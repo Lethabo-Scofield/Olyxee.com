@@ -269,7 +269,7 @@ function HeroGrysics() {
             </h1>
 
             <p className="max-w-xl text-base sm:text-lg lg:text-xl text-[#b3b3b3] mb-8 leading-relaxed">
-              Grysics simulates, tests, and verifies your AI so it runs flawlessly on any hardware—edge, lab, or cloud.
+              Grysics simulates, tests, and verifies your AI so it runs flawlessly on any hardware edge, lab, or cloud.
             </p>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto mb-6">
