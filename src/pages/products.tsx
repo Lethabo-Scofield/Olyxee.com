@@ -1,5 +1,6 @@
 import "../app/globals.css";
 import { FC, useState, useEffect, useRef } from "react";
+import Header from '../components/header';
 import { ArrowRight, Cpu, Globe, ShieldCheck, Sparkles, Play, Check, X, ChevronRight } from "lucide-react";
 import { Head } from "react-day-picker";
 
@@ -107,6 +108,7 @@ model.deploy(target="jetson-nano")`;
 
   return (
     <div className="bg-white text-gray-900">
+      <Header />
       {/* Hero Section */}
       <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">

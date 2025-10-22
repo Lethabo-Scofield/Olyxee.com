@@ -2,6 +2,7 @@
 import "../app/globals.css";
 import { FC, useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import Header from '../components/header';
 import {
   MessageSquare,
   Users,
@@ -209,46 +210,32 @@ const Community: FC = () => {
   }, [channels]);
 
   return (
-    <div className="min-h-screen bg-white text-gray-900">
+    <div className="pt-24 min-h-screen bg-white text-gray-900">
+      <Header />
 
+      <section className="relative w-full max-w-6xl mx-auto h-[400px] overflow-hidden rounded-3xl px-6">
+        <div
+          className="absolute inset-0 rounded-3xl"
+          style={{
+            backgroundImage: 'url("/images/Community presentation.png")',
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
 
-      {/* Hero Banner */}
-      <section className="relative w-full h-[600px] overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-          <div
-            className="absolute inset-0 opacity-20"
-            style={{
-              backgroundImage:
-                'url("https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop")',
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/50 to-transparent" />
-        <div className="relative container mx-auto max-w-6xl h-full flex flex-col items-center justify-center text-center px-6">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md text-white rounded-full text-sm font-medium mb-8 border border-white/20">
+        <div className="relative z-20 h-full flex flex-col items-center justify-center text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-md text-white rounded-full text-sm font-medium mb-4 border border-white/30">
             <Sparkles className="w-4 h-4" />
             <span>11.2k+ Active Members</span>
           </div>
-          <h1 className="text-6xl md:text-7xl font-bold text-white mb-6 tracking-tight">
+
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight">
             Join the Community
           </h1>
-          <p className="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto mb-12">
+
+          <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">
             Connect with developers building the future of edge AI deployment
           </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            {quickLinks.map((link) => (
-              <a
-                key={link.title}
-                href={link.link}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white rounded-full font-medium transition-all duration-300 border border-white/20"
-              >
-                <link.icon className="w-4 h-4" />
-                <span>{link.title}</span>
-              </a>
-            ))}
-          </div>
         </div>
       </section>
 

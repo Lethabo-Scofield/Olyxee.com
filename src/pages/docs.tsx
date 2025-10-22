@@ -6,6 +6,7 @@ import Guides from "../components/docs/sections/Guides";
 import Resources from "../components/docs/sections/Resources";
 import LiveAssistant from "../components/docs/sections/LiveAssistant";
 import DocsLayout from "../layouts/DocsLayout";
+import Header from '../components/header';
 
 interface Section {
   id: string;
@@ -34,10 +35,16 @@ const Docs: FC = () => {
   ).map(([family, items]) => ({ family, items }));
 
   return (
-    <DocsLayout families={families} active={activeSection} onSelect={setActiveSection}>
-      {ActiveComponent && <ActiveComponent />}
-      <LiveAssistant />
-    </DocsLayout>
+    <>
+      <div>
+        <Header />
+        <DocsLayout families={families} active={activeSection} onSelect={setActiveSection}>
+          {ActiveComponent && <ActiveComponent />}
+          <LiveAssistant />
+        </DocsLayout>
+      </div>
+    </>
+
   );
 };
 
