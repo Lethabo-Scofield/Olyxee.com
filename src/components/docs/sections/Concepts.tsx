@@ -1,15 +1,15 @@
 import { FC } from "react";
-import edgeDevices from "@/assets/EdgeExplained.jpg";
-import containerIllustration from "@/assets/Conternazation.png";
-import optimizationIllustration from "@/assets/Quantization.png";
-import workflowDiagram from "@/assets/workflow.png";
+import Image from "next/image";
+import containerIllustration from "public/images/Conternazation.png";
+import optimizationIllustration from "public/images/Quantization.png";
+import workflowDiagram from "public/images/workflow.png";
 
 const Concepts: FC = () => {
     const sections = [
         {
             title: "Containerization & Verification",
             description:
-                "Models are packaged into secure containers — just like Docker, but optimized for AI. Each container is verified before deployment to guarantee stability, performance, and hardware compatibility.",
+                "Models are packaged into secure containers just like Docker, but optimized for AI. Each container is verified before deployment to guarantee stability, performance, and hardware compatibility.",
             image: containerIllustration,
             alt: "Containerization Illustration",
         },
@@ -44,21 +44,19 @@ const Concepts: FC = () => {
                     </p>
                 </div>
 
-                {/* Video Section */}
                 <section className="w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-md">
                     <div className="relative w-full aspect-video">
                         <iframe
                             className="absolute top-0 left-0 w-full h-full rounded-xl"
                             src="https://www.youtube.com/embed/Z6aYwU8xnsA?autoplay=1&mute=1&controls=0&loop=1&playlist=Z6aYwU8xnsA&modestbranding=1&rel=0"
                             title="Edge AI Deployment Video"
-                            frameBorder="0"
+                            frameBorder={0}
                             allow="autoplay; encrypted-media; picture-in-picture"
                             allowFullScreen
                         />
                     </div>
                 </section>
 
-                {/* Concept Sections */}
                 {sections.map((section, idx) => (
                     <section
                         key={idx}
@@ -82,7 +80,7 @@ const Concepts: FC = () => {
                                 </p>
                             )}
                             <div className="flex justify-center">
-                                <img
+                                <Image
                                     src={section.image}
                                     alt={section.alt}
                                     className="w-full max-w-4xl rounded-xl object-cover"
@@ -92,11 +90,9 @@ const Concepts: FC = () => {
                     </section>
                 ))}
 
-                {/* Footer Note */}
                 <section className="text-center px-4 py-8 sm:py-12">
                     <p className="text-gray-500 text-sm sm:text-base lg:text-lg max-w-3xl mx-auto leading-relaxed">
-                        Soon, interactive visualizations will show live model deployment,
-                        verification, and optimization in real time — making Olyxee's process even more transparent for developers.
+                        Soon, interactive visualizations will show live model deployment, verification, and optimization in real time, making Olyxee's process even more transparent for developers.
                     </p>
                 </section>
             </div>

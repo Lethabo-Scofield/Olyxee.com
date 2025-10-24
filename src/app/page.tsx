@@ -59,7 +59,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-white">
       <Header />
 
-      <main id="main-content">
+      <main id="main-content ">
         <HeroGrysics />
         <AudienceTabs activeTab={activeTab} setActiveTab={setActiveTab} />
 
@@ -87,17 +87,7 @@ export default function HomePage() {
               </>
             )}
 
-            {activeTab === "businesses" && (
-              <>
-                <BusinessIdeServicesBanner />
-                <BusinessBenefitsGrid />
-                <div className="bg-white py-16 sm:py-24">
-                  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <ComplianceSecurityBanner />
-                  </div>
-                </div>
-              </>
-            )}
+
           </motion.div>
         </AnimatePresence>
         <DiscoverMoreCards />
@@ -113,84 +103,57 @@ export default function HomePage() {
 }
 
 function HeroGrysics() {
-  const lines = 4;
-  const lineSpacing = 100 / (lines + 1);
-
-  const words = ["Boards", "Drones", "Robots"];
-  const colors = ["text-pink-500", "text-indigo-500", "text-orange-500"];
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % words.length);
-    }, 2500);
-    return () => clearInterval(interval);
-  }, []);
-
   const hardwareLogos = [
     { src: "/hardware-logos/raspberrypi.png", alt: "Raspberry Pi" },
     { src: "/hardware-logos/NVIDIA-logo-BL_thmb.jpg", alt: "NVIDIA Jetson" },
     { src: "/hardware-logos/arduino-logo.png", alt: "Arduino" },
     { src: "/hardware-logos/intel.jpg", alt: "Intel" },
-    { src: "/hardware-logos/ESP32-C6-DevKit-Module-Pinout-c.jpg", alt: "ESP" },
+    { src: "/hardware-logos/ESP32.png", alt: "ESP" },
   ];
 
   return (
-    <section className="relative w-full min-h-[85vh] pt-24 flex flex-col items-center justify-center px-4 md:px-6 lg:px-12 bg-gradient-to-t from-blue-400 to-white overflow-hidden">
-      {/* Background animated lines */}
-      <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#e0e0e0" />
-            <stop offset="100%" stopColor="#c0c0c0" />
-          </linearGradient>
-        </defs>
-        {[...Array(lines)].map((_, i) => (
-          <motion.line
-            key={i}
-            x1={0}
-            y1={`${(i + 1) * lineSpacing}%`}
-            x2="100%"
-            y2={`${(i + 1) * lineSpacing}%`}
-            stroke="url(#lineGradient)"
-            strokeWidth={2}
-            animate={{ x1: ["0%", "-5%"], x2: ["100%", "95%"] }}
-            transition={{ repeat: Infinity, repeatType: "mirror", duration: 5 + i }}
-          />
-        ))}
-      </svg>
+    <section className="relative w-full min-h-[85vh] flex flex-col items-center justify-center px-4 md:px-8 lg:px-16 py-24 overflow-hidden">
+      {/* Animated blue smoke background */}
+      <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-white via-blue-300/40 to-white">
+        <motion.svg
+          className="absolute inset-0 w-full h-full"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="xMidYMid slice"
+          animate={{ y: [0, 15, 0] }}
+          transition={{ repeat: Infinity, duration: 20, ease: "easeInOut" }}
+        >
+          <defs>
+            <linearGradient id="smokeGradient1" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="transparent" />
+              <stop offset="50%" stopColor="#3B82F6" stopOpacity="0.3" />
+              <stop offset="100%" stopColor="transparent" />
+            </linearGradient>
+            <filter id="blurSmoke1" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="90" />
+            </filter>
+          </defs>
+          <circle cx="50%" cy="40%" r="220" fill="url(#smokeGradient1)" filter="url(#blurSmoke1)" />
+          <circle cx="30%" cy="60%" r="180" fill="url(#smokeGradient1)" filter="url(#blurSmoke1)" />
+          <circle cx="70%" cy="55%" r="200" fill="url(#smokeGradient1)" filter="url(#blurSmoke1)" />
+        </motion.svg>
+      </div>
 
       {/* Heading */}
-      <div className="relative z-10 text-center mb-4 max-w-3xl">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-extrabold text-gray-900 leading-snug flex justify-center items-center gap-3">
-          Deploy AI Anywhere on{" "}
-          <span className="relative inline-block h-[1.2em]">
-            <AnimatePresence mode="wait">
-              <motion.span
-                key={index}
-                className={`${colors[index]}`}
-                initial={{ x: 50, opacity: 0, scale: 0.9 }}
-                animate={{ x: 0, opacity: 1, scale: 1 }}
-                exit={{ x: -50, opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.6, ease: "easeInOut" }}
-              >
-                {words[index]}
-              </motion.span>
-            </AnimatePresence>
-          </span>
+      <div className="relative z-10 text-center mb-12 max-w-3xl">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 leading-snug">
+          Deploy AI Anywhere
         </h1>
-        <p className="mt-2 text-sm sm:text-base text-gray-700 font-light max-w-md mx-auto">
+        <p className="mt-5 text-base sm:text-lg md:text-xl text-gray-700 font-light max-w-md mx-auto">
           Simulate, test, and verify AI on any device quickly.
         </p>
       </div>
 
-      {/* Console video */}
+      {/* Video with floating animation */}
       <motion.div
-        className="relative z-10 max-w-2xl w-full rounded-3xl overflow-hidden mb-6"
-        style={{ height: "300px" }}
-        initial={{ opacity: 0, scale: 0.96 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
+        className="relative z-10 w-full max-w-4xl rounded-3xl overflow-hidden mb-12"
+        style={{ height: "auto", aspectRatio: "16/9" }}
+        animate={{ y: [0, -10, 0] }}
+        transition={{ repeat: Infinity, duration: 12, ease: "easeInOut" }}
       >
         <video
           src="/videos/demo.mp4"
@@ -199,36 +162,42 @@ function HeroGrysics() {
           loop
           muted
           playsInline
-          controls={false}
+          preload="metadata"
         />
-        <button className="absolute bottom-4 right-4 px-5 py-2 bg-gray-200 text-black rounded-full font-semibold hover:bg-gray-300 transition-colors flex items-center gap-2">
+        <button
+          aria-label="Deploy Model"
+          className="absolute bottom-6 right-6 px-6 py-3 bg-gray-200 text-black rounded-full font-semibold hover:bg-gray-300 transition-all"
+        >
           Deploy Model
         </button>
       </motion.div>
 
-
-      {/* Trusted hardware logos */}
-      <div className="relative z-10 flex flex-wrap justify-center items-center gap-6 mt-4 bg-transparent">
+      {/* Hardware logos with responsive size, grayscale default, color on hover */}
+      <div className="relative z-10 flex flex-wrap justify-center items-end gap-8 mt-8">
         {hardwareLogos.map((logo, i) => (
           <div
             key={i}
-            className="w-20 h-20 flex items-center justify-center transition-all duration-300 hover:scale-105"
+            className="flex flex-col items-center w-20 sm:w-24 md:w-28 lg:w-32"
           >
-            <Image
-              src={logo.src}
-              alt={logo.alt}
-              width={80}
-              height={80}
-              className="object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-            />
+            <div className="w-full h-20 sm:h-24 md:h-28 lg:h-32 flex items-center justify-center">
+              <Image
+                src={logo.src}
+                alt={logo.alt}
+                width={128}
+                height={128}
+                unoptimized
+                className="object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+              />
+            </div>
+            <span className="mt-2 text-sm sm:text-base text-gray-800 font-semibold text-center">
+              {logo.alt}
+            </span>
           </div>
         ))}
       </div>
-
     </section>
   );
 }
-
 
 function AudienceTabs({
   activeTab,
@@ -251,12 +220,6 @@ function AudienceTabs({
       label: "For Teams",
       icon: Users,
       preview: "Collaborate on AI projects with shared pipelines, versioned models, and CI/CD automation.",
-    },
-    {
-      id: "businesses" as const,
-      label: "For Businesses",
-      icon: Building,
-      preview: "Deploy AI at scale with reliability, compliance, and cross-hardware support.",
     },
   ];
 
@@ -889,71 +852,6 @@ function TeamCityPipelinesBanner() {
             </div>
           </div>
         </a>
-      </div>
-    </section>
-  );
-}
-
-function BusinessIdeServicesBanner() {
-  const JetBrainsSimpleLogo = () => (
-    <div className="h-6 w-6 flex-shrink-0" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="24" height="24" fill="white" />
-        <path d="M12 6L6 12L12 18L18 12L12 6Z" fill="black" />
-      </svg>
-    </div>
-  );
-
-  return (
-    <section className="bg-white py-16 sm:py-24" id="businesses-panel" role="tabpanel">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl text-center">
-          <h2 className="flex items-center justify-center gap-x-2 text-lg font-semibold leading-7 text-gray-700 mb-4">
-            <span>For</span>
-            <Building className="h-5 w-5 text-black" />
-            <span>businesses</span>
-          </h2>
-          <p className="text-4xl sm:text-5xl font-bold tracking-tight text-black">
-            Empower your team and succeed as a business
-          </p>
-        </div>
-        <div className="mt-16 sm:mt-20">
-          <Link
-            href="https://www.jetbrains.com/ide-services/"
-            className="group block relative mx-auto max-w-[1200px] overflow-hidden rounded-[24px] border border-gray-200 hover:border-gray-400 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-700"
-            aria-label="Learn more about JetBrains IDE Services"
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-400" />
-            <Image
-              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/c6af1086-1c42-4c7e-8bfb-3e84cfcea34c-jetbrains-com/assets/svgs/ide-services-bg-6.svg?"
-              alt=""
-              fill
-              className="absolute inset-0 z-0 opacity-30"
-              aria-hidden="true"
-            />
-            <div className="relative z-10 p-14 text-black">
-              <div className="flex flex-col items-start">
-                <div className="flex items-center gap-3">
-                  <JetBrainsSimpleLogo />
-                  <span className="text-lg font-bold text-black">JetBrains IDE Services</span>
-                </div>
-                <h3 className="mt-12 text-[36px] font-bold leading-tight tracking-[-0.01em] text-black">
-                  Manage developer tools at scale
-                </h3>
-                <p className="mt-4 max-w-xl text-lg font-normal leading-relaxed text-gray-600">
-                  Provision IDEs centrally to machines across your entire organization. Securely
-                  govern AI-powered development.
-                </p>
-                <div className="mt-8">
-                  <span className="inline-flex items-center gap-2 rounded-full bg-gray-700 px-9 py-[14px] text-base font-semibold text-white transition-all duration-200 group-hover:scale-105">
-                    Learn more
-                    <ArrowRight className="w-4 h-4" />
-                  </span>
-                </div>
-              </div>
-            </div>
-          </Link>
-        </div>
       </div>
     </section>
   );
