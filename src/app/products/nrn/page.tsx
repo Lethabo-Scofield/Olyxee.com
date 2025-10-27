@@ -24,22 +24,44 @@ export default function NRNArticle() {
                 transition={{ duration: 0.6 }}
                 className="max-w-5xl mx-auto px-6 py-16 flex flex-col gap-16"
             >
-                {/* Article Header */}
-                <header className="flex flex-col gap-4">
-                    <h1 className="text-5xl font-bold text-black">Neural Reality Network (NRN) by Olyxee</h1>
-                    <p className="text-gray-700 text-lg">
-                        NRN is a next-generation interpretable AI system designed for multi-path feature analysis,
-                        allowing real-time insights into AI decision-making. Built for edge deployment and research,
-                        NRN bridges the gap between raw neural computation and human-understandable reasoning.
+                <header className="flex flex-col gap-8">
+                    <h1 className="text-5xl sm:text-6xl font-extrabold text-black leading-tight">
+                        Neural Reality Network (NRN) by Olyxee
+                    </h1>
+                    <p className="text-gray-700 text-lg sm:text-xl max-w-3xl">
+                        NRN is a next-generation interpretable AI system for multi-path feature analysis,
+                        delivering real-time insights into AI decision-making. Designed for edge deployment
+                        and research, it bridges the gap between raw neural computation and human-understandable reasoning.
                     </p>
-                    <div className="relative w-full h-100 overflow-hidden ">
-                        <Image
-                            src="/products/nrn/Overview.jpg"
-                            alt="Neural Reality Network Overview"
-                            fill
-                            className="object-cover"
-                        />
+
+                    <div className="mt-8">
+                        <h2 className="text-2xl sm:text-3xl font-semibold mb-3 inline-block px-2 py-1 bg-pink-400/40 rounded">
+                            Without NRN
+                        </h2>
+                        <div className="relative w-full aspect-[16/9] rounded-lg overflow-hidden">
+                            <Image
+                                src="/products/nrn/image.png"
+                                alt="Without NRN"
+                                fill
+                                className="object-contain"
+                            />
+                        </div>
                     </div>
+
+                    <div className="mt-8">
+                        <h2 className="text-2xl sm:text-3xl font-semibold mb-3 inline-block px-2 py-1 bg-pink-400/40 rounded">
+                            With NRN
+                        </h2>
+                        <div className="relative w-full aspect-[16/9] rounded-lg overflow-hidden">
+                            <Image
+                                src="/products/nrn/NRN_Archi.png"
+                                alt="With NRN"
+                                fill
+                                className="object-contain"
+                            />
+                        </div>
+                    </div>
+
                 </header>
 
                 {/* Introduction */}

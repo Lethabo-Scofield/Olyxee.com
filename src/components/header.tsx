@@ -1,66 +1,59 @@
 'use client';
 
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback, memo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { FaDiscord } from 'react-icons/fa';
 
-export default function Header() {
+const menuItems = [
+    { name: "Products", href: "#", hasDropdown: true },
+    { name: "Docs", href: "/docs" },
+    { name: "Community", href: "/community" },
+    { name: "Support", href: "/support" },
+];
+
+const productsDropdown = [
+    {
+        name: "Grysics",
+        href: "/products/grysics",
+        description: "Next-level AI simulation & edge deployment tools.",
+        bg: "bg-gray-100",
+        icon: "/Logo/Olyxee_Logo.png",
+        image: "/Products/product_2.jpg"
+    },
+    {
+        name: "Neural Reality Network",
+        href: "/products/nrn",
+        description: "Interpretable AI that sees and explains reality.",
+        bg: "bg-gray-100",
+        icon: "/Logo/Olyxee_Logo.png",
+        image: "/Products/product.jpg"
+    },
+];
+
+const Header = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const [scrollDirection, setScrollDirection] = useState('up');
-    const [lastScrollY, setLastScrollY] = useState(0);
+    const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('up');
     const [scrolled, setScrolled] = useState(false);
     const [productsOpen, setProductsOpen] = useState(false);
-
+    const lastScrollY = useRef(0);
     const dropdownTimerRef = useRef<NodeJS.Timeout | null>(null);
     const firstFocusableRef = useRef<HTMLButtonElement | null>(null);
 
-    const menuItems = [
-        { name: "Products", href: "#", hasDropdown: true },
-        { name: "Docs", href: "/docs" },
-        { name: "Community", href: "/community" },
-        { name: "Support", href: "/support" },
-    ];
-
-    const productsDropdown = [
-        {
-            name: "Grysics",
-            href: "/products/grysics",
-            description: "Next-level AI simulation & edge deployment tools.",
-            bg: "bg-gray-100",
-            icon: "/Logo/Olyxee_Logo.png",
-            image: "/Products/product_2.jpg"
-        },
-        {
-            name: "Neural Reality Network",
-            href: "/products/nrn",
-            description: "Interpretable AI that sees and explains reality.",
-            bg: "bg-gray-100",
-            icon: "/Logo/Olyxee_Logo.png",
-            image: "/Products/product.jpg"
-        },
-    ];
-
-
+    // Scroll handling with minimal re-renders
     useEffect(() => {
-        let ticking = false;
         const handleScroll = () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    const currentScrollY = window.scrollY;
-                    setScrollDirection(currentScrollY > lastScrollY && currentScrollY > 50 ? 'down' : 'up');
-                    setLastScrollY(currentScrollY);
-                    setScrolled(currentScrollY > 80);
-                    ticking = false;
-                });
-                ticking = true;
-            }
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > lastScrollY.current && currentScrollY > 50) setScrollDirection('down');
+            else setScrollDirection('up');
+            setScrolled(currentScrollY > 80);
+            lastScrollY.current = currentScrollY;
         };
         window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
-    }, [lastScrollY]);
+    }, []);
 
     const handleMouseEnterDropdown = useCallback(() => {
         if (dropdownTimerRef.current) clearTimeout(dropdownTimerRef.current);
@@ -73,7 +66,7 @@ export default function Header() {
 
     useEffect(() => {
         const handleEscape = (e: KeyboardEvent) => {
-            if (e.key === 'Escape' && mobileMenuOpen) setMobileMenuOpen(false);
+            if (e.key === 'Escape') setMobileMenuOpen(false);
         };
         if (mobileMenuOpen) {
             document.addEventListener('keydown', handleEscape);
@@ -89,11 +82,6 @@ export default function Header() {
     const handleBackdropClick = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
         if (e.target === e.currentTarget) setMobileMenuOpen(false);
     }, []);
-
-    const menuItemVariants = {
-        hidden: { opacity: 0, x: -20 },
-        visible: (i: number) => ({ opacity: 1, x: 0, transition: { delay: i * 0.1, duration: 0.3, ease: 'easeOut' } })
-    };
 
     return (
         <>
@@ -113,7 +101,7 @@ export default function Header() {
                 transition={{ type: 'tween', duration: 0.3 }}
             >
                 <div className={`flex items-center ${scrolled ? 'justify-center gap-6' : 'justify-between'} w-full h-16 relative`}>
-                    <Link href="/" aria-label="Home" className="focus:outline-none focus:ring-2 focus:ring-gray-900 rounded-lg transition-transform hover:scale-110">
+                    <Link href="/" prefetch className="focus:outline-none focus:ring-2 focus:ring-gray-900 rounded-lg transition-transform hover:scale-110">
                         <Image src="/Logo/Olyxee_Logo.png" alt="Olyxee Logo" width={32} height={32} className="cursor-pointer" />
                     </Link>
 
@@ -128,6 +116,7 @@ export default function Header() {
                                 >
                                     <Link
                                         href={item.href}
+                                        prefetch
                                         className="text-black text-sm font-normal transition-all hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-900 rounded px-2 py-1 relative group"
                                         aria-haspopup={item.hasDropdown ? "true" : undefined}
                                         aria-expanded={item.hasDropdown ? productsOpen : undefined}
@@ -151,6 +140,7 @@ export default function Header() {
                                                         <Link
                                                             key={product.name}
                                                             href={product.href}
+                                                            prefetch
                                                             className="relative flex flex-col min-w-[220px] p-6 rounded-xl overflow-hidden bg-white hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-gray-900 group"
                                                             role="menuitem"
                                                         >
@@ -164,7 +154,7 @@ export default function Header() {
                                                             )}
                                                             {product.icon && (
                                                                 <div className="mb-4 transition-transform group-hover:scale-105">
-                                                                    <Image src={product.icon} alt="" width={40} height={40} />
+                                                                    <Image src={product.icon} alt="" width={40} height={40} priority />
                                                                 </div>
                                                             )}
                                                             <h3 className="text-lg font-bold text-black mb-2 group-hover:text-gray-800 transition-colors">{product.name}</h3>
@@ -230,8 +220,8 @@ export default function Header() {
                             <nav className="p-6 overflow-y-auto h-[calc(100vh-80px)]">
                                 <ul className="space-y-2">
                                     {menuItems.map((item, i) => (
-                                        <motion.li key={item.name} custom={i} initial="hidden" animate="visible" variants={menuItemVariants}>
-                                            <Link href={item.href} className="flex items-center justify-between py-3 px-4 hover:bg-gray-100 active:bg-gray-200 rounded-lg transition-all text-black font-medium focus:outline-none focus:ring-2 focus:ring-gray-900" onClick={() => setMobileMenuOpen(false)}>
+                                        <motion.li key={item.name} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05 }}>
+                                            <Link href={item.href} prefetch className="flex items-center justify-between py-3 px-4 hover:bg-gray-100 active:bg-gray-200 rounded-lg transition-all text-black font-medium focus:outline-none focus:ring-2 focus:ring-gray-900" onClick={() => setMobileMenuOpen(false)}>
                                                 {item.name} <span className="text-gray-400">→</span>
                                             </Link>
                                         </motion.li>
@@ -252,4 +242,6 @@ export default function Header() {
             </AnimatePresence>
         </>
     );
-}
+};
+
+export default memo(Header);

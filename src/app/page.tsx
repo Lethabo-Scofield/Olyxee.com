@@ -139,15 +139,14 @@ function HeroGrysics() {
       </div>
 
       {/* Heading */}
-      <div className="relative z-10 text-center mb-12 max-w-3xl">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 leading-snug">
-          Deploy AI Anywhere
+      <div className="relative z-10 text-center mb-16 max-w-3xl mx-auto">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold font-sans text-gray-900 leading-tight">
+          Simplifying AI Deployment Everywhere
         </h1>
-        <p className="mt-5 text-base sm:text-lg md:text-xl text-gray-700 font-light max-w-md mx-auto">
-          Simulate, test, and verify AI on any device quickly.
+        <p className="mt-6 text-base sm:text-lg md:text-xl font-light font-sans text-gray-600 max-w-md mx-auto">
+          Simplifying the complexity of deploying AI on heterogeneous devices.
         </p>
       </div>
-
       {/* Video with floating animation */}
       <motion.div
         className="relative z-10 w-full max-w-4xl rounded-3xl overflow-hidden mb-12"
@@ -172,29 +171,30 @@ function HeroGrysics() {
         </button>
       </motion.div>
 
-      {/* Hardware logos with responsive size, grayscale default, color on hover */}
-      <div className="relative z-10 flex flex-wrap justify-center items-end gap-8 mt-8">
+      {/* Hardware logos with smaller size, transparent background, grayscale default, color on hover */}
+      <div className="relative z-10 flex flex-wrap justify-center items-end gap-6 mt-8">
         {hardwareLogos.map((logo, i) => (
           <div
             key={i}
-            className="flex flex-col items-center w-20 sm:w-24 md:w-28 lg:w-32"
+            className="flex flex-col items-center w-16 sm:w-20 md:w-24 lg:w-28 transition-transform duration-300 hover:scale-105"
           >
-            <div className="w-full h-20 sm:h-24 md:h-28 lg:h-32 flex items-center justify-center">
+            <div className="w-full h-16 sm:h-20 md:h-24 lg:h-28 flex items-center justify-center">
               <Image
                 src={logo.src}
                 alt={logo.alt}
-                width={128}
-                height={128}
+                width={96}
+                height={96}
                 unoptimized
-                className="object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                className="object-contain filter grayscale hover:grayscale-0 transition-all duration-300 bg-transparent"
               />
             </div>
-            <span className="mt-2 text-sm sm:text-base text-gray-800 font-semibold text-center">
+            <span className="mt-2 text-xs sm:text-sm md:text-base text-gray-700 font-medium text-center">
               {logo.alt}
             </span>
           </div>
         ))}
       </div>
+
     </section>
   );
 }
