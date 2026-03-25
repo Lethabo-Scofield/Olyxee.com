@@ -1,5 +1,4 @@
 import { useState, FC } from "react";
-import "../app/globals.css";
 import Overview from "../components/docs/sections/Overview";
 import Concepts from "../components/docs/sections/Concepts";
 import Guides from "../components/docs/sections/Guides";

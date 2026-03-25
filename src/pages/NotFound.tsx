@@ -1,5 +1,4 @@
 import { FC } from "react";
-import "../app/globals.css";
 import Lottie from "lottie-react";
 import constructionAnimation from "@/assets/animations/site under construction.json";
 

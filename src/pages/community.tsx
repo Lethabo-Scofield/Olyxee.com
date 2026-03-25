@@ -1,5 +1,4 @@
 "use client";
-import "../app/globals.css";
 import React, { FC, useState, useEffect, useRef } from "react";
 import Header from "../components/header";
 import {
