@@ -52,8 +52,8 @@ export default function GrysicsPage() {
   ];
 
   const useCases = [
-    { title: 'Smart Manufacturing', description: 'Real-time quality control and predictive maintenance.', image: 'https://images.unsplash.com/photo-1581091215361-5e4c74f399c5?auto=format&fit=crop&w=400&h=300', industries: ['Automotive', 'Electronics', 'Pharmaceuticals'] },
-    { title: 'Healthcare Devices', description: 'Privacy-first patient monitoring at the edge.', image: 'https://images.unsplash.com/photo-1588776814546-1e5e24a5db47?auto=format&fit=crop&w=400&h=300', industries: ['Wearables', 'Imaging', 'Emergency Care'] },
+    { title: 'Smart Manufacturing', description: 'Real-time quality control and predictive maintenance.', image: 'https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=400&h=300', industries: ['Automotive', 'Electronics', 'Pharmaceuticals'] },
+    { title: 'Healthcare Devices', description: 'Privacy-first patient monitoring at the edge.', image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=400&h=300', industries: ['Wearables', 'Imaging', 'Emergency Care'] },
     { title: 'Smart Cities', description: 'Traffic optimization and public safety systems.', image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=400&h=300', industries: ['Transportation', 'Infrastructure', 'Security'] }
   ];
 
@@ -63,10 +63,10 @@ export default function GrysicsPage() {
   ];
 
   const partners = [
-    'https://upload.wikimedia.org/wikipedia/commons/4/44/NVIDIA_logo.svg',
-    'https://upload.wikimedia.org/wikipedia/commons/4/4e/ARM_logo.svg',
-    'https://upload.wikimedia.org/wikipedia/commons/d/d5/Raspberry_Pi_Logo.svg',
-    'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg'
+    '/hardware-logos/NVIDIA-logo-BL_thmb.jpg',
+    '/hardware-logos/arduino-logo.png',
+    '/hardware-logos/raspberrypi.png',
+    '/hardware-logos/ESP32.png'
   ];
 
   return (
@@ -76,7 +76,7 @@ export default function GrysicsPage() {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-6 pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 -z-10">
-          <Image src="https://images.unsplash.com/photo-1612831455544-9c1151b9c2f7?auto=format&fit=crop&w=1920&h=1080" alt="" fill className="object-cover opacity-10" aria-hidden="true" />
+          <Image src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&h=1080" alt="" fill className="object-cover opacity-10" aria-hidden="true" />
         </div>
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
           <motion.div style={{ opacity, scale }} className="flex flex-col gap-8">
@@ -105,7 +105,7 @@ export default function GrysicsPage() {
           {/* Hero Dashboard */}
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.2 }} className="relative flex items-center justify-center gap-8">
             <div className="relative w-full max-w-lg h-[500px] rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
-              <Image src="https://images.unsplash.com/photo-1605902711622-cfb43c44324a?auto=format&fit=crop&w=600&h=400" alt="Grysics Dashboard" fill className="object-cover" />
+              <Image src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&h=400" alt="Grysics Dashboard" fill className="object-cover" priority />
             </div>
           </motion.div>
         </div>
@@ -198,7 +198,7 @@ export default function GrysicsPage() {
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <div className="relative w-8 h-8"><Image src="https://upload.wikimedia.org/wikipedia/commons/1/17/Google-flutter-logo.png" alt="Grysics" fill className="object-contain" /></div>
+                <div className="relative w-8 h-8"><Image src="/Logo/Olyxee_Logo.png" alt="Grysics" fill className="object-contain" /></div>
                 <span className="text-xl font-bold">Grysics</span>
               </div>
               <p className="text-gray-600 text-sm leading-relaxed">Next-generation edge AI deployment platform</p>

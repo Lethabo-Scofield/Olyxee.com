@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Header from "@/components/header";
 import { BlockMath, InlineMath } from 'react-katex';
-import 'katex/dist/katex.min.css';
 
 export default function NRNArticle() {
     const keyMetrics = [
@@ -40,7 +39,7 @@ export default function NRNArticle() {
                         </h2>
                         <div className="relative w-full aspect-[16/9] rounded-lg overflow-hidden">
                             <Image
-                                src="/products/nrn/image.png"
+                                src="/Products/nrn/image.png"
                                 alt="Without NRN"
                                 fill
                                 className="object-contain"
@@ -54,7 +53,7 @@ export default function NRNArticle() {
                         </h2>
                         <div className="relative w-full aspect-[16/9] rounded-lg overflow-hidden">
                             <Image
-                                src="/products/nrn/NRN_Archi.png"
+                                src="/Products/nrn/NRN_Archi.png"
                                 alt="With NRN"
                                 fill
                                 className="object-contain"
@@ -116,15 +115,15 @@ export default function NRNArticle() {
                         <p className="text-gray-800 text-sm">
                             Features contributing to decision path: <InlineMath math="N_{used} = 114" />
                         </p>
-                        <p className="text-gray-800 text-sm">
+                        <div className="text-gray-800 text-sm">
                             Interpretability ratio: <BlockMath math="\text{IR} = \frac{N_{used}}{N_{total}} = \frac{114}{120} \approx 0.95" />
-                        </p>
-                        <p className="text-gray-800 text-sm">
+                        </div>
+                        <div className="text-gray-800 text-sm">
                             Explainability Score: <BlockMath math="ES = IR \times 100 = 0.95 \times 100 = 95\%" />
-                        </p>
-                        <p className="text-gray-800 text-sm">
+                        </div>
+                        <div className="text-gray-800 text-sm">
                             Edge Deployment Efficiency (example): <BlockMath math="EDE = \frac{Model_{Runtime\_Edge}}{Model_{Runtime\_Base}} \times 100 = \frac{0.87s}{1.0s} \times 100 \approx 87\%" />
-                        </p>
+                        </div>
                     </div>
                 </section>
 

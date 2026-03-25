@@ -1,0 +1,285 @@
+Understood. Treat Olyxee’s website as a **company-level interface** (like OpenAI, Google, Anthropic, DeepMind), not a single-product landing page.
+
+It should present:
+
+* vision
+* research
+* products (including Grysics)
+* credibility
+* ecosystem
+
+---
+
+## 1) Homepage (Company Narrative)
+
+![Image](https://images.openai.com/static-rsc-4/FYM3HvaYoWCa8iAT6BD1NctxECe1dvJUTD5gdMLVxSyrfmwOtQixQplhSB0dRRWrUZMcLJswg4ZVDpGbVeyeArIg9Pgszqoa_5vOixRNa3wwbdEVSStkJjZJ1OVvWOy0-PSBINT1jZ2rxvZHV-ALdc6ZC5BydPSV39hINLeLC0OVBg9p0RwvyDzngO3_zMQ2?purpose=fullsize)
+
+![Image](https://images.openai.com/static-rsc-4/fgoVZB-Od9aAmwc3JALU2V83MZT8rIz5nGAEz0ndUIAERxZ_VMneCRxVh-1IgTGV0DBC0Nt7ik0KXbknq2hmBc-ZEzD3uz1mjCXNPTWHDxrH4Kh_HTvB307aaFpktVWh-SioBlXSqii1DpA_xPcVnDwdtfR8-Hgs9eTjAwoc43PlLSI2ovf2Xx1AHqyOMnwh?purpose=fullsize)
+
+![Image](https://images.openai.com/static-rsc-4/3wskw1TURi0Xsoo9fVLQOMM3IPDXjSSeqMc7HhMyk0Z4xSndNWD-LlOmD8hgPo4tZcJcsM1OHtUEorzsShcpn25Dp-jH4r5FF4e_1D5Q0arlLNjo6K459zRheSui286wLmffi-q4cMRAoXpzn9cxMaZ1gbBPMFjbS-Cvc9E65cx3JHAhaRNh3jp-PysRr7yd?purpose=fullsize)
+
+![Image](https://images.openai.com/static-rsc-4/ufaz801i65zf1TStYK-qdtvWaJKW0FYLOrMEpRJNFEjfdAbWRMHi4PE_-SB5-V9K_6NuvjzGjlh80b-ieKzIW3D4Vhgn36ShkXWB9cO1ejP04UOA9bm9RiXngErd5kMEK4nWAnJG6dxc9Am5JMyfyB2n2zOitvJ0rtgeL8memxOVT6C2CwIUBxdQc2E7ziKd?purpose=fullsize)
+
+![Image](https://images.openai.com/static-rsc-4/089NmiPA202cBQ2bUnk0-3zw4-khmH8JaiP8_mx7RX41cSbd1_lDRu2Rnjq_InURW_139BB96fgBCvswrXSTgaPWHlYOYHqFL62-fTy0N2vCnnjat0-OzWnlu1XAUrvD3ke3gaLZWRpkBf5jKrVmodYXKLjCf0vok17Q4EBfpQQJfNgo6lEWpzGR5RsUj4IP?purpose=fullsize)
+
+![Image](https://images.openai.com/static-rsc-4/S6v3b1Rz0CZUvL2sEvNV9rH7PibDEz6JFWvPgLxszoi7A33e-H4Y5SZhEF7lTrFiWu2_sfVogBdgBAbYl6eDZS4OwoBxQzE3kAazadKL3W7QG6h0VWXHqRp--o9g1mNbbTfk1WTWCdk2GZ6YJGhSE6mCxYIPoTNKPv7Kw1wWl8Jy1Pg2ASnbASL_kTJMHsjx?purpose=fullsize)
+
+**Purpose:** Define what Olyxee is at a high level.
+
+**Content:**
+
+* Headline (vision-driven, not product-specific)
+  Example:
+  *“Building reliable infrastructure for the next generation of AI systems.”*
+
+* Subtext:
+
+  * Focus on **AI reliability, verification, and deployment**
+  * Position Olyxee as **infrastructure layer for AI systems**
+
+* Sections:
+
+  * “What we do”
+  * “Our products”
+  * “Research”
+  * “Get started”
+
+---
+
+## 2) About / Mission
+
+**Purpose:** Establish identity and philosophy.
+
+**Include:**
+
+* Mission: Reliable AI everywhere (edge → enterprise)
+* Problem:
+
+  * AI systems fail in real-world deployment
+* Approach:
+
+  * Verification-first infrastructure
+* Philosophy:
+
+  * Similar depth to DeepMind/Anthropic (not marketing-heavy)
+
+---
+
+## 3) Products (Portfolio, not just one)
+
+![Image](https://images.openai.com/static-rsc-4/MlfI4hhPANE7LZIaNDgPtKBdr1R-kbXuhcdNrqdC-t1Flg_WBrnjqXadFDTyLy4XrXBy6h4iT6ORLdzTIojwf06fGGdg_SvFPvmvFJt8UwdotA4vGdznJhgY_KR1UyZcXWqqwZPzCw3JKpgj2NghJcuVBeqOWgczIn4eb4RlPXFy_sdh4KWGbGF5DDL5Hkbz?purpose=fullsize)
+
+![Image](https://images.openai.com/static-rsc-4/6DEeylGlA77ULMz0Pb3sFJiEIlCbwlCvjUQ9yxE8_PqhRU12cH-lvMOrVFZdyBM9i3yzeOEjhgJu-QHPenSVvglPgQTjK79nQoRanp1fEDVWG2wz0fWs5VapRXf3XIM_9jg9AhizeMwcme6_TEeTIfbRudmdTH71ARgr9thMxCBN2YRTkosGc-PPaWVi3t_6?purpose=fullsize)
+
+![Image](https://images.openai.com/static-rsc-4/hdZuknxAEHuRwiFpFx5ri3B7ttxfhZMwdGv0g9tKDK58WYFXm9NnudGeGTsRejuVnxlY8s1CAAO91Zc-Ajd7MGMWTZYGCOWaOYpF5OvxSBws2A13aFQpZkMHDYQOniZ_7nBOUDzRRRgcyy8kViBfczglAllDxBvCfdqh3PBuygntBIKUKmvKzboL4pzonRXg?purpose=fullsize)
+
+![Image](https://images.openai.com/static-rsc-4/AFInj4fM61QMAfOeHWk5e6kGayr_dQiurN69-5j1AR-q8TMMGFxShY9KvvaLg3TUp_zUKD8l5EJt0Arusvf42oFfdhi2vygsu3e8cmcQLnFGX0keFRMfomGrZmokAz25uR0dAz09ZxXdYpFo2rnlTOmg_AYrGZZa8sxCiX2HrfwEKt_6r3nZihouKvG3WaAU?purpose=fullsize)
+
+![Image](https://images.openai.com/static-rsc-4/77meENOcytBUxys_ziRm2IrvitDe2G7AYTJOx1pCfhi5TRFkHPCnK8TF37yIx_1mQS7S4cQXfGo64unrGeif9T2_GsqPvNhBUtWy3P0hDmccprVDQFp1cJ83M_Aq32nnn4ytMVRkH7L5Nm-7qOYgnGGxOMxuU0GnnIvPt3RqGicDhjivFmfBxauRQ4MbOSIl?purpose=fullsize)
+
+![Image](https://images.openai.com/static-rsc-4/JwRiv3ly7I4F3C_3ayL0o8XH_PSNY7X4GJXkvYqEuGwAVLrLdOeJ4EbcCC3ITb-bYIvQN5m3tLC3BYDhjjk4T5P74e4Z7CmU3aScOaBRPptv3YA8Qu07Pl5eakE7YgC1tjM-S8ejHrQuIT3abyCej2Hp5h1QEPfsZwwP_x4lJBzhCJ-8AC2iOgs9RYun8CPG?purpose=fullsize)
+
+**Purpose:** Show Olyxee as a platform company.
+
+Structure:
+
+### a. Olyxee (Core Platform)
+
+* Infrastructure layer (WAVE)
+* Handles deployment pipelines
+
+### b. Grysics
+
+* Verification engine
+* Simulation + testing
+
+### c. Future Products (placeholder)
+
+* Monitoring
+* Runtime optimization
+* Autonomous adaptation
+
+Each product:
+
+* Short description
+* Link to detailed page
+
+---
+
+## 4) Research
+
+![Image](https://images.openai.com/static-rsc-4/8_5h9_BgJIy6b0dW-z06aft6Ca7DLxX0XoD5TgSKj5VAMMeaOS0xiyCZbG34BGRWqAALeqK8Qp5oi6zbxEYfVB4OxgMnJ8Yz3KqwWlTl5ptXd1m9ql0Eu7OuKkMUG9mKAmUk4tWx0cUvXzXOfRXkJHUVkZ-Yq3-aIArmNIER9QSmVQoId0oClqY9xd7Vq-t2?purpose=fullsize)
+
+![Image](https://images.openai.com/static-rsc-4/xFoEUmcUBwfRbPEcPQm8e5FPsyx1AQTMogy8LTeCaKzSmmTx_2-UyGz3FFOdenfGU2-vq9gLeQEjWyReYRRTeKpjuZK23j-tsyDS6RfxAmoPrlAboOXgZH1y7wXJJhF7YCpTcFxs1rK9LN6FFQSokPVbM4lXB-qIlzB7lIV0DXeZAzXFBFlkAfzbzbpb8mWL?purpose=fullsize)
+
+![Image](https://images.openai.com/static-rsc-4/RctCzG3j_2yIR4CkYjNLUha6zP1JaaLpGtH1I8sI-tEKK_YiaY1eXZV9jYaJHspEHwb7eQ8jOnVGN8vkSESaDxx0maVQE_0vdYmmnjyVd-P3IzxcCtAVnzEYZu5z-ExrQrmt_LQVClAWlhJksPUKrjmF8x-HNh-GdrUNnvpTRE4Ao--4PPP_OdFgpmhPevua?purpose=fullsize)
+
+![Image](https://images.openai.com/static-rsc-4/kadxovEm36rSONWg1EI9H7Ca-26QWa4uUWovCxa_nXD2vwCioWWcvJ8N36vDY4GUWwmvVm-Az-dY60-GtA3KumYaq-c8AE3kGCYyZ3HYbMVZXya8t3FzEOttOV14xeB7IraF-NL1qbXRh4CyNT0RnxlKAwQIFfLrXBxaNn74ktyAMcZo8PjjClJ7JOA9yEHg?purpose=fullsize)
+
+![Image](https://images.openai.com/static-rsc-4/LGhqEX_6S3Yy44cB4aYvvox-Vk-A5PDsocNetcxkAoGS6P0IvYU7wMUuGgY9goYLCEMv0aTNtZ0jmmN_gND_SsfSTPNIKeetdvm4QO8kndYSIP78desnPRg6jRqerp8Q4X5ia8PqKDH2p4Z3fUFq4yoTxOzyd5l2nFMa5Bol-azw1HZf4tnGi7MdwCpvuIza?purpose=fullsize)
+
+![Image](https://images.openai.com/static-rsc-4/dafjaBL-n3-r8ThHL-vosLq8U_QP8QNcvEbhctJUJyRSybSUBn3eoqbOoKMS8socvLTb6rzv3eB2o7JmCNx8rEqeU4tHwCQNkGMKf5Q084R5NfvcbMamgbz0nOw_MhRNZjhf6FbF6hKzNSubyPNwg6qDTRXtBKzUUTQd9aev0v0xvkMhQxTNn98q7GRh4upG?purpose=fullsize)
+
+![Image](https://images.openai.com/static-rsc-4/z337ITqe4nuPUrVXLR5Q8Sk7Ezoyf51XZtTWTu0PaeQu1O6ucVWmQ5ZIvMh62dQ-xoS-UF3rZ-AxjPLJzofBtZBH1OitLfCHF_din9u3zX0TM_XwkBsBzJH_H3SJpm1_l0TkwCstVUfoguvyO6_6cLiAdJLniQgjAoZ1Oi8ocU-j3lX7Fsh1NdnAA4pkJFd_?purpose=fullsize)
+
+**Purpose:** Position Olyxee as a technical authority.
+
+**Include:**
+
+* Papers (even early drafts)
+* Technical blogs
+* Experiments:
+
+  * model reliability
+  * deployment failures
+  * benchmarking
+
+**Key idea:**
+This builds trust like DeepMind/OpenAI.
+
+---
+
+## 5) Technology (How it Works at High Level)
+
+**Purpose:** Explain system without going too low-level.
+
+Include:
+
+* WAVE architecture (abstracted)
+* Verification pipeline concept
+* Hardware abstraction idea
+
+Avoid too much implementation detail (that goes in docs).
+
+---
+
+## 6) Developers / Platform Access
+
+**Purpose:** Entry point for builders.
+
+Include:
+
+* API overview
+* SDKs
+* CLI tools
+* “Start building”
+
+This is similar to developer sections in major AI companies.
+
+---
+
+## 7) Safety & Reliability
+
+**Purpose:** Strong differentiation.
+
+**Content:**
+
+* AI verification principles
+* Failure detection
+* Deployment guarantees (if applicable)
+
+This is your equivalent of:
+
+* “AI safety” (Anthropic)
+* “alignment” (OpenAI)
+
+But focused on **engineering reliability**.
+
+---
+
+## 8) Use Cases / Industries
+
+**Purpose:** Show real-world relevance.
+
+Examples:
+
+* Robotics
+* Edge AI
+* IoT systems
+* Autonomous systems
+
+Keep it high-level, not product demo-level.
+
+---
+
+## 9) Careers
+
+**Purpose:** Attract talent.
+
+Include:
+
+* Mission-driven language
+* Engineering challenges:
+
+  * distributed systems
+  * AI verification
+  * edge deployment
+
+---
+
+## 10) Blog / Insights
+
+**Purpose:** Ongoing thought leadership.
+
+Content:
+
+* AI deployment failures
+* benchmarking methods
+* system design insights
+* internal learnings
+
+---
+
+## 11) Contact / Partnerships
+
+**Purpose:** Business entry point.
+
+Include:
+
+* Enterprise contact
+* Partnerships
+* Research collaboration
+
+---
+
+## Structural Comparison
+
+* OpenAI → vision + products + API
+* DeepMind → research-first
+* Anthropic → safety-first
+
+**Olyxee should be:**
+→ **Reliability-first AI infrastructure company**
+
+---
+
+## Final Structure (Clean)
+
+* Home
+* About
+* Products
+* Research
+* Technology
+* Developers
+* Safety & Reliability
+* Use Cases
+* Careers
+* Blog
+* Contact
+
+---
+
+## Key Principle
+
+The site should not feel like:
+
+* a startup landing page
+* or a single SaaS tool
+
+It should feel like:
+→ a **foundational AI company building core infrastructure**
+
+---
+
+If you want next step:
+I can convert this into a **real homepage copy + section text** or a **UI wireframe aligned to this structure**.

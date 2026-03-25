@@ -1,7 +1,7 @@
 # Olyxee - Next.js App on Replit
 
 ## Overview
-A Next.js 15 application migrated from Vercel/Firebase Hosting to Replit.
+A Next.js 15 application migrated from Vercel/Firebase Hosting to Replit. AI deployment platform website.
 
 ## Architecture
 - **Framework**: Next.js 15 (App Router + Pages Router mixed)
@@ -11,6 +11,7 @@ A Next.js 15 application migrated from Vercel/Firebase Hosting to Replit.
 - **Auth**: better-auth
 - **Database**: LibSQL / Drizzle ORM
 - **Payments**: Stripe
+- **Math rendering**: KaTeX (CSS imported in root layout)
 
 ## Running the App
 - **Dev server**: `npm run dev` — starts on port 5000 with Turbopack, bound to 0.0.0.0
@@ -20,14 +21,24 @@ A Next.js 15 application migrated from Vercel/Firebase Hosting to Replit.
 - **App Router** (`src/app/`): `/`, `/products/grysics`, `/products/nrn`
 - **Pages Router** (`src/pages/`): `/docs`, `/community`, `/support`
 - Global CSS is imported via `src/pages/_app.tsx` for Pages Router routes
+- KaTeX CSS is imported in `src/app/layout.tsx` for App Router routes
+
+## Important: Case-Sensitive Paths
+- Product images are in `public/Products/` (capital P)
+- Hardware logos are in `public/hardware-logos/`
+- Logo files are in `public/Logo/`
 
 ## Replit Migration Notes
-- Removed `output: 'export'` (static export) from `next.config.ts` — not compatible with server features
-- Removed turbopack custom loader config (component-tagger-loader) — not needed for Replit
-- Removed `outputFileTracingRoot` pointing to monorepo parent — not applicable
-- Dev and start scripts updated to use `--turbopack -p 5000 -H 0.0.0.0` for Replit proxy compatibility
-- Added `src/pages/_app.tsx` to properly handle global CSS imports for Pages Router
+- Removed `output: 'export'` (static export) from `next.config.ts`
+- Removed turbopack custom loader config (component-tagger-loader)
+- Removed `outputFileTracingRoot` pointing to monorepo parent
+- Dev and start scripts updated to use `--turbopack -p 5000 -H 0.0.0.0`
+- Added `src/pages/_app.tsx` for proper global CSS in Pages Router
 - Created `/support` page (was a dead navigation link)
+- Fixed case-sensitive image paths in NRN product page
+- Replaced broken external images (Unsplash, Wikipedia) with working alternatives
+- Fixed hydration errors from BlockMath inside p tags on NRN page
+- Replaced Flutter logo with Olyxee logo in Grysics footer
 
 ## Key Directories
 - `src/app/` — Next.js App Router pages and layouts
