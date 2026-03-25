@@ -185,7 +185,7 @@ function HeroGrysics() {
                 width={96}
                 height={96}
                 unoptimized
-                className="object-contain filter grayscale hover:grayscale-0 transition-all duration-300 bg-transparent"
+                className="object-contain w-auto h-auto filter grayscale hover:grayscale-0 transition-all duration-300 bg-transparent"
               />
             </div>
             <span className="mt-2 text-xs sm:text-sm md:text-base text-gray-700 font-medium text-center">
@@ -505,12 +505,12 @@ function FeaturesCarousel() {
             orientation="vertical"
             className="w-full mt-4"
           >
-            <CarouselContent className="h-[600px] lg:h-[500px] -mt-1">
+            <CarouselContent className="h-[480px] sm:h-[520px] lg:h-[500px] -mt-1">
               {featuresData.map((feature, index) => (
                 <CarouselItem key={index} className="pt-1 md:basis-full flex items-center">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full">
                     <div className="flex flex-col justify-center text-center lg:text-left">
-                      <h4 className="text-[32px] font-bold text-black leading-tight">
+                      <h4 className="text-2xl sm:text-[28px] lg:text-[32px] font-bold text-black leading-tight">
                         {feature.title}
                       </h4>
                       <p className="mt-6 text-base text-gray-600 leading-relaxed max-w-md mx-auto lg:mx-0">
@@ -557,7 +557,7 @@ function FeaturesCarousel() {
             </CarouselContent>
           </Carousel>
 
-          <div className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="mt-12 sm:mt-16 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             {featuresData.map((feature, index) => (
               <button
                 key={index}
@@ -625,10 +625,10 @@ function KotlinEcosystemBanner() {
               quality={100}
             />
           </div>
-          <div className="relative z-10 flex items-center min-h-[500px]">
+          <div className="relative z-10 flex items-center min-h-[350px] sm:min-h-[400px] lg:min-h-[500px]">
             <div className="w-full lg:w-1/2 p-8 md:p-12 lg:p-[60px]">
               <KotlinKLogo className="h-16 w-16 mb-6" />
-              <h2 className="text-[40px] font-bold text-black leading-[1.1] tracking-[-0.02em] mb-4">
+              <h2 className="text-3xl sm:text-[36px] lg:text-[40px] font-bold text-black leading-[1.1] tracking-[-0.02em] mb-4">
                 The JetBrains Kotlin Ecosystem
               </h2>
               <p className="text-lg text-gray-600 mb-8 max-w-md leading-relaxed">
@@ -825,10 +825,10 @@ function TeamCityPipelinesBanner() {
         >
           <div className="flex flex-col lg:flex-row items-center justify-between gap-x-12 gap-y-8">
             <div className="flex-1 order-2 lg:order-1 text-center lg:text-left z-10">
-              <h3 className="text-[32px] font-bold text-black leading-tight">
+              <h3 className="text-2xl sm:text-[28px] lg:text-[32px] font-bold text-black leading-tight">
                 Grysics Pipeline
               </h3>
-              <h4 className="mt-2 text-2xl font-semibold text-gray-700">
+              <h4 className="mt-2 text-xl sm:text-2xl font-semibold text-gray-700">
                 A new approach to CI/CD
               </h4>
               <p className="mt-4 text-base text-gray-600 leading-relaxed max-w-lg mx-auto lg:mx-0">

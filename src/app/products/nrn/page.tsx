@@ -14,7 +14,7 @@ export default function NRNArticle() {
     ];
 
     return (
-        <article className="w-full min-h-screen bg-white text-gray-900 font-mono">
+        <article className="w-full min-h-screen bg-white text-gray-900 font-sans">
             <Header />
 
             <motion.div
@@ -24,7 +24,7 @@ export default function NRNArticle() {
                 className="max-w-5xl mx-auto px-6 py-16 flex flex-col gap-16"
             >
                 <header className="flex flex-col gap-8">
-                    <h1 className="text-5xl sm:text-6xl font-extrabold text-black leading-tight">
+                    <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-black leading-tight">
                         Neural Reality Network (NRN) by Olyxee
                     </h1>
                     <p className="text-gray-700 text-lg sm:text-xl max-w-3xl">
@@ -43,6 +43,7 @@ export default function NRNArticle() {
                                 alt="Without NRN"
                                 fill
                                 className="object-contain"
+                                priority
                             />
                         </div>
                     </div>
@@ -82,7 +83,7 @@ export default function NRNArticle() {
                         distinct features and computes intermediate explanations. The outputs are then
                         aggregated into an interpretable summary without compromising performance.
                     </p>
-                    <div className="relative w-full h-120 overflow-hidden">
+                    <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] overflow-hidden">
                         <Image
                             src="/Products/nrn/nrn_system_digram.png"
                             alt="NRN Architecture"
@@ -108,7 +109,7 @@ export default function NRNArticle() {
                 {/* Example Calculation */}
                 <section className="flex flex-col gap-4">
                     <h2 className="text-3xl font-semibold text-black">Example Calculations</h2>
-                    <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 space-y-4">
+                    <div className="bg-gray-50 rounded-lg p-4 sm:p-6 border border-gray-200 space-y-4 overflow-x-auto">
                         <p className="text-gray-800 text-sm">
                             Total features detected in input: <InlineMath math="N_{total} = 120" />
                         </p>

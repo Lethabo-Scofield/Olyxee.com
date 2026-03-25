@@ -128,7 +128,7 @@ const Community: FC = () => {
     <div className="pt-24 min-h-screen bg-white text-gray-900">
       <Header />
 
-      <section className="relative w-full max-w-6xl mx-auto h-[400px] overflow-hidden rounded-3xl px-6">
+      <section className="relative w-full max-w-6xl mx-auto h-[280px] sm:h-[350px] lg:h-[400px] overflow-hidden rounded-3xl px-4 sm:px-6">
         <div
           className="absolute inset-0 rounded-3xl"
           style={{ backgroundImage: 'url("/images/Community presentation.png")', backgroundSize: "cover", backgroundPosition: "center" }}
@@ -138,19 +138,19 @@ const Community: FC = () => {
             <Sparkles className="w-4 h-4" />
             <span>11.2k+ Active Members</span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight">Join the Community</h1>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight">Join the Community</h1>
         </div>
       </section>
 
-      <section className="py-32 px-6 bg-white" ref={statsRef}>
+      <section className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 bg-white" ref={statsRef}>
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl font-semibold text-gray-900 mb-4 tracking-tight">Connect With Us</h2>
-            <p className="text-xl text-gray-600">Choose your preferred platform</p>
+          <div className="text-center mb-12 sm:mb-20">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-gray-900 mb-4 tracking-tight">Connect With Us</h2>
+            <p className="text-lg sm:text-xl text-gray-600">Choose your preferred platform</p>
           </div>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
             {channels.map((channel) => (
-              <div key={channel.title} className={`relative bg-gradient-to-br ${channel.gradient} rounded-3xl p-10 overflow-hidden group hover:shadow-xl transition-all duration-500 hover:-translate-y-1`}>
+              <div key={channel.title} className={`relative bg-gradient-to-br ${channel.gradient} rounded-3xl p-6 sm:p-10 overflow-hidden group hover:shadow-xl transition-all duration-500 hover:-translate-y-1`}>
                 <div className="absolute inset-0 bg-white/40 backdrop-blur-3xl z-0 rounded-3xl" />
                 <div className="relative z-10">
                   <div className="flex items-start justify-between mb-8">
@@ -182,7 +182,7 @@ const Community: FC = () => {
                   <p className="text-gray-700 mb-8 leading-relaxed">{channel.description}</p>
 
                   <div className="flex items-baseline gap-3 mb-6">
-                    <span className="text-5xl font-bold text-gray-900">{animatedStats[channel.title] ? formatNumber(animatedStats[channel.title]) : 0}+</span>
+                    <span className="text-3xl sm:text-5xl font-bold text-gray-900">{animatedStats[channel.title] ? formatNumber(animatedStats[channel.title]) : 0}+</span>
                     <span className="text-lg text-gray-600">{channel.unit}</span>
                   </div>
 
@@ -197,16 +197,16 @@ const Community: FC = () => {
         </div>
       </section>
 
-      <section className="py-32 px-6 bg-gray-50">
+      <section className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 bg-gray-50">
         <div className="container mx-auto max-w-6xl">
-          <div className="flex items-center justify-between mb-20">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-12 sm:mb-20">
             <div>
-              <h2 className="text-5xl font-semibold text-gray-900 mb-3 tracking-tight">Upcoming Events</h2>
-              <p className="text-xl text-gray-600">Join us for workshops, meetups, and challenges</p>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-gray-900 mb-3 tracking-tight">Upcoming Events</h2>
+              <p className="text-lg sm:text-xl text-gray-600">Join us for workshops, meetups, and challenges</p>
             </div>
-            <Calendar className="w-12 h-12 text-gray-300" />
+            <Calendar className="hidden sm:block w-12 h-12 text-gray-300 flex-shrink-0" />
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
             {events.map((event, index) => (
               <div key={index} className="group relative rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                 <div className="absolute inset-0">
@@ -229,10 +229,10 @@ const Community: FC = () => {
         </div>
       </section>
 
-      <section className="py-32 px-6 bg-gray-900">
+      <section className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 bg-gray-900">
         <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="text-5xl md:text-6xl font-semibold text-white mb-6 tracking-tight">Ready to contribute?</h2>
-          <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">Share your deployment stories, report issues, or suggest new features.</p>
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold text-white mb-6 tracking-tight">Ready to contribute?</h2>
+          <p className="text-lg sm:text-xl text-gray-400 mb-8 sm:mb-12 max-w-2xl mx-auto">Share your deployment stories, report issues, or suggest new features.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="https://discord.gg/DgBEMVCh" target="_blank" rel="noopener noreferrer" className="px-10 py-4 bg-white text-gray-900 rounded-full font-semibold hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">Join Discord</a>
             <a href="https://github.com/Olyxee" target="_blank" rel="noopener noreferrer" className="px-10 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-full font-semibold hover:bg-white/20 transition-all duration-300">View on GitHub</a>

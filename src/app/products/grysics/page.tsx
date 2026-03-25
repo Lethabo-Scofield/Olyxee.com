@@ -104,7 +104,7 @@ export default function GrysicsPage() {
 
           {/* Hero Dashboard */}
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.2 }} className="relative flex items-center justify-center gap-8">
-            <div className="relative w-full max-w-lg h-[500px] rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
+            <div className="relative w-full max-w-lg h-[300px] sm:h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
               <Image src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&h=400" alt="Grysics Dashboard" fill className="object-cover" priority />
             </div>
           </motion.div>
@@ -117,8 +117,8 @@ export default function GrysicsPage() {
           {stats.map((stat, idx) => (
             <motion.div key={idx} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: idx * 0.1 }} className="text-center flex flex-col items-center gap-2">
               <Image src={stat.icon} width={50} height={50} alt={stat.label} />
-              <div className="text-5xl lg:text-6xl font-bold mb-2">{stat.value}</div>
-              <div className="text-gray-600 text-lg">{stat.label}</div>
+              <div className="text-3xl sm:text-5xl lg:text-6xl font-bold mb-2">{stat.value}</div>
+              <div className="text-gray-600 text-sm sm:text-lg">{stat.label}</div>
             </motion.div>
           ))}
         </div>
@@ -127,7 +127,7 @@ export default function GrysicsPage() {
       {/* Features */}
       <section id="features" className="max-w-7xl mx-auto px-6 py-24">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-20">
-          <h2 className="text-5xl lg:text-6xl font-bold mb-6 tracking-tight">Built for the Edge</h2>
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">Built for the Edge</h2>
           <p className="text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed">Everything you need to deploy, monitor, and scale AI at the edge</p>
         </motion.div>
 
@@ -145,7 +145,7 @@ export default function GrysicsPage() {
       {/* Use Cases */}
       <section id="usecases" className="max-w-7xl mx-auto px-6 py-24">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-20">
-          <h2 className="text-5xl lg:text-6xl font-bold mb-6 tracking-tight">Proven Across Industries</h2>
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">Proven Across Industries</h2>
           <p className="text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed">From factories to hospitals, Grysics powers critical edge AI applications</p>
         </motion.div>
         <div className="grid lg:grid-cols-3 gap-8">
@@ -163,9 +163,9 @@ export default function GrysicsPage() {
       </section>
 
       {/* Testimonials */}
-      <section id="testimonials" className="max-w-7xl mx-auto px-6 py-24 bg-gray-50 rounded-3xl mx-6">
+      <section id="testimonials" className="max-w-7xl px-6 py-16 sm:py-24 bg-gray-50 rounded-3xl mx-4 sm:mx-6 lg:mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-20">
-          <h2 className="text-5xl lg:text-6xl font-bold mb-6 tracking-tight">Trusted by Engineers</h2>
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">Trusted by Engineers</h2>
         </motion.div>
         <div className="grid md:grid-cols-2 gap-8">
           {testimonials.map((t, idx) => (
@@ -182,9 +182,9 @@ export default function GrysicsPage() {
 
       {/* CTA */}
       <section className="max-w-7xl mx-auto px-6 py-24">
-        <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="relative bg-black text-white rounded-3xl p-16 lg:p-20 text-center">
-          <h2 className="text-5xl lg:text-6xl font-bold mb-6 tracking-tight">Ready to Transform Your Edge AI?</h2>
-          <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">Join thousands of developers deploying AI at the edge with Grysics</p>
+        <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="relative bg-black text-white rounded-3xl p-8 sm:p-12 lg:p-20 text-center">
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">Ready to Transform Your Edge AI?</h2>
+          <p className="text-lg sm:text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">Join thousands of developers deploying AI at the edge with Grysics</p>
           <div className="flex flex-wrap gap-4 justify-center">
             <button className="px-10 py-4 bg-white text-black rounded-lg font-semibold hover:bg-gray-100 transition-all text-lg">Start Free Trial</button>
             <button className="px-10 py-4 bg-transparent text-white border-2 border-white rounded-lg font-semibold hover:bg-white hover:text-black transition-all text-lg">Schedule Demo</button>
@@ -195,7 +195,7 @@ export default function GrysicsPage() {
       {/* Footer */}
       <footer className="border-t border-gray-200 py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-12 mb-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12 mb-12">
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <div className="relative w-8 h-8"><Image src="/Logo/Olyxee_Logo.png" alt="Grysics" fill className="object-contain" /></div>

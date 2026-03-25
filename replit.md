@@ -40,6 +40,15 @@ A Next.js 15 application migrated from Vercel/Firebase Hosting to Replit. AI dep
 - Fixed hydration errors from BlockMath inside p tags on NRN page
 - Replaced Flutter logo with Olyxee logo in Grysics footer
 
+## Responsive Design Pass
+- Header: CTA buttons hidden on small screens (available in mobile hamburger menu)
+- Homepage: Carousel height scales across breakpoints, font sizes responsive, image aspect ratios fixed
+- Grysics page: All section headings, hero image, stats, CTA padding responsive
+- NRN page: Changed from font-mono to font-sans for readability, math block overflow handled
+- Docs layout: Sidebar has mobile toggle with backdrop overlay and scroll support
+- Community page: Section padding, headings, event grid all scale for mobile
+- Support page: Already responsive (no changes needed)
+
 ## Key Directories
 - `src/app/` — Next.js App Router pages and layouts
 - `src/pages/` — Next.js Pages Router pages (docs, community, support)
