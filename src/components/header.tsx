@@ -12,7 +12,7 @@ const menuItems = [
     { name: "Products", href: "#", hasDropdown: true },
     { name: "Research", href: "/research" },
     { name: "Technology", href: "/technology" },
-    { name: "Developers", href: "/developers" },
+    { name: "Community", href: "/community" },
 ];
 
 const productsDropdown = [
