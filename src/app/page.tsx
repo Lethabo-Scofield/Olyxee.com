@@ -7,13 +7,8 @@ import Footer from '../components/footer';
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import {
   ArrowRight,
-  Shield,
-  Cpu,
-  Layers,
-  Zap,
   Factory,
   Bot,
   Wifi,
@@ -32,7 +27,8 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white relative">
+      <div className="grain" />
       <Header />
 
       <main>
@@ -56,76 +52,60 @@ export default function HomePage() {
 
 function HeroSection() {
   return (
-    <section className="relative w-full min-h-[90vh] flex flex-col items-center justify-center px-4 md:px-8 lg:px-16 pt-24 pb-20 overflow-hidden">
-      <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-white via-blue-200/30 to-white">
-        <motion.svg
-          className="absolute inset-0 w-full h-full"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="xMidYMid slice"
-          animate={{ y: [0, 15, 0] }}
-          transition={{ repeat: Infinity, duration: 20, ease: "easeInOut" }}
-        >
-          <defs>
-            <linearGradient id="smokeGradient1" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="transparent" />
-              <stop offset="50%" stopColor="#3B82F6" stopOpacity="0.2" />
-              <stop offset="100%" stopColor="transparent" />
-            </linearGradient>
-            <filter id="blurSmoke1" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="90" />
-            </filter>
-          </defs>
-          <circle cx="50%" cy="40%" r="220" fill="url(#smokeGradient1)" filter="url(#blurSmoke1)" />
-          <circle cx="30%" cy="60%" r="180" fill="url(#smokeGradient1)" filter="url(#blurSmoke1)" />
-          <circle cx="70%" cy="55%" r="200" fill="url(#smokeGradient1)" filter="url(#blurSmoke1)" />
-        </motion.svg>
+    <section className="relative w-full min-h-[95vh] flex flex-col items-center justify-center px-4 md:px-8 lg:px-16 pt-28 pb-20 overflow-hidden">
+      <div className="absolute inset-0 w-full h-full">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-neutral-100 rounded-full blur-[120px] opacity-60 -translate-y-1/3 translate-x-1/4" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-neutral-100 rounded-full blur-[100px] opacity-40 translate-y-1/3 -translate-x-1/4" />
       </div>
 
-      <div className="relative z-10 text-center max-w-4xl mx-auto">
+      <div className="relative z-10 text-center max-w-5xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium mb-8 border border-gray-200"
+          transition={{ duration: 0.5 }}
+          className="inline-flex items-center gap-2 px-4 py-1.5 text-neutral-500 text-sm font-medium mb-10 tracking-wide"
         >
-          <Shield className="w-4 h-4" />
+          <span className="accent-dot" />
           Reliability-first AI infrastructure
         </motion.div>
 
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-sans text-gray-900 leading-[1.1] tracking-tight"
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-neutral-900 leading-[1.05] tracking-tight"
         >
-          Building reliable infrastructure for the next generation of AI systems.
+          Building reliable
+          <br />
+          infrastructure for{" "}
+          <em className="text-neutral-400">AI</em>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-8 text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed"
+          transition={{ duration: 0.6, delay: 0.25 }}
+          className="mt-8 text-lg sm:text-xl text-neutral-500 max-w-2xl mx-auto leading-relaxed font-light"
         >
-          Olyxee develops verification-first AI infrastructure — ensuring AI systems are reliable, explainable, and deployable everywhere from edge devices to enterprise clouds.
+          Verification-first deployment infrastructure — ensuring AI systems are reliable, explainable, and deployable from edge devices to enterprise clouds.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.35 }}
           className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
         >
           <Link
             href="/developers"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gray-900 text-white rounded-full font-semibold hover:bg-black hover:shadow-lg transition-all text-base"
+            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-black transition-all text-sm tracking-wide"
           >
             Start Building
             <ArrowRight className="w-4 h-4" />
           </Link>
           <Link
             href="/research"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-gray-900 border border-gray-300 rounded-full font-semibold hover:bg-gray-50 hover:border-gray-400 transition-all text-base"
+            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-neutral-700 border border-neutral-300 rounded-full font-medium hover:border-neutral-500 transition-all text-sm tracking-wide"
           >
             Read Our Research
           </Link>
@@ -133,28 +113,30 @@ function HeroSection() {
       </div>
 
       <motion.div
-        className="relative z-10 w-full max-w-4xl rounded-3xl overflow-hidden mt-16"
-        style={{ aspectRatio: "16/9" }}
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: [0, -10, 0] }}
-        transition={{ opacity: { duration: 0.8, delay: 0.5 }, y: { repeat: Infinity, duration: 12, ease: "easeInOut" } }}
+        className="relative z-10 w-full max-w-4xl mt-20"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.5 }}
       >
-        <video
-          src="/videos/demo.mp4"
-          className="w-full h-full object-cover rounded-2xl"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-        />
+        <div className="relative rounded-2xl overflow-hidden border border-neutral-200 shadow-2xl shadow-neutral-200/50">
+          <video
+            src="/videos/demo.mp4"
+            className="w-full aspect-video object-cover"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+          />
+          <div className="absolute inset-0 border border-white/20 rounded-2xl pointer-events-none" />
+        </div>
       </motion.div>
 
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0.8 }}
-        className="relative z-10 mt-16 flex flex-wrap justify-center items-end gap-6 sm:gap-10"
+        className="relative z-10 mt-20 flex flex-wrap justify-center items-end gap-8 sm:gap-12"
       >
         {[
           { src: "/hardware-logos/raspberrypi.png", alt: "Raspberry Pi" },
@@ -165,19 +147,19 @@ function HeroSection() {
         ].map((logo, i) => (
           <div
             key={i}
-            className="flex flex-col items-center w-16 sm:w-20 md:w-24 transition-transform duration-300 hover:scale-105"
+            className="flex flex-col items-center w-16 sm:w-20 transition-all duration-500 hover:scale-110"
           >
-            <div className="w-full h-16 sm:h-20 md:h-24 flex items-center justify-center">
+            <div className="w-full h-16 sm:h-20 flex items-center justify-center">
               <Image
                 src={logo.src}
                 alt={logo.alt}
-                width={96}
-                height={96}
+                width={80}
+                height={80}
                 unoptimized
-                className="object-contain w-auto h-auto filter grayscale hover:grayscale-0 transition-all duration-300 bg-transparent"
+                className="object-contain w-auto h-auto filter grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500 bg-transparent"
               />
             </div>
-            <span className="mt-2 text-xs sm:text-sm text-gray-500 font-medium text-center">
+            <span className="mt-2 text-[11px] text-neutral-400 font-medium text-center tracking-wide uppercase">
               {logo.alt}
             </span>
           </div>
@@ -189,81 +171,60 @@ function HeroSection() {
 
 function WhatWeDoSection() {
   const pillars = [
-    {
-      icon: Shield,
-      title: "Verification",
-      description: "Rigorous testing and validation pipelines that ensure AI models perform correctly before deployment — catching failures before they reach production.",
-    },
-    {
-      icon: Layers,
-      title: "Deployment",
-      description: "Hardware-agnostic deployment infrastructure that abstracts away device complexity, letting you run the same model on a Jetson, a Raspberry Pi, or the cloud.",
-    },
-    {
-      icon: Cpu,
-      title: "Optimization",
-      description: "Automatic model quantization and runtime optimization that adapts to target hardware, maintaining accuracy while minimizing resource consumption.",
-    },
-    {
-      icon: Zap,
-      title: "Monitoring",
-      description: "Real-time observability for deployed AI systems — detecting drift, anomalies, and performance degradation before they become critical failures.",
-    },
+    { title: "Verification", description: "Rigorous testing and validation that ensures AI models perform correctly before deployment — catching failures before they reach production." },
+    { title: "Deployment", description: "Hardware-agnostic infrastructure that abstracts away device complexity. Same model, any device — Jetson, Raspberry Pi, or cloud." },
+    { title: "Optimization", description: "Automatic quantization and runtime optimization adapted to target hardware. Maintain accuracy while minimizing resource consumption." },
+    { title: "Monitoring", description: "Real-time observability for deployed systems — detecting drift, anomalies, and degradation before they become critical failures." },
   ];
 
   return (
-    <section className="bg-gray-50 py-20 sm:py-28">
+    <section className="py-28 sm:py-36 border-t border-neutral-100">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
-        <div className="text-center mb-16">
-          <motion.p
+        <div className="max-w-2xl mb-20">
+          <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-sm font-medium text-gray-500 uppercase tracking-widest mb-4"
           >
-            What We Do
-          </motion.p>
+            <span className="accent-line" />
+          </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900"
+            className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight mb-6"
           >
-            AI systems fail in the real world.
-            <br className="hidden sm:block" />
-            <span className="text-gray-500">We fix that.</span>
+            AI systems fail in
+            <br />
+            the real world.{" "}
+            <em className="text-neutral-400">We fix that.</em>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="mt-6 text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed"
+            className="text-lg text-neutral-500 leading-relaxed font-light"
           >
-            From verification to deployment to monitoring, Olyxee provides the complete infrastructure stack for building AI systems that actually work in production.
+            From verification to deployment to monitoring — the complete infrastructure stack for AI that actually works in production.
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {pillars.map((pillar, idx) => {
-            const Icon = pillar.icon;
-            return (
-              <motion.div
-                key={pillar.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="bg-white rounded-2xl p-8 border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all"
-              >
-                <div className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center mb-6">
-                  <Icon className="w-6 h-6 text-gray-700" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{pillar.title}</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">{pillar.description}</p>
-              </motion.div>
-            );
-          })}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-neutral-200 rounded-2xl overflow-hidden border border-neutral-200">
+          {pillars.map((pillar, idx) => (
+            <motion.div
+              key={pillar.title}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className="bg-white p-10 sm:p-12 hover:bg-neutral-50 transition-colors"
+            >
+              <span className="text-xs font-medium text-neutral-400 uppercase tracking-widest">0{idx + 1}</span>
+              <h3 className="text-2xl font-semibold text-neutral-900 mt-3 mb-4">{pillar.title}</h3>
+              <p className="text-neutral-500 text-sm leading-relaxed">{pillar.description}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
@@ -290,39 +251,35 @@ function ProductsSection() {
       name: "WAVE",
       tagline: "Core Platform",
       description: "The infrastructure layer that powers all Olyxee products — handling deployment pipelines, hardware abstraction, and runtime management.",
-      href: "/technology",
+      href: "/docs",
       status: "In Development",
     },
   ];
 
   return (
-    <section className="py-20 sm:py-28">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-16">
+    <section className="py-28 sm:py-36 bg-neutral-950 text-white relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-neutral-800 rounded-full blur-[150px] opacity-30 -translate-y-1/2 -translate-x-1/4" />
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 relative">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-20">
           <div>
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-sm font-medium text-gray-500 uppercase tracking-widest mb-4"
-            >
-              Our Products
-            </motion.p>
+            <span className="block w-12 h-0.5 bg-white/30 mb-6" />
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900"
+              className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight"
             >
-              A platform for reliable AI
+              A platform for
+              <br />
+              <em className="text-neutral-500">reliable AI</em>
             </motion.h2>
           </div>
-          <Link href="/products/grysics" className="text-gray-700 hover:text-black font-medium text-sm flex items-center gap-1 transition-colors">
-            View all products <ArrowRight className="w-4 h-4" />
+          <Link href="/products/grysics" className="text-neutral-400 hover:text-white font-medium text-sm flex items-center gap-1.5 transition-colors tracking-wide">
+            All products <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="space-y-4">
           {products.map((product, idx) => (
             <motion.div
               key={product.name}
@@ -333,24 +290,18 @@ function ProductsSection() {
             >
               <Link
                 href={product.href}
-                className="group flex flex-col h-full bg-white rounded-2xl p-8 sm:p-10 border border-gray-200 hover:border-gray-400 hover:shadow-xl transition-all"
+                className="group flex flex-col sm:flex-row sm:items-center justify-between gap-6 p-8 sm:p-10 rounded-2xl border border-white/10 hover:border-white/20 hover:bg-white/[0.03] transition-all"
               >
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0">
-                    <Image src="/Logo/Olyxee_Logo.png" alt="" width={40} height={40} />
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-4 mb-3">
+                    <h3 className="text-2xl sm:text-3xl font-semibold">{product.name}</h3>
+                    <span className="text-xs font-medium text-neutral-500 bg-white/5 px-3 py-1 rounded-full border border-white/10">{product.status}</span>
                   </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900">{product.name}</h3>
-                    <p className="text-xs text-gray-500">{product.tagline}</p>
-                  </div>
+                  <p className="text-neutral-400 text-sm leading-relaxed max-w-xl">{product.description}</p>
                 </div>
-                <p className="text-gray-600 text-sm leading-relaxed flex-grow mb-6">{product.description}</p>
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-medium text-gray-500 bg-gray-100 px-3 py-1 rounded-full">{product.status}</span>
-                  <span className="text-sm font-medium text-gray-900 flex items-center gap-1 group-hover:gap-2 transition-all">
-                    Learn more <ArrowRight className="w-3.5 h-3.5" />
-                  </span>
-                </div>
+                <span className="text-sm font-medium text-neutral-500 flex items-center gap-1.5 group-hover:text-white group-hover:gap-3 transition-all flex-shrink-0">
+                  Explore <ArrowRight className="w-4 h-4" />
+                </span>
               </Link>
             </motion.div>
           ))}
@@ -383,48 +334,49 @@ function ResearchSection() {
   ];
 
   return (
-    <section className="bg-gray-50 py-20 sm:py-28">
+    <section className="py-28 sm:py-36 border-t border-neutral-100">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-16">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-20">
           <div>
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-sm font-medium text-gray-500 uppercase tracking-widest mb-4"
-            >
-              Research
-            </motion.p>
+            <span className="accent-line" />
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900"
+              className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900"
             >
-              Advancing AI reliability
+              Advancing AI
+              <br />
+              <em className="text-neutral-400">reliability</em>
             </motion.h2>
           </div>
-          <Link href="/research" className="text-gray-700 hover:text-black font-medium text-sm flex items-center gap-1 transition-colors">
-            View all research <ArrowRight className="w-4 h-4" />
+          <Link href="/research" className="text-neutral-500 hover:text-neutral-900 font-medium text-sm flex items-center gap-1.5 transition-colors tracking-wide">
+            All research <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="divide-y divide-neutral-200">
           {papers.map((paper, idx) => (
             <motion.div
               key={paper.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="bg-white rounded-2xl p-8 border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all group cursor-pointer"
+              className="py-10 sm:py-12 group cursor-pointer hover:px-4 transition-all"
             >
-              <div className="flex items-center gap-2 mb-4">
-                <span className="text-xs font-medium text-gray-500 bg-gray-100 px-2.5 py-1 rounded-full">{paper.category}</span>
-                <span className="text-xs text-gray-400">{paper.date}</span>
+              <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-8">
+                <div className="flex items-center gap-3 sm:w-48 flex-shrink-0">
+                  <span className="text-xs font-medium text-neutral-400 uppercase tracking-widest">{paper.category}</span>
+                  <span className="text-neutral-300">·</span>
+                  <span className="text-xs text-neutral-400">{paper.date}</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl sm:text-2xl font-semibold text-neutral-900 mb-2 group-hover:text-neutral-600 transition-colors">{paper.title}</h3>
+                  <p className="text-neutral-500 text-sm leading-relaxed">{paper.description}</p>
+                </div>
+                <ArrowRight className="w-5 h-5 text-neutral-300 group-hover:text-neutral-900 transition-all flex-shrink-0 hidden sm:block mt-1.5" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3 group-hover:text-gray-700 transition-colors">{paper.title}</h3>
-              <p className="text-sm text-gray-600 leading-relaxed">{paper.description}</p>
             </motion.div>
           ))}
         </div>
@@ -442,42 +394,35 @@ function TrustSection() {
   ];
 
   return (
-    <section className="py-20 sm:py-28">
+    <section className="py-28 sm:py-36 bg-neutral-50 border-y border-neutral-100">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
-        <div className="bg-gray-900 rounded-3xl p-10 sm:p-16 lg:p-20 text-center">
+        <div className="text-center mb-20">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-4"
+            className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900"
           >
-            Trusted by engineers building the future
+            Trusted by engineers
+            <br />
+            <em className="text-neutral-400">building the future</em>
           </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-gray-400 text-lg max-w-xl mx-auto mb-16"
-          >
-            From startups to research labs, teams use Olyxee to ship AI that works.
-          </motion.p>
+        </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
-            {stats.map((stat, idx) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="text-center"
-              >
-                <div className="text-4xl sm:text-5xl font-bold text-white mb-2">{stat.value}</div>
-                <div className="text-gray-400 text-sm sm:text-base">{stat.label}</div>
-              </motion.div>
-            ))}
-          </div>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
+          {stats.map((stat, idx) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className="text-center"
+            >
+              <div className="text-5xl sm:text-6xl lg:text-7xl font-serif italic text-neutral-900 mb-3">{stat.value}</div>
+              <div className="text-neutral-400 text-sm uppercase tracking-widest font-medium">{stat.label}</div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
@@ -493,28 +438,23 @@ function UseCasesSection() {
   ];
 
   return (
-    <section className="bg-gray-50 py-20 sm:py-28">
+    <section className="py-28 sm:py-36 border-t border-neutral-100">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
-        <div className="text-center mb-16">
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-sm font-medium text-gray-500 uppercase tracking-widest mb-4"
-          >
-            Use Cases
-          </motion.p>
+        <div className="max-w-2xl mb-20">
+          <span className="accent-line" />
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900"
+            className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-6"
           >
-            Proven across industries
+            Proven across
+            <br />
+            <em className="text-neutral-400">industries</em>
           </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {useCases.map((uc, idx) => {
             const Icon = uc.icon;
             return (
@@ -524,18 +464,22 @@ function UseCasesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="bg-white rounded-2xl p-8 border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all"
+                className="flex items-start gap-5 p-8 sm:p-10 rounded-2xl border border-neutral-200 hover:border-neutral-300 transition-all group"
               >
-                <Icon className="w-8 h-8 text-gray-700 mb-5" />
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{uc.title}</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">{uc.description}</p>
+                <div className="w-12 h-12 rounded-xl bg-neutral-100 flex items-center justify-center flex-shrink-0 group-hover:bg-neutral-900 transition-colors">
+                  <Icon className="w-5 h-5 text-neutral-600 group-hover:text-white transition-colors" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-neutral-900 mb-2">{uc.title}</h3>
+                  <p className="text-neutral-500 text-sm leading-relaxed">{uc.description}</p>
+                </div>
               </motion.div>
             );
           })}
         </div>
 
         <div className="text-center mt-12">
-          <Link href="/use-cases" className="inline-flex items-center gap-2 text-gray-700 hover:text-black font-medium text-sm transition-colors">
+          <Link href="/use-cases" className="inline-flex items-center gap-2 text-neutral-500 hover:text-neutral-900 font-medium text-sm transition-colors tracking-wide">
             Explore all use cases <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
@@ -546,22 +490,24 @@ function UseCasesSection() {
 
 function CTASection() {
   return (
-    <section className="py-20 sm:py-28">
+    <section className="py-28 sm:py-36 bg-neutral-950 text-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-12 text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900 mb-6"
+          className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight mb-6"
         >
-          Ready to build AI that works?
+          Ready to build AI
+          <br />
+          <em className="text-neutral-500">that works?</em>
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-lg text-gray-600 max-w-xl mx-auto mb-10"
+          className="text-neutral-400 text-lg max-w-xl mx-auto mb-10 font-light leading-relaxed"
         >
           Get started with Olyxee's developer tools, or reach out to discuss enterprise solutions.
         </motion.p>
@@ -574,13 +520,13 @@ function CTASection() {
         >
           <Link
             href="/developers"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gray-900 text-white rounded-full font-semibold hover:bg-black hover:shadow-lg transition-all"
+            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide"
           >
-            Start Building <ArrowRight className="w-4 h-4" />
+            Get Started <ArrowRight className="w-4 h-4" />
           </Link>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-gray-900 border border-gray-300 rounded-full font-semibold hover:bg-gray-50 hover:border-gray-400 transition-all"
+            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-white border border-white/20 rounded-full font-medium hover:bg-white/10 transition-all text-sm tracking-wide"
           >
             Contact Sales
           </Link>
@@ -591,53 +537,31 @@ function CTASection() {
 }
 
 function CookieBanner({ onDismiss }: { onDismiss: () => void }) {
-  const [showSettings, setShowSettings] = useState(false);
-
-  const handleAccept = () => {
-    localStorage.setItem("cookie-consent", "accepted");
-    onDismiss();
-  };
-
   return (
     <motion.div
       initial={{ y: 100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       exit={{ y: 100, opacity: 0 }}
-      className="fixed bottom-4 right-4 left-4 sm:left-auto sm:max-w-[420px] z-[999]"
+      transition={{ type: "spring", damping: 25 }}
+      className="fixed bottom-6 left-6 right-6 z-50 flex justify-center"
       role="dialog"
-      aria-modal="true"
-      aria-labelledby="cookie-banner-title"
+      aria-modal="false"
+      aria-label="Cookie consent"
     >
-      <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-2xl">
-        <h2 id="cookie-banner-title" className="text-base font-semibold text-black mb-2">
-          Cookie Settings
-        </h2>
-        <p className="text-sm text-gray-600 mb-4 leading-relaxed">
-          We use cookies to improve your experience and analyze site usage.{" "}
-          <a href="/privacy" className="text-gray-700 hover:underline">Learn more</a>
+      <div className="flex flex-col sm:flex-row items-center gap-4 bg-white border border-neutral-200 shadow-lg rounded-xl px-6 py-4 max-w-lg">
+        <p className="text-sm text-neutral-600 flex-1">
+          We use cookies to improve your experience. By continuing, you agree to our{" "}
+          <Link href="/privacy" className="underline hover:text-neutral-900">privacy policy</Link>.
         </p>
-        {showSettings && (
-          <div className="mb-4 space-y-2 p-3 bg-gray-50 rounded-lg">
-            <label className="flex items-center gap-2">
-              <input type="checkbox" checked disabled className="rounded" />
-              <span className="text-sm text-black">Essential (Required)</span>
-            </label>
-            <label className="flex items-center gap-2">
-              <input type="checkbox" defaultChecked className="rounded" />
-              <span className="text-sm text-black">Analytics</span>
-            </label>
-          </div>
-        )}
-        <div className="flex gap-2">
-          <Button onClick={handleAccept} className="flex-1 rounded-full bg-gray-900 text-white hover:bg-black font-semibold text-sm">
-            Accept All
-          </Button>
-          <Button onClick={() => setShowSettings(!showSettings)} variant="outline" className="flex-1 rounded-full border-gray-300 bg-white text-black hover:bg-gray-100 text-sm">
-            {showSettings ? "Save" : "Customize"}
-          </Button>
+        <div className="flex gap-3">
+          <button onClick={() => { localStorage.setItem("cookie-consent", "accepted"); onDismiss(); }} className="px-4 py-2 bg-neutral-900 text-white text-sm rounded-lg font-medium hover:bg-black transition-colors">
+            Accept
+          </button>
+          <button onClick={() => { localStorage.setItem("cookie-consent", "declined"); onDismiss(); }} className="px-4 py-2 text-neutral-500 text-sm hover:text-neutral-900 transition-colors">
+            Decline
+          </button>
         </div>
       </div>
     </motion.div>
   );
 }
-

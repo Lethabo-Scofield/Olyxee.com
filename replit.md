@@ -17,8 +17,18 @@ Company-level website for Olyxee, a reliability-first AI infrastructure company.
 - **Dev server**: `npm run dev` — starts on port 5000 with Turbopack, bound to 0.0.0.0
 - **Workflow**: "Start application" — runs `npm run dev`
 
+## Design System
+- **Display font**: `Instrument Serif` (italic) for all major headings — creates a distinctive, editorial feel
+- **Body font**: `Inter` for body text and UI elements
+- **Grain texture**: `.grain` CSS class — fixed noise overlay at z-9999, opacity 0.03, applied to page wrappers
+- **Accent utilities**: `.accent-line` (48px × 2px black block), `.accent-dot` (6px black circle) — used as section markers
+- **Color palette**: neutral-950 for dark sections, neutral-400/500 for muted text, neutral-100/200 for borders. No bright accent colors.
+- **Section pattern**: Alternating white/neutral-50/neutral-950 sections separated by thin border-neutral-100 borders
+- **Typography pattern**: Large serif italic headings with `<em>` in muted color for emphasis contrast
+- **Heading/paragraph colors**: Use `color: inherit` globally — each section explicitly controls text color via Tailwind classes
+
 ## Site Structure & Navigation
-Navigation: About | Products (dropdown) | Research | Technology | Developers | Safety | Careers
+Navigation: About | Products (dropdown) | Research | Docs | Community
 Desktop CTA: "Get Started" → /developers
 Products dropdown: Grysics, Neural Reality Network, WAVE Platform
 

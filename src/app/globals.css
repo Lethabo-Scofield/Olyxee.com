@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap");
 
 @import "tailwindcss";
 @import "tw-animate-css";
@@ -9,34 +9,33 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  /* Shadcn/UI base colors - Dark Theme */
-  --color-background: #000000;
-  --color-foreground: #ffffff;
+  --color-background: #fafafa;
+  --color-foreground: #171717;
 
-  --color-card: #1a1a1a;
-  --color-card-foreground: #ffffff;
+  --color-card: #ffffff;
+  --color-card-foreground: #171717;
 
-  --color-popover: #1a1a1a;
-  --color-popover-foreground: #ffffff;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #171717;
 
-  --color-primary: #00ff00; /* Electric Green */
-  --color-primary-foreground: #000000;
+  --color-primary: #171717;
+  --color-primary-foreground: #fafafa;
 
-  --color-secondary: #2b2b2b;
-  --color-secondary-foreground: #ffffff;
+  --color-secondary: #f5f5f5;
+  --color-secondary-foreground: #171717;
 
-  --color-muted: #666666;
-  --color-muted-foreground: #9b9b9b;
+  --color-muted: #a3a3a3;
+  --color-muted-foreground: #737373;
 
-  --color-accent: #2d1b3d; /* Deep Purple */
-  --color-accent-foreground: #ffffff;
+  --color-accent: #f5f5f5;
+  --color-accent-foreground: #171717;
 
-  --color-destructive: #ff0066; /* Red Accent */
-  --color-destructive-foreground: #ffffff;
+  --color-destructive: #dc2626;
+  --color-destructive-foreground: #fafafa;
 
-  --color-border: #2b2b2b;
-  --color-input: #2b2b2b;
-  --color-ring: #00ff00; /* Electric Green */
+  --color-border: #e5e5e5;
+  --color-input: #e5e5e5;
+  --color-ring: #171717;
 
   --color-chart-1: #e67e22;
   --color-chart-2: #2d8659;
@@ -44,77 +43,36 @@
   --color-chart-4: #f1c40f;
   --color-chart-5: #e74c3c;
 
-  --color-sidebar: #1a1a1a;
-  --color-sidebar-foreground: #ffffff;
-  --color-sidebar-primary: #00ff00;
-  --color-sidebar-primary-foreground: #000000;
-  --color-sidebar-accent: #2b2b2b;
-  --color-sidebar-accent-foreground: #ffffff;
-  --color-sidebar-border: #2b2b2b;
-  --color-sidebar-ring: #00ff00;
+  --color-sidebar: #fafafa;
+  --color-sidebar-foreground: #171717;
+  --color-sidebar-primary: #171717;
+  --color-sidebar-primary-foreground: #fafafa;
+  --color-sidebar-accent: #f5f5f5;
+  --color-sidebar-accent-foreground: #171717;
+  --color-sidebar-border: #e5e5e5;
+  --color-sidebar-ring: #171717;
 
-  --radius-lg: 1rem; /* 16px */
-  --radius-md: calc(1rem - 4px); /* 12px */
-  --radius-sm: calc(1rem - 8px); /* 8px */
+  --radius-lg: 1rem;
+  --radius-md: calc(1rem - 4px);
+  --radius-sm: calc(1rem - 8px);
 
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
 
   @keyframes accordion-down {
-    from {
-      height: 0;
-    }
-    to {
-      height: var(--radix-accordion-content-height);
-    }
+    from { height: 0; }
+    to { height: var(--radix-accordion-content-height); }
   }
   @keyframes accordion-up {
-    from {
-      height: var(--radix-accordion-content-height);
-    }
-    to {
-      height: 0;
-    }
+    from { height: var(--radix-accordion-content-height); }
+    to { height: 0; }
   }
 
-  /* JetBrains Specific Colors */
-  --color-background-primary: #000000;
-  --color-background-secondary: #1a1a1a;
-  --color-background-tertiary: #2b2b2b;
-  --color-background-deep-purple: #2d1b3d;
-  --color-background-dark-purple-card: #3d1836;
-  --color-background-teal: #0d4d4d;
-  --color-background-magenta-gradient-start: #6b3be7;
-  --color-background-magenta-gradient-end: #e91e8c;
-  --color-background-teal-gradient-start: #00d4aa;
-  --color-background-teal-gradient-end: #1ccecc;
-
-  --color-text-primary: #ffffff;
-  --color-text-secondary: #9b9b9b;
-  --color-text-tertiary: #666666;
-  --color-text-magenta: #ff00ff;
-  --color-text-electric-green: #00ff00;
-  --color-text-cyan: #00d4aa;
-  --color-text-orange: #ff6b00;
-
-  --color-border-subtle: rgba(255, 255, 255, 0.1);
-
-  /* JetBrains Specific Typography */
-  --font-display: "Inter", sans-serif;
-  --font-body: "Inter", sans-serif;
-  --font-mono:
-    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-    "Courier New", monospace;
+  --font-display: "Instrument Serif", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
 @layer base {
   *,
   ::after,
@@ -165,94 +123,80 @@
   }
 
   body {
-    background-color: var(--background);
+    background-color: #ffffff;
     color: var(--foreground);
     font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: var(--font-display);
-    color: var(--color-text-primary);
+  h1, h2, h3, h4, h5, h6 {
+    color: inherit;
     line-height: 1.1;
     letter-spacing: -0.02em;
   }
 
-  h1 {
-    font-size: 4rem; /* 64px */
-    font-weight: 800;
-  }
-
-  h2 {
-    font-size: 3rem; /* 48px */
-    font-weight: 700;
-  }
-
-  h3 {
-    font-size: 2.25rem; /* 36px */
-    font-weight: 700;
-  }
-
-  h4 {
-    font-size: 1.5rem; /* 24px */
-    font-weight: 600;
-  }
-
-  h5 {
-    font-size: 1.25rem; /* 20px */
-    font-weight: 600;
-  }
-
   p {
-    font-size: 1rem; /* 16px */
-    line-height: 1.6;
-    color: var(--color-text-secondary);
-  }
-
-  .text-lg {
-    font-size: 1.125rem; /* 18px */
-    line-height: 1.6;
-  }
-
-  .text-sm {
-    font-size: 0.875rem; /* 14px */
-    line-height: 1.5;
-  }
-
-  .text-xs {
-    font-size: 0.75rem; /* 12px */
-    line-height: 1.4;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: inherit;
   }
 
   .container {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1rem; /* 16px */
-    padding-right: 1rem; /* 16px */
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   @media (min-width: 768px) {
     .container {
-      padding-left: 1.5rem; /* 24px */
-      padding-right: 1.5rem; /* 24px */
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
     }
   }
 
   @media (min-width: 1024px) {
     .container {
       max-width: 1440px;
-      padding-left: 3rem; /* 48px */
-      padding-right: 3rem; /* 48px */
+      padding-left: 3rem;
+      padding-right: 3rem;
     }
   }
 }
 
-/* Hide Next.js error overlay portal */
+.font-serif {
+  font-family: var(--font-display);
+}
+
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+.accent-line {
+  width: 48px;
+  height: 2px;
+  background: #171717;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.accent-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #171717;
+  display: inline-block;
+}
+
 nextjs-portal {
   display: none !important;
 }
