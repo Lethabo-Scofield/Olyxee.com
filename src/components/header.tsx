@@ -91,21 +91,23 @@ const Header = () => {
     return (
         <>
             <motion.header
-                className="fixed top-0 z-[1000] w-full px-4 sm:px-6 md:px-8 transition-all"
+                className="fixed top-0 left-0 right-0 z-[1000] flex justify-center px-4 sm:px-6 md:px-8 transition-all"
                 animate={{ y: scrollDirection === 'down' ? -100 : 0 }}
-                style={{
-                    justifyContent: scrolled ? 'center' : 'space-between',
-                    borderRadius: scrolled ? 16 : 0,
-                    maxWidth: scrolled ? 900 : '100%',
-                    margin: scrolled ? '0 auto' : 0,
-                    background: scrolled ? 'rgba(255,255,255,0.85)' : 'transparent',
-                    backdropFilter: scrolled ? 'blur(20px)' : 'none',
-                    WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none',
-                    boxShadow: scrolled ? '0 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -1px rgba(0,0,0,0.06)' : 'none',
-                }}
                 transition={{ type: 'tween', duration: 0.3 }}
             >
-                <div className={`flex items-center ${scrolled ? 'justify-center gap-4' : 'justify-between'} w-full h-16 relative`}>
+                <motion.div
+                    className="flex items-center justify-center gap-4 w-full h-16 relative"
+                    initial={{ maxWidth: 1200 }}
+                    animate={{
+                        maxWidth: scrolled ? 900 : 1200,
+                        borderRadius: scrolled ? 16 : 0,
+                        background: scrolled ? 'rgba(255,255,255,0.85)' : 'rgba(255,255,255,0)',
+                        backdropFilter: scrolled ? 'blur(20px)' : 'blur(0px)',
+                        boxShadow: scrolled ? '0 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -1px rgba(0,0,0,0.06)' : '0 0 0 0 rgba(0,0,0,0)',
+                    }}
+                    transition={{ type: 'tween', duration: 0.3 }}
+                    style={{ WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none', paddingLeft: 16, paddingRight: 16 }}
+                >
                     <Link href="/" prefetch className="focus:outline-none focus:ring-2 focus:ring-gray-900 rounded-lg transition-transform hover:scale-110 flex items-center gap-2">
                         <Image src="/Logo/Olyxee_Logo.png" alt="Olyxee Logo" width={32} height={32} className="cursor-pointer" />
                         {!scrolled && <span className="text-lg font-bold text-black hidden sm:inline">Olyxee</span>}
@@ -180,7 +182,7 @@ const Header = () => {
                             </button>
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </motion.header>
 
             <AnimatePresence>
