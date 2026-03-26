@@ -123,29 +123,29 @@ function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0.8 }}
-        className="relative z-10 mt-16 flex flex-wrap justify-center items-center gap-6 sm:gap-10"
+        className="relative z-10 mt-16"
       >
-        {[
-          { src: "/hardware-logos/raspberrypi.png", alt: "Raspberry Pi" },
-          { src: "/hardware-logos/NVIDIA-logo-BL_thmb.jpg", alt: "NVIDIA Jetson" },
-          { src: "/hardware-logos/arduino-logo.png", alt: "Arduino" },
-          { src: "/hardware-logos/intel.jpg", alt: "Intel" },
-          { src: "/hardware-logos/ESP32.png", alt: "ESP32" },
-        ].map((logo, i) => (
-          <div
-            key={i}
-            className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 transition-all duration-500 hover:scale-110"
-          >
-            <Image
-              src={logo.src}
-              alt={logo.alt}
-              width={48}
-              height={48}
-              unoptimized
-              className="object-contain w-auto h-auto max-w-[48px] max-h-[48px] filter grayscale opacity-30 hover:grayscale-0 hover:opacity-100 transition-all duration-500 bg-transparent"
-            />
-          </div>
-        ))}
+        <p className="text-xs text-neutral-400 uppercase tracking-[0.15em] font-medium text-center mb-6">Works with leading AI models</p>
+        <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-12">
+          {[
+            "OpenAI",
+            "Meta AI",
+            "Google",
+            "Anthropic",
+            "Mistral",
+            "Hugging Face",
+          ].map((name, i) => (
+            <motion.span
+              key={name}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9 + i * 0.06, duration: 0.5 }}
+              className="text-sm sm:text-base font-semibold text-neutral-300 hover:text-neutral-600 transition-colors duration-300 cursor-default tracking-tight"
+            >
+              {name}
+            </motion.span>
+          ))}
+        </div>
       </motion.div>
     </section>
   );
