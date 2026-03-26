@@ -18,17 +18,17 @@ const menuItems = [
 
 const Header = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('up');
     const [scrolled, setScrolled] = useState(false);
+    const [visible, setVisible] = useState(true);
     const lastScrollY = useRef(0);
     const firstFocusableRef = useRef<HTMLButtonElement | null>(null);
 
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
-            if (currentScrollY > lastScrollY.current && currentScrollY > 50) setScrollDirection('down');
-            else setScrollDirection('up');
-            setScrolled(currentScrollY > 80);
+            if (currentScrollY > lastScrollY.current && currentScrollY > 80) setVisible(false);
+            else setVisible(true);
+            setScrolled(currentScrollY > 40);
             lastScrollY.current = currentScrollY;
         };
         window.addEventListener('scroll', handleScroll, { passive: true });
@@ -57,57 +57,99 @@ const Header = () => {
     return (
         <>
             <motion.header
-                className="fixed top-0 left-0 right-0 z-[1000] flex justify-center px-4 sm:px-6 md:px-8 transition-all"
-                animate={{ y: scrollDirection === 'down' ? -100 : 0 }}
-                transition={{ type: 'tween', duration: 0.3 }}
+                className="fixed top-0 left-0 right-0 z-[1000] flex justify-center px-3 sm:px-5 pt-3"
+                initial={{ y: -80, opacity: 0 }}
+                animate={{
+                    y: visible ? 0 : -100,
+                    opacity: visible ? 1 : 0,
+                }}
+                transition={{ type: 'spring', stiffness: 260, damping: 30 }}
             >
                 <motion.div
-                    className="flex items-center justify-center gap-4 w-full h-16 relative"
-                    initial={{ maxWidth: 1200 }}
+                    className="flex items-center w-full h-14 relative"
+                    initial={{ maxWidth: 1100, borderRadius: 50 }}
                     animate={{
-                        maxWidth: scrolled ? 900 : 1200,
-                        borderRadius: scrolled ? 16 : 0,
-                        background: scrolled ? 'rgba(255,255,255,0.85)' : 'rgba(255,255,255,0)',
-                        backdropFilter: scrolled ? 'blur(20px)' : 'blur(0px)',
-                        boxShadow: scrolled ? '0 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -1px rgba(0,0,0,0.06)' : '0 0 0 0 rgba(0,0,0,0)',
+                        maxWidth: scrolled ? 820 : 1100,
+                        background: scrolled
+                            ? 'rgba(255, 255, 255, 0.55)'
+                            : 'rgba(255, 255, 255, 0.35)',
+                        boxShadow: scrolled
+                            ? '0 8px 32px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.6)'
+                            : '0 4px 20px rgba(0,0,0,0.03), 0 1px 2px rgba(0,0,0,0.02), inset 0 1px 0 rgba(255,255,255,0.4)',
                     }}
-                    transition={{ type: 'tween', duration: 0.3 }}
-                    style={{ WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none', paddingLeft: 16, paddingRight: 16 }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                    style={{
+                        backdropFilter: 'blur(24px) saturate(180%)',
+                        WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+                        border: '1px solid rgba(255,255,255,0.45)',
+                        borderRadius: 50,
+                        paddingLeft: 20,
+                        paddingRight: 20,
+                    }}
                 >
-                    <Link href="/" prefetch className="focus:outline-none focus:ring-2 focus:ring-gray-900 rounded-lg transition-transform hover:scale-110 flex items-center gap-2">
-                        <Image src="/Logo/Olyxee_Logo.png" alt="Olyxee Logo" width={32} height={32} className="cursor-pointer" />
-                        {!scrolled && <span className="text-lg font-bold text-black hidden sm:inline">Olyxee</span>}
+                    <Link href="/" prefetch className="focus:outline-none rounded-full transition-transform hover:scale-105 flex items-center gap-2.5 flex-shrink-0">
+                        <Image src="/Logo/Olyxee_Logo.png" alt="Olyxee Logo" width={30} height={30} className="cursor-pointer" />
+                        <motion.span
+                            className="text-[15px] font-bold text-neutral-900 hidden sm:inline"
+                            animate={{ opacity: scrolled ? 0 : 1, width: scrolled ? 0 : 'auto' }}
+                            transition={{ duration: 0.2 }}
+                        >
+                            Olyxee
+                        </motion.span>
                     </Link>
 
-                    <nav className="hidden lg:flex h-full ml-6" aria-label="Main navigation">
-                        <ul className="flex h-full items-center gap-6">
-                            {menuItems.map(item => (
-                                <li key={item.name} className="relative">
+                    <nav className="hidden lg:flex h-full ml-auto mr-auto" aria-label="Main navigation">
+                        <ul className="flex h-full items-center gap-1">
+                            {menuItems.map((item, i) => (
+                                <motion.li
+                                    key={item.name}
+                                    initial={{ opacity: 0, y: -10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.05 + i * 0.04, type: 'spring', stiffness: 400, damping: 25 }}
+                                >
                                     <Link
                                         href={item.href}
                                         prefetch
-                                        className="text-black text-sm font-normal transition-all hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-900 rounded px-2 py-1 relative group"
+                                        className="text-neutral-700 text-[13px] font-medium transition-all hover:text-neutral-900 hover:bg-white/50 focus:outline-none focus:ring-2 focus:ring-neutral-400/30 rounded-full px-3.5 py-1.5 relative"
                                     >
                                         {item.name}
-                                        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-black transition-all group-hover:w-full"></span>
                                     </Link>
-                                </li>
+                                </motion.li>
                             ))}
                         </ul>
                     </nav>
 
-                    <div className="flex items-center gap-3 sm:gap-4 ml-auto">
-                        <button className="hidden sm:flex text-white p-2 hover:opacity-80 hover:scale-110 active:scale-95 transition-all rounded-full bg-black focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2" aria-label="Join Discord">
-                            <FaDiscord className="w-5 h-5" />
-                        </button>
-                        <Link href="/developers" className="hidden md:inline-flex px-5 py-2 bg-gray-900 text-white rounded-full hover:bg-black hover:shadow-md active:scale-95 transition-all font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2">
-                            Get Started
-                        </Link>
+                    <div className="flex items-center gap-2.5 ml-auto lg:ml-0 flex-shrink-0">
+                        <motion.button
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: 0.3, type: 'spring', stiffness: 400, damping: 25 }}
+                            className="hidden sm:flex text-white p-2 hover:scale-110 active:scale-95 transition-all rounded-full bg-neutral-900/90 backdrop-blur-sm focus:outline-none"
+                            aria-label="Join Discord"
+                        >
+                            <FaDiscord className="w-4 h-4" />
+                        </motion.button>
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: 0.35, type: 'spring', stiffness: 400, damping: 25 }}
+                        >
+                            <Link href="/developers" className="hidden md:inline-flex px-5 py-1.5 bg-neutral-900 text-white rounded-full hover:bg-black active:scale-95 transition-all font-semibold text-[13px] focus:outline-none shadow-sm">
+                                Get Started
+                            </Link>
+                        </motion.div>
 
                         <div className="lg:hidden">
-                            <button onClick={() => setMobileMenuOpen(true)} className="transition-all hover:opacity-80 hover:scale-110 active:scale-95 focus:outline-none focus:ring-2 focus:ring-gray-900 rounded p-1" aria-label="Open menu">
-                                <Menu className="h-6 w-6" />
-                            </button>
+                            <motion.button
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.2 }}
+                                onClick={() => setMobileMenuOpen(true)}
+                                className="transition-all hover:opacity-80 active:scale-90 focus:outline-none rounded-full p-2 hover:bg-white/40"
+                                aria-label="Open menu"
+                            >
+                                <Menu className="h-5 w-5 text-neutral-800" />
+                            </motion.button>
                         </div>
                     </div>
                 </motion.div>
@@ -120,48 +162,85 @@ const Header = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 0.2 }}
-                            className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[1001] lg:hidden"
+                            transition={{ duration: 0.25 }}
+                            className="fixed inset-0 bg-black/25 backdrop-blur-md z-[1001] lg:hidden"
                             onClick={handleBackdropClick}
                             aria-hidden="true"
                         />
                         <motion.div
-                            initial={{ x: '100%' }}
-                            animate={{ x: 0 }}
-                            exit={{ x: '100%' }}
-                            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                            className="fixed right-0 top-0 bottom-0 w-full max-w-sm bg-white z-[1002] lg:hidden shadow-2xl"
+                            initial={{ x: '100%', opacity: 0.5 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            exit={{ x: '100%', opacity: 0 }}
+                            transition={{ type: 'spring', damping: 28, stiffness: 220 }}
+                            className="fixed right-3 top-3 bottom-3 w-[calc(100%-24px)] max-w-sm z-[1002] lg:hidden overflow-hidden"
+                            style={{
+                                background: 'rgba(255,255,255,0.75)',
+                                backdropFilter: 'blur(40px) saturate(200%)',
+                                WebkitBackdropFilter: 'blur(40px) saturate(200%)',
+                                borderRadius: 28,
+                                border: '1px solid rgba(255,255,255,0.5)',
+                                boxShadow: '0 24px 80px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.06)',
+                            }}
                             role="dialog"
                             aria-modal="true"
                         >
-                            <div className="flex items-center justify-between p-6 border-b border-gray-200">
-                                <div className="flex items-center gap-2">
-                                    <Image src="/Logo/Olyxee_Logo.png" alt="Olyxee Logo" width={28} height={28} />
-                                    <span className="font-bold text-black">Olyxee</span>
+                            <div className="flex items-center justify-between p-5 pb-4">
+                                <div className="flex items-center gap-2.5">
+                                    <Image src="/Logo/Olyxee_Logo.png" alt="Olyxee Logo" width={26} height={26} />
+                                    <span className="font-bold text-neutral-900 text-[15px]">Olyxee</span>
                                 </div>
-                                <button ref={firstFocusableRef} onClick={() => setMobileMenuOpen(false)} className="p-2 hover:bg-gray-100 rounded-full transition-all active:scale-95 focus:outline-none focus:ring-2 focus:ring-gray-900" aria-label="Close menu">
-                                    <X className="h-6 w-6" />
+                                <button
+                                    ref={firstFocusableRef}
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="p-2 hover:bg-white/60 rounded-full transition-all active:scale-90 focus:outline-none"
+                                    aria-label="Close menu"
+                                >
+                                    <X className="h-5 w-5 text-neutral-700" />
                                 </button>
                             </div>
-                            <nav className="p-6 overflow-y-auto h-[calc(100vh-80px)]">
-                                <ul className="space-y-1">
+
+                            <div className="mx-5 h-px bg-neutral-200/50" />
+
+                            <nav className="p-5 overflow-y-auto h-[calc(100%-140px)]">
+                                <ul className="space-y-0.5">
                                     {menuItems.map((item, i) => (
-                                        <motion.li key={item.name} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.04 }}>
-                                            <Link href={item.href} prefetch className="flex items-center justify-between py-3 px-4 hover:bg-gray-100 active:bg-gray-200 rounded-lg transition-all text-black font-medium focus:outline-none focus:ring-2 focus:ring-gray-900" onClick={() => setMobileMenuOpen(false)}>
-                                                {item.name} <span className="text-gray-400">→</span>
+                                        <motion.li
+                                            key={item.name}
+                                            initial={{ opacity: 0, x: 30 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            transition={{ delay: 0.08 + i * 0.05, type: 'spring', stiffness: 400, damping: 30 }}
+                                        >
+                                            <Link
+                                                href={item.href}
+                                                prefetch
+                                                className="flex items-center justify-between py-3 px-4 hover:bg-white/60 active:bg-white/80 rounded-2xl transition-all text-neutral-900 font-medium text-[15px] focus:outline-none"
+                                                onClick={() => setMobileMenuOpen(false)}
+                                            >
+                                                {item.name}
+                                                <span className="text-neutral-400 text-xs">→</span>
                                             </Link>
                                         </motion.li>
                                     ))}
                                 </ul>
-                                <motion.div className="mt-8 pt-8 border-t border-gray-200 flex flex-col gap-3" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.3 }}>
-                                    <Link href="/developers" className="w-full py-3 bg-gray-900 text-white rounded-full flex items-center justify-center gap-2 hover:bg-black hover:shadow-lg active:scale-95 transition-all font-semibold focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2" onClick={() => setMobileMenuOpen(false)}>
-                                        Get Started
-                                    </Link>
-                                    <button className="w-full py-3 bg-white text-black border border-gray-200 rounded-full flex items-center justify-center gap-2 hover:bg-gray-50 active:scale-95 transition-all font-semibold focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2">
-                                        <FaDiscord className="w-5 h-5" /> Join Discord
-                                    </button>
-                                </motion.div>
                             </nav>
+
+                            <motion.div
+                                className="absolute bottom-0 left-0 right-0 p-5 flex flex-col gap-2.5"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.4, type: 'spring', stiffness: 300, damping: 25 }}
+                            >
+                                <Link
+                                    href="/developers"
+                                    className="w-full py-3 bg-neutral-900 text-white rounded-2xl flex items-center justify-center gap-2 hover:bg-black active:scale-[0.98] transition-all font-semibold text-sm focus:outline-none shadow-sm"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                >
+                                    Get Started
+                                </Link>
+                                <button className="w-full py-3 bg-white/50 text-neutral-900 border border-neutral-200/50 rounded-2xl flex items-center justify-center gap-2 hover:bg-white/70 active:scale-[0.98] transition-all font-semibold text-sm focus:outline-none">
+                                    <FaDiscord className="w-4 h-4" /> Join Discord
+                                </button>
+                            </motion.div>
                         </motion.div>
                     </>
                 )}
