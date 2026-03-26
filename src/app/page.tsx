@@ -152,7 +152,7 @@ function HeroSection() {
         transition={{ duration: 1, delay: 0.8 }}
         className="relative z-10 mt-16"
       >
-        <p className="text-xs text-neutral-400 uppercase tracking-[0.15em] font-medium text-center mb-8">Works with leading AI models</p>
+        <p className="text-xs text-neutral-400 uppercase tracking-[0.15em] font-medium text-center mb-8">Collaborating with</p>
         <div className="flex flex-wrap justify-center items-center gap-10 sm:gap-14">
           {partnerLogos.map((logo, i) => (
             <motion.div
