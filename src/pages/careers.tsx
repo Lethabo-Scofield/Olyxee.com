@@ -3,121 +3,162 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import Link from "next/link";
 import { ArrowRight, MapPin } from "lucide-react";
+import { motion } from "framer-motion";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i: number) => ({
+    opacity: 1, y: 0,
+    transition: { duration: 0.6, delay: i * 0.08, ease: [0.25, 0.46, 0.45, 0.94] },
+  }),
+};
 
 const Careers: FC = () => {
-  const openings = [
+  const internships = [
     {
-      title: "Senior Systems Engineer",
-      team: "Platform",
-      location: "Remote",
-      type: "Full-time",
-      description: "Build core infrastructure for AI deployment pipelines. Experience with distributed systems, containerization, and hardware interfaces.",
-    },
-    {
-      title: "ML Verification Engineer",
-      team: "Reliability",
-      location: "Remote",
-      type: "Full-time",
-      description: "Develop automated testing frameworks for AI model verification across heterogeneous hardware. Strong background in ML and formal methods.",
-    },
-    {
-      title: "Edge AI Researcher",
+      title: "AI Research Intern",
       team: "Research",
       location: "Remote",
-      type: "Full-time",
-      description: "Research model optimization techniques for resource-constrained devices. Publish papers and build prototypes that become products.",
+      description: "Contribute to research on AI verification, model reliability, and edge deployment. Help publish papers and build prototypes.",
     },
     {
-      title: "Developer Experience Engineer",
+      title: "ML Engineering Intern",
+      team: "Platform",
+      location: "Remote",
+      description: "Work on model optimization pipelines, quantization techniques, and hardware-aware inference for edge devices.",
+    },
+    {
+      title: "Systems Engineering Intern",
+      team: "Infrastructure",
+      location: "Remote",
+      description: "Help build distributed deployment infrastructure, runtime monitoring, and hardware abstraction layers.",
+    },
+    {
+      title: "Developer Experience Intern",
       team: "Developer Tools",
       location: "Remote",
-      type: "Full-time",
-      description: "Build SDKs, CLIs, and documentation that make Olyxee accessible to every developer. Obsess over developer ergonomics.",
+      description: "Improve SDKs, CLI tools, and documentation. Build tutorials and sample projects that help developers adopt Olyxee.",
     },
     {
-      title: "Product Designer",
+      title: "Product Design Intern",
       team: "Design",
       location: "Remote",
-      type: "Full-time",
-      description: "Design interfaces for complex AI infrastructure tools. Make the hard things feel simple without hiding complexity.",
+      description: "Design interfaces for AI infrastructure tools. Create intuitive experiences for complex technical workflows.",
+    },
+    {
+      title: "Technical Writing Intern",
+      team: "Content",
+      location: "Remote",
+      description: "Write technical documentation, blog posts, and educational content about AI deployment and reliability.",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-white text-gray-900">
+    <div className="min-h-screen bg-white text-neutral-900 relative">
+      <div className="grain" />
       <Header />
 
-      <section className="pt-32 pb-20 px-4 sm:px-6">
-        <div className="max-w-4xl mx-auto">
-          <p className="text-sm font-medium text-gray-500 uppercase tracking-widest mb-4">Careers</p>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] mb-8">
-            Build the infrastructure AI needs.
-          </h1>
-          <p className="text-xl text-gray-600 leading-relaxed max-w-3xl">
-            We're a small team working on hard problems — AI reliability, distributed systems,
-            edge deployment, and formal verification. If you want your work to matter, this is it.
-          </p>
+      <section className="pt-32 sm:pt-44 pb-28 sm:pb-36 px-4 sm:px-6 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-neutral-100 rounded-full blur-[120px] opacity-50 -translate-y-1/3 translate-x-1/4" />
+        <div className="max-w-5xl mx-auto relative">
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="flex items-center gap-2 mb-8">
+            <span className="accent-dot" />
+            <span className="text-sm font-medium text-neutral-400 uppercase tracking-widest">Careers</span>
+          </motion.div>
+          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }} className="font-serif text-5xl sm:text-6xl lg:text-[5.5rem] text-neutral-900 tracking-tight leading-[1.05] mb-8">
+            Help us build the
+            <br />
+            <em className="text-neutral-400">future of AI</em>
+          </motion.h1>
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-xl text-neutral-500 leading-relaxed max-w-3xl font-light">
+            We're looking for talented individuals passionate about AI reliability, systems engineering,
+            and building infrastructure that matters. Join us as an intern and work on real problems.
+          </motion.p>
         </div>
       </section>
 
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold tracking-tight mb-4">Why Olyxee</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8">
+      <section className="py-28 sm:py-36 bg-neutral-50 border-y border-neutral-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="mb-16">
+            <span className="accent-line" />
+            <h2 className="font-serif text-4xl sm:text-5xl tracking-tight text-neutral-900">
+              Why <em className="text-neutral-400">Olyxee</em>
+            </h2>
+          </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-neutral-200 rounded-2xl overflow-hidden border border-neutral-200">
             {[
-              { title: "Hard problems", description: "Work on distributed systems, AI verification, and edge deployment at the intersection of research and production." },
-              { title: "Small team, big impact", description: "Every person shapes the product. No bureaucracy, no meetings about meetings. Ship code that millions will rely on." },
-              { title: "Remote-first", description: "Work from anywhere. We care about what you build, not where you sit. Async-first communication and flexible hours." },
-            ].map((item) => (
-              <div key={item.title} className="bg-white rounded-2xl p-8 border border-gray-200">
-                <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">{item.description}</p>
-              </div>
+              { title: "Real problems", description: "Work on distributed systems, AI verification, and edge deployment — not busywork. Your contributions ship to production." },
+              { title: "Learn by doing", description: "Mentorship from experienced engineers. Access to cutting-edge research. Build skills that matter in AI infrastructure." },
+              { title: "Remote & flexible", description: "Work from anywhere on your schedule. We care about what you build, not when or where you build it." },
+            ].map((item, idx) => (
+              <motion.div key={item.title} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={idx} variants={fadeUp} className="bg-white p-10 sm:p-12">
+                <h3 className="text-xl font-semibold text-neutral-900 mb-3">{item.title}</h3>
+                <p className="text-sm text-neutral-500 leading-relaxed">{item.description}</p>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold tracking-tight mb-12">Open Positions</h2>
-          <div className="space-y-4">
-            {openings.map((job) => (
-              <div
+      <section className="py-28 sm:py-36">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="mb-16">
+            <span className="accent-line" />
+            <h2 className="font-serif text-4xl sm:text-5xl tracking-tight text-neutral-900 mb-4">
+              Open Internships
+            </h2>
+            <p className="text-neutral-400 text-sm uppercase tracking-widest font-medium">Unpaid · Remote · Flexible hours</p>
+          </motion.div>
+
+          <div className="divide-y divide-neutral-200">
+            {internships.map((job, idx) => (
+              <motion.div
                 key={job.title}
-                className="bg-white rounded-xl p-6 sm:p-8 border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all cursor-pointer group"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                custom={idx}
+                variants={fadeUp}
+                className="py-10 group cursor-pointer hover:px-4 transition-all"
               >
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                  <div>
-                    <h3 className="text-lg font-semibold group-hover:text-gray-700 transition-colors">{job.title}</h3>
-                    <div className="flex flex-wrap items-center gap-2 mt-2">
-                      <span className="text-xs font-medium text-gray-500 bg-gray-100 px-2.5 py-1 rounded-full">{job.team}</span>
-                      <span className="text-xs text-gray-400 flex items-center gap-1">
-                        <MapPin className="w-3 h-3" /> {job.location}
-                      </span>
-                      <span className="text-xs text-gray-400">{job.type}</span>
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-3">
+                      <h3 className="text-xl sm:text-2xl font-semibold text-neutral-900 group-hover:text-neutral-600 transition-colors">{job.title}</h3>
+                      <span className="text-xs font-medium text-neutral-400 bg-neutral-100 px-3 py-1 rounded-full border border-neutral-200">{job.team}</span>
                     </div>
-                    <p className="text-sm text-gray-600 mt-3 leading-relaxed">{job.description}</p>
+                    <p className="text-neutral-500 text-sm leading-relaxed max-w-xl mb-3">{job.description}</p>
+                    <div className="flex items-center gap-1.5 text-xs text-neutral-400">
+                      <MapPin className="w-3 h-3" />
+                      {job.location} · Unpaid Internship
+                    </div>
                   </div>
-                  <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-gray-900 transition-colors flex-shrink-0 hidden sm:block" />
+                  <ArrowRight className="w-5 h-5 text-neutral-300 group-hover:text-neutral-900 transition-all flex-shrink-0 hidden sm:block mt-2" />
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4">Don't see your role?</h2>
-          <p className="text-gray-600 mb-8 max-w-lg mx-auto">
-            We're always looking for exceptional people. Send us a note about what you'd like to work on.
-          </p>
-          <Link href="/contact" className="inline-flex items-center gap-2 px-8 py-4 bg-gray-900 text-white rounded-full font-semibold hover:bg-black transition-all">
-            Get in Touch <ArrowRight className="w-4 h-4" />
-          </Link>
+      <section className="py-28 sm:py-36 bg-neutral-950 text-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp}>
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight mb-6">
+              Don't see your role?
+              <br />
+              <em className="text-neutral-500">Reach out anyway.</em>
+            </h2>
+            <p className="text-lg text-neutral-400 mb-10 max-w-2xl mx-auto leading-relaxed font-light">
+              We're always looking for exceptional people. Tell us what you'd like to work on.
+            </p>
+            <Link href="/contact" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide">
+              Get in Touch <ArrowRight className="w-4 h-4" />
+            </Link>
+          </motion.div>
         </div>
       </section>
+
       <Footer />
     </div>
   );

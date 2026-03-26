@@ -1,28 +1,35 @@
 import { FC } from "react";
-import Lottie from "lottie-react";
-import constructionAnimation from "@/assets/animations/site under construction.json";
 import Header from "../components/header";
+import Footer from "../components/footer";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 const Support: FC = () => {
   return (
-    <div>
+    <div className="min-h-screen bg-white text-neutral-900 relative">
+      <div className="grain" />
       <Header />
-      <div className="w-full h-screen flex items-center justify-center bg-white text-gray-900 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl text-center space-y-8">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold">
-            Support Coming Soon
-          </h2>
-          <p className="text-gray-600 text-base sm:text-lg lg:text-xl">
-            Our support center is under construction.
-          </p>
-          <div className="w-64 sm:w-80 lg:w-96 mx-auto">
-            <Lottie animationData={constructionAnimation} loop={true} />
-          </div>
-          <p className="text-gray-500 text-sm sm:text-base lg:text-lg leading-relaxed">
-            Check back later for full support resources, FAQs, and contact options.
-          </p>
+      <section className="pt-32 sm:pt-44 pb-28 sm:pb-36 px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="flex items-center gap-2 mb-8 justify-center">
+            <span className="accent-dot" />
+            <span className="text-sm font-medium text-neutral-400 uppercase tracking-widest">Support</span>
+          </motion.div>
+          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }} className="font-serif text-5xl sm:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-6">
+            Coming <em className="text-neutral-400">soon</em>
+          </motion.h1>
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="text-xl text-neutral-500 leading-relaxed max-w-2xl mx-auto font-light mb-10">
+            Our support center is under construction. In the meantime, reach out to us directly.
+          </motion.p>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}>
+            <Link href="/contact" className="inline-flex items-center gap-2 px-8 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-black transition-all text-sm tracking-wide">
+              Contact Us <ArrowRight className="w-4 h-4" />
+            </Link>
+          </motion.div>
         </div>
-      </div>
+      </section>
+      <Footer />
     </div>
   );
 };

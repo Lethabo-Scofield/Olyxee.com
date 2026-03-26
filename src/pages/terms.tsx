@@ -1,45 +1,38 @@
 import { FC } from "react";
 import Header from "../components/header";
 import Footer from "../components/footer";
+import { motion } from "framer-motion";
 
 const Terms: FC = () => {
   return (
-    <div className="min-h-screen bg-white text-gray-900">
+    <div className="min-h-screen bg-white text-neutral-900 relative">
+      <div className="grain" />
       <Header />
-      <section className="pt-32 pb-20 px-4 sm:px-6">
+      <section className="pt-32 sm:pt-44 pb-28 sm:pb-36 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto">
-          <p className="text-sm font-medium text-gray-500 uppercase tracking-widest mb-4">Legal</p>
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight leading-[1.1] mb-8">Terms of Use</h1>
-          <p className="text-gray-500 mb-12">Last updated: October 2025</p>
-          <div className="prose prose-gray max-w-none space-y-8 text-gray-600 leading-relaxed">
-            <div>
-              <h2 className="text-xl font-semibold text-gray-900 mb-3">1. Acceptance of Terms</h2>
-              <p>By accessing or using Olyxee's services, you agree to be bound by these Terms of Use. If you do not agree, you may not use our services.</p>
-            </div>
-            <div>
-              <h2 className="text-xl font-semibold text-gray-900 mb-3">2. Use of Services</h2>
-              <p>You may use our services only in compliance with these terms and all applicable laws. You are responsible for maintaining the confidentiality of your account credentials.</p>
-            </div>
-            <div>
-              <h2 className="text-xl font-semibold text-gray-900 mb-3">3. Intellectual Property</h2>
-              <p>All content, software, and materials provided through Olyxee's services are owned by Olyxee or its licensors. You may not copy, modify, or distribute these materials without permission.</p>
-            </div>
-            <div>
-              <h2 className="text-xl font-semibold text-gray-900 mb-3">4. API and SDK Usage</h2>
-              <p>Use of Olyxee APIs and SDKs is subject to our developer terms. You agree not to reverse engineer, misuse, or exceed rate limits on our APIs.</p>
-            </div>
-            <div>
-              <h2 className="text-xl font-semibold text-gray-900 mb-3">5. Limitation of Liability</h2>
-              <p>Olyxee's services are provided "as is" without warranties of any kind. We are not liable for any indirect, incidental, or consequential damages arising from use of our services.</p>
-            </div>
-            <div>
-              <h2 className="text-xl font-semibold text-gray-900 mb-3">6. Changes to Terms</h2>
-              <p>We may update these terms from time to time. Continued use of our services after changes constitutes acceptance of the updated terms.</p>
-            </div>
-            <div>
-              <h2 className="text-xl font-semibold text-gray-900 mb-3">7. Contact</h2>
-              <p>For questions about these terms, contact us at legal@olyxee.com or visit our <a href="/contact" className="text-gray-900 underline hover:text-gray-700">contact page</a>.</p>
-            </div>
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="flex items-center gap-2 mb-8">
+            <span className="accent-dot" />
+            <span className="text-sm font-medium text-neutral-400 uppercase tracking-widest">Legal</span>
+          </motion.div>
+          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }} className="font-serif text-5xl sm:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-4">
+            Terms of Use
+          </motion.h1>
+          <p className="text-neutral-400 text-sm mb-16">Last updated: October 2025</p>
+          <div className="space-y-10">
+            {[
+              { title: "1. Acceptance of Terms", content: "By accessing or using Olyxee's services, you agree to be bound by these Terms of Use. If you do not agree, you may not use our services." },
+              { title: "2. Use of Services", content: "You may use our services only in compliance with these terms and all applicable laws. You are responsible for maintaining the confidentiality of your account credentials." },
+              { title: "3. Intellectual Property", content: "All content, software, and materials provided through Olyxee's services are owned by Olyxee or its licensors. You may not copy, modify, or distribute these materials without permission." },
+              { title: "4. API and SDK Usage", content: "Use of Olyxee APIs and SDKs is subject to our developer terms. You agree not to reverse engineer, misuse, or exceed rate limits on our APIs." },
+              { title: "5. Limitation of Liability", content: "Olyxee's services are provided \"as is\" without warranties of any kind. We are not liable for any indirect, incidental, or consequential damages arising from use of our services." },
+              { title: "6. Changes to Terms", content: "We may update these terms from time to time. Continued use of our services after changes constitutes acceptance of the updated terms." },
+              { title: "7. Contact", content: "For questions about these terms, contact us at legal@olyxee.com." },
+            ].map((section) => (
+              <div key={section.title}>
+                <h2 className="text-lg font-semibold text-neutral-900 mb-3">{section.title}</h2>
+                <p className="text-neutral-500 leading-relaxed">{section.content}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
