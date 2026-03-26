@@ -68,6 +68,15 @@ export default function HomePage() {
   );
 }
 
+const partnerLogos = [
+  { name: "OpenAI", src: "/partner-logos/openai.svg", w: 28, h: 28 },
+  { name: "Meta", src: "/partner-logos/meta.svg", w: 36, h: 20 },
+  { name: "Google", src: "/partner-logos/google.svg", w: 26, h: 26 },
+  { name: "Anthropic", src: "/partner-logos/anthropic.svg", w: 28, h: 18 },
+  { name: "Mistral", src: "/partner-logos/mistral.svg", w: 24, h: 24 },
+  { name: "Hugging Face", src: "/partner-logos/huggingface.svg", w: 28, h: 28 },
+];
+
 function HeroSection() {
   return (
     <section className="relative w-full min-h-[95vh] flex flex-col items-center justify-center px-4 md:px-8 lg:px-16 pt-28 pb-20 overflow-hidden">
@@ -143,25 +152,27 @@ function HeroSection() {
         transition={{ duration: 1, delay: 0.8 }}
         className="relative z-10 mt-16"
       >
-        <p className="text-xs text-neutral-400 uppercase tracking-[0.15em] font-medium text-center mb-6">Works with leading AI models</p>
-        <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-12">
-          {[
-            "OpenAI",
-            "Meta AI",
-            "Google",
-            "Anthropic",
-            "Mistral",
-            "Hugging Face",
-          ].map((name, i) => (
-            <motion.span
-              key={name}
+        <p className="text-xs text-neutral-400 uppercase tracking-[0.15em] font-medium text-center mb-8">Works with leading AI models</p>
+        <div className="flex flex-wrap justify-center items-center gap-10 sm:gap-14">
+          {partnerLogos.map((logo, i) => (
+            <motion.div
+              key={logo.name}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.9 + i * 0.06, duration: 0.5 }}
-              className="text-sm sm:text-base font-semibold text-neutral-300 hover:text-neutral-600 transition-colors duration-300 cursor-default tracking-tight"
+              className="flex items-center gap-2.5 opacity-30 hover:opacity-70 transition-opacity duration-300 cursor-default"
+              title={logo.name}
             >
-              {name}
-            </motion.span>
+              <Image
+                src={logo.src}
+                alt={logo.name}
+                width={logo.w}
+                height={logo.h}
+                className="select-none"
+                draggable={false}
+              />
+              <span className="text-sm font-semibold text-neutral-900 tracking-tight hidden sm:inline">{logo.name}</span>
+            </motion.div>
           ))}
         </div>
       </motion.div>
