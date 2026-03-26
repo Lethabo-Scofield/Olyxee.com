@@ -1,7 +1,7 @@
-# Olyxee - Next.js App on Replit
+# Olyxee - AI Infrastructure Company Website
 
 ## Overview
-A Next.js 15 application migrated from Vercel/Firebase Hosting to Replit. AI deployment platform website.
+Company-level website for Olyxee, a reliability-first AI infrastructure company. Positioned like OpenAI/DeepMind/Anthropic — presenting vision, research, products, and credibility as a foundational AI company.
 
 ## Architecture
 - **Framework**: Next.js 15 (App Router + Pages Router mixed)
@@ -17,9 +17,14 @@ A Next.js 15 application migrated from Vercel/Firebase Hosting to Replit. AI dep
 - **Dev server**: `npm run dev` — starts on port 5000 with Turbopack, bound to 0.0.0.0
 - **Workflow**: "Start application" — runs `npm run dev`
 
+## Site Structure & Navigation
+Navigation: About | Products (dropdown) | Research | Technology | Developers | Safety | Careers
+Desktop CTA: "Get Started" → /developers
+Products dropdown: Grysics, Neural Reality Network, WAVE Platform
+
 ## Routing
 - **App Router** (`src/app/`): `/`, `/products/grysics`, `/products/nrn`
-- **Pages Router** (`src/pages/`): `/docs`, `/community`, `/support`
+- **Pages Router** (`src/pages/`): `/about`, `/research`, `/technology`, `/developers`, `/safety`, `/use-cases`, `/careers`, `/blog`, `/contact`, `/docs`, `/community`, `/support`
 - Global CSS is imported via `src/pages/_app.tsx` for Pages Router routes
 - KaTeX CSS is imported in `src/app/layout.tsx` for App Router routes
 
@@ -28,31 +33,23 @@ A Next.js 15 application migrated from Vercel/Firebase Hosting to Replit. AI dep
 - Hardware logos are in `public/hardware-logos/`
 - Logo files are in `public/Logo/`
 
-## Replit Migration Notes
-- Removed `output: 'export'` (static export) from `next.config.ts`
-- Removed turbopack custom loader config (component-tagger-loader)
-- Removed `outputFileTracingRoot` pointing to monorepo parent
-- Dev and start scripts updated to use `--turbopack -p 5000 -H 0.0.0.0`
-- Added `src/pages/_app.tsx` for proper global CSS in Pages Router
-- Created `/support` page (was a dead navigation link)
-- Fixed case-sensitive image paths in NRN product page
-- Replaced broken external images (Unsplash, Wikipedia) with working alternatives
-- Fixed hydration errors from BlockMath inside p tags on NRN page
-- Replaced Flutter logo with Olyxee logo in Grysics footer
-
-## Responsive Design Pass
-- Header: CTA buttons hidden on small screens (available in mobile hamburger menu)
-- Homepage: Carousel height scales across breakpoints, font sizes responsive, image aspect ratios fixed
-- Grysics page: All section headings, hero image, stats, CTA padding responsive
-- NRN page: Changed from font-mono to font-sans for readability, math block overflow handled
-- Docs layout: Sidebar has mobile toggle with backdrop overlay and scroll support
-- Community page: Section padding, headings, event grid all scale for mobile
-- Support page: Already responsive (no changes needed)
+## Key Pages
+- **Homepage** (`src/app/page.tsx`): Vision hero, What We Do (4 pillars), Products (3 cards), Research (3 papers), Trust stats, Use Cases, CTA, Footer
+- **About** (`src/pages/about.tsx`): Mission, problem statement, approach, philosophy
+- **Products**: Grysics (verification engine), NRN (interpretable AI), WAVE (core platform)
+- **Research** (`src/pages/research.tsx`): Papers on AI reliability, interpretability, optimization
+- **Technology** (`src/pages/technology.tsx`): WAVE architecture, deployment pipeline, supported hardware
+- **Developers** (`src/pages/developers.tsx`): SDK/CLI/API overview, getting started guide
+- **Safety** (`src/pages/safety.tsx`): Reliability principles, verification approach
+- **Use Cases** (`src/pages/use-cases.tsx`): Manufacturing, healthcare, robotics, autonomous, IoT, enterprise
+- **Careers** (`src/pages/careers.tsx`): Open positions, company culture
+- **Blog** (`src/pages/blog.tsx`): Technical articles and insights
+- **Contact** (`src/pages/contact.tsx`): Contact form with inquiry types
 
 ## Key Directories
 - `src/app/` — Next.js App Router pages and layouts
-- `src/pages/` — Next.js Pages Router pages (docs, community, support)
-- `src/components/` — Shared React components
+- `src/pages/` — Next.js Pages Router pages
+- `src/components/` — Shared React components (header.tsx is primary nav)
 - `src/visual-edits/` — Visual editing overlay system (VisualEditsMessenger)
 - `src/lib/` — Utilities and shared logic
 - `public/` — Static assets

@@ -4,32 +4,37 @@ import React, { useState, useEffect, useRef, useCallback, memo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { FaDiscord } from 'react-icons/fa';
 
 const menuItems = [
+    { name: "About", href: "/about" },
     { name: "Products", href: "#", hasDropdown: true },
-    { name: "Docs", href: "/docs" },
-    { name: "Community", href: "/community" },
-    { name: "Support", href: "/support" },
+    { name: "Research", href: "/research" },
+    { name: "Technology", href: "/technology" },
+    { name: "Developers", href: "/developers" },
+    { name: "Safety", href: "/safety" },
+    { name: "Careers", href: "/careers" },
 ];
 
 const productsDropdown = [
     {
         name: "Grysics",
         href: "/products/grysics",
-        description: "Next-level AI simulation & edge deployment tools.",
-        bg: "bg-gray-100",
+        description: "AI verification engine for simulation, testing, and edge deployment.",
         icon: "/Logo/Olyxee_Logo.png",
-        image: "/Products/product_2.jpg"
     },
     {
         name: "Neural Reality Network",
         href: "/products/nrn",
-        description: "Interpretable AI that sees and explains reality.",
-        bg: "bg-gray-100",
+        description: "Interpretable AI architecture for multi-path feature analysis.",
         icon: "/Logo/Olyxee_Logo.png",
-        image: "/Products/product.jpg"
+    },
+    {
+        name: "WAVE Platform",
+        href: "/technology",
+        description: "Core infrastructure layer for AI deployment pipelines.",
+        icon: "/Logo/Olyxee_Logo.png",
     },
 ];
 
@@ -38,11 +43,11 @@ const Header = () => {
     const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('up');
     const [scrolled, setScrolled] = useState(false);
     const [productsOpen, setProductsOpen] = useState(false);
+    const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
     const lastScrollY = useRef(0);
     const dropdownTimerRef = useRef<NodeJS.Timeout | null>(null);
     const firstFocusableRef = useRef<HTMLButtonElement | null>(null);
 
-    // Scroll handling with minimal re-renders
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
@@ -86,12 +91,12 @@ const Header = () => {
     return (
         <>
             <motion.header
-                className="fixed top-0 z-[1000] w-full px-6 md:px-8 transition-all"
+                className="fixed top-0 z-[1000] w-full px-4 sm:px-6 md:px-8 transition-all"
                 animate={{ y: scrollDirection === 'down' ? -100 : 0 }}
                 style={{
                     justifyContent: scrolled ? 'center' : 'space-between',
                     borderRadius: scrolled ? 16 : 0,
-                    maxWidth: scrolled ? 800 : '100%',
+                    maxWidth: scrolled ? 900 : '100%',
                     margin: scrolled ? '0 auto' : 0,
                     background: scrolled ? 'rgba(255,255,255,0.85)' : 'transparent',
                     backdropFilter: scrolled ? 'blur(20px)' : 'none',
@@ -100,13 +105,14 @@ const Header = () => {
                 }}
                 transition={{ type: 'tween', duration: 0.3 }}
             >
-                <div className={`flex items-center ${scrolled ? 'justify-center gap-6' : 'justify-between'} w-full h-16 relative`}>
-                    <Link href="/" prefetch className="focus:outline-none focus:ring-2 focus:ring-gray-900 rounded-lg transition-transform hover:scale-110">
+                <div className={`flex items-center ${scrolled ? 'justify-center gap-4' : 'justify-between'} w-full h-16 relative`}>
+                    <Link href="/" prefetch className="focus:outline-none focus:ring-2 focus:ring-gray-900 rounded-lg transition-transform hover:scale-110 flex items-center gap-2">
                         <Image src="/Logo/Olyxee_Logo.png" alt="Olyxee Logo" width={32} height={32} className="cursor-pointer" />
+                        {!scrolled && <span className="text-lg font-bold text-black hidden sm:inline">Olyxee</span>}
                     </Link>
 
                     <nav className="hidden lg:flex h-full ml-6" aria-label="Main navigation">
-                        <ul className="flex h-full items-center gap-8">
+                        <ul className="flex h-full items-center gap-6">
                             {menuItems.map(item => (
                                 <li
                                     key={item.name}
@@ -133,7 +139,7 @@ const Header = () => {
                                                     animate={{ opacity: 1, y: 0, scale: 1 }}
                                                     exit={{ opacity: 0, y: -10, scale: 0.95 }}
                                                     transition={{ duration: 0.2, ease: 'easeOut' }}
-                                                    className="absolute left-0 top-full mt-2 bg-white shadow-xl rounded-xl px-10 py-8 z-50 flex gap-8 border border-gray-200"
+                                                    className="absolute left-0 top-full mt-2 bg-white shadow-xl rounded-xl p-6 z-50 flex flex-col gap-2 border border-gray-200 min-w-[320px]"
                                                     role="menu"
                                                 >
                                                     {productsDropdown.map(product => (
@@ -141,27 +147,14 @@ const Header = () => {
                                                             key={product.name}
                                                             href={product.href}
                                                             prefetch
-                                                            className="relative flex flex-col min-w-[220px] p-6 rounded-xl overflow-hidden bg-white hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-gray-900 group"
+                                                            className="flex items-start gap-4 p-4 rounded-lg hover:bg-gray-50 transition-all focus:outline-none focus:ring-2 focus:ring-gray-900 group"
                                                             role="menuitem"
                                                         >
-                                                            {product.image && (
-                                                                <Image
-                                                                    src={product.image}
-                                                                    alt=""
-                                                                    fill
-                                                                    className="absolute inset-0 object-cover opacity-10 -z-10 transition-opacity group-hover:opacity-20"
-                                                                />
-                                                            )}
-                                                            {product.icon && (
-                                                                <div className="mb-4 transition-transform group-hover:scale-105">
-                                                                    <Image src={product.icon} alt="" width={40} height={40} priority />
-                                                                </div>
-                                                            )}
-                                                            <h3 className="text-lg font-bold text-black mb-2 group-hover:text-gray-800 transition-colors">{product.name}</h3>
-                                                            <p className="text-sm text-gray-700 mb-4 flex-grow">{product.description}</p>
-                                                            <span className="text-gray-900 font-medium text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all">
-                                                                Learn more <span className="transition-transform group-hover:translate-x-1">→</span>
-                                                            </span>
+                                                            <Image src={product.icon} alt="" width={28} height={28} className="mt-0.5 flex-shrink-0" />
+                                                            <div>
+                                                                <h3 className="text-sm font-semibold text-black group-hover:text-gray-800 transition-colors">{product.name}</h3>
+                                                                <p className="text-xs text-gray-500 mt-0.5">{product.description}</p>
+                                                            </div>
                                                         </Link>
                                                     ))}
                                                 </motion.div>
@@ -177,9 +170,9 @@ const Header = () => {
                         <button className="hidden sm:flex text-white p-2 hover:opacity-80 hover:scale-110 active:scale-95 transition-all rounded-full bg-black focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2" aria-label="Join Discord">
                             <FaDiscord className="w-5 h-5" />
                         </button>
-                        <button className="hidden md:inline-flex px-5 py-2 bg-gray-300 text-black rounded-full hover:bg-gray-400 hover:shadow-md active:scale-95 transition-all font-semibold focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2">
-                            Deploy Model
-                        </button>
+                        <Link href="/developers" className="hidden md:inline-flex px-5 py-2 bg-gray-900 text-white rounded-full hover:bg-black hover:shadow-md active:scale-95 transition-all font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2">
+                            Get Started
+                        </Link>
 
                         <div className="lg:hidden">
                             <button onClick={() => setMobileMenuOpen(true)} className="transition-all hover:opacity-80 hover:scale-110 active:scale-95 focus:outline-none focus:ring-2 focus:ring-gray-900 rounded p-1" aria-label="Open menu">
@@ -212,27 +205,64 @@ const Header = () => {
                             aria-modal="true"
                         >
                             <div className="flex items-center justify-between p-6 border-b border-gray-200">
-                                <Image src="/Logo/Olyxee_trans.png" alt="Olyxee Logo" width={32} height={32} />
+                                <div className="flex items-center gap-2">
+                                    <Image src="/Logo/Olyxee_Logo.png" alt="Olyxee Logo" width={28} height={28} />
+                                    <span className="font-bold text-black">Olyxee</span>
+                                </div>
                                 <button ref={firstFocusableRef} onClick={() => setMobileMenuOpen(false)} className="p-2 hover:bg-gray-100 rounded-full transition-all active:scale-95 focus:outline-none focus:ring-2 focus:ring-gray-900" aria-label="Close menu">
                                     <X className="h-6 w-6" />
                                 </button>
                             </div>
                             <nav className="p-6 overflow-y-auto h-[calc(100vh-80px)]">
-                                <ul className="space-y-2">
+                                <ul className="space-y-1">
                                     {menuItems.map((item, i) => (
-                                        <motion.li key={item.name} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05 }}>
-                                            <Link href={item.href} prefetch className="flex items-center justify-between py-3 px-4 hover:bg-gray-100 active:bg-gray-200 rounded-lg transition-all text-black font-medium focus:outline-none focus:ring-2 focus:ring-gray-900" onClick={() => setMobileMenuOpen(false)}>
-                                                {item.name} <span className="text-gray-400">→</span>
-                                            </Link>
+                                        <motion.li key={item.name} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.04 }}>
+                                            {item.hasDropdown ? (
+                                                <>
+                                                    <button
+                                                        onClick={() => setMobileProductsOpen(!mobileProductsOpen)}
+                                                        className="flex items-center justify-between w-full py-3 px-4 hover:bg-gray-100 active:bg-gray-200 rounded-lg transition-all text-black font-medium focus:outline-none focus:ring-2 focus:ring-gray-900"
+                                                    >
+                                                        {item.name}
+                                                        <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform ${mobileProductsOpen ? 'rotate-180' : ''}`} />
+                                                    </button>
+                                                    <AnimatePresence>
+                                                        {mobileProductsOpen && (
+                                                            <motion.div
+                                                                initial={{ height: 0, opacity: 0 }}
+                                                                animate={{ height: 'auto', opacity: 1 }}
+                                                                exit={{ height: 0, opacity: 0 }}
+                                                                className="overflow-hidden pl-4"
+                                                            >
+                                                                {productsDropdown.map(product => (
+                                                                    <Link
+                                                                        key={product.name}
+                                                                        href={product.href}
+                                                                        className="flex items-center gap-3 py-2.5 px-4 hover:bg-gray-100 rounded-lg transition-all text-gray-700 text-sm"
+                                                                        onClick={() => setMobileMenuOpen(false)}
+                                                                    >
+                                                                        <Image src={product.icon} alt="" width={20} height={20} />
+                                                                        {product.name}
+                                                                    </Link>
+                                                                ))}
+                                                            </motion.div>
+                                                        )}
+                                                    </AnimatePresence>
+                                                </>
+                                            ) : (
+                                                <Link href={item.href} prefetch className="flex items-center justify-between py-3 px-4 hover:bg-gray-100 active:bg-gray-200 rounded-lg transition-all text-black font-medium focus:outline-none focus:ring-2 focus:ring-gray-900" onClick={() => setMobileMenuOpen(false)}>
+                                                    {item.name} <span className="text-gray-400">→</span>
+                                                </Link>
+                                            )}
                                         </motion.li>
                                     ))}
                                 </ul>
-                                <motion.div className="mt-8 pt-8 border-t border-gray-200 flex flex-col gap-4" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.3 }}>
-                                    <button className="w-full py-3 bg-black text-white rounded-full flex items-center justify-center gap-2 hover:bg-gray-900 hover:shadow-lg active:scale-95 transition-all font-semibold focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2">
+                                <motion.div className="mt-8 pt-8 border-t border-gray-200 flex flex-col gap-3" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.3 }}>
+                                    <Link href="/developers" className="w-full py-3 bg-gray-900 text-white rounded-full flex items-center justify-center gap-2 hover:bg-black hover:shadow-lg active:scale-95 transition-all font-semibold focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2" onClick={() => setMobileMenuOpen(false)}>
+                                        Get Started
+                                    </Link>
+                                    <button className="w-full py-3 bg-white text-black border border-gray-200 rounded-full flex items-center justify-center gap-2 hover:bg-gray-50 active:scale-95 transition-all font-semibold focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2">
                                         <FaDiscord className="w-5 h-5" /> Join Discord
-                                    </button>
-                                    <button className="w-full py-3 bg-gray-300 text-black rounded-full hover:bg-gray-400 hover:shadow-md active:scale-95 transition-all font-semibold focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2">
-                                        Deploy Model
                                     </button>
                                 </motion.div>
                             </nav>
