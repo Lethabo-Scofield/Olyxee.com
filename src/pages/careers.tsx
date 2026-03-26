@@ -164,7 +164,7 @@ const Careers: FC = () => {
                         {job.location} · Unpaid Internship
                       </span>
                       <span className="text-neutral-300">·</span>
-                      <span className="text-neutral-900 font-medium group-hover:underline">Apply →</span>
+                      <span className="text-blue-600 font-medium group-hover:underline">Apply →</span>
                     </div>
                   </div>
                   <ArrowRight className="w-5 h-5 text-neutral-300 group-hover:text-neutral-900 transition-all flex-shrink-0 hidden sm:block mt-2" />

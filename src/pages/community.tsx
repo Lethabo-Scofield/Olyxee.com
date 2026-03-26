@@ -151,7 +151,7 @@ const Community: FC = () => {
                   <span className="text-4xl font-serif italic text-neutral-900">{animatedStats[channel.title] ? formatNumber(animatedStats[channel.title]) : 0}+</span>
                   <span className="text-sm text-neutral-400">{channel.unit}</span>
                 </div>
-                <a href={channel.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm font-medium text-neutral-500 hover:text-neutral-900 transition-colors tracking-wide">
+                <a href={channel.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm font-medium text-neutral-500 hover:text-blue-600 transition-colors tracking-wide">
                   Join Now <ArrowRight className="w-4 h-4" />
                 </a>
               </motion.div>

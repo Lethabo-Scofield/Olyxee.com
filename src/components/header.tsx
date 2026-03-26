@@ -109,7 +109,7 @@ const Header = () => {
                                     <Link
                                         href={item.href}
                                         prefetch
-                                        className="text-neutral-700 text-[13px] font-medium transition-all hover:text-neutral-900 hover:bg-white/50 focus:outline-none focus:ring-2 focus:ring-neutral-400/30 rounded-full px-3.5 py-1.5 relative"
+                                        className="text-neutral-700 text-[13px] font-medium transition-all hover:text-blue-600 hover:bg-blue-50/50 focus:outline-none focus:ring-2 focus:ring-blue-400/20 rounded-full px-3.5 py-1.5 relative"
                                     >
                                         {item.name}
                                     </Link>
@@ -212,7 +212,7 @@ const Header = () => {
                                             <Link
                                                 href={item.href}
                                                 prefetch
-                                                className="flex items-center justify-between py-3 px-4 hover:bg-white/60 active:bg-white/80 rounded-2xl transition-all text-neutral-900 font-medium text-[15px] focus:outline-none"
+                                                className="flex items-center justify-between py-3 px-4 hover:bg-blue-50/50 active:bg-blue-50/80 rounded-2xl transition-all text-neutral-900 font-medium text-[15px] focus:outline-none hover:text-blue-600"
                                                 onClick={() => setMobileMenuOpen(false)}
                                             >
                                                 {item.name}

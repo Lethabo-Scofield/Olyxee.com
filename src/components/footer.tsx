@@ -61,7 +61,7 @@ export default function Footer() {
               <ul className="space-y-3">
                 {column.links.map((link) => (
                   <li key={link.name}>
-                    <Link href={link.href} className="text-sm text-neutral-600 hover:text-neutral-900 transition-colors">
+                    <Link href={link.href} className="text-sm text-neutral-600 hover:text-blue-600 transition-colors">
                       {link.name}
                     </Link>
                   </li>
@@ -85,7 +85,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.name}
-                  className="w-9 h-9 flex items-center justify-center rounded-full text-neutral-400 hover:text-neutral-900 transition-all"
+                  className="w-9 h-9 flex items-center justify-center rounded-full text-neutral-400 hover:text-blue-600 transition-all"
                 >
                   <SocialIcon className="h-4 w-4" />
                 </a>
