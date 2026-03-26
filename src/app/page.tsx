@@ -65,26 +65,16 @@ function HeroSection() {
       </div>
 
       <div className="relative z-10 text-center max-w-5xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 text-neutral-500 text-sm font-medium mb-10 tracking-wide"
-        >
-          <span className="accent-dot" />
-          Reliability-first AI infrastructure
-        </motion.div>
-
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
           className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-neutral-900 leading-[1.05] tracking-tight"
         >
-          Building reliable
+          Research and safety
           <br />
-          infrastructure for{" "}
-          <em className="text-neutral-400">AI</em>
+          for{" "}
+          <em className="text-neutral-400">artificial intelligence</em>
         </motion.h1>
 
       </div>
