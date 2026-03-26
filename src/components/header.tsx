@@ -22,18 +22,6 @@ const productsDropdown = [
         description: "AI verification engine for simulation, testing, and edge deployment.",
         icon: "/Logo/Olyxee_Logo.png",
     },
-    {
-        name: "Neural Reality Network",
-        href: "/products/nrn",
-        description: "Interpretable AI architecture for multi-path feature analysis.",
-        icon: "/Logo/Olyxee_Logo.png",
-    },
-    {
-        name: "WAVE Platform",
-        href: "/technology",
-        description: "Core infrastructure layer for AI deployment pipelines.",
-        icon: "/Logo/Olyxee_Logo.png",
-    },
 ];
 
 const Header = () => {
