@@ -25,9 +25,19 @@ const Header = () => {
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
-            if (currentScrollY > lastScrollY.current && currentScrollY > 80) setVisible(false);
-            else setVisible(true);
-            setScrolled(currentScrollY > 40);
+            const delta = currentScrollY - lastScrollY.current;
+
+            if (currentScrollY <= 10) {
+                setVisible(true);
+                setScrolled(false);
+            } else if (delta > 4) {
+                setVisible(false);
+                setScrolled(true);
+            } else if (delta < -4) {
+                setVisible(true);
+                setScrolled(true);
+            }
+
             lastScrollY.current = currentScrollY;
         };
         window.addEventListener('scroll', handleScroll, { passive: true });
@@ -62,7 +72,7 @@ const Header = () => {
                     y: visible ? 0 : -100,
                     opacity: visible ? 1 : 0,
                 }}
-                transition={{ type: 'spring', stiffness: 260, damping: 30 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 35 }}
             >
                 <motion.div
                     className="flex items-center w-full h-14 relative"
