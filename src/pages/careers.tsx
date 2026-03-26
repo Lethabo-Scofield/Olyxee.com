@@ -1,4 +1,5 @@
 import { FC, useState } from "react";
+import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import Link from "next/link";
@@ -84,6 +85,7 @@ const Careers: FC = () => {
 
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
+      <SEO title="Careers" description="Join Olyxee and work on AI infrastructure that matters. Open internship positions in research, engineering, design, and more." path="/careers" />
       <div className="grain" />
       <Header />
 

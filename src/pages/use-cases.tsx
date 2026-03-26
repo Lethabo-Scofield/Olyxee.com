@@ -1,4 +1,5 @@
 import { FC } from "react";
+import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import Link from "next/link";
@@ -26,6 +27,7 @@ const UseCases: FC = () => {
 
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
+      <SEO title="Use Cases" description="See how Olyxee is used across manufacturing, healthcare, robotics, autonomous systems, IoT, and enterprise AI deployments." path="/use-cases" />
       <div className="grain" />
       <Header />
 

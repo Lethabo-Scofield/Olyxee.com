@@ -5,9 +5,76 @@ import VisualEditsMessenger from "../visual-edits/VisualEditsMessenger";
 import ErrorReporter from "@/components/ErrorReporter";
 import Script from "next/script";
 
+const siteUrl = "https://olyxee.com";
+
 export const metadata: Metadata = {
-  title: "Olyxee",
-  description: "Deploy t eas",
+  title: {
+    default: "Olyxee — Research and Safety for Artificial Intelligence",
+    template: "%s | Olyxee",
+  },
+  description:
+    "Olyxee is an AI infrastructure company building Grysics, a verification engine that ensures AI models work correctly before and after deployment. Research, safety, and reliability for artificial intelligence.",
+  keywords: [
+    "AI infrastructure",
+    "AI verification",
+    "Grysics",
+    "AI safety",
+    "model deployment",
+    "edge AI",
+    "AI reliability",
+    "machine learning operations",
+    "MLOps",
+    "AI monitoring",
+    "Olyxee",
+    "AI research",
+  ],
+  authors: [{ name: "Olyxee" }],
+  creator: "Olyxee",
+  publisher: "Olyxee",
+  metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: "https://olyxee.com",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteUrl,
+    siteName: "Olyxee",
+    title: "Olyxee — Research and Safety for Artificial Intelligence",
+    description:
+      "AI infrastructure company building Grysics — a verification engine that ensures AI models work correctly before and after deployment.",
+    images: [
+      {
+        url: "/api/og",
+        width: 1200,
+        height: 630,
+        alt: "Olyxee — Research and Safety for AI",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Olyxee — Research and Safety for Artificial Intelligence",
+    description:
+      "AI infrastructure company building Grysics — a verification engine for reliable AI deployment.",
+    images: ["/api/og"],
+    creator: "@Olyxee",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  icons: {
+    icon: "/Logo/Olyxee_Logo.png",
+    apple: "/Logo/Olyxee_Logo.png",
+  },
 };
 
 export default function RootLayout({
@@ -17,6 +84,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/Logo/Olyxee_Logo.png" />
+        <link rel="apple-touch-icon" href="/Logo/Olyxee_Logo.png" />
+        <meta name="theme-color" content="#ffffff" />
+      </head>
       <body className="antialiased">
         <ErrorReporter />
         <Script

@@ -26,9 +26,27 @@ export default function HomePage() {
     }
   }, []);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Olyxee",
+    url: "https://olyxee.com",
+    logo: "https://olyxee.com/Logo/Olyxee_Logo.png",
+    description: "AI infrastructure company building Grysics, a verification engine that ensures AI models work correctly before and after deployment.",
+    sameAs: [
+      "https://www.linkedin.com/company/olyxeelab/",
+    ],
+    foundingDate: "2024",
+    knowsAbout: ["Artificial Intelligence", "AI Safety", "AI Verification", "Machine Learning", "Edge AI"],
+  };
+
   return (
     <div className="min-h-screen bg-white relative">
       <div className="grain" />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
 
       <main>

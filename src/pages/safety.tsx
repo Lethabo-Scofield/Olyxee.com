@@ -1,4 +1,5 @@
 import { FC } from "react";
+import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import Link from "next/link";
@@ -16,6 +17,7 @@ const fadeUp = {
 const Safety: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
+      <SEO title="Safety & Reliability" description="How Olyxee ensures AI systems are safe and reliable. Our approach to verification, monitoring, and failure prevention." path="/safety" />
       <div className="grain" />
       <Header />
 

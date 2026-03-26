@@ -1,4 +1,5 @@
 import { FC } from "react";
+import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import { ArrowRight } from "lucide-react";
@@ -24,6 +25,7 @@ const posts = [
 const Blog: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
+      <SEO title="Blog" description="Technical articles, insights, and updates from the Olyxee team on AI infrastructure, verification, and deployment." path="/blog" />
       <div className="grain" />
       <Header />
 

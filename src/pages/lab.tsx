@@ -1,4 +1,5 @@
 import { FC } from "react";
+import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import Link from "next/link";
@@ -83,6 +84,7 @@ const recentWork = [
 const Lab: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
+      <SEO title="Olyxee Lab — Research" description="Olyxee Lab is our research division exploring the frontiers of AI safety, interpretability, and efficient intelligence. Read our latest publications." path="/lab" />
       <div className="grain" />
       <Header />
 

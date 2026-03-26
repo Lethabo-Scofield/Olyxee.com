@@ -1,4 +1,5 @@
 import { FC } from "react";
+import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import Link from "next/link";
@@ -24,6 +25,7 @@ const papers = [
 const Research: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
+      <SEO title="Research" description="Explore Olyxee's research in AI verification, model reliability, interpretability, and edge deployment optimization." path="/research" />
       <div className="grain" />
       <Header />
 

@@ -1,4 +1,5 @@
 import { FC } from "react";
+import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import Link from "next/link";
@@ -8,6 +9,7 @@ import { motion } from "framer-motion";
 const Support: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
+      <SEO title="Support" description="Get help with Olyxee. FAQs, troubleshooting, and contact information for technical support." path="/support" />
       <div className="grain" />
       <Header />
       <section className="pt-32 sm:pt-44 pb-28 sm:pb-36 px-4 sm:px-6">

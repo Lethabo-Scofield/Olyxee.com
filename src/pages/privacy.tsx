@@ -1,4 +1,5 @@
 import { FC } from "react";
+import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import { motion } from "framer-motion";
@@ -6,6 +7,7 @@ import { motion } from "framer-motion";
 const Privacy: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
+      <SEO title="Privacy Policy" description="Olyxee's privacy policy. How we collect, use, and protect your data." path="/privacy" />
       <div className="grain" />
       <Header />
       <section className="pt-32 sm:pt-44 pb-28 sm:pb-36 px-4 sm:px-6">

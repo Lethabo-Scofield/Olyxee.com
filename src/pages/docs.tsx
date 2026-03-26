@@ -1,4 +1,5 @@
 import { useState, FC } from "react";
+import SEO from "../components/SEO";
 import DocsLayout from "../layouts/DocsLayout";
 import Header from '../components/header';
 import { ArrowRight, BookOpen, Code2, Cpu, Rocket, Shield, Terminal, Zap, Layers, GitBranch, Box, BarChart3, Settings, FileCode, Wrench } from "lucide-react";
@@ -54,6 +55,7 @@ const Docs: FC = () => {
 
   return (
     <div>
+      <SEO title="Documentation" description="Complete documentation for the Olyxee platform. Learn about Grysics verification, the Python SDK, CLI tools, and API reference." path="/docs" />
       <Header />
       <DocsLayout families={families} active={activeSection} onSelect={setActiveSection}>
         {renderContent()}

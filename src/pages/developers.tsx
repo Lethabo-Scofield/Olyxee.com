@@ -1,4 +1,5 @@
 import { FC, useState } from "react";
+import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import Link from "next/link";
@@ -25,6 +26,7 @@ const Developers: FC = () => {
 
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
+      <SEO title="Developers" description="Get started with Olyxee's developer tools. SDK, CLI, and API documentation for integrating AI verification into your pipeline." path="/developers" />
       <div className="grain" />
       <Header />
 

@@ -1,4 +1,5 @@
 import { FC, useState } from "react";
+import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import { Mail, MessageSquare, Building2, Users } from "lucide-react";
@@ -23,6 +24,7 @@ const Contact: FC = () => {
 
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
+      <SEO title="Contact" description="Get in touch with Olyxee. Reach out for partnerships, support, or general inquiries about our AI infrastructure platform." path="/contact" />
       <div className="grain" />
       <Header />
 

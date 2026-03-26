@@ -1,4 +1,5 @@
 import { FC } from "react";
+import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import Link from "next/link";
@@ -17,6 +18,7 @@ const fadeUp = {
 const Technology: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
+      <SEO title="Technology" description="The WAVE architecture powering Olyxee's platform. Learn about our verification pipeline, hardware abstraction, and deployment infrastructure." path="/technology" />
       <div className="grain" />
       <Header />
 

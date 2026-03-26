@@ -64,6 +64,16 @@ Desktop CTA: "Get Started" → /developers
 - **Research** (`src/pages/research.tsx`): Papers on AI reliability, interpretability, optimization
 - **Technology** (`src/pages/technology.tsx`): WAVE architecture, deployment pipeline, supported hardware
 
+## SEO
+- **Layout metadata** (`src/app/layout.tsx`): Full Next.js Metadata export with title template, description, keywords, OG, Twitter cards, robots directives, and icons
+- **Pages Router SEO** (`src/components/SEO.tsx`): Reusable component with `<Head>` — title, description, canonical, OG, Twitter. Used on all Pages Router pages.
+- **Product metadata**: `src/app/products/grysics/layout.tsx` and `nrn/layout.tsx` export page-specific Metadata
+- **JSON-LD**: Organization structured data on homepage (`src/app/page.tsx`)
+- **OG Image**: Dynamic edge-rendered OG image at `/api/og` (1200×630)
+- **robots.txt**: `public/robots.txt` — allows all crawlers, references sitemap
+- **sitemap.xml**: `public/sitemap.xml` — all 16 pages with priorities and change frequencies
+- **_document.tsx**: `src/pages/_document.tsx` — favicon, apple-touch-icon, theme-color for Pages Router
+
 ## Key Directories
 - `src/app/` — Next.js App Router pages and layouts
 - `src/pages/` — Next.js Pages Router pages

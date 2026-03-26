@@ -1,5 +1,6 @@
 "use client";
 import React, { FC, useState, useEffect, useRef } from "react";
+import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import {
@@ -75,6 +76,7 @@ const Community: FC = () => {
 
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
+      <SEO title="Community" description="Connect with developers, researchers, and engineers building reliable AI systems. Join our Discord, GitHub, and community forums." path="/community" />
       <div className="grain" />
       <Header />
 
