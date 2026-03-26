@@ -1,32 +1,33 @@
 import { useState, FC } from "react";
-import Overview from "../components/docs/sections/Overview";
-import Concepts from "../components/docs/sections/Concepts";
-import Guides from "../components/docs/sections/Guides";
-import Resources from "../components/docs/sections/Resources";
-import API from "../components/docs/sections/API";
 import DocsLayout from "../layouts/DocsLayout";
 import Header from '../components/header';
+import { ArrowRight, BookOpen, Code2, Cpu, Rocket, Shield, Terminal, Zap, Layers, GitBranch, Box, BarChart3, Settings, FileCode, Wrench } from "lucide-react";
 
 interface Section {
   id: string;
   title: string;
-  component: FC;
+  component: FC<any>;
   family: string;
+  badge?: string;
 }
 
 const sections: Section[] = [
-  { id: "overview", title: "Overview", component: Overview, family: "Getting Started" },
-  { id: "quickstart", title: "Quickstart", component: Quickstart, family: "Getting Started" },
-  { id: "concepts", title: "Key Concepts", component: Concepts, family: "Core Concepts" },
-  { id: "wave", title: "WAVE Architecture", component: WaveArchitecture, family: "Core Concepts" },
-  { id: "verification", title: "Verification", component: Verification, family: "Core Concepts" },
-  { id: "guides", title: "Deployment Guide", component: Guides, family: "Guides" },
-  { id: "edge-deployment", title: "Edge Deployment", component: EdgeDeployment, family: "Guides" },
-  { id: "optimization", title: "Optimization", component: Optimization, family: "Guides" },
-  { id: "api-reference", title: "API Reference", component: API, family: "API" },
-  { id: "sdk", title: "Python SDK", component: PythonSDK, family: "API" },
+  { id: "overview", title: "Overview", component: Overview, family: "Get started" },
+  { id: "quickstart", title: "Quickstart", component: Quickstart, family: "Get started" },
+  { id: "models", title: "Supported Models", component: SupportedModels, family: "Get started" },
+  { id: "grysics-overview", title: "What is Grysics", component: GrysicsOverview, family: "Grysics" },
+  { id: "verification", title: "Verification Engine", component: Verification, family: "Grysics" },
+  { id: "deployment", title: "Deployment", component: Deployment, family: "Grysics" },
+  { id: "monitoring", title: "Monitoring", component: Monitoring, family: "Grysics", badge: "new" },
+  { id: "api-reference", title: "API Reference", component: APIReference, family: "API" },
+  { id: "python-sdk", title: "Python SDK", component: PythonSDK, family: "API" },
   { id: "cli", title: "CLI Reference", component: CLIReference, family: "API" },
-  { id: "resources", title: "Resources", component: Resources, family: "Resources" },
+  { id: "errors", title: "Error Handling", component: ErrorHandling, family: "API" },
+  { id: "edge-devices", title: "Edge Devices", component: EdgeDevices, family: "Guides" },
+  { id: "optimization", title: "Optimization", component: Optimization, family: "Guides" },
+  { id: "configuration", title: "Configuration", component: Configuration, family: "Guides" },
+  { id: "changelog", title: "Changelog", component: Changelog, family: "Resources" },
+  { id: "limits", title: "Rate Limits", component: RateLimits, family: "Resources" },
 ];
 
 const Docs: FC = () => {
@@ -36,9 +37,9 @@ const Docs: FC = () => {
   const families = Array.from(
     sections.reduce((map, sec) => {
       if (!map.has(sec.family)) map.set(sec.family, []);
-      map.get(sec.family)!.push({ id: sec.id, title: sec.title });
+      map.get(sec.family)!.push({ id: sec.id, title: sec.title, badge: sec.badge });
       return map;
-    }, new Map<string, { id: string; title: string }[]>())
+    }, new Map<string, { id: string; title: string; badge?: string }[]>())
   ).map(([family, items]) => ({ family, items, defaultOpen: true }));
 
   const renderContent = () => {
@@ -63,220 +64,361 @@ const Docs: FC = () => {
 
 export default Docs;
 
+
+function Overview({ onNavigate }: { onNavigate?: (id: string) => void }) {
+  return (
+    <DocPage
+      title="Olyxee Documentation"
+      subtitle="Explore the platform, learn about Grysics, and start building with our API."
+    >
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12">
+        {[
+          { icon: Rocket, title: "Quickstart", desc: "Set up and verify your first model in under 5 minutes.", id: "quickstart" },
+          { icon: Shield, title: "Grysics", desc: "Learn about our verification engine for AI systems.", id: "grysics-overview" },
+          { icon: Code2, title: "API Reference", desc: "Integrate Olyxee into your pipeline with the REST API.", id: "api-reference" },
+          { icon: Cpu, title: "Edge Devices", desc: "Deploy verified models to Jetson, Raspberry Pi, and more.", id: "edge-devices" },
+        ].map(card => {
+          const Icon = card.icon;
+          return (
+            <button
+              key={card.id}
+              onClick={() => onNavigate?.(card.id)}
+              className="bg-white border border-neutral-200 rounded-xl p-6 hover:border-blue-200 hover:shadow-sm transition-all cursor-pointer group text-left"
+            >
+              <Icon className="w-5 h-5 text-neutral-400 group-hover:text-blue-500 mb-3 transition-colors" />
+              <h3 className="text-[15px] font-semibold text-neutral-900 mb-1">{card.title}</h3>
+              <p className="text-sm text-neutral-500 leading-relaxed">{card.desc}</p>
+            </button>
+          );
+        })}
+      </div>
+
+      <DocSection title="What is Olyxee?">
+        <p>Olyxee is an AI infrastructure company building tools for reliable AI deployment. Our first product, <strong>Grysics</strong>, is a verification engine that ensures AI models work correctly before and after they reach production hardware.</p>
+        <p>The platform handles model ingestion, automated verification against target hardware profiles, optimization, deployment, and continuous monitoring — giving teams confidence that their models will behave as expected in the real world.</p>
+      </DocSection>
+
+      <DocSection title="Core products">
+        <div className="space-y-3">
+          {[
+            { title: "Grysics", desc: "Verification engine for AI. Tests model accuracy, latency, and memory against target hardware before deployment. Catches failures before they reach production." },
+            { title: "WAVE Platform", desc: "Workload Adaptive Verification Engine — the infrastructure layer powering model optimization, hardware abstraction, and runtime monitoring." },
+            { title: "Olyxee SDK", desc: "Python SDK and CLI tools for integrating verification and deployment into your existing ML pipeline." },
+          ].map(item => (
+            <div key={item.title} className="flex gap-3 items-start">
+              <span className="w-1 h-1 rounded-full bg-blue-500 mt-2.5 flex-shrink-0" />
+              <div>
+                <span className="font-medium text-neutral-900">{item.title}</span>
+                <span className="text-neutral-600"> — {item.desc}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection title="Supported frameworks">
+        <p>Olyxee works with models from all major ML frameworks:</p>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-3">
+          {["PyTorch", "TensorFlow", "ONNX", "TFLite"].map(fw => (
+            <div key={fw} className="bg-neutral-50 border border-neutral-200 rounded-lg px-4 py-2.5 text-center text-sm font-medium text-neutral-700">{fw}</div>
+          ))}
+        </div>
+      </DocSection>
+    </DocPage>
+  );
+}
+
+
 function Quickstart() {
   return (
     <DocPage
       title="Quickstart"
       subtitle="Get up and running with Olyxee in under 5 minutes."
     >
-      <DocSection title="Install the SDK">
-        <p>Install the Olyxee Python SDK using pip:</p>
+      <DocSection title="1. Install the SDK">
+        <p>Install the Olyxee Python SDK:</p>
         <CodeBlock language="bash" code="pip install olyxee" />
       </DocSection>
 
-      <DocSection title="Initialize a project">
-        <p>Create a new Olyxee project in your working directory:</p>
+      <DocSection title="2. Initialize a project">
         <CodeBlock language="bash" code={`olyxee init my-project\ncd my-project`} />
       </DocSection>
 
-      <DocSection title="Import your model">
+      <DocSection title="3. Import your model">
         <p>Load a trained model from any supported framework:</p>
-        <CodeBlock language="python" code={`import olyxee\n\n# Load a PyTorch model\nmodel = olyxee.load("model.pt")\n\n# Or load from ONNX\nmodel = olyxee.load("model.onnx")`} />
+        <CodeBlock language="python" code={`import olyxee\n\nmodel = olyxee.load("model.pt")\n\n# Or from ONNX\nmodel = olyxee.load("model.onnx")`} />
       </DocSection>
 
-      <DocSection title="Run verification">
-        <p>Verify your model against target hardware profiles before deploying:</p>
-        <CodeBlock language="python" code={`# Run verification against Jetson Nano profile\nresults = model.verify(target="jetson-nano")\n\nprint(results.summary())\n# ✓ Accuracy: 98.2% (within tolerance)\n# ✓ Latency: 12ms (target: <50ms)\n# ✓ Memory: 245MB (target: <512MB)`} />
+      <DocSection title="4. Run verification with Grysics">
+        <p>Verify your model against a target hardware profile:</p>
+        <CodeBlock language="python" code={`results = model.verify(target="jetson-nano")\n\nprint(results.summary())\n# ✓ Accuracy: 98.2% (within tolerance)\n# ✓ Latency: 12ms (target: <50ms)\n# ✓ Memory: 245MB (target: <512MB)`} />
       </DocSection>
 
-      <DocSection title="Deploy">
-        <p>Deploy your verified model to the target device:</p>
-        <CodeBlock language="python" code={`# Deploy to connected device\ndeployment = model.deploy(\n    target="jetson-nano",\n    name="my-first-model"\n)\n\nprint(f"Deployed: {deployment.url}")`} />
+      <DocSection title="5. Deploy">
+        <p>Deploy your verified model:</p>
+        <CodeBlock language="python" code={`deployment = model.deploy(\n    target="jetson-nano",\n    name="my-first-model"\n)\n\nprint(f"Deployed: {deployment.url}")`} />
       </DocSection>
 
       <DocCallout type="info">
-        For a more detailed walkthrough, navigate to the Deployment Guide in the sidebar.
+        For detailed deployment options, see the <strong>Deployment</strong> section under Grysics.
       </DocCallout>
     </DocPage>
   );
 }
 
-function WaveArchitecture() {
+
+function SupportedModels() {
   return (
     <DocPage
-      title="WAVE Architecture"
-      subtitle="Understanding the Workload Adaptive Verification Engine that powers all Olyxee products."
+      title="Supported Models"
+      subtitle="Model formats and frameworks compatible with the Olyxee platform."
     >
-      <DocSection title="Overview">
-        <p>WAVE (Workload Adaptive Verification Engine) is the core infrastructure layer that handles model verification, optimization, and deployment across heterogeneous hardware targets.</p>
-        <p className="mt-3">It provides three primary capabilities:</p>
-        <ul className="list-disc pl-6 mt-3 space-y-2">
-          <li><strong>Verification Pipeline</strong> — Automated testing that validates model correctness across target hardware configurations</li>
-          <li><strong>Hardware Abstraction</strong> — A unified deployment interface that works across all supported devices</li>
-          <li><strong>Runtime Monitoring</strong> — Continuous observability for deployed models</li>
-        </ul>
+      <DocSection title="Frameworks">
+        <DocTable
+          headers={["Framework", "File formats", "Status"]}
+          rows={[
+            ["PyTorch", ".pt, .pth", "Supported"],
+            ["TensorFlow", ".h5, .pb, SavedModel", "Supported"],
+            ["ONNX", ".onnx", "Supported"],
+            ["TFLite", ".tflite", "Supported"],
+            ["JAX", "Exported via ONNX", "Beta"],
+          ]}
+        />
       </DocSection>
 
-      <DocSection title="Architecture layers">
-        <p>WAVE operates in three distinct layers:</p>
-        <div className="mt-4 space-y-4">
-          <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
-            <h4 className="font-semibold text-gray-900 mb-1">Application Layer</h4>
-            <p className="text-sm text-gray-600">SDKs, CLI tools, and APIs that developers interact with directly. Handles model ingestion, configuration, and deployment commands.</p>
-          </div>
-          <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
-            <h4 className="font-semibold text-gray-900 mb-1">Orchestration Layer</h4>
-            <p className="text-sm text-gray-600">Manages the verification pipeline, optimization passes, and deployment scheduling. Routes workloads to appropriate hardware targets.</p>
-          </div>
-          <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
-            <h4 className="font-semibold text-gray-900 mb-1">Runtime Layer</h4>
-            <p className="text-sm text-gray-600">Executes on target devices. Handles model loading, inference, monitoring, and automated rollback when issues are detected.</p>
-          </div>
-        </div>
+      <DocSection title="Model types">
+        <p>Grysics verification works with classification, detection, segmentation, and generative models. Custom architectures are supported as long as they export to a compatible format.</p>
+        <DocCallout type="tip">
+          For best results, export your model to ONNX. It provides the widest hardware compatibility and most reliable verification results.
+        </DocCallout>
       </DocSection>
 
-      <DocSection title="Hardware targets">
-        <p>WAVE currently supports the following hardware families:</p>
-        <div className="mt-3 overflow-x-auto">
-          <table className="w-full text-sm border border-gray-200 rounded-lg overflow-hidden">
-            <thead className="bg-gray-50">
-              <tr>
-                <th className="text-left px-4 py-3 font-semibold text-gray-900 border-b border-gray-200">Device</th>
-                <th className="text-left px-4 py-3 font-semibold text-gray-900 border-b border-gray-200">Status</th>
-                <th className="text-left px-4 py-3 font-semibold text-gray-900 border-b border-gray-200">Notes</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                ["NVIDIA Jetson (Nano, Xavier, Orin)", "Supported", "Full GPU acceleration"],
-                ["Raspberry Pi (3B+, 4, 5)", "Supported", "CPU inference"],
-                ["Arduino (Nano 33 BLE)", "Beta", "TinyML models only"],
-                ["Intel NCS2", "Supported", "OpenVINO backend"],
-                ["ESP32", "Experimental", "Microcontroller models"],
-              ].map(([device, status, notes], i) => (
-                <tr key={i} className="border-b border-gray-100 last:border-0">
-                  <td className="px-4 py-3 text-gray-900">{device}</td>
-                  <td className="px-4 py-3"><span className={`text-xs font-medium px-2 py-0.5 rounded-full ${status === 'Supported' ? 'bg-green-50 text-green-700' : status === 'Beta' ? 'bg-yellow-50 text-yellow-700' : 'bg-gray-100 text-gray-600'}`}>{status}</span></td>
-                  <td className="px-4 py-3 text-gray-600">{notes}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+      <DocSection title="Size limits">
+        <DocTable
+          headers={["Plan", "Max model size", "Max verification time"]}
+          rows={[
+            ["Free", "500 MB", "10 minutes"],
+            ["Pro", "5 GB", "60 minutes"],
+            ["Enterprise", "Unlimited", "Custom"],
+          ]}
+        />
       </DocSection>
     </DocPage>
   );
 }
+
+
+function GrysicsOverview() {
+  return (
+    <DocPage
+      title="What is Grysics"
+      subtitle="The verification engine at the core of the Olyxee platform."
+    >
+      <DocSection title="Overview">
+        <p><strong>Grysics</strong> is Olyxee's verification engine for AI systems. It automatically tests whether a trained model will work correctly on target hardware — before you deploy it.</p>
+        <p>Instead of discovering failures in production, Grysics catches accuracy degradation, latency violations, memory overflows, and numerical instability during a pre-deployment verification pass.</p>
+      </DocSection>
+
+      <DocSection title="How it works">
+        <div className="space-y-3 mt-2">
+          {[
+            { step: "1", title: "Ingest", desc: "Load your trained model from any supported framework. Grysics analyzes the architecture, parameter count, and computational graph." },
+            { step: "2", title: "Profile", desc: "Grysics creates a hardware-specific execution profile for your target device, mapping operations to available compute resources." },
+            { step: "3", title: "Verify", desc: "Run automated tests that validate accuracy, latency, memory usage, and stability against configurable thresholds." },
+            { step: "4", title: "Report", desc: "Receive a detailed verification report with pass/fail status, performance metrics, and optimization recommendations." },
+          ].map(item => (
+            <div key={item.step} className="flex gap-4 items-start">
+              <div className="w-7 h-7 rounded-lg bg-neutral-100 border border-neutral-200 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span className="text-xs font-semibold text-neutral-500">{item.step}</span>
+              </div>
+              <div>
+                <span className="font-medium text-neutral-900">{item.title}</span>
+                <p className="text-neutral-600 mt-0.5">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection title="Verification checks">
+        <DocTable
+          headers={["Check", "What it tests", "Default threshold"]}
+          rows={[
+            ["Accuracy", "Output correctness vs reference data", "±2% tolerance"],
+            ["Latency", "Inference time per sample", "<50ms (configurable)"],
+            ["Memory", "Peak memory during inference", "Device limit"],
+            ["Stability", "Numerical consistency over 1000 runs", "0 NaN/Inf values"],
+            ["Throughput", "Samples processed per second", "Informational"],
+          ]}
+        />
+      </DocSection>
+
+      <DocCallout type="info">
+        Verification results are hardware-specific. A model that passes for Jetson Nano may not pass for Raspberry Pi due to different resource constraints.
+      </DocCallout>
+    </DocPage>
+  );
+}
+
 
 function Verification() {
   return (
     <DocPage
-      title="Verification"
-      subtitle="How Olyxee ensures your AI models work correctly before and after deployment."
+      title="Verification Engine"
+      subtitle="Deep dive into the Grysics verification pipeline."
     >
       <DocSection title="Pre-deployment verification">
-        <p>Every model goes through automated verification before it reaches a target device. The verification pipeline tests for:</p>
-        <ul className="list-disc pl-6 mt-3 space-y-2">
-          <li><strong>Accuracy</strong> — Model outputs match expected results within configurable tolerance</li>
-          <li><strong>Latency</strong> — Inference time meets target hardware constraints</li>
-          <li><strong>Memory</strong> — Peak memory usage stays within device limits</li>
-          <li><strong>Stability</strong> — No crashes or numerical issues over extended runs</li>
+        <p>Every model goes through automated verification before it reaches a target device:</p>
+        <ul className="list-disc pl-6 mt-2 space-y-1.5 text-neutral-700">
+          <li><strong>Accuracy</strong> — outputs match expected results within configurable tolerance</li>
+          <li><strong>Latency</strong> — inference time meets target hardware constraints</li>
+          <li><strong>Memory</strong> — peak memory usage stays within device limits</li>
+          <li><strong>Stability</strong> — no crashes or numerical issues over extended runs</li>
         </ul>
       </DocSection>
 
       <DocSection title="Running verification">
-        <CodeBlock language="python" code={`results = model.verify(\n    target="jetson-nano",\n    test_data="./test_set.csv",\n    tolerance=0.02,       # 2% accuracy tolerance\n    latency_target=50,    # milliseconds\n    memory_limit=512      # MB\n)\n\nif results.passed:\n    print("All checks passed")\n    model.deploy(target="jetson-nano")\nelse:\n    print(results.failures)`} />
+        <CodeBlock language="python" code={`results = model.verify(\n    target="jetson-nano",\n    test_data="./test_set.csv",\n    tolerance=0.02,\n    latency_target=50,\n    memory_limit=512\n)\n\nif results.passed:\n    print("All checks passed")\n    model.deploy(target="jetson-nano")\nelse:\n    print(results.failures)`} />
+      </DocSection>
+
+      <DocSection title="Verification report">
+        <p>After verification completes, you receive a structured report:</p>
+        <CodeBlock language="json" code={`{\n  "status": "passed",\n  "target": "jetson-nano",\n  "checks": {\n    "accuracy": { "passed": true, "value": 0.982, "threshold": 0.96 },\n    "latency_ms": { "passed": true, "value": 12, "threshold": 50 },\n    "memory_mb": { "passed": true, "value": 245, "threshold": 512 },\n    "stability": { "passed": true, "nan_count": 0, "inf_count": 0 }\n  },\n  "recommendations": [\n    "Consider INT8 quantization for 3x latency improvement"\n  ]\n}`} />
       </DocSection>
 
       <DocSection title="Post-deployment monitoring">
-        <p>After deployment, WAVE continuously monitors model performance and can automatically roll back to a known-good state if issues are detected.</p>
-        <CodeBlock language="python" code={`# Enable monitoring on a deployed model\ndeployment.monitor(\n    check_interval=60,      # seconds\n    drift_threshold=0.05,   # 5% accuracy drift\n    auto_rollback=True\n)`} />
+        <p>After deployment, Grysics continuously monitors model performance and can automatically roll back if issues are detected:</p>
+        <CodeBlock language="python" code={`deployment.monitor(\n    check_interval=60,\n    drift_threshold=0.05,\n    auto_rollback=True\n)`} />
       </DocSection>
 
       <DocCallout type="warning">
-        Verification results are hardware-specific. A model that passes verification for Jetson Nano may not pass for Raspberry Pi due to different resource constraints.
+        Always run verification against the exact hardware profile you plan to deploy to. Emulated profiles may not catch device-specific issues.
       </DocCallout>
     </DocPage>
   );
 }
 
-function EdgeDeployment() {
+
+function Deployment() {
   return (
     <DocPage
-      title="Edge Deployment"
-      subtitle="Deploy AI models to edge devices with hardware-aware optimization."
+      title="Deployment"
+      subtitle="Deploy verified models to edge devices and cloud endpoints."
     >
-      <DocSection title="Supported deployment modes">
-        <p>Olyxee supports multiple deployment strategies depending on your use case:</p>
-        <div className="mt-4 space-y-4">
-          <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
-            <h4 className="font-semibold text-gray-900 mb-1">Direct Deploy</h4>
-            <p className="text-sm text-gray-600">Push a model directly to a connected device over USB, SSH, or local network. Best for development and testing.</p>
-          </div>
-          <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
-            <h4 className="font-semibold text-gray-900 mb-1">Fleet Deploy</h4>
-            <p className="text-sm text-gray-600">Deploy to multiple devices simultaneously using device groups. Includes staged rollout and automatic rollback.</p>
-          </div>
-          <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
-            <h4 className="font-semibold text-gray-900 mb-1">Container Deploy</h4>
-            <p className="text-sm text-gray-600">Package your model into an OCI-compatible container with all dependencies. Deploy to any container runtime.</p>
-          </div>
+      <DocSection title="Deployment modes">
+        <div className="space-y-3 mt-2">
+          {[
+            { title: "Direct Deploy", desc: "Push to a connected device over USB, SSH, or local network. Best for development and testing." },
+            { title: "Fleet Deploy", desc: "Deploy to multiple devices simultaneously using device groups. Includes staged rollout and automatic rollback." },
+            { title: "Container Deploy", desc: "Package into an OCI-compatible container with all dependencies. Deploy to any container runtime." },
+          ].map(item => (
+            <div key={item.title} className="bg-neutral-50 border border-neutral-200 rounded-xl p-5">
+              <h4 className="font-semibold text-neutral-900 mb-1 text-[15px]">{item.title}</h4>
+              <p className="text-sm text-neutral-600">{item.desc}</p>
+            </div>
+          ))}
         </div>
       </DocSection>
 
-      <DocSection title="Example: Deploy to Jetson">
-        <CodeBlock language="python" code={`import olyxee\n\nmodel = olyxee.load("model.onnx")\n\n# Optimize for target hardware\noptimized = model.optimize(\n    target="jetson-nano",\n    quantization="int8",\n    batch_size=1\n)\n\n# Verify before deploying\nresults = optimized.verify(target="jetson-nano")\nassert results.passed\n\n# Deploy\ndeployment = optimized.deploy(\n    target="jetson-nano",\n    name="perception-model-v2",\n    device_ip="192.168.1.100"\n)\n\nprint(f"Status: {deployment.status}")\nprint(f"Endpoint: {deployment.url}")`} />
+      <DocSection title="Deploy to Jetson">
+        <CodeBlock language="python" code={`import olyxee\n\nmodel = olyxee.load("model.onnx")\n\noptimized = model.optimize(\n    target="jetson-nano",\n    quantization="int8",\n    batch_size=1\n)\n\nresults = optimized.verify(target="jetson-nano")\nassert results.passed\n\ndeployment = optimized.deploy(\n    target="jetson-nano",\n    name="perception-model-v2",\n    device_ip="192.168.1.100"\n)\n\nprint(f"Status: {deployment.status}")\nprint(f"Endpoint: {deployment.url}")`} />
       </DocSection>
 
-      <DocSection title="Configuration">
-        <p>Deployment behavior can be customized via <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">olyxee.yaml</code>:</p>
+      <DocSection title="Configuration file">
+        <p>Deployment behavior can be customized via <code className="bg-neutral-100 px-1.5 py-0.5 rounded text-sm font-mono text-neutral-800">olyxee.yaml</code>:</p>
         <CodeBlock language="yaml" code={`target:\n  device: jetson-nano\n  connection: ssh\n  host: 192.168.1.100\n\noptimization:\n  quantization: int8\n  pruning: false\n  batch_size: 1\n\nverification:\n  tolerance: 0.02\n  latency_target: 50\n  memory_limit: 512\n\nmonitoring:\n  enabled: true\n  interval: 60\n  auto_rollback: true`} />
       </DocSection>
     </DocPage>
   );
 }
 
-function Optimization() {
+
+function Monitoring() {
   return (
     <DocPage
-      title="Optimization"
-      subtitle="Automatic model optimization for resource-constrained hardware."
+      title="Monitoring"
+      subtitle="Real-time observability for deployed AI models."
     >
-      <DocSection title="Quantization">
-        <p>Olyxee supports multiple quantization strategies to reduce model size and improve inference speed:</p>
-        <div className="mt-3 overflow-x-auto">
-          <table className="w-full text-sm border border-gray-200 rounded-lg overflow-hidden">
-            <thead className="bg-gray-50">
-              <tr>
-                <th className="text-left px-4 py-3 font-semibold text-gray-900 border-b border-gray-200">Strategy</th>
-                <th className="text-left px-4 py-3 font-semibold text-gray-900 border-b border-gray-200">Size Reduction</th>
-                <th className="text-left px-4 py-3 font-semibold text-gray-900 border-b border-gray-200">Accuracy Impact</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                ["FP16 (Half Precision)", "~50%", "Minimal (<0.1%)"],
-                ["INT8 (Dynamic)", "~75%", "Low (<1%)"],
-                ["INT8 (Static)", "~75%", "Very Low (<0.5%)"],
-                ["INT4", "~87%", "Moderate (1-3%)"],
-              ].map(([strategy, size, accuracy], i) => (
-                <tr key={i} className="border-b border-gray-100 last:border-0">
-                  <td className="px-4 py-3 text-gray-900 font-medium">{strategy}</td>
-                  <td className="px-4 py-3 text-gray-600">{size}</td>
-                  <td className="px-4 py-3 text-gray-600">{accuracy}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+      <DocSection title="Overview">
+        <p>Once a model is deployed, Grysics provides continuous monitoring that tracks inference quality, resource usage, and model drift. When anomalies are detected, the system can automatically roll back to a known-good state.</p>
       </DocSection>
 
-      <DocSection title="Usage">
-        <CodeBlock language="python" code={`# Automatic optimization\noptimized = model.optimize(\n    target="raspberry-pi-4",\n    quantization="int8",\n    calibration_data="./calibration_set.csv"\n)\n\n# Compare before and after\nprint(f"Original size: {model.size_mb}MB")\nprint(f"Optimized size: {optimized.size_mb}MB")\nprint(f"Speedup: {optimized.speedup}x")`} />
+      <DocSection title="Metrics tracked">
+        <DocTable
+          headers={["Metric", "Description", "Alert threshold"]}
+          rows={[
+            ["Accuracy drift", "Change in output quality over time", "Configurable (default 5%)"],
+            ["Latency p99", "99th percentile inference time", "2x baseline"],
+            ["Memory usage", "Runtime memory consumption", "90% device limit"],
+            ["Error rate", "Failed inference requests", ">1% of requests"],
+            ["Throughput", "Requests processed per second", "50% below baseline"],
+          ]}
+        />
+      </DocSection>
+
+      <DocSection title="Enable monitoring">
+        <CodeBlock language="python" code={`deployment.monitor(\n    check_interval=60,\n    drift_threshold=0.05,\n    latency_alert=100,\n    auto_rollback=True,\n    webhook="https://your-api.com/alerts"\n)`} />
+      </DocSection>
+
+      <DocSection title="Dashboard">
+        <p>View real-time metrics through the Olyxee dashboard or query them programmatically:</p>
+        <CodeBlock language="python" code={`metrics = deployment.metrics(\n    period="24h",\n    resolution="5m"\n)\n\nprint(f"Avg latency: {metrics.latency_avg}ms")\nprint(f"Accuracy: {metrics.accuracy}")\nprint(f"Total requests: {metrics.request_count}")`} />
       </DocSection>
     </DocPage>
   );
 }
+
+
+function APIReference() {
+  return (
+    <DocPage
+      title="API Reference"
+      subtitle="Integrate Olyxee into your pipeline with the REST API."
+    >
+      <DocSection title="Base URL">
+        <CodeBlock language="bash" code="https://api.olyxee.com/v1" />
+      </DocSection>
+
+      <DocSection title="Authentication">
+        <p>All API requests require an API key passed in the <code className="bg-neutral-100 px-1.5 py-0.5 rounded text-sm font-mono text-neutral-800">Authorization</code> header:</p>
+        <CodeBlock language="bash" code={`curl https://api.olyxee.com/v1/models \\\n  -H "Authorization: Bearer oly_sk_..."`} />
+        <DocCallout type="warning">
+          Never expose your API key in client-side code. Use environment variables or a secrets manager.
+        </DocCallout>
+      </DocSection>
+
+      <DocSection title="Endpoints">
+        <DocTable
+          headers={["Method", "Endpoint", "Description"]}
+          rows={[
+            ["POST", "/models", "Upload a model for verification"],
+            ["GET", "/models/:id", "Get model details and status"],
+            ["POST", "/models/:id/verify", "Start a verification run"],
+            ["GET", "/models/:id/verify/:run_id", "Get verification results"],
+            ["POST", "/models/:id/deploy", "Deploy a verified model"],
+            ["GET", "/deployments", "List all deployments"],
+            ["GET", "/deployments/:id/metrics", "Get deployment metrics"],
+            ["POST", "/deployments/:id/rollback", "Rollback a deployment"],
+          ]}
+        />
+      </DocSection>
+
+      <DocSection title="Upload a model">
+        <CodeBlock language="bash" code={`curl -X POST https://api.olyxee.com/v1/models \\\n  -H "Authorization: Bearer oly_sk_..." \\\n  -H "Content-Type: multipart/form-data" \\\n  -F "file=@model.onnx" \\\n  -F "name=my-model" \\\n  -F "framework=onnx"`} />
+      </DocSection>
+
+      <DocSection title="Start verification">
+        <CodeBlock language="bash" code={`curl -X POST https://api.olyxee.com/v1/models/mdl_abc123/verify \\\n  -H "Authorization: Bearer oly_sk_..." \\\n  -H "Content-Type: application/json" \\\n  -d '{\n    "target": "jetson-nano",\n    "tolerance": 0.02,\n    "latency_target": 50\n  }'`} />
+      </DocSection>
+
+      <DocSection title="Response format">
+        <p>All responses follow a consistent envelope:</p>
+        <CodeBlock language="json" code={`{\n  "object": "model",\n  "id": "mdl_abc123",\n  "name": "my-model",\n  "framework": "onnx",\n  "size_bytes": 52428800,\n  "status": "verified",\n  "created_at": "2025-01-15T10:30:00Z"\n}`} />
+      </DocSection>
+    </DocPage>
+  );
+}
+
 
 function PythonSDK() {
   return (
@@ -286,53 +428,46 @@ function PythonSDK() {
     >
       <DocSection title="Installation">
         <CodeBlock language="bash" code="pip install olyxee" />
+        <p>Requires Python 3.9+.</p>
       </DocSection>
 
       <DocSection title="olyxee.load()">
-        <p>Load a model from a file path. Supports PyTorch (.pt, .pth), TensorFlow (.h5, .pb), ONNX (.onnx), and TFLite (.tflite).</p>
-        <CodeBlock language="python" code={`model = olyxee.load(\n    path: str,\n    framework: str = "auto",  # auto-detect framework\n    device: str = "cpu"\n) -> OlyxeeModel`} />
-        <h4 className="font-semibold text-gray-900 mt-4 mb-2">Parameters</h4>
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm border border-gray-200 rounded-lg overflow-hidden">
-            <thead className="bg-gray-50">
-              <tr>
-                <th className="text-left px-4 py-2 font-semibold text-gray-900 border-b border-gray-200">Parameter</th>
-                <th className="text-left px-4 py-2 font-semibold text-gray-900 border-b border-gray-200">Type</th>
-                <th className="text-left px-4 py-2 font-semibold text-gray-900 border-b border-gray-200">Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="border-b border-gray-100"><td className="px-4 py-2 font-mono text-sm">path</td><td className="px-4 py-2 text-gray-600">str</td><td className="px-4 py-2 text-gray-600">Path to the model file</td></tr>
-              <tr className="border-b border-gray-100"><td className="px-4 py-2 font-mono text-sm">framework</td><td className="px-4 py-2 text-gray-600">str</td><td className="px-4 py-2 text-gray-600">Framework override (pytorch, tensorflow, onnx)</td></tr>
-              <tr><td className="px-4 py-2 font-mono text-sm">device</td><td className="px-4 py-2 text-gray-600">str</td><td className="px-4 py-2 text-gray-600">Device for local operations (cpu, cuda)</td></tr>
-            </tbody>
-          </table>
-        </div>
+        <p>Load a model from a file path or URL.</p>
+        <CodeBlock language="python" code={`model = olyxee.load(\n    path="model.onnx",\n    framework="auto",\n    device="cpu"\n)`} />
+        <DocTable
+          headers={["Parameter", "Type", "Description"]}
+          rows={[
+            ["path", "str", "Path to model file or URL"],
+            ["framework", "str", "Framework override (auto, pytorch, tensorflow, onnx)"],
+            ["device", "str", "Device for local operations (cpu, cuda)"],
+          ]}
+        />
       </DocSection>
 
       <DocSection title="model.verify()">
-        <p>Run verification against a target hardware profile.</p>
-        <CodeBlock language="python" code={`results = model.verify(\n    target: str,\n    test_data: str = None,\n    tolerance: float = 0.02,\n    latency_target: int = None,  # ms\n    memory_limit: int = None     # MB\n) -> VerificationResults`} />
+        <p>Run Grysics verification against a target hardware profile.</p>
+        <CodeBlock language="python" code={`results = model.verify(\n    target="jetson-nano",\n    test_data="./test_set.csv",\n    tolerance=0.02,\n    latency_target=50,\n    memory_limit=512\n)`} />
       </DocSection>
 
       <DocSection title="model.optimize()">
-        <p>Optimize the model for a target hardware platform.</p>
-        <CodeBlock language="python" code={`optimized = model.optimize(\n    target: str,\n    quantization: str = "int8",\n    calibration_data: str = None,\n    batch_size: int = 1\n) -> OlyxeeModel`} />
+        <p>Optimize the model for target hardware.</p>
+        <CodeBlock language="python" code={`optimized = model.optimize(\n    target="raspberry-pi-4",\n    quantization="int8",\n    calibration_data="./calibration.csv"\n)`} />
       </DocSection>
 
       <DocSection title="model.deploy()">
         <p>Deploy the model to a target device.</p>
-        <CodeBlock language="python" code={`deployment = model.deploy(\n    target: str,\n    name: str,\n    device_ip: str = None,\n    replicas: int = 1\n) -> Deployment`} />
+        <CodeBlock language="python" code={`deployment = model.deploy(\n    target="jetson-nano",\n    name="my-model",\n    device_ip="192.168.1.100",\n    replicas=1\n)`} />
       </DocSection>
     </DocPage>
   );
 }
 
+
 function CLIReference() {
   return (
     <DocPage
       title="CLI Reference"
-      subtitle="Command-line tools for managing Olyxee deployments."
+      subtitle="Command-line tools for managing Olyxee projects."
     >
       <DocSection title="Installation">
         <p>The CLI is included with the Python SDK:</p>
@@ -340,24 +475,247 @@ function CLIReference() {
       </DocSection>
 
       <DocSection title="Commands">
-        <CodeBlock language="bash" code={`# Initialize a new project\nolyxee init <project-name>\n\n# Load and verify a model\nolyxee verify model.onnx --target jetson-nano\n\n# Optimize a model\nolyxee optimize model.onnx --target raspberry-pi-4 --quantization int8\n\n# Deploy a model\nolyxee deploy model.onnx --target jetson-nano --name my-model\n\n# List deployments\nolyxee deployments list\n\n# Check deployment status\nolyxee deployments status my-model\n\n# Monitor a deployment\nolyxee monitor my-model --interval 60\n\n# Rollback a deployment\nolyxee rollback my-model --version 2`} />
+        <CodeBlock language="bash" code={`olyxee init <project>       # Initialize a new project\nolyxee verify <model>       # Run Grysics verification\nolyxee optimize <model>     # Optimize for target hardware\nolyxee deploy <model>       # Deploy to a device\nolyxee deployments list     # List active deployments\nolyxee deployments status   # Check deployment health\nolyxee monitor <name>       # Start monitoring\nolyxee rollback <name>      # Rollback deployment`} />
       </DocSection>
 
-      <DocSection title="Configuration file">
-        <p>The CLI reads configuration from <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">olyxee.yaml</code> in the project root. Command-line flags override file settings.</p>
+      <DocSection title="Examples">
+        <CodeBlock language="bash" code={`# Verify a model for Jetson Nano\nolyxee verify model.onnx --target jetson-nano\n\n# Optimize with INT8 quantization\nolyxee optimize model.onnx --target raspberry-pi-4 --quantization int8\n\n# Deploy with monitoring enabled\nolyxee deploy model.onnx --target jetson-nano --name my-model --monitor`} />
+      </DocSection>
+
+      <DocSection title="Configuration">
+        <p>The CLI reads from <code className="bg-neutral-100 px-1.5 py-0.5 rounded text-sm font-mono text-neutral-800">olyxee.yaml</code> in the project root. Command-line flags override file settings.</p>
       </DocSection>
     </DocPage>
   );
 }
 
+
+function ErrorHandling() {
+  return (
+    <DocPage
+      title="Error Handling"
+      subtitle="Error codes, status codes, and troubleshooting."
+    >
+      <DocSection title="HTTP status codes">
+        <DocTable
+          headers={["Code", "Meaning", "Description"]}
+          rows={[
+            ["200", "OK", "Request succeeded"],
+            ["201", "Created", "Resource created successfully"],
+            ["400", "Bad Request", "Invalid parameters or malformed request"],
+            ["401", "Unauthorized", "Missing or invalid API key"],
+            ["404", "Not Found", "Resource does not exist"],
+            ["422", "Unprocessable", "Valid request but cannot be processed"],
+            ["429", "Rate Limited", "Too many requests"],
+            ["500", "Server Error", "Internal server error"],
+          ]}
+        />
+      </DocSection>
+
+      <DocSection title="Error response format">
+        <CodeBlock language="json" code={`{\n  "error": {\n    "type": "invalid_request",\n    "message": "Target 'unknown-device' is not supported",\n    "code": "unsupported_target",\n    "param": "target"\n  }\n}`} />
+      </DocSection>
+
+      <DocSection title="Verification errors">
+        <DocTable
+          headers={["Error", "Cause", "Solution"]}
+          rows={[
+            ["accuracy_below_threshold", "Model accuracy dropped below tolerance", "Adjust tolerance or retrain model"],
+            ["latency_exceeded", "Inference time exceeded target", "Try quantization or a more powerful device"],
+            ["memory_overflow", "Model exceeds device memory", "Use a smaller model or optimize with pruning"],
+            ["numerical_instability", "NaN or Inf values detected", "Check model for numerical issues"],
+          ]}
+        />
+      </DocSection>
+    </DocPage>
+  );
+}
+
+
+function EdgeDevices() {
+  return (
+    <DocPage
+      title="Edge Devices"
+      subtitle="Supported hardware targets and device-specific guidance."
+    >
+      <DocSection title="Supported devices">
+        <DocTable
+          headers={["Device", "Status", "Acceleration", "Notes"]}
+          rows={[
+            ["NVIDIA Jetson Nano", "Supported", "GPU (CUDA)", "Full TensorRT support"],
+            ["NVIDIA Jetson Xavier", "Supported", "GPU (CUDA)", "DLA acceleration available"],
+            ["NVIDIA Jetson Orin", "Supported", "GPU (CUDA)", "Highest edge performance"],
+            ["Raspberry Pi 4", "Supported", "CPU", "ARM NEON optimizations"],
+            ["Raspberry Pi 5", "Supported", "CPU", "Improved throughput"],
+            ["Intel NCS2", "Supported", "VPU", "OpenVINO backend"],
+            ["Arduino Nano 33 BLE", "Beta", "MCU", "TinyML models only"],
+            ["ESP32", "Experimental", "MCU", "Microcontroller models"],
+          ]}
+        />
+      </DocSection>
+
+      <DocSection title="Adding a device">
+        <CodeBlock language="python" code={`import olyxee\n\n# Register a new device\nolyxee.devices.register(\n    name="my-jetson",\n    type="jetson-nano",\n    host="192.168.1.100",\n    connection="ssh",\n    credentials="~/.ssh/id_rsa"\n)\n\n# List registered devices\ndevices = olyxee.devices.list()\nfor d in devices:\n    print(f"{d.name}: {d.status}")`} />
+      </DocSection>
+
+      <DocSection title="Device profiles">
+        <p>Each device has a hardware profile that Grysics uses during verification. Profiles include CPU architecture, available memory, accelerator capabilities, and supported operations.</p>
+        <CodeBlock language="python" code={`profile = olyxee.devices.profile("jetson-nano")\n\nprint(f"CPU: {profile.cpu}")\nprint(f"GPU: {profile.gpu}")\nprint(f"Memory: {profile.memory_mb}MB")\nprint(f"Supported ops: {profile.supported_ops}")`} />
+      </DocSection>
+    </DocPage>
+  );
+}
+
+
+function Optimization() {
+  return (
+    <DocPage
+      title="Optimization"
+      subtitle="Automatic model optimization for resource-constrained hardware."
+    >
+      <DocSection title="Quantization strategies">
+        <DocTable
+          headers={["Strategy", "Size reduction", "Accuracy impact"]}
+          rows={[
+            ["FP16 (Half Precision)", "~50%", "Minimal (<0.1%)"],
+            ["INT8 (Dynamic)", "~75%", "Low (<1%)"],
+            ["INT8 (Static)", "~75%", "Very Low (<0.5%)"],
+            ["INT4", "~87%", "Moderate (1-3%)"],
+          ]}
+        />
+      </DocSection>
+
+      <DocSection title="Usage">
+        <CodeBlock language="python" code={`optimized = model.optimize(\n    target="raspberry-pi-4",\n    quantization="int8",\n    calibration_data="./calibration_set.csv"\n)\n\nprint(f"Original: {model.size_mb}MB")\nprint(f"Optimized: {optimized.size_mb}MB")\nprint(f"Speedup: {optimized.speedup}x")`} />
+      </DocSection>
+
+      <DocCallout type="tip">
+        Always run verification after optimization. Quantization can occasionally affect model accuracy in unexpected ways.
+      </DocCallout>
+    </DocPage>
+  );
+}
+
+
+function Configuration() {
+  return (
+    <DocPage
+      title="Configuration"
+      subtitle="Project configuration and environment setup."
+    >
+      <DocSection title="olyxee.yaml">
+        <p>The project configuration file controls default settings for verification, optimization, and deployment:</p>
+        <CodeBlock language="yaml" code={`project:\n  name: my-ai-project\n  version: 1.0.0\n\ntarget:\n  device: jetson-nano\n  connection: ssh\n  host: 192.168.1.100\n\nverification:\n  tolerance: 0.02\n  latency_target: 50\n  memory_limit: 512\n  stability_runs: 1000\n\noptimization:\n  quantization: int8\n  pruning: false\n  calibration_data: ./calibration/\n\nmonitoring:\n  enabled: true\n  interval: 60\n  drift_threshold: 0.05\n  auto_rollback: true\n  webhook: https://your-api.com/alerts`} />
+      </DocSection>
+
+      <DocSection title="Environment variables">
+        <DocTable
+          headers={["Variable", "Description", "Required"]}
+          rows={[
+            ["OLYXEE_API_KEY", "API authentication key", "Yes"],
+            ["OLYXEE_ORG_ID", "Organization identifier", "For teams"],
+            ["OLYXEE_LOG_LEVEL", "Logging verbosity (debug, info, warn)", "No"],
+            ["OLYXEE_CACHE_DIR", "Local cache directory for models", "No"],
+          ]}
+        />
+      </DocSection>
+    </DocPage>
+  );
+}
+
+
+function Changelog() {
+  return (
+    <DocPage
+      title="Changelog"
+      subtitle="Recent updates and improvements to the Olyxee platform."
+    >
+      {[
+        {
+          version: "1.0.0",
+          date: "January 2025",
+          items: [
+            "General availability of Grysics verification engine",
+            "Python SDK v1.0 with full verification and deployment support",
+            "Support for NVIDIA Jetson, Raspberry Pi, and Intel NCS2",
+            "REST API v1 with model management endpoints",
+            "CLI tools for project initialization, verification, and deployment",
+          ],
+        },
+        {
+          version: "0.9.0",
+          date: "November 2024",
+          items: [
+            "Beta release of post-deployment monitoring",
+            "Added INT4 quantization support",
+            "Fleet deployment with staged rollout",
+            "Webhook notifications for monitoring alerts",
+          ],
+        },
+        {
+          version: "0.8.0",
+          date: "September 2024",
+          items: [
+            "Arduino Nano 33 BLE support (beta)",
+            "Container deployment mode",
+            "Improved verification report format",
+            "Added calibration data support for static quantization",
+          ],
+        },
+      ].map(release => (
+        <DocSection key={release.version} title={`v${release.version} — ${release.date}`}>
+          <ul className="list-disc pl-5 space-y-1.5 text-neutral-700">
+            {release.items.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
+        </DocSection>
+      ))}
+    </DocPage>
+  );
+}
+
+
+function RateLimits() {
+  return (
+    <DocPage
+      title="Rate Limits"
+      subtitle="API usage limits and quotas."
+    >
+      <DocSection title="Default limits">
+        <DocTable
+          headers={["Endpoint", "Free", "Pro", "Enterprise"]}
+          rows={[
+            ["Model uploads", "10/day", "100/day", "Unlimited"],
+            ["Verification runs", "20/day", "500/day", "Unlimited"],
+            ["API requests", "1,000/min", "10,000/min", "Custom"],
+            ["Concurrent deployments", "3", "25", "Unlimited"],
+          ]}
+        />
+      </DocSection>
+
+      <DocSection title="Rate limit headers">
+        <p>Every API response includes rate limit information:</p>
+        <CodeBlock language="http" code={`X-RateLimit-Limit: 1000\nX-RateLimit-Remaining: 947\nX-RateLimit-Reset: 1705312800`} />
+      </DocSection>
+
+      <DocSection title="Handling rate limits">
+        <p>When rate limited, the API returns a <code className="bg-neutral-100 px-1.5 py-0.5 rounded text-sm font-mono text-neutral-800">429</code> status. Implement exponential backoff:</p>
+        <CodeBlock language="python" code={`import time\nimport olyxee\n\ndef verify_with_retry(model, target, max_retries=3):\n    for attempt in range(max_retries):\n        try:\n            return model.verify(target=target)\n        except olyxee.RateLimitError as e:\n            wait = 2 ** attempt\n            print(f"Rate limited. Retrying in {wait}s...")\n            time.sleep(wait)\n    raise Exception("Max retries exceeded")`} />
+      </DocSection>
+    </DocPage>
+  );
+}
+
+
 function DocPage({ title, subtitle, children }: { title: string; subtitle: string; children: React.ReactNode }) {
   return (
-    <div className="w-full max-w-3xl mx-auto px-6 sm:px-8 py-10 sm:py-14">
-      <div className="mb-10">
-        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight mb-3">{title}</h1>
-        <p className="text-gray-500 text-lg leading-relaxed">{subtitle}</p>
+    <div className="w-full max-w-3xl mx-auto px-6 sm:px-10 py-10 sm:py-14">
+      <div className="mb-10 pb-8 border-b border-neutral-100">
+        <h1 className="text-2xl sm:text-3xl font-semibold text-neutral-900 tracking-tight mb-2">{title}</h1>
+        <p className="text-neutral-500 text-base leading-relaxed">{subtitle}</p>
       </div>
-      <div className="space-y-10 text-gray-700 leading-relaxed">
+      <div className="space-y-10 text-[15px] text-neutral-700 leading-relaxed">
         {children}
       </div>
     </div>
@@ -367,7 +725,7 @@ function DocPage({ title, subtitle, children }: { title: string; subtitle: strin
 function DocSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section>
-      <h2 className="text-xl font-semibold text-gray-900 mb-4 pb-2 border-b border-gray-100">{title}</h2>
+      <h2 className="text-lg font-semibold text-neutral-900 mb-4 pb-2 border-b border-neutral-100">{title}</h2>
       <div className="space-y-3">{children}</div>
     </section>
   );
@@ -382,18 +740,15 @@ function CodeBlock({ language, code }: { language: string; code: string }) {
   };
 
   return (
-    <div className="relative group rounded-xl overflow-hidden border border-gray-200 bg-gray-950 my-4">
-      <div className="flex items-center justify-between px-4 py-2 bg-gray-900 border-b border-gray-800">
-        <span className="text-xs text-gray-400 font-mono">{language}</span>
-        <button
-          onClick={handleCopy}
-          className="text-xs text-gray-400 hover:text-white transition-colors px-2 py-1 rounded"
-        >
+    <div className="relative group rounded-xl overflow-hidden border border-neutral-800 bg-neutral-950 my-4">
+      <div className="flex items-center justify-between px-4 py-2 bg-neutral-900/80 border-b border-neutral-800">
+        <span className="text-[11px] text-neutral-500 font-mono uppercase tracking-wider">{language}</span>
+        <button onClick={handleCopy} className="text-[11px] text-neutral-500 hover:text-white transition-colors px-2 py-0.5 rounded">
           {copied ? "Copied!" : "Copy"}
         </button>
       </div>
       <pre className="p-4 overflow-x-auto text-sm leading-relaxed">
-        <code className="text-gray-300 font-mono whitespace-pre">{code}</code>
+        <code className="text-neutral-300 font-mono whitespace-pre">{code}</code>
       </pre>
     </div>
   );
@@ -401,9 +756,9 @@ function CodeBlock({ language, code }: { language: string; code: string }) {
 
 function DocCallout({ type, children }: { type: "info" | "warning" | "tip"; children: React.ReactNode }) {
   const styles = {
-    info: "bg-blue-50 border-blue-200 text-blue-800",
-    warning: "bg-yellow-50 border-yellow-200 text-yellow-800",
-    tip: "bg-green-50 border-green-200 text-green-800",
+    info: "bg-blue-50/60 border-blue-200/60 text-blue-800",
+    warning: "bg-amber-50/60 border-amber-200/60 text-amber-800",
+    tip: "bg-emerald-50/60 border-emerald-200/60 text-emerald-800",
   };
   const labels = { info: "Note", warning: "Warning", tip: "Tip" };
 
@@ -411,6 +766,36 @@ function DocCallout({ type, children }: { type: "info" | "warning" | "tip"; chil
     <div className={`rounded-xl border p-4 text-sm ${styles[type]}`}>
       <span className="font-semibold">{labels[type]}:</span>{" "}
       {children}
+    </div>
+  );
+}
+
+function DocTable({ headers, rows }: { headers: string[]; rows: string[][] }) {
+  return (
+    <div className="mt-3 overflow-x-auto rounded-xl border border-neutral-200">
+      <table className="w-full text-sm">
+        <thead className="bg-neutral-50">
+          <tr>
+            {headers.map((h, i) => (
+              <th key={i} className="text-left px-4 py-2.5 font-semibold text-neutral-900 border-b border-neutral-200 text-[13px]">{h}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row, i) => (
+            <tr key={i} className="border-b border-neutral-100 last:border-0">
+              {row.map((cell, j) => (
+                <td key={j} className={`px-4 py-2.5 ${j === 0 ? 'text-neutral-900 font-medium' : 'text-neutral-600'} text-[13px]`}>
+                  {cell === "Supported" ? <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">{cell}</span>
+                    : cell === "Beta" ? <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200">{cell}</span>
+                    : cell === "Experimental" ? <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-neutral-100 text-neutral-600 border border-neutral-200">{cell}</span>
+                    : cell}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
