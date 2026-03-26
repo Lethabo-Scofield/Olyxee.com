@@ -81,42 +81,13 @@ function HeroSection() {
           <em className="text-neutral-400">AI</em>
         </motion.h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.25 }}
-          className="mt-8 text-lg sm:text-xl text-neutral-500 max-w-2xl mx-auto leading-relaxed font-light"
-        >
-          Verification-first deployment infrastructure — ensuring AI systems are reliable, explainable, and deployable from edge devices to enterprise clouds.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.35 }}
-          className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
-        >
-          <Link
-            href="/developers"
-            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-black transition-all text-sm tracking-wide"
-          >
-            Start Building
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-          <Link
-            href="/research"
-            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-neutral-700 border border-neutral-300 rounded-full font-medium hover:border-neutral-500 transition-all text-sm tracking-wide"
-          >
-            Read Our Research
-          </Link>
-        </motion.div>
       </div>
 
       <motion.div
-        className="relative z-10 w-full max-w-4xl mt-20"
+        className="relative z-10 w-full max-w-4xl mt-16"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.5 }}
+        transition={{ duration: 1, delay: 0.2 }}
       >
         <div className="relative rounded-2xl overflow-hidden border border-neutral-200 shadow-2xl shadow-neutral-200/50">
           <video
@@ -129,6 +100,26 @@ function HeroSection() {
             preload="metadata"
           />
           <div className="absolute inset-0 border border-white/20 rounded-2xl pointer-events-none" />
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="absolute bottom-0 left-0 right-0 flex flex-col sm:flex-row gap-3 justify-center items-center p-4 sm:p-6 bg-gradient-to-t from-black/60 via-black/30 to-transparent"
+          >
+            <Link
+              href="/developers"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide shadow-lg"
+            >
+              Start Building
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link
+              href="/research"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3 text-white border border-white/40 rounded-full font-medium hover:bg-white/10 transition-all text-sm tracking-wide backdrop-blur-sm"
+            >
+              Read Our Research
+            </Link>
+          </motion.div>
         </div>
       </motion.div>
 
