@@ -54,8 +54,14 @@ function HeroSection() {
   return (
     <section className="relative w-full min-h-[95vh] flex flex-col items-center justify-center px-4 md:px-8 lg:px-16 pt-28 pb-20 overflow-hidden">
       <div className="absolute inset-0 w-full h-full">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-neutral-100 rounded-full blur-[120px] opacity-60 -translate-y-1/3 translate-x-1/4" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-neutral-100 rounded-full blur-[100px] opacity-40 translate-y-1/3 -translate-x-1/4" />
+        <Image
+          src="/hero-bg.png"
+          alt=""
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-white/70" />
       </div>
 
       <div className="relative z-10 text-center max-w-5xl mx-auto">
