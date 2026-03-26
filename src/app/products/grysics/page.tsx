@@ -1,247 +1,290 @@
 'use client';
 
-import Image from 'next/image';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
+import { useEffect, useRef } from 'react';
+import Link from 'next/link';
 import Header from "@/components/header";
+import Footer from "@/components/footer";
+import { ArrowRight, Shield, Cpu, BarChart3, Zap, GitBranch, Layers } from 'lucide-react';
 
-// Premium icons (replace with Streamline imports if installed locally)
-const HeroIcons = {
-  Rocket: "https://cdn-icons-png.flaticon.com/512/709/709579.png",
-  Play: "https://cdn-icons-png.flaticon.com/512/709/709592.png"
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i: number) => ({
+    opacity: 1, y: 0,
+    transition: { duration: 0.6, delay: i * 0.08, ease: [0.25, 0.46, 0.45, 0.94] },
+  }),
 };
 
-const StatsIcons = {
-  Timer: "https://cdn-icons-png.flaticon.com/512/2907/2907245.png",
-  Dollar: "https://cdn-icons-png.flaticon.com/512/2907/2907239.png",
-  Device: "https://cdn-icons-png.flaticon.com/512/2910/2910710.png",
-  Shield: "https://cdn-icons-png.flaticon.com/512/2910/2910730.png"
-};
-
-const FeatureIcons = {
-  Chip: "https://cdn-icons-png.flaticon.com/512/2910/2910764.png",
-  Plug: "https://cdn-icons-png.flaticon.com/512/2920/2920567.png",
-  Devices: "https://cdn-icons-png.flaticon.com/512/2919/2919141.png",
-  Graph: "https://cdn-icons-png.flaticon.com/512/2910/2910762.png"
-};
-
-export default function GrysicsPage() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const { scrollYProgress } = useScroll();
-  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
+function LiveDiagram() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let animationId: number;
+    let time = 0;
+
+    const nodes = [
+      { x: 0.18, y: 0.25, label: 'Model', r: 28 },
+      { x: 0.50, y: 0.15, label: 'Verify', r: 28 },
+      { x: 0.82, y: 0.25, label: 'Optimize', r: 28 },
+      { x: 0.50, y: 0.50, label: 'Grysics', r: 36 },
+      { x: 0.18, y: 0.75, label: 'Edge', r: 28 },
+      { x: 0.50, y: 0.85, label: 'Monitor', r: 28 },
+      { x: 0.82, y: 0.75, label: 'Deploy', r: 28 },
+    ];
+
+    const edges = [
+      [0, 3], [1, 3], [2, 3], [3, 4], [3, 5], [3, 6],
+      [0, 1], [1, 2], [4, 5], [5, 6],
+    ];
+
+    const resize = () => {
+      const dpr = window.devicePixelRatio || 1;
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      ctx.scale(dpr, dpr);
+    };
+
+    resize();
+    window.addEventListener('resize', resize);
+
+    const draw = () => {
+      time += 0.008;
+      const w = canvas.getBoundingClientRect().width;
+      const h = canvas.getBoundingClientRect().height;
+      ctx.clearRect(0, 0, w, h);
+
+      const pts = nodes.map(n => ({
+        x: n.x * w,
+        y: n.y * h + Math.sin(time * 1.2 + n.x * 6) * 4,
+        label: n.label,
+        r: n.r,
+      }));
+
+      edges.forEach(([a, b], i) => {
+        const pa = pts[a];
+        const pb = pts[b];
+        ctx.beginPath();
+        ctx.moveTo(pa.x, pa.y);
+        ctx.lineTo(pb.x, pb.y);
+        ctx.strokeStyle = 'rgba(163,163,163,0.15)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+
+        const pulse = (time * 0.6 + i * 0.3) % 1;
+        const px = pa.x + (pb.x - pa.x) * pulse;
+        const py = pa.y + (pb.y - pa.y) * pulse;
+        ctx.beginPath();
+        ctx.arc(px, py, 2.5, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(163,163,163,${0.5 - pulse * 0.4})`;
+        ctx.fill();
+      });
+
+      pts.forEach((p, i) => {
+        const isCenter = i === 3;
+        const glow = Math.sin(time * 2 + i) * 0.15 + 0.85;
+
+        if (isCenter) {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r + 8, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(23,23,23,${0.04 * glow})`;
+          ctx.fill();
+        }
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = isCenter ? `rgba(23,23,23,${0.95 * glow})` : `rgba(245,245,245,${glow})`;
+        ctx.fill();
+        ctx.strokeStyle = isCenter ? 'rgba(23,23,23,0.3)' : 'rgba(163,163,163,0.25)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+
+        ctx.font = `${isCenter ? '600 13' : '500 11'}px Inter, system-ui, sans-serif`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle = isCenter ? 'rgba(255,255,255,0.95)' : 'rgba(115,115,115,0.9)';
+        ctx.fillText(p.label, p.x, p.y);
+      });
+
+      animationId = requestAnimationFrame(draw);
+    };
+
+    draw();
+
+    return () => {
+      cancelAnimationFrame(animationId);
+      window.removeEventListener('resize', resize);
+    };
   }, []);
 
-  const features = [
-    { title: 'Edge AI Simulation', description: 'Run high-fidelity AI simulations directly on edge devices.', icon: FeatureIcons.Chip },
-    { title: 'Adaptive Quantization', description: 'Automatically optimize models for target hardware.', icon: FeatureIcons.Plug },
-    { title: 'Cross-Hardware Deploy', description: 'Deploy seamlessly across IoT devices.', icon: FeatureIcons.Devices },
-    { title: 'Real-Time Analytics', description: 'Monitor performance and detect anomalies in real-time.', icon: FeatureIcons.Graph }
-  ];
-
-  const stats = [
-    { value: '10x', label: 'Faster Deployment', icon: StatsIcons.Timer },
-    { value: '90%', label: 'Cost Reduction', icon: StatsIcons.Dollar },
-    { value: '50K+', label: 'Devices Powered', icon: StatsIcons.Device },
-    { value: '99.9%', label: 'Uptime SLA', icon: StatsIcons.Shield }
-  ];
-
-  const useCases = [
-    { title: 'Smart Manufacturing', description: 'Real-time quality control and predictive maintenance.', image: 'https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=400&h=300', industries: ['Automotive', 'Electronics', 'Pharmaceuticals'] },
-    { title: 'Healthcare Devices', description: 'Privacy-first patient monitoring at the edge.', image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=400&h=300', industries: ['Wearables', 'Imaging', 'Emergency Care'] },
-    { title: 'Smart Cities', description: 'Traffic optimization and public safety systems.', image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=400&h=300', industries: ['Transportation', 'Infrastructure', 'Security'] }
-  ];
-
-  const testimonials = [
-    { quote: "Grysics reduced our deployment time from weeks to hours.", author: "Dr. Sarah Chen", role: "Head of ML Engineering", company: "RoboTech Industries", image: 'https://randomuser.me/api/portraits/women/44.jpg' },
-    { quote: "We're running complex vision models on $35 hardware.", author: "Marcus Rodriguez", role: "CTO", company: "EdgeVision AI", image: 'https://randomuser.me/api/portraits/men/36.jpg' }
-  ];
-
-  const partners = [
-    '/hardware-logos/NVIDIA-logo-BL_thmb.jpg',
-    '/hardware-logos/arduino-logo.png',
-    '/hardware-logos/raspberrypi.png',
-    '/hardware-logos/ESP32.png'
-  ];
-
   return (
-    <main className="w-full min-h-screen bg-white text-black font-sans overflow-hidden">
+    <canvas
+      ref={canvasRef}
+      className="w-full h-full"
+      style={{ display: 'block' }}
+    />
+  );
+}
+
+export default function GrysicsPage() {
+  return (
+    <div className="min-h-screen bg-white text-neutral-900 relative">
+      <div className="grain" />
       <Header />
 
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-6 pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 -z-10">
-          <Image src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&h=1080" alt="" fill className="object-cover opacity-10" aria-hidden="true" />
-        </div>
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-          <motion.div style={{ opacity, scale }} className="flex flex-col gap-8">
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-black rounded-full text-sm font-semibold w-fit border border-gray-200">
-              Next-Generation Edge AI Platform
-            </motion.div>
-
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
-              Deploy AI<br />Anywhere, Instantly
-            </motion.h1>
-
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }} className="text-xl text-gray-700 leading-relaxed max-w-xl">
-              Run production-grade AI models on any edge device. Grysics makes edge AI deployment 10x faster with zero compromise on accuracy or performance.
-            </motion.p>
-
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} className="flex flex-wrap gap-4">
-              <button className="group px-8 py-4 bg-black text-white rounded-lg font-semibold hover:bg-gray-800 transition-all flex items-center gap-2">
-                <Image src={HeroIcons.Rocket} width={20} height={20} alt="Rocket" /> Start Free Trial
-              </button>
-              <button className="px-8 py-4 bg-white text-black border-2 border-gray-200 rounded-lg font-semibold hover:border-black transition-all flex items-center gap-2">
-                <Image src={HeroIcons.Play} width={20} height={20} alt="Play" /> Watch Demo
-              </button>
-            </motion.div>
-          </motion.div>
-
-          {/* Hero Dashboard */}
-          <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.2 }} className="relative flex items-center justify-center gap-8">
-            <div className="relative w-full max-w-lg h-[300px] sm:h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
-              <Image src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&h=400" alt="Grysics Dashboard" fill className="object-cover" priority />
+      <section className="pt-32 sm:pt-44 pb-16 sm:pb-24 px-4 sm:px-6 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-neutral-100 rounded-full blur-[120px] opacity-50 -translate-y-1/3 translate-x-1/4" />
+        <div className="max-w-6xl mx-auto relative">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="flex items-center gap-2 mb-8">
+                <span className="accent-dot" />
+                <span className="text-sm font-medium text-neutral-400 uppercase tracking-widest">Grysics</span>
+              </motion.div>
+              <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }} className="font-serif text-5xl sm:text-6xl lg:text-7xl text-neutral-900 tracking-tight leading-[1.05] mb-8">
+                Verification
+                <br />
+                <em className="text-neutral-400">engine for AI</em>
+              </motion.h1>
+              <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-xl text-neutral-500 leading-relaxed max-w-xl font-light mb-10">
+                Test AI models against real hardware profiles before deployment.
+                Catch failures before they reach production.
+              </motion.p>
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} className="flex flex-wrap gap-4">
+                <Link href="/developers" className="inline-flex items-center gap-2 px-8 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-black transition-all text-sm tracking-wide">
+                  Get Started <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link href="/research" className="inline-flex items-center gap-2 px-8 py-3.5 text-neutral-900 border border-neutral-200 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide">
+                  Read the Paper
+                </Link>
+              </motion.div>
             </div>
-          </motion.div>
-        </div>
-      </section>
 
-      {/* Stats */}
-      <section className="max-w-7xl mx-auto px-6 py-24 border-y border-gray-200 bg-gray-50">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12">
-          {stats.map((stat, idx) => (
-            <motion.div key={idx} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: idx * 0.1 }} className="text-center flex flex-col items-center gap-2">
-              <Image src={stat.icon} width={50} height={50} alt={stat.label} />
-              <div className="text-3xl sm:text-5xl lg:text-6xl font-bold mb-2">{stat.value}</div>
-              <div className="text-gray-600 text-sm sm:text-lg">{stat.label}</div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.3 }}
+              className="relative aspect-square max-w-[480px] mx-auto w-full"
+            >
+              <LiveDiagram />
             </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* Features */}
-      <section id="features" className="max-w-7xl mx-auto px-6 py-24">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-20">
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">Built for the Edge</h2>
-          <p className="text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed">Everything you need to deploy, monitor, and scale AI at the edge</p>
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 gap-8">
-          {features.map((feature, idx) => (
-            <motion.div key={idx} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: idx * 0.1 }} className="group relative bg-white rounded-2xl p-10 border border-gray-200 hover:shadow-xl transition-all flex flex-col items-center text-center">
-              <Image src={feature.icon} width={64} height={64} alt={feature.title} />
-              <h3 className="text-2xl font-bold mb-4 mt-4">{feature.title}</h3>
-              <p className="text-gray-700 leading-relaxed text-lg">{feature.description}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* Use Cases */}
-      <section id="usecases" className="max-w-7xl mx-auto px-6 py-24">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-20">
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">Proven Across Industries</h2>
-          <p className="text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed">From factories to hospitals, Grysics powers critical edge AI applications</p>
-        </motion.div>
-        <div className="grid lg:grid-cols-3 gap-8">
-          {useCases.map((useCase, idx) => (
-            <motion.div key={idx} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: idx * 0.1 }} className="bg-white rounded-2xl overflow-hidden border border-gray-200 hover:shadow-xl transition-all">
-              <div className="relative w-full h-64"><Image src={useCase.image} alt={useCase.title} fill className="object-cover" /></div>
-              <div className="p-8">
-                <h3 className="text-2xl font-bold mb-4">{useCase.title}</h3>
-                <p className="text-gray-700 mb-6 leading-relaxed">{useCase.description}</p>
-                <div className="flex flex-wrap gap-2">{useCase.industries.map((ind, i) => <span key={i} className="px-3 py-1.5 bg-gray-100 text-black rounded-lg text-sm font-medium border border-gray-200">{ind}</span>)}</div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section id="testimonials" className="max-w-7xl px-6 py-16 sm:py-24 bg-gray-50 rounded-3xl mx-4 sm:mx-6 lg:mx-auto">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-20">
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">Trusted by Engineers</h2>
-        </motion.div>
-        <div className="grid md:grid-cols-2 gap-8">
-          {testimonials.map((t, idx) => (
-            <motion.div key={idx} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: idx * 0.1 }} className="bg-white rounded-2xl p-10 border border-gray-200 shadow-lg">
-              <p className="text-xl text-gray-800 mb-8 leading-relaxed font-medium">"{t.quote}"</p>
-              <div className="flex items-center gap-4">
-                <div className="relative w-14 h-14 rounded-full overflow-hidden bg-gray-200"><Image src={t.image} alt={t.author} fill className="object-cover" /></div>
-                <div><div className="font-bold text-lg">{t.author}</div><div className="text-gray-600">{t.role}, {t.company}</div></div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="max-w-7xl mx-auto px-6 py-24">
-        <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="relative bg-black text-white rounded-3xl p-8 sm:p-12 lg:p-20 text-center">
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">Ready to Transform Your Edge AI?</h2>
-          <p className="text-lg sm:text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">Join thousands of developers deploying AI at the edge with Grysics</p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <button className="px-10 py-4 bg-white text-black rounded-lg font-semibold hover:bg-gray-100 transition-all text-lg">Start Free Trial</button>
-            <button className="px-10 py-4 bg-transparent text-white border-2 border-white rounded-lg font-semibold hover:bg-white hover:text-black transition-all text-lg">Schedule Demo</button>
           </div>
-        </motion.div>
+        </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-gray-200 py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12 mb-12">
-            <div>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="relative w-8 h-8"><Image src="/Logo/Olyxee_Logo.png" alt="Grysics" fill className="object-contain" /></div>
-                <span className="text-xl font-bold">Grysics</span>
-              </div>
-              <p className="text-gray-600 text-sm leading-relaxed">Next-generation edge AI deployment platform</p>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">Product</h4>
-              <ul className="space-y-2 text-gray-600">
-                <li><a href="#" className="hover:text-black transition-colors">Features</a></li>
-                <li><a href="#" className="hover:text-black transition-colors">Pricing</a></li>
-                <li><a href="#" className="hover:text-black transition-colors">Use Cases</a></li>
-                <li><a href="#" className="hover:text-black transition-colors">Documentation</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">Company</h4>
-              <ul className="space-y-2 text-gray-600">
-                <li><a href="#" className="hover:text-black transition-colors">About</a></li>
-                <li><a href="#" className="hover:text-black transition-colors">Blog</a></li>
-                <li><a href="#" className="hover:text-black transition-colors">Careers</a></li>
-                <li><a href="#" className="hover:text-black transition-colors">Contact</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">Legal</h4>
-              <ul className="space-y-2 text-gray-600">
-                <li><a href="#" className="hover:text-black transition-colors">Privacy</a></li>
-                <li><a href="#" className="hover:text-black transition-colors">Terms</a></li>
-                <li><a href="#" className="hover:text-black transition-colors">Security</a></li>
-              </ul>
-            </div>
+      <section className="py-28 sm:py-36 bg-neutral-950 text-white relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-neutral-800 rounded-full blur-[150px] opacity-30 -translate-y-1/2 -translate-x-1/4" />
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 relative">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="mb-20">
+            <span className="block w-12 h-0.5 bg-white/30 mb-6" />
+            <h2 className="font-serif text-4xl sm:text-5xl tracking-tight">
+              What Grysics
+              <br />
+              <em className="text-neutral-500">does</em>
+            </h2>
+          </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 rounded-2xl overflow-hidden">
+            {[
+              { icon: Shield, title: "Pre-Deploy Verification", description: "Automated testing against target hardware configurations. Models are proven correct before they ship." },
+              { icon: Cpu, title: "Adaptive Quantization", description: "Automatic model compression tuned to hardware constraints while maintaining accuracy guarantees." },
+              { icon: GitBranch, title: "Multi-Framework Import", description: "Import from PyTorch, TensorFlow, ONNX. Grysics analyzes architecture and dependencies automatically." },
+              { icon: BarChart3, title: "Performance Profiling", description: "Detailed latency, memory, and power analysis across every hardware target in your fleet." },
+              { icon: Layers, title: "Hardware Abstraction", description: "Write verification once, run it against any supported edge device — from Jetson to Raspberry Pi." },
+              { icon: Zap, title: "CI/CD Integration", description: "Plug into your existing pipeline. Block deployments that fail verification. Automate everything." },
+            ].map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <motion.div key={item.title} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={idx} variants={fadeUp} className="bg-neutral-950 p-10 hover:bg-white/[0.03] transition-colors">
+                  <Icon className="w-6 h-6 text-neutral-500 mb-5" />
+                  <h3 className="text-lg font-semibold mb-3">{item.title}</h3>
+                  <p className="text-sm text-neutral-500 leading-relaxed">{item.description}</p>
+                </motion.div>
+              );
+            })}
           </div>
+        </div>
+      </section>
 
-          <div className="flex flex-wrap justify-center gap-8 py-8 border-t border-gray-200">
-            {partners.map((p, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.1 }} className="relative w-32 h-12">
-                <Image src={p} alt="Partner logo" fill className="object-contain" />
+      <section className="py-28 sm:py-36 border-t border-neutral-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="mb-16">
+            <span className="accent-line" />
+            <h2 className="font-serif text-4xl sm:text-5xl tracking-tight text-neutral-900">
+              How it <em className="text-neutral-400">works</em>
+            </h2>
+          </motion.div>
+          <div className="divide-y divide-neutral-200 max-w-3xl">
+            {[
+              { step: "01", title: "Import your model", description: "Load from any framework. Grysics reads the computational graph and maps dependencies." },
+              { step: "02", title: "Define hardware targets", description: "Select from supported devices or define custom hardware profiles with resource constraints." },
+              { step: "03", title: "Run verification", description: "Grysics tests accuracy, latency, memory usage, and edge cases across every target." },
+              { step: "04", title: "Review results", description: "Get a detailed report with pass/fail status, performance metrics, and optimization suggestions." },
+              { step: "05", title: "Deploy with confidence", description: "Ship only verified models. Grysics guarantees they'll work on the target hardware." },
+            ].map((item, idx) => (
+              <motion.div key={item.step} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={idx} variants={fadeUp} className="py-8 grid grid-cols-[auto_1fr] gap-6 items-start">
+                <span className="text-xs font-mono text-neutral-400 mt-1">{item.step}</span>
+                <div>
+                  <h3 className="text-lg font-semibold text-neutral-900 mb-1">{item.title}</h3>
+                  <p className="text-neutral-500 leading-relaxed">{item.description}</p>
+                </div>
               </motion.div>
             ))}
           </div>
-
-          <div className="pt-8 border-t border-gray-200 text-center text-gray-600">© 2025 Grysics. All rights reserved.</div>
         </div>
-      </footer>
-    </main>
+      </section>
+
+      <section className="py-28 sm:py-36 bg-neutral-50 border-y border-neutral-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="mb-16">
+            <span className="accent-line" />
+            <h2 className="font-serif text-4xl sm:text-5xl tracking-tight text-neutral-900">
+              Built for <em className="text-neutral-400">real workloads</em>
+            </h2>
+          </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-neutral-200 rounded-2xl overflow-hidden border border-neutral-200">
+            {[
+              { value: "10x", label: "Faster than manual testing", description: "Automated verification runs in minutes, not weeks." },
+              { value: "99.9%", label: "Deployment reliability", description: "Models that pass Grysics verification work in production." },
+              { value: "50+", label: "Hardware targets", description: "From NVIDIA Jetson to Raspberry Pi to custom silicon." },
+            ].map((stat, idx) => (
+              <motion.div key={stat.label} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={idx} variants={fadeUp} className="bg-white p-10 sm:p-12">
+                <span className="font-serif text-5xl sm:text-6xl italic text-neutral-900">{stat.value}</span>
+                <h3 className="text-sm font-semibold text-neutral-900 mt-4 mb-2">{stat.label}</h3>
+                <p className="text-sm text-neutral-500 leading-relaxed">{stat.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-28 sm:py-36 bg-neutral-950 text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp}>
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight mb-6">
+              Stop shipping
+              <br />
+              <em className="text-neutral-500">untested models</em>
+            </h2>
+            <p className="text-neutral-400 text-lg max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+              Grysics catches deployment failures before they reach your devices.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/developers" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide">
+                Get Started <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link href="/contact" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-white border border-white/20 rounded-full font-medium hover:bg-white/10 transition-all text-sm tracking-wide">
+                Contact Sales
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+      <Footer />
+    </div>
   );
 }

@@ -4,34 +4,22 @@ import React, { useState, useEffect, useRef, useCallback, memo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { FaDiscord } from 'react-icons/fa';
 
 const menuItems = [
     { name: "About", href: "/about" },
-    { name: "Products", href: "#", hasDropdown: true },
+    { name: "Grysics", href: "/products/grysics" },
     { name: "Research", href: "/research" },
     { name: "Docs", href: "/docs" },
     { name: "Community", href: "/community" },
-];
-
-const productsDropdown = [
-    {
-        name: "Grysics",
-        href: "/products/grysics",
-        description: "AI verification engine for simulation, testing, and edge deployment.",
-        icon: "/Logo/Olyxee_Logo.png",
-    },
 ];
 
 const Header = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('up');
     const [scrolled, setScrolled] = useState(false);
-    const [productsOpen, setProductsOpen] = useState(false);
-    const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
     const lastScrollY = useRef(0);
-    const dropdownTimerRef = useRef<NodeJS.Timeout | null>(null);
     const firstFocusableRef = useRef<HTMLButtonElement | null>(null);
 
     useEffect(() => {
@@ -44,15 +32,6 @@ const Header = () => {
         };
         window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
-    const handleMouseEnterDropdown = useCallback(() => {
-        if (dropdownTimerRef.current) clearTimeout(dropdownTimerRef.current);
-        setProductsOpen(true);
-    }, []);
-
-    const handleMouseLeaveDropdown = useCallback(() => {
-        dropdownTimerRef.current = setTimeout(() => setProductsOpen(false), 150);
     }, []);
 
     useEffect(() => {
@@ -102,53 +81,15 @@ const Header = () => {
                     <nav className="hidden lg:flex h-full ml-6" aria-label="Main navigation">
                         <ul className="flex h-full items-center gap-6">
                             {menuItems.map(item => (
-                                <li
-                                    key={item.name}
-                                    className="relative"
-                                    onMouseEnter={() => item.hasDropdown && handleMouseEnterDropdown()}
-                                    onMouseLeave={() => item.hasDropdown && handleMouseLeaveDropdown()}
-                                >
+                                <li key={item.name} className="relative">
                                     <Link
                                         href={item.href}
                                         prefetch
                                         className="text-black text-sm font-normal transition-all hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-900 rounded px-2 py-1 relative group"
-                                        aria-haspopup={item.hasDropdown ? "true" : undefined}
-                                        aria-expanded={item.hasDropdown ? productsOpen : undefined}
                                     >
                                         {item.name}
                                         <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-black transition-all group-hover:w-full"></span>
                                     </Link>
-
-                                    {item.hasDropdown && (
-                                        <AnimatePresence>
-                                            {productsOpen && (
-                                                <motion.div
-                                                    initial={{ opacity: 0, y: -10, scale: 0.95 }}
-                                                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                                                    exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                                                    transition={{ duration: 0.2, ease: 'easeOut' }}
-                                                    className="absolute left-0 top-full mt-2 bg-white shadow-xl rounded-xl p-6 z-50 flex flex-col gap-2 border border-gray-200 min-w-[320px]"
-                                                    role="menu"
-                                                >
-                                                    {productsDropdown.map(product => (
-                                                        <Link
-                                                            key={product.name}
-                                                            href={product.href}
-                                                            prefetch
-                                                            className="flex items-start gap-4 p-4 rounded-lg hover:bg-gray-50 transition-all focus:outline-none focus:ring-2 focus:ring-gray-900 group"
-                                                            role="menuitem"
-                                                        >
-                                                            <Image src={product.icon} alt="" width={28} height={28} className="mt-0.5 flex-shrink-0" />
-                                                            <div>
-                                                                <h3 className="text-sm font-semibold text-black group-hover:text-gray-800 transition-colors">{product.name}</h3>
-                                                                <p className="text-xs text-gray-500 mt-0.5">{product.description}</p>
-                                                            </div>
-                                                        </Link>
-                                                    ))}
-                                                </motion.div>
-                                            )}
-                                        </AnimatePresence>
-                                    )}
                                 </li>
                             ))}
                         </ul>
@@ -205,43 +146,9 @@ const Header = () => {
                                 <ul className="space-y-1">
                                     {menuItems.map((item, i) => (
                                         <motion.li key={item.name} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.04 }}>
-                                            {item.hasDropdown ? (
-                                                <>
-                                                    <button
-                                                        onClick={() => setMobileProductsOpen(!mobileProductsOpen)}
-                                                        className="flex items-center justify-between w-full py-3 px-4 hover:bg-gray-100 active:bg-gray-200 rounded-lg transition-all text-black font-medium focus:outline-none focus:ring-2 focus:ring-gray-900"
-                                                    >
-                                                        {item.name}
-                                                        <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform ${mobileProductsOpen ? 'rotate-180' : ''}`} />
-                                                    </button>
-                                                    <AnimatePresence>
-                                                        {mobileProductsOpen && (
-                                                            <motion.div
-                                                                initial={{ height: 0, opacity: 0 }}
-                                                                animate={{ height: 'auto', opacity: 1 }}
-                                                                exit={{ height: 0, opacity: 0 }}
-                                                                className="overflow-hidden pl-4"
-                                                            >
-                                                                {productsDropdown.map(product => (
-                                                                    <Link
-                                                                        key={product.name}
-                                                                        href={product.href}
-                                                                        className="flex items-center gap-3 py-2.5 px-4 hover:bg-gray-100 rounded-lg transition-all text-gray-700 text-sm"
-                                                                        onClick={() => setMobileMenuOpen(false)}
-                                                                    >
-                                                                        <Image src={product.icon} alt="" width={20} height={20} />
-                                                                        {product.name}
-                                                                    </Link>
-                                                                ))}
-                                                            </motion.div>
-                                                        )}
-                                                    </AnimatePresence>
-                                                </>
-                                            ) : (
-                                                <Link href={item.href} prefetch className="flex items-center justify-between py-3 px-4 hover:bg-gray-100 active:bg-gray-200 rounded-lg transition-all text-black font-medium focus:outline-none focus:ring-2 focus:ring-gray-900" onClick={() => setMobileMenuOpen(false)}>
-                                                    {item.name} <span className="text-gray-400">→</span>
-                                                </Link>
-                                            )}
+                                            <Link href={item.href} prefetch className="flex items-center justify-between py-3 px-4 hover:bg-gray-100 active:bg-gray-200 rounded-lg transition-all text-black font-medium focus:outline-none focus:ring-2 focus:ring-gray-900" onClick={() => setMobileMenuOpen(false)}>
+                                                {item.name} <span className="text-gray-400">→</span>
+                                            </Link>
                                         </motion.li>
                                     ))}
                                 </ul>
