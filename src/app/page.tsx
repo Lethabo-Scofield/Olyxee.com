@@ -133,27 +133,53 @@ function HeroSection() {
       </div>
 
       <motion.div
+        className="relative z-10 w-full max-w-4xl rounded-3xl overflow-hidden mt-16"
+        style={{ aspectRatio: "16/9" }}
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: [0, -10, 0] }}
+        transition={{ opacity: { duration: 0.8, delay: 0.5 }, y: { repeat: Infinity, duration: 12, ease: "easeInOut" } }}
+      >
+        <video
+          src="/videos/demo.mp4"
+          className="w-full h-full object-cover rounded-2xl"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+        />
+      </motion.div>
+
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0.8 }}
-        className="relative z-10 mt-20 flex flex-wrap justify-center items-center gap-8 sm:gap-12"
+        className="relative z-10 mt-16 flex flex-wrap justify-center items-end gap-6 sm:gap-10"
       >
         {[
-          { src: "/hardware-logos/NVIDIA-logo-BL_thmb.jpg", alt: "NVIDIA" },
-          { src: "/hardware-logos/arduino-logo.png", alt: "Arduino" },
           { src: "/hardware-logos/raspberrypi.png", alt: "Raspberry Pi" },
+          { src: "/hardware-logos/NVIDIA-logo-BL_thmb.jpg", alt: "NVIDIA Jetson" },
+          { src: "/hardware-logos/arduino-logo.png", alt: "Arduino" },
           { src: "/hardware-logos/intel.jpg", alt: "Intel" },
           { src: "/hardware-logos/ESP32.png", alt: "ESP32" },
         ].map((logo, i) => (
-          <div key={i} className="w-16 sm:w-20 h-12 sm:h-14 flex items-center justify-center">
-            <Image
-              src={logo.src}
-              alt={logo.alt}
-              width={80}
-              height={56}
-              unoptimized
-              className="object-contain w-auto h-auto filter grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-            />
+          <div
+            key={i}
+            className="flex flex-col items-center w-16 sm:w-20 md:w-24 transition-transform duration-300 hover:scale-105"
+          >
+            <div className="w-full h-16 sm:h-20 md:h-24 flex items-center justify-center">
+              <Image
+                src={logo.src}
+                alt={logo.alt}
+                width={96}
+                height={96}
+                unoptimized
+                className="object-contain w-auto h-auto filter grayscale hover:grayscale-0 transition-all duration-300 bg-transparent"
+              />
+            </div>
+            <span className="mt-2 text-xs sm:text-sm text-gray-500 font-medium text-center">
+              {logo.alt}
+            </span>
           </div>
         ))}
       </motion.div>
