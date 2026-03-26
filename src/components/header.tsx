@@ -57,7 +57,7 @@ const Header = () => {
         <>
             <motion.header
                 className="fixed top-0 left-0 right-0 z-[1000] flex justify-center px-3 sm:px-5 pt-3"
-                initial={{ y: -80, opacity: 0 }}
+                initial={{ y: 0, opacity: 1 }}
                 animate={{
                     y: visible ? 0 : -100,
                     opacity: visible ? 1 : 0,
@@ -66,7 +66,6 @@ const Header = () => {
             >
                 <motion.div
                     className="flex items-center w-full h-14 relative"
-                    initial={{ maxWidth: 1100, borderRadius: 50 }}
                     animate={{
                         maxWidth: scrolled ? 820 : 1100,
                         background: scrolled
@@ -78,6 +77,7 @@ const Header = () => {
                     }}
                     transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                     style={{
+                        maxWidth: 1100,
                         backdropFilter: 'blur(24px) saturate(180%)',
                         WebkitBackdropFilter: 'blur(24px) saturate(180%)',
                         border: '1px solid rgba(255,255,255,0.45)',
