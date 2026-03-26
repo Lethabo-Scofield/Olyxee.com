@@ -212,9 +212,9 @@ const Lab: FC = () => {
               <Link href="/careers" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide">
                 View Open Roles <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link href="/research" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-white border border-white/20 rounded-full font-medium hover:bg-white/10 transition-all text-sm tracking-wide">
-                Read Our Papers
-              </Link>
+              <a href="https://www.linkedin.com/company/olyxeelab/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-white border border-white/20 rounded-full font-medium hover:bg-white/10 transition-all text-sm tracking-wide">
+                Follow on LinkedIn <ArrowRight className="w-4 h-4" />
+              </a>
             </div>
           </motion.div>
         </div>
