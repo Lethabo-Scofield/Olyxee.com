@@ -18,7 +18,7 @@ const fadeUp = {
 const Technology: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO title="Technology" description="The WAVE architecture powering Olyxee's platform. Learn about our verification pipeline, hardware abstraction, and deployment infrastructure." path="/technology" />
+      <SEO title="Technology" description="The architecture powering Olyxee's Grysics platform. Learn about our verification pipeline, hardware abstraction, and deployment infrastructure." path="/technology" />
       <div className="grain" />
       <Header />
 
@@ -35,7 +35,7 @@ const Technology: FC = () => {
             <em className="text-neutral-400">works</em>
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-xl text-neutral-500 leading-relaxed max-w-3xl font-light">
-            Built on WAVE — our core architecture for verified AI deployment. It handles the entire
+            Built on Grysics — our verification engine for AI deployment. It handles the entire
             lifecycle from model verification to production monitoring.
           </motion.p>
         </div>
@@ -47,10 +47,10 @@ const Technology: FC = () => {
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="mb-20">
             <span className="block w-12 h-0.5 bg-white/30 mb-6" />
             <h2 className="font-serif text-4xl sm:text-5xl tracking-tight mb-4">
-              WAVE <em className="text-neutral-500">Architecture</em>
+              Grysics <em className="text-neutral-500">Architecture</em>
             </h2>
             <p className="text-neutral-400 text-lg max-w-3xl font-light leading-relaxed">
-              Workload Adaptive Verification Engine — the infrastructure layer powering all Olyxee products.
+              The verification engine and infrastructure layer powering Olyxee's AI deployment platform.
             </p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5 rounded-2xl overflow-hidden">
@@ -82,10 +82,10 @@ const Technology: FC = () => {
           </motion.div>
           <div className="divide-y divide-neutral-200 max-w-3xl">
             {[
-              { step: "01", title: "Model Ingestion", description: "Import from any framework — PyTorch, TensorFlow, ONNX. WAVE automatically analyzes architecture and dependencies.", icon: GitBranch },
+              { step: "01", title: "Model Ingestion", description: "Import from any framework — PyTorch, TensorFlow, ONNX. Grysics automatically analyzes architecture and dependencies.", icon: GitBranch },
               { step: "02", title: "Verification", description: "Comprehensive tests against target hardware profiles. Identify accuracy degradation, latency bottlenecks, and edge cases.", icon: Shield },
               { step: "03", title: "Optimization", description: "Automatic quantization and runtime optimization tuned for your target hardware.", icon: Cpu },
-              { step: "04", title: "Deployment", description: "One-click deployment to any supported device. WAVE handles containerization and configuration.", icon: Zap },
+              { step: "04", title: "Deployment", description: "One-click deployment to any supported device. Grysics handles containerization and configuration.", icon: Zap },
               { step: "05", title: "Monitoring", description: "Real-time observability with drift detection, anomaly alerts, and automated rollback.", icon: BarChart3 },
             ].map((item, idx) => {
               const Icon = item.icon;
@@ -137,7 +137,7 @@ const Technology: FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp}>
             <h2 className="font-serif text-4xl sm:text-5xl tracking-tight text-neutral-900 mb-6">
-              Start building <em className="text-neutral-400">with WAVE</em>
+              Start building <em className="text-neutral-400">with Grysics</em>
             </h2>
             <Link href="/developers" className="inline-flex items-center gap-2 px-8 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-black transition-all text-sm tracking-wide">
               Get Started <ArrowRight className="w-4 h-4" />

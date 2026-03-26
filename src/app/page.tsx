@@ -251,20 +251,6 @@ function ProductsSection() {
       href: "/products/grysics",
       status: "Available",
     },
-    {
-      name: "Neural Reality Network",
-      tagline: "Interpretable AI",
-      description: "Next-generation architecture for multi-path feature analysis, delivering real-time insights into AI decision-making.",
-      href: "/products/nrn",
-      status: "Research Preview",
-    },
-    {
-      name: "WAVE",
-      tagline: "Core Platform",
-      description: "The infrastructure layer that powers all Olyxee products — handling deployment pipelines, hardware abstraction, and runtime management.",
-      href: "/docs",
-      status: "In Development",
-    },
   ];
 
   return (
@@ -331,10 +317,10 @@ function ResearchSection() {
       description: "A framework for pre-deployment verification of AI models targeting heterogeneous edge hardware.",
     },
     {
-      title: "Multi-Path Feature Analysis in Neural Reality Networks",
+      title: "Interpretable Feature Attribution in Verification Pipelines",
       category: "Interpretability",
       date: "2025",
-      description: "Introducing interpretable pathways that trace feature contributions at multiple levels of neural computation.",
+      description: "Tracing feature contributions within the Grysics verification pipeline for actionable model behavior insights.",
     },
     {
       title: "Adaptive Quantization for Cross-Hardware Deployment",

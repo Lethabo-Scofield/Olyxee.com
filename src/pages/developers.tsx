@@ -72,7 +72,7 @@ const Developers: FC = () => {
             {[
               { icon: Code2, title: "SDK", description: "Python and C++ libraries for model verification, optimization, and deployment.", status: "Available" },
               { icon: Terminal, title: "CLI", description: "Command-line tools for managing deployments, running tests, and monitoring.", status: "Available" },
-              { icon: Package, title: "API", description: "RESTful API for programmatic access to the WAVE platform.", status: "Beta" },
+              { icon: Package, title: "API", description: "RESTful API for programmatic access to the Grysics platform.", status: "Beta" },
               { icon: BookOpen, title: "Docs", description: "Comprehensive guides, tutorials, and API reference.", status: "Available" },
             ].map((tool, idx) => {
               const Icon = tool.icon;
@@ -102,7 +102,7 @@ const Developers: FC = () => {
               { step: "01", title: "Install the SDK", description: "Install the Olyxee Python SDK using pip. C++ support is also available." },
               { step: "02", title: "Import your model", description: "Load your trained model from PyTorch, TensorFlow, ONNX, or any supported framework." },
               { step: "03", title: "Run verification", description: "Use the verification pipeline to test your model against target hardware profiles." },
-              { step: "04", title: "Deploy", description: "Deploy to your target devices with a single command. WAVE handles the rest." },
+              { step: "04", title: "Deploy", description: "Deploy to your target devices with a single command. Grysics handles the rest." },
             ].map((item, idx) => (
               <motion.div key={item.step} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={idx} variants={fadeUp} className="py-8 grid grid-cols-[auto_1fr] gap-6 items-start">
                 <span className="text-xs font-mono text-neutral-400 mt-1">{item.step}</span>

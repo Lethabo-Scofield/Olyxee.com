@@ -56,7 +56,7 @@ const Overview: FC<OverviewProps> = ({ onNavigate }) => {
         <div className="space-y-3">
           {[
             { title: "Model Verification", description: "Automatically test model accuracy, latency, and memory usage against target hardware profiles before deployment." },
-            { title: "Hardware Abstraction", description: "Write once, deploy anywhere. WAVE abstracts device-specific complexity into a unified interface." },
+            { title: "Hardware Abstraction", description: "Write once, deploy anywhere. Grysics abstracts device-specific complexity into a unified interface." },
             { title: "Automatic Optimization", description: "Quantization, pruning, and runtime optimization tuned for your target hardware." },
             { title: "Production Monitoring", description: "Real-time observability with drift detection, anomaly alerts, and automated rollback." },
           ].map((item) => (

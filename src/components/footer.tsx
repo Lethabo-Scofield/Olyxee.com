@@ -10,8 +10,6 @@ const footerData = {
       title: "Products",
       links: [
         { name: "Grysics", href: "/products/grysics" },
-        { name: "Neural Reality Network", href: "/products/nrn" },
-        { name: "WAVE Platform", href: "/docs" },
       ],
     },
     {

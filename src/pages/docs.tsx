@@ -102,22 +102,8 @@ function Overview({ onNavigate }: { onNavigate?: (id: string) => void }) {
         <p>The platform handles model ingestion, automated verification against target hardware profiles, optimization, deployment, and continuous monitoring — giving teams confidence that their models will behave as expected in the real world.</p>
       </DocSection>
 
-      <DocSection title="Core products">
-        <div className="space-y-4">
-          {[
-            { title: "Grysics", desc: "Verification engine for AI. Tests model accuracy, latency, and memory against target hardware before deployment. Catches failures before they reach production." },
-            { title: "WAVE Platform", desc: "Workload Adaptive Verification Engine — the infrastructure layer powering model optimization, hardware abstraction, and runtime monitoring." },
-            { title: "Olyxee SDK", desc: "Python SDK and CLI tools for integrating verification and deployment into your existing ML pipeline." },
-          ].map(item => (
-            <div key={item.title} className="flex gap-4 items-start">
-              <div className="w-1.5 h-1.5 rounded-full bg-neutral-300 mt-2 flex-shrink-0" />
-              <div>
-                <span className="font-medium text-neutral-900">{item.title}</span>
-                <span className="text-neutral-500"> — {item.desc}</span>
-              </div>
-            </div>
-          ))}
-        </div>
+      <DocSection title="Grysics">
+        <p><strong>Grysics</strong> is Olyxee's verification engine for AI. It tests model accuracy, latency, and memory against target hardware before deployment — catching failures before they reach production. It includes a Python SDK and CLI tools for integrating verification and deployment into your existing ML pipeline.</p>
       </DocSection>
 
       <DocSection title="Supported frameworks">

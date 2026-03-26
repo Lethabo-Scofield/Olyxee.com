@@ -80,7 +80,7 @@ const Concepts: FC = () => {
         <section>
           <h2 className="text-xl font-semibold text-gray-900 mb-4 pb-2 border-b border-gray-100">Hardware abstraction</h2>
           <p>
-            WAVE provides a unified interface across all supported hardware targets. You write your deployment configuration once, and the platform handles device-specific details — driver compatibility, memory management, runtime selection, and performance tuning.
+            Grysics provides a unified interface across all supported hardware targets. You write your deployment configuration once, and the platform handles device-specific details — driver compatibility, memory management, runtime selection, and performance tuning.
           </p>
           <p className="mt-3">
             This means the same model and configuration can target an NVIDIA Jetson, a Raspberry Pi, or an ESP32 microcontroller without changes to your code.
