@@ -13,8 +13,6 @@ const menuItems = [
     { name: "Research", href: "/research" },
     { name: "Technology", href: "/technology" },
     { name: "Developers", href: "/developers" },
-    { name: "Safety", href: "/safety" },
-    { name: "Careers", href: "/careers" },
 ];
 
 const productsDropdown = [
