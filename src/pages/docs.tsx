@@ -71,24 +71,26 @@ function Overview({ onNavigate }: { onNavigate?: (id: string) => void }) {
   return (
     <DocPage
       title="Olyxee Documentation"
-      subtitle="Explore the platform, learn about Grysics, and start building with our API."
+      subtitle="Everything you need to verify, optimize, and deploy AI models with confidence."
     >
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-16">
         {[
-          { icon: Rocket, title: "Quickstart", desc: "Set up and verify your first model in under 5 minutes.", id: "quickstart" },
-          { icon: Shield, title: "Grysics", desc: "Learn about our verification engine for AI systems.", id: "grysics-overview" },
-          { icon: Code2, title: "API Reference", desc: "Integrate Olyxee into your pipeline with the REST API.", id: "api-reference" },
-          { icon: Cpu, title: "Edge Devices", desc: "Deploy verified models to Jetson, Raspberry Pi, and more.", id: "edge-devices" },
+          { icon: Rocket, title: "Quickstart", desc: "Verify your first model in under five minutes.", id: "quickstart" },
+          { icon: Shield, title: "Grysics", desc: "The verification engine for AI systems.", id: "grysics-overview" },
+          { icon: Code2, title: "API Reference", desc: "Integrate Olyxee into your pipeline.", id: "api-reference" },
+          { icon: Cpu, title: "Edge Devices", desc: "Deploy to Jetson, Raspberry Pi, and more.", id: "edge-devices" },
         ].map(card => {
           const Icon = card.icon;
           return (
             <button
               key={card.id}
               onClick={() => onNavigate?.(card.id)}
-              className="bg-white border border-neutral-200 rounded-xl p-6 hover:border-blue-200 hover:shadow-sm transition-all cursor-pointer group text-left"
+              className="bg-white/60 border border-neutral-200/60 rounded-2xl p-6 hover:border-neutral-300 hover:bg-white transition-all cursor-pointer group text-left"
             >
-              <Icon className="w-5 h-5 text-neutral-400 group-hover:text-blue-500 mb-3 transition-colors" />
-              <h3 className="text-[15px] font-semibold text-neutral-900 mb-1">{card.title}</h3>
+              <div className="w-9 h-9 rounded-xl bg-neutral-100 border border-neutral-200/60 flex items-center justify-center mb-4 group-hover:bg-neutral-900 group-hover:border-neutral-900 transition-colors">
+                <Icon className="w-4 h-4 text-neutral-400 group-hover:text-white transition-colors" />
+              </div>
+              <h3 className="text-[15px] font-semibold text-neutral-900 mb-1.5">{card.title}</h3>
               <p className="text-sm text-neutral-500 leading-relaxed">{card.desc}</p>
             </button>
           );
@@ -101,17 +103,17 @@ function Overview({ onNavigate }: { onNavigate?: (id: string) => void }) {
       </DocSection>
 
       <DocSection title="Core products">
-        <div className="space-y-3">
+        <div className="space-y-4">
           {[
             { title: "Grysics", desc: "Verification engine for AI. Tests model accuracy, latency, and memory against target hardware before deployment. Catches failures before they reach production." },
             { title: "WAVE Platform", desc: "Workload Adaptive Verification Engine — the infrastructure layer powering model optimization, hardware abstraction, and runtime monitoring." },
             { title: "Olyxee SDK", desc: "Python SDK and CLI tools for integrating verification and deployment into your existing ML pipeline." },
           ].map(item => (
-            <div key={item.title} className="flex gap-3 items-start">
-              <span className="w-1 h-1 rounded-full bg-blue-500 mt-2.5 flex-shrink-0" />
+            <div key={item.title} className="flex gap-4 items-start">
+              <div className="w-1.5 h-1.5 rounded-full bg-neutral-300 mt-2 flex-shrink-0" />
               <div>
                 <span className="font-medium text-neutral-900">{item.title}</span>
-                <span className="text-neutral-600"> — {item.desc}</span>
+                <span className="text-neutral-500"> — {item.desc}</span>
               </div>
             </div>
           ))}
@@ -120,9 +122,9 @@ function Overview({ onNavigate }: { onNavigate?: (id: string) => void }) {
 
       <DocSection title="Supported frameworks">
         <p>Olyxee works with models from all major ML frameworks:</p>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-3">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4">
           {["PyTorch", "TensorFlow", "ONNX", "TFLite"].map(fw => (
-            <div key={fw} className="bg-neutral-50 border border-neutral-200 rounded-lg px-4 py-2.5 text-center text-sm font-medium text-neutral-700">{fw}</div>
+            <div key={fw} className="bg-white/60 border border-neutral-200/60 rounded-xl px-4 py-3 text-center text-sm font-medium text-neutral-700">{fw}</div>
           ))}
         </div>
       </DocSection>
@@ -135,7 +137,7 @@ function Quickstart() {
   return (
     <DocPage
       title="Quickstart"
-      subtitle="Get up and running with Olyxee in under 5 minutes."
+      subtitle="Get up and running with Olyxee in under five minutes."
     >
       <DocSection title="1. Install the SDK">
         <p>Install the Olyxee Python SDK:</p>
@@ -222,7 +224,7 @@ function GrysicsOverview() {
       </DocSection>
 
       <DocSection title="How it works">
-        <div className="space-y-3 mt-2">
+        <div className="space-y-4 mt-2">
           {[
             { step: "1", title: "Ingest", desc: "Load your trained model from any supported framework. Grysics analyzes the architecture, parameter count, and computational graph." },
             { step: "2", title: "Profile", desc: "Grysics creates a hardware-specific execution profile for your target device, mapping operations to available compute resources." },
@@ -230,12 +232,12 @@ function GrysicsOverview() {
             { step: "4", title: "Report", desc: "Receive a detailed verification report with pass/fail status, performance metrics, and optimization recommendations." },
           ].map(item => (
             <div key={item.step} className="flex gap-4 items-start">
-              <div className="w-7 h-7 rounded-lg bg-neutral-100 border border-neutral-200 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <span className="text-xs font-semibold text-neutral-500">{item.step}</span>
+              <div className="w-8 h-8 rounded-xl bg-neutral-900 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span className="text-xs font-semibold text-white">{item.step}</span>
               </div>
               <div>
                 <span className="font-medium text-neutral-900">{item.title}</span>
-                <p className="text-neutral-600 mt-0.5">{item.desc}</p>
+                <p className="text-neutral-500 mt-0.5">{item.desc}</p>
               </div>
             </div>
           ))}
@@ -271,11 +273,11 @@ function Verification() {
     >
       <DocSection title="Pre-deployment verification">
         <p>Every model goes through automated verification before it reaches a target device:</p>
-        <ul className="list-disc pl-6 mt-2 space-y-1.5 text-neutral-700">
-          <li><strong>Accuracy</strong> — outputs match expected results within configurable tolerance</li>
-          <li><strong>Latency</strong> — inference time meets target hardware constraints</li>
-          <li><strong>Memory</strong> — peak memory usage stays within device limits</li>
-          <li><strong>Stability</strong> — no crashes or numerical issues over extended runs</li>
+        <ul className="list-none pl-0 mt-3 space-y-2.5 text-neutral-600">
+          <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-neutral-300 mt-2 flex-shrink-0" /><span><strong className="text-neutral-900">Accuracy</strong> — outputs match expected results within configurable tolerance</span></li>
+          <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-neutral-300 mt-2 flex-shrink-0" /><span><strong className="text-neutral-900">Latency</strong> — inference time meets target hardware constraints</span></li>
+          <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-neutral-300 mt-2 flex-shrink-0" /><span><strong className="text-neutral-900">Memory</strong> — peak memory usage stays within device limits</span></li>
+          <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-neutral-300 mt-2 flex-shrink-0" /><span><strong className="text-neutral-900">Stability</strong> — no crashes or numerical issues over extended runs</span></li>
         </ul>
       </DocSection>
 
@@ -314,9 +316,9 @@ function Deployment() {
             { title: "Fleet Deploy", desc: "Deploy to multiple devices simultaneously using device groups. Includes staged rollout and automatic rollback." },
             { title: "Container Deploy", desc: "Package into an OCI-compatible container with all dependencies. Deploy to any container runtime." },
           ].map(item => (
-            <div key={item.title} className="bg-neutral-50 border border-neutral-200 rounded-xl p-5">
-              <h4 className="font-semibold text-neutral-900 mb-1 text-[15px]">{item.title}</h4>
-              <p className="text-sm text-neutral-600">{item.desc}</p>
+            <div key={item.title} className="bg-white/60 border border-neutral-200/60 rounded-2xl p-5">
+              <h4 className="font-semibold text-neutral-900 mb-1.5 text-[15px]">{item.title}</h4>
+              <p className="text-sm text-neutral-500 leading-relaxed">{item.desc}</p>
             </div>
           ))}
         </div>
@@ -666,9 +668,12 @@ function Changelog() {
         },
       ].map(release => (
         <DocSection key={release.version} title={`v${release.version} — ${release.date}`}>
-          <ul className="list-disc pl-5 space-y-1.5 text-neutral-700">
+          <ul className="list-none pl-0 space-y-2 text-neutral-600">
             {release.items.map((item, i) => (
-              <li key={i}>{item}</li>
+              <li key={i} className="flex gap-3 items-start">
+                <span className="w-1.5 h-1.5 rounded-full bg-neutral-300 mt-2 flex-shrink-0" />
+                {item}
+              </li>
             ))}
           </ul>
         </DocSection>
@@ -712,12 +717,12 @@ function RateLimits() {
 
 function DocPage({ title, subtitle, children }: { title: string; subtitle: string; children: React.ReactNode }) {
   return (
-    <div className="w-full max-w-3xl mx-auto px-6 sm:px-10 py-10 sm:py-14">
-      <div className="mb-10 pb-8 border-b border-neutral-100">
-        <h1 className="text-2xl sm:text-3xl font-semibold text-neutral-900 tracking-tight mb-2">{title}</h1>
-        <p className="text-neutral-500 text-base leading-relaxed">{subtitle}</p>
+    <div className="w-full max-w-3xl mx-auto px-6 sm:px-10 py-12 sm:py-16">
+      <div className="mb-12 pb-8 border-b border-neutral-200/40">
+        <h1 className="font-['Instrument_Serif'] text-3xl sm:text-4xl text-neutral-900 tracking-tight mb-3 italic">{title}</h1>
+        <p className="text-neutral-400 text-base leading-relaxed max-w-xl">{subtitle}</p>
       </div>
-      <div className="space-y-10 text-[15px] text-neutral-700 leading-relaxed">
+      <div className="space-y-12 text-[15px] text-neutral-600 leading-relaxed">
         {children}
       </div>
     </div>
@@ -727,7 +732,7 @@ function DocPage({ title, subtitle, children }: { title: string; subtitle: strin
 function DocSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section>
-      <h2 className="text-lg font-semibold text-neutral-900 mb-4 pb-2 border-b border-neutral-100">{title}</h2>
+      <h2 className="font-['Instrument_Serif'] text-xl text-neutral-900 mb-4 pb-2 border-b border-neutral-200/30 italic">{title}</h2>
       <div className="space-y-3">{children}</div>
     </section>
   );
@@ -742,14 +747,14 @@ function CodeBlock({ language, code }: { language: string; code: string }) {
   };
 
   return (
-    <div className="relative group rounded-xl overflow-hidden border border-neutral-800 bg-neutral-950 my-4">
-      <div className="flex items-center justify-between px-4 py-2 bg-neutral-900/80 border-b border-neutral-800">
-        <span className="text-[11px] text-neutral-500 font-mono uppercase tracking-wider">{language}</span>
+    <div className="relative group rounded-2xl overflow-hidden border border-neutral-200/60 bg-neutral-950 my-4">
+      <div className="flex items-center justify-between px-4 py-2.5 bg-neutral-900/60 border-b border-neutral-800/50">
+        <span className="text-[10px] text-neutral-500 font-mono uppercase tracking-[0.15em]">{language}</span>
         <button onClick={handleCopy} className="text-[11px] text-neutral-500 hover:text-white transition-colors px-2 py-0.5 rounded">
-          {copied ? "Copied!" : "Copy"}
+          {copied ? "Copied" : "Copy"}
         </button>
       </div>
-      <pre className="p-4 overflow-x-auto text-sm leading-relaxed">
+      <pre className="p-5 overflow-x-auto text-[13px] leading-relaxed">
         <code className="text-neutral-300 font-mono whitespace-pre">{code}</code>
       </pre>
     </div>
@@ -758,39 +763,39 @@ function CodeBlock({ language, code }: { language: string; code: string }) {
 
 function DocCallout({ type, children }: { type: "info" | "warning" | "tip"; children: React.ReactNode }) {
   const styles = {
-    info: "bg-blue-50/60 border-blue-200/60 text-blue-800",
-    warning: "bg-amber-50/60 border-amber-200/60 text-amber-800",
-    tip: "bg-emerald-50/60 border-emerald-200/60 text-emerald-800",
+    info: "bg-neutral-50 border-neutral-200/60 text-neutral-600",
+    warning: "bg-amber-50/40 border-amber-200/40 text-amber-800",
+    tip: "bg-emerald-50/40 border-emerald-200/40 text-emerald-800",
   };
   const labels = { info: "Note", warning: "Warning", tip: "Tip" };
 
   return (
-    <div className={`rounded-xl border p-4 text-sm ${styles[type]}`}>
-      <span className="font-semibold">{labels[type]}:</span>{" "}
-      {children}
+    <div className={`rounded-2xl border p-5 text-sm leading-relaxed ${styles[type]}`}>
+      <span className="font-semibold text-neutral-900">{labels[type]}</span>{" "}
+      <span className="text-neutral-600">{children}</span>
     </div>
   );
 }
 
 function DocTable({ headers, rows }: { headers: string[]; rows: string[][] }) {
   return (
-    <div className="mt-3 overflow-x-auto rounded-xl border border-neutral-200">
+    <div className="mt-3 overflow-x-auto rounded-2xl border border-neutral-200/60 bg-white/40">
       <table className="w-full text-sm">
-        <thead className="bg-neutral-50">
-          <tr>
+        <thead>
+          <tr className="border-b border-neutral-200/40">
             {headers.map((h, i) => (
-              <th key={i} className="text-left px-4 py-2.5 font-semibold text-neutral-900 border-b border-neutral-200 text-[13px]">{h}</th>
+              <th key={i} className="text-left px-5 py-3 font-semibold text-neutral-900 text-[12px] uppercase tracking-[0.08em]">{h}</th>
             ))}
           </tr>
         </thead>
         <tbody>
           {rows.map((row, i) => (
-            <tr key={i} className="border-b border-neutral-100 last:border-0">
+            <tr key={i} className="border-b border-neutral-100/60 last:border-0">
               {row.map((cell, j) => (
-                <td key={j} className={`px-4 py-2.5 ${j === 0 ? 'text-neutral-900 font-medium' : 'text-neutral-600'} text-[13px]`}>
-                  {cell === "Supported" ? <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">{cell}</span>
-                    : cell === "Beta" ? <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200">{cell}</span>
-                    : cell === "Experimental" ? <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-neutral-100 text-neutral-600 border border-neutral-200">{cell}</span>
+                <td key={j} className={`px-5 py-3 ${j === 0 ? 'text-neutral-900 font-medium' : 'text-neutral-500'} text-[13px]`}>
+                  {cell === "Supported" ? <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-neutral-900 text-white">{cell}</span>
+                    : cell === "Beta" ? <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-neutral-100 text-neutral-600 border border-neutral-200">{cell}</span>
+                    : cell === "Experimental" ? <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-neutral-50 text-neutral-400 border border-neutral-200/60">{cell}</span>
                     : cell}
                 </td>
               ))}
