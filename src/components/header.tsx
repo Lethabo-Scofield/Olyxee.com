@@ -12,7 +12,6 @@ const menuItems = [
     { name: "EdgeAI", href: "/edgeai" },
     { name: "Docs", href: "/docs" },
     { name: "Community", href: "/community" },
-    { name: "Early Access", href: "/early-access" },
 ];
 
 const Header = () => {

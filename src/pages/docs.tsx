@@ -47,6 +47,12 @@ const GRYSICS_SIDE_NAV = [
       { id: "monitoring", title: "Monitoring", badge: "new" },
     ],
   },
+  {
+    heading: "Access",
+    items: [
+      { id: "early-access", title: "Early Access", badge: "open" },
+    ],
+  },
 ];
 
 const GUIDES_SIDE_NAV = [
@@ -116,6 +122,7 @@ const Docs: FC = () => {
       "edge-devices": EdgeDevices,
       "optimization": Optimization,
       "configuration": Configuration,
+      "early-access": EarlyAccessDoc,
       "changelog": Changelog,
       "limits": RateLimits,
     };
@@ -869,6 +876,73 @@ function RateLimits() {
   );
 }
 
+
+function EarlyAccessDoc() {
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [company, setCompany] = useState("");
+  const [role, setRole] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
+
+  return (
+    <DocPage title="Early Access" subtitle="Get early access to Grysics and the Olyxee platform.">
+      <DocSection title="What you get">
+        <ul className="list-disc pl-5 space-y-1.5 text-gray-600 text-[14px]">
+          <li>Full access to the Grysics verification engine</li>
+          <li>Edge deployment to supported hardware targets</li>
+          <li>Direct support channel with the engineering team</li>
+          <li>Priority access to new features and API updates</li>
+        </ul>
+      </DocSection>
+
+      {submitted ? (
+        <div className="text-center py-12 bg-gray-50 rounded-xl border border-gray-200">
+          <div className="w-12 h-12 rounded-full bg-gray-900 text-white flex items-center justify-center mx-auto mb-4 text-lg font-semibold">&#10003;</div>
+          <h3 className="text-lg font-semibold text-gray-900 mb-1">You&apos;re on the list</h3>
+          <p className="text-gray-500 text-sm">We&apos;ll reach out when your spot is ready.</p>
+        </div>
+      ) : (
+        <DocSection title="Request access">
+          <form onSubmit={handleSubmit} className="space-y-4 max-w-md">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+              <input type="text" required value={name} onChange={(e) => setName(e.target.value)} placeholder="Your name" className="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-gray-400 focus:bg-white transition-colors placeholder-gray-400" />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Work email</label>
+              <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@company.com" className="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-gray-400 focus:bg-white transition-colors placeholder-gray-400" />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Company</label>
+              <input type="text" value={company} onChange={(e) => setCompany(e.target.value)} placeholder="Company name" className="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-gray-400 focus:bg-white transition-colors placeholder-gray-400" />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Role</label>
+              <select value={role} onChange={(e) => setRole(e.target.value)} className="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-gray-400 focus:bg-white transition-colors text-gray-900 appearance-none">
+                <option value="">Select your role</option>
+                <option value="engineer">ML / AI Engineer</option>
+                <option value="devops">DevOps / MLOps</option>
+                <option value="manager">Engineering Manager</option>
+                <option value="founder">Founder / CTO</option>
+                <option value="researcher">Researcher</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <button type="submit" className="w-full px-6 py-2.5 bg-gray-900 text-white rounded-lg font-medium hover:bg-black transition-colors text-sm mt-2">
+              Request Access
+            </button>
+            <p className="text-xs text-gray-400 text-center">No credit card required.</p>
+          </form>
+        </DocSection>
+      )}
+    </DocPage>
+  );
+}
 
 function DocPage({ title, subtitle, children }: { title: string; subtitle: string; children: React.ReactNode }) {
   return (
