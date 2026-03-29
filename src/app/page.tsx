@@ -28,7 +28,7 @@ export default function HomePage() {
     name: "Olyxee",
     url: "https://olyxee.com",
     logo: "https://olyxee.com/Logo/Olyxee_Logo.png",
-    description: "AI infrastructure company building Grysics, a verification engine that ensures AI models work correctly before and after deployment.",
+    description: "AI infrastructure company building Grysics, a verification engine that ensures AI applications — chatbots, RAG pipelines, and agent workflows — work correctly and reliably.",
     sameAs: [
       "https://www.linkedin.com/company/olyxeelab/",
     ],
@@ -173,10 +173,10 @@ function HeroSection() {
 
 function PipelineSection() {
   const steps = [
-    { title: "Ingest", desc: "Import from any framework." },
-    { title: "Verify", desc: "Test against real hardware." },
-    { title: "Optimize", desc: "Compress for the target." },
-    { title: "Deploy", desc: "Push to any device." },
+    { title: "Connect", desc: "Point to any AI app." },
+    { title: "Verify", desc: "Test accuracy and safety." },
+    { title: "Evaluate", desc: "Score RAG and agents." },
+    { title: "Deploy", desc: "Ship with confidence." },
     { title: "Monitor", desc: "Watch it in production." },
   ];
 
@@ -190,7 +190,7 @@ function PipelineSection() {
             viewport={{ once: true }}
             className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight mb-5"
           >
-            From model to <em className="text-neutral-400">production.</em>
+            From app to <em className="text-neutral-400">production.</em>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -253,48 +253,48 @@ function PipelineSection() {
 function IndustriesSection() {
   const industries = [
     {
-      title: "Automotive & ADAS",
-      subtitle: "Safety-critical perception at 30fps",
-      desc: "Deploy verified object detection, lane tracking, and sensor fusion models to vehicle ECUs. Grysics validates latency under 33ms and accuracy above 99.2% before any model reaches a production vehicle — meeting ISO 26262 functional safety requirements.",
+      title: "Customer Support AI",
+      subtitle: "Reliable chatbots at scale",
+      desc: "Verify that your support chatbot answers accurately, handles edge cases gracefully, and never hallucinates policy information. Grysics tests consistency across thousands of query variations and monitors response quality in production.",
       metrics: [
-        { label: "Inference latency", value: "<33ms" },
-        { label: "Accuracy threshold", value: "99.2%" },
-        { label: "Compliance", value: "ISO 26262" },
+        { label: "Accuracy", value: ">95%" },
+        { label: "Consistency", value: "97%" },
+        { label: "Hallucination rate", value: "<2%" },
       ],
-      flow: ["Camera/LiDAR Input", "Perception Model", "Grysics Verify", "ECU Deploy", "OTA Updates"],
+      flow: ["User Query", "RAG Pipeline", "Grysics Verify", "Response", "Monitor"],
     },
     {
-      title: "Medical Devices & Diagnostics",
-      subtitle: "Regulated AI for clinical environments",
-      desc: "Run pathology classification, radiology assistants, and diagnostic screening models on hospital edge devices. Grysics provides verification audit trails required for FDA 510(k) submissions and CE marking — ensuring models perform identically across device configurations.",
+      title: "Legal & Compliance",
+      subtitle: "Verified AI for regulated industries",
+      desc: "Ensure legal research assistants and compliance chatbots cite correct sources and never fabricate case law. Grysics provides audit trails showing verification results for every model update — supporting regulatory requirements.",
       metrics: [
-        { label: "Sensitivity", value: ">97%" },
-        { label: "Specificity", value: ">95%" },
-        { label: "Regulatory", value: "FDA / CE" },
+        { label: "Citation accuracy", value: ">99%" },
+        { label: "Source fidelity", value: "Verified" },
+        { label: "Audit trail", value: "Complete" },
       ],
-      flow: ["DICOM Input", "Diagnostic Model", "Grysics Verify", "Clinical Edge", "Audit Trail"],
+      flow: ["Legal Query", "Document Retrieval", "Grysics Verify", "Response", "Audit Log"],
     },
     {
-      title: "Industrial Manufacturing",
-      subtitle: "Real-time defect detection on the line",
-      desc: "Deploy visual inspection models to factory floor cameras running on NVIDIA Jetson or Intel NCS2 devices. Grysics ensures sub-20ms inference for real-time quality control, with automatic model rollback if defect detection accuracy drops below threshold during production shifts.",
+      title: "Healthcare AI",
+      subtitle: "Safe AI assistants for clinical use",
+      desc: "Test medical Q&A systems and clinical decision support tools for accuracy and safety. Grysics detects hallucinated medical advice, verifies responses against approved clinical guidelines, and flags inconsistencies before patient-facing deployment.",
       metrics: [
-        { label: "Throughput", value: "50 fps" },
-        { label: "Defect recall", value: ">98%" },
-        { label: "Downtime", value: "<0.1%" },
+        { label: "Safety checks", value: "Automated" },
+        { label: "Guideline adherence", value: ">98%" },
+        { label: "Drift detection", value: "Real-time" },
       ],
-      flow: ["Line Camera", "Inspection Model", "Grysics Verify", "Jetson Edge", "MES Integration"],
+      flow: ["Clinical Query", "Knowledge Base", "Grysics Verify", "Response", "Safety Monitor"],
     },
     {
-      title: "Energy & Utilities",
-      subtitle: "Predictive maintenance at grid scale",
-      desc: "Run anomaly detection and predictive failure models on SCADA-connected edge devices across power grids, wind farms, and pipeline networks. Grysics verifies model behavior under variable load conditions and deploys updates to thousands of distributed nodes simultaneously.",
+      title: "Enterprise Knowledge",
+      subtitle: "Trustworthy internal AI tools",
+      desc: "Verify that internal knowledge base chatbots and document Q&A systems retrieve the right information and answer correctly. Grysics evaluates retrieval quality, context utilization, and response faithfulness across your entire document corpus.",
       metrics: [
-        { label: "Fleet size", value: "10K+ nodes" },
-        { label: "False positive rate", value: "<0.5%" },
-        { label: "Update rollout", value: "Staged" },
+        { label: "Retrieval relevance", value: ">92%" },
+        { label: "Answer accuracy", value: ">94%" },
+        { label: "Context utilization", value: ">87%" },
       ],
-      flow: ["SCADA Sensors", "Anomaly Model", "Grysics Verify", "Fleet Deploy", "Grid Dashboard"],
+      flow: ["Employee Query", "Vector Search", "Grysics Verify", "Response", "Quality Dashboard"],
     },
   ];
 
@@ -417,7 +417,7 @@ function ProductsSection() {
                 <h3 className="text-2xl sm:text-3xl font-semibold text-neutral-900">Grysics</h3>
                 <span className="text-xs font-medium text-neutral-500 bg-neutral-50 px-3 py-1 rounded-full border border-neutral-200">Available</span>
               </div>
-              <p className="text-neutral-500 text-sm leading-relaxed max-w-xl">High-fidelity AI simulation and testing for edge devices. Verify model behavior across hardware configurations before deployment.</p>
+              <p className="text-neutral-500 text-sm leading-relaxed max-w-xl">Verification engine for AI applications. Test chatbots, RAG pipelines, and agent workflows for accuracy, consistency, and hallucination — before and after deployment.</p>
             </div>
             <span className="text-sm font-medium text-neutral-400 flex items-center gap-1.5 group-hover:text-neutral-900 group-hover:gap-3 transition-all flex-shrink-0">
               Explore <ArrowRight className="w-4 h-4" />
@@ -496,7 +496,7 @@ function ArchitectureSection() {
                   <div className="text-[11px] text-neutral-400">Strategy & orchestration layer</div>
                 </div>
               </div>
-              <p className="text-xs text-neutral-500 mt-2 max-w-lg">The brain — handles API routing, model registry, verification scheduling, fleet coordination, and customer-facing platform services.</p>
+              <p className="text-xs text-neutral-500 mt-2 max-w-lg">The brain — handles API routing, application registry, verification scheduling, monitoring coordination, and customer-facing platform services.</p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-neutral-200">
@@ -528,9 +528,9 @@ function ArchitectureSection() {
                     <div className="text-[11px] text-neutral-400">Verification layer</div>
                   </div>
                 </div>
-                <p className="text-xs text-neutral-500 mt-2">Quality control — runs pre-deployment verification, post-deployment monitoring, accuracy testing, latency profiling, and compliance audit trail generation.</p>
+                <p className="text-xs text-neutral-500 mt-2">Quality control — tests AI applications for accuracy, consistency, and hallucination. Monitors chatbots, RAG pipelines, and agent workflows in production.</p>
                 <div className="mt-4 flex flex-wrap gap-1.5">
-                  {["Accuracy", "Latency", "Memory", "Stability", "Drift"].map(c => (
+                  {["Accuracy", "Consistency", "Hallucination", "RAG Eval", "Drift"].map(c => (
                     <span key={c} className="text-[10px] text-neutral-400 bg-neutral-50 border border-neutral-200 rounded px-2 py-0.5">{c}</span>
                   ))}
                 </div>
@@ -543,7 +543,7 @@ function ArchitectureSection() {
                   <span className="w-1.5 h-1.5 rounded-full bg-neutral-900" /> Orchestrates
                 </span>
                 <span className="text-neutral-300">|</span>
-                <span>PyTorch · TensorFlow · ONNX · TFLite · JAX</span>
+                <span>OpenAI · Anthropic · LangChain · LlamaIndex · Custom</span>
                 <span className="text-neutral-300">|</span>
                 <span>REST API · Python SDK · CLI</span>
               </div>
@@ -567,22 +567,22 @@ function ArchitectureSection() {
 function ResearchSection() {
   const papers = [
     {
-      title: "Verification-First Deployment for Edge AI Systems",
+      title: "Automated Hallucination Detection in RAG Pipelines",
       category: "AI Reliability",
       date: "2025",
-      description: "A framework for pre-deployment verification of AI models targeting heterogeneous edge hardware, with formal guarantees on accuracy and latency bounds.",
+      description: "A framework for detecting and measuring hallucination rates in retrieval-augmented generation systems, with configurable thresholds and continuous monitoring.",
     },
     {
-      title: "Interpretable Feature Attribution in Verification Pipelines",
-      category: "Interpretability",
+      title: "Consistency Metrics for Conversational AI Systems",
+      category: "Evaluation",
       date: "2025",
-      description: "Tracing feature contributions within the Grysics verification pipeline for actionable model behavior insights and regulatory compliance documentation.",
+      description: "Measuring behavioral consistency in chatbots and agent workflows across query variations, prompt perturbations, and temporal drift.",
     },
     {
-      title: "Adaptive Quantization for Cross-Hardware Deployment",
-      category: "Optimization",
+      title: "End-to-End RAG Evaluation: Retrieval, Context, and Response",
+      category: "RAG Systems",
       date: "2025",
-      description: "Automatic model compression that adapts to target hardware constraints while preserving accuracy guarantees across device families.",
+      description: "A comprehensive evaluation methodology for RAG pipelines that independently scores retrieval quality, context utilization, and response faithfulness.",
     },
   ];
 
@@ -641,10 +641,10 @@ function ResearchSection() {
 
 function MetricsSection() {
   const metrics = [
-    { value: "99.97%", label: "Verification accuracy", context: "Across 12K+ model runs" },
-    { value: "<12ms", label: "Median inference", context: "On NVIDIA Jetson Nano" },
-    { value: "87%", label: "Model size reduction", context: "INT4 quantization" },
-    { value: "0", label: "Production rollbacks", context: "Post-Grysics verification" },
+    { value: "94.3%", label: "Avg accuracy score", context: "Across verified applications" },
+    { value: "<2%", label: "Hallucination rate", context: "Post-Grysics verification" },
+    { value: "97%", label: "Consistency score", context: "Same query, stable answers" },
+    { value: "0", label: "Undetected failures", context: "In monitored production apps" },
   ];
 
   return (

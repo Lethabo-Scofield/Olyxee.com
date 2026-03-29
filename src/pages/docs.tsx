@@ -37,13 +37,13 @@ const GRYSICS_SIDE_NAV = [
     heading: "Overview",
     items: [
       { id: "grysics-overview", title: "What is Grysics" },
-      { id: "verification", title: "Verification Engine" },
+      { id: "verification", title: "Testing & Verification" },
     ],
   },
   {
-    heading: "Deploy & Monitor",
+    heading: "Use Cases",
     items: [
-      { id: "deployment", title: "Deployment" },
+      { id: "deployment", title: "RAG Evaluation" },
       { id: "monitoring", title: "Monitoring", badge: "new" },
     ],
   },
@@ -59,8 +59,8 @@ const GUIDES_SIDE_NAV = [
   {
     heading: "Topics",
     items: [
-      { id: "edge-devices", title: "Edge Devices" },
-      { id: "optimization", title: "Optimization" },
+      { id: "supported-platforms", title: "Supported Platforms" },
+      { id: "testing-strategies", title: "Testing Strategies" },
       { id: "configuration", title: "Configuration" },
     ],
   },
@@ -79,7 +79,7 @@ const RESOURCES_SIDE_NAV = [
 const TAB_DEFAULTS: Record<string, string> = {
   api: "api-overview",
   grysics: "grysics-overview",
-  guides: "edge-devices",
+  guides: "supported-platforms",
   resources: "changelog",
 };
 
@@ -119,8 +119,8 @@ const Docs: FC = () => {
       "verification": Verification,
       "deployment": Deployment,
       "monitoring": Monitoring,
-      "edge-devices": EdgeDevices,
-      "optimization": Optimization,
+      "supported-platforms": SupportedPlatforms,
+      "testing-strategies": TestingStrategies,
       "configuration": Configuration,
       "early-access": EarlyAccessDoc,
       "changelog": Changelog,
@@ -157,30 +157,30 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
     {
       icon: ArrowRight,
       title: "Quickstart",
-      desc: "Verify your first model in under five minutes.",
+      desc: "Verify your first AI application in under five minutes.",
       tab: "api",
       page: "quickstart",
     },
     {
       icon: Layers,
       title: "Grysics Engine",
-      desc: "Learn how the verification engine ensures AI reliability.",
+      desc: "Learn how the verification engine ensures AI application reliability.",
       tab: "grysics",
       page: "grysics-overview",
     },
     {
       icon: Terminal,
       title: "API Reference",
-      desc: "Integrate Grysics into your ML pipeline.",
+      desc: "Integrate Grysics into your AI pipeline.",
       tab: "api",
       page: "api-reference",
     },
     {
       icon: Cpu,
-      title: "Edge Devices",
-      desc: "Deploy to Jetson, Raspberry Pi, and more.",
+      title: "Supported Platforms",
+      desc: "OpenAI, Anthropic, LangChain, and more.",
       tab: "guides",
-      page: "edge-devices",
+      page: "supported-platforms",
     },
   ];
 
@@ -198,9 +198,9 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       thumb: "from-neutral-700 to-neutral-900",
     },
     {
-      title: "Deploying to edge devices",
+      title: "Testing RAG pipelines",
       duration: "8:45",
-      desc: "Step-by-step deployment to NVIDIA Jetson and Raspberry Pi.",
+      desc: "Evaluate retrieval quality, context usage, and response accuracy.",
       thumb: "from-neutral-800 to-neutral-950",
     },
   ];
@@ -209,7 +209,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
     { label: "Python SDK", tab: "api", page: "python-sdk" },
     { label: "CLI Reference", tab: "api", page: "cli" },
     { label: "Monitoring", tab: "grysics", page: "monitoring" },
-    { label: "Optimization", tab: "guides", page: "optimization" },
+    { label: "Testing Strategies", tab: "guides", page: "testing-strategies" },
     { label: "Changelog", tab: "resources", page: "changelog" },
     { label: "Rate Limits", tab: "resources", page: "limits" },
   ];
@@ -219,7 +219,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       <div className="mb-12">
         <h1 className="text-3xl sm:text-4xl font-semibold text-gray-900 tracking-tight mb-3">Documentation</h1>
         <p className="text-gray-500 text-base sm:text-lg max-w-2xl leading-relaxed">
-          Explore the Olyxee platform. Learn how to verify, optimize, and deploy AI models to edge hardware with confidence.
+          Explore the Olyxee platform. Learn how to verify, test, and monitor AI applications with confidence.
         </p>
       </div>
 
@@ -276,16 +276,16 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       <div className="mb-16">
         <h2 className="text-xl font-semibold text-gray-900 mb-4">What is Olyxee?</h2>
         <div className="text-[15px] text-gray-600 leading-relaxed space-y-3 max-w-3xl">
-          <p>Olyxee is an AI infrastructure company building tools for reliable AI deployment. Our flagship product, <strong className="text-gray-900">Grysics</strong>, is a verification engine that ensures AI models work correctly before and after they reach production hardware.</p>
-          <p>The platform handles model ingestion, automated verification against target hardware profiles, optimization, deployment, and continuous monitoring — giving teams confidence that their models will behave as expected in the real world.</p>
+          <p>Olyxee is an AI infrastructure company building tools for reliable AI systems. Our flagship product, <strong className="text-gray-900">Grysics</strong>, is a verification engine that ensures AI applications — chatbots, RAG pipelines, and agent workflows — work correctly and reliably in real-world use.</p>
+          <p>Grysics handles testing, evaluation, failure detection, performance monitoring, and continuous verification — giving teams confidence that their AI applications behave as expected before and after deployment.</p>
         </div>
       </div>
 
       <div className="mb-16">
         <h2 className="text-xl font-semibold text-gray-900 mb-2">Supported frameworks</h2>
-        <p className="text-sm text-gray-500 mb-4">Grysics works with models from all major ML frameworks.</p>
+        <p className="text-sm text-gray-500 mb-4">Grysics works with AI applications built on any stack.</p>
         <div className="flex flex-wrap gap-2">
-          {["PyTorch", "TensorFlow", "ONNX", "TFLite", "JAX"].map(fw => (
+          {["OpenAI", "Anthropic", "LangChain", "LlamaIndex", "Hugging Face", "Custom LLMs"].map(fw => (
             <span key={fw} className="text-sm font-medium text-gray-700 bg-gray-50 border border-gray-200 rounded-lg px-4 py-2">{fw}</span>
           ))}
         </div>
@@ -313,10 +313,10 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
 
 function APIOverview() {
   return (
-    <DocPage title="API Overview" subtitle="Integrate Grysics into your pipeline with our Python SDK, REST API, and CLI tools.">
+    <DocPage title="API Overview" subtitle="Integrate Grysics into your AI application pipeline with our Python SDK, REST API, and CLI tools.">
       <DocSection title="Authentication">
         <p>All API requests require an API key. Get your key from the Olyxee dashboard and include it in every request:</p>
-        <CodeBlock language="bash" code={`curl https://api.olyxee.com/v1/models \\\n  -H "Authorization: Bearer oly_sk_..."`} />
+        <CodeBlock language="bash" code={`curl https://api.olyxee.com/v1/apps \\\n  -H "Authorization: Bearer oly_sk_..."`} />
         <DocCallout type="warning">
           Never expose your API key in client-side code. Use environment variables or a secrets manager.
         </DocCallout>
@@ -325,9 +325,9 @@ function APIOverview() {
       <DocSection title="SDKs & tools">
         <div className="space-y-3 mt-2">
           {[
-            { title: "Python SDK", desc: "Full-featured SDK for model loading, verification, optimization, and deployment." },
+            { title: "Python SDK", desc: "Full-featured SDK for connecting, verifying, evaluating, and monitoring AI applications." },
             { title: "REST API", desc: "HTTP API for programmatic access from any language or platform." },
-            { title: "CLI", desc: "Command-line tools for quick model verification and deployment." },
+            { title: "CLI", desc: "Command-line tools for quick application verification and monitoring." },
           ].map(item => (
             <div key={item.title} className="border border-gray-200 rounded-lg p-4 hover:border-gray-300 transition-colors">
               <h4 className="font-semibold text-gray-900 mb-1 text-[15px]">{item.title}</h4>
@@ -347,33 +347,33 @@ function APIOverview() {
 
 function Quickstart() {
   return (
-    <DocPage title="Quickstart" subtitle="Get up and running with Olyxee in under five minutes.">
+    <DocPage title="Quickstart" subtitle="Get up and running with Grysics in under five minutes.">
       <DocSection title="1. Install the SDK">
-        <p>Install the Olyxee Python SDK:</p>
-        <CodeBlock language="bash" code="pip install olyxee" />
+        <p>Install the Grysics Python SDK:</p>
+        <CodeBlock language="bash" code="pip install grysics" />
       </DocSection>
 
       <DocSection title="2. Initialize a project">
-        <CodeBlock language="bash" code={`olyxee init my-project\ncd my-project`} />
+        <CodeBlock language="bash" code={`grysics init my-project\ncd my-project`} />
       </DocSection>
 
-      <DocSection title="3. Import your model">
-        <p>Load a trained model from any supported framework:</p>
-        <CodeBlock language="python" code={`import olyxee\n\nmodel = olyxee.load("model.pt")\n\n# Or from ONNX\nmodel = olyxee.load("model.onnx")`} />
+      <DocSection title="3. Connect your AI application">
+        <p>Point Grysics at your chatbot, RAG pipeline, or agent:</p>
+        <CodeBlock language="python" code={`import grysics\n\napp = grysics.connect(\n    endpoint="http://localhost:8000/chat",\n    type="rag"  # or "chatbot", "agent"\n)`} />
       </DocSection>
 
-      <DocSection title="4. Run verification with Grysics">
-        <p>Verify your model against a target hardware profile:</p>
-        <CodeBlock language="python" code={`results = model.verify(target="jetson-nano")\n\nprint(results.summary())\n# ✓ Accuracy: 98.2% (within tolerance)\n# ✓ Latency: 12ms (target: <50ms)\n# ✓ Memory: 245MB (target: <512MB)`} />
+      <DocSection title="4. Run verification">
+        <p>Run test cases against your application:</p>
+        <CodeBlock language="python" code={`results = app.verify()\n\nprint(results.summary())\n# ✓ Accuracy: 94.3% (above threshold)\n# ✓ Consistency: 97.1% (same input → same output)\n# ✓ Retrieval relevance: 91.8%\n# ✓ Latency p95: 320ms`} />
       </DocSection>
 
-      <DocSection title="5. Deploy">
-        <p>Deploy your verified model:</p>
-        <CodeBlock language="python" code={`deployment = model.deploy(\n    target="jetson-nano",\n    name="my-first-model"\n)\n\nprint(f"Deployed: {deployment.url}")`} />
+      <DocSection title="5. Monitor in production">
+        <p>Enable continuous verification:</p>
+        <CodeBlock language="python" code={`app.monitor(\n    check_interval=300,\n    alert_on=["hallucination", "drift", "latency"]\n)\n\nprint("Monitoring active")`} />
       </DocSection>
 
       <DocCallout type="info">
-        For detailed deployment options, see the <strong>Deployment</strong> section under Grysics.
+        For detailed evaluation options, see the <strong>Testing &amp; Verification</strong> section under Grysics.
       </DocCallout>
     </DocPage>
   );
@@ -382,34 +382,34 @@ function Quickstart() {
 
 function SupportedModels() {
   return (
-    <DocPage title="Supported Models" subtitle="Model formats and frameworks compatible with the Olyxee platform.">
-      <DocSection title="Frameworks">
+    <DocPage title="Supported Platforms" subtitle="AI frameworks and application types compatible with Grysics.">
+      <DocSection title="LLM Providers">
         <DocTable
-          headers={["Framework", "File formats", "Status"]}
+          headers={["Provider", "Integration", "Status"]}
           rows={[
-            ["PyTorch", ".pt, .pth", "Supported"],
-            ["TensorFlow", ".h5, .pb, SavedModel", "Supported"],
-            ["ONNX", ".onnx", "Supported"],
-            ["TFLite", ".tflite", "Supported"],
-            ["JAX", "Exported via ONNX", "Beta"],
+            ["OpenAI", "API / SDK", "Supported"],
+            ["Anthropic", "API / SDK", "Supported"],
+            ["Google (Gemini)", "API / SDK", "Supported"],
+            ["Hugging Face", "Transformers / Inference API", "Supported"],
+            ["Self-hosted LLMs", "Any HTTP endpoint", "Supported"],
           ]}
         />
       </DocSection>
 
-      <DocSection title="Model types">
-        <p>Grysics verification works with classification, detection, segmentation, and generative models. Custom architectures are supported as long as they export to a compatible format.</p>
+      <DocSection title="Application types">
+        <p>Grysics verification works with chatbots, RAG pipelines, agent workflows, and custom LLM applications. Any system with a queryable endpoint can be tested.</p>
         <DocCallout type="tip">
-          For best results, export your model to ONNX. It provides the widest hardware compatibility and most reliable verification results.
+          For RAG systems, Grysics can evaluate the full pipeline — retrieval quality, context relevance, and final response accuracy — not just the LLM output.
         </DocCallout>
       </DocSection>
 
-      <DocSection title="Size limits">
+      <DocSection title="Plan limits">
         <DocTable
-          headers={["Plan", "Max model size", "Max verification time"]}
+          headers={["Plan", "Test runs / month", "Monitoring"]}
           rows={[
-            ["Free", "500 MB", "10 minutes"],
-            ["Pro", "5 GB", "60 minutes"],
-            ["Enterprise", "Unlimited", "Custom"],
+            ["Free", "500", "7-day retention"],
+            ["Pro", "10,000", "90-day retention"],
+            ["Enterprise", "Unlimited", "Custom retention"],
           ]}
         />
       </DocSection>
@@ -420,19 +420,19 @@ function SupportedModels() {
 
 function GrysicsOverview() {
   return (
-    <DocPage title="What is Grysics" subtitle="The verification engine at the core of the Olyxee platform.">
+    <DocPage title="What is Grysics" subtitle="The verification engine for AI applications.">
       <DocSection title="Overview">
-        <p><strong>Grysics</strong> is Olyxee's verification engine for AI systems. It automatically tests whether a trained model will work correctly on target hardware — before you deploy it.</p>
-        <p>Instead of discovering failures in production, Grysics catches accuracy degradation, latency violations, memory overflows, and numerical instability during a pre-deployment verification pass.</p>
+        <p><strong>Grysics</strong> is a system for verifying, testing, and monitoring AI applications — especially chatbots, RAG pipelines, and agent-based workflows.</p>
+        <p>It ensures that AI systems are not just built, but work correctly, reliably, and consistently in real-world use. Instead of discovering failures in production, Grysics catches hallucinations, retrieval failures, inconsistencies, and performance issues before they reach users.</p>
       </DocSection>
 
-      <DocSection title="How it works">
+      <DocSection title="The problem">
         <div className="space-y-3 mt-2">
           {[
-            { step: "01", title: "Ingest", desc: "Load your trained model from any supported framework. Grysics analyzes the architecture, parameter count, and computational graph." },
-            { step: "02", title: "Profile", desc: "Grysics creates a hardware-specific execution profile for your target device, mapping operations to available compute resources." },
-            { step: "03", title: "Verify", desc: "Run automated tests that validate accuracy, latency, memory usage, and stability against configurable thresholds." },
-            { step: "04", title: "Report", desc: "Receive a detailed verification report with pass/fail status, performance metrics, and optimization recommendations." },
+            { step: "01", title: "Hallucinated outputs", desc: "LLMs generate confident but wrong answers. RAG retrieves irrelevant or incomplete context." },
+            { step: "02", title: "Unstable behavior", desc: "Same input produces different outputs. Small prompt changes cause large behavior shifts." },
+            { step: "03", title: "Retrieval failures", desc: "Wrong documents retrieved. Missing critical context. Poor ranking of relevant data." },
+            { step: "04", title: "Edge case failures", desc: "Works in demos, fails in production. Breaks with unusual queries or real user behavior." },
           ].map(item => (
             <div key={item.step} className="flex gap-4 items-start p-4 rounded-lg bg-gray-50 border border-gray-100">
               <span className="text-xs font-mono font-bold text-gray-900 bg-gray-100 border border-gray-200 rounded px-2 py-1 flex-shrink-0">{item.step}</span>
@@ -445,21 +445,21 @@ function GrysicsOverview() {
         </div>
       </DocSection>
 
-      <DocSection title="Verification checks">
+      <DocSection title="What Grysics does">
         <DocTable
-          headers={["Check", "What it tests", "Default threshold"]}
+          headers={["Capability", "What it checks", "When"]}
           rows={[
-            ["Accuracy", "Output correctness vs reference data", "±2% tolerance"],
-            ["Latency", "Inference time per sample", "<50ms (configurable)"],
-            ["Memory", "Peak memory during inference", "Device limit"],
-            ["Stability", "Numerical consistency over 1000 runs", "0 NaN/Inf values"],
-            ["Throughput", "Samples processed per second", "Informational"],
+            ["Testing", "Accuracy, consistency, robustness of responses", "Pre-deployment"],
+            ["RAG Evaluation", "Retrieval quality, context relevance, answer accuracy", "Pre & post-deployment"],
+            ["Failure Detection", "Hallucinations, missing context, logical inconsistencies", "Continuous"],
+            ["Performance", "Response time, pipeline bottlenecks, throughput", "Continuous"],
+            ["Drift Monitoring", "Output quality degradation over time", "Post-deployment"],
           ]}
         />
       </DocSection>
 
       <DocCallout type="info">
-        Verification results are hardware-specific. A model that passes for Jetson Nano may not pass for Raspberry Pi due to different resource constraints.
+        Grysics is not another chatbot or model. It is infrastructure for AI reliability — a verification engine for AI applications.
       </DocCallout>
     </DocPage>
   );
@@ -468,33 +468,33 @@ function GrysicsOverview() {
 
 function Verification() {
   return (
-    <DocPage title="Verification Engine" subtitle="Deep dive into the Grysics verification pipeline.">
-      <DocSection title="Pre-deployment verification">
-        <p>Every model goes through automated verification before it reaches a target device:</p>
+    <DocPage title="Testing & Verification" subtitle="Deep dive into how Grysics tests AI applications.">
+      <DocSection title="What Grysics tests">
+        <p>Every AI application goes through structured verification:</p>
         <ul className="list-none pl-0 mt-3 space-y-2 text-gray-600">
-          <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0" /><span><strong className="text-gray-900">Accuracy</strong> — outputs match expected results within configurable tolerance</span></li>
-          <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0" /><span><strong className="text-gray-900">Latency</strong> — inference time meets target hardware constraints</span></li>
-          <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0" /><span><strong className="text-gray-900">Memory</strong> — peak memory usage stays within device limits</span></li>
-          <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0" /><span><strong className="text-gray-900">Stability</strong> — no crashes or numerical issues over extended runs</span></li>
+          <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0" /><span><strong className="text-gray-900">Accuracy</strong> — responses are correct against known-answer test cases</span></li>
+          <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0" /><span><strong className="text-gray-900">Consistency</strong> — same question asked multiple times produces stable answers</span></li>
+          <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0" /><span><strong className="text-gray-900">Robustness</strong> — system handles edge cases, unusual queries, and adversarial inputs</span></li>
+          <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0" /><span><strong className="text-gray-900">Hallucination detection</strong> — flags confident but incorrect or fabricated responses</span></li>
         </ul>
       </DocSection>
 
-      <DocSection title="Running verification">
-        <CodeBlock language="python" code={`results = model.verify(\n    target="jetson-nano",\n    test_data="./test_set.csv",\n    tolerance=0.02,\n    latency_target=50,\n    memory_limit=512\n)\n\nif results.passed:\n    print("All checks passed")\n    model.deploy(target="jetson-nano")\nelse:\n    print(results.failures)`} />
+      <DocSection title="Running tests">
+        <CodeBlock language="python" code={`results = app.verify(\n    test_cases="./test_suite.yaml",\n    checks=["accuracy", "consistency", "hallucination"],\n    runs_per_case=5\n)\n\nif results.passed:\n    print("All checks passed")\nelse:\n    print(results.failures)`} />
       </DocSection>
 
       <DocSection title="Verification report">
         <p>After verification completes, you receive a structured report:</p>
-        <CodeBlock language="json" code={`{\n  "status": "passed",\n  "target": "jetson-nano",\n  "checks": {\n    "accuracy": { "passed": true, "value": 0.982, "threshold": 0.96 },\n    "latency_ms": { "passed": true, "value": 12, "threshold": 50 },\n    "memory_mb": { "passed": true, "value": 245, "threshold": 512 },\n    "stability": { "passed": true, "nan_count": 0, "inf_count": 0 }\n  },\n  "recommendations": [\n    "Consider INT8 quantization for 3x latency improvement"\n  ]\n}`} />
+        <CodeBlock language="json" code={`{\n  "status": "passed",\n  "app_type": "rag",\n  "checks": {\n    "accuracy": { "passed": true, "score": 0.943, "threshold": 0.90 },\n    "consistency": { "passed": true, "score": 0.971, "threshold": 0.95 },\n    "retrieval_relevance": { "passed": true, "score": 0.918, "threshold": 0.85 },\n    "hallucination_rate": { "passed": true, "value": 0.02, "threshold": 0.05 }\n  },\n  "recommendations": [\n    "Consider adding retrieval re-ranking for improved context relevance"\n  ]\n}`} />
       </DocSection>
 
-      <DocSection title="Post-deployment monitoring">
-        <p>After deployment, Grysics continuously monitors model performance and can automatically roll back if issues are detected:</p>
-        <CodeBlock language="python" code={`deployment.monitor(\n    check_interval=60,\n    drift_threshold=0.05,\n    auto_rollback=True\n)`} />
+      <DocSection title="Test case format">
+        <p>Define test cases in YAML:</p>
+        <CodeBlock language="yaml" code={`tests:\n  - query: "What is your refund policy?"\n    expected: "contains: 30-day money-back guarantee"\n    tags: [policy, faq]\n\n  - query: "Who founded the company?"\n    expected: "exact: Jane Smith founded Acme in 2019"\n    tags: [factual]\n\n  - query: "asdfghjkl random noise"\n    expected: "graceful_fallback: true"\n    tags: [edge-case]`} />
       </DocSection>
 
       <DocCallout type="warning">
-        Always run verification against the exact hardware profile you plan to deploy to. Emulated profiles may not catch device-specific issues.
+        Always test with realistic queries that reflect actual user behavior. Demo-optimized test cases often miss real-world failure modes.
       </DocCallout>
     </DocPage>
   );
@@ -503,13 +503,13 @@ function Verification() {
 
 function Deployment() {
   return (
-    <DocPage title="Deployment" subtitle="Deploy verified models to edge devices and cloud endpoints.">
-      <DocSection title="Deployment modes">
+    <DocPage title="RAG Evaluation" subtitle="Evaluate the full retrieval-augmented generation pipeline.">
+      <DocSection title="What Grysics evaluates">
         <div className="space-y-3 mt-2">
           {[
-            { title: "Direct Deploy", desc: "Push to a connected device over USB, SSH, or local network. Best for development and testing." },
-            { title: "Fleet Deploy", desc: "Deploy to multiple devices simultaneously using device groups. Includes staged rollout and automatic rollback." },
-            { title: "Container Deploy", desc: "Package into an OCI-compatible container with all dependencies. Deploy to any container runtime." },
+            { title: "Retrieval Quality", desc: "Did the system retrieve the right documents? Are the most relevant chunks ranked highest?" },
+            { title: "Context Relevance", desc: "Is the retrieved context actually useful for answering the query? Measures signal-to-noise ratio." },
+            { title: "Response Accuracy", desc: "Did the model use the retrieved context correctly? Is the final answer faithful to the source data?" },
           ].map(item => (
             <div key={item.title} className="border border-gray-200 rounded-lg p-5 hover:border-gray-300 transition-colors">
               <h4 className="font-semibold text-gray-900 mb-1.5 text-[15px]">{item.title}</h4>
@@ -519,13 +519,13 @@ function Deployment() {
         </div>
       </DocSection>
 
-      <DocSection title="Deploy to Jetson">
-        <CodeBlock language="python" code={`import olyxee\n\nmodel = olyxee.load("model.onnx")\n\noptimized = model.optimize(\n    target="jetson-nano",\n    quantization="int8",\n    batch_size=1\n)\n\nresults = optimized.verify(target="jetson-nano")\nassert results.passed\n\ndeployment = optimized.deploy(\n    target="jetson-nano",\n    name="perception-model-v2",\n    device_ip="192.168.1.100"\n)\n\nprint(f"Status: {deployment.status}")\nprint(f"Endpoint: {deployment.url}")`} />
+      <DocSection title="Evaluate a RAG pipeline">
+        <CodeBlock language="python" code={`import grysics\n\nrag = grysics.connect(\n    endpoint="http://localhost:8000/query",\n    type="rag"\n)\n\nresults = rag.evaluate(\n    test_cases="./rag_tests.yaml",\n    checks=[\n        "retrieval_relevance",\n        "context_utilization",\n        "answer_accuracy",\n        "hallucination"\n    ]\n)\n\nprint(results.summary())\n# ✓ Retrieval relevance: 91.8%\n# ✓ Context utilization: 87.3%\n# ✓ Answer accuracy: 94.1%\n# ✓ Hallucination rate: 2.1%`} />
       </DocSection>
 
-      <DocSection title="Configuration file">
-        <p>Deployment behavior can be customized via <InlineCode>olyxee.yaml</InlineCode>:</p>
-        <CodeBlock language="yaml" code={`target:\n  device: jetson-nano\n  connection: ssh\n  host: 192.168.1.100\n\noptimization:\n  quantization: int8\n  pruning: false\n  batch_size: 1\n\nverification:\n  tolerance: 0.02\n  latency_target: 50\n  memory_limit: 512\n\nmonitoring:\n  enabled: true\n  interval: 60\n  auto_rollback: true`} />
+      <DocSection title="Configuration">
+        <p>RAG evaluation behavior can be customized via <InlineCode>grysics.yaml</InlineCode>:</p>
+        <CodeBlock language="yaml" code={`app:\n  type: rag\n  endpoint: http://localhost:8000/query\n\nevaluation:\n  retrieval_relevance_threshold: 0.85\n  accuracy_threshold: 0.90\n  hallucination_limit: 0.05\n  runs_per_case: 3\n\nmonitoring:\n  enabled: true\n  interval: 300\n  alert_on:\n    - hallucination_spike\n    - accuracy_drop\n    - latency_degradation`} />
       </DocSection>
     </DocPage>
   );
@@ -534,31 +534,31 @@ function Deployment() {
 
 function Monitoring() {
   return (
-    <DocPage title="Monitoring" subtitle="Real-time observability for deployed AI models.">
+    <DocPage title="Monitoring" subtitle="Continuous verification for AI applications in production.">
       <DocSection title="Overview">
-        <p>Once a model is deployed, Grysics provides continuous monitoring that tracks inference quality, resource usage, and model drift. When anomalies are detected, the system can automatically roll back to a known-good state.</p>
+        <p>Once an AI application is deployed, Grysics provides continuous monitoring that tracks response quality, consistency, and drift. When anomalies are detected, the system flags degradation and can trigger alerts before users are impacted.</p>
       </DocSection>
 
       <DocSection title="Metrics tracked">
         <DocTable
           headers={["Metric", "Description", "Alert threshold"]}
           rows={[
-            ["Accuracy drift", "Change in output quality over time", "Configurable (default 5%)"],
-            ["Latency p99", "99th percentile inference time", "2x baseline"],
-            ["Memory usage", "Runtime memory consumption", "90% device limit"],
-            ["Error rate", "Failed inference requests", ">1% of requests"],
+            ["Response quality", "Accuracy and relevance of outputs over time", "Configurable (default 5% drop)"],
+            ["Hallucination rate", "Frequency of fabricated or unsupported claims", ">5% of responses"],
+            ["Consistency", "Variation in answers to repeated queries", "<95% similarity"],
+            ["Latency p95", "95th percentile response time", "2x baseline"],
             ["Throughput", "Requests processed per second", "50% below baseline"],
           ]}
         />
       </DocSection>
 
       <DocSection title="Enable monitoring">
-        <CodeBlock language="python" code={`deployment.monitor(\n    check_interval=60,\n    drift_threshold=0.05,\n    latency_alert=100,\n    auto_rollback=True,\n    webhook="https://your-api.com/alerts"\n)`} />
+        <CodeBlock language="python" code={`app.monitor(\n    check_interval=300,\n    drift_threshold=0.05,\n    hallucination_limit=0.05,\n    alert_webhook="https://your-api.com/alerts"\n)`} />
       </DocSection>
 
       <DocSection title="Dashboard">
         <p>View real-time metrics through the Olyxee dashboard or query them programmatically:</p>
-        <CodeBlock language="python" code={`metrics = deployment.metrics(\n    period="24h",\n    resolution="5m"\n)\n\nprint(f"Avg latency: {metrics.latency_avg}ms")\nprint(f"Accuracy: {metrics.accuracy}")\nprint(f"Total requests: {metrics.request_count}")`} />
+        <CodeBlock language="python" code={`metrics = app.metrics(\n    period="24h",\n    resolution="5m"\n)\n\nprint(f"Avg latency: {metrics.latency_avg}ms")\nprint(f"Response quality: {metrics.quality_score}")\nprint(f"Hallucination rate: {metrics.hallucination_rate}")\nprint(f"Total queries: {metrics.query_count}")`} />
       </DocSection>
     </DocPage>
   );
@@ -567,43 +567,42 @@ function Monitoring() {
 
 function APIReference() {
   return (
-    <DocPage title="REST API" subtitle="Integrate Grysics into your pipeline with the REST API.">
+    <DocPage title="REST API" subtitle="Integrate Grysics into your AI application pipeline with the REST API.">
       <DocSection title="Base URL">
         <CodeBlock language="bash" code="https://api.olyxee.com/v1" />
       </DocSection>
 
       <DocSection title="Authentication">
         <p>All API requests require an API key passed in the <InlineCode>Authorization</InlineCode> header:</p>
-        <CodeBlock language="bash" code={`curl https://api.olyxee.com/v1/models \\\n  -H "Authorization: Bearer oly_sk_..."`} />
+        <CodeBlock language="bash" code={`curl https://api.olyxee.com/v1/apps \\\n  -H "Authorization: Bearer oly_sk_..."`} />
       </DocSection>
 
       <DocSection title="Endpoints">
         <DocTable
           headers={["Method", "Endpoint", "Description"]}
           rows={[
-            ["POST", "/models", "Upload a model for verification"],
-            ["GET", "/models/:id", "Get model details and status"],
-            ["POST", "/models/:id/verify", "Start a verification run"],
-            ["GET", "/models/:id/verify/:run_id", "Get verification results"],
-            ["POST", "/models/:id/deploy", "Deploy a verified model"],
-            ["GET", "/deployments", "List all deployments"],
-            ["GET", "/deployments/:id/metrics", "Get deployment metrics"],
-            ["POST", "/deployments/:id/rollback", "Rollback a deployment"],
+            ["POST", "/apps", "Register an AI application"],
+            ["GET", "/apps/:id", "Get application details"],
+            ["POST", "/apps/:id/verify", "Start a verification run"],
+            ["GET", "/apps/:id/verify/:run_id", "Get verification results"],
+            ["POST", "/apps/:id/monitor", "Enable monitoring"],
+            ["GET", "/apps/:id/metrics", "Get monitoring metrics"],
+            ["GET", "/apps/:id/alerts", "List triggered alerts"],
           ]}
         />
       </DocSection>
 
-      <DocSection title="Upload a model">
-        <CodeBlock language="bash" code={`curl -X POST https://api.olyxee.com/v1/models \\\n  -H "Authorization: Bearer oly_sk_..." \\\n  -H "Content-Type: multipart/form-data" \\\n  -F "file=@model.onnx" \\\n  -F "name=my-model" \\\n  -F "framework=onnx"`} />
+      <DocSection title="Register an application">
+        <CodeBlock language="bash" code={`curl -X POST https://api.olyxee.com/v1/apps \\\n  -H "Authorization: Bearer oly_sk_..." \\\n  -H "Content-Type: application/json" \\\n  -d '{\n    "name": "my-chatbot",\n    "type": "rag",\n    "endpoint": "https://my-app.com/api/chat"\n  }'`} />
       </DocSection>
 
       <DocSection title="Start verification">
-        <CodeBlock language="bash" code={`curl -X POST https://api.olyxee.com/v1/models/mdl_abc123/verify \\\n  -H "Authorization: Bearer oly_sk_..." \\\n  -H "Content-Type: application/json" \\\n  -d '{\n    "target": "jetson-nano",\n    "tolerance": 0.02,\n    "latency_target": 50\n  }'`} />
+        <CodeBlock language="bash" code={`curl -X POST https://api.olyxee.com/v1/apps/app_abc123/verify \\\n  -H "Authorization: Bearer oly_sk_..." \\\n  -H "Content-Type: application/json" \\\n  -d '{\n    "checks": ["accuracy", "consistency", "hallucination"],\n    "test_cases": "default",\n    "runs_per_case": 3\n  }'`} />
       </DocSection>
 
       <DocSection title="Response format">
         <p>All responses follow a consistent envelope:</p>
-        <CodeBlock language="json" code={`{\n  "object": "model",\n  "id": "mdl_abc123",\n  "name": "my-model",\n  "framework": "onnx",\n  "size_bytes": 52428800,\n  "status": "verified",\n  "created_at": "2025-01-15T10:30:00Z"\n}`} />
+        <CodeBlock language="json" code={`{\n  "object": "app",\n  "id": "app_abc123",\n  "name": "my-chatbot",\n  "type": "rag",\n  "status": "verified",\n  "last_run": "2025-01-15T10:30:00Z",\n  "quality_score": 0.943\n}`} />
       </DocSection>
     </DocPage>
   );
@@ -612,38 +611,38 @@ function APIReference() {
 
 function PythonSDK() {
   return (
-    <DocPage title="Python SDK" subtitle="Complete reference for the olyxee Python package.">
+    <DocPage title="Python SDK" subtitle="Complete reference for the grysics Python package.">
       <DocSection title="Installation">
-        <CodeBlock language="bash" code="pip install olyxee" />
+        <CodeBlock language="bash" code="pip install grysics" />
         <p>Requires Python 3.9+.</p>
       </DocSection>
 
-      <DocSection title="olyxee.load()">
-        <p>Load a model from a file path or URL.</p>
-        <CodeBlock language="python" code={`model = olyxee.load(\n    path="model.onnx",\n    framework="auto",\n    device="cpu"\n)`} />
+      <DocSection title="grysics.connect()">
+        <p>Connect to an AI application endpoint.</p>
+        <CodeBlock language="python" code={`app = grysics.connect(\n    endpoint="http://localhost:8000/chat",\n    type="rag",\n    api_key="your-app-api-key"\n)`} />
         <DocTable
           headers={["Parameter", "Type", "Description"]}
           rows={[
-            ["path", "str", "Path to model file or URL"],
-            ["framework", "str", "Framework override (auto, pytorch, tensorflow, onnx)"],
-            ["device", "str", "Device for local operations (cpu, cuda)"],
+            ["endpoint", "str", "URL of your AI application"],
+            ["type", "str", "Application type (chatbot, rag, agent)"],
+            ["api_key", "str", "Optional API key for your application"],
           ]}
         />
       </DocSection>
 
-      <DocSection title="model.verify()">
-        <p>Run Grysics verification against a target hardware profile.</p>
-        <CodeBlock language="python" code={`results = model.verify(\n    target="jetson-nano",\n    test_data="./test_set.csv",\n    tolerance=0.02,\n    latency_target=50,\n    memory_limit=512\n)`} />
+      <DocSection title="app.verify()">
+        <p>Run Grysics verification against your AI application.</p>
+        <CodeBlock language="python" code={`results = app.verify(\n    test_cases="./test_suite.yaml",\n    checks=["accuracy", "consistency", "hallucination"],\n    runs_per_case=5\n)`} />
       </DocSection>
 
-      <DocSection title="model.optimize()">
-        <p>Optimize the model for target hardware.</p>
-        <CodeBlock language="python" code={`optimized = model.optimize(\n    target="raspberry-pi-4",\n    quantization="int8",\n    calibration_data="./calibration.csv"\n)`} />
+      <DocSection title="app.evaluate()">
+        <p>Run RAG-specific evaluation on retrieval and response quality.</p>
+        <CodeBlock language="python" code={`results = app.evaluate(\n    checks=["retrieval_relevance", "context_utilization", "answer_accuracy"],\n    test_cases="./rag_tests.yaml"\n)`} />
       </DocSection>
 
-      <DocSection title="model.deploy()">
-        <p>Deploy the model to a target device.</p>
-        <CodeBlock language="python" code={`deployment = model.deploy(\n    target="jetson-nano",\n    name="my-model",\n    device_ip="192.168.1.100",\n    replicas=1\n)`} />
+      <DocSection title="app.monitor()">
+        <p>Enable continuous monitoring for a deployed application.</p>
+        <CodeBlock language="python" code={`app.monitor(\n    check_interval=300,\n    alert_on=["hallucination", "drift", "latency"],\n    webhook="https://your-api.com/alerts"\n)`} />
       </DocSection>
     </DocPage>
   );
@@ -652,22 +651,22 @@ function PythonSDK() {
 
 function CLIReference() {
   return (
-    <DocPage title="CLI Reference" subtitle="Command-line tools for managing Olyxee projects.">
+    <DocPage title="CLI Reference" subtitle="Command-line tools for managing Grysics projects.">
       <DocSection title="Installation">
         <p>The CLI is included with the Python SDK:</p>
-        <CodeBlock language="bash" code="pip install olyxee" />
+        <CodeBlock language="bash" code="pip install grysics" />
       </DocSection>
 
       <DocSection title="Commands">
-        <CodeBlock language="bash" code={`olyxee init <project>       # Initialize a new project\nolyxee verify <model>       # Run Grysics verification\nolyxee optimize <model>     # Optimize for target hardware\nolyxee deploy <model>       # Deploy to a device\nolyxee deployments list     # List active deployments\nolyxee deployments status   # Check deployment health\nolyxee monitor <name>       # Start monitoring\nolyxee rollback <name>      # Rollback deployment`} />
+        <CodeBlock language="bash" code={`grysics init <project>       # Initialize a new project\ngrysics connect <endpoint>   # Connect to an AI application\ngrysics verify               # Run verification tests\ngrysics evaluate             # Run RAG evaluation\ngrysics monitor start        # Enable continuous monitoring\ngrysics monitor status       # Check monitoring health\ngrysics metrics              # View latest metrics\ngrysics alerts               # List triggered alerts`} />
       </DocSection>
 
       <DocSection title="Examples">
-        <CodeBlock language="bash" code={`# Verify a model for Jetson Nano\nolyxee verify model.onnx --target jetson-nano\n\n# Optimize with INT8 quantization\nolyxee optimize model.onnx --target raspberry-pi-4 --quantization int8\n\n# Deploy with monitoring enabled\nolyxee deploy model.onnx --target jetson-nano --name my-model --monitor`} />
+        <CodeBlock language="bash" code={`# Connect to a chatbot and run verification\ngrysics connect http://localhost:8000/chat --type chatbot\ngrysics verify --checks accuracy,consistency,hallucination\n\n# Evaluate a RAG pipeline\ngrysics connect http://localhost:8000/query --type rag\ngrysics evaluate --checks retrieval,accuracy\n\n# Start monitoring with alerts\ngrysics monitor start --interval 300 --webhook https://hooks.slack.com/...`} />
       </DocSection>
 
       <DocSection title="Configuration">
-        <p>The CLI reads from <InlineCode>olyxee.yaml</InlineCode> in the project root. Command-line flags override file settings.</p>
+        <p>The CLI reads from <InlineCode>grysics.yaml</InlineCode> in the project root. Command-line flags override file settings.</p>
       </DocSection>
     </DocPage>
   );
@@ -694,17 +693,17 @@ function ErrorHandling() {
       </DocSection>
 
       <DocSection title="Error response format">
-        <CodeBlock language="json" code={`{\n  "error": {\n    "type": "invalid_request",\n    "message": "Target 'unknown-device' is not supported",\n    "code": "unsupported_target",\n    "param": "target"\n  }\n}`} />
+        <CodeBlock language="json" code={`{\n  "error": {\n    "type": "invalid_request",\n    "message": "Check type 'unknown-check' is not supported",\n    "code": "unsupported_check",\n    "param": "checks"\n  }\n}`} />
       </DocSection>
 
       <DocSection title="Verification errors">
         <DocTable
           headers={["Error", "Cause", "Solution"]}
           rows={[
-            ["accuracy_below_threshold", "Model accuracy dropped below tolerance", "Adjust tolerance or retrain model"],
-            ["latency_exceeded", "Inference time exceeded target", "Try quantization or a more powerful device"],
-            ["memory_overflow", "Model exceeds device memory", "Use a smaller model or optimize with pruning"],
-            ["numerical_instability", "NaN or Inf values detected", "Check model for numerical issues"],
+            ["accuracy_below_threshold", "Response accuracy dropped below threshold", "Review test cases or adjust threshold"],
+            ["hallucination_detected", "Response contains fabricated information", "Check retrieval pipeline and prompt engineering"],
+            ["consistency_failure", "Inconsistent answers across query variations", "Improve prompt robustness or add guardrails"],
+            ["endpoint_unreachable", "Application endpoint not responding", "Check endpoint URL and network connectivity"],
           ]}
         />
       </DocSection>
@@ -713,59 +712,65 @@ function ErrorHandling() {
 }
 
 
-function EdgeDevices() {
+function SupportedPlatforms() {
   return (
-    <DocPage title="Edge Devices" subtitle="Supported hardware targets and device-specific guidance.">
-      <DocSection title="Supported devices">
+    <DocPage title="Supported Platforms" subtitle="AI frameworks and platforms that Grysics integrates with.">
+      <DocSection title="LLM providers">
         <DocTable
-          headers={["Device", "Status", "Acceleration", "Notes"]}
+          headers={["Provider", "Status", "Integration", "Notes"]}
           rows={[
-            ["NVIDIA Jetson Nano", "Supported", "GPU (CUDA)", "Full TensorRT support"],
-            ["NVIDIA Jetson Xavier", "Supported", "GPU (CUDA)", "DLA acceleration available"],
-            ["NVIDIA Jetson Orin", "Supported", "GPU (CUDA)", "Highest edge performance"],
-            ["Raspberry Pi 4", "Supported", "CPU", "ARM NEON optimizations"],
-            ["Raspberry Pi 5", "Supported", "CPU", "Improved throughput"],
-            ["Intel NCS2", "Supported", "VPU", "OpenVINO backend"],
-            ["Arduino Nano 33 BLE", "Beta", "MCU", "TinyML models only"],
-            ["ESP32", "Experimental", "MCU", "Microcontroller models"],
+            ["OpenAI", "Supported", "API", "GPT-4, GPT-3.5, embeddings"],
+            ["Anthropic", "Supported", "API", "Claude 3.5, Claude 3"],
+            ["Google Gemini", "Supported", "API", "Gemini Pro, Gemini Flash"],
+            ["Cohere", "Supported", "API", "Command, Embed models"],
+            ["Local / Self-hosted", "Supported", "HTTP endpoint", "Any OpenAI-compatible API"],
           ]}
         />
       </DocSection>
 
-      <DocSection title="Adding a device">
-        <CodeBlock language="python" code={`import olyxee\n\n# Register a new device\nolyxee.devices.register(\n    name="my-jetson",\n    type="jetson-nano",\n    host="192.168.1.100",\n    connection="ssh",\n    credentials="~/.ssh/id_rsa"\n)\n\n# List registered devices\ndevices = olyxee.devices.list()\nfor d in devices:\n    print(f"{d.name}: {d.status}")`} />
+      <DocSection title="Frameworks">
+        <DocTable
+          headers={["Framework", "Status", "Notes"]}
+          rows={[
+            ["LangChain", "Supported", "Chain and agent verification"],
+            ["LlamaIndex", "Supported", "RAG pipeline evaluation"],
+            ["Haystack", "Beta", "Pipeline testing"],
+            ["Custom", "Supported", "Any HTTP endpoint"],
+          ]}
+        />
       </DocSection>
 
-      <DocSection title="Device profiles">
-        <p>Each device has a hardware profile that Grysics uses during verification.</p>
-        <CodeBlock language="python" code={`profile = olyxee.devices.profile("jetson-nano")\n\nprint(f"CPU: {profile.cpu}")\nprint(f"GPU: {profile.gpu}")\nprint(f"Memory: {profile.memory_mb}MB")\nprint(f"Supported ops: {profile.supported_ops}")`} />
+      <DocSection title="Connecting a platform">
+        <CodeBlock language="python" code={`import grysics\n\n# Connect to an OpenAI-powered chatbot\napp = grysics.connect(\n    endpoint="http://localhost:8000/chat",\n    type="chatbot"\n)\n\n# Connect to a LangChain RAG pipeline\napp = grysics.connect(\n    endpoint="http://localhost:8000/query",\n    type="rag",\n    framework="langchain"\n)`} />
       </DocSection>
     </DocPage>
   );
 }
 
 
-function Optimization() {
+function TestingStrategies() {
   return (
-    <DocPage title="Optimization" subtitle="Automatic model optimization for resource-constrained hardware.">
-      <DocSection title="Quantization strategies">
+    <DocPage title="Testing Strategies" subtitle="Best practices for verifying different types of AI applications.">
+      <DocSection title="Test types">
         <DocTable
-          headers={["Strategy", "Size reduction", "Accuracy impact"]}
+          headers={["Test", "Best for", "What it checks"]}
           rows={[
-            ["FP16 (Half Precision)", "~50%", "Minimal (<0.1%)"],
-            ["INT8 (Dynamic)", "~75%", "Low (<1%)"],
-            ["INT8 (Static)", "~75%", "Very Low (<0.5%)"],
-            ["INT4", "~87%", "Moderate (1-3%)"],
+            ["Accuracy", "All apps", "Response correctness against ground truth"],
+            ["Consistency", "Chatbots", "Same answer across rephrased queries"],
+            ["Hallucination", "RAG, Q&A", "Fabricated facts not in source data"],
+            ["Retrieval relevance", "RAG pipelines", "Quality of retrieved context"],
+            ["Context utilization", "RAG pipelines", "How well responses use retrieved context"],
+            ["Tool usage", "Agents", "Correct tool selection and parameter passing"],
           ]}
         />
       </DocSection>
 
-      <DocSection title="Usage">
-        <CodeBlock language="python" code={`optimized = model.optimize(\n    target="raspberry-pi-4",\n    quantization="int8",\n    calibration_data="./calibration_set.csv"\n)\n\nprint(f"Original: {model.size_mb}MB")\nprint(f"Optimized: {optimized.size_mb}MB")\nprint(f"Speedup: {optimized.speedup}x")`} />
+      <DocSection title="Writing test cases">
+        <CodeBlock language="yaml" code={`test_cases:\n  - input: "What is your refund policy?"\n    expected: "30-day money-back guarantee"\n    checks: [accuracy, hallucination]\n\n  - input: "How do I reset my password?"\n    expected_contains: ["settings", "reset", "email"]\n    checks: [accuracy, consistency]\n    variations:\n      - "I forgot my password"\n      - "Can you help me change my password?"`} />
       </DocSection>
 
       <DocCallout type="tip">
-        Always run verification after optimization. Quantization can occasionally affect model accuracy in unexpected ways.
+        Start with accuracy and hallucination checks. Add consistency testing once your application handles basic queries reliably.
       </DocCallout>
     </DocPage>
   );
@@ -775,19 +780,19 @@ function Optimization() {
 function Configuration() {
   return (
     <DocPage title="Configuration" subtitle="Project configuration and environment setup.">
-      <DocSection title="olyxee.yaml">
+      <DocSection title="grysics.yaml">
         <p>The project configuration file controls default settings:</p>
-        <CodeBlock language="yaml" code={`project:\n  name: my-ai-project\n  version: 1.0.0\n\ntarget:\n  device: jetson-nano\n  connection: ssh\n  host: 192.168.1.100\n\nverification:\n  tolerance: 0.02\n  latency_target: 50\n  memory_limit: 512\n  stability_runs: 1000\n\noptimization:\n  quantization: int8\n  pruning: false\n  calibration_data: ./calibration/\n\nmonitoring:\n  enabled: true\n  interval: 60\n  drift_threshold: 0.05\n  auto_rollback: true\n  webhook: https://your-api.com/alerts`} />
+        <CodeBlock language="yaml" code={`project:\n  name: my-ai-project\n  version: 1.0.0\n\napplication:\n  endpoint: http://localhost:8000/chat\n  type: rag\n  framework: langchain\n\nverification:\n  checks:\n    - accuracy\n    - consistency\n    - hallucination\n  runs_per_case: 5\n  test_cases: ./tests/\n\nmonitoring:\n  enabled: true\n  interval: 300\n  alert_on:\n    - hallucination\n    - drift\n    - latency\n  webhook: https://your-api.com/alerts`} />
       </DocSection>
 
       <DocSection title="Environment variables">
         <DocTable
           headers={["Variable", "Description", "Required"]}
           rows={[
-            ["OLYXEE_API_KEY", "API authentication key", "Yes"],
-            ["OLYXEE_ORG_ID", "Organization identifier", "For teams"],
-            ["OLYXEE_LOG_LEVEL", "Logging verbosity (debug, info, warn)", "No"],
-            ["OLYXEE_CACHE_DIR", "Local cache directory for models", "No"],
+            ["GRYSICS_API_KEY", "API authentication key", "Yes"],
+            ["GRYSICS_ORG_ID", "Organization identifier", "For teams"],
+            ["GRYSICS_LOG_LEVEL", "Logging verbosity (debug, info, warn)", "No"],
+            ["GRYSICS_CACHE_DIR", "Local cache directory", "No"],
           ]}
         />
       </DocSection>
@@ -805,19 +810,19 @@ function Changelog() {
           date: "January 2025",
           items: [
             "General availability of Grysics verification engine",
-            "Python SDK v1.0 with full verification and deployment support",
-            "Support for NVIDIA Jetson, Raspberry Pi, and Intel NCS2",
-            "REST API v1 with model management endpoints",
-            "CLI tools for project initialization, verification, and deployment",
+            "Python SDK v1.0 with full verification and monitoring support",
+            "Support for OpenAI, Anthropic, LangChain, and LlamaIndex",
+            "REST API v1 with application management endpoints",
+            "CLI tools for project initialization, verification, and monitoring",
           ],
         },
         {
           version: "0.9.0",
           date: "November 2024",
           items: [
-            "Beta release of post-deployment monitoring",
-            "Added INT4 quantization support",
-            "Fleet deployment with staged rollout",
+            "Beta release of production monitoring",
+            "Added hallucination detection checks",
+            "RAG evaluation with retrieval relevance scoring",
             "Webhook notifications for monitoring alerts",
           ],
         },
@@ -825,10 +830,10 @@ function Changelog() {
           version: "0.8.0",
           date: "September 2024",
           items: [
-            "Arduino Nano 33 BLE support (beta)",
-            "Container deployment mode",
+            "Consistency testing across query variations",
+            "Agent workflow verification support",
             "Improved verification report format",
-            "Added calibration data support for static quantization",
+            "Added test case YAML configuration",
           ],
         },
       ].map(release => (
@@ -855,10 +860,10 @@ function RateLimits() {
         <DocTable
           headers={["Endpoint", "Free", "Pro", "Enterprise"]}
           rows={[
-            ["Model uploads", "10/day", "100/day", "Unlimited"],
+            ["Registered apps", "5", "50", "Unlimited"],
             ["Verification runs", "20/day", "500/day", "Unlimited"],
             ["API requests", "1,000/min", "10,000/min", "Custom"],
-            ["Concurrent deployments", "3", "25", "Unlimited"],
+            ["Monitored apps", "3", "25", "Unlimited"],
           ]}
         />
       </DocSection>
@@ -870,7 +875,7 @@ function RateLimits() {
 
       <DocSection title="Handling rate limits">
         <p>When rate limited, the API returns a <InlineCode>429</InlineCode> status. Implement exponential backoff:</p>
-        <CodeBlock language="python" code={`import time\nimport olyxee\n\ndef verify_with_retry(model, target, max_retries=3):\n    for attempt in range(max_retries):\n        try:\n            return model.verify(target=target)\n        except olyxee.RateLimitError as e:\n            wait = 2 ** attempt\n            print(f"Rate limited. Retrying in {wait}s...")\n            time.sleep(wait)\n    raise Exception("Max retries exceeded")`} />
+        <CodeBlock language="python" code={`import time\nimport grysics\n\ndef verify_with_retry(app, max_retries=3):\n    for attempt in range(max_retries):\n        try:\n            return app.verify(\n                checks=["accuracy", "hallucination"]\n            )\n        except grysics.RateLimitError as e:\n            wait = 2 ** attempt\n            print(f"Rate limited. Retrying in {wait}s...")\n            time.sleep(wait)\n    raise Exception("Max retries exceeded")`} />
       </DocSection>
     </DocPage>
   );
@@ -894,7 +899,7 @@ function EarlyAccessDoc() {
       <DocSection title="What you get">
         <ul className="list-disc pl-5 space-y-1.5 text-gray-600 text-[14px]">
           <li>Full access to the Grysics verification engine</li>
-          <li>Edge deployment to supported hardware targets</li>
+          <li>Verification and monitoring for chatbots, RAG, and agents</li>
           <li>Direct support channel with the engineering team</li>
           <li>Priority access to new features and API updates</li>
         </ul>
