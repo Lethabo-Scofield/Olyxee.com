@@ -318,116 +318,121 @@ function IndustriesSection() {
   }, [activeIndex]);
 
   return (
-    <section className="py-32 sm:py-44 bg-neutral-950 text-white relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-neutral-800 rounded-full blur-[200px] opacity-20 translate-x-1/3 -translate-y-1/3" />
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 relative">
-        <div className="mb-16 sm:mb-24">
-          <span className="block w-12 h-0.5 bg-white/30 mb-6" />
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight"
-          >
-            Built for regulated,
-            <br />
-            <em className="text-neutral-500">safety-critical industries</em>
-          </motion.h2>
-        </div>
+    <section className="py-32 sm:py-44">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="bg-neutral-950 text-white rounded-[2rem] sm:rounded-[2.5rem] relative overflow-hidden p-8 sm:p-12 lg:p-16">
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-neutral-800 rounded-full blur-[200px] opacity-20 translate-x-1/3 -translate-y-1/3" />
 
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
-          <div className="lg:w-[260px] flex-shrink-0">
-            <div className="flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0 -mx-1 px-1">
-              {industries.map((ind, idx) => (
-                <button
-                  key={ind.title}
-                  onClick={() => setActiveIndex(idx)}
-                  className={`relative text-left px-4 py-3 rounded-xl transition-all duration-300 flex-shrink-0 ${
-                    idx === activeIndex
-                      ? "bg-white/10 text-white"
-                      : "text-neutral-500 hover:text-neutral-300 hover:bg-white/5"
-                  }`}
-                >
-                  <span className="text-sm font-medium whitespace-nowrap">{ind.title}</span>
-                  {idx === activeIndex && (
-                    <motion.div
-                      className="absolute bottom-0 left-4 right-4 lg:left-0 lg:right-auto lg:top-0 lg:bottom-0 lg:w-[3px] h-[3px] lg:h-auto rounded-full bg-white"
-                      layoutId="industry-indicator"
-                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                    />
-                  )}
-                </button>
-              ))}
-            </div>
-
-            <div className="hidden lg:flex items-center gap-2 mt-6 ml-4">
-              <span className="text-[11px] text-neutral-600 font-medium tabular-nums">{String(activeIndex + 1).padStart(2, "0")} / {String(industries.length).padStart(2, "0")}</span>
-              <div className="flex-1 h-px bg-white/10 rounded-full overflow-hidden ml-2">
-                <motion.div
-                  className="h-full bg-white/40 rounded-full"
-                  initial={{ width: "0%" }}
-                  animate={{ width: "100%" }}
-                  key={activeIndex}
-                  transition={{ duration: 6, ease: "linear" }}
-                />
-              </div>
-            </div>
-          </div>
-
-          <div className="flex-1 min-w-0">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeIndex}
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -12 }}
-                transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
-                className="rounded-3xl border border-white/10 overflow-hidden"
+          <div className="relative">
+            <div className="mb-14 sm:mb-20">
+              <span className="block w-12 h-0.5 bg-white/30 mb-6" />
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="font-serif text-3xl sm:text-4xl lg:text-5xl tracking-tight"
               >
-                <div className="p-8 sm:p-10">
-                  <div className="mb-6">
-                    <h3 className="text-xl sm:text-2xl font-semibold mb-1">{active.title}</h3>
-                    <p className="text-sm text-neutral-500">{active.subtitle}</p>
-                  </div>
+                Built for regulated,
+                <br />
+                <em className="text-neutral-500">safety-critical industries</em>
+              </motion.h2>
+            </div>
 
-                  <p className="text-neutral-400 text-sm leading-relaxed max-w-2xl mb-8">{active.desc}</p>
+            <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
+              <div className="lg:w-[260px] flex-shrink-0">
+                <div className="flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0 -mx-1 px-1">
+                  {industries.map((ind, idx) => (
+                    <button
+                      key={ind.title}
+                      onClick={() => setActiveIndex(idx)}
+                      className={`relative text-left px-4 py-3 rounded-xl transition-all duration-300 flex-shrink-0 ${
+                        idx === activeIndex
+                          ? "bg-white/10 text-white"
+                          : "text-neutral-500 hover:text-neutral-300 hover:bg-white/5"
+                      }`}
+                    >
+                      <span className="text-sm font-medium whitespace-nowrap">{ind.title}</span>
+                      {idx === activeIndex && (
+                        <motion.div
+                          className="absolute bottom-0 left-4 right-4 lg:left-0 lg:right-auto lg:top-0 lg:bottom-0 lg:w-[3px] h-[3px] lg:h-auto rounded-full bg-white"
+                          layoutId="industry-indicator"
+                          transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                        />
+                      )}
+                    </button>
+                  ))}
+                </div>
 
-                  <div className="flex flex-col sm:flex-row sm:items-end gap-8">
-                    <div className="flex flex-wrap gap-6">
-                      {active.metrics.map(m => (
-                        <div key={m.label}>
-                          <div className="text-xl font-semibold text-white">{m.value}</div>
-                          <div className="text-xs text-neutral-500 uppercase tracking-wider mt-0.5">{m.label}</div>
-                        </div>
-                      ))}
-                    </div>
-
-                    <div className="sm:ml-auto sm:w-[240px] flex-shrink-0">
-                      <div className="text-[10px] text-neutral-600 uppercase tracking-widest mb-3 font-medium">Data flow</div>
-                      <div className="flex flex-col gap-0">
-                        {active.flow.map((node, i) => (
-                          <div key={node} className="flex items-center gap-0">
-                            <div className={`flex-1 text-xs font-medium px-3 py-1.5 border rounded-md text-center ${
-                              node.includes("Grysics")
-                                ? "border-white/30 text-white bg-white/5"
-                                : "border-white/10 text-neutral-400"
-                            }`}>
-                              {node}
-                            </div>
-                            {i < active.flow.length - 1 && (
-                              <div className="flex flex-col items-center mx-0 -my-1 relative z-10">
-                                <div className="w-px h-3 bg-white/20" />
-                                <div className="w-0 h-0 border-l-[3px] border-r-[3px] border-t-[4px] border-l-transparent border-r-transparent border-t-white/20" />
-                              </div>
-                            )}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
+                <div className="hidden lg:flex items-center gap-2 mt-6 ml-4">
+                  <span className="text-[11px] text-neutral-600 font-medium tabular-nums">{String(activeIndex + 1).padStart(2, "0")} / {String(industries.length).padStart(2, "0")}</span>
+                  <div className="flex-1 h-px bg-white/10 rounded-full overflow-hidden ml-2">
+                    <motion.div
+                      className="h-full bg-white/40 rounded-full"
+                      initial={{ width: "0%" }}
+                      animate={{ width: "100%" }}
+                      key={activeIndex}
+                      transition={{ duration: 6, ease: "linear" }}
+                    />
                   </div>
                 </div>
-              </motion.div>
-            </AnimatePresence>
+              </div>
+
+              <div className="flex-1 min-w-0">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeIndex}
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -12 }}
+                    transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
+                    className="rounded-2xl border border-white/10 overflow-hidden"
+                  >
+                    <div className="p-6 sm:p-8">
+                      <div className="mb-5">
+                        <h3 className="text-lg sm:text-xl font-semibold mb-1">{active.title}</h3>
+                        <p className="text-sm text-neutral-500">{active.subtitle}</p>
+                      </div>
+
+                      <p className="text-neutral-400 text-sm leading-relaxed max-w-2xl mb-6">{active.desc}</p>
+
+                      <div className="flex flex-col sm:flex-row sm:items-end gap-6">
+                        <div className="flex flex-wrap gap-6">
+                          {active.metrics.map(m => (
+                            <div key={m.label}>
+                              <div className="text-lg font-semibold text-white">{m.value}</div>
+                              <div className="text-xs text-neutral-500 uppercase tracking-wider mt-0.5">{m.label}</div>
+                            </div>
+                          ))}
+                        </div>
+
+                        <div className="sm:ml-auto sm:w-[220px] flex-shrink-0">
+                          <div className="text-[10px] text-neutral-600 uppercase tracking-widest mb-2.5 font-medium">Data flow</div>
+                          <div className="flex flex-col gap-0">
+                            {active.flow.map((node, i) => (
+                              <div key={node} className="flex items-center gap-0">
+                                <div className={`flex-1 text-xs font-medium px-3 py-1.5 border rounded-md text-center ${
+                                  node.includes("Grysics")
+                                    ? "border-white/30 text-white bg-white/5"
+                                    : "border-white/10 text-neutral-400"
+                                }`}>
+                                  {node}
+                                </div>
+                                {i < active.flow.length - 1 && (
+                                  <div className="flex flex-col items-center mx-0 -my-1 relative z-10">
+                                    <div className="w-px h-3 bg-white/20" />
+                                    <div className="w-0 h-0 border-l-[3px] border-r-[3px] border-t-[4px] border-l-transparent border-r-transparent border-t-white/20" />
+                                  </div>
+                                )}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+            </div>
           </div>
         </div>
       </div>
