@@ -242,11 +242,11 @@ function IndustriesSection() {
   return (
     <section className="py-32 sm:py-44">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="bg-neutral-950 text-white rounded-[2rem] sm:rounded-[2.5rem] relative overflow-hidden p-8 sm:p-12 lg:p-16">
+        <div className="bg-neutral-950 text-white rounded-[2rem] sm:rounded-[2.5rem] relative overflow-hidden p-6 sm:p-10 lg:p-12">
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-neutral-800 rounded-full blur-[200px] opacity-20 translate-x-1/3 -translate-y-1/3" />
 
           <div className="relative">
-            <div className="mb-14 sm:mb-20">
+            <div className="mb-10 sm:mb-14">
               <span className="block w-12 h-0.5 bg-white/30 mb-6" />
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
@@ -309,7 +309,7 @@ function IndustriesSection() {
                     transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
                     className="rounded-2xl border border-white/10 overflow-hidden"
                   >
-                    <div className="p-6 sm:p-8">
+                    <div className="p-5 sm:p-7">
                       <div className="mb-5">
                         <h3 className="text-lg sm:text-xl font-semibold mb-1">{active.title}</h3>
                         <p className="text-sm text-neutral-500">{active.subtitle}</p>
