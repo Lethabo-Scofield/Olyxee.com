@@ -71,13 +71,37 @@ export default function HomePage() {
   );
 }
 
+const OpenAIIcon = () => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.998 5.998 0 0 0-3.998 2.9 6.042 6.042 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073zM13.26 22.43a4.476 4.476 0 0 1-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 0 0 .392-.681v-6.737l2.02 1.168a.071.071 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494zM3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085 4.783 2.759a.771.771 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.033.062L9.74 19.95a4.5 4.5 0 0 1-6.14-1.646zM2.34 7.896a4.485 4.485 0 0 1 2.366-1.973V11.6a.766.766 0 0 0 .388.676l5.815 3.355-2.02 1.168a.076.076 0 0 1-.071 0l-4.83-2.786A4.504 4.504 0 0 1 2.34 7.872zm16.597 3.855l-5.833-3.387L15.119 7.2a.076.076 0 0 1 .071 0l4.83 2.791a4.494 4.494 0 0 1-.676 8.105v-5.678a.79.79 0 0 0-.407-.667zm2.01-3.023l-.141-.085-4.774-2.782a.776.776 0 0 0-.785 0L9.409 9.23V6.897a.066.066 0 0 1 .028-.061l4.83-2.787a4.5 4.5 0 0 1 6.68 4.66zm-12.64 4.135l-2.02-1.164a.08.08 0 0 1-.038-.057V6.075a4.5 4.5 0 0 1 7.375-3.453l-.142.08L8.704 5.46a.795.795 0 0 0-.393.681zm1.097-2.365l2.602-1.5 2.607 1.5v2.999l-2.597 1.5-2.607-1.5z"/></svg>
+);
+
+const GoogleIcon = () => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+);
+
+const AnthropicIcon = () => (
+  <svg viewBox="0 0 24 16" fill="currentColor" className="w-5 h-5"><path d="M16.98 0L24 16h-4.87l-7.02-16h4.87zM7.02 0L0 16h4.87l2.15-5.12h6.42L11.3 6.97H8.73L11.64 0H7.02z"/></svg>
+);
+
+const MistralIcon = () => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><rect x="0" y="0" width="5" height="5"/><rect x="19" y="0" width="5" height="5"/><rect x="0" y="6.33" width="5" height="5"/><rect x="6.33" y="6.33" width="5" height="5"/><rect x="12.66" y="6.33" width="5" height="5"/><rect x="19" y="6.33" width="5" height="5"/><rect x="0" y="12.66" width="5" height="5"/><rect x="12.66" y="12.66" width="5" height="5"/><rect x="19" y="12.66" width="5" height="5"/><rect x="0" y="19" width="5" height="5"/><rect x="6.33" y="19" width="5" height="5"/><rect x="12.66" y="19" width="5" height="5"/><rect x="19" y="19" width="5" height="5"/></svg>
+);
+
+const HuggingFaceIcon = () => (
+  <svg viewBox="0 0 32 32" fill="currentColor" className="w-5 h-5"><path d="M16 0C7.164 0 0 7.164 0 16s7.164 16 16 16 16-7.164 16-16S24.836 0 16 0zm-4.5 9c1.657 0 3 1.79 3 4s-1.343 4-3 4-3-1.79-3-4 1.343-4 3-4zm9 0c1.657 0 3 1.79 3 4s-1.343 4-3 4-3-1.79-3-4 1.343-4 3-4zm-1 10.5c0 1.5-1.343 3.5-3.5 3.5s-3.5-2-3.5-3.5h7zm-7-5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm9 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2zM9.5 19.5C10 22 12.5 24 16 24s6-2 6.5-4.5h-13z"/></svg>
+);
+
+const NvidiaIcon = () => (
+  <svg viewBox="0 0 351.4 62.8" fill="currentColor" className="w-16 h-5"><path d="M150.8 0h17.4v62.8h-17.4V0zm-40.6 0h17.4v62.8h-17.4V0zm121.9 0H249v50.6l-25.3-50.6h-17.4v62.8h16.9V13.1L249 62.8h16.9V0h-33.8zm69.7 0h-34.3v62.8h17.4V43.5h16.9c14.2 0 24.3-8.5 24.3-21.7S316 0 301.8 0zm-1 31.1h-15.9V12.4h15.9c5.7 0 8.5 3.8 8.5 9.3 0 5.6-2.8 9.4-8.5 9.4zM82.3 0L65.5 40.1 48.8 0H29.8l28.2 62.8h15L101.3 0H82.3zM194 38.4c0 15.3-10.1 25.9-28.3 25.9h-26.5V0h26.5c18.2 0 28.3 10.5 28.3 25.8v12.6zm-17.4-12.9c0-9.2-5.1-13.1-12-13.1h-7.5v38.2h7.5c6.9 0 12-4 12-13.1V25.5z"/></svg>
+);
+
 const partnerLogos = [
-  { name: "OpenAI", src: "/partner-logos/openai.svg", w: 28, h: 28 },
-  { name: "NVIDIA", src: "/partner-logos/nvidia.svg", w: 36, h: 20 },
-  { name: "Google", src: "/partner-logos/google.svg", w: 26, h: 26 },
-  { name: "Anthropic", src: "/partner-logos/anthropic.svg", w: 28, h: 18 },
-  { name: "Mistral", src: "/partner-logos/mistral.svg", w: 24, h: 24 },
-  { name: "Hugging Face", src: "/partner-logos/huggingface.svg", w: 28, h: 28 },
+  { name: "OpenAI", icon: OpenAIIcon },
+  { name: "NVIDIA", icon: NvidiaIcon },
+  { name: "Google", icon: GoogleIcon },
+  { name: "Anthropic", icon: AnthropicIcon },
+  { name: "Mistral", icon: MistralIcon },
+  { name: "Hugging Face", icon: HuggingFaceIcon },
 ];
 
 function HeroSection() {
@@ -157,27 +181,22 @@ function HeroSection() {
       >
         <p className="text-xs text-neutral-400 uppercase tracking-[0.15em] font-medium text-center mb-8">Trusted by industry leaders</p>
         <div className="flex flex-wrap justify-center items-center gap-10 sm:gap-14">
-          {partnerLogos.map((logo, i) => (
-            <motion.div
-              key={logo.name}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.9 + i * 0.06, duration: 0.5 }}
-              className="flex items-center gap-2.5 opacity-30 hover:opacity-70 transition-opacity duration-300 cursor-default"
-              title={logo.name}
-            >
-              <Image
-                src={logo.src}
-                alt={logo.name}
-                width={logo.w}
-                height={logo.h}
-                className="select-none"
-                style={{ width: "auto", height: "auto" }}
-                draggable={false}
-              />
-              <span className="text-sm font-semibold text-neutral-900 tracking-tight hidden sm:inline">{logo.name}</span>
-            </motion.div>
-          ))}
+          {partnerLogos.map((logo, i) => {
+            const Icon = logo.icon;
+            return (
+              <motion.div
+                key={logo.name}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.9 + i * 0.06, duration: 0.5 }}
+                className="flex items-center gap-2.5 text-neutral-400 hover:text-neutral-600 transition-colors duration-300 cursor-default select-none"
+                title={logo.name}
+              >
+                <Icon />
+                <span className="text-sm font-medium tracking-tight hidden sm:inline">{logo.name}</span>
+              </motion.div>
+            );
+          })}
         </div>
       </motion.div>
     </section>
