@@ -23,7 +23,7 @@ Company-level website for Olyxee, a reliability-first AI infrastructure company.
 - **Grain texture**: `.grain` CSS class — fixed noise overlay at z-9999, opacity 0.03, applied to page wrappers
 - **Accent utilities**: `.accent-line` (48px × 2px black block), `.accent-dot` (6px blue circle) — used as section markers
 - **Color palette**: neutral-950 for dark sections, neutral-400/500 for muted text, neutral-100/200 for borders. Blue (#3b82f6) used sparingly for interactive hover states, active nav items, and clickable highlights.
-- **Gradient backgrounds**: Gradient images in `public/images/` (gradient-blue, gradient-purple, gradient-orange-pink, gradient-yellow-blue, gradient-pink-cyan, gradient-painted) used as subtle section backgrounds with white/82-90% overlay + backdrop-blur-sm. Applied across Homepage, EdgeAI, Docs, About, and Community pages.
+- **Gradient backgrounds**: Gradient images in `public/images/` used as card-level backgrounds only (not full sections). Pattern: `bg-cover bg-center` + `bg-white/80-82 backdrop-blur-sm` overlay. Available gradients: gradient-blue, gradient-purple, gradient-orange-pink, gradient-yellow-blue, gradient-pink-cyan, gradient-painted, gradient-blue-pink, gradient-yellow-green, gradient-pastel, gradient-orange-purple, gradient-abstract-blue. Applied to: offering cards, hardware cards, stat cards, channel cards, docs featured cards, video thumbnails.
 - **Section pattern**: Alternating white/neutral-50/neutral-950 sections separated by thin border-neutral-100 borders
 - **Typography pattern**: Large serif italic headings with `<em>` in muted color for emphasis contrast
 - **Heading/paragraph colors**: Use `color: inherit` globally — each section explicitly controls text color via Tailwind classes

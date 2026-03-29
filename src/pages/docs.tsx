@@ -160,7 +160,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       desc: "Verify your first AI application in under five minutes.",
       tab: "api",
       page: "quickstart",
-      bg: "/images/gradient-blue.png",
+      bg: "/images/gradient-blue-pink.png",
     },
     {
       icon: Layers,
@@ -168,7 +168,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       desc: "Learn how the verification engine ensures AI application reliability.",
       tab: "grysics",
       page: "grysics-overview",
-      bg: "/images/gradient-purple.png",
+      bg: "/images/gradient-pastel.png",
     },
     {
       icon: Terminal,
@@ -176,7 +176,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       desc: "Integrate Grysics into your AI pipeline.",
       tab: "api",
       page: "api-reference",
-      bg: "/images/gradient-orange-pink.png",
+      bg: "/images/gradient-orange-purple.png",
     },
     {
       icon: Cpu,
@@ -184,7 +184,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       desc: "OpenAI, Anthropic, LangChain, and more.",
       tab: "guides",
       page: "supported-platforms",
-      bg: "/images/gradient-yellow-blue.png",
+      bg: "/images/gradient-yellow-green.png",
     },
   ];
 
@@ -193,19 +193,19 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       title: "Getting started with Olyxee",
       duration: "5:12",
       desc: "Set up your first project and run verification in minutes.",
-      bg: "/images/gradient-pink-cyan.png",
+      bg: "/images/gradient-abstract-blue.png",
     },
     {
       title: "Grysics deep dive",
       duration: "12:34",
       desc: "Understanding the verification engine and its checks.",
-      bg: "/images/gradient-blue.png",
+      bg: "/images/gradient-blue-pink.png",
     },
     {
       title: "Testing RAG pipelines",
       duration: "8:45",
       desc: "Evaluate retrieval quality, context usage, and response accuracy.",
-      bg: "/images/gradient-painted.png",
+      bg: "/images/gradient-orange-purple.png",
     },
   ];
 

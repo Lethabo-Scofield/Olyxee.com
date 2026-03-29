@@ -181,10 +181,8 @@ function PipelineSection() {
   ];
 
   return (
-    <section className="py-32 sm:py-44 relative overflow-hidden">
-      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-yellow-blue.png")' }} />
-      <div className="absolute inset-0 bg-white/90 backdrop-blur-sm" />
-      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-12">
+    <section className="py-32 sm:py-44 border-t border-neutral-100">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-12">
         <div className="text-center mb-24">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -411,7 +409,7 @@ function OfferingsSection() {
             href="/products/grysics"
             className="group relative flex flex-col sm:flex-row sm:items-center justify-between gap-6 p-8 sm:p-10 rounded-2xl overflow-hidden transition-all hover:shadow-lg"
           >
-            <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-blue.png")' }} />
+            <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-blue-pink.png")' }} />
             <div className="absolute inset-0 bg-white/80 backdrop-blur-sm" />
             <div className="relative flex-1 min-w-0">
               <div className="flex items-center gap-4 mb-3">
@@ -437,7 +435,7 @@ function OfferingsSection() {
             href="/edgeai"
             className="group relative flex flex-col sm:flex-row sm:items-center justify-between gap-6 p-8 sm:p-10 rounded-2xl overflow-hidden transition-all hover:shadow-lg"
           >
-            <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-purple.png")' }} />
+            <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-yellow-green.png")' }} />
             <div className="absolute inset-0 bg-white/80 backdrop-blur-sm" />
             <div className="relative flex-1 min-w-0">
               <div className="flex items-center gap-4 mb-3">
@@ -459,10 +457,8 @@ function OfferingsSection() {
 
 function ArchitectureSection() {
   return (
-    <section className="py-28 sm:py-36 relative overflow-hidden">
-      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-orange-pink.png")' }} />
-      <div className="absolute inset-0 bg-white/88 backdrop-blur-sm" />
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
+    <section className="py-28 sm:py-36 border-t border-neutral-100">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
         <div className="text-center mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -592,10 +588,8 @@ function ResearchSection() {
   ];
 
   return (
-    <section className="py-28 sm:py-36 relative overflow-hidden">
-      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-painted.png")' }} />
-      <div className="absolute inset-0 bg-white/88 backdrop-blur-sm" />
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
+    <section className="py-28 sm:py-36 border-t border-neutral-100">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-20">
           <div>
             <span className="accent-line" />
@@ -694,10 +688,8 @@ function MetricsSection() {
 
 function CTASection() {
   return (
-    <section className="py-28 sm:py-36 relative overflow-hidden">
-      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-pink-cyan.png")' }} />
-      <div className="absolute inset-0 bg-white/85 backdrop-blur-sm" />
-      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-12 text-center">
+    <section className="py-28 sm:py-36 border-t border-neutral-100">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-12 text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

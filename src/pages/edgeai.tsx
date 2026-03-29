@@ -48,6 +48,17 @@ const capabilities = [
   },
 ];
 
+const hardwareGradients = [
+  "/images/gradient-blue.png",
+  "/images/gradient-pastel.png",
+  "/images/gradient-yellow-green.png",
+  "/images/gradient-blue-pink.png",
+  "/images/gradient-orange-purple.png",
+  "/images/gradient-purple.png",
+  "/images/gradient-pink-cyan.png",
+  "/images/gradient-abstract-blue.png",
+];
+
 const supportedHardware = [
   { name: "NVIDIA Jetson", category: "GPU" },
   { name: "Raspberry Pi", category: "SBC" },
@@ -70,10 +81,8 @@ const EdgeAI: FC = () => {
       <div className="grain" />
       <Header />
 
-      <section className="pt-28 sm:pt-36 pb-20 sm:pb-28 px-4 sm:px-6 relative overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-purple.png")' }} />
-        <div className="absolute inset-0 bg-white/90 backdrop-blur-sm" />
-        <div className="relative max-w-5xl mx-auto">
+      <section className="pt-28 sm:pt-36 pb-20 sm:pb-28 px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -145,10 +154,8 @@ const EdgeAI: FC = () => {
         </div>
       </section>
 
-      <section className="py-20 sm:py-28 relative overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-orange-pink.png")' }} />
-        <div className="absolute inset-0 bg-white/85 backdrop-blur-sm" />
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6">
+      <section className="py-20 sm:py-28">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -170,10 +177,8 @@ const EdgeAI: FC = () => {
         </div>
       </section>
 
-      <section className="py-20 sm:py-28 relative overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-yellow-blue.png")' }} />
-        <div className="absolute inset-0 bg-white/88 backdrop-blur-sm" />
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6">
+      <section className="py-20 sm:py-28 border-t border-neutral-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -188,12 +193,13 @@ const EdgeAI: FC = () => {
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-neutral-200 rounded-2xl overflow-hidden border border-neutral-200">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {[
               {
                 label: "Olyxee",
                 role: "The Brain",
                 description: "Defines vision, conducts research, and builds core AI capabilities. Strategy and intelligence originate here.",
+                bg: "/images/gradient-blue.png",
               },
               {
                 label: "OEB",
@@ -205,6 +211,7 @@ const EdgeAI: FC = () => {
                 label: "Grysics",
                 role: "Quality Control",
                 description: "Verifies AI works correctly before and after deployment. The trust layer that ensures reliability.",
+                bg: "/images/gradient-yellow-green.png",
               },
             ].map((item, idx) => (
               <motion.div
@@ -214,17 +221,25 @@ const EdgeAI: FC = () => {
                 viewport={{ once: true }}
                 custom={idx}
                 variants={fadeUp}
-                className={`p-10 sm:p-12 ${item.highlight ? "bg-neutral-900 text-white" : "bg-white"}`}
+                className={`p-10 sm:p-12 rounded-2xl relative overflow-hidden ${item.highlight ? "bg-neutral-900 text-white" : ""}`}
               >
-                <span className={`text-xs font-medium uppercase tracking-widest ${item.highlight ? "text-neutral-400" : "text-neutral-400"}`}>
-                  {item.label}
-                </span>
-                <h3 className={`text-2xl font-semibold mt-3 mb-3 ${item.highlight ? "text-white" : "text-neutral-900"}`}>
-                  {item.role}
-                </h3>
-                <p className={`text-sm leading-relaxed ${item.highlight ? "text-neutral-400" : "text-neutral-500"}`}>
-                  {item.description}
-                </p>
+                {!item.highlight && item.bg && (
+                  <>
+                    <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url("${item.bg}")` }} />
+                    <div className="absolute inset-0 bg-white/80 backdrop-blur-sm" />
+                  </>
+                )}
+                <div className="relative">
+                  <span className={`text-xs font-medium uppercase tracking-widest ${item.highlight ? "text-neutral-400" : "text-neutral-500"}`}>
+                    {item.label}
+                  </span>
+                  <h3 className={`text-2xl font-semibold mt-3 mb-3 ${item.highlight ? "text-white" : "text-neutral-900"}`}>
+                    {item.role}
+                  </h3>
+                  <p className={`text-sm leading-relaxed ${item.highlight ? "text-neutral-400" : "text-neutral-600"}`}>
+                    {item.description}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -273,10 +288,8 @@ const EdgeAI: FC = () => {
         </div>
       </section>
 
-      <section className="py-28 sm:py-36 relative overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-painted.png")' }} />
-        <div className="absolute inset-0 bg-white/88 backdrop-blur-sm" />
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6">
+      <section className="py-28 sm:py-36 border-t border-neutral-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -303,13 +316,17 @@ const EdgeAI: FC = () => {
                 viewport={{ once: true }}
                 custom={idx}
                 variants={fadeUp}
-                className="border border-neutral-200 rounded-2xl p-6 hover:border-neutral-300 hover:shadow-sm transition-all"
+                className="rounded-2xl p-6 hover:shadow-md transition-all relative overflow-hidden"
               >
-                <Cpu className="w-5 h-5 text-neutral-400 mb-4" />
-                <h3 className="text-sm font-semibold text-neutral-900">{hw.name}</h3>
-                <span className="text-[10px] font-medium text-neutral-400 uppercase tracking-widest mt-1 block">
-                  {hw.category}
-                </span>
+                <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url("${hardwareGradients[idx]}")` }} />
+                <div className="absolute inset-0 bg-white/80 backdrop-blur-sm" />
+                <div className="relative">
+                  <Cpu className="w-5 h-5 text-neutral-500 mb-4" />
+                  <h3 className="text-sm font-semibold text-neutral-900">{hw.name}</h3>
+                  <span className="text-[10px] font-medium text-neutral-500 uppercase tracking-widest mt-1 block">
+                    {hw.category}
+                  </span>
+                </div>
               </motion.div>
             ))}
           </div>

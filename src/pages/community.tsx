@@ -24,6 +24,7 @@ interface Channel {
   members: number;
   unit: string;
   link: string;
+  bg: string;
 }
 
 const Community: FC = () => {
@@ -32,10 +33,10 @@ const Community: FC = () => {
   const statsRef = useRef<HTMLDivElement>(null);
 
   const channels: Channel[] = React.useMemo(() => [
-    { icon: MessageSquare, title: "Discord", description: "Join real-time conversations with developers deploying AI at the edge.", members: 5000, unit: "members", link: "https://discord.gg/DgBEMVCh" },
-    { icon: Github, title: "GitHub", description: "Contribute to our open-source tools and shape the future of edge AI.", members: 1200, unit: "stars", link: "https://github.com/Olyxee" },
-    { icon: Twitter, title: "X", description: "Stay updated with the latest features, tips, and community highlights.", members: 3000, unit: "followers", link: "https://x.com/Olyxee" },
-    { icon: Users, title: "Forums", description: "Deep-dive discussions on optimization strategies and deployment patterns.", members: 2000, unit: "posts", link: "#forums" },
+    { icon: MessageSquare, title: "Discord", description: "Join real-time conversations with developers deploying AI at the edge.", members: 5000, unit: "members", link: "https://discord.gg/DgBEMVCh", bg: "/images/gradient-blue-pink.png" },
+    { icon: Github, title: "GitHub", description: "Contribute to our open-source tools and shape the future of edge AI.", members: 1200, unit: "stars", link: "https://github.com/Olyxee", bg: "/images/gradient-yellow-green.png" },
+    { icon: Twitter, title: "X", description: "Stay updated with the latest features, tips, and community highlights.", members: 3000, unit: "followers", link: "https://x.com/Olyxee", bg: "/images/gradient-pastel.png" },
+    { icon: Users, title: "Forums", description: "Deep-dive discussions on optimization strategies and deployment patterns.", members: 2000, unit: "posts", link: "#forums", bg: "/images/gradient-orange-purple.png" },
   ], []);
 
   const formatNumber = (num: number) => num >= 1000 ? `${(num / 1000).toFixed(1)}k` : num.toString();
@@ -80,10 +81,8 @@ const Community: FC = () => {
       <div className="grain" />
       <Header />
 
-      <section className="pt-28 sm:pt-36 pb-28 sm:pb-36 px-4 sm:px-6 relative overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-orange-pink.png")' }} />
-        <div className="absolute inset-0 bg-white/88 backdrop-blur-sm pointer-events-none" />
-        <div className="relative max-w-5xl mx-auto">
+      <section className="pt-28 sm:pt-36 pb-28 sm:pb-36 px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -124,10 +123,8 @@ const Community: FC = () => {
         </div>
       </section>
 
-      <section className="py-28 sm:py-36 relative overflow-hidden" ref={statsRef}>
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-purple.png")' }} />
-        <div className="absolute inset-0 bg-white/88 backdrop-blur-sm pointer-events-none" />
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6">
+      <section className="py-28 sm:py-36 border-t border-neutral-100" ref={statsRef}>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="mb-16">
             <span className="accent-line" />
             <h2 className="font-serif text-4xl sm:text-5xl tracking-tight text-neutral-900">
@@ -137,7 +134,7 @@ const Community: FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {channels.map((channel, idx) => (
               <motion.div key={channel.title} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={idx} variants={fadeUp} className="rounded-2xl p-8 sm:p-10 transition-all group relative overflow-hidden hover:shadow-md">
-                <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url("/images/gradient-${['blue', 'yellow-blue', 'pink-cyan', 'painted'][idx]}.png")` }} />
+                <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url("${channel.bg}")` }} />
                 <div className="absolute inset-0 bg-white/82 backdrop-blur-sm" />
                 <div className="relative">
                   <div className="flex items-start justify-between mb-8">

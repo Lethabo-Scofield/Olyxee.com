@@ -22,10 +22,8 @@ const About: FC = () => {
       <div className="grain" />
       <Header />
 
-      <section className="pt-32 sm:pt-44 pb-20 sm:pb-28 px-4 sm:px-6 relative overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-blue.png")' }} />
-        <div className="absolute inset-0 bg-white/90 backdrop-blur-sm pointer-events-none" />
-        <div className="relative max-w-5xl mx-auto">
+      <section className="pt-32 sm:pt-44 pb-20 sm:pb-28 px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -63,59 +61,39 @@ const About: FC = () => {
         </div>
       </section>
 
-      <section className="py-28 sm:py-36 relative overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-pink-cyan.png")' }} />
-        <div className="absolute inset-0 bg-white/88 backdrop-blur-sm pointer-events-none" />
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-28">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-            >
-              <motion.div custom={0} variants={fadeUp}>
-                <span className="accent-line" />
+      <section className="py-28 sm:py-36 border-t border-neutral-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {[
+              { title: "The Problem", bg: "/images/gradient-blue-pink.png", texts: [
+                "AI models achieve remarkable results in controlled environments. But when deployed to real hardware — edge devices, IoT sensors, production servers — they fail in unpredictable ways.",
+                "Models drift. Hardware constraints break assumptions. Latency spikes cause cascading failures. The gap between \"works in the notebook\" and \"works in production\" is where most AI projects die."
+              ]},
+              { title: "Our Answer", bg: "/images/gradient-yellow-green.png", texts: [
+                "We build verification-first infrastructure. Every component in the Olyxee stack is designed around a core principle: AI systems should be proven correct before they're deployed, and continuously monitored after.",
+                "There's no standard infrastructure for this today — no reliable way to test across heterogeneous hardware, and no systematic approach to post-deployment correctness. We're building it."
+              ]},
+            ].map((card, idx) => (
+              <motion.div
+                key={card.title}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                custom={idx}
+                variants={fadeUp}
+                className="rounded-2xl p-10 sm:p-12 relative overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url("${card.bg}")` }} />
+                <div className="absolute inset-0 bg-white/82 backdrop-blur-sm" />
+                <div className="relative">
+                  <span className="accent-line" />
+                  <h2 className="font-serif text-3xl sm:text-4xl tracking-tight mb-6">{card.title}</h2>
+                  <div className="space-y-5 text-lg text-neutral-600 leading-relaxed font-light">
+                    {card.texts.map((t, i) => <p key={i}>{t}</p>)}
+                  </div>
+                </div>
               </motion.div>
-              <motion.h2 custom={0} variants={fadeUp} className="font-serif text-3xl sm:text-4xl lg:text-5xl tracking-tight mb-6">
-                The Problem
-              </motion.h2>
-              <motion.div custom={1} variants={fadeUp} className="space-y-5 text-lg text-neutral-500 leading-relaxed font-light">
-                <p>
-                  AI models achieve remarkable results in controlled environments. But when deployed
-                  to real hardware — edge devices, IoT sensors, production servers — they fail in
-                  unpredictable ways.
-                </p>
-                <p>
-                  Models drift. Hardware constraints break assumptions. Latency spikes cause
-                  cascading failures. The gap between "works in the notebook" and "works in
-                  production" is where most AI projects die.
-                </p>
-              </motion.div>
-            </motion.div>
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-            >
-              <motion.div custom={0} variants={fadeUp}>
-                <span className="accent-line" />
-              </motion.div>
-              <motion.h2 custom={0} variants={fadeUp} className="font-serif text-3xl sm:text-4xl lg:text-5xl tracking-tight mb-6">
-                Our Answer
-              </motion.h2>
-              <motion.div custom={1} variants={fadeUp} className="space-y-5 text-lg text-neutral-500 leading-relaxed font-light">
-                <p>
-                  We build verification-first infrastructure. Every component in the Olyxee stack
-                  is designed around a core principle: AI systems should be proven correct before
-                  they're deployed, and continuously monitored after.
-                </p>
-                <p>
-                  There's no standard infrastructure for this today — no reliable way to test
-                  across heterogeneous hardware, and no systematic approach to post-deployment
-                  correctness. We're building it.
-                </p>
-              </motion.div>
-            </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -169,10 +147,8 @@ const About: FC = () => {
         </div>
       </section>
 
-      <section className="py-28 sm:py-36 relative overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-painted.png")' }} />
-        <div className="absolute inset-0 bg-white/88 backdrop-blur-sm pointer-events-none" />
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6">
+      <section className="py-28 sm:py-36 border-t border-neutral-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -186,12 +162,12 @@ const About: FC = () => {
               Built for <em className="text-neutral-400">scale</em>
             </h2>
           </motion.div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { number: "50+", label: "Hardware targets" },
-              { number: "<10ms", label: "Verification latency" },
-              { number: "99.97%", label: "Deployment success" },
-              { number: "5", label: "ML frameworks" },
+              { number: "50+", label: "Hardware targets", bg: "/images/gradient-blue.png" },
+              { number: "<10ms", label: "Verification latency", bg: "/images/gradient-pastel.png" },
+              { number: "99.97%", label: "Deployment success", bg: "/images/gradient-orange-purple.png" },
+              { number: "5", label: "ML frameworks", bg: "/images/gradient-yellow-green.png" },
             ].map((stat, idx) => (
               <motion.div
                 key={stat.label}
@@ -200,9 +176,14 @@ const About: FC = () => {
                 viewport={{ once: true, amount: 0.3 }}
                 custom={idx}
                 variants={fadeUp}
+                className="rounded-2xl p-8 relative overflow-hidden"
               >
-                <p className="text-4xl sm:text-5xl font-serif italic text-neutral-900 mb-2">{stat.number}</p>
-                <p className="text-sm text-neutral-400 uppercase tracking-widest font-medium">{stat.label}</p>
+                <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url("${stat.bg}")` }} />
+                <div className="absolute inset-0 bg-white/80 backdrop-blur-sm" />
+                <div className="relative">
+                  <p className="text-4xl sm:text-5xl font-serif italic text-neutral-900 mb-2">{stat.number}</p>
+                  <p className="text-sm text-neutral-500 uppercase tracking-widest font-medium">{stat.label}</p>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -250,10 +231,8 @@ const About: FC = () => {
         </div>
       </section>
 
-      <section className="py-28 sm:py-36 relative overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-orange-pink.png")' }} />
-        <div className="absolute inset-0 bg-white/90 backdrop-blur-sm pointer-events-none" />
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6">
+      <section className="py-28 sm:py-36 border-b border-neutral-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <span className="accent-line" />
           <motion.div
             initial="hidden"
