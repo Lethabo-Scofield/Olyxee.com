@@ -171,7 +171,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
     {
       icon: Terminal,
       title: "API Reference",
-      desc: "Integrate Olyxee into your ML pipeline.",
+      desc: "Integrate Grysics into your ML pipeline.",
       tab: "api",
       page: "api-reference",
     },
@@ -283,7 +283,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
 
       <div className="mb-16">
         <h2 className="text-xl font-semibold text-gray-900 mb-2">Supported frameworks</h2>
-        <p className="text-sm text-gray-500 mb-4">Olyxee works with models from all major ML frameworks.</p>
+        <p className="text-sm text-gray-500 mb-4">Grysics works with models from all major ML frameworks.</p>
         <div className="flex flex-wrap gap-2">
           {["PyTorch", "TensorFlow", "ONNX", "TFLite", "JAX"].map(fw => (
             <span key={fw} className="text-sm font-medium text-gray-700 bg-gray-50 border border-gray-200 rounded-lg px-4 py-2">{fw}</span>
@@ -313,7 +313,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
 
 function APIOverview() {
   return (
-    <DocPage title="API Overview" subtitle="Integrate Olyxee into your pipeline with our Python SDK, REST API, and CLI tools.">
+    <DocPage title="API Overview" subtitle="Integrate Grysics into your pipeline with our Python SDK, REST API, and CLI tools.">
       <DocSection title="Authentication">
         <p>All API requests require an API key. Get your key from the Olyxee dashboard and include it in every request:</p>
         <CodeBlock language="bash" code={`curl https://api.olyxee.com/v1/models \\\n  -H "Authorization: Bearer oly_sk_..."`} />
@@ -567,7 +567,7 @@ function Monitoring() {
 
 function APIReference() {
   return (
-    <DocPage title="REST API" subtitle="Integrate Olyxee into your pipeline with the REST API.">
+    <DocPage title="REST API" subtitle="Integrate Grysics into your pipeline with the REST API.">
       <DocSection title="Base URL">
         <CodeBlock language="bash" code="https://api.olyxee.com/v1" />
       </DocSection>
