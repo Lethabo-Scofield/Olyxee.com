@@ -2,62 +2,140 @@ import { useState, FC } from "react";
 import SEO from "../components/SEO";
 import DocsLayout from "../layouts/DocsLayout";
 import Header from '../components/header';
-import { ArrowRight, BookOpen, Code2, Cpu, Rocket, Shield, Terminal, Zap, Layers, GitBranch, Box, BarChart3, Settings, FileCode, Wrench, ChevronRight, Sparkles } from "lucide-react";
+import { Code2, Cpu, Rocket, Shield, ChevronRight, Play } from "lucide-react";
 
-interface Section {
-  id: string;
-  title: string;
-  component: FC<any>;
-  family: string;
-  badge?: string;
-}
-
-const sections: Section[] = [
-  { id: "overview", title: "Overview", component: Overview, family: "Get started" },
-  { id: "quickstart", title: "Quickstart", component: Quickstart, family: "Get started" },
-  { id: "models", title: "Supported Models", component: SupportedModels, family: "Get started" },
-  { id: "grysics-overview", title: "What is Grysics", component: GrysicsOverview, family: "Grysics" },
-  { id: "verification", title: "Verification Engine", component: Verification, family: "Grysics" },
-  { id: "deployment", title: "Deployment", component: Deployment, family: "Grysics" },
-  { id: "monitoring", title: "Monitoring", component: Monitoring, family: "Grysics", badge: "new" },
-  { id: "api-reference", title: "API Reference", component: APIReference, family: "API" },
-  { id: "python-sdk", title: "Python SDK", component: PythonSDK, family: "API" },
-  { id: "cli", title: "CLI Reference", component: CLIReference, family: "API" },
-  { id: "errors", title: "Error Handling", component: ErrorHandling, family: "API" },
-  { id: "edge-devices", title: "Edge Devices", component: EdgeDevices, family: "Guides" },
-  { id: "optimization", title: "Optimization", component: Optimization, family: "Guides" },
-  { id: "configuration", title: "Configuration", component: Configuration, family: "Guides" },
-  { id: "changelog", title: "Changelog", component: Changelog, family: "Resources" },
-  { id: "limits", title: "Rate Limits", component: RateLimits, family: "Resources" },
+const TABS = [
+  { id: "home", label: "Home" },
+  { id: "api", label: "API" },
+  { id: "grysics", label: "Grysics" },
+  { id: "guides", label: "Guides" },
+  { id: "resources", label: "Resources" },
 ];
 
-const Docs: FC = () => {
-  const [activeSection, setActiveSection] = useState("overview");
-  const ActiveComponent = sections.find(sec => sec.id === activeSection)?.component;
+const API_SIDE_NAV = [
+  {
+    heading: "Getting started",
+    items: [
+      { id: "api-overview", title: "Overview" },
+      { id: "quickstart", title: "Quickstart" },
+      { id: "models", title: "Supported Models" },
+    ],
+  },
+  {
+    heading: "Reference",
+    items: [
+      { id: "api-reference", title: "REST API" },
+      { id: "python-sdk", title: "Python SDK" },
+      { id: "cli", title: "CLI" },
+      { id: "errors", title: "Error Handling" },
+    ],
+  },
+];
 
-  const families = Array.from(
-    sections.reduce((map, sec) => {
-      if (!map.has(sec.family)) map.set(sec.family, []);
-      map.get(sec.family)!.push({ id: sec.id, title: sec.title, badge: sec.badge });
-      return map;
-    }, new Map<string, { id: string; title: string; badge?: string }[]>())
-  ).map(([family, items]) => ({ family, items, defaultOpen: true }));
+const GRYSICS_SIDE_NAV = [
+  {
+    heading: "Overview",
+    items: [
+      { id: "grysics-overview", title: "What is Grysics" },
+      { id: "verification", title: "Verification Engine" },
+    ],
+  },
+  {
+    heading: "Deploy & Monitor",
+    items: [
+      { id: "deployment", title: "Deployment" },
+      { id: "monitoring", title: "Monitoring", badge: "new" },
+    ],
+  },
+];
+
+const GUIDES_SIDE_NAV = [
+  {
+    heading: "Topics",
+    items: [
+      { id: "edge-devices", title: "Edge Devices" },
+      { id: "optimization", title: "Optimization" },
+      { id: "configuration", title: "Configuration" },
+    ],
+  },
+];
+
+const RESOURCES_SIDE_NAV = [
+  {
+    heading: "Reference",
+    items: [
+      { id: "changelog", title: "Changelog" },
+      { id: "limits", title: "Rate Limits" },
+    ],
+  },
+];
+
+const TAB_DEFAULTS: Record<string, string> = {
+  api: "api-overview",
+  grysics: "grysics-overview",
+  guides: "edge-devices",
+  resources: "changelog",
+};
+
+const SIDE_NAVS: Record<string, typeof API_SIDE_NAV> = {
+  api: API_SIDE_NAV,
+  grysics: GRYSICS_SIDE_NAV,
+  guides: GUIDES_SIDE_NAV,
+  resources: RESOURCES_SIDE_NAV,
+};
+
+const Docs: FC = () => {
+  const [activeTab, setActiveTab] = useState("home");
+  const [activePage, setActivePage] = useState("api-overview");
+
+  const handleTabChange = (id: string) => {
+    setActiveTab(id);
+    if (TAB_DEFAULTS[id]) setActivePage(TAB_DEFAULTS[id]);
+  };
+
+  const handleNavigate = (tabId: string, pageId: string) => {
+    setActiveTab(tabId);
+    setActivePage(pageId);
+  };
 
   const renderContent = () => {
-    if (activeSection === "overview") {
-      return <Overview onNavigate={setActiveSection} />;
-    }
-    if (ActiveComponent) {
-      return <ActiveComponent />;
-    }
-    return null;
+    if (activeTab === "home") return <DocsHome onNavigate={handleNavigate} />;
+
+    const pageMap: Record<string, FC<any>> = {
+      "api-overview": APIOverview,
+      "quickstart": Quickstart,
+      "models": SupportedModels,
+      "api-reference": APIReference,
+      "python-sdk": PythonSDK,
+      "cli": CLIReference,
+      "errors": ErrorHandling,
+      "grysics-overview": GrysicsOverview,
+      "verification": Verification,
+      "deployment": Deployment,
+      "monitoring": Monitoring,
+      "edge-devices": EdgeDevices,
+      "optimization": Optimization,
+      "configuration": Configuration,
+      "changelog": Changelog,
+      "limits": RateLimits,
+    };
+
+    const Component = pageMap[activePage];
+    return Component ? <Component /> : null;
   };
 
   return (
     <div>
-      <SEO title="Documentation" description="Complete documentation for the Olyxee platform. Learn about Grysics verification, the Python SDK, CLI tools, and API reference." path="/docs" />
+      <SEO title="Documentation" description="Complete documentation for the Olyxee platform." path="/docs" />
       <Header />
-      <DocsLayout families={families} active={activeSection} onSelect={setActiveSection}>
+      <DocsLayout
+        tabs={TABS}
+        activeTab={activeTab}
+        onTabChange={handleTabChange}
+        sideNav={activeTab !== "home" ? SIDE_NAVS[activeTab] : undefined}
+        activePage={activePage}
+        onPageChange={setActivePage}
+      >
         {renderContent()}
       </DocsLayout>
     </div>
@@ -67,81 +145,197 @@ const Docs: FC = () => {
 export default Docs;
 
 
-function Overview({ onNavigate }: { onNavigate?: (id: string) => void }) {
-  const cards = [
+function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => void }) {
+  const featuredCards = [
     {
       icon: Rocket,
       title: "Quickstart",
-      desc: "Verify your first model in under five minutes with the Olyxee SDK.",
-      id: "quickstart",
-      gradient: "from-green-400 to-emerald-500",
+      desc: "Verify your first model in under five minutes.",
+      tab: "api",
+      page: "quickstart",
+      accent: "bg-green-500",
     },
     {
       icon: Shield,
       title: "Grysics Engine",
       desc: "Learn how the verification engine ensures AI reliability.",
-      id: "grysics-overview",
-      gradient: "from-blue-400 to-indigo-500",
+      tab: "grysics",
+      page: "grysics-overview",
+      accent: "bg-blue-500",
     },
     {
       icon: Code2,
       title: "API Reference",
-      desc: "Integrate Olyxee into your ML pipeline with the REST API.",
-      id: "api-reference",
-      gradient: "from-violet-400 to-purple-500",
+      desc: "Integrate Olyxee into your ML pipeline.",
+      tab: "api",
+      page: "api-reference",
+      accent: "bg-violet-500",
     },
     {
       icon: Cpu,
       title: "Edge Devices",
-      desc: "Deploy to Jetson, Raspberry Pi, and more hardware targets.",
-      id: "edge-devices",
-      gradient: "from-orange-400 to-red-500",
+      desc: "Deploy to Jetson, Raspberry Pi, and more.",
+      tab: "guides",
+      page: "edge-devices",
+      accent: "bg-orange-500",
     },
   ];
 
+  const videos = [
+    {
+      title: "Getting started with Olyxee",
+      duration: "5:12",
+      desc: "Set up your first project and run verification in minutes.",
+      thumb: "from-neutral-800 to-neutral-900",
+    },
+    {
+      title: "Grysics deep dive",
+      duration: "12:34",
+      desc: "Understanding the verification engine and its checks.",
+      thumb: "from-green-800 to-green-900",
+    },
+    {
+      title: "Deploying to edge devices",
+      duration: "8:45",
+      desc: "Step-by-step deployment to NVIDIA Jetson and Raspberry Pi.",
+      thumb: "from-blue-800 to-blue-900",
+    },
+  ];
+
+  const quickLinks = [
+    { label: "Python SDK", tab: "api", page: "python-sdk" },
+    { label: "CLI Reference", tab: "api", page: "cli" },
+    { label: "Monitoring", tab: "grysics", page: "monitoring" },
+    { label: "Optimization", tab: "guides", page: "optimization" },
+    { label: "Changelog", tab: "resources", page: "changelog" },
+    { label: "Rate Limits", tab: "resources", page: "limits" },
+  ];
+
   return (
-    <DocPage title="Documentation" subtitle="Explore the Olyxee platform, Grysics verification engine, and deployment tools.">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-14">
-        {cards.map(card => {
+    <div className="max-w-5xl mx-auto px-4 sm:px-8 py-10 sm:py-16">
+      <div className="mb-12">
+        <h1 className="text-3xl sm:text-4xl font-semibold text-gray-900 tracking-tight mb-3">Documentation</h1>
+        <p className="text-gray-500 text-base sm:text-lg max-w-2xl leading-relaxed">
+          Explore the Olyxee platform. Learn how to verify, optimize, and deploy AI models to edge hardware with confidence.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-16">
+        {featuredCards.map(card => {
           const Icon = card.icon;
           return (
             <button
-              key={card.id}
-              onClick={() => onNavigate?.(card.id)}
-              className="group text-left rounded-xl border border-gray-200 overflow-hidden hover:shadow-md hover:border-gray-300 transition-all"
+              key={card.page}
+              onClick={() => onNavigate(card.tab, card.page)}
+              className="group text-left rounded-xl border border-gray-200 p-5 hover:border-gray-300 hover:shadow-sm transition-all"
             >
-              <div className={`h-24 bg-gradient-to-br ${card.gradient} relative overflow-hidden`}>
-                <div className="absolute inset-0 bg-black/5" />
-                <Icon className="absolute bottom-3 right-4 w-10 h-10 text-white/30" />
-              </div>
-              <div className="p-5">
-                <div className="flex items-center gap-2 mb-1.5">
-                  <h3 className="text-[15px] font-semibold text-gray-900">{card.title}</h3>
-                  <ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:translate-x-0.5 transition-transform" />
+              <div className="flex items-start gap-4">
+                <div className={`w-9 h-9 rounded-lg ${card.accent} flex items-center justify-center flex-shrink-0`}>
+                  <Icon className="w-4.5 h-4.5 text-white" strokeWidth={2} />
                 </div>
-                <p className="text-sm text-gray-500 leading-relaxed">{card.desc}</p>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-1.5 mb-1">
+                    <h3 className="text-[15px] font-semibold text-gray-900">{card.title}</h3>
+                    <ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:translate-x-0.5 transition-transform" />
+                  </div>
+                  <p className="text-sm text-gray-500 leading-relaxed">{card.desc}</p>
+                </div>
               </div>
             </button>
           );
         })}
       </div>
 
-      <DocSection title="What is Olyxee?">
-        <p>Olyxee is an AI infrastructure company building tools for reliable AI deployment. Our flagship product, <strong>Grysics</strong>, is a verification engine that ensures AI models work correctly before and after they reach production hardware.</p>
-        <p>The platform handles model ingestion, automated verification against target hardware profiles, optimization, deployment, and continuous monitoring — giving teams confidence that their models will behave as expected in the real world.</p>
-      </DocSection>
+      <div className="mb-16">
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-xl font-semibold text-gray-900">Featured videos</h2>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          {videos.map((video, i) => (
+            <div key={i} className="group cursor-pointer">
+              <div className={`relative aspect-video rounded-xl bg-gradient-to-br ${video.thumb} mb-3 overflow-hidden`}>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:bg-white/30 transition-colors">
+                    <Play className="w-5 h-5 text-white ml-0.5" fill="white" />
+                  </div>
+                </div>
+                <div className="absolute bottom-2 right-2 bg-black/60 text-white text-[11px] font-mono px-1.5 py-0.5 rounded">
+                  {video.duration}
+                </div>
+              </div>
+              <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-green-600 transition-colors">{video.title}</h3>
+              <p className="text-xs text-gray-500 leading-relaxed">{video.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
 
-      <DocSection title="Grysics">
-        <p><strong>Grysics</strong> is Olyxee's verification engine. It tests model accuracy, latency, and memory against target hardware before deployment — catching failures before they reach production. The Python SDK and CLI tools let you integrate verification into your existing ML pipeline.</p>
-      </DocSection>
+      <div className="mb-16">
+        <h2 className="text-xl font-semibold text-gray-900 mb-4">What is Olyxee?</h2>
+        <div className="text-[15px] text-gray-600 leading-relaxed space-y-3 max-w-3xl">
+          <p>Olyxee is an AI infrastructure company building tools for reliable AI deployment. Our flagship product, <strong className="text-gray-900">Grysics</strong>, is a verification engine that ensures AI models work correctly before and after they reach production hardware.</p>
+          <p>The platform handles model ingestion, automated verification against target hardware profiles, optimization, deployment, and continuous monitoring — giving teams confidence that their models will behave as expected in the real world.</p>
+        </div>
+      </div>
 
-      <DocSection title="Supported frameworks">
-        <p>Olyxee works with models from all major ML frameworks:</p>
-        <div className="flex flex-wrap gap-2 mt-3">
-          {["PyTorch", "TensorFlow", "ONNX", "TFLite"].map(fw => (
+      <div className="mb-16">
+        <h2 className="text-xl font-semibold text-gray-900 mb-2">Supported frameworks</h2>
+        <p className="text-sm text-gray-500 mb-4">Olyxee works with models from all major ML frameworks.</p>
+        <div className="flex flex-wrap gap-2">
+          {["PyTorch", "TensorFlow", "ONNX", "TFLite", "JAX"].map(fw => (
             <span key={fw} className="text-sm font-medium text-gray-700 bg-gray-50 border border-gray-200 rounded-lg px-4 py-2">{fw}</span>
           ))}
         </div>
+      </div>
+
+      <div>
+        <h2 className="text-xl font-semibold text-gray-900 mb-4">Quick links</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+          {quickLinks.map(link => (
+            <button
+              key={link.page}
+              onClick={() => onNavigate(link.tab, link.page)}
+              className="text-left px-4 py-3 rounded-lg border border-gray-200 text-sm text-gray-600 hover:text-gray-900 hover:border-gray-300 hover:bg-gray-50 transition-all flex items-center justify-between"
+            >
+              {link.label}
+              <ChevronRight className="w-3.5 h-3.5 text-gray-300" />
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+function APIOverview() {
+  return (
+    <DocPage title="API Overview" subtitle="Integrate Olyxee into your pipeline with our Python SDK, REST API, and CLI tools.">
+      <DocSection title="Authentication">
+        <p>All API requests require an API key. Get your key from the Olyxee dashboard and include it in every request:</p>
+        <CodeBlock language="bash" code={`curl https://api.olyxee.com/v1/models \\\n  -H "Authorization: Bearer oly_sk_..."`} />
+        <DocCallout type="warning">
+          Never expose your API key in client-side code. Use environment variables or a secrets manager.
+        </DocCallout>
+      </DocSection>
+
+      <DocSection title="SDKs & tools">
+        <div className="space-y-3 mt-2">
+          {[
+            { title: "Python SDK", desc: "Full-featured SDK for model loading, verification, optimization, and deployment." },
+            { title: "REST API", desc: "HTTP API for programmatic access from any language or platform." },
+            { title: "CLI", desc: "Command-line tools for quick model verification and deployment." },
+          ].map(item => (
+            <div key={item.title} className="border border-gray-200 rounded-lg p-4 hover:border-gray-300 transition-colors">
+              <h4 className="font-semibold text-gray-900 mb-1 text-[15px]">{item.title}</h4>
+              <p className="text-sm text-gray-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
+
+      <DocSection title="Base URL">
+        <CodeBlock language="bash" code="https://api.olyxee.com/v1" />
       </DocSection>
     </DocPage>
   );
@@ -370,7 +564,7 @@ function Monitoring() {
 
 function APIReference() {
   return (
-    <DocPage title="API Reference" subtitle="Integrate Olyxee into your pipeline with the REST API.">
+    <DocPage title="REST API" subtitle="Integrate Olyxee into your pipeline with the REST API.">
       <DocSection title="Base URL">
         <CodeBlock language="bash" code="https://api.olyxee.com/v1" />
       </DocSection>
@@ -378,9 +572,6 @@ function APIReference() {
       <DocSection title="Authentication">
         <p>All API requests require an API key passed in the <InlineCode>Authorization</InlineCode> header:</p>
         <CodeBlock language="bash" code={`curl https://api.olyxee.com/v1/models \\\n  -H "Authorization: Bearer oly_sk_..."`} />
-        <DocCallout type="warning">
-          Never expose your API key in client-side code. Use environment variables or a secrets manager.
-        </DocCallout>
       </DocSection>
 
       <DocSection title="Endpoints">
@@ -543,7 +734,7 @@ function EdgeDevices() {
       </DocSection>
 
       <DocSection title="Device profiles">
-        <p>Each device has a hardware profile that Grysics uses during verification. Profiles include CPU architecture, available memory, accelerator capabilities, and supported operations.</p>
+        <p>Each device has a hardware profile that Grysics uses during verification.</p>
         <CodeBlock language="python" code={`profile = olyxee.devices.profile("jetson-nano")\n\nprint(f"CPU: {profile.cpu}")\nprint(f"GPU: {profile.gpu}")\nprint(f"Memory: {profile.memory_mb}MB")\nprint(f"Supported ops: {profile.supported_ops}")`} />
       </DocSection>
     </DocPage>
@@ -582,7 +773,7 @@ function Configuration() {
   return (
     <DocPage title="Configuration" subtitle="Project configuration and environment setup.">
       <DocSection title="olyxee.yaml">
-        <p>The project configuration file controls default settings for verification, optimization, and deployment:</p>
+        <p>The project configuration file controls default settings:</p>
         <CodeBlock language="yaml" code={`project:\n  name: my-ai-project\n  version: 1.0.0\n\ntarget:\n  device: jetson-nano\n  connection: ssh\n  host: 192.168.1.100\n\nverification:\n  tolerance: 0.02\n  latency_target: 50\n  memory_limit: 512\n  stability_runs: 1000\n\noptimization:\n  quantization: int8\n  pruning: false\n  calibration_data: ./calibration/\n\nmonitoring:\n  enabled: true\n  interval: 60\n  drift_threshold: 0.05\n  auto_rollback: true\n  webhook: https://your-api.com/alerts`} />
       </DocSection>
 
