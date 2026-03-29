@@ -635,35 +635,24 @@ function DeveloperToolsSection() {
 
   return (
     <>
-      <section className="py-32 sm:py-44 bg-neutral-950 text-white relative overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: 'url("/images/gradient-blue.png")',
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            filter: "blur(80px) saturate(1.5)",
-          }}
-        />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,transparent_0%,rgba(0,0,0,0.6)_100%)]" />
-
-        <div className="relative max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+      <section className="py-32 sm:py-44">
+        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-20 sm:mb-28">
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-              className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight mb-5"
+              className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight mb-5"
             >
-              Developer <em className="text-white/40">tools</em>
+              Developer <em className="text-neutral-400">tools</em>
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.15, duration: 0.7 }}
-              className="text-lg text-white/50 font-light max-w-xl mx-auto"
+              className="text-lg text-neutral-500 font-light max-w-xl mx-auto"
             >
               Everything you need to build, test, and ship reliable AI.
             </motion.p>
@@ -679,24 +668,24 @@ function DeveloperToolsSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-                  className="group relative rounded-3xl border border-white/10 hover:border-white/20 p-8 sm:p-10 transition-all duration-500 hover:bg-white/[0.03] flex flex-col"
+                  className="group relative rounded-3xl border border-neutral-200 hover:border-neutral-300 p-8 sm:p-10 transition-all duration-500 hover:bg-neutral-50 flex flex-col"
                 >
                   <div className="flex items-start justify-between mb-6">
-                    <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center">
-                      <Icon className="w-5 h-5 text-white/70" />
+                    <div className="w-12 h-12 rounded-2xl bg-neutral-100 flex items-center justify-center">
+                      <Icon className="w-5 h-5 text-neutral-600" />
                     </div>
                     <div className="flex items-center gap-2">
                       <span className={`w-1.5 h-1.5 rounded-full ${tool.statusColor}`} />
-                      <span className="text-[11px] font-medium text-white/40 uppercase tracking-widest">{tool.status}</span>
+                      <span className="text-[11px] font-medium text-neutral-400 uppercase tracking-widest">{tool.status}</span>
                     </div>
                   </div>
 
-                  <h3 className="text-xl tracking-tight mb-2">{tool.title}</h3>
-                  <p className="text-sm text-white/40 leading-relaxed font-light flex-1">{tool.desc}</p>
+                  <h3 className="text-xl tracking-tight text-neutral-900 mb-2">{tool.title}</h3>
+                  <p className="text-sm text-neutral-500 leading-relaxed font-light flex-1">{tool.desc}</p>
 
                   <button
                     onClick={() => openWaitlist(tool.title)}
-                    className="mt-6 group/btn inline-flex items-center gap-2 text-sm font-medium text-white/60 hover:text-white transition-colors"
+                    className="mt-6 group/btn inline-flex items-center gap-2 text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors"
                   >
                     Get early access <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-0.5 transition-transform" />
                   </button>
@@ -886,36 +875,25 @@ function ResearchSection() {
 
 function CTASection() {
   return (
-    <section className="py-32 sm:py-44 bg-neutral-950 text-white relative overflow-hidden">
-      <div
-        className="absolute inset-0 opacity-30"
-        style={{
-          backgroundImage: 'url("/images/gradient-purple.png")',
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          filter: "blur(80px) saturate(1.5)",
-        }}
-      />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.5)_100%)]" />
-
-      <div className="relative max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+    <section className="py-32 sm:py-44">
+      <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-          className="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl tracking-tight mb-8"
+          className="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-neutral-900 tracking-tight mb-8"
         >
           Ready to build AI
           <br />
-          <em className="text-white/40">that works?</em>
+          <em className="text-neutral-400">that works?</em>
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.15, duration: 0.7 }}
-          className="text-white/50 text-lg sm:text-xl max-w-xl mx-auto mb-12 font-light leading-relaxed"
+          className="text-neutral-500 text-lg sm:text-xl max-w-xl mx-auto mb-12 font-light leading-relaxed"
         >
           Get started with Olyxee's developer tools, or reach out to discuss enterprise solutions.
         </motion.p>
@@ -928,13 +906,13 @@ function CTASection() {
         >
           <Link
             href="/docs"
-            className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide"
+            className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-neutral-900 text-white rounded-full font-medium hover:bg-black transition-all text-sm tracking-wide"
           >
             Get Started <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
           </Link>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 text-white/70 border border-white/15 rounded-full font-medium hover:bg-white/5 hover:text-white transition-all text-sm tracking-wide"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 text-neutral-600 border border-neutral-200 rounded-full font-medium hover:bg-neutral-50 hover:text-neutral-900 transition-all text-sm tracking-wide"
           >
             Contact Sales
           </Link>
