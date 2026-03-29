@@ -3,9 +3,7 @@
 import { motion, useMotionValue, useTransform, animate, useInView } from 'framer-motion';
 import { useEffect, useRef, useState, FormEvent } from 'react';
 import Link from 'next/link';
-import Header from "@/components/header";
-import Footer from "@/components/footer";
-import { ArrowRight, Shield, Cpu, BarChart3, Zap, GitBranch, Layers, Check, Brain, Sparkles, TrendingUp, Clock, ChevronRight } from 'lucide-react';
+import { ArrowRight, Shield, Cpu, BarChart3, Zap, GitBranch, Layers, Check, Brain, Sparkles, TrendingUp, Clock, ChevronRight, ChevronLeft, LogIn, Menu, X } from 'lucide-react';
 
 function VisionIcon({ className }: { className?: string }) {
   return (
@@ -236,7 +234,37 @@ export default function GrysicsPage() {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
       <div className="grain" />
-      <Header />
+
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-neutral-200/60">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+          <div className="flex items-center gap-6">
+            <Link href="/" className="flex items-center gap-1.5 text-xs text-neutral-400 hover:text-neutral-600 transition-colors">
+              <ChevronLeft className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Olyxee</span>
+            </Link>
+            <div className="h-4 w-px bg-neutral-200" />
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-6 rounded-lg bg-neutral-900 flex items-center justify-center">
+                <Shield className="w-3.5 h-3.5 text-white" />
+              </div>
+              <span className="text-sm font-semibold tracking-tight text-neutral-900">Grysics</span>
+            </div>
+          </div>
+          <div className="hidden sm:flex items-center gap-1">
+            {['Features', 'Benchmarks', 'Pricing'].map((item) => (
+              <span key={item} className="px-3 py-1.5 text-[13px] text-neutral-500 hover:text-neutral-900 transition-colors cursor-default">{item}</span>
+            ))}
+          </div>
+          <div className="flex items-center gap-2.5">
+            <button className="px-4 py-1.5 text-[13px] font-medium text-neutral-600 hover:text-neutral-900 transition-colors">
+              Log in
+            </button>
+            <button className="px-4 py-1.5 text-[13px] font-medium bg-neutral-900 text-white rounded-full hover:bg-black transition-colors">
+              Sign up
+            </button>
+          </div>
+        </div>
+      </nav>
 
       <section className="pt-32 sm:pt-44 pb-20 sm:pb-28 px-4 sm:px-6 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[700px] h-[700px] rounded-full blur-[180px] opacity-30 -translate-y-1/3 translate-x-1/4 pointer-events-none" style={{ background: 'linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #f0abfc 100%)' }} />
@@ -531,7 +559,24 @@ export default function GrysicsPage() {
         </div>
       </section>
 
-      <Footer />
+      <footer className="bg-neutral-950 border-t border-white/5">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div className="flex items-center gap-2">
+              <div className="w-5 h-5 rounded-md bg-white/10 flex items-center justify-center">
+                <Shield className="w-3 h-3 text-white/50" />
+              </div>
+              <span className="text-xs text-neutral-500">Grysics by Olyxee</span>
+            </div>
+            <div className="flex items-center gap-6">
+              {['Documentation', 'Status', 'Privacy', 'Terms'].map((item) => (
+                <span key={item} className="text-xs text-neutral-600 hover:text-neutral-400 transition-colors cursor-default">{item}</span>
+              ))}
+            </div>
+            <p className="text-xs text-neutral-600">&copy; {new Date().getFullYear()} Olyxee</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
