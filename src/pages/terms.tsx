@@ -98,7 +98,7 @@ const Terms: FC = () => {
             <h1 className="font-serif text-4xl sm:text-5xl text-neutral-900 tracking-tight leading-[1.08] mb-3">
               Terms of Use
             </h1>
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col items-start sm:flex-row sm:items-center justify-between gap-3">
               <p className="text-neutral-400 text-sm">Last updated: March 2026</p>
               <button
                 onClick={handleDownload}

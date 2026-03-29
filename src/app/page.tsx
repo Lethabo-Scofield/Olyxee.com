@@ -167,6 +167,7 @@ function HeroSection() {
                 width={logo.w}
                 height={logo.h}
                 className="select-none"
+                style={{ width: "auto", height: "auto" }}
                 draggable={false}
               />
               <span className="text-sm font-semibold text-neutral-900 tracking-tight hidden sm:inline">{logo.name}</span>
