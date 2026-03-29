@@ -120,7 +120,7 @@ const Header = () => {
                                     <Link
                                         href={item.href}
                                         prefetch
-                                        className="text-neutral-700 text-[13px] font-medium transition-all hover:text-blue-600 hover:bg-blue-50/50 focus:outline-none focus:ring-2 focus:ring-blue-400/20 rounded-full px-3.5 py-1.5 relative"
+                                        className="text-neutral-500 text-[13px] font-medium transition-colors hover:text-neutral-900 focus:outline-none px-3.5 py-1.5 relative"
                                     >
                                         {item.name}
                                     </Link>
