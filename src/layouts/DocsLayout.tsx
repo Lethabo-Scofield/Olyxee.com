@@ -66,7 +66,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ tabs, activeTab, onTabChange, sideNav
 
   return (
     <div className="min-h-screen bg-white" style={{ paddingTop: '60px' }}>
-      <div className="border-b border-gray-200 bg-white sticky top-[60px] z-30">
+      <div className="border-b border-gray-200 bg-white/95 backdrop-blur-md sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-8 overflow-x-auto scrollbar-hide" ref={tabsRef}>
@@ -125,7 +125,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ tabs, activeTab, onTabChange, sideNav
           {sideNav && (
             <>
               <aside className={`w-60 flex-shrink-0 border-r border-gray-100 hidden md:block`}>
-                <nav className="sticky top-[108px] h-[calc(100vh-108px)] overflow-y-auto py-6 px-4">
+                <nav className="sticky top-[46px] h-[calc(100vh-46px)] overflow-y-auto py-6 px-4">
                   {!hasResults && searchQuery ? (
                     <p className="text-sm text-gray-400 px-2 py-4">No results for &ldquo;{searchQuery}&rdquo;</p>
                   ) : filteredSideNav?.map(section => section.items.length > 0 ? (
