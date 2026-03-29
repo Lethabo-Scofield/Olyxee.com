@@ -5,7 +5,84 @@ import { useEffect, useRef, useState, FormEvent } from 'react';
 import Link from 'next/link';
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import { ArrowRight, Shield, Cpu, BarChart3, Zap, GitBranch, Layers, Check, Brain, Eye, MessageSquare, Image, Music, Video, Bot, Car, Factory, Stethoscope, Sparkles, TrendingUp, Clock, ChevronRight } from 'lucide-react';
+import { ArrowRight, Shield, Cpu, BarChart3, Zap, GitBranch, Layers, Check, Brain, Sparkles, TrendingUp, Clock, ChevronRight } from 'lucide-react';
+
+function VisionIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="3.5" />
+      <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z" />
+    </svg>
+  );
+}
+
+function LanguageIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 5h16M4 5v3c0 4.418 3.582 8 8 8M4 5c0 0 1 4 4 6" />
+      <path d="M12 16l3 5M12 16l-3 5" />
+      <path d="M20 5c0 0-1 4-4 6" />
+    </svg>
+  );
+}
+
+function PaletteIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 2a10 10 0 0 0-1 19.95A2 2 0 0 0 13 20v-1.5a2 2 0 0 1 2-2h1.5a10 10 0 0 0-4.5-14.5" />
+      <circle cx="8" cy="10" r="1.5" fill="currentColor" />
+      <circle cx="12" cy="7" r="1.5" fill="currentColor" />
+      <circle cx="16" cy="10" r="1.5" fill="currentColor" />
+    </svg>
+  );
+}
+
+function WaveformIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+      <path d="M3 12h2l2-7 3 14 3-10 2 6h2l2-3" />
+    </svg>
+  );
+}
+
+function FilmIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="4" width="20" height="16" rx="2" />
+      <path d="M2 8h20M2 16h20M8 4v16M16 4v16" />
+    </svg>
+  );
+}
+
+function RobotArmIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 20v-4M8 20h8" />
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 8V4M8.5 9.5L5.5 6.5M15.5 9.5l3-3" />
+    </svg>
+  );
+}
+
+function HeartPulseIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+      <path d="M5 12h3l2-3 3 6 2-3h4" />
+    </svg>
+  );
+}
+
+function CarIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M5 17h14M5 17a2 2 0 0 1-2-2v-3l2-5h14l2 5v3a2 2 0 0 1-2 2M5 17v2M19 17v2" />
+      <circle cx="7.5" cy="14.5" r="1.5" />
+      <circle cx="16.5" cy="14.5" r="1.5" />
+      <path d="M10 7l1-3M14 7l-1-3" />
+    </svg>
+  );
+}
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -145,14 +222,14 @@ function EarlyAccessForm() {
 }
 
 const aiApplications = [
-  { icon: Eye, name: "Computer Vision", examples: "Object detection, image segmentation, facial recognition", color: "from-blue-500 to-cyan-500" },
-  { icon: MessageSquare, name: "NLP & LLMs", examples: "Text generation, sentiment analysis, chatbots, translation", color: "from-violet-500 to-purple-500" },
-  { icon: Image, name: "Image Generation", examples: "Stable Diffusion, DALL-E, style transfer, super-resolution", color: "from-pink-500 to-rose-500" },
-  { icon: Music, name: "Audio & Speech", examples: "Speech-to-text, music generation, voice cloning", color: "from-orange-500 to-amber-500" },
-  { icon: Video, name: "Video Analysis", examples: "Action recognition, tracking, video generation", color: "from-green-500 to-emerald-500" },
-  { icon: Bot, name: "Robotics & Control", examples: "Path planning, reinforcement learning, simulation", color: "from-red-500 to-orange-500" },
-  { icon: Stethoscope, name: "Medical AI", examples: "Diagnostics, drug discovery, medical imaging", color: "from-teal-500 to-cyan-500" },
-  { icon: Car, name: "Autonomous Systems", examples: "Self-driving, drone navigation, ADAS", color: "from-indigo-500 to-blue-500" },
+  { icon: VisionIcon, name: "Computer Vision", examples: "Object detection, image segmentation, facial recognition", gradient: "from-blue-400 via-cyan-400 to-teal-400" },
+  { icon: LanguageIcon, name: "NLP & LLMs", examples: "Text generation, sentiment analysis, chatbots, translation", gradient: "from-violet-400 via-purple-400 to-fuchsia-400" },
+  { icon: PaletteIcon, name: "Image Generation", examples: "Stable Diffusion, DALL-E, style transfer, super-resolution", gradient: "from-pink-400 via-rose-400 to-orange-400" },
+  { icon: WaveformIcon, name: "Audio & Speech", examples: "Speech-to-text, music generation, voice cloning", gradient: "from-amber-400 via-orange-400 to-red-400" },
+  { icon: FilmIcon, name: "Video Analysis", examples: "Action recognition, tracking, video generation", gradient: "from-emerald-400 via-green-400 to-cyan-400" },
+  { icon: RobotArmIcon, name: "Robotics & Control", examples: "Path planning, reinforcement learning, simulation", gradient: "from-red-400 via-rose-400 to-pink-400" },
+  { icon: HeartPulseIcon, name: "Medical AI", examples: "Diagnostics, drug discovery, medical imaging", gradient: "from-teal-400 via-cyan-400 to-blue-400" },
+  { icon: CarIcon, name: "Autonomous Systems", examples: "Self-driving, drone navigation, ADAS", gradient: "from-indigo-400 via-blue-400 to-violet-400" },
 ];
 
 export default function GrysicsPage() {
@@ -245,7 +322,7 @@ export default function GrysicsPage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {aiApplications.map((app, idx) => {
               const Icon = app.icon;
               return (
@@ -256,15 +333,19 @@ export default function GrysicsPage() {
                   viewport={{ once: true }}
                   custom={idx}
                   variants={fadeUp}
-                  className="group relative rounded-2xl border border-neutral-200 p-6 hover:border-neutral-300 hover:shadow-lg transition-all cursor-default overflow-hidden"
+                  className="group relative rounded-3xl border border-neutral-200/80 hover:border-neutral-300 hover:shadow-xl transition-all duration-500 cursor-default overflow-hidden bg-white"
                 >
-                  <div className={`absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br ${app.color} opacity-[0.08] group-hover:opacity-[0.15] rounded-full blur-2xl transition-opacity duration-500 pointer-events-none`} />
-                  <div className={`absolute -bottom-8 -left-8 w-24 h-24 bg-gradient-to-br ${app.color} opacity-[0.05] group-hover:opacity-[0.1] rounded-full blur-xl transition-opacity duration-500 pointer-events-none`} />
-                  <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${app.color} flex items-center justify-center mb-4`}>
-                    <Icon className="w-5 h-5 text-white" />
+                  <div className={`relative h-32 bg-gradient-to-br ${app.gradient} overflow-hidden`}>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
+                    <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(circle at 30% 70%, rgba(255,255,255,0.4) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255,255,255,0.3) 0%, transparent 40%)' }} />
+                    <div className="absolute bottom-3 left-3 w-10 h-10 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 shadow-lg">
+                      <Icon className="w-5 h-5 text-white" />
+                    </div>
                   </div>
-                  <h3 className="text-sm font-semibold text-neutral-900 mb-1.5">{app.name}</h3>
-                  <p className="text-xs text-neutral-500 leading-relaxed">{app.examples}</p>
+                  <div className="p-5">
+                    <h3 className="text-sm font-semibold text-neutral-900 mb-1.5 group-hover:text-neutral-700 transition-colors">{app.name}</h3>
+                    <p className="text-xs text-neutral-500 leading-relaxed font-light">{app.examples}</p>
+                  </div>
                 </motion.div>
               );
             })}
