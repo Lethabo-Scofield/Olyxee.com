@@ -134,6 +134,7 @@
     color: inherit;
     line-height: 1.1;
     letter-spacing: -0.02em;
+    font-family: var(--font-instrument), "Instrument Serif", Georgia, serif;
   }
 
   p {
@@ -168,6 +169,15 @@
 
 .font-serif {
   font-family: var(--font-instrument), "Instrument Serif", Georgia, serif;
+}
+
+.docs-page h1,
+.docs-page h2,
+.docs-page h3,
+.docs-page h4,
+.docs-page h5,
+.docs-page h6 {
+  font-family: var(--font-inter), "Inter", system-ui, sans-serif;
 }
 
 .grain {
