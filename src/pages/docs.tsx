@@ -18,7 +18,8 @@ const API_SIDE_NAV = [
     items: [
       { id: "api-overview", title: "Overview" },
       { id: "quickstart", title: "Quickstart" },
-      { id: "models", title: "Supported Models" },
+      { id: "api-keys", title: "API Keys" },
+      { id: "models", title: "Supported Platforms" },
     ],
   },
   {
@@ -110,6 +111,7 @@ const Docs: FC = () => {
     const pageMap: Record<string, FC<any>> = {
       "api-overview": APIOverview,
       "quickstart": Quickstart,
+      "api-keys": APIKeys,
       "models": SupportedModels,
       "api-reference": APIReference,
       "python-sdk": PythonSDK,
@@ -315,11 +317,27 @@ function APIOverview() {
   return (
     <DocPage title="API Overview" subtitle="Integrate Grysics into your AI application pipeline with our Python SDK, REST API, and CLI tools.">
       <DocSection title="Authentication">
-        <p>All API requests require an API key. Get your key from the Olyxee dashboard and include it in every request:</p>
+        <p>All API requests require an API key. Generate keys from the Olyxee dashboard or via the API, and include it in every request:</p>
         <CodeBlock language="bash" code={`curl https://api.olyxee.com/v1/apps \\\n  -H "Authorization: Bearer oly_sk_..."`} />
         <DocCallout type="warning">
-          Never expose your API key in client-side code. Use environment variables or a secrets manager.
+          Never expose your API key in client-side code. Use environment variables or a secrets manager. See the <strong>API Keys</strong> page for key management.
         </DocCallout>
+      </DocSection>
+
+      <DocSection title="Key concepts">
+        <div className="space-y-3 mt-2">
+          {[
+            { title: "Applications", desc: "Register your chatbot, RAG pipeline, or agent workflow as an application. Each app gets its own verification history and monitoring dashboard." },
+            { title: "Verification runs", desc: "Test your application against predefined checks — accuracy, consistency, hallucination detection, and retrieval relevance." },
+            { title: "Monitoring", desc: "Continuous production monitoring with alerts for quality drift, hallucination spikes, and latency degradation." },
+            { title: "API Keys", desc: "Create scoped keys for different environments (dev, staging, production) with configurable permissions and expiration." },
+          ].map(item => (
+            <div key={item.title} className="border border-gray-200 rounded-lg p-4 hover:border-gray-300 transition-colors">
+              <h4 className="font-semibold text-gray-900 mb-1 text-[15px]">{item.title}</h4>
+              <p className="text-sm text-gray-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
       </DocSection>
 
       <DocSection title="SDKs & tools">
@@ -375,6 +393,101 @@ function Quickstart() {
       <DocCallout type="info">
         For detailed evaluation options, see the <strong>Testing &amp; Verification</strong> section under Grysics.
       </DocCallout>
+    </DocPage>
+  );
+}
+
+
+function APIKeys() {
+  return (
+    <DocPage title="API Keys" subtitle="Create and manage API keys for authenticating with the Grysics platform.">
+      <DocSection title="Key types">
+        <DocTable
+          headers={["Type", "Prefix", "Permissions", "Use case"]}
+          rows={[
+            ["Secret key", "oly_sk_", "Full access", "Server-side applications, CI/CD"],
+            ["Restricted key", "oly_rk_", "Scoped access", "Specific apps or read-only access"],
+            ["Test key", "oly_tk_", "Sandbox only", "Development and testing"],
+          ]}
+        />
+      </DocSection>
+
+      <DocSection title="Generate a key via dashboard">
+        <p>The simplest way to create an API key:</p>
+        <div className="space-y-2 mt-2">
+          {[
+            "Go to dashboard.olyxee.com → Settings → API Keys",
+            "Click \"Create new key\"",
+            "Choose the key type and set permissions",
+            "Optionally set an expiration date",
+            "Copy the key — it will only be shown once",
+          ].map((step, i) => (
+            <div key={i} className="flex gap-3 items-start">
+              <span className="text-xs font-mono font-bold text-gray-900 bg-gray-100 border border-gray-200 rounded px-2 py-0.5 flex-shrink-0 mt-0.5">{i + 1}</span>
+              <p className="text-sm text-gray-600">{step}</p>
+            </div>
+          ))}
+        </div>
+        <DocCallout type="warning">
+          API keys are shown only once at creation. Store them securely — you cannot retrieve the full key later.
+        </DocCallout>
+      </DocSection>
+
+      <DocSection title="Generate a key via API">
+        <CodeBlock language="bash" code={`curl -X POST https://api.olyxee.com/v1/api-keys \\\n  -H "Authorization: Bearer oly_sk_..." \\\n  -H "Content-Type: application/json" \\\n  -d '{\n    "name": "CI Pipeline Key",\n    "type": "restricted",\n    "permissions": ["apps:read", "verify:write"],\n    "expires_in": "90d"\n  }'`} />
+        <p>Response:</p>
+        <CodeBlock language="json" code={`{\n  "object": "api_key",\n  "id": "key_abc123",\n  "name": "CI Pipeline Key",\n  "key": "oly_rk_live_abc123...xyz",\n  "type": "restricted",\n  "permissions": ["apps:read", "verify:write"],\n  "created_at": "2025-01-15T10:30:00Z",\n  "expires_at": "2025-04-15T10:30:00Z"\n}`} />
+      </DocSection>
+
+      <DocSection title="Generate a key via SDK">
+        <CodeBlock language="python" code={`import grysics\n\nkey = grysics.api_keys.create(\n    name="Production Monitor",\n    type="restricted",\n    permissions=["apps:read", "monitor:write", "metrics:read"],\n    expires_in="180d"\n)\n\nprint(f"Key: {key.secret}")  # Only available at creation\nprint(f"ID: {key.id}")\nprint(f"Expires: {key.expires_at}")`} />
+      </DocSection>
+
+      <DocSection title="List keys">
+        <CodeBlock language="bash" code={`curl https://api.olyxee.com/v1/api-keys \\\n  -H "Authorization: Bearer oly_sk_..."`} />
+        <CodeBlock language="json" code={`{\n  "object": "list",\n  "data": [\n    {\n      "id": "key_abc123",\n      "name": "CI Pipeline Key",\n      "type": "restricted",\n      "last_four": "xyz0",\n      "last_used_at": "2025-01-15T09:12:00Z",\n      "expires_at": "2025-04-15T10:30:00Z",\n      "status": "active"\n    }\n  ]\n}`} />
+      </DocSection>
+
+      <DocSection title="Revoke a key">
+        <CodeBlock language="bash" code={`curl -X DELETE https://api.olyxee.com/v1/api-keys/key_abc123 \\\n  -H "Authorization: Bearer oly_sk_..."`} />
+        <p>Or via the SDK:</p>
+        <CodeBlock language="python" code={`grysics.api_keys.revoke("key_abc123")`} />
+        <DocCallout type="info">
+          Revoked keys stop working immediately. Any in-flight requests using the key will fail with a 401 error.
+        </DocCallout>
+      </DocSection>
+
+      <DocSection title="Available permissions">
+        <DocTable
+          headers={["Permission", "Description"]}
+          rows={[
+            ["apps:read", "List and view registered applications"],
+            ["apps:write", "Register and update applications"],
+            ["verify:write", "Start verification runs"],
+            ["verify:read", "View verification results"],
+            ["monitor:write", "Enable and configure monitoring"],
+            ["metrics:read", "View monitoring metrics and alerts"],
+            ["keys:manage", "Create and revoke API keys"],
+          ]}
+        />
+      </DocSection>
+
+      <DocSection title="Best practices">
+        <div className="space-y-2 mt-1">
+          {[
+            "Use restricted keys with minimal permissions for each use case",
+            "Set expiration dates on all keys — rotate regularly",
+            "Use separate keys for development, staging, and production",
+            "Store keys in environment variables, never in source code",
+            "Monitor key usage in the dashboard to detect anomalies",
+          ].map((tip, i) => (
+            <div key={i} className="flex gap-2 items-start">
+              <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0" />
+              <p className="text-sm text-gray-600">{tip}</p>
+            </div>
+          ))}
+        </div>
+      </DocSection>
     </DocPage>
   );
 }
@@ -577,7 +690,7 @@ function APIReference() {
         <CodeBlock language="bash" code={`curl https://api.olyxee.com/v1/apps \\\n  -H "Authorization: Bearer oly_sk_..."`} />
       </DocSection>
 
-      <DocSection title="Endpoints">
+      <DocSection title="Application endpoints">
         <DocTable
           headers={["Method", "Endpoint", "Description"]}
           rows={[
@@ -588,6 +701,19 @@ function APIReference() {
             ["POST", "/apps/:id/monitor", "Enable monitoring"],
             ["GET", "/apps/:id/metrics", "Get monitoring metrics"],
             ["GET", "/apps/:id/alerts", "List triggered alerts"],
+          ]}
+        />
+      </DocSection>
+
+      <DocSection title="API key endpoints">
+        <DocTable
+          headers={["Method", "Endpoint", "Description"]}
+          rows={[
+            ["POST", "/api-keys", "Create a new API key"],
+            ["GET", "/api-keys", "List all API keys"],
+            ["GET", "/api-keys/:id", "Get key details"],
+            ["DELETE", "/api-keys/:id", "Revoke an API key"],
+            ["PATCH", "/api-keys/:id", "Update key name or permissions"],
           ]}
         />
       </DocSection>
