@@ -1,10 +1,10 @@
-import { FC, useState, useRef } from "react";
+import { FC, useState } from "react";
 import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import Link from "next/link";
-import { ArrowRight, MapPin, X, CheckCircle, Briefcase, Clock, Globe, Users, Zap, ChevronDown } from "lucide-react";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { ArrowRight, MapPin, X, CheckCircle, Briefcase, Clock, Globe, Users, Zap } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface Role {
   title: string;
@@ -158,96 +158,61 @@ const roles: Role[] = [
 const teams = Array.from(new Set(roles.map(r => r.team)));
 
 function HeroSection() {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95]);
-  const y = useTransform(scrollYProgress, [0, 0.5], [0, 60]);
-
   return (
-    <section ref={ref} className="relative min-h-[100vh] flex flex-col items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 bg-neutral-950" />
-      <div
-        className="absolute inset-0 opacity-40"
-        style={{
-          backgroundImage: 'url("/images/gradient-blue-pink.png")',
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          filter: "blur(80px) saturate(1.5)",
-        }}
-      />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.6)_100%)]" />
-
-      <motion.div
-        style={{ opacity, scale, y }}
-        className="relative z-10 text-center px-6 max-w-5xl mx-auto"
-      >
+    <section className="pt-40 sm:pt-48 pb-20 sm:pb-28">
+      <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+          transition={{ duration: 0.8, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          <div className="inline-flex items-center gap-2.5 px-4 py-2 bg-white/10 backdrop-blur-xl text-white/80 rounded-full text-xs font-medium mb-10 border border-white/10">
-            <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+          <div className="inline-flex items-center gap-2.5 px-4 py-2 bg-neutral-100 text-neutral-600 rounded-full text-xs font-medium mb-8 border border-neutral-200/60">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
             Now hiring across all teams
           </div>
         </motion.div>
 
         <motion.h1
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-          className="font-serif text-5xl sm:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] text-white leading-[1] tracking-tight mb-8"
+          transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+          className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 leading-[1.08] tracking-tight mb-5"
         >
-          Do the best
+          Do the best work
           <br />
-          work of your <em className="text-white/40">life.</em>
+          of your <em className="text-neutral-400">life.</em>
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-          className="text-lg sm:text-xl text-white/50 max-w-2xl mx-auto leading-relaxed font-light"
+          transition={{ duration: 0.8, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+          className="text-lg text-neutral-500 max-w-xl leading-relaxed font-light mb-10"
         >
           Join a small team solving hard problems in AI reliability and verification.
           Start with an internship. Grow into something bigger.
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1, ease: [0.25, 0.1, 0.25, 1] }}
-          className="mt-12 flex flex-col sm:flex-row gap-4 justify-center"
+          transition={{ duration: 0.7, delay: 0.65, ease: [0.25, 0.1, 0.25, 1] }}
+          className="flex flex-wrap gap-3"
         >
           <a
             href="#roles"
-            className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide"
+            className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-black transition-all text-sm"
           >
             View open roles <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
           </a>
           <Link
             href="/about"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 text-white/70 border border-white/15 rounded-full font-medium hover:bg-white/5 hover:text-white transition-all text-sm tracking-wide"
+            className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-neutral-600 border border-neutral-200 rounded-full font-medium hover:bg-neutral-50 hover:text-neutral-900 transition-all text-sm"
           >
             Learn about Olyxee
           </Link>
         </motion.div>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-        >
-          <ChevronDown className="w-5 h-5 text-white/30" />
-        </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }
@@ -659,7 +624,7 @@ const Careers: FC = () => {
   return (
     <div className="min-h-screen bg-[#fafafa] text-neutral-900 relative">
       <SEO title="Careers" description="Join Olyxee and work on AI infrastructure that matters. Open internship positions in research, engineering, design, and more." path="/careers" />
-      <Header theme="dark" />
+      <Header />
 
       <main>
         <HeroSection />
