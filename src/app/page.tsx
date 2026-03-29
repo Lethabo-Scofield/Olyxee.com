@@ -127,20 +127,15 @@ function HeroSection() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="absolute bottom-0 left-0 right-0 flex flex-col sm:flex-row gap-3 justify-center items-center p-4 sm:p-6 bg-gradient-to-t from-black/60 via-black/30 to-transparent"
+            className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6"
           >
             <Link
-              href="/developers"
-              className="inline-flex items-center justify-center gap-2 px-7 py-3 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide shadow-lg"
+              href="/docs"
+              className="group relative inline-flex items-center gap-2.5 px-6 py-2.5 bg-white/10 backdrop-blur-md text-white rounded-full font-medium hover:bg-white/20 transition-all text-sm tracking-wide border border-white/20 hover:border-white/40 shadow-lg shadow-black/20"
             >
+              <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
               Start Building
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link
-              href="/research"
-              className="inline-flex items-center justify-center gap-2 px-7 py-3 text-white border border-white/40 rounded-full font-medium hover:bg-white/10 transition-all text-sm tracking-wide backdrop-blur-sm"
-            >
-              Read Our Research
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
             </Link>
           </motion.div>
         </div>
