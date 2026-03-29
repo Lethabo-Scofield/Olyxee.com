@@ -154,12 +154,8 @@ function HeroSection() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex items-end justify-between"
+            className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6"
           >
-            <div className="flex items-center gap-3 bg-white/90 backdrop-blur-xl rounded-2xl px-5 py-3 shadow-lg shadow-black/10 border border-white/50">
-              <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              <span className="text-sm font-medium text-neutral-800 tracking-tight">Live demo</span>
-            </div>
             <Link
               href="/docs"
               className="group inline-flex items-center gap-2.5 bg-white/90 backdrop-blur-xl text-neutral-900 rounded-2xl px-5 py-3 hover:bg-white hover:scale-[1.02] transition-all shadow-lg shadow-black/10 border border-white/50"
