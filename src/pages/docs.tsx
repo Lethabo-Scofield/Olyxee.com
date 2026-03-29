@@ -2,7 +2,7 @@ import { useState, FC } from "react";
 import SEO from "../components/SEO";
 import DocsLayout from "../layouts/DocsLayout";
 import Header from '../components/header';
-import { ArrowRight, BookOpen, Code2, Cpu, Rocket, Shield, Terminal, Zap, Layers, GitBranch, Box, BarChart3, Settings, FileCode, Wrench } from "lucide-react";
+import { ArrowRight, BookOpen, Code2, Cpu, Rocket, Shield, Terminal, Zap, Layers, GitBranch, Box, BarChart3, Settings, FileCode, Wrench, ChevronRight, Sparkles } from "lucide-react";
 
 interface Section {
   id: string;
@@ -68,49 +68,78 @@ export default Docs;
 
 
 function Overview({ onNavigate }: { onNavigate?: (id: string) => void }) {
+  const cards = [
+    {
+      icon: Rocket,
+      title: "Quickstart",
+      desc: "Verify your first model in under five minutes with the Olyxee SDK.",
+      id: "quickstart",
+      gradient: "from-green-400 to-emerald-500",
+    },
+    {
+      icon: Shield,
+      title: "Grysics Engine",
+      desc: "Learn how the verification engine ensures AI reliability.",
+      id: "grysics-overview",
+      gradient: "from-blue-400 to-indigo-500",
+    },
+    {
+      icon: Code2,
+      title: "API Reference",
+      desc: "Integrate Olyxee into your ML pipeline with the REST API.",
+      id: "api-reference",
+      gradient: "from-violet-400 to-purple-500",
+    },
+    {
+      icon: Cpu,
+      title: "Edge Devices",
+      desc: "Deploy to Jetson, Raspberry Pi, and more hardware targets.",
+      id: "edge-devices",
+      gradient: "from-orange-400 to-red-500",
+    },
+  ];
+
   return (
-    <DocPage
-      title="Olyxee Documentation"
-      subtitle="Everything you need to verify, optimize, and deploy AI models with confidence."
-    >
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-16">
-        {[
-          { icon: Rocket, title: "Quickstart", desc: "Verify your first model in under five minutes.", id: "quickstart" },
-          { icon: Shield, title: "Grysics", desc: "The verification engine for AI systems.", id: "grysics-overview" },
-          { icon: Code2, title: "API Reference", desc: "Integrate Olyxee into your pipeline.", id: "api-reference" },
-          { icon: Cpu, title: "Edge Devices", desc: "Deploy to Jetson, Raspberry Pi, and more.", id: "edge-devices" },
-        ].map(card => {
+    <DocPage title="Documentation" subtitle="Explore the Olyxee platform, Grysics verification engine, and deployment tools.">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-14">
+        {cards.map(card => {
           const Icon = card.icon;
           return (
             <button
               key={card.id}
               onClick={() => onNavigate?.(card.id)}
-              className="bg-white/60 border border-neutral-200/60 rounded-2xl p-6 hover:border-neutral-300 hover:bg-white transition-all cursor-pointer group text-left"
+              className="group text-left rounded-xl border border-gray-200 overflow-hidden hover:shadow-md hover:border-gray-300 transition-all"
             >
-              <div className="w-9 h-9 rounded-xl bg-neutral-100 border border-neutral-200/60 flex items-center justify-center mb-4 group-hover:bg-neutral-900 group-hover:border-neutral-900 transition-colors">
-                <Icon className="w-4 h-4 text-neutral-400 group-hover:text-white transition-colors" />
+              <div className={`h-24 bg-gradient-to-br ${card.gradient} relative overflow-hidden`}>
+                <div className="absolute inset-0 bg-black/5" />
+                <Icon className="absolute bottom-3 right-4 w-10 h-10 text-white/30" />
               </div>
-              <h3 className="text-[15px] font-semibold text-neutral-900 mb-1.5">{card.title}</h3>
-              <p className="text-sm text-neutral-500 leading-relaxed">{card.desc}</p>
+              <div className="p-5">
+                <div className="flex items-center gap-2 mb-1.5">
+                  <h3 className="text-[15px] font-semibold text-gray-900">{card.title}</h3>
+                  <ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:translate-x-0.5 transition-transform" />
+                </div>
+                <p className="text-sm text-gray-500 leading-relaxed">{card.desc}</p>
+              </div>
             </button>
           );
         })}
       </div>
 
       <DocSection title="What is Olyxee?">
-        <p>Olyxee is an AI infrastructure company building tools for reliable AI deployment. Our first product, <strong>Grysics</strong>, is a verification engine that ensures AI models work correctly before and after they reach production hardware.</p>
+        <p>Olyxee is an AI infrastructure company building tools for reliable AI deployment. Our flagship product, <strong>Grysics</strong>, is a verification engine that ensures AI models work correctly before and after they reach production hardware.</p>
         <p>The platform handles model ingestion, automated verification against target hardware profiles, optimization, deployment, and continuous monitoring — giving teams confidence that their models will behave as expected in the real world.</p>
       </DocSection>
 
       <DocSection title="Grysics">
-        <p><strong>Grysics</strong> is Olyxee's verification engine for AI. It tests model accuracy, latency, and memory against target hardware before deployment — catching failures before they reach production. It includes a Python SDK and CLI tools for integrating verification and deployment into your existing ML pipeline.</p>
+        <p><strong>Grysics</strong> is Olyxee's verification engine. It tests model accuracy, latency, and memory against target hardware before deployment — catching failures before they reach production. The Python SDK and CLI tools let you integrate verification into your existing ML pipeline.</p>
       </DocSection>
 
       <DocSection title="Supported frameworks">
         <p>Olyxee works with models from all major ML frameworks:</p>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4">
+        <div className="flex flex-wrap gap-2 mt-3">
           {["PyTorch", "TensorFlow", "ONNX", "TFLite"].map(fw => (
-            <div key={fw} className="bg-white/60 border border-neutral-200/60 rounded-xl px-4 py-3 text-center text-sm font-medium text-neutral-700">{fw}</div>
+            <span key={fw} className="text-sm font-medium text-gray-700 bg-gray-50 border border-gray-200 rounded-lg px-4 py-2">{fw}</span>
           ))}
         </div>
       </DocSection>
@@ -121,10 +150,7 @@ function Overview({ onNavigate }: { onNavigate?: (id: string) => void }) {
 
 function Quickstart() {
   return (
-    <DocPage
-      title="Quickstart"
-      subtitle="Get up and running with Olyxee in under five minutes."
-    >
+    <DocPage title="Quickstart" subtitle="Get up and running with Olyxee in under five minutes.">
       <DocSection title="1. Install the SDK">
         <p>Install the Olyxee Python SDK:</p>
         <CodeBlock language="bash" code="pip install olyxee" />
@@ -159,10 +185,7 @@ function Quickstart() {
 
 function SupportedModels() {
   return (
-    <DocPage
-      title="Supported Models"
-      subtitle="Model formats and frameworks compatible with the Olyxee platform."
-    >
+    <DocPage title="Supported Models" subtitle="Model formats and frameworks compatible with the Olyxee platform.">
       <DocSection title="Frameworks">
         <DocTable
           headers={["Framework", "File formats", "Status"]}
@@ -200,30 +223,25 @@ function SupportedModels() {
 
 function GrysicsOverview() {
   return (
-    <DocPage
-      title="What is Grysics"
-      subtitle="The verification engine at the core of the Olyxee platform."
-    >
+    <DocPage title="What is Grysics" subtitle="The verification engine at the core of the Olyxee platform.">
       <DocSection title="Overview">
         <p><strong>Grysics</strong> is Olyxee's verification engine for AI systems. It automatically tests whether a trained model will work correctly on target hardware — before you deploy it.</p>
         <p>Instead of discovering failures in production, Grysics catches accuracy degradation, latency violations, memory overflows, and numerical instability during a pre-deployment verification pass.</p>
       </DocSection>
 
       <DocSection title="How it works">
-        <div className="space-y-4 mt-2">
+        <div className="space-y-3 mt-2">
           {[
-            { step: "1", title: "Ingest", desc: "Load your trained model from any supported framework. Grysics analyzes the architecture, parameter count, and computational graph." },
-            { step: "2", title: "Profile", desc: "Grysics creates a hardware-specific execution profile for your target device, mapping operations to available compute resources." },
-            { step: "3", title: "Verify", desc: "Run automated tests that validate accuracy, latency, memory usage, and stability against configurable thresholds." },
-            { step: "4", title: "Report", desc: "Receive a detailed verification report with pass/fail status, performance metrics, and optimization recommendations." },
+            { step: "01", title: "Ingest", desc: "Load your trained model from any supported framework. Grysics analyzes the architecture, parameter count, and computational graph." },
+            { step: "02", title: "Profile", desc: "Grysics creates a hardware-specific execution profile for your target device, mapping operations to available compute resources." },
+            { step: "03", title: "Verify", desc: "Run automated tests that validate accuracy, latency, memory usage, and stability against configurable thresholds." },
+            { step: "04", title: "Report", desc: "Receive a detailed verification report with pass/fail status, performance metrics, and optimization recommendations." },
           ].map(item => (
-            <div key={item.step} className="flex gap-4 items-start">
-              <div className="w-8 h-8 rounded-xl bg-neutral-900 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <span className="text-xs font-semibold text-white">{item.step}</span>
-              </div>
+            <div key={item.step} className="flex gap-4 items-start p-4 rounded-lg bg-gray-50 border border-gray-100">
+              <span className="text-xs font-mono font-bold text-green-600 bg-green-50 border border-green-200 rounded px-2 py-1 flex-shrink-0">{item.step}</span>
               <div>
-                <span className="font-medium text-neutral-900">{item.title}</span>
-                <p className="text-neutral-500 mt-0.5">{item.desc}</p>
+                <span className="font-semibold text-gray-900">{item.title}</span>
+                <p className="text-gray-500 mt-0.5 text-sm">{item.desc}</p>
               </div>
             </div>
           ))}
@@ -253,17 +271,14 @@ function GrysicsOverview() {
 
 function Verification() {
   return (
-    <DocPage
-      title="Verification Engine"
-      subtitle="Deep dive into the Grysics verification pipeline."
-    >
+    <DocPage title="Verification Engine" subtitle="Deep dive into the Grysics verification pipeline.">
       <DocSection title="Pre-deployment verification">
         <p>Every model goes through automated verification before it reaches a target device:</p>
-        <ul className="list-none pl-0 mt-3 space-y-2.5 text-neutral-600">
-          <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-neutral-300 mt-2 flex-shrink-0" /><span><strong className="text-neutral-900">Accuracy</strong> — outputs match expected results within configurable tolerance</span></li>
-          <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-neutral-300 mt-2 flex-shrink-0" /><span><strong className="text-neutral-900">Latency</strong> — inference time meets target hardware constraints</span></li>
-          <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-neutral-300 mt-2 flex-shrink-0" /><span><strong className="text-neutral-900">Memory</strong> — peak memory usage stays within device limits</span></li>
-          <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-neutral-300 mt-2 flex-shrink-0" /><span><strong className="text-neutral-900">Stability</strong> — no crashes or numerical issues over extended runs</span></li>
+        <ul className="list-none pl-0 mt-3 space-y-2 text-gray-600">
+          <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-green-500 mt-2 flex-shrink-0" /><span><strong className="text-gray-900">Accuracy</strong> — outputs match expected results within configurable tolerance</span></li>
+          <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-green-500 mt-2 flex-shrink-0" /><span><strong className="text-gray-900">Latency</strong> — inference time meets target hardware constraints</span></li>
+          <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-green-500 mt-2 flex-shrink-0" /><span><strong className="text-gray-900">Memory</strong> — peak memory usage stays within device limits</span></li>
+          <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-green-500 mt-2 flex-shrink-0" /><span><strong className="text-gray-900">Stability</strong> — no crashes or numerical issues over extended runs</span></li>
         </ul>
       </DocSection>
 
@@ -291,10 +306,7 @@ function Verification() {
 
 function Deployment() {
   return (
-    <DocPage
-      title="Deployment"
-      subtitle="Deploy verified models to edge devices and cloud endpoints."
-    >
+    <DocPage title="Deployment" subtitle="Deploy verified models to edge devices and cloud endpoints.">
       <DocSection title="Deployment modes">
         <div className="space-y-3 mt-2">
           {[
@@ -302,9 +314,9 @@ function Deployment() {
             { title: "Fleet Deploy", desc: "Deploy to multiple devices simultaneously using device groups. Includes staged rollout and automatic rollback." },
             { title: "Container Deploy", desc: "Package into an OCI-compatible container with all dependencies. Deploy to any container runtime." },
           ].map(item => (
-            <div key={item.title} className="bg-white/60 border border-neutral-200/60 rounded-2xl p-5">
-              <h4 className="font-semibold text-neutral-900 mb-1.5 text-[15px]">{item.title}</h4>
-              <p className="text-sm text-neutral-500 leading-relaxed">{item.desc}</p>
+            <div key={item.title} className="border border-gray-200 rounded-lg p-5 hover:border-gray-300 transition-colors">
+              <h4 className="font-semibold text-gray-900 mb-1.5 text-[15px]">{item.title}</h4>
+              <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
             </div>
           ))}
         </div>
@@ -315,7 +327,7 @@ function Deployment() {
       </DocSection>
 
       <DocSection title="Configuration file">
-        <p>Deployment behavior can be customized via <code className="bg-neutral-100 px-1.5 py-0.5 rounded text-sm font-mono text-neutral-800">olyxee.yaml</code>:</p>
+        <p>Deployment behavior can be customized via <InlineCode>olyxee.yaml</InlineCode>:</p>
         <CodeBlock language="yaml" code={`target:\n  device: jetson-nano\n  connection: ssh\n  host: 192.168.1.100\n\noptimization:\n  quantization: int8\n  pruning: false\n  batch_size: 1\n\nverification:\n  tolerance: 0.02\n  latency_target: 50\n  memory_limit: 512\n\nmonitoring:\n  enabled: true\n  interval: 60\n  auto_rollback: true`} />
       </DocSection>
     </DocPage>
@@ -325,10 +337,7 @@ function Deployment() {
 
 function Monitoring() {
   return (
-    <DocPage
-      title="Monitoring"
-      subtitle="Real-time observability for deployed AI models."
-    >
+    <DocPage title="Monitoring" subtitle="Real-time observability for deployed AI models.">
       <DocSection title="Overview">
         <p>Once a model is deployed, Grysics provides continuous monitoring that tracks inference quality, resource usage, and model drift. When anomalies are detected, the system can automatically roll back to a known-good state.</p>
       </DocSection>
@@ -361,16 +370,13 @@ function Monitoring() {
 
 function APIReference() {
   return (
-    <DocPage
-      title="API Reference"
-      subtitle="Integrate Olyxee into your pipeline with the REST API."
-    >
+    <DocPage title="API Reference" subtitle="Integrate Olyxee into your pipeline with the REST API.">
       <DocSection title="Base URL">
         <CodeBlock language="bash" code="https://api.olyxee.com/v1" />
       </DocSection>
 
       <DocSection title="Authentication">
-        <p>All API requests require an API key passed in the <code className="bg-neutral-100 px-1.5 py-0.5 rounded text-sm font-mono text-neutral-800">Authorization</code> header:</p>
+        <p>All API requests require an API key passed in the <InlineCode>Authorization</InlineCode> header:</p>
         <CodeBlock language="bash" code={`curl https://api.olyxee.com/v1/models \\\n  -H "Authorization: Bearer oly_sk_..."`} />
         <DocCallout type="warning">
           Never expose your API key in client-side code. Use environment variables or a secrets manager.
@@ -412,10 +418,7 @@ function APIReference() {
 
 function PythonSDK() {
   return (
-    <DocPage
-      title="Python SDK"
-      subtitle="Complete reference for the olyxee Python package."
-    >
+    <DocPage title="Python SDK" subtitle="Complete reference for the olyxee Python package.">
       <DocSection title="Installation">
         <CodeBlock language="bash" code="pip install olyxee" />
         <p>Requires Python 3.9+.</p>
@@ -455,10 +458,7 @@ function PythonSDK() {
 
 function CLIReference() {
   return (
-    <DocPage
-      title="CLI Reference"
-      subtitle="Command-line tools for managing Olyxee projects."
-    >
+    <DocPage title="CLI Reference" subtitle="Command-line tools for managing Olyxee projects.">
       <DocSection title="Installation">
         <p>The CLI is included with the Python SDK:</p>
         <CodeBlock language="bash" code="pip install olyxee" />
@@ -473,7 +473,7 @@ function CLIReference() {
       </DocSection>
 
       <DocSection title="Configuration">
-        <p>The CLI reads from <code className="bg-neutral-100 px-1.5 py-0.5 rounded text-sm font-mono text-neutral-800">olyxee.yaml</code> in the project root. Command-line flags override file settings.</p>
+        <p>The CLI reads from <InlineCode>olyxee.yaml</InlineCode> in the project root. Command-line flags override file settings.</p>
       </DocSection>
     </DocPage>
   );
@@ -482,10 +482,7 @@ function CLIReference() {
 
 function ErrorHandling() {
   return (
-    <DocPage
-      title="Error Handling"
-      subtitle="Error codes, status codes, and troubleshooting."
-    >
+    <DocPage title="Error Handling" subtitle="Error codes, status codes, and troubleshooting.">
       <DocSection title="HTTP status codes">
         <DocTable
           headers={["Code", "Meaning", "Description"]}
@@ -524,10 +521,7 @@ function ErrorHandling() {
 
 function EdgeDevices() {
   return (
-    <DocPage
-      title="Edge Devices"
-      subtitle="Supported hardware targets and device-specific guidance."
-    >
+    <DocPage title="Edge Devices" subtitle="Supported hardware targets and device-specific guidance.">
       <DocSection title="Supported devices">
         <DocTable
           headers={["Device", "Status", "Acceleration", "Notes"]}
@@ -559,10 +553,7 @@ function EdgeDevices() {
 
 function Optimization() {
   return (
-    <DocPage
-      title="Optimization"
-      subtitle="Automatic model optimization for resource-constrained hardware."
-    >
+    <DocPage title="Optimization" subtitle="Automatic model optimization for resource-constrained hardware.">
       <DocSection title="Quantization strategies">
         <DocTable
           headers={["Strategy", "Size reduction", "Accuracy impact"]}
@@ -589,10 +580,7 @@ function Optimization() {
 
 function Configuration() {
   return (
-    <DocPage
-      title="Configuration"
-      subtitle="Project configuration and environment setup."
-    >
+    <DocPage title="Configuration" subtitle="Project configuration and environment setup.">
       <DocSection title="olyxee.yaml">
         <p>The project configuration file controls default settings for verification, optimization, and deployment:</p>
         <CodeBlock language="yaml" code={`project:\n  name: my-ai-project\n  version: 1.0.0\n\ntarget:\n  device: jetson-nano\n  connection: ssh\n  host: 192.168.1.100\n\nverification:\n  tolerance: 0.02\n  latency_target: 50\n  memory_limit: 512\n  stability_runs: 1000\n\noptimization:\n  quantization: int8\n  pruning: false\n  calibration_data: ./calibration/\n\nmonitoring:\n  enabled: true\n  interval: 60\n  drift_threshold: 0.05\n  auto_rollback: true\n  webhook: https://your-api.com/alerts`} />
@@ -616,10 +604,7 @@ function Configuration() {
 
 function Changelog() {
   return (
-    <DocPage
-      title="Changelog"
-      subtitle="Recent updates and improvements to the Olyxee platform."
-    >
+    <DocPage title="Changelog" subtitle="Recent updates and improvements to the Olyxee platform.">
       {[
         {
           version: "1.0.0",
@@ -654,10 +639,10 @@ function Changelog() {
         },
       ].map(release => (
         <DocSection key={release.version} title={`v${release.version} — ${release.date}`}>
-          <ul className="list-none pl-0 space-y-2 text-neutral-600">
+          <ul className="list-none pl-0 space-y-2 text-gray-600">
             {release.items.map((item, i) => (
               <li key={i} className="flex gap-3 items-start">
-                <span className="w-1.5 h-1.5 rounded-full bg-neutral-300 mt-2 flex-shrink-0" />
+                <span className="w-1.5 h-1.5 rounded-full bg-green-500 mt-2 flex-shrink-0" />
                 {item}
               </li>
             ))}
@@ -671,10 +656,7 @@ function Changelog() {
 
 function RateLimits() {
   return (
-    <DocPage
-      title="Rate Limits"
-      subtitle="API usage limits and quotas."
-    >
+    <DocPage title="Rate Limits" subtitle="API usage limits and quotas.">
       <DocSection title="Default limits">
         <DocTable
           headers={["Endpoint", "Free", "Pro", "Enterprise"]}
@@ -693,7 +675,7 @@ function RateLimits() {
       </DocSection>
 
       <DocSection title="Handling rate limits">
-        <p>When rate limited, the API returns a <code className="bg-neutral-100 px-1.5 py-0.5 rounded text-sm font-mono text-neutral-800">429</code> status. Implement exponential backoff:</p>
+        <p>When rate limited, the API returns a <InlineCode>429</InlineCode> status. Implement exponential backoff:</p>
         <CodeBlock language="python" code={`import time\nimport olyxee\n\ndef verify_with_retry(model, target, max_retries=3):\n    for attempt in range(max_retries):\n        try:\n            return model.verify(target=target)\n        except olyxee.RateLimitError as e:\n            wait = 2 ** attempt\n            print(f"Rate limited. Retrying in {wait}s...")\n            time.sleep(wait)\n    raise Exception("Max retries exceeded")`} />
       </DocSection>
     </DocPage>
@@ -703,12 +685,12 @@ function RateLimits() {
 
 function DocPage({ title, subtitle, children }: { title: string; subtitle: string; children: React.ReactNode }) {
   return (
-    <div className="w-full max-w-3xl mx-auto px-6 sm:px-10 py-12 sm:py-16">
-      <div className="mb-12 pb-8 border-b border-neutral-200/40">
-        <h1 className="font-['Instrument_Serif'] text-3xl sm:text-4xl text-neutral-900 tracking-tight mb-3 italic">{title}</h1>
-        <p className="text-neutral-400 text-base leading-relaxed max-w-xl">{subtitle}</p>
+    <div className="w-full max-w-3xl mx-auto px-6 sm:px-10 py-10 sm:py-14">
+      <div className="mb-10 pb-6 border-b border-gray-100">
+        <h1 className="text-[28px] sm:text-[32px] font-semibold text-gray-900 tracking-tight mb-2">{title}</h1>
+        <p className="text-gray-500 text-[15px] leading-relaxed max-w-xl">{subtitle}</p>
       </div>
-      <div className="space-y-12 text-[15px] text-neutral-600 leading-relaxed">
+      <div className="space-y-10 text-[15px] text-gray-600 leading-relaxed">
         {children}
       </div>
     </div>
@@ -718,10 +700,14 @@ function DocPage({ title, subtitle, children }: { title: string; subtitle: strin
 function DocSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section>
-      <h2 className="font-['Instrument_Serif'] text-xl text-neutral-900 mb-4 pb-2 border-b border-neutral-200/30 italic">{title}</h2>
+      <h2 className="text-lg font-semibold text-gray-900 mb-3">{title}</h2>
       <div className="space-y-3">{children}</div>
     </section>
   );
+}
+
+function InlineCode({ children }: { children: React.ReactNode }) {
+  return <code className="text-[13px] font-mono text-gray-800 bg-gray-100 border border-gray-200 rounded px-1.5 py-0.5">{children}</code>;
 }
 
 function CodeBlock({ language, code }: { language: string; code: string }) {
@@ -733,15 +719,15 @@ function CodeBlock({ language, code }: { language: string; code: string }) {
   };
 
   return (
-    <div className="relative group rounded-2xl overflow-hidden border border-neutral-200/60 bg-neutral-950 my-4">
-      <div className="flex items-center justify-between px-4 py-2.5 bg-neutral-900/60 border-b border-neutral-800/50">
-        <span className="text-[10px] text-neutral-500 font-mono uppercase tracking-[0.15em]">{language}</span>
-        <button onClick={handleCopy} className="text-[11px] text-neutral-500 hover:text-white transition-colors px-2 py-0.5 rounded">
-          {copied ? "Copied" : "Copy"}
+    <div className="relative group rounded-lg overflow-hidden border border-gray-200 bg-[#0d0d0d] my-4">
+      <div className="flex items-center justify-between px-4 py-2 bg-[#161616] border-b border-gray-800">
+        <span className="text-[11px] text-gray-500 font-mono">{language}</span>
+        <button onClick={handleCopy} className="text-[11px] text-gray-500 hover:text-white transition-colors px-2 py-0.5 rounded hover:bg-white/10">
+          {copied ? "Copied!" : "Copy"}
         </button>
       </div>
-      <pre className="p-5 overflow-x-auto text-[13px] leading-relaxed">
-        <code className="text-neutral-300 font-mono whitespace-pre">{code}</code>
+      <pre className="p-4 overflow-x-auto text-[13px] leading-relaxed">
+        <code className="text-gray-300 font-mono whitespace-pre">{code}</code>
       </pre>
     </div>
   );
@@ -749,39 +735,44 @@ function CodeBlock({ language, code }: { language: string; code: string }) {
 
 function DocCallout({ type, children }: { type: "info" | "warning" | "tip"; children: React.ReactNode }) {
   const styles = {
-    info: "bg-neutral-50 border-neutral-200/60 text-neutral-600",
-    warning: "bg-amber-50/40 border-amber-200/40 text-amber-800",
-    tip: "bg-emerald-50/40 border-emerald-200/40 text-emerald-800",
+    info: "border-l-green-500 bg-green-50/50",
+    warning: "border-l-amber-500 bg-amber-50/50",
+    tip: "border-l-blue-500 bg-blue-50/50",
   };
   const labels = { info: "Note", warning: "Warning", tip: "Tip" };
+  const labelColors = {
+    info: "text-green-700",
+    warning: "text-amber-700",
+    tip: "text-blue-700",
+  };
 
   return (
-    <div className={`rounded-2xl border p-5 text-sm leading-relaxed ${styles[type]}`}>
-      <span className="font-semibold text-neutral-900">{labels[type]}</span>{" "}
-      <span className="text-neutral-600">{children}</span>
+    <div className={`rounded-lg border border-gray-200 border-l-4 p-4 text-sm leading-relaxed ${styles[type]}`}>
+      <span className={`font-semibold ${labelColors[type]}`}>{labels[type]}</span>{" "}
+      <span className="text-gray-600">{children}</span>
     </div>
   );
 }
 
 function DocTable({ headers, rows }: { headers: string[]; rows: string[][] }) {
   return (
-    <div className="mt-3 overflow-x-auto rounded-2xl border border-neutral-200/60 bg-white/40">
+    <div className="mt-3 overflow-x-auto rounded-lg border border-gray-200">
       <table className="w-full text-sm">
         <thead>
-          <tr className="border-b border-neutral-200/40">
+          <tr className="border-b border-gray-200 bg-gray-50">
             {headers.map((h, i) => (
-              <th key={i} className="text-left px-5 py-3 font-semibold text-neutral-900 text-[12px] uppercase tracking-[0.08em]">{h}</th>
+              <th key={i} className="text-left px-4 py-2.5 font-semibold text-gray-700 text-[13px]">{h}</th>
             ))}
           </tr>
         </thead>
         <tbody>
           {rows.map((row, i) => (
-            <tr key={i} className="border-b border-neutral-100/60 last:border-0">
+            <tr key={i} className="border-b border-gray-100 last:border-0">
               {row.map((cell, j) => (
-                <td key={j} className={`px-5 py-3 ${j === 0 ? 'text-neutral-900 font-medium' : 'text-neutral-500'} text-[13px]`}>
-                  {cell === "Supported" ? <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-neutral-900 text-white">{cell}</span>
-                    : cell === "Beta" ? <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-neutral-100 text-neutral-600 border border-neutral-200">{cell}</span>
-                    : cell === "Experimental" ? <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-neutral-50 text-neutral-400 border border-neutral-200/60">{cell}</span>
+                <td key={j} className={`px-4 py-2.5 ${j === 0 ? 'text-gray-900 font-medium' : 'text-gray-500'} text-[13px]`}>
+                  {cell === "Supported" ? <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-green-100 text-green-700">{cell}</span>
+                    : cell === "Beta" ? <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-blue-100 text-blue-700">{cell}</span>
+                    : cell === "Experimental" ? <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-gray-100 text-gray-500">{cell}</span>
                     : cell}
                 </td>
               ))}
