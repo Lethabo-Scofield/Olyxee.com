@@ -157,7 +157,7 @@ function HeroSection() {
             className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6"
           >
             <Link
-              href="/docs"
+              href="/products/grysics"
               className="group inline-flex items-center gap-2.5 bg-white/90 backdrop-blur-xl text-neutral-900 rounded-2xl px-5 py-3 hover:bg-white hover:scale-[1.02] transition-all shadow-lg shadow-black/10 border border-white/50"
             >
               <span className="text-sm font-medium tracking-tight">Try Grysics</span>
