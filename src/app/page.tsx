@@ -53,7 +53,7 @@ export default function HomePage() {
 
       <main>
         <HeroSection />
-        <PipelineSection />
+
         <IndustriesSection />
         <OfferingsSection />
         <ArchitectureSection />
@@ -177,85 +177,6 @@ function HeroSection() {
   );
 }
 
-
-function PipelineSection() {
-  const steps = [
-    { title: "Connect", desc: "Point to any AI app." },
-    { title: "Verify", desc: "Test accuracy and safety." },
-    { title: "Evaluate", desc: "Score RAG and agents." },
-    { title: "Deploy", desc: "Ship with confidence." },
-    { title: "Monitor", desc: "Watch it in production." },
-  ];
-
-  return (
-    <section className="py-32 sm:py-44">
-      <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="text-center mb-24 sm:mb-32">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight mb-5"
-          >
-            From app to <em className="text-neutral-400">production.</em>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.15, duration: 0.7 }}
-            className="text-lg text-neutral-400 font-light max-w-xl mx-auto"
-          >
-            Five stages. One pipeline. Zero guesswork.
-          </motion.p>
-        </div>
-
-        <div className="hidden sm:flex items-start justify-between relative">
-          <div className="absolute top-6 left-[10%] right-[10%] h-px bg-neutral-200/80" />
-
-          {steps.map((step, idx) => (
-            <motion.div
-              key={step.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-              className="flex flex-col items-center text-center relative z-10 w-1/5 group"
-            >
-              <div className="w-12 h-12 rounded-full bg-neutral-900 text-white flex items-center justify-center text-sm font-medium mb-6 group-hover:scale-110 transition-transform duration-300">
-                {idx + 1}
-              </div>
-              <h3 className="text-base font-semibold text-neutral-900 mb-1.5">{step.title}</h3>
-              <p className="text-sm text-neutral-400 font-light">{step.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-
-        <div className="sm:hidden space-y-6">
-          {steps.map((step, idx) => (
-            <motion.div
-              key={step.title}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
-              className="flex items-start gap-5"
-            >
-              <div className="w-10 h-10 rounded-full bg-neutral-900 text-white flex items-center justify-center text-sm font-medium flex-shrink-0">
-                {idx + 1}
-              </div>
-              <div>
-                <h3 className="text-base font-semibold text-neutral-900">{step.title}</h3>
-                <p className="text-sm text-neutral-400 mt-1 font-light">{step.desc}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 
 function IndustriesSection() {
