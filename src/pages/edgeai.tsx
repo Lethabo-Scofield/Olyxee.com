@@ -1,10 +1,11 @@
-import { FC } from "react";
+import { FC, useState, useEffect } from "react";
 import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Cpu, Radio, Server, Layers, CircuitBoard, Shield, Gauge, Box } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -71,6 +72,12 @@ const supportedHardware = [
 ];
 
 const EdgeAI: FC = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 2200);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
@@ -79,6 +86,57 @@ const EdgeAI: FC = () => {
         description="Olyxee Edge Box (OEB) is our execution division — deploying AI into real-world systems across edge devices, factories, and autonomous platforms."
         path="/edgeai"
       />
+
+      <AnimatePresence>
+        {loading && (
+          <motion.div
+            key="loader"
+            className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-neutral-950"
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+              className="relative"
+            >
+              <motion.div
+                animate={{ scale: [1, 1.15, 1] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute inset-0 rounded-full blur-[60px] opacity-30"
+                style={{ background: 'linear-gradient(135deg, #6366f1 0%, #06b6d4 30%, #f97316 60%, #eab308 100%)' }}
+              />
+              <Image
+                src="/Logo/OEB_Logo.png"
+                alt="OEB"
+                width={80}
+                height={80}
+                className="relative z-10 drop-shadow-2xl rounded-2xl"
+                style={{ width: 80, height: 'auto' }}
+                priority
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+              className="mt-8 flex flex-col items-center gap-4"
+            >
+              <span className="text-sm font-medium text-white/70 tracking-widest uppercase">Olyxee Edge Box</span>
+              <div className="w-32 h-[2px] bg-white/10 rounded-full overflow-hidden">
+                <motion.div
+                  className="h-full bg-gradient-to-r from-indigo-500 via-cyan-400 to-orange-400 rounded-full"
+                  initial={{ width: "0%" }}
+                  animate={{ width: "100%" }}
+                  transition={{ duration: 1.8, ease: [0.25, 0.1, 0.25, 1] }}
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <div className="grain" />
       <Header />
 
