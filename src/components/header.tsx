@@ -9,10 +9,10 @@ import { FaDiscord } from 'react-icons/fa';
 
 const menuItems = [
     { name: "About", href: "/about" },
-    { name: "Grysics", href: "/products/grysics" },
     { name: "EdgeAI", href: "/edgeai" },
     { name: "Docs", href: "/docs" },
     { name: "Community", href: "/community" },
+    { name: "Early Access", href: "/early-access" },
 ];
 
 const Header = () => {
