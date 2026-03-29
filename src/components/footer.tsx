@@ -50,16 +50,16 @@ const footerData = {
 
 export default function Footer() {
   return (
-    <footer className="bg-neutral-50 border-t border-neutral-200">
-      <div className="max-w-6xl mx-auto px-6 md:px-12 pt-20 pb-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12 mb-20">
+    <footer className="bg-neutral-950 text-white">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 pt-24 pb-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-14 mb-24">
           {footerData.columns.map((column) => (
             <div key={column.title}>
-              <h3 className="text-xs font-medium text-neutral-400 uppercase tracking-widest mb-5">{column.title}</h3>
-              <ul className="space-y-3">
+              <h3 className="text-[10px] font-semibold text-neutral-500 uppercase tracking-widest mb-6">{column.title}</h3>
+              <ul className="space-y-3.5">
                 {column.links.map((link) => (
                   <li key={link.name}>
-                    <Link href={link.href} className="text-sm text-neutral-600 hover:text-blue-600 transition-colors">
+                    <Link href={link.href} className="text-sm text-neutral-400 hover:text-white transition-colors duration-300 font-light">
                       {link.name}
                     </Link>
                   </li>
@@ -68,10 +68,10 @@ export default function Footer() {
             </div>
           ))}
         </div>
-        <div className="pt-8 border-t border-neutral-200 flex flex-col-reverse items-center gap-y-6 sm:flex-row sm:justify-between">
+        <div className="pt-8 border-t border-white/10 flex flex-col-reverse items-center gap-y-6 sm:flex-row sm:justify-between">
           <div className="flex items-center gap-3">
             <Image src="/Logo/Olyxee_Logo.png" alt="Olyxee" width={18} height={18} className="opacity-40" />
-            <p className="text-xs text-neutral-400">&copy; {new Date().getFullYear()} Olyxee. All rights reserved.</p>
+            <p className="text-xs text-neutral-500 font-light">&copy; {new Date().getFullYear()} Olyxee. All rights reserved.</p>
           </div>
           <div className="flex items-center gap-x-1">
             {footerData.socials.map((social) => {
@@ -83,7 +83,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.name}
-                  className="w-9 h-9 flex items-center justify-center rounded-full text-neutral-400 hover:text-blue-600 transition-all"
+                  className="w-9 h-9 flex items-center justify-center rounded-full text-neutral-500 hover:text-white transition-all duration-300"
                 >
                   <SocialIcon className="h-4 w-4" />
                 </a>

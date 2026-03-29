@@ -17,20 +17,23 @@ Company-level website for Olyxee, a reliability-first AI infrastructure company.
 - **Dev server**: `npm run dev` — starts on port 5000 with Turbopack, bound to 0.0.0.0
 - **Workflow**: "Start application" — runs `npm run dev`
 
-## Design System
-- **Display font**: `Instrument Serif` (italic) for all major headings — loaded via `next/font/google` (zero-lag, self-hosted). CSS variable: `--font-instrument`
-- **Body font**: `Inter` for body text and UI elements — loaded via `next/font/google`. CSS variable: `--font-inter`
-- **Font loading**: Optimized with `next/font` (self-hosted, `display: swap`) instead of CSS `@import` — eliminates FOUT/FOIT and network blocking
-- **Page transitions**: `PageTransitionLoader` component shows a thin progress bar at the top during navigation. Listens to pathname changes + click interception for instant feedback
-- **Section animations**: Framer Motion `fadeUp` variants on all major sections provide smooth reveal on scroll
-- **Grain texture**: `.grain` CSS class — fixed noise overlay at z-9999, opacity 0.03, applied to page wrappers
-- **Accent utilities**: `.accent-line` (48px × 2px black block), `.accent-dot` (6px blue circle) — used as section markers
-- **Color palette**: neutral-950 for dark sections, neutral-400/500 for muted text, neutral-100/200 for borders. Blue (#3b82f6) used sparingly for interactive hover states, active nav items, and clickable highlights.
-- **Gradient backgrounds**: Gradient images in `public/images/` used as card-level backgrounds only (not full sections). Pattern: `bg-cover bg-center` + `bg-white/80-82 backdrop-blur-sm` overlay. Available gradients: gradient-blue, gradient-purple, gradient-orange-pink, gradient-yellow-blue, gradient-pink-cyan, gradient-painted, gradient-blue-pink, gradient-yellow-green, gradient-pastel, gradient-orange-purple, gradient-abstract-blue. Applied to: offering cards, hardware cards, stat cards, channel cards, docs featured cards, video thumbnails.
-- **Section pattern**: Alternating white/neutral-50/neutral-950 sections separated by thin border-neutral-100 borders
-- **Typography pattern**: Large serif italic headings with `<em>` in muted color for emphasis contrast
-- **Heading/paragraph colors**: Use `color: inherit` globally — each section explicitly controls text color via Tailwind classes
-- **Interactive blue**: Nav links hover blue, footer links hover blue, "Apply →" on careers is blue, community "Join Now" hovers blue. Blue is never used for static text or backgrounds — only on interaction.
+## Design System (Apple-style)
+- **Design language**: Apple-inspired — generous spacing, cinematic dark sections, frosted glass elements, smooth spring animations, minimal borders, spatial separation
+- **Display font**: `Instrument Serif` (italic) for HIGHLIGHTS ONLY (main hero headings, section titles) — loaded via `next/font/google`. CSS variable: `--font-instrument`. Do NOT apply globally to all headings.
+- **Body font**: `Inter` for body text, UI elements, and most headings — loaded via `next/font/google`. CSS variable: `--font-inter`
+- **Font loading**: Optimized with `next/font` (self-hosted, `display: swap`)
+- **Section spacing**: `py-32 sm:py-44` for all major sections (generous Apple-style whitespace)
+- **Card radius**: `rounded-3xl` on all major content cards, offering cards, hardware cards. Consistent across the site.
+- **Dark cinematic heroes**: Used on Careers and EdgeAI pages — `bg-neutral-950` with blurred gradient glow overlay (`filter: blur(80px) saturate(1.5)`), radial gradient vignette, parallax scroll via `useScroll`/`useTransform`
+- **Dark CTA sections**: `bg-neutral-950` with blurred gradient glow (purple/green), `text-white/40` for muted emphasis
+- **Dark footer**: `bg-neutral-950 text-white`, `text-neutral-400` for links, `border-white/10` divider
+- **Animations**: Custom easing `[0.25, 0.1, 0.25, 1]`, longer durations (0.7-1.2s), staggered delays. Spring physics on header and interactive elements.
+- **Frosted glass**: Cookie banner and header use `backdrop-blur(24px) saturate(180%)` with `rgba(255,255,255,0.75)` background
+- **Hover patterns**: Circle arrow buttons (`w-10-12 h-10-12 rounded-full bg-neutral-100 → bg-neutral-900`) on cards and list items. Cards use `group-hover:bg-white/75` overlay transition.
+- **Typography pattern**: Large serif italic headings with `<em>` in muted color (`text-neutral-400` light, `text-white/40` dark) for emphasis contrast. Body text uses `font-light`.
+- **Grain texture**: `.grain` CSS class — fixed noise overlay at z-9999, opacity 0.03
+- **Gradient backgrounds**: Gradient images in `public/images/` used as card-level backgrounds only. Pattern: `bg-cover bg-center` + `bg-white/82 backdrop-blur-sm` overlay.
+- **Header dark theme**: `<Header theme="dark" />` on pages with dark heroes. Nav links and mobile menu icon are theme-aware (white on dark, neutral on light).
 
 ## Header
 - Apple-style glass pill navbar: `borderRadius: 50`, `backdropFilter: blur(24px) saturate(180%)`, `border: 1px solid rgba(255,255,255,0.45)`

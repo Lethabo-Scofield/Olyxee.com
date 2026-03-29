@@ -108,7 +108,7 @@ function HeroSection() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.2 }}
       >
-        <div className="relative rounded-2xl overflow-hidden border border-neutral-200 shadow-2xl shadow-neutral-200/50">
+        <div className="relative rounded-3xl overflow-hidden border border-neutral-200 shadow-2xl shadow-neutral-200/50">
           <video
             src="/videos/demo.mp4"
             className="w-full aspect-video object-cover"
@@ -118,7 +118,7 @@ function HeroSection() {
             playsInline
             preload="metadata"
           />
-          <div className="absolute inset-0 border border-white/20 rounded-2xl pointer-events-none" />
+          <div className="absolute inset-0 border border-white/20 rounded-3xl pointer-events-none" />
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -181,13 +181,14 @@ function PipelineSection() {
   ];
 
   return (
-    <section className="py-32 sm:py-44 border-t border-neutral-100">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-12">
-        <div className="text-center mb-24">
+    <section className="py-32 sm:py-44">
+      <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="text-center mb-24 sm:mb-32">
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight mb-5"
           >
             From app to <em className="text-neutral-400">production.</em>
@@ -196,50 +197,50 @@ function PipelineSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-lg text-neutral-400 font-light"
+            transition={{ delay: 0.15, duration: 0.7 }}
+            className="text-lg text-neutral-400 font-light max-w-xl mx-auto"
           >
             Five stages. One pipeline. Zero guesswork.
           </motion.p>
         </div>
 
         <div className="hidden sm:flex items-start justify-between relative">
-          <div className="absolute top-5 left-[10%] right-[10%] h-px bg-neutral-200" />
+          <div className="absolute top-6 left-[10%] right-[10%] h-px bg-neutral-200/80" />
 
           {steps.map((step, idx) => (
             <motion.div
               key={step.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="flex flex-col items-center text-center relative z-10 w-1/5"
+              transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+              className="flex flex-col items-center text-center relative z-10 w-1/5 group"
             >
-              <div className="w-10 h-10 rounded-full bg-neutral-900 text-white flex items-center justify-center text-xs font-medium mb-6">
+              <div className="w-12 h-12 rounded-full bg-neutral-900 text-white flex items-center justify-center text-sm font-medium mb-6 group-hover:scale-110 transition-transform duration-300">
                 {idx + 1}
               </div>
-              <h3 className="text-base font-semibold text-neutral-900 mb-1">{step.title}</h3>
-              <p className="text-sm text-neutral-400">{step.desc}</p>
+              <h3 className="text-base font-semibold text-neutral-900 mb-1.5">{step.title}</h3>
+              <p className="text-sm text-neutral-400 font-light">{step.desc}</p>
             </motion.div>
           ))}
         </div>
 
-        <div className="sm:hidden space-y-8">
+        <div className="sm:hidden space-y-6">
           {steps.map((step, idx) => (
             <motion.div
               key={step.title}
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.08 }}
-              className="flex items-start gap-4"
+              transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
+              className="flex items-start gap-5"
             >
-              <div className="w-8 h-8 rounded-full bg-neutral-900 text-white flex items-center justify-center text-xs font-medium flex-shrink-0">
+              <div className="w-10 h-10 rounded-full bg-neutral-900 text-white flex items-center justify-center text-sm font-medium flex-shrink-0">
                 {idx + 1}
               </div>
               <div>
                 <h3 className="text-base font-semibold text-neutral-900">{step.title}</h3>
-                <p className="text-sm text-neutral-400 mt-0.5">{step.desc}</p>
+                <p className="text-sm text-neutral-400 mt-1 font-light">{step.desc}</p>
               </div>
             </motion.div>
           ))}
@@ -310,10 +311,10 @@ function IndustriesSection() {
   }, [activeIndex]);
 
   return (
-    <section className="py-28 sm:py-36 bg-neutral-950 text-white relative overflow-hidden">
+    <section className="py-32 sm:py-44 bg-neutral-950 text-white relative overflow-hidden">
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-neutral-800 rounded-full blur-[200px] opacity-20 translate-x-1/3 -translate-y-1/3" />
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 relative">
-        <div className="mb-16 sm:mb-20">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 relative">
+        <div className="mb-16 sm:mb-24">
           <span className="block w-12 h-0.5 bg-white/30 mb-6" />
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -374,7 +375,7 @@ function IndustriesSection() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -12 }}
                 transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
-                className="rounded-2xl border border-white/10 overflow-hidden"
+                className="rounded-3xl border border-white/10 overflow-hidden"
               >
                 <div className="p-8 sm:p-10">
                   <div className="mb-6">
@@ -430,73 +431,80 @@ function IndustriesSection() {
 
 function OfferingsSection() {
   return (
-    <section className="py-28 sm:py-36 border-t border-neutral-100">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-20">
-          <div>
-            <span className="accent-line" />
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900"
-            >
-              What we
-              <br />
-              <em className="text-neutral-400">build & do</em>
-            </motion.h2>
-          </div>
+    <section className="py-32 sm:py-44">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="text-center mb-20 sm:mb-28">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+            className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-5"
+          >
+            What we <em className="text-neutral-400">build & do</em>
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.15, duration: 0.7 }}
+            className="text-lg text-neutral-400 font-light max-w-xl mx-auto"
+          >
+            Products and divisions powering the future of trustworthy AI.
+          </motion.p>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <Link
-            href="/products/grysics"
-            className="group relative flex flex-col sm:flex-row sm:items-center justify-between gap-6 p-8 sm:p-10 rounded-2xl overflow-hidden transition-all hover:shadow-lg"
+        <div className="space-y-5">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
           >
-            <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-blue-pink.png")' }} />
-            <div className="absolute inset-0 bg-white/80 backdrop-blur-sm" />
-            <div className="relative flex-1 min-w-0">
-              <div className="flex items-center gap-4 mb-3">
-                <h3 className="text-2xl sm:text-3xl font-semibold text-neutral-900">Grysics</h3>
-                <span className="text-xs font-medium text-neutral-600 bg-white/60 px-3 py-1 rounded-full border border-white/40">Product</span>
+            <Link
+              href="/products/grysics"
+              className="group relative flex flex-col sm:flex-row sm:items-center justify-between gap-6 p-10 sm:p-14 rounded-3xl overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-neutral-200/50"
+            >
+              <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-blue-pink.png")' }} />
+              <div className="absolute inset-0 bg-white/82 backdrop-blur-sm group-hover:bg-white/75 transition-all duration-500" />
+              <div className="relative flex-1 min-w-0">
+                <div className="flex items-center gap-4 mb-4">
+                  <h3 className="text-2xl sm:text-3xl tracking-tight text-neutral-900">Grysics</h3>
+                  <span className="text-[10px] font-semibold text-neutral-500 bg-white/60 px-3 py-1 rounded-full border border-white/40 uppercase tracking-widest">Product</span>
+                </div>
+                <p className="text-neutral-500 text-[15px] leading-relaxed max-w-xl font-light">Verification engine for AI applications. Test chatbots, RAG pipelines, and agent workflows for accuracy, consistency, and hallucination — before and after deployment.</p>
               </div>
-              <p className="text-neutral-600 text-sm leading-relaxed max-w-xl">Verification engine for AI applications. Test chatbots, RAG pipelines, and agent workflows for accuracy, consistency, and hallucination — before and after deployment.</p>
-            </div>
-            <span className="relative text-sm font-medium text-neutral-400 flex items-center gap-1.5 group-hover:text-neutral-900 group-hover:gap-3 transition-all flex-shrink-0">
-              Explore <ArrowRight className="w-4 h-4" />
-            </span>
-          </Link>
-        </motion.div>
+              <div className="relative flex-shrink-0 w-12 h-12 rounded-full bg-white/60 flex items-center justify-center group-hover:bg-neutral-900 transition-all duration-300">
+                <ArrowRight className="w-5 h-5 text-neutral-400 group-hover:text-white transition-colors duration-300" />
+              </div>
+            </Link>
+          </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="mt-4"
-        >
-          <Link
-            href="/edgeai"
-            className="group relative flex flex-col sm:flex-row sm:items-center justify-between gap-6 p-8 sm:p-10 rounded-2xl overflow-hidden transition-all hover:shadow-lg"
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.12, ease: [0.25, 0.1, 0.25, 1] }}
           >
-            <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-yellow-green.png")' }} />
-            <div className="absolute inset-0 bg-white/80 backdrop-blur-sm" />
-            <div className="relative flex-1 min-w-0">
-              <div className="flex items-center gap-4 mb-3">
-                <h3 className="text-2xl sm:text-3xl font-semibold text-neutral-900">Olyxee Edge Box</h3>
-                <span className="text-xs font-medium text-neutral-600 bg-white/60 px-3 py-1 rounded-full border border-white/40">Division</span>
+            <Link
+              href="/edgeai"
+              className="group relative flex flex-col sm:flex-row sm:items-center justify-between gap-6 p-10 sm:p-14 rounded-3xl overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-neutral-200/50"
+            >
+              <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-yellow-green.png")' }} />
+              <div className="absolute inset-0 bg-white/82 backdrop-blur-sm group-hover:bg-white/75 transition-all duration-500" />
+              <div className="relative flex-1 min-w-0">
+                <div className="flex items-center gap-4 mb-4">
+                  <h3 className="text-2xl sm:text-3xl tracking-tight text-neutral-900">Olyxee Edge Box</h3>
+                  <span className="text-[10px] font-semibold text-neutral-500 bg-white/60 px-3 py-1 rounded-full border border-white/40 uppercase tracking-widest">Division</span>
+                </div>
+                <p className="text-neutral-500 text-[15px] leading-relaxed max-w-xl font-light">Our edge AI sub-division. Deploys AI models to IoT sensors, drones, robots, and embedded systems — optimized for performance, power, and latency on real hardware.</p>
               </div>
-              <p className="text-neutral-600 text-sm leading-relaxed max-w-xl">Our edge AI sub-division. Deploys AI models to IoT sensors, drones, robots, and embedded systems — optimized for performance, power, and latency on real hardware.</p>
-            </div>
-            <span className="relative text-sm font-medium text-neutral-400 flex items-center gap-1.5 group-hover:text-neutral-900 group-hover:gap-3 transition-all flex-shrink-0">
-              Learn more <ArrowRight className="w-4 h-4" />
-            </span>
-          </Link>
-        </motion.div>
+              <div className="relative flex-shrink-0 w-12 h-12 rounded-full bg-white/60 flex items-center justify-center group-hover:bg-neutral-900 transition-all duration-300">
+                <ArrowRight className="w-5 h-5 text-neutral-400 group-hover:text-white transition-colors duration-300" />
+              </div>
+            </Link>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
@@ -505,16 +513,17 @@ function OfferingsSection() {
 
 function ArchitectureSection() {
   return (
-    <section className="py-28 sm:py-36 border-t border-neutral-100 relative overflow-hidden">
+    <section className="py-32 sm:py-44 relative overflow-hidden">
       <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-pastel.png")' }} />
       <div className="absolute inset-0 bg-white/88 backdrop-blur-sm" />
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
-        <div className="text-center mb-16">
+      <div className="relative max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="text-center mb-20 sm:mb-28">
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-4"
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+            className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-5"
           >
             System architecture
           </motion.h2>
@@ -522,8 +531,8 @@ function ArchitectureSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-neutral-500 text-base max-w-xl mx-auto"
+            transition={{ delay: 0.15, duration: 0.7 }}
+            className="text-neutral-500 text-lg max-w-xl mx-auto font-light"
           >
             How Olyxee connects strategy, execution, and verification into one coherent stack.
           </motion.p>
@@ -536,7 +545,7 @@ function ArchitectureSection() {
           transition={{ duration: 0.7 }}
           className="max-w-3xl mx-auto"
         >
-          <div className="rounded-2xl border border-neutral-200 bg-white overflow-hidden shadow-lg">
+          <div className="rounded-3xl border border-neutral-200 bg-white overflow-hidden shadow-lg">
             <div className="border-b border-neutral-200 p-6 sm:p-8">
               <div className="flex items-center gap-3 mb-2">
                 <div className="w-8 h-8 rounded-lg bg-neutral-900 flex items-center justify-center">
@@ -638,52 +647,68 @@ function ResearchSection() {
   ];
 
   return (
-    <section className="py-28 sm:py-36 border-t border-neutral-100">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-20">
-          <div>
-            <span className="accent-line" />
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900"
-            >
-              Advancing AI
-              <br />
-              <em className="text-neutral-400">reliability</em>
-            </motion.h2>
-          </div>
-          <Link href="/research" className="text-neutral-500 hover:text-neutral-900 font-medium text-sm flex items-center gap-1.5 transition-colors tracking-wide">
-            All research <ArrowRight className="w-4 h-4" />
-          </Link>
+    <section className="py-32 sm:py-44">
+      <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="text-center mb-20 sm:mb-28">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+            className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-5"
+          >
+            Advancing AI <em className="text-neutral-400">reliability</em>
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.15, duration: 0.7 }}
+            className="text-lg text-neutral-400 font-light max-w-xl mx-auto"
+          >
+            Published research from the Olyxee team.
+          </motion.p>
         </div>
 
-        <div className="divide-y divide-neutral-200">
+        <div className="space-y-0 divide-y divide-neutral-100">
           {papers.map((paper, idx) => (
             <motion.div
               key={paper.title}
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="py-10 sm:py-12 group cursor-pointer hover:px-4 transition-all"
+              transition={{ duration: 0.6, delay: idx * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
+              className="group cursor-pointer py-8 sm:py-10 flex items-center justify-between gap-6 transition-all"
             >
-              <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-8">
-                <div className="flex items-center gap-3 sm:w-48 flex-shrink-0">
-                  <span className="text-xs font-medium text-neutral-400 uppercase tracking-widest">{paper.category}</span>
-                  <span className="text-neutral-300">·</span>
-                  <span className="text-xs text-neutral-400">{paper.date}</span>
+              <div className="flex-1 min-w-0">
+                <div className="flex flex-wrap items-center gap-3 mb-2.5">
+                  <h3 className="text-lg sm:text-xl tracking-tight text-neutral-900 group-hover:text-neutral-600 transition-colors">{paper.title}</h3>
                 </div>
-                <div className="flex-1">
-                  <h3 className="text-xl sm:text-2xl font-semibold text-neutral-900 mb-2 group-hover:text-neutral-600 transition-colors">{paper.title}</h3>
-                  <p className="text-neutral-500 text-sm leading-relaxed">{paper.description}</p>
+                <p className="text-sm text-neutral-400 leading-relaxed max-w-2xl font-light mb-3">{paper.description}</p>
+                <div className="flex items-center gap-3 text-xs text-neutral-400">
+                  <span className="font-medium uppercase tracking-widest">{paper.category}</span>
+                  <span className="text-neutral-200">·</span>
+                  <span>{paper.date}</span>
                 </div>
-                <ArrowRight className="w-5 h-5 text-neutral-300 group-hover:text-neutral-900 transition-all flex-shrink-0 hidden sm:block mt-1.5" />
+              </div>
+              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-neutral-100 flex items-center justify-center group-hover:bg-neutral-900 transition-all duration-300">
+                <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-white transition-colors duration-300" />
               </div>
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="text-center mt-12"
+        >
+          <Link href="/research" className="inline-flex items-center gap-2 text-sm font-medium text-neutral-500 hover:text-neutral-900 transition-colors tracking-wide">
+            View all research <ArrowRight className="w-4 h-4" />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );
@@ -692,24 +717,36 @@ function ResearchSection() {
 
 function CTASection() {
   return (
-    <section className="py-28 sm:py-36 border-t border-neutral-100">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-12 text-center">
+    <section className="py-32 sm:py-44 bg-neutral-950 text-white relative overflow-hidden">
+      <div
+        className="absolute inset-0 opacity-30"
+        style={{
+          backgroundImage: 'url("/images/gradient-purple.png")',
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          filter: "blur(80px) saturate(1.5)",
+        }}
+      />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.5)_100%)]" />
+
+      <div className="relative max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
         <motion.h2
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-6"
+          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+          className="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl tracking-tight mb-8"
         >
           Ready to build AI
           <br />
-          <em className="text-neutral-400">that works?</em>
+          <em className="text-white/40">that works?</em>
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="text-neutral-500 text-lg max-w-xl mx-auto mb-10 font-light leading-relaxed"
+          transition={{ delay: 0.15, duration: 0.7 }}
+          className="text-white/50 text-lg sm:text-xl max-w-xl mx-auto mb-12 font-light leading-relaxed"
         >
           Get started with Olyxee's developer tools, or reach out to discuss enterprise solutions.
         </motion.p>
@@ -717,18 +754,18 @@ function CTASection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
+          transition={{ delay: 0.25, duration: 0.7 }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
           <Link
             href="/docs"
-            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-black transition-all text-sm tracking-wide"
+            className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide"
           >
-            Get Started <ArrowRight className="w-4 h-4" />
+            Get Started <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
           </Link>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-neutral-900 border border-neutral-200 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 text-white/70 border border-white/15 rounded-full font-medium hover:bg-white/5 hover:text-white transition-all text-sm tracking-wide"
           >
             Contact Sales
           </Link>
@@ -750,16 +787,25 @@ function CookieBanner({ onDismiss }: { onDismiss: () => void }) {
       aria-modal="false"
       aria-label="Cookie consent"
     >
-      <div className="flex flex-col sm:flex-row items-center gap-4 bg-white border border-neutral-200 shadow-lg rounded-xl px-6 py-4 max-w-lg">
-        <p className="text-sm text-neutral-600 flex-1">
+      <div
+        className="flex flex-col sm:flex-row items-center gap-4 px-6 py-4 max-w-lg rounded-2xl"
+        style={{
+          background: 'rgba(255,255,255,0.75)',
+          backdropFilter: 'blur(24px) saturate(180%)',
+          WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+          border: '1px solid rgba(255,255,255,0.45)',
+          boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
+        }}
+      >
+        <p className="text-sm text-neutral-600 flex-1 font-light">
           We use cookies to improve your experience. By continuing, you agree to our{" "}
           <Link href="/privacy" className="underline hover:text-neutral-900">privacy policy</Link>.
         </p>
         <div className="flex gap-3">
-          <button onClick={() => { localStorage.setItem("cookie-consent", "accepted"); onDismiss(); }} className="px-4 py-2 bg-neutral-900 text-white text-sm rounded-lg font-medium hover:bg-black transition-colors">
+          <button onClick={() => { localStorage.setItem("cookie-consent", "accepted"); onDismiss(); }} className="px-5 py-2 bg-neutral-900 text-white text-sm rounded-full font-medium hover:bg-black transition-colors">
             Accept
           </button>
-          <button onClick={() => { localStorage.setItem("cookie-consent", "declined"); onDismiss(); }} className="px-4 py-2 text-neutral-500 text-sm hover:text-neutral-900 transition-colors">
+          <button onClick={() => { localStorage.setItem("cookie-consent", "declined"); onDismiss(); }} className="px-4 py-2 text-neutral-400 text-sm hover:text-neutral-900 transition-colors">
             Decline
           </button>
         </div>

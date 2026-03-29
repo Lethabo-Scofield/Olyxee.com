@@ -165,7 +165,7 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                                 }`}
                                 aria-label="Open menu"
                             >
-                                <Menu className="h-5 w-5 text-neutral-800" />
+                                <Menu className={`h-5 w-5 ${theme === "dark" && !scrolled ? "text-white" : "text-neutral-800"}`} />
                             </motion.button>
                         </div>
                     </div>
