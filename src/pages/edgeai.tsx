@@ -143,6 +143,29 @@ const EdgeAI: FC = () => {
         </div>
       </section>
 
+      <section className="py-20 sm:py-28 border-b border-neutral-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="relative w-full rounded-2xl overflow-hidden"
+          >
+            <img
+              src="/images/edge-ai-grid.png"
+              alt="AI-powered computer vision across real-world environments — object detection, pose estimation, anomaly detection, and scene analysis running on edge devices"
+              className="w-full h-auto"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
+              <p className="text-white/90 text-sm sm:text-base font-medium">Computer vision at the edge</p>
+              <p className="text-white/50 text-xs sm:text-sm mt-1 max-w-xl">Object detection, pose estimation, anomaly detection, and scene analysis — deployed across industrial, automotive, and public safety environments.</p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       <section className="py-20 sm:py-28 bg-neutral-50 border-y border-neutral-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <motion.div
@@ -285,38 +308,55 @@ const EdgeAI: FC = () => {
         </div>
       </section>
 
-      <section className="py-28 sm:py-36 bg-neutral-950 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            custom={0}
-            variants={fadeUp}
-          >
-            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight mb-6">
-              Deploy AI
-              <br />
-              <em className="text-neutral-500">at the edge</em>
-            </h2>
-            <p className="text-neutral-400 text-lg max-w-2xl mx-auto mb-10 font-light leading-relaxed">
-              Get your models running on real hardware in minutes. OEB handles the infrastructure — you focus on the intelligence.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/developers"
-                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide"
-              >
-                Get Started <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link
-                href="/docs"
-                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-white border border-white/20 rounded-full font-medium hover:bg-white/10 transition-all text-sm tracking-wide"
-              >
-                Read the Docs <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </motion.div>
+      <section className="py-28 sm:py-36 bg-neutral-950 text-white relative overflow-hidden">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 relative">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              custom={0}
+              variants={fadeUp}
+            >
+              <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight mb-6">
+                Deploy AI
+                <br />
+                <em className="text-neutral-500">at the edge</em>
+              </h2>
+              <p className="text-neutral-400 text-lg mb-10 font-light leading-relaxed">
+                Get your models running on real hardware in minutes. OEB handles the infrastructure — you focus on the intelligence.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="/developers"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide"
+                >
+                  Get Started <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link
+                  href="/docs"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-white border border-white/20 rounded-full font-medium hover:bg-white/10 transition-all text-sm tracking-wide"
+                >
+                  Read the Docs <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative rounded-2xl overflow-hidden"
+            >
+              <img
+                src="/images/edge-ai-server.png"
+                alt="Engineer managing edge infrastructure in a server room"
+                className="w-full h-auto rounded-2xl"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/30 to-transparent rounded-2xl" />
+            </motion.div>
+          </div>
         </div>
       </section>
 
