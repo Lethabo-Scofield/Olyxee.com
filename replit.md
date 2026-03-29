@@ -36,10 +36,11 @@ Company-level website for Olyxee, a reliability-first AI infrastructure company.
 - Mobile drawer: glass rounded panel (`borderRadius: 28`) pinned right with matching frosted glass
 
 ## Site Structure & Navigation
-Navigation: About | Grysics | Research | Docs | Community
-Desktop CTA: "Get Started" → /developers
-- "Research" in nav links to /lab (Olyxee Lab page), not /research
-- Olyxee Lab LinkedIn: https://www.linkedin.com/company/olyxeelab/
+Navigation: About | EdgeAI | Docs | Community
+Desktop CTA: "Get Started"
+- Grysics = verification engine for AI applications (chatbots, RAG, agents) — NOT edge hardware
+- Olyxee = the company, NOT a product
+- Grysics SDK: `pip install grysics`, CLI: `grysics` commands
 
 ## Routing
 - **App Router** (`src/app/`): `/`, `/products/grysics`, `/products/nrn`
@@ -58,7 +59,7 @@ Desktop CTA: "Get Started" → /developers
 - **About** (`src/pages/about.tsx`): Mission, problem statement, approach, philosophy
 - **Olyxee Lab** (`src/pages/lab.tsx`): Research division — 6 research areas, recent publications, approach section, LinkedIn CTA
 - **Products**: Grysics (verification engine with animated canvas network), NRN (interpretable AI), WAVE (core platform)
-- **Docs** (`src/pages/docs.tsx`): OpenAI-style documentation with sidebar. Sections: Get Started (Overview, Quickstart, Supported Models), Grysics (Overview, Verification Engine, Deployment, Monitoring), API (Reference, Python SDK, CLI, Error Handling), Guides (Edge Devices, Optimization, Configuration), Resources (Changelog, Rate Limits)
+- **Docs** (`src/pages/docs.tsx`): OpenAI-style documentation with sidebar. Tabs: Home, API (Overview, Quickstart, API Keys, Supported Platforms, REST API, Python SDK, CLI, Error Handling), Grysics (What is Grysics, Chatbots, RAG Pipelines, Agents, Testing & Verification, Monitoring, Early Access), Guides (Supported Platforms, Testing Strategies, Configuration), Resources (Changelog, Rate Limits)
 - **Careers** (`src/pages/careers.tsx`): Internship listings with clickable apply modal that fires mailto:scofieldx911@gmail.com
 - **Community** (`src/pages/community.tsx`): Hero banner image, channel cards with animated stats
 - **Research** (`src/pages/research.tsx`): Papers on AI reliability, interpretability, optimization
