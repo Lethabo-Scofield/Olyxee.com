@@ -18,8 +18,11 @@ Company-level website for Olyxee, a reliability-first AI infrastructure company.
 - **Workflow**: "Start application" — runs `npm run dev`
 
 ## Design System
-- **Display font**: `Instrument Serif` (italic) for all major headings — creates a distinctive, editorial feel
-- **Body font**: `Inter` for body text and UI elements
+- **Display font**: `Instrument Serif` (italic) for all major headings — loaded via `next/font/google` (zero-lag, self-hosted). CSS variable: `--font-instrument`
+- **Body font**: `Inter` for body text and UI elements — loaded via `next/font/google`. CSS variable: `--font-inter`
+- **Font loading**: Optimized with `next/font` (self-hosted, `display: swap`) instead of CSS `@import` — eliminates FOUT/FOIT and network blocking
+- **Page transitions**: `PageTransitionLoader` component shows a thin progress bar at the top during navigation. Listens to pathname changes + click interception for instant feedback
+- **Section animations**: Framer Motion `fadeUp` variants on all major sections provide smooth reveal on scroll
 - **Grain texture**: `.grain` CSS class — fixed noise overlay at z-9999, opacity 0.03, applied to page wrappers
 - **Accent utilities**: `.accent-line` (48px × 2px black block), `.accent-dot` (6px blue circle) — used as section markers
 - **Color palette**: neutral-950 for dark sections, neutral-400/500 for muted text, neutral-100/200 for borders. Blue (#3b82f6) used sparingly for interactive hover states, active nav items, and clickable highlights.

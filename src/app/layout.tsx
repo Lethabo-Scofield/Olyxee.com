@@ -1,9 +1,25 @@
 import type { Metadata } from "next";
+import { Inter, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import "katex/dist/katex.min.css";
 import VisualEditsMessenger from "../visual-edits/VisualEditsMessenger";
 import ErrorReporter from "@/components/ErrorReporter";
+import PageTransitionLoader from "@/components/PageTransitionLoader";
 import Script from "next/script";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
+
+const instrumentSerif = Instrument_Serif({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-instrument",
+  style: ["normal", "italic"],
+});
 
 const siteUrl = "https://olyxee.com";
 
@@ -89,8 +105,9 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/Logo/Olyxee_Logo.png" />
         <meta name="theme-color" content="#ffffff" />
       </head>
-      <body className="antialiased">
+      <body className={`${inter.variable} ${instrumentSerif.variable} antialiased`}>
         <ErrorReporter />
+        <PageTransitionLoader />
         <Script
           src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/scripts//route-messenger.js"
           strategy="afterInteractive"
