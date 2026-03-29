@@ -3,7 +3,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useEffect, useRef, useState, FormEvent } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Shield, Cpu, BarChart3, Zap, GitBranch, Layers, Check, Sparkles, TrendingUp, Clock, ChevronLeft, Terminal, Play, Copy, CheckCircle2, AlertTriangle, XCircle, ArrowUpRight, Globe, Lock, Activity } from 'lucide-react';
+import { ArrowRight, Shield, Cpu, BarChart3, Zap, GitBranch, Layers, Check, Sparkles, TrendingUp, Clock, ChevronLeft, Terminal, Play, Copy, CheckCircle2, AlertTriangle, XCircle, ArrowUpRight, Globe, Lock, Activity, Linkedin } from 'lucide-react';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -764,6 +764,15 @@ export default function GrysicsPage() {
               {['Docs', 'Status', 'Changelog', 'Privacy', 'Terms'].map((item) => (
                 <span key={item} className="text-xs text-neutral-600 hover:text-neutral-400 transition-colors cursor-default">{item}</span>
               ))}
+              <a
+                href="https://www.linkedin.com/company/olyxeelab"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-xs text-neutral-600 hover:text-neutral-400 transition-colors"
+              >
+                <Linkedin className="w-3.5 h-3.5" />
+                Follow OEB
+              </a>
             </div>
             <p className="text-xs text-neutral-700">&copy; {new Date().getFullYear()} Olyxee Inc.</p>
           </div>
