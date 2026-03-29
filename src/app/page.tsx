@@ -181,8 +181,10 @@ function PipelineSection() {
   ];
 
   return (
-    <section className="py-32 sm:py-44 border-t border-neutral-100">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-12">
+    <section className="py-32 sm:py-44 relative overflow-hidden">
+      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-yellow-blue.png")' }} />
+      <div className="absolute inset-0 bg-white/90 backdrop-blur-sm" />
+      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-12">
         <div className="text-center mb-24">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -407,16 +409,18 @@ function OfferingsSection() {
         >
           <Link
             href="/products/grysics"
-            className="group flex flex-col sm:flex-row sm:items-center justify-between gap-6 p-8 sm:p-10 rounded-2xl border border-neutral-200 hover:border-neutral-300 hover:shadow-sm transition-all"
+            className="group relative flex flex-col sm:flex-row sm:items-center justify-between gap-6 p-8 sm:p-10 rounded-2xl overflow-hidden transition-all hover:shadow-lg"
           >
-            <div className="flex-1 min-w-0">
+            <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-blue.png")' }} />
+            <div className="absolute inset-0 bg-white/80 backdrop-blur-sm" />
+            <div className="relative flex-1 min-w-0">
               <div className="flex items-center gap-4 mb-3">
                 <h3 className="text-2xl sm:text-3xl font-semibold text-neutral-900">Grysics</h3>
-                <span className="text-xs font-medium text-neutral-500 bg-neutral-50 px-3 py-1 rounded-full border border-neutral-200">Product</span>
+                <span className="text-xs font-medium text-neutral-600 bg-white/60 px-3 py-1 rounded-full border border-white/40">Product</span>
               </div>
-              <p className="text-neutral-500 text-sm leading-relaxed max-w-xl">Verification engine for AI applications. Test chatbots, RAG pipelines, and agent workflows for accuracy, consistency, and hallucination — before and after deployment.</p>
+              <p className="text-neutral-600 text-sm leading-relaxed max-w-xl">Verification engine for AI applications. Test chatbots, RAG pipelines, and agent workflows for accuracy, consistency, and hallucination — before and after deployment.</p>
             </div>
-            <span className="text-sm font-medium text-neutral-400 flex items-center gap-1.5 group-hover:text-neutral-900 group-hover:gap-3 transition-all flex-shrink-0">
+            <span className="relative text-sm font-medium text-neutral-400 flex items-center gap-1.5 group-hover:text-neutral-900 group-hover:gap-3 transition-all flex-shrink-0">
               Explore <ArrowRight className="w-4 h-4" />
             </span>
           </Link>
@@ -431,16 +435,18 @@ function OfferingsSection() {
         >
           <Link
             href="/edgeai"
-            className="group flex flex-col sm:flex-row sm:items-center justify-between gap-6 p-8 sm:p-10 rounded-2xl border border-neutral-200 hover:border-neutral-300 hover:shadow-sm transition-all"
+            className="group relative flex flex-col sm:flex-row sm:items-center justify-between gap-6 p-8 sm:p-10 rounded-2xl overflow-hidden transition-all hover:shadow-lg"
           >
-            <div className="flex-1 min-w-0">
+            <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-purple.png")' }} />
+            <div className="absolute inset-0 bg-white/80 backdrop-blur-sm" />
+            <div className="relative flex-1 min-w-0">
               <div className="flex items-center gap-4 mb-3">
                 <h3 className="text-2xl sm:text-3xl font-semibold text-neutral-900">Olyxee Edge Box</h3>
-                <span className="text-xs font-medium text-neutral-500 bg-neutral-50 px-3 py-1 rounded-full border border-neutral-200">Division</span>
+                <span className="text-xs font-medium text-neutral-600 bg-white/60 px-3 py-1 rounded-full border border-white/40">Division</span>
               </div>
-              <p className="text-neutral-500 text-sm leading-relaxed max-w-xl">Our edge AI sub-division. Deploys AI models to IoT sensors, drones, robots, and embedded systems — optimized for performance, power, and latency on real hardware.</p>
+              <p className="text-neutral-600 text-sm leading-relaxed max-w-xl">Our edge AI sub-division. Deploys AI models to IoT sensors, drones, robots, and embedded systems — optimized for performance, power, and latency on real hardware.</p>
             </div>
-            <span className="text-sm font-medium text-neutral-400 flex items-center gap-1.5 group-hover:text-neutral-900 group-hover:gap-3 transition-all flex-shrink-0">
+            <span className="relative text-sm font-medium text-neutral-400 flex items-center gap-1.5 group-hover:text-neutral-900 group-hover:gap-3 transition-all flex-shrink-0">
               Learn more <ArrowRight className="w-4 h-4" />
             </span>
           </Link>
@@ -453,8 +459,10 @@ function OfferingsSection() {
 
 function ArchitectureSection() {
   return (
-    <section className="py-28 sm:py-36 bg-neutral-50 border-y border-neutral-100">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
+    <section className="py-28 sm:py-36 relative overflow-hidden">
+      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-orange-pink.png")' }} />
+      <div className="absolute inset-0 bg-white/88 backdrop-blur-sm" />
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
         <div className="text-center mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -584,8 +592,10 @@ function ResearchSection() {
   ];
 
   return (
-    <section className="py-28 sm:py-36 border-t border-neutral-100">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
+    <section className="py-28 sm:py-36 relative overflow-hidden">
+      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-painted.png")' }} />
+      <div className="absolute inset-0 bg-white/88 backdrop-blur-sm" />
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-20">
           <div>
             <span className="accent-line" />
@@ -684,8 +694,10 @@ function MetricsSection() {
 
 function CTASection() {
   return (
-    <section className="py-28 sm:py-36 border-t border-neutral-100">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-12 text-center">
+    <section className="py-28 sm:py-36 relative overflow-hidden">
+      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-pink-cyan.png")' }} />
+      <div className="absolute inset-0 bg-white/85 backdrop-blur-sm" />
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-12 text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
