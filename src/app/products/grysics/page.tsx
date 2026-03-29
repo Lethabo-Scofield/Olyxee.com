@@ -162,8 +162,9 @@ export default function GrysicsPage() {
       <Header />
 
       <section className="pt-32 sm:pt-44 pb-20 sm:pb-28 px-4 sm:px-6 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-neutral-100 rounded-full blur-[150px] opacity-40 -translate-y-1/3 translate-x-1/4" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-50 rounded-full blur-[120px] opacity-30 translate-y-1/3 -translate-x-1/4" />
+        <div className="absolute top-0 right-0 w-[700px] h-[700px] rounded-full blur-[180px] opacity-30 -translate-y-1/3 translate-x-1/4 pointer-events-none" style={{ background: 'linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #f0abfc 100%)' }} />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full blur-[150px] opacity-20 translate-y-1/3 -translate-x-1/4 pointer-events-none" style={{ background: 'linear-gradient(135deg, #67e8f9 0%, #6ee7b7 100%)' }} />
+        <div className="absolute top-1/2 left-1/2 w-[300px] h-[300px] rounded-full blur-[120px] opacity-10 -translate-x-1/2 -translate-y-1/2 pointer-events-none" style={{ background: 'linear-gradient(135deg, #fbbf24 0%, #f97316 100%)' }} />
         <div className="max-w-5xl mx-auto relative">
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="flex items-center gap-3 mb-8">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-neutral-900 text-white rounded-full text-xs font-medium uppercase tracking-widest">
@@ -230,8 +231,10 @@ export default function GrysicsPage() {
         </div>
       </section>
 
-      <section className="py-24 sm:py-32">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+      <section className="py-24 sm:py-32 relative overflow-hidden">
+        <div className="absolute top-0 left-1/2 w-[600px] h-[600px] rounded-full blur-[200px] opacity-10 -translate-x-1/2 -translate-y-1/2 pointer-events-none" style={{ background: 'linear-gradient(135deg, #a78bfa 0%, #ec4899 100%)' }} />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full blur-[150px] opacity-10 translate-y-1/3 translate-x-1/4 pointer-events-none" style={{ background: 'linear-gradient(135deg, #60a5fa 0%, #34d399 100%)' }} />
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 relative">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="text-center mb-16">
             <span className="text-xs font-medium text-neutral-400 uppercase tracking-widest mb-4 block">Works with every AI type</span>
             <h2 className="font-serif text-4xl sm:text-5xl tracking-tight text-neutral-900">
@@ -269,7 +272,9 @@ export default function GrysicsPage() {
       </section>
 
       <section className="py-24 sm:py-32 bg-neutral-950 text-white relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-neutral-800 rounded-full blur-[150px] opacity-30 -translate-y-1/2 -translate-x-1/4" />
+        <div className="absolute top-0 left-0 w-[600px] h-[600px] rounded-full blur-[180px] opacity-20 -translate-y-1/2 -translate-x-1/4 pointer-events-none" style={{ background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)' }} />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full blur-[180px] opacity-[0.15] translate-y-1/3 translate-x-1/4 pointer-events-none" style={{ background: 'linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%)' }} />
+        <div className="absolute top-1/2 left-1/2 w-[400px] h-[400px] rounded-full blur-[150px] opacity-[0.08] -translate-x-1/2 -translate-y-1/2 pointer-events-none" style={{ background: 'linear-gradient(135deg, #ec4899 0%, #f97316 100%)' }} />
         <div className="max-w-5xl mx-auto px-4 sm:px-6 relative">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="text-center mb-16">
             <span className="text-xs font-medium text-neutral-500 uppercase tracking-widest mb-4 block">Performance</span>
@@ -321,8 +326,10 @@ export default function GrysicsPage() {
         </div>
       </section>
 
-      <section className="py-24 sm:py-32">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+      <section className="py-24 sm:py-32 relative overflow-hidden">
+        <div className="absolute top-1/2 right-0 w-[500px] h-[500px] rounded-full blur-[180px] opacity-10 -translate-y-1/2 translate-x-1/3 pointer-events-none" style={{ background: 'linear-gradient(135deg, #fbbf24 0%, #f97316 50%, #ef4444 100%)' }} />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full blur-[150px] opacity-[0.08] translate-y-1/3 -translate-x-1/4 pointer-events-none" style={{ background: 'linear-gradient(135deg, #818cf8 0%, #6366f1 100%)' }} />
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 relative">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="mb-16">
             <span className="accent-line" />
             <h2 className="font-serif text-4xl sm:text-5xl tracking-tight text-neutral-900">
@@ -373,8 +380,10 @@ export default function GrysicsPage() {
         </div>
       </section>
 
-      <section className="py-24 sm:py-32 bg-neutral-50 border-y border-neutral-100">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+      <section className="py-24 sm:py-32 bg-neutral-50 border-y border-neutral-100 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full blur-[200px] opacity-[0.08] -translate-y-1/3 -translate-x-1/4 pointer-events-none" style={{ background: 'linear-gradient(135deg, #c084fc 0%, #818cf8 100%)' }} />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full blur-[180px] opacity-[0.08] translate-y-1/3 translate-x-1/4 pointer-events-none" style={{ background: 'linear-gradient(135deg, #34d399 0%, #60a5fa 100%)' }} />
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 relative">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="mb-16">
             <span className="accent-line" />
             <h2 className="font-serif text-4xl sm:text-5xl tracking-tight text-neutral-900">
@@ -413,7 +422,8 @@ export default function GrysicsPage() {
       </section>
 
       <section className="py-28 sm:py-36 bg-neutral-950 text-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-neutral-800 rounded-full blur-[150px] opacity-20 -translate-y-1/3 translate-x-1/4" />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full blur-[200px] opacity-20 -translate-y-1/3 translate-x-1/4 pointer-events-none" style={{ background: 'linear-gradient(135deg, #a78bfa 0%, #ec4899 100%)' }} />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full blur-[180px] opacity-[0.15] translate-y-1/3 -translate-x-1/4 pointer-events-none" style={{ background: 'linear-gradient(135deg, #06b6d4 0%, #6366f1 100%)' }} />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center relative">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp}>
             <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/10 text-white rounded-full text-xs font-medium mb-8 border border-white/10 uppercase tracking-widest">
