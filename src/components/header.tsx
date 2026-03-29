@@ -14,7 +14,7 @@ const menuItems = [
     { name: "Community", href: "/community" },
 ];
 
-const Header = () => {
+const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [visible, setVisible] = useState(true);
@@ -102,7 +102,9 @@ const Header = () => {
                 >
                     <Link href="/" prefetch className="focus:outline-none rounded-full transition-transform hover:scale-105 flex items-center gap-2.5 flex-shrink-0">
                         <Image src="/Logo/Olyxee_Logo.png" alt="Olyxee Logo" width={30} height={30} className="cursor-pointer" />
-                        <span className="text-[15px] font-bold text-neutral-900 hidden sm:inline">
+                        <span className={`text-[15px] font-bold hidden sm:inline transition-colors ${
+                            theme === "dark" && !scrolled ? "text-white" : "text-neutral-900"
+                        }`}>
                             Olyxee
                         </span>
                     </Link>
@@ -119,7 +121,11 @@ const Header = () => {
                                     <Link
                                         href={item.href}
                                         prefetch
-                                        className="text-neutral-500 text-[13px] font-medium transition-colors hover:text-neutral-900 focus:outline-none px-3.5 py-1.5 relative"
+                                        className={`text-[13px] font-medium transition-colors focus:outline-none px-3.5 py-1.5 relative ${
+                                            theme === "dark" && !scrolled
+                                                ? "text-white/60 hover:text-white"
+                                                : "text-neutral-500 hover:text-neutral-900"
+                                        }`}
                                     >
                                         {item.name}
                                     </Link>
@@ -154,7 +160,9 @@ const Header = () => {
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 0.2 }}
                                 onClick={() => setMobileMenuOpen(true)}
-                                className="transition-all hover:opacity-80 active:scale-90 focus:outline-none rounded-full p-2 hover:bg-white/40"
+                                className={`transition-all hover:opacity-80 active:scale-90 focus:outline-none rounded-full p-2 ${
+                                    theme === "dark" && !scrolled ? "hover:bg-white/20 text-white" : "hover:bg-white/40"
+                                }`}
                                 aria-label="Open menu"
                             >
                                 <Menu className="h-5 w-5 text-neutral-800" />

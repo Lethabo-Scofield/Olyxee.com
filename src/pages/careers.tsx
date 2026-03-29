@@ -1,18 +1,10 @@
-import { FC, useState } from "react";
+import { FC, useState, useRef } from "react";
 import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import Link from "next/link";
-import { ArrowRight, MapPin, X, Send, CheckCircle, Briefcase, GraduationCap, Clock, Globe, Users, Zap } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i: number) => ({
-    opacity: 1, y: 0,
-    transition: { duration: 0.5, delay: i * 0.06, ease: [0.25, 0.46, 0.45, 0.94] },
-  }),
-};
+import { ArrowRight, MapPin, X, CheckCircle, Briefcase, Clock, Globe, Users, Zap, ChevronDown } from "lucide-react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 
 interface Role {
   title: string;
@@ -165,9 +157,174 @@ const roles: Role[] = [
 
 const teams = Array.from(new Set(roles.map(r => r.team)));
 
-const Careers: FC = () => {
-  const [selectedRole, setSelectedRole] = useState<Role | null>(null);
+function HeroSection() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95]);
+  const y = useTransform(scrollYProgress, [0, 0.5], [0, 60]);
+
+  return (
+    <section ref={ref} className="relative min-h-[100vh] flex flex-col items-center justify-center overflow-hidden">
+      <div className="absolute inset-0 bg-neutral-950" />
+      <div
+        className="absolute inset-0 opacity-40"
+        style={{
+          backgroundImage: 'url("/images/gradient-blue-pink.png")',
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          filter: "blur(80px) saturate(1.5)",
+        }}
+      />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.6)_100%)]" />
+
+      <motion.div
+        style={{ opacity, scale, y }}
+        className="relative z-10 text-center px-6 max-w-5xl mx-auto"
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+        >
+          <div className="inline-flex items-center gap-2.5 px-4 py-2 bg-white/10 backdrop-blur-xl text-white/80 rounded-full text-xs font-medium mb-10 border border-white/10">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+            Now hiring across all teams
+          </div>
+        </motion.div>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+          className="font-serif text-5xl sm:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] text-white leading-[1] tracking-tight mb-8"
+        >
+          Do the best
+          <br />
+          work of your <em className="text-white/40">life.</em>
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
+          className="text-lg sm:text-xl text-white/50 max-w-2xl mx-auto leading-relaxed font-light"
+        >
+          Join a small team solving hard problems in AI reliability and verification.
+          Start with an internship. Grow into something bigger.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1, ease: [0.25, 0.1, 0.25, 1] }}
+          className="mt-12 flex flex-col sm:flex-row gap-4 justify-center"
+        >
+          <a
+            href="#roles"
+            className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide"
+          >
+            View open roles <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+          </a>
+          <Link
+            href="/about"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 text-white/70 border border-white/15 rounded-full font-medium hover:bg-white/5 hover:text-white transition-all text-sm tracking-wide"
+          >
+            Learn about Olyxee
+          </Link>
+        </motion.div>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5, duration: 1 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2"
+      >
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+        >
+          <ChevronDown className="w-5 h-5 text-white/30" />
+        </motion.div>
+      </motion.div>
+    </section>
+  );
+}
+
+function ValuesSection() {
+  const values = [
+    {
+      title: "Ship real work",
+      desc: "Your contributions go to production from week one. No busywork, no fake projects. You'll solve real challenges in AI systems used by developers worldwide.",
+      icon: Zap,
+      gradient: "/images/gradient-orange-pink.png",
+    },
+    {
+      title: "Learn from the best",
+      desc: "Work alongside experienced engineers and researchers who've built systems at scale. Get mentorship that accelerates your career by years, not months.",
+      icon: Users,
+      gradient: "/images/gradient-blue-pink.png",
+    },
+    {
+      title: "Work from anywhere",
+      desc: "Fully remote with flexible hours. We care about what you build, not when you build it. Do your best work from wherever you're most productive.",
+      icon: Globe,
+      gradient: "/images/gradient-yellow-green.png",
+    },
+  ];
+
+  return (
+    <section className="py-32 sm:py-44">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20 sm:mb-28"
+        >
+          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-6">
+            Why people choose <em className="text-neutral-400">Olyxee</em>
+          </h2>
+          <p className="text-neutral-500 text-lg max-w-xl mx-auto font-light">
+            We built the kind of company we'd want to work at.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+          {values.map((v, idx) => {
+            const Icon = v.icon;
+            return (
+              <motion.div
+                key={v.title}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: idx * 0.12 }}
+                className="group relative rounded-3xl overflow-hidden p-8 sm:p-10 min-h-[320px] flex flex-col justify-end"
+              >
+                <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url("${v.gradient}")` }} />
+                <div className="absolute inset-0 bg-white/80 backdrop-blur-sm group-hover:bg-white/75 transition-all duration-500" />
+                <div className="relative">
+                  <div className="w-12 h-12 rounded-2xl bg-white/80 border border-white/60 flex items-center justify-center mb-6 shadow-sm">
+                    <Icon className="w-5 h-5 text-neutral-700" />
+                  </div>
+                  <h3 className="text-2xl tracking-tight text-neutral-900 mb-3">{v.title}</h3>
+                  <p className="text-[15px] text-neutral-500 leading-relaxed">{v.desc}</p>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function RolesSection() {
   const [filterTeam, setFilterTeam] = useState<string>("All");
+  const [selectedRole, setSelectedRole] = useState<Role | null>(null);
   const [formData, setFormData] = useState({ name: "", email: "", portfolio: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
 
@@ -176,13 +333,11 @@ const Careers: FC = () => {
   const handleApply = (e: React.FormEvent) => {
     e.preventDefault();
     if (!selectedRole) return;
-
     const subject = encodeURIComponent(`Application: ${selectedRole.title}`);
     const body = encodeURIComponent(
       `Role: ${selectedRole.title}\nTeam: ${selectedRole.team}\n\nName: ${formData.name}\nEmail: ${formData.email}\nPortfolio/LinkedIn: ${formData.portfolio}\n\n${formData.message}`
     );
     window.location.href = `mailto:scofieldx911@gmail.com?subject=${subject}&body=${body}`;
-
     setSubmitted(true);
     setTimeout(() => {
       setSubmitted(false);
@@ -192,201 +347,95 @@ const Careers: FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white text-neutral-900">
-      <SEO title="Careers" description="Join Olyxee and work on AI infrastructure that matters. Open internship positions in research, engineering, design, and more." path="/careers" />
-      <Header />
+    <>
+      <section id="roles" className="py-32 sm:py-44 border-t border-neutral-100">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="mb-16"
+          >
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-4">
+              Open roles
+            </h2>
+            <p className="text-neutral-500 text-lg font-light">
+              {roles.length} positions across {teams.length} teams. All remote.
+            </p>
+          </motion.div>
 
-      <section className="pt-28 sm:pt-36 pb-20 sm:pb-28 px-4 sm:px-6">
-        <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="relative w-full h-[280px] sm:h-[380px] rounded-3xl overflow-hidden mb-14"
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="flex flex-wrap gap-2 mb-12"
           >
-            <div
-              className="absolute inset-0"
-              style={{
-                backgroundImage: 'url("/images/Community.jpg")',
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10" />
-            <div className="relative z-10 h-full flex flex-col items-start justify-end p-8 sm:p-12">
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="inline-flex items-center gap-2 px-3 py-1 bg-green-500/20 backdrop-blur-md text-green-300 rounded-full text-xs font-semibold mb-4 border border-green-400/30 uppercase tracking-widest"
-              >
-                <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                We're hiring
-              </motion.div>
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="font-serif text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.1]"
-              >
-                Build the future of
-                <br />
-                <em className="text-white/60">AI infrastructure</em>
-              </motion.h1>
-            </div>
-          </motion.div>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.5 }} className="text-lg text-neutral-500 leading-relaxed max-w-2xl mb-8">
-            We're looking for talented people who want to solve hard problems in AI reliability,
-            verification, and edge deployment. Start with an internship — grow with us.
-          </motion.p>
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.6 }} className="flex flex-wrap gap-6 text-sm text-neutral-500">
-            <span className="flex items-center gap-2"><Globe className="w-4 h-4 text-neutral-400" /> 100% Remote</span>
-            <span className="flex items-center gap-2"><Clock className="w-4 h-4 text-neutral-400" /> Flexible hours</span>
-            <span className="flex items-center gap-2"><GraduationCap className="w-4 h-4 text-neutral-400" /> Internships available</span>
-            <span className="flex items-center gap-2"><Users className="w-4 h-4 text-neutral-400" /> Mentorship included</span>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="py-16 sm:py-20 border-t border-neutral-100">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {[
-              { icon: Zap, title: "Ship real work", desc: "Your contributions go to production. No busywork — you'll solve real challenges in AI systems." },
-              { icon: Users, title: "Learn from experts", desc: "Work alongside experienced engineers and researchers. Get mentorship that accelerates your growth." },
-              { icon: Globe, title: "Work anywhere", desc: "Fully remote with flexible hours. We value output over hours. Build from wherever you do your best work." },
-            ].map((item, idx) => {
-              const Icon = item.icon;
-              return (
-                <motion.div key={item.title} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={idx} variants={fadeUp}
-                  className="p-6 rounded-xl border border-neutral-200 hover:border-neutral-300 transition-colors"
-                >
-                  <div className="w-10 h-10 rounded-lg bg-neutral-100 flex items-center justify-center mb-4">
-                    <Icon className="w-5 h-5 text-neutral-600" />
-                  </div>
-                  <h3 className="text-base font-semibold text-neutral-900 mb-2">{item.title}</h3>
-                  <p className="text-sm text-neutral-500 leading-relaxed">{item.desc}</p>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 sm:py-20 border-t border-neutral-100 bg-neutral-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="mb-10">
-            <h2 className="text-2xl sm:text-3xl font-semibold text-neutral-900 tracking-tight mb-2">Open positions</h2>
-            <p className="text-sm text-neutral-500">{roles.length} roles across {teams.length} teams</p>
-          </motion.div>
-
-          <div className="flex flex-wrap gap-2 mb-8">
             {["All", ...teams].map(team => (
               <button
                 key={team}
                 onClick={() => setFilterTeam(team)}
-                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                   filterTeam === team
-                    ? 'bg-neutral-900 text-white'
-                    : 'bg-white text-neutral-600 border border-neutral-200 hover:border-neutral-300 hover:text-neutral-900'
+                    ? 'bg-neutral-900 text-white shadow-lg shadow-neutral-900/20'
+                    : 'bg-neutral-100 text-neutral-500 hover:bg-neutral-200 hover:text-neutral-700'
                 }`}
               >
                 {team}
               </button>
             ))}
-          </div>
+          </motion.div>
 
-          <div className="space-y-3">
-            {filteredRoles.map((role, idx) => (
-              <motion.button
-                key={role.title}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                custom={idx}
-                variants={fadeUp}
-                onClick={() => setSelectedRole(role)}
-                className="w-full text-left bg-white rounded-xl border border-neutral-200 p-5 sm:p-6 hover:border-neutral-300 hover:shadow-sm transition-all group"
-              >
-                <div className="flex items-start justify-between gap-4">
+          <div className="space-y-0 divide-y divide-neutral-100">
+            <AnimatePresence mode="popLayout">
+              {filteredRoles.map((role, idx) => (
+                <motion.button
+                  key={role.title}
+                  layout
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.4, delay: idx * 0.04 }}
+                  onClick={() => setSelectedRole(role)}
+                  className="w-full text-left py-7 sm:py-8 group flex items-center justify-between gap-6 transition-all"
+                >
                   <div className="flex-1 min-w-0">
-                    <div className="flex flex-wrap items-center gap-2 mb-2">
-                      <h3 className="text-base sm:text-lg font-semibold text-neutral-900">{role.title}</h3>
-                      <span className={`text-[11px] font-semibold uppercase tracking-wide px-2 py-0.5 rounded-full ${
+                    <div className="flex flex-wrap items-center gap-3 mb-2">
+                      <h3 className="text-lg sm:text-xl tracking-tight text-neutral-900 group-hover:text-neutral-600 transition-colors">{role.title}</h3>
+                      <span className={`text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full ${
                         role.type === 'internship'
-                          ? 'bg-blue-50 text-blue-600 border border-blue-200'
-                          : 'bg-green-50 text-green-600 border border-green-200'
+                          ? 'bg-blue-50 text-blue-500'
+                          : 'bg-green-50 text-green-500'
                       }`}>
-                        {role.type === 'internship' ? 'Internship' : 'Full-time'}
+                        {role.type === 'internship' ? 'Intern' : 'Full-time'}
                       </span>
                     </div>
-                    <p className="text-sm text-neutral-500 mb-3 leading-relaxed">{role.description}</p>
-                    <div className="flex flex-wrap items-center gap-3 text-xs text-neutral-400">
-                      <span className="flex items-center gap-1"><Briefcase className="w-3 h-3" />{role.team}</span>
-                      <span className="text-neutral-200">·</span>
-                      <span className="flex items-center gap-1"><MapPin className="w-3 h-3" />{role.location}</span>
-                      <span className="text-neutral-200">·</span>
-                      <span className="flex items-center gap-1"><Clock className="w-3 h-3" />Flexible hours</span>
+                    <p className="text-sm text-neutral-400 leading-relaxed max-w-xl">{role.description}</p>
+                    <div className="flex flex-wrap items-center gap-4 mt-3 text-xs text-neutral-400">
+                      <span className="flex items-center gap-1.5"><Briefcase className="w-3.5 h-3.5" />{role.team}</span>
+                      <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5" />{role.location}</span>
                     </div>
                   </div>
-                  <div className="flex-shrink-0 hidden sm:flex items-center gap-2 text-sm text-neutral-400 group-hover:text-neutral-900 transition-colors mt-1">
-                    <span className="font-medium">Apply</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-neutral-100 flex items-center justify-center group-hover:bg-neutral-900 group-hover:text-white transition-all duration-300">
+                    <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-white transition-colors" />
                   </div>
-                </div>
-              </motion.button>
-            ))}
+                </motion.button>
+              ))}
+            </AnimatePresence>
           </div>
 
           {filteredRoles.length === 0 && (
-            <div className="text-center py-16">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="text-center py-20"
+            >
               <p className="text-neutral-400 text-sm">No open positions on this team right now.</p>
-            </div>
+            </motion.div>
           )}
         </div>
       </section>
-
-      <section className="py-16 sm:py-20 border-t border-neutral-100">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="mb-10">
-            <h2 className="text-2xl sm:text-3xl font-semibold text-neutral-900 tracking-tight mb-2">How it works</h2>
-            <p className="text-sm text-neutral-500">Our internship process is simple and transparent.</p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-4 gap-6">
-            {[
-              { step: "01", title: "Apply", desc: "Pick a role and tell us about yourself. No cover letter needed — just the basics." },
-              { step: "02", title: "Chat", desc: "A short conversation about your interests, experience, and what excites you about AI." },
-              { step: "03", title: "Trial task", desc: "A small, relevant project to see how you think and work. Nothing unreasonable." },
-              { step: "04", title: "Join", desc: "Start working with the team. You'll get onboarded, assigned a mentor, and ship code." },
-            ].map((item, idx) => (
-              <motion.div key={item.step} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={idx} variants={fadeUp}>
-                <div className="text-2xl font-bold text-neutral-200 mb-3">{item.step}</div>
-                <h3 className="text-base font-semibold text-neutral-900 mb-1.5">{item.title}</h3>
-                <p className="text-sm text-neutral-500 leading-relaxed">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 sm:py-20 bg-neutral-900 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp}>
-            <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight mb-4">
-              Don't see your role?
-            </h2>
-            <p className="text-neutral-400 mb-8 max-w-lg mx-auto leading-relaxed">
-              We're always open to hearing from exceptional people. Tell us what you'd like to work on and we'll figure it out together.
-            </p>
-            <Link href="/contact" className="inline-flex items-center justify-center gap-2 px-7 py-3 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm">
-              Get in Touch <ArrowRight className="w-4 h-4" />
-            </Link>
-          </motion.div>
-        </div>
-      </section>
-
-      <Footer />
 
       <AnimatePresence>
         {selectedRole && (
@@ -394,69 +443,57 @@ const Careers: FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[2000] flex items-center justify-center p-4"
-            onClick={(e) => { if (e.target === e.currentTarget) { setSelectedRole(null); setSubmitted(false); } }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-[2000] flex items-end sm:items-center justify-center"
           >
-            <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+            <div className="absolute inset-0 bg-black/50 backdrop-blur-md" onClick={() => { setSelectedRole(null); setSubmitted(false); }} />
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 10 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 10 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-              className="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto"
+              initial={{ opacity: 0, y: 40, scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 40, scale: 0.97 }}
+              transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+              className="relative w-full max-w-lg bg-white rounded-t-3xl sm:rounded-3xl shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto"
             >
-              <div className="p-6 sm:p-8">
-                <div className="flex items-start justify-between mb-6">
-                  <div>
-                    <div className="flex items-center gap-2 mb-1">
-                      <h3 className="text-lg font-semibold text-neutral-900">{selectedRole.title}</h3>
-                      <span className={`text-[10px] font-semibold uppercase tracking-wide px-2 py-0.5 rounded-full ${
-                        selectedRole.type === 'internship'
-                          ? 'bg-blue-50 text-blue-600'
-                          : 'bg-green-50 text-green-600'
-                      }`}>
-                        {selectedRole.type === 'internship' ? 'Internship' : 'Full-time'}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2 text-xs text-neutral-400">
-                      <span>{selectedRole.team}</span>
-                      <span>·</span>
-                      <span>{selectedRole.location}</span>
-                    </div>
-                  </div>
-                  <button
-                    onClick={() => { setSelectedRole(null); setSubmitted(false); }}
-                    className="p-1.5 hover:bg-neutral-100 rounded-lg transition-colors"
-                  >
-                    <X className="w-4 h-4 text-neutral-400" />
-                  </button>
+              <div className="sticky top-0 z-10 bg-white/90 backdrop-blur-xl border-b border-neutral-100 px-6 sm:px-8 py-5 flex items-center justify-between">
+                <div>
+                  <h3 className="text-base font-semibold text-neutral-900">{selectedRole.title}</h3>
+                  <p className="text-xs text-neutral-400 mt-0.5">{selectedRole.team} · {selectedRole.location}</p>
                 </div>
+                <button
+                  onClick={() => { setSelectedRole(null); setSubmitted(false); }}
+                  className="w-8 h-8 rounded-full bg-neutral-100 hover:bg-neutral-200 flex items-center justify-center transition-colors"
+                >
+                  <X className="w-4 h-4 text-neutral-500" />
+                </button>
+              </div>
 
-                <p className="text-sm text-neutral-600 mb-5 leading-relaxed">{selectedRole.description}</p>
+              <div className="px-6 sm:px-8 py-6">
+                <p className="text-[15px] text-neutral-600 leading-relaxed mb-8">{selectedRole.description}</p>
 
-                <div className="mb-5">
-                  <h4 className="text-xs font-semibold text-neutral-900 uppercase tracking-wider mb-2">What you'll do</h4>
-                  <ul className="space-y-1.5">
+                <div className="mb-8">
+                  <h4 className="text-xs font-semibold text-neutral-400 uppercase tracking-widest mb-4">What you'll do</h4>
+                  <div className="space-y-3">
                     {selectedRole.responsibilities.map((r, i) => (
-                      <li key={i} className="text-sm text-neutral-500 flex items-start gap-2">
-                        <span className="w-1 h-1 rounded-full bg-green-500 mt-2 flex-shrink-0" />
-                        {r}
-                      </li>
+                      <div key={i} className="flex items-start gap-3">
+                        <div className="w-5 h-5 rounded-full bg-neutral-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <span className="text-[10px] font-semibold text-neutral-500">{i + 1}</span>
+                        </div>
+                        <p className="text-sm text-neutral-600 leading-relaxed">{r}</p>
+                      </div>
                     ))}
-                  </ul>
+                  </div>
                 </div>
 
-                <div className="mb-6">
-                  <h4 className="text-xs font-semibold text-neutral-900 uppercase tracking-wider mb-2">What we're looking for</h4>
-                  <ul className="space-y-1.5">
+                <div className="mb-8">
+                  <h4 className="text-xs font-semibold text-neutral-400 uppercase tracking-widest mb-4">What we're looking for</h4>
+                  <div className="space-y-3">
                     {selectedRole.requirements.map((r, i) => (
-                      <li key={i} className="text-sm text-neutral-500 flex items-start gap-2">
-                        <span className="w-1 h-1 rounded-full bg-neutral-300 mt-2 flex-shrink-0" />
-                        {r}
-                      </li>
+                      <div key={i} className="flex items-start gap-3">
+                        <span className="w-1.5 h-1.5 rounded-full bg-neutral-300 mt-2 flex-shrink-0" />
+                        <p className="text-sm text-neutral-600 leading-relaxed">{r}</p>
+                      </div>
                     ))}
-                  </ul>
+                  </div>
                 </div>
 
                 <div className="border-t border-neutral-100 pt-6">
@@ -464,23 +501,23 @@ const Careers: FC = () => {
                     <motion.div
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      className="text-center py-8"
+                      className="text-center py-10"
                     >
-                      <div className="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center mx-auto mb-4">
-                        <CheckCircle className="w-6 h-6 text-green-600" />
+                      <div className="w-14 h-14 rounded-full bg-green-50 flex items-center justify-center mx-auto mb-5">
+                        <CheckCircle className="w-7 h-7 text-green-500" />
                       </div>
-                      <h4 className="text-base font-semibold text-neutral-900 mb-1">Application sent</h4>
-                      <p className="text-sm text-neutral-500">Your email client should have opened. We'll review your application soon.</p>
+                      <h4 className="text-lg text-neutral-900 mb-1">Application sent</h4>
+                      <p className="text-sm text-neutral-500">Your email client should have opened. We'll be in touch.</p>
                     </motion.div>
                   ) : (
-                    <form onSubmit={handleApply} className="space-y-3">
-                      <h4 className="text-xs font-semibold text-neutral-900 uppercase tracking-wider mb-1">Apply now</h4>
+                    <form onSubmit={handleApply} className="space-y-4">
+                      <h4 className="text-xs font-semibold text-neutral-400 uppercase tracking-widest mb-2">Apply now</h4>
                       <input
                         type="text"
                         required
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-4 py-2.5 bg-neutral-50 border border-neutral-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900/10 focus:border-neutral-300 text-sm text-neutral-900 placeholder:text-neutral-400"
+                        className="w-full px-4 py-3 bg-neutral-50 border-0 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900/10 text-sm text-neutral-900 placeholder:text-neutral-400"
                         placeholder="Full name"
                       />
                       <input
@@ -488,29 +525,28 @@ const Careers: FC = () => {
                         required
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-4 py-2.5 bg-neutral-50 border border-neutral-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900/10 focus:border-neutral-300 text-sm text-neutral-900 placeholder:text-neutral-400"
+                        className="w-full px-4 py-3 bg-neutral-50 border-0 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900/10 text-sm text-neutral-900 placeholder:text-neutral-400"
                         placeholder="Email address"
                       />
                       <input
                         type="text"
                         value={formData.portfolio}
                         onChange={(e) => setFormData({ ...formData, portfolio: e.target.value })}
-                        className="w-full px-4 py-2.5 bg-neutral-50 border border-neutral-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900/10 focus:border-neutral-300 text-sm text-neutral-900 placeholder:text-neutral-400"
-                        placeholder="Portfolio / LinkedIn (optional)"
+                        className="w-full px-4 py-3 bg-neutral-50 border-0 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900/10 text-sm text-neutral-900 placeholder:text-neutral-400"
+                        placeholder="Portfolio or LinkedIn (optional)"
                       />
                       <textarea
-                        required
-                        rows={3}
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        className="w-full px-4 py-2.5 bg-neutral-50 border border-neutral-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900/10 focus:border-neutral-300 text-sm resize-none text-neutral-900 placeholder:text-neutral-400"
-                        placeholder="Why are you interested in this role?"
+                        className="w-full px-4 py-3 bg-neutral-50 border-0 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900/10 text-sm text-neutral-900 placeholder:text-neutral-400 resize-none"
+                        rows={3}
+                        placeholder="Tell us about yourself..."
                       />
                       <button
                         type="submit"
-                        className="w-full py-3 bg-neutral-900 text-white rounded-xl font-medium hover:bg-black active:scale-[0.99] transition-all text-sm flex items-center justify-center gap-2"
+                        className="w-full py-3.5 bg-neutral-900 text-white rounded-xl font-medium text-sm hover:bg-black transition-colors"
                       >
-                        <Send className="w-3.5 h-3.5" /> Submit Application
+                        Submit Application
                       </button>
                     </form>
                   )}
@@ -520,6 +556,120 @@ const Careers: FC = () => {
           </motion.div>
         )}
       </AnimatePresence>
+    </>
+  );
+}
+
+function ProcessSection() {
+  const steps = [
+    { num: "01", title: "Apply", desc: "Pick a role and tell us about yourself. No cover letter — just the basics." },
+    { num: "02", title: "Chat", desc: "A short conversation about your interests and what excites you about AI." },
+    { num: "03", title: "Build", desc: "A small, relevant project to see how you think. Nothing unreasonable." },
+    { num: "04", title: "Join", desc: "Start with the team. Get onboarded, meet your mentor, and ship code." },
+  ];
+
+  return (
+    <section className="py-32 sm:py-44 border-t border-neutral-100 relative overflow-hidden">
+      <div className="absolute inset-0 bg-cover bg-center opacity-30" style={{ backgroundImage: 'url("/images/gradient-pastel.png")' }} />
+      <div className="absolute inset-0 bg-white/90" />
+      <div className="relative max-w-6xl mx-auto px-6 sm:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20 sm:mb-28"
+        >
+          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-6">
+            Four steps to <em className="text-neutral-400">joining</em>
+          </h2>
+          <p className="text-neutral-500 text-lg max-w-md mx-auto font-light">
+            Simple, transparent, and respectful of your time.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          {steps.map((step, idx) => (
+            <motion.div
+              key={step.num}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: idx * 0.1 }}
+              className="relative"
+            >
+              <div className="text-6xl sm:text-7xl font-serif text-neutral-100 mb-4 leading-none">{step.num}</div>
+              <h3 className="text-xl tracking-tight text-neutral-900 mb-2">{step.title}</h3>
+              <p className="text-sm text-neutral-500 leading-relaxed">{step.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CTASection() {
+  return (
+    <section className="py-32 sm:py-44 bg-neutral-950 relative overflow-hidden">
+      <div
+        className="absolute inset-0 opacity-25"
+        style={{
+          backgroundImage: 'url("/images/gradient-purple.png")',
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          filter: "blur(100px)",
+        }}
+      />
+      <div className="relative max-w-4xl mx-auto px-6 sm:px-8 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-white mb-6">
+            Don't see your role?
+          </h2>
+          <p className="text-white/50 text-lg max-w-lg mx-auto mb-12 font-light leading-relaxed">
+            We're always open to meeting exceptional people.
+            Tell us what you'd like to work on.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide"
+            >
+              Get in Touch <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+            </Link>
+            <a
+              href="#roles"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 text-white/70 border border-white/15 rounded-full font-medium hover:bg-white/5 hover:text-white transition-all text-sm tracking-wide"
+            >
+              Browse roles
+            </a>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+const Careers: FC = () => {
+  return (
+    <div className="min-h-screen bg-[#fafafa] text-neutral-900 relative">
+      <SEO title="Careers" description="Join Olyxee and work on AI infrastructure that matters. Open internship positions in research, engineering, design, and more." path="/careers" />
+      <Header theme="dark" />
+
+      <main>
+        <HeroSection />
+        <ValuesSection />
+        <RolesSection />
+        <ProcessSection />
+        <CTASection />
+      </main>
+
+      <Footer />
     </div>
   );
 };
