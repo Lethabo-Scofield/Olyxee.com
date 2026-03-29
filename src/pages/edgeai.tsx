@@ -70,39 +70,51 @@ const EdgeAI: FC = () => {
       <div className="grain" />
       <Header />
 
-      <section className="pt-32 sm:pt-44 pb-28 sm:pb-36 px-4 sm:px-6 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50 rounded-full blur-[120px] opacity-50 -translate-y-1/3 translate-x-1/4" />
-        <div className="max-w-5xl mx-auto relative">
+      <section className="pt-28 sm:pt-36 pb-20 sm:pb-28 px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex items-center gap-3 mb-8"
-          >
-            <div className="w-7 h-7 bg-neutral-900 rounded-lg flex items-center justify-center">
-              <Box className="w-4 h-4 text-white" />
-            </div>
-            <span className="text-sm font-medium text-neutral-400 uppercase tracking-widest">
-              Olyxee Edge Box
-            </span>
-          </motion.div>
-
-          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="font-serif text-5xl sm:text-6xl lg:text-[5.5rem] text-neutral-900 tracking-tight leading-[1.05] mb-8"
+            transition={{ duration: 0.8 }}
+            className="relative w-full h-[280px] sm:h-[380px] rounded-3xl overflow-hidden mb-14"
           >
-            AI that runs
-            <br />
-            <em className="text-neutral-400">in the real world</em>
-          </motion.h1>
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: 'url("/images/EdgeExplained.jpg")',
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10" />
+            <div className="relative z-10 h-full flex flex-col items-start justify-end p-8 sm:p-12">
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="inline-flex items-center gap-2 px-3 py-1 bg-white/15 backdrop-blur-md text-white rounded-full text-xs font-medium mb-4 border border-white/20 uppercase tracking-widest"
+              >
+                <Box className="w-3 h-3" />
+                Olyxee Edge Box
+              </motion.div>
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="font-serif text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.1]"
+              >
+                AI that runs
+                <br />
+                <em className="text-white/60">in the real world</em>
+              </motion.h1>
+            </div>
+          </motion.div>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-xl text-neutral-500 leading-relaxed max-w-3xl font-light"
+            transition={{ duration: 0.7, delay: 0.5 }}
+            className="text-lg text-neutral-500 leading-relaxed max-w-3xl font-light"
           >
             Olyxee Edge Box (OEB) is our execution division — the hands of Olyxee.
             We take AI from the lab and deploy it into factories, vehicles, devices,
@@ -112,7 +124,7 @@ const EdgeAI: FC = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
+            transition={{ duration: 0.7, delay: 0.6 }}
             className="flex flex-col sm:flex-row gap-4 mt-10"
           >
             <Link

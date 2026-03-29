@@ -196,22 +196,50 @@ const Careers: FC = () => {
       <SEO title="Careers" description="Join Olyxee and work on AI infrastructure that matters. Open internship positions in research, engineering, design, and more." path="/careers" />
       <Header />
 
-      <section className="pt-32 sm:pt-40 pb-20 sm:pb-28 px-4 sm:px-6">
+      <section className="pt-28 sm:pt-36 pb-20 sm:pb-28 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="inline-flex items-center gap-2 px-4 py-1.5 bg-green-50 border border-green-200 rounded-full mb-8">
-            <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-            <span className="text-xs font-semibold text-green-700 uppercase tracking-wider">We're hiring</span>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="relative w-full h-[280px] sm:h-[380px] rounded-3xl overflow-hidden mb-14"
+          >
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: 'url("/images/Community.jpg")',
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10" />
+            <div className="relative z-10 h-full flex flex-col items-start justify-end p-8 sm:p-12">
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="inline-flex items-center gap-2 px-3 py-1 bg-green-500/20 backdrop-blur-md text-green-300 rounded-full text-xs font-semibold mb-4 border border-green-400/30 uppercase tracking-widest"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                We're hiring
+              </motion.div>
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="font-serif text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.1]"
+              >
+                Build the future of
+                <br />
+                <em className="text-white/60">AI infrastructure</em>
+              </motion.h1>
+            </div>
           </motion.div>
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }} className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-neutral-900 tracking-tight leading-[1.1] mb-6">
-            Build the future of
-            <br />
-            AI infrastructure
-          </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }} className="text-lg text-neutral-500 leading-relaxed max-w-2xl mb-10">
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.5 }} className="text-lg text-neutral-500 leading-relaxed max-w-2xl mb-8">
             We're looking for talented people who want to solve hard problems in AI reliability,
             verification, and edge deployment. Start with an internship — grow with us.
           </motion.p>
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} className="flex flex-wrap gap-6 text-sm text-neutral-500">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.6 }} className="flex flex-wrap gap-6 text-sm text-neutral-500">
             <span className="flex items-center gap-2"><Globe className="w-4 h-4 text-neutral-400" /> 100% Remote</span>
             <span className="flex items-center gap-2"><Clock className="w-4 h-4 text-neutral-400" /> Flexible hours</span>
             <span className="flex items-center gap-2"><GraduationCap className="w-4 h-4 text-neutral-400" /> Internships available</span>
