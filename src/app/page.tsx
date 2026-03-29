@@ -128,11 +128,9 @@ function HeroSection() {
           >
             <Link
               href="/docs"
-              className="group relative inline-flex items-center gap-2.5 px-6 py-2.5 bg-white/10 backdrop-blur-md text-white rounded-full font-medium hover:bg-white/20 transition-all text-sm tracking-wide border border-white/20 hover:border-white/40 shadow-lg shadow-black/20"
+              className="inline-flex items-center justify-center w-20 h-20 bg-white text-neutral-900 rounded-full font-medium hover:scale-105 transition-all text-sm tracking-wide shadow-xl shadow-black/20"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-              Start Building
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+              Start
             </Link>
           </motion.div>
         </div>
