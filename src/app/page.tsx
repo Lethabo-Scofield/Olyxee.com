@@ -87,12 +87,12 @@ const MistralIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><rect x="0" y="0" width="5" height="5"/><rect x="19" y="0" width="5" height="5"/><rect x="0" y="6.33" width="5" height="5"/><rect x="6.33" y="6.33" width="5" height="5"/><rect x="12.66" y="6.33" width="5" height="5"/><rect x="19" y="6.33" width="5" height="5"/><rect x="0" y="12.66" width="5" height="5"/><rect x="12.66" y="12.66" width="5" height="5"/><rect x="19" y="12.66" width="5" height="5"/><rect x="0" y="19" width="5" height="5"/><rect x="6.33" y="19" width="5" height="5"/><rect x="12.66" y="19" width="5" height="5"/><rect x="19" y="19" width="5" height="5"/></svg>
 );
 
-const HuggingFaceIcon = () => (
-  <svg viewBox="0 0 32 32" fill="currentColor" className="w-5 h-5"><path d="M16 0C7.164 0 0 7.164 0 16s7.164 16 16 16 16-7.164 16-16S24.836 0 16 0zm-4.5 9c1.657 0 3 1.79 3 4s-1.343 4-3 4-3-1.79-3-4 1.343-4 3-4zm9 0c1.657 0 3 1.79 3 4s-1.343 4-3 4-3-1.79-3-4 1.343-4 3-4zm-1 10.5c0 1.5-1.343 3.5-3.5 3.5s-3.5-2-3.5-3.5h7zm-7-5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm9 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2zM9.5 19.5C10 22 12.5 24 16 24s6-2 6.5-4.5h-13z"/></svg>
+const MicrosoftIcon = () => (
+  <svg viewBox="0 0 23 23" fill="currentColor" className="w-5 h-5"><path d="M0 0h11v11H0zM12 0h11v11H12zM0 12h11v11H0zM12 12h11v11H12z"/></svg>
 );
 
 const NvidiaIcon = () => (
-  <svg viewBox="0 0 351.4 62.8" fill="currentColor" className="w-16 h-5"><path d="M150.8 0h17.4v62.8h-17.4V0zm-40.6 0h17.4v62.8h-17.4V0zm121.9 0H249v50.6l-25.3-50.6h-17.4v62.8h16.9V13.1L249 62.8h16.9V0h-33.8zm69.7 0h-34.3v62.8h17.4V43.5h16.9c14.2 0 24.3-8.5 24.3-21.7S316 0 301.8 0zm-1 31.1h-15.9V12.4h15.9c5.7 0 8.5 3.8 8.5 9.3 0 5.6-2.8 9.4-8.5 9.4zM82.3 0L65.5 40.1 48.8 0H29.8l28.2 62.8h15L101.3 0H82.3zM194 38.4c0 15.3-10.1 25.9-28.3 25.9h-26.5V0h26.5c18.2 0 28.3 10.5 28.3 25.8v12.6zm-17.4-12.9c0-9.2-5.1-13.1-12-13.1h-7.5v38.2h7.5c6.9 0 12-4 12-13.1V25.5z"/></svg>
+  <svg viewBox="0 0 256 256" fill="currentColor" className="w-6 h-6"><path d="M103.47 55.08v-17.4c1.58-.12 3.18-.2 4.8-.2 55.24 0 72.94 47.86 72.94 47.86s-21.46 27.48-44.46 27.48c-14.28 0-26.08-8.54-33.28-17.78v-39.96zm0 54.32v16.26c4.76 2.28 10.08 3.58 15.74 3.58 31.94 0 55.62-29.44 55.62-29.44s-32.04-55.36-75.58-55.36c-5.74 0-11.08.82-15.92 2.06v11.12c-20.36 8.2-33.62 24.12-33.62 24.12s22.62 37.96 53.76 27.66zM85.33 45.32V55.7c-8.5 4.4-18.14 13.78-18.14 13.78s12.52 21.3 36.28 14.26V98.2c-28.88 10.08-56.58-22.52-56.58-22.52s15.18-20.84 38.44-30.36zm18.14-31.1v15.68c-2.24.18-4.44.46-6.62.84V14.68c-45.22 6.34-60.84 44.6-60.84 44.6s20.44 39.5 60.84 29.32v17.44C52.01 118.12 24.19 72.98 24.19 72.98s23.58-50.9 79.28-58.76z"/></svg>
 );
 
 const partnerLogos = [
@@ -101,7 +101,7 @@ const partnerLogos = [
   { name: "Google", icon: GoogleIcon },
   { name: "Anthropic", icon: AnthropicIcon },
   { name: "Mistral", icon: MistralIcon },
-  { name: "Hugging Face", icon: HuggingFaceIcon },
+  { name: "Microsoft", icon: MicrosoftIcon },
 ];
 
 function HeroSection() {
