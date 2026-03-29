@@ -64,7 +64,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ tabs, activeTab, onTabChange, sideNav
   return (
     <div className="min-h-screen bg-white" style={{ paddingTop: '60px' }}>
       <div
-        className="border-b border-gray-200 bg-white/95 backdrop-blur-md sticky z-40 transition-[top] duration-300"
+        className="bg-white/95 backdrop-blur-md sticky z-40 transition-[top] duration-300"
         style={{ top: headerVisible ? 60 : 0 }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -74,16 +74,13 @@ const DocsLayout: FC<DocsLayoutProps> = ({ tabs, activeTab, onTabChange, sideNav
                 <button
                   key={tab.id}
                   onClick={() => { onTabChange(tab.id); setMobileMenuOpen(false) }}
-                  className={`relative py-3 text-sm font-medium whitespace-nowrap transition-colors ${
+                  className={`py-2 px-4 text-sm font-medium whitespace-nowrap transition-colors rounded-lg ${
                     activeTab === tab.id
-                      ? 'text-gray-900'
-                      : 'text-gray-500 hover:text-gray-900'
+                      ? 'text-gray-900 bg-gray-100'
+                      : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'
                   }`}
                 >
                   {tab.label}
-                  {activeTab === tab.id && (
-                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-gray-900 rounded-full" />
-                  )}
                 </button>
               ))}
             </div>
