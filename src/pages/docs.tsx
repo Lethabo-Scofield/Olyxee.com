@@ -132,7 +132,7 @@ const Docs: FC = () => {
   };
 
   return (
-    <div className="docs-page">
+    <div>
       <SEO title="Documentation" description="Complete documentation for the Olyxee platform." path="/docs" />
       <Header />
       <DocsLayout
