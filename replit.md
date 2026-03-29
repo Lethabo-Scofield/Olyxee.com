@@ -49,7 +49,7 @@ Company-level website for Olyxee, a reliability-first AI infrastructure company.
 
 ## Site Structure & Navigation
 Navigation: About | EdgeAI | Docs | Community
-Desktop CTA: "Get Started"
+Desktop CTA: "Try Grysics"
 - Grysics SDK: `pip install grysics`, CLI: `grysics` commands
 
 ## Routing

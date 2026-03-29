@@ -150,7 +150,7 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                             transition={{ delay: 0.35, type: 'spring', stiffness: 400, damping: 25 }}
                         >
                             <Link href="/developers" className="hidden md:inline-flex px-5 py-1.5 bg-neutral-900 text-white rounded-full hover:bg-black active:scale-95 transition-all font-semibold text-[13px] focus:outline-none shadow-sm">
-                                Get Started
+                                Try Grysics
                             </Link>
                         </motion.div>
 
@@ -252,7 +252,7 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                                     className="w-full py-3 bg-neutral-900 text-white rounded-2xl flex items-center justify-center gap-2 hover:bg-black active:scale-[0.98] transition-all font-semibold text-sm focus:outline-none shadow-sm"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
-                                    Get Started
+                                    Try Grysics
                                 </Link>
                                 <button className="w-full py-3 bg-white/50 text-neutral-900 border border-neutral-200/50 rounded-2xl flex items-center justify-center gap-2 hover:bg-white/70 active:scale-[0.98] transition-all font-semibold text-sm focus:outline-none">
                                     <FaDiscord className="w-4 h-4" /> Join Discord

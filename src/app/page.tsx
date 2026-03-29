@@ -130,14 +130,19 @@ function HeroSection() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6"
+            className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex items-end justify-between"
           >
+            <div className="flex items-center gap-3 bg-white/90 backdrop-blur-xl rounded-2xl px-5 py-3 shadow-lg shadow-black/10 border border-white/50">
+              <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+              <span className="text-sm font-medium text-neutral-800 tracking-tight">Live demo</span>
+            </div>
             <Link
               href="/docs"
-              className="group inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-white text-neutral-900 rounded-full hover:scale-105 transition-all shadow-xl shadow-black/20"
+              className="group inline-flex items-center gap-2.5 bg-white/90 backdrop-blur-xl text-neutral-900 rounded-2xl px-5 py-3 hover:bg-white hover:scale-[1.02] transition-all shadow-lg shadow-black/10 border border-white/50"
             >
-              <svg className="w-5 h-5 sm:w-6 sm:h-6 ml-0.5 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5.14v14l11-7-11-7z" />
+              <span className="text-sm font-medium tracking-tight">Try Grysics</span>
+              <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </Link>
           </motion.div>
