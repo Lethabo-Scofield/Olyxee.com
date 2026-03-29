@@ -1,6 +1,6 @@
-import { FC, useState, useEffect, useRef, useCallback } from "react"
+import { FC, useState, useEffect, useRef } from "react"
 import Link from "next/link"
-import { Search, ChevronRight, ExternalLink, Menu, X } from "lucide-react"
+import { ChevronRight, ExternalLink, Menu, X } from "lucide-react"
 
 interface DocsTab {
   id: string
@@ -30,8 +30,6 @@ interface DocsLayoutProps {
 
 const DocsLayout: FC<DocsLayoutProps> = ({ tabs, activeTab, onTabChange, sideNav, activePage, onPageChange, children }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [searchQuery, setSearchQuery] = useState("")
-  const [searchFocused, setSearchFocused] = useState(false)
   const [headerVisible, setHeaderVisible] = useState(true)
   const tabsRef = useRef<HTMLDivElement>(null)
   const lastScrollY = useRef(0)
@@ -62,26 +60,6 @@ const DocsLayout: FC<DocsLayoutProps> = ({ tabs, activeTab, onTabChange, sideNav
     return () => { document.body.style.overflow = 'unset' }
   }, [mobileMenuOpen])
 
-  useEffect(() => {
-    const handleKey = (e: KeyboardEvent) => {
-      if (e.key === '/' && !searchFocused) {
-        e.preventDefault()
-        const input = document.querySelector<HTMLInputElement>('[data-docs-search]')
-        input?.focus()
-      }
-    }
-    document.addEventListener('keydown', handleKey)
-    return () => document.removeEventListener('keydown', handleKey)
-  }, [searchFocused])
-
-  const filteredSideNav = searchQuery
-    ? sideNav?.map(s => ({
-        ...s,
-        items: s.items.filter(i => i.title.toLowerCase().includes(searchQuery.toLowerCase()))
-      }))
-    : sideNav
-
-  const hasResults = filteredSideNav?.some(s => s.items.length > 0) ?? false
 
   return (
     <div className="min-h-screen bg-white" style={{ paddingTop: '60px' }}>
@@ -90,7 +68,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ tabs, activeTab, onTabChange, sideNav
         style={{ top: headerVisible ? 60 : 0 }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-center">
             <div className="flex items-center gap-8 overflow-x-auto scrollbar-hide" ref={tabsRef}>
               {tabs.map(tab => (
                 <button
@@ -108,25 +86,6 @@ const DocsLayout: FC<DocsLayoutProps> = ({ tabs, activeTab, onTabChange, sideNav
                   )}
                 </button>
               ))}
-            </div>
-
-            <div className="hidden md:block">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-400" />
-                <input
-                  data-docs-search
-                  type="text"
-                  placeholder="Search..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  onFocus={() => setSearchFocused(true)}
-                  onBlur={() => setSearchFocused(false)}
-                  className={`w-52 pl-9 pr-8 py-1.5 text-sm bg-gray-50 border rounded-lg focus:outline-none focus:bg-white transition-all text-gray-900 placeholder-gray-400 ${searchFocused ? 'border-gray-400 ring-1 ring-gray-200 w-72' : 'border-gray-200'}`}
-                />
-                <kbd className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-gray-400 bg-white border border-gray-200 rounded px-1.5 py-0.5 font-mono">
-                  /
-                </kbd>
-              </div>
             </div>
 
             {sideNav && (
@@ -151,9 +110,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ tabs, activeTab, onTabChange, sideNav
                   className="sticky overflow-y-auto py-6 px-4 transition-[top] duration-300"
                   style={{ top: headerVisible ? 106 : 46, height: headerVisible ? 'calc(100vh - 106px)' : 'calc(100vh - 46px)' }}
                 >
-                  {!hasResults && searchQuery ? (
-                    <p className="text-sm text-gray-400 px-2 py-4">No results for &ldquo;{searchQuery}&rdquo;</p>
-                  ) : filteredSideNav?.map(section => section.items.length > 0 ? (
+                  {sideNav?.map(section => section.items.length > 0 ? (
                     <div key={section.heading} className="mb-6">
                       <h4 className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider px-2 mb-2">{section.heading}</h4>
                       <div className="space-y-px">
@@ -194,19 +151,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ tabs, activeTab, onTabChange, sideNav
                 <>
                   <div className="fixed inset-0 bg-black/20 z-40 md:hidden" onClick={() => setMobileMenuOpen(false)} />
                   <div className="fixed top-[108px] left-0 right-0 bottom-0 bg-white z-50 md:hidden overflow-y-auto p-4">
-                    <div className="relative mb-4">
-                      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                      <input
-                        type="text"
-                        placeholder="Search..."
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full pl-10 pr-4 py-2.5 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-gray-400 text-gray-900 placeholder-gray-400"
-                      />
-                    </div>
-                    {!hasResults && searchQuery ? (
-                      <p className="text-sm text-gray-400 px-2 py-4">No results for &ldquo;{searchQuery}&rdquo;</p>
-                    ) : filteredSideNav?.filter(s => s.items.length > 0).map(section => (
+                    {sideNav?.filter(s => s.items.length > 0).map(section => (
                       <div key={section.heading} className="mb-5">
                         <h4 className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider px-2 mb-2">{section.heading}</h4>
                         {section.items.map(item => (

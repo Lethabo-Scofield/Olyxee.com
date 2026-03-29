@@ -59,7 +59,7 @@ Desktop CTA: "Get Started"
 - **About** (`src/pages/about.tsx`): Mission, problem statement, approach, philosophy
 - **Olyxee Lab** (`src/pages/lab.tsx`): Research division — 6 research areas, recent publications, approach section, LinkedIn CTA
 - **Products**: Grysics (verification engine with animated canvas network), NRN (interpretable AI), WAVE (core platform)
-- **Docs** (`src/pages/docs.tsx`): OpenAI-style documentation with sidebar. Tabs: Home, API (Overview, Quickstart, API Keys, Supported Platforms, REST API, Python SDK, CLI, Error Handling), Grysics (What is Grysics, Chatbots, RAG Pipelines, Agents, Testing & Verification, Monitoring, Early Access), Guides (Supported Platforms, Testing Strategies, Configuration), Resources (Changelog, Rate Limits)
+- **Docs** (`src/pages/docs.tsx`): OpenAI-style documentation with centered tab navbar. Tabs: Home, API (Overview, Quickstart, API Keys, Supported Platforms, REST API, Python SDK, CLI, Error Handling, Changelog, Rate Limits), Grysics (What is Grysics, Chatbots, RAG Pipelines, Agents, Testing & Verification, Monitoring, Early Access), Guides (Supported Platforms, Testing Strategies, Configuration)
 - **Careers** (`src/pages/careers.tsx`): Internship listings with clickable apply modal that fires mailto:scofieldx911@gmail.com
 - **Community** (`src/pages/community.tsx`): Hero banner image, channel cards with animated stats
 - **Research** (`src/pages/research.tsx`): Papers on AI reliability, interpretability, optimization

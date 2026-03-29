@@ -9,7 +9,6 @@ const TABS = [
   { id: "api", label: "API" },
   { id: "grysics", label: "Grysics" },
   { id: "guides", label: "Guides" },
-  { id: "resources", label: "Resources" },
 ];
 
 const API_SIDE_NAV = [
@@ -29,6 +28,8 @@ const API_SIDE_NAV = [
       { id: "python-sdk", title: "Python SDK" },
       { id: "cli", title: "CLI" },
       { id: "errors", title: "Error Handling" },
+      { id: "changelog", title: "Changelog" },
+      { id: "limits", title: "Rate Limits" },
     ],
   },
 ];
@@ -74,28 +75,16 @@ const GUIDES_SIDE_NAV = [
   },
 ];
 
-const RESOURCES_SIDE_NAV = [
-  {
-    heading: "Reference",
-    items: [
-      { id: "changelog", title: "Changelog" },
-      { id: "limits", title: "Rate Limits" },
-    ],
-  },
-];
-
 const TAB_DEFAULTS: Record<string, string> = {
   api: "api-overview",
   grysics: "grysics-overview",
   guides: "supported-platforms",
-  resources: "changelog",
 };
 
 const SIDE_NAVS: Record<string, typeof API_SIDE_NAV> = {
   api: API_SIDE_NAV,
   grysics: GRYSICS_SIDE_NAV,
   guides: GUIDES_SIDE_NAV,
-  resources: RESOURCES_SIDE_NAV,
 };
 
 const Docs: FC = () => {
@@ -221,8 +210,8 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
     { label: "CLI Reference", tab: "api", page: "cli" },
     { label: "Monitoring", tab: "grysics", page: "monitoring" },
     { label: "Testing Strategies", tab: "guides", page: "testing-strategies" },
-    { label: "Changelog", tab: "resources", page: "changelog" },
-    { label: "Rate Limits", tab: "resources", page: "limits" },
+    { label: "Changelog", tab: "api", page: "changelog" },
+    { label: "Rate Limits", tab: "api", page: "limits" },
   ];
 
   return (
