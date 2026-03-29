@@ -127,9 +127,10 @@ function HeroSection() {
           >
             <Link
               href="/docs"
-              className="inline-flex items-center justify-center w-20 h-20 bg-white text-neutral-900 rounded-full font-medium hover:scale-105 transition-all text-sm tracking-wide shadow-xl shadow-black/20"
+              className="group inline-flex items-center justify-center gap-1 w-20 h-20 bg-white text-neutral-900 rounded-full font-medium hover:scale-105 transition-all text-sm tracking-wide shadow-xl shadow-black/20"
             >
               Start
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
             </Link>
           </motion.div>
         </div>
@@ -457,7 +458,7 @@ function OfferingsSection() {
 function ArchitectureSection() {
   return (
     <section className="py-28 sm:py-36 border-t border-neutral-100 relative overflow-hidden">
-      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-abstract-blue.png")' }} />
+      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-pastel.png")' }} />
       <div className="absolute inset-0 bg-white/88 backdrop-blur-sm" />
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
         <div className="text-center mb-16">
