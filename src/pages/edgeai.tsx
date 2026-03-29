@@ -131,7 +131,7 @@ const EdgeAI: FC = () => {
               href="/docs"
               className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-black transition-all text-sm tracking-wide"
             >
-              Deploy Your First Model <ArrowRight className="w-4 h-4" />
+              Explore OEB <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
               href="/products/grysics"

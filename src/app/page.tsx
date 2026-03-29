@@ -49,7 +49,7 @@ export default function HomePage() {
         <HeroSection />
         <PipelineSection />
         <IndustriesSection />
-        <ProductsSection />
+        <OfferingsSection />
         <ArchitectureSection />
         <ResearchSection />
         <MetricsSection />
@@ -380,7 +380,7 @@ function IndustriesSection() {
 }
 
 
-function ProductsSection() {
+function OfferingsSection() {
   return (
     <section className="py-28 sm:py-36 border-t border-neutral-100">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
@@ -393,14 +393,11 @@ function ProductsSection() {
               viewport={{ once: true }}
               className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900"
             >
-              A platform for
+              What we
               <br />
-              <em className="text-neutral-400">reliable AI</em>
+              <em className="text-neutral-400">build & do</em>
             </motion.h2>
           </div>
-          <Link href="/products/grysics" className="text-neutral-500 hover:text-neutral-900 font-medium text-sm flex items-center gap-1.5 transition-colors tracking-wide">
-            All products <ArrowRight className="w-4 h-4" />
-          </Link>
         </div>
 
         <motion.div
@@ -415,7 +412,7 @@ function ProductsSection() {
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-4 mb-3">
                 <h3 className="text-2xl sm:text-3xl font-semibold text-neutral-900">Grysics</h3>
-                <span className="text-xs font-medium text-neutral-500 bg-neutral-50 px-3 py-1 rounded-full border border-neutral-200">Available</span>
+                <span className="text-xs font-medium text-neutral-500 bg-neutral-50 px-3 py-1 rounded-full border border-neutral-200">Product</span>
               </div>
               <p className="text-neutral-500 text-sm leading-relaxed max-w-xl">Verification engine for AI applications. Test chatbots, RAG pipelines, and agent workflows for accuracy, consistency, and hallucination — before and after deployment.</p>
             </div>
@@ -439,12 +436,12 @@ function ProductsSection() {
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-4 mb-3">
                 <h3 className="text-2xl sm:text-3xl font-semibold text-neutral-900">Olyxee Edge Box</h3>
-                <span className="text-xs font-medium text-neutral-500 bg-neutral-50 px-3 py-1 rounded-full border border-neutral-200">Hardware</span>
+                <span className="text-xs font-medium text-neutral-500 bg-neutral-50 px-3 py-1 rounded-full border border-neutral-200">Division</span>
               </div>
-              <p className="text-neutral-500 text-sm leading-relaxed max-w-xl">Purpose-built edge hardware for deploying AI models in factories, vehicles, and field environments. Managed fleet operations included.</p>
+              <p className="text-neutral-500 text-sm leading-relaxed max-w-xl">Our edge AI sub-division. Deploys AI models to IoT sensors, drones, robots, and embedded systems — optimized for performance, power, and latency on real hardware.</p>
             </div>
             <span className="text-sm font-medium text-neutral-400 flex items-center gap-1.5 group-hover:text-neutral-900 group-hover:gap-3 transition-all flex-shrink-0">
-              Explore <ArrowRight className="w-4 h-4" />
+              Learn more <ArrowRight className="w-4 h-4" />
             </span>
           </Link>
         </motion.div>
