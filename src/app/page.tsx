@@ -251,6 +251,8 @@ function PipelineSection() {
 
 
 function IndustriesSection() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
   const industries = [
     {
       title: "Customer Support AI",
@@ -298,81 +300,127 @@ function IndustriesSection() {
     },
   ];
 
+  const active = industries[activeIndex];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIndex(prev => (prev + 1) % industries.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [activeIndex]);
+
   return (
     <section className="py-28 sm:py-36 bg-neutral-950 text-white relative overflow-hidden">
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-neutral-800 rounded-full blur-[200px] opacity-20 translate-x-1/3 -translate-y-1/3" />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 relative">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-20">
-          <div>
-            <span className="block w-12 h-0.5 bg-white/30 mb-6" />
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight"
-            >
-              Built for regulated,
-              <br />
-              <em className="text-neutral-500">safety-critical industries</em>
-            </motion.h2>
-          </div>
+        <div className="mb-16 sm:mb-20">
+          <span className="block w-12 h-0.5 bg-white/30 mb-6" />
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight"
+          >
+            Built for regulated,
+            <br />
+            <em className="text-neutral-500">safety-critical industries</em>
+          </motion.h2>
         </div>
 
-        <div className="space-y-6">
-          {industries.map((ind, idx) => (
-            <motion.div
-              key={ind.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.08 }}
-              className="rounded-2xl border border-white/10 hover:border-white/20 transition-all overflow-hidden"
-            >
-              <div className="p-8 sm:p-10">
-                <div className="flex flex-col lg:flex-row lg:items-start gap-8">
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-3 mb-1">
-                      <h3 className="text-xl sm:text-2xl font-semibold">{ind.title}</h3>
-                    </div>
-                    <p className="text-sm text-neutral-500 mb-4">{ind.subtitle}</p>
-                    <p className="text-neutral-400 text-sm leading-relaxed max-w-2xl">{ind.desc}</p>
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
+          <div className="lg:w-[260px] flex-shrink-0">
+            <div className="flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0 -mx-1 px-1">
+              {industries.map((ind, idx) => (
+                <button
+                  key={ind.title}
+                  onClick={() => setActiveIndex(idx)}
+                  className={`relative text-left px-4 py-3 rounded-xl transition-all duration-300 flex-shrink-0 ${
+                    idx === activeIndex
+                      ? "bg-white/10 text-white"
+                      : "text-neutral-500 hover:text-neutral-300 hover:bg-white/5"
+                  }`}
+                >
+                  <span className="text-sm font-medium whitespace-nowrap">{ind.title}</span>
+                  {idx === activeIndex && (
+                    <motion.div
+                      className="absolute bottom-0 left-4 right-4 lg:left-0 lg:right-auto lg:top-0 lg:bottom-0 lg:w-[3px] h-[3px] lg:h-auto rounded-full bg-white"
+                      layoutId="industry-indicator"
+                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                    />
+                  )}
+                </button>
+              ))}
+            </div>
 
-                    <div className="flex flex-wrap gap-6 mt-6">
-                      {ind.metrics.map(m => (
+            <div className="hidden lg:flex items-center gap-2 mt-6 ml-4">
+              <span className="text-[11px] text-neutral-600 font-medium tabular-nums">{String(activeIndex + 1).padStart(2, "0")} / {String(industries.length).padStart(2, "0")}</span>
+              <div className="flex-1 h-px bg-white/10 rounded-full overflow-hidden ml-2">
+                <motion.div
+                  className="h-full bg-white/40 rounded-full"
+                  initial={{ width: "0%" }}
+                  animate={{ width: "100%" }}
+                  key={activeIndex}
+                  transition={{ duration: 6, ease: "linear" }}
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="flex-1 min-w-0">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeIndex}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
+                className="rounded-2xl border border-white/10 overflow-hidden"
+              >
+                <div className="p-8 sm:p-10">
+                  <div className="mb-6">
+                    <h3 className="text-xl sm:text-2xl font-semibold mb-1">{active.title}</h3>
+                    <p className="text-sm text-neutral-500">{active.subtitle}</p>
+                  </div>
+
+                  <p className="text-neutral-400 text-sm leading-relaxed max-w-2xl mb-8">{active.desc}</p>
+
+                  <div className="flex flex-col sm:flex-row sm:items-end gap-8">
+                    <div className="flex flex-wrap gap-6">
+                      {active.metrics.map(m => (
                         <div key={m.label}>
                           <div className="text-xl font-semibold text-white">{m.value}</div>
                           <div className="text-xs text-neutral-500 uppercase tracking-wider mt-0.5">{m.label}</div>
                         </div>
                       ))}
                     </div>
-                  </div>
 
-                  <div className="lg:w-[340px] flex-shrink-0">
-                    <div className="text-[10px] text-neutral-600 uppercase tracking-widest mb-3 font-medium">Data flow</div>
-                    <div className="flex flex-col gap-0">
-                      {ind.flow.map((node, i) => (
-                        <div key={node} className="flex items-center gap-0">
-                          <div className={`flex-1 text-xs font-medium px-3 py-2 border rounded-md text-center ${
-                            node.includes("Grysics")
-                              ? "border-white/30 text-white bg-white/5"
-                              : "border-white/10 text-neutral-400"
-                          }`}>
-                            {node}
-                          </div>
-                          {i < ind.flow.length - 1 && (
-                            <div className="flex flex-col items-center mx-0 -my-1 relative z-10">
-                              <div className="w-px h-3 bg-white/20" />
-                              <div className="w-0 h-0 border-l-[3px] border-r-[3px] border-t-[4px] border-l-transparent border-r-transparent border-t-white/20" />
+                    <div className="sm:ml-auto sm:w-[240px] flex-shrink-0">
+                      <div className="text-[10px] text-neutral-600 uppercase tracking-widest mb-3 font-medium">Data flow</div>
+                      <div className="flex flex-col gap-0">
+                        {active.flow.map((node, i) => (
+                          <div key={node} className="flex items-center gap-0">
+                            <div className={`flex-1 text-xs font-medium px-3 py-1.5 border rounded-md text-center ${
+                              node.includes("Grysics")
+                                ? "border-white/30 text-white bg-white/5"
+                                : "border-white/10 text-neutral-400"
+                            }`}>
+                              {node}
                             </div>
-                          )}
-                        </div>
-                      ))}
+                            {i < active.flow.length - 1 && (
+                              <div className="flex flex-col items-center mx-0 -my-1 relative z-10">
+                                <div className="w-px h-3 bg-white/20" />
+                                <div className="w-0 h-0 border-l-[3px] border-r-[3px] border-t-[4px] border-l-transparent border-r-transparent border-t-white/20" />
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </div>
       </div>
     </section>
