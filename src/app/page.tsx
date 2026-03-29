@@ -52,7 +52,6 @@ export default function HomePage() {
         <OfferingsSection />
         <ArchitectureSection />
         <ResearchSection />
-        <MetricsSection />
         <CTASection />
       </main>
 
@@ -457,8 +456,10 @@ function OfferingsSection() {
 
 function ArchitectureSection() {
   return (
-    <section className="py-28 sm:py-36 border-t border-neutral-100">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
+    <section className="py-28 sm:py-36 border-t border-neutral-100 relative overflow-hidden">
+      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-abstract-blue.png")' }} />
+      <div className="absolute inset-0 bg-white/88 backdrop-blur-sm" />
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
         <div className="text-center mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -484,9 +485,9 @@ function ArchitectureSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="max-w-4xl mx-auto"
+          className="max-w-3xl mx-auto"
         >
-          <div className="rounded-2xl border border-neutral-200 bg-white overflow-hidden">
+          <div className="rounded-2xl border border-neutral-200 bg-white overflow-hidden shadow-lg">
             <div className="border-b border-neutral-200 p-6 sm:p-8">
               <div className="flex items-center gap-3 mb-2">
                 <div className="w-8 h-8 rounded-lg bg-neutral-900 flex items-center justify-center">
@@ -631,52 +632,6 @@ function ResearchSection() {
                 </div>
                 <ArrowRight className="w-5 h-5 text-neutral-300 group-hover:text-neutral-900 transition-all flex-shrink-0 hidden sm:block mt-1.5" />
               </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-
-function MetricsSection() {
-  const metrics = [
-    { value: "94.3%", label: "Avg accuracy score", context: "Across verified applications" },
-    { value: "<2%", label: "Hallucination rate", context: "Post-Grysics verification" },
-    { value: "97%", label: "Consistency score", context: "Same query, stable answers" },
-    { value: "0", label: "Undetected failures", context: "In monitored production apps" },
-  ];
-
-  return (
-    <section className="py-28 sm:py-36 bg-neutral-950 text-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
-        <div className="text-center mb-20">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight"
-          >
-            Numbers that
-            <br />
-            <em className="text-neutral-500">matter</em>
-          </motion.h2>
-        </div>
-
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
-          {metrics.map((m, idx) => (
-            <motion.div
-              key={m.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="text-center"
-            >
-              <div className="text-4xl sm:text-5xl lg:text-6xl font-serif italic text-white mb-2">{m.value}</div>
-              <div className="text-neutral-400 text-sm font-medium mb-1">{m.label}</div>
-              <div className="text-neutral-600 text-xs">{m.context}</div>
             </motion.div>
           ))}
         </div>
