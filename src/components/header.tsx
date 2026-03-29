@@ -28,14 +28,15 @@ const Header = () => {
             const delta = currentScrollY - lastScrollY.current;
 
             if (currentScrollY <= 10) {
-                setVisible(true);
                 setScrolled(false);
-            } else if (delta > 4) {
-                setVisible(false);
-                setScrolled(true);
-            } else if (delta < -4) {
                 setVisible(true);
+            } else {
                 setScrolled(true);
+                if (delta > 4) {
+                    setVisible(false);
+                } else if (delta < -4) {
+                    setVisible(true);
+                }
             }
 
             lastScrollY.current = currentScrollY;
@@ -66,45 +67,45 @@ const Header = () => {
     return (
         <>
             <motion.header
-                className="fixed top-0 left-0 right-0 z-[1000] flex justify-center px-3 sm:px-5 pt-3"
+                className="fixed top-0 left-0 right-0 z-[1000] flex justify-center"
                 initial={{ y: 0, opacity: 1 }}
                 animate={{
-                    y: visible ? 0 : -100,
-                    opacity: visible ? 1 : 0,
+                    y: scrolled && !visible ? -100 : 0,
+                    opacity: scrolled && !visible ? 0 : 1,
                 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 35 }}
+                style={{
+                    padding: scrolled ? '12px 12px 0' : '0',
+                }}
             >
                 <motion.div
-                    className="flex items-center w-full h-14 relative"
+                    className="flex items-center w-full relative"
+                    initial={{ maxWidth: 1400 }}
                     animate={{
-                        maxWidth: scrolled ? 820 : 1100,
+                        maxWidth: scrolled ? 820 : 1400,
+                        height: scrolled ? 52 : 60,
+                        borderRadius: scrolled ? 50 : 0,
+                        paddingLeft: scrolled ? 20 : 32,
+                        paddingRight: scrolled ? 20 : 32,
                         background: scrolled
-                            ? 'rgba(255, 255, 255, 0.55)'
-                            : 'rgba(255, 255, 255, 0.35)',
+                            ? 'rgba(255, 255, 255, 0.6)'
+                            : 'rgba(255, 255, 255, 0.0)',
                         boxShadow: scrolled
                             ? '0 8px 32px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.6)'
-                            : '0 4px 20px rgba(0,0,0,0.03), 0 1px 2px rgba(0,0,0,0.02), inset 0 1px 0 rgba(255,255,255,0.4)',
+                            : '0 0 0 rgba(0,0,0,0)',
                     }}
                     transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                     style={{
-                        maxWidth: 1100,
-                        backdropFilter: 'blur(24px) saturate(180%)',
-                        WebkitBackdropFilter: 'blur(24px) saturate(180%)',
-                        border: '1px solid rgba(255,255,255,0.45)',
-                        borderRadius: 50,
-                        paddingLeft: 20,
-                        paddingRight: 20,
+                        backdropFilter: scrolled ? 'blur(24px) saturate(180%)' : 'none',
+                        WebkitBackdropFilter: scrolled ? 'blur(24px) saturate(180%)' : 'none',
+                        border: scrolled ? '1px solid rgba(255,255,255,0.45)' : '1px solid transparent',
                     }}
                 >
                     <Link href="/" prefetch className="focus:outline-none rounded-full transition-transform hover:scale-105 flex items-center gap-2.5 flex-shrink-0">
                         <Image src="/Logo/Olyxee_Logo.png" alt="Olyxee Logo" width={30} height={30} className="cursor-pointer" />
-                        <motion.span
-                            className="text-[15px] font-bold text-neutral-900 hidden sm:inline"
-                            animate={{ opacity: scrolled ? 0 : 1, width: scrolled ? 0 : 'auto' }}
-                            transition={{ duration: 0.2 }}
-                        >
+                        <span className="text-[15px] font-bold text-neutral-900 hidden sm:inline">
                             Olyxee
-                        </motion.span>
+                        </span>
                     </Link>
 
                     <nav className="hidden lg:flex h-full ml-auto mr-auto" aria-label="Main navigation">
