@@ -258,7 +258,8 @@ export default function GrysicsPage() {
                   variants={fadeUp}
                   className="group relative rounded-2xl border border-neutral-200 p-6 hover:border-neutral-300 hover:shadow-lg transition-all cursor-default overflow-hidden"
                 >
-                  <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${app.color} opacity-0 group-hover:opacity-5 rounded-full blur-2xl transition-opacity duration-500 -translate-y-1/2 translate-x-1/2`} />
+                  <div className={`absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br ${app.color} opacity-[0.08] group-hover:opacity-[0.15] rounded-full blur-2xl transition-opacity duration-500 pointer-events-none`} />
+                  <div className={`absolute -bottom-8 -left-8 w-24 h-24 bg-gradient-to-br ${app.color} opacity-[0.05] group-hover:opacity-[0.1] rounded-full blur-xl transition-opacity duration-500 pointer-events-none`} />
                   <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${app.color} flex items-center justify-center mb-4`}>
                     <Icon className="w-5 h-5 text-white" />
                   </div>
