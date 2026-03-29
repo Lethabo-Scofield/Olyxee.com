@@ -70,8 +70,10 @@ const EdgeAI: FC = () => {
       <div className="grain" />
       <Header />
 
-      <section className="pt-28 sm:pt-36 pb-20 sm:pb-28 px-4 sm:px-6">
-        <div className="max-w-5xl mx-auto">
+      <section className="pt-28 sm:pt-36 pb-20 sm:pb-28 px-4 sm:px-6 relative overflow-hidden">
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-purple.png")' }} />
+        <div className="absolute inset-0 bg-white/90 backdrop-blur-sm" />
+        <div className="relative max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -143,8 +145,10 @@ const EdgeAI: FC = () => {
         </div>
       </section>
 
-      <section className="py-20 sm:py-28 border-b border-neutral-100">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+      <section className="py-20 sm:py-28 relative overflow-hidden">
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-orange-pink.png")' }} />
+        <div className="absolute inset-0 bg-white/85 backdrop-blur-sm" />
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -166,8 +170,10 @@ const EdgeAI: FC = () => {
         </div>
       </section>
 
-      <section className="py-20 sm:py-28 bg-neutral-50 border-y border-neutral-100">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+      <section className="py-20 sm:py-28 relative overflow-hidden">
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-yellow-blue.png")' }} />
+        <div className="absolute inset-0 bg-white/88 backdrop-blur-sm" />
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -267,8 +273,10 @@ const EdgeAI: FC = () => {
         </div>
       </section>
 
-      <section className="py-28 sm:py-36 border-t border-neutral-100">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+      <section className="py-28 sm:py-36 relative overflow-hidden">
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-painted.png")' }} />
+        <div className="absolute inset-0 bg-white/88 backdrop-blur-sm" />
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6">
           <motion.div
             initial="hidden"
             whileInView="visible"

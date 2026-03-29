@@ -160,6 +160,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       desc: "Verify your first AI application in under five minutes.",
       tab: "api",
       page: "quickstart",
+      bg: "/images/gradient-blue.png",
     },
     {
       icon: Layers,
@@ -167,6 +168,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       desc: "Learn how the verification engine ensures AI application reliability.",
       tab: "grysics",
       page: "grysics-overview",
+      bg: "/images/gradient-purple.png",
     },
     {
       icon: Terminal,
@@ -174,6 +176,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       desc: "Integrate Grysics into your AI pipeline.",
       tab: "api",
       page: "api-reference",
+      bg: "/images/gradient-orange-pink.png",
     },
     {
       icon: Cpu,
@@ -181,6 +184,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       desc: "OpenAI, Anthropic, LangChain, and more.",
       tab: "guides",
       page: "supported-platforms",
+      bg: "/images/gradient-yellow-blue.png",
     },
   ];
 
@@ -189,19 +193,19 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       title: "Getting started with Olyxee",
       duration: "5:12",
       desc: "Set up your first project and run verification in minutes.",
-      thumb: "from-neutral-800 to-neutral-900",
+      bg: "/images/gradient-pink-cyan.png",
     },
     {
       title: "Grysics deep dive",
       duration: "12:34",
       desc: "Understanding the verification engine and its checks.",
-      thumb: "from-neutral-700 to-neutral-900",
+      bg: "/images/gradient-blue.png",
     },
     {
       title: "Testing RAG pipelines",
       duration: "8:45",
       desc: "Evaluate retrieval quality, context usage, and response accuracy.",
-      thumb: "from-neutral-800 to-neutral-950",
+      bg: "/images/gradient-painted.png",
     },
   ];
 
@@ -230,18 +234,20 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
             <button
               key={card.page}
               onClick={() => onNavigate(card.tab, card.page)}
-              className="group text-left rounded-xl border border-gray-200 p-5 hover:border-gray-300 hover:shadow-sm transition-all"
+              className="group text-left rounded-xl p-5 hover:shadow-md transition-all relative overflow-hidden"
             >
-              <div className="flex items-start gap-4">
-                <div className="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0">
-                  <Icon className="w-4.5 h-4.5 text-gray-600" strokeWidth={1.5} />
+              <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url("${card.bg}")` }} />
+              <div className="absolute inset-0 bg-white/82 backdrop-blur-sm" />
+              <div className="relative flex items-start gap-4">
+                <div className="w-9 h-9 rounded-lg bg-white/60 backdrop-blur-sm flex items-center justify-center flex-shrink-0">
+                  <Icon className="w-4.5 h-4.5 text-gray-700" strokeWidth={1.5} />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-1.5 mb-1">
                     <h3 className="text-[15px] font-semibold text-gray-900">{card.title}</h3>
                     <ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:translate-x-0.5 transition-transform" />
                   </div>
-                  <p className="text-sm text-gray-500 leading-relaxed">{card.desc}</p>
+                  <p className="text-sm text-gray-600 leading-relaxed">{card.desc}</p>
                 </div>
               </div>
             </button>
@@ -256,7 +262,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
           {videos.map((video, i) => (
             <div key={i} className="group cursor-pointer">
-              <div className={`relative aspect-video rounded-xl bg-gradient-to-br ${video.thumb} mb-3 overflow-hidden`}>
+              <div className="relative aspect-video rounded-xl mb-3 overflow-hidden" style={{ backgroundImage: `url("${video.bg}")`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:bg-white/30 transition-colors">
                     <Play className="w-5 h-5 text-white ml-0.5" fill="white" />

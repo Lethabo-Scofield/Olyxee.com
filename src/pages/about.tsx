@@ -22,8 +22,10 @@ const About: FC = () => {
       <div className="grain" />
       <Header />
 
-      <section className="pt-32 sm:pt-44 pb-20 sm:pb-28 px-4 sm:px-6">
-        <div className="max-w-5xl mx-auto">
+      <section className="pt-32 sm:pt-44 pb-20 sm:pb-28 px-4 sm:px-6 relative overflow-hidden">
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-blue.png")' }} />
+        <div className="absolute inset-0 bg-white/90 backdrop-blur-sm pointer-events-none" />
+        <div className="relative max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -61,8 +63,10 @@ const About: FC = () => {
         </div>
       </section>
 
-      <section className="py-28 sm:py-36 border-t border-neutral-100">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+      <section className="py-28 sm:py-36 relative overflow-hidden">
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-pink-cyan.png")' }} />
+        <div className="absolute inset-0 bg-white/88 backdrop-blur-sm pointer-events-none" />
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-28">
             <motion.div
               initial="hidden"
@@ -165,8 +169,10 @@ const About: FC = () => {
         </div>
       </section>
 
-      <section className="py-28 sm:py-36 border-t border-neutral-100">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+      <section className="py-28 sm:py-36 relative overflow-hidden">
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-painted.png")' }} />
+        <div className="absolute inset-0 bg-white/88 backdrop-blur-sm pointer-events-none" />
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -244,8 +250,10 @@ const About: FC = () => {
         </div>
       </section>
 
-      <section className="py-28 sm:py-36 border-b border-neutral-100">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+      <section className="py-28 sm:py-36 relative overflow-hidden">
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-orange-pink.png")' }} />
+        <div className="absolute inset-0 bg-white/90 backdrop-blur-sm pointer-events-none" />
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6">
           <span className="accent-line" />
           <motion.div
             initial="hidden"

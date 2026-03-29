@@ -81,8 +81,9 @@ const Community: FC = () => {
       <Header />
 
       <section className="pt-28 sm:pt-36 pb-28 sm:pb-36 px-4 sm:px-6 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-neutral-100 rounded-full blur-[120px] opacity-50 -translate-y-1/3 translate-x-1/4" />
-        <div className="max-w-5xl mx-auto relative">
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-orange-pink.png")' }} />
+        <div className="absolute inset-0 bg-white/88 backdrop-blur-sm pointer-events-none" />
+        <div className="relative max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -123,8 +124,10 @@ const Community: FC = () => {
         </div>
       </section>
 
-      <section className="py-28 sm:py-36 border-t border-neutral-100" ref={statsRef}>
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+      <section className="py-28 sm:py-36 relative overflow-hidden" ref={statsRef}>
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/images/gradient-purple.png")' }} />
+        <div className="absolute inset-0 bg-white/88 backdrop-blur-sm pointer-events-none" />
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="mb-16">
             <span className="accent-line" />
             <h2 className="font-serif text-4xl sm:text-5xl tracking-tight text-neutral-900">
@@ -133,29 +136,33 @@ const Community: FC = () => {
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {channels.map((channel, idx) => (
-              <motion.div key={channel.title} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={idx} variants={fadeUp} className="rounded-2xl border border-neutral-200 p-8 sm:p-10 hover:border-neutral-300 transition-all group">
-                <div className="flex items-start justify-between mb-8">
-                  <div className="w-12 h-12 rounded-xl bg-neutral-100 flex items-center justify-center group-hover:bg-neutral-900 transition-colors">
-                    {React.createElement(channel.icon, { className: "w-5 h-5 text-neutral-600 group-hover:text-white transition-colors" })}
+              <motion.div key={channel.title} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={idx} variants={fadeUp} className="rounded-2xl p-8 sm:p-10 transition-all group relative overflow-hidden hover:shadow-md">
+                <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url("/images/gradient-${['blue', 'yellow-blue', 'pink-cyan', 'painted'][idx]}.png")` }} />
+                <div className="absolute inset-0 bg-white/82 backdrop-blur-sm" />
+                <div className="relative">
+                  <div className="flex items-start justify-between mb-8">
+                    <div className="w-12 h-12 rounded-xl bg-white/60 backdrop-blur-sm flex items-center justify-center group-hover:bg-neutral-900 transition-colors">
+                      {React.createElement(channel.icon, { className: "w-5 h-5 text-neutral-600 group-hover:text-white transition-colors" })}
+                    </div>
+                    <div className="flex gap-2">
+                      <button onClick={() => handleCopyLink(channel.link)} className="p-2.5 rounded-lg border border-neutral-200/60 hover:bg-white/50 transition-all" title="Copy link" aria-label={`Copy ${channel.title} link`}>
+                        {copiedLink === channel.link ? <Check className="w-4 h-4 text-neutral-900" /> : <Copy className="w-4 h-4 text-neutral-500" />}
+                      </button>
+                      <a href={channel.link} target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-lg border border-neutral-200/60 hover:bg-white/50 transition-all" aria-label={`Visit ${channel.title}`}>
+                        <ExternalLink className="w-4 h-4 text-neutral-500" />
+                      </a>
+                    </div>
                   </div>
-                  <div className="flex gap-2">
-                    <button onClick={() => handleCopyLink(channel.link)} className="p-2.5 rounded-lg border border-neutral-200 hover:bg-neutral-50 transition-all" title="Copy link" aria-label={`Copy ${channel.title} link`}>
-                      {copiedLink === channel.link ? <Check className="w-4 h-4 text-neutral-900" /> : <Copy className="w-4 h-4 text-neutral-400" />}
-                    </button>
-                    <a href={channel.link} target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-lg border border-neutral-200 hover:bg-neutral-50 transition-all" aria-label={`Visit ${channel.title}`}>
-                      <ExternalLink className="w-4 h-4 text-neutral-400" />
-                    </a>
+                  <h3 className="text-2xl font-semibold text-neutral-900 mb-3">{channel.title}</h3>
+                  <p className="text-neutral-600 text-sm leading-relaxed mb-6">{channel.description}</p>
+                  <div className="flex items-baseline gap-2 mb-6">
+                    <span className="text-4xl font-serif italic text-neutral-900">{animatedStats[channel.title] ? formatNumber(animatedStats[channel.title]) : 0}+</span>
+                    <span className="text-sm text-neutral-500">{channel.unit}</span>
                   </div>
+                  <a href={channel.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm font-medium text-neutral-600 hover:text-blue-600 transition-colors tracking-wide">
+                    Join Now <ArrowRight className="w-4 h-4" />
+                  </a>
                 </div>
-                <h3 className="text-2xl font-semibold text-neutral-900 mb-3">{channel.title}</h3>
-                <p className="text-neutral-500 text-sm leading-relaxed mb-6">{channel.description}</p>
-                <div className="flex items-baseline gap-2 mb-6">
-                  <span className="text-4xl font-serif italic text-neutral-900">{animatedStats[channel.title] ? formatNumber(animatedStats[channel.title]) : 0}+</span>
-                  <span className="text-sm text-neutral-400">{channel.unit}</span>
-                </div>
-                <a href={channel.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm font-medium text-neutral-500 hover:text-blue-600 transition-colors tracking-wide">
-                  Join Now <ArrowRight className="w-4 h-4" />
-                </a>
               </motion.div>
             ))}
           </div>
