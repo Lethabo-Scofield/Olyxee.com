@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 22" fill="none">
+  <path d="M16.5 2.5C10.3 3.2 7.4 8.5 7.4 8.5s-0.1 0-0.1 0.1V4.8H4.8v16.8h2.7v-8.8c0-3.4 2.3-7.2 7.2-7.8 0.6-0.1 1.2-0.1 1.8 0V2.4c-0.1 0-0.1 0.1 0 0.1z" fill="currentColor"/>
+  <path d="M29.7 4.8h-2.8l-5 13.5-5-13.5h-2.9l6.5 16.8h2.8l6.4-16.8z" fill="currentColor"/>
+  <path d="M33.2 4.8h2.7v16.8h-2.7V4.8z" fill="currentColor"/>
+  <path d="M33.2 0h2.7v2.7h-2.7V0z" fill="currentColor"/>
+  <path d="M52.2 0h2.7v21.6h-2.7v-2.1c-1.6 1.7-3.8 2.5-6.3 2.5-5.2 0-9.1-4.1-9.1-8.9 0-4.8 3.9-8.9 9.1-8.9 2.5 0 4.7 0.9 6.3 2.5V0zm-5.8 19.4c3.6 0 6.1-2.7 6.1-6.3 0-3.5-2.6-6.3-6.1-6.3-3.6 0-6.2 2.7-6.2 6.3 0 3.6 2.6 6.3 6.2 6.3z" fill="currentColor"/>
+  <path d="M60.3 4.8h2.7v16.8h-2.7V4.8z" fill="currentColor"/>
+  <path d="M60.3 0h2.7v2.7h-2.7V0z" fill="currentColor"/>
+  <path d="M78.2 4.8h2.7v16.8h-2.7v-2.1c-1.5 1.7-3.5 2.5-5.9 2.5-5.3 0-8.4-3.8-8.4-8.8V4.8h2.7v8.1c0 3.8 2 6.5 5.9 6.5 3.5 0 5.7-2.7 5.7-6.6V4.8z" fill="currentColor"/>
+  <path d="M0 4.8h2.7v2.7c1.3-2 3.5-3.1 6.2-3.1 5.3 0 8.4 3.8 8.4 8.8v8.4h-2.7v-8.1c0-3.8-2-6.5-5.9-6.5-3.5 0-5.7 2.7-5.7 6.6v8h-2.7L0 4.8z" fill="currentColor"/>
+  <text x="88" y="18" font-family="Arial,sans-serif" font-size="6" fill="currentColor" font-weight="bold">®</text>
+</svg>

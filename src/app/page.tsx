@@ -73,7 +73,7 @@ export default function HomePage() {
 
 const partnerLogos = [
   { name: "OpenAI", src: "/partner-logos/openai.svg", w: 28, h: 28 },
-  { name: "Meta", src: "/partner-logos/meta.svg", w: 36, h: 20 },
+  { name: "NVIDIA", src: "/partner-logos/nvidia.svg", w: 36, h: 20 },
   { name: "Google", src: "/partner-logos/google.svg", w: 26, h: 26 },
   { name: "Anthropic", src: "/partner-logos/anthropic.svg", w: 28, h: 18 },
   { name: "Mistral", src: "/partner-logos/mistral.svg", w: 24, h: 24 },
@@ -134,10 +134,11 @@ function HeroSection() {
           >
             <Link
               href="/docs"
-              className="group inline-flex items-center justify-center gap-1 w-20 h-20 bg-white text-neutral-900 rounded-full font-medium hover:scale-105 transition-all text-sm tracking-wide shadow-xl shadow-black/20"
+              className="group inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-white text-neutral-900 rounded-full hover:scale-105 transition-all shadow-xl shadow-black/20"
             >
-              Start
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+              <svg className="w-5 h-5 sm:w-6 sm:h-6 ml-0.5 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5.14v14l11-7-11-7z" />
+              </svg>
             </Link>
           </motion.div>
         </div>
