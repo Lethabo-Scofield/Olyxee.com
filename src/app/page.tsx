@@ -9,10 +9,6 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
-  Factory,
-  Bot,
-  Wifi,
-  Car,
 } from "lucide-react";
 
 export default function HomePage() {
@@ -51,11 +47,12 @@ export default function HomePage() {
 
       <main>
         <HeroSection />
-        <WhatWeDoSection />
+        <PipelineSection />
+        <IndustriesSection />
         <ProductsSection />
+        <ArchitectureSection />
         <ResearchSection />
-        <TrustSection />
-        <UseCasesSection />
+        <MetricsSection />
         <CTASection />
       </main>
 
@@ -175,35 +172,55 @@ function HeroSection() {
   );
 }
 
-function WhatWeDoSection() {
-  const pillars = [
-    { title: "Verification", description: "Rigorous testing and validation that ensures AI models perform correctly before deployment — catching failures before they reach production." },
-    { title: "Deployment", description: "Hardware-agnostic infrastructure that abstracts away device complexity. Same model, any device — Jetson, Raspberry Pi, or cloud." },
-    { title: "Optimization", description: "Automatic quantization and runtime optimization adapted to target hardware. Maintain accuracy while minimizing resource consumption." },
-    { title: "Monitoring", description: "Real-time observability for deployed systems — detecting drift, anomalies, and degradation before they become critical failures." },
+
+function PipelineSection() {
+  const steps = [
+    {
+      num: "01",
+      title: "Ingest",
+      desc: "Import trained models from PyTorch, TensorFlow, ONNX, or JAX. Grysics analyzes the computational graph and parameter structure automatically.",
+      detail: "Supports .pt, .onnx, .h5, .tflite",
+    },
+    {
+      num: "02",
+      title: "Verify",
+      desc: "Run hardware-specific verification: accuracy tolerance, latency bounds, memory limits, and numerical stability across 1,000+ inference cycles.",
+      detail: "Pre-deployment failure detection",
+    },
+    {
+      num: "03",
+      title: "Optimize",
+      desc: "Automatic quantization (FP16, INT8, INT4) and pruning adapted to target hardware constraints. Maintain accuracy while cutting model size up to 87%.",
+      detail: "Calibration-aware compression",
+    },
+    {
+      num: "04",
+      title: "Deploy",
+      desc: "Push to Jetson, Raspberry Pi, Intel NCS2, or containerized endpoints. Fleet deployment with staged rollout and automatic rollback.",
+      detail: "Single-command to any device",
+    },
+    {
+      num: "05",
+      title: "Monitor",
+      desc: "Continuous observability for drift, latency degradation, and anomalies. Automatic rollback when metrics breach configurable thresholds.",
+      detail: "Real-time production health",
+    },
   ];
 
   return (
     <section className="py-28 sm:py-36 border-t border-neutral-100">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
         <div className="max-w-2xl mb-20">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            <span className="accent-line" />
-          </motion.div>
+          <span className="accent-line" />
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight mb-6"
           >
-            AI systems fail in
+            From model to
             <br />
-            the real world.{" "}
-            <em className="text-neutral-400">We fix that.</em>
+            <em className="text-neutral-400">production. End to end.</em>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -212,45 +229,99 @@ function WhatWeDoSection() {
             transition={{ delay: 0.1 }}
             className="text-lg text-neutral-500 leading-relaxed font-light"
           >
-            From verification to deployment to monitoring — the complete infrastructure stack for AI that actually works in production.
+            The Grysics pipeline handles every stage between a trained model and a deployed, monitored system.
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-neutral-200 rounded-2xl overflow-hidden border border-neutral-200">
-          {pillars.map((pillar, idx) => (
-            <motion.div
-              key={pillar.title}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="bg-white p-10 sm:p-12 hover:bg-neutral-50 transition-colors"
-            >
-              <span className="text-xs font-medium text-neutral-400 uppercase tracking-widest">0{idx + 1}</span>
-              <h3 className="text-2xl font-semibold text-neutral-900 mt-3 mb-4">{pillar.title}</h3>
-              <p className="text-neutral-500 text-sm leading-relaxed">{pillar.description}</p>
-            </motion.div>
-          ))}
+        <div className="relative">
+          <div className="absolute left-6 top-0 bottom-0 w-px bg-neutral-200 hidden sm:block" />
+
+          <div className="space-y-0">
+            {steps.map((step, idx) => (
+              <motion.div
+                key={step.num}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.08 }}
+                className="relative flex gap-8 sm:gap-12 group"
+              >
+                <div className="relative flex-shrink-0 hidden sm:flex flex-col items-center">
+                  <div className="w-12 h-12 rounded-full bg-neutral-900 text-white flex items-center justify-center text-xs font-mono font-bold z-10 group-hover:scale-110 transition-transform">
+                    {step.num}
+                  </div>
+                  {idx < steps.length - 1 && (
+                    <div className="w-px flex-1 bg-neutral-200" />
+                  )}
+                </div>
+
+                <div className="flex-1 pb-12 sm:pb-16">
+                  <div className="sm:hidden text-xs font-mono font-bold text-neutral-400 mb-2">{step.num}</div>
+                  <h3 className="text-xl sm:text-2xl font-semibold text-neutral-900 mb-2">{step.title}</h3>
+                  <p className="text-neutral-500 text-sm leading-relaxed mb-3 max-w-xl">{step.desc}</p>
+                  <span className="inline-block text-xs font-medium text-neutral-400 bg-neutral-50 border border-neutral-200 rounded-full px-3 py-1">{step.detail}</span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
-function ProductsSection() {
-  const products = [
+
+function IndustriesSection() {
+  const industries = [
     {
-      name: "Grysics",
-      tagline: "Verification Engine",
-      description: "High-fidelity AI simulation and testing for edge devices. Verify model behavior across hardware configurations before deployment.",
-      href: "/products/grysics",
-      status: "Available",
+      title: "Automotive & ADAS",
+      subtitle: "Safety-critical perception at 30fps",
+      desc: "Deploy verified object detection, lane tracking, and sensor fusion models to vehicle ECUs. Grysics validates latency under 33ms and accuracy above 99.2% before any model reaches a production vehicle — meeting ISO 26262 functional safety requirements.",
+      metrics: [
+        { label: "Inference latency", value: "<33ms" },
+        { label: "Accuracy threshold", value: "99.2%" },
+        { label: "Compliance", value: "ISO 26262" },
+      ],
+      flow: ["Camera/LiDAR Input", "Perception Model", "Grysics Verify", "ECU Deploy", "OTA Updates"],
+    },
+    {
+      title: "Medical Devices & Diagnostics",
+      subtitle: "Regulated AI for clinical environments",
+      desc: "Run pathology classification, radiology assistants, and diagnostic screening models on hospital edge devices. Grysics provides verification audit trails required for FDA 510(k) submissions and CE marking — ensuring models perform identically across device configurations.",
+      metrics: [
+        { label: "Sensitivity", value: ">97%" },
+        { label: "Specificity", value: ">95%" },
+        { label: "Regulatory", value: "FDA / CE" },
+      ],
+      flow: ["DICOM Input", "Diagnostic Model", "Grysics Verify", "Clinical Edge", "Audit Trail"],
+    },
+    {
+      title: "Industrial Manufacturing",
+      subtitle: "Real-time defect detection on the line",
+      desc: "Deploy visual inspection models to factory floor cameras running on NVIDIA Jetson or Intel NCS2 devices. Grysics ensures sub-20ms inference for real-time quality control, with automatic model rollback if defect detection accuracy drops below threshold during production shifts.",
+      metrics: [
+        { label: "Throughput", value: "50 fps" },
+        { label: "Defect recall", value: ">98%" },
+        { label: "Downtime", value: "<0.1%" },
+      ],
+      flow: ["Line Camera", "Inspection Model", "Grysics Verify", "Jetson Edge", "MES Integration"],
+    },
+    {
+      title: "Energy & Utilities",
+      subtitle: "Predictive maintenance at grid scale",
+      desc: "Run anomaly detection and predictive failure models on SCADA-connected edge devices across power grids, wind farms, and pipeline networks. Grysics verifies model behavior under variable load conditions and deploys updates to thousands of distributed nodes simultaneously.",
+      metrics: [
+        { label: "Fleet size", value: "10K+ nodes" },
+        { label: "False positive rate", value: "<0.5%" },
+        { label: "Update rollout", value: "Staged" },
+      ],
+      flow: ["SCADA Sensors", "Anomaly Model", "Grysics Verify", "Fleet Deploy", "Grid Dashboard"],
     },
   ];
 
   return (
     <section className="py-28 sm:py-36 bg-neutral-950 text-white relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-neutral-800 rounded-full blur-[150px] opacity-30 -translate-y-1/2 -translate-x-1/4" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-neutral-800 rounded-full blur-[200px] opacity-20 translate-x-1/3 -translate-y-1/3" />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 relative">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-20">
           <div>
@@ -261,40 +332,66 @@ function ProductsSection() {
               viewport={{ once: true }}
               className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight"
             >
-              A platform for
+              Built for regulated,
               <br />
-              <em className="text-neutral-500">reliable AI</em>
+              <em className="text-neutral-500">safety-critical industries</em>
             </motion.h2>
           </div>
-          <Link href="/products/grysics" className="text-neutral-400 hover:text-white font-medium text-sm flex items-center gap-1.5 transition-colors tracking-wide">
-            All products <ArrowRight className="w-4 h-4" />
-          </Link>
         </div>
 
-        <div className="space-y-4">
-          {products.map((product, idx) => (
+        <div className="space-y-6">
+          {industries.map((ind, idx) => (
             <motion.div
-              key={product.name}
+              key={ind.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              transition={{ duration: 0.5, delay: idx * 0.08 }}
+              className="rounded-2xl border border-white/10 hover:border-white/20 transition-all overflow-hidden"
             >
-              <Link
-                href={product.href}
-                className="group flex flex-col sm:flex-row sm:items-center justify-between gap-6 p-8 sm:p-10 rounded-2xl border border-white/10 hover:border-white/20 hover:bg-white/[0.03] transition-all"
-              >
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-4 mb-3">
-                    <h3 className="text-2xl sm:text-3xl font-semibold">{product.name}</h3>
-                    <span className="text-xs font-medium text-neutral-500 bg-white/5 px-3 py-1 rounded-full border border-white/10">{product.status}</span>
+              <div className="p-8 sm:p-10">
+                <div className="flex flex-col lg:flex-row lg:items-start gap-8">
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-3 mb-1">
+                      <h3 className="text-xl sm:text-2xl font-semibold">{ind.title}</h3>
+                    </div>
+                    <p className="text-sm text-neutral-500 mb-4">{ind.subtitle}</p>
+                    <p className="text-neutral-400 text-sm leading-relaxed max-w-2xl">{ind.desc}</p>
+
+                    <div className="flex flex-wrap gap-6 mt-6">
+                      {ind.metrics.map(m => (
+                        <div key={m.label}>
+                          <div className="text-xl font-semibold text-white">{m.value}</div>
+                          <div className="text-xs text-neutral-500 uppercase tracking-wider mt-0.5">{m.label}</div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <p className="text-neutral-400 text-sm leading-relaxed max-w-xl">{product.description}</p>
+
+                  <div className="lg:w-[340px] flex-shrink-0">
+                    <div className="text-[10px] text-neutral-600 uppercase tracking-widest mb-3 font-medium">Data flow</div>
+                    <div className="flex flex-col gap-0">
+                      {ind.flow.map((node, i) => (
+                        <div key={node} className="flex items-center gap-0">
+                          <div className={`flex-1 text-xs font-medium px-3 py-2 border rounded-md text-center ${
+                            node.includes("Grysics")
+                              ? "border-white/30 text-white bg-white/5"
+                              : "border-white/10 text-neutral-400"
+                          }`}>
+                            {node}
+                          </div>
+                          {i < ind.flow.length - 1 && (
+                            <div className="flex flex-col items-center mx-0 -my-1 relative z-10">
+                              <div className="w-px h-3 bg-white/20" />
+                              <div className="w-0 h-0 border-l-[3px] border-r-[3px] border-t-[4px] border-l-transparent border-r-transparent border-t-white/20" />
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-                <span className="text-sm font-medium text-neutral-500 flex items-center gap-1.5 group-hover:text-white group-hover:gap-3 transition-all flex-shrink-0">
-                  Explore <ArrowRight className="w-4 h-4" />
-                </span>
-              </Link>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -303,25 +400,210 @@ function ProductsSection() {
   );
 }
 
+
+function ProductsSection() {
+  return (
+    <section className="py-28 sm:py-36 border-t border-neutral-100">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-20">
+          <div>
+            <span className="accent-line" />
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900"
+            >
+              A platform for
+              <br />
+              <em className="text-neutral-400">reliable AI</em>
+            </motion.h2>
+          </div>
+          <Link href="/products/grysics" className="text-neutral-500 hover:text-neutral-900 font-medium text-sm flex items-center gap-1.5 transition-colors tracking-wide">
+            All products <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <Link
+            href="/products/grysics"
+            className="group flex flex-col sm:flex-row sm:items-center justify-between gap-6 p-8 sm:p-10 rounded-2xl border border-neutral-200 hover:border-neutral-300 hover:shadow-sm transition-all"
+          >
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-4 mb-3">
+                <h3 className="text-2xl sm:text-3xl font-semibold text-neutral-900">Grysics</h3>
+                <span className="text-xs font-medium text-neutral-500 bg-neutral-50 px-3 py-1 rounded-full border border-neutral-200">Available</span>
+              </div>
+              <p className="text-neutral-500 text-sm leading-relaxed max-w-xl">High-fidelity AI simulation and testing for edge devices. Verify model behavior across hardware configurations before deployment.</p>
+            </div>
+            <span className="text-sm font-medium text-neutral-400 flex items-center gap-1.5 group-hover:text-neutral-900 group-hover:gap-3 transition-all flex-shrink-0">
+              Explore <ArrowRight className="w-4 h-4" />
+            </span>
+          </Link>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="mt-4"
+        >
+          <Link
+            href="/edgeai"
+            className="group flex flex-col sm:flex-row sm:items-center justify-between gap-6 p-8 sm:p-10 rounded-2xl border border-neutral-200 hover:border-neutral-300 hover:shadow-sm transition-all"
+          >
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-4 mb-3">
+                <h3 className="text-2xl sm:text-3xl font-semibold text-neutral-900">Olyxee Edge Box</h3>
+                <span className="text-xs font-medium text-neutral-500 bg-neutral-50 px-3 py-1 rounded-full border border-neutral-200">Hardware</span>
+              </div>
+              <p className="text-neutral-500 text-sm leading-relaxed max-w-xl">Purpose-built edge hardware for deploying AI models in factories, vehicles, and field environments. Managed fleet operations included.</p>
+            </div>
+            <span className="text-sm font-medium text-neutral-400 flex items-center gap-1.5 group-hover:text-neutral-900 group-hover:gap-3 transition-all flex-shrink-0">
+              Explore <ArrowRight className="w-4 h-4" />
+            </span>
+          </Link>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+
+function ArchitectureSection() {
+  return (
+    <section className="py-28 sm:py-36 bg-neutral-50 border-y border-neutral-100">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
+        <div className="text-center mb-16">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-4"
+          >
+            System architecture
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-neutral-500 text-base max-w-xl mx-auto"
+          >
+            How Olyxee connects strategy, execution, and verification into one coherent stack.
+          </motion.p>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="max-w-4xl mx-auto"
+        >
+          <div className="rounded-2xl border border-neutral-200 bg-white overflow-hidden">
+            <div className="border-b border-neutral-200 p-6 sm:p-8">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-8 h-8 rounded-lg bg-neutral-900 flex items-center justify-center">
+                  <span className="text-white text-xs font-bold">O</span>
+                </div>
+                <div>
+                  <div className="text-sm font-semibold text-neutral-900">Olyxee Core</div>
+                  <div className="text-[11px] text-neutral-400">Strategy & orchestration layer</div>
+                </div>
+              </div>
+              <p className="text-xs text-neutral-500 mt-2 max-w-lg">The brain — handles API routing, model registry, verification scheduling, fleet coordination, and customer-facing platform services.</p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-neutral-200">
+              <div className="p-6 sm:p-8">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-8 h-8 rounded-lg bg-neutral-200 flex items-center justify-center">
+                    <span className="text-neutral-700 text-xs font-bold">OEB</span>
+                  </div>
+                  <div>
+                    <div className="text-sm font-semibold text-neutral-900">Edge Box Division</div>
+                    <div className="text-[11px] text-neutral-400">Execution layer</div>
+                  </div>
+                </div>
+                <p className="text-xs text-neutral-500 mt-2">The hands — manages physical edge deployments, device provisioning, OTA updates, and hardware abstraction across Jetson, RPi, Intel, and custom silicon.</p>
+                <div className="mt-4 flex flex-wrap gap-1.5">
+                  {["Jetson", "RPi", "Intel NCS2", "Custom"].map(d => (
+                    <span key={d} className="text-[10px] text-neutral-400 bg-neutral-50 border border-neutral-200 rounded px-2 py-0.5">{d}</span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="p-6 sm:p-8">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-8 h-8 rounded-lg bg-neutral-200 flex items-center justify-center">
+                    <span className="text-neutral-700 text-xs font-bold">G</span>
+                  </div>
+                  <div>
+                    <div className="text-sm font-semibold text-neutral-900">Grysics Engine</div>
+                    <div className="text-[11px] text-neutral-400">Verification layer</div>
+                  </div>
+                </div>
+                <p className="text-xs text-neutral-500 mt-2">Quality control — runs pre-deployment verification, post-deployment monitoring, accuracy testing, latency profiling, and compliance audit trail generation.</p>
+                <div className="mt-4 flex flex-wrap gap-1.5">
+                  {["Accuracy", "Latency", "Memory", "Stability", "Drift"].map(c => (
+                    <span key={c} className="text-[10px] text-neutral-400 bg-neutral-50 border border-neutral-200 rounded px-2 py-0.5">{c}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="border-t border-neutral-200 p-4 sm:p-6 bg-neutral-50">
+              <div className="flex flex-wrap items-center justify-center gap-4 text-[11px] text-neutral-400">
+                <span className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-neutral-900" /> Orchestrates
+                </span>
+                <span className="text-neutral-300">|</span>
+                <span>PyTorch · TensorFlow · ONNX · TFLite · JAX</span>
+                <span className="text-neutral-300">|</span>
+                <span>REST API · Python SDK · CLI</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex justify-center mt-4">
+            <div className="flex items-center gap-2 text-[11px] text-neutral-400">
+              <span className="w-2 h-px bg-neutral-300" />
+              <span>Olyxee (brain) → OEB (hands) → Grysics (quality control)</span>
+              <span className="w-2 h-px bg-neutral-300" />
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+
 function ResearchSection() {
   const papers = [
     {
       title: "Verification-First Deployment for Edge AI Systems",
       category: "AI Reliability",
       date: "2025",
-      description: "A framework for pre-deployment verification of AI models targeting heterogeneous edge hardware.",
+      description: "A framework for pre-deployment verification of AI models targeting heterogeneous edge hardware, with formal guarantees on accuracy and latency bounds.",
     },
     {
       title: "Interpretable Feature Attribution in Verification Pipelines",
       category: "Interpretability",
       date: "2025",
-      description: "Tracing feature contributions within the Grysics verification pipeline for actionable model behavior insights.",
+      description: "Tracing feature contributions within the Grysics verification pipeline for actionable model behavior insights and regulatory compliance documentation.",
     },
     {
       title: "Adaptive Quantization for Cross-Hardware Deployment",
       category: "Optimization",
       date: "2025",
-      description: "Automatic model compression that adapts to target hardware constraints while preserving accuracy guarantees.",
+      description: "Automatic model compression that adapts to target hardware constraints while preserving accuracy guarantees across device families.",
     },
   ];
 
@@ -377,42 +659,44 @@ function ResearchSection() {
   );
 }
 
-function TrustSection() {
-  const stats = [
-    { value: "10x", label: "Faster deployment" },
-    { value: "99.9%", label: "Uptime SLA" },
-    { value: "50K+", label: "Devices powered" },
-    { value: "90%", label: "Cost reduction" },
+
+function MetricsSection() {
+  const metrics = [
+    { value: "99.97%", label: "Verification accuracy", context: "Across 12K+ model runs" },
+    { value: "<12ms", label: "Median inference", context: "On NVIDIA Jetson Nano" },
+    { value: "87%", label: "Model size reduction", context: "INT4 quantization" },
+    { value: "0", label: "Production rollbacks", context: "Post-Grysics verification" },
   ];
 
   return (
-    <section className="py-28 sm:py-36 bg-neutral-50 border-y border-neutral-100">
+    <section className="py-28 sm:py-36 bg-neutral-950 text-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
         <div className="text-center mb-20">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900"
+            className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight"
           >
-            Trusted by engineers
+            Numbers that
             <br />
-            <em className="text-neutral-400">building the future</em>
+            <em className="text-neutral-500">matter</em>
           </motion.h2>
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
-          {stats.map((stat, idx) => (
+          {metrics.map((m, idx) => (
             <motion.div
-              key={stat.label}
+              key={m.label}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               className="text-center"
             >
-              <div className="text-4xl sm:text-5xl lg:text-7xl font-serif italic text-neutral-900 mb-3">{stat.value}</div>
-              <div className="text-neutral-400 text-sm uppercase tracking-widest font-medium">{stat.label}</div>
+              <div className="text-4xl sm:text-5xl lg:text-6xl font-serif italic text-white mb-2">{m.value}</div>
+              <div className="text-neutral-400 text-sm font-medium mb-1">{m.label}</div>
+              <div className="text-neutral-600 text-xs">{m.context}</div>
             </motion.div>
           ))}
         </div>
@@ -421,85 +705,27 @@ function TrustSection() {
   );
 }
 
-function UseCasesSection() {
-  const useCases = [
-    { icon: Factory, title: "Smart Manufacturing", description: "Real-time quality control and predictive maintenance on factory edge devices." },
-    { icon: Bot, title: "Robotics", description: "Deploy perception and planning models on autonomous systems with verified reliability." },
-    { icon: Wifi, title: "IoT & Edge AI", description: "Run optimized models on constrained hardware across distributed sensor networks." },
-    { icon: Car, title: "Autonomous Systems", description: "Safety-critical AI deployment with formal verification and continuous monitoring." },
-  ];
-
-  return (
-    <section className="py-28 sm:py-36 border-t border-neutral-100">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
-        <div className="max-w-2xl mb-20">
-          <span className="accent-line" />
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-6"
-          >
-            Proven across
-            <br />
-            <em className="text-neutral-400">industries</em>
-          </motion.h2>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {useCases.map((uc, idx) => {
-            const Icon = uc.icon;
-            return (
-              <motion.div
-                key={uc.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="flex items-start gap-5 p-8 sm:p-10 rounded-2xl border border-neutral-200 hover:border-neutral-300 transition-all group"
-              >
-                <div className="w-12 h-12 rounded-xl bg-neutral-100 flex items-center justify-center flex-shrink-0 group-hover:bg-neutral-900 transition-colors">
-                  <Icon className="w-5 h-5 text-neutral-600 group-hover:text-white transition-colors" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-neutral-900 mb-2">{uc.title}</h3>
-                  <p className="text-neutral-500 text-sm leading-relaxed">{uc.description}</p>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        <div className="text-center mt-12">
-          <Link href="/use-cases" className="inline-flex items-center gap-2 text-neutral-500 hover:text-neutral-900 font-medium text-sm transition-colors tracking-wide">
-            Explore all use cases <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 function CTASection() {
   return (
-    <section className="py-28 sm:py-36 bg-neutral-950 text-white">
+    <section className="py-28 sm:py-36 border-t border-neutral-100">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-12 text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight mb-6"
+          className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-6"
         >
           Ready to build AI
           <br />
-          <em className="text-neutral-500">that works?</em>
+          <em className="text-neutral-400">that works?</em>
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-neutral-400 text-lg max-w-xl mx-auto mb-10 font-light leading-relaxed"
+          className="text-neutral-500 text-lg max-w-xl mx-auto mb-10 font-light leading-relaxed"
         >
           Get started with Olyxee's developer tools, or reach out to discuss enterprise solutions.
         </motion.p>
@@ -511,14 +737,14 @@ function CTASection() {
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
           <Link
-            href="/developers"
-            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide"
+            href="/docs"
+            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-black transition-all text-sm tracking-wide"
           >
             Get Started <ArrowRight className="w-4 h-4" />
           </Link>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-white border border-white/20 rounded-full font-medium hover:bg-white/10 transition-all text-sm tracking-wide"
+            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-neutral-900 border border-neutral-200 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide"
           >
             Contact Sales
           </Link>
