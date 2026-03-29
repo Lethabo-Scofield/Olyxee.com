@@ -76,13 +76,13 @@ const DocsLayout: FC<DocsLayoutProps> = ({ tabs, activeTab, onTabChange, sideNav
                   onClick={() => { onTabChange(tab.id); setMobileMenuOpen(false) }}
                   className={`relative py-3 text-sm font-medium whitespace-nowrap transition-colors ${
                     activeTab === tab.id
-                      ? 'text-green-600'
+                      ? 'text-gray-900'
                       : 'text-gray-500 hover:text-gray-900'
                   }`}
                 >
                   {tab.label}
                   {activeTab === tab.id && (
-                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-green-600 rounded-full" />
+                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-gray-900 rounded-full" />
                   )}
                 </button>
               ))}
@@ -99,7 +99,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ tabs, activeTab, onTabChange, sideNav
                   onChange={(e) => setSearchQuery(e.target.value)}
                   onFocus={() => setSearchFocused(true)}
                   onBlur={() => setSearchFocused(false)}
-                  className={`w-52 pl-9 pr-8 py-1.5 text-sm bg-gray-50 border rounded-lg focus:outline-none focus:bg-white transition-all text-gray-900 placeholder-gray-400 ${searchFocused ? 'border-green-500 ring-1 ring-green-500/20 w-72' : 'border-gray-200'}`}
+                  className={`w-52 pl-9 pr-8 py-1.5 text-sm bg-gray-50 border rounded-lg focus:outline-none focus:bg-white transition-all text-gray-900 placeholder-gray-400 ${searchFocused ? 'border-gray-400 ring-1 ring-gray-200 w-72' : 'border-gray-200'}`}
                 />
                 <kbd className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-gray-400 bg-white border border-gray-200 rounded px-1.5 py-0.5 font-mono">
                   /
@@ -138,14 +138,14 @@ const DocsLayout: FC<DocsLayoutProps> = ({ tabs, activeTab, onTabChange, sideNav
                             onClick={() => onPageChange?.(item.id)}
                             className={`w-full text-left px-2 py-1.5 rounded-md text-[13px] transition-colors flex items-center justify-between ${
                               activePage === item.id
-                                ? 'text-green-700 bg-green-50/80 font-medium'
+                                ? 'text-gray-900 bg-gray-100 font-medium'
                                 : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                             }`}
                           >
                             {item.title}
                             {item.badge && (
                               <span className={`text-[9px] font-semibold uppercase tracking-wide px-1.5 py-0.5 rounded-full ${
-                                activePage === item.id ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500'
+                                activePage === item.id ? 'bg-gray-200 text-gray-700' : 'bg-gray-100 text-gray-500'
                               }`}>{item.badge}</span>
                             )}
                           </button>
@@ -176,7 +176,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ tabs, activeTab, onTabChange, sideNav
                         placeholder="Search..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full pl-10 pr-4 py-2.5 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-green-500 text-gray-900 placeholder-gray-400"
+                        className="w-full pl-10 pr-4 py-2.5 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-gray-400 text-gray-900 placeholder-gray-400"
                       />
                     </div>
                     {!hasResults && searchQuery ? (
@@ -189,7 +189,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ tabs, activeTab, onTabChange, sideNav
                             key={item.id}
                             onClick={() => { onPageChange?.(item.id); setMobileMenuOpen(false) }}
                             className={`w-full text-left px-3 py-2.5 rounded-lg text-sm transition-colors flex items-center justify-between ${
-                              activePage === item.id ? 'text-green-700 bg-green-50 font-medium' : 'text-gray-700 hover:bg-gray-50'
+                              activePage === item.id ? 'text-gray-900 bg-gray-100 font-medium' : 'text-gray-700 hover:bg-gray-50'
                             }`}
                           >
                             {item.title}

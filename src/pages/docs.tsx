@@ -2,7 +2,7 @@ import { useState, FC } from "react";
 import SEO from "../components/SEO";
 import DocsLayout from "../layouts/DocsLayout";
 import Header from '../components/header';
-import { Code2, Cpu, Rocket, Shield, ChevronRight, Play } from "lucide-react";
+import { ArrowRight, BookOpen, Terminal, Layers, Cpu, ChevronRight, Play } from "lucide-react";
 
 const TABS = [
   { id: "home", label: "Home" },
@@ -148,28 +148,25 @@ export default Docs;
 function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => void }) {
   const featuredCards = [
     {
-      icon: Rocket,
+      icon: ArrowRight,
       title: "Quickstart",
       desc: "Verify your first model in under five minutes.",
       tab: "api",
       page: "quickstart",
-      accent: "bg-green-500",
     },
     {
-      icon: Shield,
+      icon: Layers,
       title: "Grysics Engine",
       desc: "Learn how the verification engine ensures AI reliability.",
       tab: "grysics",
       page: "grysics-overview",
-      accent: "bg-blue-500",
     },
     {
-      icon: Code2,
+      icon: Terminal,
       title: "API Reference",
       desc: "Integrate Olyxee into your ML pipeline.",
       tab: "api",
       page: "api-reference",
-      accent: "bg-violet-500",
     },
     {
       icon: Cpu,
@@ -177,7 +174,6 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       desc: "Deploy to Jetson, Raspberry Pi, and more.",
       tab: "guides",
       page: "edge-devices",
-      accent: "bg-orange-500",
     },
   ];
 
@@ -192,13 +188,13 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       title: "Grysics deep dive",
       duration: "12:34",
       desc: "Understanding the verification engine and its checks.",
-      thumb: "from-green-800 to-green-900",
+      thumb: "from-neutral-700 to-neutral-900",
     },
     {
       title: "Deploying to edge devices",
       duration: "8:45",
       desc: "Step-by-step deployment to NVIDIA Jetson and Raspberry Pi.",
-      thumb: "from-blue-800 to-blue-900",
+      thumb: "from-neutral-800 to-neutral-950",
     },
   ];
 
@@ -230,8 +226,8 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
               className="group text-left rounded-xl border border-gray-200 p-5 hover:border-gray-300 hover:shadow-sm transition-all"
             >
               <div className="flex items-start gap-4">
-                <div className={`w-9 h-9 rounded-lg ${card.accent} flex items-center justify-center flex-shrink-0`}>
-                  <Icon className="w-4.5 h-4.5 text-white" strokeWidth={2} />
+                <div className="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0">
+                  <Icon className="w-4.5 h-4.5 text-gray-600" strokeWidth={1.5} />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-1.5 mb-1">
@@ -263,7 +259,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
                   {video.duration}
                 </div>
               </div>
-              <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-green-600 transition-colors">{video.title}</h3>
+              <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-gray-700 transition-colors">{video.title}</h3>
               <p className="text-xs text-gray-500 leading-relaxed">{video.desc}</p>
             </div>
           ))}
@@ -432,7 +428,7 @@ function GrysicsOverview() {
             { step: "04", title: "Report", desc: "Receive a detailed verification report with pass/fail status, performance metrics, and optimization recommendations." },
           ].map(item => (
             <div key={item.step} className="flex gap-4 items-start p-4 rounded-lg bg-gray-50 border border-gray-100">
-              <span className="text-xs font-mono font-bold text-green-600 bg-green-50 border border-green-200 rounded px-2 py-1 flex-shrink-0">{item.step}</span>
+              <span className="text-xs font-mono font-bold text-gray-900 bg-gray-100 border border-gray-200 rounded px-2 py-1 flex-shrink-0">{item.step}</span>
               <div>
                 <span className="font-semibold text-gray-900">{item.title}</span>
                 <p className="text-gray-500 mt-0.5 text-sm">{item.desc}</p>
@@ -469,10 +465,10 @@ function Verification() {
       <DocSection title="Pre-deployment verification">
         <p>Every model goes through automated verification before it reaches a target device:</p>
         <ul className="list-none pl-0 mt-3 space-y-2 text-gray-600">
-          <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-green-500 mt-2 flex-shrink-0" /><span><strong className="text-gray-900">Accuracy</strong> — outputs match expected results within configurable tolerance</span></li>
-          <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-green-500 mt-2 flex-shrink-0" /><span><strong className="text-gray-900">Latency</strong> — inference time meets target hardware constraints</span></li>
-          <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-green-500 mt-2 flex-shrink-0" /><span><strong className="text-gray-900">Memory</strong> — peak memory usage stays within device limits</span></li>
-          <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-green-500 mt-2 flex-shrink-0" /><span><strong className="text-gray-900">Stability</strong> — no crashes or numerical issues over extended runs</span></li>
+          <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0" /><span><strong className="text-gray-900">Accuracy</strong> — outputs match expected results within configurable tolerance</span></li>
+          <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0" /><span><strong className="text-gray-900">Latency</strong> — inference time meets target hardware constraints</span></li>
+          <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0" /><span><strong className="text-gray-900">Memory</strong> — peak memory usage stays within device limits</span></li>
+          <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0" /><span><strong className="text-gray-900">Stability</strong> — no crashes or numerical issues over extended runs</span></li>
         </ul>
       </DocSection>
 
@@ -833,7 +829,7 @@ function Changelog() {
           <ul className="list-none pl-0 space-y-2 text-gray-600">
             {release.items.map((item, i) => (
               <li key={i} className="flex gap-3 items-start">
-                <span className="w-1.5 h-1.5 rounded-full bg-green-500 mt-2 flex-shrink-0" />
+                <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0" />
                 {item}
               </li>
             ))}
@@ -926,20 +922,15 @@ function CodeBlock({ language, code }: { language: string; code: string }) {
 
 function DocCallout({ type, children }: { type: "info" | "warning" | "tip"; children: React.ReactNode }) {
   const styles = {
-    info: "border-l-green-500 bg-green-50/50",
-    warning: "border-l-amber-500 bg-amber-50/50",
-    tip: "border-l-blue-500 bg-blue-50/50",
+    info: "border-l-gray-400 bg-gray-50/60",
+    warning: "border-l-gray-600 bg-gray-50/60",
+    tip: "border-l-gray-300 bg-gray-50/60",
   };
   const labels = { info: "Note", warning: "Warning", tip: "Tip" };
-  const labelColors = {
-    info: "text-green-700",
-    warning: "text-amber-700",
-    tip: "text-blue-700",
-  };
 
   return (
     <div className={`rounded-lg border border-gray-200 border-l-4 p-4 text-sm leading-relaxed ${styles[type]}`}>
-      <span className={`font-semibold ${labelColors[type]}`}>{labels[type]}</span>{" "}
+      <span className="font-semibold text-gray-900">{labels[type]}</span>{" "}
       <span className="text-gray-600">{children}</span>
     </div>
   );
@@ -961,8 +952,8 @@ function DocTable({ headers, rows }: { headers: string[]; rows: string[][] }) {
             <tr key={i} className="border-b border-gray-100 last:border-0">
               {row.map((cell, j) => (
                 <td key={j} className={`px-4 py-2.5 ${j === 0 ? 'text-gray-900 font-medium' : 'text-gray-500'} text-[13px]`}>
-                  {cell === "Supported" ? <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-green-100 text-green-700">{cell}</span>
-                    : cell === "Beta" ? <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-blue-100 text-blue-700">{cell}</span>
+                  {cell === "Supported" ? <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-gray-900 text-white">{cell}</span>
+                    : cell === "Beta" ? <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-gray-200 text-gray-700">{cell}</span>
                     : cell === "Experimental" ? <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-gray-100 text-gray-500">{cell}</span>
                     : cell}
                 </td>
