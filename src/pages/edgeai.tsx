@@ -90,14 +90,10 @@ const EdgeAI: FC = () => {
             className="relative w-full h-[280px] sm:h-[380px] rounded-3xl overflow-hidden mb-14"
           >
             <div
-              className="absolute inset-0"
-              style={{
-                backgroundImage: 'url("/images/EdgeExplained.jpg")',
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: 'url("/images/gradient-yellow-green.png")' }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10" />
+            <div className="absolute inset-0 bg-black/40" />
             <div className="relative z-10 h-full flex flex-col items-start justify-end p-8 sm:p-12">
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
