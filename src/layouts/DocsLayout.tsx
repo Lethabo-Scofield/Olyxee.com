@@ -1,4 +1,4 @@
-import { FC, useState, useEffect, useRef } from "react"
+import { FC, useState, useEffect, useRef, useCallback } from "react"
 import Link from "next/link"
 import { Search, ChevronRight, ExternalLink, Menu, X } from "lucide-react"
 
@@ -32,7 +32,26 @@ const DocsLayout: FC<DocsLayoutProps> = ({ tabs, activeTab, onTabChange, sideNav
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
   const [searchFocused, setSearchFocused] = useState(false)
+  const [headerVisible, setHeaderVisible] = useState(true)
   const tabsRef = useRef<HTMLDivElement>(null)
+  const lastScrollY = useRef(0)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const y = window.scrollY
+      const delta = y - lastScrollY.current
+      if (y <= 10) {
+        setHeaderVisible(true)
+      } else if (delta > 4) {
+        setHeaderVisible(false)
+      } else if (delta < -4) {
+        setHeaderVisible(true)
+      }
+      lastScrollY.current = y
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   useEffect(() => {
     if (mobileMenuOpen) {
@@ -66,7 +85,10 @@ const DocsLayout: FC<DocsLayoutProps> = ({ tabs, activeTab, onTabChange, sideNav
 
   return (
     <div className="min-h-screen bg-white" style={{ paddingTop: '60px' }}>
-      <div className="border-b border-gray-200 bg-white/95 backdrop-blur-md sticky top-0 z-40">
+      <div
+        className="border-b border-gray-200 bg-white/95 backdrop-blur-md sticky z-40 transition-[top] duration-300"
+        style={{ top: headerVisible ? 60 : 0 }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-8 overflow-x-auto scrollbar-hide" ref={tabsRef}>
@@ -125,7 +147,10 @@ const DocsLayout: FC<DocsLayoutProps> = ({ tabs, activeTab, onTabChange, sideNav
           {sideNav && (
             <>
               <aside className={`w-60 flex-shrink-0 border-r border-gray-100 hidden md:block`}>
-                <nav className="sticky top-[46px] h-[calc(100vh-46px)] overflow-y-auto py-6 px-4">
+                <nav
+                  className="sticky overflow-y-auto py-6 px-4 transition-[top] duration-300"
+                  style={{ top: headerVisible ? 106 : 46, height: headerVisible ? 'calc(100vh - 106px)' : 'calc(100vh - 46px)' }}
+                >
                   {!hasResults && searchQuery ? (
                     <p className="text-sm text-gray-400 px-2 py-4">No results for &ldquo;{searchQuery}&rdquo;</p>
                   ) : filteredSideNav?.map(section => section.items.length > 0 ? (
