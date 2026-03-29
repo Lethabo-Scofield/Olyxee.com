@@ -222,14 +222,14 @@ function EarlyAccessForm() {
 }
 
 const aiApplications = [
-  { icon: VisionIcon, name: "Computer Vision", examples: "Object detection, image segmentation, facial recognition", gradient: "from-blue-400 via-cyan-400 to-teal-400" },
-  { icon: LanguageIcon, name: "NLP & LLMs", examples: "Text generation, sentiment analysis, chatbots, translation", gradient: "from-violet-400 via-purple-400 to-fuchsia-400" },
-  { icon: PaletteIcon, name: "Image Generation", examples: "Stable Diffusion, DALL-E, style transfer, super-resolution", gradient: "from-pink-400 via-rose-400 to-orange-400" },
-  { icon: WaveformIcon, name: "Audio & Speech", examples: "Speech-to-text, music generation, voice cloning", gradient: "from-amber-400 via-orange-400 to-red-400" },
-  { icon: FilmIcon, name: "Video Analysis", examples: "Action recognition, tracking, video generation", gradient: "from-emerald-400 via-green-400 to-cyan-400" },
-  { icon: RobotArmIcon, name: "Robotics & Control", examples: "Path planning, reinforcement learning, simulation", gradient: "from-red-400 via-rose-400 to-pink-400" },
-  { icon: HeartPulseIcon, name: "Medical AI", examples: "Diagnostics, drug discovery, medical imaging", gradient: "from-teal-400 via-cyan-400 to-blue-400" },
-  { icon: CarIcon, name: "Autonomous Systems", examples: "Self-driving, drone navigation, ADAS", gradient: "from-indigo-400 via-blue-400 to-violet-400" },
+  { icon: VisionIcon, name: "Computer Vision", examples: "Object detection, image segmentation, facial recognition", image: "/images/gradient-blue.png" },
+  { icon: LanguageIcon, name: "NLP & LLMs", examples: "Text generation, sentiment analysis, chatbots, translation", image: "/images/gradient-purple.png" },
+  { icon: PaletteIcon, name: "Image Generation", examples: "Stable Diffusion, DALL-E, style transfer, super-resolution", image: "/images/gradient-pink-cyan.png" },
+  { icon: WaveformIcon, name: "Audio & Speech", examples: "Speech-to-text, music generation, voice cloning", image: "/images/gradient-orange-purple.png" },
+  { icon: FilmIcon, name: "Video Analysis", examples: "Action recognition, tracking, video generation", image: "/images/gradient-yellow-green.png" },
+  { icon: RobotArmIcon, name: "Robotics & Control", examples: "Path planning, reinforcement learning, simulation", image: "/images/gradient-orange-pink.png" },
+  { icon: HeartPulseIcon, name: "Medical AI", examples: "Diagnostics, drug discovery, medical imaging", image: "/images/gradient-pastel.png" },
+  { icon: CarIcon, name: "Autonomous Systems", examples: "Self-driving, drone navigation, ADAS", image: "/images/gradient-abstract-blue.png" },
 ];
 
 export default function GrysicsPage() {
@@ -335,9 +335,13 @@ export default function GrysicsPage() {
                   variants={fadeUp}
                   className="group relative rounded-3xl border border-neutral-200/80 hover:border-neutral-300 hover:shadow-xl transition-all duration-500 cursor-default overflow-hidden bg-white"
                 >
-                  <div className={`relative h-32 bg-gradient-to-br ${app.gradient} overflow-hidden`}>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
-                    <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(circle at 30% 70%, rgba(255,255,255,0.4) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255,255,255,0.3) 0%, transparent 40%)' }} />
+                  <div className="relative h-32 overflow-hidden">
+                    <img
+                      src={app.image}
+                      alt=""
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors duration-500" />
                     <div className="absolute bottom-3 left-3 w-10 h-10 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 shadow-lg">
                       <Icon className="w-5 h-5 text-white" />
                     </div>
