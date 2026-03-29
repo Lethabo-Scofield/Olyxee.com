@@ -65,7 +65,7 @@ Desktop CTA: "Get Started"
 - Community hero image: `public/images/Community presentation.png`
 
 ## Key Pages
-- **Homepage** (`src/app/page.tsx`): Vision hero, What We Do (4 pillars), Products (3 cards), Research (3 papers), Trust stats, Use Cases, CTA, Footer
+- **Homepage** (`src/app/page.tsx`): Vision hero, Pipeline (5 steps), Industries (tabbed slider), Offerings (Grysics + OEB cards), Architecture, Developer Tools (SDK/CLI/API/Docs with waitlist modal), Research (3 papers), CTA, Footer
 - **About** (`src/pages/about.tsx`): Mission, problem statement, approach, philosophy
 - **Olyxee Lab** (`src/pages/lab.tsx`): Research division — 6 research areas, recent publications, approach section, LinkedIn CTA
 - **Products**: Grysics (verification engine with animated canvas network), NRN (interpretable AI), WAVE (core platform)

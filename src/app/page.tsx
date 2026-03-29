@@ -9,6 +9,12 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
+  Code2,
+  Terminal,
+  Globe,
+  BookOpen,
+  X,
+  CheckCircle,
 } from "lucide-react";
 
 export default function HomePage() {
@@ -51,6 +57,7 @@ export default function HomePage() {
         <IndustriesSection />
         <OfferingsSection />
         <ArchitectureSection />
+        <DeveloperToolsSection />
         <ResearchSection />
         <CTASection />
       </main>
@@ -620,6 +627,241 @@ function ArchitectureSection() {
         </motion.div>
       </div>
     </section>
+  );
+}
+
+
+function DeveloperToolsSection() {
+  const [waitlistOpen, setWaitlistOpen] = useState(false);
+  const [selectedTool, setSelectedTool] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [responseMsg, setResponseMsg] = useState("");
+
+  const tools = [
+    {
+      icon: Code2,
+      title: "SDK",
+      desc: "Python and C++ libraries for model verification, optimization, and deployment.",
+      status: "Available",
+      statusColor: "bg-green-400",
+    },
+    {
+      icon: Terminal,
+      title: "CLI",
+      desc: "Command-line tools for managing deployments, running tests, and monitoring.",
+      status: "Available",
+      statusColor: "bg-green-400",
+    },
+    {
+      icon: Globe,
+      title: "API",
+      desc: "RESTful API for programmatic access to the Grysics platform.",
+      status: "Beta",
+      statusColor: "bg-amber-400",
+    },
+    {
+      icon: BookOpen,
+      title: "Docs",
+      desc: "Comprehensive guides, tutorials, and API reference.",
+      status: "Available",
+      statusColor: "bg-green-400",
+    },
+  ];
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, message, tool: selectedTool }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setStatus("success");
+        setResponseMsg(data.message);
+        setTimeout(() => {
+          setWaitlistOpen(false);
+          setStatus("idle");
+          setEmail("");
+          setMessage("");
+        }, 3000);
+      } else {
+        setStatus("error");
+        setResponseMsg(data.error || "Something went wrong.");
+      }
+    } catch {
+      setStatus("error");
+      setResponseMsg("Network error. Please try again.");
+    }
+  };
+
+  const openWaitlist = (toolName: string) => {
+    setSelectedTool(toolName);
+    setWaitlistOpen(true);
+    setStatus("idle");
+    setResponseMsg("");
+  };
+
+  return (
+    <>
+      <section className="py-32 sm:py-44 bg-neutral-950 text-white relative overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage: 'url("/images/gradient-blue.png")',
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            filter: "blur(80px) saturate(1.5)",
+          }}
+        />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,transparent_0%,rgba(0,0,0,0.6)_100%)]" />
+
+        <div className="relative max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="text-center mb-20 sm:mb-28">
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+              className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight mb-5"
+            >
+              Developer <em className="text-white/40">tools</em>
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.15, duration: 0.7 }}
+              className="text-lg text-white/50 font-light max-w-xl mx-auto"
+            >
+              Everything you need to build, test, and ship reliable AI.
+            </motion.p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {tools.map((tool, idx) => {
+              const Icon = tool.icon;
+              return (
+                <motion.div
+                  key={tool.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+                  className="group relative rounded-3xl border border-white/10 hover:border-white/20 p-8 sm:p-10 transition-all duration-500 hover:bg-white/[0.03] flex flex-col"
+                >
+                  <div className="flex items-start justify-between mb-6">
+                    <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center">
+                      <Icon className="w-5 h-5 text-white/70" />
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className={`w-1.5 h-1.5 rounded-full ${tool.statusColor}`} />
+                      <span className="text-[11px] font-medium text-white/40 uppercase tracking-widest">{tool.status}</span>
+                    </div>
+                  </div>
+
+                  <h3 className="text-xl tracking-tight mb-2">{tool.title}</h3>
+                  <p className="text-sm text-white/40 leading-relaxed font-light flex-1">{tool.desc}</p>
+
+                  <button
+                    onClick={() => openWaitlist(tool.title)}
+                    className="mt-6 group/btn inline-flex items-center gap-2 text-sm font-medium text-white/60 hover:text-white transition-colors"
+                  >
+                    Get early access <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-0.5 transition-transform" />
+                  </button>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <AnimatePresence>
+        {waitlistOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-[2000] flex items-end sm:items-center justify-center"
+          >
+            <div className="absolute inset-0 bg-black/50 backdrop-blur-md" onClick={() => { setWaitlistOpen(false); setStatus("idle"); }} />
+            <motion.div
+              initial={{ opacity: 0, y: 40, scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 40, scale: 0.97 }}
+              transition={{ type: "spring", stiffness: 350, damping: 30 }}
+              className="relative w-full max-w-md bg-white rounded-t-3xl sm:rounded-3xl shadow-2xl overflow-hidden"
+            >
+              <div className="flex items-center justify-between px-6 sm:px-8 py-5 border-b border-neutral-100">
+                <div>
+                  <h3 className="text-base font-semibold text-neutral-900">Get early access</h3>
+                  <p className="text-xs text-neutral-400 mt-0.5">{selectedTool} — Join the waitlist</p>
+                </div>
+                <button
+                  onClick={() => { setWaitlistOpen(false); setStatus("idle"); }}
+                  className="w-8 h-8 rounded-full bg-neutral-100 hover:bg-neutral-200 flex items-center justify-center transition-colors"
+                >
+                  <X className="w-4 h-4 text-neutral-500" />
+                </button>
+              </div>
+
+              <div className="px-6 sm:px-8 py-6">
+                {status === "success" ? (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="text-center py-8"
+                  >
+                    <div className="w-14 h-14 rounded-full bg-green-50 flex items-center justify-center mx-auto mb-5">
+                      <CheckCircle className="w-7 h-7 text-green-500" />
+                    </div>
+                    <h4 className="text-lg text-neutral-900 mb-1">{responseMsg}</h4>
+                    <p className="text-sm text-neutral-500">We'll notify you when {selectedTool} is ready for you.</p>
+                  </motion.div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <p className="text-sm text-neutral-500 font-light leading-relaxed mb-2">
+                      Sign up for early access to our {selectedTool}. We'll reach out when your spot is ready.
+                    </p>
+                    <input
+                      type="email"
+                      required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="w-full px-4 py-3 bg-neutral-50 border-0 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900/10 text-sm text-neutral-900 placeholder:text-neutral-400"
+                      placeholder="Email address"
+                    />
+                    <textarea
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                      className="w-full px-4 py-3 bg-neutral-50 border-0 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900/10 text-sm text-neutral-900 placeholder:text-neutral-400 resize-none"
+                      rows={3}
+                      placeholder="Tell us what you're building (optional)"
+                    />
+                    {status === "error" && (
+                      <p className="text-sm text-red-500">{responseMsg}</p>
+                    )}
+                    <button
+                      type="submit"
+                      disabled={status === "loading"}
+                      className="w-full py-3.5 bg-neutral-900 text-white rounded-xl font-medium text-sm hover:bg-black transition-colors disabled:opacity-50"
+                    >
+                      {status === "loading" ? "Joining..." : "Join the waitlist"}
+                    </button>
+                    <p className="text-[11px] text-neutral-400 text-center">No spam. We'll only email you about early access.</p>
+                  </form>
+                )}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
 
