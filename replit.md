@@ -35,11 +35,14 @@ Company-level website for Olyxee, a reliability-first AI infrastructure company.
 - Nav items stagger in with spring physics
 - Mobile drawer: glass rounded panel (`borderRadius: 28`) pinned right with matching frosted glass
 
+## Organizational Hierarchy
+- **Olyxee** = the company (brain/strategy) — defines vision, conducts research, builds core AI
+- **OEB / EdgeAI** = sub-division (hands/execution) — deploys AI to edge devices (IoT, drones, robots, wearables, cameras, medical devices). Handles model deployment, optimization (quantization/pruning), fleet orchestration, monitoring & updates
+- **Grysics** = verification engine for AI applications (chatbots, RAG, agents) — ensures reliability before and after deployment. Integrates with OEB for edge verification
+
 ## Site Structure & Navigation
 Navigation: About | EdgeAI | Docs | Community
 Desktop CTA: "Get Started"
-- Grysics = verification engine for AI applications (chatbots, RAG, agents) — NOT edge hardware
-- Olyxee = the company, NOT a product
 - Grysics SDK: `pip install grysics`, CLI: `grysics` commands
 
 ## Routing
