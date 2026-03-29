@@ -685,7 +685,7 @@ function RateLimits() {
 
 function DocPage({ title, subtitle, children }: { title: string; subtitle: string; children: React.ReactNode }) {
   return (
-    <div className="w-full max-w-3xl mx-auto px-6 sm:px-10 py-10 sm:py-14">
+    <div className="w-full max-w-3xl mx-auto px-4 sm:px-10 py-10 sm:py-14">
       <div className="mb-10 pb-6 border-b border-gray-100">
         <h1 className="text-[28px] sm:text-[32px] font-semibold text-gray-900 tracking-tight mb-2">{title}</h1>
         <p className="text-gray-500 text-[15px] leading-relaxed max-w-xl">{subtitle}</p>

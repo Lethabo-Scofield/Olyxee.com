@@ -85,8 +85,8 @@ const Header = () => {
                         maxWidth: scrolled ? 820 : 1400,
                         height: scrolled ? 52 : 60,
                         borderRadius: scrolled ? 50 : 0,
-                        paddingLeft: scrolled ? 20 : 32,
-                        paddingRight: scrolled ? 20 : 32,
+                        paddingLeft: scrolled ? 16 : 16,
+                        paddingRight: scrolled ? 16 : 16,
                         background: scrolled
                             ? 'rgba(255, 255, 255, 0.6)'
                             : 'rgba(255, 255, 255, 0.0)',

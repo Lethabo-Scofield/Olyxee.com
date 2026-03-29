@@ -177,7 +177,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ families, active, onSelect, children 
         </div>
       </aside>
 
-      <main className="flex-1 min-w-0 overflow-y-auto">
+      <main className="flex-1 min-w-0 overflow-y-auto pt-10 lg:pt-0">
         {children}
       </main>
     </div>

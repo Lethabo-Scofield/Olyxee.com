@@ -253,7 +253,7 @@ export default function GrysicsPage() {
               { value: "50+", label: "Hardware targets", description: "From NVIDIA Jetson to Raspberry Pi to custom silicon." },
             ].map((stat, idx) => (
               <motion.div key={stat.label} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={idx} variants={fadeUp} className="bg-white p-10 sm:p-12">
-                <span className="font-serif text-5xl sm:text-6xl italic text-neutral-900">{stat.value}</span>
+                <span className="font-serif text-4xl sm:text-5xl italic text-neutral-900">{stat.value}</span>
                 <h3 className="text-sm font-semibold text-neutral-900 mt-4 mb-2">{stat.label}</h3>
                 <p className="text-sm text-neutral-500 leading-relaxed">{stat.description}</p>
               </motion.div>

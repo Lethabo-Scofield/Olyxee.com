@@ -416,7 +416,7 @@ function TrustSection() {
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               className="text-center"
             >
-              <div className="text-5xl sm:text-6xl lg:text-7xl font-serif italic text-neutral-900 mb-3">{stat.value}</div>
+              <div className="text-4xl sm:text-5xl lg:text-7xl font-serif italic text-neutral-900 mb-3">{stat.value}</div>
               <div className="text-neutral-400 text-sm uppercase tracking-widest font-medium">{stat.label}</div>
             </motion.div>
           ))}

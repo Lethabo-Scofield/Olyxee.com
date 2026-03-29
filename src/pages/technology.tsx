@@ -90,10 +90,12 @@ const Technology: FC = () => {
             ].map((item, idx) => {
               const Icon = item.icon;
               return (
-                <motion.div key={item.step} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={idx} variants={fadeUp} className="py-8 grid grid-cols-[auto_auto_1fr] gap-6 items-start">
-                  <span className="text-xs font-mono text-neutral-400 mt-1">{item.step}</span>
-                  <div className="w-10 h-10 rounded-xl bg-neutral-100 flex items-center justify-center flex-shrink-0">
-                    <Icon className="w-5 h-5 text-neutral-600" />
+                <motion.div key={item.step} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={idx} variants={fadeUp} className="py-8 flex flex-col sm:grid sm:grid-cols-[auto_auto_1fr] gap-4 sm:gap-6 items-start">
+                  <div className="flex items-center gap-3 sm:contents">
+                    <span className="text-xs font-mono text-neutral-400 mt-1">{item.step}</span>
+                    <div className="w-10 h-10 rounded-xl bg-neutral-100 flex items-center justify-center flex-shrink-0">
+                      <Icon className="w-5 h-5 text-neutral-600" />
+                    </div>
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-neutral-900 mb-1">{item.title}</h3>

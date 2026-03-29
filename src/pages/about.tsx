@@ -190,7 +190,7 @@ const About: FC = () => {
                 custom={idx}
                 variants={fadeUp}
               >
-                <p className="text-5xl sm:text-6xl font-serif italic text-neutral-900 mb-2">{stat.number}</p>
+                <p className="text-4xl sm:text-5xl font-serif italic text-neutral-900 mb-2">{stat.number}</p>
                 <p className="text-sm text-neutral-400 uppercase tracking-widest font-medium">{stat.label}</p>
               </motion.div>
             ))}
