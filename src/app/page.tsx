@@ -175,95 +175,76 @@ function HeroSection() {
 
 function PipelineSection() {
   const steps = [
-    {
-      num: "01",
-      title: "Ingest",
-      desc: "Import trained models from PyTorch, TensorFlow, ONNX, or JAX. Grysics analyzes the computational graph and parameter structure automatically.",
-      detail: "Supports .pt, .onnx, .h5, .tflite",
-    },
-    {
-      num: "02",
-      title: "Verify",
-      desc: "Run hardware-specific verification: accuracy tolerance, latency bounds, memory limits, and numerical stability across 1,000+ inference cycles.",
-      detail: "Pre-deployment failure detection",
-    },
-    {
-      num: "03",
-      title: "Optimize",
-      desc: "Automatic quantization (FP16, INT8, INT4) and pruning adapted to target hardware constraints. Maintain accuracy while cutting model size up to 87%.",
-      detail: "Calibration-aware compression",
-    },
-    {
-      num: "04",
-      title: "Deploy",
-      desc: "Push to Jetson, Raspberry Pi, Intel NCS2, or containerized endpoints. Fleet deployment with staged rollout and automatic rollback.",
-      detail: "Single-command to any device",
-    },
-    {
-      num: "05",
-      title: "Monitor",
-      desc: "Continuous observability for drift, latency degradation, and anomalies. Automatic rollback when metrics breach configurable thresholds.",
-      detail: "Real-time production health",
-    },
+    { title: "Ingest", desc: "Import from any framework." },
+    { title: "Verify", desc: "Test against real hardware." },
+    { title: "Optimize", desc: "Compress for the target." },
+    { title: "Deploy", desc: "Push to any device." },
+    { title: "Monitor", desc: "Watch it in production." },
   ];
 
   return (
-    <section className="py-28 sm:py-36 border-t border-neutral-100">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
-        <div className="max-w-2xl mb-20">
-          <span className="accent-line" />
+    <section className="py-32 sm:py-44 border-t border-neutral-100">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-12">
+        <div className="text-center mb-24">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight mb-6"
+            className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight mb-5"
           >
-            From model to
-            <br />
-            <em className="text-neutral-400">production. End to end.</em>
+            From model to <em className="text-neutral-400">production.</em>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-lg text-neutral-500 leading-relaxed font-light"
+            className="text-lg text-neutral-400 font-light"
           >
-            The Grysics pipeline handles every stage between a trained model and a deployed, monitored system.
+            Five stages. One pipeline. Zero guesswork.
           </motion.p>
         </div>
 
-        <div className="relative">
-          <div className="absolute left-6 top-0 bottom-0 w-px bg-neutral-200 hidden sm:block" />
+        <div className="hidden sm:flex items-start justify-between relative">
+          <div className="absolute top-5 left-[10%] right-[10%] h-px bg-neutral-200" />
 
-          <div className="space-y-0">
-            {steps.map((step, idx) => (
-              <motion.div
-                key={step.num}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.08 }}
-                className="relative flex gap-8 sm:gap-12 group"
-              >
-                <div className="relative flex-shrink-0 hidden sm:flex flex-col items-center">
-                  <div className="w-12 h-12 rounded-full bg-neutral-900 text-white flex items-center justify-center text-xs font-mono font-bold z-10 group-hover:scale-110 transition-transform">
-                    {step.num}
-                  </div>
-                  {idx < steps.length - 1 && (
-                    <div className="w-px flex-1 bg-neutral-200" />
-                  )}
-                </div>
+          {steps.map((step, idx) => (
+            <motion.div
+              key={step.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className="flex flex-col items-center text-center relative z-10 w-1/5"
+            >
+              <div className="w-10 h-10 rounded-full bg-neutral-900 text-white flex items-center justify-center text-xs font-medium mb-6">
+                {idx + 1}
+              </div>
+              <h3 className="text-base font-semibold text-neutral-900 mb-1">{step.title}</h3>
+              <p className="text-sm text-neutral-400">{step.desc}</p>
+            </motion.div>
+          ))}
+        </div>
 
-                <div className="flex-1 pb-12 sm:pb-16">
-                  <div className="sm:hidden text-xs font-mono font-bold text-neutral-400 mb-2">{step.num}</div>
-                  <h3 className="text-xl sm:text-2xl font-semibold text-neutral-900 mb-2">{step.title}</h3>
-                  <p className="text-neutral-500 text-sm leading-relaxed mb-3 max-w-xl">{step.desc}</p>
-                  <span className="inline-block text-xs font-medium text-neutral-400 bg-neutral-50 border border-neutral-200 rounded-full px-3 py-1">{step.detail}</span>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+        <div className="sm:hidden space-y-8">
+          {steps.map((step, idx) => (
+            <motion.div
+              key={step.title}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: idx * 0.08 }}
+              className="flex items-start gap-4"
+            >
+              <div className="w-8 h-8 rounded-full bg-neutral-900 text-white flex items-center justify-center text-xs font-medium flex-shrink-0">
+                {idx + 1}
+              </div>
+              <div>
+                <h3 className="text-base font-semibold text-neutral-900">{step.title}</h3>
+                <p className="text-sm text-neutral-400 mt-0.5">{step.desc}</p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
