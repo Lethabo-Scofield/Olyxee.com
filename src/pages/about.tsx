@@ -22,43 +22,32 @@ const About: FC = () => {
       <div className="grain" />
       <Header />
 
-      <section className="pt-28 sm:pt-36 pb-20 sm:pb-28 px-4 sm:px-6">
+      <section className="pt-32 sm:pt-44 pb-20 sm:pb-28 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="relative w-full h-[280px] sm:h-[380px] rounded-3xl overflow-hidden mb-14"
+            className="max-w-3xl mb-14"
           >
-            <div
-              className="absolute inset-0"
-              style={{
-                backgroundImage: 'url("/images/Olyxee_Position.jpg")',
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10" />
-            <div className="relative z-10 h-full flex flex-col items-start justify-end p-8 sm:p-12">
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="inline-flex items-center gap-2 px-3 py-1 bg-white/15 backdrop-blur-md text-white rounded-full text-xs font-medium mb-4 border border-white/20 uppercase tracking-widest"
-              >
-                About Olyxee
-              </motion.div>
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="font-serif text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.1]"
-              >
-                Making AI systems
-                <br />
-                <em className="text-white/60">reliable enough to trust.</em>
-              </motion.h1>
-            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="inline-flex items-center gap-2 px-3 py-1 bg-neutral-100 text-neutral-500 rounded-full text-xs font-medium mb-6 uppercase tracking-widest"
+            >
+              About Olyxee
+            </motion.div>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.1]"
+            >
+              Making AI systems
+              <br />
+              <em className="text-neutral-400">reliable enough to trust.</em>
+            </motion.h1>
           </motion.div>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
