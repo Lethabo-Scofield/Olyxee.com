@@ -1,10 +1,10 @@
-import { FC, useRef } from "react";
+import { FC } from "react";
 import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import Link from "next/link";
-import { ArrowRight, Cpu, Radio, Server, Layers, CircuitBoard, Shield, Gauge, Box, ChevronDown } from "lucide-react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight, Cpu, Radio, Server, Layers, CircuitBoard, Shield, Gauge, Box } from "lucide-react";
+import { motion } from "framer-motion";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -71,11 +71,6 @@ const supportedHardware = [
 ];
 
 const EdgeAI: FC = () => {
-  const heroRef = useRef(null);
-  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const heroScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95]);
-  const heroY = useTransform(scrollYProgress, [0, 0.5], [0, 60]);
 
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
@@ -85,91 +80,62 @@ const EdgeAI: FC = () => {
         path="/edgeai"
       />
       <div className="grain" />
-      <Header theme="dark" />
+      <Header />
 
-      <section ref={heroRef} className="relative min-h-[100vh] flex flex-col items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-neutral-950" />
-        <div
-          className="absolute inset-0 opacity-40"
-          style={{
-            backgroundImage: 'url("/images/gradient-yellow-green.png")',
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            filter: "blur(80px) saturate(1.5)",
-          }}
-        />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.6)_100%)]" />
-
-        <motion.div
-          style={{ opacity: heroOpacity, scale: heroScale, y: heroY }}
-          className="relative z-10 text-center px-6 max-w-5xl mx-auto"
-        >
+      <section className="pt-40 sm:pt-48 pb-20 sm:pb-28">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+            transition={{ duration: 0.8, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
           >
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 bg-white/10 backdrop-blur-xl text-white/80 rounded-full text-xs font-medium mb-10 border border-white/10">
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 bg-neutral-100 text-neutral-600 rounded-full text-xs font-medium mb-8 border border-neutral-200/60">
               <Box className="w-3.5 h-3.5" />
               Olyxee Edge Box
             </div>
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-            className="font-serif text-5xl sm:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] text-white leading-[1] tracking-tight mb-8"
+            transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+            className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 leading-[1.08] tracking-tight mb-5"
           >
             AI that runs
             <br />
-            <em className="text-white/40">in the real world</em>
+            <em className="text-neutral-400">in the real world</em>
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-            className="text-lg sm:text-xl text-white/50 max-w-2xl mx-auto leading-relaxed font-light"
+            transition={{ duration: 0.8, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+            className="text-lg text-neutral-500 max-w-xl leading-relaxed font-light mb-10"
           >
             Olyxee Edge Box (OEB) is our execution division — the hands of Olyxee.
             We take AI from the lab and deploy it into the real world.
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1, ease: [0.25, 0.1, 0.25, 1] }}
-            className="mt-12 flex flex-col sm:flex-row gap-4 justify-center"
+            transition={{ duration: 0.7, delay: 0.65, ease: [0.25, 0.1, 0.25, 1] }}
+            className="flex flex-wrap gap-3"
           >
             <Link
               href="/docs"
-              className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide"
+              className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-black transition-all text-sm"
             >
               Explore OEB <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </Link>
             <Link
               href="/products/grysics"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 text-white/70 border border-white/15 rounded-full font-medium hover:bg-white/5 hover:text-white transition-all text-sm tracking-wide"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-neutral-600 border border-neutral-200 rounded-full font-medium hover:bg-neutral-50 hover:text-neutral-900 transition-all text-sm"
             >
               Verify with Grysics
             </Link>
           </motion.div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 1 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-          >
-            <ChevronDown className="w-5 h-5 text-white/30" />
-          </motion.div>
-        </motion.div>
+        </div>
       </section>
 
       <section className="py-32 sm:py-44">
@@ -265,8 +231,7 @@ const EdgeAI: FC = () => {
         </div>
       </section>
 
-      <section className="py-32 sm:py-44 bg-neutral-950 text-white relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-neutral-800 rounded-full blur-[150px] opacity-30 -translate-y-1/2 -translate-x-1/4" />
+      <section className="py-32 sm:py-44">
         <div className="max-w-5xl mx-auto px-6 sm:px-8 relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -275,15 +240,15 @@ const EdgeAI: FC = () => {
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             className="text-center mb-20 sm:mb-28"
           >
-            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight mb-5">
-              Edge <em className="text-neutral-500">capabilities</em>
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight mb-5">
+              Edge <em className="text-neutral-400">capabilities</em>
             </h2>
             <p className="text-lg text-neutral-500 font-light max-w-xl mx-auto">
               Everything you need to run AI at the edge, built in.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 rounded-3xl overflow-hidden">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-neutral-200 rounded-3xl overflow-hidden">
             {capabilities.map((cap, idx) => {
               const Icon = cap.icon;
               return (
@@ -294,10 +259,10 @@ const EdgeAI: FC = () => {
                   viewport={{ once: true }}
                   custom={idx}
                   variants={fadeUp}
-                  className="bg-neutral-950 p-10 sm:p-12 hover:bg-white/[0.03] transition-colors duration-300"
+                  className="bg-[#fafafa] p-10 sm:p-12 hover:bg-neutral-50 transition-colors duration-300"
                 >
-                  <Icon className="w-6 h-6 text-neutral-500 mb-6" />
-                  <h3 className="text-lg tracking-tight mb-3">{cap.title}</h3>
+                  <Icon className="w-6 h-6 text-neutral-400 mb-6" />
+                  <h3 className="text-lg tracking-tight text-neutral-900 mb-3">{cap.title}</h3>
                   <p className="text-sm text-neutral-500 leading-relaxed font-light">{cap.description}</p>
                 </motion.div>
               );
@@ -349,18 +314,8 @@ const EdgeAI: FC = () => {
         </div>
       </section>
 
-      <section className="py-32 sm:py-44 bg-neutral-950 text-white relative overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-25"
-          style={{
-            backgroundImage: 'url("/images/gradient-yellow-green.png")',
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            filter: "blur(80px) saturate(1.5)",
-          }}
-        />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.5)_100%)]" />
-        <div className="max-w-5xl mx-auto px-6 sm:px-8 relative">
+      <section className="py-32 sm:py-44">
+        <div className="max-w-5xl mx-auto px-6 sm:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -368,24 +323,24 @@ const EdgeAI: FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             >
-              <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight mb-8">
+              <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight mb-8">
                 Deploy AI
                 <br />
-                <em className="text-white/40">at the edge</em>
+                <em className="text-neutral-400">at the edge</em>
               </h2>
-              <p className="text-white/50 text-lg mb-12 font-light leading-relaxed">
+              <p className="text-neutral-500 text-lg mb-12 font-light leading-relaxed">
                 Get your models running on real hardware in minutes. OEB handles the infrastructure — you focus on the intelligence.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <Link
                   href="/developers"
-                  className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide"
+                  className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-black transition-all text-sm"
                 >
                   Get Started <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                 </Link>
                 <Link
                   href="/docs"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 text-white/70 border border-white/15 rounded-full font-medium hover:bg-white/5 hover:text-white transition-all text-sm tracking-wide"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-neutral-600 border border-neutral-200 rounded-full font-medium hover:bg-neutral-50 hover:text-neutral-900 transition-all text-sm"
                 >
                   Read the Docs
                 </Link>
@@ -404,7 +359,6 @@ const EdgeAI: FC = () => {
                 alt="Engineer managing edge infrastructure in a server room"
                 className="w-full h-auto rounded-3xl"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/30 to-transparent rounded-3xl" />
             </motion.div>
           </div>
         </div>
