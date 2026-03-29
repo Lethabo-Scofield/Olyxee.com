@@ -331,14 +331,18 @@ function APIOverview() {
       <DocSection title="Key concepts">
         <div className="space-y-3 mt-2">
           {[
-            { title: "Applications", desc: "Register your chatbot, RAG pipeline, or agent workflow as an application. Each app gets its own verification history and monitoring dashboard." },
-            { title: "Verification runs", desc: "Test your application against predefined checks — accuracy, consistency, hallucination detection, and retrieval relevance." },
-            { title: "Monitoring", desc: "Continuous production monitoring with alerts for quality drift, hallucination spikes, and latency degradation." },
-            { title: "API Keys", desc: "Create scoped keys for different environments (dev, staging, production) with configurable permissions and expiration." },
+            { title: "Applications", desc: "Register your chatbot, RAG pipeline, or agent workflow as an application. Each app gets its own verification history and monitoring dashboard.", bg: "/images/gradient-blue-pink.png" },
+            { title: "Verification runs", desc: "Test your application against predefined checks — accuracy, consistency, hallucination detection, and retrieval relevance.", bg: "/images/gradient-pastel.png" },
+            { title: "Monitoring", desc: "Continuous production monitoring with alerts for quality drift, hallucination spikes, and latency degradation.", bg: "/images/gradient-yellow-green.png" },
+            { title: "API Keys", desc: "Create scoped keys for different environments (dev, staging, production) with configurable permissions and expiration.", bg: "/images/gradient-orange-purple.png" },
           ].map(item => (
-            <div key={item.title} className="border border-gray-200 rounded-lg p-4 hover:border-gray-300 transition-colors">
-              <h4 className="font-semibold text-gray-900 mb-1 text-[15px]">{item.title}</h4>
-              <p className="text-sm text-gray-500">{item.desc}</p>
+            <div key={item.title} className="rounded-lg p-4 hover:shadow-sm transition-all relative overflow-hidden">
+              <div className="absolute inset-0 bg-cover bg-center pointer-events-none" style={{ backgroundImage: `url("${item.bg}")` }} />
+              <div className="absolute inset-0 bg-white/82 backdrop-blur-sm pointer-events-none" />
+              <div className="relative">
+                <h4 className="font-semibold text-gray-900 mb-1 text-[15px]">{item.title}</h4>
+                <p className="text-sm text-gray-500">{item.desc}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -347,13 +351,17 @@ function APIOverview() {
       <DocSection title="SDKs & tools">
         <div className="space-y-3 mt-2">
           {[
-            { title: "Python SDK", desc: "Full-featured SDK for connecting, verifying, evaluating, and monitoring AI applications." },
-            { title: "REST API", desc: "HTTP API for programmatic access from any language or platform." },
-            { title: "CLI", desc: "Command-line tools for quick application verification and monitoring." },
+            { title: "Python SDK", desc: "Full-featured SDK for connecting, verifying, evaluating, and monitoring AI applications.", bg: "/images/gradient-abstract-blue.png" },
+            { title: "REST API", desc: "HTTP API for programmatic access from any language or platform.", bg: "/images/gradient-orange-pink.png" },
+            { title: "CLI", desc: "Command-line tools for quick application verification and monitoring.", bg: "/images/gradient-purple.png" },
           ].map(item => (
-            <div key={item.title} className="border border-gray-200 rounded-lg p-4 hover:border-gray-300 transition-colors">
-              <h4 className="font-semibold text-gray-900 mb-1 text-[15px]">{item.title}</h4>
-              <p className="text-sm text-gray-500">{item.desc}</p>
+            <div key={item.title} className="rounded-lg p-4 hover:shadow-sm transition-all relative overflow-hidden">
+              <div className="absolute inset-0 bg-cover bg-center pointer-events-none" style={{ backgroundImage: `url("${item.bg}")` }} />
+              <div className="absolute inset-0 bg-white/82 backdrop-blur-sm pointer-events-none" />
+              <div className="relative">
+                <h4 className="font-semibold text-gray-900 mb-1 text-[15px]">{item.title}</h4>
+                <p className="text-sm text-gray-500">{item.desc}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -552,31 +560,38 @@ function GrysicsOverview({ onNavigate }: { onNavigate?: (tab: string, page: stri
               title: "Chatbots",
               desc: "Customer support, Q&A assistants, conversational AI",
               checks: ["Accuracy", "Consistency", "Tone"],
+              bg: "/images/gradient-blue-pink.png",
             },
             {
               id: "grysics-rag",
               title: "RAG Pipelines",
               desc: "Document Q&A, knowledge bases, search-augmented answers",
               checks: ["Retrieval", "Context", "Faithfulness"],
+              bg: "/images/gradient-yellow-green.png",
             },
             {
               id: "grysics-agents",
               title: "Agents",
               desc: "Tool-using agents, multi-step workflows, autonomous systems",
               checks: ["Tool usage", "Planning", "Safety"],
+              bg: "/images/gradient-orange-purple.png",
             },
           ].map(item => (
             <button
               key={item.id}
               onClick={() => onNavigate?.("grysics", item.id)}
-              className="text-left border border-gray-200 rounded-xl p-5 hover:border-gray-400 hover:shadow-sm transition-all group"
+              className="text-left rounded-xl p-5 hover:shadow-md transition-all group relative overflow-hidden"
             >
-              <h4 className="font-semibold text-gray-900 text-base mb-1 group-hover:text-black">{item.title}</h4>
-              <p className="text-sm text-gray-500 mb-3">{item.desc}</p>
-              <div className="flex flex-wrap gap-1.5">
-                {item.checks.map(c => (
-                  <span key={c} className="text-[11px] text-gray-500 bg-gray-50 border border-gray-200 rounded px-2 py-0.5">{c}</span>
-                ))}
+              <div className="absolute inset-0 bg-cover bg-center pointer-events-none" style={{ backgroundImage: `url("${item.bg}")` }} />
+              <div className="absolute inset-0 bg-white/82 backdrop-blur-sm pointer-events-none" />
+              <div className="relative">
+                <h4 className="font-semibold text-gray-900 text-base mb-1 group-hover:text-black">{item.title}</h4>
+                <p className="text-sm text-gray-500 mb-3">{item.desc}</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {item.checks.map(c => (
+                    <span key={c} className="text-[11px] text-gray-500 bg-white/60 border border-white/40 rounded px-2 py-0.5">{c}</span>
+                  ))}
+                </div>
               </div>
             </button>
           ))}
@@ -586,13 +601,15 @@ function GrysicsOverview({ onNavigate }: { onNavigate?: (tab: string, page: stri
       <DocSection title="How it works">
         <div className="space-y-3 mt-2">
           {[
-            { step: "1", title: "Connect", desc: "Point Grysics at your application endpoint. Works with any HTTP API — no code changes needed." },
-            { step: "2", title: "Test", desc: "Run checks for accuracy, consistency, hallucination, and more. Use built-in or custom test cases." },
-            { step: "3", title: "Monitor", desc: "Enable continuous verification in production. Get alerts when quality drops." },
+            { step: "1", title: "Connect", desc: "Point Grysics at your application endpoint. Works with any HTTP API — no code changes needed.", bg: "/images/gradient-blue-pink.png" },
+            { step: "2", title: "Test", desc: "Run checks for accuracy, consistency, hallucination, and more. Use built-in or custom test cases.", bg: "/images/gradient-pastel.png" },
+            { step: "3", title: "Monitor", desc: "Enable continuous verification in production. Get alerts when quality drops.", bg: "/images/gradient-yellow-green.png" },
           ].map(item => (
-            <div key={item.step} className="flex gap-4 items-start p-4 rounded-lg bg-gray-50 border border-gray-100">
-              <span className="text-xs font-mono font-bold text-gray-900 bg-gray-100 border border-gray-200 rounded w-7 h-7 flex items-center justify-center flex-shrink-0">{item.step}</span>
-              <div>
+            <div key={item.step} className="flex gap-4 items-start p-4 rounded-lg relative overflow-hidden">
+              <div className="absolute inset-0 bg-cover bg-center pointer-events-none" style={{ backgroundImage: `url("${item.bg}")` }} />
+              <div className="absolute inset-0 bg-white/82 backdrop-blur-sm pointer-events-none" />
+              <span className="relative text-xs font-mono font-bold text-gray-900 bg-white/60 border border-white/40 rounded w-7 h-7 flex items-center justify-center flex-shrink-0">{item.step}</span>
+              <div className="relative">
                 <span className="font-semibold text-gray-900">{item.title}</span>
                 <p className="text-gray-500 mt-0.5 text-sm">{item.desc}</p>
               </div>
@@ -666,14 +683,18 @@ function GrysicsChatbots() {
       <DocSection title="What Grysics checks for chatbots">
         <div className="space-y-3 mt-2">
           {[
-            { title: "Accuracy", desc: "Does the bot answer correctly? Responses are tested against known-good answers for your most common questions." },
-            { title: "Consistency", desc: "Does the bot give the same answer when the same question is asked differently? \"How do I return an item?\" should match \"What's your return policy?\"" },
-            { title: "Hallucination", desc: "Does the bot make things up? Grysics detects when the bot invents policies, prices, or procedures that don't exist." },
-            { title: "Tone & safety", desc: "Does the bot respond appropriately? Catches rude, biased, or off-brand responses." },
+            { title: "Accuracy", desc: "Does the bot answer correctly? Responses are tested against known-good answers for your most common questions.", bg: "/images/gradient-pastel.png" },
+            { title: "Consistency", desc: "Does the bot give the same answer when the same question is asked differently? \"How do I return an item?\" should match \"What's your return policy?\"", bg: "/images/gradient-abstract-blue.png" },
+            { title: "Hallucination", desc: "Does the bot make things up? Grysics detects when the bot invents policies, prices, or procedures that don't exist.", bg: "/images/gradient-orange-pink.png" },
+            { title: "Tone & safety", desc: "Does the bot respond appropriately? Catches rude, biased, or off-brand responses.", bg: "/images/gradient-purple.png" },
           ].map(item => (
-            <div key={item.title} className="border border-gray-200 rounded-lg p-5 hover:border-gray-300 transition-colors">
-              <h4 className="font-semibold text-gray-900 mb-1.5 text-[15px]">{item.title}</h4>
-              <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
+            <div key={item.title} className="rounded-lg p-5 hover:shadow-sm transition-all relative overflow-hidden">
+              <div className="absolute inset-0 bg-cover bg-center pointer-events-none" style={{ backgroundImage: `url("${item.bg}")` }} />
+              <div className="absolute inset-0 bg-white/82 backdrop-blur-sm pointer-events-none" />
+              <div className="relative">
+                <h4 className="font-semibold text-gray-900 mb-1.5 text-[15px]">{item.title}</h4>
+                <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -713,14 +734,18 @@ function GrysicsRAG() {
       <DocSection title="What Grysics checks for RAG">
         <div className="space-y-3 mt-2">
           {[
-            { title: "Retrieval relevance", desc: "Did the system retrieve the right documents? Are the most relevant chunks ranked highest?" },
-            { title: "Context utilization", desc: "Is the retrieved context actually used in the answer? Measures whether the model leverages what it retrieves." },
-            { title: "Answer faithfulness", desc: "Is the answer supported by the retrieved context? Catches hallucinations where the model goes beyond the source data." },
-            { title: "Completeness", desc: "Does the answer cover all relevant information from the retrieved documents? Detects missing key details." },
+            { title: "Retrieval relevance", desc: "Did the system retrieve the right documents? Are the most relevant chunks ranked highest?", bg: "/images/gradient-blue-pink.png" },
+            { title: "Context utilization", desc: "Is the retrieved context actually used in the answer? Measures whether the model leverages what it retrieves.", bg: "/images/gradient-yellow-green.png" },
+            { title: "Answer faithfulness", desc: "Is the answer supported by the retrieved context? Catches hallucinations where the model goes beyond the source data.", bg: "/images/gradient-pastel.png" },
+            { title: "Completeness", desc: "Does the answer cover all relevant information from the retrieved documents? Detects missing key details.", bg: "/images/gradient-orange-purple.png" },
           ].map(item => (
-            <div key={item.title} className="border border-gray-200 rounded-lg p-5 hover:border-gray-300 transition-colors">
-              <h4 className="font-semibold text-gray-900 mb-1.5 text-[15px]">{item.title}</h4>
-              <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
+            <div key={item.title} className="rounded-lg p-5 hover:shadow-sm transition-all relative overflow-hidden">
+              <div className="absolute inset-0 bg-cover bg-center pointer-events-none" style={{ backgroundImage: `url("${item.bg}")` }} />
+              <div className="absolute inset-0 bg-white/82 backdrop-blur-sm pointer-events-none" />
+              <div className="relative">
+                <h4 className="font-semibold text-gray-900 mb-1.5 text-[15px]">{item.title}</h4>
+                <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -761,14 +786,18 @@ function GrysicsAgents() {
       <DocSection title="What Grysics checks for agents">
         <div className="space-y-3 mt-2">
           {[
-            { title: "Tool selection", desc: "Does the agent pick the right tool for each task? Catches cases where the agent calls the wrong API or uses incorrect parameters." },
-            { title: "Planning accuracy", desc: "Does the agent break complex tasks into correct steps? Verifies that multi-step plans are logical and complete." },
-            { title: "Parameter correctness", desc: "Are tool calls made with valid parameters? Detects type mismatches, missing required fields, and out-of-range values." },
-            { title: "Safety guardrails", desc: "Does the agent respect boundaries? Ensures it doesn't take destructive actions, access unauthorized data, or exceed scope." },
+            { title: "Tool selection", desc: "Does the agent pick the right tool for each task? Catches cases where the agent calls the wrong API or uses incorrect parameters.", bg: "/images/gradient-abstract-blue.png" },
+            { title: "Planning accuracy", desc: "Does the agent break complex tasks into correct steps? Verifies that multi-step plans are logical and complete.", bg: "/images/gradient-orange-pink.png" },
+            { title: "Parameter correctness", desc: "Are tool calls made with valid parameters? Detects type mismatches, missing required fields, and out-of-range values.", bg: "/images/gradient-blue-pink.png" },
+            { title: "Safety guardrails", desc: "Does the agent respect boundaries? Ensures it doesn't take destructive actions, access unauthorized data, or exceed scope.", bg: "/images/gradient-purple.png" },
           ].map(item => (
-            <div key={item.title} className="border border-gray-200 rounded-lg p-5 hover:border-gray-300 transition-colors">
-              <h4 className="font-semibold text-gray-900 mb-1.5 text-[15px]">{item.title}</h4>
-              <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
+            <div key={item.title} className="rounded-lg p-5 hover:shadow-sm transition-all relative overflow-hidden">
+              <div className="absolute inset-0 bg-cover bg-center pointer-events-none" style={{ backgroundImage: `url("${item.bg}")` }} />
+              <div className="absolute inset-0 bg-white/82 backdrop-blur-sm pointer-events-none" />
+              <div className="relative">
+                <h4 className="font-semibold text-gray-900 mb-1.5 text-[15px]">{item.title}</h4>
+                <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
+              </div>
             </div>
           ))}
         </div>
