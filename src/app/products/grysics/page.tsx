@@ -1,11 +1,11 @@
 'use client';
 
-import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
-import { useEffect, useRef } from 'react';
+import { motion, useMotionValue, useTransform, animate, useInView } from 'framer-motion';
+import { useEffect, useRef, useState, FormEvent } from 'react';
 import Link from 'next/link';
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import { ArrowRight, Shield, Cpu, BarChart3, Zap, GitBranch, Layers } from 'lucide-react';
+import { ArrowRight, Shield, Cpu, BarChart3, Zap, GitBranch, Layers, Check, Brain, Eye, MessageSquare, Image, Music, Video, Bot, Car, Factory, Stethoscope, Sparkles, TrendingUp, Clock, ChevronRight } from 'lucide-react';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -15,121 +15,145 @@ const fadeUp = {
   }),
 };
 
-function LiveDiagram() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+function AnimatedCounter({ target, suffix = '', prefix = '' }: { target: number; suffix?: string; prefix?: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true });
+  const [value, setValue] = useState(0);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
+    if (!isInView) return;
+    let current = 0;
+    const increment = Math.ceil(target / 40);
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) { current = target; clearInterval(timer); }
+      setValue(current);
+    }, 30);
+    return () => clearInterval(timer);
+  }, [isInView, target]);
 
-    let animationId: number;
-    let time = 0;
+  return <span ref={ref}>{prefix}{value.toLocaleString()}{suffix}</span>;
+}
 
-    const nodes = [
-      { x: 0.18, y: 0.25, label: 'Model', r: 28 },
-      { x: 0.50, y: 0.15, label: 'Verify', r: 28 },
-      { x: 0.82, y: 0.25, label: 'Optimize', r: 28 },
-      { x: 0.50, y: 0.50, label: 'Grysics', r: 36 },
-      { x: 0.18, y: 0.75, label: 'Edge', r: 28 },
-      { x: 0.50, y: 0.85, label: 'Monitor', r: 28 },
-      { x: 0.82, y: 0.75, label: 'Deploy', r: 28 },
-    ];
-
-    const edges = [
-      [0, 3], [1, 3], [2, 3], [3, 4], [3, 5], [3, 6],
-      [0, 1], [1, 2], [4, 5], [5, 6],
-    ];
-
-    const resize = () => {
-      const dpr = window.devicePixelRatio || 1;
-      const rect = canvas.getBoundingClientRect();
-      canvas.width = rect.width * dpr;
-      canvas.height = rect.height * dpr;
-      ctx.scale(dpr, dpr);
-    };
-
-    resize();
-    window.addEventListener('resize', resize);
-
-    const draw = () => {
-      time += 0.008;
-      const w = canvas.getBoundingClientRect().width;
-      const h = canvas.getBoundingClientRect().height;
-      ctx.clearRect(0, 0, w, h);
-
-      const pts = nodes.map(n => ({
-        x: n.x * w,
-        y: n.y * h + Math.sin(time * 1.2 + n.x * 6) * 4,
-        label: n.label,
-        r: n.r,
-      }));
-
-      edges.forEach(([a, b], i) => {
-        const pa = pts[a];
-        const pb = pts[b];
-        ctx.beginPath();
-        ctx.moveTo(pa.x, pa.y);
-        ctx.lineTo(pb.x, pb.y);
-        ctx.strokeStyle = 'rgba(163,163,163,0.15)';
-        ctx.lineWidth = 1;
-        ctx.stroke();
-
-        const pulse = (time * 0.6 + i * 0.3) % 1;
-        const px = pa.x + (pb.x - pa.x) * pulse;
-        const py = pa.y + (pb.y - pa.y) * pulse;
-        ctx.beginPath();
-        ctx.arc(px, py, 2.5, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(163,163,163,${0.5 - pulse * 0.4})`;
-        ctx.fill();
-      });
-
-      pts.forEach((p, i) => {
-        const isCenter = i === 3;
-        const glow = Math.sin(time * 2 + i) * 0.15 + 0.85;
-
-        if (isCenter) {
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r + 8, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(23,23,23,${0.04 * glow})`;
-          ctx.fill();
-        }
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = isCenter ? `rgba(23,23,23,${0.95 * glow})` : `rgba(245,245,245,${glow})`;
-        ctx.fill();
-        ctx.strokeStyle = isCenter ? 'rgba(23,23,23,0.3)' : 'rgba(163,163,163,0.25)';
-        ctx.lineWidth = 1;
-        ctx.stroke();
-
-        ctx.font = `${isCenter ? '600 13' : '500 11'}px Inter, system-ui, sans-serif`;
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillStyle = isCenter ? 'rgba(255,255,255,0.95)' : 'rgba(115,115,115,0.9)';
-        ctx.fillText(p.label, p.x, p.y);
-      });
-
-      animationId = requestAnimationFrame(draw);
-    };
-
-    draw();
-
-    return () => {
-      cancelAnimationFrame(animationId);
-      window.removeEventListener('resize', resize);
-    };
-  }, []);
+function BenchmarkBar({ label, grysics, others, unit, delay }: { label: string; grysics: number; others: number; unit: string; delay: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true });
+  const max = Math.max(grysics, others);
+  const grysicsWidth = (grysics / max) * 100;
+  const othersWidth = (others / max) * 100;
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="w-full h-full"
-      style={{ display: 'block' }}
-    />
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay }}
+      className="space-y-3"
+    >
+      <div className="flex items-center justify-between">
+        <span className="text-sm font-medium text-white">{label}</span>
+        <span className="text-xs text-neutral-500">{unit}</span>
+      </div>
+      <div className="space-y-2">
+        <div className="flex items-center gap-3">
+          <span className="text-[11px] font-medium text-neutral-400 w-16 flex-shrink-0">Grysics</span>
+          <div className="flex-1 h-8 bg-white/10 rounded-lg overflow-hidden relative">
+            <motion.div
+              className="h-full bg-gradient-to-r from-white to-neutral-300 rounded-lg flex items-center justify-end pr-3"
+              initial={{ width: 0 }}
+              animate={isInView ? { width: `${grysicsWidth}%` } : {}}
+              transition={{ duration: 1, delay: delay + 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+            >
+              <span className="text-[11px] font-bold text-neutral-900">{grysics}{unit === 'ms' ? 'ms' : unit === '%' ? '%' : ''}</span>
+            </motion.div>
+          </div>
+        </div>
+        <div className="flex items-center gap-3">
+          <span className="text-[11px] font-medium text-neutral-600 w-16 flex-shrink-0">Others</span>
+          <div className="flex-1 h-8 bg-white/10 rounded-lg overflow-hidden relative">
+            <motion.div
+              className="h-full bg-white/20 rounded-lg flex items-center justify-end pr-3"
+              initial={{ width: 0 }}
+              animate={isInView ? { width: `${othersWidth}%` } : {}}
+              transition={{ duration: 1, delay: delay + 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+            >
+              <span className="text-[11px] font-bold text-neutral-400">{others}{unit === 'ms' ? 'ms' : unit === '%' ? '%' : ''}</span>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+    </motion.div>
   );
 }
+
+function EarlyAccessForm() {
+  const [email, setEmail] = useState('');
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      setSubmitted(true);
+    }, 1200);
+  };
+
+  if (submitted) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className="flex items-center gap-3 px-6 py-4 bg-green-50 border border-green-200 rounded-2xl"
+      >
+        <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+          <Check className="w-4 h-4 text-green-600" />
+        </div>
+        <div>
+          <p className="text-sm font-semibold text-green-900">You're on the list!</p>
+          <p className="text-xs text-green-600">We'll notify you when Grysics launches.</p>
+        </div>
+      </motion.div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 w-full max-w-md">
+      <input
+        type="email"
+        placeholder="Enter your email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+        className="flex-1 px-5 py-3.5 rounded-full border border-neutral-200 bg-white text-neutral-900 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900/10 focus:border-neutral-400 transition-all placeholder:text-neutral-400"
+      />
+      <button
+        type="submit"
+        disabled={loading}
+        className="px-7 py-3.5 bg-neutral-900 text-white rounded-full font-medium text-sm hover:bg-black transition-all disabled:opacity-60 flex items-center justify-center gap-2 flex-shrink-0"
+      >
+        {loading ? (
+          <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+        ) : (
+          <>Get Early Access <ArrowRight className="w-4 h-4" /></>
+        )}
+      </button>
+    </form>
+  );
+}
+
+const aiApplications = [
+  { icon: Eye, name: "Computer Vision", examples: "Object detection, image segmentation, facial recognition", color: "from-blue-500 to-cyan-500" },
+  { icon: MessageSquare, name: "NLP & LLMs", examples: "Text generation, sentiment analysis, chatbots, translation", color: "from-violet-500 to-purple-500" },
+  { icon: Image, name: "Image Generation", examples: "Stable Diffusion, DALL-E, style transfer, super-resolution", color: "from-pink-500 to-rose-500" },
+  { icon: Music, name: "Audio & Speech", examples: "Speech-to-text, music generation, voice cloning", color: "from-orange-500 to-amber-500" },
+  { icon: Video, name: "Video Analysis", examples: "Action recognition, tracking, video generation", color: "from-green-500 to-emerald-500" },
+  { icon: Bot, name: "Robotics & Control", examples: "Path planning, reinforcement learning, simulation", color: "from-red-500 to-orange-500" },
+  { icon: Stethoscope, name: "Medical AI", examples: "Diagnostics, drug discovery, medical imaging", color: "from-teal-500 to-cyan-500" },
+  { icon: Car, name: "Autonomous Systems", examples: "Self-driving, drone navigation, ADAS", color: "from-indigo-500 to-blue-500" },
+];
 
 export default function GrysicsPage() {
   return (
@@ -137,71 +161,249 @@ export default function GrysicsPage() {
       <div className="grain" />
       <Header />
 
-      <section className="pt-32 sm:pt-44 pb-16 sm:pb-24 px-4 sm:px-6 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-neutral-100 rounded-full blur-[120px] opacity-50 -translate-y-1/3 translate-x-1/4" />
-        <div className="max-w-6xl mx-auto relative">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="flex items-center gap-2 mb-8">
-                <span className="accent-dot" />
-                <span className="text-sm font-medium text-neutral-400 uppercase tracking-widest">Grysics</span>
-              </motion.div>
-              <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }} className="font-serif text-5xl sm:text-6xl lg:text-7xl text-neutral-900 tracking-tight leading-[1.05] mb-8">
-                Verification
-                <br />
-                <em className="text-neutral-400">engine for AI</em>
-              </motion.h1>
-              <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-xl text-neutral-500 leading-relaxed max-w-xl font-light mb-10">
-                Test AI models against real hardware profiles before deployment.
-                Catch failures before they reach production.
-              </motion.p>
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} className="flex flex-wrap gap-4">
-                <Link href="/developers" className="inline-flex items-center gap-2 px-8 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-black transition-all text-sm tracking-wide">
-                  Get Started <ArrowRight className="w-4 h-4" />
-                </Link>
-                <Link href="/research" className="inline-flex items-center gap-2 px-8 py-3.5 text-neutral-900 border border-neutral-200 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide">
-                  Read the Paper
-                </Link>
-              </motion.div>
-            </div>
+      <section className="pt-32 sm:pt-44 pb-20 sm:pb-28 px-4 sm:px-6 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-neutral-100 rounded-full blur-[150px] opacity-40 -translate-y-1/3 translate-x-1/4" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-50 rounded-full blur-[120px] opacity-30 translate-y-1/3 -translate-x-1/4" />
+        <div className="max-w-5xl mx-auto relative">
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="flex items-center gap-3 mb-8">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-neutral-900 text-white rounded-full text-xs font-medium uppercase tracking-widest">
+              <Sparkles className="w-3 h-3" /> Coming Soon
+            </span>
+          </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.3 }}
-              className="relative aspect-square max-w-[480px] mx-auto w-full"
-            >
-              <LiveDiagram />
-            </motion.div>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="font-serif text-5xl sm:text-6xl lg:text-7xl text-neutral-900 tracking-tight leading-[1.05] mb-6"
+          >
+            Verify any AI app
+            <br />
+            <em className="text-neutral-400">before it ships</em>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="text-xl text-neutral-500 leading-relaxed max-w-2xl font-light mb-10"
+          >
+            Grysics tests your AI application — vision, language, generative, or any other type — against real-world conditions. Catch accuracy drops, latency spikes, and failures before your users do.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <p className="text-sm font-medium text-neutral-500 mb-3">Sign up for early access</p>
+            <EarlyAccessForm />
+            <p className="text-xs text-neutral-400 mt-3">Free during beta. No credit card required.</p>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="py-10 sm:py-14 border-y border-neutral-100 bg-neutral-50/50">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-4">
+            {[
+              { icon: Shield, text: "Pre-deploy verification" },
+              { icon: Zap, text: "Real-time benchmarks" },
+              { icon: Cpu, text: "Any hardware target" },
+              { icon: Layers, text: "Any AI framework" },
+            ].map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <motion.div
+                  key={item.text}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 + i * 0.08 }}
+                  className="flex items-center gap-2 text-sm text-neutral-500"
+                >
+                  <Icon className="w-4 h-4 text-neutral-400" />
+                  {item.text}
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <section className="py-28 sm:py-36 bg-neutral-950 text-white relative overflow-hidden">
+      <section className="py-24 sm:py-32">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="text-center mb-16">
+            <span className="text-xs font-medium text-neutral-400 uppercase tracking-widest mb-4 block">Works with every AI type</span>
+            <h2 className="font-serif text-4xl sm:text-5xl tracking-tight text-neutral-900">
+              One tool for <em className="text-neutral-400">all your AI</em>
+            </h2>
+            <p className="text-neutral-500 mt-4 text-lg font-light max-w-2xl mx-auto">
+              Whether you're building a chatbot, a vision system, or a generative model — Grysics verifies it works correctly on any device.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {aiApplications.map((app, idx) => {
+              const Icon = app.icon;
+              return (
+                <motion.div
+                  key={app.name}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  custom={idx}
+                  variants={fadeUp}
+                  className="group relative rounded-2xl border border-neutral-200 p-6 hover:border-neutral-300 hover:shadow-lg transition-all cursor-default overflow-hidden"
+                >
+                  <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${app.color} opacity-0 group-hover:opacity-5 rounded-full blur-2xl transition-opacity duration-500 -translate-y-1/2 translate-x-1/2`} />
+                  <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${app.color} flex items-center justify-center mb-4`}>
+                    <Icon className="w-5 h-5 text-white" />
+                  </div>
+                  <h3 className="text-sm font-semibold text-neutral-900 mb-1.5">{app.name}</h3>
+                  <p className="text-xs text-neutral-500 leading-relaxed">{app.examples}</p>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 sm:py-32 bg-neutral-950 text-white relative overflow-hidden">
         <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-neutral-800 rounded-full blur-[150px] opacity-30 -translate-y-1/2 -translate-x-1/4" />
         <div className="max-w-5xl mx-auto px-4 sm:px-6 relative">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="mb-20">
-            <span className="block w-12 h-0.5 bg-white/30 mb-6" />
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="text-center mb-16">
+            <span className="text-xs font-medium text-neutral-500 uppercase tracking-widest mb-4 block">Performance</span>
             <h2 className="font-serif text-4xl sm:text-5xl tracking-tight">
-              What Grysics
-              <br />
-              <em className="text-neutral-500">does</em>
+              Benchmark <em className="text-neutral-500">results</em>
+            </h2>
+            <p className="text-neutral-400 mt-4 text-lg font-light max-w-2xl mx-auto">
+              Grysics consistently outperforms manual testing and competing tools across key metrics.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+            <div className="space-y-10">
+              <BenchmarkBar label="Verification Speed" grysics={12} others={180} unit="ms" delay={0} />
+              <BenchmarkBar label="Accuracy Retention" grysics={99} others={92} unit="%" delay={0.15} />
+              <BenchmarkBar label="Memory Efficiency" grysics={245} others={512} unit="mb" delay={0.3} />
+              <BenchmarkBar label="Deployment Success Rate" grysics={99} others={87} unit="%" delay={0.45} />
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { value: 10, suffix: 'x', label: 'Faster verification', description: 'Compared to manual testing workflows', icon: TrendingUp },
+                { value: 50, suffix: '+', label: 'Hardware targets', description: 'From Jetson to Raspberry Pi to cloud', icon: Cpu },
+                { value: 99, suffix: '.9%', label: 'Deploy reliability', description: 'Verified models work in production', icon: Shield },
+                { value: 3, suffix: 'min', label: 'Average verify time', description: 'Full verification pipeline end-to-end', icon: Clock },
+              ].map((stat, idx) => {
+                const Icon = stat.icon;
+                return (
+                  <motion.div
+                    key={stat.label}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    custom={idx}
+                    variants={fadeUp}
+                    className="bg-white/5 rounded-2xl p-6 border border-white/10"
+                  >
+                    <Icon className="w-5 h-5 text-neutral-500 mb-3" />
+                    <div className="font-serif text-3xl sm:text-4xl italic text-white mb-1">
+                      <AnimatedCounter target={stat.value} suffix={stat.suffix} />
+                    </div>
+                    <p className="text-sm font-medium text-white mb-1">{stat.label}</p>
+                    <p className="text-xs text-neutral-500 leading-relaxed">{stat.description}</p>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 sm:py-32">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="mb-16">
+            <span className="accent-line" />
+            <h2 className="font-serif text-4xl sm:text-5xl tracking-tight text-neutral-900">
+              How it <em className="text-neutral-400">works</em>
+            </h2>
+            <p className="text-neutral-500 mt-4 text-lg font-light max-w-2xl">
+              Three steps from model to verified deployment. No complex setup required.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+            {[
+              {
+                step: "01",
+                title: "Upload your model",
+                description: "Drop in any AI model — PyTorch, TensorFlow, ONNX, TFLite. Grysics auto-detects the architecture and maps all dependencies.",
+                gradient: "from-blue-500 to-indigo-500",
+              },
+              {
+                step: "02",
+                title: "Run verification",
+                description: "Grysics tests accuracy, latency, memory, and edge cases across your target devices. Get detailed pass/fail reports in minutes.",
+                gradient: "from-violet-500 to-purple-500",
+              },
+              {
+                step: "03",
+                title: "Ship with confidence",
+                description: "Deploy only verified models. Grysics guarantees they'll work on your target hardware. Continuous monitoring catches drift post-deploy.",
+                gradient: "from-green-500 to-emerald-500",
+              },
+            ].map((item, idx) => (
+              <motion.div
+                key={item.step}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                custom={idx}
+                variants={fadeUp}
+                className="relative"
+              >
+                <div className={`h-2 rounded-full bg-gradient-to-r ${item.gradient} mb-8 opacity-40`} />
+                <span className="text-xs font-mono font-bold text-neutral-400 mb-3 block">{item.step}</span>
+                <h3 className="text-xl font-semibold text-neutral-900 mb-3">{item.title}</h3>
+                <p className="text-neutral-500 text-sm leading-relaxed">{item.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 sm:py-32 bg-neutral-50 border-y border-neutral-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="mb-16">
+            <span className="accent-line" />
+            <h2 className="font-serif text-4xl sm:text-5xl tracking-tight text-neutral-900">
+              What Grysics <em className="text-neutral-400">catches</em>
             </h2>
           </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 rounded-2xl overflow-hidden">
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-neutral-200 rounded-2xl overflow-hidden border border-neutral-200">
             {[
-              { icon: Shield, title: "Pre-Deploy Verification", description: "Automated testing against target hardware configurations. Models are proven correct before they ship." },
-              { icon: Cpu, title: "Adaptive Quantization", description: "Automatic model compression tuned to hardware constraints while maintaining accuracy guarantees." },
-              { icon: GitBranch, title: "Multi-Framework Import", description: "Import from PyTorch, TensorFlow, ONNX. Grysics analyzes architecture and dependencies automatically." },
-              { icon: BarChart3, title: "Performance Profiling", description: "Detailed latency, memory, and power analysis across every hardware target in your fleet." },
-              { icon: Layers, title: "Hardware Abstraction", description: "Write verification once, run it against any supported edge device — from Jetson to Raspberry Pi." },
-              { icon: Zap, title: "CI/CD Integration", description: "Plug into your existing pipeline. Block deployments that fail verification. Automate everything." },
+              { icon: Shield, title: "Accuracy Degradation", description: "Detects when quantization or hardware conversion silently drops model accuracy below your thresholds." },
+              { icon: Clock, title: "Latency Violations", description: "Identifies operations that exceed real-time constraints on your target edge devices." },
+              { icon: Cpu, title: "Memory Overflows", description: "Catches models that exceed available RAM or VRAM on constrained hardware before deployment." },
+              { icon: BarChart3, title: "Numerical Instability", description: "Finds floating-point precision issues and NaN propagation that cause silent failures." },
+              { icon: GitBranch, title: "Framework Mismatches", description: "Validates that model exports preserve behavior across PyTorch, TF, and ONNX conversions." },
+              { icon: Zap, title: "Performance Bottlenecks", description: "Pinpoints layers and operations that consume disproportionate compute or energy." },
             ].map((item, idx) => {
               const Icon = item.icon;
               return (
-                <motion.div key={item.title} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={idx} variants={fadeUp} className="bg-neutral-950 p-10 hover:bg-white/[0.03] transition-colors">
-                  <Icon className="w-6 h-6 text-neutral-500 mb-5" />
-                  <h3 className="text-lg font-semibold mb-3">{item.title}</h3>
+                <motion.div
+                  key={item.title}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  custom={idx}
+                  variants={fadeUp}
+                  className="bg-white p-8 sm:p-10 hover:bg-neutral-50 transition-colors"
+                >
+                  <Icon className="w-6 h-6 text-neutral-400 mb-5" />
+                  <h3 className="text-base font-semibold text-neutral-900 mb-2">{item.title}</h3>
                   <p className="text-sm text-neutral-500 leading-relaxed">{item.description}</p>
                 </motion.div>
               );
@@ -210,80 +412,29 @@ export default function GrysicsPage() {
         </div>
       </section>
 
-      <section className="py-28 sm:py-36 border-t border-neutral-100">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="mb-16">
-            <span className="accent-line" />
-            <h2 className="font-serif text-4xl sm:text-5xl tracking-tight text-neutral-900">
-              How it <em className="text-neutral-400">works</em>
-            </h2>
-          </motion.div>
-          <div className="divide-y divide-neutral-200 max-w-3xl">
-            {[
-              { step: "01", title: "Import your model", description: "Load from any framework. Grysics reads the computational graph and maps dependencies." },
-              { step: "02", title: "Define hardware targets", description: "Select from supported devices or define custom hardware profiles with resource constraints." },
-              { step: "03", title: "Run verification", description: "Grysics tests accuracy, latency, memory usage, and edge cases across every target." },
-              { step: "04", title: "Review results", description: "Get a detailed report with pass/fail status, performance metrics, and optimization suggestions." },
-              { step: "05", title: "Deploy with confidence", description: "Ship only verified models. Grysics guarantees they'll work on the target hardware." },
-            ].map((item, idx) => (
-              <motion.div key={item.step} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={idx} variants={fadeUp} className="py-8 grid grid-cols-[auto_1fr] gap-6 items-start">
-                <span className="text-xs font-mono text-neutral-400 mt-1">{item.step}</span>
-                <div>
-                  <h3 className="text-lg font-semibold text-neutral-900 mb-1">{item.title}</h3>
-                  <p className="text-neutral-500 leading-relaxed">{item.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-28 sm:py-36 bg-neutral-50 border-y border-neutral-100">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="mb-16">
-            <span className="accent-line" />
-            <h2 className="font-serif text-4xl sm:text-5xl tracking-tight text-neutral-900">
-              Built for <em className="text-neutral-400">real workloads</em>
-            </h2>
-          </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-neutral-200 rounded-2xl overflow-hidden border border-neutral-200">
-            {[
-              { value: "10x", label: "Faster than manual testing", description: "Automated verification runs in minutes, not weeks." },
-              { value: "99.9%", label: "Deployment reliability", description: "Models that pass Grysics verification work in production." },
-              { value: "50+", label: "Hardware targets", description: "From NVIDIA Jetson to Raspberry Pi to custom silicon." },
-            ].map((stat, idx) => (
-              <motion.div key={stat.label} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={idx} variants={fadeUp} className="bg-white p-10 sm:p-12">
-                <span className="font-serif text-4xl sm:text-5xl italic text-neutral-900">{stat.value}</span>
-                <h3 className="text-sm font-semibold text-neutral-900 mt-4 mb-2">{stat.label}</h3>
-                <p className="text-sm text-neutral-500 leading-relaxed">{stat.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-28 sm:py-36 bg-neutral-950 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <section className="py-28 sm:py-36 bg-neutral-950 text-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-neutral-800 rounded-full blur-[150px] opacity-20 -translate-y-1/3 translate-x-1/4" />
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center relative">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp}>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/10 text-white rounded-full text-xs font-medium mb-8 border border-white/10 uppercase tracking-widest">
+              <Sparkles className="w-3 h-3" /> Limited Beta
+            </div>
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight mb-6">
               Stop shipping
               <br />
-              <em className="text-neutral-500">untested models</em>
+              <em className="text-neutral-500">untested AI</em>
             </h2>
             <p className="text-neutral-400 text-lg max-w-2xl mx-auto mb-10 font-light leading-relaxed">
-              Grysics catches deployment failures before they reach your devices.
+              Join the early access list. Be the first to verify your AI applications with Grysics before they reach production.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/developers" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide">
-                Get Started <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link href="/contact" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-white border border-white/20 rounded-full font-medium hover:bg-white/10 transition-all text-sm tracking-wide">
-                Contact Sales
-              </Link>
+            <div className="flex justify-center">
+              <EarlyAccessForm />
             </div>
+            <p className="text-xs text-neutral-600 mt-4">Join 500+ developers already on the waitlist</p>
           </motion.div>
         </div>
       </section>
+
       <Footer />
     </div>
   );
