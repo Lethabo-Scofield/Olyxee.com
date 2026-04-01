@@ -127,7 +127,7 @@ const Research: FC = () => {
       <div className="grain" />
       <Header />
 
-      <section className="pt-32 sm:pt-44 pb-20 sm:pb-28 px-4 sm:px-6 relative overflow-hidden">
+      <section className="pt-28 sm:pt-44 pb-16 sm:pb-28 px-4 sm:px-6 relative overflow-hidden">
         <div className="absolute inset-0">
           <Image src="/images/gradient-pastel.png" alt="" fill sizes="100vw" aria-hidden="true" priority className="object-cover opacity-20" />
           <div className="absolute inset-0 bg-white/80" />
@@ -137,12 +137,12 @@ const Research: FC = () => {
             <span className="accent-dot" />
             <span className="text-sm font-medium text-neutral-400 uppercase tracking-widest">Research</span>
           </motion.div>
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }} className="font-serif text-5xl sm:text-6xl lg:text-[5.5rem] text-neutral-900 tracking-tight leading-[1.05] mb-8">
+          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }} className="font-serif text-3xl sm:text-5xl lg:text-[5.5rem] text-neutral-900 tracking-tight leading-[1.05] mb-6 sm:mb-8">
             Papers that shape
             <br />
             <em className="text-neutral-400">our mission</em>
           </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-xl text-neutral-500 leading-relaxed max-w-3xl font-light">
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-base sm:text-xl text-neutral-500 leading-relaxed max-w-3xl font-light">
             We are building on the work of researchers advancing AI safety, evaluation, and reliability.
             These are key papers from the community that inform our direction. Full credit goes to the original authors.
           </motion.p>
@@ -163,7 +163,7 @@ const Research: FC = () => {
         </div>
       </section>
 
-      <section className="pb-28 sm:pb-36">
+      <section className="pb-20 sm:pb-36">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="space-y-0 divide-y divide-neutral-100">
             {papers.map((paper, idx) => (
@@ -211,9 +211,9 @@ const Research: FC = () => {
         </div>
       </section>
 
-      <section className="py-24 sm:py-32 bg-neutral-50 border-y border-neutral-100">
+      <section className="py-16 sm:py-24 lg:py-32 bg-neutral-50 border-y border-neutral-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -265,19 +265,19 @@ const Research: FC = () => {
         </div>
       </section>
 
-      <section className="py-28 sm:py-36 bg-neutral-950 text-white relative overflow-hidden">
+      <section className="py-20 sm:py-28 lg:py-36 bg-neutral-950 text-white relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-gradient-to-b from-indigo-500/10 to-transparent blur-3xl" />
         </div>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center relative">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp}>
             <FileText className="w-6 h-6 text-neutral-500 mx-auto mb-6" />
-            <h2 className="font-serif text-4xl sm:text-5xl tracking-tight mb-6">
+            <h2 className="font-serif text-3xl sm:text-5xl tracking-tight mb-5 sm:mb-6">
               Want to collaborate
               <br />
               <em className="text-neutral-500">on research?</em>
             </h2>
-            <p className="text-neutral-400 text-lg max-w-lg mx-auto mb-10 font-light leading-relaxed">
+            <p className="text-neutral-400 text-base sm:text-lg max-w-lg mx-auto mb-8 sm:mb-10 font-light leading-relaxed">
               We are always interested in connecting with researchers working on AI safety,
               evaluation, and reliability.
             </p>

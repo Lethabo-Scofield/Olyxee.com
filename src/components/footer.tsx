@@ -49,8 +49,8 @@ const footerData = {
 export default function Footer() {
   return (
     <footer className="bg-neutral-950 text-white" aria-label="Site footer">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 pt-24 pb-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-14 mb-24">
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 pt-16 sm:pt-24 pb-12 sm:pb-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 sm:gap-x-8 gap-y-10 sm:gap-y-14 mb-16 sm:mb-24">
           {footerData.columns.map((column) => (
             <div key={column.title}>
               <h3 className="text-[10px] font-semibold text-neutral-500 uppercase tracking-widest mb-6">{column.title}</h3>

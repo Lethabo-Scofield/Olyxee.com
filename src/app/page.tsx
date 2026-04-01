@@ -95,12 +95,12 @@ function HeroSection() {
         <div className="absolute inset-0 bg-white/60" />
       </div>
 
-      <motion.div style={{ y, opacity }} className="relative z-10 text-center max-w-5xl mx-auto pt-24">
+      <motion.div style={{ y, opacity }} className="relative z-10 text-center max-w-5xl mx-auto pt-20 sm:pt-24">
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.1 }}
-          className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-neutral-900 leading-[1.02] tracking-tight"
+          className="font-serif text-[2.5rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] text-neutral-900 leading-[1.02] tracking-tight"
         >
           Research and safety
           <br />
@@ -111,7 +111,7 @@ function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="mt-7 text-lg sm:text-xl text-neutral-500 font-light max-w-2xl mx-auto leading-relaxed"
+          className="mt-5 sm:mt-7 text-base sm:text-xl text-neutral-500 font-light max-w-2xl mx-auto leading-relaxed px-2 sm:px-0"
         >
           Olyxee is an AI infrastructure company building the tools and systems
           that make artificial intelligence safe, reliable, and trustworthy.
@@ -139,7 +139,7 @@ function HeroSection() {
       </motion.div>
 
       <motion.div
-        className="relative z-10 w-full max-w-5xl mt-16 mb-8"
+        className="relative z-10 w-full max-w-5xl mt-10 sm:mt-16 mb-8 px-2 sm:px-0"
         initial={{ opacity: 0, y: 60, scale: 0.97 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 1.2, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
@@ -160,10 +160,10 @@ function HeroSection() {
 
 function LogoStrip() {
   return (
-    <section className="border-y border-neutral-100 bg-neutral-50/50 py-10 sm:py-12">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-        <p className="text-center text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-8">Focus Areas</p>
-        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 sm:gap-x-16">
+    <section className="border-y border-neutral-100 bg-neutral-50/50 py-8 sm:py-12">
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
+        <p className="text-center text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-6 sm:mb-8">Focus Areas</p>
+        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 sm:gap-x-16 sm:gap-y-4">
           {[
             { icon: Shield, label: "AI Safety" },
             { icon: Eye, label: "Verification" },
@@ -193,22 +193,22 @@ function LogoStrip() {
 
 function MissionSection() {
   return (
-    <section className="py-32 sm:py-40">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+    <section className="py-20 sm:py-32 lg:py-40">
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="mb-20"
+          className="mb-12 sm:mb-20"
         >
           <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Who We Are</p>
-          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 max-w-3xl">
+          <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 max-w-3xl">
             AI is powerful. It should also be <em className="text-neutral-400">reliable</em>
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-start">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -304,21 +304,21 @@ function ResearchAreas() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-gradient-to-br from-indigo-500/10 via-purple-500/5 to-transparent blur-3xl" />
       </div>
 
-      <div className="relative py-32 sm:py-40 max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div className="relative py-20 sm:py-32 lg:py-40 max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20 sm:mb-24"
+          className="text-center mb-12 sm:mb-20 lg:mb-24"
         >
           <p className="text-xs font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-4">What We Do</p>
-          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-white">
+          <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-white">
             Advancing the science of <em className="text-neutral-500">AI reliability</em>
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
           {[
             {
               num: "01",
@@ -387,25 +387,21 @@ function VerificationDiagram() {
   ];
 
   return (
-    <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 sm:p-10">
-      <p className="text-[11px] font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-8 text-center">How Olyxee Fits Into Your AI Stack</p>
-      <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-0 justify-between">
+    <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-5 sm:p-10">
+      <p className="text-[11px] font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-6 sm:mb-8 text-center">How Olyxee Fits Into Your AI Stack</p>
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
         {steps.map((step, idx) => (
-          <div key={step.label} className="flex items-center gap-3 sm:gap-0 w-full sm:w-auto">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.1 }}
-              className={`flex-1 sm:flex-none px-5 py-4 rounded-xl border ${step.color} text-center min-w-[140px]`}
-            >
-              <div className="text-sm font-semibold">{step.label}</div>
-              <div className="text-[11px] opacity-60 mt-0.5">{step.sub}</div>
-            </motion.div>
-            {idx < steps.length - 1 && (
-              <div className="hidden sm:block w-8 lg:w-12 h-px bg-gradient-to-r from-white/20 to-white/5 mx-2" />
-            )}
-          </div>
+          <motion.div
+            key={step.label}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: idx * 0.1 }}
+            className={`px-4 py-3.5 sm:px-5 sm:py-4 rounded-xl border ${step.color} text-center`}
+          >
+            <div className="text-xs sm:text-sm font-semibold">{step.label}</div>
+            <div className="text-[10px] sm:text-[11px] opacity-60 mt-0.5">{step.sub}</div>
+          </motion.div>
         ))}
       </div>
     </div>
@@ -415,17 +411,17 @@ function VerificationDiagram() {
 
 function ApproachSection() {
   return (
-    <section className="py-32 sm:py-40">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+    <section className="py-20 sm:py-32 lg:py-40">
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="mb-16 sm:mb-20"
+          className="mb-10 sm:mb-16 lg:mb-20"
         >
           <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Our Approach</p>
-          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 max-w-3xl">
+          <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 max-w-3xl">
             Built at the intersection of <em className="text-neutral-400">research and engineering</em>
           </h2>
         </motion.div>
@@ -548,9 +544,9 @@ function ProductsSection() {
       <div className="absolute inset-0">
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full bg-gradient-to-tr from-blue-500/8 via-purple-500/4 to-transparent blur-3xl" />
       </div>
-      <div className="relative py-32 sm:py-40">
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className="relative py-20 sm:py-32 lg:py-40">
+        <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -558,7 +554,7 @@ function ProductsSection() {
               transition={{ duration: 0.7 }}
             >
               <p className="text-xs font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-4">Our Products</p>
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white mb-6">
+              <h2 className="font-serif text-2xl sm:text-4xl lg:text-5xl tracking-tight text-white mb-5 sm:mb-6">
                 <Link href="/products/grysics" className="hover:text-neutral-300 transition-colors">Grysics</Link> <em className="text-neutral-500">/ coming soon</em>
               </h2>
               <p className="text-neutral-400 text-[15px] sm:text-base font-light leading-relaxed mb-8">
@@ -611,7 +607,7 @@ function ProductsSection() {
                   <div className="w-3 h-3 rounded-full bg-green-500/60" />
                   <span className="text-[11px] text-neutral-600 ml-2 font-mono">grysics verify</span>
                 </div>
-                <div className="p-5 sm:p-6 font-mono text-[13px] leading-[1.8] space-y-1">
+                <div className="p-4 sm:p-6 font-mono text-[11px] sm:text-[13px] leading-[1.8] space-y-1 overflow-x-auto">
                   <div className="text-neutral-500">$ grysics verify --suite chatbot-v2</div>
                   <div className="text-neutral-400 mt-3">Running 847 test cases...</div>
                   <div className="text-neutral-400 mt-1 flex items-center gap-2">
@@ -670,7 +666,7 @@ function ProductsSection() {
 
 function CTASection() {
   return (
-    <section className="py-32 sm:py-44 relative overflow-hidden">
+    <section className="py-20 sm:py-32 lg:py-44 relative overflow-hidden">
       <div className="absolute inset-0">
         <Image
           src="/images/gradient-pastel.png"
@@ -682,7 +678,7 @@ function CTASection() {
         />
         <div className="absolute inset-0 bg-white/70" />
       </div>
-      <div className="relative max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-8 lg:px-12 text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -703,7 +699,7 @@ function CTASection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-neutral-900 tracking-tight mb-6"
+          className="font-serif text-3xl sm:text-5xl lg:text-6xl xl:text-7xl text-neutral-900 tracking-tight mb-5 sm:mb-6"
         >
           The future of AI<br />needs <em className="text-neutral-400">better foundations</em>
         </motion.h2>
@@ -712,7 +708,7 @@ function CTASection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1, duration: 0.7 }}
-          className="text-neutral-500 text-lg sm:text-xl max-w-xl mx-auto mb-10 font-light leading-relaxed"
+          className="text-neutral-500 text-base sm:text-xl max-w-xl mx-auto mb-8 sm:mb-10 font-light leading-relaxed px-2 sm:px-0"
         >
           We are building those foundations. Follow our journey.
         </motion.p>

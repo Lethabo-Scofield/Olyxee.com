@@ -15,7 +15,7 @@ const DiscordIcon = ({ className }: { className?: string }) => (
 
 const menuItems = [
     { name: "Products", href: "/#products" },
-    { name: "Research", href: "/about" },
+    { name: "Research", href: "/research" },
     { name: "Community", href: "/community" },
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },

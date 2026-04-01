@@ -23,7 +23,7 @@ const About: FC = () => {
       <div className="grain" />
       <Header />
 
-      <section className="relative pt-32 sm:pt-44 pb-20 sm:pb-28 px-4 sm:px-6 overflow-hidden">
+      <section className="relative pt-28 sm:pt-44 pb-16 sm:pb-28 px-4 sm:px-6 overflow-hidden">
         <div className="absolute inset-0">
           <Image src="/images/gradient-pastel.png" alt="" fill sizes="100vw" aria-hidden="true" priority className="object-cover opacity-30" />
           <div className="absolute inset-0 bg-white/80" />
@@ -47,7 +47,7 @@ const About: FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.1]"
+              className="font-serif text-3xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.1]"
             >
               We are building the trust layer
               <br />
@@ -58,7 +58,7 @@ const About: FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.5 }}
-            className="text-lg sm:text-xl text-neutral-500 leading-relaxed max-w-3xl font-light"
+            className="text-base sm:text-xl text-neutral-500 leading-relaxed max-w-3xl font-light"
           >
             AI is transforming every industry. But as systems grow more powerful, the question is no longer
             "can AI do this?" but "can we trust that it will do it correctly?" Olyxee exists to answer that question.
@@ -66,9 +66,9 @@ const About: FC = () => {
         </div>
       </section>
 
-      <section className="py-24 sm:py-32">
+      <section className="py-16 sm:py-24 lg:py-32">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -81,7 +81,7 @@ const About: FC = () => {
                 <Image src="/images/gradient-blue-pink.png" alt="" fill sizes="(max-width: 1024px) 100vw, 50vw" aria-hidden="true" className="object-cover" />
                 <div className="absolute inset-0 bg-white/80 backdrop-blur-sm" />
               </div>
-              <div className="relative p-10 sm:p-12">
+              <div className="relative p-7 sm:p-12">
                 <div className="w-10 h-10 rounded-xl bg-neutral-900 flex items-center justify-center mb-6">
                   <Eye className="w-5 h-5 text-white" />
                 </div>
@@ -112,11 +112,11 @@ const About: FC = () => {
                 <Image src="/images/gradient-yellow-green.png" alt="" fill sizes="(max-width: 1024px) 100vw, 50vw" aria-hidden="true" className="object-cover" />
                 <div className="absolute inset-0 bg-white/80 backdrop-blur-sm" />
               </div>
-              <div className="relative p-10 sm:p-12">
+              <div className="relative p-7 sm:p-12">
                 <div className="w-10 h-10 rounded-xl bg-neutral-900 flex items-center justify-center mb-6">
                   <Shield className="w-5 h-5 text-white" />
                 </div>
-                <h2 className="font-serif text-3xl sm:text-4xl tracking-tight mb-6">Our Answer</h2>
+                <h2 className="font-serif text-2xl sm:text-4xl tracking-tight mb-5 sm:mb-6">Our Answer</h2>
                 <div className="space-y-5 text-[15px] text-neutral-600 leading-relaxed font-light">
                   <p>
                     We build verification-first infrastructure. Every component in the Olyxee stack is designed around a
@@ -134,7 +134,7 @@ const About: FC = () => {
         </div>
       </section>
 
-      <section className="py-24 sm:py-32 relative overflow-hidden">
+      <section className="py-16 sm:py-24 lg:py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-neutral-950" />
         <div className="absolute inset-0">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-gradient-to-br from-indigo-500/10 via-purple-500/5 to-transparent blur-3xl" />
@@ -149,14 +149,14 @@ const About: FC = () => {
             className="mb-16 sm:mb-20"
           >
             <p className="text-xs font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-4">What We Build</p>
-            <h2 className="font-serif text-4xl sm:text-5xl tracking-tight text-white">
+            <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-white">
               Verification-first
               <br />
               <em className="text-neutral-500">AI infrastructure</em>
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
             {[
               { icon: Shield, title: "Pre-deployment Testing", description: "Automated evaluation suites that test AI outputs for accuracy, consistency, and safety before reaching production." },
               { icon: Eye, title: "Hallucination Detection", description: "Research-backed methods to identify when AI models fabricate information, with confidence scoring and source attribution." },
@@ -174,7 +174,7 @@ const About: FC = () => {
                   viewport={{ once: true, amount: 0.2 }}
                   custom={idx}
                   variants={fadeUp}
-                  className="rounded-2xl bg-white/[0.03] border border-white/[0.06] p-8 hover:bg-white/[0.06] hover:border-white/[0.1] transition-all duration-300"
+                  className="rounded-2xl bg-white/[0.03] border border-white/[0.06] p-6 sm:p-8 hover:bg-white/[0.06] hover:border-white/[0.1] transition-all duration-300"
                 >
                   <Icon className="w-5 h-5 text-neutral-500 mb-5" />
                   <h3 className="text-lg font-semibold text-white mb-3">{item.title}</h3>
@@ -186,9 +186,9 @@ const About: FC = () => {
         </div>
       </section>
 
-      <section className="py-24 sm:py-32">
+      <section className="py-16 sm:py-24 lg:py-32">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16 items-start">
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -198,7 +198,7 @@ const About: FC = () => {
               className="lg:col-span-2"
             >
               <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Our Position</p>
-              <h2 className="font-serif text-4xl sm:text-5xl tracking-tight text-neutral-900 mb-6">
+              <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900 mb-5 sm:mb-6">
                 Where we fit in the <em className="text-neutral-400">AI stack</em>
               </h2>
               <p className="text-neutral-500 text-[15px] leading-relaxed font-light mb-8">
@@ -232,7 +232,7 @@ const About: FC = () => {
         </div>
       </section>
 
-      <section className="py-24 sm:py-32 bg-neutral-50 border-y border-neutral-100">
+      <section className="py-16 sm:py-24 lg:py-32 bg-neutral-50 border-y border-neutral-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <motion.div
             initial="hidden"
@@ -240,15 +240,15 @@ const About: FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             custom={0}
             variants={fadeUp}
-            className="mb-16"
+            className="mb-10 sm:mb-16"
           >
             <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Our Principles</p>
-            <h2 className="font-serif text-4xl sm:text-5xl tracking-tight text-neutral-900">
+            <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900">
               What drives <em className="text-neutral-400">us</em>
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             {[
               { title: "Reliability over novelty", description: "The most important advances in AI will not come from making models bigger. They will come from making models more reliable.", icon: Shield },
               { title: "Transparency by default", description: "Every deployment should be explainable. Every failure should be traceable. Engineers should understand exactly what happened and why.", icon: Eye },
@@ -264,7 +264,7 @@ const About: FC = () => {
                   viewport={{ once: true, amount: 0.3 }}
                   custom={idx}
                   variants={fadeUp}
-                  className="rounded-2xl bg-white border border-neutral-200/80 p-8 sm:p-10 hover:shadow-lg hover:shadow-neutral-200/40 transition-all duration-300"
+                  className="rounded-2xl bg-white border border-neutral-200/80 p-6 sm:p-10 hover:shadow-lg hover:shadow-neutral-200/40 transition-all duration-300"
                 >
                   <div className="w-9 h-9 rounded-lg bg-neutral-100 flex items-center justify-center mb-5">
                     <Icon className="w-4.5 h-4.5 text-neutral-600" />
@@ -278,9 +278,9 @@ const About: FC = () => {
         </div>
       </section>
 
-      <section className="py-24 sm:py-32">
+      <section className="py-16 sm:py-24 lg:py-32">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16 items-start">
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -309,7 +309,7 @@ const About: FC = () => {
               className="lg:col-span-2"
             >
               <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Our Founder's Note</p>
-              <blockquote className="font-serif text-2xl sm:text-3xl text-neutral-900 leading-snug mb-8 italic">
+              <blockquote className="font-serif text-xl sm:text-3xl text-neutral-900 leading-snug mb-6 sm:mb-8 italic">
                 "The companies that win in AI will be the ones whose systems work consistently
                 and can be understood by the engineers who deploy them."
               </blockquote>
@@ -327,7 +327,7 @@ const About: FC = () => {
         </div>
       </section>
 
-      <section className="py-28 sm:py-36 bg-neutral-950 text-white relative overflow-hidden">
+      <section className="py-20 sm:py-28 lg:py-36 bg-neutral-950 text-white relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full bg-gradient-to-tl from-indigo-500/10 to-transparent blur-3xl" />
         </div>
@@ -347,12 +347,12 @@ const About: FC = () => {
               height={40}
               className="mx-auto mb-8 opacity-30 invert"
             />
-            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight mb-6">
+            <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight mb-5 sm:mb-6">
               Join us in building
               <br />
               <em className="text-neutral-500">trustworthy AI</em>
             </h2>
-            <p className="text-lg text-neutral-400 mb-10 max-w-2xl mx-auto leading-relaxed font-light">
+            <p className="text-base sm:text-lg text-neutral-400 mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed font-light">
               We are looking for researchers and engineers who want to solve hard problems in AI safety,
               verification, and evaluation.
             </p>

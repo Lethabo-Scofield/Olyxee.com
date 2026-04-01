@@ -22,7 +22,11 @@ Company-level website for Olyxee, a reliability-first AI infrastructure company.
 - **Display font**: `Instrument Serif` (italic) for HIGHLIGHTS ONLY (main hero headings, section titles) — loaded via `next/font/google`. CSS variable: `--font-instrument`. Do NOT apply globally to all headings.
 - **Body font**: `Inter` for body text, UI elements, and most headings — loaded via `next/font/google`. CSS variable: `--font-inter`
 - **Font loading**: Optimized with `next/font` (self-hosted, `display: swap`)
-- **Section spacing**: `py-32 sm:py-44` for all major sections (generous Apple-style whitespace)
+- **Section spacing**: `py-20 sm:py-32 lg:py-40` for major sections (mobile-first responsive whitespace)
+- **Container padding**: `px-4 sm:px-8 lg:px-12` for all section containers
+- **Heading sizes**: `text-3xl sm:text-5xl lg:text-6xl` for h2, `text-base sm:text-xl` for subtitles
+- **Grid breakpoints**: `grid-cols-1 sm:grid-cols-2 md:grid-cols-3` pattern for card grids
+- **Card padding**: `p-6 sm:p-10` or `p-7 sm:p-12` for responsive card interiors
 - **Card radius**: `rounded-3xl` on all major content cards, offering cards, hardware cards. Consistent across the site.
 - **Dark cinematic heroes**: Used on Careers and EdgeAI pages — `bg-neutral-950` with blurred gradient glow overlay (`filter: blur(80px) saturate(1.5)`), radial gradient vignette, parallax scroll via `useScroll`/`useTransform`
 - **Dark CTA sections**: `bg-neutral-950` with blurred gradient glow (purple/green), `text-white/40` for muted emphasis
