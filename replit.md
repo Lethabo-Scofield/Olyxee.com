@@ -65,7 +65,7 @@ Desktop CTA: "Try Grysics"
 - Community hero image: `public/images/Community presentation.png`
 
 ## Key Pages
-- **Homepage** (`src/app/page.tsx`): Vision hero, Pipeline (5 steps), Industries (tabbed slider), Offerings (Grysics + OEB cards), Architecture, Developer Tools (SDK/CLI/API/Docs with waitlist modal), Research (3 papers), CTA, Footer
+- **Homepage** (`src/app/page.tsx`): Vision hero with video demo + partner logos, Products (Grysics + OEB interactive cards), Mission/Why It Matters (dark section with differentiators grid), Audience Pathways (Developer/Enterprise/Research blocks with CTAs), Use Cases (6-card grid: chatbot verification, RAG eval, agent testing, monitoring, edge validation, compliance), Proof/Credibility (metrics + partner logos + testimonial), CTA (dark section with Try Grysics/Docs/Sales buttons), Footer
 - **About** (`src/pages/about.tsx`): Mission, problem statement, approach, philosophy
 - **Olyxee Lab** (`src/pages/lab.tsx`): Research division — 6 research areas, recent publications, approach section, LinkedIn CTA
 - **Products**: Grysics (verification engine with animated canvas network), NRN (interpretable AI), WAVE (core platform)
