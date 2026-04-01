@@ -165,12 +165,12 @@ function LogoStrip() {
         <p className="text-center text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-6 sm:mb-8">Focus Areas</p>
         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 sm:gap-x-16 sm:gap-y-4">
           {[
-            { icon: Shield, label: "AI Safety" },
-            { icon: Eye, label: "Verification" },
-            { icon: Brain, label: "LLM Research" },
-            { icon: Activity, label: "Monitoring" },
-            { icon: BarChart3, label: "Evaluation" },
-            { icon: Lock, label: "Compliance" },
+            { icon: Shield, label: "AI Safety", color: "text-blue-500" },
+            { icon: Eye, label: "Verification", color: "text-orange-500" },
+            { icon: Brain, label: "LLM Research", color: "text-violet-500" },
+            { icon: Activity, label: "Monitoring", color: "text-emerald-500" },
+            { icon: BarChart3, label: "Evaluation", color: "text-cyan-500" },
+            { icon: Lock, label: "Compliance", color: "text-amber-500" },
           ].map((item, idx) => (
             <motion.div
               key={item.label}
@@ -178,10 +178,10 @@ function LogoStrip() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.06 }}
-              className="flex items-center gap-2.5 text-neutral-400"
+              className="flex items-center gap-2.5"
             >
-              <item.icon className="w-4 h-4" />
-              <span className="text-sm font-medium">{item.label}</span>
+              <item.icon className={`w-4 h-4 ${item.color}`} />
+              <span className="text-sm font-medium text-neutral-500">{item.label}</span>
             </motion.div>
           ))}
         </div>
@@ -251,9 +251,9 @@ function MissionSection() {
             className="space-y-6"
           >
             {[
-              { icon: Shield, title: "Research-first", desc: "Grounded in AI safety research. We study failure modes and publish our findings." },
-              { icon: Zap, title: "Infrastructure-grade", desc: "Production-scale systems. Reliable, fast, and built to integrate seamlessly." },
-              { icon: Eye, title: "Trust through transparency", desc: "Tools that show exactly how your AI behaves and where it falls short." },
+              { icon: Shield, title: "Research-first", desc: "Grounded in AI safety research. We study failure modes and publish our findings.", gradient: "/images/gradient-blue.png", tint: "bg-blue-500/10", iconColor: "text-blue-600" },
+              { icon: Zap, title: "Infrastructure-grade", desc: "Production-scale systems. Reliable, fast, and built to integrate seamlessly.", gradient: "/images/gradient-orange-pink.png", tint: "bg-orange-500/10", iconColor: "text-orange-600" },
+              { icon: Eye, title: "Trust through transparency", desc: "Tools that show exactly how your AI behaves and where it falls short.", gradient: "/images/gradient-purple.png", tint: "bg-violet-500/10", iconColor: "text-violet-600" },
             ].map((item, idx) => (
               <motion.div
                 key={item.title}
@@ -261,12 +261,15 @@ function MissionSection() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.08 }}
-                className="group flex gap-4 p-5 rounded-xl hover:bg-neutral-50 transition-colors"
+                className="group relative flex gap-5 p-6 rounded-2xl overflow-hidden border border-neutral-200/60 hover:shadow-lg hover:shadow-neutral-200/50 transition-all duration-300"
               >
-                <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-neutral-900 flex items-center justify-center mt-0.5">
-                  <item.icon className="w-5 h-5 text-white" />
+                <div className="absolute inset-0">
+                  <Image src={item.gradient} alt="" fill sizes="(max-width: 768px) 100vw, 50vw" aria-hidden="true" className="object-cover opacity-[0.08] group-hover:opacity-[0.15] transition-opacity duration-500" />
                 </div>
-                <div>
+                <div className={`relative flex-shrink-0 w-11 h-11 rounded-2xl ${item.tint} backdrop-blur-sm flex items-center justify-center mt-0.5`}>
+                  <item.icon className={`w-5 h-5 ${item.iconColor}`} />
+                </div>
+                <div className="relative">
                   <h3 className="text-[15px] font-semibold text-neutral-900 mb-1">{item.title}</h3>
                   <p className="text-sm text-neutral-500 font-light leading-relaxed">{item.desc}</p>
                 </div>
@@ -325,21 +328,27 @@ function ResearchAreas() {
               title: "Verification",
               desc: "Methods to verify AI systems produce accurate, consistent outputs across every scenario.",
               icon: CheckCircle2,
-              gradient: "from-blue-500/20 via-blue-400/5 to-transparent",
+              img: "/images/gradient-blue.png",
+              iconColor: "text-blue-400",
+              tint: "bg-blue-500/15",
             },
             {
               num: "02",
               title: "Safety",
               desc: "Detecting hallucinations and ensuring AI systems stay within intended boundaries.",
               icon: AlertTriangle,
-              gradient: "from-amber-500/20 via-amber-400/5 to-transparent",
+              img: "/images/gradient-orange-pink.png",
+              iconColor: "text-orange-400",
+              tint: "bg-orange-500/15",
             },
             {
               num: "03",
               title: "Monitoring",
               desc: "Real-time observability for AI in production. Catch drift and failures early.",
               icon: Activity,
-              gradient: "from-emerald-500/20 via-emerald-400/5 to-transparent",
+              img: "/images/gradient-yellow-green.png",
+              iconColor: "text-emerald-400",
+              tint: "bg-emerald-500/15",
             },
           ].map((step, idx) => (
             <motion.div
@@ -348,13 +357,17 @@ function ResearchAreas() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.12 }}
-              className="relative p-8 sm:p-10 rounded-2xl border border-white/[0.06] bg-white/[0.02] overflow-hidden group hover:border-white/[0.12] transition-colors"
+              className="relative p-8 sm:p-10 rounded-3xl border border-white/[0.08] bg-white/[0.02] overflow-hidden group hover:border-white/[0.15] transition-all duration-500"
             >
-              <div className={`absolute top-0 left-0 w-full h-full bg-gradient-to-br ${step.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+              <div className="absolute inset-0">
+                <Image src={step.img} alt="" fill sizes="(max-width: 768px) 100vw, 33vw" aria-hidden="true" className="object-cover opacity-[0.06] group-hover:opacity-[0.15] transition-opacity duration-700 scale-110" />
+              </div>
               <div className="relative">
                 <div className="flex items-center justify-between mb-8">
-                  <div className="text-4xl font-serif text-white/[0.08] leading-none">{step.num}</div>
-                  <step.icon className="w-6 h-6 text-white/20 group-hover:text-white/40 transition-colors" />
+                  <div className={`w-12 h-12 rounded-2xl ${step.tint} backdrop-blur-sm flex items-center justify-center`}>
+                    <step.icon className={`w-6 h-6 ${step.iconColor}`} />
+                  </div>
+                  <div className="text-4xl font-serif text-white/[0.06] leading-none">{step.num}</div>
                 </div>
                 <h3 className="text-xl sm:text-2xl font-semibold text-white mb-3 tracking-tight">{step.title}</h3>
                 <p className="text-sm sm:text-[15px] text-neutral-400 font-light leading-relaxed">{step.desc}</p>
@@ -446,7 +459,9 @@ function ApproachSection() {
             </div>
             <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-indigo-500/15 to-transparent rounded-full blur-2xl" />
             <div className="relative p-8 sm:p-10">
-              <Shield className="w-6 h-6 text-neutral-400 mb-4" />
+              <div className="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-5">
+                <Shield className="w-6 h-6 text-blue-400" />
+              </div>
               <h3 className="text-xl sm:text-2xl font-semibold text-white mb-3 tracking-tight">AI Safety Infrastructure</h3>
               <p className="text-neutral-400 text-sm sm:text-[15px] font-light leading-relaxed max-w-lg mb-6">
                 Verification engines, evaluation frameworks, and monitoring systems for real-world AI deployment.
@@ -470,7 +485,9 @@ function ApproachSection() {
               <Image src="/images/gradient-orange-pink.png" alt="" fill sizes="(max-width: 768px) 100vw, 33vw" aria-hidden="true" className="object-cover opacity-30" />
             </div>
             <div className="relative p-8 sm:p-10">
-              <Eye className="w-5 h-5 text-amber-600/60 mb-4" />
+              <div className="w-11 h-11 rounded-2xl bg-amber-500/10 flex items-center justify-center mb-5">
+                <Eye className="w-5 h-5 text-amber-500" />
+              </div>
               <h3 className="text-lg font-semibold text-neutral-900 mb-3 tracking-tight">Hallucination Research</h3>
               <p className="text-sm text-neutral-600 font-light leading-relaxed mb-4">
                 Studying why AI fabricates information and building detection methods that work across domains.
@@ -492,7 +509,9 @@ function ApproachSection() {
               <Image src="/images/gradient-yellow-green.png" alt="" fill sizes="(max-width: 768px) 100vw, 33vw" aria-hidden="true" className="object-cover opacity-25" />
             </div>
             <div className="relative p-8 sm:p-10">
-              <Brain className="w-5 h-5 text-emerald-600/60 mb-4" />
+              <div className="w-11 h-11 rounded-2xl bg-emerald-500/10 flex items-center justify-center mb-5">
+                <Brain className="w-5 h-5 text-emerald-500" />
+              </div>
               <h3 className="text-lg font-semibold text-neutral-900 mb-3 tracking-tight">Behavioral Evaluation</h3>
               <p className="text-sm text-neutral-600 font-light leading-relaxed mb-4">
                 Evaluating AI behavior at scale: consistency, accuracy, and alignment with intended outcomes.
@@ -516,7 +535,9 @@ function ApproachSection() {
             <div className="relative p-8 sm:p-10">
               <div className="flex flex-col sm:flex-row gap-6 sm:gap-10 items-start">
                 <div className="flex-1">
-                  <Lock className="w-5 h-5 text-violet-600/60 mb-4" />
+                  <div className="w-11 h-11 rounded-2xl bg-violet-500/10 flex items-center justify-center mb-5">
+                    <Lock className="w-5 h-5 text-violet-500" />
+                  </div>
                   <h3 className="text-lg font-semibold text-neutral-900 mb-3 tracking-tight">Enterprise & Regulated Industries</h3>
                   <p className="text-sm text-neutral-600 font-light leading-relaxed">
                     Verification and audit for regulated industries where trust is non-negotiable.
@@ -563,12 +584,14 @@ function ProductsSection() {
 
               <div className="space-y-4 mb-10">
                 {[
-                  { label: "Hallucination detection", desc: "Find fabricated facts and confident-sounding nonsense automatically" },
-                  { label: "Consistency testing", desc: "Verify your AI gives the same quality answer regardless of phrasing" },
-                  { label: "Production monitoring", desc: "Real-time alerts when behavior drifts or quality degrades" },
+                  { label: "Hallucination detection", desc: "Find fabricated facts and confident-sounding nonsense automatically", color: "text-orange-400", tint: "bg-orange-500/15" },
+                  { label: "Consistency testing", desc: "Verify your AI gives the same quality answer regardless of phrasing", color: "text-blue-400", tint: "bg-blue-500/15" },
+                  { label: "Production monitoring", desc: "Real-time alerts when behavior drifts or quality degrades", color: "text-emerald-400", tint: "bg-emerald-500/15" },
                 ].map((tool) => (
                   <div key={tool.label} className="flex gap-3 items-start">
-                    <Zap className="w-4 h-4 text-neutral-500 mt-1 flex-shrink-0" />
+                    <div className={`w-7 h-7 rounded-lg ${tool.tint} flex items-center justify-center mt-0.5 flex-shrink-0`}>
+                      <Zap className={`w-3.5 h-3.5 ${tool.color}`} />
+                    </div>
                     <div>
                       <span className="text-sm font-medium text-white">{tool.label}</span>
                       <span className="text-sm text-neutral-500 ml-2">{tool.desc}</span>

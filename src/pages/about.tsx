@@ -224,8 +224,8 @@ const About: FC = () => {
                 <div className="absolute inset-0 bg-white/80 backdrop-blur-sm" />
               </div>
               <div className="relative p-7 sm:p-12">
-                <div className="w-10 h-10 rounded-xl bg-neutral-900 flex items-center justify-center mb-6">
-                  <Eye className="w-5 h-5 text-white" />
+                <div className="w-12 h-12 rounded-2xl bg-orange-500/10 flex items-center justify-center mb-6">
+                  <Eye className="w-5 h-5 text-orange-500" />
                 </div>
                 <h2 className="font-serif text-3xl sm:text-4xl tracking-tight mb-6">The Problem</h2>
                 <div className="space-y-4 text-[15px] text-neutral-600 leading-relaxed font-light">
@@ -252,8 +252,8 @@ const About: FC = () => {
                 <div className="absolute inset-0 bg-white/80 backdrop-blur-sm" />
               </div>
               <div className="relative p-7 sm:p-12">
-                <div className="w-10 h-10 rounded-xl bg-neutral-900 flex items-center justify-center mb-6">
-                  <Shield className="w-5 h-5 text-white" />
+                <div className="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-6">
+                  <Shield className="w-5 h-5 text-blue-500" />
                 </div>
                 <h2 className="font-serif text-2xl sm:text-4xl tracking-tight mb-5 sm:mb-6">Our Answer</h2>
                 <div className="space-y-4 text-[15px] text-neutral-600 leading-relaxed font-light">
@@ -323,12 +323,12 @@ const About: FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
             {[
-              { icon: Shield, title: "Pre-deployment Testing", description: "Test AI outputs for accuracy, consistency, and safety before production." },
-              { icon: Eye, title: "Hallucination Detection", description: "Identify when models fabricate information, with confidence scoring." },
-              { icon: Brain, title: "Behavioral Evaluation", description: "Measure AI consistency across rephrasings and edge cases." },
-              { icon: Activity, title: "Production Monitoring", description: "Detect quality degradation, drift, and failure patterns in real time." },
-              { icon: Lock, title: "Compliance & Audit", description: "Audit trails for regulated industries. Every decision tracked." },
-              { icon: Sparkles, title: "Open Research", description: "We publish findings and open-source tools. Safety is a shared foundation." },
+              { icon: Shield, title: "Pre-deployment Testing", description: "Test AI outputs for accuracy, consistency, and safety before production.", img: "/images/gradient-blue.png", iconColor: "text-blue-400", tint: "bg-blue-500/15" },
+              { icon: Eye, title: "Hallucination Detection", description: "Identify when models fabricate information, with confidence scoring.", img: "/images/gradient-orange-pink.png", iconColor: "text-orange-400", tint: "bg-orange-500/15" },
+              { icon: Brain, title: "Behavioral Evaluation", description: "Measure AI consistency across rephrasings and edge cases.", img: "/images/gradient-purple.png", iconColor: "text-violet-400", tint: "bg-violet-500/15" },
+              { icon: Activity, title: "Production Monitoring", description: "Detect quality degradation, drift, and failure patterns in real time.", img: "/images/gradient-yellow-green.png", iconColor: "text-emerald-400", tint: "bg-emerald-500/15" },
+              { icon: Lock, title: "Compliance & Audit", description: "Audit trails for regulated industries. Every decision tracked.", img: "/images/gradient-pink-cyan.png", iconColor: "text-cyan-400", tint: "bg-cyan-500/15" },
+              { icon: Sparkles, title: "Open Research", description: "We publish findings and open-source tools. Safety is a shared foundation.", img: "/images/gradient-pastel.png", iconColor: "text-amber-400", tint: "bg-amber-500/15" },
             ].map((item, idx) => {
               const Icon = item.icon;
               return (
@@ -339,11 +339,18 @@ const About: FC = () => {
                   viewport={{ once: true, amount: 0.2 }}
                   custom={idx}
                   variants={fadeUp}
-                  className="rounded-2xl bg-white/[0.03] border border-white/[0.06] p-6 sm:p-8 hover:bg-white/[0.06] hover:border-white/[0.1] transition-all duration-300"
+                  className="relative rounded-3xl bg-white/[0.03] border border-white/[0.08] p-6 sm:p-8 hover:bg-white/[0.06] hover:border-white/[0.15] transition-all duration-500 overflow-hidden group"
                 >
-                  <Icon className="w-5 h-5 text-neutral-500 mb-5" />
-                  <h3 className="text-lg font-semibold text-white mb-3">{item.title}</h3>
-                  <p className="text-sm text-neutral-400 leading-relaxed font-light">{item.description}</p>
+                  <div className="absolute inset-0">
+                    <Image src={item.img} alt="" fill sizes="(max-width: 768px) 100vw, 33vw" aria-hidden="true" className="object-cover opacity-[0.05] group-hover:opacity-[0.12] transition-opacity duration-700" />
+                  </div>
+                  <div className="relative">
+                    <div className={`w-11 h-11 rounded-2xl ${item.tint} backdrop-blur-sm flex items-center justify-center mb-5`}>
+                      <Icon className={`w-5 h-5 ${item.iconColor}`} />
+                    </div>
+                    <h3 className="text-lg font-semibold text-white mb-3">{item.title}</h3>
+                    <p className="text-sm text-neutral-400 leading-relaxed font-light">{item.description}</p>
+                  </div>
                 </motion.div>
               );
             })}
@@ -414,10 +421,10 @@ const About: FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             {[
-              { title: "Reliability over novelty", description: "Better AI comes from making models more reliable, not just bigger.", icon: Shield },
-              { title: "Transparency by default", description: "Every deployment explainable. Every failure traceable.", icon: Eye },
-              { title: "Safety is not optional", description: "We design for the most demanding use cases first.", icon: Lock },
-              { title: "Open foundations", description: "We publish research and open-source our tools. Safety is a shared foundation.", icon: Sparkles },
+              { title: "Reliability over novelty", description: "Better AI comes from making models more reliable, not just bigger.", icon: Shield, img: "/images/gradient-blue.png", iconColor: "text-blue-600", tint: "bg-blue-500/10" },
+              { title: "Transparency by default", description: "Every deployment explainable. Every failure traceable.", icon: Eye, img: "/images/gradient-orange-pink.png", iconColor: "text-orange-600", tint: "bg-orange-500/10" },
+              { title: "Safety is not optional", description: "We design for the most demanding use cases first.", icon: Lock, img: "/images/gradient-purple.png", iconColor: "text-violet-600", tint: "bg-violet-500/10" },
+              { title: "Open foundations", description: "We publish research and open-source our tools. Safety is a shared foundation.", icon: Sparkles, img: "/images/gradient-yellow-green.png", iconColor: "text-emerald-600", tint: "bg-emerald-500/10" },
             ].map((value, idx) => {
               const Icon = value.icon;
               return (
@@ -428,13 +435,18 @@ const About: FC = () => {
                   viewport={{ once: true, amount: 0.3 }}
                   custom={idx}
                   variants={fadeUp}
-                  className="rounded-2xl bg-white border border-neutral-200/80 p-6 sm:p-10 hover:shadow-lg hover:shadow-neutral-200/40 transition-all duration-300"
+                  className="relative rounded-3xl bg-white border border-neutral-200/60 p-6 sm:p-10 hover:shadow-xl hover:shadow-neutral-200/50 transition-all duration-500 overflow-hidden group"
                 >
-                  <div className="w-9 h-9 rounded-lg bg-neutral-100 flex items-center justify-center mb-5">
-                    <Icon className="w-4.5 h-4.5 text-neutral-600" />
+                  <div className="absolute inset-0">
+                    <Image src={value.img} alt="" fill sizes="(max-width: 768px) 100vw, 50vw" aria-hidden="true" className="object-cover opacity-[0.06] group-hover:opacity-[0.12] transition-opacity duration-700" />
                   </div>
-                  <h3 className="text-lg font-semibold text-neutral-900 mb-3">{value.title}</h3>
-                  <p className="text-sm text-neutral-500 leading-relaxed font-light">{value.description}</p>
+                  <div className="relative">
+                    <div className={`w-11 h-11 rounded-2xl ${value.tint} flex items-center justify-center mb-5`}>
+                      <Icon className={`w-5 h-5 ${value.iconColor}`} />
+                    </div>
+                    <h3 className="text-lg font-semibold text-neutral-900 mb-3">{value.title}</h3>
+                    <p className="text-sm text-neutral-500 leading-relaxed font-light">{value.description}</p>
+                  </div>
                 </motion.div>
               );
             })}

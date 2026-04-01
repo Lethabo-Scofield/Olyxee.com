@@ -243,14 +243,19 @@ const Research: FC = () => {
               className="grid grid-cols-2 gap-4"
             >
               {[
-                { label: "AI Safety", count: "3 papers", color: "bg-red-50 border-red-100 text-red-600" },
-                { label: "Evaluation", count: "4 papers", color: "bg-blue-50 border-blue-100 text-blue-600" },
-                { label: "Hallucination", count: "1 paper", color: "bg-amber-50 border-amber-100 text-amber-600" },
-                { label: "RAG & Retrieval", count: "1 paper", color: "bg-emerald-50 border-emerald-100 text-emerald-600" },
+                { label: "AI Safety", count: "3 papers", color: "bg-red-50 border-red-100 text-red-600", img: "/images/gradient-orange-pink.png" },
+                { label: "Evaluation", count: "4 papers", color: "bg-blue-50 border-blue-100 text-blue-600", img: "/images/gradient-blue.png" },
+                { label: "Hallucination", count: "1 paper", color: "bg-amber-50 border-amber-100 text-amber-600", img: "/images/gradient-orange-purple.png" },
+                { label: "RAG & Retrieval", count: "1 paper", color: "bg-emerald-50 border-emerald-100 text-emerald-600", img: "/images/gradient-yellow-green.png" },
               ].map((item) => (
-                <div key={item.label} className={`rounded-xl border p-5 ${item.color}`}>
-                  <p className="text-sm font-semibold mb-1">{item.label}</p>
-                  <p className="text-xs opacity-70">{item.count}</p>
+                <div key={item.label} className={`relative rounded-2xl border p-5 ${item.color} overflow-hidden group`}>
+                  <div className="absolute inset-0">
+                    <Image src={item.img} alt="" fill sizes="(max-width: 768px) 50vw, 25vw" aria-hidden="true" className="object-cover opacity-[0.08]" />
+                  </div>
+                  <div className="relative">
+                    <p className="text-sm font-semibold mb-1">{item.label}</p>
+                    <p className="text-xs opacity-70">{item.count}</p>
+                  </div>
                 </div>
               ))}
             </motion.div>
