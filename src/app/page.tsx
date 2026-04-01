@@ -1,26 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import './globals.css';
 import Header from '../components/header';
 import Footer from '../components/footer';
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import {
-  ArrowRight,
-  Code2,
-  Shield,
-  BarChart3,
-  Zap,
-  Eye,
-  Building2,
-  FlaskConical,
-  MessageSquare,
-  FileSearch,
-  Bot,
-  Layers,
-} from "lucide-react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { ArrowRight, ArrowUpRight, Terminal, ChevronRight } from "lucide-react";
 
 export default function HomePage() {
   const [cookieBannerVisible, setCookieBannerVisible] = useState(false);
@@ -40,33 +27,26 @@ export default function HomePage() {
     url: "https://olyxee.com",
     logo: "https://olyxee.com/Logo/Olyxee_Logo.png",
     description: "AI infrastructure company building Grysics, a verification engine that ensures AI applications — chatbots, RAG pipelines, and agent workflows — work correctly and reliably.",
-    sameAs: [
-      "https://www.linkedin.com/company/olyxeelab/",
-    ],
+    sameAs: ["https://www.linkedin.com/company/olyxeelab/"],
     foundingDate: "2024",
-    knowsAbout: ["Artificial Intelligence", "AI Safety", "AI Verification", "Machine Learning", "Edge AI"],
+    knowsAbout: ["Artificial Intelligence", "AI Safety", "AI Verification", "Machine Learning"],
   };
 
   return (
     <div className="min-h-screen bg-white relative">
       <div className="grain" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Header />
-
       <main>
         <HeroSection />
-        <ProductsSection />
-        <MissionSection />
-        <AudiencePathwaysSection />
-        <UseCasesSection />
+        <AnnouncementStrip />
+        <ProductShowcase />
+        <HowItWorks />
+        <CapabilitiesBento />
+        <DeveloperSection />
         <CTASection />
       </main>
-
       <Footer />
-
       <AnimatePresence>
         {cookieBannerVisible && <CookieBanner onDismiss={() => setCookieBannerVisible(false)} />}
       </AnimatePresence>
@@ -74,154 +54,217 @@ export default function HomePage() {
   );
 }
 
+
 function HeroSection() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const y = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
   return (
-    <section className="relative w-full min-h-[95vh] flex flex-col items-center justify-center px-4 md:px-8 lg:px-16 pt-28 pb-20 overflow-hidden">
+    <section ref={ref} className="relative w-full min-h-[100vh] flex flex-col items-center justify-center px-4 md:px-8 lg:px-16 overflow-hidden" style={{ position: 'relative' }}>
       <div className="absolute inset-0 w-full h-full">
-        <Image
-          src="/hero-bg.png"
-          alt=""
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-white/70" />
+        <Image src="/hero-bg.png" alt="" fill className="object-cover" priority />
+        <div className="absolute inset-0 bg-white/60" />
       </div>
 
-      <div className="relative z-10 text-center max-w-5xl mx-auto">
-        <motion.h1
+      <motion.div style={{ y, opacity }} className="relative z-10 text-center max-w-5xl mx-auto pt-24">
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-          className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-neutral-900 leading-[1.05] tracking-tight"
+          transition={{ duration: 0.6 }}
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-neutral-900/5 border border-neutral-200 mb-8"
+        >
+          <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+          <span className="text-xs font-medium text-neutral-600">Now building in public</span>
+        </motion.div>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.1 }}
+          className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-neutral-900 leading-[1.02] tracking-tight"
         >
           Research and safety
           <br />
-          for{" "}
-          <em className="text-neutral-400">artificial intelligence</em>
+          for <em className="text-neutral-400">artificial intelligence</em>
         </motion.h1>
-      </div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          className="mt-7 text-lg sm:text-xl text-neutral-500 font-light max-w-2xl mx-auto leading-relaxed"
+        >
+          We build verification infrastructure for AI applications.
+          Test, evaluate, and monitor your models before they fail in production.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.45 }}
+          className="mt-10 flex flex-col sm:flex-row gap-3 justify-center"
+        >
+          <Link
+            href="/products/grysics"
+            className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-black transition-all text-sm tracking-wide shadow-lg shadow-neutral-900/20"
+          >
+            Try Grysics <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+          </Link>
+          <Link
+            href="/docs"
+            className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-neutral-700 bg-white border border-neutral-200 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide shadow-sm"
+          >
+            Read the Docs
+          </Link>
+        </motion.div>
+      </motion.div>
 
       <motion.div
-        className="relative z-10 w-full max-w-4xl mt-16"
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.2 }}
+        className="relative z-10 w-full max-w-5xl mt-16 mb-8"
+        initial={{ opacity: 0, y: 60, scale: 0.97 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 1.2, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
       >
-        <div className="relative rounded-3xl overflow-hidden border border-neutral-200 shadow-2xl shadow-neutral-200/50">
+        <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-neutral-200/80 shadow-2xl shadow-neutral-300/40">
           <video
             src="/videos/demo.mp4"
             className="w-full aspect-video object-cover"
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
+            autoPlay loop muted playsInline preload="metadata"
           />
-          <div className="absolute inset-0 border border-white/20 rounded-3xl pointer-events-none" />
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6"
-          >
-            <Link
-              href="/products/grysics"
-              className="group inline-flex items-center gap-2.5 bg-white/90 backdrop-blur-xl text-neutral-900 rounded-2xl px-5 py-3 hover:bg-white hover:scale-[1.02] transition-all shadow-lg shadow-black/10 border border-white/50"
-            >
-              <span className="text-sm font-medium tracking-tight">Try Grysics</span>
-              <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </Link>
-          </motion.div>
+          <div className="absolute inset-0 rounded-2xl sm:rounded-3xl pointer-events-none ring-1 ring-inset ring-black/5" />
         </div>
       </motion.div>
-
     </section>
   );
 }
 
 
-function ProductsSection() {
+function AnnouncementStrip() {
   return (
-    <section className="py-28 sm:py-36">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="text-center mb-16 sm:mb-20">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-5"
-          >
-            What we <em className="text-neutral-400">build</em>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1, duration: 0.7 }}
-            className="text-lg text-neutral-500 font-light max-w-xl mx-auto"
-          >
-            Tools and infrastructure for trustworthy AI.
-          </motion.p>
+    <section className="border-y border-neutral-200 bg-neutral-50/50">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 py-5">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <span className="text-[10px] font-bold text-white bg-neutral-900 px-2.5 py-1 rounded-md uppercase tracking-widest">New</span>
+            <p className="text-sm text-neutral-600">
+              <span className="font-medium text-neutral-900">Grysics is now available.</span>{" "}
+              Verification engine for chatbots, RAG, and agent workflows.
+            </p>
+          </div>
+          <Link href="/products/grysics" className="group inline-flex items-center gap-1.5 text-sm font-medium text-neutral-900 hover:text-neutral-600 transition-colors whitespace-nowrap">
+            Learn more <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+          </Link>
         </div>
+      </div>
+    </section>
+  );
+}
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+function ProductShowcase() {
+  return (
+    <section className="py-32 sm:py-40">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mb-20"
+        >
+          <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Our Product</p>
+          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 max-w-3xl">
+            Grysics catches what <em className="text-neutral-400">testing misses</em>
+          </h2>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="lg:col-span-2"
+            className="space-y-8"
           >
+            <p className="text-lg text-neutral-600 font-light leading-relaxed">
+              AI applications fail in ways traditional testing can't detect. Grysics is a verification engine
+              purpose-built for LLM-powered systems — chatbots, RAG pipelines, and agent workflows.
+            </p>
+
+            <div className="space-y-5">
+              {[
+                { title: "Hallucination detection", desc: "Find fabricated facts, invented citations, and confident-sounding nonsense before users do." },
+                { title: "RAG evaluation", desc: "Score retrieval quality, context usage, and answer faithfulness independently across your entire pipeline." },
+                { title: "Drift monitoring", desc: "Detect when production models silently degrade over time. Get alerts on accuracy drops, behavior shifts, and emerging patterns." },
+                { title: "Consistency testing", desc: "Verify your AI gives the same quality answer to the same question, regardless of phrasing, ordering, or context." },
+              ].map((item, idx) => (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.08 }}
+                  className="group flex gap-4"
+                >
+                  <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-neutral-900 flex items-center justify-center mt-0.5">
+                    <span className="text-white text-xs font-bold">{idx + 1}</span>
+                  </div>
+                  <div>
+                    <h3 className="text-[15px] font-semibold text-neutral-900 mb-1">{item.title}</h3>
+                    <p className="text-sm text-neutral-500 font-light leading-relaxed">{item.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
             <Link
               href="/products/grysics"
-              className="group relative flex flex-col h-full p-8 sm:p-10 rounded-3xl overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-neutral-200/60 bg-gradient-to-br from-blue-50 via-indigo-50 to-violet-50 border border-neutral-100 hover:border-neutral-200"
+              className="group inline-flex items-center gap-2 text-sm font-semibold text-neutral-900 hover:text-neutral-600 transition-colors mt-4"
             >
-              <div className="flex items-center gap-3 mb-5">
-                <h3 className="text-2xl sm:text-3xl tracking-tight text-neutral-900">Grysics</h3>
-                <span className="text-[10px] font-semibold text-neutral-500 bg-white/70 px-3 py-1 rounded-full border border-white/50 uppercase tracking-widest">
-                  Flagship Product
-                </span>
-              </div>
-
-              <p className="text-base font-medium text-neutral-700 mb-3">The verification engine for AI applications</p>
-              <p className="text-sm text-neutral-500 leading-relaxed font-light mb-6 flex-1">Test and monitor chatbots, RAG pipelines, and agent workflows for accuracy, consistency, and hallucination — before and after deployment. Catch failures before your users do.</p>
-
-              <div className="flex flex-wrap gap-2 mb-8">
-                {["Hallucination detection", "RAG evaluation", "Drift monitoring", "Accuracy benchmarks"].map((f) => (
-                  <span key={f} className="text-[11px] text-neutral-500 bg-white/60 border border-neutral-200/60 rounded-full px-3 py-1">
-                    {f}
-                  </span>
-                ))}
-              </div>
-
-              <div className="flex items-center gap-2 text-sm font-medium text-neutral-900 group-hover:gap-3 transition-all">
-                Try Grysics <ArrowRight className="w-4 h-4" />
-              </div>
+              Explore Grysics <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 30, scale: 0.98 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.12 }}
+            transition={{ duration: 0.8, delay: 0.15 }}
+            className="relative"
           >
-            <div className="flex flex-col h-full p-8 sm:p-10 rounded-3xl border border-dashed border-neutral-300 bg-neutral-50/50 items-center justify-center text-center">
-              <div className="w-12 h-12 rounded-2xl bg-neutral-100 flex items-center justify-center mb-5">
-                <Zap className="w-5 h-5 text-neutral-400" />
+            <div className="sticky top-32 rounded-2xl bg-neutral-950 p-6 sm:p-8 overflow-hidden border border-neutral-800">
+              <div className="flex items-center gap-2 mb-6">
+                <div className="w-3 h-3 rounded-full bg-red-500/80" />
+                <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                <span className="text-[11px] text-neutral-600 ml-2 font-mono">grysics verify</span>
               </div>
-              <h3 className="text-lg tracking-tight text-neutral-900 mb-2">More coming soon</h3>
-              <p className="text-sm text-neutral-400 font-light leading-relaxed mb-6">We're building additional tools to expand the Olyxee platform. Stay tuned.</p>
-              <Link
-                href="/contact"
-                className="text-sm font-medium text-neutral-500 hover:text-neutral-900 transition-colors"
-              >
-                Get notified
-              </Link>
+              <div className="font-mono text-[13px] leading-[1.8] space-y-1">
+                <div className="text-neutral-500">$ grysics verify --suite chatbot-v2</div>
+                <div className="text-neutral-400 mt-3">Running 847 test cases...</div>
+                <div className="text-neutral-400 mt-1 flex items-center gap-2">
+                  <span className="text-green-400">✓</span> Accuracy: all assertions passed
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-green-400">✓</span> <span className="text-neutral-400">Consistency: 98.2% across paraphrases</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-amber-400">!</span> <span className="text-neutral-400">Hallucination: 3 cases flagged</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-green-400">✓</span> <span className="text-neutral-400">RAG retrieval: relevance above threshold</span>
+                </div>
+                <div className="text-neutral-400 mt-3">
+                  <span className="text-neutral-500">───────────────────────────────</span>
+                </div>
+                <div className="text-white mt-1">
+                  Results: <span className="text-green-400">844 passed</span>, <span className="text-amber-400">3 warnings</span>, <span className="text-red-400">0 failed</span>
+                </div>
+                <div className="text-neutral-600 mt-1">Report saved to ./reports/chatbot-v2.html</div>
+                <div className="mt-3 text-neutral-500 animate-pulse">▊</div>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -231,75 +274,52 @@ function ProductsSection() {
 }
 
 
-function MissionSection() {
-  const differentiators = [
-    {
-      icon: Shield,
-      title: "Safety-first approach",
-      desc: "Every product we build starts with verification and reliability as core requirements, not afterthoughts.",
-    },
-    {
-      icon: Eye,
-      title: "Pre- and post-deployment",
-      desc: "Catch issues before launch with testing, then continuously monitor in production for drift and degradation.",
-    },
-    {
-      icon: Layers,
-      title: "Full-stack coverage",
-      desc: "From RAG retrieval quality to agent workflow consistency to chatbot hallucination — one platform covers it all.",
-    },
-    {
-      icon: Zap,
-      title: "Built for speed",
-      desc: "Designed to integrate into existing CI/CD pipelines without slowing down your development velocity.",
-    },
+function HowItWorks() {
+  const steps = [
+    { num: "01", title: "Connect", desc: "Point Grysics at your AI application — chatbot, RAG pipeline, or agent workflow. No code changes required." },
+    { num: "02", title: "Verify", desc: "Run comprehensive test suites that check accuracy, consistency, hallucination, and retrieval quality across thousands of scenarios." },
+    { num: "03", title: "Monitor", desc: "Deploy to production with continuous monitoring. Get real-time alerts when behavior drifts or quality degrades." },
   ];
 
   return (
-    <section className="py-28 sm:py-36 relative overflow-hidden">
+    <section className="relative overflow-hidden">
       <div className="absolute inset-0 bg-neutral-950" />
-      <div className="relative max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="max-w-3xl mx-auto text-center mb-16 sm:mb-20">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-white mb-8"
-          >
-            Why it <em className="text-neutral-500">matters</em>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1, duration: 0.7 }}
-            className="text-lg sm:text-xl text-neutral-300 font-light leading-relaxed"
-          >
-            AI is being deployed in high-stakes environments — healthcare, legal, finance, customer support — where a wrong answer isn't just inconvenient, it's dangerous. Olyxee exists to ensure AI applications work correctly, consistently, and safely. We build the verification infrastructure that makes trustworthy AI possible at scale.
-          </motion.p>
-        </div>
+      <div className="absolute inset-0">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-gradient-to-br from-indigo-500/10 via-purple-500/5 to-transparent blur-3xl" />
+      </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {differentiators.map((item, idx) => {
-            const Icon = item.icon;
-            return (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.08 }}
-                className="group p-7 sm:p-8 rounded-2xl border border-white/8 hover:border-white/15 bg-white/[0.03] hover:bg-white/[0.05] transition-all duration-400"
-              >
-                <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center mb-5">
-                  <Icon className="w-5 h-5 text-neutral-400" />
-                </div>
-                <h3 className="text-base font-semibold text-white mb-2">{item.title}</h3>
-                <p className="text-sm text-neutral-400 leading-relaxed font-light">{item.desc}</p>
-              </motion.div>
-            );
-          })}
+      <div className="relative py-32 sm:py-40 max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20 sm:mb-24"
+        >
+          <p className="text-xs font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-4">How it works</p>
+          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-white">
+            Three steps to <em className="text-neutral-500">reliable AI</em>
+          </h2>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-0">
+          {steps.map((step, idx) => (
+            <motion.div
+              key={step.num}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: idx * 0.12 }}
+              className="relative p-8 sm:p-10 md:p-12"
+            >
+              {idx < steps.length - 1 && (
+                <div className="hidden md:block absolute top-1/2 right-0 -translate-y-1/2 w-px h-24 bg-gradient-to-b from-transparent via-white/10 to-transparent" />
+              )}
+              <div className="text-5xl sm:text-6xl font-serif text-white/[0.06] mb-6 leading-none">{step.num}</div>
+              <h3 className="text-xl sm:text-2xl font-semibold text-white mb-3 tracking-tight">{step.title}</h3>
+              <p className="text-sm sm:text-[15px] text-neutral-400 font-light leading-relaxed">{step.desc}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
@@ -307,100 +327,98 @@ function MissionSection() {
 }
 
 
-function AudiencePathwaysSection() {
-  const pathways = [
-    {
-      icon: Code2,
-      audience: "Developers",
-      headline: "Ship AI that actually works",
-      description: "Access SDKs, APIs, CLI tools, and comprehensive documentation to integrate verification into your development workflow. Test your models locally, in CI, or in production.",
-      cta: "Explore Docs",
-      href: "/docs",
-      features: ["Python & C++ SDKs", "REST API", "CLI tools", "CI/CD integration"],
-    },
-    {
-      icon: Building2,
-      audience: "Enterprise",
-      headline: "AI you can trust at scale",
-      description: "Deploy verified AI models across your organization with enterprise-grade monitoring, audit trails, and compliance reporting. Scale with confidence.",
-      cta: "Contact Sales",
-      href: "/contact",
-      features: ["SOC 2 compliance", "Audit trails", "SLA guarantees", "Dedicated support"],
-    },
-    {
-      icon: FlaskConical,
-      audience: "Research & Partners",
-      headline: "Advance AI reliability together",
-      description: "We're building in the open and looking for research partners to help define verification standards for AI systems. If you're working on AI safety, evaluation, or reliability — let's talk.",
-      cta: "Get in Touch",
-      href: "/contact",
-      features: ["Open collaboration", "Verification standards", "Safety research", "Early partner program"],
-    },
-  ];
-
+function CapabilitiesBento() {
   return (
-    <section className="py-28 sm:py-36">
+    <section className="py-32 sm:py-40">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="text-center mb-16 sm:mb-20">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mb-16 sm:mb-20"
+        >
+          <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Capabilities</p>
+          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 max-w-3xl">
+            Built for every stage of the <em className="text-neutral-400">AI lifecycle</em>
+          </h2>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-5"
+            transition={{ duration: 0.5 }}
+            className="md:col-span-2 relative group rounded-2xl bg-neutral-950 p-8 sm:p-10 overflow-hidden"
           >
-            Built for <em className="text-neutral-400">your team</em>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-indigo-500/15 to-transparent rounded-full blur-2xl" />
+            <div className="relative">
+              <h3 className="text-xl sm:text-2xl font-semibold text-white mb-3 tracking-tight">Chatbot & Agent Verification</h3>
+              <p className="text-neutral-400 text-sm sm:text-[15px] font-light leading-relaxed max-w-lg mb-6">
+                Test customer-facing AI across thousands of query variations. Detect hallucinated answers, inconsistent behavior, and policy violations — automatically.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {["Accuracy testing", "Consistency checks", "Policy compliance", "Edge case detection"].map(t => (
+                  <span key={t} className="text-[11px] text-neutral-400 bg-white/5 border border-white/10 rounded-full px-3 py-1">{t}</span>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1, duration: 0.7 }}
-            className="text-lg text-neutral-500 font-light max-w-xl mx-auto"
+            transition={{ duration: 0.5, delay: 0.06 }}
+            className="group rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-100/80 p-8 sm:p-10"
           >
-            Whether you're writing code, leading a product, or pushing the boundaries of research.
-          </motion.p>
-        </div>
+            <h3 className="text-lg font-semibold text-neutral-900 mb-3 tracking-tight">RAG Evaluation</h3>
+            <p className="text-sm text-neutral-600 font-light leading-relaxed mb-4">
+              Score retrieval quality, context utilization, and response faithfulness independently. Know exactly where your pipeline breaks.
+            </p>
+            <div className="flex items-center gap-2 text-sm font-medium text-neutral-900 opacity-60">
+              Full-stack analysis <ArrowUpRight className="w-3.5 h-3.5" />
+            </div>
+          </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {pathways.map((path, idx) => {
-            const Icon = path.icon;
-            return (
-              <motion.div
-                key={path.audience}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-                className="group flex flex-col rounded-3xl border border-neutral-200 hover:border-neutral-300 p-8 sm:p-9 transition-all duration-500 hover:shadow-xl hover:shadow-neutral-100/80"
-              >
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-11 h-11 rounded-2xl bg-neutral-100 flex items-center justify-center group-hover:bg-neutral-900 transition-colors duration-300">
-                    <Icon className="w-5 h-5 text-neutral-600 group-hover:text-white transition-colors duration-300" />
-                  </div>
-                  <span className="text-xs font-semibold text-neutral-400 uppercase tracking-widest">{path.audience}</span>
-                </div>
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.12 }}
+            className="group rounded-2xl bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-100/80 p-8 sm:p-10"
+          >
+            <h3 className="text-lg font-semibold text-neutral-900 mb-3 tracking-tight">Production Monitoring</h3>
+            <p className="text-sm text-neutral-600 font-light leading-relaxed mb-4">
+              Continuous monitoring for accuracy drift, response degradation, and emerging failure patterns. Alerts before users notice.
+            </p>
+            <div className="flex items-center gap-2 text-sm font-medium text-neutral-900 opacity-60">
+              Real-time alerts <ArrowUpRight className="w-3.5 h-3.5" />
+            </div>
+          </motion.div>
 
-                <h3 className="text-xl tracking-tight text-neutral-900 mb-3">{path.headline}</h3>
-                <p className="text-sm text-neutral-500 leading-relaxed font-light mb-6 flex-1">{path.description}</p>
-
-                <div className="flex flex-wrap gap-2 mb-7">
-                  {path.features.map((f) => (
-                    <span key={f} className="text-[11px] text-neutral-400 bg-neutral-50 border border-neutral-200 rounded-full px-3 py-1">
-                      {f}
-                    </span>
-                  ))}
-                </div>
-
-                <Link
-                  href={path.href}
-                  className="group/btn inline-flex items-center gap-2 text-sm font-medium text-neutral-900 hover:gap-3 transition-all"
-                >
-                  {path.cta} <ArrowRight className="w-4 h-4" />
-                </Link>
-              </motion.div>
-            );
-          })}
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.18 }}
+            className="md:col-span-2 lg:col-span-2 group rounded-2xl bg-gradient-to-br from-violet-50 to-blue-50 border border-violet-100/80 p-8 sm:p-10"
+          >
+            <div className="flex flex-col sm:flex-row gap-6 sm:gap-10 items-start">
+              <div className="flex-1">
+                <h3 className="text-lg font-semibold text-neutral-900 mb-3 tracking-tight">Compliance & Audit Trails</h3>
+                <p className="text-sm text-neutral-600 font-light leading-relaxed">
+                  Generate verification reports for regulated industries. Complete audit trails with test results, accuracy metrics, and behavioral logs for every deployment cycle.
+                </p>
+              </div>
+              <div className="flex-shrink-0 flex flex-wrap gap-2">
+                {["Healthcare", "Legal", "Finance", "Enterprise"].map(t => (
+                  <span key={t} className="text-[11px] text-violet-600 bg-violet-100/60 border border-violet-200/60 rounded-full px-3 py-1">{t}</span>
+                ))}
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
@@ -408,88 +426,115 @@ function AudiencePathwaysSection() {
 }
 
 
-function UseCasesSection() {
-  const useCases = [
-    {
-      icon: MessageSquare,
-      title: "Chatbot verification",
-      description: "Test customer support bots across thousands of query variations. Detect hallucinated answers, inconsistent responses, and policy violations before they reach users.",
-      metric: "Automated",
-    },
-    {
-      icon: FileSearch,
-      title: "RAG pipeline evaluation",
-      description: "Score retrieval quality, context utilization, and response faithfulness independently. Identify exactly where your RAG pipeline breaks down.",
-      metric: "Full-stack",
-    },
-    {
-      icon: Bot,
-      title: "Agent workflow testing",
-      description: "Verify multi-step agent workflows handle edge cases correctly. Test tool-calling accuracy, reasoning chains, and failure recovery paths.",
-      metric: "End-to-end",
-    },
-    {
-      icon: BarChart3,
-      title: "Production monitoring",
-      description: "Continuously monitor deployed models for accuracy drift, response degradation, and emerging failure patterns. Get alerts before users complain.",
-      metric: "Real-time",
-    },
-    {
-      icon: Shield,
-      title: "Compliance & audit trails",
-      description: "Generate verification reports for regulated industries. Complete audit trails showing test results, accuracy metrics, and model behavior logs for every deployment.",
-      metric: "Audit-ready",
-    },
-  ];
+function DeveloperSection() {
+  const codeSnippet = `from grysics import Verifier
+
+verifier = Verifier(api_key="gry_...")
+
+# Verify a chatbot response
+result = verifier.check(
+    prompt="What is your refund policy?",
+    response=chatbot.reply(prompt),
+    context=retrieval.search(prompt),
+)
+
+print(result.accuracy)      # 0.94
+print(result.hallucination) # False
+print(result.consistency)   # 0.97`;
 
   return (
-    <section className="py-28 sm:py-36 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-neutral-50/80 to-white" />
-      <div className="relative max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="text-center mb-16 sm:mb-20">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-5"
-          >
-            Real-world <em className="text-neutral-400">use cases</em>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1, duration: 0.7 }}
-            className="text-lg text-neutral-500 font-light max-w-xl mx-auto"
-          >
-            How teams use Olyxee to build AI that works correctly in production.
-          </motion.p>
-        </div>
+    <section className="relative overflow-hidden">
+      <div className="absolute inset-0 bg-neutral-950" />
+      <div className="relative py-32 sm:py-40">
+        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
+              <p className="text-xs font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-4">For Developers</p>
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white mb-6">
+                Integrate in <em className="text-neutral-500">minutes</em>
+              </h2>
+              <p className="text-neutral-400 text-[15px] sm:text-base font-light leading-relaxed mb-8">
+                Grysics fits into your existing workflow. Python SDK, REST API, and CLI — test locally, in CI/CD, or in production. No infrastructure to manage.
+              </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {useCases.map((uc, idx) => {
-            const Icon = uc.icon;
-            return (
-              <motion.div
-                key={uc.title}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.06 }}
-                className="group p-7 sm:p-8 rounded-2xl bg-white border border-neutral-200 hover:border-neutral-300 hover:shadow-lg hover:shadow-neutral-100/80 transition-all duration-400"
-              >
-                <div className="flex items-start justify-between mb-5">
-                  <div className="w-11 h-11 rounded-2xl bg-neutral-100 flex items-center justify-center">
-                    <Icon className="w-5 h-5 text-neutral-600" />
+              <div className="space-y-4 mb-10">
+                {[
+                  { label: "Python SDK", desc: "pip install grysics — start verifying in 3 lines of code" },
+                  { label: "REST API", desc: "Language-agnostic HTTP endpoints for any stack" },
+                  { label: "CLI", desc: "Run verification suites from your terminal or CI pipeline" },
+                ].map((tool) => (
+                  <div key={tool.label} className="flex gap-3 items-start">
+                    <Terminal className="w-4 h-4 text-neutral-500 mt-1 flex-shrink-0" />
+                    <div>
+                      <span className="text-sm font-medium text-white">{tool.label}</span>
+                      <span className="text-sm text-neutral-500 ml-2">{tool.desc}</span>
+                    </div>
                   </div>
-                  <span className="text-[11px] font-semibold text-neutral-400 uppercase tracking-wider mt-1">{uc.metric}</span>
+                ))}
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link
+                  href="/docs"
+                  className="group inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm"
+                >
+                  Read the Docs <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                </Link>
+                <Link
+                  href="/products/grysics"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 text-neutral-400 border border-white/15 rounded-full font-medium hover:bg-white/5 hover:text-white transition-all text-sm"
+                >
+                  Get API Access
+                </Link>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30, scale: 0.98 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+            >
+              <div className="rounded-2xl bg-[#0d1117] border border-white/10 overflow-hidden shadow-2xl shadow-black/50">
+                <div className="flex items-center gap-2 px-5 py-3 border-b border-white/5">
+                  <div className="w-3 h-3 rounded-full bg-red-500/60" />
+                  <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
+                  <div className="w-3 h-3 rounded-full bg-green-500/60" />
+                  <span className="text-[11px] text-neutral-600 ml-2 font-mono">verify.py</span>
                 </div>
-                <h3 className="text-base font-semibold text-neutral-900 mb-2">{uc.title}</h3>
-                <p className="text-sm text-neutral-500 leading-relaxed font-light">{uc.description}</p>
-              </motion.div>
-            );
-          })}
+                <pre className="p-5 sm:p-6 overflow-x-auto">
+                  <code className="text-[13px] font-mono leading-[1.8]">
+                    {codeSnippet.split('\n').map((line, i) => (
+                      <div key={i}>
+                        {line.startsWith('#') ? (
+                          <span className="text-neutral-600">{line}</span>
+                        ) : line.startsWith('from') || line.startsWith('import') ? (
+                          <span>
+                            <span className="text-purple-400">{line.split(' ')[0]}</span>
+                            <span className="text-neutral-300">{' ' + line.split(' ').slice(1).join(' ')}</span>
+                          </span>
+                        ) : line.includes('print') ? (
+                          <span>
+                            <span className="text-blue-400">print</span>
+                            <span className="text-neutral-300">{line.replace('print', '')}</span>
+                          </span>
+                        ) : line.includes('=') && !line.trim().startsWith('response') && !line.trim().startsWith('context') ? (
+                          <span className="text-neutral-300">{line}</span>
+                        ) : (
+                          <span className="text-neutral-300">{line}</span>
+                        )}
+                      </div>
+                    ))}
+                  </code>
+                </pre>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>
@@ -499,54 +544,45 @@ function UseCasesSection() {
 
 function CTASection() {
   return (
-    <section className="py-28 sm:py-36 relative overflow-hidden">
-      <div className="absolute inset-0 bg-neutral-950" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(255,255,255,0.03)_0%,_transparent_70%)]" />
+    <section className="py-32 sm:py-44 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-white via-neutral-50 to-neutral-100" />
       <div className="relative max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-white tracking-tight mb-8"
+          className="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-neutral-900 tracking-tight mb-6"
         >
-          Ready to build AI
-          <br />
-          <em className="text-neutral-500">that works?</em>
+          Build AI that<br /><em className="text-neutral-400">actually works</em>
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.15, duration: 0.7 }}
-          className="text-neutral-300 text-lg sm:text-xl max-w-xl mx-auto mb-12 font-light leading-relaxed"
+          transition={{ delay: 0.1, duration: 0.7 }}
+          className="text-neutral-500 text-lg sm:text-xl max-w-xl mx-auto mb-10 font-light leading-relaxed"
         >
-          Start verifying your AI applications today, or talk to us about enterprise solutions.
+          Start verifying your AI applications today.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.25, duration: 0.7 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+          transition={{ delay: 0.2, duration: 0.7 }}
+          className="flex flex-col sm:flex-row gap-3 justify-center"
         >
           <Link
             href="/products/grysics"
-            className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide"
+            className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-neutral-900 text-white rounded-full font-medium hover:bg-black transition-all text-sm tracking-wide shadow-lg shadow-neutral-900/20"
           >
-            Try Grysics <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-          </Link>
-          <Link
-            href="/docs"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 text-neutral-400 border border-white/15 rounded-full font-medium hover:bg-white/5 hover:text-white transition-all text-sm tracking-wide"
-          >
-            Explore Docs
+            Get Started <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
           </Link>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 text-neutral-400 border border-white/15 rounded-full font-medium hover:bg-white/5 hover:text-white transition-all text-sm tracking-wide"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 text-neutral-600 bg-white border border-neutral-200 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide shadow-sm"
           >
-            Contact Sales
+            Talk to Us
           </Link>
         </motion.div>
       </div>

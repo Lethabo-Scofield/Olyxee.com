@@ -65,7 +65,7 @@ Desktop CTA: "Try Grysics"
 - Community hero image: `public/images/Community presentation.png`
 
 ## Key Pages
-- **Homepage** (`src/app/page.tsx`): Vision hero with video demo, Products (Grysics featured card + "Coming Soon" placeholder), Mission/Why It Matters (dark section with differentiators grid), Audience Pathways (Developer/Enterprise/Research blocks with CTAs), Use Cases (5-card grid: chatbot verification, RAG eval, agent testing, monitoring, compliance), CTA (dark section with Try Grysics/Docs/Sales buttons), Footer. Note: No fake stats, testimonials, or partner logos — Olyxee is a new company. EdgeAI/OEB removed from navbar and products.
+- **Homepage** (`src/app/page.tsx`): Cinematic full-viewport hero with parallax scrolling + video demo + "Now building in public" badge, Announcement strip (Grysics launch), Product Showcase (split layout: left features list + right terminal mockup), How It Works (dark section with 3 steps + radial glow), Capabilities Bento grid (mixed sizes: dark featured card + colored cards + compliance row), Developer section (dark, code snippet + SDK/API/CLI details), CTA (light gradient). Design inspired by OpenAI/Anthropic/DeepMind patterns. No fake stats, testimonials, or partner logos — Olyxee is a new company. EdgeAI/OEB removed from navbar and products.
 - **About** (`src/pages/about.tsx`): Mission, problem statement, approach, philosophy
 - **Olyxee Lab** (`src/pages/lab.tsx`): Research division — 6 research areas, recent publications, approach section, LinkedIn CTA
 - **Products**: Grysics (verification engine with animated canvas network), NRN (interpretable AI), WAVE (core platform)
