@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import Header from '../components/header';
 import Footer from '../components/footer';
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Shield, Eye, Brain, Zap, Lock } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Shield, Eye, Brain, Zap, Lock, CheckCircle2, AlertTriangle, Activity, BarChart3 } from "lucide-react";
 
 export default function HomePage() {
   const [cookieBannerVisible, setCookieBannerVisible] = useState(false);
@@ -66,6 +66,7 @@ export default function HomePage() {
       <Header />
       <main>
         <HeroSection />
+        <LogoStrip />
         <MissionSection />
         <ResearchAreas />
         <ApproachSection />
@@ -157,6 +158,39 @@ function HeroSection() {
 }
 
 
+function LogoStrip() {
+  return (
+    <section className="border-y border-neutral-100 bg-neutral-50/50 py-10 sm:py-12">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+        <p className="text-center text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-8">Focus Areas</p>
+        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 sm:gap-x-16">
+          {[
+            { icon: Shield, label: "AI Safety" },
+            { icon: Eye, label: "Verification" },
+            { icon: Brain, label: "LLM Research" },
+            { icon: Activity, label: "Monitoring" },
+            { icon: BarChart3, label: "Evaluation" },
+            { icon: Lock, label: "Compliance" },
+          ].map((item, idx) => (
+            <motion.div
+              key={item.label}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: idx * 0.06 }}
+              className="flex items-center gap-2.5 text-neutral-400"
+            >
+              <item.icon className="w-4 h-4" />
+              <span className="text-sm font-medium">{item.label}</span>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
 function MissionSection() {
   return (
     <section className="py-32 sm:py-40">
@@ -191,6 +225,22 @@ function MissionSection() {
             <p className="text-lg text-neutral-600 font-light leading-relaxed">
               We believe safety and performance are not trade-offs. They are the same goal.
             </p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative mt-8 rounded-2xl overflow-hidden border border-neutral-200/80"
+            >
+              <Image
+                src="/images/Olyxee_Position.png"
+                alt="Olyxee's position in the AI ecosystem"
+                width={600}
+                height={400}
+                className="w-full h-auto"
+              />
+            </motion.div>
           </motion.div>
 
           <motion.div
@@ -201,9 +251,9 @@ function MissionSection() {
             className="space-y-6"
           >
             {[
-              { title: "Research-first", desc: "Our work is grounded in rigorous AI safety research. We study failure modes, develop evaluation methodologies, and publish our findings." },
-              { title: "Infrastructure-grade", desc: "We build systems designed for production scale. Reliable, fast, and engineered to integrate seamlessly into existing workflows." },
-              { title: "Trust through transparency", desc: "We believe the AI industry needs more accountability. Our tools help teams understand exactly how their AI behaves and where it falls short." },
+              { icon: Shield, title: "Research-first", desc: "Our work is grounded in rigorous AI safety research. We study failure modes, develop evaluation methodologies, and publish our findings." },
+              { icon: Zap, title: "Infrastructure-grade", desc: "We build systems designed for production scale. Reliable, fast, and engineered to integrate seamlessly into existing workflows." },
+              { icon: Eye, title: "Trust through transparency", desc: "We believe the AI industry needs more accountability. Our tools help teams understand exactly how their AI behaves and where it falls short." },
             ].map((item, idx) => (
               <motion.div
                 key={item.title}
@@ -211,10 +261,10 @@ function MissionSection() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.08 }}
-                className="group flex gap-4"
+                className="group flex gap-4 p-5 rounded-xl hover:bg-neutral-50 transition-colors"
               >
-                <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-neutral-900 flex items-center justify-center mt-0.5">
-                  <span className="text-white text-xs font-bold">{idx + 1}</span>
+                <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-neutral-900 flex items-center justify-center mt-0.5">
+                  <item.icon className="w-5 h-5 text-white" />
                 </div>
                 <div>
                   <h3 className="text-[15px] font-semibold text-neutral-900 mb-1">{item.title}</h3>
@@ -222,6 +272,22 @@ function MissionSection() {
                 </div>
               </motion.div>
             ))}
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="relative mt-4 rounded-2xl overflow-hidden"
+            >
+              <Image
+                src="/images/workflow.png"
+                alt="Olyxee verification workflow"
+                width={600}
+                height={350}
+                className="w-full h-auto rounded-2xl border border-neutral-200/80"
+              />
+            </motion.div>
           </motion.div>
         </div>
       </div>
@@ -252,11 +318,29 @@ function ResearchAreas() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-0">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
-            { num: "01", title: "Verification", desc: "Developing methods to systematically verify that AI systems produce accurate, consistent, and faithful outputs across every deployment scenario." },
-            { num: "02", title: "Safety", desc: "Researching failure modes in large language models, detection of hallucinations, and techniques to ensure AI systems stay within intended boundaries." },
-            { num: "03", title: "Monitoring", desc: "Building real-time observability for AI in production. Detecting drift, degradation, and emergent failure patterns before they cause harm." },
+            {
+              num: "01",
+              title: "Verification",
+              desc: "Developing methods to systematically verify that AI systems produce accurate, consistent, and faithful outputs across every deployment scenario.",
+              icon: CheckCircle2,
+              gradient: "from-blue-500/20 via-blue-400/5 to-transparent",
+            },
+            {
+              num: "02",
+              title: "Safety",
+              desc: "Researching failure modes in large language models, detection of hallucinations, and techniques to ensure AI systems stay within intended boundaries.",
+              icon: AlertTriangle,
+              gradient: "from-amber-500/20 via-amber-400/5 to-transparent",
+            },
+            {
+              num: "03",
+              title: "Monitoring",
+              desc: "Building real-time observability for AI in production. Detecting drift, degradation, and emergent failure patterns before they cause harm.",
+              icon: Activity,
+              gradient: "from-emerald-500/20 via-emerald-400/5 to-transparent",
+            },
           ].map((step, idx) => (
             <motion.div
               key={step.num}
@@ -264,19 +348,67 @@ function ResearchAreas() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.12 }}
-              className="relative p-8 sm:p-10 md:p-12"
+              className="relative p-8 sm:p-10 rounded-2xl border border-white/[0.06] bg-white/[0.02] overflow-hidden group hover:border-white/[0.12] transition-colors"
             >
-              {idx < 2 && (
-                <div className="hidden md:block absolute top-1/2 right-0 -translate-y-1/2 w-px h-24 bg-gradient-to-b from-transparent via-white/10 to-transparent" />
-              )}
-              <div className="text-5xl sm:text-6xl font-serif text-white/[0.06] mb-6 leading-none">{step.num}</div>
-              <h3 className="text-xl sm:text-2xl font-semibold text-white mb-3 tracking-tight">{step.title}</h3>
-              <p className="text-sm sm:text-[15px] text-neutral-400 font-light leading-relaxed">{step.desc}</p>
+              <div className={`absolute top-0 left-0 w-full h-full bg-gradient-to-br ${step.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+              <div className="relative">
+                <div className="flex items-center justify-between mb-8">
+                  <div className="text-4xl font-serif text-white/[0.08] leading-none">{step.num}</div>
+                  <step.icon className="w-6 h-6 text-white/20 group-hover:text-white/40 transition-colors" />
+                </div>
+                <h3 className="text-xl sm:text-2xl font-semibold text-white mb-3 tracking-tight">{step.title}</h3>
+                <p className="text-sm sm:text-[15px] text-neutral-400 font-light leading-relaxed">{step.desc}</p>
+              </div>
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          className="mt-16"
+        >
+          <VerificationDiagram />
+        </motion.div>
       </div>
     </section>
+  );
+}
+
+
+function VerificationDiagram() {
+  const steps = [
+    { label: "AI Application", sub: "Chatbot / RAG / Agent", color: "bg-blue-500/20 border-blue-500/30 text-blue-300" },
+    { label: "Verification", sub: "Test & Evaluate", color: "bg-amber-500/20 border-amber-500/30 text-amber-300" },
+    { label: "Analysis", sub: "Score & Report", color: "bg-purple-500/20 border-purple-500/30 text-purple-300" },
+    { label: "Production", sub: "Monitor & Alert", color: "bg-emerald-500/20 border-emerald-500/30 text-emerald-300" },
+  ];
+
+  return (
+    <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 sm:p-10">
+      <p className="text-[11px] font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-8 text-center">How Olyxee Fits Into Your AI Stack</p>
+      <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-0 justify-between">
+        {steps.map((step, idx) => (
+          <div key={step.label} className="flex items-center gap-3 sm:gap-0 w-full sm:w-auto">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: idx * 0.1 }}
+              className={`flex-1 sm:flex-none px-5 py-4 rounded-xl border ${step.color} text-center min-w-[140px]`}
+            >
+              <div className="text-sm font-semibold">{step.label}</div>
+              <div className="text-[11px] opacity-60 mt-0.5">{step.sub}</div>
+            </motion.div>
+            {idx < steps.length - 1 && (
+              <div className="hidden sm:block w-8 lg:w-12 h-px bg-gradient-to-r from-white/20 to-white/5 mx-2" />
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -304,10 +436,20 @@ function ApproachSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="md:col-span-2 relative group rounded-2xl bg-neutral-950 p-8 sm:p-10 overflow-hidden"
+            className="md:col-span-2 relative group rounded-2xl bg-neutral-950 overflow-hidden"
           >
+            <div className="absolute inset-0">
+              <Image
+                src="/images/gradient-blue-pink.png"
+                alt=""
+                fill
+                sizes="(max-width: 768px) 100vw, 66vw"
+                aria-hidden="true"
+                className="object-cover opacity-20 group-hover:opacity-30 transition-opacity duration-500"
+              />
+            </div>
             <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-indigo-500/15 to-transparent rounded-full blur-2xl" />
-            <div className="relative">
+            <div className="relative p-8 sm:p-10">
               <Shield className="w-6 h-6 text-neutral-400 mb-4" />
               <h3 className="text-xl sm:text-2xl font-semibold text-white mb-3 tracking-tight">AI Safety Infrastructure</h3>
               <p className="text-neutral-400 text-sm sm:text-[15px] font-light leading-relaxed max-w-lg mb-6">
@@ -326,15 +468,20 @@ function ApproachSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.06 }}
-            className="group rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-100/80 p-8 sm:p-10"
+            className="group rounded-2xl relative overflow-hidden border border-amber-100/80"
           >
-            <Eye className="w-5 h-5 text-amber-600/60 mb-4" />
-            <h3 className="text-lg font-semibold text-neutral-900 mb-3 tracking-tight">Hallucination Research</h3>
-            <p className="text-sm text-neutral-600 font-light leading-relaxed mb-4">
-              Studying how and why AI models fabricate information, and developing detection methods that work across domains and model architectures.
-            </p>
-            <div className="flex items-center gap-2 text-sm font-medium text-neutral-900 opacity-60">
-              Active research <ArrowUpRight className="w-3.5 h-3.5" />
+            <div className="absolute inset-0">
+              <Image src="/images/gradient-orange-pink.png" alt="" fill sizes="(max-width: 768px) 100vw, 33vw" aria-hidden="true" className="object-cover opacity-30" />
+            </div>
+            <div className="relative p-8 sm:p-10">
+              <Eye className="w-5 h-5 text-amber-600/60 mb-4" />
+              <h3 className="text-lg font-semibold text-neutral-900 mb-3 tracking-tight">Hallucination Research</h3>
+              <p className="text-sm text-neutral-600 font-light leading-relaxed mb-4">
+                Studying how and why AI models fabricate information, and developing detection methods that work across domains and model architectures.
+              </p>
+              <div className="flex items-center gap-2 text-sm font-medium text-neutral-900 opacity-60">
+                Active research <ArrowUpRight className="w-3.5 h-3.5" />
+              </div>
             </div>
           </motion.div>
 
@@ -343,15 +490,20 @@ function ApproachSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.12 }}
-            className="group rounded-2xl bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-100/80 p-8 sm:p-10"
+            className="group rounded-2xl relative overflow-hidden border border-emerald-100/80"
           >
-            <Brain className="w-5 h-5 text-emerald-600/60 mb-4" />
-            <h3 className="text-lg font-semibold text-neutral-900 mb-3 tracking-tight">Behavioral Evaluation</h3>
-            <p className="text-sm text-neutral-600 font-light leading-relaxed mb-4">
-              Developing frameworks to evaluate AI behavior at scale, measuring consistency, accuracy, and alignment with intended outcomes.
-            </p>
-            <div className="flex items-center gap-2 text-sm font-medium text-neutral-900 opacity-60">
-              Active research <ArrowUpRight className="w-3.5 h-3.5" />
+            <div className="absolute inset-0">
+              <Image src="/images/gradient-yellow-green.png" alt="" fill sizes="(max-width: 768px) 100vw, 33vw" aria-hidden="true" className="object-cover opacity-25" />
+            </div>
+            <div className="relative p-8 sm:p-10">
+              <Brain className="w-5 h-5 text-emerald-600/60 mb-4" />
+              <h3 className="text-lg font-semibold text-neutral-900 mb-3 tracking-tight">Behavioral Evaluation</h3>
+              <p className="text-sm text-neutral-600 font-light leading-relaxed mb-4">
+                Developing frameworks to evaluate AI behavior at scale, measuring consistency, accuracy, and alignment with intended outcomes.
+              </p>
+              <div className="flex items-center gap-2 text-sm font-medium text-neutral-900 opacity-60">
+                Active research <ArrowUpRight className="w-3.5 h-3.5" />
+              </div>
             </div>
           </motion.div>
 
@@ -360,20 +512,25 @@ function ApproachSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.18 }}
-            className="md:col-span-2 lg:col-span-2 group rounded-2xl bg-gradient-to-br from-violet-50 to-blue-50 border border-violet-100/80 p-8 sm:p-10"
+            className="md:col-span-2 lg:col-span-2 group rounded-2xl relative overflow-hidden border border-violet-100/80"
           >
-            <div className="flex flex-col sm:flex-row gap-6 sm:gap-10 items-start">
-              <div className="flex-1">
-                <Lock className="w-5 h-5 text-violet-600/60 mb-4" />
-                <h3 className="text-lg font-semibold text-neutral-900 mb-3 tracking-tight">Enterprise & Regulated Industries</h3>
-                <p className="text-sm text-neutral-600 font-light leading-relaxed">
-                  AI in healthcare, finance, and legal environments demands higher standards. We are building verification and audit capabilities tailored for regulated industries where trust is non-negotiable.
-                </p>
-              </div>
-              <div className="flex-shrink-0 flex flex-wrap gap-2">
-                {["Healthcare", "Legal", "Finance", "Enterprise"].map(t => (
-                  <span key={t} className="text-[11px] text-violet-600 bg-violet-100/60 border border-violet-200/60 rounded-full px-3 py-1">{t}</span>
-                ))}
+            <div className="absolute inset-0">
+              <Image src="/images/gradient-purple.png" alt="" fill sizes="(max-width: 768px) 100vw, 66vw" aria-hidden="true" className="object-cover opacity-20" />
+            </div>
+            <div className="relative p-8 sm:p-10">
+              <div className="flex flex-col sm:flex-row gap-6 sm:gap-10 items-start">
+                <div className="flex-1">
+                  <Lock className="w-5 h-5 text-violet-600/60 mb-4" />
+                  <h3 className="text-lg font-semibold text-neutral-900 mb-3 tracking-tight">Enterprise & Regulated Industries</h3>
+                  <p className="text-sm text-neutral-600 font-light leading-relaxed">
+                    AI in healthcare, finance, and legal environments demands higher standards. We are building verification and audit capabilities tailored for regulated industries where trust is non-negotiable.
+                  </p>
+                </div>
+                <div className="flex-shrink-0 flex flex-wrap gap-2">
+                  {["Healthcare", "Legal", "Finance", "Enterprise"].map(t => (
+                    <span key={t} className="text-[11px] text-violet-600 bg-violet-100/60 border border-violet-200/60 rounded-full px-3 py-1">{t}</span>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>
@@ -388,6 +545,9 @@ function ProductsSection() {
   return (
     <section id="products" className="relative overflow-hidden scroll-mt-20">
       <div className="absolute inset-0 bg-neutral-950" />
+      <div className="absolute inset-0">
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full bg-gradient-to-tr from-blue-500/8 via-purple-500/4 to-transparent blur-3xl" />
+      </div>
       <div className="relative py-32 sm:py-40">
         <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -442,6 +602,7 @@ function ProductsSection() {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.1 }}
+              className="space-y-4"
             >
               <div className="rounded-2xl bg-[#0d1117] border border-white/10 overflow-hidden shadow-2xl shadow-black/50">
                 <div className="flex items-center gap-2 px-5 py-3 border-b border-white/5">
@@ -475,6 +636,29 @@ function ProductsSection() {
                   <div className="mt-3 text-neutral-500 animate-pulse">{"▊"}</div>
                 </div>
               </div>
+
+              <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-5" role="img" aria-label="Verification score trend from January to December, ranging from 78% to 98%, showing consistent improvement over time">
+                <div className="flex items-center gap-3 mb-3">
+                  <BarChart3 className="w-4 h-4 text-neutral-500" />
+                  <span className="text-xs font-semibold text-neutral-500 uppercase tracking-wider">Verification Score</span>
+                </div>
+                <div className="flex items-end gap-1.5 h-16" aria-hidden="true">
+                  {[85, 92, 78, 95, 88, 91, 97, 83, 96, 94, 90, 98].map((val, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ height: 0 }}
+                      whileInView={{ height: `${val}%` }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: i * 0.04 }}
+                      className={`flex-1 rounded-sm ${val >= 90 ? 'bg-emerald-500/40' : val >= 80 ? 'bg-amber-500/40' : 'bg-red-500/40'}`}
+                    />
+                  ))}
+                </div>
+                <div className="flex justify-between mt-2" aria-hidden="true">
+                  <span className="text-[10px] text-neutral-600">Jan</span>
+                  <span className="text-[10px] text-neutral-600">Dec</span>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
@@ -487,8 +671,33 @@ function ProductsSection() {
 function CTASection() {
   return (
     <section className="py-32 sm:py-44 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-neutral-50 to-neutral-100" />
+      <div className="absolute inset-0">
+        <Image
+          src="/images/gradient-pastel.png"
+          alt=""
+          fill
+          sizes="100vw"
+          aria-hidden="true"
+          className="object-cover opacity-40"
+        />
+        <div className="absolute inset-0 bg-white/70" />
+      </div>
       <div className="relative max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-8"
+        >
+          <Image
+            src="/Logo/Olyxee_Logo.png"
+            alt="Olyxee"
+            width={48}
+            height={48}
+            className="mx-auto opacity-30"
+          />
+        </motion.div>
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
