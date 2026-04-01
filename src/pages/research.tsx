@@ -22,7 +22,7 @@ const papers = [
     venue: "ACM Computing Surveys, 2024",
     year: "2024",
     category: "Hallucination",
-    description: "A comprehensive survey categorizing hallucination phenomena in LLMs, analyzing their causes, and reviewing detection and mitigation strategies across different model architectures.",
+    description: "Categorizes hallucination in LLMs, analyzing causes and reviewing detection and mitigation strategies.",
     url: "https://arxiv.org/abs/2311.05232",
     tags: ["Hallucination", "LLM", "Survey"],
   },
@@ -32,7 +32,7 @@ const papers = [
     venue: "ACL 2022",
     year: "2022",
     category: "Evaluation",
-    description: "Introduces a benchmark to measure whether language models generate truthful answers, revealing that larger models can be less truthful due to learning human misconceptions from training data.",
+    description: "Benchmark measuring whether language models generate truthful answers. Larger models can be less truthful.",
     url: "https://arxiv.org/abs/2109.07958",
     tags: ["Truthfulness", "Benchmarking", "Evaluation"],
   },
@@ -42,7 +42,7 @@ const papers = [
     venue: "Anthropic, 2022",
     year: "2022",
     category: "AI Safety",
-    description: "Proposes a method for training AI assistants to be helpful, harmless, and honest using a set of principles (a constitution), reducing the need for human feedback on harmful outputs.",
+    description: "Training AI to be helpful, harmless, and honest using a set of principles, reducing the need for human feedback.",
     url: "https://arxiv.org/abs/2212.08073",
     tags: ["AI Safety", "Alignment", "RLHF"],
   },
@@ -52,7 +52,7 @@ const papers = [
     venue: "arXiv, 2016",
     year: "2016",
     category: "AI Safety",
-    description: "A foundational paper outlining five practical research problems in AI safety: safe exploration, distributional shift, avoiding negative side effects, reward hacking, and scalable oversight.",
+    description: "Five practical AI safety problems: safe exploration, distributional shift, side effects, reward hacking, and oversight.",
     url: "https://arxiv.org/abs/1606.06565",
     tags: ["AI Safety", "Foundational", "Research Agenda"],
   },
@@ -62,7 +62,7 @@ const papers = [
     venue: "EMNLP 2023",
     year: "2023",
     category: "Evaluation",
-    description: "Introduces FActScore, a metric that breaks LLM-generated text into atomic facts and verifies each against a knowledge source, enabling fine-grained factuality evaluation.",
+    description: "Breaks LLM text into atomic facts and verifies each against a knowledge source for fine-grained factuality scoring.",
     url: "https://arxiv.org/abs/2305.14251",
     tags: ["Factuality", "Evaluation", "LLM"],
   },
@@ -72,7 +72,7 @@ const papers = [
     venue: "NeurIPS 2020",
     year: "2020",
     category: "RAG",
-    description: "The seminal paper introducing Retrieval-Augmented Generation (RAG), combining parametric and non-parametric memory to improve factual accuracy and reduce hallucinations in language models.",
+    description: "The seminal RAG paper. Combines retrieval with generation to improve factual accuracy and reduce hallucinations.",
     url: "https://arxiv.org/abs/2005.11401",
     tags: ["RAG", "Retrieval", "Factuality"],
   },
@@ -82,7 +82,7 @@ const papers = [
     venue: "Transactions on Machine Learning Research, 2023",
     year: "2023",
     category: "Evaluation",
-    description: "Presents HELM, a comprehensive benchmark framework that evaluates language models across scenarios and metrics including accuracy, calibration, robustness, fairness, and efficiency.",
+    description: "Comprehensive benchmark evaluating LLMs across accuracy, calibration, robustness, fairness, and efficiency.",
     url: "https://arxiv.org/abs/2211.09110",
     tags: ["Benchmarking", "Evaluation", "LLM"],
   },
@@ -92,7 +92,7 @@ const papers = [
     venue: "NeurIPS 2020 (GPT-3)",
     year: "2020",
     category: "Foundational",
-    description: "The GPT-3 paper demonstrating that scaling language models enables strong few-shot performance, while also highlighting challenges in reliability, bias, and factual consistency.",
+    description: "Scaling enables strong few-shot performance, but highlights challenges in reliability, bias, and factual consistency.",
     url: "https://arxiv.org/abs/2005.14165",
     tags: ["LLM", "Foundational", "GPT-3"],
   },
@@ -102,7 +102,7 @@ const papers = [
     venue: "Microsoft Research, 2023",
     year: "2023",
     category: "Evaluation",
-    description: "An extensive evaluation of GPT-4's capabilities and limitations, documenting both remarkable reasoning abilities and persistent failure modes in factual accuracy and consistency.",
+    description: "GPT-4 capabilities and limitations: remarkable reasoning alongside persistent factual accuracy failures.",
     url: "https://arxiv.org/abs/2303.12712",
     tags: ["GPT-4", "Evaluation", "Capabilities"],
   },
@@ -112,7 +112,7 @@ const papers = [
     venue: "Anthropic, 2022",
     year: "2022",
     category: "AI Safety",
-    description: "Describes methods for red teaming language models to discover harmful outputs, analyzing how model size and training methods affect the types and severity of harms discovered.",
+    description: "Methods for red teaming LLMs to discover harmful outputs, and how model size affects the harms found.",
     url: "https://arxiv.org/abs/2209.07858",
     tags: ["Red Teaming", "AI Safety", "Evaluation"],
   },
@@ -143,8 +143,7 @@ const Research: FC = () => {
             <em className="text-neutral-400">our mission</em>
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-base sm:text-xl text-neutral-500 leading-relaxed max-w-3xl font-light">
-            We are building on the work of researchers advancing AI safety, evaluation, and reliability.
-            These are key papers from the community that inform our direction. Full credit goes to the original authors.
+            Key papers from the AI safety and evaluation community that inform our direction. Full credit to the original authors.
           </motion.p>
         </div>
       </section>
@@ -227,16 +226,10 @@ const Research: FC = () => {
               </h2>
               <div className="space-y-4 text-[15px] text-neutral-600 font-light leading-relaxed">
                 <p>
-                  Olyxee is a research-driven company. While we are still early in our own research journey,
-                  these papers represent the ideas and challenges that motivate our work.
+                  These papers represent the ideas that motivate our work, from hallucination detection to systematic evaluation.
                 </p>
                 <p>
-                  From hallucination detection to systematic model evaluation, the questions raised by these
-                  researchers are the ones we are working to solve with practical, production-ready tools.
-                </p>
-                <p>
-                  As we publish our own findings, they will appear here alongside the foundational work
-                  that inspired them.
+                  As we publish our own findings, they will appear here alongside the work that inspired them.
                 </p>
               </div>
             </motion.div>
@@ -278,8 +271,7 @@ const Research: FC = () => {
               <em className="text-neutral-500">on research?</em>
             </h2>
             <p className="text-neutral-400 text-base sm:text-lg max-w-lg mx-auto mb-8 sm:mb-10 font-light leading-relaxed">
-              We are always interested in connecting with researchers working on AI safety,
-              evaluation, and reliability.
+              We connect with researchers working on AI safety, evaluation, and reliability.
             </p>
             <Link href="/contact" className="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide">
               Get in Touch <ArrowRight className="w-4 h-4" />

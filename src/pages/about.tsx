@@ -21,21 +21,21 @@ const videos = [
     id: "aircAruvnKk",
     title: "How AI Could Empower Any Business",
     speaker: "Andrew Ng, TED",
-    description: "Andrew Ng explains how AI can transform businesses of all sizes, and why making AI accessible and reliable matters for everyone.",
+    description: "Why making AI accessible and reliable matters for businesses of all sizes.",
     tag: "Accessibility",
   },
   {
     id: "J6Mdq3n6kgk",
     title: "How AI Thinks and Learns",
     speaker: "CGP Grey",
-    description: "A clear, visual explanation of how machine learning actually works under the hood, no technical background needed.",
+    description: "A visual explanation of how machine learning works under the hood.",
     tag: "Explainer",
   },
   {
     id: "hfMk-kjRv4c",
     title: "The Danger of AI is Weirder Than You Think",
     speaker: "Janelle Shane, TED",
-    description: "Why AI systems fail in unexpected ways, from misaligned objectives to strange edge cases. Understanding these failure modes is central to our mission.",
+    description: "Why AI fails in unexpected ways, and why understanding failure modes matters.",
     tag: "AI Safety",
   },
 ];
@@ -203,8 +203,7 @@ const About: FC = () => {
             transition={{ duration: 0.7, delay: 0.5 }}
             className="text-base sm:text-xl text-neutral-500 leading-relaxed max-w-3xl font-light"
           >
-            AI is transforming every industry. But as systems grow more powerful, the question is no longer
-            "can AI do this?" but "can we trust that it will do it correctly?" Olyxee exists to answer that question.
+            AI systems are growing more powerful, but not more trustworthy. Olyxee exists to change that.
           </motion.p>
         </div>
       </section>
@@ -229,15 +228,12 @@ const About: FC = () => {
                   <Eye className="w-5 h-5 text-white" />
                 </div>
                 <h2 className="font-serif text-3xl sm:text-4xl tracking-tight mb-6">The Problem</h2>
-                <div className="space-y-5 text-[15px] text-neutral-600 leading-relaxed font-light">
+                <div className="space-y-4 text-[15px] text-neutral-600 leading-relaxed font-light">
                   <p>
-                    AI models achieve remarkable results in controlled environments. But in production, they hallucinate,
-                    drift, and fail in ways that are difficult to predict or detect.
+                    AI works in the lab. In production, it hallucinates, drifts, and fails unpredictably.
                   </p>
                   <p>
-                    There is no standard way to verify that an AI system will behave correctly before it reaches users,
-                    and no systematic approach to catching failures after deployment. The gap between a promising demo
-                    and a trustworthy product is where most AI projects stall.
+                    There is no standard way to verify AI before deployment or catch failures after. That gap is where most AI projects stall.
                   </p>
                 </div>
               </div>
@@ -260,15 +256,12 @@ const About: FC = () => {
                   <Shield className="w-5 h-5 text-white" />
                 </div>
                 <h2 className="font-serif text-2xl sm:text-4xl tracking-tight mb-5 sm:mb-6">Our Answer</h2>
-                <div className="space-y-5 text-[15px] text-neutral-600 leading-relaxed font-light">
+                <div className="space-y-4 text-[15px] text-neutral-600 leading-relaxed font-light">
                   <p>
-                    We build verification-first infrastructure. Every component in the Olyxee stack is designed around a
-                    simple principle: AI systems should be tested and evaluated before they reach users, and continuously
-                    monitored after.
+                    Verification-first infrastructure. Test before deployment, monitor after.
                   </p>
                   <p>
-                    Our research focuses on hallucination detection, behavioral consistency, and automated evaluation,
-                    the building blocks of AI you can actually rely on.
+                    We focus on hallucination detection, behavioral consistency, and automated evaluation.
                   </p>
                 </div>
               </div>
@@ -292,8 +285,7 @@ const About: FC = () => {
               Understand our mission <em className="text-neutral-400">visually</em>
             </h2>
             <p className="text-base sm:text-lg text-neutral-500 font-light leading-relaxed max-w-2xl">
-              Not everyone reads whitepapers. These videos explain the core ideas behind AI safety, reliability,
-              and why verification matters, in ways anyone can follow.
+              AI safety and verification explained simply. No technical background needed.
             </p>
           </motion.div>
 
@@ -331,12 +323,12 @@ const About: FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
             {[
-              { icon: Shield, title: "Pre-deployment Testing", description: "Automated evaluation suites that test AI outputs for accuracy, consistency, and safety before reaching production." },
-              { icon: Eye, title: "Hallucination Detection", description: "Research-backed methods to identify when AI models fabricate information, with confidence scoring and source attribution." },
-              { icon: Brain, title: "Behavioral Evaluation", description: "Frameworks to evaluate whether AI systems respond consistently, measuring stability across rephrasings and edge cases." },
-              { icon: Activity, title: "Production Monitoring", description: "Real-time observability for AI in production. Detect quality degradation, output drift, and emerging failure patterns." },
-              { icon: Lock, title: "Compliance & Audit", description: "Systematic audit trails for regulated industries. Track every evaluation, every decision, and every outcome." },
-              { icon: Sparkles, title: "Open Research", description: "We publish our findings and contribute tools to the ecosystem. AI safety infrastructure should be a shared foundation." },
+              { icon: Shield, title: "Pre-deployment Testing", description: "Test AI outputs for accuracy, consistency, and safety before production." },
+              { icon: Eye, title: "Hallucination Detection", description: "Identify when models fabricate information, with confidence scoring." },
+              { icon: Brain, title: "Behavioral Evaluation", description: "Measure AI consistency across rephrasings and edge cases." },
+              { icon: Activity, title: "Production Monitoring", description: "Detect quality degradation, drift, and failure patterns in real time." },
+              { icon: Lock, title: "Compliance & Audit", description: "Audit trails for regulated industries. Every decision tracked." },
+              { icon: Sparkles, title: "Open Research", description: "We publish findings and open-source tools. Safety is a shared foundation." },
             ].map((item, idx) => {
               const Icon = item.icon;
               return (
@@ -375,8 +367,7 @@ const About: FC = () => {
                 Where we fit in the <em className="text-neutral-400">AI stack</em>
               </h2>
               <p className="text-neutral-500 text-[15px] leading-relaxed font-light mb-8">
-                We sit between AI development and deployment. While others focus on training bigger models, we focus on
-                making sure those models actually work as expected when they reach real users.
+                Others build bigger models. We make sure those models actually work when they reach real users.
               </p>
               <Link href="/research" className="group inline-flex items-center gap-2 text-sm font-medium text-neutral-900 hover:text-neutral-600 transition-colors">
                 Read our research <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -423,10 +414,10 @@ const About: FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             {[
-              { title: "Reliability over novelty", description: "The most important advances in AI will not come from making models bigger. They will come from making models more reliable.", icon: Shield },
-              { title: "Transparency by default", description: "Every deployment should be explainable. Every failure should be traceable. Engineers should understand exactly what happened and why.", icon: Eye },
-              { title: "Safety is not optional", description: "AI systems in healthcare, finance, and legal environments demand higher standards. We design for the most demanding use cases first.", icon: Lock },
-              { title: "Open foundations", description: "Critical infrastructure should be open. We publish our research, open-source our tools, and contribute to the ecosystem that makes AI trustworthy.", icon: Sparkles },
+              { title: "Reliability over novelty", description: "Better AI comes from making models more reliable, not just bigger.", icon: Shield },
+              { title: "Transparency by default", description: "Every deployment explainable. Every failure traceable.", icon: Eye },
+              { title: "Safety is not optional", description: "We design for the most demanding use cases first.", icon: Lock },
+              { title: "Open foundations", description: "We publish research and open-source our tools. Safety is a shared foundation.", icon: Sparkles },
             ].map((value, idx) => {
               const Icon = value.icon;
               return (
@@ -483,17 +474,13 @@ const About: FC = () => {
             >
               <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Our Founder's Note</p>
               <blockquote className="font-serif text-xl sm:text-3xl text-neutral-900 leading-snug mb-6 sm:mb-8 italic">
-                "The companies that win in AI will be the ones whose systems work consistently
-                and can be understood by the engineers who deploy them."
+                "The companies that win in AI will be the ones whose systems actually work."
               </blockquote>
               <p className="text-[15px] text-neutral-500 leading-relaxed font-light mb-5">
-                Olyxee exists to build the infrastructure layer that makes this possible. We are not
-                building another model. We are building the foundation that every model needs.
+                We are not building another model. We are building the foundation every model needs.
               </p>
               <p className="text-[15px] text-neutral-500 leading-relaxed font-light">
-                This means investing in verification research, building evaluation tooling, and
-                creating systems rigorous enough for safety-critical applications, while
-                remaining simple enough for any team to adopt.
+                Rigorous enough for safety-critical applications. Simple enough for any team to adopt.
               </p>
             </motion.div>
           </div>
@@ -526,8 +513,7 @@ const About: FC = () => {
               <em className="text-neutral-500">trustworthy AI</em>
             </h2>
             <p className="text-base sm:text-lg text-neutral-400 mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed font-light">
-              We are looking for researchers and engineers who want to solve hard problems in AI safety,
-              verification, and evaluation.
+              Researchers and engineers solving hard problems in AI safety and verification.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/careers" className="group inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide">
