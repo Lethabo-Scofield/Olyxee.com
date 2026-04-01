@@ -11,7 +11,6 @@ import {
   ArrowRight,
   Code2,
   Shield,
-  Cpu,
   BarChart3,
   Zap,
   Eye,
@@ -145,31 +144,6 @@ function HeroSection() {
 
 
 function ProductsSection() {
-  const products = [
-    {
-      name: "Grysics",
-      tag: "Flagship Product",
-      tagline: "The verification engine for AI applications",
-      description: "Test and monitor chatbots, RAG pipelines, and agent workflows for accuracy, consistency, and hallucination — before and after deployment. Catch failures before your users do.",
-      href: "/products/grysics",
-      cta: "Try Grysics",
-      features: ["Hallucination detection", "RAG evaluation", "Drift monitoring", "Accuracy benchmarks"],
-      gradient: "from-blue-50 via-indigo-50 to-violet-50",
-      available: true,
-    },
-    {
-      name: "Olyxee Edge Box",
-      tag: "Division",
-      tagline: "AI at the edge, optimized for real hardware",
-      description: "Deploy verified AI models to IoT sensors, drones, robots, and embedded systems. Optimized for performance, power efficiency, and low latency on production hardware.",
-      href: "/edgeai",
-      cta: "Learn More",
-      features: ["Edge deployment", "Hardware optimization", "OTA updates", "Device management"],
-      gradient: "from-emerald-50 via-teal-50 to-cyan-50",
-      available: false,
-    },
-  ];
-
   return (
     <section className="py-28 sm:py-36">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
@@ -190,52 +164,66 @@ function ProductsSection() {
             transition={{ delay: 0.1, duration: 0.7 }}
             className="text-lg text-neutral-500 font-light max-w-xl mx-auto"
           >
-            Products and infrastructure powering the future of trustworthy AI.
+            Tools and infrastructure for trustworthy AI.
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {products.map((product, idx) => (
-            <motion.div
-              key={product.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: idx * 0.12 }}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="lg:col-span-2"
+          >
+            <Link
+              href="/products/grysics"
+              className="group relative flex flex-col h-full p-8 sm:p-10 rounded-3xl overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-neutral-200/60 bg-gradient-to-br from-blue-50 via-indigo-50 to-violet-50 border border-neutral-100 hover:border-neutral-200"
             >
-              <Link
-                href={product.href}
-                className={`group relative flex flex-col h-full p-8 sm:p-10 rounded-3xl overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-neutral-200/60 bg-gradient-to-br ${product.gradient} border border-neutral-100 hover:border-neutral-200`}
-              >
-                <div className="flex items-center gap-3 mb-5">
-                  <h3 className="text-2xl sm:text-3xl tracking-tight text-neutral-900">{product.name}</h3>
-                  <span className="text-[10px] font-semibold text-neutral-500 bg-white/70 px-3 py-1 rounded-full border border-white/50 uppercase tracking-widest">
-                    {product.tag}
+              <div className="flex items-center gap-3 mb-5">
+                <h3 className="text-2xl sm:text-3xl tracking-tight text-neutral-900">Grysics</h3>
+                <span className="text-[10px] font-semibold text-neutral-500 bg-white/70 px-3 py-1 rounded-full border border-white/50 uppercase tracking-widest">
+                  Flagship Product
+                </span>
+              </div>
+
+              <p className="text-base font-medium text-neutral-700 mb-3">The verification engine for AI applications</p>
+              <p className="text-sm text-neutral-500 leading-relaxed font-light mb-6 flex-1">Test and monitor chatbots, RAG pipelines, and agent workflows for accuracy, consistency, and hallucination — before and after deployment. Catch failures before your users do.</p>
+
+              <div className="flex flex-wrap gap-2 mb-8">
+                {["Hallucination detection", "RAG evaluation", "Drift monitoring", "Accuracy benchmarks"].map((f) => (
+                  <span key={f} className="text-[11px] text-neutral-500 bg-white/60 border border-neutral-200/60 rounded-full px-3 py-1">
+                    {f}
                   </span>
-                  {!product.available && (
-                    <span className="text-[10px] font-semibold text-amber-600 bg-amber-50 px-3 py-1 rounded-full border border-amber-100 uppercase tracking-widest">
-                      Coming Soon
-                    </span>
-                  )}
-                </div>
+                ))}
+              </div>
 
-                <p className="text-base font-medium text-neutral-700 mb-3">{product.tagline}</p>
-                <p className="text-sm text-neutral-500 leading-relaxed font-light mb-6 flex-1">{product.description}</p>
+              <div className="flex items-center gap-2 text-sm font-medium text-neutral-900 group-hover:gap-3 transition-all">
+                Try Grysics <ArrowRight className="w-4 h-4" />
+              </div>
+            </Link>
+          </motion.div>
 
-                <div className="flex flex-wrap gap-2 mb-8">
-                  {product.features.map((f) => (
-                    <span key={f} className="text-[11px] text-neutral-500 bg-white/60 border border-neutral-200/60 rounded-full px-3 py-1">
-                      {f}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex items-center gap-2 text-sm font-medium text-neutral-900 group-hover:gap-3 transition-all">
-                  {product.cta} <ArrowRight className="w-4 h-4" />
-                </div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.12 }}
+          >
+            <div className="flex flex-col h-full p-8 sm:p-10 rounded-3xl border border-dashed border-neutral-300 bg-neutral-50/50 items-center justify-center text-center">
+              <div className="w-12 h-12 rounded-2xl bg-neutral-100 flex items-center justify-center mb-5">
+                <Zap className="w-5 h-5 text-neutral-400" />
+              </div>
+              <h3 className="text-lg tracking-tight text-neutral-900 mb-2">More coming soon</h3>
+              <p className="text-sm text-neutral-400 font-light leading-relaxed mb-6">We're building additional tools to expand the Olyxee platform. Stay tuned.</p>
+              <Link
+                href="/contact"
+                className="text-sm font-medium text-neutral-500 hover:text-neutral-900 transition-colors"
+              >
+                Get notified
               </Link>
-            </motion.div>
-          ))}
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
@@ -445,12 +433,6 @@ function UseCasesSection() {
       title: "Production monitoring",
       description: "Continuously monitor deployed models for accuracy drift, response degradation, and emerging failure patterns. Get alerts before users complain.",
       metric: "Real-time",
-    },
-    {
-      icon: Cpu,
-      title: "Edge deployment validation",
-      description: "Verify model accuracy is preserved after quantization and optimization for edge hardware. Ensure performance on Jetson, RPi, and custom silicon.",
-      metric: "Hardware-aware",
     },
     {
       icon: Shield,

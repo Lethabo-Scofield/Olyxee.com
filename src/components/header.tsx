@@ -8,10 +8,11 @@ import { Menu, X } from 'lucide-react';
 import { FaDiscord } from 'react-icons/fa';
 
 const menuItems = [
-    { name: "About", href: "/about" },
-    { name: "EdgeAI", href: "/edgeai" },
+    { name: "Products", href: "/products/grysics" },
     { name: "Docs", href: "/docs" },
     { name: "Community", href: "/community" },
+    { name: "About", href: "/about" },
+    { name: "Contact", href: "/contact" },
 ];
 
 const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {

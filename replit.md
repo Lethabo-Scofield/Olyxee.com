@@ -48,7 +48,7 @@ Company-level website for Olyxee, a reliability-first AI infrastructure company.
 - **Grysics** = verification engine for AI applications (chatbots, RAG, agents) — ensures reliability before and after deployment. Integrates with OEB for edge verification
 
 ## Site Structure & Navigation
-Navigation: About | EdgeAI | Docs | Community
+Navigation: Products | Docs | Community | About | Contact
 Desktop CTA: "Try Grysics"
 - Grysics SDK: `pip install grysics`, CLI: `grysics` commands
 
@@ -65,7 +65,7 @@ Desktop CTA: "Try Grysics"
 - Community hero image: `public/images/Community presentation.png`
 
 ## Key Pages
-- **Homepage** (`src/app/page.tsx`): Vision hero with video demo, Products (Grysics + OEB interactive cards), Mission/Why It Matters (dark section with differentiators grid), Audience Pathways (Developer/Enterprise/Research blocks with CTAs), Use Cases (6-card grid: chatbot verification, RAG eval, agent testing, monitoring, edge validation, compliance), CTA (dark section with Try Grysics/Docs/Sales buttons), Footer. Note: No fake stats, testimonials, or partner logos — Olyxee is a new company.
+- **Homepage** (`src/app/page.tsx`): Vision hero with video demo, Products (Grysics featured card + "Coming Soon" placeholder), Mission/Why It Matters (dark section with differentiators grid), Audience Pathways (Developer/Enterprise/Research blocks with CTAs), Use Cases (5-card grid: chatbot verification, RAG eval, agent testing, monitoring, compliance), CTA (dark section with Try Grysics/Docs/Sales buttons), Footer. Note: No fake stats, testimonials, or partner logos — Olyxee is a new company. EdgeAI/OEB removed from navbar and products.
 - **About** (`src/pages/about.tsx`): Mission, problem statement, approach, philosophy
 - **Olyxee Lab** (`src/pages/lab.tsx`): Research division — 6 research areas, recent publications, approach section, LinkedIn CTA
 - **Products**: Grysics (verification engine with animated canvas network), NRN (interpretable AI), WAVE (core platform)
