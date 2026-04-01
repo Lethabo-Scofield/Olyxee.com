@@ -559,7 +559,7 @@ function ProductsSection() {
             >
               <p className="text-xs font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-4">Our Products</p>
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white mb-6">
-                <a href="https://grysics.olyxee.com" target="_blank" rel="noopener noreferrer" className="hover:text-neutral-300 transition-colors">Grysics</a> <em className="text-neutral-500">/ coming soon</em>
+                <Link href="/products/grysics" className="hover:text-neutral-300 transition-colors">Grysics</Link> <em className="text-neutral-500">/ coming soon</em>
               </h2>
               <p className="text-neutral-400 text-[15px] sm:text-base font-light leading-relaxed mb-8">
                 Our first product is a verification engine purpose-built for AI applications. Grysics will help teams test, evaluate, and monitor chatbots, RAG pipelines, and agent workflows, catching failures before users do.

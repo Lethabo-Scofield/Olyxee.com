@@ -9,7 +9,7 @@ const footerData = {
     {
       title: "Products",
       links: [
-        { name: "Grysics", href: "https://grysics.olyxee.com", external: true },
+        { name: "Grysics", href: "/products/grysics" },
       ],
     },
     {
