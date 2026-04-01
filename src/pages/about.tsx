@@ -1,11 +1,11 @@
-import { FC } from "react";
+import { FC, useState, useRef, useCallback } from "react";
 import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Shield, Brain, Eye, Activity, Lock, Sparkles } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Shield, Brain, Eye, Activity, Lock, Sparkles, Play, ExternalLink } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -15,6 +15,149 @@ const fadeUp = {
     transition: { duration: 0.6, delay: i * 0.08, ease: [0.25, 0.46, 0.45, 0.94] },
   }),
 };
+
+const videos = [
+  {
+    id: "aircAruvnKk",
+    title: "How AI Could Empower Any Business",
+    speaker: "Andrew Ng, TED",
+    description: "Andrew Ng explains how AI can transform businesses of all sizes, and why making AI accessible and reliable matters for everyone.",
+    tag: "Accessibility",
+  },
+  {
+    id: "J6Mdq3n6kgk",
+    title: "How AI Thinks and Learns",
+    speaker: "CGP Grey",
+    description: "A clear, visual explanation of how machine learning actually works under the hood, no technical background needed.",
+    tag: "Explainer",
+  },
+  {
+    id: "hfMk-kjRv4c",
+    title: "The Danger of AI is Weirder Than You Think",
+    speaker: "Janelle Shane, TED",
+    description: "Why AI systems fail in unexpected ways, from misaligned objectives to strange edge cases. Understanding these failure modes is central to our mission.",
+    tag: "AI Safety",
+  },
+];
+
+function VideoCard({ video, index }: { video: typeof videos[0]; index: number }) {
+  const [playing, setPlaying] = useState(false);
+
+  return (
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      custom={index}
+      variants={fadeUp}
+      className="group"
+    >
+      <div className="rounded-2xl overflow-hidden border border-neutral-200/80 bg-neutral-50 hover:shadow-lg hover:shadow-neutral-200/40 transition-all duration-300">
+        <div className="relative aspect-video bg-neutral-900">
+          {playing ? (
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${video.id}?autoplay=1&rel=0`}
+              title={video.title}
+              allow="autoplay; encrypted-media; picture-in-picture"
+              allowFullScreen
+              referrerPolicy="strict-origin-when-cross-origin"
+              className="absolute inset-0 w-full h-full"
+            />
+          ) : (
+            <button
+              onClick={() => setPlaying(true)}
+              className="absolute inset-0 w-full h-full cursor-pointer group/play"
+              aria-label={`Play ${video.title}`}
+            >
+              <img
+                src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`}
+                alt={video.title}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black/30 group-hover/play:bg-black/40 transition-colors" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center group-hover/play:scale-110 transition-transform shadow-lg">
+                  <Play className="w-6 h-6 text-neutral-900 ml-1" fill="currentColor" />
+                </div>
+              </div>
+            </button>
+          )}
+        </div>
+        <div className="p-5 sm:p-6">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="text-[10px] font-semibold text-neutral-500 uppercase tracking-wider bg-neutral-100 px-2 py-0.5 rounded-full">{video.tag}</span>
+            <span className="text-[11px] text-neutral-400">{video.speaker}</span>
+          </div>
+          <h3 className="text-base sm:text-lg font-semibold text-neutral-900 mb-2 leading-snug">{video.title}</h3>
+          <p className="text-sm text-neutral-500 leading-relaxed font-light">{video.description}</p>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+function DemoVideo() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const togglePlay = useCallback(() => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        videoRef.current.play().then(() => {
+          setIsPlaying(true);
+        }).catch(() => {
+          setIsPlaying(false);
+        });
+      }
+    }
+  }, [isPlaying]);
+
+  return (
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      custom={0}
+      variants={fadeUp}
+      className="mb-10 sm:mb-14"
+    >
+      <div className="rounded-2xl sm:rounded-3xl overflow-hidden border border-neutral-200/80 shadow-xl shadow-neutral-200/30 relative bg-neutral-900">
+        <div className="relative aspect-video">
+          <video
+            ref={videoRef}
+            src="/videos/demo.mp4"
+            className="w-full h-full object-cover"
+            playsInline
+            controls={isPlaying}
+            onEnded={() => setIsPlaying(false)}
+            onPause={() => setIsPlaying(false)}
+            onPlay={() => setIsPlaying(true)}
+          />
+          {!isPlaying && (
+            <button
+              onClick={togglePlay}
+              className="absolute inset-0 w-full h-full flex items-center justify-center bg-black/20 hover:bg-black/30 transition-colors cursor-pointer group"
+              aria-label="Play demo video"
+            >
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform shadow-xl">
+                <Play className="w-7 h-7 sm:w-8 sm:h-8 text-neutral-900 ml-1" fill="currentColor" />
+              </div>
+            </button>
+          )}
+        </div>
+        <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6">
+          <div className="bg-white/80 backdrop-blur-md rounded-xl px-4 py-3 sm:px-5 sm:py-3.5 border border-white/40 shadow-lg">
+            <p className="text-xs sm:text-sm font-semibold text-neutral-900">See How AI Verification Works</p>
+            <p className="text-[11px] sm:text-xs text-neutral-500 mt-0.5">A quick look at the challenges we are solving</p>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
 
 const About: FC = () => {
   return (
@@ -130,6 +273,36 @@ const About: FC = () => {
                 </div>
               </div>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 sm:py-24 lg:py-32 bg-neutral-50 border-y border-neutral-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            custom={0}
+            variants={fadeUp}
+            className="mb-10 sm:mb-14"
+          >
+            <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Watch & Learn</p>
+            <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900 mb-4 sm:mb-5">
+              Understand our mission <em className="text-neutral-400">visually</em>
+            </h2>
+            <p className="text-base sm:text-lg text-neutral-500 font-light leading-relaxed max-w-2xl">
+              Not everyone reads whitepapers. These videos explain the core ideas behind AI safety, reliability,
+              and why verification matters, in ways anyone can follow.
+            </p>
+          </motion.div>
+
+          <DemoVideo />
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            {videos.map((video, idx) => (
+              <VideoCard key={video.id} video={video} index={idx + 1} />
+            ))}
           </div>
         </div>
       </section>
