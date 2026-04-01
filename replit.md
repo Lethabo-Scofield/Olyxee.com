@@ -34,9 +34,11 @@ Company-level website for Olyxee, a reliability-first AI infrastructure company.
 - **Animations**: Custom easing `[0.25, 0.1, 0.25, 1]`, longer durations (0.7-1.2s), staggered delays. Spring physics on header and interactive elements.
 - **Frosted glass**: Cookie banner and header use `backdrop-blur(24px) saturate(180%)` with `rgba(255,255,255,0.75)` background
 - **Hover patterns**: Circle arrow buttons (`w-10-12 h-10-12 rounded-full bg-neutral-100 → bg-neutral-900`) on cards and list items. Cards use `group-hover:bg-white/75` overlay transition.
-- **Typography pattern**: Large serif italic headings with `<em>` in blue (`text-blue-400`/`text-blue-500`) or orange (`text-orange-400`) for emphasis contrast, alternating between sections. Body text uses `font-light`.
-- **Icon containers**: Apple-style tinted rounded squares (`w-11 h-11 rounded-2xl` or `w-12 h-12 rounded-2xl`) with colored tint backgrounds (`bg-blue-500/10`, `bg-orange-500/10`, etc.) and matching colored icons. Never solid black boxes.
-- **Card backgrounds**: All major cards use gradient image backgrounds from `public/images/gradient-*.png` at low opacity (`opacity-[0.06]` to `opacity-[0.08]`) with hover reveal (`group-hover:opacity-[0.12]` to `opacity-[0.15]`). Cards have `overflow-hidden` with absolute-positioned Image fill.
+- **Typography pattern**: Large serif italic headings with `<em>` in blue (`text-blue-400`/`text-blue-500`) or orange (`text-orange-400`) for emphasis contrast. Body text uses `font-light`.
+- **Icon style**: Clean monochrome icons (`text-neutral-400` or `text-neutral-600`). Small inline icons, no colored tint boxes. Restraint over decoration.
+- **Icon containers (light bg)**: Simple `rounded-xl bg-neutral-100` with `text-neutral-600` icon. No color tints.
+- **Icon containers (dark bg)**: Simple `rounded-xl bg-white/[0.06]` with `text-white/40` icon.
+- **Card backgrounds (bento grid only)**: Large showcase cards use gradient images from `public/images/gradient-*.png` at moderate opacity. Small info cards use NO gradient backgrounds.
 - **Grain texture**: `.grain` CSS class — fixed noise overlay at z-9999, opacity 0.03
 - **Gradient images available**: gradient-blue-pink, gradient-orange-pink, gradient-yellow-green, gradient-purple, gradient-pastel, gradient-blue, gradient-orange-purple, gradient-abstract-blue, gradient-painted, gradient-pink-cyan, gradient-yellow-blue
 - **Header dark theme**: `<Header theme="dark" />` on pages with dark heroes. Nav links and mobile menu icon are theme-aware (white on dark, neutral on light).
