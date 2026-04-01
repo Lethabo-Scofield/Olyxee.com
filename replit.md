@@ -48,9 +48,10 @@ Company-level website for Olyxee, a reliability-first AI infrastructure company.
 - **Grysics** = verification engine for AI applications (chatbots, RAG, agents) — ensures reliability before and after deployment. Integrates with OEB for edge verification
 
 ## Site Structure & Navigation
-Navigation: Products | Docs | Community | About | Contact
-Desktop CTA: "Try Grysics"
-- Grysics SDK: `pip install grysics`, CLI: `grysics` commands
+Navigation: Research | Community | About | Contact
+Desktop CTA: "Get in Touch"
+- Grysics is NOT yet released — positioned as "Coming Soon" throughout the site
+- No fake stats, testimonials, or partner logos — Olyxee is a new company
 
 ## Routing
 - **App Router** (`src/app/`): `/`, `/products/grysics`, `/products/nrn`
@@ -65,7 +66,7 @@ Desktop CTA: "Try Grysics"
 - Community hero image: `public/images/Community presentation.png`
 
 ## Key Pages
-- **Homepage** (`src/app/page.tsx`): Cinematic full-viewport hero with parallax scrolling + video demo + "Now building in public" badge, Announcement strip (Grysics launch), Product Showcase (split layout: left features list + right terminal mockup), How It Works (dark section with 3 steps + radial glow), Capabilities Bento grid (mixed sizes: dark featured card + colored cards + compliance row), Developer section (dark, code snippet + SDK/API/CLI details), CTA (light gradient). Design inspired by OpenAI/Anthropic/DeepMind patterns. No fake stats, testimonials, or partner logos — Olyxee is a new company. EdgeAI/OEB removed from navbar and products.
+- **Homepage** (`src/app/page.tsx`): Company-focused landing page. Cinematic full-viewport hero with parallax scrolling + video demo. Sections: MissionSection (who we are + values), ResearchAreas (dark section: verification, safety, monitoring with radial glow), ApproachSection (bento grid: AI safety infrastructure, hallucination research, behavioral evaluation, enterprise/regulated), WhatsComingSection (dark section previewing Grysics as "Coming Soon" with terminal mockup), CTASection (light gradient). Design inspired by OpenAI/Anthropic/DeepMind patterns. No fake stats, testimonials, or partner logos.
 - **About** (`src/pages/about.tsx`): Mission, problem statement, approach, philosophy
 - **Olyxee Lab** (`src/pages/lab.tsx`): Research division — 6 research areas, recent publications, approach section, LinkedIn CTA
 - **Products**: Grysics (verification engine with animated canvas network), NRN (interpretable AI), WAVE (core platform)

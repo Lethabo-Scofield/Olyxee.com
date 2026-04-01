@@ -13,8 +13,7 @@ const DiscordIcon = ({ className }: { className?: string }) => (
 );
 
 const menuItems = [
-    { name: "Products", href: "/products/grysics" },
-    { name: "Docs", href: "/docs" },
+    { name: "Research", href: "/about" },
     { name: "Community", href: "/community" },
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
@@ -155,8 +154,8 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: 0.35, type: 'spring', stiffness: 400, damping: 25 }}
                         >
-                            <Link href="/products/grysics" className="hidden md:inline-flex px-5 py-1.5 bg-neutral-900 text-white rounded-full hover:bg-black active:scale-95 transition-all font-semibold text-[13px] focus:outline-none shadow-sm">
-                                Try Grysics
+                            <Link href="/contact" className="hidden md:inline-flex px-5 py-1.5 bg-neutral-900 text-white rounded-full hover:bg-black active:scale-95 transition-all font-semibold text-[13px] focus:outline-none shadow-sm">
+                                Get in Touch
                             </Link>
                         </motion.div>
 
@@ -254,11 +253,11 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                                 transition={{ delay: 0.4, type: 'spring', stiffness: 300, damping: 25 }}
                             >
                                 <Link
-                                    href="/products/grysics"
+                                    href="/contact"
                                     className="w-full py-3 bg-neutral-900 text-white rounded-2xl flex items-center justify-center gap-2 hover:bg-black active:scale-[0.98] transition-all font-semibold text-sm focus:outline-none shadow-sm"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
-                                    Try Grysics
+                                    Get in Touch
                                 </Link>
                                 <button className="w-full py-3 bg-white/50 text-neutral-900 border border-neutral-200/50 rounded-2xl flex items-center justify-center gap-2 hover:bg-white/70 active:scale-[0.98] transition-all font-semibold text-sm focus:outline-none">
                                     <DiscordIcon className="w-4 h-4" /> Join Discord
