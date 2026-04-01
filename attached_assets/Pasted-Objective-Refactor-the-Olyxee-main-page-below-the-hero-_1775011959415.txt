@@ -1,0 +1,65 @@
+Objective:
+Refactor the Olyxee main page below the hero section to make it clearer, modern, and aligned with industry leaders (OpenAI, DeepMind, Anthropic). Keep current navbar and hero section unchanged.
+
+1. Remove / Replace
+Remove any generic “features” or “services” sections that do not clearly convey product value or capabilities.
+Remove duplicate or overlapping sections such as multiple “About” blocks or generic filler content.
+Remove non-essential graphics or text that don’t support the mission or products.
+Remove top-level focus on sub-products as separate sections; only highlight them in a Products/Capabilities section.
+2. Add / Restructure Sections Below Hero
+
+Section A: Products / Capabilities
+
+Replace old product blurbs with interactive cards or panels:
+Grysics — tagline, 1 line value proposition, CTA “Try Now” linking to gryics.olyxee.com
+OEB — placeholder or “Coming Soon / Learn More” linking to future subdomain
+Include short description for each product emphasizing what problem it solves.
+Optional: subtle hover effects or animated micro-interactions.
+
+Section B: Mission / Why It Matters
+
+One concise paragraph about Olyxee’s mission and ecosystem vision.
+Bullet points (3–4) highlighting core values or differentiators.
+Should appear immediately after Products to explain why users should care.
+
+Section C: Audience Pathways
+
+Separate blocks for:
+Developers → Docs, SDKs, APIs
+Enterprise / Business → scalable, verified models
+Research / Partners → collaboration, validation, advanced tools
+Each block includes CTA buttons like “Explore Docs” or “Learn More”.
+
+Section D: Use Cases / Examples
+
+Replace vague text with real-world examples of product usage:
+Model verification scenarios
+Edge deployment examples
+Accuracy/robustness demonstrations
+Format as a grid or cards with icons/images.
+
+Section E: Proof / Credibility
+
+Carousel or grid of:
+Partner logos
+Case studies
+Key metrics (e.g., verified models deployed, accuracy stats)
+Optional testimonial quotes from early adopters or pilots.
+
+Section F: Call-to-Action / Footer Links
+
+CTA after main content: “Try Grysics” (repeat from hero if needed)
+Footer: clean links to Products, Resources, Company, Legal, Contact
+Maintain visual consistency with existing navbar style.
+3. Design / Style Notes
+Keep existing navbar and hero section intact.
+Below hero: use clean card/grid layout, minimalistic but engaging.
+Maintain consistent font, color palette, spacing with current hero.
+Subtle hover effects or micro-animations encouraged for interactivity.
+Ensure all CTAs are clear, single primary focus per section.
+4. Outcome / Goal
+Page should communicate:
+What Olyxee products are and why they matter
+Who the page is for (developers, enterprises, partners)
+How users can engage immediately (Try Grysics / Docs / Learn More)
+Achieve a main page as polished and functional as OpenAI or DeepMind, without cluttering the navbar or hero.
