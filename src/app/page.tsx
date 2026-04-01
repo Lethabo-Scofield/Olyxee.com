@@ -155,10 +155,10 @@ function MissionSection() {
             className="space-y-6"
           >
             <p className="text-lg text-neutral-600 font-light leading-relaxed">
-              As AI becomes embedded in critical systems — from healthcare to finance to everyday tools — the gap between what AI can do and what it should do keeps widening.
+              As AI becomes embedded in critical systems, from healthcare to finance to everyday tools, the gap between what AI can do and what it should do keeps widening.
             </p>
             <p className="text-lg text-neutral-600 font-light leading-relaxed">
-              Olyxee exists to close that gap. We are a research-driven company building infrastructure that verifies, evaluates, and monitors AI applications so they behave as intended — every time.
+              Olyxee exists to close that gap. We are a research-driven company building infrastructure that verifies, evaluates, and monitors AI applications so they behave as intended, every time.
             </p>
             <p className="text-lg text-neutral-600 font-light leading-relaxed">
               We believe safety and performance are not trade-offs. They are the same goal.
@@ -174,7 +174,7 @@ function MissionSection() {
           >
             {[
               { title: "Research-first", desc: "Our work is grounded in rigorous AI safety research. We study failure modes, develop evaluation methodologies, and publish our findings." },
-              { title: "Infrastructure-grade", desc: "We build systems designed for production scale — reliable, fast, and engineered to integrate seamlessly into existing workflows." },
+              { title: "Infrastructure-grade", desc: "We build systems designed for production scale. Reliable, fast, and engineered to integrate seamlessly into existing workflows." },
               { title: "Trust through transparency", desc: "We believe the AI industry needs more accountability. Our tools help teams understand exactly how their AI behaves and where it falls short." },
             ].map((item, idx) => (
               <motion.div
@@ -226,9 +226,9 @@ function ResearchAreas() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-0">
           {[
-            { num: "01", title: "Verification", desc: "Developing methods to systematically verify that AI systems produce accurate, consistent, and faithful outputs — across every deployment scenario." },
+            { num: "01", title: "Verification", desc: "Developing methods to systematically verify that AI systems produce accurate, consistent, and faithful outputs across every deployment scenario." },
             { num: "02", title: "Safety", desc: "Researching failure modes in large language models, detection of hallucinations, and techniques to ensure AI systems stay within intended boundaries." },
-            { num: "03", title: "Monitoring", desc: "Building real-time observability for AI in production — detecting drift, degradation, and emergent failure patterns before they cause harm." },
+            { num: "03", title: "Monitoring", desc: "Building real-time observability for AI in production. Detecting drift, degradation, and emergent failure patterns before they cause harm." },
           ].map((step, idx) => (
             <motion.div
               key={step.num}
@@ -283,7 +283,7 @@ function ApproachSection() {
               <Shield className="w-6 h-6 text-neutral-400 mb-4" />
               <h3 className="text-xl sm:text-2xl font-semibold text-white mb-3 tracking-tight">AI Safety Infrastructure</h3>
               <p className="text-neutral-400 text-sm sm:text-[15px] font-light leading-relaxed max-w-lg mb-6">
-                We are building the foundational infrastructure that organizations need to deploy AI responsibly — verification engines, evaluation frameworks, and monitoring systems designed for real-world scale.
+                We are building the foundational infrastructure that organizations need to deploy AI responsibly: verification engines, evaluation frameworks, and monitoring systems designed for real-world scale.
               </p>
               <div className="flex flex-wrap gap-2">
                 {["Verification", "Evaluation", "Monitoring", "Compliance"].map(t => (
@@ -303,7 +303,7 @@ function ApproachSection() {
             <Eye className="w-5 h-5 text-amber-600/60 mb-4" />
             <h3 className="text-lg font-semibold text-neutral-900 mb-3 tracking-tight">Hallucination Research</h3>
             <p className="text-sm text-neutral-600 font-light leading-relaxed mb-4">
-              Studying how and why AI models fabricate information — and developing detection methods that work across domains and model architectures.
+              Studying how and why AI models fabricate information, and developing detection methods that work across domains and model architectures.
             </p>
             <div className="flex items-center gap-2 text-sm font-medium text-neutral-900 opacity-60">
               Active research <ArrowUpRight className="w-3.5 h-3.5" />
@@ -320,7 +320,7 @@ function ApproachSection() {
             <Brain className="w-5 h-5 text-emerald-600/60 mb-4" />
             <h3 className="text-lg font-semibold text-neutral-900 mb-3 tracking-tight">Behavioral Evaluation</h3>
             <p className="text-sm text-neutral-600 font-light leading-relaxed mb-4">
-              Developing frameworks to evaluate AI behavior at scale — measuring consistency, accuracy, and alignment with intended outcomes.
+              Developing frameworks to evaluate AI behavior at scale, measuring consistency, accuracy, and alignment with intended outcomes.
             </p>
             <div className="flex items-center gap-2 text-sm font-medium text-neutral-900 opacity-60">
               Active research <ArrowUpRight className="w-3.5 h-3.5" />
@@ -371,10 +371,10 @@ function ProductsSection() {
             >
               <p className="text-xs font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-4">Our Products</p>
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white mb-6">
-                Grysics <em className="text-neutral-500">— coming soon</em>
+                Grysics <em className="text-neutral-500">/ coming soon</em>
               </h2>
               <p className="text-neutral-400 text-[15px] sm:text-base font-light leading-relaxed mb-8">
-                Our first product is a verification engine purpose-built for AI applications. Grysics will help teams test, evaluate, and monitor chatbots, RAG pipelines, and agent workflows — catching failures before users do.
+                Our first product is a verification engine purpose-built for AI applications. Grysics will help teams test, evaluate, and monitor chatbots, RAG pipelines, and agent workflows, catching failures before users do.
               </p>
 
               <div className="space-y-4 mb-10">
