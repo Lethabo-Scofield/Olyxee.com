@@ -48,8 +48,9 @@ Company-level website for Olyxee, a reliability-first AI infrastructure company.
 - **Grysics** = verification engine for AI applications (chatbots, RAG, agents) — ensures reliability before and after deployment. Integrates with OEB for edge verification
 
 ## Site Structure & Navigation
-Navigation: Research | Community | About | Contact
+Navigation: Products | Research | Community | About | Contact
 Desktop CTA: "Get in Touch"
+- "Products" is a smooth-scroll anchor link (`/#products`) to the ProductsSection on the homepage, not a separate route
 - Grysics is NOT yet released — positioned as "Coming Soon" throughout the site
 - No fake stats, testimonials, or partner logos — Olyxee is a new company
 

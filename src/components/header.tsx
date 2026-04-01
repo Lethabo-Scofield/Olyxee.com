@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef, useCallback, memo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
@@ -13,6 +14,7 @@ const DiscordIcon = ({ className }: { className?: string }) => (
 );
 
 const menuItems = [
+    { name: "Products", href: "/#products" },
     { name: "Research", href: "/about" },
     { name: "Community", href: "/community" },
     { name: "About", href: "/about" },
@@ -25,6 +27,18 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
     const [visible, setVisible] = useState(true);
     const lastScrollY = useRef(0);
     const firstFocusableRef = useRef<HTMLButtonElement | null>(null);
+    const pathname = usePathname();
+
+    const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+        if (href.startsWith('/#')) {
+            const id = href.slice(2);
+            if (pathname === '/') {
+                e.preventDefault();
+                const el = document.getElementById(id);
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    }, [pathname]);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -125,7 +139,8 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                                 >
                                     <Link
                                         href={item.href}
-                                        prefetch
+                                        prefetch={!item.href.startsWith('/#')}
+                                        onClick={(e) => handleNavClick(e, item.href)}
                                         className={`text-[13px] font-medium transition-colors focus:outline-none px-3.5 py-1.5 relative ${
                                             theme === "dark" && !scrolled
                                                 ? "text-white/60 hover:text-white"
@@ -234,9 +249,9 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                                         >
                                             <Link
                                                 href={item.href}
-                                                prefetch
+                                                prefetch={!item.href.startsWith('/#')}
                                                 className="flex items-center justify-between py-3 px-4 hover:bg-blue-50/50 active:bg-blue-50/80 rounded-2xl transition-all text-neutral-900 font-medium text-[15px] focus:outline-none hover:text-blue-600"
-                                                onClick={() => setMobileMenuOpen(false)}
+                                                onClick={(e) => { handleNavClick(e, item.href); setMobileMenuOpen(false); }}
                                             >
                                                 {item.name}
                                                 <span className="text-neutral-400 text-xs">→</span>

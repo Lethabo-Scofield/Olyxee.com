@@ -41,7 +41,7 @@ export default function HomePage() {
         <MissionSection />
         <ResearchAreas />
         <ApproachSection />
-        <WhatsComingSection />
+        <ProductsSection />
         <CTASection />
       </main>
       <Footer />
@@ -356,9 +356,9 @@ function ApproachSection() {
 }
 
 
-function WhatsComingSection() {
+function ProductsSection() {
   return (
-    <section className="relative overflow-hidden">
+    <section id="products" className="relative overflow-hidden scroll-mt-20">
       <div className="absolute inset-0 bg-neutral-950" />
       <div className="relative py-32 sm:py-40">
         <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
@@ -369,9 +369,9 @@ function WhatsComingSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
             >
-              <p className="text-xs font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-4">Coming Soon</p>
+              <p className="text-xs font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-4">Our Products</p>
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white mb-6">
-                Grysics <em className="text-neutral-500">— verification for AI</em>
+                Grysics <em className="text-neutral-500">— coming soon</em>
               </h2>
               <p className="text-neutral-400 text-[15px] sm:text-base font-light leading-relaxed mb-8">
                 Our first product is a verification engine purpose-built for AI applications. Grysics will help teams test, evaluate, and monitor chatbots, RAG pipelines, and agent workflows — catching failures before users do.
