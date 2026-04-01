@@ -104,7 +104,7 @@ function HeroSection() {
         >
           Research and safety
           <br />
-          for <em className="text-neutral-400">artificial intelligence</em>
+          for <em className="text-blue-400">artificial intelligence</em>
         </motion.h1>
 
         <motion.p
@@ -204,7 +204,7 @@ function MissionSection() {
         >
           <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Who We Are</p>
           <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 max-w-3xl">
-            AI is powerful. It should also be <em className="text-neutral-400">reliable</em>
+            AI is powerful. It should also be <em className="text-orange-400">reliable</em>
           </h2>
         </motion.div>
 
@@ -314,7 +314,7 @@ function ResearchAreas() {
         >
           <p className="text-xs font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-4">What We Do</p>
           <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-white">
-            Advancing the science of <em className="text-neutral-500">AI reliability</em>
+            Advancing the science of <em className="text-blue-400">AI reliability</em>
           </h2>
         </motion.div>
 
@@ -422,7 +422,7 @@ function ApproachSection() {
         >
           <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Our Approach</p>
           <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 max-w-3xl">
-            Built at the intersection of <em className="text-neutral-400">research and engineering</em>
+            Built at the intersection of <em className="text-orange-400">research and engineering</em>
           </h2>
         </motion.div>
 
@@ -555,7 +555,7 @@ function ProductsSection() {
             >
               <p className="text-xs font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-4">Our Products</p>
               <h2 className="font-serif text-2xl sm:text-4xl lg:text-5xl tracking-tight text-white mb-5 sm:mb-6">
-                <Link href="/products/grysics" className="hover:text-neutral-300 transition-colors">Grysics</Link> <em className="text-neutral-500">/ coming soon</em>
+                <Link href="/products/grysics" className="hover:text-neutral-300 transition-colors">Grysics</Link> <em className="text-orange-400/60">/ coming soon</em>
               </h2>
               <p className="text-neutral-400 text-[15px] sm:text-base font-light leading-relaxed mb-8">
                 A verification engine for AI applications. Test, evaluate, and monitor chatbots, RAG pipelines, and agent workflows.
@@ -701,7 +701,7 @@ function CTASection() {
           transition={{ duration: 0.8 }}
           className="font-serif text-3xl sm:text-5xl lg:text-6xl xl:text-7xl text-neutral-900 tracking-tight mb-5 sm:mb-6"
         >
-          The future of AI<br />needs <em className="text-neutral-400">better foundations</em>
+          The future of AI<br />needs <em className="text-blue-500">better foundations</em>
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}

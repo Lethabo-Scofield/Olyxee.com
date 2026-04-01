@@ -140,7 +140,7 @@ const Research: FC = () => {
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }} className="font-serif text-3xl sm:text-5xl lg:text-[5.5rem] text-neutral-900 tracking-tight leading-[1.05] mb-6 sm:mb-8">
             Papers that shape
             <br />
-            <em className="text-neutral-400">our mission</em>
+            <em className="text-blue-400">our mission</em>
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-base sm:text-xl text-neutral-500 leading-relaxed max-w-3xl font-light">
             Key papers from the AI safety and evaluation community that inform our direction. Full credit to the original authors.
@@ -222,7 +222,7 @@ const Research: FC = () => {
             >
               <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Our Direction</p>
               <h2 className="font-serif text-3xl sm:text-4xl tracking-tight text-neutral-900 mb-6">
-                Why these papers <em className="text-neutral-400">matter to us</em>
+                Why these papers <em className="text-orange-400">matter to us</em>
               </h2>
               <div className="space-y-4 text-[15px] text-neutral-600 font-light leading-relaxed">
                 <p>
@@ -268,7 +268,7 @@ const Research: FC = () => {
             <h2 className="font-serif text-3xl sm:text-5xl tracking-tight mb-5 sm:mb-6">
               Want to collaborate
               <br />
-              <em className="text-neutral-500">on research?</em>
+              <em className="text-blue-400">on research?</em>
             </h2>
             <p className="text-neutral-400 text-base sm:text-lg max-w-lg mx-auto mb-8 sm:mb-10 font-light leading-relaxed">
               We connect with researchers working on AI safety, evaluation, and reliability.

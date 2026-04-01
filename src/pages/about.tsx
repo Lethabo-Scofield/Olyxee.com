@@ -194,7 +194,7 @@ const About: FC = () => {
             >
               We are building the trust layer
               <br />
-              <em className="text-neutral-400">for artificial intelligence.</em>
+              <em className="text-blue-400">for artificial intelligence.</em>
             </motion.h1>
           </motion.div>
           <motion.p
@@ -282,7 +282,7 @@ const About: FC = () => {
           >
             <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Watch & Learn</p>
             <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900 mb-4 sm:mb-5">
-              Understand our mission <em className="text-neutral-400">visually</em>
+              Understand our mission <em className="text-orange-400">visually</em>
             </h2>
             <p className="text-base sm:text-lg text-neutral-500 font-light leading-relaxed max-w-2xl">
               AI safety and verification explained simply. No technical background needed.
@@ -317,7 +317,7 @@ const About: FC = () => {
             <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-white">
               Verification-first
               <br />
-              <em className="text-neutral-500">AI infrastructure</em>
+              <em className="text-blue-500">AI infrastructure</em>
             </h2>
           </motion.div>
 
@@ -364,7 +364,7 @@ const About: FC = () => {
             >
               <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Our Position</p>
               <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900 mb-5 sm:mb-6">
-                Where we fit in the <em className="text-neutral-400">AI stack</em>
+                Where we fit in the <em className="text-orange-400">AI stack</em>
               </h2>
               <p className="text-neutral-500 text-[15px] leading-relaxed font-light mb-8">
                 Others build bigger models. We make sure those models actually work when they reach real users.
@@ -408,7 +408,7 @@ const About: FC = () => {
           >
             <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Our Principles</p>
             <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900">
-              What drives <em className="text-neutral-400">us</em>
+              What drives <em className="text-blue-500">us</em>
             </h2>
           </motion.div>
 
@@ -510,7 +510,7 @@ const About: FC = () => {
             <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight mb-5 sm:mb-6">
               Join us in building
               <br />
-              <em className="text-neutral-500">trustworthy AI</em>
+              <em className="text-orange-400">trustworthy AI</em>
             </h2>
             <p className="text-base sm:text-lg text-neutral-400 mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed font-light">
               Researchers and engineers solving hard problems in AI safety and verification.
