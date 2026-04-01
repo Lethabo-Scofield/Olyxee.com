@@ -58,13 +58,13 @@ Company-level website for Olyxee, a reliability-first AI infrastructure company.
 ## Site Structure & Navigation
 Navigation: Products | Research | Community | About | Contact
 Desktop CTA: "Get in Touch"
-- "Products" is a smooth-scroll anchor link (`/#products`) to the ProductsSection on the homepage, not a separate route
+- "Products" links to `/products` (separate page, not a scroll anchor)
 - Grysics is NOT yet released — positioned as "Coming Soon" throughout the site
 - No fake stats, testimonials, or partner logos — Olyxee is a new company
 
 ## Routing
 - **App Router** (`src/app/`): `/`, `/products/grysics`, `/products/nrn`
-- **Pages Router** (`src/pages/`): `/about`, `/lab`, `/research`, `/technology`, `/developers`, `/safety`, `/use-cases`, `/careers`, `/blog`, `/contact`, `/docs`, `/community`, `/support`
+- **Pages Router** (`src/pages/`): `/products`, `/about`, `/lab`, `/research`, `/technology`, `/developers`, `/safety`, `/use-cases`, `/careers`, `/blog`, `/contact`, `/docs`, `/community`, `/support`
 - Global CSS is imported via `src/pages/_app.tsx` for Pages Router routes
 - KaTeX CSS is imported in `src/app/layout.tsx` for App Router routes
 
@@ -75,7 +75,8 @@ Desktop CTA: "Get in Touch"
 - Community hero image: `public/images/Community presentation.png`
 
 ## Key Pages
-- **Homepage** (`src/app/page.tsx`): Company-focused landing page. Cinematic full-viewport hero with parallax scrolling + video demo. Sections: MissionSection (who we are + values), ResearchAreas (dark section: verification, safety, monitoring with radial glow), ApproachSection (bento grid: AI safety infrastructure, hallucination research, behavioral evaluation, enterprise/regulated), WhatsComingSection (dark section previewing Grysics as "Coming Soon" with terminal mockup), CTASection (light gradient). Design inspired by OpenAI/Anthropic/DeepMind patterns. No fake stats, testimonials, or partner logos.
+- **Homepage** (`src/app/page.tsx`): Company-focused landing page. Cinematic full-viewport hero with parallax scrolling. Sections: LogoStrip (focus areas), MissionSection (who we are + values), ResearchAreas (dark section: verification, safety, monitoring), ApproachSection (bento grid: AI safety infrastructure, hallucination research, behavioral evaluation, enterprise/regulated), CTASection (light gradient). No fake stats, testimonials, or partner logos.
+- **Products** (`src/pages/products.tsx`): Dedicated products page with hero and Grysics "Coming Soon" section with terminal mockup and verification score chart.
 - **About** (`src/pages/about.tsx`): Mission, problem statement, approach, philosophy
 - **Olyxee Lab** (`src/pages/lab.tsx`): Research division — 6 research areas, recent publications, approach section, LinkedIn CTA
 - **Products**: Grysics (verification engine with animated canvas network), NRN (interpretable AI), WAVE (core platform)
