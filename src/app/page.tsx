@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ArrowUpRight, Shield, Eye, Brain, Zap, Lock, CheckCircle2, AlertTriangle, Activity, BarChart3 } from "lucide-react";
+import { GoogleLogo, MicrosoftLogo, OpenAILogo, NvidiaLogo, MetaLogo, AWSLogo, GoogleCloudLogo, IBMLogo, HuggingFaceLogo } from "../components/company-logos";
 
 export default function HomePage() {
   const [cookieBannerVisible, setCookieBannerVisible] = useState(false);
@@ -159,29 +160,31 @@ function HeroSection() {
 
 
 function LogoStrip() {
-  const collaborators = ["Google", "Microsoft", "OpenAI", "NVIDIA", "Meta", "AWS"];
+  const collaborators = [
+    { name: "Google", Logo: GoogleLogo, width: "w-20" },
+    { name: "Microsoft", Logo: MicrosoftLogo, width: "w-7" },
+    { name: "OpenAI", Logo: OpenAILogo, width: "w-7" },
+    { name: "NVIDIA", Logo: NvidiaLogo, width: "w-24" },
+    { name: "Meta", Logo: MetaLogo, width: "w-20" },
+    { name: "AWS", Logo: AWSLogo, width: "w-16" },
+  ];
 
   return (
     <section className="border-y border-neutral-100 bg-neutral-50/50 py-8 sm:py-12">
       <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
         <p className="text-center text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-6 sm:mb-8">Trusted By Industry Leaders</p>
         <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 sm:gap-x-16 sm:gap-y-6">
-          {collaborators.map((name, idx) => (
+          {collaborators.map((item, idx) => (
             <motion.div
-              key={name}
+              key={item.name}
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.06 }}
-              className="text-neutral-300 hover:text-neutral-500 transition-colors duration-300"
+              className="text-neutral-300 hover:text-neutral-600 transition-colors duration-300"
+              title={item.name}
             >
-              <Image
-                src={`/images/logos/${name.toLowerCase()}.png`}
-                alt={name}
-                width={120}
-                height={40}
-                className="h-7 sm:h-8 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300 grayscale"
-              />
+              <item.Logo className={`${item.width} h-auto`} />
             </motion.div>
           ))}
         </div>
@@ -477,12 +480,12 @@ function ApproachSection() {
 
 function IntegrationSection() {
   const floatingCards = useMemo(() => [
-    { name: "AWS", subtitle: "Cloud Infrastructure", position: "left-[3%] top-[8%]", rotation: "-3deg", delay: 0 },
-    { name: "Google Cloud", subtitle: "AI Platform", position: "right-[2%] top-[5%]", rotation: "4deg", delay: 0.1 },
-    { name: "Microsoft Azure", subtitle: "Enterprise Cloud", position: "right-[8%] top-[38%]", rotation: "2deg", delay: 0.2 },
-    { name: "IBM", subtitle: "Watson AI", position: "left-[5%] top-[45%]", rotation: "-2deg", delay: 0.15 },
-    { name: "NVIDIA", subtitle: "GPU Computing", position: "left-[8%] bottom-[8%]", rotation: "3deg", delay: 0.25 },
-    { name: "Hugging Face", subtitle: "Model Hub", position: "right-[5%] bottom-[10%]", rotation: "-3deg", delay: 0.3 },
+    { name: "AWS", subtitle: "Cloud Infrastructure", position: "left-[3%] top-[8%]", rotation: "-3deg", delay: 0, Logo: AWSLogo },
+    { name: "Google Cloud", subtitle: "AI Platform", position: "right-[2%] top-[5%]", rotation: "4deg", delay: 0.1, Logo: GoogleCloudLogo },
+    { name: "Microsoft", subtitle: "Enterprise Cloud", position: "right-[8%] top-[38%]", rotation: "2deg", delay: 0.2, Logo: MicrosoftLogo },
+    { name: "IBM", subtitle: "Watson AI", position: "left-[5%] top-[45%]", rotation: "-2deg", delay: 0.15, Logo: IBMLogo },
+    { name: "NVIDIA", subtitle: "GPU Computing", position: "left-[8%] bottom-[8%]", rotation: "3deg", delay: 0.25, Logo: NvidiaLogo },
+    { name: "Hugging Face", subtitle: "Model Hub", position: "right-[5%] bottom-[10%]", rotation: "-3deg", delay: 0.3, Logo: HuggingFaceLogo },
   ], []);
 
   return (
@@ -508,6 +511,7 @@ function IntegrationSection() {
               transition={{ duration: 4 + idx * 0.5, repeat: Infinity, ease: "easeInOut" }}
               className="bg-white rounded-2xl shadow-lg shadow-neutral-200/50 p-5 sm:p-6 w-40 sm:w-44"
             >
+              <card.Logo className="w-6 h-6 text-neutral-700 mb-2" />
               <p className="text-sm font-semibold text-neutral-800">{card.name}</p>
               <p className="text-[11px] text-neutral-400 mt-0.5">{card.subtitle}</p>
             </motion.div>
@@ -547,6 +551,7 @@ function IntegrationSection() {
                 transition={{ duration: 0.4, delay: idx * 0.06 }}
                 className="bg-white rounded-xl shadow-sm p-4"
               >
+                <card.Logo className="w-5 h-5 text-neutral-600 mb-1.5" />
                 <p className="text-sm font-semibold text-neutral-800">{card.name}</p>
                 <p className="text-[11px] text-neutral-400 mt-0.5">{card.subtitle}</p>
               </motion.div>
