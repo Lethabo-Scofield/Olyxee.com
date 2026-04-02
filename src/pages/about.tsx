@@ -262,7 +262,7 @@ const About: FC = () => {
             >
               <div className="inline-block px-3 py-1 bg-neutral-100 text-neutral-600 text-xs font-semibold uppercase tracking-widest rounded-full mb-5">Founder&apos;s Note</div>
               <blockquote className="font-serif text-2xl sm:text-3xl lg:text-4xl text-neutral-900 leading-snug mb-8 tracking-tight">
-                &ldquo;We started Olyxee because we saw teams building incredible models with nowhere reliable to run them. That problem is what we solve.&rdquo;
+                &ldquo;AI is only as powerful as the systems we build to harness it. At Olyxee, we turn research into reliable infrastructure so every model can reach its full potential.&rdquo;
               </blockquote>
               <div className="space-y-4">
                 <p className="text-base text-neutral-500 leading-relaxed font-light">
