@@ -504,7 +504,16 @@ function ApproachSection() {
 
 
 function IntegrationSection() {
-  const platforms = useMemo(() => [
+  const scatteredCards = useMemo(() => [
+    { name: "AWS", subtitle: "Cloud Infrastructure", Logo: AWSLogo, top: "4%", left: "3%", rotate: -3 },
+    { name: "Google Cloud", subtitle: "AI Platform", Logo: GoogleCloudLogo, top: "8%", right: "5%", rotate: 2 },
+    { name: "Microsoft", subtitle: "Enterprise Cloud", Logo: MicrosoftLogo, top: "42%", right: "2%", rotate: -1.5 },
+    { name: "IBM", subtitle: "Watson AI", Logo: IBMLogo, top: "38%", left: "1%", rotate: 2.5 },
+    { name: "NVIDIA", subtitle: "GPU Computing", Logo: NvidiaLogo, bottom: "8%", left: "6%", rotate: -2 },
+    { name: "Hugging Face", subtitle: "Model Hub", Logo: HuggingFaceLogo, bottom: "4%", right: "3%", rotate: 1.5 },
+  ], []);
+
+  const mobileCards = useMemo(() => [
     { name: "AWS", subtitle: "Cloud Infrastructure", Logo: AWSLogo },
     { name: "Google Cloud", subtitle: "AI Platform", Logo: GoogleCloudLogo },
     { name: "Microsoft", subtitle: "Enterprise Cloud", Logo: MicrosoftLogo },
@@ -514,51 +523,76 @@ function IntegrationSection() {
   ], []);
 
   return (
-    <section className="relative py-24 sm:py-36 lg:py-44 overflow-hidden bg-amber-50/40">
+    <section className="relative py-24 sm:py-36 lg:py-48 overflow-hidden bg-amber-50/40">
       <div className="absolute inset-0">
         <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-orange-100/30 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 right-1/3 w-80 h-80 bg-amber-100/30 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative max-w-5xl mx-auto px-4 sm:px-8 lg:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-14 sm:mb-20"
-        >
-          <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] tracking-tight text-neutral-900 leading-tight mb-6">
-            AI verification built for{" "}
-            <em className="text-orange-400">your stack</em>.
-          </h2>
-          <p className="text-neutral-500 text-base sm:text-lg font-light leading-relaxed mb-8 max-w-md mx-auto">
-            Deploy Olyxee in your environment, or integrate through our cloud API. Works with every major platform.
-          </p>
-          <Link
-            href="/docs"
-            className="inline-flex items-center gap-2 text-sm font-medium text-neutral-900 hover:text-orange-500 transition-colors group"
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
+        {scatteredCards.map((card, idx) => (
+          <motion.div
+            key={card.name}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: idx * 0.08 }}
+            className="absolute hidden lg:block"
+            style={{
+              top: card.top,
+              left: card.left,
+              right: card.right,
+              bottom: card.bottom,
+              transform: `rotate(${card.rotate}deg)`,
+            }}
           >
-            Discover more
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-orange-400" />
-          </Link>
-        </motion.div>
-
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-          {platforms.map((card, idx) => (
-            <motion.div
-              key={card.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.06 }}
-              className="bg-white rounded-2xl border border-neutral-100 p-5 sm:p-6 text-center hover:shadow-lg hover:shadow-neutral-200/50 transition-all duration-300"
-            >
-              <card.Logo className="w-6 h-6 text-neutral-700 mx-auto mb-3" />
+            <div className="bg-white rounded-2xl shadow-md shadow-neutral-200/60 border border-neutral-100/80 p-5 w-44 hover:shadow-lg transition-shadow duration-300">
+              <card.Logo className="w-6 h-6 text-neutral-700 mb-2" />
               <p className="text-sm font-semibold text-neutral-800">{card.name}</p>
               <p className="text-[11px] text-neutral-400 mt-0.5">{card.subtitle}</p>
-            </motion.div>
-          ))}
+            </div>
+          </motion.div>
+        ))}
+
+        <div className="relative z-10 max-w-xl mx-auto text-center py-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] tracking-tight text-neutral-900 leading-tight mb-6">
+              AI verification built for{" "}
+              <em className="text-orange-400">your stack</em>.
+            </h2>
+            <p className="text-neutral-500 text-base sm:text-lg font-light leading-relaxed mb-8 max-w-md mx-auto">
+              Deploy Olyxee in your environment, or integrate through our cloud API. Works with every major platform.
+            </p>
+            <Link
+              href="/docs"
+              className="inline-flex items-center gap-2 text-sm font-medium text-neutral-900 hover:text-orange-500 transition-colors group"
+            >
+              Discover more
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-orange-400" />
+            </Link>
+          </motion.div>
+
+          <div className="lg:hidden mt-12 grid grid-cols-2 sm:grid-cols-3 gap-3">
+            {mobileCards.map((card, idx) => (
+              <motion.div
+                key={card.name}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: idx * 0.06 }}
+                className="bg-white rounded-xl shadow-sm border border-neutral-100 p-4"
+              >
+                <card.Logo className="w-5 h-5 text-neutral-600 mb-1.5" />
+                <p className="text-sm font-semibold text-neutral-800">{card.name}</p>
+                <p className="text-[11px] text-neutral-400 mt-0.5">{card.subtitle}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
