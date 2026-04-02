@@ -224,22 +224,6 @@ function MissionSection() {
             <p className="text-lg text-neutral-600 font-light leading-relaxed">
               Safety and performance are not trade-offs. They are the same goal.
             </p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative mt-8 rounded-2xl overflow-hidden border border-neutral-200/80"
-            >
-              <Image
-                src="/images/Olyxee_Position.png"
-                alt="Olyxee's position in the AI ecosystem"
-                width={600}
-                height={400}
-                className="w-full h-auto"
-              />
-            </motion.div>
           </motion.div>
 
           <motion.div
@@ -271,24 +255,24 @@ function MissionSection() {
                 </div>
               </motion.div>
             ))}
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="relative mt-4 rounded-2xl overflow-hidden"
-            >
-              <Image
-                src="/images/workflow.png"
-                alt="Olyxee verification workflow"
-                width={600}
-                height={350}
-                className="w-full h-auto rounded-2xl border border-neutral-200/80"
-              />
-            </motion.div>
           </motion.div>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="mt-16 rounded-2xl overflow-hidden border border-neutral-200/80"
+        >
+          <Image
+            src="/images/team-developers.png"
+            alt="Olyxee team collaborating on AI safety and infrastructure"
+            width={1408}
+            height={768}
+            className="w-full h-auto object-cover"
+          />
+        </motion.div>
       </div>
     </section>
   );
