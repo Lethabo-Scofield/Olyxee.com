@@ -8,64 +8,85 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const papers = [
   {
-    title: "A Survey on Hallucination in Large Language Models",
-    authors: "Lei Huang, Weijiang Yu, Weitao Ma, et al.",
-    venue: "ACM Computing Surveys, 2024",
-    year: "2024",
-    category: "Hallucination",
-    description: "Categorizes hallucination in LLMs, analyzing causes and reviewing detection and mitigation strategies.",
-    url: "https://arxiv.org/abs/2311.05232",
-    tags: ["Hallucination", "LLM", "Survey"],
+    title: "Attention Is All You Need",
+    authors: "Ashish Vaswani, Noam Shazeer, Niki Parmar, et al.",
+    venue: "NeurIPS 2017",
+    year: "2017",
+    category: "Foundational",
+    description: "Introduced the Transformer architecture that underpins virtually all modern AI systems, replacing recurrence with self-attention for parallelizable, scalable sequence modeling.",
+    url: "https://arxiv.org/abs/1706.03762",
   },
   {
-    title: "TruthfulQA: Measuring How Models Mimic Human Falsehoods",
-    authors: "Stephanie Lin, Jacob Hilton, Owain Evans",
-    venue: "ACL 2022",
+    title: "Scaling Laws for Neural Language Models",
+    authors: "Jared Kaplan, Sam McCandlish, Tom Henighan, et al.",
+    venue: "OpenAI, 2020",
+    year: "2020",
+    category: "Scaling",
+    description: "Empirically derives power-law relationships between model size, dataset size, compute budget, and performance — foundational to planning AI infrastructure investments.",
+    url: "https://arxiv.org/abs/2001.08361",
+  },
+  {
+    title: "Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism",
+    authors: "Mohammad Shoeybi, Mostofa Patwary, Raul Puri, et al.",
+    venue: "NVIDIA, 2020",
+    year: "2020",
+    category: "Infrastructure",
+    description: "Efficient intra-layer model parallelism techniques for training massive transformer models across GPU clusters, enabling practical multi-billion parameter training.",
+    url: "https://arxiv.org/abs/1909.08053",
+  },
+  {
+    title: "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness",
+    authors: "Tri Dao, Daniel Y. Fu, Stefano Ermon, et al.",
+    venue: "NeurIPS 2022",
     year: "2022",
-    category: "Evaluation",
-    description: "Benchmark measuring whether language models generate truthful answers. Larger models can be less truthful.",
-    url: "https://arxiv.org/abs/2109.07958",
-    tags: ["Truthfulness", "Benchmarking"],
+    category: "Infrastructure",
+    description: "Redesigns attention computation to be IO-aware, achieving 2-4x speedups and significant memory savings. Now standard infrastructure in all major training frameworks.",
+    url: "https://arxiv.org/abs/2205.14135",
   },
   {
-    title: "Constitutional AI: Harmlessness from AI Feedback",
-    authors: "Yuntao Bai, Saurav Kadavath, Sandipan Kundu, et al.",
-    venue: "Anthropic, 2022",
-    year: "2022",
-    category: "AI Safety",
-    description: "Training AI to be helpful, harmless, and honest using a set of principles, reducing the need for human feedback.",
-    url: "https://arxiv.org/abs/2212.08073",
-    tags: ["AI Safety", "Alignment"],
+    title: "Efficient Large-Scale Language Model Training on GPU Clusters Using Megatron-DeepSpeed",
+    authors: "Deepak Narayanan, Mohammad Shoeybi, Jared Casper, et al.",
+    venue: "SC 2021",
+    year: "2021",
+    category: "Infrastructure",
+    description: "Combines pipeline, tensor, and data parallelism to efficiently train trillion-parameter models. Defines the distributed training playbook used across the industry.",
+    url: "https://arxiv.org/abs/2104.04473",
   },
   {
-    title: "Concrete Problems in AI Safety",
-    authors: "Dario Amodei, Chris Olah, Jacob Steinhardt, et al.",
-    venue: "arXiv, 2016",
-    year: "2016",
-    category: "AI Safety",
-    description: "Five practical AI safety problems: safe exploration, distributional shift, side effects, reward hacking, and oversight.",
-    url: "https://arxiv.org/abs/1606.06565",
-    tags: ["AI Safety", "Foundational"],
-  },
-  {
-    title: "FActScore: Fine-grained Atomic Evaluation of Factual Precision",
-    authors: "Sewon Min, Kalpesh Krishna, Xinxi Lyu, et al.",
-    venue: "EMNLP 2023",
+    title: "LLaMA: Open and Efficient Foundation Language Models",
+    authors: "Hugo Touvron, Thibaut Lavril, Gautier Izacard, et al.",
+    venue: "Meta AI, 2023",
     year: "2023",
-    category: "Evaluation",
-    description: "Breaks LLM text into atomic facts and verifies each against a knowledge source for fine-grained factuality scoring.",
-    url: "https://arxiv.org/abs/2305.14251",
-    tags: ["Factuality", "Evaluation"],
+    category: "Foundational",
+    description: "Demonstrates that smaller, well-trained models can match larger ones. Shifted the field toward efficient training and open-weight models as infrastructure.",
+    url: "https://arxiv.org/abs/2302.13971",
+  },
+  {
+    title: "vLLM: Efficient Memory Management for Large Language Model Serving with PagedAttention",
+    authors: "Woosuk Kwon, Zhuohan Li, Sicheng Zuo, et al.",
+    venue: "SOSP 2023",
+    year: "2023",
+    category: "Serving",
+    description: "Introduces PagedAttention for near-zero-waste KV cache memory management, achieving 2-4x higher serving throughput. Core infrastructure for production LLM deployment.",
+    url: "https://arxiv.org/abs/2309.06180",
   },
   {
     title: "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
     authors: "Patrick Lewis, Ethan Perez, Aleksandra Piktus, et al.",
     venue: "NeurIPS 2020",
     year: "2020",
-    category: "RAG",
-    description: "The seminal RAG paper. Combines retrieval with generation to improve factual accuracy and reduce hallucinations.",
+    category: "Systems",
+    description: "Combines retrieval with generation to ground AI outputs in external knowledge, reducing hallucinations. The architecture behind modern enterprise AI systems.",
     url: "https://arxiv.org/abs/2005.11401",
-    tags: ["RAG", "Retrieval"],
+  },
+  {
+    title: "Training Compute-Optimal Large Language Models",
+    authors: "Jordan Hoffmann, Sebastian Borgeaud, Arthur Mensch, et al.",
+    venue: "DeepMind (Chinchilla), 2022",
+    year: "2022",
+    category: "Scaling",
+    description: "Shows that most large models are significantly undertrained for their compute budget. Redefines optimal allocation of data vs. parameters for training infrastructure.",
+    url: "https://arxiv.org/abs/2203.15556",
   },
   {
     title: "Holistic Evaluation of Language Models (HELM)",
@@ -73,50 +94,39 @@ const papers = [
     venue: "TMLR, 2023",
     year: "2023",
     category: "Evaluation",
-    description: "Comprehensive benchmark evaluating LLMs across accuracy, calibration, robustness, fairness, and efficiency.",
+    description: "Comprehensive benchmark evaluating LLMs across accuracy, calibration, robustness, fairness, and efficiency. Sets the standard for systematic AI evaluation infrastructure.",
     url: "https://arxiv.org/abs/2211.09110",
-    tags: ["Benchmarking", "Evaluation"],
   },
   {
-    title: "Language Models are Few-Shot Learners",
-    authors: "Tom Brown, Benjamin Mann, Nick Ryder, et al.",
-    venue: "NeurIPS 2020 (GPT-3)",
-    year: "2020",
-    category: "Foundational",
-    description: "Scaling enables strong few-shot performance, but highlights challenges in reliability, bias, and factual consistency.",
-    url: "https://arxiv.org/abs/2005.14165",
-    tags: ["LLM", "Foundational"],
+    title: "LoRA: Low-Rank Adaptation of Large Language Models",
+    authors: "Edward J. Hu, Yelong Shen, Phillip Wallis, et al.",
+    venue: "ICLR 2022",
+    year: "2022",
+    category: "Infrastructure",
+    description: "Freezes pretrained weights and injects trainable low-rank matrices, reducing fine-tuning compute by 10,000x. Fundamental infrastructure for efficient model customization.",
+    url: "https://arxiv.org/abs/2106.09685",
   },
   {
-    title: "Sparks of Artificial General Intelligence: Early experiments with GPT-4",
-    authors: "Sebastien Bubeck, Varun Chandrasekaran, et al.",
-    venue: "Microsoft Research, 2023",
-    year: "2023",
-    category: "Evaluation",
-    description: "GPT-4 capabilities and limitations: remarkable reasoning alongside persistent factual accuracy failures.",
-    url: "https://arxiv.org/abs/2303.12712",
-    tags: ["GPT-4", "Evaluation"],
-  },
-  {
-    title: "Red Teaming Language Models to Reduce Harms",
-    authors: "Deep Ganguli, Liane Lovitt, Jackson Kernion, et al.",
+    title: "Constitutional AI: Harmlessness from AI Feedback",
+    authors: "Yuntao Bai, Saurav Kadavath, Sandipan Kundu, et al.",
     venue: "Anthropic, 2022",
     year: "2022",
-    category: "AI Safety",
-    description: "Methods for red teaming LLMs to discover harmful outputs, and how model size affects the harms found.",
-    url: "https://arxiv.org/abs/2209.07858",
-    tags: ["Red Teaming", "AI Safety"],
+    category: "Alignment",
+    description: "Training AI to be helpful, harmless, and honest using a set of principles. Establishes scalable alignment methods critical for deploying AI systems responsibly.",
+    url: "https://arxiv.org/abs/2212.08073",
   },
 ];
 
-const categories = ["All", "AI Safety", "Hallucination", "Evaluation", "RAG", "Foundational"];
+const categories = ["All", "Foundational", "Infrastructure", "Scaling", "Serving", "Systems", "Evaluation", "Alignment"];
 
 const categoryColors: Record<string, string> = {
-  "AI Safety": "bg-red-50 text-red-600 border-red-100",
-  "Hallucination": "bg-amber-50 text-amber-600 border-amber-100",
-  "Evaluation": "bg-blue-50 text-blue-600 border-blue-100",
-  "RAG": "bg-emerald-50 text-emerald-600 border-emerald-100",
   "Foundational": "bg-violet-50 text-violet-600 border-violet-100",
+  "Infrastructure": "bg-blue-50 text-blue-600 border-blue-100",
+  "Scaling": "bg-orange-50 text-orange-600 border-orange-100",
+  "Serving": "bg-emerald-50 text-emerald-600 border-emerald-100",
+  "Systems": "bg-cyan-50 text-cyan-600 border-cyan-100",
+  "Evaluation": "bg-amber-50 text-amber-600 border-amber-100",
+  "Alignment": "bg-red-50 text-red-600 border-red-100",
 };
 
 const Research: FC = () => {
@@ -129,7 +139,7 @@ const Research: FC = () => {
 
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO title="Research" description="Key papers in AI safety, hallucination detection, model evaluation, and verification that inform Olyxee's mission to build reliable AI infrastructure." path="/research" />
+      <SEO title="Research" description="Papers in AI infrastructure, systems, scaling, and foundational research that shape Olyxee's work in building reliable AI systems." path="/research" />
       <div className="grain" />
       <Header />
 
@@ -149,7 +159,7 @@ const Research: FC = () => {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-base sm:text-xl text-neutral-500 leading-relaxed max-w-2xl font-light"
           >
-            Key papers from the AI safety and evaluation community that inform our direction. Full credit to the original authors.
+            Papers across AI infrastructure, training systems, and foundational research that shape our work. Full credit to the original authors.
           </motion.p>
         </div>
       </section>
@@ -245,7 +255,7 @@ const Research: FC = () => {
               Want to collaborate on research?
             </h2>
             <p className="text-neutral-500 text-base sm:text-lg max-w-lg mx-auto mb-8 sm:mb-10 font-light leading-relaxed">
-              We connect with researchers working on AI safety, evaluation, and reliability.
+              We connect with researchers working on AI infrastructure, systems, and foundational research.
             </p>
             <Link href="/contact" className="group inline-flex items-center gap-2 px-8 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide">
               Get in Touch <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
