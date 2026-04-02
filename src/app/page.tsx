@@ -140,16 +140,16 @@ function HeroSection() {
 
 function LogoStrip() {
   const collaborators = [
-    { name: "OpenAI", Logo: OpenAILogo, width: "w-[28px]" },
-    { name: "Anthropic", Logo: AnthropicLogo, width: "w-[28px]" },
-    { name: "Google DeepMind", Logo: DeepMindLogo, width: "w-[110px]" },
-    { name: "Meta", Logo: MetaLogo, width: "w-[80px]" },
-    { name: "Mistral", Logo: MistralLogo, width: "w-[28px]" },
-    { name: "Cohere", Logo: CohereLogo, width: "w-[90px]" },
-    { name: "xAI", Logo: xAILogo, width: "w-[50px]" },
-    { name: "NVIDIA", Logo: NvidiaLogo, width: "w-[100px]" },
-    { name: "Google", Logo: GoogleLogo, width: "w-[88px]" },
-    { name: "Microsoft", Logo: MicrosoftLogo, width: "w-[28px]" },
+    { name: "OpenAI", src: "/images/logos/openai.png", size: 32 },
+    { name: "Anthropic", src: "/images/logos/anthropic.png", size: 32 },
+    { name: "Mistral", src: "/images/logos/mistral.png", size: 32 },
+    { name: "xAI", src: "/images/logos/xai.png", size: 30 },
+    { name: "DeepSeek", src: "/images/logos/deepseek.png", size: 32 },
+    { name: "Meta", src: "/images/logos/meta.png", size: 80 },
+    { name: "Google", src: "/images/logos/google.png", size: 88 },
+    { name: "Microsoft", src: "/images/logos/microsoft.png", size: 28 },
+    { name: "NVIDIA", src: "/images/logos/nvidia.png", size: 100 },
+    { name: "GitHub", src: "/images/logos/github.png", size: 32 },
   ];
 
   return (
@@ -164,10 +164,17 @@ function LogoStrip() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.06 }}
-              className="text-neutral-300 hover:text-neutral-600 transition-colors duration-300"
+              className="opacity-40 hover:opacity-70 transition-opacity duration-300 grayscale hover:grayscale-0"
               title={item.name}
             >
-              <item.Logo className={`${item.width} h-auto`} />
+              <Image
+                src={item.src}
+                alt={item.name}
+                width={item.size}
+                height={item.size}
+                className="w-auto h-auto object-contain"
+                style={{ maxHeight: 32, maxWidth: item.size }}
+              />
             </motion.div>
           ))}
         </div>
@@ -505,21 +512,21 @@ function ApproachSection() {
 
 function IntegrationSection() {
   const scatteredCards = useMemo(() => [
-    { name: "AWS", subtitle: "Cloud Infrastructure", Logo: AWSLogo, top: "4%", left: "3%", rotate: -3 },
-    { name: "Google Cloud", subtitle: "AI Platform", Logo: GoogleCloudLogo, top: "8%", right: "5%", rotate: 2 },
-    { name: "Microsoft", subtitle: "Enterprise Cloud", Logo: MicrosoftLogo, top: "42%", right: "2%", rotate: -1.5 },
-    { name: "IBM", subtitle: "Watson AI", Logo: IBMLogo, top: "38%", left: "1%", rotate: 2.5 },
-    { name: "NVIDIA", subtitle: "GPU Computing", Logo: NvidiaLogo, bottom: "8%", left: "6%", rotate: -2 },
-    { name: "Hugging Face", subtitle: "Model Hub", Logo: HuggingFaceLogo, bottom: "4%", right: "3%", rotate: 1.5 },
+    { name: "OpenAI", subtitle: "GPT Models", src: "/images/logos/openai.png", top: "4%", left: "3%", rotate: -3 },
+    { name: "Anthropic", subtitle: "Claude AI", src: "/images/logos/anthropic.png", top: "8%", right: "5%", rotate: 2 },
+    { name: "Mistral", subtitle: "Open Models", src: "/images/logos/mistral.png", top: "42%", right: "2%", rotate: -1.5 },
+    { name: "DeepSeek", subtitle: "AI Research", src: "/images/logos/deepseek.png", top: "38%", left: "1%", rotate: 2.5 },
+    { name: "Google", subtitle: "AI Platform", src: "/images/logos/google.png", bottom: "8%", left: "6%", rotate: -2 },
+    { name: "GitHub", subtitle: "Developer Platform", src: "/images/logos/github.png", bottom: "4%", right: "3%", rotate: 1.5 },
   ], []);
 
   const mobileCards = useMemo(() => [
-    { name: "AWS", subtitle: "Cloud Infrastructure", Logo: AWSLogo },
-    { name: "Google Cloud", subtitle: "AI Platform", Logo: GoogleCloudLogo },
-    { name: "Microsoft", subtitle: "Enterprise Cloud", Logo: MicrosoftLogo },
-    { name: "IBM", subtitle: "Watson AI", Logo: IBMLogo },
-    { name: "NVIDIA", subtitle: "GPU Computing", Logo: NvidiaLogo },
-    { name: "Hugging Face", subtitle: "Model Hub", Logo: HuggingFaceLogo },
+    { name: "OpenAI", subtitle: "GPT Models", src: "/images/logos/openai.png" },
+    { name: "Anthropic", subtitle: "Claude AI", src: "/images/logos/anthropic.png" },
+    { name: "Mistral", subtitle: "Open Models", src: "/images/logos/mistral.png" },
+    { name: "DeepSeek", subtitle: "AI Research", src: "/images/logos/deepseek.png" },
+    { name: "Google", subtitle: "AI Platform", src: "/images/logos/google.png" },
+    { name: "GitHub", subtitle: "Developer Platform", src: "/images/logos/github.png" },
   ], []);
 
   return (
@@ -547,7 +554,7 @@ function IntegrationSection() {
             }}
           >
             <div className="bg-white rounded-2xl shadow-md shadow-neutral-200/60 border border-neutral-100/80 p-5 w-44 hover:shadow-lg transition-shadow duration-300">
-              <card.Logo className="w-6 h-6 text-neutral-700 mb-2" />
+              <Image src={card.src} alt={card.name} width={28} height={28} className="w-7 h-7 object-contain mb-2" />
               <p className="text-sm font-semibold text-neutral-800">{card.name}</p>
               <p className="text-[11px] text-neutral-400 mt-0.5">{card.subtitle}</p>
             </div>
@@ -587,7 +594,7 @@ function IntegrationSection() {
                 transition={{ duration: 0.4, delay: idx * 0.06 }}
                 className="bg-white rounded-xl shadow-sm border border-neutral-100 p-4"
               >
-                <card.Logo className="w-5 h-5 text-neutral-600 mb-1.5" />
+                <Image src={card.src} alt={card.name} width={24} height={24} className="w-5 h-5 object-contain mb-1.5" />
                 <p className="text-sm font-semibold text-neutral-800">{card.name}</p>
                 <p className="text-[11px] text-neutral-400 mt-0.5">{card.subtitle}</p>
               </motion.div>
