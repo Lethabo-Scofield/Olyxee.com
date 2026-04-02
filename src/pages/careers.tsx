@@ -34,6 +34,36 @@ const roles: Role[] = [
     ],
   },
   {
+    title: "AI Engineering Intern",
+    team: "AI Research & Development",
+    location: "Remote",
+    type: "internship",
+    description: "Build and integrate AI systems, from prototyping models to deploying them in production.",
+    responsibilities: [
+      "Develop and integrate AI models into platform services",
+      "Build data pipelines and feature engineering workflows",
+      "Collaborate across research and engineering to ship AI-powered features",
+    ],
+    requirements: [
+      "Link to portfolio, GitHub, or projects you have worked on",
+    ],
+  },
+  {
+    title: "Full Stack Developer Intern",
+    team: "Infrastructure & Platform",
+    location: "Remote",
+    type: "internship",
+    description: "Work across frontend and backend to build end-to-end features for the Olyxee platform.",
+    responsibilities: [
+      "Build features spanning frontend, backend, and data layers",
+      "Design and implement new platform capabilities",
+      "Own features end-to-end from concept to deployment",
+    ],
+    requirements: [
+      "Link to portfolio, GitHub, or projects you have worked on",
+    ],
+  },
+  {
     title: "ML Engineering Intern",
     team: "AI Research & Development",
     location: "Remote",
