@@ -323,29 +323,78 @@ function ResearchAreas() {
 
 function VerificationDiagram() {
   const steps = [
-    { label: "AI Application", sub: "Chatbot / RAG / Agent", color: "bg-blue-50 border-blue-200 text-blue-700" },
-    { label: "Verification", sub: "Test & Evaluate", color: "bg-amber-50 border-amber-200 text-amber-700" },
-    { label: "Analysis", sub: "Score & Report", color: "bg-purple-50 border-purple-200 text-purple-700" },
-    { label: "Production", sub: "Monitor & Alert", color: "bg-emerald-50 border-emerald-200 text-emerald-700" },
+    { label: "AI Application", sub: "Chatbot / RAG / Agent" },
+    { label: "Verification", sub: "Test & Evaluate" },
+    { label: "Analysis", sub: "Score & Report" },
+    { label: "Production", sub: "Monitor & Alert" },
   ];
 
   return (
     <div className="rounded-2xl bg-white p-5 sm:p-10">
-      <p className="text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-6 sm:mb-8 text-center">How Olyxee Fits Into Your AI Stack</p>
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+      <p className="text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-8 sm:mb-10 text-center">How Olyxee Fits Into Your AI Stack</p>
+
+      <div className="hidden sm:flex items-center justify-center gap-0">
         {steps.map((step, idx) => (
           <motion.div
             key={step.label}
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, x: -10 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: idx * 0.1 }}
-            className={`px-4 py-3.5 sm:px-5 sm:py-4 rounded-xl border ${step.color} text-center`}
+            transition={{ duration: 0.4, delay: idx * 0.12 }}
+            className="flex items-center"
           >
-            <div className="text-xs sm:text-sm font-semibold">{step.label}</div>
-            <div className="text-[10px] sm:text-[11px] opacity-60 mt-0.5">{step.sub}</div>
+            <div className="relative flex flex-col items-center">
+              <div className="w-3 h-3 rounded-full bg-neutral-900 relative z-10" />
+              <div className="mt-4 text-center w-32">
+                <div className="text-sm font-semibold text-neutral-900">{step.label}</div>
+                <div className="text-[11px] text-neutral-400 mt-0.5">{step.sub}</div>
+              </div>
+            </div>
+            {idx < steps.length - 1 && (
+              <div className="flex items-center -mt-8">
+                <div className="w-16 lg:w-24 h-px bg-neutral-300" />
+                <svg width="8" height="12" viewBox="0 0 8 12" fill="none" className="-ml-px text-neutral-300">
+                  <path d="M1 1L6 6L1 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+            )}
           </motion.div>
         ))}
+      </div>
+
+      <div className="sm:hidden flex flex-col items-start pl-6">
+        {steps.map((step, idx) => (
+          <motion.div
+            key={step.label}
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: idx * 0.1 }}
+            className="flex items-start gap-4"
+          >
+            <div className="flex flex-col items-center">
+              <div className="w-2.5 h-2.5 rounded-full bg-neutral-900 relative z-10 mt-1.5" />
+              {idx < steps.length - 1 && <div className="w-px h-10 bg-neutral-200" />}
+            </div>
+            <div className="pb-6">
+              <div className="text-sm font-semibold text-neutral-900">{step.label}</div>
+              <div className="text-[11px] text-neutral-400 mt-0.5">{step.sub}</div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      <div className="mt-8 sm:mt-10 pt-6 sm:pt-8 border-t border-neutral-100">
+        <div className="flex items-center justify-center gap-6 text-[11px] text-neutral-400">
+          <span className="flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-neutral-900" />
+            Pipeline stage
+          </span>
+          <span className="flex items-center gap-2">
+            <span className="w-4 h-px bg-neutral-300 inline-block" />
+            Data flow
+          </span>
+        </div>
       </div>
     </div>
   );
