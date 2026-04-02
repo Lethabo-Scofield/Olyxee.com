@@ -61,7 +61,7 @@ const About: FC = () => {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="text-base sm:text-lg text-neutral-500 max-w-xl leading-relaxed font-light mt-8 max-w-6xl mx-auto"
           >
-            Olyxee empowers teams to develop, test, and deploy AI systems with robust infrastructure and scientific rigor.
+            From model development to production deployment, we provide the systems and tools that make AI work at scale.
           </motion.p>
         </div>
       </section>
@@ -79,8 +79,8 @@ const About: FC = () => {
               <div className="inline-block px-3 py-1 bg-red-50 text-red-700 text-xs font-semibold uppercase tracking-widest rounded-full mb-5">The Challenge</div>
               <h2 className="font-serif text-3xl sm:text-4xl tracking-tight mb-6 leading-tight">AI needs more than models.</h2>
               <div className="space-y-4 text-[15px] sm:text-base text-neutral-500 leading-relaxed font-light">
-                <p>Building AI is one thing. Getting it to work reliably in production is another. Teams need scalable infrastructure, deployment pipelines, and verification tools to move from research to real-world impact.</p>
-                <p>Most AI projects stall not because of bad models, but because the infrastructure around them is missing.</p>
+                <p>Building a model is the beginning, not the end. Teams need scalable systems, deployment pipelines, and verification tools to move from experimentation to real-world impact.</p>
+                <p>Most AI projects stall not because the models are bad, but because everything around them is missing.</p>
               </div>
             </motion.div>
             <motion.div
@@ -130,10 +130,10 @@ const About: FC = () => {
               className="order-1 lg:order-2"
             >
               <div className="inline-block px-3 py-1 bg-green-50 text-green-700 text-xs font-semibold uppercase tracking-widest rounded-full mb-5">Our Approach</div>
-              <h2 className="font-serif text-3xl sm:text-4xl tracking-tight mb-6 leading-tight">Research-driven infrastructure.</h2>
+              <h2 className="font-serif text-3xl sm:text-4xl tracking-tight mb-6 leading-tight">Built for the full lifecycle.</h2>
               <div className="space-y-4 text-[15px] sm:text-base text-neutral-500 leading-relaxed font-light">
-                <p>We support experimentation across deep learning, NLP, computer vision, and physics-informed AI. Through products like Grysics, we ensure models perform as expected before deployment.</p>
-                <p>Scalable backend, deployment pipelines, and tools to integrate AI into production safely and efficiently.</p>
+                <p>We support experimentation across deep learning, NLP, computer vision, and physics-informed AI. Through products like Grysics, we verify that models perform as expected before they reach users.</p>
+                <p>Scalable backends, deployment pipelines, and evaluation tools, designed to take AI from prototype to production.</p>
               </div>
             </motion.div>
           </div>
@@ -153,7 +153,7 @@ const About: FC = () => {
             >
               <p className="text-xs font-semibold text-neutral-500 uppercase tracking-[0.25em] mb-4">What We Build</p>
               <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900">
-                AI research and infrastructure
+                The systems behind smarter AI
               </h2>
             </motion.div>
 
@@ -210,9 +210,9 @@ const About: FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-neutral-200 rounded-2xl overflow-hidden">
             {[
               { num: "01", title: "Scientific rigor", description: "Every system we build is grounded in research, tested thoroughly, and validated before deployment. We do not ship what we cannot measure." },
-              { num: "02", title: "Infrastructure first", description: "Great AI needs great infrastructure. We invest in the foundation, from scalable backends to deployment pipelines, so teams can focus on their models." },
+              { num: "02", title: "Build the foundation", description: "Strong systems enable strong models. We invest in the foundation, from scalable backends to deployment pipelines, so teams can focus on what matters." },
               { num: "03", title: "Production ready", description: "We design for real-world workloads, not demos. Every tool is built to handle scale, complexity, and the unpredictability of production environments." },
-              { num: "04", title: "Open research", description: "We publish our findings and contribute tools back to the broader AI community. Progress in AI infrastructure benefits everyone." },
+              { num: "04", title: "Open by default", description: "We publish our findings and contribute tools back to the broader AI community. Progress should not happen behind closed doors." },
             ].map((value, idx) => (
               <motion.div
                 key={value.title}
@@ -262,14 +262,14 @@ const About: FC = () => {
             >
               <div className="inline-block px-3 py-1 bg-neutral-100 text-neutral-600 text-xs font-semibold uppercase tracking-widest rounded-full mb-5">Founder&apos;s Note</div>
               <blockquote className="font-serif text-2xl sm:text-3xl lg:text-4xl text-neutral-900 leading-snug mb-8 tracking-tight">
-                &ldquo;Great AI does not happen without great infrastructure. We are building the research and tools that make AI work in the real world.&rdquo;
+                &ldquo;We started Olyxee because we saw teams building incredible models with nowhere reliable to run them. That problem is what we solve.&rdquo;
               </blockquote>
               <div className="space-y-4">
                 <p className="text-base text-neutral-500 leading-relaxed font-light">
-                  We are not building another model. We are building the infrastructure, pipelines, and verification systems every AI team needs.
+                  We are not competing with model builders. We are giving them the platform to ship with confidence.
                 </p>
                 <p className="text-base text-neutral-500 leading-relaxed font-light">
-                  From experimentation to production, Olyxee gives teams the tools to move faster with confidence.
+                  From first experiment to full-scale deployment, every tool we build exists to close that gap.
                 </p>
               </div>
               <div className="mt-8 pt-6 border-t border-neutral-100">
