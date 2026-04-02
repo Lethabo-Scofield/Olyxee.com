@@ -11,7 +11,7 @@ interface Role {
   title: string;
   team: string;
   location: string;
-  type: "internship" | "full-time";
+  type: "full-time";
   description: string;
   responsibilities: string[];
   requirements: string[];
@@ -19,139 +19,496 @@ interface Role {
 
 const roles: Role[] = [
   {
-    title: "AI Research Intern",
-    team: "Research",
+    title: "AI/ML Scientist",
+    team: "AI Research & Development",
     location: "Remote",
-    type: "internship",
-    description: "Contribute to research on AI verification, model reliability, and edge deployment.",
+    type: "full-time",
+    description: "Drive foundational research in AI verification, model reliability, and safety evaluation.",
     responsibilities: [
-      "Conduct experiments on model verification techniques",
-      "Help publish papers and build research prototypes",
-      "Collaborate with senior researchers on open problems",
+      "Design and run experiments on model verification and safety",
+      "Publish research and contribute to the broader AI safety community",
+      "Develop novel techniques for AI reliability assessment",
     ],
     requirements: [
-      "Pursuing a degree in CS, ML, or related field",
-      "Familiarity with PyTorch or TensorFlow",
+      "PhD or equivalent experience in ML, AI, or related field",
+      "Strong publication record in top-tier venues",
+      "Deep expertise in PyTorch or JAX",
+    ],
+  },
+  {
+    title: "Deep Learning Engineer",
+    team: "AI Research & Development",
+    location: "Remote",
+    type: "full-time",
+    description: "Build and optimize deep learning systems for model verification and inference.",
+    responsibilities: [
+      "Implement and optimize deep learning architectures",
+      "Build training and evaluation pipelines at scale",
+      "Collaborate with research to productionize new methods",
+    ],
+    requirements: [
+      "3+ years experience with deep learning frameworks",
+      "Strong understanding of transformer architectures",
+      "Experience with distributed training and GPU optimization",
+    ],
+  },
+  {
+    title: "Research Engineer",
+    team: "AI Research & Development",
+    location: "Remote",
+    type: "full-time",
+    description: "Bridge research and engineering on model verification and physics-informed AI systems.",
+    responsibilities: [
+      "Prototype and implement research ideas in production code",
+      "Build tools for model verification and testing",
+      "Develop physics-informed AI verification approaches",
+    ],
+    requirements: [
+      "MS or PhD in CS, Physics, or related field",
+      "Strong software engineering skills alongside research ability",
+      "Experience with scientific computing or simulation",
+    ],
+  },
+  {
+    title: "Data Scientist / AI Analyst",
+    team: "AI Research & Development",
+    location: "Remote",
+    type: "full-time",
+    description: "Analyze model behavior, build evaluation benchmarks, and surface reliability insights.",
+    responsibilities: [
+      "Design and maintain model evaluation benchmarks",
+      "Analyze large-scale model performance data",
+      "Build dashboards and reports for AI reliability metrics",
+    ],
+    requirements: [
+      "Strong statistical analysis and data science skills",
+      "Experience with Python, SQL, and visualization tools",
+      "Understanding of ML model evaluation methodologies",
+    ],
+  },
+  {
+    title: "NLP Engineer",
+    team: "AI Research & Development",
+    location: "Remote",
+    type: "full-time",
+    description: "Build and improve language model pipelines, RAG systems, and text verification tools.",
+    responsibilities: [
+      "Develop and optimize RAG pipelines for verification",
+      "Build language model evaluation and testing frameworks",
+      "Improve NLP components across the platform",
+    ],
+    requirements: [
+      "3+ years NLP/LLM experience",
+      "Experience with retrieval-augmented generation systems",
+      "Strong Python skills and familiarity with HuggingFace ecosystem",
+    ],
+  },
+  {
+    title: "Computer Vision Engineer",
+    team: "AI Research & Development",
+    location: "Remote",
+    type: "full-time",
+    description: "Develop vision-based verification systems and visual AI reliability tools.",
+    responsibilities: [
+      "Build computer vision pipelines for model verification",
+      "Develop visual analysis tools for AI behavior monitoring",
+      "Optimize vision models for production deployment",
+    ],
+    requirements: [
+      "Strong experience with computer vision frameworks",
+      "Knowledge of image classification, detection, and segmentation",
+      "Experience deploying vision models at scale",
+    ],
+  },
+  {
+    title: "Reinforcement Learning Engineer",
+    team: "AI Research & Development",
+    location: "Remote",
+    type: "full-time",
+    description: "Apply RL techniques to AI alignment verification and adaptive testing systems.",
+    responsibilities: [
+      "Design RL-based approaches for automated model testing",
+      "Build reward models for AI behavior verification",
+      "Develop adaptive evaluation strategies",
+    ],
+    requirements: [
+      "Strong RL background with practical implementation experience",
+      "Familiarity with RLHF and alignment techniques",
+      "Experience with policy optimization and reward modeling",
+    ],
+  },
+  {
+    title: "Backend Engineer",
+    team: "Infrastructure & Platform",
+    location: "Remote",
+    type: "full-time",
+    description: "Build and scale the APIs and services that power Olyxee's verification platform.",
+    responsibilities: [
+      "Design and implement scalable API services",
+      "Build microservices for model evaluation pipelines",
+      "Optimize system performance and reliability",
+    ],
+    requirements: [
+      "3+ years backend engineering experience",
+      "Proficiency in Python, Go, or Rust",
+      "Experience with distributed systems and API design",
+    ],
+  },
+  {
+    title: "Frontend Engineer",
+    team: "Infrastructure & Platform",
+    location: "Remote",
+    type: "full-time",
+    description: "Build the web interfaces and dashboards that make AI verification accessible.",
+    responsibilities: [
+      "Develop interactive dashboards for model metrics",
+      "Build developer-facing tools and documentation UIs",
+      "Create intuitive interfaces for complex AI workflows",
+    ],
+    requirements: [
+      "3+ years with React/TypeScript",
+      "Experience with data visualization libraries",
+      "Eye for clean, functional design",
+    ],
+  },
+  {
+    title: "Full Stack Engineer",
+    team: "Infrastructure & Platform",
+    location: "Remote",
+    type: "full-time",
+    description: "Work across the stack to build end-to-end features for the Olyxee platform.",
+    responsibilities: [
+      "Build features spanning frontend, backend, and data layers",
+      "Design and implement new platform capabilities",
+      "Maintain and improve existing platform infrastructure",
+    ],
+    requirements: [
+      "Strong frontend and backend skills",
+      "Experience with modern web frameworks and databases",
+      "Ability to own features end-to-end",
+    ],
+  },
+  {
+    title: "DevOps / MLOps Engineer",
+    team: "Infrastructure & Platform",
+    location: "Remote",
+    type: "full-time",
+    description: "Build and maintain the CI/CD, deployment, and ML infrastructure that keeps Olyxee running.",
+    responsibilities: [
+      "Design and manage ML training and serving infrastructure",
+      "Build CI/CD pipelines for model and code deployment",
+      "Automate infrastructure provisioning and monitoring",
+    ],
+    requirements: [
+      "Experience with Kubernetes, Docker, and cloud platforms",
+      "Familiarity with ML pipeline tools (MLflow, Kubeflow, etc.)",
+      "Strong scripting and automation skills",
+    ],
+  },
+  {
+    title: "Cloud Infrastructure Engineer",
+    team: "Infrastructure & Platform",
+    location: "Remote",
+    type: "full-time",
+    description: "Architect and manage cloud infrastructure across AWS, GCP, and Azure.",
+    responsibilities: [
+      "Design multi-cloud infrastructure for AI workloads",
+      "Optimize cloud costs and resource utilization",
+      "Implement infrastructure as code and automation",
+    ],
+    requirements: [
+      "Deep experience with at least two major cloud platforms",
+      "Infrastructure as code expertise (Terraform, Pulumi)",
+      "Understanding of GPU compute and AI-specific infrastructure",
+    ],
+  },
+  {
+    title: "Site Reliability Engineer",
+    team: "Infrastructure & Platform",
+    location: "Remote",
+    type: "full-time",
+    description: "Ensure the Olyxee platform is reliable, performant, and available at scale.",
+    responsibilities: [
+      "Define and monitor SLOs for platform services",
+      "Build observability and incident response systems",
+      "Drive reliability improvements across the stack",
+    ],
+    requirements: [
+      "3+ years SRE or production engineering experience",
+      "Strong systems programming and debugging skills",
+      "Experience with monitoring, alerting, and on-call practices",
+    ],
+  },
+  {
+    title: "Database Engineer",
+    team: "Infrastructure & Platform",
+    location: "Remote",
+    type: "full-time",
+    description: "Design and maintain the data layer powering AI verification at scale.",
+    responsibilities: [
+      "Design schemas and optimize queries for large-scale data",
+      "Manage SQL, NoSQL, and graph database systems",
+      "Build data pipelines for model evaluation results",
+    ],
+    requirements: [
+      "Deep expertise in PostgreSQL, MongoDB, or Neo4j",
+      "Experience with database performance tuning",
+      "Understanding of data modeling for ML workloads",
+    ],
+  },
+  {
+    title: "Security Engineer",
+    team: "Infrastructure & Platform",
+    location: "Remote",
+    type: "full-time",
+    description: "Secure the platform and contribute to AI safety from a cybersecurity perspective.",
+    responsibilities: [
+      "Implement security controls across infrastructure and code",
+      "Conduct security reviews and threat modeling",
+      "Develop AI-specific security measures and monitoring",
+    ],
+    requirements: [
+      "3+ years in cybersecurity or security engineering",
+      "Experience with cloud security and DevSecOps",
+      "Interest in AI safety and adversarial robustness",
+    ],
+  },
+  {
+    title: "Product Manager",
+    team: "Product & Design",
+    location: "Remote",
+    type: "full-time",
+    description: "Define and drive the product strategy for Olyxee's AI verification tools.",
+    responsibilities: [
+      "Define product roadmap based on customer and market insights",
+      "Work closely with engineering and research to ship features",
+      "Measure product success and iterate based on data",
+    ],
+    requirements: [
+      "3+ years product management for technical/AI products",
+      "Strong analytical and communication skills",
+      "Ability to translate complex technical concepts for users",
+    ],
+  },
+  {
+    title: "Technical Product Manager",
+    team: "Product & Design",
+    location: "Remote",
+    type: "full-time",
+    description: "Own the technical product vision for platform APIs, SDKs, and developer tools.",
+    responsibilities: [
+      "Define API and SDK product requirements",
+      "Coordinate across engineering teams on platform features",
+      "Manage developer experience and documentation strategy",
+    ],
+    requirements: [
+      "Engineering background with product management experience",
+      "Deep understanding of developer tools and APIs",
+      "Experience working with ML/AI infrastructure products",
+    ],
+  },
+  {
+    title: "UX/UI Designer",
+    team: "Product & Design",
+    location: "Remote",
+    type: "full-time",
+    description: "Design elegant interfaces for complex AI infrastructure tools.",
+    responsibilities: [
+      "Create wireframes, prototypes, and high-fidelity designs",
+      "Design end-to-end user flows for technical products",
+      "Establish and maintain the design system",
+    ],
+    requirements: [
+      "Portfolio demonstrating strong UI/UX work",
+      "Proficiency in Figma or similar design tools",
+      "Experience designing for technical/developer audiences",
+    ],
+  },
+  {
+    title: "Interaction Designer",
+    team: "Product & Design",
+    location: "Remote",
+    type: "full-time",
+    description: "Craft interactions and motion design that make AI tools intuitive to use.",
+    responsibilities: [
+      "Design micro-interactions and transitions",
+      "Build interactive prototypes for user testing",
+      "Define interaction patterns for data-heavy interfaces",
+    ],
+    requirements: [
+      "Strong interaction and motion design portfolio",
+      "Prototyping skills in Framer, Principle, or code",
+      "Understanding of accessibility and usability standards",
+    ],
+  },
+  {
+    title: "Design Researcher",
+    team: "Product & Design",
+    location: "Remote",
+    type: "full-time",
+    description: "Understand user needs and behaviors to inform product and design decisions.",
+    responsibilities: [
+      "Plan and conduct user research studies",
+      "Synthesize findings into actionable design recommendations",
+      "Build and maintain user personas and journey maps",
+    ],
+    requirements: [
+      "Experience with qualitative and quantitative research methods",
+      "Strong synthesis and communication skills",
+      "Background in HCI, psychology, or related field",
+    ],
+  },
+  {
+    title: "AI Model Validator / Tester",
+    team: "QA & Testing",
+    location: "Remote",
+    type: "full-time",
+    description: "Validate AI models for correctness, reliability, and safety before deployment.",
+    responsibilities: [
+      "Design and execute model validation test suites",
+      "Identify edge cases and failure modes in AI systems",
+      "Build automated testing frameworks for model evaluation",
+    ],
+    requirements: [
+      "Understanding of ML model evaluation and testing",
+      "Experience with test automation and frameworks",
+      "Analytical mindset with attention to detail",
+    ],
+  },
+  {
+    title: "Software QA Engineer",
+    team: "QA & Testing",
+    location: "Remote",
+    type: "full-time",
+    description: "Ensure platform quality through comprehensive testing and quality processes.",
+    responsibilities: [
+      "Design and maintain test plans and test cases",
+      "Perform manual and automated testing across the platform",
+      "Track and report bugs, collaborate on fixes",
+    ],
+    requirements: [
+      "3+ years QA experience in a software environment",
+      "Experience with test management and bug tracking tools",
       "Strong analytical and problem-solving skills",
     ],
   },
   {
-    title: "ML Engineering Intern",
-    team: "Platform",
+    title: "Automation Test Engineer",
+    team: "QA & Testing",
     location: "Remote",
-    type: "internship",
-    description: "Work on model optimization pipelines, quantization, and hardware-aware inference.",
+    type: "full-time",
+    description: "Build and maintain automated test infrastructure for the Olyxee platform.",
     responsibilities: [
-      "Build and improve optimization pipelines",
-      "Implement quantization and pruning techniques",
-      "Benchmark models across different hardware targets",
+      "Develop end-to-end and integration test automation",
+      "Build CI/CD test pipelines and reporting",
+      "Maintain test frameworks and improve test coverage",
     ],
     requirements: [
-      "Experience with Python and ML frameworks",
-      "Understanding of model compression techniques",
-      "Interest in edge computing and embedded systems",
+      "Strong experience with test automation frameworks",
+      "Proficiency in Python or JavaScript for testing",
+      "Experience with API and UI testing tools",
     ],
   },
   {
-    title: "Systems Engineering Intern",
-    team: "Infrastructure",
+    title: "Performance & Load Tester",
+    team: "QA & Testing",
     location: "Remote",
-    type: "internship",
-    description: "Help build distributed deployment infrastructure, runtime monitoring, and hardware abstraction.",
+    type: "full-time",
+    description: "Ensure the platform performs reliably under load and at scale.",
     responsibilities: [
-      "Design and implement deployment automation",
-      "Build monitoring and alerting systems",
-      "Contribute to device management tooling",
+      "Design and run performance and load tests",
+      "Identify bottlenecks and recommend optimizations",
+      "Build performance benchmarking and monitoring tools",
     ],
     requirements: [
-      "Experience with Linux systems and networking",
-      "Familiarity with Docker, Kubernetes, or similar",
-      "Strong programming skills in Python or Go",
+      "Experience with load testing tools (k6, Locust, JMeter)",
+      "Understanding of system performance metrics",
+      "Ability to analyze and report on performance data",
     ],
   },
   {
-    title: "Frontend Engineering Intern",
-    team: "Developer Tools",
+    title: "Technical Project Manager",
+    team: "Business & Operations",
     location: "Remote",
-    type: "internship",
-    description: "Build dashboards, developer tools, and data visualization for the Olyxee platform.",
+    type: "full-time",
+    description: "Drive cross-functional project execution across engineering, research, and product teams.",
     responsibilities: [
-      "Develop interactive dashboards for model metrics",
-      "Improve developer-facing documentation and tools",
-      "Create intuitive UIs for complex workflows",
+      "Manage project timelines, resources, and deliverables",
+      "Coordinate across engineering, research, and product",
+      "Identify and mitigate project risks proactively",
     ],
     requirements: [
-      "Experience with React, TypeScript, or Next.js",
-      "Eye for clean, functional design",
-      "Interest in developer experience and tooling",
+      "3+ years technical project management experience",
+      "Strong organizational and communication skills",
+      "Experience in AI/ML or developer tools space preferred",
     ],
   },
   {
-    title: "Product Design Intern",
-    team: "Design",
+    title: "Solutions Engineer",
+    team: "Business & Operations",
     location: "Remote",
-    type: "internship",
-    description: "Design interfaces for AI infrastructure tools. Shape how developers interact with Olyxee.",
+    type: "full-time",
+    description: "Help customers integrate and get value from Olyxee's verification platform.",
     responsibilities: [
-      "Create wireframes and high-fidelity mockups",
-      "Design end-to-end user flows for technical products",
-      "Conduct user research with developer audiences",
+      "Provide technical guidance during customer onboarding",
+      "Build demos, proof-of-concepts, and integration guides",
+      "Serve as the technical bridge between customers and product",
     ],
     requirements: [
-      "Portfolio demonstrating UI/UX work",
-      "Proficiency in Figma or similar design tools",
-      "Interest in designing for technical users",
+      "Engineering background with customer-facing experience",
+      "Strong communication and presentation skills",
+      "Understanding of AI/ML deployment and infrastructure",
     ],
   },
   {
-    title: "Technical Writing Intern",
-    team: "Content",
+    title: "Business Analyst",
+    team: "Business & Operations",
     location: "Remote",
-    type: "internship",
-    description: "Write documentation, tutorials, and educational content about AI deployment.",
+    type: "full-time",
+    description: "Analyze market opportunities and support strategic decision-making.",
     responsibilities: [
-      "Write and maintain API and SDK documentation",
-      "Create tutorials and getting-started guides",
-      "Produce blog posts on AI infrastructure topics",
+      "Conduct market and competitive analysis",
+      "Build financial models and business cases",
+      "Support leadership with data-driven insights",
     ],
     requirements: [
-      "Strong technical writing skills",
-      "Ability to explain complex topics simply",
-      "Familiarity with developer documentation",
+      "Strong analytical and modeling skills",
+      "Experience with market research in tech/AI",
+      "Excellent communication and presentation skills",
     ],
   },
   {
-    title: "DevOps Engineering Intern",
-    team: "Infrastructure",
+    title: "Sales Engineer",
+    team: "Business & Operations",
     location: "Remote",
-    type: "internship",
-    description: "Automate CI/CD pipelines, manage cloud infrastructure, and improve deployment reliability.",
+    type: "full-time",
+    description: "Drive technical sales for Olyxee's AI verification and reliability solutions.",
     responsibilities: [
-      "Build and maintain CI/CD pipelines",
-      "Automate infrastructure provisioning",
-      "Monitor and improve system reliability",
+      "Lead technical discussions and product demos with prospects",
+      "Understand customer requirements and map to solutions",
+      "Collaborate with product on customer feedback and needs",
     ],
     requirements: [
-      "Familiarity with CI/CD tools (GitHub Actions, etc.)",
-      "Basic cloud platform experience (AWS, GCP, or Azure)",
-      "Scripting skills in Bash or Python",
+      "Technical background with sales or pre-sales experience",
+      "Understanding of AI/ML infrastructure and workflows",
+      "Strong relationship-building skills",
     ],
   },
   {
-    title: "Community & Partnerships Intern",
-    team: "Growth",
+    title: "Marketing Specialist",
+    team: "Business & Operations",
     location: "Remote",
-    type: "internship",
-    description: "Grow the Olyxee developer community, manage partnerships, and organize events.",
+    type: "full-time",
+    description: "Tell the Olyxee story and grow awareness for AI verification as a category.",
     responsibilities: [
-      "Engage with the developer community on Discord and forums",
-      "Help plan and execute virtual events and workshops",
-      "Identify and support partnership opportunities",
+      "Create content for blog, social media, and events",
+      "Plan and execute marketing campaigns for AI products",
+      "Manage brand presence and developer community engagement",
     ],
     requirements: [
-      "Excellent communication skills",
-      "Interest in developer communities and open source",
-      "Self-motivated and organized",
+      "Experience marketing technical/AI products",
+      "Strong writing and content creation skills",
+      "Understanding of developer and B2B marketing",
     ],
   },
 ];
@@ -188,7 +545,7 @@ function HeroSection() {
               className="text-base sm:text-lg text-white/70 max-w-xl leading-relaxed font-light mb-8 sm:mb-10"
             >
               Join a small team solving hard problems in AI reliability and verification.
-              Start with an internship. Grow into something bigger.
+              Build something that matters.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 15 }}
@@ -362,12 +719,8 @@ function RolesSection() {
                   <div className="flex-1 min-w-0">
                     <div className="flex flex-wrap items-center gap-3 mb-2">
                       <h3 className="text-lg sm:text-xl tracking-tight text-neutral-900 group-hover:text-neutral-600 transition-colors">{role.title}</h3>
-                      <span className={`text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full ${
-                        role.type === 'internship'
-                          ? 'bg-blue-50 text-blue-500'
-                          : 'bg-green-50 text-green-500'
-                      }`}>
-                        {role.type === 'internship' ? 'Intern' : 'Full-time'}
+                      <span className="text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full bg-green-50 text-green-500">
+                        Full-time
                       </span>
                     </div>
                     <p className="text-sm text-neutral-400 leading-relaxed max-w-xl">{role.description}</p>
@@ -603,7 +956,7 @@ function CTASection() {
 const Careers: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO title="Careers" description="Join Olyxee and work on AI infrastructure that matters. Open internship positions in research, engineering, design, and more." path="/careers" />
+      <SEO title="Careers" description="Join Olyxee and work on AI infrastructure that matters. Open positions in research, engineering, design, and more." path="/careers" />
       <Header />
 
       <main>
