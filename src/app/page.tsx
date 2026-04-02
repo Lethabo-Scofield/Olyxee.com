@@ -70,6 +70,7 @@ export default function HomePage() {
         <MissionSection />
         <ResearchAreas />
         <ApproachSection />
+        <IntegrationSection />
         <CTASection />
       </main>
       <Footer />
@@ -466,6 +467,90 @@ function ApproachSection() {
               </div>
             </div>
           </motion.div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
+function IntegrationSection() {
+  const floatingCards = useMemo(() => [
+    { name: "AWS", subtitle: "Cloud Infrastructure", position: "left-[3%] top-[8%]", rotation: "-3deg", delay: 0 },
+    { name: "Google Cloud", subtitle: "AI Platform", position: "right-[2%] top-[5%]", rotation: "4deg", delay: 0.1 },
+    { name: "Microsoft Azure", subtitle: "Enterprise Cloud", position: "right-[8%] top-[38%]", rotation: "2deg", delay: 0.2 },
+    { name: "IBM", subtitle: "Watson AI", position: "left-[5%] top-[45%]", rotation: "-2deg", delay: 0.15 },
+    { name: "NVIDIA", subtitle: "GPU Computing", position: "left-[8%] bottom-[8%]", rotation: "3deg", delay: 0.25 },
+    { name: "Hugging Face", subtitle: "Model Hub", position: "right-[5%] bottom-[10%]", rotation: "-3deg", delay: 0.3 },
+  ], []);
+
+  return (
+    <section className="relative py-24 sm:py-36 lg:py-44 overflow-hidden bg-amber-50/40">
+      <div className="absolute inset-0">
+        <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-orange-100/30 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/3 w-80 h-80 bg-amber-100/30 rounded-full blur-3xl" />
+      </div>
+
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
+        {floatingCards.map((card, idx) => (
+          <motion.div
+            key={card.name}
+            initial={{ opacity: 0, y: 20, scale: 0.9 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: card.delay, type: "spring", stiffness: 200, damping: 20 }}
+            className={`absolute ${card.position} hidden lg:block`}
+            style={{ transform: `rotate(${card.rotation})` }}
+          >
+            <motion.div
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 4 + idx * 0.5, repeat: Infinity, ease: "easeInOut" }}
+              className="bg-white rounded-2xl shadow-lg shadow-neutral-200/50 p-5 sm:p-6 w-40 sm:w-44"
+            >
+              <p className="text-sm font-semibold text-neutral-800">{card.name}</p>
+              <p className="text-[11px] text-neutral-400 mt-0.5">{card.subtitle}</p>
+            </motion.div>
+          </motion.div>
+        ))}
+
+        <div className="relative z-10 max-w-xl mx-auto text-center py-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] tracking-tight text-neutral-900 leading-tight mb-6">
+              AI verification built for{" "}
+              <em className="text-orange-400">your stack</em>.
+            </h2>
+            <p className="text-neutral-500 text-base sm:text-lg font-light leading-relaxed mb-8 max-w-md mx-auto">
+              Deploy Olyxee in your environment, or integrate through our cloud API. Works with every major platform.
+            </p>
+            <Link
+              href="/docs"
+              className="inline-flex items-center gap-2 text-sm font-medium text-neutral-900 hover:text-orange-500 transition-colors group"
+            >
+              Discover more
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-orange-400" />
+            </Link>
+          </motion.div>
+
+          <div className="lg:hidden mt-12 grid grid-cols-2 sm:grid-cols-3 gap-3">
+            {floatingCards.map((card, idx) => (
+              <motion.div
+                key={card.name}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: idx * 0.06 }}
+                className="bg-white rounded-xl shadow-sm p-4"
+              >
+                <p className="text-sm font-semibold text-neutral-800">{card.name}</p>
+                <p className="text-[11px] text-neutral-400 mt-0.5">{card.subtitle}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>
