@@ -15,6 +15,13 @@ const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
   reactStrictMode: true,
+  redirects: async () => [
+    {
+      source: "/products/grysics",
+      destination: "https://grysics.olyxee.com",
+      permanent: false,
+    },
+  ],
   headers: async () => [
     {
       source: "/:all*(svg|jpg|jpeg|png|webp|avif|ico|woff|woff2)",
