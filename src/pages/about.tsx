@@ -30,7 +30,6 @@ const About: FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-6">About Olyxee</p>
             <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.1] mb-8">
               We are building the trust layer
               <br />

@@ -456,7 +456,6 @@ function ApproachSection() {
               <p className="text-sm text-neutral-600 font-light leading-relaxed mb-4">
                 Studying why AI fabricates information and building detection methods that work across domains.
               </p>
-              <p className="text-xs font-medium text-neutral-400 uppercase tracking-wider">Active research</p>
             </div>
           </motion.div>
 
@@ -472,10 +471,9 @@ function ApproachSection() {
             </div>
             <div className="relative p-8 sm:p-10">
               <h3 className="text-lg font-semibold text-neutral-900 mb-3 tracking-tight">Behavioral Evaluation</h3>
-              <p className="text-sm text-neutral-600 font-light leading-relaxed mb-4">
+              <p className="text-sm text-neutral-600 font-light leading-relaxed">
                 Evaluating AI behavior at scale: consistency, accuracy, and alignment with intended outcomes.
               </p>
-              <p className="text-xs font-medium text-neutral-400 uppercase tracking-wider">Active research</p>
             </div>
           </motion.div>
 

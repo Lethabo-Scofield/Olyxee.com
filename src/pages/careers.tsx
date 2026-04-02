@@ -173,16 +173,6 @@ function HeroSection() {
           />
           <div className="absolute inset-0 bg-black/55" />
           <div className="absolute inset-0 flex flex-col justify-end p-8 sm:p-12 lg:p-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.15 }}
-            >
-              <div className="inline-flex items-center gap-2.5 px-4 py-2 bg-white/15 backdrop-blur-md text-white rounded-full text-xs font-medium mb-6 border border-white/20">
-                <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                Now hiring across all teams
-              </div>
-            </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
