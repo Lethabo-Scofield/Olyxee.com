@@ -152,7 +152,7 @@ function LogoStrip() {
   return (
     <section className="border-y border-neutral-100 bg-neutral-50/50 py-8 sm:py-12">
       <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
-        <p className="text-center text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-6 sm:mb-8">Trusted By Industry Leaders</p>
+        <p className="text-center text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-6 sm:mb-8">Works With</p>
         <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 sm:gap-x-16 sm:gap-y-6">
           {collaborators.map((item, idx) => (
             <motion.div
@@ -210,7 +210,7 @@ function MissionSection() {
               AI is everywhere. But the gap between what it can do and what it should do keeps widening.
             </p>
             <p className="text-lg text-neutral-600 font-light leading-relaxed">
-              Olyxee builds the infrastructure to close that gap: verification, evaluation, and monitoring so AI behaves as intended.
+              Olyxee is an AI company building the research and infrastructure to close that gap. Our product, Grysics, handles verification, evaluation, and monitoring so AI behaves as intended.
             </p>
             <p className="text-lg text-neutral-600 font-light leading-relaxed">
               Safety and performance are not trade-offs. They are the same goal.
@@ -349,7 +349,7 @@ function VerificationDiagram() {
   return (
     <div className="rounded-3xl bg-white p-6 sm:p-10 lg:p-14 border border-neutral-100 shadow-sm">
       <div className="text-center mb-10 sm:mb-14">
-        <p className="text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.25em] mb-3">How Olyxee Fits Into Your AI Stack</p>
+        <p className="text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.25em] mb-3">How Grysics Fits Into Your Stack</p>
         <h3 className="font-serif text-xl sm:text-2xl text-neutral-900 tracking-tight">The pipeline, from application to production</h3>
       </div>
 
@@ -456,7 +456,7 @@ function ApproachSection() {
           >
             <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-blue-100/40 to-transparent rounded-full blur-2xl" />
             <div className="relative p-8 sm:p-10">
-              <h3 className="text-xl sm:text-2xl font-semibold text-neutral-900 mb-3 tracking-tight">AI Safety Infrastructure</h3>
+              <h3 className="text-xl sm:text-2xl font-semibold text-neutral-900 mb-3 tracking-tight">Grysics Platform</h3>
               <p className="text-neutral-500 text-sm sm:text-[15px] font-light leading-relaxed max-w-lg mb-6">
                 Verification engines, evaluation frameworks, and monitoring systems for real-world AI deployment.
               </p>
@@ -597,11 +597,11 @@ function IntegrationSection() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] tracking-tight text-neutral-900 leading-tight mb-6">
-              AI verification built for{" "}
+              Grysics: AI verification built for{" "}
               <em className="text-orange-400">your stack</em>.
             </h2>
             <p className="text-neutral-500 text-base sm:text-lg font-light leading-relaxed mb-8 max-w-md mx-auto">
-              Deploy Olyxee in your environment, or integrate through our cloud API. Works with every major platform.
+              Deploy Grysics in your environment, or integrate through our cloud API. Works with every major platform.
             </p>
             <Link
               href="/docs"
@@ -671,7 +671,7 @@ function CTASection() {
           transition={{ delay: 0.1, duration: 0.7 }}
           className="text-neutral-500 text-base sm:text-xl max-w-xl mx-auto mb-8 sm:mb-10 font-light leading-relaxed px-2 sm:px-0"
         >
-          We are building those foundations. Follow our journey.
+          We are building those foundations. Join us on the journey.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
