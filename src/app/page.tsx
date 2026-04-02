@@ -40,7 +40,7 @@ export default function HomePage() {
       "AI Monitoring",
       "Responsible AI",
     ],
-    slogan: "Research and safety for artificial intelligence",
+    slogan: "Research and Infrastructure for artificial intelligence",
   };
 
   const websiteJsonLd = {
@@ -48,7 +48,7 @@ export default function HomePage() {
     "@type": "WebSite",
     name: "Olyxee",
     url: "https://olyxee.com",
-    description: "Research and safety for artificial intelligence",
+    description: "Research and Infrastructure for artificial intelligence",
     publisher: {
       "@type": "Organization",
       name: "Olyxee",
@@ -103,7 +103,7 @@ function HeroSection() {
           transition={{ duration: 0.9, delay: 0.1 }}
           className="font-serif text-[2.5rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] text-neutral-900 leading-[1.02] tracking-tight"
         >
-          Research and safety
+          Research and Infrastructure
           <br />
           for <em className="text-blue-400">artificial intelligence</em>
         </motion.h1>
