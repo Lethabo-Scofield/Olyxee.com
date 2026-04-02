@@ -160,19 +160,19 @@ const teams = Array.from(new Set(roles.map(r => r.team)));
 
 function HeroSection() {
   return (
-    <section className="relative">
-      <div className="relative h-[340px] sm:h-[420px] lg:h-[480px] overflow-hidden">
-        <Image
-          src="/images/careers-hero.png"
-          alt="Team collaborating on code"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60" />
-        <div className="absolute inset-0 flex items-end">
-          <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 pb-10 sm:pb-14 w-full">
+    <section className="relative pt-20 sm:pt-24">
+      <div className="px-4 sm:px-6 lg:px-8">
+        <div className="relative max-w-6xl mx-auto rounded-2xl sm:rounded-3xl overflow-hidden min-h-[480px] sm:min-h-[540px] lg:min-h-[600px]">
+          <Image
+            src="/images/careers-hero.png"
+            alt="Team collaborating on code"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-black/55" />
+          <div className="absolute inset-0 flex flex-col justify-end p-8 sm:p-12 lg:p-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -187,44 +187,40 @@ function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
-              className="font-serif text-3xl sm:text-5xl lg:text-6xl text-white leading-[1.08] tracking-tight"
+              className="font-serif text-3xl sm:text-5xl lg:text-6xl text-white leading-[1.08] tracking-tight mb-6 sm:mb-8"
             >
               Do the best work of your life.
             </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="text-base sm:text-lg text-white/70 max-w-xl leading-relaxed font-light mb-8 sm:mb-10"
+            >
+              Join a small team solving hard problems in AI reliability and verification.
+              Start with an internship. Grow into something bigger.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.65 }}
+              className="flex flex-wrap gap-3"
+            >
+              <a
+                href="#roles"
+                className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm"
+              >
+                View open roles <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+              </a>
+              <Link
+                href="/about"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-white border border-white/25 rounded-full font-medium hover:bg-white/10 transition-all text-sm"
+              >
+                Learn about Olyxee
+              </Link>
+            </motion.div>
           </div>
         </div>
-      </div>
-
-      <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 pt-10 sm:pt-14 pb-16 sm:pb-20">
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-lg text-neutral-500 max-w-xl leading-relaxed font-light mb-10"
-        >
-          Join a small team solving hard problems in AI reliability and verification.
-          Start with an internship. Grow into something bigger.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.65 }}
-          className="flex flex-wrap gap-3"
-        >
-          <a
-            href="#roles"
-            className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-black transition-all text-sm"
-          >
-            View open roles <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-          </a>
-          <Link
-            href="/about"
-            className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-neutral-600 border border-neutral-200 rounded-full font-medium hover:bg-neutral-50 hover:text-neutral-900 transition-all text-sm"
-          >
-            Learn about Olyxee
-          </Link>
-        </motion.div>
       </div>
     </section>
   );
