@@ -22,29 +22,33 @@ const About: FC = () => {
       <SEO title="About" description="Learn about Olyxee's mission to build reliable AI infrastructure. Our team is dedicated to AI safety, verification, and making deployment trustworthy." path="/about" />
       <Header />
 
-      <section className="relative pt-28 sm:pt-40 pb-20 sm:pb-32 px-4 sm:px-6 overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-20 right-1/4 w-[500px] h-[500px] bg-blue-100/40 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-1/3 w-[400px] h-[400px] bg-orange-100/30 rounded-full blur-3xl" />
-        </div>
-        <div className="relative max-w-6xl mx-auto">
+      <section className="relative w-full min-h-[50vh] sm:min-h-[60vh] flex items-center overflow-hidden">
+        <Image
+          src="/images/section-header-bg.jpg"
+          alt=""
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 pt-28 sm:pt-40 pb-20 sm:pb-32">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="max-w-3xl"
           >
-            <p className="text-xs font-semibold text-blue-600 uppercase tracking-[0.25em] mb-5">About Olyxee</p>
-            <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl text-neutral-900 tracking-tight leading-[1.08] mb-8">
+            <p className="text-xs font-semibold text-white/70 uppercase tracking-[0.25em] mb-5">About Olyxee</p>
+            <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl text-white tracking-tight leading-[1.08] mb-8">
               We are building the trust layer{" "}
-              <em className="text-blue-500">for artificial intelligence.</em>
+              <em className="text-blue-400">for artificial intelligence.</em>
             </h1>
           </motion.div>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-lg sm:text-xl text-neutral-500 leading-relaxed max-w-2xl font-light"
+            className="text-lg sm:text-xl text-white/60 leading-relaxed max-w-2xl font-light"
           >
             AI systems are growing more powerful, but not more trustworthy. Olyxee exists to change that.
           </motion.p>
@@ -125,63 +129,48 @@ const About: FC = () => {
         </div>
       </section>
 
-      <section className="relative overflow-hidden">
-        <div className="relative h-48 sm:h-64 lg:h-72 overflow-hidden">
-          <Image
-            src="/images/section-header-bg.jpg"
-            alt=""
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/40" />
-          <div className="absolute inset-0 flex items-end">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 w-full pb-8 sm:pb-12">
+      <section className="py-16 sm:py-24 lg:py-32 bg-neutral-100">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            custom={0}
+            variants={fadeUp}
+            className="mb-12 sm:mb-16"
+          >
+            <p className="text-xs font-semibold text-neutral-500 uppercase tracking-[0.25em] mb-4">What We Build</p>
+            <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900">
+              Verification-first AI infrastructure
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+            {[
+              { title: "Pre-deployment Testing", description: "Test AI outputs for accuracy, consistency, and safety before production.", bg: "/images/gradient-blue-pink.png" },
+              { title: "Hallucination Detection", description: "Identify when models fabricate information, with confidence scoring.", bg: "/images/gradient-orange-purple.png" },
+              { title: "Behavioral Evaluation", description: "Measure AI consistency across rephrasings and edge cases.", bg: "/images/gradient-pastel.png" },
+              { title: "Production Monitoring", description: "Detect quality degradation, drift, and failure patterns in real time.", bg: "/images/gradient-purple.png" },
+              { title: "Compliance & Audit", description: "Audit trails for regulated industries. Every decision tracked.", bg: "/images/gradient-abstract-blue.png" },
+              { title: "Open Research", description: "We publish findings and open-source tools. Safety is a shared foundation.", bg: "/images/gradient-yellow-green.png" },
+            ].map((item, idx) => (
               <motion.div
+                key={item.title}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
-                custom={0}
+                custom={idx}
                 variants={fadeUp}
+                className="group relative rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300"
               >
-                <p className="text-xs font-semibold text-white/70 uppercase tracking-[0.25em] mb-3">What We Build</p>
-                <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-white">
-                  Verification-first AI infrastructure
-                </h2>
+                <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url("${item.bg}")` }} />
+                <div className="absolute inset-0 bg-neutral-800/80" />
+                <div className="relative p-7 sm:p-8">
+                  <h3 className="text-base font-semibold text-white mb-2">{item.title}</h3>
+                  <p className="text-sm text-neutral-300 leading-relaxed font-light">{item.description}</p>
+                </div>
               </motion.div>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-neutral-100 py-12 sm:py-16 lg:py-20">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-              {[
-                { title: "Pre-deployment Testing", description: "Test AI outputs for accuracy, consistency, and safety before production.", bg: "/images/gradient-blue-pink.png" },
-                { title: "Hallucination Detection", description: "Identify when models fabricate information, with confidence scoring.", bg: "/images/gradient-orange-purple.png" },
-                { title: "Behavioral Evaluation", description: "Measure AI consistency across rephrasings and edge cases.", bg: "/images/gradient-pastel.png" },
-                { title: "Production Monitoring", description: "Detect quality degradation, drift, and failure patterns in real time.", bg: "/images/gradient-purple.png" },
-                { title: "Compliance & Audit", description: "Audit trails for regulated industries. Every decision tracked.", bg: "/images/gradient-abstract-blue.png" },
-                { title: "Open Research", description: "We publish findings and open-source tools. Safety is a shared foundation.", bg: "/images/gradient-yellow-green.png" },
-              ].map((item, idx) => (
-                <motion.div
-                  key={item.title}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.2 }}
-                  custom={idx}
-                  variants={fadeUp}
-                  className="group relative rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300"
-                >
-                  <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url("${item.bg}")` }} />
-                  <div className="absolute inset-0 bg-neutral-800/80" />
-                  <div className="relative p-7 sm:p-8">
-                    <h3 className="text-base font-semibold text-white mb-2">{item.title}</h3>
-                    <p className="text-sm text-neutral-300 leading-relaxed font-light">{item.description}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+            ))}
           </div>
         </div>
       </section>
