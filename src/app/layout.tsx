@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     "model evaluation",
     "AI quality assurance",
   ],
-  authors: [{ name: "Olyxee" }],
+  authors: [{ name: "Olyxee" }, { name: "Lethabo Scofield", url: "https://lethaboscofield.web.app/" }],
   creator: "Olyxee",
   publisher: "Olyxee",
   metadataBase: new URL(siteUrl),
@@ -108,6 +108,53 @@ export default function RootLayout({
         <link rel="icon" href="/Logo/Olyxee_Logo.png" />
         <link rel="apple-touch-icon" href="/Logo/Olyxee_Logo.png" />
         <meta name="theme-color" content="#ffffff" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Olyxee",
+              url: "https://olyxee.com",
+              logo: "https://olyxee.com/Logo/Olyxee_Logo.png",
+              description: "AI infrastructure company building verification and monitoring systems that ensure AI applications are safe, reliable, and trustworthy.",
+              foundingDate: "2024",
+              sameAs: [
+                "https://twitter.com/olyxee",
+                "https://www.linkedin.com/company/olyxee/",
+                "https://github.com/olyxee"
+              ],
+              founder: {
+                "@type": "Person",
+                name: "Lethabo Scofield",
+                url: "https://lethaboscofield.web.app/"
+              },
+              contactPoint: {
+                "@type": "ContactPoint",
+                contactType: "General Inquiry",
+                url: "https://olyxee.com/contact"
+              }
+            })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "Olyxee",
+              url: "https://olyxee.com",
+              potentialAction: {
+                "@type": "SearchAction",
+                target: "https://olyxee.com/docs?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+              }
+            })
+          }}
+        />
       </head>
       <body className={`${inter.variable} ${instrumentSerif.variable} antialiased`}>
         <ErrorReporter />
