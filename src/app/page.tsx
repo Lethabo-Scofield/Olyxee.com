@@ -456,7 +456,10 @@ function ApproachSection() {
           >
             <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-blue-100/40 to-transparent rounded-full blur-2xl" />
             <div className="relative p-8 sm:p-10">
-              <h3 className="text-xl sm:text-2xl font-semibold text-neutral-900 mb-3 tracking-tight">Grysics Platform</h3>
+              <div className="flex items-center gap-3 mb-4">
+                <Image src="/images/grysics-logo.png" alt="Grysics" width={32} height={32} className="rounded-lg" />
+                <h3 className="text-xl sm:text-2xl font-semibold text-neutral-900 tracking-tight">Grysics Platform</h3>
+              </div>
               <p className="text-neutral-500 text-sm sm:text-[15px] font-light leading-relaxed max-w-lg mb-6">
                 Verification engines, evaluation frameworks, and monitoring systems for real-world AI deployment.
               </p>

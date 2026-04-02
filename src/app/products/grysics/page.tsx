@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useEffect, useRef, useState, FormEvent } from 'react';
 import { ArrowRight, Check } from 'lucide-react';
+import Image from 'next/image';
 import Header from '../../../components/header';
 import Footer from '../../../components/footer';
 
@@ -238,7 +239,8 @@ export default function GrysicsPage() {
 
       <section className="pt-28 sm:pt-40 pb-8 sm:pb-12 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto text-center">
-          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="flex justify-center mb-6">
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="flex flex-col items-center gap-4 mb-6">
+            <Image src="/images/grysics-logo.png" alt="Grysics" width={48} height={48} className="rounded-xl" priority />
             <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-neutral-100 text-neutral-500 rounded-full text-xs font-medium border border-neutral-200/60">
               <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
               Now in limited beta

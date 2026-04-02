@@ -4,6 +4,7 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { ArrowRight, Check } from "lucide-react";
 
 function EarlyAccessForm() {
@@ -108,6 +109,7 @@ const ProductsPage: FC = () => {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
                 <div className="p-8 sm:p-12 lg:p-14 flex flex-col justify-center">
                   <div className="flex items-center gap-3 mb-6">
+                    <Image src="/images/grysics-logo.png" alt="Grysics" width={28} height={28} className="rounded-md" />
                     <span className="text-sm font-semibold tracking-tight text-neutral-900">Grysics</span>
                     <span className="text-[10px] font-medium text-neutral-400 bg-neutral-200/60 px-2.5 py-0.5 rounded-full uppercase tracking-wider">Coming soon</span>
                   </div>
