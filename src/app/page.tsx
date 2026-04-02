@@ -161,12 +161,12 @@ function HeroSection() {
 
 function LogoStrip() {
   const collaborators = [
-    { name: "Google", Logo: GoogleLogo, width: "w-20" },
-    { name: "Microsoft", Logo: MicrosoftLogo, width: "w-7" },
-    { name: "OpenAI", Logo: OpenAILogo, width: "w-7" },
-    { name: "NVIDIA", Logo: NvidiaLogo, width: "w-24" },
-    { name: "Meta", Logo: MetaLogo, width: "w-20" },
-    { name: "AWS", Logo: AWSLogo, width: "w-16" },
+    { name: "Google", Logo: GoogleLogo, width: "w-[88px]" },
+    { name: "Microsoft", Logo: MicrosoftLogo, width: "w-[28px]" },
+    { name: "OpenAI", Logo: OpenAILogo, width: "w-[28px]" },
+    { name: "NVIDIA", Logo: NvidiaLogo, width: "w-[100px]" },
+    { name: "Meta", Logo: MetaLogo, width: "w-[80px]" },
+    { name: "AWS", Logo: AWSLogo, width: "w-[60px]" },
   ];
 
   return (
@@ -466,12 +466,12 @@ function ApproachSection() {
 
 function IntegrationSection() {
   const floatingCards = useMemo(() => [
-    { name: "AWS", subtitle: "Cloud Infrastructure", position: "left-[3%] top-[8%]", rotation: "-3deg", delay: 0, Logo: AWSLogo },
-    { name: "Google Cloud", subtitle: "AI Platform", position: "right-[2%] top-[5%]", rotation: "4deg", delay: 0.1, Logo: GoogleCloudLogo },
-    { name: "Microsoft", subtitle: "Enterprise Cloud", position: "right-[8%] top-[38%]", rotation: "2deg", delay: 0.2, Logo: MicrosoftLogo },
-    { name: "IBM", subtitle: "Watson AI", position: "left-[5%] top-[45%]", rotation: "-2deg", delay: 0.15, Logo: IBMLogo },
-    { name: "NVIDIA", subtitle: "GPU Computing", position: "left-[8%] bottom-[8%]", rotation: "3deg", delay: 0.25, Logo: NvidiaLogo },
-    { name: "Hugging Face", subtitle: "Model Hub", position: "right-[5%] bottom-[10%]", rotation: "-3deg", delay: 0.3, Logo: HuggingFaceLogo },
+    { name: "AWS", subtitle: "Cloud Infrastructure", position: "left-[2%] top-[5%]", rotation: "-2deg", delay: 0, Logo: AWSLogo },
+    { name: "Google Cloud", subtitle: "AI Platform", position: "right-[2%] top-[5%]", rotation: "3deg", delay: 0.1, Logo: GoogleCloudLogo },
+    { name: "Microsoft", subtitle: "Enterprise Cloud", position: "right-[4%] top-[45%]", rotation: "2deg", delay: 0.2, Logo: MicrosoftLogo },
+    { name: "IBM", subtitle: "Watson AI", position: "left-[4%] top-[45%]", rotation: "-2deg", delay: 0.15, Logo: IBMLogo },
+    { name: "NVIDIA", subtitle: "GPU Computing", position: "left-[2%] bottom-[5%]", rotation: "2deg", delay: 0.25, Logo: NvidiaLogo },
+    { name: "Hugging Face", subtitle: "Model Hub", position: "right-[2%] bottom-[5%]", rotation: "-2deg", delay: 0.3, Logo: HuggingFaceLogo },
   ], []);
 
   return (
