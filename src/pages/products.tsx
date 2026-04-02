@@ -1,10 +1,68 @@
-import { FC } from "react";
+import { FC, useState, FormEvent } from "react";
 import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
+
+function EarlyAccessForm() {
+  const [email, setEmail] = useState('');
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      setSubmitted(true);
+    }, 1200);
+  };
+
+  if (submitted) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className="flex items-center gap-3 px-6 py-4 rounded-2xl bg-green-50 border border-green-200"
+      >
+        <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 bg-green-100">
+          <Check className="w-4 h-4 text-green-600" />
+        </div>
+        <div>
+          <p className="text-sm font-semibold text-green-900">You're on the list!</p>
+          <p className="text-xs text-green-600">We'll notify you when Grysics launches.</p>
+        </div>
+      </motion.div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 w-full max-w-md">
+      <input
+        type="email"
+        placeholder="you@company.com"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+        className="flex-1 px-5 py-3.5 rounded-full text-sm focus:outline-none transition-all placeholder:text-neutral-400 border border-neutral-200 bg-white text-neutral-900 focus:ring-2 focus:ring-neutral-900/10 focus:border-neutral-400"
+      />
+      <button
+        type="submit"
+        disabled={loading}
+        className="px-7 py-3.5 rounded-full font-medium text-sm transition-all disabled:opacity-60 flex items-center justify-center gap-2 flex-shrink-0 bg-neutral-900 text-white hover:bg-black"
+      >
+        {loading ? (
+          <div className="w-4 h-4 border-2 rounded-full animate-spin border-white/30 border-t-white" />
+        ) : (
+          <>Get Early Access <ArrowRight className="w-4 h-4" /></>
+        )}
+      </button>
+    </form>
+  );
+}
 
 const ProductsPage: FC = () => {
   return (
@@ -38,7 +96,7 @@ const ProductsPage: FC = () => {
         </div>
       </section>
 
-      <section className="pb-24 sm:pb-36 px-4 sm:px-6">
+      <section className="pb-16 sm:pb-24 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
           <Link href="/products/grysics" className="group block">
             <motion.div
@@ -109,6 +167,26 @@ const ProductsPage: FC = () => {
               </div>
             </motion.div>
           </Link>
+        </div>
+      </section>
+
+      <section className="pb-24 sm:pb-36 px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
+            className="rounded-2xl sm:rounded-3xl border border-neutral-100 bg-neutral-50/50 p-8 sm:p-12 lg:p-14"
+          >
+            <h3 className="font-serif text-2xl sm:text-3xl tracking-tight text-neutral-900 mb-3">
+              Get early access
+            </h3>
+            <p className="text-neutral-500 text-sm sm:text-base font-light leading-relaxed mb-8 max-w-lg">
+              Grysics is currently in limited beta. Leave your email and we'll notify you when it's ready.
+            </p>
+            <EarlyAccessForm />
+            <p className="text-xs text-neutral-400 mt-4">Free during beta · No credit card required</p>
+          </motion.div>
         </div>
       </section>
 

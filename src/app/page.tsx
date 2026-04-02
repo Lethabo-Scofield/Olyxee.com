@@ -108,42 +108,13 @@ function HeroSection() {
           for <em className="text-blue-400">artificial intelligence</em>
         </motion.h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-          className="mt-5 sm:mt-7 text-base sm:text-xl text-neutral-500 font-light max-w-2xl mx-auto leading-relaxed px-2 sm:px-0"
-        >
-          Olyxee is an AI infrastructure company building the tools and systems
-          that make artificial intelligence safe, reliable, and trustworthy.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.45 }}
-          className="mt-10 flex flex-col sm:flex-row gap-3 justify-center"
-        >
-          <Link
-            href="/about"
-            className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-black transition-all text-sm tracking-wide shadow-lg shadow-neutral-900/20"
-          >
-            Our Mission <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-          </Link>
-          <Link
-            href="/about"
-            className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-neutral-700 bg-white border border-neutral-200 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide shadow-sm"
-          >
-            Learn More
-          </Link>
-        </motion.div>
       </motion.div>
 
       <motion.div
         className="relative z-10 w-full max-w-5xl mt-10 sm:mt-16 mb-8 px-2 sm:px-0"
         initial={{ opacity: 0, y: 60, scale: 0.97 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 1.2, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 1.2, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-neutral-200/80 shadow-2xl shadow-neutral-300/40">
           <video
@@ -152,6 +123,14 @@ function HeroSection() {
             autoPlay loop muted playsInline preload="metadata"
           />
           <div className="absolute inset-0 rounded-2xl sm:rounded-3xl pointer-events-none ring-1 ring-inset ring-black/5" />
+          <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 z-20">
+            <Link
+              href="/products"
+              className="group inline-flex items-center gap-2 px-5 py-2.5 sm:px-7 sm:py-3.5 bg-white/90 backdrop-blur-md text-neutral-900 rounded-full font-medium hover:bg-white transition-all text-sm tracking-wide shadow-lg shadow-black/10 border border-white/60"
+            >
+              Try Grysics <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+            </Link>
+          </div>
         </div>
       </motion.div>
     </section>
