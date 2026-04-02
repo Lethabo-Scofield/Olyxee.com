@@ -41,7 +41,7 @@ const Contact: FC = () => {
               </motion.h1>
               <motion.p custom={2} variants={fadeUp} className="text-lg text-neutral-500 leading-relaxed mb-12 font-light">
                 Whether you're evaluating Olyxee for your team, interested in research collaboration,
-                or exploring partnership opportunities — we'd like to hear from you.
+                or exploring partnership opportunities, we'd like to hear from you.
               </motion.p>
 
               <div className="space-y-6">

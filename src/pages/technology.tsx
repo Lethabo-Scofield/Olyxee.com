@@ -61,7 +61,7 @@ const Technology: FC = () => {
             </div>
           </motion.div>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.5 }} className="text-lg text-neutral-500 leading-relaxed max-w-3xl font-light">
-            Built on Grysics — our verification engine for AI deployment. It handles the entire
+            Built on Grysics, our verification engine for AI deployment. It handles the entire
             lifecycle from model verification to production monitoring.
           </motion.p>
         </div>
@@ -83,7 +83,7 @@ const Technology: FC = () => {
             {[
               { icon: Shield, title: "Verification Pipeline", description: "Automated testing that validates model correctness across target hardware configurations before deployment." },
               { icon: Layers, title: "Hardware Abstraction", description: "A unified deployment interface that abstracts away device-specific complexity. Write once, deploy anywhere." },
-              { icon: BarChart3, title: "Runtime Monitoring", description: "Continuous observability for deployed models — tracking accuracy drift, latency, and resource usage." },
+              { icon: BarChart3, title: "Runtime Monitoring", description: "Continuous observability for deployed models: tracking accuracy drift, latency, and resource usage." },
             ].map((item, idx) => {
               const Icon = item.icon;
               return (
@@ -108,7 +108,7 @@ const Technology: FC = () => {
           </motion.div>
           <div className="divide-y divide-neutral-200 max-w-3xl">
             {[
-              { step: "01", title: "Model Ingestion", description: "Import from any framework — PyTorch, TensorFlow, ONNX. Grysics automatically analyzes architecture and dependencies.", icon: GitBranch },
+              { step: "01", title: "Model Ingestion", description: "Import from any framework: PyTorch, TensorFlow, ONNX. Grysics automatically analyzes architecture and dependencies.", icon: GitBranch },
               { step: "02", title: "Verification", description: "Comprehensive tests against target hardware profiles. Identify accuracy degradation, latency bottlenecks, and edge cases.", icon: Shield },
               { step: "03", title: "Optimization", description: "Automatic quantization and runtime optimization tuned for your target hardware.", icon: Cpu },
               { step: "04", title: "Deployment", description: "One-click deployment to any supported device. Grysics handles containerization and configuration.", icon: Zap },

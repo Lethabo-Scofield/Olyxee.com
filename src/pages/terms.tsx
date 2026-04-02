@@ -65,7 +65,7 @@ const Terms: FC = () => {
   const contentRef = useRef<HTMLDivElement>(null);
 
   const handleDownload = () => {
-    let text = "OLYXEE — TERMS OF USE\nLast updated: March 2026\n\n";
+    let text = "OLYXEE | TERMS OF USE\nLast updated: March 2026\n\n";
     sections.forEach((s) => {
       text += `${s.title}\n\n${s.content}\n\n`;
     });

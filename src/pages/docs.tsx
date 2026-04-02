@@ -261,8 +261,8 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       <div className="mb-16">
         <h2 className="text-xl font-semibold text-gray-900 mb-4">What is Olyxee?</h2>
         <div className="text-[15px] text-gray-600 leading-relaxed space-y-3 max-w-3xl">
-          <p>Olyxee is an AI infrastructure company building tools for reliable AI systems. Our flagship product, <strong className="text-gray-900">Grysics</strong>, is a verification engine that ensures AI applications — chatbots, RAG pipelines, and agent workflows — work correctly and reliably in real-world use.</p>
-          <p>Grysics handles testing, evaluation, failure detection, performance monitoring, and continuous verification — giving teams confidence that their AI applications behave as expected before and after deployment.</p>
+          <p>Olyxee is an AI infrastructure company building tools for reliable AI systems. Our flagship product, <strong className="text-gray-900">Grysics</strong>, is a verification engine that ensures AI applications (chatbots, RAG pipelines, and agent workflows) work correctly and reliably in real-world use.</p>
+          <p>Grysics handles testing, evaluation, failure detection, performance monitoring, and continuous verification, giving teams confidence that their AI applications behave as expected before and after deployment.</p>
         </div>
       </div>
 
@@ -358,7 +358,7 @@ function APIOverview() {
         <div className="space-y-3 mt-2">
           {[
             { title: "Applications", desc: "Register your chatbot, RAG pipeline, or agent workflow as an application. Each app gets its own verification history and monitoring dashboard.", bg: "/images/gradient-blue-pink.png" },
-            { title: "Verification runs", desc: "Test your application against predefined checks — accuracy, consistency, hallucination detection, and retrieval relevance.", bg: "/images/gradient-pastel.png" },
+            { title: "Verification runs", desc: "Test your application against predefined checks: accuracy, consistency, hallucination detection, and retrieval relevance.", bg: "/images/gradient-pastel.png" },
             { title: "Monitoring", desc: "Continuous production monitoring with alerts for quality drift, hallucination spikes, and latency degradation.", bg: "/images/gradient-yellow-green.png" },
             { title: "API Keys", desc: "Create scoped keys for different environments (dev, staging, production) with configurable permissions and expiration.", bg: "/images/gradient-orange-purple.png" },
           ].map(item => (
@@ -458,7 +458,7 @@ function APIKeys() {
             "Click \"Create new key\"",
             "Choose the key type and set permissions",
             "Optionally set an expiration date",
-            "Copy the key — it will only be shown once",
+            "Copy the key. It will only be shown once",
           ].map((step, i) => (
             <div key={i} className="flex gap-3 items-start">
               <span className="text-xs font-mono font-bold text-gray-900 bg-gray-100 border border-gray-200 rounded px-2 py-0.5 flex-shrink-0 mt-0.5">{i + 1}</span>
@@ -467,7 +467,7 @@ function APIKeys() {
           ))}
         </div>
         <DocCallout type="warning">
-          API keys are shown only once at creation. Store them securely — you cannot retrieve the full key later.
+          API keys are shown only once at creation. Store them securely. You cannot retrieve the full key later.
         </DocCallout>
       </DocSection>
 
@@ -514,7 +514,7 @@ function APIKeys() {
         <div className="space-y-2 mt-1">
           {[
             "Use restricted keys with minimal permissions for each use case",
-            "Set expiration dates on all keys — rotate regularly",
+            "Set expiration dates on all keys. Rotate regularly",
             "Use separate keys for development, staging, and production",
             "Store keys in environment variables, never in source code",
             "Monitor key usage in the dashboard to detect anomalies",
@@ -550,7 +550,7 @@ function SupportedModels() {
       <DocSection title="Application types">
         <p>Grysics verification works with chatbots, RAG pipelines, agent workflows, and custom LLM applications. Any system with a queryable endpoint can be tested.</p>
         <DocCallout type="tip">
-          For RAG systems, Grysics can evaluate the full pipeline — retrieval quality, context relevance, and final response accuracy — not just the LLM output.
+          For RAG systems, Grysics can evaluate the full pipeline: retrieval quality, context relevance, and final response accuracy, not just the LLM output.
         </DocCallout>
       </DocSection>
 
@@ -573,7 +573,7 @@ function GrysicsOverview({ onNavigate }: { onNavigate?: (tab: string, page: stri
   return (
     <DocPage title="What is Grysics" subtitle="The verification engine for AI applications.">
       <DocSection title="Overview">
-        <p><strong>Grysics</strong> is a system for verifying, testing, and monitoring AI applications — chatbots, RAG pipelines, and agent workflows.</p>
+        <p><strong>Grysics</strong> is a system for verifying, testing, and monitoring AI applications: chatbots, RAG pipelines, and agent workflows.</p>
         <p>Instead of discovering failures in production, Grysics catches hallucinations, retrieval failures, inconsistencies, and performance issues before they reach users.</p>
       </DocSection>
 
@@ -627,7 +627,7 @@ function GrysicsOverview({ onNavigate }: { onNavigate?: (tab: string, page: stri
       <DocSection title="How it works">
         <div className="space-y-3 mt-2">
           {[
-            { step: "1", title: "Connect", desc: "Point Grysics at your application endpoint. Works with any HTTP API — no code changes needed.", bg: "/images/gradient-blue-pink.png" },
+            { step: "1", title: "Connect", desc: "Point Grysics at your application endpoint. Works with any HTTP API. No code changes needed.", bg: "/images/gradient-blue-pink.png" },
             { step: "2", title: "Test", desc: "Run checks for accuracy, consistency, hallucination, and more. Use built-in or custom test cases.", bg: "/images/gradient-pastel.png" },
             { step: "3", title: "Monitor", desc: "Enable continuous verification in production. Get alerts when quality drops.", bg: "/images/gradient-yellow-green.png" },
           ].map(item => (
@@ -661,7 +661,7 @@ function GrysicsOverview({ onNavigate }: { onNavigate?: (tab: string, page: stri
       </DocSection>
 
       <DocCallout type="info">
-        Grysics is not another chatbot or model. It is infrastructure for AI reliability — a verification engine that works with any AI application.
+        Grysics is not another chatbot or model. It is infrastructure for AI reliability: a verification engine that works with any AI application.
       </DocCallout>
     </DocPage>
   );
@@ -674,10 +674,10 @@ function Verification() {
       <DocSection title="What Grysics tests">
         <p>Every AI application goes through structured verification:</p>
         <ul className="list-none pl-0 mt-3 space-y-2 text-gray-600">
-          <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0" /><span><strong className="text-gray-900">Accuracy</strong> — responses are correct against known-answer test cases</span></li>
-          <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0" /><span><strong className="text-gray-900">Consistency</strong> — same question asked multiple times produces stable answers</span></li>
-          <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0" /><span><strong className="text-gray-900">Robustness</strong> — system handles edge cases, unusual queries, and adversarial inputs</span></li>
-          <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0" /><span><strong className="text-gray-900">Hallucination detection</strong> — flags confident but incorrect or fabricated responses</span></li>
+          <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0" /><span><strong className="text-gray-900">Accuracy</strong>: responses are correct against known-answer test cases</span></li>
+          <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0" /><span><strong className="text-gray-900">Consistency</strong>: same question asked multiple times produces stable answers</span></li>
+          <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0" /><span><strong className="text-gray-900">Robustness</strong>: system handles edge cases, unusual queries, and adversarial inputs</span></li>
+          <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0" /><span><strong className="text-gray-900">Hallucination detection</strong>: flags confident but incorrect or fabricated responses</span></li>
         </ul>
       </DocSection>
 
@@ -1177,7 +1177,7 @@ function Changelog() {
           ],
         },
       ].map(release => (
-        <DocSection key={release.version} title={`v${release.version} — ${release.date}`}>
+        <DocSection key={release.version} title={`v${release.version} | ${release.date}`}>
           <ul className="list-none pl-0 space-y-2 text-gray-600">
             {release.items.map((item, i) => (
               <li key={i} className="flex gap-3 items-start">

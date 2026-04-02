@@ -20,7 +20,7 @@ const capabilities = [
   {
     icon: CircuitBoard,
     title: "Hardware Abstraction",
-    description: "Deploy to any edge device — NVIDIA Jetson, Raspberry Pi, Arduino, ESP32 — with a single unified pipeline. No device-specific rewrites.",
+    description: "Deploy to any edge device: NVIDIA Jetson, Raspberry Pi, Arduino, ESP32, with a single unified pipeline. No device-specific rewrites.",
   },
   {
     icon: Gauge,
@@ -40,7 +40,7 @@ const capabilities = [
   {
     icon: Layers,
     title: "Multi-Model Pipelines",
-    description: "Chain multiple models on a single device — preprocessing, inference, and postprocessing — orchestrated as one coherent pipeline.",
+    description: "Chain multiple models on a single device: preprocessing, inference, and postprocessing, orchestrated as one coherent pipeline.",
   },
   {
     icon: Server,
@@ -82,8 +82,8 @@ const EdgeAI: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
       <SEO
-        title="EdgeAI — Olyxee Edge Box"
-        description="Olyxee Edge Box (OEB) is our execution division — deploying AI into real-world systems across edge devices, factories, and autonomous platforms."
+        title="EdgeAI | Olyxee Edge Box"
+        description="Olyxee Edge Box (OEB) is our execution division, deploying AI into real-world systems across edge devices, factories, and autonomous platforms."
         path="/edgeai"
       />
 
@@ -170,7 +170,7 @@ const EdgeAI: FC = () => {
             transition={{ duration: 0.8, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
             className="text-lg text-neutral-500 max-w-xl leading-relaxed font-light mb-10"
           >
-            Olyxee Edge Box (OEB) is our execution division — the hands of Olyxee.
+            Olyxee Edge Box (OEB) is our execution division. The hands of Olyxee.
             We take AI from the lab and deploy it into the real world.
           </motion.p>
 
@@ -207,13 +207,13 @@ const EdgeAI: FC = () => {
           >
             <img
               src="/images/edge-ai-grid.png"
-              alt="AI-powered computer vision across real-world environments — object detection, pose estimation, anomaly detection, and scene analysis running on edge devices"
+              alt="AI-powered computer vision across real-world environments. Object detection, pose estimation, anomaly detection, and scene analysis running on edge devices"
               className="w-full h-auto"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-10">
               <p className="text-white/90 text-base sm:text-lg font-medium">Computer vision at the edge</p>
-              <p className="text-white/50 text-sm mt-1.5 max-w-xl font-light">Object detection, pose estimation, anomaly detection, and scene analysis — deployed across industrial, automotive, and public safety environments.</p>
+              <p className="text-white/50 text-sm mt-1.5 max-w-xl font-light">Object detection, pose estimation, anomaly detection, and scene analysis, deployed across industrial, automotive, and public safety environments.</p>
             </div>
           </motion.div>
         </div>
@@ -387,7 +387,7 @@ const EdgeAI: FC = () => {
                 <em className="text-neutral-400">at the edge</em>
               </h2>
               <p className="text-neutral-500 text-lg mb-12 font-light leading-relaxed">
-                Get your models running on real hardware in minutes. OEB handles the infrastructure — you focus on the intelligence.
+                Get your models running on real hardware in minutes. OEB handles the infrastructure. You focus on the intelligence.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link

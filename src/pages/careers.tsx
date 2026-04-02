@@ -1031,7 +1031,7 @@ function RolesSection() {
 
 function ProcessSection() {
   const steps = [
-    { num: "01", title: "Apply", desc: "Pick a role and tell us about yourself. No cover letter — just the basics." },
+    { num: "01", title: "Apply", desc: "Pick a role and tell us about yourself. No cover letter, just the basics." },
     { num: "02", title: "Chat", desc: "A short conversation about your interests and what excites you about AI." },
     { num: "03", title: "Build", desc: "A small, relevant project to see how you think. Nothing unreasonable." },
     { num: "04", title: "Join", desc: "Start with the team. Get onboarded, meet your mentor, and ship code." },

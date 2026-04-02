@@ -37,7 +37,7 @@ const researchAreas = [
   {
     icon: Lightbulb,
     title: "Efficient Intelligence",
-    description: "Building AI systems that achieve more with less — smaller models, fewer parameters, lower energy. Intelligence shouldn't require a data center.",
+    description: "Building AI systems that achieve more with less: smaller models, fewer parameters, lower energy. Intelligence shouldn't require a data center.",
     status: "Active",
   },
   {
@@ -84,7 +84,7 @@ const recentWork = [
 const Lab: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO title="Olyxee Lab — Research" description="Olyxee Lab is our research division exploring the frontiers of AI safety, interpretability, and efficient intelligence. Read our latest publications." path="/lab" />
+      <SEO title="Olyxee Lab | Research" description="Olyxee Lab is our research division exploring the frontiers of AI safety, interpretability, and efficient intelligence. Read our latest publications." path="/lab" />
       <div className="grain" />
       <Header />
 
@@ -101,7 +101,7 @@ const Lab: FC = () => {
             <em className="text-neutral-400">of intelligence</em>
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-xl text-neutral-500 leading-relaxed max-w-3xl font-light">
-            Olyxee Lab is our research division — dedicated to advancing the science of
+            Olyxee Lab is our research division, dedicated to advancing the science of
             artificial intelligence. We work on fundamental problems in AI safety,
             interpretability, and capability, and publish our findings openly.
           </motion.p>

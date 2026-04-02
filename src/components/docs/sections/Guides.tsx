@@ -132,7 +132,7 @@ print(f"Monitoring: {app.monitor_status}")
                 <ArrowRight className="w-4 h-4 text-gray-400 mt-1 flex-shrink-0 group-hover:text-gray-900 transition-colors" />
                 <div>
                   <span className="font-medium text-gray-900 group-hover:text-gray-700 transition-colors">{item.title}</span>
-                  <span className="text-gray-600"> — {item.description}</span>
+                  <span className="text-gray-600">, {item.description}</span>
                 </div>
               </div>
             ))}

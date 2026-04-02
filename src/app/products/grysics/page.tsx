@@ -79,7 +79,7 @@ function TerminalDemo() {
             <div className="w-3 h-3 rounded-full bg-green-500/70" />
           </div>
           <div className="flex-1 flex items-center justify-center">
-            <span className="text-[11px] text-neutral-500 font-mono">grysics — verification</span>
+            <span className="text-[11px] text-neutral-500 font-mono">grysics / verification</span>
           </div>
         </div>
         <div className="p-5 sm:p-6 font-mono text-[12px] sm:text-[13px] leading-6 min-h-[340px]">
@@ -320,7 +320,7 @@ export default function GrysicsPage() {
               Any model. Any device.
             </h2>
             <p className="text-neutral-500 mt-4 text-lg font-light max-w-2xl mx-auto">
-              Vision, language, generative, audio — Grysics verifies it all on any hardware target.
+              Vision, language, generative, audio. Grysics verifies it all on any hardware target.
             </p>
           </motion.div>
 
@@ -475,7 +475,7 @@ export default function GrysicsPage() {
               {
                 step: "01",
                 title: "Upload",
-                description: "Drop in any AI model — PyTorch, TensorFlow, ONNX, TFLite. Grysics auto-detects architecture and dependencies.",
+                description: "Drop in any AI model: PyTorch, TensorFlow, ONNX, TFLite. Grysics auto-detects architecture and dependencies.",
               },
               {
                 step: "02",

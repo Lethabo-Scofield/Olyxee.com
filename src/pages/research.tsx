@@ -22,7 +22,7 @@ const papers = [
     venue: "OpenAI, 2020",
     year: "2020",
     category: "Scaling",
-    description: "Empirically derives power-law relationships between model size, dataset size, compute budget, and performance — foundational to planning AI infrastructure investments.",
+    description: "Empirically derives power-law relationships between model size, dataset size, compute budget, and performance, foundational to planning AI infrastructure investments.",
     url: "https://arxiv.org/abs/2001.08361",
   },
   {

@@ -9,7 +9,7 @@ import { Download } from "lucide-react";
 const sections = [
   {
     title: "1. Information We Collect",
-    content: "We collect information you provide directly — such as when you create an account, fill out a contact form, subscribe to a waitlist, or communicate with us. This may include your name, email address, company name, job title, and any messages you send.\n\nWe also collect technical information automatically when you use our services, including IP address, browser type and version, device information, operating system, referring URLs, pages visited, and usage patterns through cookies and similar technologies."
+    content: "We collect information you provide directly, such as when you create an account, fill out a contact form, subscribe to a waitlist, or communicate with us. This may include your name, email address, company name, job title, and any messages you send.\n\nWe also collect technical information automatically when you use our services, including IP address, browser type and version, device information, operating system, referring URLs, pages visited, and usage patterns through cookies and similar technologies."
   },
   {
     title: "2. How We Use Your Information",
@@ -53,7 +53,7 @@ const Privacy: FC = () => {
   const contentRef = useRef<HTMLDivElement>(null);
 
   const handleDownload = () => {
-    let text = "OLYXEE — PRIVACY POLICY\nLast updated: March 2026\n\n";
+    let text = "OLYXEE | PRIVACY POLICY\nLast updated: March 2026\n\n";
     sections.forEach((s) => {
       text += `${s.title}\n\n${s.content}\n\n`;
     });

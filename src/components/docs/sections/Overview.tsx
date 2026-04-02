@@ -43,7 +43,7 @@ const Overview: FC<OverviewProps> = ({ onNavigate }) => {
         <h2 className="text-xl font-semibold text-gray-900 mb-4 pb-2 border-b border-gray-100">What is Olyxee?</h2>
         <div className="space-y-4 text-gray-700 leading-relaxed">
           <p>
-            Olyxee is a verification-first AI deployment platform. It provides the infrastructure to take trained AI models and deploy them reliably to edge devices — from NVIDIA Jetson boards to Raspberry Pi to microcontrollers.
+            Olyxee is a verification-first AI deployment platform. It provides the infrastructure to take trained AI models and deploy them reliably to edge devices, from NVIDIA Jetson boards to Raspberry Pi to microcontrollers.
           </p>
           <p>
             The platform handles the entire lifecycle: model ingestion, automated verification against target hardware, optimization (quantization, pruning), deployment, and continuous monitoring.
@@ -64,7 +64,7 @@ const Overview: FC<OverviewProps> = ({ onNavigate }) => {
               <div className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2.5 flex-shrink-0" />
               <div>
                 <span className="font-medium text-gray-900">{item.title}</span>
-                <span className="text-gray-600"> — {item.description}</span>
+                <span className="text-gray-600">, {item.description}</span>
               </div>
             </div>
           ))}
