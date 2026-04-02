@@ -22,36 +22,46 @@ const About: FC = () => {
       <SEO title="About" description="Learn about Olyxee's mission to build reliable AI infrastructure. Our team is dedicated to AI safety, verification, and making deployment trustworthy." path="/about" />
       <Header />
 
-      <section className="relative w-full min-h-[50vh] sm:min-h-[60vh] flex items-center overflow-hidden">
-        <Image
-          src="/images/section-header-bg.jpg"
-          alt=""
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 pt-28 sm:pt-40 pb-20 sm:pb-32">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-3xl"
-          >
-            <p className="text-xs font-semibold text-white/70 uppercase tracking-[0.25em] mb-5">About Olyxee</p>
-            <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl text-white tracking-tight leading-[1.08] mb-8">
-              We are building the trust layer{" "}
-              <em className="text-blue-400">for artificial intelligence.</em>
-            </h1>
-          </motion.div>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-lg sm:text-xl text-white/60 leading-relaxed max-w-2xl font-light"
-          >
-            AI systems are growing more powerful, but not more trustworthy. Olyxee exists to change that.
-          </motion.p>
+      <section className="relative pt-20 sm:pt-24">
+        <div className="px-4 sm:px-6 lg:px-8">
+          <div className="relative max-w-6xl mx-auto rounded-2xl sm:rounded-3xl overflow-hidden min-h-[480px] sm:min-h-[540px] lg:min-h-[600px]">
+            <Image
+              src="/images/section-header-bg.jpg"
+              alt="AI infrastructure collage"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-black/55" />
+            <div className="absolute inset-0 flex flex-col justify-end p-8 sm:p-12 lg:p-16">
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.1 }}
+                className="text-xs font-semibold text-white/70 uppercase tracking-[0.25em] mb-5"
+              >
+                About Olyxee
+              </motion.p>
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.3 }}
+                className="font-serif text-3xl sm:text-5xl lg:text-6xl text-white leading-[1.08] tracking-tight mb-6 sm:mb-8"
+              >
+                We are building the trust layer{" "}
+                <em className="text-blue-400">for artificial intelligence.</em>
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+                className="text-base sm:text-lg text-white/70 max-w-xl leading-relaxed font-light"
+              >
+                AI systems are growing more powerful, but not more trustworthy. Olyxee exists to change that.
+              </motion.p>
+            </div>
+          </div>
         </div>
       </section>
 
