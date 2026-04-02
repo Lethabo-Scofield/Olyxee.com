@@ -158,10 +158,10 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                                 href="https://www.linkedin.com/company/olyxee/?viewAsMember=true"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className={`inline-flex items-center justify-center w-8 h-8 rounded-full transition-all ${
+                                className={`inline-flex items-center justify-center w-8 h-8 rounded-full border transition-all ${
                                     theme === "dark" && !scrolled
-                                        ? "text-white/60 hover:text-white hover:bg-white/10"
-                                        : "text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100"
+                                        ? "text-white/70 border-white/20 hover:text-white hover:bg-white/10 hover:border-white/30"
+                                        : "text-neutral-500 border-neutral-200 hover:text-neutral-900 hover:bg-neutral-100 hover:border-neutral-300"
                                 }`}
                                 aria-label="Discord"
                             >
