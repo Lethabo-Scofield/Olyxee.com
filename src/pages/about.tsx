@@ -188,49 +188,6 @@ const About: FC = () => {
         </div>
       </section>
 
-      <section className="py-16 sm:py-24 lg:py-32">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              custom={0}
-              variants={fadeUp}
-            >
-              <div className="inline-block px-3 py-1 bg-blue-50 text-blue-700 text-xs font-semibold uppercase tracking-widest rounded-full mb-5">Our Position</div>
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl tracking-tight text-neutral-900 mb-6 leading-tight">
-                Where we fit in the AI stack
-              </h2>
-              <p className="text-neutral-500 text-base sm:text-lg leading-relaxed font-light mb-8">
-                Others build bigger models. We make sure those models actually work when they reach real users.
-              </p>
-              <Link href="/research" className="group inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white rounded-full text-sm font-medium hover:bg-black transition-all">
-                Read our research <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-              </Link>
-            </motion.div>
-
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              custom={1}
-              variants={fadeUp}
-            >
-              <div className="rounded-3xl overflow-hidden shadow-xl shadow-neutral-200/50">
-                <Image
-                  src="/images/ai-deployment-scale.png"
-                  alt="Only 22% of large organizations have deployed AI at scale"
-                  width={800}
-                  height={500}
-                  className="w-full h-auto"
-                />
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
       <section className="py-16 sm:py-24 lg:py-32 bg-amber-50/40 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-orange-100/30 rounded-full blur-3xl" />
