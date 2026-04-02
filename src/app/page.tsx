@@ -145,10 +145,7 @@ function LogoStrip() {
     { name: "Mistral", src: "/images/logos/mistral.png", size: 32 },
     { name: "xAI", src: "/images/logos/xai.png", size: 30 },
     { name: "DeepSeek", src: "/images/logos/deepseek.png", size: 32 },
-    { name: "Meta", src: "/images/logos/meta.png", size: 80 },
-    { name: "Google", src: "/images/logos/google.png", size: 88 },
-    { name: "Microsoft", src: "/images/logos/microsoft.png", size: 28 },
-    { name: "NVIDIA", src: "/images/logos/nvidia.png", size: 100 },
+    { name: "NVIDIA", src: "/images/logos/nvidia-icon.png", size: 36 },
     { name: "GitHub", src: "/images/logos/github.png", size: 32 },
   ];
 
