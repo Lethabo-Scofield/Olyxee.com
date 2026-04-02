@@ -139,48 +139,50 @@ const About: FC = () => {
         </div>
       </section>
 
-      <section className="py-16 sm:py-24 lg:py-32 bg-neutral-100">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            custom={0}
-            variants={fadeUp}
-            className="mb-12 sm:mb-16"
-          >
-            <p className="text-xs font-semibold text-neutral-500 uppercase tracking-[0.25em] mb-4">What We Build</p>
-            <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900">
-              Verification-first AI infrastructure
-            </h2>
-          </motion.div>
+      <section className="py-16 sm:py-24 lg:py-32">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-neutral-100 rounded-2xl sm:rounded-3xl p-8 sm:p-12 lg:p-16">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              custom={0}
+              variants={fadeUp}
+              className="mb-12 sm:mb-16"
+            >
+              <p className="text-xs font-semibold text-neutral-500 uppercase tracking-[0.25em] mb-4">What We Build</p>
+              <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900">
+                Verification-first AI infrastructure
+              </h2>
+            </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-            {[
-              { title: "Pre-deployment Testing", description: "Test AI outputs for accuracy, consistency, and safety before production.", bg: "/images/gradient-blue-pink.png" },
-              { title: "Hallucination Detection", description: "Identify when models fabricate information, with confidence scoring.", bg: "/images/gradient-orange-purple.png" },
-              { title: "Behavioral Evaluation", description: "Measure AI consistency across rephrasings and edge cases.", bg: "/images/gradient-pastel.png" },
-              { title: "Production Monitoring", description: "Detect quality degradation, drift, and failure patterns in real time.", bg: "/images/gradient-purple.png" },
-              { title: "Compliance & Audit", description: "Audit trails for regulated industries. Every decision tracked.", bg: "/images/gradient-abstract-blue.png" },
-              { title: "Open Research", description: "We publish findings and open-source tools. Safety is a shared foundation.", bg: "/images/gradient-yellow-green.png" },
-            ].map((item, idx) => (
-              <motion.div
-                key={item.title}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
-                custom={idx}
-                variants={fadeUp}
-                className="group relative rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300"
-              >
-                <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url("${item.bg}")` }} />
-                <div className="absolute inset-0 bg-neutral-800/80" />
-                <div className="relative p-7 sm:p-8">
-                  <h3 className="text-base font-semibold text-white mb-2">{item.title}</h3>
-                  <p className="text-sm text-neutral-300 leading-relaxed font-light">{item.description}</p>
-                </div>
-              </motion.div>
-            ))}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+              {[
+                { title: "Pre-deployment Testing", description: "Test AI outputs for accuracy, consistency, and safety before production.", bg: "/images/gradient-blue-pink.png" },
+                { title: "Hallucination Detection", description: "Identify when models fabricate information, with confidence scoring.", bg: "/images/gradient-orange-purple.png" },
+                { title: "Behavioral Evaluation", description: "Measure AI consistency across rephrasings and edge cases.", bg: "/images/gradient-pastel.png" },
+                { title: "Production Monitoring", description: "Detect quality degradation, drift, and failure patterns in real time.", bg: "/images/gradient-purple.png" },
+                { title: "Compliance & Audit", description: "Audit trails for regulated industries. Every decision tracked.", bg: "/images/gradient-abstract-blue.png" },
+                { title: "Open Research", description: "We publish findings and open-source tools. Safety is a shared foundation.", bg: "/images/gradient-yellow-green.png" },
+              ].map((item, idx) => (
+                <motion.div
+                  key={item.title}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.2 }}
+                  custom={idx}
+                  variants={fadeUp}
+                  className="group relative rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300"
+                >
+                  <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url("${item.bg}")` }} />
+                  <div className="absolute inset-0 bg-neutral-800/80" />
+                  <div className="relative p-7 sm:p-8">
+                    <h3 className="text-base font-semibold text-white mb-2">{item.title}</h3>
+                    <p className="text-sm text-neutral-300 leading-relaxed font-light">{item.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
