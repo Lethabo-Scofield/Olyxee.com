@@ -24,22 +24,23 @@ const About: FC = () => {
 
       <section className="relative pt-20 sm:pt-24">
         <div className="px-4 sm:px-6 lg:px-8">
-          <div className="relative max-w-6xl mx-auto rounded-2xl sm:rounded-3xl overflow-hidden min-h-[480px] sm:min-h-[540px] lg:min-h-[600px]">
+          <div className="relative max-w-6xl mx-auto rounded-2xl sm:rounded-3xl overflow-hidden">
             <Image
               src="/images/section-header-bg.jpg"
               alt="AI infrastructure collage"
-              fill
+              width={1360}
+              height={300}
               priority
               sizes="100vw"
-              className="object-cover object-center"
+              className="w-full h-auto block"
             />
-            <div className="absolute inset-0 bg-black/55" />
-            <div className="absolute inset-0 flex flex-col justify-end p-8 sm:p-12 lg:p-16">
+            <div className="absolute inset-0 bg-black/50" />
+            <div className="absolute inset-0 flex flex-col justify-end p-6 sm:p-10 lg:p-14">
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.1 }}
-                className="text-xs font-semibold text-white/70 uppercase tracking-[0.25em] mb-5"
+                className="text-xs font-semibold text-white/70 uppercase tracking-[0.25em] mb-3"
               >
                 About Olyxee
               </motion.p>
@@ -47,21 +48,21 @@ const About: FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.3 }}
-                className="font-serif text-3xl sm:text-5xl lg:text-6xl text-white leading-[1.08] tracking-tight mb-6 sm:mb-8"
+                className="font-serif text-2xl sm:text-4xl lg:text-5xl text-white leading-[1.08] tracking-tight"
               >
                 We are building the trust layer{" "}
                 <em className="text-blue-400">for artificial intelligence.</em>
               </motion.h1>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-                className="text-base sm:text-lg text-white/70 max-w-xl leading-relaxed font-light"
-              >
-                AI systems are growing more powerful, but not more trustworthy. Olyxee exists to change that.
-              </motion.p>
             </div>
           </div>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="text-base sm:text-lg text-neutral-500 max-w-xl leading-relaxed font-light mt-8 max-w-6xl mx-auto"
+          >
+            AI systems are growing more powerful, but not more trustworthy. Olyxee exists to change that.
+          </motion.p>
         </div>
       </section>
 
