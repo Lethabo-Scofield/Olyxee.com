@@ -207,7 +207,7 @@ function MissionSection() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -227,52 +227,21 @@ function MissionSection() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="space-y-6"
+            transition={{ duration: 0.8, delay: 0.15 }}
+            className="rounded-2xl overflow-hidden border border-neutral-200/80"
           >
-            {[
-              { icon: Shield, title: "Research-first", desc: "Grounded in AI safety research. We study failure modes and publish our findings." },
-              { icon: Zap, title: "Infrastructure-grade", desc: "Production-scale systems. Reliable, fast, and built to integrate seamlessly." },
-              { icon: Eye, title: "Trust through transparency", desc: "Tools that show exactly how your AI behaves and where it falls short." },
-            ].map((item, idx) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.08 }}
-                className="group flex gap-5 p-6 rounded-2xl hover:bg-neutral-50/80 transition-all duration-300"
-              >
-                <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-neutral-100 flex items-center justify-center mt-0.5">
-                  <item.icon className="w-5 h-5 text-neutral-600" />
-                </div>
-                <div>
-                  <h3 className="text-[15px] font-semibold text-neutral-900 mb-1">{item.title}</h3>
-                  <p className="text-sm text-neutral-500 font-light leading-relaxed">{item.desc}</p>
-                </div>
-              </motion.div>
-            ))}
+            <Image
+              src="/images/team-developers.png"
+              alt="Olyxee team collaborating on AI safety and infrastructure"
+              width={1408}
+              height={768}
+              className="w-full h-auto object-cover"
+            />
           </motion.div>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="mt-16 rounded-2xl overflow-hidden border border-neutral-200/80"
-        >
-          <Image
-            src="/images/team-developers.png"
-            alt="Olyxee team collaborating on AI safety and infrastructure"
-            width={1408}
-            height={768}
-            className="w-full h-auto object-cover"
-          />
-        </motion.div>
       </div>
     </section>
   );
