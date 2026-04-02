@@ -188,31 +188,31 @@ const About: FC = () => {
         </div>
       </section>
 
-      <section className="py-16 sm:py-24 lg:py-32 bg-amber-50/40 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-orange-100/30 rounded-full blur-3xl" />
-        </div>
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
+      <section className="py-16 sm:py-24 lg:py-32">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             custom={0}
             variants={fadeUp}
-            className="text-center mb-14 sm:mb-20"
+            className="mb-14 sm:mb-20"
           >
-            <p className="text-xs font-semibold text-orange-700 uppercase tracking-[0.25em] mb-4">Our Principles</p>
-            <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900">
+            <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.25em] mb-4">Our Principles</p>
+            <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-5">
               What drives us
             </h2>
+            <p className="text-base sm:text-lg text-neutral-500 leading-relaxed font-light max-w-2xl">
+              The principles behind every product we ship, every paper we publish, and every system we deploy.
+            </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-neutral-200 rounded-2xl overflow-hidden">
             {[
-              { num: "01", title: "Scientific rigor", description: "Every system we build is grounded in research, tested thoroughly, and validated before deployment.", gradient: "from-blue-500 to-blue-600" },
-              { num: "02", title: "Infrastructure first", description: "Great AI needs great infrastructure. We build the foundation teams can rely on.", gradient: "from-orange-500 to-orange-600" },
-              { num: "03", title: "Production ready", description: "We design for real-world workloads, not demos. Every tool is built to scale.", gradient: "from-green-500 to-green-600" },
-              { num: "04", title: "Open research", description: "We publish our findings and contribute tools back to the broader AI community.", gradient: "from-purple-500 to-purple-600" },
+              { num: "01", title: "Scientific rigor", description: "Every system we build is grounded in research, tested thoroughly, and validated before deployment. We do not ship what we cannot measure." },
+              { num: "02", title: "Infrastructure first", description: "Great AI needs great infrastructure. We invest in the foundation, from scalable backends to deployment pipelines, so teams can focus on their models." },
+              { num: "03", title: "Production ready", description: "We design for real-world workloads, not demos. Every tool is built to handle scale, complexity, and the unpredictability of production environments." },
+              { num: "04", title: "Open research", description: "We publish our findings and contribute tools back to the broader AI community. Progress in AI infrastructure benefits everyone." },
             ].map((value, idx) => (
               <motion.div
                 key={value.title}
@@ -221,13 +221,11 @@ const About: FC = () => {
                 viewport={{ once: true, amount: 0.3 }}
                 custom={idx}
                 variants={fadeUp}
-                className="bg-white rounded-2xl p-7 sm:p-8 shadow-sm border border-neutral-100 hover:shadow-lg hover:shadow-neutral-200/50 transition-all duration-300"
+                className="bg-white p-8 sm:p-10 lg:p-12"
               >
-                <div className={`inline-flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br ${value.gradient} text-white text-sm font-bold mb-5`}>
-                  {value.num}
-                </div>
-                <h3 className="text-lg font-semibold text-neutral-900 mb-3">{value.title}</h3>
-                <p className="text-sm text-neutral-500 leading-relaxed font-light">{value.description}</p>
+                <span className="text-xs font-mono text-neutral-300 tracking-wider mb-4 block">{value.num}</span>
+                <h3 className="text-xl font-semibold text-neutral-900 mb-3">{value.title}</h3>
+                <p className="text-[15px] text-neutral-500 leading-relaxed font-light">{value.description}</p>
               </motion.div>
             ))}
           </div>
