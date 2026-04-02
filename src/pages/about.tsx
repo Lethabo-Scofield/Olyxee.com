@@ -306,12 +306,18 @@ const About: FC = () => {
               </div>
               <div className="mt-8 pt-6 border-t border-neutral-100">
                 <a
-                  href="https://lethaboscofield.web.app/"
+                  href="https://www.linkedin.com/in/lethabo-scofield-17b37a257/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group inline-flex items-center gap-3 hover:opacity-80 transition-opacity"
                 >
-                  <div className="w-10 h-10 rounded-full bg-neutral-900 flex items-center justify-center text-white text-sm font-semibold">LS</div>
+                  <Image
+                    src="/images/lethabo-scofield.png"
+                    alt="Lethabo Scofield"
+                    width={40}
+                    height={40}
+                    className="rounded-full object-cover"
+                  />
                   <div>
                     <p className="text-sm font-semibold text-neutral-900 group-hover:text-neutral-600 transition-colors">Lethabo Scofield</p>
                     <p className="text-xs text-neutral-400">Founder &amp; CEO</p>
