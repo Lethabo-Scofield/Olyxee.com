@@ -127,6 +127,71 @@ export function HuggingFaceLogo({ className }: { className?: string }) {
   );
 }
 
+export function AnthropicLogo({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 256 176" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M147.487 0L256 176h-45.544L128 18.227L45.544 176H0L108.513 0h38.974z"/>
+    </svg>
+  );
+}
+
+export function MistralLogo({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 256 233" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <rect x="186" y="0" width="70" height="47" fill="#F7D046"/>
+      <rect x="0" y="0" width="70" height="47"/>
+      <rect x="0" y="62" width="70" height="47"/>
+      <rect x="62" y="62" width="70" height="47"/>
+      <rect x="186" y="62" width="70" height="47"/>
+      <rect x="124" y="62" width="70" height="47"/>
+      <rect x="0" y="124" width="70" height="47"/>
+      <rect x="124" y="124" width="70" height="47"/>
+      <rect x="0" y="186" width="70" height="47"/>
+      <rect x="186" y="186" width="70" height="47"/>
+      <rect x="62" y="186" width="70" height="47"/>
+      <rect x="124" y="186" width="70" height="47"/>
+    </svg>
+  );
+}
+
+export function CohereLogo({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 800 200" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M95.3 160c-33.1 0-60-26.9-60-60s26.9-60 60-60c20.4 0 38.4 10.2 49.2 25.8l-24.4 16.3c-5.9-8.5-15.7-14.1-24.8-14.1-18.6 0-28 15.4-28 32s9.4 32 28 32c9.1 0 18.9-5.6 24.8-14.1l24.4 16.3C174 149.8 155.7 160 95.3 160z"/>
+      <path d="M200 42c-11 0-20 9-20 20s9 20 20 20 20-9 20-20-9-20-20-20zm-18 56v60h36V98h-36z"/>
+      <path d="M290 95c-33.1 0-55 22.4-55 53v10h36v-10c0-14.4 7.6-25 19-25s19 10.6 19 25v10h36v-10c0-30.6-21.9-53-55-53z"/>
+      <path d="M395 95c-33.1 0-55 22.4-55 53v10h110v-10c0-30.6-21.9-53-55-53zm-19 35c0-8.3 7.6-17 19-17s19 8.7 19 17h-38z"/>
+      <path d="M520 95c-10 0-18 4-24 10V42h-36v116h36v-48c0-8 6-15 14-15s14 7 14 15v48h36V110c0-8.3-15.9-15-40-15z"/>
+      <path d="M620 95c-33.1 0-55 22.4-55 53v10h110v-10c0-30.6-21.9-53-55-53zm-19 35c0-8.3 7.6-17 19-17s19 8.7 19 17h-38z"/>
+      <path d="M745 95c-10 0-20 5-26 12v-9h-36v60h36v-30c0-10 8-16 18-16h26V95h-18z"/>
+    </svg>
+  );
+}
+
+export function DeepMindLogo({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 660 120" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 10h30c33 0 55 20 55 50s-22 50-55 50H0V10zm30 82c20 0 35-13 35-32s-15-32-35-32H20v64h10z"/>
+      <path d="M110 48c-25 0-42 18-42 42v20h84V90c0-24-17-42-42-42zm-22 42c0-12 10-24 22-24s22 12 22 24h-44z"/>
+      <path d="M185 48c-25 0-42 18-42 42v20h84V90c0-24-17-42-42-42zm-22 42c0-12 10-24 22-24s22 12 22 24h-44z"/>
+      <path d="M250 48v62c0 30-18 48-45 48h-5v-18h5c16 0 27-10 27-30V48h18z"/>
+      <path d="M260 48v62h18V73c0-14 10-22 22-22 12 0 18 8 18 22v37h18V73c0-14 10-22 22-22 12 0 18 8 18 22v37h18V73c0-24-12-38-32-38-13 0-23 6-28 15-5-9-15-15-28-15-10 0-18 5-24 12v-4h-4z"/>
+      <path d="M420 10v28c-7-7-17-12-28-12-25 0-42 18-42 42s17 42 42 42c11 0 21-5 28-12v10h18V10h-18zm-25 82c-14 0-25-11-25-24s11-24 25-24 25 11 25 24-11 24-25 24z"/>
+    </svg>
+  );
+}
+
+export function xAILogo({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 200 100" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 15L55 50L10 85h16l35-27.5L96 85h16L67 50l45-35H96L61 42.5L26 15H10z"/>
+      <path d="M135 15l-20 35h18l20-35h-18z"/>
+      <path d="M115 50l-10 17.5L115 85h18L123 67.5L133 50h-18z"/>
+      <path d="M155 15v70h16V15h-16z"/>
+    </svg>
+  );
+}
+
 export const companyLogos = {
   google: { Component: GoogleLogo, name: "Google" },
   microsoft: { Component: MicrosoftLogo, name: "Microsoft" },

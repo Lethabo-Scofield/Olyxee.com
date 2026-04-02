@@ -7,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { GoogleLogo, MicrosoftLogo, OpenAILogo, NvidiaLogo, MetaLogo, AWSLogo, GoogleCloudLogo, IBMLogo, HuggingFaceLogo } from "../components/company-logos";
+import { GoogleLogo, MicrosoftLogo, OpenAILogo, NvidiaLogo, MetaLogo, AWSLogo, GoogleCloudLogo, IBMLogo, HuggingFaceLogo, AnthropicLogo, MistralLogo, CohereLogo, DeepMindLogo, xAILogo } from "../components/company-logos";
 
 export default function HomePage() {
   const [cookieBannerVisible, setCookieBannerVisible] = useState(false);
@@ -140,12 +140,16 @@ function HeroSection() {
 
 function LogoStrip() {
   const collaborators = [
+    { name: "OpenAI", Logo: OpenAILogo, width: "w-[28px]" },
+    { name: "Anthropic", Logo: AnthropicLogo, width: "w-[28px]" },
+    { name: "Google DeepMind", Logo: DeepMindLogo, width: "w-[110px]" },
+    { name: "Meta", Logo: MetaLogo, width: "w-[80px]" },
+    { name: "Mistral", Logo: MistralLogo, width: "w-[28px]" },
+    { name: "Cohere", Logo: CohereLogo, width: "w-[90px]" },
+    { name: "xAI", Logo: xAILogo, width: "w-[50px]" },
+    { name: "NVIDIA", Logo: NvidiaLogo, width: "w-[100px]" },
     { name: "Google", Logo: GoogleLogo, width: "w-[88px]" },
     { name: "Microsoft", Logo: MicrosoftLogo, width: "w-[28px]" },
-    { name: "OpenAI", Logo: OpenAILogo, width: "w-[28px]" },
-    { name: "NVIDIA", Logo: NvidiaLogo, width: "w-[100px]" },
-    { name: "Meta", Logo: MetaLogo, width: "w-[80px]" },
-    { name: "AWS", Logo: AWSLogo, width: "w-[60px]" },
   ];
 
   return (
