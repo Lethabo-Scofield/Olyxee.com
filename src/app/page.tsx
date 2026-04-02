@@ -250,76 +250,73 @@ function MissionSection() {
 
 function ResearchAreas() {
   return (
-    <section className="relative overflow-hidden">
-      <div className="absolute inset-0 bg-neutral-950" />
-      <div className="absolute inset-0">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-gradient-to-br from-indigo-500/10 via-purple-500/5 to-transparent blur-3xl" />
-      </div>
+    <section className="py-20 sm:py-32 lg:py-40">
+      <div className="max-w-5xl mx-auto px-4 sm:px-8 lg:px-12">
+        <div className="bg-neutral-50 rounded-3xl p-8 sm:p-12 lg:p-16">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12 sm:mb-16 lg:mb-20"
+          >
+            <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">What We Do</p>
+            <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900">
+              Advancing the science of <em className="text-blue-500">AI reliability</em>
+            </h2>
+          </motion.div>
 
-      <div className="relative py-20 sm:py-32 lg:py-40 max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-12 sm:mb-20 lg:mb-24"
-        >
-          <p className="text-xs font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-4">What We Do</p>
-          <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-white">
-            Advancing the science of <em className="text-blue-400">AI reliability</em>
-          </h2>
-        </motion.div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
-          {[
-            {
-              num: "01",
-              title: "Verification",
-              desc: "Methods to verify AI systems produce accurate, consistent outputs across every scenario.",
-              icon: CheckCircle2,
-            },
-            {
-              num: "02",
-              title: "Safety",
-              desc: "Detecting hallucinations and ensuring AI systems stay within intended boundaries.",
-              icon: AlertTriangle,
-            },
-            {
-              num: "03",
-              title: "Monitoring",
-              desc: "Real-time observability for AI in production. Catch drift and failures early.",
-              icon: Activity,
-            },
-          ].map((step, idx) => (
-            <motion.div
-              key={step.num}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: idx * 0.12 }}
-              className="p-8 sm:p-10 rounded-2xl border border-white/[0.06] bg-white/[0.02] group hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-300"
-            >
-              <div className="flex items-center justify-between mb-8">
-                <div className="w-10 h-10 rounded-xl bg-white/[0.06] flex items-center justify-center">
-                  <step.icon className="w-5 h-5 text-white/40" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+            {[
+              {
+                num: "01",
+                title: "Verification",
+                desc: "Methods to verify AI systems produce accurate, consistent outputs across every scenario.",
+                icon: CheckCircle2,
+              },
+              {
+                num: "02",
+                title: "Safety",
+                desc: "Detecting hallucinations and ensuring AI systems stay within intended boundaries.",
+                icon: AlertTriangle,
+              },
+              {
+                num: "03",
+                title: "Monitoring",
+                desc: "Real-time observability for AI in production. Catch drift and failures early.",
+                icon: Activity,
+              },
+            ].map((step, idx) => (
+              <motion.div
+                key={step.num}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: idx * 0.12 }}
+                className="p-8 sm:p-10 rounded-2xl bg-white group hover:shadow-sm transition-all duration-300"
+              >
+                <div className="flex items-center justify-between mb-8">
+                  <div className="w-10 h-10 rounded-xl bg-neutral-100 flex items-center justify-center">
+                    <step.icon className="w-5 h-5 text-neutral-500" />
+                  </div>
+                  <div className="text-4xl font-serif text-neutral-200 leading-none">{step.num}</div>
                 </div>
-                <div className="text-4xl font-serif text-white/[0.06] leading-none">{step.num}</div>
-              </div>
-              <h3 className="text-xl sm:text-2xl font-semibold text-white mb-3 tracking-tight">{step.title}</h3>
-              <p className="text-sm sm:text-[15px] text-neutral-400 font-light leading-relaxed">{step.desc}</p>
-            </motion.div>
-          ))}
-        </div>
+                <h3 className="text-xl sm:text-2xl font-semibold text-neutral-900 mb-3 tracking-tight">{step.title}</h3>
+                <p className="text-sm sm:text-[15px] text-neutral-500 font-light leading-relaxed">{step.desc}</p>
+              </motion.div>
+            ))}
+          </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-          className="mt-16"
-        >
-          <VerificationDiagram />
-        </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="mt-12"
+          >
+            <VerificationDiagram />
+          </motion.div>
+        </div>
       </div>
     </section>
   );
@@ -328,15 +325,15 @@ function ResearchAreas() {
 
 function VerificationDiagram() {
   const steps = [
-    { label: "AI Application", sub: "Chatbot / RAG / Agent", color: "bg-blue-500/20 border-blue-500/30 text-blue-300" },
-    { label: "Verification", sub: "Test & Evaluate", color: "bg-amber-500/20 border-amber-500/30 text-amber-300" },
-    { label: "Analysis", sub: "Score & Report", color: "bg-purple-500/20 border-purple-500/30 text-purple-300" },
-    { label: "Production", sub: "Monitor & Alert", color: "bg-emerald-500/20 border-emerald-500/30 text-emerald-300" },
+    { label: "AI Application", sub: "Chatbot / RAG / Agent", color: "bg-blue-50 border-blue-200 text-blue-700" },
+    { label: "Verification", sub: "Test & Evaluate", color: "bg-amber-50 border-amber-200 text-amber-700" },
+    { label: "Analysis", sub: "Score & Report", color: "bg-purple-50 border-purple-200 text-purple-700" },
+    { label: "Production", sub: "Monitor & Alert", color: "bg-emerald-50 border-emerald-200 text-emerald-700" },
   ];
 
   return (
-    <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-5 sm:p-10">
-      <p className="text-[11px] font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-6 sm:mb-8 text-center">How Olyxee Fits Into Your AI Stack</p>
+    <div className="rounded-2xl bg-white p-5 sm:p-10">
+      <p className="text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-6 sm:mb-8 text-center">How Olyxee Fits Into Your AI Stack</p>
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
         {steps.map((step, idx) => (
           <motion.div
@@ -360,48 +357,39 @@ function VerificationDiagram() {
 function ApproachSection() {
   return (
     <section className="py-20 sm:py-32 lg:py-40">
-      <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="mb-10 sm:mb-16 lg:mb-20"
-        >
-          <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Our Approach</p>
-          <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 max-w-3xl">
-            Built at the intersection of <em className="text-orange-400">research and engineering</em>
-          </h2>
-        </motion.div>
+      <div className="max-w-5xl mx-auto px-4 sm:px-8 lg:px-12">
+        <div className="bg-neutral-50 rounded-3xl p-8 sm:p-12 lg:p-16">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="mb-10 sm:mb-16 lg:mb-20"
+          >
+            <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Our Approach</p>
+            <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 max-w-3xl">
+              Built at the intersection of <em className="text-orange-400">research and engineering</em>
+            </h2>
+          </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="md:col-span-2 relative group rounded-2xl bg-neutral-950 overflow-hidden"
+            className="md:col-span-2 relative group rounded-2xl bg-neutral-100 overflow-hidden"
           >
-            <div className="absolute inset-0">
-              <Image
-                src="/images/gradient-blue-pink.png"
-                alt=""
-                fill
-                sizes="(max-width: 768px) 100vw, 66vw"
-                aria-hidden="true"
-                className="object-cover opacity-20 group-hover:opacity-30 transition-opacity duration-500"
-              />
-            </div>
-            <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-indigo-500/15 to-transparent rounded-full blur-2xl" />
+            <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-blue-100/40 to-transparent rounded-full blur-2xl" />
             <div className="relative p-8 sm:p-10">
-              <Shield className="w-6 h-6 text-neutral-400 mb-5" />
-              <h3 className="text-xl sm:text-2xl font-semibold text-white mb-3 tracking-tight">AI Safety Infrastructure</h3>
-              <p className="text-neutral-400 text-sm sm:text-[15px] font-light leading-relaxed max-w-lg mb-6">
+              <Shield className="w-6 h-6 text-neutral-500 mb-5" />
+              <h3 className="text-xl sm:text-2xl font-semibold text-neutral-900 mb-3 tracking-tight">AI Safety Infrastructure</h3>
+              <p className="text-neutral-500 text-sm sm:text-[15px] font-light leading-relaxed max-w-lg mb-6">
                 Verification engines, evaluation frameworks, and monitoring systems for real-world AI deployment.
               </p>
               <div className="flex flex-wrap gap-2">
                 {["Verification", "Evaluation", "Monitoring", "Compliance"].map(t => (
-                  <span key={t} className="text-[11px] text-neutral-400 bg-white/5 border border-white/10 rounded-full px-3 py-1">{t}</span>
+                  <span key={t} className="text-[11px] text-neutral-500 bg-white/60 rounded-full px-3 py-1">{t}</span>
                 ))}
               </div>
             </div>
@@ -478,6 +466,7 @@ function ApproachSection() {
               </div>
             </div>
           </motion.div>
+          </div>
         </div>
       </div>
     </section>
