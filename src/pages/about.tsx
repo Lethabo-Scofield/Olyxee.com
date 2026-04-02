@@ -19,7 +19,7 @@ const fadeUp = {
 const About: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO title="About" description="Learn about Olyxee's mission to build reliable AI infrastructure. Our team is dedicated to AI safety, verification, and making deployment trustworthy." path="/about" />
+      <SEO title="About" description="Olyxee provides research and infrastructure for artificial intelligence. We support experimentation, development, and verification of AI models with scalable tools for production deployment." path="/about" />
       <Header />
 
       <section className="relative pt-20 sm:pt-24">
@@ -50,7 +50,7 @@ const About: FC = () => {
                 transition={{ duration: 1, delay: 0.3 }}
                 className="font-serif text-2xl sm:text-4xl lg:text-5xl text-white leading-[1.08] tracking-tight"
               >
-                We are building the trust layer{" "}
+                Research and infrastructure{" "}
                 <em className="text-blue-400">for artificial intelligence.</em>
               </motion.h1>
             </div>
@@ -61,7 +61,7 @@ const About: FC = () => {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="text-base sm:text-lg text-neutral-500 max-w-xl leading-relaxed font-light mt-8 max-w-6xl mx-auto"
           >
-            AI systems are growing more powerful, but not more trustworthy. Olyxee exists to change that.
+            Olyxee empowers teams to develop, test, and deploy AI systems with robust infrastructure and scientific rigor.
           </motion.p>
         </div>
       </section>
@@ -76,11 +76,11 @@ const About: FC = () => {
               custom={0}
               variants={fadeUp}
             >
-              <div className="inline-block px-3 py-1 bg-red-50 text-red-700 text-xs font-semibold uppercase tracking-widest rounded-full mb-5">The Problem</div>
-              <h2 className="font-serif text-3xl sm:text-4xl tracking-tight mb-6 leading-tight">AI works in the lab. Production is different.</h2>
+              <div className="inline-block px-3 py-1 bg-red-50 text-red-700 text-xs font-semibold uppercase tracking-widest rounded-full mb-5">The Challenge</div>
+              <h2 className="font-serif text-3xl sm:text-4xl tracking-tight mb-6 leading-tight">AI needs more than models.</h2>
               <div className="space-y-4 text-[15px] sm:text-base text-neutral-500 leading-relaxed font-light">
-                <p>AI hallucinates, drifts, and fails unpredictably in production. There is no standard way to verify AI before deployment or catch failures after.</p>
-                <p>That gap is where most AI projects stall.</p>
+                <p>Building AI is one thing. Getting it to work reliably in production is another. Teams need scalable infrastructure, deployment pipelines, and verification tools to move from research to real-world impact.</p>
+                <p>Most AI projects stall not because of bad models, but because the infrastructure around them is missing.</p>
               </div>
             </motion.div>
             <motion.div
@@ -129,11 +129,11 @@ const About: FC = () => {
               variants={fadeUp}
               className="order-1 lg:order-2"
             >
-              <div className="inline-block px-3 py-1 bg-green-50 text-green-700 text-xs font-semibold uppercase tracking-widest rounded-full mb-5">Our Answer</div>
-              <h2 className="font-serif text-3xl sm:text-4xl tracking-tight mb-6 leading-tight">Verification-first infrastructure.</h2>
+              <div className="inline-block px-3 py-1 bg-green-50 text-green-700 text-xs font-semibold uppercase tracking-widest rounded-full mb-5">Our Approach</div>
+              <h2 className="font-serif text-3xl sm:text-4xl tracking-tight mb-6 leading-tight">Research-driven infrastructure.</h2>
               <div className="space-y-4 text-[15px] sm:text-base text-neutral-500 leading-relaxed font-light">
-                <p>Test before deployment, monitor after. We focus on hallucination detection, behavioral consistency, and automated evaluation.</p>
-                <p>Rigorous enough for safety-critical applications. Simple enough for any team to adopt.</p>
+                <p>We support experimentation across deep learning, NLP, computer vision, and physics-informed AI. Through products like Grysics, we ensure models perform as expected before deployment.</p>
+                <p>Scalable backend, deployment pipelines, and tools to integrate AI into production safely and efficiently.</p>
               </div>
             </motion.div>
           </div>
@@ -153,18 +153,18 @@ const About: FC = () => {
             >
               <p className="text-xs font-semibold text-neutral-500 uppercase tracking-[0.25em] mb-4">What We Build</p>
               <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900">
-                Verification-first AI infrastructure
+                AI research and infrastructure
               </h2>
             </motion.div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
               {[
-                { title: "Pre-deployment Testing", description: "Test AI outputs for accuracy, consistency, and safety before production.", bg: "/images/gradient-blue-pink.png" },
-                { title: "Hallucination Detection", description: "Identify when models fabricate information, with confidence scoring.", bg: "/images/gradient-orange-purple.png" },
-                { title: "Behavioral Evaluation", description: "Measure AI consistency across rephrasings and edge cases.", bg: "/images/gradient-pastel.png" },
+                { title: "AI Research", description: "Experimentation and development across deep learning, NLP, computer vision, and physics-informed AI.", bg: "/images/gradient-blue-pink.png" },
+                { title: "Model Verification", description: "Through Grysics, ensure AI models perform as expected before deployment with rigorous testing.", bg: "/images/gradient-orange-purple.png" },
+                { title: "Deployment Pipelines", description: "Scalable backend and tools to move AI from research to production safely and efficiently.", bg: "/images/gradient-pastel.png" },
                 { title: "Production Monitoring", description: "Detect quality degradation, drift, and failure patterns in real time.", bg: "/images/gradient-purple.png" },
-                { title: "Compliance & Audit", description: "Audit trails for regulated industries. Every decision tracked.", bg: "/images/gradient-abstract-blue.png" },
-                { title: "Open Research", description: "We publish findings and open-source tools. Safety is a shared foundation.", bg: "/images/gradient-yellow-green.png" },
+                { title: "Infrastructure at Scale", description: "Backend systems designed to handle AI workloads across training, inference, and evaluation.", bg: "/images/gradient-abstract-blue.png" },
+                { title: "Open Research", description: "We publish findings and open-source tools to advance AI development collectively.", bg: "/images/gradient-yellow-green.png" },
               ].map((item, idx) => (
                 <motion.div
                   key={item.title}
@@ -209,10 +209,10 @@ const About: FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { num: "01", title: "Reliability over novelty", description: "Better AI comes from making models more reliable, not just bigger.", gradient: "from-blue-500 to-blue-600" },
-              { num: "02", title: "Transparency by default", description: "Every deployment explainable. Every failure traceable.", gradient: "from-orange-500 to-orange-600" },
-              { num: "03", title: "Safety is not optional", description: "We design for the most demanding use cases first.", gradient: "from-green-500 to-green-600" },
-              { num: "04", title: "Open foundations", description: "We publish research and open-source our tools. Safety is a shared foundation.", gradient: "from-purple-500 to-purple-600" },
+              { num: "01", title: "Scientific rigor", description: "Every system we build is grounded in research, tested thoroughly, and validated before deployment.", gradient: "from-blue-500 to-blue-600" },
+              { num: "02", title: "Infrastructure first", description: "Great AI needs great infrastructure. We build the foundation teams can rely on.", gradient: "from-orange-500 to-orange-600" },
+              { num: "03", title: "Production ready", description: "We design for real-world workloads, not demos. Every tool is built to scale.", gradient: "from-green-500 to-green-600" },
+              { num: "04", title: "Open research", description: "We publish our findings and contribute tools back to the broader AI community.", gradient: "from-purple-500 to-purple-600" },
             ].map((value, idx) => (
               <motion.div
                 key={value.title}
@@ -264,14 +264,14 @@ const About: FC = () => {
             >
               <div className="inline-block px-3 py-1 bg-neutral-100 text-neutral-600 text-xs font-semibold uppercase tracking-widest rounded-full mb-5">Founder&apos;s Note</div>
               <blockquote className="font-serif text-2xl sm:text-3xl lg:text-4xl text-neutral-900 leading-snug mb-8 tracking-tight">
-                &ldquo;The companies that win in AI will be the ones whose systems actually work.&rdquo;
+                &ldquo;Great AI does not happen without great infrastructure. We are building the research and tools that make AI work in the real world.&rdquo;
               </blockquote>
               <div className="space-y-4">
                 <p className="text-base text-neutral-500 leading-relaxed font-light">
-                  We are not building another model. We are building the foundation every model needs.
+                  We are not building another model. We are building the infrastructure, pipelines, and verification systems every AI team needs.
                 </p>
                 <p className="text-base text-neutral-500 leading-relaxed font-light">
-                  Rigorous enough for safety-critical applications. Simple enough for any team to adopt.
+                  From experimentation to production, Olyxee gives teams the tools to move faster with confidence.
                 </p>
               </div>
               <div className="mt-8 pt-6 border-t border-neutral-100">
