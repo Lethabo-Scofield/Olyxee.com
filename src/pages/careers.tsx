@@ -11,7 +11,7 @@ interface Role {
   title: string;
   team: string;
   location: string;
-  type: "full-time";
+  type: "full-time" | "internship";
   description: string;
   responsibilities: string[];
   requirements: string[];
@@ -511,6 +511,159 @@ const roles: Role[] = [
       "Understanding of developer and B2B marketing",
     ],
   },
+  {
+    title: "AI Research Intern",
+    team: "AI Research & Development",
+    location: "Remote",
+    type: "internship",
+    description: "Contribute to research on AI verification, model reliability, and safety evaluation.",
+    responsibilities: [
+      "Conduct experiments on model verification techniques",
+      "Help publish papers and build research prototypes",
+      "Collaborate with senior researchers on open problems",
+    ],
+    requirements: [
+      "Pursuing a degree in CS, ML, or related field",
+      "Familiarity with PyTorch or TensorFlow",
+      "Strong analytical and problem-solving skills",
+    ],
+  },
+  {
+    title: "ML Engineering Intern",
+    team: "AI Research & Development",
+    location: "Remote",
+    type: "internship",
+    description: "Work on model optimization pipelines, quantization, and hardware-aware inference.",
+    responsibilities: [
+      "Build and improve optimization pipelines",
+      "Implement quantization and pruning techniques",
+      "Benchmark models across different hardware targets",
+    ],
+    requirements: [
+      "Experience with Python and ML frameworks",
+      "Understanding of model compression techniques",
+      "Interest in edge computing and embedded systems",
+    ],
+  },
+  {
+    title: "Backend Engineering Intern",
+    team: "Infrastructure & Platform",
+    location: "Remote",
+    type: "internship",
+    description: "Help build and scale APIs and services powering the Olyxee platform.",
+    responsibilities: [
+      "Develop and test API endpoints",
+      "Write integration tests and improve code quality",
+      "Assist with database and service architecture",
+    ],
+    requirements: [
+      "Familiarity with Python, Go, or Node.js",
+      "Understanding of REST APIs and databases",
+      "Strong problem-solving skills",
+    ],
+  },
+  {
+    title: "Frontend Engineering Intern",
+    team: "Infrastructure & Platform",
+    location: "Remote",
+    type: "internship",
+    description: "Build dashboards, developer tools, and data visualization for the Olyxee platform.",
+    responsibilities: [
+      "Develop interactive dashboards for model metrics",
+      "Improve developer-facing documentation and tools",
+      "Create intuitive UIs for complex workflows",
+    ],
+    requirements: [
+      "Experience with React, TypeScript, or Next.js",
+      "Eye for clean, functional design",
+      "Interest in developer experience and tooling",
+    ],
+  },
+  {
+    title: "DevOps / MLOps Intern",
+    team: "Infrastructure & Platform",
+    location: "Remote",
+    type: "internship",
+    description: "Automate CI/CD pipelines, manage cloud infrastructure, and improve deployment reliability.",
+    responsibilities: [
+      "Build and maintain CI/CD pipelines",
+      "Automate infrastructure provisioning",
+      "Monitor and improve system reliability",
+    ],
+    requirements: [
+      "Familiarity with CI/CD tools (GitHub Actions, etc.)",
+      "Basic cloud platform experience (AWS, GCP, or Azure)",
+      "Scripting skills in Bash or Python",
+    ],
+  },
+  {
+    title: "Product Design Intern",
+    team: "Product & Design",
+    location: "Remote",
+    type: "internship",
+    description: "Design interfaces for AI infrastructure tools. Shape how developers interact with Olyxee.",
+    responsibilities: [
+      "Create wireframes and high-fidelity mockups",
+      "Design end-to-end user flows for technical products",
+      "Conduct user research with developer audiences",
+    ],
+    requirements: [
+      "Portfolio demonstrating UI/UX work",
+      "Proficiency in Figma or similar design tools",
+      "Interest in designing for technical users",
+    ],
+  },
+  {
+    title: "QA / Testing Intern",
+    team: "QA & Testing",
+    location: "Remote",
+    type: "internship",
+    description: "Help ensure platform quality through testing, bug reporting, and automation.",
+    responsibilities: [
+      "Write and execute test cases",
+      "Report and track bugs across the platform",
+      "Assist with building automated test suites",
+    ],
+    requirements: [
+      "Attention to detail and analytical mindset",
+      "Basic programming skills in Python or JavaScript",
+      "Interest in software quality and testing",
+    ],
+  },
+  {
+    title: "Technical Writing Intern",
+    team: "Business & Operations",
+    location: "Remote",
+    type: "internship",
+    description: "Write documentation, tutorials, and educational content about AI infrastructure.",
+    responsibilities: [
+      "Write and maintain API and SDK documentation",
+      "Create tutorials and getting-started guides",
+      "Produce blog posts on AI infrastructure topics",
+    ],
+    requirements: [
+      "Strong technical writing skills",
+      "Ability to explain complex topics simply",
+      "Familiarity with developer documentation",
+    ],
+  },
+  {
+    title: "Community & Marketing Intern",
+    team: "Business & Operations",
+    location: "Remote",
+    type: "internship",
+    description: "Grow the Olyxee developer community, create content, and support marketing efforts.",
+    responsibilities: [
+      "Engage with the developer community on social media",
+      "Create content for blog, newsletters, and events",
+      "Support partnership and outreach initiatives",
+    ],
+    requirements: [
+      "Excellent communication skills",
+      "Interest in AI, developer communities, and open source",
+      "Self-motivated and organized",
+    ],
+  },
 ];
 
 const teams = Array.from(new Set(roles.map(r => r.team)));
@@ -719,8 +872,12 @@ function RolesSection() {
                   <div className="flex-1 min-w-0">
                     <div className="flex flex-wrap items-center gap-3 mb-2">
                       <h3 className="text-lg sm:text-xl tracking-tight text-neutral-900 group-hover:text-neutral-600 transition-colors">{role.title}</h3>
-                      <span className="text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full bg-green-50 text-green-500">
-                        Full-time
+                      <span className={`text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full ${
+                        role.type === 'internship'
+                          ? 'bg-blue-50 text-blue-500'
+                          : 'bg-green-50 text-green-500'
+                      }`}>
+                        {role.type === 'internship' ? 'Unpaid Internship' : 'Full-time'}
                       </span>
                     </div>
                     <p className="text-sm text-neutral-400 leading-relaxed max-w-xl">{role.description}</p>
