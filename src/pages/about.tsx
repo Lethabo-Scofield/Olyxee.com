@@ -50,13 +50,14 @@ const About: FC = () => {
 
       <section className="py-16 sm:py-24 lg:py-32">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 sm:gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-14 items-center mb-20 sm:mb-28">
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               custom={0}
               variants={fadeUp}
+              className="lg:col-span-3"
             >
               <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">The Problem</p>
               <h2 className="font-serif text-2xl sm:text-3xl tracking-tight mb-5">AI works in the lab. Production is different.</h2>
@@ -65,13 +66,48 @@ const About: FC = () => {
                 <p>That gap is where most AI projects stall.</p>
               </div>
             </motion.div>
-
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               custom={1}
               variants={fadeUp}
+              className="lg:col-span-2"
+            >
+              <Image
+                src="/images/ai-failure-rate.png"
+                alt="The failure rate of AI projects is 50 percent"
+                width={500}
+                height={300}
+                className="w-full h-auto rounded-2xl"
+              />
+            </motion.div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-14 items-center">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              custom={0}
+              variants={fadeUp}
+              className="lg:col-span-2 order-2 lg:order-1"
+            >
+              <Image
+                src="/images/ai-fixing.png"
+                alt="Engineers fixing and improving AI systems"
+                width={500}
+                height={300}
+                className="w-full h-auto rounded-2xl"
+              />
+            </motion.div>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              custom={1}
+              variants={fadeUp}
+              className="lg:col-span-3 order-1 lg:order-2"
             >
               <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Our Answer</p>
               <h2 className="font-serif text-2xl sm:text-3xl tracking-tight mb-5">Verification-first infrastructure.</h2>
@@ -160,10 +196,10 @@ const About: FC = () => {
             >
               <div className="rounded-2xl overflow-hidden border border-neutral-200/80">
                 <Image
-                  src="/images/Olyxee_Position.png"
-                  alt="Diagram showing Olyxee's position in the AI infrastructure stack"
+                  src="/images/ai-deployment-scale.png"
+                  alt="Only 22% of large organizations have deployed AI at scale"
                   width={800}
-                  height={500}
+                  height={400}
                   className="w-full h-auto"
                 />
               </div>
@@ -225,10 +261,10 @@ const About: FC = () => {
             >
               <div className="rounded-2xl overflow-hidden border border-neutral-200/80">
                 <Image
-                  src="/images/workflow.png"
-                  alt="Olyxee verification workflow"
+                  src="/images/ai-debugging.png"
+                  alt="Person debugging AI application alongside a robot"
                   width={800}
-                  height={450}
+                  height={500}
                   className="w-full h-auto"
                 />
               </div>
