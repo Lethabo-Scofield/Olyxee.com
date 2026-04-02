@@ -90,7 +90,7 @@ function HeroSection() {
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
-    <section ref={ref} aria-label="Hero" className="relative w-full min-h-[100vh] flex flex-col items-center justify-center px-4 md:px-8 lg:px-16 overflow-hidden" style={{ position: 'relative' }}>
+    <section ref={ref} aria-label="Hero" className="relative w-full min-h-[100svh] flex flex-col items-center justify-center px-4 md:px-8 lg:px-16 overflow-hidden" style={{ position: 'relative' }}>
       <div className="absolute inset-0 w-full h-full">
         <Image src="/hero-bg.png" alt="" fill className="object-cover" priority />
         <div className="absolute inset-0 bg-white/60" />
@@ -101,7 +101,7 @@ function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.1 }}
-          className="font-serif text-[2.5rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] text-neutral-900 leading-[1.02] tracking-tight"
+          className="font-serif text-[2rem] xs:text-[2.5rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] text-neutral-900 leading-[1.05] tracking-tight px-2 sm:px-0"
         >
           Research and Infrastructure
           <br />
@@ -170,7 +170,7 @@ function LogoStrip() {
                 width={item.size}
                 height={item.size}
                 className="object-contain"
-                style={{ width: "auto", height: "auto", maxHeight: 32, maxWidth: item.size }}
+                style={{ width: item.size, height: item.size }}
               />
             </motion.div>
           ))}
@@ -457,7 +457,7 @@ function ApproachSection() {
             <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-blue-100/40 to-transparent rounded-full blur-2xl" />
             <div className="relative p-8 sm:p-10">
               <div className="flex items-center gap-3 mb-4">
-                <Image src="/images/grysics-logo.png" alt="Grysics" width={32} height={32} className="rounded-lg" />
+                <Image src="/images/grysics-logo.png" alt="Grysics" width={32} height={32} className="rounded-lg" style={{ width: 32, height: 32 }} />
                 <h3 className="text-xl sm:text-2xl font-semibold text-neutral-900 tracking-tight">Grysics Platform</h3>
               </div>
               <p className="text-neutral-500 text-sm sm:text-[15px] font-light leading-relaxed max-w-lg mb-6">
@@ -585,7 +585,7 @@ function IntegrationSection() {
             }}
           >
             <div className="bg-white rounded-2xl shadow-md shadow-neutral-200/60 border border-neutral-100/80 p-5 w-44 hover:shadow-lg transition-shadow duration-300">
-              <Image src={card.src} alt={card.name} width={28} height={28} className="w-7 h-7 object-contain mb-2" />
+              <Image src={card.src} alt={card.name} width={28} height={28} className="object-contain mb-2" style={{ width: 28, height: 28 }} />
               <p className="text-sm font-semibold text-neutral-800">{card.name}</p>
               <p className="text-[11px] text-neutral-400 mt-0.5">{card.subtitle}</p>
             </div>
@@ -625,7 +625,7 @@ function IntegrationSection() {
                 transition={{ duration: 0.4, delay: idx * 0.06 }}
                 className="bg-white rounded-xl shadow-sm border border-neutral-100 p-4"
               >
-                <Image src={card.src} alt={card.name} width={24} height={24} className="w-5 h-5 object-contain mb-1.5" />
+                <Image src={card.src} alt={card.name} width={24} height={24} className="object-contain mb-1.5" style={{ width: 20, height: 20 }} />
                 <p className="text-sm font-semibold text-neutral-800">{card.name}</p>
                 <p className="text-[11px] text-neutral-400 mt-0.5">{card.subtitle}</p>
               </motion.div>
