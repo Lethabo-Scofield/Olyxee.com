@@ -2,7 +2,7 @@ import { useState, FC } from "react";
 import SEO from "../components/SEO";
 import DocsLayout from "../layouts/DocsLayout";
 import Header from '../components/header';
-import { ArrowRight, BookOpen, Terminal, Layers, Cpu, ChevronRight, Play } from "lucide-react";
+import { ArrowRight, BookOpen, Terminal, Layers, Cpu, ChevronRight, Play, Lock, Sparkles } from "lucide-react";
 
 const TABS = [
   { id: "home", label: "Home" },
@@ -101,34 +101,13 @@ const Docs: FC = () => {
     setActivePage(pageId);
   };
 
+  const handleHomeNavigate = (tabId: string, _pageId: string) => {
+    setActiveTab(tabId);
+  };
+
   const renderContent = () => {
-    if (activeTab === "home") return <DocsHome onNavigate={handleNavigate} />;
-
-    const pageMap: Record<string, FC<any>> = {
-      "api-overview": APIOverview,
-      "quickstart": Quickstart,
-      "api-keys": APIKeys,
-      "models": SupportedModels,
-      "api-reference": APIReference,
-      "python-sdk": PythonSDK,
-      "cli": CLIReference,
-      "errors": ErrorHandling,
-      "grysics-overview": GrysicsOverview,
-      "grysics-chatbots": GrysicsChatbots,
-      "grysics-rag": GrysicsRAG,
-      "grysics-agents": GrysicsAgents,
-      "verification": Verification,
-      "monitoring": Monitoring,
-      "supported-platforms": SupportedPlatforms,
-      "testing-strategies": TestingStrategies,
-      "configuration": Configuration,
-      "early-access": EarlyAccessDoc,
-      "changelog": Changelog,
-      "limits": RateLimits,
-    };
-
-    const Component = pageMap[activePage];
-    return Component ? <Component onNavigate={handleNavigate} /> : null;
+    if (activeTab === "home") return <DocsHome onNavigate={handleHomeNavigate} />;
+    return <EarlyAccessGate />;
   };
 
   return (
@@ -139,7 +118,7 @@ const Docs: FC = () => {
         tabs={TABS}
         activeTab={activeTab}
         onTabChange={handleTabChange}
-        sideNav={activeTab !== "home" ? SIDE_NAVS[activeTab] : undefined}
+        sideNav={undefined}
         activePage={activePage}
         onPageChange={setActivePage}
       >
@@ -309,6 +288,53 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
               {link.label}
               <ChevronRight className="w-3.5 h-3.5 text-gray-300" />
             </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+function EarlyAccessGate() {
+  return (
+    <div className="max-w-2xl mx-auto px-4 sm:px-8 py-20 sm:py-32 text-center">
+      <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-neutral-900 text-white mb-8">
+        <Lock className="w-7 h-7" strokeWidth={1.5} />
+      </div>
+      <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 tracking-tight mb-4">
+        Sign in for early access
+      </h2>
+      <p className="text-base text-gray-500 leading-relaxed mb-8 max-w-md mx-auto">
+        Full documentation is available to early access members. Sign in or request access to explore the API, Grysics engine, and guides.
+      </p>
+      <div className="flex flex-col sm:flex-row gap-3 justify-center">
+        <a
+          href="/products"
+          className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-neutral-900 text-white rounded-full text-sm font-medium hover:bg-black transition-all shadow-lg shadow-neutral-900/15"
+        >
+          <Sparkles className="w-4 h-4" />
+          Request Early Access
+        </a>
+        <a
+          href="/products"
+          className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-neutral-700 border border-neutral-200 rounded-full text-sm font-medium hover:bg-neutral-50 transition-all"
+        >
+          Sign In
+        </a>
+      </div>
+      <div className="mt-12 pt-8 border-t border-neutral-100">
+        <p className="text-xs text-neutral-400 uppercase tracking-widest font-semibold mb-4">What you get with early access</p>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {[
+            { title: "API Reference", desc: "REST API, Python SDK, and CLI documentation" },
+            { title: "Grysics Engine", desc: "Verification engine guides for chatbots, RAG, and agents" },
+            { title: "Guides & Tutorials", desc: "Testing strategies, configuration, and best practices" },
+          ].map(item => (
+            <div key={item.title} className="text-left p-4 rounded-xl bg-neutral-50 border border-neutral-100">
+              <h4 className="text-sm font-semibold text-neutral-900 mb-1">{item.title}</h4>
+              <p className="text-xs text-neutral-500 leading-relaxed">{item.desc}</p>
+            </div>
           ))}
         </div>
       </div>
