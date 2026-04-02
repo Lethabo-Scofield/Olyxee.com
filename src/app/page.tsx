@@ -255,16 +255,19 @@ function ResearchAreas() {
                 num: "01",
                 title: "Verification",
                 desc: "Methods to verify AI systems produce accurate, consistent outputs across every scenario.",
+                bg: "/images/gradient-blue.png",
               },
               {
                 num: "02",
                 title: "Safety",
                 desc: "Detecting hallucinations and ensuring AI systems stay within intended boundaries.",
+                bg: "/images/gradient-orange-pink.png",
               },
               {
                 num: "03",
                 title: "Monitoring",
                 desc: "Real-time observability for AI in production. Catch drift and failures early.",
+                bg: "/images/gradient-purple.png",
               },
             ].map((step, idx) => (
               <motion.div
@@ -273,13 +276,19 @@ function ResearchAreas() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: idx * 0.12 }}
-                className="p-8 sm:p-10 rounded-2xl bg-white group hover:shadow-sm transition-all duration-300"
+                className="relative rounded-2xl group hover:shadow-lg hover:shadow-neutral-200/60 transition-all duration-300 overflow-hidden"
               >
-                <div className="mb-8">
-                  <div className="text-4xl font-serif text-neutral-200 leading-none">{step.num}</div>
+                <div className="absolute inset-0">
+                  <Image src={step.bg} alt="" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
+                  <div className="absolute inset-0 bg-white/80 group-hover:bg-white/75 transition-colors duration-300" />
                 </div>
-                <h3 className="text-xl sm:text-2xl font-semibold text-neutral-900 mb-3 tracking-tight">{step.title}</h3>
-                <p className="text-sm sm:text-[15px] text-neutral-500 font-light leading-relaxed">{step.desc}</p>
+                <div className="relative p-8 sm:p-10">
+                  <div className="mb-8">
+                    <div className="text-4xl font-serif text-neutral-300 leading-none">{step.num}</div>
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-semibold text-neutral-900 mb-3 tracking-tight">{step.title}</h3>
+                  <p className="text-sm sm:text-[15px] text-neutral-500 font-light leading-relaxed">{step.desc}</p>
+                </div>
               </motion.div>
             ))}
           </div>
