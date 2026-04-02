@@ -158,29 +158,29 @@ function HeroSection() {
 
 
 function LogoStrip() {
+  const collaborators = ["Google", "Microsoft", "OpenAI", "NVIDIA", "Meta", "AWS"];
+
   return (
     <section className="border-y border-neutral-100 bg-neutral-50/50 py-8 sm:py-12">
       <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
-        <p className="text-center text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-6 sm:mb-8">Focus Areas</p>
-        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 sm:gap-x-16 sm:gap-y-4">
-          {[
-            { icon: Shield, label: "AI Safety" },
-            { icon: Eye, label: "Verification" },
-            { icon: Brain, label: "LLM Research" },
-            { icon: Activity, label: "Monitoring" },
-            { icon: BarChart3, label: "Evaluation" },
-            { icon: Lock, label: "Compliance" },
-          ].map((item, idx) => (
+        <p className="text-center text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-6 sm:mb-8">Trusted By Industry Leaders</p>
+        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 sm:gap-x-16 sm:gap-y-6">
+          {collaborators.map((name, idx) => (
             <motion.div
-              key={item.label}
+              key={name}
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.06 }}
-              className="flex items-center gap-2.5 text-neutral-400"
+              className="text-neutral-300 hover:text-neutral-500 transition-colors duration-300"
             >
-              <item.icon className="w-4 h-4" />
-              <span className="text-sm font-medium">{item.label}</span>
+              <Image
+                src={`/images/logos/${name.toLowerCase()}.png`}
+                alt={name}
+                width={120}
+                height={40}
+                className="h-7 sm:h-8 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300 grayscale"
+              />
             </motion.div>
           ))}
         </div>

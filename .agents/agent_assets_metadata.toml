@@ -6,3 +6,39 @@ id = "izyPwAe20ShWeqme4ypbq"
 uri = "file://public/images/team-developers.png"
 type = "image"
 title = "generated_image"
+
+[[generated]]
+id = "6cdOn6GxICwopqpPvSM0l"
+uri = "file://public/images/logos/google.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "kHuO15xM4z3m08LGGZqQg"
+uri = "file://public/images/logos/microsoft.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "QBuMuyjzdPKhSlTW6XMlF"
+uri = "file://public/images/logos/openai.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "Wh4NhvtTxs2zAhG3_nsH0"
+uri = "file://public/images/logos/nvidia.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "wqDZ9jFMkGU8hsn7Zoyx7"
+uri = "file://public/images/logos/meta.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "7XTYeDqPCaLCSLDv5Cjbz"
+uri = "file://public/images/logos/aws.png"
+type = "image"
+title = "generated_image"
