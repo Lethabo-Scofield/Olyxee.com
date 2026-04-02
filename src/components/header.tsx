@@ -17,6 +17,7 @@ const menuItems = [
     { name: "Products", href: "/products" },
     { name: "Research", href: "/research" },
     { name: "About", href: "/about" },
+    { name: "Careers", href: "/careers" },
 ];
 
 const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {

@@ -3,7 +3,8 @@ import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import Link from "next/link";
-import { ArrowRight, MapPin, X, CheckCircle, Briefcase, Clock, Globe, Users, Zap } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, MapPin, X, CheckCircle, Briefcase } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface Role {
@@ -159,34 +160,46 @@ const teams = Array.from(new Set(roles.map(r => r.team)));
 
 function HeroSection() {
   return (
-    <section className="pt-40 sm:pt-48 pb-20 sm:pb-28">
-      <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
-        >
-          <div className="inline-flex items-center gap-2.5 px-4 py-2 bg-neutral-100 text-neutral-600 rounded-full text-xs font-medium mb-8 border border-neutral-200/60">
-            <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-            Now hiring across all teams
+    <section className="relative">
+      <div className="relative h-[340px] sm:h-[420px] lg:h-[480px] overflow-hidden">
+        <Image
+          src="/images/careers-hero.png"
+          alt="Team collaborating on code"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60" />
+        <div className="absolute inset-0 flex items-end">
+          <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 pb-10 sm:pb-14 w-full">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.15 }}
+            >
+              <div className="inline-flex items-center gap-2.5 px-4 py-2 bg-white/15 backdrop-blur-md text-white rounded-full text-xs font-medium mb-6 border border-white/20">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                Now hiring across all teams
+              </div>
+            </motion.div>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.3 }}
+              className="font-serif text-3xl sm:text-5xl lg:text-6xl text-white leading-[1.08] tracking-tight"
+            >
+              Do the best work of your life.
+            </motion.h1>
           </div>
-        </motion.div>
+        </div>
+      </div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-          className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 leading-[1.08] tracking-tight mb-5"
-        >
-          Do the best work
-          <br />
-          of your <em className="text-neutral-400">life.</em>
-        </motion.h1>
-
+      <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 pt-10 sm:pt-14 pb-16 sm:pb-20">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+          transition={{ duration: 0.8, delay: 0.5 }}
           className="text-lg text-neutral-500 max-w-xl leading-relaxed font-light mb-10"
         >
           Join a small team solving hard problems in AI reliability and verification.
@@ -196,7 +209,7 @@ function HeroSection() {
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.65, ease: [0.25, 0.1, 0.25, 1] }}
+          transition={{ duration: 0.7, delay: 0.65 }}
           className="flex flex-wrap gap-3"
         >
           <a
@@ -220,67 +233,52 @@ function HeroSection() {
 function ValuesSection() {
   const values = [
     {
+      num: "01",
       title: "Ship real work",
-      desc: "Your contributions go to production from week one. No busywork, no fake projects. You'll solve real challenges in AI systems used by developers worldwide.",
-      icon: Zap,
-      gradient: "/images/gradient-orange-pink.png",
+      desc: "Your contributions go to production from week one. No busywork, no fake projects.",
     },
     {
+      num: "02",
       title: "Learn from the best",
-      desc: "Work alongside experienced engineers and researchers who've built systems at scale. Get mentorship that accelerates your career by years, not months.",
-      icon: Users,
-      gradient: "/images/gradient-blue-pink.png",
+      desc: "Work alongside experienced engineers and researchers who've built systems at scale.",
     },
     {
+      num: "03",
       title: "Work from anywhere",
-      desc: "Fully remote with flexible hours. We care about what you build, not when you build it. Do your best work from wherever you're most productive.",
-      icon: Globe,
-      gradient: "/images/gradient-yellow-green.png",
+      desc: "Fully remote with flexible hours. We care about what you build, not when you build it.",
     },
   ];
 
   return (
-    <section className="py-32 sm:py-44">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8">
+    <section className="py-16 sm:py-24 lg:py-32 border-t border-neutral-100">
+      <div className="max-w-4xl mx-auto px-6 sm:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20 sm:mb-28"
+          className="mb-12 sm:mb-16"
         >
-          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-6">
-            Why people choose <em className="text-neutral-400">Olyxee</em>
-          </h2>
-          <p className="text-neutral-500 text-lg max-w-xl mx-auto font-light">
+          <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Why Olyxee</p>
+          <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900">
             We built the kind of company we'd want to work at.
-          </p>
+          </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
-          {values.map((v, idx) => {
-            const Icon = v.icon;
-            return (
-              <motion.div
-                key={v.title}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: idx * 0.12 }}
-                className="group relative rounded-3xl overflow-hidden p-8 sm:p-10 min-h-[320px] flex flex-col justify-end"
-              >
-                <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url("${v.gradient}")` }} />
-                <div className="absolute inset-0 bg-white/80 backdrop-blur-sm group-hover:bg-white/75 transition-all duration-500" />
-                <div className="relative">
-                  <div className="w-12 h-12 rounded-2xl bg-white/80 border border-white/60 flex items-center justify-center mb-6 shadow-sm">
-                    <Icon className="w-5 h-5 text-neutral-700" />
-                  </div>
-                  <h3 className="text-2xl tracking-tight text-neutral-900 mb-3">{v.title}</h3>
-                  <p className="text-[15px] text-neutral-500 leading-relaxed">{v.desc}</p>
-                </div>
-              </motion.div>
-            );
-          })}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-12">
+          {values.map((v, idx) => (
+            <motion.div
+              key={v.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: idx * 0.1 }}
+            >
+              <div className="text-3xl font-serif text-neutral-200 mb-4">{v.num}</div>
+              <h3 className="text-lg font-semibold text-neutral-900 mb-2">{v.title}</h3>
+              <p className="text-sm text-neutral-500 leading-relaxed font-light">{v.desc}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
@@ -534,38 +532,33 @@ function ProcessSection() {
   ];
 
   return (
-    <section className="py-32 sm:py-44 border-t border-neutral-100 relative overflow-hidden">
-      <div className="absolute inset-0 bg-cover bg-center opacity-30" style={{ backgroundImage: 'url("/images/gradient-pastel.png")' }} />
-      <div className="absolute inset-0 bg-white/90" />
-      <div className="relative max-w-6xl mx-auto px-6 sm:px-8">
+    <section className="py-16 sm:py-24 lg:py-32 border-t border-neutral-100">
+      <div className="max-w-4xl mx-auto px-6 sm:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20 sm:mb-28"
+          className="mb-12 sm:mb-16"
         >
-          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-6">
-            Four steps to <em className="text-neutral-400">joining</em>
+          <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Process</p>
+          <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900">
+            Four steps to joining
           </h2>
-          <p className="text-neutral-500 text-lg max-w-md mx-auto font-light">
-            Simple, transparent, and respectful of your time.
-          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-8">
           {steps.map((step, idx) => (
             <motion.div
               key={step.num}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="relative"
             >
-              <div className="text-6xl sm:text-7xl font-serif text-neutral-100 mb-4 leading-none">{step.num}</div>
-              <h3 className="text-xl tracking-tight text-neutral-900 mb-2">{step.title}</h3>
-              <p className="text-sm text-neutral-500 leading-relaxed">{step.desc}</p>
+              <div className="text-3xl font-serif text-neutral-200 mb-4">{step.num}</div>
+              <h3 className="text-lg font-semibold text-neutral-900 mb-2">{step.title}</h3>
+              <p className="text-sm text-neutral-500 leading-relaxed font-light">{step.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -576,40 +569,31 @@ function ProcessSection() {
 
 function CTASection() {
   return (
-    <section className="py-32 sm:py-44 bg-neutral-950 relative overflow-hidden">
-      <div
-        className="absolute inset-0 opacity-25"
-        style={{
-          backgroundImage: 'url("/images/gradient-purple.png")',
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          filter: "blur(100px)",
-        }}
-      />
-      <div className="relative max-w-4xl mx-auto px-6 sm:px-8 text-center">
+    <section className="py-20 sm:py-28 lg:py-36 border-t border-neutral-100">
+      <div className="max-w-4xl mx-auto px-6 sm:px-8 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-white mb-6">
+          <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-5 sm:mb-6">
             Don't see your role?
           </h2>
-          <p className="text-white/50 text-lg max-w-lg mx-auto mb-12 font-light leading-relaxed">
+          <p className="text-neutral-500 text-lg max-w-lg mx-auto mb-10 font-light leading-relaxed">
             We're always open to meeting exceptional people.
             Tell us what you'd like to work on.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact"
-              className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide"
+              className="group inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide"
             >
               Get in Touch <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </Link>
             <a
               href="#roles"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 text-white/70 border border-white/15 rounded-full font-medium hover:bg-white/5 hover:text-white transition-all text-sm tracking-wide"
+              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-neutral-900 border border-neutral-200 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide"
             >
               Browse roles
             </a>
@@ -622,7 +606,7 @@ function CTASection() {
 
 const Careers: FC = () => {
   return (
-    <div className="min-h-screen bg-[#fafafa] text-neutral-900 relative">
+    <div className="min-h-screen bg-white text-neutral-900 relative">
       <SEO title="Careers" description="Join Olyxee and work on AI infrastructure that matters. Open internship positions in research, engineering, design, and more." path="/careers" />
       <Header />
 
