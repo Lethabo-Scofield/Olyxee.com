@@ -30,8 +30,6 @@ const footerData = {
     {
       title: "Trust",
       links: [
-        { name: "Safety & Reliability", href: "/safety" },
-        { name: "Use Cases", href: "/use-cases" },
         { name: "Privacy Policy", href: "/privacy" },
         { name: "Terms of Use", href: "/terms" },
       ],
