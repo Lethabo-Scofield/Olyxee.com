@@ -232,16 +232,19 @@ function ValuesSection() {
       num: "01",
       title: "Ship real work",
       desc: "Your contributions go to production from week one. No busywork, no fake projects.",
+      gradient: "/images/gradient-orange-pink.png",
     },
     {
       num: "02",
       title: "Learn from the best",
       desc: "Work alongside experienced engineers and researchers who've built systems at scale.",
+      gradient: "/images/gradient-blue-pink.png",
     },
     {
       num: "03",
       title: "Work from anywhere",
       desc: "Fully remote with flexible hours. We care about what you build, not when you build it.",
+      gradient: "/images/gradient-yellow-green.png",
     },
   ];
 
@@ -261,7 +264,7 @@ function ValuesSection() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5">
           {values.map((v, idx) => (
             <motion.div
               key={v.title}
@@ -269,10 +272,17 @@ function ValuesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
+              className="relative rounded-2xl sm:rounded-3xl overflow-hidden p-7 sm:p-8 min-h-[220px] flex flex-col justify-end group"
             >
-              <div className="text-3xl font-serif text-neutral-200 mb-4">{v.num}</div>
-              <h3 className="text-lg font-semibold text-neutral-900 mb-2">{v.title}</h3>
-              <p className="text-sm text-neutral-500 leading-relaxed font-light">{v.desc}</p>
+              <div className="absolute inset-0">
+                <Image src={v.gradient} alt="" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
+              </div>
+              <div className="absolute inset-0 bg-white/80 group-hover:bg-white/70 transition-all duration-500" />
+              <div className="relative">
+                <div className="text-3xl font-serif text-neutral-300 mb-4">{v.num}</div>
+                <h3 className="text-lg font-semibold text-neutral-900 mb-2">{v.title}</h3>
+                <p className="text-sm text-neutral-500 leading-relaxed font-light">{v.desc}</p>
+              </div>
             </motion.div>
           ))}
         </div>
