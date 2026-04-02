@@ -6,7 +6,7 @@ import Footer from '../components/footer';
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Bot, ShieldCheck, BarChart3, Activity, ChevronRight } from "lucide-react";
 import { GoogleLogo, MicrosoftLogo, OpenAILogo, NvidiaLogo, MetaLogo, AWSLogo, GoogleCloudLogo, IBMLogo, HuggingFaceLogo, AnthropicLogo, MistralLogo, CohereLogo, DeepMindLogo, xAILogo } from "../components/company-logos";
 
 export default function HomePage() {
@@ -319,75 +319,121 @@ function ResearchAreas() {
 
 function VerificationDiagram() {
   const steps = [
-    { label: "AI Application", sub: "Chatbot / RAG / Agent" },
-    { label: "Verification", sub: "Test & Evaluate" },
-    { label: "Analysis", sub: "Score & Report" },
-    { label: "Production", sub: "Monitor & Alert" },
+    {
+      label: "AI Application",
+      sub: "Chatbot, RAG, or Agent sends output",
+      icon: Bot,
+      gradient: "from-blue-500 to-blue-600",
+      bg: "bg-blue-50",
+      ring: "ring-blue-100",
+      text: "text-blue-600",
+      num: "01",
+    },
+    {
+      label: "Verification",
+      sub: "Test for hallucinations & consistency",
+      icon: ShieldCheck,
+      gradient: "from-emerald-500 to-emerald-600",
+      bg: "bg-emerald-50",
+      ring: "ring-emerald-100",
+      text: "text-emerald-600",
+      num: "02",
+    },
+    {
+      label: "Analysis",
+      sub: "Score, benchmark, and generate reports",
+      icon: BarChart3,
+      gradient: "from-orange-500 to-orange-600",
+      bg: "bg-orange-50",
+      ring: "ring-orange-100",
+      text: "text-orange-600",
+      num: "03",
+    },
+    {
+      label: "Production",
+      sub: "Monitor drift, quality & alert in real time",
+      icon: Activity,
+      gradient: "from-purple-500 to-purple-600",
+      bg: "bg-purple-50",
+      ring: "ring-purple-100",
+      text: "text-purple-600",
+      num: "04",
+    },
   ];
 
   return (
-    <div className="rounded-2xl bg-white p-5 sm:p-10">
-      <p className="text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-8 sm:mb-10 text-center">How Olyxee Fits Into Your AI Stack</p>
-
-      <div className="hidden sm:flex items-center justify-center gap-0">
-        {steps.map((step, idx) => (
-          <motion.div
-            key={step.label}
-            initial={{ opacity: 0, x: -10 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: idx * 0.12 }}
-            className="flex items-center"
-          >
-            <div className="relative flex flex-col items-center">
-              <div className="w-3 h-3 rounded-full bg-neutral-900 relative z-10" />
-              <div className="mt-4 text-center w-32">
-                <div className="text-sm font-semibold text-neutral-900">{step.label}</div>
-                <div className="text-[11px] text-neutral-400 mt-0.5">{step.sub}</div>
-              </div>
-            </div>
-            {idx < steps.length - 1 && (
-              <div className="flex items-center -mt-8">
-                <div className="w-16 lg:w-24 h-px bg-neutral-300" />
-                <svg width="8" height="12" viewBox="0 0 8 12" fill="none" className="-ml-px text-neutral-300">
-                  <path d="M1 1L6 6L1 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </div>
-            )}
-          </motion.div>
-        ))}
+    <div className="rounded-3xl bg-white p-6 sm:p-10 lg:p-14 border border-neutral-100 shadow-sm">
+      <div className="text-center mb-10 sm:mb-14">
+        <p className="text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.25em] mb-3">How Olyxee Fits Into Your AI Stack</p>
+        <h3 className="font-serif text-xl sm:text-2xl text-neutral-900 tracking-tight">From input to production, verified at every step</h3>
       </div>
 
-      <div className="sm:hidden flex flex-col items-start pl-6">
-        {steps.map((step, idx) => (
-          <motion.div
-            key={step.label}
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: idx * 0.1 }}
-            className="flex items-start gap-4"
-          >
-            <div className="flex flex-col items-center">
-              <div className="w-2.5 h-2.5 rounded-full bg-neutral-900 relative z-10 mt-1.5" />
-              {idx < steps.length - 1 && <div className="w-px h-10 bg-neutral-200" />}
-            </div>
-            <div className="pb-6">
-              <div className="text-sm font-semibold text-neutral-900">{step.label}</div>
-              <div className="text-[11px] text-neutral-400 mt-0.5">{step.sub}</div>
-            </div>
-          </motion.div>
-        ))}
+      <div className="hidden sm:grid sm:grid-cols-4 gap-4 lg:gap-6">
+        {steps.map((step, idx) => {
+          const Icon = step.icon;
+          return (
+            <motion.div
+              key={step.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className="relative"
+            >
+              <div className={`relative rounded-2xl ${step.bg} p-6 lg:p-7 h-full ring-1 ${step.ring} group hover:shadow-md transition-all duration-300`}>
+                <div className="flex items-start justify-between mb-5">
+                  <div className={`inline-flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br ${step.gradient} text-white shadow-sm`}>
+                    <Icon className="w-5 h-5" strokeWidth={1.8} />
+                  </div>
+                  <span className="text-xs font-mono text-neutral-300 font-semibold">{step.num}</span>
+                </div>
+                <h4 className="text-sm font-semibold text-neutral-900 mb-1.5">{step.label}</h4>
+                <p className="text-xs text-neutral-500 leading-relaxed font-light">{step.sub}</p>
+              </div>
+              {idx < steps.length - 1 && (
+                <div className="absolute top-1/2 -right-3 lg:-right-4 -translate-y-1/2 z-10 hidden sm:block">
+                  <ChevronRight className="w-4 h-4 text-neutral-300" strokeWidth={2} />
+                </div>
+              )}
+            </motion.div>
+          );
+        })}
       </div>
 
-      <div className="mt-8 sm:mt-10 pt-6 sm:pt-8 border-t border-neutral-100">
-        <div className="flex items-center justify-center gap-6 text-[11px] text-neutral-400">
+      <div className="sm:hidden flex flex-col gap-3">
+        {steps.map((step, idx) => {
+          const Icon = step.icon;
+          return (
+            <motion.div
+              key={step.label}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: idx * 0.08 }}
+            >
+              <div className={`flex items-center gap-4 rounded-xl ${step.bg} p-4 ring-1 ${step.ring}`}>
+                <div className={`flex-shrink-0 inline-flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br ${step.gradient} text-white`}>
+                  <Icon className="w-5 h-5" strokeWidth={1.8} />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h4 className="text-sm font-semibold text-neutral-900">{step.label}</h4>
+                  <p className="text-xs text-neutral-500 font-light">{step.sub}</p>
+                </div>
+                <span className="text-xs font-mono text-neutral-300 font-semibold flex-shrink-0">{step.num}</span>
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
+
+      <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-neutral-100">
+        <div className="flex items-center justify-center gap-8 text-[11px] text-neutral-400">
           <span className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-neutral-900" />
+            <span className="w-5 h-5 rounded-md bg-gradient-to-br from-neutral-200 to-neutral-300 inline-block" />
             Pipeline stage
           </span>
           <span className="flex items-center gap-2">
-            <span className="w-4 h-px bg-neutral-300 inline-block" />
+            <ChevronRight className="w-3.5 h-3.5 text-neutral-300" />
             Data flow
           </span>
         </div>
