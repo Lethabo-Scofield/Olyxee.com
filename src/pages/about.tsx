@@ -96,6 +96,7 @@ const About: FC = () => {
                   alt="The failure rate of AI projects is 50 percent"
                   width={600}
                   height={400}
+                  loading="lazy"
                   className="w-full h-auto"
                 />
               </div>
@@ -117,6 +118,7 @@ const About: FC = () => {
                   alt="Engineers fixing and improving AI systems"
                   width={600}
                   height={400}
+                  loading="lazy"
                   className="w-full h-auto"
                 />
               </div>
@@ -248,6 +250,7 @@ const About: FC = () => {
                   alt="Person debugging AI application alongside a robot"
                   width={800}
                   height={500}
+                  loading="lazy"
                   className="w-full h-auto"
                 />
               </div>
@@ -316,6 +319,7 @@ const About: FC = () => {
               alt="Olyxee"
               width={48}
               height={48}
+              loading="lazy"
               className="mx-auto opacity-30 mb-8"
             />
             <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight mb-5 sm:mb-6 text-neutral-900">

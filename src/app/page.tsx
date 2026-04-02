@@ -169,8 +169,8 @@ function LogoStrip() {
                 alt={item.name}
                 width={item.size}
                 height={item.size}
-                className="w-auto h-auto object-contain"
-                style={{ maxHeight: 32, maxWidth: item.size }}
+                className="object-contain"
+                style={{ width: "auto", height: "auto", maxHeight: 32, maxWidth: item.size }}
               />
             </motion.div>
           ))}
@@ -229,6 +229,7 @@ function MissionSection() {
               alt="Olyxee team collaborating on AI safety and infrastructure"
               width={1408}
               height={768}
+              loading="lazy"
               className="w-full h-auto object-cover"
             />
           </motion.div>
@@ -650,6 +651,7 @@ function CTASection() {
             alt="Olyxee"
             width={48}
             height={48}
+            loading="lazy"
             className="mx-auto opacity-30"
           />
         </motion.div>
