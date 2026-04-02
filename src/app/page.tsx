@@ -6,7 +6,7 @@ import Footer from '../components/footer';
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Shield, Eye, Brain, Zap, Lock, CheckCircle2, AlertTriangle, Activity, BarChart3 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { GoogleLogo, MicrosoftLogo, OpenAILogo, NvidiaLogo, MetaLogo, AWSLogo, GoogleCloudLogo, IBMLogo, HuggingFaceLogo } from "../components/company-logos";
 
 export default function HomePage() {
@@ -276,19 +276,16 @@ function ResearchAreas() {
                 num: "01",
                 title: "Verification",
                 desc: "Methods to verify AI systems produce accurate, consistent outputs across every scenario.",
-                icon: CheckCircle2,
               },
               {
                 num: "02",
                 title: "Safety",
                 desc: "Detecting hallucinations and ensuring AI systems stay within intended boundaries.",
-                icon: AlertTriangle,
               },
               {
                 num: "03",
                 title: "Monitoring",
                 desc: "Real-time observability for AI in production. Catch drift and failures early.",
-                icon: Activity,
               },
             ].map((step, idx) => (
               <motion.div
@@ -299,10 +296,7 @@ function ResearchAreas() {
                 transition={{ duration: 0.6, delay: idx * 0.12 }}
                 className="p-8 sm:p-10 rounded-2xl bg-white group hover:shadow-sm transition-all duration-300"
               >
-                <div className="flex items-center justify-between mb-8">
-                  <div className="w-10 h-10 rounded-xl bg-neutral-100 flex items-center justify-center">
-                    <step.icon className="w-5 h-5 text-neutral-500" />
-                  </div>
+                <div className="mb-8">
                   <div className="text-4xl font-serif text-neutral-200 leading-none">{step.num}</div>
                 </div>
                 <h3 className="text-xl sm:text-2xl font-semibold text-neutral-900 mb-3 tracking-tight">{step.title}</h3>
@@ -386,7 +380,6 @@ function ApproachSection() {
           >
             <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-blue-100/40 to-transparent rounded-full blur-2xl" />
             <div className="relative p-8 sm:p-10">
-              <Shield className="w-6 h-6 text-neutral-500 mb-5" />
               <h3 className="text-xl sm:text-2xl font-semibold text-neutral-900 mb-3 tracking-tight">AI Safety Infrastructure</h3>
               <p className="text-neutral-500 text-sm sm:text-[15px] font-light leading-relaxed max-w-lg mb-6">
                 Verification engines, evaluation frameworks, and monitoring systems for real-world AI deployment.
@@ -410,14 +403,11 @@ function ApproachSection() {
               <Image src="/images/gradient-orange-pink.png" alt="" fill sizes="(max-width: 768px) 100vw, 33vw" aria-hidden="true" className="object-cover opacity-30" />
             </div>
             <div className="relative p-8 sm:p-10">
-              <Eye className="w-5 h-5 text-neutral-400 mb-5" />
               <h3 className="text-lg font-semibold text-neutral-900 mb-3 tracking-tight">Hallucination Research</h3>
               <p className="text-sm text-neutral-600 font-light leading-relaxed mb-4">
                 Studying why AI fabricates information and building detection methods that work across domains.
               </p>
-              <div className="flex items-center gap-2 text-sm font-medium text-neutral-900 opacity-60">
-                Active research <ArrowUpRight className="w-3.5 h-3.5" />
-              </div>
+              <p className="text-xs font-medium text-neutral-400 uppercase tracking-wider">Active research</p>
             </div>
           </motion.div>
 
@@ -432,14 +422,11 @@ function ApproachSection() {
               <Image src="/images/gradient-yellow-green.png" alt="" fill sizes="(max-width: 768px) 100vw, 33vw" aria-hidden="true" className="object-cover opacity-25" />
             </div>
             <div className="relative p-8 sm:p-10">
-              <Brain className="w-5 h-5 text-neutral-400 mb-5" />
               <h3 className="text-lg font-semibold text-neutral-900 mb-3 tracking-tight">Behavioral Evaluation</h3>
               <p className="text-sm text-neutral-600 font-light leading-relaxed mb-4">
                 Evaluating AI behavior at scale: consistency, accuracy, and alignment with intended outcomes.
               </p>
-              <div className="flex items-center gap-2 text-sm font-medium text-neutral-900 opacity-60">
-                Active research <ArrowUpRight className="w-3.5 h-3.5" />
-              </div>
+              <p className="text-xs font-medium text-neutral-400 uppercase tracking-wider">Active research</p>
             </div>
           </motion.div>
 
@@ -456,7 +443,6 @@ function ApproachSection() {
             <div className="relative p-8 sm:p-10">
               <div className="flex flex-col sm:flex-row gap-6 sm:gap-10 items-start">
                 <div className="flex-1">
-                  <Lock className="w-5 h-5 text-neutral-400 mb-5" />
                   <h3 className="text-lg font-semibold text-neutral-900 mb-3 tracking-tight">Enterprise & Regulated Industries</h3>
                   <p className="text-sm text-neutral-600 font-light leading-relaxed">
                     Verification and audit for regulated industries where trust is non-negotiable.
