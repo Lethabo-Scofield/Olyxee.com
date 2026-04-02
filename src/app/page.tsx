@@ -565,18 +565,7 @@ function IntegrationSection() {
 function CTASection() {
   return (
     <section className="py-20 sm:py-32 lg:py-44 relative overflow-hidden">
-      <div className="absolute inset-0">
-        <Image
-          src="/images/gradient-pastel.png"
-          alt=""
-          fill
-          sizes="100vw"
-          aria-hidden="true"
-          className="object-cover opacity-40"
-        />
-        <div className="absolute inset-0 bg-white/70" />
-      </div>
-      <div className="relative max-w-4xl mx-auto px-4 sm:px-8 lg:px-12 text-center">
+      <div className="max-w-4xl mx-auto px-4 sm:px-8 lg:px-12 text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
