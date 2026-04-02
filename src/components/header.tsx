@@ -16,9 +16,7 @@ const DiscordIcon = ({ className }: { className?: string }) => (
 const menuItems = [
     { name: "Products", href: "/products" },
     { name: "Research", href: "/research" },
-    { name: "Community", href: "/community" },
     { name: "About", href: "/about" },
-    { name: "Contact", href: "/contact" },
 ];
 
 const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
@@ -164,16 +162,6 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                         >
                             <DiscordIcon className="w-4 h-4" />
                         </motion.button>
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.35, type: 'spring', stiffness: 400, damping: 25 }}
-                        >
-                            <Link href="/contact" className="hidden md:inline-flex px-5 py-1.5 bg-neutral-900 text-white rounded-full hover:bg-black active:scale-95 transition-all font-semibold text-[13px] focus:outline-none shadow-sm">
-                                Get in Touch
-                            </Link>
-                        </motion.div>
-
                         <div className="lg:hidden">
                             <motion.button
                                 initial={{ opacity: 0 }}
@@ -267,13 +255,6 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.4, type: 'spring', stiffness: 300, damping: 25 }}
                             >
-                                <Link
-                                    href="/contact"
-                                    className="w-full py-3 bg-neutral-900 text-white rounded-2xl flex items-center justify-center gap-2 hover:bg-black active:scale-[0.98] transition-all font-semibold text-sm focus:outline-none shadow-sm"
-                                    onClick={() => setMobileMenuOpen(false)}
-                                >
-                                    Get in Touch
-                                </Link>
                                 <button className="w-full py-3 bg-white/50 text-neutral-900 border border-neutral-200/50 rounded-2xl flex items-center justify-center gap-2 hover:bg-white/70 active:scale-[0.98] transition-all font-semibold text-sm focus:outline-none">
                                     <DiscordIcon className="w-4 h-4" /> Join Discord
                                 </button>

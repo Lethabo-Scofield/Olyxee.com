@@ -25,7 +25,6 @@ const footerData = {
       title: "Resources",
       links: [
         { name: "Documentation", href: "/docs" },
-        { name: "Community", href: "/community" },
       ],
     },
     {
