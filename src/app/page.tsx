@@ -242,7 +242,7 @@ function MissionSection() {
 function ResearchAreas() {
   return (
     <section className="py-20 sm:py-32 lg:py-40">
-      <div className="max-w-5xl mx-auto px-4 sm:px-8 lg:px-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
         <div className="bg-neutral-50 rounded-3xl p-8 sm:p-12 lg:p-16">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -400,7 +400,7 @@ function VerificationDiagram() {
 function ApproachSection() {
   return (
     <section className="py-20 sm:py-32 lg:py-40">
-      <div className="max-w-5xl mx-auto px-4 sm:px-8 lg:px-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
         <div className="bg-neutral-50 rounded-3xl p-8 sm:p-12 lg:p-16">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
