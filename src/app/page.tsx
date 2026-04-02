@@ -323,40 +323,24 @@ function VerificationDiagram() {
       label: "AI Application",
       sub: "Chatbot, RAG, or Agent sends output",
       icon: Bot,
-      gradient: "from-blue-500 to-blue-600",
-      bg: "bg-blue-50",
-      ring: "ring-blue-100",
-      text: "text-blue-600",
       num: "01",
     },
     {
       label: "Verification",
       sub: "Test for hallucinations & consistency",
       icon: ShieldCheck,
-      gradient: "from-emerald-500 to-emerald-600",
-      bg: "bg-emerald-50",
-      ring: "ring-emerald-100",
-      text: "text-emerald-600",
       num: "02",
     },
     {
       label: "Analysis",
       sub: "Score, benchmark, and generate reports",
       icon: BarChart3,
-      gradient: "from-orange-500 to-orange-600",
-      bg: "bg-orange-50",
-      ring: "ring-orange-100",
-      text: "text-orange-600",
       num: "03",
     },
     {
       label: "Production",
       sub: "Monitor drift, quality & alert in real time",
       icon: Activity,
-      gradient: "from-purple-500 to-purple-600",
-      bg: "bg-purple-50",
-      ring: "ring-purple-100",
-      text: "text-purple-600",
       num: "04",
     },
   ];
@@ -365,7 +349,7 @@ function VerificationDiagram() {
     <div className="rounded-3xl bg-white p-6 sm:p-10 lg:p-14 border border-neutral-100 shadow-sm">
       <div className="text-center mb-10 sm:mb-14">
         <p className="text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.25em] mb-3">How Olyxee Fits Into Your AI Stack</p>
-        <h3 className="font-serif text-xl sm:text-2xl text-neutral-900 tracking-tight">From input to production, verified at every step</h3>
+        <h3 className="font-serif text-xl sm:text-2xl text-neutral-900 tracking-tight">The pipeline, from application to production</h3>
       </div>
 
       <div className="hidden sm:grid sm:grid-cols-4 gap-4 lg:gap-6">
@@ -380,9 +364,9 @@ function VerificationDiagram() {
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               className="relative"
             >
-              <div className={`relative rounded-2xl ${step.bg} p-6 lg:p-7 h-full ring-1 ${step.ring} group hover:shadow-md transition-all duration-300`}>
+              <div className="relative rounded-2xl bg-neutral-50 p-6 lg:p-7 h-full border border-neutral-100 group hover:shadow-md transition-all duration-300">
                 <div className="flex items-start justify-between mb-5">
-                  <div className={`inline-flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br ${step.gradient} text-white shadow-sm`}>
+                  <div className="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-neutral-900 text-white">
                     <Icon className="w-5 h-5" strokeWidth={1.8} />
                   </div>
                   <span className="text-xs font-mono text-neutral-300 font-semibold">{step.num}</span>
@@ -411,8 +395,8 @@ function VerificationDiagram() {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.08 }}
             >
-              <div className={`flex items-center gap-4 rounded-xl ${step.bg} p-4 ring-1 ${step.ring}`}>
-                <div className={`flex-shrink-0 inline-flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br ${step.gradient} text-white`}>
+              <div className="flex items-center gap-4 rounded-xl bg-neutral-50 p-4 border border-neutral-100">
+                <div className="flex-shrink-0 inline-flex items-center justify-center w-10 h-10 rounded-xl bg-neutral-900 text-white">
                   <Icon className="w-5 h-5" strokeWidth={1.8} />
                 </div>
                 <div className="flex-1 min-w-0">
@@ -429,7 +413,7 @@ function VerificationDiagram() {
       <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-neutral-100">
         <div className="flex items-center justify-center gap-8 text-[11px] text-neutral-400">
           <span className="flex items-center gap-2">
-            <span className="w-5 h-5 rounded-md bg-gradient-to-br from-neutral-200 to-neutral-300 inline-block" />
+            <span className="w-5 h-5 rounded-md bg-neutral-200 inline-block" />
             Pipeline stage
           </span>
           <span className="flex items-center gap-2">
