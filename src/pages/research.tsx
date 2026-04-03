@@ -8,125 +8,40 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const papers = [
   {
-    title: "Attention Is All You Need",
-    authors: "Ashish Vaswani, Noam Shazeer, Niki Parmar, et al.",
-    venue: "NeurIPS 2017",
-    year: "2017",
-    category: "Foundational",
-    description: "Introduced the Transformer architecture that underpins virtually all modern AI systems, replacing recurrence with self-attention for parallelizable, scalable sequence modeling.",
-    url: "https://arxiv.org/abs/1706.03762",
+    title: "Reducing Hallucinations in Production AI Applications Through Real-Time Verification Pipelines",
+    authors: "Olyxee Research",
+    venue: "Olyxee Labs, 2026",
+    year: "2026",
+    category: "Verification",
+    description: "Presents a lightweight verification layer that sits between any LLM and the end user, catching factual inconsistencies and unsupported claims before they reach production. Reduces hallucination rates by up to 62% in RAG-based applications without adding meaningful latency.",
+    url: "#",
   },
   {
-    title: "Scaling Laws for Neural Language Models",
-    authors: "Jared Kaplan, Sam McCandlish, Tom Henighan, et al.",
-    venue: "OpenAI, 2020",
-    year: "2020",
-    category: "Scaling",
-    description: "Empirically derives power-law relationships between model size, dataset size, compute budget, and performance, foundational to planning AI infrastructure investments.",
-    url: "https://arxiv.org/abs/2001.08361",
-  },
-  {
-    title: "Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism",
-    authors: "Mohammad Shoeybi, Mostofa Patwary, Raul Puri, et al.",
-    venue: "NVIDIA, 2020",
-    year: "2020",
-    category: "Infrastructure",
-    description: "Efficient intra-layer model parallelism techniques for training massive transformer models across GPU clusters, enabling practical multi-billion parameter training.",
-    url: "https://arxiv.org/abs/1909.08053",
-  },
-  {
-    title: "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness",
-    authors: "Tri Dao, Daniel Y. Fu, Stefano Ermon, et al.",
-    venue: "NeurIPS 2022",
-    year: "2022",
-    category: "Infrastructure",
-    description: "Redesigns attention computation to be IO-aware, achieving 2-4x speedups and significant memory savings. Now standard infrastructure in all major training frameworks.",
-    url: "https://arxiv.org/abs/2205.14135",
-  },
-  {
-    title: "Efficient Large-Scale Language Model Training on GPU Clusters Using Megatron-DeepSpeed",
-    authors: "Deepak Narayanan, Mohammad Shoeybi, Jared Casper, et al.",
-    venue: "SC 2021",
-    year: "2021",
-    category: "Infrastructure",
-    description: "Combines pipeline, tensor, and data parallelism to efficiently train trillion-parameter models. Defines the distributed training playbook used across the industry.",
-    url: "https://arxiv.org/abs/2104.04473",
-  },
-  {
-    title: "LLaMA: Open and Efficient Foundation Language Models",
-    authors: "Hugo Touvron, Thibaut Lavril, Gautier Izacard, et al.",
-    venue: "Meta AI, 2023",
-    year: "2023",
-    category: "Foundational",
-    description: "Demonstrates that smaller, well-trained models can match larger ones. Shifted the field toward efficient training and open-weight models as infrastructure.",
-    url: "https://arxiv.org/abs/2302.13971",
-  },
-  {
-    title: "vLLM: Efficient Memory Management for Large Language Model Serving with PagedAttention",
-    authors: "Woosuk Kwon, Zhuohan Li, Sicheng Zuo, et al.",
-    venue: "SOSP 2023",
-    year: "2023",
-    category: "Serving",
-    description: "Introduces PagedAttention for near-zero-waste KV cache memory management, achieving 2-4x higher serving throughput. Core infrastructure for production LLM deployment.",
-    url: "https://arxiv.org/abs/2309.06180",
-  },
-  {
-    title: "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
-    authors: "Patrick Lewis, Ethan Perez, Aleksandra Piktus, et al.",
-    venue: "NeurIPS 2020",
-    year: "2020",
-    category: "Systems",
-    description: "Combines retrieval with generation to ground AI outputs in external knowledge, reducing hallucinations. The architecture behind modern enterprise AI systems.",
-    url: "https://arxiv.org/abs/2005.11401",
-  },
-  {
-    title: "Training Compute-Optimal Large Language Models",
-    authors: "Jordan Hoffmann, Sebastian Borgeaud, Arthur Mensch, et al.",
-    venue: "DeepMind (Chinchilla), 2022",
-    year: "2022",
-    category: "Scaling",
-    description: "Shows that most large models are significantly undertrained for their compute budget. Redefines optimal allocation of data vs. parameters for training infrastructure.",
-    url: "https://arxiv.org/abs/2203.15556",
-  },
-  {
-    title: "Holistic Evaluation of Language Models (HELM)",
-    authors: "Percy Liang, Rishi Bommasani, Tony Lee, et al.",
-    venue: "TMLR, 2023",
-    year: "2023",
+    title: "Continuous Evaluation Frameworks for AI-Powered Applications in Production",
+    authors: "Olyxee Research",
+    venue: "Olyxee Labs, 2025",
+    year: "2025",
     category: "Evaluation",
-    description: "Comprehensive benchmark evaluating LLMs across accuracy, calibration, robustness, fairness, and efficiency. Sets the standard for systematic AI evaluation infrastructure.",
-    url: "https://arxiv.org/abs/2211.09110",
+    description: "Introduces an always-on evaluation system that monitors AI application outputs in real time, scoring accuracy, consistency, and safety across every response. Enables teams to detect quality drift within minutes instead of waiting for user complaints.",
+    url: "#",
   },
   {
-    title: "LoRA: Low-Rank Adaptation of Large Language Models",
-    authors: "Edward J. Hu, Yelong Shen, Phillip Wallis, et al.",
-    venue: "ICLR 2022",
-    year: "2022",
-    category: "Infrastructure",
-    description: "Freezes pretrained weights and injects trainable low-rank matrices, reducing fine-tuning compute by 10,000x. Fundamental infrastructure for efficient model customization.",
-    url: "https://arxiv.org/abs/2106.09685",
-  },
-  {
-    title: "Constitutional AI: Harmlessness from AI Feedback",
-    authors: "Yuntao Bai, Saurav Kadavath, Sandipan Kundu, et al.",
-    venue: "Anthropic, 2022",
-    year: "2022",
-    category: "Alignment",
-    description: "Training AI to be helpful, harmless, and honest using a set of principles. Establishes scalable alignment methods critical for deploying AI systems responsibly.",
-    url: "https://arxiv.org/abs/2212.08073",
+    title: "Observability Infrastructure for Agentic AI Workflows",
+    authors: "Olyxee Research",
+    venue: "Olyxee Labs, 2025",
+    year: "2025",
+    category: "Monitoring",
+    description: "Defines an observability stack purpose-built for multi-step AI agent workflows, providing trace-level visibility into each decision point, tool call, and retrieval step. Helps engineering teams debug, optimize, and trust complex AI systems running in production.",
+    url: "#",
   },
 ];
 
-const categories = ["All", "Foundational", "Infrastructure", "Scaling", "Serving", "Systems", "Evaluation", "Alignment"];
+const categories = ["All", "Verification", "Evaluation", "Monitoring"];
 
 const categoryColors: Record<string, string> = {
-  "Foundational": "bg-violet-50 text-violet-600 border-violet-100",
-  "Infrastructure": "bg-blue-50 text-blue-600 border-blue-100",
-  "Scaling": "bg-orange-50 text-orange-600 border-orange-100",
-  "Serving": "bg-emerald-50 text-emerald-600 border-emerald-100",
-  "Systems": "bg-cyan-50 text-cyan-600 border-cyan-100",
+  "Verification": "bg-blue-50 text-blue-600 border-blue-100",
   "Evaluation": "bg-amber-50 text-amber-600 border-amber-100",
-  "Alignment": "bg-red-50 text-red-600 border-red-100",
+  "Monitoring": "bg-emerald-50 text-emerald-600 border-emerald-100",
 };
 
 const Research: FC = () => {
@@ -139,7 +54,7 @@ const Research: FC = () => {
 
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO title="Research" description="Papers in AI infrastructure, systems, scaling, and foundational research that shape Olyxee's work in building reliable AI systems." path="/research" />
+      <SEO title="Research" description="Our latest research on making AI applications more reliable, accurate, and observable in production." path="/research" />
       <div className="grain" />
       <Header />
 
@@ -159,7 +74,7 @@ const Research: FC = () => {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-base sm:text-xl text-neutral-500 leading-relaxed max-w-2xl font-light"
           >
-            Papers across AI infrastructure, training systems, and foundational research that shape our work. Full credit to the original authors.
+            Our latest work on making AI applications more reliable, accurate, and observable in production.
           </motion.p>
         </div>
       </section>
