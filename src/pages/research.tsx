@@ -3,6 +3,7 @@ import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -45,7 +46,7 @@ const categoryColors: Record<string, string> = {
 const Research: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO title="Research" description="Our latest research on making AI applications more reliable, accurate, and observable in production." path="/research" />
+      <SEO title="Research" description="Published work from the Olyxee team on verification, evaluation, and observability for AI applications in production." path="/research" />
       <div className="grain" />
       <Header />
 
@@ -55,10 +56,10 @@ const Research: FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="flex items-center gap-2 mb-8"
+            className="flex items-center gap-3 mb-6"
           >
-            <span className="accent-dot" />
-            <span className="text-sm font-medium text-neutral-400 uppercase tracking-widest">Research</span>
+            <Image src="/Logo/Olyxee_Logo.png" alt="Olyxee" width={24} height={24} className="opacity-40" />
+            <span className="text-sm font-medium text-neutral-400 uppercase tracking-widest">Olyxee Research</span>
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -66,7 +67,7 @@ const Research: FC = () => {
             transition={{ duration: 0.8, delay: 0.05 }}
             className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.08] mb-6"
           >
-            Making AI applications <em className="text-blue-500">work better</em>
+            Our Research
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -74,28 +75,26 @@ const Research: FC = () => {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-base sm:text-xl text-neutral-500 leading-relaxed max-w-2xl font-light"
           >
-            Our latest work on verification, evaluation, and observability — the infrastructure that makes AI applications reliable in production.
+            Published work from the Olyxee team on verification, evaluation, and observability for AI applications in production.
           </motion.p>
         </div>
       </section>
 
       <section className="pb-20 sm:pb-32">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <div className="space-y-0 divide-y divide-neutral-100">
+          <div className="grid grid-cols-1 gap-6">
             {papers.map((paper, idx) => (
               <motion.a
                 key={paper.title}
                 href={paper.url}
-                target="_blank"
-                rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.15 + idx * 0.08 }}
-                className="group block py-10 sm:py-12 first:pt-0"
+                className="group block rounded-2xl border border-neutral-100 hover:border-neutral-200 bg-white hover:shadow-lg hover:shadow-neutral-100/60 transition-all duration-300 p-8 sm:p-10"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start">
                   <div className="lg:col-span-8">
-                    <div className="flex items-center gap-3 mb-4">
+                    <div className="flex items-center gap-3 mb-5">
                       <span className={`inline-flex px-2.5 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider border ${categoryColors[paper.category]}`}>
                         {paper.category}
                       </span>
@@ -108,13 +107,13 @@ const Research: FC = () => {
                       {paper.description}
                     </p>
                   </div>
-                  <div className="lg:col-span-4 flex lg:flex-col lg:items-end lg:justify-between lg:h-full lg:pt-10">
+                  <div className="lg:col-span-4 flex lg:flex-col lg:items-end lg:justify-between lg:h-full">
                     <div className="flex items-center gap-4 lg:flex-col lg:items-end lg:gap-1">
                       <p className="text-sm text-neutral-400">{paper.authors}</p>
                       <span className="text-xs text-neutral-300">{paper.venue}</span>
                     </div>
-                    <div className="ml-auto lg:ml-0 lg:mt-6 flex items-center gap-1.5 text-sm text-neutral-400 group-hover:text-blue-600 transition-colors">
-                      <span className="hidden sm:inline">Read paper</span>
+                    <div className="ml-auto lg:ml-0 lg:mt-8 flex items-center gap-1.5 text-sm text-neutral-400 group-hover:text-blue-600 transition-colors font-medium">
+                      <span>Read paper</span>
                       <ArrowUpRight className="w-4 h-4" />
                     </div>
                   </div>
