@@ -114,9 +114,9 @@ const About: FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {[
-              { title: "Verification", description: "Test AI outputs for accuracy, consistency, and hallucinations before they reach users." },
-              { title: "Evaluation", description: "Continuous scoring and benchmarking so you always know how your AI is performing." },
-              { title: "Monitoring", description: "Real-time observability for production AI — catch drift, failures, and quality issues early." },
+              { title: "Verification", description: "Test AI outputs for accuracy, consistency, and hallucinations before they reach users.", bg: "/images/gradient-blue.png" },
+              { title: "Evaluation", description: "Continuous scoring and benchmarking so you always know how your AI is performing.", bg: "/images/gradient-orange-pink.png" },
+              { title: "Monitoring", description: "Real-time observability for production AI. Catch drift, failures, and quality issues early.", bg: "/images/gradient-purple.png" },
             ].map((item, idx) => (
               <motion.div
                 key={item.title}
@@ -125,11 +125,17 @@ const About: FC = () => {
                 viewport={{ once: true, amount: 0.2 }}
                 custom={idx}
                 variants={fadeUp}
-                className="bg-white rounded-2xl p-8 sm:p-10 border border-neutral-100"
+                className="relative rounded-2xl overflow-hidden group hover:shadow-lg transition-all duration-300"
               >
-                <div className="text-xs font-mono text-neutral-300 mb-6">0{idx + 1}</div>
-                <h3 className="text-lg font-semibold text-neutral-900 mb-3">{item.title}</h3>
-                <p className="text-sm text-neutral-500 leading-relaxed font-light">{item.description}</p>
+                <div className="absolute inset-0">
+                  <Image src={item.bg} alt="" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
+                  <div className="absolute inset-0 bg-white/80 group-hover:bg-white/75 transition-colors duration-300" />
+                </div>
+                <div className="relative p-8 sm:p-10">
+                  <div className="text-xs font-mono text-neutral-400 mb-6">0{idx + 1}</div>
+                  <h3 className="text-lg font-semibold text-neutral-900 mb-3">{item.title}</h3>
+                  <p className="text-sm text-neutral-500 leading-relaxed font-light">{item.description}</p>
+                </div>
               </motion.div>
             ))}
           </div>
