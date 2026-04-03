@@ -19,56 +19,43 @@ const fadeUp = {
 const About: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO title="About" description="Olyxee provides research and infrastructure for artificial intelligence. We support experimentation, development, and verification of AI models with scalable tools for production deployment." path="/about" />
+      <SEO title="About" description="Olyxee builds the infrastructure to make AI applications more reliable, accurate, and observable in production." path="/about" />
+      <div className="grain" />
       <Header />
 
-      <section className="relative pt-20 sm:pt-24">
-        <div className="px-4 sm:px-6 lg:px-8">
-          <div className="relative max-w-6xl mx-auto rounded-2xl sm:rounded-3xl overflow-hidden">
-            <Image
-              src="/images/section-header-bg.jpg"
-              alt="AI infrastructure collage"
-              width={1360}
-              height={300}
-              priority
-              sizes="100vw"
-              className="w-full h-auto block"
-            />
-            <div className="absolute inset-0 bg-black/50" />
-            <div className="absolute inset-0 flex flex-col justify-end p-6 sm:p-10 lg:p-14">
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.1 }}
-                className="text-xs font-semibold text-white/70 uppercase tracking-[0.25em] mb-3"
-              >
-                About Olyxee
-              </motion.p>
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.3 }}
-                className="font-serif text-2xl sm:text-4xl lg:text-5xl text-white leading-[1.08] tracking-tight"
-              >
-                Research and infrastructure{" "}
-                <em className="text-blue-400">for artificial intelligence.</em>
-              </motion.h1>
-            </div>
-          </div>
+      <section className="pt-32 sm:pt-44 pb-16 sm:pb-24 px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="flex items-center gap-2 mb-8"
+          >
+            <span className="accent-dot" />
+            <span className="text-sm font-medium text-neutral-400 uppercase tracking-widest">About Olyxee</span>
+          </motion.div>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.05 }}
+            className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.08] mb-6"
+          >
+            We make AI applications <em className="text-blue-500">work as intended</em>
+          </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-base sm:text-lg text-neutral-500 max-w-xl leading-relaxed font-light mt-8 max-w-6xl mx-auto"
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="text-base sm:text-xl text-neutral-500 leading-relaxed max-w-2xl font-light"
           >
-            From model development to production deployment, we provide the systems and tools that make AI work at scale.
+            Olyxee builds verification, evaluation, and monitoring infrastructure so teams can ship AI with confidence.
           </motion.p>
         </div>
       </section>
 
-      <section className="py-16 sm:py-24 lg:py-32">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-24 sm:mb-32">
+      <section className="pb-20 sm:pb-32">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -76,11 +63,11 @@ const About: FC = () => {
               custom={0}
               variants={fadeUp}
             >
-              <div className="inline-block px-3 py-1 bg-red-50 text-red-700 text-xs font-semibold uppercase tracking-widest rounded-full mb-5">The Challenge</div>
-              <h2 className="font-serif text-3xl sm:text-4xl tracking-tight mb-6 leading-tight">AI needs more than models.</h2>
+              <h2 className="font-serif text-3xl sm:text-4xl tracking-tight mb-6 leading-tight">The problem we solve</h2>
               <div className="space-y-4 text-[15px] sm:text-base text-neutral-500 leading-relaxed font-light">
-                <p>Building a model is the beginning, not the end. Teams need scalable systems, deployment pipelines, and verification tools to move from experimentation to real-world impact.</p>
-                <p>Most AI projects stall not because the models are bad, but because everything around them is missing.</p>
+                <p>AI models are getting better every month. But the applications built on top of them still break in unpredictable ways — hallucinations, inconsistent outputs, silent quality degradation.</p>
+                <p>The gap between a working demo and a reliable product is enormous. Most teams have no way to systematically verify, evaluate, or monitor their AI in production.</p>
+                <p>That's what Olyxee is here to fix.</p>
               </div>
             </motion.div>
             <motion.div
@@ -90,108 +77,67 @@ const About: FC = () => {
               custom={1}
               variants={fadeUp}
             >
-              <div className="relative rounded-3xl overflow-hidden shadow-xl shadow-neutral-200/50">
-                <Image
-                  src="/images/ai-failure-rate.png"
-                  alt="The failure rate of AI projects is 50 percent"
-                  width={600}
-                  height={400}
-                  loading="lazy"
-                  className="w-full h-auto"
-                />
-              </div>
-            </motion.div>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              custom={0}
-              variants={fadeUp}
-              className="order-2 lg:order-1"
-            >
-              <div className="relative rounded-3xl overflow-hidden shadow-xl shadow-neutral-200/50">
-                <Image
-                  src="/images/ai-fixing.png"
-                  alt="Engineers fixing and improving AI systems"
-                  width={600}
-                  height={400}
-                  loading="lazy"
-                  className="w-full h-auto"
-                />
-              </div>
-            </motion.div>
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              custom={1}
-              variants={fadeUp}
-              className="order-1 lg:order-2"
-            >
-              <div className="inline-block px-3 py-1 bg-green-50 text-green-700 text-xs font-semibold uppercase tracking-widest rounded-full mb-5">Our Approach</div>
-              <h2 className="font-serif text-3xl sm:text-4xl tracking-tight mb-6 leading-tight">Built for the full lifecycle.</h2>
-              <div className="space-y-4 text-[15px] sm:text-base text-neutral-500 leading-relaxed font-light">
-                <p>We support experimentation across deep learning, NLP, computer vision, and physics-informed AI. Through products like Grysics, we verify that models perform as expected before they reach users.</p>
-                <p>Scalable backends, deployment pipelines, and evaluation tools, designed to take AI from prototype to production.</p>
+              <div className="bg-neutral-50 rounded-2xl p-8 sm:p-10 border border-neutral-100">
+                <div className="space-y-8">
+                  {[
+                    { stat: "50%", label: "of AI projects fail to reach production" },
+                    { stat: "62%", label: "hallucination reduction with verification" },
+                    { stat: "3x", label: "faster issue detection with monitoring" },
+                  ].map((item) => (
+                    <div key={item.label}>
+                      <div className="text-3xl sm:text-4xl font-serif text-neutral-900 mb-1">{item.stat}</div>
+                      <p className="text-sm text-neutral-500 font-light">{item.label}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      <section className="py-16 sm:py-24 lg:py-32">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-neutral-100 rounded-2xl sm:rounded-3xl p-8 sm:p-12 lg:p-16">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              custom={0}
-              variants={fadeUp}
-              className="mb-12 sm:mb-16"
-            >
-              <p className="text-xs font-semibold text-neutral-500 uppercase tracking-[0.25em] mb-4">What We Build</p>
-              <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900">
-                The systems behind smarter AI
-              </h2>
-            </motion.div>
+      <section className="py-20 sm:py-32 bg-neutral-50">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            custom={0}
+            variants={fadeUp}
+            className="mb-14 sm:mb-20"
+          >
+            <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.25em] mb-4">What We Build</p>
+            <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900">
+              Infrastructure for reliable AI
+            </h2>
+          </motion.div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-              {[
-                { title: "AI Research", description: "Experimentation and development across deep learning, NLP, computer vision, and physics-informed AI.", bg: "/images/gradient-blue-pink.png" },
-                { title: "Model Verification", description: "Through Grysics, ensure AI models perform as expected before deployment with rigorous testing.", bg: "/images/gradient-orange-purple.png" },
-                { title: "Deployment Pipelines", description: "Scalable backend and tools to move AI from research to production safely and efficiently.", bg: "/images/gradient-pastel.png" },
-                { title: "Production Monitoring", description: "Detect quality degradation, drift, and failure patterns in real time.", bg: "/images/gradient-purple.png" },
-                { title: "Infrastructure at Scale", description: "Backend systems designed to handle AI workloads across training, inference, and evaluation.", bg: "/images/gradient-abstract-blue.png" },
-                { title: "Open Research", description: "We publish findings and open-source tools to advance AI development collectively.", bg: "/images/gradient-yellow-green.png" },
-              ].map((item, idx) => (
-                <motion.div
-                  key={item.title}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.2 }}
-                  custom={idx}
-                  variants={fadeUp}
-                  className="group relative rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300"
-                >
-                  <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url("${item.bg}")` }} />
-                  <div className="absolute inset-0 bg-neutral-800/80" />
-                  <div className="relative p-7 sm:p-8">
-                    <h3 className="text-base font-semibold text-white mb-2">{item.title}</h3>
-                    <p className="text-sm text-neutral-300 leading-relaxed font-light">{item.description}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {[
+              { title: "Verification", description: "Test AI outputs for accuracy, consistency, and hallucinations before they reach users." },
+              { title: "Evaluation", description: "Continuous scoring and benchmarking so you always know how your AI is performing." },
+              { title: "Monitoring", description: "Real-time observability for production AI — catch drift, failures, and quality issues early." },
+            ].map((item, idx) => (
+              <motion.div
+                key={item.title}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                custom={idx}
+                variants={fadeUp}
+                className="bg-white rounded-2xl p-8 sm:p-10 border border-neutral-100"
+              >
+                <div className="text-xs font-mono text-neutral-300 mb-6">0{idx + 1}</div>
+                <h3 className="text-lg font-semibold text-neutral-900 mb-3">{item.title}</h3>
+                <p className="text-sm text-neutral-500 leading-relaxed font-light">{item.description}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="py-16 sm:py-24 lg:py-32">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+      <section className="py-20 sm:py-32">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -201,20 +147,17 @@ const About: FC = () => {
             className="mb-14 sm:mb-20"
           >
             <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.25em] mb-4">Our Principles</p>
-            <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-5">
+            <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900">
               What drives us
             </h2>
-            <p className="text-base sm:text-lg text-neutral-500 leading-relaxed font-light max-w-2xl">
-              The principles behind every product we ship, every paper we publish, and every system we deploy.
-            </p>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-neutral-200 rounded-2xl overflow-hidden">
             {[
-              { num: "01", title: "Scientific rigor", description: "Every system we build is grounded in research, tested thoroughly, and validated before deployment. We do not ship what we cannot measure." },
-              { num: "02", title: "Build the foundation", description: "Strong systems enable strong models. We invest in the foundation, from scalable backends to deployment pipelines, so teams can focus on what matters." },
-              { num: "03", title: "Production ready", description: "We design for real-world workloads, not demos. Every tool is built to handle scale, complexity, and the unpredictability of production environments." },
-              { num: "04", title: "Open by default", description: "We publish our findings and contribute tools back to the broader AI community. Progress should not happen behind closed doors." },
+              { num: "01", title: "Reliability over novelty", description: "We prioritize building things that work consistently over chasing the latest trend. Our tools are designed for production, not demos." },
+              { num: "02", title: "Measure everything", description: "If you can't measure it, you can't improve it. Every system we build is grounded in data, tested thoroughly, and validated before shipping." },
+              { num: "03", title: "We don't build models", description: "We make the models you already use work better. We're not competing with model providers — we're giving them the infrastructure to succeed." },
+              { num: "04", title: "Transparency", description: "We publish our research, share our findings, and build in the open. Trust is earned through visibility." },
             ].map((value, idx) => (
               <motion.div
                 key={value.title}
@@ -234,9 +177,9 @@ const About: FC = () => {
         </div>
       </section>
 
-      <section className="py-16 sm:py-24 lg:py-32">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <section className="py-20 sm:py-32 border-t border-neutral-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -244,35 +187,13 @@ const About: FC = () => {
               custom={0}
               variants={fadeUp}
             >
-              <div className="rounded-3xl overflow-hidden shadow-xl shadow-neutral-200/50">
-                <Image
-                  src="/images/ai-debugging.png"
-                  alt="Person debugging AI application alongside a robot"
-                  width={800}
-                  height={500}
-                  loading="lazy"
-                  className="w-full h-auto"
-                />
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              custom={1}
-              variants={fadeUp}
-            >
               <div className="inline-block px-3 py-1 bg-neutral-100 text-neutral-600 text-xs font-semibold uppercase tracking-widest rounded-full mb-5">Founder&apos;s Note</div>
               <blockquote className="font-serif text-2xl sm:text-3xl lg:text-4xl text-neutral-900 leading-snug mb-8 tracking-tight">
-                &ldquo;AI is only as powerful as the systems we build to harness it. At Olyxee, we turn research into reliable infrastructure so every model can reach its full potential.&rdquo;
+                &ldquo;We're not here to build another model. We're here to make sure the ones you use actually work.&rdquo;
               </blockquote>
               <div className="space-y-4">
                 <p className="text-base text-neutral-500 leading-relaxed font-light">
-                  We are not competing with model builders. We are giving them the platform to ship with confidence.
-                </p>
-                <p className="text-base text-neutral-500 leading-relaxed font-light">
-                  From first experiment to full-scale deployment, every tool we build exists to close that gap.
+                  AI is only as valuable as its reliability. At Olyxee, we build the infrastructure that closes the gap between what AI promises and what it delivers.
                 </p>
               </div>
               <div className="mt-8 pt-6 border-t border-neutral-100">
@@ -296,49 +217,39 @@ const About: FC = () => {
                 </a>
               </div>
             </motion.div>
-          </div>
-        </div>
-      </section>
 
-      <section className="py-20 sm:py-28 lg:py-36 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-100/40 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-1/3 w-[400px] h-[400px] bg-orange-100/30 rounded-full blur-3xl" />
-        </div>
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            custom={0}
-            variants={fadeUp}
-            className="text-center"
-          >
-            <Image
-              src="/Logo/Olyxee_Logo.png"
-              alt="Olyxee"
-              width={48}
-              height={48}
-              loading="lazy"
-              className="mx-auto opacity-30 mb-8"
-            />
-            <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight mb-5 sm:mb-6 text-neutral-900">
-              Join us in building
-              <br />
-              <em className="text-blue-500">trustworthy AI</em>
-            </h2>
-            <p className="text-base sm:text-lg text-neutral-500 mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed font-light">
-              Researchers and engineers solving hard problems in AI safety and verification.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/careers" className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-neutral-900 text-white rounded-full font-medium hover:bg-black transition-all text-sm tracking-wide shadow-lg shadow-neutral-900/20">
-                View Open Roles <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-              </Link>
-              <Link href="/contact" className="inline-flex items-center justify-center gap-2 px-8 py-4 text-neutral-900 border border-neutral-200 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide">
-                Get in Touch
-              </Link>
-            </div>
-          </motion.div>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              custom={1}
+              variants={fadeUp}
+              className="text-center bg-neutral-50 rounded-2xl p-10 sm:p-14 border border-neutral-100"
+            >
+              <Image
+                src="/Logo/Olyxee_Logo.png"
+                alt="Olyxee"
+                width={48}
+                height={48}
+                loading="lazy"
+                className="mx-auto opacity-30 mb-8"
+              />
+              <h3 className="font-serif text-2xl sm:text-3xl tracking-tight mb-4 text-neutral-900">
+                Join us in building<br /><em className="text-blue-500">trustworthy AI</em>
+              </h3>
+              <p className="text-sm text-neutral-500 mb-8 max-w-sm mx-auto leading-relaxed font-light">
+                We're looking for people who care about making AI work reliably in the real world.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <Link href="/careers" className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-black transition-all text-sm tracking-wide">
+                  View Open Roles <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                </Link>
+                <Link href="/contact" className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-neutral-900 border border-neutral-200 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide">
+                  Get in Touch
+                </Link>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
