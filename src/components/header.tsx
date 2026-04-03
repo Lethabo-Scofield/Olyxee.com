@@ -173,7 +173,7 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                             className="hidden sm:block"
                         >
                             <Link
-                                href="/products"
+                                href="/signup"
                                 className="inline-flex items-center px-4 py-1.5 text-[13px] font-medium bg-neutral-900 text-white rounded-full hover:bg-black transition-all"
                             >
                                 Sign up
@@ -273,7 +273,7 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                                 transition={{ delay: 0.4, type: 'spring', stiffness: 300, damping: 25 }}
                             >
                                 <Link
-                                    href="/products"
+                                    href="/signup"
                                     onClick={() => setMobileMenuOpen(false)}
                                     className="w-full py-3 bg-neutral-900 text-white rounded-2xl flex items-center justify-center active:scale-[0.98] transition-all font-semibold text-sm focus:outline-none"
                                 >
