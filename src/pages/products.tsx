@@ -117,7 +117,7 @@ const ProductsPage: FC = () => {
                     Verify your AI before it breaks
                   </h2>
                   <p className="text-neutral-500 text-[15px] sm:text-base font-light leading-relaxed mb-8 max-w-md">
-                    One command to test accuracy, latency, and reliability across every target. Catch failures before your users do.
+                    Automatically test accuracy, consistency, and reliability across your AI application. Catch failures before your users do.
                   </p>
                   <div className="space-y-3 mb-10">
                     {[
@@ -137,31 +137,54 @@ const ProductsPage: FC = () => {
                 </div>
 
                 <div className="p-6 sm:p-8 lg:p-10 flex items-center">
-                  <div className="w-full rounded-xl bg-[#0d1117] border border-neutral-800 overflow-hidden shadow-lg">
-                    <div className="flex items-center gap-2 px-4 py-2.5 border-b border-white/5">
-                      <div className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
-                      <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
-                      <div className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
-                      <span className="text-[10px] text-neutral-600 ml-2 font-mono">grysics verify</span>
+                  <div className="w-full rounded-xl bg-white border border-neutral-200 overflow-hidden shadow-sm">
+                    <div className="px-5 py-4 border-b border-neutral-100 flex items-center justify-between">
+                      <span className="text-sm font-semibold text-neutral-900">Verification Results</span>
+                      <span className="text-[10px] font-medium text-green-600 bg-green-50 px-2.5 py-1 rounded-full uppercase tracking-wider">Passed</span>
                     </div>
-                    <div className="p-4 sm:p-5 font-mono text-[11px] sm:text-[12px] leading-[1.9] space-y-0.5 overflow-x-auto">
-                      <div className="text-neutral-500">$ grysics verify --suite chatbot-v2</div>
-                      <div className="text-neutral-500 mt-2">Running 847 test cases...</div>
-                      <div className="mt-1 flex items-center gap-2">
-                        <span className="text-green-400">✓</span> <span className="text-neutral-400">Accuracy: all assertions passed</span>
+                    <div className="p-5 space-y-4">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-neutral-500">Accuracy</span>
+                        <div className="flex items-center gap-2">
+                          <div className="w-24 h-2 rounded-full bg-neutral-100 overflow-hidden">
+                            <div className="w-full h-full rounded-full bg-green-500" />
+                          </div>
+                          <span className="text-sm font-semibold text-neutral-900">100%</span>
+                        </div>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-green-400">✓</span> <span className="text-neutral-400">Consistency: 98.2%</span>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-neutral-500">Consistency</span>
+                        <div className="flex items-center gap-2">
+                          <div className="w-24 h-2 rounded-full bg-neutral-100 overflow-hidden">
+                            <div className="w-[98%] h-full rounded-full bg-green-500" />
+                          </div>
+                          <span className="text-sm font-semibold text-neutral-900">98.2%</span>
+                        </div>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-amber-400">!</span> <span className="text-neutral-400">Hallucination: 3 flagged</span>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-neutral-500">Hallucinations</span>
+                        <div className="flex items-center gap-2">
+                          <div className="w-24 h-2 rounded-full bg-neutral-100 overflow-hidden">
+                            <div className="w-[3%] h-full rounded-full bg-amber-400" />
+                          </div>
+                          <span className="text-sm font-semibold text-amber-600">3 flagged</span>
+                        </div>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-green-400">✓</span> <span className="text-neutral-400">RAG relevance: above threshold</span>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-neutral-500">RAG Relevance</span>
+                        <div className="flex items-center gap-2">
+                          <div className="w-24 h-2 rounded-full bg-neutral-100 overflow-hidden">
+                            <div className="w-[95%] h-full rounded-full bg-green-500" />
+                          </div>
+                          <span className="text-sm font-semibold text-neutral-900">95.4%</span>
+                        </div>
                       </div>
-                      <div className="text-neutral-700 mt-2">───────────────────────</div>
-                      <div className="text-white mt-0.5">
-                        <span className="text-green-400">844 passed</span> · <span className="text-amber-400">3 warnings</span> · <span className="text-red-400">0 failed</span>
+                      <div className="pt-3 mt-1 border-t border-neutral-100 flex items-center justify-between">
+                        <span className="text-xs text-neutral-400">847 test cases completed</span>
+                        <div className="flex items-center gap-3 text-xs">
+                          <span className="text-green-600 font-medium">844 passed</span>
+                          <span className="text-amber-600 font-medium">3 warnings</span>
+                        </div>
                       </div>
                     </div>
                   </div>
