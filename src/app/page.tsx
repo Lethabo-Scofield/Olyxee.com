@@ -67,7 +67,6 @@ export default function HomePage() {
       <Header />
       <main>
         <HeroSection />
-        <LogoStrip />
         <MissionSection />
         <ResearchAreas />
         <ApproachSection />
@@ -133,6 +132,8 @@ function HeroSection() {
           </div>
         </div>
       </motion.div>
+
+      <LogoStrip />
     </section>
   );
 }
@@ -150,10 +151,9 @@ function LogoStrip() {
   ];
 
   return (
-    <section className="border-y border-neutral-100 bg-neutral-50/50 py-8 sm:py-12">
-      <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
-        <p className="text-center text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-6 sm:mb-8">Works With</p>
-        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 sm:gap-x-16 sm:gap-y-6">
+    <div className="relative z-10 w-full max-w-5xl mx-auto py-8 sm:py-10 px-4 sm:px-8 lg:px-12">
+      <p className="text-center text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-6 sm:mb-8">Works With</p>
+      <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 sm:gap-x-16 sm:gap-y-6">
           {collaborators.map((item, idx) => (
             <motion.div
               key={item.name}
@@ -175,8 +175,7 @@ function LogoStrip() {
             </motion.div>
           ))}
         </div>
-      </div>
-    </section>
+    </div>
   );
 }
 
