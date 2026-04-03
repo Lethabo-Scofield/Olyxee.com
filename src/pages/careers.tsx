@@ -23,11 +23,11 @@ const roles: Role[] = [
     team: "AI Research & Development",
     location: "Remote",
     type: "internship",
-    description: "Contribute to research across deep learning, NLP, computer vision, and physics-informed AI.",
+    description: "Push the boundaries of what's possible in AI verification and evaluation. Work on research that shapes how the industry thinks about AI reliability.",
     responsibilities: [
-      "Conduct experiments on model verification and evaluation",
-      "Help build research prototypes and contribute to publications",
-      "Collaborate with the team on open problems in AI reliability",
+      "Design and run experiments on model verification and evaluation methods",
+      "Build research prototypes that turn into real products",
+      "Tackle open problems in AI reliability that no one else is solving",
     ],
     requirements: [
       "Link to portfolio, GitHub, or projects you have worked on",
@@ -38,11 +38,11 @@ const roles: Role[] = [
     team: "AI Research & Development",
     location: "Remote",
     type: "internship",
-    description: "Build and integrate AI systems, from prototyping models to deploying them in production.",
+    description: "Turn cutting-edge research into production systems. You'll bridge the gap between what's possible in a lab and what works at scale.",
     responsibilities: [
-      "Develop and integrate AI models into platform services",
-      "Build data pipelines and feature engineering workflows",
-      "Collaborate across research and engineering to ship AI-powered features",
+      "Build and deploy AI models that power real verification workflows",
+      "Design data pipelines that handle production-scale AI evaluation",
+      "Work directly with researchers to bring new ideas to life in code",
     ],
     requirements: [
       "Link to portfolio, GitHub, or projects you have worked on",
@@ -53,11 +53,11 @@ const roles: Role[] = [
     team: "Infrastructure & Platform",
     location: "Remote",
     type: "internship",
-    description: "Work across frontend and backend to build end-to-end features for the Olyxee platform.",
+    description: "Build the platform that teams rely on to trust their AI. You'll own entire features from idea to deployment, across every layer of the stack.",
     responsibilities: [
-      "Build features spanning frontend, backend, and data layers",
-      "Design and implement new platform capabilities",
-      "Own features end-to-end from concept to deployment",
+      "Architect and build features across frontend, backend, and data layers",
+      "Design systems that handle the complexity of real-time AI monitoring",
+      "Own what you build. Ship it, measure it, improve it.",
     ],
     requirements: [
       "Link to portfolio, GitHub, or projects you have worked on",
@@ -68,11 +68,11 @@ const roles: Role[] = [
     team: "AI Research & Development",
     location: "Remote",
     type: "internship",
-    description: "Work on model optimization, training pipelines, and inference systems.",
+    description: "Make AI systems faster, more accurate, and production-ready. Your work directly impacts how reliable AI is for thousands of teams.",
     responsibilities: [
-      "Build and improve model training and evaluation pipelines",
-      "Implement optimization techniques for production models",
-      "Benchmark and test models across different configurations",
+      "Build training and evaluation pipelines that set the standard for quality",
+      "Optimize models for real-world performance, not just benchmarks",
+      "Design testing frameworks that catch problems before users do",
     ],
     requirements: [
       "Link to portfolio, GitHub, or projects you have worked on",
@@ -83,11 +83,11 @@ const roles: Role[] = [
     team: "Infrastructure & Platform",
     location: "Remote",
     type: "internship",
-    description: "Help build and scale the APIs and services powering the Olyxee platform.",
+    description: "Build the APIs and services that power AI verification at scale. The systems you create will handle millions of evaluation requests.",
     responsibilities: [
-      "Develop and test API endpoints and backend services",
-      "Write tests and improve code quality",
-      "Assist with database design and service architecture",
+      "Design and build APIs that are fast, reliable, and well-documented",
+      "Architect backend services that scale with growing demand",
+      "Shape the database and service layer that everything else depends on",
     ],
     requirements: [
       "Link to portfolio, GitHub, or projects you have worked on",
@@ -98,11 +98,11 @@ const roles: Role[] = [
     team: "Infrastructure & Platform",
     location: "Remote",
     type: "internship",
-    description: "Build dashboards, developer tools, and interfaces for the Olyxee platform.",
+    description: "Design and build the interfaces that make complex AI data simple and actionable. Your work defines how teams experience Olyxee.",
     responsibilities: [
-      "Develop interactive dashboards and data visualizations",
-      "Improve developer-facing tools and documentation UIs",
-      "Create clean, functional interfaces for complex workflows",
+      "Build dashboards and visualizations that turn raw AI data into clear insights",
+      "Create developer tools that engineers actually enjoy using",
+      "Craft interfaces that make complex verification workflows feel effortless",
     ],
     requirements: [
       "Link to portfolio, GitHub, or projects you have worked on",
@@ -113,11 +113,11 @@ const roles: Role[] = [
     team: "Infrastructure & Platform",
     location: "Remote",
     type: "internship",
-    description: "Automate CI/CD pipelines, manage cloud systems, and improve deployment reliability.",
+    description: "Build the infrastructure that keeps Olyxee running at scale. You'll design systems where uptime and reliability aren't negotiable.",
     responsibilities: [
-      "Build and maintain CI/CD and deployment pipelines",
-      "Automate infrastructure provisioning and monitoring",
-      "Improve system reliability and observability",
+      "Design CI/CD pipelines that make deployments fast and fearless",
+      "Build infrastructure automation that scales with the platform",
+      "Create monitoring and alerting systems that catch issues before they matter",
     ],
     requirements: [
       "Link to portfolio, GitHub, or projects you have worked on",
@@ -128,11 +128,11 @@ const roles: Role[] = [
     team: "Product & Design",
     location: "Remote",
     type: "internship",
-    description: "Design interfaces for AI tools. Shape how developers interact with Olyxee products.",
+    description: "Shape how the world's best engineering teams interact with AI infrastructure. Your designs will define what trust looks like in software.",
     responsibilities: [
-      "Create wireframes, prototypes, and high-fidelity designs",
-      "Design end-to-end user flows for technical products",
-      "Conduct lightweight user research with developer audiences",
+      "Design end-to-end experiences for complex technical workflows",
+      "Create prototypes that influence product direction, not just visuals",
+      "Talk to real users and turn their pain points into elegant solutions",
     ],
     requirements: [
       "Link to portfolio, GitHub, or projects you have worked on",
@@ -143,11 +143,11 @@ const roles: Role[] = [
     team: "QA & Testing",
     location: "Remote",
     type: "internship",
-    description: "Help ensure platform quality through testing, bug reporting, and automation.",
+    description: "Be the last line of defense before our tools reach production. You'll ensure that the platform teams trust to verify AI is itself bulletproof.",
     responsibilities: [
-      "Write and execute test cases across the platform",
-      "Report and track bugs with clear documentation",
-      "Assist with building automated test suites",
+      "Design and execute test strategies that catch what others miss",
+      "Build automated test suites that scale with the platform",
+      "Set the quality bar for a product where reliability is the entire promise",
     ],
     requirements: [
       "Link to portfolio, GitHub, or projects you have worked on",
@@ -158,11 +158,11 @@ const roles: Role[] = [
     team: "Business & Operations",
     location: "Remote",
     type: "internship",
-    description: "Write documentation, tutorials, and educational content about AI and our platform.",
+    description: "Make complex AI infrastructure accessible to every developer. Your writing will be the first experience many teams have with Olyxee.",
     responsibilities: [
-      "Write and maintain API and product documentation",
-      "Create tutorials and getting-started guides",
-      "Produce clear, well-structured technical content",
+      "Write documentation that developers actually want to read",
+      "Create tutorials and guides that turn beginners into power users",
+      "Translate deep technical concepts into clear, compelling content",
     ],
     requirements: [
       "Link to portfolio, GitHub, or projects you have worked on",
@@ -193,7 +193,7 @@ function HeroSection() {
               transition={{ duration: 1, delay: 0.3 }}
               className="font-serif text-3xl sm:text-5xl lg:text-6xl text-white leading-[1.08] tracking-tight mb-6 sm:mb-8"
             >
-              Do the best work of your life.
+              The people who make AI actually work.
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -201,8 +201,7 @@ function HeroSection() {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="text-base sm:text-lg text-white/70 max-w-xl leading-relaxed font-light mb-8 sm:mb-10"
             >
-              Join a small team solving hard problems in AI reliability and verification.
-              Build something that matters.
+              Everyone is building AI. We're building the infrastructure that makes it trustworthy. If you want to work on problems that the entire industry depends on, this is the place.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 15 }}
@@ -234,20 +233,20 @@ function ValuesSection() {
   const values = [
     {
       num: "01",
-      title: "Ship real work",
-      desc: "Your contributions go to production from week one. No busywork, no fake projects.",
+      title: "Your work ships to production",
+      desc: "No sandbox projects. No busywork. From your first week, you're building features that real teams depend on to run AI in production.",
       gradient: "/images/gradient-orange-pink.png",
     },
     {
       num: "02",
-      title: "Learn from the best",
-      desc: "Work alongside experienced engineers and researchers who've built systems at scale.",
+      title: "Grow faster than anywhere else",
+      desc: "Small team, big problems. You'll take on responsibilities most companies wouldn't hand to someone for years. That's how we like it.",
       gradient: "/images/gradient-blue-pink.png",
     },
     {
       num: "03",
-      title: "Work from anywhere",
-      desc: "Fully remote with flexible hours. We care about what you build, not when you build it.",
+      title: "Remote, flexible, outcome-driven",
+      desc: "Work from anywhere in the world. We don't track hours. We track impact. Show up, do great work, and own your schedule.",
       gradient: "/images/gradient-yellow-green.png",
     },
   ];
@@ -264,7 +263,7 @@ function ValuesSection() {
         >
           <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Why Olyxee</p>
           <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900">
-            We built the kind of company we'd want to work at.
+            Built for people who want to do work that matters.
           </h2>
         </motion.div>
 
@@ -532,10 +531,10 @@ function RolesSection() {
 
 function ProcessSection() {
   const steps = [
-    { num: "01", title: "Apply", desc: "Pick a role and tell us about yourself. No cover letter, just the basics." },
-    { num: "02", title: "Chat", desc: "A short conversation about your interests and what excites you about AI." },
-    { num: "03", title: "Build", desc: "A small, relevant project to see how you think. Nothing unreasonable." },
-    { num: "04", title: "Join", desc: "Start with the team. Get onboarded, meet your mentor, and ship code." },
+    { num: "01", title: "Apply", desc: "Send us your work. No cover letter needed. Just show us what you've built and what excites you." },
+    { num: "02", title: "Chat", desc: "A casual conversation about what drives you, how you think, and where you want to go." },
+    { num: "03", title: "Build", desc: "A short, relevant challenge. We want to see how you approach real problems, not trick questions." },
+    { num: "04", title: "Join", desc: "Get onboarded, meet your team, and start shipping. You'll have real ownership from day one." },
   ];
 
   return (
@@ -588,8 +587,7 @@ function CTASection() {
             Don't see your role?
           </h2>
           <p className="text-neutral-500 text-lg max-w-lg mx-auto mb-10 font-light leading-relaxed">
-            We're always open to meeting exceptional people.
-            Tell us what you'd like to work on.
+            We hire for talent, not just titles. If you're exceptional at what you do and excited about making AI more reliable, reach out. We'll find a place for you.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
