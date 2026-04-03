@@ -65,7 +65,7 @@ const About: FC = () => {
             >
               <h2 className="font-serif text-3xl sm:text-4xl tracking-tight mb-6 leading-tight">The problem we solve</h2>
               <div className="space-y-4 text-[15px] sm:text-base text-neutral-500 leading-relaxed font-light">
-                <p>AI models are getting better every month. But the applications built on top of them still break in unpredictable ways — hallucinations, inconsistent outputs, silent quality degradation.</p>
+                <p>AI models are getting better every month. But the applications built on top of them still break in unpredictable ways: hallucinations, inconsistent outputs, silent quality degradation.</p>
                 <p>The gap between a working demo and a reliable product is enormous. Most teams have no way to systematically verify, evaluate, or monitor their AI in production.</p>
                 <p>That's what Olyxee is here to fix.</p>
               </div>
@@ -162,7 +162,7 @@ const About: FC = () => {
             {[
               { num: "01", title: "Reliability over novelty", description: "We prioritize building things that work consistently over chasing the latest trend. Our tools are designed for production, not demos." },
               { num: "02", title: "Measure everything", description: "If you can't measure it, you can't improve it. Every system we build is grounded in data, tested thoroughly, and validated before shipping." },
-              { num: "03", title: "We don't build models", description: "We make the models you already use work better. We're not competing with model providers — we're giving them the infrastructure to succeed." },
+              { num: "03", title: "We don't build models", description: "We make the models you already use work better. We're not competing with model providers. We're giving them the infrastructure to succeed." },
               { num: "04", title: "Transparency", description: "We publish our research, share our findings, and build in the open. Trust is earned through visibility." },
             ].map((value, idx) => (
               <motion.div
