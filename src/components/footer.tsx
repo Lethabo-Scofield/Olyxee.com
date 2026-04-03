@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Twitter, Linkedin, Youtube, Rss } from "lucide-react";
+import { Twitter, Linkedin, Youtube } from "lucide-react";
 
 const footerData = {
   columns: [
@@ -17,7 +17,6 @@ const footerData = {
       links: [
         { name: "About", href: "/about" },
         { name: "Careers", href: "/careers" },
-        { name: "Blog", href: "/blog" },
         { name: "Contact", href: "/contact" },
       ],
     },
@@ -39,7 +38,6 @@ const footerData = {
     { name: "Twitter", href: "https://twitter.com/olyxee", icon: Twitter },
     { name: "YouTube", href: "https://www.youtube.com/@olyxee", icon: Youtube },
     { name: "LinkedIn", href: "https://www.linkedin.com/company/olyxee", icon: Linkedin },
-    { name: "Blog", href: "/blog", icon: Rss },
   ],
 };
 
