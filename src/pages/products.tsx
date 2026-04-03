@@ -146,37 +146,37 @@ const ProductsPage: FC = () => {
                       <div className="flex items-center justify-between">
                         <span className="text-sm text-neutral-500">Accuracy</span>
                         <div className="flex items-center gap-2">
-                          <div className="w-24 h-2 rounded-full bg-neutral-100 overflow-hidden">
+                          <div className="w-16 sm:w-24 h-2 rounded-full bg-neutral-100 overflow-hidden">
                             <div className="w-full h-full rounded-full bg-green-500" />
                           </div>
-                          <span className="text-sm font-semibold text-neutral-900">100%</span>
+                          <span className="text-xs sm:text-sm font-semibold text-neutral-900">100%</span>
                         </div>
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-sm text-neutral-500">Consistency</span>
                         <div className="flex items-center gap-2">
-                          <div className="w-24 h-2 rounded-full bg-neutral-100 overflow-hidden">
+                          <div className="w-16 sm:w-24 h-2 rounded-full bg-neutral-100 overflow-hidden">
                             <div className="w-[98%] h-full rounded-full bg-green-500" />
                           </div>
-                          <span className="text-sm font-semibold text-neutral-900">98.2%</span>
+                          <span className="text-xs sm:text-sm font-semibold text-neutral-900">98.2%</span>
                         </div>
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-sm text-neutral-500">Hallucinations</span>
                         <div className="flex items-center gap-2">
-                          <div className="w-24 h-2 rounded-full bg-neutral-100 overflow-hidden">
+                          <div className="w-16 sm:w-24 h-2 rounded-full bg-neutral-100 overflow-hidden">
                             <div className="w-[3%] h-full rounded-full bg-amber-400" />
                           </div>
-                          <span className="text-sm font-semibold text-amber-600">3 flagged</span>
+                          <span className="text-xs sm:text-sm font-semibold text-amber-600">3 flagged</span>
                         </div>
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-sm text-neutral-500">RAG Relevance</span>
                         <div className="flex items-center gap-2">
-                          <div className="w-24 h-2 rounded-full bg-neutral-100 overflow-hidden">
+                          <div className="w-16 sm:w-24 h-2 rounded-full bg-neutral-100 overflow-hidden">
                             <div className="w-[95%] h-full rounded-full bg-green-500" />
                           </div>
-                          <span className="text-sm font-semibold text-neutral-900">95.4%</span>
+                          <span className="text-xs sm:text-sm font-semibold text-neutral-900">95.4%</span>
                         </div>
                       </div>
                       <div className="pt-3 mt-1 border-t border-neutral-100 flex items-center justify-between">

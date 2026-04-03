@@ -348,7 +348,7 @@ function RolesSection() {
               <button
                 key={team}
                 onClick={() => setFilterTeam(team)}
-                className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${
                   filterTeam === team
                     ? 'bg-neutral-900 text-white shadow-lg shadow-neutral-900/20'
                     : 'bg-neutral-100 text-neutral-500 hover:bg-neutral-200 hover:text-neutral-700'

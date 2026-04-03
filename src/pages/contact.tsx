@@ -36,7 +36,7 @@ const Contact: FC = () => {
                 <span className="accent-dot" />
                 <span className="text-sm font-medium text-neutral-400 uppercase tracking-widest">Contact</span>
               </motion.div>
-              <motion.h1 custom={1} variants={fadeUp} className="font-serif text-5xl sm:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-8">
+              <motion.h1 custom={1} variants={fadeUp} className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-8">
                 Let's <em className="text-neutral-400">talk.</em>
               </motion.h1>
               <motion.p custom={2} variants={fadeUp} className="text-lg text-neutral-500 leading-relaxed mb-12 font-light">
