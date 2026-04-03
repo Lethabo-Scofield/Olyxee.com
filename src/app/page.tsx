@@ -92,7 +92,7 @@ function HeroSection() {
     <section ref={ref} aria-label="Hero" className="relative w-full min-h-[100svh] flex flex-col items-center justify-center px-4 md:px-8 lg:px-16 overflow-hidden" style={{ position: 'relative' }}>
       <div className="absolute inset-0 w-full h-full">
         <Image src="/hero-bg.png" alt="" fill className="object-cover" priority />
-        <div className="absolute inset-0 bg-white/60" />
+        <div className="absolute inset-0 bg-white/75" />
       </div>
 
       <motion.div style={{ y, opacity }} className="relative z-10 text-center max-w-5xl mx-auto pt-20 sm:pt-24">
@@ -151,9 +151,9 @@ function LogoStrip() {
   ];
 
   return (
-    <div className="relative z-10 w-full max-w-5xl mx-auto py-8 sm:py-10 px-4 sm:px-8 lg:px-12">
-      <p className="text-center text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-6 sm:mb-8">Works With</p>
-      <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 sm:gap-x-16 sm:gap-y-6">
+    <div className="relative z-10 w-full max-w-4xl mx-auto py-8 sm:py-10 px-4 sm:px-8 lg:px-12">
+      <p className="text-center text-[11px] font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-6 sm:mb-8">Works With</p>
+      <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 sm:gap-x-12 sm:gap-y-5">
           {collaborators.map((item, idx) => (
             <motion.div
               key={item.name}
@@ -161,17 +161,20 @@ function LogoStrip() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.06 }}
-              className="opacity-40 hover:opacity-70 transition-opacity duration-300 grayscale hover:grayscale-0"
+              className="flex items-center gap-2 opacity-50 hover:opacity-80 transition-opacity duration-300"
               title={item.name}
             >
-              <Image
-                src={item.src}
-                alt={item.name}
-                width={item.size}
-                height={item.size}
-                className="object-contain"
-                style={{ width: item.size, height: item.size }}
-              />
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-white shadow-sm border border-neutral-100 flex items-center justify-center overflow-hidden">
+                <Image
+                  src={item.src}
+                  alt={item.name}
+                  width={20}
+                  height={20}
+                  className="object-contain"
+                  style={{ width: 20, height: 20 }}
+                />
+              </div>
+              <span className="text-xs font-medium text-neutral-500 hidden sm:inline">{item.name}</span>
             </motion.div>
           ))}
         </div>
