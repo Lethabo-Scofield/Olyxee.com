@@ -1,10 +1,10 @@
-import { FC, useState, useMemo } from "react";
+import { FC } from "react";
 import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const papers = [
   {
@@ -36,8 +36,6 @@ const papers = [
   },
 ];
 
-const categories = ["All", "Verification", "Evaluation", "Monitoring"];
-
 const categoryColors: Record<string, string> = {
   "Verification": "bg-blue-50 text-blue-600 border-blue-100",
   "Evaluation": "bg-amber-50 text-amber-600 border-amber-100",
@@ -45,28 +43,30 @@ const categoryColors: Record<string, string> = {
 };
 
 const Research: FC = () => {
-  const [activeCategory, setActiveCategory] = useState("All");
-
-  const filteredPapers = useMemo(() => {
-    if (activeCategory === "All") return papers;
-    return papers.filter(p => p.category === activeCategory);
-  }, [activeCategory]);
-
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
       <SEO title="Research" description="Our latest research on making AI applications more reliable, accurate, and observable in production." path="/research" />
       <div className="grain" />
       <Header />
 
-      <section className="pt-28 sm:pt-44 pb-12 sm:pb-16 px-4 sm:px-6">
+      <section className="pt-32 sm:pt-44 pb-16 sm:pb-24 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
-          <motion.h1
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="font-serif text-3xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.08] mb-6"
+            className="flex items-center gap-2 mb-8"
           >
-            Research
+            <span className="accent-dot" />
+            <span className="text-sm font-medium text-neutral-400 uppercase tracking-widest">Research</span>
+          </motion.div>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.05 }}
+            className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.08] mb-6"
+          >
+            Making AI applications <em className="text-blue-500">work better</em>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -74,91 +74,58 @@ const Research: FC = () => {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-base sm:text-xl text-neutral-500 leading-relaxed max-w-2xl font-light"
           >
-            Our latest work on making AI applications more reliable, accurate, and observable in production.
+            Our latest work on verification, evaluation, and observability — the infrastructure that makes AI applications reliable in production.
           </motion.p>
         </div>
       </section>
 
-      <section className="sticky top-0 z-30 bg-white/90 backdrop-blur-lg border-b border-neutral-100">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-4">
-          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar">
-            {categories.map(cat => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-200 ${
-                  activeCategory === cat
-                    ? "bg-neutral-900 text-white"
-                    : "bg-neutral-100 text-neutral-500 hover:bg-neutral-200 hover:text-neutral-700"
-                }`}
+      <section className="pb-20 sm:pb-32">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <div className="space-y-0 divide-y divide-neutral-100">
+            {papers.map((paper, idx) => (
+              <motion.a
+                key={paper.title}
+                href={paper.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.15 + idx * 0.08 }}
+                className="group block py-10 sm:py-12 first:pt-0"
               >
-                {cat}
-                {cat !== "All" && (
-                  <span className="ml-1.5 text-xs opacity-60">
-                    {papers.filter(p => p.category === cat).length}
-                  </span>
-                )}
-              </button>
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start">
+                  <div className="lg:col-span-8">
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className={`inline-flex px-2.5 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider border ${categoryColors[paper.category]}`}>
+                        {paper.category}
+                      </span>
+                      <span className="text-xs text-neutral-300 font-medium">{paper.year}</span>
+                    </div>
+                    <h2 className="text-xl sm:text-2xl font-semibold text-neutral-900 group-hover:text-blue-600 transition-colors leading-snug mb-4 tracking-tight">
+                      {paper.title}
+                    </h2>
+                    <p className="text-sm sm:text-[15px] text-neutral-500 leading-relaxed font-light max-w-2xl">
+                      {paper.description}
+                    </p>
+                  </div>
+                  <div className="lg:col-span-4 flex lg:flex-col lg:items-end lg:justify-between lg:h-full lg:pt-10">
+                    <div className="flex items-center gap-4 lg:flex-col lg:items-end lg:gap-1">
+                      <p className="text-sm text-neutral-400">{paper.authors}</p>
+                      <span className="text-xs text-neutral-300">{paper.venue}</span>
+                    </div>
+                    <div className="ml-auto lg:ml-0 lg:mt-6 flex items-center gap-1.5 text-sm text-neutral-400 group-hover:text-blue-600 transition-colors">
+                      <span className="hidden sm:inline">Read paper</span>
+                      <ArrowUpRight className="w-4 h-4" />
+                    </div>
+                  </div>
+                </div>
+              </motion.a>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-10 sm:py-16">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            <AnimatePresence mode="popLayout">
-              {filteredPapers.map((paper, idx) => (
-                <motion.a
-                  key={paper.title}
-                  href={paper.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  layout
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.4, delay: idx * 0.03 }}
-                  className="group block rounded-2xl border border-neutral-100 hover:border-neutral-200 bg-white hover:shadow-lg hover:shadow-neutral-100/60 transition-all duration-300 overflow-hidden"
-                >
-                  <div className="p-6 sm:p-7 flex flex-col h-full">
-                    <div className="flex items-center justify-between mb-4">
-                      <span className={`inline-flex px-2.5 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider border ${categoryColors[paper.category] || "bg-neutral-50 text-neutral-500 border-neutral-100"}`}>
-                        {paper.category}
-                      </span>
-                      <span className="text-xs text-neutral-300">{paper.year}</span>
-                    </div>
-
-                    <h2 className="text-base font-semibold text-neutral-900 group-hover:text-neutral-600 transition-colors leading-snug mb-3 flex-grow">
-                      {paper.title}
-                    </h2>
-
-                    <p className="text-sm text-neutral-500 leading-relaxed font-light mb-4 line-clamp-3">
-                      {paper.description}
-                    </p>
-
-                    <div className="mt-auto pt-4 border-t border-neutral-50">
-                      <p className="text-xs text-neutral-400 mb-2 line-clamp-1">{paper.authors}</p>
-                      <div className="flex items-center justify-between">
-                        <span className="text-[11px] text-neutral-400">{paper.venue}</span>
-                        <ArrowUpRight className="w-3.5 h-3.5 text-neutral-300 group-hover:text-neutral-600 transition-colors" />
-                      </div>
-                    </div>
-                  </div>
-                </motion.a>
-              ))}
-            </AnimatePresence>
-          </div>
-
-          {filteredPapers.length === 0 && (
-            <div className="text-center py-20">
-              <p className="text-neutral-400 text-sm">No papers in this category yet.</p>
-            </div>
-          )}
-        </div>
-      </section>
-
-      <section className="py-16 sm:py-24 lg:py-32 border-t border-neutral-100">
+      <section className="py-20 sm:py-32 border-t border-neutral-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -170,7 +137,7 @@ const Research: FC = () => {
               Want to collaborate on research?
             </h2>
             <p className="text-neutral-500 text-base sm:text-lg max-w-lg mx-auto mb-8 sm:mb-10 font-light leading-relaxed">
-              We connect with researchers working on AI infrastructure, systems, and foundational research.
+              We work with teams building AI applications who want to improve reliability, accuracy, and observability.
             </p>
             <Link href="/contact" className="group inline-flex items-center gap-2 px-8 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide">
               Get in Touch <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
