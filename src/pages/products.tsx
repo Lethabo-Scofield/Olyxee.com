@@ -70,8 +70,27 @@ const ProductsPage: FC = () => {
     <div className="min-h-screen bg-white text-neutral-900 relative">
       <SEO
         title="Products"
-        description="AI verification and monitoring tools from Olyxee. Grysics: test, evaluate, and monitor AI applications before and after deployment."
+        description="Olyxee products for AI verification, evaluation, and monitoring. Grysics tests accuracy, consistency, and hallucinations across your AI application before your users find them."
         path="/products"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          name: "Grysics",
+          applicationCategory: "DeveloperApplication",
+          operatingSystem: "Cloud",
+          offers: {
+            "@type": "Offer",
+            price: "0",
+            priceCurrency: "USD",
+            availability: "https://schema.org/PreOrder",
+          },
+          description: "AI verification and evaluation platform that tests accuracy, consistency, and hallucinations across AI applications before deployment.",
+          creator: {
+            "@type": "Organization",
+            name: "Olyxee",
+            url: "https://olyxee.com",
+          },
+        }}
       />
       <div className="grain" />
       <Header />

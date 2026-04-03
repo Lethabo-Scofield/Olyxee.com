@@ -11,6 +11,10 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:site_name" content="Olyxee" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:creator" content="@Olyxee" />
       </Head>
       <AnimatePresence mode="wait">
         <motion.div

@@ -46,7 +46,7 @@ const categoryColors: Record<string, string> = {
 const Research: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO title="Research" description="Key research related to the problems Olyxee solves: verification, evaluation, and observability for AI applications in production." path="/research" />
+      <SEO title="Research We Follow" description="Key papers and publications shaping AI verification, evaluation, and observability. Research that informs how Olyxee builds infrastructure for reliable AI applications." path="/research" />
       <div className="grain" />
       <Header />
 

@@ -612,7 +612,7 @@ function CTASection() {
 const Careers: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO title="Careers" description="Join Olyxee and work on AI infrastructure that matters. Open positions in research, engineering, design, and more." path="/careers" />
+      <SEO title="Careers" description="Join Olyxee and build the infrastructure that makes AI trustworthy. 10 remote internships across AI research, engineering, design, and operations. Ship real work from day one." path="/careers" />
       <Header />
 
       <main>

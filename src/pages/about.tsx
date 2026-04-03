@@ -19,7 +19,7 @@ const fadeUp = {
 const About: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO title="About" description="Olyxee builds the infrastructure to make AI applications more reliable, accurate, and observable in production." path="/about" />
+      <SEO title="About" description="Olyxee builds verification, evaluation, and monitoring infrastructure so teams can ship AI with confidence. Learn about our mission, what we build, and the team behind it." path="/about" />
       <div className="grain" />
       <Header />
 

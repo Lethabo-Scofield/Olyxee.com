@@ -88,13 +88,15 @@ Desktop CTA: "Get in Touch"
 
 ## SEO & Viewport
 - **Viewport**: App Router uses `export const viewport` in `src/app/layout.tsx`; Pages Router uses `<meta name="viewport">` via `_app.tsx` `<Head>`
-- **Layout metadata** (`src/app/layout.tsx`): Full Next.js Metadata export with title template, description, keywords, OG, Twitter cards, robots directives, and icons
-- **Pages Router SEO** (`src/components/SEO.tsx`): Reusable component with `<Head>` — title, description, canonical, OG, Twitter. Used on all Pages Router pages.
+- **Layout metadata** (`src/app/layout.tsx`): Full Next.js Metadata export with title template ("Olyxee | Research and Infrastructure for AI"), description, 18 keywords, OG, Twitter cards, robots directives, and icons
+- **Pages Router SEO** (`src/components/SEO.tsx`): Reusable component with `<Head>` — title, description, canonical, OG (with locale and image alt), Twitter. Supports optional `jsonLd` prop for page-specific structured data. Used on all Pages Router pages.
+- **Pages Router defaults** (`src/pages/_app.tsx`): Auto-canonical URLs, robots meta, og:site_name, twitter:card/creator fallbacks
 - **Product metadata**: `src/app/products/grysics/layout.tsx` and `nrn/layout.tsx` export page-specific Metadata
-- **JSON-LD**: Organization structured data on homepage (`src/app/page.tsx`)
+- **JSON-LD**: Organization + WebSite structured data in layout.tsx; Organization on homepage; SoftwareApplication (Grysics) on products page
 - **OG Image**: Dynamic edge-rendered OG image at `/api/og` (1200×630)
-- **robots.txt**: `public/robots.txt` — allows all crawlers, references sitemap
-- **sitemap.xml**: `public/sitemap.xml` — all indexable pages including /products/grysics with priorities and change frequencies
+- **robots.txt**: `public/robots.txt` — allows all crawlers, disallows /api/ and /_next/, references sitemap
+- **sitemap.xml**: `public/sitemap.xml` — only real pages (/, /about, /products, /products/grysics, /research, /careers, /signup, /contact, /privacy, /terms). No ghost pages.
+- **Heading hierarchy**: Every page has exactly one `<h1>` in its hero section
 - **_document.tsx**: `src/pages/_document.tsx` — favicon, apple-touch-icon, theme-color, format-detection for Pages Router
 - **Global CSS**: `overflow-x: hidden` on html/body, `-webkit-text-size-adjust: 100%`, tap-highlight transparent
 - **Image best practice**: All Next.js Image components with CSS size overrides use explicit `style={{ width, height }}` to prevent aspect ratio warnings
