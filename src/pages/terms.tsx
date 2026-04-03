@@ -57,7 +57,7 @@ const sections = [
   },
   {
     title: "13. Contact",
-    content: "For questions about these Terms of Use, contact us at:\n\nlegal@olyxee.com"
+    content: "For questions about these Terms of Use, contact us at:\n\nscofield@olyxee.com"
   },
 ];
 

@@ -310,7 +310,7 @@ function RolesSection() {
     const body = encodeURIComponent(
       `Role: ${selectedRole.title}\nTeam: ${selectedRole.team}\n\nName: ${formData.name}\nEmail: ${formData.email}\nPortfolio/LinkedIn: ${formData.portfolio}\n\n${formData.message}`
     );
-    window.location.href = `mailto:scofieldx911@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:scofield@olyxee.com?subject=${subject}&body=${body}`;
     setSubmitted(true);
     setTimeout(() => {
       setSubmitted(false);
