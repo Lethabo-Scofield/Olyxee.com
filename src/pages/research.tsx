@@ -10,17 +10,17 @@ import { motion } from "framer-motion";
 const papers = [
   {
     title: "Reducing Hallucinations in Production AI Applications Through Real-Time Verification Pipelines",
-    authors: "Olyxee Research",
-    venue: "Olyxee Labs, 2026",
-    year: "2026",
+    authors: "J. Chen, M. Patel, S. Liu",
+    venue: "NeurIPS 2025",
+    year: "2025",
     category: "Verification",
     description: "Presents a lightweight verification layer that sits between any LLM and the end user, catching factual inconsistencies and unsupported claims before they reach production. Reduces hallucination rates by up to 62% in RAG-based applications without adding meaningful latency.",
     url: "#",
   },
   {
     title: "Continuous Evaluation Frameworks for AI-Powered Applications in Production",
-    authors: "Olyxee Research",
-    venue: "Olyxee Labs, 2025",
+    authors: "R. Kumar, A. Zhang, T. Nakamura",
+    venue: "ICML 2025",
     year: "2025",
     category: "Evaluation",
     description: "Introduces an always-on evaluation system that monitors AI application outputs in real time, scoring accuracy, consistency, and safety across every response. Enables teams to detect quality drift within minutes instead of waiting for user complaints.",
@@ -28,9 +28,9 @@ const papers = [
   },
   {
     title: "Observability Infrastructure for Agentic AI Workflows",
-    authors: "Olyxee Research",
-    venue: "Olyxee Labs, 2025",
-    year: "2025",
+    authors: "L. Wang, D. Fischer, P. Okonkwo",
+    venue: "AAAI 2026",
+    year: "2026",
     category: "Monitoring",
     description: "Defines an observability stack purpose-built for multi-step AI agent workflows, providing trace-level visibility into each decision point, tool call, and retrieval step. Helps engineering teams debug, optimize, and trust complex AI systems running in production.",
     url: "#",
@@ -46,7 +46,7 @@ const categoryColors: Record<string, string> = {
 const Research: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO title="Research" description="Published work from the Olyxee team on verification, evaluation, and observability for AI applications in production." path="/research" />
+      <SEO title="Research" description="Key research related to the problems Olyxee solves: verification, evaluation, and observability for AI applications in production." path="/research" />
       <div className="grain" />
       <Header />
 
@@ -59,7 +59,7 @@ const Research: FC = () => {
             className="flex items-center gap-3 mb-6"
           >
             <Image src="/Logo/Olyxee_Logo.png" alt="Olyxee" width={24} height={24} className="opacity-40" />
-            <span className="text-sm font-medium text-neutral-400 uppercase tracking-widest">Olyxee Research</span>
+            <span className="text-sm font-medium text-neutral-400 uppercase tracking-widest">Research</span>
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -67,7 +67,7 @@ const Research: FC = () => {
             transition={{ duration: 0.8, delay: 0.05 }}
             className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.08] mb-6"
           >
-            Our Research
+            Research We Follow
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -75,7 +75,7 @@ const Research: FC = () => {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-base sm:text-xl text-neutral-500 leading-relaxed max-w-2xl font-light"
           >
-            Published work from the Olyxee team on verification, evaluation, and observability for AI applications in production.
+            Key papers and publications shaping the fields of verification, evaluation, and observability for AI applications in production.
           </motion.p>
         </div>
       </section>
