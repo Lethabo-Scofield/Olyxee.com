@@ -15,7 +15,7 @@ const fadeUp = {
 };
 
 const SignUp: FC = () => {
-  const [formData, setFormData] = useState({ name: "", email: "", company: "", role: "" });
+  const [formData, setFormData] = useState({ name: "", email: "" });
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -25,7 +25,7 @@ const SignUp: FC = () => {
 
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO title="Sign Up" description="Create your Olyxee Platform account. Get access to AI verification, evaluation, and monitoring tools." path="/signup" />
+      <SEO title="Join the Waitlist" description="Join the Olyxee Platform waitlist. Be the first to get access to AI verification, evaluation, and monitoring tools." path="/signup" />
       <div className="grain" />
       <Header />
 
@@ -38,10 +38,10 @@ const SignUp: FC = () => {
                 <span className="text-sm font-medium text-neutral-400 uppercase tracking-widest">Get Started</span>
               </motion.div>
               <motion.h1 custom={1} variants={fadeUp} className="font-serif text-5xl sm:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-8">
-                Join the <em className="text-blue-500">Olyxee</em> Platform
+                Join the <em className="text-blue-500">waitlist</em>
               </motion.h1>
               <motion.p custom={2} variants={fadeUp} className="text-lg text-neutral-500 leading-relaxed mb-12 font-light">
-                Sign up for access to the Olyxee Platform — tools and infrastructure to make your AI applications more reliable, accurate, and observable.
+                The Olyxee Platform is coming soon. Join the waitlist to be the first to get access to tools that make your AI applications more reliable, accurate, and observable.
               </motion.p>
 
               <div className="space-y-5">
@@ -65,8 +65,8 @@ const SignUp: FC = () => {
                   <div className="w-16 h-16 rounded-full bg-blue-50 flex items-center justify-center mx-auto mb-6">
                     <CheckCircle2 className="w-8 h-8 text-blue-500" />
                   </div>
-                  <h2 className="text-2xl font-semibold mb-3 text-neutral-900">You're on the list</h2>
-                  <p className="text-neutral-500 mb-6">We'll reach out soon with your access details.</p>
+                  <h2 className="text-2xl font-semibold mb-3 text-neutral-900">You're on the waitlist</h2>
+                  <p className="text-neutral-500 mb-6">We'll notify you as soon as the platform is ready.</p>
                   <Link href="/" className="text-sm text-blue-500 hover:text-blue-600 transition-colors">
                     Back to home
                   </Link>
@@ -97,39 +97,11 @@ const SignUp: FC = () => {
                       placeholder="you@company.com"
                     />
                   </div>
-                  <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-neutral-700 mb-2">Company</label>
-                    <input
-                      id="company"
-                      type="text"
-                      value={formData.company}
-                      onChange={e => setFormData(prev => ({ ...prev, company: e.target.value }))}
-                      className="w-full px-4 py-3 bg-white border border-neutral-200 rounded-xl text-sm text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-300 focus:border-transparent transition-all"
-                      placeholder="Your company (optional)"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="role" className="block text-sm font-medium text-neutral-700 mb-2">Role</label>
-                    <select
-                      id="role"
-                      value={formData.role}
-                      onChange={e => setFormData(prev => ({ ...prev, role: e.target.value }))}
-                      className="w-full px-4 py-3 bg-white border border-neutral-200 rounded-xl text-sm text-neutral-900 focus:outline-none focus:ring-2 focus:ring-neutral-300 focus:border-transparent transition-all"
-                    >
-                      <option value="">Select your role</option>
-                      <option value="engineer">Engineer / Developer</option>
-                      <option value="mlops">ML / AI Engineer</option>
-                      <option value="lead">Engineering Lead</option>
-                      <option value="product">Product Manager</option>
-                      <option value="founder">Founder / Executive</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
                   <button
                     type="submit"
                     className="w-full py-3.5 bg-neutral-900 text-white rounded-xl font-medium hover:bg-black transition-all text-sm tracking-wide flex items-center justify-center gap-2 group"
                   >
-                    Create Account <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                    Join Waitlist <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                   </button>
                   <p className="text-xs text-neutral-400 text-center leading-relaxed">
                     By signing up, you agree to our{" "}
