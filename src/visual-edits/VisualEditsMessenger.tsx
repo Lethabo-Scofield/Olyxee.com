@@ -403,14 +403,14 @@ export default function HoverReceiver() {
   const [hoverBoxes, setHoverBoxes] = useState<Box[]>([]);
   const [focusBox, setFocusBox] = useState<Box>(null);
   const [focusedElementId, setFocusedElementId] = useState<string | null>(null);
-  const [isVisualEditMode, setIsVisualEditMode] = useState(() => {
-    // Initialize from localStorage if available
-    if (typeof window !== "undefined") {
-      const stored = localStorage.getItem(VISUAL_EDIT_MODE_KEY);
-      return stored === "true";
+  const [isVisualEditMode, setIsVisualEditMode] = useState(false);
+
+  useEffect(() => {
+    const stored = localStorage.getItem(VISUAL_EDIT_MODE_KEY);
+    if (stored === "true") {
+      setIsVisualEditMode(true);
     }
-    return false;
-  });
+  }, []);
   const [isResizing, setIsResizing] = useState(false);
   const [resizeHandle, setResizeHandle] = useState<string | null>(null);
   const [resizeStart, setResizeStart] = useState<{
