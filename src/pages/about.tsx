@@ -195,11 +195,17 @@ const About: FC = () => {
             >
               <div className="inline-block px-3 py-1 bg-neutral-100 text-neutral-600 text-xs font-semibold uppercase tracking-widest rounded-full mb-5">Founder&apos;s Note</div>
               <blockquote className="font-serif text-2xl sm:text-3xl lg:text-4xl text-neutral-900 leading-snug mb-8 tracking-tight">
-                &ldquo;We're not here to build another model. We're here to make sure the ones you use actually work.&rdquo;
+                &ldquo;Every company is racing to ship AI. Almost none of them can tell you if it's actually working.&rdquo;
               </blockquote>
               <div className="space-y-4">
                 <p className="text-base text-neutral-500 leading-relaxed font-light">
-                  AI is only as valuable as its reliability. At Olyxee, we build the infrastructure that closes the gap between what AI promises and what it delivers.
+                  I started Olyxee because I kept seeing the same pattern: teams would build impressive AI demos, get executive buy-in, push to production, and then have no idea whether the system was performing well or quietly failing. The tooling simply didn't exist.
+                </p>
+                <p className="text-base text-neutral-500 leading-relaxed font-light">
+                  We're not interested in building models. There are brilliant teams doing that already. What's missing is the layer that sits between the model and the real world, the infrastructure that verifies outputs, catches regressions, and gives teams the confidence to actually rely on AI in production.
+                </p>
+                <p className="text-base text-neutral-500 leading-relaxed font-light">
+                  That's what we're building. Not another AI product, but the foundation that makes every AI product more trustworthy.
                 </p>
               </div>
               <div className="mt-8 pt-6 border-t border-neutral-100">
