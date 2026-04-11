@@ -139,23 +139,23 @@ function HeroSection() {
 
 
 function LogoStrip() {
-  const collaborators: { name: string; Logo: React.FC<{ className?: string }> }[] = [
-    { name: "OpenAI", Logo: OpenAILogo },
-    { name: "Anthropic", Logo: AnthropicLogo },
-    { name: "Google", Logo: GoogleLogo },
-    { name: "NVIDIA", Logo: NvidiaLogo },
-    { name: "Meta", Logo: MetaLogo },
-    { name: "Mistral", Logo: MistralLogo },
-    { name: "xAI", Logo: xAILogo },
-    { name: "Hugging Face", Logo: HuggingFaceLogo },
-    { name: "DeepMind", Logo: DeepMindLogo },
-    { name: "Cohere", Logo: CohereLogo },
+  const collaborators: { name: string; Logo: React.FC<{ className?: string }>; w: number; h: number }[] = [
+    { name: "OpenAI", Logo: OpenAILogo, w: 22, h: 22 },
+    { name: "Anthropic", Logo: AnthropicLogo, w: 28, h: 19 },
+    { name: "Google", Logo: GoogleLogo, w: 60, h: 20 },
+    { name: "NVIDIA", Logo: NvidiaLogo, w: 72, h: 15 },
+    { name: "Meta", Logo: MetaLogo, w: 62, h: 17 },
+    { name: "Mistral", Logo: MistralLogo, w: 22, h: 20 },
+    { name: "xAI", Logo: xAILogo, w: 40, h: 20 },
+    { name: "Hugging Face", Logo: HuggingFaceLogo, w: 22, h: 22 },
+    { name: "DeepMind", Logo: DeepMindLogo, w: 82, h: 15 },
+    { name: "Cohere", Logo: CohereLogo, w: 68, h: 17 },
   ];
 
   return (
     <div className="relative z-10 w-full max-w-5xl mx-auto py-8 sm:py-10 px-4 sm:px-8 lg:px-12">
       <p className="text-center text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-6 sm:mb-8">Collaborators</p>
-      <div className="flex items-center justify-center gap-x-8 sm:gap-x-12 flex-wrap gap-y-6">
+      <div className="flex items-center justify-center gap-x-8 sm:gap-x-10 flex-wrap gap-y-5">
         {collaborators.map((item, idx) => {
           const LogoComponent = item.Logo;
           return (
@@ -165,12 +165,11 @@ function LogoStrip() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.05 }}
-              className="flex-shrink-0 group"
+              className="flex-shrink-0 group flex items-center justify-center"
               title={item.name}
+              style={{ width: item.w, height: item.h }}
             >
-              <div className="h-6 opacity-40 group-hover:opacity-80 transition-opacity duration-300">
-                <LogoComponent className="h-full w-auto" />
-              </div>
+              <LogoComponent className="w-full h-full opacity-40 group-hover:opacity-70 transition-opacity duration-300" />
             </motion.div>
           );
         })}
