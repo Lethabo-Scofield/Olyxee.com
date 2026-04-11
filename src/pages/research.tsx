@@ -43,6 +43,12 @@ const categoryColors: Record<string, string> = {
   "Monitoring": "bg-emerald-50 text-emerald-600 border-emerald-100",
 };
 
+const categoryGradients: Record<string, string> = {
+  "Verification": "/images/gradient-blue.webp",
+  "Evaluation": "/images/gradient-yellow-green.webp",
+  "Monitoring": "/images/gradient-pink-cyan.webp",
+};
+
 const Research: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
@@ -90,31 +96,37 @@ const Research: FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.15 + idx * 0.08 }}
-                className="group block rounded-2xl border border-neutral-100 hover:border-neutral-200 bg-white hover:shadow-lg hover:shadow-neutral-100/60 transition-all duration-300 p-8 sm:p-10"
+                className="group block rounded-2xl border border-neutral-200/60 hover:border-neutral-300/60 hover:shadow-lg hover:shadow-neutral-200/40 transition-all duration-300 relative overflow-hidden"
               >
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start">
-                  <div className="lg:col-span-8">
-                    <div className="flex items-center gap-3 mb-5">
-                      <span className={`inline-flex px-2.5 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider border ${categoryColors[paper.category]}`}>
-                        {paper.category}
-                      </span>
-                      <span className="text-xs text-neutral-300 font-medium">{paper.year}</span>
+                <div className="absolute inset-0">
+                  <Image src={categoryGradients[paper.category]} alt="" fill className="object-cover" />
+                  <div className="absolute inset-0 bg-white/80 group-hover:bg-white/70 transition-colors duration-300" />
+                </div>
+                <div className="relative p-8 sm:p-10">
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start">
+                    <div className="lg:col-span-8">
+                      <div className="flex items-center gap-3 mb-5">
+                        <span className={`inline-flex px-2.5 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider border ${categoryColors[paper.category]}`}>
+                          {paper.category}
+                        </span>
+                        <span className="text-xs text-neutral-400 font-medium">{paper.year}</span>
+                      </div>
+                      <h2 className="text-xl sm:text-2xl font-semibold text-neutral-900 group-hover:text-blue-600 transition-colors leading-snug mb-4 tracking-tight">
+                        {paper.title}
+                      </h2>
+                      <p className="text-sm sm:text-[15px] text-neutral-600 leading-relaxed font-light max-w-2xl">
+                        {paper.description}
+                      </p>
                     </div>
-                    <h2 className="text-xl sm:text-2xl font-semibold text-neutral-900 group-hover:text-blue-600 transition-colors leading-snug mb-4 tracking-tight">
-                      {paper.title}
-                    </h2>
-                    <p className="text-sm sm:text-[15px] text-neutral-500 leading-relaxed font-light max-w-2xl">
-                      {paper.description}
-                    </p>
-                  </div>
-                  <div className="lg:col-span-4 flex lg:flex-col lg:items-end lg:justify-between lg:h-full">
-                    <div className="flex items-center gap-4 lg:flex-col lg:items-end lg:gap-1">
-                      <p className="text-sm text-neutral-400">{paper.authors}</p>
-                      <span className="text-xs text-neutral-300">{paper.venue}</span>
-                    </div>
-                    <div className="ml-auto lg:ml-0 lg:mt-8 flex items-center gap-1.5 text-sm text-neutral-400 group-hover:text-blue-600 transition-colors font-medium">
-                      <span>Read paper</span>
-                      <ArrowUpRight className="w-4 h-4" />
+                    <div className="lg:col-span-4 flex lg:flex-col lg:items-end lg:justify-between lg:h-full">
+                      <div className="flex items-center gap-4 lg:flex-col lg:items-end lg:gap-1">
+                        <p className="text-sm text-neutral-500">{paper.authors}</p>
+                        <span className="text-xs text-neutral-400">{paper.venue}</span>
+                      </div>
+                      <div className="ml-auto lg:ml-0 lg:mt-8 flex items-center gap-1.5 text-sm text-neutral-500 group-hover:text-blue-600 transition-colors font-medium">
+                        <span>Read paper</span>
+                        <ArrowUpRight className="w-4 h-4" />
+                      </div>
                     </div>
                   </div>
                 </div>
