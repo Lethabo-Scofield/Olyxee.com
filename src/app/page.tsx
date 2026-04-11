@@ -183,42 +183,38 @@ function ResearchAreas() {
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          <div className="space-y-0 divide-y divide-neutral-100">
             {[
               {
                 num: "01",
                 title: "AI Research",
                 desc: "New system-level approaches for how AI executes tasks, coordinates processes, and maintains reliability across multi-step operations.",
-                gradient: "/images/gradient-blue.png",
               },
               {
                 num: "02",
                 title: "Infrastructure Systems",
                 desc: "Runtime and integration layers that allow AI to operate across tools, APIs, and environments as a unified system.",
-                gradient: "/images/gradient-purple.png",
               },
               {
                 num: "03",
                 title: "Composability Layer",
                 desc: "Connecting models, tools, and workflows into coherent, end-to-end AI systems that execute reliably.",
-                gradient: "/images/gradient-pastel.png",
               },
             ].map((step, idx) => (
               <motion.div
                 key={step.num}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.12 }}
-                className="relative rounded-2xl group hover:shadow-xl hover:shadow-neutral-200/50 transition-all duration-300 overflow-hidden bg-white border border-neutral-100"
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="group py-8 sm:py-10 cursor-default"
               >
-                <div className="h-2 w-full overflow-hidden relative">
-                  <Image src={step.gradient} alt="" fill className="object-cover" />
-                </div>
-                <div className="p-8 sm:p-10">
-                  <span className="inline-block text-xs font-mono text-neutral-300 mb-6">{step.num}</span>
-                  <h3 className="text-lg sm:text-xl font-semibold text-neutral-900 mb-4 tracking-tight leading-snug">{step.title}</h3>
-                  <p className="text-sm text-neutral-500 leading-relaxed">{step.desc}</p>
+                <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-12">
+                  <span className="text-xs font-mono text-neutral-300 pt-1 shrink-0">{step.num}</span>
+                  <div>
+                    <h3 className="text-lg sm:text-xl font-semibold text-neutral-900 group-hover:text-blue-500 transition-colors duration-300 tracking-tight leading-snug mb-3">{step.title}</h3>
+                    <p className="text-sm text-neutral-500 leading-relaxed max-w-lg">{step.desc}</p>
+                  </div>
                 </div>
               </motion.div>
             ))}
