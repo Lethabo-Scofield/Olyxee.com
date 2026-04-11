@@ -543,8 +543,11 @@ function IntegrationSection() {
 
 function CTASection() {
   return (
-    <section className="py-20 sm:py-32 lg:py-44">
-      <div className="max-w-4xl mx-auto px-4 sm:px-8 lg:px-12 text-center">
+    <section
+      className="relative pt-24 sm:pt-36 pb-32 sm:pb-44 overflow-hidden"
+      style={{ background: 'linear-gradient(to bottom, #ffffff 0%, #f5f5f5 12%, #e5e5e5 25%, #a3a3a3 42%, #525252 58%, #262626 72%, #171717 85%, #0a0a0a 100%)' }}
+    >
+      <div className="max-w-4xl mx-auto px-4 sm:px-8 lg:px-12 text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -594,7 +597,7 @@ function CTASection() {
           </Link>
           <Link
             href="/about"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 text-neutral-600 bg-white border border-neutral-200 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide shadow-sm"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 text-neutral-300 bg-transparent border border-neutral-500 rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide"
           >
             About Olyxee
           </Link>
