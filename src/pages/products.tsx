@@ -319,8 +319,8 @@ const ProductsPage: FC = () => {
         </div>
       </section>
 
-      <section className="py-16 sm:py-24 border-t border-neutral-100 bg-neutral-50/50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <section className="relative pt-24 sm:pt-36 pb-32 sm:pb-44 overflow-hidden" style={{ background: 'linear-gradient(to bottom, #ffffff 0%, #f5f5f5 12%, #e5e5e5 25%, #a3a3a3 42%, #525252 58%, #262626 72%, #171717 85%, #0a0a0a 100%)' }}>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -328,12 +328,17 @@ const ProductsPage: FC = () => {
             custom={0}
             variants={fadeUp}
           >
-            <p className="text-base sm:text-lg text-neutral-500 font-light leading-relaxed">
-              Olyxee products are not applications.
+            <p className="text-sm font-semibold text-neutral-400 uppercase tracking-[0.25em] mb-6">What comes next</p>
+            <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-800 mb-6 leading-snug">
+              AI needs better foundations.
+            </h2>
+            <p className="text-base sm:text-xl text-neutral-500 font-light leading-relaxed max-w-2xl mx-auto mb-10">
+              We are building those foundations. Join us on the journey.
             </p>
-            <p className="text-base sm:text-lg text-neutral-900 font-medium mt-2">
-              They are systems for operational AI.
-            </p>
+            <Link href="/careers" className="inline-flex items-center gap-2 text-sm font-medium text-white bg-neutral-900 hover:bg-neutral-800 px-6 py-3 rounded-full transition-colors duration-200">
+              View open roles
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </motion.div>
         </div>
       </section>
