@@ -164,28 +164,8 @@ const ProductsPage: FC = () => {
           >
             Systems built from Olyxee research for real-world AI operation.
           </motion.p>
-        </div>
-      </section>
 
-      <section className="pb-20 sm:pb-28 px-4 sm:px-6">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            custom={0}
-            variants={fadeUp}
-            className="mb-16 sm:mb-20 max-w-3xl"
-          >
-            <p className="text-base sm:text-lg text-neutral-500 leading-relaxed font-light">
-              Olyxee builds foundational systems that enable AI to operate reliably across environments, tools, and domains.
-            </p>
-            <p className="text-base sm:text-lg text-neutral-500 leading-relaxed font-light mt-4">
-              These systems demonstrate how AI moves from capability to execution.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-16 sm:mb-24">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-12 sm:mt-16 mb-16 sm:mb-24">
             <motion.a
               href="https://grysics.olyxee.com/"
               target="_blank"
