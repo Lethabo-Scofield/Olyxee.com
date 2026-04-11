@@ -50,14 +50,14 @@ const capabilities = [
 ];
 
 const hardwareGradients = [
-  "/images/gradient-blue.png",
-  "/images/gradient-pastel.png",
-  "/images/gradient-yellow-green.png",
-  "/images/gradient-blue-pink.png",
-  "/images/gradient-orange-purple.png",
-  "/images/gradient-purple.png",
-  "/images/gradient-pink-cyan.png",
-  "/images/gradient-abstract-blue.png",
+  "/images/gradient-blue.webp",
+  "/images/gradient-pastel.webp",
+  "/images/gradient-yellow-green.webp",
+  "/images/gradient-blue-pink.webp",
+  "/images/gradient-orange-purple.webp",
+  "/images/gradient-purple.webp",
+  "/images/gradient-pink-cyan.webp",
+  "/images/gradient-abstract-blue.webp",
 ];
 
 const supportedHardware = [
@@ -242,7 +242,7 @@ const EdgeAI: FC = () => {
                 label: "Olyxee",
                 role: "The Brain",
                 description: "Defines vision, conducts research, and builds core AI capabilities. Strategy and intelligence originate here.",
-                bg: "/images/gradient-blue.png",
+                bg: "/images/gradient-blue.webp",
               },
               {
                 label: "OEB",
@@ -254,7 +254,7 @@ const EdgeAI: FC = () => {
                 label: "Grysics",
                 role: "Quality Control",
                 description: "Verifies AI works correctly before and after deployment. The trust layer that ensures reliability.",
-                bg: "/images/gradient-yellow-green.png",
+                bg: "/images/gradient-yellow-green.webp",
               },
             ].map((item, idx) => (
               <motion.div

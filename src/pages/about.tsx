@@ -114,9 +114,9 @@ const About: FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {[
-              { title: "Verification", description: "Test AI outputs for accuracy, consistency, and hallucinations before they reach users.", bg: "/images/gradient-blue.png" },
-              { title: "Evaluation", description: "Continuous scoring and benchmarking so you always know how your AI is performing.", bg: "/images/gradient-orange-pink.png" },
-              { title: "Monitoring", description: "Real-time observability for production AI. Catch drift, failures, and quality issues early.", bg: "/images/gradient-purple.png" },
+              { title: "Verification", description: "Test AI outputs for accuracy, consistency, and hallucinations before they reach users.", bg: "/images/gradient-blue.webp" },
+              { title: "Evaluation", description: "Continuous scoring and benchmarking so you always know how your AI is performing.", bg: "/images/gradient-orange-pink.webp" },
+              { title: "Monitoring", description: "Real-time observability for production AI. Catch drift, failures, and quality issues early.", bg: "/images/gradient-purple.webp" },
             ].map((item, idx) => (
               <motion.div
                 key={item.title}

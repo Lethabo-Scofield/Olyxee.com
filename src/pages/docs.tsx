@@ -139,7 +139,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       desc: "Verify your first AI application in under five minutes.",
       tab: "api",
       page: "quickstart",
-      bg: "/images/gradient-blue-pink.png",
+      bg: "/images/gradient-blue-pink.webp",
     },
     {
       icon: Layers,
@@ -147,7 +147,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       desc: "Learn how the verification engine ensures AI application reliability.",
       tab: "grysics",
       page: "grysics-overview",
-      bg: "/images/gradient-pastel.png",
+      bg: "/images/gradient-pastel.webp",
     },
     {
       icon: Terminal,
@@ -155,7 +155,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       desc: "Integrate Grysics into your AI pipeline.",
       tab: "api",
       page: "api-reference",
-      bg: "/images/gradient-orange-purple.png",
+      bg: "/images/gradient-orange-purple.webp",
     },
     {
       icon: Cpu,
@@ -163,7 +163,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       desc: "OpenAI, Anthropic, LangChain, and more.",
       tab: "guides",
       page: "supported-platforms",
-      bg: "/images/gradient-yellow-green.png",
+      bg: "/images/gradient-yellow-green.webp",
     },
   ];
 
@@ -172,19 +172,19 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       title: "Getting started with Olyxee",
       duration: "5:12",
       desc: "Set up your first project and run verification in minutes.",
-      bg: "/images/gradient-abstract-blue.png",
+      bg: "/images/gradient-abstract-blue.webp",
     },
     {
       title: "Grysics deep dive",
       duration: "12:34",
       desc: "Understanding the verification engine and its checks.",
-      bg: "/images/gradient-blue-pink.png",
+      bg: "/images/gradient-blue-pink.webp",
     },
     {
       title: "Testing RAG pipelines",
       duration: "8:45",
       desc: "Evaluate retrieval quality, context usage, and response accuracy.",
-      bg: "/images/gradient-orange-purple.png",
+      bg: "/images/gradient-orange-purple.webp",
     },
   ];
 
@@ -357,10 +357,10 @@ function APIOverview() {
       <DocSection title="Key concepts">
         <div className="space-y-3 mt-2">
           {[
-            { title: "Applications", desc: "Register your chatbot, RAG pipeline, or agent workflow as an application. Each app gets its own verification history and monitoring dashboard.", bg: "/images/gradient-blue-pink.png" },
-            { title: "Verification runs", desc: "Test your application against predefined checks: accuracy, consistency, hallucination detection, and retrieval relevance.", bg: "/images/gradient-pastel.png" },
-            { title: "Monitoring", desc: "Continuous production monitoring with alerts for quality drift, hallucination spikes, and latency degradation.", bg: "/images/gradient-yellow-green.png" },
-            { title: "API Keys", desc: "Create scoped keys for different environments (dev, staging, production) with configurable permissions and expiration.", bg: "/images/gradient-orange-purple.png" },
+            { title: "Applications", desc: "Register your chatbot, RAG pipeline, or agent workflow as an application. Each app gets its own verification history and monitoring dashboard.", bg: "/images/gradient-blue-pink.webp" },
+            { title: "Verification runs", desc: "Test your application against predefined checks: accuracy, consistency, hallucination detection, and retrieval relevance.", bg: "/images/gradient-pastel.webp" },
+            { title: "Monitoring", desc: "Continuous production monitoring with alerts for quality drift, hallucination spikes, and latency degradation.", bg: "/images/gradient-yellow-green.webp" },
+            { title: "API Keys", desc: "Create scoped keys for different environments (dev, staging, production) with configurable permissions and expiration.", bg: "/images/gradient-orange-purple.webp" },
           ].map(item => (
             <div key={item.title} className="rounded-lg p-4 hover:shadow-sm transition-all relative overflow-hidden">
               <div className="absolute inset-0 bg-cover bg-center pointer-events-none" style={{ backgroundImage: `url("${item.bg}")` }} />
@@ -377,9 +377,9 @@ function APIOverview() {
       <DocSection title="SDKs & tools">
         <div className="space-y-3 mt-2">
           {[
-            { title: "Python SDK", desc: "Full-featured SDK for connecting, verifying, evaluating, and monitoring AI applications.", bg: "/images/gradient-abstract-blue.png" },
-            { title: "REST API", desc: "HTTP API for programmatic access from any language or platform.", bg: "/images/gradient-orange-pink.png" },
-            { title: "CLI", desc: "Command-line tools for quick application verification and monitoring.", bg: "/images/gradient-purple.png" },
+            { title: "Python SDK", desc: "Full-featured SDK for connecting, verifying, evaluating, and monitoring AI applications.", bg: "/images/gradient-abstract-blue.webp" },
+            { title: "REST API", desc: "HTTP API for programmatic access from any language or platform.", bg: "/images/gradient-orange-pink.webp" },
+            { title: "CLI", desc: "Command-line tools for quick application verification and monitoring.", bg: "/images/gradient-purple.webp" },
           ].map(item => (
             <div key={item.title} className="rounded-lg p-4 hover:shadow-sm transition-all relative overflow-hidden">
               <div className="absolute inset-0 bg-cover bg-center pointer-events-none" style={{ backgroundImage: `url("${item.bg}")` }} />
@@ -586,21 +586,21 @@ function GrysicsOverview({ onNavigate }: { onNavigate?: (tab: string, page: stri
               title: "Chatbots",
               desc: "Customer support, Q&A assistants, conversational AI",
               checks: ["Accuracy", "Consistency", "Tone"],
-              bg: "/images/gradient-blue-pink.png",
+              bg: "/images/gradient-blue-pink.webp",
             },
             {
               id: "grysics-rag",
               title: "RAG Pipelines",
               desc: "Document Q&A, knowledge bases, search-augmented answers",
               checks: ["Retrieval", "Context", "Faithfulness"],
-              bg: "/images/gradient-yellow-green.png",
+              bg: "/images/gradient-yellow-green.webp",
             },
             {
               id: "grysics-agents",
               title: "Agents",
               desc: "Tool-using agents, multi-step workflows, autonomous systems",
               checks: ["Tool usage", "Planning", "Safety"],
-              bg: "/images/gradient-orange-purple.png",
+              bg: "/images/gradient-orange-purple.webp",
             },
           ].map(item => (
             <button
@@ -627,9 +627,9 @@ function GrysicsOverview({ onNavigate }: { onNavigate?: (tab: string, page: stri
       <DocSection title="How it works">
         <div className="space-y-3 mt-2">
           {[
-            { step: "1", title: "Connect", desc: "Point Grysics at your application endpoint. Works with any HTTP API. No code changes needed.", bg: "/images/gradient-blue-pink.png" },
-            { step: "2", title: "Test", desc: "Run checks for accuracy, consistency, hallucination, and more. Use built-in or custom test cases.", bg: "/images/gradient-pastel.png" },
-            { step: "3", title: "Monitor", desc: "Enable continuous verification in production. Get alerts when quality drops.", bg: "/images/gradient-yellow-green.png" },
+            { step: "1", title: "Connect", desc: "Point Grysics at your application endpoint. Works with any HTTP API. No code changes needed.", bg: "/images/gradient-blue-pink.webp" },
+            { step: "2", title: "Test", desc: "Run checks for accuracy, consistency, hallucination, and more. Use built-in or custom test cases.", bg: "/images/gradient-pastel.webp" },
+            { step: "3", title: "Monitor", desc: "Enable continuous verification in production. Get alerts when quality drops.", bg: "/images/gradient-yellow-green.webp" },
           ].map(item => (
             <div key={item.step} className="flex gap-4 items-start p-4 rounded-lg relative overflow-hidden">
               <div className="absolute inset-0 bg-cover bg-center pointer-events-none" style={{ backgroundImage: `url("${item.bg}")` }} />
@@ -709,10 +709,10 @@ function GrysicsChatbots() {
       <DocSection title="What Grysics checks for chatbots">
         <div className="space-y-3 mt-2">
           {[
-            { title: "Accuracy", desc: "Does the bot answer correctly? Responses are tested against known-good answers for your most common questions.", bg: "/images/gradient-pastel.png" },
-            { title: "Consistency", desc: "Does the bot give the same answer when the same question is asked differently? \"How do I return an item?\" should match \"What's your return policy?\"", bg: "/images/gradient-abstract-blue.png" },
-            { title: "Hallucination", desc: "Does the bot make things up? Grysics detects when the bot invents policies, prices, or procedures that don't exist.", bg: "/images/gradient-orange-pink.png" },
-            { title: "Tone & safety", desc: "Does the bot respond appropriately? Catches rude, biased, or off-brand responses.", bg: "/images/gradient-purple.png" },
+            { title: "Accuracy", desc: "Does the bot answer correctly? Responses are tested against known-good answers for your most common questions.", bg: "/images/gradient-pastel.webp" },
+            { title: "Consistency", desc: "Does the bot give the same answer when the same question is asked differently? \"How do I return an item?\" should match \"What's your return policy?\"", bg: "/images/gradient-abstract-blue.webp" },
+            { title: "Hallucination", desc: "Does the bot make things up? Grysics detects when the bot invents policies, prices, or procedures that don't exist.", bg: "/images/gradient-orange-pink.webp" },
+            { title: "Tone & safety", desc: "Does the bot respond appropriately? Catches rude, biased, or off-brand responses.", bg: "/images/gradient-purple.webp" },
           ].map(item => (
             <div key={item.title} className="rounded-lg p-5 hover:shadow-sm transition-all relative overflow-hidden">
               <div className="absolute inset-0 bg-cover bg-center pointer-events-none" style={{ backgroundImage: `url("${item.bg}")` }} />
@@ -760,10 +760,10 @@ function GrysicsRAG() {
       <DocSection title="What Grysics checks for RAG">
         <div className="space-y-3 mt-2">
           {[
-            { title: "Retrieval relevance", desc: "Did the system retrieve the right documents? Are the most relevant chunks ranked highest?", bg: "/images/gradient-blue-pink.png" },
-            { title: "Context utilization", desc: "Is the retrieved context actually used in the answer? Measures whether the model leverages what it retrieves.", bg: "/images/gradient-yellow-green.png" },
-            { title: "Answer faithfulness", desc: "Is the answer supported by the retrieved context? Catches hallucinations where the model goes beyond the source data.", bg: "/images/gradient-pastel.png" },
-            { title: "Completeness", desc: "Does the answer cover all relevant information from the retrieved documents? Detects missing key details.", bg: "/images/gradient-orange-purple.png" },
+            { title: "Retrieval relevance", desc: "Did the system retrieve the right documents? Are the most relevant chunks ranked highest?", bg: "/images/gradient-blue-pink.webp" },
+            { title: "Context utilization", desc: "Is the retrieved context actually used in the answer? Measures whether the model leverages what it retrieves.", bg: "/images/gradient-yellow-green.webp" },
+            { title: "Answer faithfulness", desc: "Is the answer supported by the retrieved context? Catches hallucinations where the model goes beyond the source data.", bg: "/images/gradient-pastel.webp" },
+            { title: "Completeness", desc: "Does the answer cover all relevant information from the retrieved documents? Detects missing key details.", bg: "/images/gradient-orange-purple.webp" },
           ].map(item => (
             <div key={item.title} className="rounded-lg p-5 hover:shadow-sm transition-all relative overflow-hidden">
               <div className="absolute inset-0 bg-cover bg-center pointer-events-none" style={{ backgroundImage: `url("${item.bg}")` }} />
@@ -812,10 +812,10 @@ function GrysicsAgents() {
       <DocSection title="What Grysics checks for agents">
         <div className="space-y-3 mt-2">
           {[
-            { title: "Tool selection", desc: "Does the agent pick the right tool for each task? Catches cases where the agent calls the wrong API or uses incorrect parameters.", bg: "/images/gradient-abstract-blue.png" },
-            { title: "Planning accuracy", desc: "Does the agent break complex tasks into correct steps? Verifies that multi-step plans are logical and complete.", bg: "/images/gradient-orange-pink.png" },
-            { title: "Parameter correctness", desc: "Are tool calls made with valid parameters? Detects type mismatches, missing required fields, and out-of-range values.", bg: "/images/gradient-blue-pink.png" },
-            { title: "Safety guardrails", desc: "Does the agent respect boundaries? Ensures it doesn't take destructive actions, access unauthorized data, or exceed scope.", bg: "/images/gradient-purple.png" },
+            { title: "Tool selection", desc: "Does the agent pick the right tool for each task? Catches cases where the agent calls the wrong API or uses incorrect parameters.", bg: "/images/gradient-abstract-blue.webp" },
+            { title: "Planning accuracy", desc: "Does the agent break complex tasks into correct steps? Verifies that multi-step plans are logical and complete.", bg: "/images/gradient-orange-pink.webp" },
+            { title: "Parameter correctness", desc: "Are tool calls made with valid parameters? Detects type mismatches, missing required fields, and out-of-range values.", bg: "/images/gradient-blue-pink.webp" },
+            { title: "Safety guardrails", desc: "Does the agent respect boundaries? Ensures it doesn't take destructive actions, access unauthorized data, or exceed scope.", bg: "/images/gradient-purple.webp" },
           ].map(item => (
             <div key={item.title} className="rounded-lg p-5 hover:shadow-sm transition-all relative overflow-hidden">
               <div className="absolute inset-0 bg-cover bg-center pointer-events-none" style={{ backgroundImage: `url("${item.bg}")` }} />

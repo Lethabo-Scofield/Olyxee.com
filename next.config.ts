@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   allowedDevOrigins: ["*.replit.dev", "*.spock.replit.dev", "*.janeway.replit.dev", "*.worf.replit.dev", "*.repl.co"],
   images: {
-    unoptimized: true,
+    formats: ['image/webp', 'image/avif'],
     remotePatterns: [
       { protocol: 'https', hostname: '**' },
       { protocol: 'http', hostname: '**' }

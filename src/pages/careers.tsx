@@ -163,7 +163,7 @@ function HeroSection() {
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="relative max-w-6xl mx-auto rounded-2xl sm:rounded-3xl overflow-hidden min-h-[480px] sm:min-h-[540px] lg:min-h-[600px]">
           <Image
-            src="/images/careers-hero.png"
+            src="/images/careers-hero.webp"
             alt="Team collaborating on code"
             fill
             priority
@@ -220,19 +220,19 @@ function ValuesSection() {
       num: "01",
       title: "Your work ships to production",
       desc: "No sandbox projects. No busywork. From your first week, you're building features that real teams depend on to run AI in production.",
-      gradient: "/images/gradient-orange-pink.png",
+      gradient: "/images/gradient-orange-pink.webp",
     },
     {
       num: "02",
       title: "Grow faster than anywhere else",
       desc: "Small team, big problems. You'll take on responsibilities most companies wouldn't hand to someone for years. That's how we like it.",
-      gradient: "/images/gradient-blue-pink.png",
+      gradient: "/images/gradient-blue-pink.webp",
     },
     {
       num: "03",
       title: "Remote, flexible, outcome-driven",
       desc: "Work from anywhere in the world. We don't track hours. We track impact. Show up, do great work, and own your schedule.",
-      gradient: "/images/gradient-yellow-green.png",
+      gradient: "/images/gradient-yellow-green.webp",
     },
   ];
 

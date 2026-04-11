@@ -33,10 +33,10 @@ const Community: FC = () => {
   const statsRef = useRef<HTMLDivElement>(null);
 
   const channels: Channel[] = React.useMemo(() => [
-    { icon: MessageSquare, title: "Discord", description: "Join real-time conversations with developers deploying AI at the edge.", members: 5000, unit: "members", link: "https://discord.gg/DgBEMVCh", bg: "/images/gradient-blue-pink.png" },
-    { icon: Github, title: "GitHub", description: "Contribute to our open-source tools and shape the future of edge AI.", members: 1200, unit: "stars", link: "https://github.com/Olyxee", bg: "/images/gradient-yellow-green.png" },
-    { icon: Twitter, title: "X", description: "Stay updated with the latest features, tips, and community highlights.", members: 3000, unit: "followers", link: "https://x.com/Olyxee", bg: "/images/gradient-pastel.png" },
-    { icon: Users, title: "Forums", description: "Deep-dive discussions on optimization strategies and deployment patterns.", members: 2000, unit: "posts", link: "#forums", bg: "/images/gradient-orange-purple.png" },
+    { icon: MessageSquare, title: "Discord", description: "Join real-time conversations with developers deploying AI at the edge.", members: 5000, unit: "members", link: "https://discord.gg/DgBEMVCh", bg: "/images/gradient-blue-pink.webp" },
+    { icon: Github, title: "GitHub", description: "Contribute to our open-source tools and shape the future of edge AI.", members: 1200, unit: "stars", link: "https://github.com/Olyxee", bg: "/images/gradient-yellow-green.webp" },
+    { icon: Twitter, title: "X", description: "Stay updated with the latest features, tips, and community highlights.", members: 3000, unit: "followers", link: "https://x.com/Olyxee", bg: "/images/gradient-pastel.webp" },
+    { icon: Users, title: "Forums", description: "Deep-dive discussions on optimization strategies and deployment patterns.", members: 2000, unit: "posts", link: "#forums", bg: "/images/gradient-orange-purple.webp" },
   ], []);
 
   const formatNumber = (num: number) => num >= 1000 ? `${(num / 1000).toFixed(1)}k` : num.toString();
