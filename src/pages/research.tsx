@@ -37,11 +37,6 @@ const papers = [
   },
 ];
 
-const categoryColors: Record<string, string> = {
-  "Verification": "bg-blue-50 text-blue-600 border-blue-100",
-  "Evaluation": "bg-amber-50 text-amber-600 border-amber-100",
-  "Monitoring": "bg-emerald-50 text-emerald-600 border-emerald-100",
-};
 
 
 const Research: FC = () => {
@@ -94,9 +89,6 @@ const Research: FC = () => {
                 className="group block py-10 sm:py-12"
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <span className={`inline-flex px-2.5 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider border ${categoryColors[paper.category]}`}>
-                    {paper.category}
-                  </span>
                   <span className="text-xs text-neutral-400 font-medium">{paper.venue} · {paper.year}</span>
                 </div>
                 <h2 className="text-xl sm:text-2xl font-semibold text-neutral-900 group-hover:text-blue-500 transition-colors leading-snug mb-3 tracking-tight">
