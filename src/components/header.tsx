@@ -78,7 +78,7 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
     return (
         <>
             <motion.header
-                className="fixed top-0 left-0 right-0 z-[1000] flex justify-center"
+                className="fixed top-0 left-0 right-0 z-[1000] flex justify-center px-3 sm:px-4"
                 initial={{ y: 0, opacity: 1 }}
                 animate={{
                     y: scrolled && !visible ? -100 : 0,
@@ -86,7 +86,7 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 35 }}
                 style={{
-                    padding: scrolled ? '12px 12px 0' : '0',
+                    paddingTop: scrolled ? 12 : 0,
                 }}
             >
                 <motion.div
@@ -94,10 +94,10 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                     initial={{ maxWidth: 1400 }}
                     animate={{
                         maxWidth: scrolled ? 820 : 1400,
-                        height: scrolled ? 52 : 60,
+                        height: scrolled ? 52 : 56,
                         borderRadius: scrolled ? 50 : 0,
-                        paddingLeft: scrolled ? 16 : 16,
-                        paddingRight: scrolled ? 16 : 16,
+                        paddingLeft: scrolled ? 16 : 12,
+                        paddingRight: scrolled ? 16 : 12,
                         background: scrolled
                             ? 'rgba(255, 255, 255, 0.6)'
                             : 'rgba(255, 255, 255, 0.0)',
@@ -121,7 +121,7 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                         </span>
                     </Link>
 
-                    <nav className="hidden lg:flex h-full ml-auto mr-auto" aria-label="Main navigation">
+                    <nav className="hidden md:flex h-full ml-auto mr-auto" aria-label="Main navigation">
                         <ul className="flex h-full items-center gap-1">
                             {menuItems.map((item, i) => (
                                 <motion.li
@@ -147,7 +147,7 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                         </ul>
                     </nav>
 
-                    <div className="flex items-center gap-2.5 ml-auto lg:ml-0 flex-shrink-0">
+                    <div className="flex items-center gap-2.5 ml-auto md:ml-0 flex-shrink-0">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
@@ -179,7 +179,7 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                                 Sign up
                             </Link>
                         </motion.div>
-                        <div className="lg:hidden">
+                        <div className="md:hidden">
                             <motion.button
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
@@ -205,7 +205,7 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             transition={{ duration: 0.25 }}
-                            className="fixed inset-0 bg-black/25 backdrop-blur-md z-[1001] lg:hidden"
+                            className="fixed inset-0 bg-black/25 backdrop-blur-md z-[1001] md:hidden"
                             onClick={handleBackdropClick}
                             aria-hidden="true"
                         />
@@ -214,7 +214,7 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                             animate={{ x: 0, opacity: 1 }}
                             exit={{ x: '100%', opacity: 0 }}
                             transition={{ type: 'spring', damping: 28, stiffness: 220 }}
-                            className="fixed right-3 top-3 bottom-3 w-[calc(100%-24px)] max-w-sm z-[1002] lg:hidden overflow-hidden"
+                            className="fixed right-3 top-3 bottom-3 w-[calc(100%-24px)] max-w-sm z-[1002] md:hidden overflow-hidden"
                             style={{
                                 background: 'rgba(255,255,255,0.75)',
                                 backdropFilter: 'blur(40px) saturate(200%)',

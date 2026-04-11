@@ -72,18 +72,18 @@ function TerminalDemo() {
 
   return (
     <div ref={ref} className="relative">
-      <div className="relative bg-[#0d1117] rounded-2xl border border-neutral-200 shadow-2xl shadow-neutral-200/40 overflow-hidden">
-        <div className="flex items-center gap-2 px-4 py-3 border-b border-neutral-800 bg-neutral-900">
+      <div className="relative bg-[#0d1117] rounded-xl sm:rounded-2xl border border-neutral-200 shadow-2xl shadow-neutral-200/40 overflow-hidden">
+        <div className="flex items-center gap-2 px-3 sm:px-4 py-2.5 sm:py-3 border-b border-neutral-800 bg-neutral-900">
           <div className="flex items-center gap-1.5">
-            <div className="w-3 h-3 rounded-full bg-red-500/70" />
-            <div className="w-3 h-3 rounded-full bg-yellow-500/70" />
-            <div className="w-3 h-3 rounded-full bg-green-500/70" />
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500/70" />
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500/70" />
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500/70" />
           </div>
           <div className="flex-1 flex items-center justify-center">
-            <span className="text-[11px] text-neutral-500 font-mono">grysics / verification</span>
+            <span className="text-[10px] sm:text-[11px] text-neutral-500 font-mono">grysics / verification</span>
           </div>
         </div>
-        <div className="p-5 sm:p-6 font-mono text-[12px] sm:text-[13px] leading-6 min-h-[340px]">
+        <div className="p-3 sm:p-6 font-mono text-[10px] sm:text-[13px] leading-5 sm:leading-6 min-h-[260px] sm:min-h-[340px] overflow-x-auto no-scrollbar">
           {lines.slice(0, visibleLines).map((line, i) => (
             <motion.div
               key={i}
@@ -134,20 +134,20 @@ if report.passed:
     grysics.deploy(report)`;
 
   return (
-    <div className="relative bg-[#0d1117] rounded-2xl border border-neutral-200 overflow-hidden shadow-lg shadow-neutral-200/30">
-      <div className="flex items-center justify-between px-4 py-2.5 border-b border-neutral-800 bg-neutral-900">
+    <div className="relative bg-[#0d1117] rounded-xl sm:rounded-2xl border border-neutral-200 overflow-hidden shadow-lg shadow-neutral-200/30">
+      <div className="flex items-center justify-between px-3 sm:px-4 py-2 sm:py-2.5 border-b border-neutral-800 bg-neutral-900">
         <div className="flex items-center gap-2">
           <div className="w-2.5 h-2.5 rounded bg-yellow-500/60" />
-          <span className="text-[11px] text-neutral-500 font-mono">verify.py</span>
+          <span className="text-[10px] sm:text-[11px] text-neutral-500 font-mono">verify.py</span>
         </div>
         <button
           onClick={() => { setCopied(true); setTimeout(() => setCopied(false), 2000); }}
-          className="text-[11px] text-neutral-500 hover:text-neutral-300 transition-colors"
+          className="text-[10px] sm:text-[11px] text-neutral-500 hover:text-neutral-300 transition-colors"
         >
           {copied ? 'Copied' : 'Copy'}
         </button>
       </div>
-      <pre className="p-5 sm:p-6 font-mono text-[12px] sm:text-[13px] leading-6 text-neutral-300 overflow-x-auto">
+      <pre className="p-3 sm:p-6 font-mono text-[10px] sm:text-[13px] leading-5 sm:leading-6 text-neutral-300 overflow-x-auto no-scrollbar">
         <code>{code.split('\n').map((line, i) => {
           let highlighted = line;
           highlighted = highlighted.replace(/(import|from|if)/g, '<kw>$1</kw>');
@@ -207,19 +207,19 @@ function EarlyAccessForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 w-full max-w-md">
+    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 w-full max-w-md px-2 sm:px-0">
       <input
         type="email"
         placeholder="you@company.com"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
-        className="flex-1 px-5 py-3.5 rounded-full text-sm focus:outline-none transition-all placeholder:text-neutral-400 border border-neutral-200 bg-white text-neutral-900 focus:ring-2 focus:ring-neutral-900/10 focus:border-neutral-400"
+        className="flex-1 min-w-0 px-5 py-3 sm:py-3.5 rounded-full text-sm focus:outline-none transition-all placeholder:text-neutral-400 border border-neutral-200 bg-white text-neutral-900 focus:ring-2 focus:ring-neutral-900/10 focus:border-neutral-400"
       />
       <button
         type="submit"
         disabled={loading}
-        className="px-7 py-3.5 rounded-full font-medium text-sm transition-all disabled:opacity-60 flex items-center justify-center gap-2 flex-shrink-0 bg-neutral-900 text-white hover:bg-black"
+        className="px-7 py-3 sm:py-3.5 rounded-full font-medium text-sm transition-all disabled:opacity-60 flex items-center justify-center gap-2 flex-shrink-0 bg-neutral-900 text-white hover:bg-black"
       >
         {loading ? (
           <div className="w-4 h-4 border-2 rounded-full animate-spin border-white/30 border-t-white" />
@@ -237,7 +237,7 @@ export default function GrysicsPage() {
       <div className="grain" />
       <Header />
 
-      <section className="pt-28 sm:pt-40 pb-8 sm:pb-12 px-4 sm:px-6">
+      <section className="pt-24 sm:pt-40 pb-8 sm:pb-12 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto text-center">
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="flex flex-col items-center gap-4 mb-6">
             <Image src="/images/grysics-logo.png" alt="Grysics" width={48} height={48} className="rounded-xl" style={{ width: 48, height: 48 }} priority />
@@ -251,7 +251,7 @@ export default function GrysicsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="font-serif text-4xl sm:text-5xl lg:text-7xl text-neutral-900 tracking-tight leading-[1.05] mb-6"
+            className="font-serif text-3xl sm:text-5xl lg:text-7xl text-neutral-900 tracking-tight leading-[1.05] mb-6"
           >
             Verify your AI
             <br />
@@ -262,7 +262,7 @@ export default function GrysicsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-lg sm:text-xl text-neutral-500 leading-relaxed font-light mb-10 max-w-2xl mx-auto"
+            className="text-base sm:text-xl text-neutral-500 leading-relaxed font-light mb-10 max-w-2xl mx-auto px-2"
           >
             One command to test accuracy, latency, and memory across every target device. Catch failures before your users do.
           </motion.p>
@@ -326,7 +326,7 @@ export default function GrysicsPage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
             {[
               { name: "Computer Vision", examples: "Object detection, segmentation" },
               { name: "NLP & LLMs", examples: "Text generation, translation" },
@@ -387,7 +387,7 @@ export default function GrysicsPage() {
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-16">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-16">
             {[
               { value: 10, suffix: 'x', label: 'Faster verification' },
               { value: 50, suffix: '+', label: 'Hardware targets' },
@@ -497,7 +497,7 @@ export default function GrysicsPage() {
                 viewport={{ once: true }}
                 custom={idx}
                 variants={fadeUp}
-                className="relative px-8 py-10 sm:border-l first:border-l-0 border-neutral-200"
+                className="relative px-6 sm:px-8 py-8 sm:py-10 border-t sm:border-t-0 sm:border-l first:border-t-0 first:border-l-0 border-neutral-200"
               >
                 <span className="text-5xl sm:text-6xl font-serif italic text-neutral-100 block mb-4">{item.step}</span>
                 <h3 className="text-xl font-semibold text-neutral-900 mb-3">{item.title}</h3>
@@ -554,13 +554,13 @@ export default function GrysicsPage() {
         </div>
       </section>
 
-      <section className="py-24 sm:py-36">
+      <section className="py-16 sm:py-36">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp}>
-            <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-6">
+            <h2 className="font-serif text-2xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-6">
               Stop shipping untested AI
             </h2>
-            <p className="text-neutral-500 text-base sm:text-lg max-w-xl mx-auto mb-10 font-light leading-relaxed">
+            <p className="text-neutral-500 text-sm sm:text-lg max-w-xl mx-auto mb-10 font-light leading-relaxed px-2 sm:px-0">
               Join the waitlist. Be the first to verify your AI before it reaches production.
             </p>
             <div className="flex justify-center mb-4">
