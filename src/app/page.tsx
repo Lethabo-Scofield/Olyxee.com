@@ -138,17 +138,17 @@ function HeroSection() {
 
 
 function LogoStrip() {
-  const collaborators: { name: string; Logo: React.FC<{ className?: string }>; w: number; h: number }[] = [
-    { name: "OpenAI", Logo: OpenAILogo, w: 28, h: 28 },
-    { name: "Anthropic", Logo: AnthropicLogo, w: 120, h: 24 },
-    { name: "Google", Logo: GoogleLogo, w: 80, h: 28 },
-    { name: "NVIDIA", Logo: NvidiaLogo, w: 120, h: 24 },
-    { name: "Meta", Logo: MetaLogo, w: 100, h: 24 },
-    { name: "Mistral", Logo: MistralLogo, w: 28, h: 30 },
-    { name: "xAI", Logo: xAILogo, w: 50, h: 24 },
-    { name: "Hugging Face", Logo: HuggingFaceLogo, w: 28, h: 28 },
-    { name: "DeepMind", Logo: DeepMindLogo, w: 140, h: 24 },
-    { name: "Cohere", Logo: CohereLogo, w: 100, h: 24 },
+  const collaborators: { name: string; Logo: React.FC<{ className?: string }> }[] = [
+    { name: "OpenAI", Logo: OpenAILogo },
+    { name: "Anthropic", Logo: AnthropicLogo },
+    { name: "Google", Logo: GoogleLogo },
+    { name: "NVIDIA", Logo: NvidiaLogo },
+    { name: "Meta", Logo: MetaLogo },
+    { name: "Mistral", Logo: MistralLogo },
+    { name: "xAI", Logo: xAILogo },
+    { name: "Hugging Face", Logo: HuggingFaceLogo },
+    { name: "DeepMind", Logo: DeepMindLogo },
+    { name: "Cohere", Logo: CohereLogo },
   ];
 
   return (
@@ -167,8 +167,8 @@ function LogoStrip() {
               className="flex-shrink-0 group"
               title={item.name}
             >
-              <div style={{ width: item.w, height: item.h }} className="opacity-40 group-hover:opacity-80 transition-opacity duration-300">
-                <LogoComponent className="w-full h-full" />
+              <div className="h-6 opacity-40 group-hover:opacity-80 transition-opacity duration-300">
+                <LogoComponent className="h-full w-auto" />
               </div>
             </motion.div>
           );
