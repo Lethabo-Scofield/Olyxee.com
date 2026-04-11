@@ -109,7 +109,7 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                     style={{
                         backdropFilter: scrolled ? 'blur(24px) saturate(180%)' : 'none',
                         WebkitBackdropFilter: scrolled ? 'blur(24px) saturate(180%)' : 'none',
-                        border: scrolled ? '1px solid rgba(255,255,255,0.45)' : '1px solid transparent',
+                        border: 'none',
                     }}
                 >
                     <Link href="/" prefetch className="focus:outline-none rounded-full transition-transform hover:scale-105 flex items-center gap-2.5 flex-shrink-0">
@@ -220,7 +220,7 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                                 backdropFilter: 'blur(40px) saturate(200%)',
                                 WebkitBackdropFilter: 'blur(40px) saturate(200%)',
                                 borderRadius: 28,
-                                border: '1px solid rgba(255,255,255,0.5)',
+                                border: 'none',
                                 boxShadow: '0 24px 80px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.06)',
                             }}
                             role="dialog"
