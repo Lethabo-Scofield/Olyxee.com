@@ -67,7 +67,7 @@ const UseCases: FC = () => {
                     </div>
                   </div>
                   <div className="lg:col-span-2 relative min-h-[200px] lg:min-h-0">
-                    <Image src={useCase.image} alt={useCase.title} fill className="object-cover" />
+                    <Image src={useCase.image} alt={useCase.title} fill sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover" />
                   </div>
                 </div>
               </motion.div>

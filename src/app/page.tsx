@@ -90,7 +90,7 @@ function HeroSection() {
   return (
     <section ref={ref} aria-label="Hero" className="relative w-full min-h-[100svh] flex flex-col items-center justify-center px-4 md:px-8 lg:px-16 overflow-hidden" style={{ position: 'relative' }}>
       <div className="absolute inset-0 w-full h-full">
-        <Image src="/hero-bg.webp" alt="" fill className="object-cover" priority sizes="100vw" />
+        <Image src="/hero-bg.webp" alt="Olyxee hero background with mountain landscape" fill className="object-cover" priority sizes="100vw" />
       </div>
 
       <motion.div style={{ y, opacity }} className="relative z-10 text-center max-w-5xl mx-auto pt-20 sm:pt-24">
@@ -212,7 +212,7 @@ function ResearchAreas() {
                 className="group relative rounded-2xl overflow-hidden cursor-default"
               >
                 <div className="absolute inset-0">
-                  <Image src={step.gradient} alt="" fill className="object-cover" />
+                  <Image src={step.gradient} alt="" fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" />
                   <div className="absolute inset-0 bg-white/80 group-hover:bg-white/70 transition-colors duration-300" />
                 </div>
                 <div className="relative p-7 sm:p-8 min-h-[200px] flex flex-col">
@@ -316,7 +316,7 @@ function ApproachSection() {
             className="md:col-span-2 relative group rounded-2xl border border-neutral-200/60 overflow-hidden"
           >
             <div className="absolute inset-0">
-              <Image src="/images/gradient-orange-pink.webp" alt="" fill className="object-cover" />
+              <Image src="/images/gradient-orange-pink.webp" alt="" fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 66vw" />
               <div className="absolute inset-0 bg-white/75 group-hover:bg-white/65 transition-colors duration-300" />
             </div>
             <div className="relative p-8 sm:p-10">
@@ -343,7 +343,7 @@ function ApproachSection() {
             className="group rounded-2xl overflow-hidden border border-neutral-200/60 hover:border-neutral-300/60 hover:shadow-lg hover:shadow-neutral-200/40 transition-all duration-300 relative"
           >
             <div className="absolute inset-0">
-              <Image src="/images/gradient-yellow-green.webp" alt="" fill className="object-cover" />
+              <Image src="/images/gradient-yellow-green.webp" alt="" fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" />
               <div className="absolute inset-0 bg-white/75 group-hover:bg-white/65 transition-colors duration-300" />
             </div>
             <div className="relative p-8 sm:p-10">
@@ -362,7 +362,7 @@ function ApproachSection() {
             className="group rounded-2xl overflow-hidden border border-neutral-200/60 hover:border-neutral-300/60 hover:shadow-lg hover:shadow-neutral-200/40 transition-all duration-300 relative"
           >
             <div className="absolute inset-0">
-              <Image src="/images/gradient-pink-cyan.webp" alt="" fill className="object-cover" />
+              <Image src="/images/gradient-pink-cyan.webp" alt="" fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" />
               <div className="absolute inset-0 bg-white/75 group-hover:bg-white/65 transition-colors duration-300" />
             </div>
             <div className="relative p-8 sm:p-10">
@@ -381,7 +381,7 @@ function ApproachSection() {
             className="md:col-span-2 lg:col-span-2 group rounded-2xl overflow-hidden border border-neutral-200/60 hover:border-neutral-300/60 hover:shadow-lg hover:shadow-neutral-200/40 transition-all duration-300 relative"
           >
             <div className="absolute inset-0">
-              <Image src="/images/gradient-yellow-blue.webp" alt="" fill className="object-cover" />
+              <Image src="/images/gradient-yellow-blue.webp" alt="" fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 66vw" />
               <div className="absolute inset-0 bg-white/75 group-hover:bg-white/65 transition-colors duration-300" />
             </div>
             <div className="relative p-8 sm:p-10">
