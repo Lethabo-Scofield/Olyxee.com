@@ -83,7 +83,7 @@ const Research: FC = () => {
 
       <section className="pb-20 sm:pb-32">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 gap-6">
+          <div className="divide-y divide-neutral-100">
             {papers.map((paper, idx) => (
               <motion.a
                 key={paper.title}
@@ -91,34 +91,25 @@ const Research: FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.15 + idx * 0.08 }}
-                className="group block rounded-2xl border border-neutral-100 hover:border-neutral-200 bg-white hover:bg-neutral-50/50 transition-all duration-300"
+                className="group block py-10 sm:py-12"
               >
-                <div className="p-8 sm:p-10">
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start">
-                    <div className="lg:col-span-8">
-                      <div className="flex items-center gap-3 mb-5">
-                        <span className={`inline-flex px-2.5 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider border ${categoryColors[paper.category]}`}>
-                          {paper.category}
-                        </span>
-                        <span className="text-xs text-neutral-400 font-medium">{paper.year}</span>
-                      </div>
-                      <h2 className="text-xl sm:text-2xl font-semibold text-neutral-900 group-hover:text-blue-600 transition-colors leading-snug mb-4 tracking-tight">
-                        {paper.title}
-                      </h2>
-                      <p className="text-sm sm:text-[15px] text-neutral-600 leading-relaxed font-light max-w-2xl">
-                        {paper.description}
-                      </p>
-                    </div>
-                    <div className="lg:col-span-4 flex lg:flex-col lg:items-end lg:justify-between lg:h-full">
-                      <div className="flex items-center gap-4 lg:flex-col lg:items-end lg:gap-1">
-                        <p className="text-sm text-neutral-500">{paper.authors}</p>
-                        <span className="text-xs text-neutral-400">{paper.venue}</span>
-                      </div>
-                      <div className="ml-auto lg:ml-0 lg:mt-8 flex items-center gap-1.5 text-sm text-neutral-500 group-hover:text-blue-600 transition-colors font-medium">
-                        <span>Read paper</span>
-                        <ArrowUpRight className="w-4 h-4" />
-                      </div>
-                    </div>
+                <div className="flex items-center gap-3 mb-4">
+                  <span className={`inline-flex px-2.5 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider border ${categoryColors[paper.category]}`}>
+                    {paper.category}
+                  </span>
+                  <span className="text-xs text-neutral-400 font-medium">{paper.venue} · {paper.year}</span>
+                </div>
+                <h2 className="text-xl sm:text-2xl font-semibold text-neutral-900 group-hover:text-blue-500 transition-colors leading-snug mb-3 tracking-tight">
+                  {paper.title}
+                </h2>
+                <p className="text-sm sm:text-[15px] text-neutral-500 leading-relaxed font-light max-w-3xl mb-4">
+                  {paper.description}
+                </p>
+                <div className="flex items-center justify-between">
+                  <p className="text-sm text-neutral-400">{paper.authors}</p>
+                  <div className="flex items-center gap-1.5 text-sm text-neutral-400 group-hover:text-blue-500 transition-colors font-medium">
+                    <span>Read paper</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
                   </div>
                 </div>
               </motion.a>
