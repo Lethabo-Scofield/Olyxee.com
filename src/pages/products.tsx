@@ -1,9 +1,9 @@
-import { FC } from "react";
+import { FC, useRef, useState, useEffect } from "react";
 import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
@@ -15,6 +15,103 @@ const fadeUp = {
     transition: { duration: 0.6, delay: i * 0.08, ease: [0.25, 0.46, 0.45, 0.94] },
   }),
 };
+
+const galleryImages = [
+  { src: "/images/product-workflow.png", label: "Workflow Coordination" },
+  { src: "/images/product-clustering.png", label: "Visual Embeddings" },
+  { src: "/images/product-classifier.png", label: "Classifier Alignment" },
+  { src: "/images/product-pipeline.png", label: "Pipeline Architecture" },
+];
+
+function StickyImageGallery() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const total = galleryImages.length;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const scrollableHeight = containerRef.current.offsetHeight - window.innerHeight;
+      if (scrollableHeight <= 0) { setActiveIndex(0); return; }
+      const scrolled = -rect.top;
+      const progress = Math.max(0, Math.min(1, scrolled / scrollableHeight));
+      const idx = Math.min(total - 1, Math.floor(progress * total));
+      setActiveIndex(prev => prev === idx ? prev : idx);
+    };
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
+  }, [total]);
+
+  return (
+    <section
+      ref={containerRef}
+      style={{ height: `${total * 100}vh` }}
+      className="relative"
+    >
+      <div className="sticky top-0 h-screen flex flex-col items-center justify-center px-4 sm:px-6">
+        <div className="max-w-6xl w-full mx-auto">
+          <div className="flex items-center justify-between mb-4 sm:mb-6">
+            <div className="flex items-center gap-3">
+              <span className="text-xs font-mono text-neutral-300">0{activeIndex + 1}</span>
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={activeIndex}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.25 }}
+                  className="text-sm font-medium text-neutral-500"
+                >
+                  {galleryImages[activeIndex].label}
+                </motion.span>
+              </AnimatePresence>
+            </div>
+            <div className="flex items-center gap-1.5">
+              {galleryImages.map((_, idx) => (
+                <div
+                  key={idx}
+                  className={`h-1 rounded-full transition-all duration-300 ${
+                    idx === activeIndex ? "w-6 bg-neutral-900" : "w-1.5 bg-neutral-200"
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+
+          <div className="relative w-full rounded-2xl overflow-hidden bg-neutral-50 border border-neutral-100" style={{ aspectRatio: '16/9' }}>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeIndex}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.4 }}
+                className="absolute inset-0"
+              >
+                <Image
+                  src={galleryImages[activeIndex].src}
+                  alt={galleryImages[activeIndex].label}
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 768px) 100vw, 1152px"
+                  priority
+                />
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          <p className="text-xs text-neutral-300 text-center mt-4">Scroll to explore</p>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 const ProductsPage: FC = () => {
   return (
@@ -150,39 +247,7 @@ const ProductsPage: FC = () => {
         </div>
       </section>
 
-      <section className="pb-20 sm:pb-32">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          {[
-            { src: "/images/product-workflow.png", alt: "AI workflow coordination", label: "Workflow Coordination" },
-            { src: "/images/product-clustering.png", alt: "Visual embeddings and clustering", label: "Visual Embeddings" },
-            { src: "/images/product-classifier.png", alt: "Aligned classifier", label: "Classifier Alignment" },
-            { src: "/images/product-pipeline.png", alt: "Model pipeline architecture", label: "Pipeline Architecture" },
-          ].map((img, idx) => (
-            <motion.div
-              key={img.alt}
-              initial={{ opacity: 0, y: 60, scale: 0.97 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className={idx > 0 ? "mt-8 sm:mt-12" : ""}
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <span className="text-xs font-mono text-neutral-300">0{idx + 1}</span>
-                <span className="text-sm font-medium text-neutral-500">{img.label}</span>
-              </div>
-              <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden bg-neutral-50 border border-neutral-100">
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 1152px"
-                />
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+      <StickyImageGallery />
 
       <section className="py-20 sm:py-32 border-t border-neutral-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
