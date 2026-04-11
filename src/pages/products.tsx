@@ -88,6 +88,39 @@ const ProductsPage: FC = () => {
             </p>
           </motion.div>
 
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            custom={0}
+            variants={fadeUp}
+            className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-20 sm:mb-28"
+          >
+            {[
+              { src: "/images/product-clustering.png", alt: "AI clustering and visual embeddings" },
+              { src: "/images/product-classifier.png", alt: "Aligned classifier visualization" },
+              { src: "/images/product-pipeline.png", alt: "Model alignment pipeline" },
+              { src: "/images/product-workflow.png", alt: "AI workflow coordination" },
+            ].map((img, idx) => (
+              <motion.div
+                key={img.alt}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="relative aspect-[16/10] rounded-xl overflow-hidden group"
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 640px) 50vw, 25vw"
+                />
+              </motion.div>
+            ))}
+          </motion.div>
+
           <div className="space-y-0 divide-y divide-neutral-100">
             <motion.div
               initial="hidden"
@@ -97,11 +130,15 @@ const ProductsPage: FC = () => {
               variants={fadeUp}
               className="group py-10 sm:py-14"
             >
-              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 lg:gap-16">
+              <div className="flex flex-col lg:flex-row lg:items-start gap-8 lg:gap-16">
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-4">
                     <Image src="/images/grysics-logo.png" alt="Grysics" width={28} height={28} className="rounded-md" style={{ width: 28, height: 28 }} />
                     <h3 className="text-2xl sm:text-3xl font-serif tracking-tight text-neutral-900">Grysics</h3>
+                    <span className="inline-flex items-center gap-2 text-xs font-medium text-emerald-600 bg-emerald-50 border border-emerald-100 px-3 py-1.5 rounded-full ml-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                      Active
+                    </span>
                   </div>
                   <p className="text-xs font-semibold text-blue-500 uppercase tracking-[0.2em] mb-6">AI Execution System</p>
                   <div className="space-y-4 text-[15px] sm:text-base text-neutral-500 leading-relaxed font-light max-w-2xl">
@@ -112,18 +149,21 @@ const ProductsPage: FC = () => {
                       It coordinates multi-step execution, handles exceptions, and produces structured outcomes rather than standalone outputs.
                     </p>
                   </div>
-                </div>
-                <div className="flex items-center gap-4 lg:pt-2">
-                  <span className="inline-flex items-center gap-2 text-xs font-medium text-emerald-600 bg-emerald-50 border border-emerald-100 px-3 py-1.5 rounded-full">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                    Active
-                  </span>
                   <Link
                     href="https://grysics.olyxee.com"
-                    className="group/link inline-flex items-center gap-1.5 text-sm font-medium text-neutral-500 hover:text-neutral-900 transition-colors"
+                    className="group/link inline-flex items-center gap-1.5 text-sm font-medium text-neutral-500 hover:text-neutral-900 transition-colors mt-6"
                   >
                     View system <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-0.5 transition-transform" />
                   </Link>
+                </div>
+                <div className="lg:w-[380px] flex-shrink-0 relative aspect-[16/10] rounded-xl overflow-hidden">
+                  <Image
+                    src="/images/product-workflow.png"
+                    alt="Grysics workflow coordination"
+                    fill
+                    className="object-cover"
+                    sizes="380px"
+                  />
                 </div>
               </div>
             </motion.div>
@@ -136,19 +176,28 @@ const ProductsPage: FC = () => {
               variants={fadeUp}
               className="group py-10 sm:py-14"
             >
-              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 lg:gap-16">
+              <div className="flex flex-col lg:flex-row lg:items-start gap-8 lg:gap-16">
                 <div className="flex-1">
-                  <h3 className="text-2xl sm:text-3xl font-serif tracking-tight text-neutral-900 mb-4">AI Systems Infrastructure Layer</h3>
+                  <div className="flex items-center gap-3 mb-4">
+                    <h3 className="text-2xl sm:text-3xl font-serif tracking-tight text-neutral-900">AI Systems Infrastructure Layer</h3>
+                    <span className="inline-flex items-center gap-2 text-xs font-medium text-amber-600 bg-amber-50 border border-amber-100 px-3 py-1.5 rounded-full">
+                      <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                      Research
+                    </span>
+                  </div>
                   <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-6">Runtime Infrastructure</p>
                   <p className="text-[15px] sm:text-base text-neutral-500 leading-relaxed font-light max-w-2xl">
                     A runtime system for executing AI workflows across distributed tools and environments with stateful coordination.
                   </p>
                 </div>
-                <div className="lg:pt-2">
-                  <span className="inline-flex items-center gap-2 text-xs font-medium text-amber-600 bg-amber-50 border border-amber-100 px-3 py-1.5 rounded-full">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                    Research
-                  </span>
+                <div className="lg:w-[380px] flex-shrink-0 relative aspect-[16/10] rounded-xl overflow-hidden">
+                  <Image
+                    src="/images/product-pipeline.png"
+                    alt="AI pipeline architecture"
+                    fill
+                    className="object-cover"
+                    sizes="380px"
+                  />
                 </div>
               </div>
             </motion.div>
@@ -161,19 +210,28 @@ const ProductsPage: FC = () => {
               variants={fadeUp}
               className="group py-10 sm:py-14"
             >
-              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 lg:gap-16">
+              <div className="flex flex-col lg:flex-row lg:items-start gap-8 lg:gap-16">
                 <div className="flex-1">
-                  <h3 className="text-2xl sm:text-3xl font-serif tracking-tight text-neutral-900 mb-4">Composability Framework</h3>
+                  <div className="flex items-center gap-3 mb-4">
+                    <h3 className="text-2xl sm:text-3xl font-serif tracking-tight text-neutral-900">Composability Framework</h3>
+                    <span className="inline-flex items-center gap-2 text-xs font-medium text-amber-600 bg-amber-50 border border-amber-100 px-3 py-1.5 rounded-full">
+                      <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                      Research
+                    </span>
+                  </div>
                   <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-6">System Architecture</p>
                   <p className="text-[15px] sm:text-base text-neutral-500 leading-relaxed font-light max-w-2xl">
                     A system for connecting models, tools, and workflows into unified AI execution pipelines.
                   </p>
                 </div>
-                <div className="lg:pt-2">
-                  <span className="inline-flex items-center gap-2 text-xs font-medium text-amber-600 bg-amber-50 border border-amber-100 px-3 py-1.5 rounded-full">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                    Research
-                  </span>
+                <div className="lg:w-[380px] flex-shrink-0 relative aspect-[16/10] rounded-xl overflow-hidden">
+                  <Image
+                    src="/images/product-classifier.png"
+                    alt="Composability visualization"
+                    fill
+                    className="object-cover"
+                    sizes="380px"
+                  />
                 </div>
               </div>
             </motion.div>
