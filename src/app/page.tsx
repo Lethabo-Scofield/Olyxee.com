@@ -372,7 +372,7 @@ function IntegrationSection() {
   ], []);
 
   return (
-    <section className="relative py-24 sm:py-36 lg:py-48 overflow-hidden bg-neutral-50/50">
+    <section className="relative py-24 sm:py-36 lg:py-48 overflow-hidden bg-gradient-to-br from-blue-50 via-blue-100/40 to-sky-50">
       <div className="relative max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
         {scatteredCards.map((card, idx) => (
           <motion.div
