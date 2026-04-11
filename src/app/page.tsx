@@ -91,7 +91,6 @@ function HeroSection() {
     <section ref={ref} aria-label="Hero" className="relative w-full min-h-[100svh] flex flex-col items-center justify-center px-4 md:px-8 lg:px-16 overflow-hidden" style={{ position: 'relative' }}>
       <div className="absolute inset-0 w-full h-full">
         <Image src="/hero-bg.png" alt="" fill className="object-cover" priority />
-        <div className="absolute inset-0 bg-white/75" />
       </div>
 
       <motion.div style={{ y, opacity }} className="relative z-10 text-center max-w-5xl mx-auto pt-20 sm:pt-24">
