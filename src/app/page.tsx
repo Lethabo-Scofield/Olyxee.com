@@ -199,38 +199,43 @@ function ResearchAreas() {
             </h2>
           </motion.div>
 
-          <div className="space-y-0 divide-y divide-neutral-100">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
             {[
               {
                 num: "01",
                 title: "AI Research",
                 desc: "New system-level approaches for how AI executes tasks, coordinates processes, and maintains reliability across multi-step operations.",
+                gradient: "/images/gradient-blue.webp",
               },
               {
                 num: "02",
                 title: "Infrastructure Systems",
                 desc: "Runtime and integration layers that allow AI to operate across tools, APIs, and environments as a unified system.",
+                gradient: "/images/gradient-purple.webp",
               },
               {
                 num: "03",
                 title: "Composability Layer",
                 desc: "Connecting models, tools, and workflows into coherent, end-to-end AI systems that execute reliably.",
+                gradient: "/images/gradient-abstract-blue.webp",
               },
             ].map((step, idx) => (
               <motion.div
                 key={step.num}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="group py-8 sm:py-10 cursor-default"
+                className="group relative rounded-2xl overflow-hidden cursor-default"
               >
-                <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-12">
-                  <span className="text-xs font-mono text-neutral-300 pt-1 shrink-0">{step.num}</span>
-                  <div>
-                    <h3 className="text-lg sm:text-xl font-semibold text-neutral-900 group-hover:text-blue-500 transition-colors duration-300 tracking-tight leading-snug mb-3">{step.title}</h3>
-                    <p className="text-sm text-neutral-500 leading-relaxed max-w-lg">{step.desc}</p>
-                  </div>
+                <div className="absolute inset-0">
+                  <Image src={step.gradient} alt="" fill className="object-cover" />
+                  <div className="absolute inset-0 bg-white/80 group-hover:bg-white/70 transition-colors duration-300" />
+                </div>
+                <div className="relative p-7 sm:p-8 min-h-[200px] flex flex-col">
+                  <span className="text-xs font-mono text-neutral-300 mb-4">{step.num}</span>
+                  <h3 className="text-lg sm:text-xl font-semibold text-neutral-900 tracking-tight leading-snug mb-3">{step.title}</h3>
+                  <p className="text-sm text-neutral-500 leading-relaxed">{step.desc}</p>
                 </div>
               </motion.div>
             ))}
