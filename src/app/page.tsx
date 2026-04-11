@@ -599,7 +599,7 @@ function CTASection() {
             href="/about"
             className="inline-flex items-center justify-center gap-2 px-8 py-4 text-neutral-300 bg-transparent border border-neutral-500 rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide"
           >
-            About Olyxee
+            About
           </Link>
         </motion.div>
       </div>
