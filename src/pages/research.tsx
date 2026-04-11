@@ -43,11 +43,6 @@ const categoryColors: Record<string, string> = {
   "Monitoring": "bg-emerald-50 text-emerald-600 border-emerald-100",
 };
 
-const categoryGradients: Record<string, string> = {
-  "Verification": "/images/gradient-blue.webp",
-  "Evaluation": "/images/gradient-yellow-green.webp",
-  "Monitoring": "/images/gradient-pink-cyan.webp",
-};
 
 const Research: FC = () => {
   return (
@@ -96,13 +91,9 @@ const Research: FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.15 + idx * 0.08 }}
-                className="group block rounded-2xl border border-neutral-200/60 hover:border-neutral-300/60 hover:shadow-lg hover:shadow-neutral-200/40 transition-all duration-300 relative overflow-hidden"
+                className="group block rounded-2xl border border-neutral-100 hover:border-neutral-200 bg-white hover:bg-neutral-50/50 transition-all duration-300"
               >
-                <div className="absolute inset-0">
-                  <Image src={categoryGradients[paper.category]} alt="" fill className="object-cover" />
-                  <div className="absolute inset-0 bg-white/80 group-hover:bg-white/70 transition-colors duration-300" />
-                </div>
-                <div className="relative p-8 sm:p-10">
+                <div className="p-8 sm:p-10">
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start">
                     <div className="lg:col-span-8">
                       <div className="flex items-center gap-3 mb-5">
