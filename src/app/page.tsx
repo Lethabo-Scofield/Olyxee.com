@@ -571,7 +571,7 @@ function CTASection() {
           transition={{ duration: 0.8 }}
           className="font-serif text-3xl sm:text-5xl lg:text-6xl xl:text-7xl text-neutral-900 tracking-tight mb-5 sm:mb-6"
         >
-          The future of AI<br />needs <em className="text-blue-500">better foundations</em>
+          The future of AI<br />needs <em className="text-blue-400">better foundations</em>
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -591,7 +591,7 @@ function CTASection() {
         >
           <Link
             href="/contact"
-            className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-all text-sm tracking-wide shadow-lg shadow-blue-600/20"
+            className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-blue-400 text-white rounded-full font-medium hover:bg-blue-500 transition-all text-sm tracking-wide shadow-lg shadow-blue-400/20"
           >
             Get in Touch <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
           </Link>
