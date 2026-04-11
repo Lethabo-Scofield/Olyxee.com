@@ -153,21 +153,6 @@ const roles: Role[] = [
       "Link to portfolio, GitHub, or projects you have worked on",
     ],
   },
-  {
-    title: "Technical Writing Intern",
-    team: "Business & Operations",
-    location: "Remote",
-    type: "internship",
-    description: "Make complex AI infrastructure accessible to every developer. Your writing will be the first experience many teams have with Olyxee.",
-    responsibilities: [
-      "Write documentation that developers actually want to read",
-      "Create tutorials and guides that turn beginners into power users",
-      "Translate deep technical concepts into clear, compelling content",
-    ],
-    requirements: [
-      "Link to portfolio, GitHub, or projects you have worked on",
-    ],
-  },
 ];
 
 const teams = Array.from(new Set(roles.map(r => r.team)));
