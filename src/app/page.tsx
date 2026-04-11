@@ -142,43 +142,41 @@ function HeroSection() {
 
 function LogoStrip() {
   const collaborators = [
-    { name: "OpenAI", src: "/images/logos/openai.png", size: 32 },
-    { name: "Anthropic", src: "/images/logos/anthropic.png", size: 32 },
-    { name: "Mistral", src: "/images/logos/mistral.png", size: 32 },
-    { name: "xAI", src: "/images/logos/xai.png", size: 30 },
-    { name: "DeepSeek", src: "/images/logos/deepseek.png", size: 32 },
-    { name: "NVIDIA", src: "/images/logos/nvidia-icon.png", size: 36 },
-    { name: "GitHub", src: "/images/logos/github.png", size: 32 },
+    { name: "OpenAI", Logo: OpenAILogo, width: "w-20" },
+    { name: "Anthropic", Logo: AnthropicLogo, width: "w-24" },
+    { name: "Google", Logo: GoogleLogo, width: "w-20" },
+    { name: "NVIDIA", Logo: NvidiaLogo, width: "w-24" },
+    { name: "Meta", Logo: MetaLogo, width: "w-20" },
+    { name: "Mistral", Logo: MistralLogo, width: "w-6" },
+    { name: "xAI", Logo: xAILogo, width: "w-16" },
+    { name: "Hugging Face", Logo: HuggingFaceLogo, width: "w-6" },
+    { name: "Cohere", Logo: CohereLogo, width: "w-24" },
+    { name: "DeepMind", Logo: DeepMindLogo, width: "w-28" },
   ];
 
   return (
-    <div className="relative z-10 w-full max-w-4xl mx-auto py-8 sm:py-10 px-4 sm:px-8 lg:px-12">
-      <p className="text-center text-[11px] font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-6 sm:mb-8">Works With</p>
-      <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 sm:gap-x-12 sm:gap-y-5">
-          {collaborators.map((item, idx) => (
+    <div className="relative z-10 w-full max-w-5xl mx-auto py-8 sm:py-10 px-4 sm:px-8 lg:px-12">
+      <p className="text-center text-[11px] font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-6 sm:mb-8">Collaborators</p>
+      <div className="flex items-center justify-center gap-x-8 sm:gap-x-10 overflow-x-auto no-scrollbar">
+        {collaborators.map((item, idx) => {
+          const LogoComponent = item.Logo;
+          return (
             <motion.div
               key={item.name}
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.06 }}
-              className="flex items-center gap-2 opacity-50 hover:opacity-80 transition-opacity duration-300"
+              className="flex-shrink-0 group"
               title={item.name}
             >
-              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-white shadow-sm border border-neutral-100 flex items-center justify-center overflow-hidden">
-                <Image
-                  src={item.src}
-                  alt={item.name}
-                  width={20}
-                  height={20}
-                  className="object-contain"
-                  style={{ width: 20, height: 20 }}
-                />
+              <div className={`${item.width} h-8 flex items-center justify-center grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300`}>
+                <LogoComponent className="w-full h-full" />
               </div>
-              <span className="text-xs font-medium text-neutral-500 hidden sm:inline">{item.name}</span>
             </motion.div>
-          ))}
-        </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
