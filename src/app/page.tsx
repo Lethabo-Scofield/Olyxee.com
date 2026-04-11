@@ -185,7 +185,7 @@ function ResearchAreas() {
   return (
     <section className="py-20 sm:py-32 lg:py-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
-        <div className="p-8 sm:p-12 lg:p-16">
+        <div className="px-4 sm:px-8 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -199,7 +199,7 @@ function ResearchAreas() {
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {[
               {
                 num: "01",
@@ -226,18 +226,15 @@ function ResearchAreas() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: idx * 0.12 }}
-                className="relative rounded-2xl group hover:shadow-lg hover:shadow-neutral-200/60 transition-all duration-300 overflow-hidden border border-neutral-200/60 hover:border-neutral-300/60"
+                className="relative rounded-2xl group hover:shadow-xl hover:shadow-neutral-200/50 transition-all duration-300 overflow-hidden bg-white border border-neutral-100"
               >
-                <div className="absolute inset-0">
+                <div className="h-2 w-full overflow-hidden relative">
                   <Image src={step.gradient} alt="" fill className="object-cover" />
-                  <div className="absolute inset-0 bg-white/70 group-hover:bg-white/60 transition-colors duration-300" />
                 </div>
-                <div className="relative p-8 sm:p-10">
-                  <div className="mb-8">
-                    <div className="text-4xl font-serif text-neutral-300 leading-none">{step.num}</div>
-                  </div>
-                  <h3 className="text-xl sm:text-2xl font-semibold text-neutral-900 mb-3 tracking-tight">{step.title}</h3>
-                  <p className="text-sm sm:text-[15px] text-neutral-500 font-light leading-relaxed">{step.desc}</p>
+                <div className="p-8 sm:p-10">
+                  <span className="inline-block text-xs font-mono text-neutral-300 mb-6">{step.num}</span>
+                  <h3 className="text-lg sm:text-xl font-semibold text-neutral-900 mb-4 tracking-tight leading-snug">{step.title}</h3>
+                  <p className="text-sm text-neutral-500 leading-relaxed">{step.desc}</p>
                 </div>
               </motion.div>
             ))}
