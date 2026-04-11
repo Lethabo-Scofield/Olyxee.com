@@ -472,27 +472,52 @@ function IntegrationSection() {
           </motion.div>
         ))}
 
-        <div className="relative z-10 max-w-xl mx-auto text-center py-8">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 py-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
+            className="relative rounded-3xl overflow-hidden p-[1px]"
           >
-            <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] tracking-tight text-neutral-900 leading-tight mb-6">
-              Grysics: AI execution for{" "}
-              <em className="text-orange-400">your workflows</em>.
-            </h2>
-            <p className="text-neutral-500 text-base sm:text-lg font-light leading-relaxed mb-8 max-w-md mx-auto">
-              Turn business goals into completed operations. Grysics plans, coordinates, and executes across your tools and systems end-to-end.
-            </p>
-            <Link
-              href="/docs"
-              className="inline-flex items-center gap-2 text-sm font-medium text-neutral-900 hover:text-blue-500 transition-colors group"
-            >
-              Discover more
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-blue-400" />
-            </Link>
+            <div
+              className="absolute inset-0 rounded-3xl"
+              style={{
+                background: 'linear-gradient(135deg, #f97316, #3b82f6, #f97316, #3b82f6)',
+                backgroundSize: '300% 300%',
+                animation: 'gradient-shift 6s ease infinite',
+              }}
+            />
+            <div className="relative rounded-3xl bg-white/95 backdrop-blur-sm">
+              <div
+                className="absolute inset-0 rounded-3xl opacity-[0.06]"
+                style={{
+                  background: 'linear-gradient(135deg, #f97316, #3b82f6, #f97316)',
+                  backgroundSize: '300% 300%',
+                  animation: 'gradient-shift 6s ease infinite',
+                }}
+              />
+              <div className="relative px-8 sm:px-14 lg:px-20 py-14 sm:py-20 text-center">
+                <div className="flex items-center justify-center gap-3 mb-6">
+                  <Image src="/images/grysics-logo.png" alt="Grysics" width={32} height={32} className="rounded-lg" style={{ width: 32, height: 32 }} />
+                  <span className="text-sm font-semibold text-neutral-400 uppercase tracking-widest">Grysics</span>
+                </div>
+                <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] tracking-tight text-neutral-900 leading-tight mb-6">
+                  AI execution for{" "}
+                  <em className="text-orange-400">your workflows</em>.
+                </h2>
+                <p className="text-neutral-500 text-base sm:text-lg font-light leading-relaxed mb-10 max-w-lg mx-auto">
+                  Turn business goals into completed operations. Grysics plans, coordinates, and executes across your tools and systems end-to-end.
+                </p>
+                <Link
+                  href="/products"
+                  className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-sm font-medium bg-neutral-900 text-white hover:bg-neutral-800 transition-colors group"
+                >
+                  Discover more
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            </div>
           </motion.div>
 
           <div className="lg:hidden mt-12 grid grid-cols-2 sm:grid-cols-3 gap-3">
