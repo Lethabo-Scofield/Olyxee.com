@@ -184,9 +184,13 @@ function LogoStrip() {
 
 function ResearchAreas() {
   return (
-    <section className="py-20 sm:py-32 lg:py-40">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
-        <div className="bg-blue-50/60 rounded-3xl p-8 sm:p-12 lg:p-16">
+    <section className="relative py-20 sm:py-32 lg:py-40 overflow-hidden">
+      <div className="absolute inset-0">
+        <Image src="/images/gradient-blue.png" alt="" fill className="object-cover" />
+        <div className="absolute inset-0 bg-white/60" />
+      </div>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
+        <div className="p-8 sm:p-12 lg:p-16">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -206,19 +210,16 @@ function ResearchAreas() {
                 num: "01",
                 title: "AI Research",
                 desc: "New system-level approaches for how AI executes tasks, coordinates processes, and maintains reliability across multi-step operations.",
-                accent: "from-blue-100/60 to-blue-50/30",
               },
               {
                 num: "02",
                 title: "Infrastructure Systems",
                 desc: "Runtime and integration layers that allow AI to operate across tools, APIs, and environments as a unified system.",
-                accent: "from-sky-100/60 to-blue-50/30",
               },
               {
                 num: "03",
                 title: "Composability Layer",
                 desc: "Connecting models, tools, and workflows into coherent, end-to-end AI systems that execute reliably.",
-                accent: "from-indigo-100/60 to-blue-50/30",
               },
             ].map((step, idx) => (
               <motion.div
@@ -227,13 +228,11 @@ function ResearchAreas() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: idx * 0.12 }}
-                className="relative rounded-2xl group hover:shadow-lg hover:shadow-blue-100/60 transition-all duration-300 overflow-hidden border border-blue-100/50 hover:border-blue-200/60"
+                className="relative rounded-2xl group hover:shadow-lg hover:shadow-neutral-200/60 transition-all duration-300 overflow-hidden border border-neutral-200/60 hover:border-neutral-300/60 bg-white/80 backdrop-blur-sm"
               >
-                <div className={`absolute inset-0 bg-gradient-to-br ${step.accent}`} />
-                <div className="absolute inset-0 bg-white/70 group-hover:bg-white/60 transition-colors duration-300" />
-                <div className="relative p-8 sm:p-10">
+                <div className="p-8 sm:p-10">
                   <div className="mb-8">
-                    <div className="text-4xl font-serif text-blue-200 leading-none">{step.num}</div>
+                    <div className="text-4xl font-serif text-neutral-200 leading-none">{step.num}</div>
                   </div>
                   <h3 className="text-xl sm:text-2xl font-semibold text-neutral-900 mb-3 tracking-tight">{step.title}</h3>
                   <p className="text-sm sm:text-[15px] text-neutral-500 font-light leading-relaxed">{step.desc}</p>
@@ -253,9 +252,13 @@ function ResearchAreas() {
 
 function ApproachSection() {
   return (
-    <section className="py-20 sm:py-32 lg:py-40">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
-        <div className="bg-blue-50/60 rounded-3xl p-8 sm:p-12 lg:p-16">
+    <section className="relative py-20 sm:py-32 lg:py-40 overflow-hidden">
+      <div className="absolute inset-0">
+        <Image src="/images/gradient-purple.png" alt="" fill className="object-cover" />
+        <div className="absolute inset-0 bg-white/70" />
+      </div>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
+        <div className="p-8 sm:p-12 lg:p-16">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -275,9 +278,8 @@ function ApproachSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="md:col-span-2 relative group rounded-2xl bg-blue-50 overflow-hidden"
+            className="md:col-span-2 relative group rounded-2xl bg-neutral-50 border border-neutral-200/60 overflow-hidden"
           >
-            <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-blue-100/40 to-transparent rounded-full blur-2xl" />
             <div className="relative p-8 sm:p-10">
               <div className="flex items-center gap-3 mb-4">
                 <Image src="/images/grysics-logo.png" alt="Grysics" width={32} height={32} className="rounded-lg" style={{ width: 32, height: 32 }} />
@@ -288,7 +290,7 @@ function ApproachSection() {
               </p>
               <div className="flex flex-wrap gap-2">
                 {["Execution", "Orchestration", "Multi-step Workflows", "Cross-system"].map(t => (
-                  <span key={t} className="text-[11px] text-blue-600 bg-white/70 border border-blue-100/50 rounded-full px-3 py-1">{t}</span>
+                  <span key={t} className="text-[11px] text-neutral-600 bg-white/70 border border-neutral-200/50 rounded-full px-3 py-1">{t}</span>
                 ))}
               </div>
             </div>
@@ -299,10 +301,9 @@ function ApproachSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.06 }}
-            className="group rounded-2xl relative overflow-hidden border border-blue-100/60 hover:border-blue-200/60 hover:shadow-lg hover:shadow-blue-100/40 transition-all duration-300"
+            className="group rounded-2xl overflow-hidden border border-neutral-200/60 hover:border-neutral-300/60 hover:shadow-lg hover:shadow-neutral-200/40 transition-all duration-300 bg-white/80 backdrop-blur-sm"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-sky-50/80 to-blue-50/40" />
-            <div className="relative p-8 sm:p-10">
+            <div className="p-8 sm:p-10">
               <h3 className="text-lg font-semibold text-neutral-900 mb-3 tracking-tight">Task Execution Research</h3>
               <p className="text-sm text-neutral-600 font-light leading-relaxed mb-4">
                 Studying how AI can plan, coordinate, and complete multi-step operations across real-world environments.
@@ -315,10 +316,9 @@ function ApproachSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.12 }}
-            className="group rounded-2xl relative overflow-hidden border border-blue-100/60 hover:border-blue-200/60 hover:shadow-lg hover:shadow-blue-100/40 transition-all duration-300"
+            className="group rounded-2xl overflow-hidden border border-neutral-200/60 hover:border-neutral-300/60 hover:shadow-lg hover:shadow-neutral-200/40 transition-all duration-300 bg-white/80 backdrop-blur-sm"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-50/80 to-indigo-50/40" />
-            <div className="relative p-8 sm:p-10">
+            <div className="p-8 sm:p-10">
               <h3 className="text-lg font-semibold text-neutral-900 mb-3 tracking-tight">System Composability</h3>
               <p className="text-sm text-neutral-600 font-light leading-relaxed">
                 Designing architectures where models, tools, and workflows compose into unified operational systems.
@@ -331,10 +331,9 @@ function ApproachSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.18 }}
-            className="md:col-span-2 lg:col-span-2 group rounded-2xl relative overflow-hidden border border-blue-100/60 hover:border-blue-200/60 hover:shadow-lg hover:shadow-blue-100/40 transition-all duration-300"
+            className="md:col-span-2 lg:col-span-2 group rounded-2xl overflow-hidden border border-neutral-200/60 hover:border-neutral-300/60 hover:shadow-lg hover:shadow-neutral-200/40 transition-all duration-300 bg-white/80 backdrop-blur-sm"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/60 to-blue-50/40" />
-            <div className="relative p-8 sm:p-10">
+            <div className="p-8 sm:p-10">
               <div className="flex flex-col sm:flex-row gap-6 sm:gap-10 items-start">
                 <div className="flex-1">
                   <h3 className="text-lg font-semibold text-neutral-900 mb-3 tracking-tight">Enterprise & Cross-System Operations</h3>
@@ -344,7 +343,7 @@ function ApproachSection() {
                 </div>
                 <div className="flex-shrink-0 flex flex-wrap gap-2">
                   {["Healthcare", "Legal", "Finance", "Enterprise"].map(t => (
-                    <span key={t} className="text-[11px] text-blue-600 bg-blue-100/60 border border-blue-200/60 rounded-full px-3 py-1">{t}</span>
+                    <span key={t} className="text-[11px] text-neutral-600 bg-neutral-100/60 border border-neutral-200/60 rounded-full px-3 py-1">{t}</span>
                   ))}
                 </div>
               </div>
@@ -378,10 +377,10 @@ function IntegrationSection() {
   ], []);
 
   return (
-    <section className="relative py-24 sm:py-36 lg:py-48 overflow-hidden bg-blue-50/40">
+    <section className="relative py-24 sm:py-36 lg:py-48 overflow-hidden">
       <div className="absolute inset-0">
-        <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-blue-100/30 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/3 w-80 h-80 bg-sky-100/30 rounded-full blur-3xl" />
+        <Image src="/images/gradient-pastel.png" alt="" fill className="object-cover" />
+        <div className="absolute inset-0 bg-white/60" />
       </div>
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
@@ -401,7 +400,7 @@ function IntegrationSection() {
               transform: `rotate(${card.rotate}deg)`,
             }}
           >
-            <div className="bg-white rounded-2xl shadow-md shadow-blue-100/60 border border-blue-100/60 p-5 w-44 hover:shadow-lg hover:shadow-blue-200/40 transition-shadow duration-300">
+            <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-md shadow-neutral-200/60 border border-neutral-200/60 p-5 w-44 hover:shadow-lg hover:shadow-neutral-300/40 transition-shadow duration-300">
               <Image src={card.src} alt={card.name} width={28} height={28} className="object-contain mb-2" style={{ width: 28, height: 28 }} />
               <p className="text-sm font-semibold text-neutral-800">{card.name}</p>
               <p className="text-[11px] text-neutral-400 mt-0.5">{card.subtitle}</p>
@@ -440,7 +439,7 @@ function IntegrationSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.06 }}
-                className="bg-white rounded-xl shadow-sm border border-blue-100/60 p-4"
+                className="bg-white/90 backdrop-blur-sm rounded-xl shadow-sm border border-neutral-200/60 p-4"
               >
                 <Image src={card.src} alt={card.name} width={24} height={24} className="object-contain mb-1.5" style={{ width: 20, height: 20 }} />
                 <p className="text-sm font-semibold text-neutral-800">{card.name}</p>
@@ -457,8 +456,12 @@ function IntegrationSection() {
 
 function CTASection() {
   return (
-    <section className="py-20 sm:py-32 lg:py-44 relative overflow-hidden">
-      <div className="max-w-4xl mx-auto px-4 sm:px-8 lg:px-12 text-center">
+    <section className="relative py-20 sm:py-32 lg:py-44 overflow-hidden">
+      <div className="absolute inset-0">
+        <Image src="/images/gradient-yellow-blue.png" alt="" fill className="object-cover" />
+        <div className="absolute inset-0 bg-white/70" />
+      </div>
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-8 lg:px-12 text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -508,7 +511,7 @@ function CTASection() {
           </Link>
           <Link
             href="/about"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 text-neutral-600 bg-white border border-blue-100 rounded-full font-medium hover:bg-blue-50/50 transition-all text-sm tracking-wide shadow-sm"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 text-neutral-600 bg-white border border-neutral-200 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide shadow-sm"
           >
             About Olyxee
           </Link>
