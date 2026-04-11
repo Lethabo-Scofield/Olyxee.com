@@ -6,7 +6,7 @@ import Footer from '../components/footer';
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, Bot, ShieldCheck, BarChart3, Activity, ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { GoogleLogo, MicrosoftLogo, OpenAILogo, NvidiaLogo, MetaLogo, AWSLogo, GoogleCloudLogo, IBMLogo, HuggingFaceLogo, AnthropicLogo, MistralLogo, CohereLogo, DeepMindLogo, xAILogo } from "../components/company-logos";
 
 export default function HomePage() {
@@ -303,15 +303,6 @@ function ResearchAreas() {
             ))}
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="mt-12"
-          >
-            <VerificationDiagram />
-          </motion.div>
         </div>
       </div>
     </section>
@@ -319,114 +310,6 @@ function ResearchAreas() {
 }
 
 
-function VerificationDiagram() {
-  const steps = [
-    {
-      label: "AI Application",
-      sub: "Chatbot, RAG, or Agent sends output",
-      icon: Bot,
-      num: "01",
-    },
-    {
-      label: "Verification",
-      sub: "Test for hallucinations & consistency",
-      icon: ShieldCheck,
-      num: "02",
-    },
-    {
-      label: "Analysis",
-      sub: "Score, benchmark, and generate reports",
-      icon: BarChart3,
-      num: "03",
-    },
-    {
-      label: "Production",
-      sub: "Monitor drift, quality & alert in real time",
-      icon: Activity,
-      num: "04",
-    },
-  ];
-
-  return (
-    <div className="rounded-3xl bg-white p-6 sm:p-10 lg:p-14 border border-neutral-100 shadow-sm">
-      <div className="text-center mb-10 sm:mb-14">
-        <p className="text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.25em] mb-3">How Grysics Fits Into Your Stack</p>
-        <h3 className="font-serif text-xl sm:text-2xl text-neutral-900 tracking-tight">The pipeline, from application to production</h3>
-      </div>
-
-      <div className="hidden sm:grid sm:grid-cols-4 gap-4 lg:gap-6">
-        {steps.map((step, idx) => {
-          const Icon = step.icon;
-          return (
-            <motion.div
-              key={step.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="relative"
-            >
-              <div className="relative rounded-2xl bg-neutral-50 p-6 lg:p-7 h-full border border-neutral-100 group hover:shadow-md transition-all duration-300">
-                <div className="flex items-start justify-between mb-5">
-                  <div className="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-neutral-900 text-white">
-                    <Icon className="w-5 h-5" strokeWidth={1.8} />
-                  </div>
-                  <span className="text-xs font-mono text-neutral-300 font-semibold">{step.num}</span>
-                </div>
-                <h4 className="text-sm font-semibold text-neutral-900 mb-1.5">{step.label}</h4>
-                <p className="text-xs text-neutral-500 leading-relaxed font-light">{step.sub}</p>
-              </div>
-              {idx < steps.length - 1 && (
-                <div className="absolute top-1/2 -right-3 lg:-right-4 -translate-y-1/2 z-10 hidden sm:block">
-                  <ChevronRight className="w-4 h-4 text-neutral-300" strokeWidth={2} />
-                </div>
-              )}
-            </motion.div>
-          );
-        })}
-      </div>
-
-      <div className="sm:hidden flex flex-col gap-3">
-        {steps.map((step, idx) => {
-          const Icon = step.icon;
-          return (
-            <motion.div
-              key={step.label}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.08 }}
-            >
-              <div className="flex items-center gap-4 rounded-xl bg-neutral-50 p-4 border border-neutral-100">
-                <div className="flex-shrink-0 inline-flex items-center justify-center w-10 h-10 rounded-xl bg-neutral-900 text-white">
-                  <Icon className="w-5 h-5" strokeWidth={1.8} />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h4 className="text-sm font-semibold text-neutral-900">{step.label}</h4>
-                  <p className="text-xs text-neutral-500 font-light">{step.sub}</p>
-                </div>
-                <span className="text-xs font-mono text-neutral-300 font-semibold flex-shrink-0">{step.num}</span>
-              </div>
-            </motion.div>
-          );
-        })}
-      </div>
-
-      <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-neutral-100">
-        <div className="flex items-center justify-center gap-8 text-[11px] text-neutral-400">
-          <span className="flex items-center gap-2">
-            <span className="w-5 h-5 rounded-md bg-neutral-200 inline-block" />
-            Pipeline stage
-          </span>
-          <span className="flex items-center gap-2">
-            <ChevronRight className="w-3.5 h-3.5 text-neutral-300" />
-            Data flow
-          </span>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 
 function ApproachSection() {
