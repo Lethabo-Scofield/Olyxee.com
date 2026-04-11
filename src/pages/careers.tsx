@@ -163,7 +163,7 @@ function HeroSection() {
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="relative max-w-6xl mx-auto rounded-2xl sm:rounded-3xl overflow-hidden min-h-[480px] sm:min-h-[540px] lg:min-h-[600px]">
           <Image
-            src="/images/careers-hero.webp"
+            src="/images/team-photo.png"
             alt="Team collaborating on code"
             fill
             priority
