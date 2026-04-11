@@ -68,7 +68,6 @@ export default function HomePage() {
       <Header />
       <main>
         <HeroSection />
-        <MissionSection />
         <ResearchAreas />
         <ApproachSection />
         <IntegrationSection />
@@ -182,63 +181,6 @@ function LogoStrip() {
 }
 
 
-function MissionSection() {
-  return (
-    <section className="py-20 sm:py-32 lg:py-40">
-      <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="mb-12 sm:mb-20"
-        >
-          <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Who We Are</p>
-          <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 max-w-3xl">
-            AI is powerful. It should also be <em className="text-orange-400">reliable</em>
-          </h2>
-        </motion.div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="space-y-6"
-          >
-            <p className="text-lg text-neutral-600 font-light leading-relaxed">
-              AI is everywhere. But the gap between what it can do and what it should do keeps widening.
-            </p>
-            <p className="text-lg text-neutral-600 font-light leading-relaxed">
-              Olyxee is an AI company building the research and infrastructure to close that gap. Our product, Grysics, handles verification, evaluation, and monitoring so AI behaves as intended.
-            </p>
-            <p className="text-lg text-neutral-600 font-light leading-relaxed">
-              Safety and performance are not trade-offs. They are the same goal.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.15 }}
-            className="rounded-2xl overflow-hidden border border-neutral-200/80"
-          >
-            <Image
-              src="/images/team-developers.png"
-              alt="Olyxee team collaborating on AI safety and infrastructure"
-              width={1408}
-              height={768}
-              loading="lazy"
-              className="w-full h-auto object-cover"
-            />
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 
 function ResearchAreas() {
