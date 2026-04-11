@@ -9,6 +9,15 @@ import { motion } from "framer-motion";
 
 const papers = [
   {
+    title: "Attention Residuals: Scalable Sparse Attention with Residual Connections for Efficient Long-Context Transformers",
+    authors: "S. Rao, K. Müller, A. Desai, N. Ivanov",
+    venue: "ICLR 2026",
+    year: "2026",
+    category: "Architecture",
+    description: "Proposes a residual-augmented sparse attention mechanism that preserves long-range dependencies while reducing quadratic complexity. By routing residual pathways through sparse attention heads, the method achieves near-full attention quality at a fraction of the compute cost, enabling efficient inference on sequences exceeding 128K tokens.",
+    url: "#",
+  },
+  {
     title: "Reducing Hallucinations in Production AI Applications Through Real-Time Verification Pipelines",
     authors: "J. Chen, M. Patel, S. Liu",
     venue: "NeurIPS 2025",
