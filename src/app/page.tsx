@@ -172,8 +172,10 @@ function LogoStrip() {
               alt={item.name}
               width={28}
               height={28}
-              className="object-contain grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
-              style={{ width: 28, height: 28 }}
+              className="object-contain opacity-40 group-hover:opacity-100 transition-all duration-300"
+              style={{ width: 28, height: 28, filter: 'grayscale(100%) brightness(0.8) sepia(1) hue-rotate(180deg) saturate(3)' }}
+              onMouseEnter={(e) => { e.currentTarget.style.filter = 'none'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.filter = 'grayscale(100%) brightness(0.8) sepia(1) hue-rotate(180deg) saturate(3)'; }}
             />
           </motion.div>
         ))}
