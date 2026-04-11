@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { GoogleLogo, OpenAILogo, NvidiaLogo, MetaLogo, HuggingFaceLogo, AnthropicLogo, MistralLogo, CohereLogo, DeepMindLogo, xAILogo } from "../components/company-logos";
 
 export default function HomePage() {
   const [cookieBannerVisible, setCookieBannerVisible] = useState(false);
@@ -137,26 +138,41 @@ function HeroSection() {
 
 
 function LogoStrip() {
-  const collaborators = [
-    "OpenAI", "Anthropic", "Google", "NVIDIA", "Meta", "Mistral", "xAI", "Hugging Face", "DeepMind", "Cohere"
+  const collaborators: { name: string; Logo: React.FC<{ className?: string }>; w: number; h: number }[] = [
+    { name: "OpenAI", Logo: OpenAILogo, w: 28, h: 28 },
+    { name: "Anthropic", Logo: AnthropicLogo, w: 120, h: 24 },
+    { name: "Google", Logo: GoogleLogo, w: 80, h: 28 },
+    { name: "NVIDIA", Logo: NvidiaLogo, w: 120, h: 24 },
+    { name: "Meta", Logo: MetaLogo, w: 100, h: 24 },
+    { name: "Mistral", Logo: MistralLogo, w: 28, h: 30 },
+    { name: "xAI", Logo: xAILogo, w: 50, h: 24 },
+    { name: "Hugging Face", Logo: HuggingFaceLogo, w: 28, h: 28 },
+    { name: "DeepMind", Logo: DeepMindLogo, w: 140, h: 24 },
+    { name: "Cohere", Logo: CohereLogo, w: 100, h: 24 },
   ];
 
   return (
     <div className="relative z-10 w-full max-w-5xl mx-auto py-8 sm:py-10 px-4 sm:px-8 lg:px-12">
       <p className="text-center text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-6 sm:mb-8">Collaborators</p>
-      <div className="flex items-center justify-center gap-x-6 sm:gap-x-10 flex-wrap gap-y-4">
-        {collaborators.map((name, idx) => (
-          <motion.span
-            key={name}
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: idx * 0.05 }}
-            className="text-sm sm:text-base font-medium text-neutral-400 hover:text-neutral-700 transition-colors duration-300 tracking-wide"
-          >
-            {name}
-          </motion.span>
-        ))}
+      <div className="flex items-center justify-center gap-x-8 sm:gap-x-12 flex-wrap gap-y-6">
+        {collaborators.map((item, idx) => {
+          const LogoComponent = item.Logo;
+          return (
+            <motion.div
+              key={item.name}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: idx * 0.05 }}
+              className="flex-shrink-0 group"
+              title={item.name}
+            >
+              <div style={{ width: item.w, height: item.h }} className="opacity-40 group-hover:opacity-80 transition-opacity duration-300">
+                <LogoComponent className="w-full h-full" />
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
     </div>
   );
