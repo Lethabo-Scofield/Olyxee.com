@@ -141,42 +141,38 @@ function HeroSection() {
 
 function LogoStrip() {
   const collaborators = [
-    { name: "OpenAI", src: "/images/logos/openai.png" },
-    { name: "Anthropic", src: "/images/logos/anthropic.png" },
-    { name: "Google", src: "/images/logos/google.png" },
-    { name: "NVIDIA", src: "/images/logos/nvidia.png" },
-    { name: "Meta", src: "/images/logos/meta.png" },
-    { name: "Mistral", src: "/images/logos/mistral.png" },
-    { name: "xAI", src: "/images/logos/xai.png" },
-    { name: "Microsoft", src: "/images/logos/microsoft.png" },
-    { name: "AWS", src: "/images/logos/aws.png" },
-    { name: "DeepSeek", src: "/images/logos/deepseek.png" },
+    { name: "OpenAI", Logo: OpenAILogo },
+    { name: "Anthropic", Logo: AnthropicLogo },
+    { name: "Google", Logo: GoogleLogo },
+    { name: "NVIDIA", Logo: NvidiaLogo },
+    { name: "Meta", Logo: MetaLogo },
+    { name: "Mistral", Logo: MistralLogo },
+    { name: "xAI", Logo: xAILogo },
+    { name: "Hugging Face", Logo: HuggingFaceLogo },
+    { name: "DeepMind", Logo: DeepMindLogo },
+    { name: "Cohere", Logo: CohereLogo },
   ];
 
   return (
     <div className="relative z-10 w-full max-w-5xl mx-auto py-8 sm:py-10 px-4 sm:px-8 lg:px-12">
       <p className="text-center text-[11px] font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-6 sm:mb-8">Collaborators</p>
       <div className="flex items-center justify-center gap-x-8 sm:gap-x-10 overflow-x-auto no-scrollbar">
-        {collaborators.map((item, idx) => (
-          <motion.div
-            key={item.name}
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: idx * 0.06 }}
-            className="flex-shrink-0 group"
-            title={item.name}
-          >
-            <Image
-              src={item.src}
-              alt={item.name}
-              width={28}
-              height={28}
-              className="object-contain grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
-              style={{ width: 28, height: 28 }}
-            />
-          </motion.div>
-        ))}
+        {collaborators.map((item, idx) => {
+          const LogoComponent = item.Logo;
+          return (
+            <motion.div
+              key={item.name}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: idx * 0.06 }}
+              className="flex-shrink-0 group"
+              title={item.name}
+            >
+              <LogoComponent className="h-5 w-auto grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" />
+            </motion.div>
+          );
+        })}
       </div>
     </div>
   );
