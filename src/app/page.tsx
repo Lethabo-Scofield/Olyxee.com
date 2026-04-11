@@ -26,16 +26,15 @@ export default function HomePage() {
     name: "Olyxee",
     url: "https://olyxee.com",
     logo: "https://olyxee.com/Logo/Olyxee_Logo.png",
-    description: "Olyxee builds verification, evaluation, and monitoring infrastructure so teams can ship AI with confidence.",
+    description: "Olyxee builds the research and infrastructure that enables AI to operate reliably across any domain, tool, or environment.",
     sameAs: ["https://www.linkedin.com/company/olyxeelab/"],
     foundingDate: "2024",
     knowsAbout: [
       "Artificial Intelligence",
-      "AI Verification",
-      "AI Evaluation",
-      "AI Monitoring",
+      "AI Execution Systems",
       "AI Infrastructure",
       "AI Reliability",
+      "AI Composability",
       "Machine Learning",
       "LLM Evaluation",
       "Hallucination Detection",
@@ -197,7 +196,7 @@ function ResearchAreas() {
           >
             <p className="text-xs font-semibold text-blue-400 uppercase tracking-[0.2em] mb-4">What We Do</p>
             <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900">
-              Advancing the science of <em className="text-blue-500">AI reliability</em>
+              From intelligence to <em className="text-blue-500">reliable execution</em>
             </h2>
           </motion.div>
 
@@ -205,20 +204,20 @@ function ResearchAreas() {
             {[
               {
                 num: "01",
-                title: "Verification",
-                desc: "Methods to verify AI systems produce accurate, consistent outputs across every scenario.",
+                title: "AI Research",
+                desc: "New system-level approaches for how AI executes tasks, coordinates processes, and maintains reliability across multi-step operations.",
                 accent: "from-blue-100/60 to-blue-50/30",
               },
               {
                 num: "02",
-                title: "Safety",
-                desc: "Detecting hallucinations and ensuring AI systems stay within intended boundaries.",
+                title: "Infrastructure Systems",
+                desc: "Runtime and integration layers that allow AI to operate across tools, APIs, and environments as a unified system.",
                 accent: "from-sky-100/60 to-blue-50/30",
               },
               {
                 num: "03",
-                title: "Monitoring",
-                desc: "Real-time observability for AI in production. Catch drift and failures early.",
+                title: "Composability Layer",
+                desc: "Connecting models, tools, and workflows into coherent, end-to-end AI systems that execute reliably.",
                 accent: "from-indigo-100/60 to-blue-50/30",
               },
             ].map((step, idx) => (
@@ -282,13 +281,13 @@ function ApproachSection() {
             <div className="relative p-8 sm:p-10">
               <div className="flex items-center gap-3 mb-4">
                 <Image src="/images/grysics-logo.png" alt="Grysics" width={32} height={32} className="rounded-lg" style={{ width: 32, height: 32 }} />
-                <h3 className="text-xl sm:text-2xl font-semibold text-neutral-900 tracking-tight">Grysics Platform</h3>
+                <h3 className="text-xl sm:text-2xl font-semibold text-neutral-900 tracking-tight">Grysics</h3>
               </div>
               <p className="text-neutral-500 text-sm sm:text-[15px] font-light leading-relaxed max-w-lg mb-6">
-                Verification engines, evaluation frameworks, and monitoring systems for real-world AI deployment.
+                An AI execution system that converts high-level business goals into completed operational workflows across tools, data sources, and systems.
               </p>
               <div className="flex flex-wrap gap-2">
-                {["Verification", "Evaluation", "Monitoring", "Compliance"].map(t => (
+                {["Execution", "Orchestration", "Multi-step Workflows", "Cross-system"].map(t => (
                   <span key={t} className="text-[11px] text-blue-600 bg-white/70 border border-blue-100/50 rounded-full px-3 py-1">{t}</span>
                 ))}
               </div>
@@ -304,9 +303,9 @@ function ApproachSection() {
           >
             <div className="absolute inset-0 bg-gradient-to-br from-sky-50/80 to-blue-50/40" />
             <div className="relative p-8 sm:p-10">
-              <h3 className="text-lg font-semibold text-neutral-900 mb-3 tracking-tight">Hallucination Research</h3>
+              <h3 className="text-lg font-semibold text-neutral-900 mb-3 tracking-tight">Task Execution Research</h3>
               <p className="text-sm text-neutral-600 font-light leading-relaxed mb-4">
-                Studying why AI fabricates information and building detection methods that work across domains.
+                Studying how AI can plan, coordinate, and complete multi-step operations across real-world environments.
               </p>
             </div>
           </motion.div>
@@ -320,9 +319,9 @@ function ApproachSection() {
           >
             <div className="absolute inset-0 bg-gradient-to-br from-blue-50/80 to-indigo-50/40" />
             <div className="relative p-8 sm:p-10">
-              <h3 className="text-lg font-semibold text-neutral-900 mb-3 tracking-tight">Behavioral Evaluation</h3>
+              <h3 className="text-lg font-semibold text-neutral-900 mb-3 tracking-tight">System Composability</h3>
               <p className="text-sm text-neutral-600 font-light leading-relaxed">
-                Evaluating AI behavior at scale: consistency, accuracy, and alignment with intended outcomes.
+                Designing architectures where models, tools, and workflows compose into unified operational systems.
               </p>
             </div>
           </motion.div>
@@ -338,9 +337,9 @@ function ApproachSection() {
             <div className="relative p-8 sm:p-10">
               <div className="flex flex-col sm:flex-row gap-6 sm:gap-10 items-start">
                 <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-neutral-900 mb-3 tracking-tight">Enterprise & Regulated Industries</h3>
+                  <h3 className="text-lg font-semibold text-neutral-900 mb-3 tracking-tight">Enterprise & Cross-System Operations</h3>
                   <p className="text-sm text-neutral-600 font-light leading-relaxed">
-                    Verification and audit for regulated industries where trust is non-negotiable.
+                    End-to-end AI execution for industries where reliability and cross-system coordination are essential.
                   </p>
                 </div>
                 <div className="flex-shrink-0 flex flex-wrap gap-2">
@@ -418,11 +417,11 @@ function IntegrationSection() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] tracking-tight text-neutral-900 leading-tight mb-6">
-              Grysics: AI verification built for{" "}
-              <em className="text-blue-400">your stack</em>.
+              Grysics: AI execution for{" "}
+              <em className="text-blue-400">your workflows</em>.
             </h2>
             <p className="text-neutral-500 text-base sm:text-lg font-light leading-relaxed mb-8 max-w-md mx-auto">
-              Deploy Grysics in your environment, or integrate through our cloud API. Works with every major platform.
+              Turn business goals into completed operations. Grysics plans, coordinates, and executes across your tools and systems end-to-end.
             </p>
             <Link
               href="/docs"
