@@ -419,7 +419,7 @@ function IntegrationSection() {
           >
             <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] tracking-tight text-neutral-900 leading-tight mb-6">
               Grysics: AI execution for{" "}
-              <em className="text-blue-400">your workflows</em>.
+              <em className="text-orange-400">your workflows</em>.
             </h2>
             <p className="text-neutral-500 text-base sm:text-lg font-light leading-relaxed mb-8 max-w-md mx-auto">
               Turn business goals into completed operations. Grysics plans, coordinates, and executes across your tools and systems end-to-end.
