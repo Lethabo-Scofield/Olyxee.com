@@ -68,6 +68,7 @@ export default function HomePage() {
       <main>
         <HeroSection />
         <ResearchAreas />
+        <ImageShowcase />
         <ApproachSection />
         <IntegrationSection />
         <CTASection />
@@ -249,6 +250,62 @@ function ResearchAreas() {
 
 
 
+
+function ImageShowcase() {
+  const images = [
+    { src: "/images/visualising-ai.png", alt: "Visualising AI", caption: "Visualising AI" },
+    { src: "/images/ai-structures.png", alt: "AI Structures", caption: "Biological Structures" },
+    { src: "/images/ai-robot.png", alt: "AI Robotics", caption: "Embodied Intelligence" },
+    { src: "/images/ai-analysis.png", alt: "AI Analysis", caption: "Language Understanding" },
+  ];
+
+  const doubled = [...images, ...images];
+
+  return (
+    <section className="py-16 sm:py-24 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 mb-10 sm:mb-14">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="text-center"
+        >
+          <p className="text-xs font-semibold text-blue-400 uppercase tracking-[0.2em] mb-4">Visual Research</p>
+          <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900">
+            Exploring AI through <em className="text-blue-500">new perspectives</em>
+          </h2>
+        </motion.div>
+      </div>
+
+      <div className="relative w-full">
+        <div
+          className="flex gap-6 hover:[animation-play-state:paused]"
+          style={{ animation: 'image-scroll 30s linear infinite' }}
+        >
+          {doubled.map((img, idx) => (
+            <div
+              key={`${img.alt}-${idx}`}
+              className="group relative flex-shrink-0 w-[340px] sm:w-[480px] lg:w-[560px] aspect-[16/10] rounded-2xl overflow-hidden"
+            >
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                sizes="(max-width: 640px) 340px, (max-width: 1024px) 480px, 560px"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                <p className="text-white text-sm sm:text-base font-medium">{img.caption}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 function ApproachSection() {
   return (
