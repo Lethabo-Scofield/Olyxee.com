@@ -70,7 +70,6 @@ export default function HomePage() {
         <ResearchAreas />
         <ImageShowcase />
         <ApproachSection />
-        <IntegrationSection />
         <CTASection />
       </main>
       <Footer />
