@@ -29,10 +29,10 @@ const About: FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="flex items-center gap-2 mb-8"
+            className="flex items-center gap-3 mb-6"
           >
-            <span className="accent-dot" />
-            <span className="text-sm font-medium text-neutral-400 uppercase tracking-widest">About Olyxee</span>
+            <Image src="/Logo/Olyxee_Logo.png" alt="Olyxee" width={24} height={24} className="opacity-40" />
+            <span className="text-sm font-medium text-neutral-400 uppercase tracking-widest">About</span>
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
