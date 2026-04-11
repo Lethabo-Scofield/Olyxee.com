@@ -172,10 +172,8 @@ function LogoStrip() {
               alt={item.name}
               width={28}
               height={28}
-              className="object-contain opacity-40 group-hover:opacity-100 transition-all duration-300"
-              style={{ width: 28, height: 28, filter: 'grayscale(100%) brightness(0.8) sepia(1) hue-rotate(180deg) saturate(3)' }}
-              onMouseEnter={(e) => { e.currentTarget.style.filter = 'none'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.filter = 'grayscale(100%) brightness(0.8) sepia(1) hue-rotate(180deg) saturate(3)'; }}
+              className="object-contain grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+              style={{ width: 28, height: 28 }}
             />
           </motion.div>
         ))}
@@ -191,7 +189,7 @@ function ResearchAreas() {
   return (
     <section className="py-20 sm:py-32 lg:py-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
-        <div className="bg-neutral-50 rounded-3xl p-8 sm:p-12 lg:p-16">
+        <div className="bg-blue-50/60 rounded-3xl p-8 sm:p-12 lg:p-16">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -199,7 +197,7 @@ function ResearchAreas() {
             transition={{ duration: 0.8 }}
             className="text-center mb-12 sm:mb-16 lg:mb-20"
           >
-            <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">What We Do</p>
+            <p className="text-xs font-semibold text-blue-400 uppercase tracking-[0.2em] mb-4">What We Do</p>
             <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900">
               Advancing the science of <em className="text-blue-500">AI reliability</em>
             </h2>
@@ -262,7 +260,7 @@ function ApproachSection() {
   return (
     <section className="py-20 sm:py-32 lg:py-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
-        <div className="bg-neutral-50 rounded-3xl p-8 sm:p-12 lg:p-16">
+        <div className="bg-blue-50/60 rounded-3xl p-8 sm:p-12 lg:p-16">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -270,7 +268,7 @@ function ApproachSection() {
             transition={{ duration: 0.8 }}
             className="mb-10 sm:mb-16 lg:mb-20"
           >
-            <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Our Approach</p>
+            <p className="text-xs font-semibold text-blue-400 uppercase tracking-[0.2em] mb-4">Our Approach</p>
             <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 max-w-3xl">
               Built at the intersection of <em className="text-orange-400">research and engineering</em>
             </h2>
@@ -282,7 +280,7 @@ function ApproachSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="md:col-span-2 relative group rounded-2xl bg-neutral-100 overflow-hidden"
+            className="md:col-span-2 relative group rounded-2xl bg-blue-50 overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-blue-100/40 to-transparent rounded-full blur-2xl" />
             <div className="relative p-8 sm:p-10">
@@ -521,7 +519,7 @@ function CTASection() {
           </Link>
           <Link
             href="/about"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 text-neutral-600 bg-white border border-neutral-200 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide shadow-sm"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 text-neutral-600 bg-white border border-blue-100 rounded-full font-medium hover:bg-blue-50/50 transition-all text-sm tracking-wide shadow-sm"
           >
             About Olyxee
           </Link>
