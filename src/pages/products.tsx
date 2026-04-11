@@ -185,18 +185,6 @@ const ProductsPage: FC = () => {
             </p>
           </motion.div>
 
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            custom={0}
-            variants={fadeUp}
-            className="mb-16 sm:mb-24 rounded-2xl sm:rounded-3xl bg-neutral-50 border border-neutral-100 px-8 sm:px-12 py-10 sm:py-14"
-          >
-            <h2 className="font-serif text-2xl sm:text-3xl tracking-tight text-neutral-900 mb-3">Our Approach</h2>
-            <p className="text-base sm:text-lg text-neutral-500 font-light leading-relaxed max-w-2xl">Built at the intersection of research and engineering.</p>
-          </motion.div>
-
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-16 sm:mb-24">
             <motion.a
               href="https://grysics.olyxee.com/"
