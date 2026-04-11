@@ -207,19 +207,19 @@ function ResearchAreas() {
                 num: "01",
                 title: "Verification",
                 desc: "Methods to verify AI systems produce accurate, consistent outputs across every scenario.",
-                bg: "/images/gradient-blue.png",
+                accent: "from-blue-100/60 to-blue-50/30",
               },
               {
                 num: "02",
                 title: "Safety",
                 desc: "Detecting hallucinations and ensuring AI systems stay within intended boundaries.",
-                bg: "/images/gradient-orange-pink.png",
+                accent: "from-sky-100/60 to-blue-50/30",
               },
               {
                 num: "03",
                 title: "Monitoring",
                 desc: "Real-time observability for AI in production. Catch drift and failures early.",
-                bg: "/images/gradient-purple.png",
+                accent: "from-indigo-100/60 to-blue-50/30",
               },
             ].map((step, idx) => (
               <motion.div
@@ -228,15 +228,13 @@ function ResearchAreas() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: idx * 0.12 }}
-                className="relative rounded-2xl group hover:shadow-lg hover:shadow-neutral-200/60 transition-all duration-300 overflow-hidden"
+                className="relative rounded-2xl group hover:shadow-lg hover:shadow-blue-100/60 transition-all duration-300 overflow-hidden border border-blue-100/50 hover:border-blue-200/60"
               >
-                <div className="absolute inset-0">
-                  <Image src={step.bg} alt="" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
-                  <div className="absolute inset-0 bg-white/80 group-hover:bg-white/75 transition-colors duration-300" />
-                </div>
+                <div className={`absolute inset-0 bg-gradient-to-br ${step.accent}`} />
+                <div className="absolute inset-0 bg-white/70 group-hover:bg-white/60 transition-colors duration-300" />
                 <div className="relative p-8 sm:p-10">
                   <div className="mb-8">
-                    <div className="text-4xl font-serif text-neutral-300 leading-none">{step.num}</div>
+                    <div className="text-4xl font-serif text-blue-200 leading-none">{step.num}</div>
                   </div>
                   <h3 className="text-xl sm:text-2xl font-semibold text-neutral-900 mb-3 tracking-tight">{step.title}</h3>
                   <p className="text-sm sm:text-[15px] text-neutral-500 font-light leading-relaxed">{step.desc}</p>
@@ -268,7 +266,7 @@ function ApproachSection() {
           >
             <p className="text-xs font-semibold text-blue-400 uppercase tracking-[0.2em] mb-4">Our Approach</p>
             <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 max-w-3xl">
-              Built at the intersection of <em className="text-orange-400">research and engineering</em>
+              Built at the intersection of <em className="text-blue-400">research and engineering</em>
             </h2>
           </motion.div>
 
@@ -291,7 +289,7 @@ function ApproachSection() {
               </p>
               <div className="flex flex-wrap gap-2">
                 {["Verification", "Evaluation", "Monitoring", "Compliance"].map(t => (
-                  <span key={t} className="text-[11px] text-neutral-500 bg-white/60 rounded-full px-3 py-1">{t}</span>
+                  <span key={t} className="text-[11px] text-blue-600 bg-white/70 border border-blue-100/50 rounded-full px-3 py-1">{t}</span>
                 ))}
               </div>
             </div>
@@ -302,11 +300,9 @@ function ApproachSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.06 }}
-            className="group rounded-2xl relative overflow-hidden border border-amber-100/80"
+            className="group rounded-2xl relative overflow-hidden border border-blue-100/60 hover:border-blue-200/60 hover:shadow-lg hover:shadow-blue-100/40 transition-all duration-300"
           >
-            <div className="absolute inset-0">
-              <Image src="/images/gradient-orange-pink.png" alt="" fill sizes="(max-width: 768px) 100vw, 33vw" aria-hidden="true" className="object-cover opacity-30" />
-            </div>
+            <div className="absolute inset-0 bg-gradient-to-br from-sky-50/80 to-blue-50/40" />
             <div className="relative p-8 sm:p-10">
               <h3 className="text-lg font-semibold text-neutral-900 mb-3 tracking-tight">Hallucination Research</h3>
               <p className="text-sm text-neutral-600 font-light leading-relaxed mb-4">
@@ -320,11 +316,9 @@ function ApproachSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.12 }}
-            className="group rounded-2xl relative overflow-hidden border border-emerald-100/80"
+            className="group rounded-2xl relative overflow-hidden border border-blue-100/60 hover:border-blue-200/60 hover:shadow-lg hover:shadow-blue-100/40 transition-all duration-300"
           >
-            <div className="absolute inset-0">
-              <Image src="/images/gradient-yellow-green.png" alt="" fill sizes="(max-width: 768px) 100vw, 33vw" aria-hidden="true" className="object-cover opacity-25" />
-            </div>
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-50/80 to-indigo-50/40" />
             <div className="relative p-8 sm:p-10">
               <h3 className="text-lg font-semibold text-neutral-900 mb-3 tracking-tight">Behavioral Evaluation</h3>
               <p className="text-sm text-neutral-600 font-light leading-relaxed">
@@ -338,11 +332,9 @@ function ApproachSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.18 }}
-            className="md:col-span-2 lg:col-span-2 group rounded-2xl relative overflow-hidden border border-violet-100/80"
+            className="md:col-span-2 lg:col-span-2 group rounded-2xl relative overflow-hidden border border-blue-100/60 hover:border-blue-200/60 hover:shadow-lg hover:shadow-blue-100/40 transition-all duration-300"
           >
-            <div className="absolute inset-0">
-              <Image src="/images/gradient-purple.png" alt="" fill sizes="(max-width: 768px) 100vw, 66vw" aria-hidden="true" className="object-cover opacity-20" />
-            </div>
+            <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/60 to-blue-50/40" />
             <div className="relative p-8 sm:p-10">
               <div className="flex flex-col sm:flex-row gap-6 sm:gap-10 items-start">
                 <div className="flex-1">
@@ -353,7 +345,7 @@ function ApproachSection() {
                 </div>
                 <div className="flex-shrink-0 flex flex-wrap gap-2">
                   {["Healthcare", "Legal", "Finance", "Enterprise"].map(t => (
-                    <span key={t} className="text-[11px] text-violet-600 bg-violet-100/60 border border-violet-200/60 rounded-full px-3 py-1">{t}</span>
+                    <span key={t} className="text-[11px] text-blue-600 bg-blue-100/60 border border-blue-200/60 rounded-full px-3 py-1">{t}</span>
                   ))}
                 </div>
               </div>
@@ -387,10 +379,10 @@ function IntegrationSection() {
   ], []);
 
   return (
-    <section className="relative py-24 sm:py-36 lg:py-48 overflow-hidden bg-amber-50/40">
+    <section className="relative py-24 sm:py-36 lg:py-48 overflow-hidden bg-blue-50/40">
       <div className="absolute inset-0">
-        <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-orange-100/30 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/3 w-80 h-80 bg-amber-100/30 rounded-full blur-3xl" />
+        <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-blue-100/30 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/3 w-80 h-80 bg-sky-100/30 rounded-full blur-3xl" />
       </div>
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
@@ -410,7 +402,7 @@ function IntegrationSection() {
               transform: `rotate(${card.rotate}deg)`,
             }}
           >
-            <div className="bg-white rounded-2xl shadow-md shadow-neutral-200/60 border border-neutral-100/80 p-5 w-44 hover:shadow-lg transition-shadow duration-300">
+            <div className="bg-white rounded-2xl shadow-md shadow-blue-100/60 border border-blue-100/60 p-5 w-44 hover:shadow-lg hover:shadow-blue-200/40 transition-shadow duration-300">
               <Image src={card.src} alt={card.name} width={28} height={28} className="object-contain mb-2" style={{ width: 28, height: 28 }} />
               <p className="text-sm font-semibold text-neutral-800">{card.name}</p>
               <p className="text-[11px] text-neutral-400 mt-0.5">{card.subtitle}</p>
@@ -427,17 +419,17 @@ function IntegrationSection() {
           >
             <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] tracking-tight text-neutral-900 leading-tight mb-6">
               Grysics: AI verification built for{" "}
-              <em className="text-orange-400">your stack</em>.
+              <em className="text-blue-400">your stack</em>.
             </h2>
             <p className="text-neutral-500 text-base sm:text-lg font-light leading-relaxed mb-8 max-w-md mx-auto">
               Deploy Grysics in your environment, or integrate through our cloud API. Works with every major platform.
             </p>
             <Link
               href="/docs"
-              className="inline-flex items-center gap-2 text-sm font-medium text-neutral-900 hover:text-orange-500 transition-colors group"
+              className="inline-flex items-center gap-2 text-sm font-medium text-neutral-900 hover:text-blue-500 transition-colors group"
             >
               Discover more
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-orange-400" />
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-blue-400" />
             </Link>
           </motion.div>
 
@@ -449,7 +441,7 @@ function IntegrationSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.06 }}
-                className="bg-white rounded-xl shadow-sm border border-neutral-100 p-4"
+                className="bg-white rounded-xl shadow-sm border border-blue-100/60 p-4"
               >
                 <Image src={card.src} alt={card.name} width={24} height={24} className="object-contain mb-1.5" style={{ width: 20, height: 20 }} />
                 <p className="text-sm font-semibold text-neutral-800">{card.name}</p>
@@ -511,7 +503,7 @@ function CTASection() {
         >
           <Link
             href="/contact"
-            className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-neutral-900 text-white rounded-full font-medium hover:bg-black transition-all text-sm tracking-wide shadow-lg shadow-neutral-900/20"
+            className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-all text-sm tracking-wide shadow-lg shadow-blue-600/20"
           >
             Get in Touch <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
           </Link>
