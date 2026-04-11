@@ -65,7 +65,7 @@ const Terms: FC = () => {
   const contentRef = useRef<HTMLDivElement>(null);
 
   const handleDownload = () => {
-    let text = "OLYXEE | TERMS OF USE\nLast updated: March 2026\n\n";
+    let text = "OLYXEE | TERMS OF USE\nLast updated: April 2026\n\n";
     sections.forEach((s) => {
       text += `${s.title}\n\n${s.content}\n\n`;
     });
@@ -99,7 +99,7 @@ const Terms: FC = () => {
               Terms of Use
             </h1>
             <div className="flex flex-col items-start sm:flex-row sm:items-center justify-between gap-3">
-              <p className="text-neutral-400 text-sm">Last updated: March 2026</p>
+              <p className="text-neutral-400 text-sm">Last updated: April 2026</p>
               <button
                 onClick={handleDownload}
                 className="inline-flex items-center gap-2 px-4 py-2 text-sm text-neutral-500 hover:text-neutral-900 border border-neutral-200 rounded-full hover:bg-neutral-50 transition-all"
