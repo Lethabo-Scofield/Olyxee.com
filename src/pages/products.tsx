@@ -18,6 +18,7 @@ const fadeUp = {
 
 const galleryImages = [
   { src: "/images/products-grysics.png", label: "System Integrations" },
+  { src: "/images/products-fintech-agents.png", label: "Fintech Agents" },
   { src: "/images/product-clustering.png", label: "Visual Embeddings" },
   { src: "/images/product-classifier.png", label: "Classifier Alignment" },
   { src: "/images/product-pipeline.png", label: "Pipeline Architecture" },
