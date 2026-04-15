@@ -4,12 +4,7 @@ import DocsLayout from "../layouts/DocsLayout";
 import Header from '../components/header';
 import { ArrowRight, BookOpen, Terminal, Layers, Cpu, ChevronRight, Play, Lock, Sparkles } from "lucide-react";
 
-const TABS = [
-  { id: "home", label: "Home" },
-  { id: "api", label: "API" },
-  { id: "grysics", label: "Grysics" },
-  { id: "guides", label: "Guides" },
-];
+const TABS: { id: string; label: string }[] = [];
 
 const API_SIDE_NAV = [
   {

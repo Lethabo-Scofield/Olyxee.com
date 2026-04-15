@@ -63,40 +63,6 @@ const DocsLayout: FC<DocsLayoutProps> = ({ tabs, activeTab, onTabChange, sideNav
 
   return (
     <div className="min-h-screen bg-white" style={{ paddingTop: '60px' }}>
-      <div
-        className="bg-white/95 backdrop-blur-md sticky z-40 transition-[top] duration-300"
-        style={{ top: headerVisible ? 60 : 0 }}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex items-center justify-center">
-            <div className="flex items-center gap-8 overflow-x-auto scrollbar-hide" ref={tabsRef}>
-              {tabs.map(tab => (
-                <button
-                  key={tab.id}
-                  onClick={() => { onTabChange(tab.id); setMobileMenuOpen(false) }}
-                  className={`py-2 px-4 text-sm font-medium whitespace-nowrap transition-colors rounded-lg ${
-                    activeTab === tab.id
-                      ? 'text-gray-900 bg-gray-100'
-                      : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
-
-            {sideNav && (
-              <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
-                aria-label="Toggle menu"
-              >
-                {mobileMenuOpen ? <X className="w-5 h-5 text-gray-600" /> : <Menu className="w-5 h-5 text-gray-600" />}
-              </button>
-            )}
-          </div>
-        </div>
-      </div>
 
       <div className="max-w-7xl mx-auto">
         <div className="flex">
