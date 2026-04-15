@@ -216,7 +216,7 @@ const About: FC = () => {
               {[
                 { value: "2024", label: "Founded" },
                 { value: "Grysics", label: "Flagship product" },
-                { value: "SOC 2", label: "Compliant" },
+                { value: "Open", label: "By design" },
                 { value: "Global", label: "From day one" },
               ].map((stat) => (
                 <div key={stat.label} className="bg-neutral-900 rounded-xl p-6 sm:p-8 border border-neutral-800">

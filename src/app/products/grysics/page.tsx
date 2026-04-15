@@ -286,7 +286,7 @@ export default function GrysicsPage() {
               "2 min average completion",
               "Cross-system integration",
               "ERP · Databases · Excel",
-              "SOC 2 compliant",
+              "Full audit trail",
             ].map((text, i) => (
               <motion.span
                 key={text}
@@ -525,7 +525,7 @@ export default function GrysicsPage() {
               { title: "Reduces Workload", description: "Free your team from repetitive operational tasks that follow the same pattern every time.", severity: "Critical" },
               { title: "Accurate Outputs", description: "Consistent results every time. No human error from manual data entry or copy-paste mistakes.", severity: "High" },
               { title: "Full Audit Trail", description: "Every action logged and traceable for compliance. All data changes are tracked and reversible.", severity: "Medium" },
-              { title: "Enterprise-Ready", description: "Built for regulated industries from day one. SOC 2 compliant with approval workflows at any stage.", severity: "Medium" },
+              { title: "Enterprise-Ready", description: "Built for regulated industries from day one. Approval workflows and full traceability at any stage.", severity: "Medium" },
             ].map((item, idx) => (
               <motion.div
                 key={item.title}
