@@ -17,7 +17,7 @@ const fadeUp = {
 };
 
 const galleryImages = [
-  { src: "/images/product-workflow.png", label: "Workflow Coordination" },
+  { src: "/images/products-grysics.png", label: "System Integrations" },
   { src: "/images/product-clustering.png", label: "Visual Embeddings" },
   { src: "/images/product-classifier.png", label: "Classifier Alignment" },
   { src: "/images/product-pipeline.png", label: "Pipeline Architecture" },
@@ -175,22 +175,17 @@ const ProductsPage: FC = () => {
               viewport={{ once: true, amount: 0.2 }}
               custom={0}
               variants={fadeUp}
-              className="rounded-2xl border-2 border-orange-300 bg-neutral-50/60 overflow-hidden flex flex-col cursor-pointer hover:border-orange-400 hover:shadow-lg hover:shadow-orange-100/50 transition-all duration-300"
+              className="rounded-2xl border-2 border-orange-300 bg-neutral-50/60 p-6 sm:p-8 flex flex-col cursor-pointer hover:border-orange-400 hover:shadow-lg hover:shadow-orange-100/50 transition-all duration-300"
             >
-              <div className="relative w-full aspect-[16/10]">
-                <Image src="/images/products-grysics.png" alt="Grysics integrations" fill sizes="(max-width: 768px) 100vw, 400px" className="object-cover" />
+              <div className="flex items-center gap-3 mb-3">
+                <Image src="/images/grysics-logo.png" alt="Grysics" width={28} height={28} className="rounded-lg" style={{ width: 28, height: 28 }} />
+                <h3 className="text-lg sm:text-xl font-serif tracking-tight text-neutral-900">Grysics</h3>
               </div>
-              <div className="p-6 sm:p-8 flex flex-col flex-1">
-                <div className="flex items-center gap-3 mb-3">
-                  <Image src="/images/grysics-logo.png" alt="Grysics" width={28} height={28} className="rounded-lg" style={{ width: 28, height: 28 }} />
-                  <h3 className="text-lg sm:text-xl font-serif tracking-tight text-neutral-900">Grysics</h3>
-                </div>
-                <p className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-1">AI Execution System</p>
-                <p className="text-sm text-neutral-500 font-light leading-relaxed mt-auto">Converts goals into completed workflows across tools and data sources.</p>
-                <span className="inline-flex items-center gap-1.5 text-xs font-medium text-orange-500 mt-4">
-                  Visit Grysics <ArrowRight className="w-3 h-3" />
-                </span>
-              </div>
+              <p className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-1">AI Execution System</p>
+              <p className="text-sm text-neutral-500 font-light leading-relaxed mt-auto">Converts goals into completed workflows across tools and data sources.</p>
+              <span className="inline-flex items-center gap-1.5 text-xs font-medium text-orange-500 mt-4">
+                Visit Grysics <ArrowRight className="w-3 h-3" />
+              </span>
             </motion.a>
 
             <motion.div
