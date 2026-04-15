@@ -41,22 +41,22 @@ function TerminalDemo() {
   const [visibleLines, setVisibleLines] = useState(0);
 
   const lines = [
-    { type: 'cmd', text: '$ grysics verify model.onnx --target jetson-orin' },
-    { type: 'info', text: '◼ Loading model... ResNet-50 (ONNX, 97.8MB)' },
-    { type: 'info', text: '◼ Target: NVIDIA Jetson Orin Nano (8GB)' },
+    { type: 'cmd', text: '$ grysics execute --goal "Reconcile Q1 financial transactions"' },
+    { type: 'info', text: '◼ Connecting to systems... ERP + Bank' },
+    { type: 'info', text: '◼ Planning execution steps...' },
     { type: 'blank', text: '' },
-    { type: 'header', text: '  VERIFICATION RESULTS' },
+    { type: 'header', text: '  EXECUTION RESULTS' },
     { type: 'blank', text: '' },
-    { type: 'pass', text: '  ✓ Accuracy retention     99.2%   (threshold: 95%)' },
-    { type: 'pass', text: '  ✓ Inference latency      8.4ms   (threshold: 50ms)' },
-    { type: 'pass', text: '  ✓ Memory footprint       412MB   (available: 8GB)' },
-    { type: 'pass', text: '  ✓ Numerical stability    PASS    (no NaN detected)' },
-    { type: 'warn', text: '  ⚠ INT8 quantization      97.1%   (minor accuracy loss)' },
-    { type: 'pass', text: '  ✓ Throughput             119 fps  (target: 30 fps)' },
+    { type: 'pass', text: '  ✓ Pulling transactions       847 records from ERP' },
+    { type: 'pass', text: '  ✓ Cross-referencing          matched with bank data' },
+    { type: 'warn', text: '  ⚠ Discrepancies found        3 found, 2 resolved' },
+    { type: 'pass', text: '  ✓ Variance identified        $12.4K flagged' },
+    { type: 'pass', text: '  ✓ Report generated           ready for download' },
+    { type: 'pass', text: '  ✓ Audit trail                full log available' },
     { type: 'blank', text: '' },
     { type: 'result', text: '  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━' },
-    { type: 'result', text: '  5/6 passed · 1 warning · 0 failed' },
-    { type: 'success', text: '  ✓ Model is ready for deployment' },
+    { type: 'result', text: '  847 records · 2m 14s · 1 pending review' },
+    { type: 'success', text: '  ✓ Execution complete' },
   ];
 
   useEffect(() => {
@@ -80,7 +80,7 @@ function TerminalDemo() {
             <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500/70" />
           </div>
           <div className="flex-1 flex items-center justify-center">
-            <span className="text-[10px] sm:text-[11px] text-neutral-500 font-mono">grysics / verification</span>
+            <span className="text-[10px] sm:text-[11px] text-neutral-500 font-mono">grysics / execution</span>
           </div>
         </div>
         <div className="p-3 sm:p-6 font-mono text-[10px] sm:text-[13px] leading-5 sm:leading-6 min-h-[260px] sm:min-h-[340px] overflow-x-auto no-scrollbar">
@@ -119,26 +119,25 @@ function CodePreview() {
 
   const code = `import grysics
 
-report = grysics.verify(
-    model="model.onnx",
-    target="jetson-orin",
-    checks=["accuracy", "latency", "memory"],
-    thresholds={
-        "accuracy": 0.95,
-        "latency_ms": 50,
-        "memory_mb": 2048
+result = grysics.execute(
+    goal="Reconcile Q1 financial transactions",
+    systems=["erp", "bank"],
+    options={
+        "auto_resolve": True,
+        "audit_trail": True,
+        "format": "detailed"
     }
 )
 
-if report.passed:
-    grysics.deploy(report)`;
+if result.complete:
+    grysics.deliver(result)`;
 
   return (
     <div className="relative bg-[#0d1117] rounded-xl sm:rounded-2xl border border-neutral-200 overflow-hidden shadow-lg shadow-neutral-200/30">
       <div className="flex items-center justify-between px-3 sm:px-4 py-2 sm:py-2.5 border-b border-neutral-800 bg-neutral-900">
         <div className="flex items-center gap-2">
           <div className="w-2.5 h-2.5 rounded bg-yellow-500/60" />
-          <span className="text-[10px] sm:text-[11px] text-neutral-500 font-mono">verify.py</span>
+          <span className="text-[10px] sm:text-[11px] text-neutral-500 font-mono">execute.py</span>
         </div>
         <button
           onClick={() => { setCopied(true); setTimeout(() => setCopied(false), 2000); }}
@@ -253,9 +252,9 @@ export default function GrysicsPage() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="font-serif text-3xl sm:text-5xl lg:text-7xl text-neutral-900 tracking-tight leading-[1.05] mb-6"
           >
-            Verify your AI
+            Turn business goals
             <br />
-            <span className="text-neutral-400">before it breaks</span>
+            <span className="text-neutral-400">into completed work</span>
           </motion.h1>
 
           <motion.p
@@ -264,7 +263,7 @@ export default function GrysicsPage() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="text-base sm:text-xl text-neutral-500 leading-relaxed font-light mb-10 max-w-2xl mx-auto px-2"
           >
-            One command to test accuracy, latency, and memory across every target device. Catch failures before your users do.
+            Describe what needs to be done. Grysics plans, coordinates, and executes across your tools and systems end-to-end.
           </motion.p>
 
           <motion.div
@@ -283,10 +282,10 @@ export default function GrysicsPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-3">
             {[
-              "Pre-deploy verification",
-              "12ms average check",
-              "50+ hardware targets",
-              "PyTorch · TensorFlow · ONNX",
+              "Goal-to-delivery execution",
+              "2 min average completion",
+              "Cross-system integration",
+              "ERP · Databases · Excel",
               "SOC 2 compliant",
             ].map((text, i) => (
               <motion.span
@@ -319,23 +318,23 @@ export default function GrysicsPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="text-center mb-16">
             <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900">
-              Any model. Any device.
+              Any goal. Any system.
             </h2>
             <p className="text-neutral-500 mt-4 text-lg font-light max-w-2xl mx-auto">
-              Vision, language, generative, audio. Grysics verifies it all on any hardware target.
+              Finance, compliance, HR, operations. Grysics executes it all across your connected systems.
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
             {[
-              { name: "Computer Vision", examples: "Object detection, segmentation" },
-              { name: "NLP & LLMs", examples: "Text generation, translation" },
-              { name: "Image Generation", examples: "Stable Diffusion, DALL-E" },
-              { name: "Audio & Speech", examples: "Speech-to-text, voice cloning" },
-              { name: "Video Analysis", examples: "Action recognition, tracking" },
-              { name: "Robotics", examples: "Path planning, RL policies" },
-              { name: "Medical AI", examples: "Diagnostics, medical imaging" },
-              { name: "Autonomous Systems", examples: "Self-driving, drone nav" },
+              { name: "Finance", examples: "Reconciliation, reporting, expense management" },
+              { name: "Compliance", examples: "Audit-ready reports, regulatory reporting" },
+              { name: "HR Operations", examples: "Onboarding, offboarding, employee updates" },
+              { name: "Enterprise Reporting", examples: "Cross-system data aggregation" },
+              { name: "Procurement", examples: "Vendor management, PO processing" },
+              { name: "Data Operations", examples: "ETL, data validation, migration" },
+              { name: "Customer Operations", examples: "Account management, billing" },
+              { name: "Executive Dashboards", examples: "KPI tracking, summaries" },
             ].map((app, idx) => (
               <motion.div
                 key={app.name}
@@ -359,13 +358,13 @@ export default function GrysicsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp}>
               <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900 mb-6">
-                Three lines to verify
+                Three lines to execute
               </h2>
               <p className="text-neutral-500 text-base sm:text-lg font-light leading-relaxed mb-8">
-                Import, configure, verify. Grysics fits into your existing pipeline with a Python SDK, CLI, and CI/CD integrations.
+                Import, describe, execute. Grysics fits into your existing stack with a Python SDK, CLI, and API integrations.
               </p>
               <div className="flex flex-wrap gap-3">
-                {['pip install grysics', 'GitHub Actions', 'Docker'].map((item) => (
+                {['pip install grysics', 'REST API', 'Python SDK'].map((item) => (
                   <span key={item} className="inline-flex items-center px-3 py-1.5 bg-neutral-100 text-neutral-600 rounded-lg text-xs font-mono border border-neutral-200/60">
                     {item}
                   </span>
@@ -389,10 +388,10 @@ export default function GrysicsPage() {
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-16">
             {[
-              { value: 10, suffix: 'x', label: 'Faster verification' },
-              { value: 50, suffix: '+', label: 'Hardware targets' },
-              { value: 99, suffix: '.9%', label: 'Deploy reliability' },
-              { value: 3, suffix: 'min', label: 'Avg. verify time' },
+              { value: 10, suffix: 'x', label: 'Faster than manual' },
+              { value: 50, suffix: '+', label: 'System integrations' },
+              { value: 99, suffix: '.9%', label: 'Execution reliability' },
+              { value: 2, suffix: 'min', label: 'Avg. completion time' },
             ].map((stat, idx) => (
               <motion.div
                 key={stat.label}
@@ -413,9 +412,9 @@ export default function GrysicsPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             {[
-              { label: "Verification Speed", grysics: "12ms", others: "180ms", grysicsWidth: "7%", othersWidth: "100%" },
-              { label: "Accuracy Retention", grysics: "99.2%", others: "92%", grysicsWidth: "99%", othersWidth: "92%" },
-              { label: "Memory Efficiency", grysics: "245MB", others: "512MB", grysicsWidth: "48%", othersWidth: "100%" },
+              { label: "Execution Speed", grysics: "2 min", others: "4+ hrs", grysicsWidth: "7%", othersWidth: "100%" },
+              { label: "Accuracy", grysics: "99.2%", others: "92%", grysicsWidth: "99%", othersWidth: "92%" },
+              { label: "Systems Connected", grysics: "50+", others: "3-5", grysicsWidth: "100%", othersWidth: "10%" },
               { label: "Success Rate", grysics: "99.9%", others: "87%", grysicsWidth: "99%", othersWidth: "87%" },
             ].map((item, idx) => (
               <motion.div
@@ -468,7 +467,7 @@ export default function GrysicsPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="text-center mb-20">
             <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900">
-              Model to production in minutes
+              Goal to delivery in minutes
             </h2>
           </motion.div>
 
@@ -476,18 +475,18 @@ export default function GrysicsPage() {
             {[
               {
                 step: "01",
-                title: "Upload",
-                description: "Drop in any AI model: PyTorch, TensorFlow, ONNX, TFLite. Grysics auto-detects architecture and dependencies.",
+                title: "Describe",
+                description: "Define your business goal in plain language. Grysics interprets it and identifies the systems, data, and steps required.",
               },
               {
                 step: "02",
-                title: "Verify",
-                description: "Grysics tests accuracy, latency, memory, and edge cases across your target devices. Detailed reports in minutes.",
+                title: "Execute",
+                description: "Grysics plans and executes across your connected systems — ERP, databases, spreadsheets, and communication tools.",
               },
               {
                 step: "03",
-                title: "Ship",
-                description: "Deploy only verified models. Continuous monitoring catches drift and regressions post-deploy automatically.",
+                title: "Deliver",
+                description: "Results delivered as reports, notifications, or audit trails. Every action is logged and traceable for compliance.",
               },
             ].map((item, idx) => (
               <motion.div
@@ -512,21 +511,21 @@ export default function GrysicsPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="text-center mb-16">
             <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900">
-              What Grysics catches
+              Why teams choose Grysics
             </h2>
             <p className="text-neutral-500 mt-4 text-base sm:text-lg font-light max-w-2xl mx-auto">
-              Six categories of failures that silently break AI in production.
+              Six reasons teams move from manual workflows to AI-driven execution.
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { title: "Accuracy Degradation", description: "Detects when quantization or hardware conversion silently drops model accuracy below your thresholds.", severity: "Critical" },
-              { title: "Latency Violations", description: "Identifies operations that exceed real-time constraints on your target edge devices.", severity: "High" },
-              { title: "Memory Overflows", description: "Catches models that exceed available RAM or VRAM on constrained hardware before deployment.", severity: "Critical" },
-              { title: "Numerical Instability", description: "Finds floating-point precision issues and NaN propagation that cause silent failures.", severity: "High" },
-              { title: "Framework Mismatches", description: "Validates that model exports preserve behavior across PyTorch, TF, and ONNX conversions.", severity: "Medium" },
-              { title: "Performance Bottlenecks", description: "Pinpoints layers and operations that consume disproportionate compute or energy.", severity: "Medium" },
+              { title: "No Manual Workflows", description: "Stop building complex automations. Just describe the goal and Grysics handles the rest.", severity: "Critical" },
+              { title: "Works With Your Systems", description: "Connects to ERP, Excel, databases, payment platforms, and more without custom integrations.", severity: "High" },
+              { title: "Reduces Workload", description: "Free your team from repetitive operational tasks that follow the same pattern every time.", severity: "Critical" },
+              { title: "Accurate Outputs", description: "Consistent results every time. No human error from manual data entry or copy-paste mistakes.", severity: "High" },
+              { title: "Full Audit Trail", description: "Every action logged and traceable for compliance. All data changes are tracked and reversible.", severity: "Medium" },
+              { title: "Enterprise-Ready", description: "Built for regulated industries from day one. SOC 2 compliant with approval workflows at any stage.", severity: "Medium" },
             ].map((item, idx) => (
               <motion.div
                 key={item.title}
@@ -558,15 +557,15 @@ export default function GrysicsPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp}>
             <h2 className="font-serif text-2xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-6">
-              Stop shipping untested AI
+              Give it a goal. Get it done.
             </h2>
             <p className="text-neutral-500 text-sm sm:text-lg max-w-xl mx-auto mb-10 font-light leading-relaxed px-2 sm:px-0">
-              Join the waitlist. Be the first to verify your AI before it reaches production.
+              Join the waitlist. Be the first to experience AI-driven execution for your business operations.
             </p>
             <div className="flex justify-center mb-4">
               <EarlyAccessForm />
             </div>
-            <p className="text-xs text-neutral-400">Join 500+ developers already on the waitlist</p>
+            <p className="text-xs text-neutral-400">Join 500+ teams already on the waitlist</p>
           </motion.div>
         </div>
       </section>

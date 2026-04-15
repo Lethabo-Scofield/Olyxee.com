@@ -7,7 +7,7 @@ const Guides: FC = () => {
       <div className="mb-10">
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight mb-3">Getting Started</h1>
         <p className="text-gray-500 text-lg leading-relaxed">
-          Step-by-step guide to verifying your first AI application with Grysics.
+          Step-by-step guide to executing your first business workflow with Grysics.
         </p>
       </div>
 
@@ -16,16 +16,16 @@ const Guides: FC = () => {
           <h2 className="text-xl font-semibold text-gray-900 mb-4 pb-2 border-b border-gray-100">Prerequisites</h2>
           <ul className="list-disc pl-6 space-y-2">
             <li>Python 3.9 or later</li>
-            <li>A running AI application (chatbot, RAG pipeline, or agent)</li>
-            <li>An accessible endpoint for your application</li>
+            <li>Access to the systems you want Grysics to connect to (ERP, databases, etc.)</li>
+            <li>API credentials for your connected systems</li>
             <li>The Grysics SDK installed (<code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">pip install grysics</code>)</li>
           </ul>
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-gray-900 mb-4 pb-2 border-b border-gray-100">Step 1: Connect your application</h2>
+          <h2 className="text-xl font-semibold text-gray-900 mb-4 pb-2 border-b border-gray-100">Step 1: Connect your systems</h2>
           <p>
-            Start by connecting Grysics to your AI application endpoint. The SDK automatically detects the application type.
+            Start by connecting Grysics to your business systems. The SDK automatically detects available data sources.
           </p>
           <div className="relative group rounded-xl overflow-hidden border border-gray-200 bg-gray-950 my-4">
             <div className="flex items-center justify-between px-4 py-2 bg-gray-900 border-b border-gray-800">
@@ -34,17 +34,17 @@ const Guides: FC = () => {
             <pre className="p-4 overflow-x-auto text-sm leading-relaxed">
               <code className="text-gray-300 font-mono whitespace-pre">{`import grysics
 
-# Connect to your AI application
-app = grysics.connect(
-    endpoint="http://localhost:8000/chat",
-    type="rag"
+# Connect to your business systems
+workspace = grysics.connect(
+    systems=["erp", "bank", "excel"],
+    env="production"
 )
 
-# Inspect connection
-print(app.status)
+# Inspect connections
+print(workspace.status)
 # Connected
-# Type: rag
-# Endpoint: http://localhost:8000/chat`}</code>
+# Systems: erp, bank, excel
+# Environment: production`}</code>
             </pre>
           </div>
         </section>
@@ -126,7 +126,7 @@ print(f"Monitoring: {app.monitor_status}")
             {[
               { title: "Add RAG evaluation", description: "Test retrieval relevance and context utilization for RAG pipelines." },
               { title: "Write more test cases", description: "Cover edge cases, multi-turn conversations, and adversarial inputs." },
-              { title: "Set up CI integration", description: "Run Grysics verification automatically on every deployment." },
+              { title: "Set up CI integration", description: "Run Grysics execution workflows automatically on every trigger." },
             ].map((item) => (
               <div key={item.title} className="flex gap-3 items-start group cursor-pointer">
                 <ArrowRight className="w-4 h-4 text-gray-400 mt-1 flex-shrink-0 group-hover:text-gray-900 transition-colors" />

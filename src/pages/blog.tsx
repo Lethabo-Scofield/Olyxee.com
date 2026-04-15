@@ -11,29 +11,29 @@ const categories = ["All", "Product", "Engineering", "Research", "Company"];
 const posts = [
   {
     slug: "introducing-grysics",
-    title: "Introducing Grysics: Verification-First AI Deployment",
+    title: "Introducing Grysics: AI Execution for Business Operations",
     category: "Product",
     date: "Mar 28, 2026",
     readTime: "6 min",
-    excerpt: "Today we're publicly unveiling Grysics, a verification engine that tests, validates, and monitors AI models before and after they reach production.",
+    excerpt: "Today we're publicly unveiling Grysics, an AI execution engine that turns business goals into completed work across your tools and systems.",
     featured: true,
     gradient: "from-indigo-500 via-purple-500 to-pink-500",
     content: [
       {
         heading: "The problem we set out to solve",
-        body: `Every AI team hits the same wall. The model works beautifully in a notebook: high accuracy, clean outputs, fast inference. Then it ships to production, and things start breaking. Not catastrophically at first. Subtle drift, edge cases the test set didn't cover, hardware constraints nobody accounted for.\n\nWe spent months talking to engineering teams across industries. The stories were remarkably consistent: weeks of debugging deployment failures, models silently degrading in production, no clear way to know if a model would actually work on target hardware before committing to a rollout.\n\nThe tooling gap was obvious. There were great tools for training models, great tools for serving them, but almost nothing for the critical step in between: verifying that a model is actually ready for the real world.`,
+        body: `Every operations team hits the same wall. Finance, compliance, and HR teams lose days every month on tasks that follow the same pattern every time — pulling data from multiple systems, reconciling records, generating reports, and chasing approvals.\n\nWe spent months talking to teams across industries. The stories were remarkably consistent: 40+ hours a month spent on manual reconciliation, 5 different systems touched per report, and 3-5 days just to close the books each month.\n\nThe tooling gap was obvious. There were great tools for individual tasks, but nothing that could take a business goal and execute it end-to-end across tools and data sources.`,
       },
       {
         heading: "What Grysics does",
-        body: `Grysics is a verification engine. It sits between your training pipeline and your deployment target, and it answers one question: will this model work correctly in production?\n\nIt does this through three layers of verification:\n\n**Pre-deployment testing**: Grysics runs your model against hardware-specific profiles, testing inference speed, memory footprint, numerical precision, and edge-case behavior on the exact configuration you're deploying to.\n\n**Continuous validation**: Once deployed, Grysics monitors model behavior in real-time. It tracks output distributions, latency patterns, and resource usage.\n\n**Drift detection**: When model performance degrades, whether from data drift, hardware issues, or environmental changes, Grysics detects it immediately.`,
+        body: `Grysics is an AI execution engine. You describe what needs to be done, and Grysics handles the rest — planning, coordinating, and executing across your tools and systems.\n\nIt works through three layers:\n\n**Goal interpretation**: Describe the business outcome you need. Grysics breaks it down into structured, executable steps automatically.\n\n**Cross-system execution**: Grysics connects to your ERP, databases, spreadsheets, and communication tools to execute each step without manual intervention.\n\n**Transparent delivery**: Every action is logged with timestamps, inputs, and outputs. Results are delivered as reports, notifications, or audit trails — fully traceable.`,
       },
       {
-        heading: "Why verification-first matters",
-        body: `The AI industry has largely treated deployment as an afterthought. Train the model, optimize it a bit, push it to production, and hope for the best. When things go wrong, debug reactively.\n\nWe think this is backwards. Verification should be a first-class step in the pipeline, not something you do when things break, but something that prevents breakage in the first place.\n\nThis is the same shift that happened in software engineering with CI/CD and automated testing. Nobody ships code without tests anymore. We believe the same should be true for AI models.`,
+        heading: "Why execution-first matters",
+        body: `Most businesses have treated operational automation as a patchwork of scripts, integrations, and manual steps. Build a workflow here, connect an API there, and hope nothing breaks when the process changes.\n\nWe think this is backwards. AI should handle the entire execution — not just individual steps, but the full goal-to-delivery pipeline.\n\nThis is the same shift that happened when businesses moved from spreadsheets to ERP systems. The next shift is from manual workflows to AI-driven execution. We believe teams should describe outcomes, not build processes.`,
       },
       {
         heading: "What's next",
-        body: `Grysics v1.0 is available today through our developer portal. We're starting with support for PyTorch and TensorFlow models targeting edge devices and cloud endpoints.\n\nOver the coming months, we'll be expanding hardware support, adding team collaboration features, and deepening our monitoring capabilities. If you're shipping AI to production and want to stop guessing whether it'll work. We built Grysics for you.`,
+        body: `Grysics is available today for early access. We're starting with finance, compliance, and operations workflows — the areas where teams spend the most time on repetitive, pattern-based work.\n\nOver the coming months, we'll be expanding system integrations, adding team collaboration features, and deepening our approval workflow capabilities. If your team is stuck on operational busywork and you want to start describing goals instead of building processes — we built Grysics for you.`,
       },
     ],
   },
@@ -83,7 +83,7 @@ const posts = [
     category: "Product",
     date: "Feb 18, 2026",
     readTime: "7 min",
-    excerpt: "How Grysics continuously monitors deployed models and catches performance degradation in real-time.",
+    excerpt: "How Grysics continuously monitors execution workflows and ensures consistent, reliable outputs across systems.",
     featured: false,
     gradient: "from-violet-500 via-purple-500 to-indigo-500",
   },

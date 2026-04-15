@@ -18,7 +18,7 @@ const fadeUp = {
 const Technology: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO title="Technology" description="The architecture powering Olyxee's Grysics platform. Learn about our verification pipeline, hardware abstraction, and deployment infrastructure." path="/technology" />
+      <SEO title="Technology" description="The architecture powering Olyxee's Grysics platform. Learn about our AI execution engine, goal-to-task pipeline, and operational infrastructure." path="/technology" />
       <div className="grain" />
       <Header />
 
@@ -61,8 +61,8 @@ const Technology: FC = () => {
             </div>
           </motion.div>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.5 }} className="text-lg text-neutral-500 leading-relaxed max-w-3xl font-light">
-            Built on Grysics, our verification engine for AI deployment. It handles the entire
-            lifecycle from model verification to production monitoring.
+            Built on Grysics, our AI execution engine. It turns business goals into completed work,
+            handling planning, coordination, and execution across your tools and systems.
           </motion.p>
         </div>
       </section>
@@ -76,14 +76,14 @@ const Technology: FC = () => {
               Grysics <em className="text-neutral-500">Architecture</em>
             </h2>
             <p className="text-neutral-400 text-lg max-w-3xl font-light leading-relaxed">
-              The verification engine and infrastructure layer powering Olyxee's AI deployment platform.
+              The AI execution engine and infrastructure layer powering Olyxee's operational platform.
             </p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5 rounded-2xl overflow-hidden">
             {[
-              { icon: Shield, title: "Verification Pipeline", description: "Automated testing that validates model correctness across target hardware configurations before deployment." },
-              { icon: Layers, title: "Hardware Abstraction", description: "A unified deployment interface that abstracts away device-specific complexity. Write once, deploy anywhere." },
-              { icon: BarChart3, title: "Runtime Monitoring", description: "Continuous observability for deployed models: tracking accuracy drift, latency, and resource usage." },
+              { icon: Shield, title: "Goal Interpretation", description: "Describe what needs to be done. Grysics breaks down business goals into structured, executable task plans automatically." },
+              { icon: Layers, title: "System Integration", description: "Connects to ERP, Excel, databases, and more. Works with your existing tools without manual workflow building." },
+              { icon: BarChart3, title: "Transparent Execution", description: "Every action is logged with timestamps, inputs, and outputs. Full audit trail for compliance and traceability." },
             ].map((item, idx) => {
               const Icon = item.icon;
               return (
@@ -108,11 +108,11 @@ const Technology: FC = () => {
           </motion.div>
           <div className="divide-y divide-neutral-200 max-w-3xl">
             {[
-              { step: "01", title: "Model Ingestion", description: "Import from any framework: PyTorch, TensorFlow, ONNX. Grysics automatically analyzes architecture and dependencies.", icon: GitBranch },
-              { step: "02", title: "Verification", description: "Comprehensive tests against target hardware profiles. Identify accuracy degradation, latency bottlenecks, and edge cases.", icon: Shield },
-              { step: "03", title: "Optimization", description: "Automatic quantization and runtime optimization tuned for your target hardware.", icon: Cpu },
-              { step: "04", title: "Deployment", description: "One-click deployment to any supported device. Grysics handles containerization and configuration.", icon: Zap },
-              { step: "05", title: "Monitoring", description: "Real-time observability with drift detection, anomaly alerts, and automated rollback.", icon: BarChart3 },
+              { step: "01", title: "Goal Input", description: "Describe the business outcome you need. Grysics interprets the goal and identifies the systems, data, and steps required.", icon: GitBranch },
+              { step: "02", title: "Planning", description: "Grysics creates a structured execution plan, mapping each step to the right tools and data sources.", icon: Shield },
+              { step: "03", title: "Execution", description: "Automated execution across connected systems — ERP, databases, spreadsheets, and communication tools.", icon: Cpu },
+              { step: "04", title: "Delivery", description: "Results are delivered as reports, notifications, or audit trails. Every output is traceable.", icon: Zap },
+              { step: "05", title: "Monitoring", description: "Full visibility into every action taken. Approval workflows let you set human checkpoints at any stage.", icon: BarChart3 },
             ].map((item, idx) => {
               const Icon = item.icon;
               return (
@@ -165,7 +165,7 @@ const Technology: FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp}>
             <h2 className="font-serif text-4xl sm:text-5xl tracking-tight text-neutral-900 mb-6">
-              Start building <em className="text-neutral-400">with Grysics</em>
+              Get started <em className="text-neutral-400">with Grysics</em>
             </h2>
             <Link href="/developers" className="inline-flex items-center gap-2 px-8 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-black transition-all text-sm tracking-wide">
               Get Started <ArrowRight className="w-4 h-4" />

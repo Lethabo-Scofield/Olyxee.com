@@ -190,7 +190,7 @@ const EdgeAI: FC = () => {
               href="/products/grysics"
               className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-neutral-600 border border-neutral-200 rounded-full font-medium hover:bg-neutral-50 hover:text-neutral-900 transition-all text-sm"
             >
-              Verify with Grysics
+              Try Grysics
             </Link>
           </motion.div>
         </div>
@@ -252,8 +252,8 @@ const EdgeAI: FC = () => {
               },
               {
                 label: "Grysics",
-                role: "Quality Control",
-                description: "Verifies AI works correctly before and after deployment. The trust layer that ensures reliability.",
+                role: "Execution Engine",
+                description: "Turns business goals into completed operations. Plans, coordinates, and executes across tools and systems end-to-end.",
                 bg: "/images/gradient-yellow-green.webp",
               },
             ].map((item, idx) => (

@@ -55,10 +55,10 @@ const Overview: FC<OverviewProps> = ({ onNavigate }) => {
         <h2 className="text-xl font-semibold text-gray-900 mb-4 pb-2 border-b border-gray-100">Key capabilities</h2>
         <div className="space-y-3">
           {[
-            { title: "Model Verification", description: "Automatically test model accuracy, latency, and memory usage against target hardware profiles before deployment." },
-            { title: "Hardware Abstraction", description: "Write once, deploy anywhere. Grysics abstracts device-specific complexity into a unified interface." },
-            { title: "Automatic Optimization", description: "Quantization, pruning, and runtime optimization tuned for your target hardware." },
-            { title: "Production Monitoring", description: "Real-time observability with drift detection, anomaly alerts, and automated rollback." },
+            { title: "Goal Interpretation", description: "Describe what needs to be done. Grysics breaks down business goals into structured, executable task plans automatically." },
+            { title: "System Integration", description: "Connects to ERP, Excel, databases, and more. Grysics works with your existing tools without manual workflow building." },
+            { title: "Cross-system Execution", description: "Automated execution across connected systems for finance, compliance, HR, and enterprise operations." },
+            { title: "Transparent Audit Trail", description: "Every action logged with timestamps, inputs, and outputs. Full traceability for compliance." },
           ].map((item) => (
             <div key={item.title} className="flex gap-3 items-start">
               <div className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2.5 flex-shrink-0" />

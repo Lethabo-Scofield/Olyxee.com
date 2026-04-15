@@ -256,14 +256,14 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       <div className="mb-16">
         <h2 className="text-xl font-semibold text-gray-900 mb-4">What is Olyxee?</h2>
         <div className="text-[15px] text-gray-600 leading-relaxed space-y-3 max-w-3xl">
-          <p>Olyxee is an AI infrastructure company building tools for reliable AI systems. Our flagship product, <strong className="text-gray-900">Grysics</strong>, is a verification engine that ensures AI applications (chatbots, RAG pipelines, and agent workflows) work correctly and reliably in real-world use.</p>
-          <p>Grysics handles testing, evaluation, failure detection, performance monitoring, and continuous verification, giving teams confidence that their AI applications behave as expected before and after deployment.</p>
+          <p>Olyxee is an AI infrastructure company building tools for reliable AI systems. Our flagship product, <strong className="text-gray-900">Grysics</strong>, is an AI execution engine that turns business goals into completed work across your tools, data sources, and systems.</p>
+          <p>Grysics handles planning, coordination, and execution — from financial reconciliation and compliance reporting to HR operations — giving teams confidence that their operational workflows are completed accurately and on time.</p>
         </div>
       </div>
 
       <div className="mb-16">
         <h2 className="text-xl font-semibold text-gray-900 mb-2">Supported frameworks</h2>
-        <p className="text-sm text-gray-500 mb-4">Grysics works with AI applications built on any stack.</p>
+        <p className="text-sm text-gray-500 mb-4">Grysics connects to the tools your team already uses.</p>
         <div className="flex flex-wrap gap-2">
           {["OpenAI", "Anthropic", "LangChain", "LlamaIndex", "Hugging Face", "Custom LLMs"].map(fw => (
             <span key={fw} className="text-sm font-medium text-gray-700 bg-gray-50 border border-gray-200 rounded-lg px-4 py-2">{fw}</span>
@@ -301,7 +301,7 @@ function EarlyAccessGate() {
         Sign in for early access
       </h2>
       <p className="text-base text-gray-500 leading-relaxed mb-8 max-w-md mx-auto">
-        Full documentation is available to early access members. Sign in or request access to explore the API, Grysics engine, and guides.
+        Full documentation is available to early access members. Sign in or request access to explore the API, Grysics execution engine, and guides.
       </p>
       <div className="flex flex-col sm:flex-row gap-3 justify-center">
         <a
@@ -323,7 +323,7 @@ function EarlyAccessGate() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {[
             { title: "API Reference", desc: "REST API, Python SDK, and CLI documentation" },
-            { title: "Grysics Engine", desc: "Verification engine guides for chatbots, RAG, and agents" },
+            { title: "Grysics Engine", desc: "AI execution engine for finance, compliance, and operations" },
             { title: "Guides & Tutorials", desc: "Testing strategies, configuration, and best practices" },
           ].map(item => (
             <div key={item.title} className="text-left p-4 rounded-xl bg-neutral-50 border border-neutral-100">
@@ -340,7 +340,7 @@ function EarlyAccessGate() {
 
 function APIOverview() {
   return (
-    <DocPage title="API Overview" subtitle="Integrate Grysics into your AI application pipeline with our Python SDK, REST API, and CLI tools.">
+    <DocPage title="API Overview" subtitle="Integrate Grysics into your operational workflows with our Python SDK, REST API, and CLI tools.">
       <DocSection title="Authentication">
         <p>All API requests require an API key. Generate keys from the Olyxee dashboard or via the API, and include it in every request:</p>
         <CodeBlock language="bash" code={`curl https://api.olyxee.com/v1/apps \\\n  -H "Authorization: Bearer oly_sk_..."`} />
@@ -352,9 +352,9 @@ function APIOverview() {
       <DocSection title="Key concepts">
         <div className="space-y-3 mt-2">
           {[
-            { title: "Applications", desc: "Register your chatbot, RAG pipeline, or agent workflow as an application. Each app gets its own verification history and monitoring dashboard.", bg: "/images/gradient-blue-pink.webp" },
-            { title: "Verification runs", desc: "Test your application against predefined checks: accuracy, consistency, hallucination detection, and retrieval relevance.", bg: "/images/gradient-pastel.webp" },
-            { title: "Monitoring", desc: "Continuous production monitoring with alerts for quality drift, hallucination spikes, and latency degradation.", bg: "/images/gradient-yellow-green.webp" },
+            { title: "Goals", desc: "Define business goals that Grysics will plan and execute. Each goal gets its own execution history and audit trail.", bg: "/images/gradient-blue-pink.webp" },
+            { title: "Execution runs", desc: "Grysics breaks goals into steps and executes them across your connected systems — ERP, databases, spreadsheets, and more.", bg: "/images/gradient-pastel.webp" },
+            { title: "Monitoring", desc: "Full visibility into every action taken. Approval workflows let you set human checkpoints at any stage.", bg: "/images/gradient-yellow-green.webp" },
             { title: "API Keys", desc: "Create scoped keys for different environments (dev, staging, production) with configurable permissions and expiration.", bg: "/images/gradient-orange-purple.webp" },
           ].map(item => (
             <div key={item.title} className="rounded-lg p-4 hover:shadow-sm transition-all relative overflow-hidden">
@@ -372,9 +372,9 @@ function APIOverview() {
       <DocSection title="SDKs & tools">
         <div className="space-y-3 mt-2">
           {[
-            { title: "Python SDK", desc: "Full-featured SDK for connecting, verifying, evaluating, and monitoring AI applications.", bg: "/images/gradient-abstract-blue.webp" },
+            { title: "Python SDK", desc: "Full-featured SDK for defining goals, triggering execution, and retrieving results.", bg: "/images/gradient-abstract-blue.webp" },
             { title: "REST API", desc: "HTTP API for programmatic access from any language or platform.", bg: "/images/gradient-orange-pink.webp" },
-            { title: "CLI", desc: "Command-line tools for quick application verification and monitoring.", bg: "/images/gradient-purple.webp" },
+            { title: "CLI", desc: "Command-line tools for quick goal execution and workflow management.", bg: "/images/gradient-purple.webp" },
           ].map(item => (
             <div key={item.title} className="rounded-lg p-4 hover:shadow-sm transition-all relative overflow-hidden">
               <div className="absolute inset-0 bg-cover bg-center pointer-events-none" style={{ backgroundImage: `url("${item.bg}")` }} />
@@ -408,23 +408,23 @@ function Quickstart() {
         <CodeBlock language="bash" code={`grysics init my-project\ncd my-project`} />
       </DocSection>
 
-      <DocSection title="3. Connect your AI application">
-        <p>Point Grysics at your chatbot, RAG pipeline, or agent:</p>
-        <CodeBlock language="python" code={`import grysics\n\napp = grysics.connect(\n    endpoint="http://localhost:8000/chat",\n    type="rag"  # or "chatbot", "agent"\n)`} />
+      <DocSection title="3. Define your goal">
+        <p>Describe the business outcome you need:</p>
+        <CodeBlock language="python" code={`import grysics\n\ngoal = grysics.goal(\n    description="Reconcile Q1 financial transactions",\n    systems=["erp", "bank"]  # connected data sources\n)`} />
       </DocSection>
 
-      <DocSection title="4. Run verification">
-        <p>Run test cases against your application:</p>
-        <CodeBlock language="python" code={`results = app.verify()\n\nprint(results.summary())\n# ✓ Accuracy: 94.3% (above threshold)\n# ✓ Consistency: 97.1% (same input → same output)\n# ✓ Retrieval relevance: 91.8%\n# ✓ Latency p95: 320ms`} />
+      <DocSection title="4. Execute">
+        <p>Run the goal and get results:</p>
+        <CodeBlock language="python" code={`result = goal.execute()\n\nprint(result.summary())\n# ✓ Records processed: 847\n# ✓ Discrepancies found: 3 (2 resolved automatically)\n# ✓ Variance identified: $12.4K\n# ✓ Execution time: 2m 14s`} />
       </DocSection>
 
-      <DocSection title="5. Monitor in production">
-        <p>Enable continuous verification:</p>
-        <CodeBlock language="python" code={`app.monitor(\n    check_interval=300,\n    alert_on=["hallucination", "drift", "latency"]\n)\n\nprint("Monitoring active")`} />
+      <DocSection title="5. Review audit trail">
+        <p>Every action is logged and traceable:</p>
+        <CodeBlock language="python" code={`result.audit_trail(\n    format="detailed",\n    include=["inputs", "outputs", "timestamps"]\n)\n\nprint("Audit trail exported")`} />
       </DocSection>
 
       <DocCallout type="info">
-        For detailed evaluation options, see the <strong>Testing &amp; Verification</strong> section under Grysics.
+        For detailed execution options, see the <strong>Use Cases</strong> section under Grysics.
       </DocCallout>
     </DocPage>
   );
@@ -528,7 +528,7 @@ function APIKeys() {
 
 function SupportedModels() {
   return (
-    <DocPage title="Supported Platforms" subtitle="AI frameworks and application types compatible with Grysics.">
+    <DocPage title="Supported Platforms" subtitle="Systems and tools compatible with Grysics.">
       <DocSection title="LLM Providers">
         <DocTable
           headers={["Provider", "Integration", "Status"]}
@@ -543,9 +543,9 @@ function SupportedModels() {
       </DocSection>
 
       <DocSection title="Application types">
-        <p>Grysics verification works with chatbots, RAG pipelines, agent workflows, and custom LLM applications. Any system with a queryable endpoint can be tested.</p>
+        <p>Grysics works with finance, compliance, HR, and enterprise reporting workflows. Any system with an API or data export can be connected.</p>
         <DocCallout type="tip">
-          For RAG systems, Grysics can evaluate the full pipeline: retrieval quality, context relevance, and final response accuracy, not just the LLM output.
+          For financial workflows, Grysics can execute the full pipeline: data extraction, reconciliation, report generation, and delivery — not just individual steps.
         </DocCallout>
       </DocSection>
 
@@ -566,35 +566,35 @@ function SupportedModels() {
 
 function GrysicsOverview({ onNavigate }: { onNavigate?: (tab: string, page: string) => void }) {
   return (
-    <DocPage title="What is Grysics" subtitle="The verification engine for AI applications.">
+    <DocPage title="What is Grysics" subtitle="The AI execution engine for business operations.">
       <DocSection title="Overview">
-        <p><strong>Grysics</strong> is a system for verifying, testing, and monitoring AI applications: chatbots, RAG pipelines, and agent workflows.</p>
-        <p>Instead of discovering failures in production, Grysics catches hallucinations, retrieval failures, inconsistencies, and performance issues before they reach users.</p>
+        <p><strong>Grysics</strong> is an AI execution engine that turns business goals into completed work. Describe what needs to be done, and Grysics plans, coordinates, and executes across your tools and systems.</p>
+        <p>Instead of building complex automations or manual workflows, Grysics handles the full goal-to-delivery pipeline for finance, compliance, HR, and enterprise operations.</p>
       </DocSection>
 
-      <DocSection title="Choose your application type">
-        <p>Grysics works differently depending on what you're building. Pick your application type to see relevant checks, test examples, and setup instructions.</p>
+      <DocSection title="Choose your use case">
+        <p>Grysics handles different operational workflows. Pick your use case to see relevant capabilities and setup instructions.</p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
           {[
             {
               id: "grysics-chatbots",
-              title: "Chatbots",
-              desc: "Customer support, Q&A assistants, conversational AI",
-              checks: ["Accuracy", "Consistency", "Tone"],
+              title: "Finance",
+              desc: "Reconciliation, reporting, expense management",
+              checks: ["Reconciliation", "Reporting", "Audit"],
               bg: "/images/gradient-blue-pink.webp",
             },
             {
               id: "grysics-rag",
-              title: "RAG Pipelines",
-              desc: "Document Q&A, knowledge bases, search-augmented answers",
-              checks: ["Retrieval", "Context", "Faithfulness"],
+              title: "Compliance",
+              desc: "Audit-ready reports, regulatory reporting, data validation",
+              checks: ["Validation", "Traceability", "Reports"],
               bg: "/images/gradient-yellow-green.webp",
             },
             {
               id: "grysics-agents",
-              title: "Agents",
-              desc: "Tool-using agents, multi-step workflows, autonomous systems",
-              checks: ["Tool usage", "Planning", "Safety"],
+              title: "Operations",
+              desc: "HR workflows, cross-system reporting, data aggregation",
+              checks: ["Execution", "Integration", "Delivery"],
               bg: "/images/gradient-orange-purple.webp",
             },
           ].map(item => (
@@ -622,9 +622,9 @@ function GrysicsOverview({ onNavigate }: { onNavigate?: (tab: string, page: stri
       <DocSection title="How it works">
         <div className="space-y-3 mt-2">
           {[
-            { step: "1", title: "Connect", desc: "Point Grysics at your application endpoint. Works with any HTTP API. No code changes needed.", bg: "/images/gradient-blue-pink.webp" },
-            { step: "2", title: "Test", desc: "Run checks for accuracy, consistency, hallucination, and more. Use built-in or custom test cases.", bg: "/images/gradient-pastel.webp" },
-            { step: "3", title: "Monitor", desc: "Enable continuous verification in production. Get alerts when quality drops.", bg: "/images/gradient-yellow-green.webp" },
+            { step: "1", title: "Describe", desc: "Define your business goal in plain language. Grysics interprets it and identifies the required systems and data.", bg: "/images/gradient-blue-pink.webp" },
+            { step: "2", title: "Execute", desc: "Grysics plans and executes across your connected systems — ERP, databases, spreadsheets, and more.", bg: "/images/gradient-pastel.webp" },
+            { step: "3", title: "Deliver", desc: "Results are delivered as reports, notifications, or audit trails. Every action is logged and traceable.", bg: "/images/gradient-yellow-green.webp" },
           ].map(item => (
             <div key={item.step} className="flex gap-4 items-start p-4 rounded-lg relative overflow-hidden">
               <div className="absolute inset-0 bg-cover bg-center pointer-events-none" style={{ backgroundImage: `url("${item.bg}")` }} />
