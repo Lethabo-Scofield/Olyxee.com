@@ -104,8 +104,8 @@ const About: FC = () => {
             className="relative rounded-3xl overflow-hidden aspect-[21/9]"
           >
             <Image
-              src="/images/Community.jpg"
-              alt="Olyxee team"
+              src="/images/about-hero.png"
+              alt="Innovate, transform and build the future together"
               fill
               sizes="(max-width: 768px) 100vw, 1200px"
               className="object-cover"
