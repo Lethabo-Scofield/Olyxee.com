@@ -110,7 +110,7 @@ const Technology: FC = () => {
             {[
               { step: "01", title: "Goal Input", description: "Describe the business outcome you need. Grysics interprets the goal and identifies the systems, data, and steps required.", icon: GitBranch },
               { step: "02", title: "Planning", description: "Grysics creates a structured execution plan, mapping each step to the right tools and data sources.", icon: Shield },
-              { step: "03", title: "Execution", description: "Automated execution across connected systems — ERP, databases, spreadsheets, and communication tools.", icon: Cpu },
+              { step: "03", title: "Execution", description: "Automated execution across connected systems including ERP, databases, spreadsheets, and communication tools.", icon: Cpu },
               { step: "04", title: "Delivery", description: "Results are delivered as reports, notifications, or audit trails. Every output is traceable.", icon: Zap },
               { step: "05", title: "Monitoring", description: "Full visibility into every action taken. Approval workflows let you set human checkpoints at any stage.", icon: BarChart3 },
             ].map((item, idx) => {

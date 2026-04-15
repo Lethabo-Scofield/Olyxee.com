@@ -19,7 +19,7 @@ const fadeUp = {
 const About: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO title="About" description="Olyxee is an AI infrastructure company. We build systems that let organizations put AI to work across their operations — reliably, transparently, and at scale." path="/about" />
+      <SEO title="About" description="Olyxee is an AI infrastructure company. We build systems that let organizations put AI to work across their operations: reliably, transparently, and at scale." path="/about" />
       <div className="grain" />
       <Header />
 
@@ -58,7 +58,7 @@ const About: FC = () => {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-lg sm:text-xl text-neutral-500 leading-relaxed font-light max-w-2xl mx-auto"
           >
-            Olyxee is an AI infrastructure company. We build systems that let organizations put AI to work across their operations — reliably, transparently, and at scale.
+            Olyxee is an AI infrastructure company. We build systems that let organizations put AI to work across their operations: reliably, transparently, and at scale.
           </motion.p>
         </div>
       </section>
@@ -147,7 +147,7 @@ const About: FC = () => {
               {
                 num: "03",
                 title: "Infrastructure should disappear",
-                text: "Teams should describe outcomes and get results — without worrying about orchestration underneath."
+                text: "Teams should describe outcomes and get results, without worrying about orchestration underneath."
               },
             ].map((item, idx) => (
               <motion.div
@@ -180,10 +180,10 @@ const About: FC = () => {
             >
               <p className="text-sm font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-8">From the Founder</p>
               <blockquote className="font-serif text-2xl sm:text-3xl lg:text-4xl text-white leading-snug mb-8 tracking-tight">
-                &ldquo;We started Olyxee because the hardest part of AI isn&apos;t intelligence — it&apos;s getting that intelligence to actually do something useful.&rdquo;
+                &ldquo;We started Olyxee because the hardest part of AI isn&apos;t intelligence. It&apos;s getting that intelligence to actually do something useful.&rdquo;
               </blockquote>
               <p className="text-base text-neutral-400 leading-relaxed font-light mb-10">
-                The models are smart enough. What&apos;s missing is the infrastructure that lets them operate — connecting to real systems, executing real workflows, and doing it in a way teams can trust.
+                The models are smart enough. What&apos;s missing is the infrastructure that lets them operate. Connecting to real systems, executing real workflows, and doing it in a way teams can trust.
               </p>
               <a
                 href="https://www.linkedin.com/in/lethabo-scofield-17b37a257/"
@@ -250,7 +250,7 @@ const About: FC = () => {
               Join us
             </h3>
             <p className="text-base text-neutral-500 mb-10 max-w-md mx-auto leading-relaxed font-light">
-              We&apos;re building a team of people who want to make AI work in the real world — not just in demos.
+              We&apos;re building a team of people who want to make AI work in the real world, not just in demos.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link href="/careers" className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-neutral-900 text-white rounded-full font-medium hover:bg-black transition-all text-sm tracking-wide">

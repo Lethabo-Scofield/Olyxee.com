@@ -257,7 +257,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
         <h2 className="text-xl font-semibold text-gray-900 mb-4">What is Olyxee?</h2>
         <div className="text-[15px] text-gray-600 leading-relaxed space-y-3 max-w-3xl">
           <p>Olyxee is an AI infrastructure company building tools for reliable AI systems. Our flagship product, <strong className="text-gray-900">Grysics</strong>, is an AI execution engine that turns business goals into completed work across your tools, data sources, and systems.</p>
-          <p>Grysics handles planning, coordination, and execution — from financial reconciliation and compliance reporting to HR operations — giving teams confidence that their operational workflows are completed accurately and on time.</p>
+          <p>Grysics handles planning, coordination, and execution across financial reconciliation, compliance reporting, and HR operations, giving teams confidence that their operational workflows are completed accurately and on time.</p>
         </div>
       </div>
 
@@ -353,7 +353,7 @@ function APIOverview() {
         <div className="space-y-3 mt-2">
           {[
             { title: "Goals", desc: "Define business goals that Grysics will plan and execute. Each goal gets its own execution history and audit trail.", bg: "/images/gradient-blue-pink.webp" },
-            { title: "Execution runs", desc: "Grysics breaks goals into steps and executes them across your connected systems — ERP, databases, spreadsheets, and more.", bg: "/images/gradient-pastel.webp" },
+            { title: "Execution runs", desc: "Grysics breaks goals into steps and executes them across your connected systems including ERP, databases, spreadsheets, and more.", bg: "/images/gradient-pastel.webp" },
             { title: "Monitoring", desc: "Full visibility into every action taken. Approval workflows let you set human checkpoints at any stage.", bg: "/images/gradient-yellow-green.webp" },
             { title: "API Keys", desc: "Create scoped keys for different environments (dev, staging, production) with configurable permissions and expiration.", bg: "/images/gradient-orange-purple.webp" },
           ].map(item => (
@@ -545,7 +545,7 @@ function SupportedModels() {
       <DocSection title="Application types">
         <p>Grysics works with finance, compliance, HR, and enterprise reporting workflows. Any system with an API or data export can be connected.</p>
         <DocCallout type="tip">
-          For financial workflows, Grysics can execute the full pipeline: data extraction, reconciliation, report generation, and delivery — not just individual steps.
+          For financial workflows, Grysics can execute the full pipeline: data extraction, reconciliation, report generation, and delivery, not just individual steps.
         </DocCallout>
       </DocSection>
 
@@ -623,7 +623,7 @@ function GrysicsOverview({ onNavigate }: { onNavigate?: (tab: string, page: stri
         <div className="space-y-3 mt-2">
           {[
             { step: "1", title: "Describe", desc: "Define your business goal in plain language. Grysics interprets it and identifies the required systems and data.", bg: "/images/gradient-blue-pink.webp" },
-            { step: "2", title: "Execute", desc: "Grysics plans and executes across your connected systems — ERP, databases, spreadsheets, and more.", bg: "/images/gradient-pastel.webp" },
+            { step: "2", title: "Execute", desc: "Grysics plans and executes across your connected systems including ERP, databases, spreadsheets, and more.", bg: "/images/gradient-pastel.webp" },
             { step: "3", title: "Deliver", desc: "Results are delivered as reports, notifications, or audit trails. Every action is logged and traceable.", bg: "/images/gradient-yellow-green.webp" },
           ].map(item => (
             <div key={item.step} className="flex gap-4 items-start p-4 rounded-lg relative overflow-hidden">

@@ -481,7 +481,7 @@ export default function GrysicsPage() {
               {
                 step: "02",
                 title: "Execute",
-                description: "Grysics plans and executes across your connected systems — ERP, databases, spreadsheets, and communication tools.",
+                description: "Grysics plans and executes across your connected systems including ERP, databases, spreadsheets, and communication tools.",
               },
               {
                 step: "03",
