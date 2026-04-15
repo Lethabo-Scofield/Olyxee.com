@@ -19,111 +19,118 @@ const fadeUp = {
 const About: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO title="About" description="Olyxee builds AI execution infrastructure. We help teams turn business goals into completed work across their tools and systems." path="/about" />
+      <SEO title="About" description="Olyxee is an AI infrastructure company. We build systems that let organizations put AI to work across their operations — reliably, transparently, and at scale." path="/about" />
       <div className="grain" />
       <Header />
 
-      <section className="pt-32 sm:pt-44 pb-20 sm:pb-32 px-4 sm:px-6">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
+      <section className="pt-36 sm:pt-48 pb-20 sm:pb-32 px-4 sm:px-6">
+        <div className="max-w-3xl mx-auto text-center">
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="flex items-center gap-3 mb-6"
+            className="text-sm font-medium text-neutral-400 uppercase tracking-widest mb-6"
           >
-            <Image src="/Logo/Olyxee_Logo.png" alt="Olyxee" width={24} height={24} className="opacity-40" />
-            <span className="text-sm font-medium text-neutral-400 uppercase tracking-widest">About</span>
-          </motion.div>
+            About Olyxee
+          </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.05 }}
-            className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.08] mb-6"
+            className="font-serif text-4xl sm:text-5xl lg:text-[3.5rem] text-neutral-900 tracking-tight leading-[1.1] mb-8"
           >
-            AI that does the work,<br /><em className="text-orange-500">not just the thinking</em>
+            Building the infrastructure for AI that operates
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-base sm:text-xl text-neutral-500 leading-relaxed max-w-2xl font-light"
+            className="text-lg sm:text-xl text-neutral-500 leading-relaxed font-light max-w-2xl mx-auto"
           >
-            Olyxee builds infrastructure that turns business goals into completed work — across your tools, systems, and teams.
+            Olyxee is an AI infrastructure company. We build systems that let organizations put AI to work across their operations — reliably, transparently, and at scale.
           </motion.p>
         </div>
       </section>
 
-      <section className="pb-20 sm:pb-32">
+      <section className="py-20 sm:py-32 border-t border-neutral-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {[
-              { stat: "1", label: "Goal in, work out", description: "Describe what needs to happen. Grysics plans and executes it." },
-              { stat: "40+", label: "System integrations", description: "ERP, databases, spreadsheets, email — connected out of the box." },
-              { stat: "100%", label: "Auditable", description: "Every action logged. Full trail. SOC 2 compliant." },
-            ].map((item, idx) => (
-              <motion.div
-                key={item.label}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-                custom={idx}
-                variants={fadeUp}
-                className="bg-neutral-50 rounded-2xl p-8 sm:p-10 border border-neutral-100"
-              >
-                <div className="text-3xl sm:text-4xl font-serif text-neutral-900 mb-2">{item.stat}</div>
-                <p className="text-sm font-semibold text-neutral-700 mb-2">{item.label}</p>
-                <p className="text-sm text-neutral-500 font-light leading-relaxed">{item.description}</p>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-12 lg:gap-20">
+            <motion.p
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              custom={0}
+              variants={fadeUp}
+              className="text-sm font-semibold text-neutral-400 uppercase tracking-[0.2em] lg:pt-2"
+            >
+              Our Mission
+            </motion.p>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              custom={1}
+              variants={fadeUp}
+            >
+              <p className="font-serif text-2xl sm:text-3xl lg:text-[2.5rem] text-neutral-900 leading-snug tracking-tight mb-8">
+                Most AI today advises. We believe it should execute. Our mission is to close the gap between what AI can understand and what it can actually do inside an organization.
+              </p>
+              <p className="text-base sm:text-lg text-neutral-500 leading-relaxed font-light max-w-2xl">
+                Teams everywhere are stuck translating AI recommendations into manual work — copying data between systems, running processes by hand, coordinating across tools. We&apos;re building the layer that removes that gap entirely.
+              </p>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 sm:py-28 bg-neutral-50">
+      <section className="py-20 sm:py-32 bg-neutral-50">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            custom={0}
-            variants={fadeUp}
-            className="mb-12"
-          >
-            <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900 mb-4">
-              How we think
-            </h2>
-            <p className="text-neutral-500 text-base sm:text-lg font-light max-w-xl">
-              Three principles behind everything we build.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {[
-              { num: "01", title: "Execution over advice", description: "AI should do the work, not just suggest what to do." },
-              { num: "02", title: "Trust through transparency", description: "Every decision is logged and auditable. No black boxes." },
-              { num: "03", title: "Built for real operations", description: "Finance, compliance, HR — we solve for the messy, regulated parts of business." },
-            ].map((value, idx) => (
-              <motion.div
-                key={value.title}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-                custom={idx}
-                variants={fadeUp}
-                className="bg-white rounded-2xl p-8 sm:p-10 border border-neutral-100"
-              >
-                <span className="text-xs font-mono text-neutral-300 tracking-wider mb-4 block">{value.num}</span>
-                <h3 className="text-lg font-semibold text-neutral-900 mb-2">{value.title}</h3>
-                <p className="text-sm text-neutral-500 leading-relaxed font-light">{value.description}</p>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-12 lg:gap-20">
+            <motion.p
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              custom={0}
+              variants={fadeUp}
+              className="text-sm font-semibold text-neutral-400 uppercase tracking-[0.2em] lg:pt-2"
+            >
+              What We Believe
+            </motion.p>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              custom={1}
+              variants={fadeUp}
+            >
+              <div className="space-y-12">
+                <div>
+                  <h3 className="text-xl font-semibold text-neutral-900 mb-3">AI should do work, not just generate answers</h3>
+                  <p className="text-base text-neutral-500 leading-relaxed font-light max-w-2xl">
+                    The most valuable AI doesn&apos;t sit in a chat window. It connects to your systems, understands your goals, and completes tasks end-to-end — without someone manually stitching it all together.
+                  </p>
+                </div>
+                <div className="border-t border-neutral-200 pt-12">
+                  <h3 className="text-xl font-semibold text-neutral-900 mb-3">Trust is built through transparency</h3>
+                  <p className="text-base text-neutral-500 leading-relaxed font-light max-w-2xl">
+                    When AI takes action in high-stakes environments — finance, compliance, operations — every step must be auditable. We design for organizations that need to verify, not just trust.
+                  </p>
+                </div>
+                <div className="border-t border-neutral-200 pt-12">
+                  <h3 className="text-xl font-semibold text-neutral-900 mb-3">Infrastructure should disappear</h3>
+                  <p className="text-base text-neutral-500 leading-relaxed font-light max-w-2xl">
+                    The best infrastructure is invisible. Teams should describe outcomes and get results — without worrying about the orchestration, integrations, or coordination underneath.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 sm:py-28">
+      <section className="py-20 sm:py-32">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -131,12 +138,12 @@ const About: FC = () => {
               custom={0}
               variants={fadeUp}
             >
-              <div className="inline-block px-3 py-1 bg-neutral-100 text-neutral-600 text-xs font-semibold uppercase tracking-widest rounded-full mb-5">From the Founder</div>
-              <blockquote className="font-serif text-2xl sm:text-3xl lg:text-4xl text-neutral-900 leading-snug mb-6 tracking-tight">
-                &ldquo;Every company has AI that thinks. Almost none have AI that actually does the work.&rdquo;
+              <p className="text-sm font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-6">From the Founder</p>
+              <blockquote className="font-serif text-2xl sm:text-3xl lg:text-4xl text-neutral-900 leading-snug mb-8 tracking-tight">
+                &ldquo;We started Olyxee because the hardest part of AI isn&apos;t intelligence — it&apos;s getting that intelligence to actually do something useful inside an organization.&rdquo;
               </blockquote>
               <p className="text-base text-neutral-500 leading-relaxed font-light mb-8">
-                I started Olyxee because I saw teams drowning in manual workflows that AI should have handled years ago. The models were smart enough — what was missing was the execution layer. That&apos;s what we&apos;re building.
+                The models are smart enough. What&apos;s missing is the infrastructure that lets them operate — connecting to real systems, executing real workflows, and doing it in a way that teams can trust and verify.
               </p>
               <div className="pt-6 border-t border-neutral-100">
                 <a
@@ -148,8 +155,8 @@ const About: FC = () => {
                   <Image
                     src="/images/lethabo-scofield.png"
                     alt="Lethabo Scofield"
-                    width={40}
-                    height={40}
+                    width={44}
+                    height={44}
                     className="rounded-full object-cover"
                   />
                   <div>
@@ -177,10 +184,10 @@ const About: FC = () => {
                 className="mx-auto opacity-30 mb-8"
               />
               <h3 className="font-serif text-2xl sm:text-3xl tracking-tight mb-4 text-neutral-900">
-                Build with us
+                Join us
               </h3>
               <p className="text-sm text-neutral-500 mb-8 max-w-sm mx-auto leading-relaxed font-light">
-                We&apos;re hiring people who want to make AI do real work.
+                We&apos;re building a team of people who want to make AI work in the real world — not just in demos.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Link href="/careers" className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-black transition-all text-sm tracking-wide">
