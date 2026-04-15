@@ -98,7 +98,7 @@ function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.1 }}
-          className="font-serif text-[2rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] text-neutral-900 leading-[1.05] tracking-tight px-2 sm:px-0"
+          className="font-serif text-[2.25rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] text-neutral-900 leading-[1.05] tracking-tight px-2 sm:px-0"
         >
           Research and Infrastructure
           <br />
@@ -120,10 +120,10 @@ function HeroSection() {
             autoPlay loop muted playsInline preload="metadata"
           />
           <div className="absolute inset-0 rounded-2xl sm:rounded-3xl pointer-events-none ring-1 ring-inset ring-black/5" />
-          <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 z-20">
+          <div className="absolute bottom-3 right-3 sm:bottom-6 sm:right-6 z-20">
             <Link
               href="/products"
-              className="group inline-flex items-center gap-2 px-5 py-2.5 sm:px-7 sm:py-3.5 bg-white/90 backdrop-blur-md text-neutral-900 rounded-full font-medium hover:bg-white transition-all text-sm tracking-wide shadow-lg shadow-black/10 border border-white/60"
+              className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-7 sm:py-3.5 bg-white/90 backdrop-blur-md text-neutral-900 rounded-full font-medium hover:bg-white transition-all text-xs sm:text-sm tracking-wide shadow-lg shadow-black/10 border border-white/60"
             >
               Try Grysics <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </Link>
@@ -293,7 +293,7 @@ function ApproachSection() {
   return (
     <section className="py-20 sm:py-32 lg:py-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
-        <div className="p-8 sm:p-12 lg:p-16">
+        <div className="sm:p-8 lg:p-12">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -599,13 +599,13 @@ function CookieBanner({ onDismiss }: { onDismiss: () => void }) {
       animate={{ y: 0, opacity: 1 }}
       exit={{ y: 100, opacity: 0 }}
       transition={{ type: "spring", damping: 25 }}
-      className="fixed bottom-6 left-6 right-6 z-50 flex justify-center"
+      className="fixed bottom-4 left-3 right-3 sm:bottom-6 sm:left-6 sm:right-6 z-50 flex justify-center"
       role="dialog"
       aria-modal="false"
       aria-label="Cookie consent"
     >
       <div
-        className="flex flex-col sm:flex-row items-center gap-4 px-6 py-4 max-w-lg rounded-2xl"
+        className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 px-4 sm:px-6 py-3 sm:py-4 max-w-lg w-full rounded-2xl"
         style={{
           background: 'rgba(255,255,255,0.75)',
           backdropFilter: 'blur(24px) saturate(180%)',

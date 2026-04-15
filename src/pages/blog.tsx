@@ -277,9 +277,9 @@ const Blog: FC = () => {
             transition={{ duration: 0.5 }}
             className="border-t border-neutral-100 pt-16 sm:pt-20"
           >
-            <div className="flex items-center justify-between mb-12">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6 mb-12">
               <h2 className="text-sm font-medium text-neutral-400 uppercase tracking-widest">More articles</h2>
-              <div className="flex items-center gap-1 overflow-x-auto">
+              <div className="flex items-center gap-1 overflow-x-auto -mx-1 px-1">
                 {categories.map((cat) => (
                   <button
                     key={cat}

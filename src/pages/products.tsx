@@ -54,12 +54,12 @@ function StickyImageGallery() {
   return (
     <section
       ref={containerRef}
-      style={{ height: `${total * 100}vh` }}
+      style={{ height: `${total * 70}vh` }}
       className="relative"
     >
       <div className="sticky top-0 h-screen flex flex-col items-center justify-center px-4 sm:px-6">
         <div className="max-w-6xl w-full mx-auto">
-          <div className="flex items-center justify-between mb-4 sm:mb-6">
+          <div className="flex items-center justify-between mb-3 sm:mb-6">
             <div className="flex items-center gap-3">
               <span className="text-xs font-mono text-neutral-300">0{activeIndex + 1}</span>
               <AnimatePresence mode="wait">
@@ -87,7 +87,7 @@ function StickyImageGallery() {
             </div>
           </div>
 
-          <div className="relative w-full rounded-2xl overflow-hidden bg-neutral-50 border border-neutral-100" style={{ aspectRatio: '16/9' }}>
+          <div className="relative w-full rounded-2xl overflow-hidden bg-neutral-50 border border-neutral-100 aspect-[4/3] sm:aspect-[16/9]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}

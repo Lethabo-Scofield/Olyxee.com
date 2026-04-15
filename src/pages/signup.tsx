@@ -31,7 +31,7 @@ const SignUp: FC = () => {
 
       <section className="pt-32 sm:pt-44 pb-28 sm:pb-36 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }}>
               <motion.div custom={0} variants={fadeUp} className="flex items-center gap-2 mb-8">
                 <span className="accent-dot" />

@@ -101,6 +101,18 @@ Desktop CTA: "Get in Touch"
 - **Global CSS**: `overflow-x: hidden` on html/body, `-webkit-text-size-adjust: 100%`, tap-highlight transparent
 - **Image best practice**: All Next.js Image components with CSS size overrides use explicit `style={{ width, height }}` to prevent aspect ratio warnings
 
+## Mobile Responsiveness
+- **Hero text**: `text-[2.25rem] sm:text-6xl md:text-7xl lg:text-[5.5rem]` for readable mobile headings
+- **Products gallery**: Uses `aspect-[4/3] sm:aspect-[16/9]` for better mobile viewing; scroll height at `70vh` per slide
+- **About banner image**: `aspect-[16/9] sm:aspect-[21/9]` prevents ultra-thin strip on mobile
+- **Blog category filters**: Stack vertically on mobile via `flex-col sm:flex-row`
+- **Research papers**: Author/link rows stack on mobile via `flex-col sm:flex-row`
+- **Signup/Contact forms**: Gap reduced to `gap-12 lg:gap-20` so form is closer to info on mobile
+- **Cookie banner**: Tighter padding and smaller offset on mobile (`left-3 right-3 sm:left-6 sm:right-6`)
+- **Approach section**: No inner padding on mobile, padding only at `sm:` breakpoint up
+- **Technology cards**: `p-6 sm:p-10` for comfortable reading on small screens
+- **Em dashes**: All em dashes (`—`) removed sitewide; replaced with commas, colons, or rephrased
+
 ## Key Directories
 - `src/app/` — Next.js App Router pages and layouts
 - `src/pages/` — Next.js Pages Router pages

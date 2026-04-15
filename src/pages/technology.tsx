@@ -87,7 +87,7 @@ const Technology: FC = () => {
             ].map((item, idx) => {
               const Icon = item.icon;
               return (
-                <motion.div key={item.title} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={idx} variants={fadeUp} className="bg-neutral-950 p-10 hover:bg-white/[0.03] transition-colors">
+                <motion.div key={item.title} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={idx} variants={fadeUp} className="bg-neutral-950 p-6 sm:p-10 hover:bg-white/[0.03] transition-colors">
                   <Icon className="w-6 h-6 text-neutral-500 mb-5" />
                   <h3 className="text-lg font-semibold mb-3">{item.title}</h3>
                   <p className="text-sm text-neutral-500 leading-relaxed">{item.description}</p>

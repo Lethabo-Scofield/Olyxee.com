@@ -108,9 +108,9 @@ const Research: FC = () => {
                 <p className="text-sm sm:text-[15px] text-neutral-500 leading-relaxed font-light max-w-3xl mb-4">
                   {paper.description}
                 </p>
-                <div className="flex items-center justify-between">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
                   <p className="text-sm text-neutral-400">{paper.authors}</p>
-                  <div className="flex items-center gap-1.5 text-sm text-neutral-400 group-hover:text-blue-500 transition-colors font-medium">
+                  <div className="flex items-center gap-1.5 text-sm text-neutral-400 group-hover:text-blue-500 transition-colors font-medium flex-shrink-0">
                     <span>Read paper</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
                   </div>

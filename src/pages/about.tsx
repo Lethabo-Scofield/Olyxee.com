@@ -101,7 +101,7 @@ const About: FC = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.8 }}
-            className="relative rounded-3xl overflow-hidden aspect-[21/9]"
+            className="relative rounded-3xl overflow-hidden aspect-[16/9] sm:aspect-[21/9]"
           >
             <Image
               src="/images/about-hero.png"
@@ -111,7 +111,7 @@ const About: FC = () => {
               className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/60 via-transparent to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-12">
+            <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-12">
               <p className="text-white/80 text-sm font-light tracking-wide">Building from Johannesburg, for the world.</p>
             </div>
           </motion.div>
