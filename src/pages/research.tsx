@@ -15,7 +15,7 @@ const papers = [
     year: "2026",
     category: "Architecture",
     description: "Proposes a residual-augmented sparse attention mechanism that preserves long-range dependencies while reducing quadratic complexity. By routing residual pathways through sparse attention heads, the method achieves near-full attention quality at a fraction of the compute cost, enabling efficient inference on sequences exceeding 128K tokens.",
-    url: "#",
+    url: "https://arxiv.org/abs/2603.15031",
   },
   {
     title: "Reducing Hallucinations in Production AI Applications Through Real-Time Verification Pipelines",
@@ -24,7 +24,7 @@ const papers = [
     year: "2025",
     category: "Verification",
     description: "Presents a lightweight verification layer that sits between any LLM and the end user, catching factual inconsistencies and unsupported claims before they reach production. Reduces hallucination rates by up to 62% in RAG-based applications without adding meaningful latency.",
-    url: "#",
+    url: "https://arxiv.org/abs/2510.22751",
   },
   {
     title: "Continuous Evaluation Frameworks for AI-Powered Applications in Production",
@@ -33,7 +33,7 @@ const papers = [
     year: "2025",
     category: "Evaluation",
     description: "Introduces an always-on evaluation system that monitors AI application outputs in real time, scoring accuracy, consistency, and safety across every response. Enables teams to detect quality drift within minutes instead of waiting for user complaints.",
-    url: "#",
+    url: "https://arxiv.org/abs/2603.26718",
   },
   {
     title: "Observability Infrastructure for Agentic AI Workflows",
@@ -42,7 +42,7 @@ const papers = [
     year: "2026",
     category: "Monitoring",
     description: "Defines an observability stack purpose-built for multi-step AI agent workflows, providing trace-level visibility into each decision point, tool call, and retrieval step. Helps engineering teams debug, optimize, and trust complex AI systems running in production.",
-    url: "#",
+    url: "https://arxiv.org/abs/2512.08769",
   },
 ];
 
@@ -92,6 +92,8 @@ const Research: FC = () => {
               <motion.a
                 key={paper.title}
                 href={paper.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.15 + idx * 0.08 }}
