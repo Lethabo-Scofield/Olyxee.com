@@ -9,7 +9,18 @@ Company-level website for Olyxee, a reliability-first AI infrastructure company.
 - **UI Components**: Radix UI, shadcn/ui
 - **Animations**: Framer Motion, Three.js, React Three Fiber
 - **Auth**: better-auth
-- **Database**: LibSQL / Drizzle ORM
+- **Database**: LibSQL / Drizzle ORM (legacy), and Replit-managed PostgreSQL via `pg` for the internship verification system
+
+## Internship Verification System
+- **Public verify page**: `/verify` — code input that returns intern details or "Invalid Code"
+- **Admin gate**: entering the secret `admin@olyxee--hard` on `/verify` calls `POST /api/admin/auth`, which sets an httpOnly cookie (`olyxee_admin`) and redirects to `/admin`
+- **Admin dashboard**: `/admin` — create new interns (auto-generates `OLX-XXXXXXXX` code if blank) and view existing records
+- **API routes** (App Router, `src/app/api/`):
+  - `GET /api/verify?code=...` — public lookup
+  - `GET /api/interns` / `POST /api/interns` — admin-only (cookie-gated via `src/lib/admin-auth.ts`)
+  - `POST/DELETE /api/admin/auth` — set/clear the admin cookie
+- **DB**: `internships` table on Replit PostgreSQL (`DATABASE_URL`); pool reused across HMR via `src/lib/db.ts`
+- **Entry point on site**: "Verify internship" button on the careers page hero
 - **Payments**: Stripe
 - **Math rendering**: KaTeX (CSS imported in root layout)
 

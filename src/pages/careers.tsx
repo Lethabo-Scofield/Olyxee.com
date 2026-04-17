@@ -206,6 +206,12 @@ function HeroSection() {
               >
                 Learn about Olyxee
               </Link>
+              <Link
+                href="/verify"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-white border border-white/25 rounded-full font-medium hover:bg-white/10 transition-all text-sm"
+              >
+                Verify internship
+              </Link>
             </motion.div>
           </div>
         </div>
