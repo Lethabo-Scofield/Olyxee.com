@@ -52,7 +52,7 @@ export default function VerifyPage() {
           return;
         }
       } catch {
-        // fall through to error
+        // fall through
       }
       setLoading(false);
       setError("Admin access denied");
@@ -80,71 +80,76 @@ export default function VerifyPage() {
   }
 
   return (
-    <main className="min-h-screen bg-black text-white flex flex-col items-center px-6 py-16">
+    <main className="min-h-screen bg-white text-neutral-900 flex flex-col items-center px-6 py-20">
       <div className="w-full max-w-xl">
-        <div className="text-center mb-10">
+        <div className="text-center mb-12">
           <Link
             href="/"
-            className="text-sm text-white/60 hover:text-white transition-colors"
+            className="text-sm text-neutral-500 hover:text-neutral-900 transition-colors"
           >
             ← Back to Olyxee
           </Link>
-          <h1 className="mt-6 text-4xl md:text-5xl font-semibold tracking-tight">
-            Internship Verification
+          <h1 className="mt-8 text-5xl md:text-6xl font-semibold tracking-tight text-neutral-900">
+            Verify a role.
           </h1>
-          <p className="mt-3 text-white/60">
-            Enter an Olyxee internship code to verify its authenticity.
+          <p className="mt-4 text-lg text-neutral-500 font-light">
+            Enter an Olyxee code to confirm authenticity.
           </p>
         </div>
 
-        <form onSubmit={onSubmit} className="space-y-4">
+        <form onSubmit={onSubmit} className="space-y-3">
           <input
             type="text"
             value={code}
             onChange={(e) => setCode(e.target.value)}
-            placeholder="e.g. OLX-XXXXXXXX"
+            placeholder="OLX-XXXXXXXX"
             autoComplete="off"
             spellCheck={false}
-            className="w-full rounded-xl bg-white/5 border border-white/10 px-5 py-4 text-lg text-center tracking-wider focus:outline-none focus:border-white/40 transition-colors"
+            className="w-full rounded-2xl bg-neutral-100 border border-transparent px-6 py-5 text-lg text-center tracking-wider text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:bg-white focus:border-neutral-300 transition-all"
           />
           <button
             type="submit"
             disabled={loading || !code.trim()}
-            className="w-full rounded-xl bg-white text-black font-medium py-4 hover:bg-white/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full rounded-full bg-neutral-900 text-white font-medium py-4 hover:bg-neutral-800 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
           >
-            {loading ? "Verifying..." : "Verify"}
+            {loading ? "Verifying…" : "Verify"}
           </button>
         </form>
 
         {error && (
-          <div className="mt-8 rounded-xl border border-red-500/30 bg-red-500/10 px-5 py-4 text-center text-red-300">
+          <div className="mt-8 rounded-2xl bg-red-50 border border-red-100 px-5 py-4 text-center text-red-600 text-sm">
             {error}
           </div>
         )}
 
         {result && (
-          <div className="mt-8 rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-6">
-            <div className="flex items-center gap-2 text-emerald-400 text-sm font-medium mb-4">
-              <span className="inline-block h-2 w-2 rounded-full bg-emerald-400" />
-              Verified Internship
+          <div className="mt-10 rounded-3xl border border-neutral-200 bg-white p-8 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_8px_24px_rgba(0,0,0,0.06)]">
+            <div className="flex items-center gap-2 text-emerald-600 text-xs font-medium uppercase tracking-widest mb-6">
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-500" />
+              Verified
             </div>
-            <dl className="space-y-3">
-              <Row label="Full Name" value={result.full_name} />
+            <dl className="space-y-4">
+              <Row label="Full name" value={result.full_name} />
               <Row label="Role" value={result.role_title} />
-              <Row label="Start Date" value={formatDate(result.start_date)} />
-              <Row label="End Date" value={formatDate(result.end_date)} />
+              <Row label="Start date" value={formatDate(result.start_date)} />
+              <Row label="End date" value={formatDate(result.end_date)} />
               <Row
                 label="Status"
+                value={<span className="capitalize">{result.status}</span>}
+              />
+              <Row
+                label="Code"
                 value={
-                  <span className="capitalize">{result.status}</span>
+                  <span className="font-mono text-neutral-500">
+                    {result.code}
+                  </span>
                 }
               />
-              <Row label="Code" value={result.code} />
             </dl>
           </div>
         )}
 
-        <p className="mt-12 text-center text-xs text-white/30">
+        <p className="mt-16 text-center text-xs text-neutral-400">
           For verification inquiries, contact the Olyxee team.
         </p>
       </div>
@@ -160,9 +165,11 @@ function Row({
   value: React.ReactNode;
 }) {
   return (
-    <div className="flex justify-between gap-4 border-b border-white/5 pb-3 last:border-0 last:pb-0">
-      <dt className="text-white/50 text-sm">{label}</dt>
-      <dd className="text-white text-sm text-right">{value}</dd>
+    <div className="flex justify-between gap-4 border-b border-neutral-100 pb-4 last:border-0 last:pb-0">
+      <dt className="text-neutral-500 text-sm">{label}</dt>
+      <dd className="text-neutral-900 text-sm text-right font-medium">
+        {value}
+      </dd>
     </div>
   );
 }
