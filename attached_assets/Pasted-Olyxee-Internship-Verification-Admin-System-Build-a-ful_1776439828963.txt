@@ -1,0 +1,109 @@
+Olyxee Internship Verification + Admin System
+
+Build a full-stack web application using Node.js (Express) for backend and a simple frontend (HTML/CSS/JS). The system uses PostgreSQL as the database.
+
+Core Features
+1. Public Verification Page (/verify)
+User enters an internship code
+System checks PostgreSQL table internships
+If code exists → return internship details:
+full_name
+role_title
+start_date
+end_date
+status
+If not found → show “Invalid Code”
+2. Hidden Admin Access System
+
+Add a special admin access code input field on the same verification page.
+
+If user enters:
+
+admin@olyxee--hard
+
+Then:
+
+Redirect user to:
+/admin
+
+No login required for MVP (simple secret key system).
+
+3. Admin Dashboard (/admin)
+
+This page allows adding new interns.
+
+Form fields:
+Full Name
+Role Title (AI/ML Engineering Intern etc.)
+Internship Code (manual or auto-generated)
+Start Date
+End Date
+Status (default: active)
+Button:
+“Create Intern”
+
+When submitted:
+
+Insert into PostgreSQL internships table
+Show success message
+4. Database (PostgreSQL)
+
+Create this table:
+
+CREATE TABLE internships (
+  code TEXT PRIMARY KEY,
+  full_name TEXT NOT NULL,
+  role_title TEXT NOT NULL,
+  start_date DATE NOT NULL,
+  end_date DATE NOT NULL,
+  status TEXT DEFAULT 'active',
+  created_at TIMESTAMP DEFAULT NOW()
+);
+5. Backend API
+GET /api/verify
+
+Query:
+
+/api/verify?code=XXXX
+
+Logic:
+
+If code exists → return internship data
+If not → return invalid response
+POST /api/interns
+
+Used by admin page to create interns:
+
+Insert into PostgreSQL
+6. Admin Security Logic
+On frontend, check input:
+if input === "admin@olyxee--hard"
+  redirect to /admin
+No authentication system for MVP (simple secret key gate)
+7. Tech Stack
+Node.js + Express
+PostgreSQL (Supabase or Neon)
+HTML/CSS/JS frontend
+pg library for DB connection
+8. UI Requirements
+Clean minimal design
+Verification page centered input box
+Admin page simple form layout
+Success/error messages clearly shown
+9. System Flow
+Verification:
+
+User → enters code → backend → PostgreSQL → result shown
+
+Admin:
+
+User enters secret admin code → redirected → adds interns → stored in DB
+
+Summary
+
+Build a simple internship verification system with:
+
+public verify page
+hidden admin access via secret code
+admin dashboard to create internship records
+PostgreSQL backend storage
