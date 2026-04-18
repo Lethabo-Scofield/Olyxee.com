@@ -30,11 +30,11 @@ const galleryImages = [
 
 function GrysicsArchitecture() {
   const tools = [
-    { y: 50, label: "Gmail", icon: "https://cdn.simpleicons.org/gmail/EA4335" },
-    { y: 122, label: "Stripe", icon: "https://cdn.simpleicons.org/stripe/635BFF" },
-    { y: 194, label: "QuickBooks", icon: "https://cdn.simpleicons.org/quickbooks/2CA01C" },
-    { y: 266, label: "Plaid", icon: "https://cdn.simpleicons.org/plaid/111111" },
-    { y: 338, label: "Slack", icon: "https://cdn.simpleicons.org/slack/4A154B" },
+    { y: 50, label: "Gmail", icon: "https://www.google.com/s2/favicons?domain=gmail.com&sz=128" },
+    { y: 122, label: "Stripe", icon: "https://www.google.com/s2/favicons?domain=stripe.com&sz=128" },
+    { y: 194, label: "QuickBooks", icon: "https://www.google.com/s2/favicons?domain=quickbooks.intuit.com&sz=128" },
+    { y: 266, label: "Xero", icon: "https://www.google.com/s2/favicons?domain=xero.com&sz=128" },
+    { y: 338, label: "Slack", icon: "https://www.google.com/s2/favicons?domain=slack.com&sz=128" },
   ];
 
   const dots = [
@@ -57,7 +57,6 @@ function GrysicsArchitecture() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
           </span>
-          <span className="text-[10px] sm:text-[11px] font-mono text-neutral-500 uppercase tracking-widest">Live finance workflow</span>
         </div>
         <span className="hidden sm:inline text-[11px] font-mono text-neutral-400">grysics.olyxee.com</span>
       </div>
