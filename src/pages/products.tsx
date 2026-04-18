@@ -30,11 +30,11 @@ const galleryImages = [
 
 function GrysicsArchitecture() {
   const tools = [
-    { y: 60, label: "API" },
-    { y: 130, label: "DB" },
-    { y: 200, label: "Email" },
-    { y: 270, label: "Docs" },
-    { y: 340, label: "Code" },
+    { y: 50, label: "Gmail", icon: "https://cdn.simpleicons.org/gmail/EA4335" },
+    { y: 122, label: "Stripe", icon: "https://cdn.simpleicons.org/stripe/635BFF" },
+    { y: 194, label: "QuickBooks", icon: "https://cdn.simpleicons.org/quickbooks/2CA01C" },
+    { y: 266, label: "Plaid", icon: "https://cdn.simpleicons.org/plaid/111111" },
+    { y: 338, label: "Slack", icon: "https://cdn.simpleicons.org/slack/4A154B" },
   ];
 
   const dots = [
@@ -57,20 +57,20 @@ function GrysicsArchitecture() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
           </span>
-          <span className="text-[10px] sm:text-[11px] font-mono text-neutral-500 uppercase tracking-widest">Live system architecture</span>
+          <span className="text-[10px] sm:text-[11px] font-mono text-neutral-500 uppercase tracking-widest">Live finance workflow</span>
         </div>
         <span className="hidden sm:inline text-[11px] font-mono text-neutral-400">grysics.olyxee.com</span>
       </div>
 
       <svg viewBox="0 0 620 400" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
-        <path id="p-goal" d="M 80 200 C 160 200, 220 200, 270 200" fill="none" stroke="#e5e5e5" strokeWidth="1.5" strokeDasharray="3 3" />
+        <path id="p-goal" d="M 90 200 C 170 200, 220 200, 260 200" fill="none" stroke="#e5e5e5" strokeWidth="1.5" strokeDasharray="3 3" />
         <path id="p-plan" d="M 320 160 C 320 120, 280 90, 220 70" fill="none" stroke="#e5e5e5" strokeWidth="1.5" strokeDasharray="3 3" />
         <path id="p-mem" d="M 320 240 C 320 280, 280 320, 220 350" fill="none" stroke="#e5e5e5" strokeWidth="1.5" strokeDasharray="3 3" />
         {tools.map((t, i) => (
           <path
             key={i}
             id={`p-t${i}`}
-            d={`M 370 200 C 450 200, 480 ${t.y}, 510 ${t.y}`}
+            d={`M 380 200 C 460 200, 490 ${t.y}, 520 ${t.y}`}
             fill="none"
             stroke="#e5e5e5"
             strokeWidth="1.5"
@@ -87,37 +87,42 @@ function GrysicsArchitecture() {
         ))}
 
         <g>
-          <circle cx="50" cy="200" r="26" fill="#ffffff" stroke="#d4d4d4" />
-          <text x="50" y="204" textAnchor="middle" fontSize="10" fill="#525252" fontFamily="ui-monospace, monospace">GOAL</text>
+          <circle cx="50" cy="200" r="30" fill="#ffffff" stroke="#d4d4d4" />
+          <text x="50" y="196" textAnchor="middle" fontSize="9" fill="#737373" fontFamily="ui-monospace, monospace">FINANCE</text>
+          <text x="50" y="210" textAnchor="middle" fontSize="9" fill="#737373" fontFamily="ui-monospace, monospace">GOAL</text>
         </g>
 
         <g>
-          <rect x="270" y="160" width="100" height="80" rx="14" fill="#0a0a0a" />
-          <text x="320" y="195" textAnchor="middle" fontSize="13" fill="#ffffff" fontWeight="600">Grysics</text>
-          <text x="320" y="215" textAnchor="middle" fontSize="10" fill="#a3a3a3" fontFamily="ui-monospace, monospace">core</text>
+          <rect x="260" y="158" width="120" height="84" rx="16" fill="#0a0a0a" />
+          <image href="/images/grysics-logo.png" x="290" y="170" width="28" height="28" />
+          <text x="328" y="190" fontSize="13" fill="#ffffff" fontWeight="600">Grysics</text>
+          <text x="320" y="220" textAnchor="middle" fontSize="9" fill="#a3a3a3" fontFamily="ui-monospace, monospace">execution core</text>
         </g>
 
         <g>
           <rect x="160" y="46" width="120" height="48" rx="10" fill="#dbeafe" stroke="#bfdbfe" />
-          <text x="220" y="74" textAnchor="middle" fontSize="11" fill="#1e40af" fontWeight="500">Planner</text>
+          <text x="220" y="68" textAnchor="middle" fontSize="11" fill="#1e40af" fontWeight="600">Planner</text>
+          <text x="220" y="84" textAnchor="middle" fontSize="9" fill="#3b82f6" fontFamily="ui-monospace, monospace">decompose goal</text>
         </g>
 
         <g>
           <rect x="160" y="326" width="120" height="48" rx="10" fill="#f3e8ff" stroke="#e9d5ff" />
-          <text x="220" y="354" textAnchor="middle" fontSize="11" fill="#6b21a8" fontWeight="500">Memory</text>
+          <text x="220" y="348" textAnchor="middle" fontSize="11" fill="#6b21a8" fontWeight="600">Memory</text>
+          <text x="220" y="364" textAnchor="middle" fontSize="9" fill="#a855f7" fontFamily="ui-monospace, monospace">ledger context</text>
         </g>
 
         {tools.map((t, i) => (
           <g key={i}>
-            <rect x={510 - 32} y={t.y - 16} width="64" height="32" rx="8" fill="#ecfdf5" stroke="#bbf7d0" />
-            <text x={510} y={t.y + 4} textAnchor="middle" fontSize="11" fill="#065f46" fontWeight="500">{t.label}</text>
+            <rect x={520 - 50} y={t.y - 18} width="100" height="36" rx="10" fill="#ffffff" stroke="#e5e5e5" />
+            <image href={t.icon} x={520 - 42} y={t.y - 12} width="24" height="24" />
+            <text x={520 + 4} y={t.y + 4} textAnchor="middle" fontSize="11" fill="#404040" fontWeight="500">{t.label}</text>
           </g>
         ))}
       </svg>
 
       <div className="flex items-center justify-between mt-3 sm:mt-4 text-[10px] sm:text-[11px] font-mono text-neutral-400">
-        <span>↻ goal → plan → execute → verify</span>
-        <span>uptime · stateful</span>
+        <span>↻ goal → plan → execute → reconcile</span>
+        <span>finance · stateful</span>
       </div>
     </div>
   );
