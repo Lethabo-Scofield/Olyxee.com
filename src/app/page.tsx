@@ -242,14 +242,22 @@ function ImageShowcase() {
     { src: "/images/ai-robot.png", alt: "AI Robotics", caption: "Embodied Intelligence" },
     { src: "/images/showcase/commerce.png", alt: "AI Commerce", caption: "Personalised Commerce" },
     { src: "/images/ai-analysis.png", alt: "AI Analysis", caption: "Language Understanding" },
-  ];
-  const rowB = [
     { src: "/images/showcase/insights.png", alt: "AI Insights", caption: "Operational Insights" },
     { src: "/images/showcase/safety.png", alt: "AI Safety", caption: "Workplace Safety Vision" },
     { src: "/images/showcase/search.png", alt: "AI Search", caption: "Search & Discovery" },
     { src: "/images/showcase/robotics.png", alt: "Warehouse Robotics", caption: "Warehouse Automation" },
+  ];
+  const rowB = [
+    { src: "/images/showcase/insights.png", alt: "AI Insights", caption: "Operational Insights" },
     { src: "/images/ai-analysis.png", alt: "AI Analysis", caption: "Language Understanding" },
+    { src: "/images/showcase/safety.png", alt: "AI Safety", caption: "Workplace Safety Vision" },
+    { src: "/images/visualising-ai.png", alt: "Visualising AI", caption: "Visualising AI" },
+    { src: "/images/showcase/search.png", alt: "AI Search", caption: "Search & Discovery" },
+    { src: "/images/ai-robot.png", alt: "AI Robotics", caption: "Embodied Intelligence" },
+    { src: "/images/showcase/robotics.png", alt: "Warehouse Robotics", caption: "Warehouse Automation" },
+    { src: "/images/ai-structures.png", alt: "AI Structures", caption: "Biological Structures" },
     { src: "/images/showcase/research.png", alt: "AI Research", caption: "Mathematical Reasoning" },
+    { src: "/images/showcase/commerce.png", alt: "AI Commerce", caption: "Personalised Commerce" },
     { src: "/images/showcase/agents.png", alt: "AI Agents", caption: "Agent Builders" },
   ];
 
@@ -298,14 +306,14 @@ function ImageShowcase() {
 
         <div
           className="flex gap-5 sm:gap-6 hover:[animation-play-state:paused] will-change-transform"
-          style={{ animation: 'image-scroll 38s linear infinite' }}
+          style={{ animation: 'image-scroll 220s linear infinite' }}
         >
           {doubledA.map(renderCard)}
         </div>
 
         <div
           className="flex gap-5 sm:gap-6 hover:[animation-play-state:paused] will-change-transform"
-          style={{ animation: 'image-scroll 46s linear infinite reverse' }}
+          style={{ animation: 'image-scroll 260s linear infinite reverse' }}
         >
           {doubledB.map(renderCard)}
         </div>
