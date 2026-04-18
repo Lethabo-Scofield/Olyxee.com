@@ -169,6 +169,138 @@ function GrysicsSpotlight() {
   );
 }
 
+function ResearchRoadmap() {
+  const stations = [
+    { x: 80, y: 320, title: "Execution Architectures", code: "R-01", note: "How AI systems run, not just think" },
+    { x: 240, y: 180, title: "Multi-step Coordination", code: "R-02", note: "Sequencing decisions across tools" },
+    { x: 410, y: 300, title: "Stateful Systems", code: "R-03", note: "Memory that survives across runs" },
+    { x: 600, y: 160, title: "Tool & Environment Integration", code: "R-04", note: "Wiring AI into real software" },
+    { x: 800, y: 280, title: "Reliability in Autonomy", code: "R-05", note: "Verifiable, auditable execution" },
+  ];
+
+  const pathD = "M 80 320 C 150 320, 180 180, 240 180 S 350 380, 410 300 S 540 80, 600 160 S 740 360, 800 280";
+
+  return (
+    <section className="py-20 sm:py-32 border-t border-neutral-100 bg-gradient-to-b from-white to-neutral-50/60">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          custom={0}
+          variants={fadeUp}
+          className="mb-10 sm:mb-14 max-w-2xl"
+        >
+          <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.25em] mb-4">Research Roadmap</p>
+          <h2 className="font-serif text-3xl sm:text-4xl tracking-tight text-neutral-900 mb-4">
+            The route from <em className="text-blue-500">intelligence</em> to <em className="text-orange-500">execution</em>
+          </h2>
+          <p className="text-base text-neutral-500 font-light leading-relaxed">
+            Each station marks a research area we are actively shipping into Olyxee products.
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8 }}
+          className="relative rounded-3xl border border-neutral-200 bg-white p-4 sm:p-8 overflow-hidden shadow-[0_30px_80px_-40px_rgba(0,0,0,0.3)]"
+        >
+          <div className="absolute inset-0 opacity-[0.04] pointer-events-none" style={{
+            backgroundImage: 'linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)',
+            backgroundSize: '40px 40px',
+          }} />
+
+          <div className="absolute top-4 right-4 sm:top-6 sm:right-6 flex items-center gap-2 text-[10px] font-mono text-neutral-400 uppercase tracking-widest z-10">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-orange-500" />
+            </span>
+            you are here
+          </div>
+
+          <svg viewBox="0 0 880 420" className="w-full h-auto relative">
+            <defs>
+              <linearGradient id="route-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#3b82f6" />
+                <stop offset="50%" stopColor="#a855f7" />
+                <stop offset="100%" stopColor="#fb923c" />
+              </linearGradient>
+              <filter id="soft-glow">
+                <feGaussianBlur stdDeviation="3" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+
+            <g opacity="0.5" stroke="#d4d4d4" strokeWidth="0.5" fill="none">
+              <path d="M 0 60 Q 220 100 440 70 T 880 90" />
+              <path d="M 0 380 Q 240 360 480 390 T 880 370" />
+            </g>
+
+            <g opacity="0.35" fill="#a3a3a3" fontFamily="ui-monospace, monospace" fontSize="8">
+              <text x="20" y="30">N</text>
+              <text x="20" y="42">↑</text>
+            </g>
+
+            <path id="research-route" d={pathD} fill="none" stroke="#e5e5e5" strokeWidth="6" strokeLinecap="round" />
+            <path d={pathD} fill="none" stroke="url(#route-grad)" strokeWidth="2.5" strokeDasharray="6 6" strokeLinecap="round" filter="url(#soft-glow)" />
+
+            <circle r="7" fill="#fb923c" filter="url(#soft-glow)">
+              <animateMotion dur="14s" repeatCount="indefinite" rotate="auto">
+                <mpath href="#research-route" />
+              </animateMotion>
+            </circle>
+            <circle r="3" fill="#ffffff">
+              <animateMotion dur="14s" repeatCount="indefinite">
+                <mpath href="#research-route" />
+              </animateMotion>
+            </circle>
+
+            {stations.map((s, i) => (
+              <g key={s.code}>
+                <circle cx={s.x} cy={s.y} r="14" fill="#ffffff" stroke="#e5e5e5" strokeWidth="1.5" />
+                <circle cx={s.x} cy={s.y} r="6" fill={i === 2 ? "#fb923c" : "#0a0a0a"} />
+                {i === 2 && (
+                  <circle cx={s.x} cy={s.y} r="14" fill="none" stroke="#fb923c" strokeWidth="1.5" opacity="0.6">
+                    <animate attributeName="r" from="14" to="26" dur="1.8s" repeatCount="indefinite" />
+                    <animate attributeName="opacity" from="0.6" to="0" dur="1.8s" repeatCount="indefinite" />
+                  </circle>
+                )}
+                <text x={s.x} y={s.y - 22} textAnchor="middle" fontSize="9" fontFamily="ui-monospace, monospace" fill="#a3a3a3">{s.code}</text>
+              </g>
+            ))}
+          </svg>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mt-6 sm:mt-8 relative z-10">
+            {stations.map((s, i) => (
+              <motion.div
+                key={s.code}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                custom={i}
+                variants={fadeUp}
+                className="group"
+              >
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-[10px] font-mono text-neutral-400">{s.code}</span>
+                  {i === 2 && <span className="text-[9px] font-mono text-orange-500 uppercase tracking-wider">active</span>}
+                </div>
+                <p className="text-sm font-medium text-neutral-900 group-hover:text-blue-500 transition-colors leading-snug">{s.title}</p>
+                <p className="text-xs text-neutral-500 font-light mt-1 leading-relaxed">{s.note}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
 function ProductGallery() {
   return (
     <section className="py-20 sm:py-28 px-4 sm:px-6 border-t border-neutral-100">
@@ -295,46 +427,8 @@ const ProductsPage: FC = () => {
 
       <ProductGallery />
 
-      <section className="py-20 sm:py-32 border-t border-neutral-100">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            custom={0}
-            variants={fadeUp}
-            className="mb-12 sm:mb-16"
-          >
-            <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.25em] mb-4">Research Direction</p>
-            <h2 className="font-serif text-3xl sm:text-4xl tracking-tight text-neutral-900 mb-6">
-              Olyxee products are built around core research areas
-            </h2>
-          </motion.div>
+      <ResearchRoadmap />
 
-          <div className="space-y-0 divide-y divide-neutral-100">
-            {[
-              "AI execution architectures",
-              "Multi-step system coordination",
-              "Stateful AI systems",
-              "Tool and environment integration",
-              "Reliability in autonomous workflows",
-            ].map((area, idx) => (
-              <motion.div
-                key={area}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                custom={idx}
-                variants={fadeUp}
-                className="group py-6 sm:py-8 flex items-center gap-6"
-              >
-                <span className="text-xs font-mono text-neutral-300 shrink-0">0{idx + 1}</span>
-                <p className="text-base sm:text-lg text-neutral-700 group-hover:text-blue-500 transition-colors duration-300 font-light">{area}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <section className="py-20 sm:py-32 border-t border-neutral-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
