@@ -7,11 +7,13 @@ import Image from "next/image";
 import { ArrowRight, MapPin, X, CheckCircle, Briefcase } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
+type RoleType = "internship" | "paid";
+
 interface Role {
   title: string;
   team: string;
   location: string;
-  type: "internship";
+  type: RoleType;
   description: string;
   responsibilities: string[];
   requirements: string[];
@@ -169,10 +171,10 @@ const roles: Role[] = [
     ],
   },
   {
-    title: "Marketing Intern",
+    title: "Marketing Lead",
     team: "Marketing & Growth",
     location: "Remote",
-    type: "internship",
+    type: "paid",
     description: "Tell the Olyxee story to the people who need to hear it. You'll shape how engineers, founders, and enterprises discover and trust our work.",
     responsibilities: [
       "Plan and execute campaigns across social, email, and developer communities",
@@ -184,10 +186,10 @@ const roles: Role[] = [
     ],
   },
   {
-    title: "Accounting Intern — Grysics",
+    title: "Accountant (Grysics)",
     team: "Finance & Accounting",
     location: "Remote",
-    type: "internship",
+    type: "paid",
     description: "Own the financial heartbeat of Grysics. You'll keep books accurate, reporting clean, and help the team make sharper decisions with real numbers.",
     responsibilities: [
       "Maintain bookkeeping, reconciliations, and monthly close for Grysics",
@@ -195,7 +197,7 @@ const roles: Role[] = [
       "Support budgeting, forecasting, and basic financial analysis",
     ],
     requirements: [
-      "Studying accounting, finance, or a related field — share your CV or LinkedIn",
+      "Background in accounting or finance. Share your CV or LinkedIn.",
     ],
   },
 ];
@@ -235,7 +237,7 @@ function HeroSection() {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="text-base sm:text-lg text-white/70 max-w-xl leading-relaxed font-light mb-8 sm:mb-10"
             >
-              Everyone is racing to ship AI. We're making sure it can be trusted. Join a small team solving the hardest problems in reliability, safety, and interpretability — the work the rest of the industry quietly depends on.
+              Everyone is racing to ship AI. We're making sure it can be trusted. Join a small team solving the hardest problems in reliability, safety, and interpretability. The work the rest of the industry quietly depends on.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 15 }}
@@ -323,12 +325,18 @@ function ValuesSection() {
 }
 
 function RolesSection() {
+  const [filterType, setFilterType] = useState<"all" | RoleType>("all");
   const [filterTeam, setFilterTeam] = useState<string>("All");
   const [selectedRole, setSelectedRole] = useState<Role | null>(null);
   const [formData, setFormData] = useState({ name: "", email: "", portfolio: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
 
-  const filteredRoles = filterTeam === "All" ? roles : roles.filter(r => r.team === filterTeam);
+  const typeFilteredRoles = filterType === "all" ? roles : roles.filter(r => r.type === filterType);
+  const visibleTeams = Array.from(new Set(typeFilteredRoles.map(r => r.team)));
+  const filteredRoles = filterTeam === "All" ? typeFilteredRoles : typeFilteredRoles.filter(r => r.team === filterTeam);
+
+  const paidCount = roles.filter(r => r.type === "paid").length;
+  const internshipCount = roles.filter(r => r.type === "internship").length;
 
   const handleApply = (e: React.FormEvent) => {
     e.preventDefault();
@@ -361,8 +369,34 @@ function RolesSection() {
               Open roles
             </h2>
             <p className="text-neutral-500 text-lg font-light">
-              {roles.length} internships across {teams.length} teams. All remote.
+              {paidCount} paid {paidCount === 1 ? "role" : "roles"} and {internshipCount} internships across {teams.length} teams. All remote.
             </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.05 }}
+            className="inline-flex items-center gap-1 p-1 mb-5 rounded-full bg-neutral-100"
+          >
+            {([
+              { key: "all", label: `All (${roles.length})` },
+              { key: "paid", label: `Paid roles (${paidCount})` },
+              { key: "internship", label: `Internships (${internshipCount})` },
+            ] as { key: "all" | RoleType; label: string }[]).map(opt => (
+              <button
+                key={opt.key}
+                onClick={() => { setFilterType(opt.key); setFilterTeam("All"); }}
+                className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${
+                  filterType === opt.key
+                    ? 'bg-neutral-900 text-white shadow-lg shadow-neutral-900/20'
+                    : 'text-neutral-500 hover:text-neutral-900'
+                }`}
+              >
+                {opt.label}
+              </button>
+            ))}
           </motion.div>
 
           <motion.div
@@ -372,7 +406,7 @@ function RolesSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="flex flex-wrap gap-2 mb-12"
           >
-            {["All", ...teams].map(team => (
+            {["All", ...visibleTeams].map(team => (
               <button
                 key={team}
                 onClick={() => setFilterTeam(team)}
@@ -403,8 +437,12 @@ function RolesSection() {
                   <div className="flex-1 min-w-0">
                     <div className="flex flex-wrap items-center gap-3 mb-2">
                       <h3 className="text-lg sm:text-xl tracking-tight text-neutral-900 group-hover:text-neutral-600 transition-colors">{role.title}</h3>
-                      <span className="text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full bg-blue-50 text-blue-700">
-                        Internship
+                      <span className={`text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full ${
+                        role.type === "paid"
+                          ? "bg-emerald-50 text-emerald-700"
+                          : "bg-blue-50 text-blue-700"
+                      }`}>
+                        {role.type === "paid" ? "Paid" : "Internship"}
                       </span>
                     </div>
                     <p className="text-sm text-neutral-400 leading-relaxed max-w-xl">{role.description}</p>
