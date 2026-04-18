@@ -229,7 +229,7 @@ function HeroSection() {
               transition={{ duration: 1, delay: 0.3 }}
               className="font-serif text-3xl sm:text-5xl lg:text-6xl text-white leading-[1.08] tracking-tight mb-6 sm:mb-8"
             >
-              Build the foundation AI runs on.
+              You belong on this team.
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -237,7 +237,7 @@ function HeroSection() {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="text-base sm:text-lg text-white/70 max-w-xl leading-relaxed font-light mb-8 sm:mb-10"
             >
-              Everyone is racing to ship AI. We're making sure it can be trusted. Join a small team solving the hardest problems in reliability, safety, and interpretability. The work the rest of the industry quietly depends on.
+              If you've ever wanted to work on something that actually matters, this is your invitation. We're a small, focused team building the reliability layer the entire AI industry depends on. Bring your craft, your curiosity, and the thing you've been waiting to build. We'll make room for it.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 15 }}
