@@ -1,12 +1,13 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 import { findRoleByTitle } from "@/lib/careers-roles";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const HIRING_EMAIL = "scofield@olyxee.com";
-const FROM_ADDRESS = "Olyxee Careers <onboarding@resend.dev>";
+const SMTP_USER = "scofield@olyxee.com";
+const FROM_ADDRESS = `"Olyxee Careers" <${SMTP_USER}>`;
 
 const MAX_LEN = {
   name: 120,
@@ -74,7 +75,7 @@ interface BuildArgs {
 
 function buildText(a: BuildArgs): string {
   const lines: string[] = [];
-  lines.push(`New application — ${a.role.title}`);
+  lines.push(`New application: ${a.role.title}`);
   lines.push(`Team: ${a.role.team}`);
   lines.push(`Type: ${a.role.type}`);
   lines.push("");
@@ -136,10 +137,18 @@ function buildHtml(a: BuildArgs): string {
   </body></html>`;
 }
 
-function getResend(): Resend | null {
-  const key = process.env.RESEND_API_KEY;
-  if (!key) return null;
-  return new Resend(key);
+let cachedTransporter: nodemailer.Transporter | null = null;
+function getTransporter(): nodemailer.Transporter | null {
+  const pass = process.env.TITAN_SMTP_PASSWORD;
+  if (!pass) return null;
+  if (cachedTransporter) return cachedTransporter;
+  cachedTransporter = nodemailer.createTransport({
+    host: "smtp.titan.email",
+    port: 465,
+    secure: true,
+    auth: { user: SMTP_USER, pass },
+  });
+  return cachedTransporter;
 }
 
 export async function POST(req: Request) {
@@ -206,7 +215,6 @@ export async function POST(req: Request) {
         answersForEmail.push({ label: q.label, value });
       }
     } else {
-      // Internship path
       if (!school) {
         return NextResponse.json(
           { error: "Please tell us which school you attend or attended." },
@@ -227,9 +235,9 @@ export async function POST(req: Request) {
       }
     }
 
-    const resend = getResend();
-    if (!resend) {
-      console.error("RESEND_API_KEY not configured");
+    const transporter = getTransporter();
+    if (!transporter) {
+      console.error("TITAN_SMTP_PASSWORD not configured");
       return NextResponse.json(
         { error: "Email service is not configured. Please try again later." },
         { status: 500 }
@@ -246,19 +254,19 @@ export async function POST(req: Request) {
       answers: role.questions ? answersForEmail : undefined,
     };
 
-    const subject = `New application — ${role.title} — ${full_name}`;
+    const subject = `New application: ${role.title} — ${full_name}`;
 
-    const result = await resend.emails.send({
-      from: FROM_ADDRESS,
-      to: HIRING_EMAIL,
-      replyTo: email,
-      subject,
-      text: buildText(args),
-      html: buildHtml(args),
-    });
-
-    if (result.error) {
-      console.error("Resend send error", result.error);
+    try {
+      await transporter.sendMail({
+        from: FROM_ADDRESS,
+        to: HIRING_EMAIL,
+        replyTo: email,
+        subject,
+        text: buildText(args),
+        html: buildHtml(args),
+      });
+    } catch (sendErr) {
+      console.error("SMTP send error", sendErr);
       return NextResponse.json(
         { error: "We couldn't deliver your application. Please try again in a moment." },
         { status: 502 }
