@@ -306,14 +306,14 @@ function ImageShowcase() {
 
         <div
           className="flex gap-5 sm:gap-6 hover:[animation-play-state:paused] will-change-transform"
-          style={{ animation: 'image-scroll 220s linear infinite' }}
+          style={{ animation: 'image-scroll 60s linear infinite' }}
         >
           {doubledA.map(renderCard)}
         </div>
 
         <div
           className="flex gap-5 sm:gap-6 hover:[animation-play-state:paused] will-change-transform"
-          style={{ animation: 'image-scroll 260s linear infinite reverse' }}
+          style={{ animation: 'image-scroll 75s linear infinite reverse' }}
         >
           {doubledB.map(renderCard)}
         </div>
