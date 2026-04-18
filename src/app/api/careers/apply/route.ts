@@ -1,9 +1,12 @@
 import { NextResponse } from "next/server";
-import { pool } from "@/lib/db";
+import { Resend } from "resend";
 import { findRoleByTitle } from "@/lib/careers-roles";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
+
+const HIRING_EMAIL = "scofield@olyxee.com";
+const FROM_ADDRESS = "Olyxee Careers <onboarding@resend.dev>";
 
 const MAX_LEN = {
   name: 120,
@@ -11,10 +14,20 @@ const MAX_LEN = {
   portfolio: 500,
   message: 2000,
   answer: 2000,
+  school: 200,
 };
 
 function clean(value: unknown, max: number): string {
   return String(value ?? "").trim().slice(0, max);
+}
+
+function escapeHtml(s: string): string {
+  return s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -49,27 +62,84 @@ function getClientIp(req: Request): string {
   return req.headers.get("x-real-ip") ?? "unknown";
 }
 
-function formatBody(opts: {
-  message: string;
+interface BuildArgs {
+  role: { title: string; team: string; type: string };
+  full_name: string;
+  email: string;
+  school?: string;
   portfolio?: string;
-  answers?: Record<string, string>;
-  questionLabels?: Record<string, string>;
-}): string {
-  const parts: string[] = [];
-  if (opts.portfolio) {
-    parts.push(`Portfolio / links:\n${opts.portfolio}`);
-  }
-  if (opts.answers && Object.keys(opts.answers).length > 0) {
-    parts.push("Application answers:");
-    for (const [id, value] of Object.entries(opts.answers)) {
-      const label = opts.questionLabels?.[id] ?? id;
-      parts.push(`- ${label}: ${value || "(no answer)"}`);
+  message: string;
+  answers?: Array<{ label: string; value: string }>;
+}
+
+function buildText(a: BuildArgs): string {
+  const lines: string[] = [];
+  lines.push(`New application — ${a.role.title}`);
+  lines.push(`Team: ${a.role.team}`);
+  lines.push(`Type: ${a.role.type}`);
+  lines.push("");
+  lines.push(`Name: ${a.full_name}`);
+  lines.push(`Email: ${a.email}`);
+  if (a.school) lines.push(`School: ${a.school}`);
+  if (a.portfolio) lines.push(`Portfolio: ${a.portfolio}`);
+  if (a.answers && a.answers.length > 0) {
+    lines.push("");
+    lines.push("Answers:");
+    for (const { label, value } of a.answers) {
+      lines.push(`  ${label}: ${value || "(no answer)"}`);
     }
   }
-  if (opts.message) {
-    parts.push(`Why this role:\n${opts.message}`);
+  if (a.message) {
+    lines.push("");
+    lines.push("Why this role:");
+    lines.push(a.message);
   }
-  return parts.join("\n\n");
+  return lines.join("\n");
+}
+
+function buildHtml(a: BuildArgs): string {
+  const row = (label: string, value: string) =>
+    `<tr><td style="padding:8px 12px;color:#6b7280;font-size:12px;text-transform:uppercase;letter-spacing:.05em;width:160px;vertical-align:top">${escapeHtml(label)}</td><td style="padding:8px 12px;color:#111827;font-size:14px;vertical-align:top">${value}</td></tr>`;
+
+  const linkOrText = (v: string) =>
+    URL_RE.test(v)
+      ? `<a href="${escapeHtml(v)}" style="color:#111827;text-decoration:underline">${escapeHtml(v)}</a>`
+      : escapeHtml(v);
+
+  let answersHtml = "";
+  if (a.answers && a.answers.length > 0) {
+    answersHtml = a.answers
+      .map((x) => row(x.label, x.value ? linkOrText(x.value) : '<span style="color:#9ca3af">(no answer)</span>'))
+      .join("");
+  }
+
+  const messageBlock = a.message
+    ? `<div style="margin-top:24px;padding:16px;background:#f9fafb;border-radius:12px"><div style="font-size:12px;color:#6b7280;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">Why this role</div><div style="white-space:pre-wrap;color:#111827;font-size:14px;line-height:1.6">${escapeHtml(a.message)}</div></div>`
+    : "";
+
+  return `<!doctype html><html><body style="margin:0;padding:24px;background:#f3f4f6;font-family:-apple-system,BlinkMacSystemFont,Inter,sans-serif">
+    <div style="max-width:640px;margin:0 auto;background:#ffffff;border-radius:16px;overflow:hidden;border:1px solid #e5e7eb">
+      <div style="padding:24px 28px;border-bottom:1px solid #f3f4f6">
+        <div style="font-size:12px;color:#6b7280;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">New application</div>
+        <div style="font-size:22px;color:#111827;font-weight:600">${escapeHtml(a.role.title)}</div>
+        <div style="font-size:13px;color:#6b7280;margin-top:4px">${escapeHtml(a.role.team)} · ${escapeHtml(a.role.type)}</div>
+      </div>
+      <table style="width:100%;border-collapse:collapse">
+        ${row("Name", escapeHtml(a.full_name))}
+        ${row("Email", `<a href="mailto:${escapeHtml(a.email)}" style="color:#111827;text-decoration:underline">${escapeHtml(a.email)}</a>`)}
+        ${a.school ? row("School", escapeHtml(a.school)) : ""}
+        ${a.portfolio ? row("Portfolio", linkOrText(a.portfolio)) : ""}
+        ${answersHtml}
+      </table>
+      <div style="padding:0 28px 24px">${messageBlock}</div>
+    </div>
+  </body></html>`;
+}
+
+function getResend(): Resend | null {
+  const key = process.env.RESEND_API_KEY;
+  if (!key) return null;
+  return new Resend(key);
 }
 
 export async function POST(req: Request) {
@@ -97,6 +167,7 @@ export async function POST(req: Request) {
     const email = clean(body.email, MAX_LEN.email);
     const message = clean(body.message, MAX_LEN.message);
     const portfolio = clean(body.portfolio, MAX_LEN.portfolio);
+    const school = clean(body.school, MAX_LEN.school);
 
     if (!full_name || !email) {
       return NextResponse.json(
@@ -111,8 +182,8 @@ export async function POST(req: Request) {
       );
     }
 
-    const cleanedAnswers: Record<string, string> = {};
-    const questionLabels: Record<string, string> = {};
+    const answersForEmail: Array<{ label: string; value: string }> = [];
+
     if (role.questions && role.questions.length > 0) {
       const rawAnswers =
         body.answers && typeof body.answers === "object"
@@ -120,7 +191,6 @@ export async function POST(req: Request) {
           : {};
       for (const q of role.questions) {
         const value = clean(rawAnswers[q.id], MAX_LEN.answer);
-        questionLabels[q.id] = q.label;
         if (q.required && !value) {
           return NextResponse.json(
             { error: `Please answer: ${q.label}.` },
@@ -133,10 +203,16 @@ export async function POST(req: Request) {
             { status: 400 }
           );
         }
-        cleanedAnswers[q.id] = value;
+        answersForEmail.push({ label: q.label, value });
       }
     } else {
-      // Internship path: portfolio link is required
+      // Internship path
+      if (!school) {
+        return NextResponse.json(
+          { error: "Please tell us which school you attend or attended." },
+          { status: 400 }
+        );
+      }
       if (!portfolio) {
         return NextResponse.json(
           { error: "Please share a link to your portfolio, GitHub, LinkedIn, or CV." },
@@ -151,27 +227,43 @@ export async function POST(req: Request) {
       }
     }
 
-    const formatted = formatBody({
-      message,
+    const resend = getResend();
+    if (!resend) {
+      console.error("RESEND_API_KEY not configured");
+      return NextResponse.json(
+        { error: "Email service is not configured. Please try again later." },
+        { status: 500 }
+      );
+    }
+
+    const args: BuildArgs = {
+      role: { title: role.title, team: role.team, type: role.type },
+      full_name,
+      email,
+      school: school || undefined,
       portfolio: role.questions ? undefined : portfolio,
-      answers: role.questions ? cleanedAnswers : undefined,
-      questionLabels,
+      message,
+      answers: role.questions ? answersForEmail : undefined,
+    };
+
+    const subject = `New application — ${role.title} — ${full_name}`;
+
+    const result = await resend.emails.send({
+      from: FROM_ADDRESS,
+      to: HIRING_EMAIL,
+      replyTo: email,
+      subject,
+      text: buildText(args),
+      html: buildHtml(args),
     });
 
-    await pool.query(
-      `INSERT INTO applications
-        (role_title, role_team, role_type, full_name, email, portfolio, message)
-       VALUES ($1, $2, $3, $4, $5, $6, $7)`,
-      [
-        role.title,
-        role.team,
-        role.type,
-        full_name,
-        email,
-        role.questions ? "" : portfolio,
-        formatted,
-      ]
-    );
+    if (result.error) {
+      console.error("Resend send error", result.error);
+      return NextResponse.json(
+        { error: "We couldn't deliver your application. Please try again in a moment." },
+        { status: 502 }
+      );
+    }
 
     return NextResponse.json({ success: true });
   } catch (err) {

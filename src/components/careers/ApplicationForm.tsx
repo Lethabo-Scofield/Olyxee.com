@@ -1,7 +1,8 @@
-import { FC, useState } from "react";
+import { FC, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle } from "lucide-react";
 import type { Role, Question } from "../../lib/careers-roles";
+import { schools } from "../../lib/schools";
 
 interface Props {
   role: Role;
@@ -24,12 +25,24 @@ const ApplicationForm: FC<Props> = ({ role, onClose }) => {
   const [step, setStep] = useState(0);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [school, setSchool] = useState("");
+  const [schoolFocused, setSchoolFocused] = useState(false);
   const [portfolio, setPortfolio] = useState("");
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [whyMessage, setWhyMessage] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+
+  const schoolBlurTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const schoolSuggestions = useMemo(() => {
+    const q = school.trim().toLowerCase();
+    if (!q) return [];
+    const matches = schools.filter((s) => s.toLowerCase().includes(q));
+    if (matches.length === 1 && matches[0].toLowerCase() === q) return [];
+    return matches.slice(0, 8);
+  }, [school]);
 
   const setAnswer = (id: string, value: string) =>
     setAnswers((prev) => ({ ...prev, [id]: value }));
@@ -41,7 +54,8 @@ const ApplicationForm: FC<Props> = ({ role, onClose }) => {
     return null;
   };
 
-  const validateInternshipPortfolio = (): string | null => {
+  const validateInternshipExtras = (): string | null => {
+    if (!school.trim()) return "Please tell us which school you attend or attended.";
     if (!portfolio.trim()) return "Please share a link to your work.";
     if (!URL_RE.test(portfolio.trim())) return "Please enter a valid URL (starting with http:// or https://).";
     return null;
@@ -86,6 +100,7 @@ const ApplicationForm: FC<Props> = ({ role, onClose }) => {
       body.answers = answers;
     } else {
       body.portfolio = portfolio.trim();
+      body.school = school.trim();
     }
     return body;
   };
@@ -98,8 +113,8 @@ const ApplicationForm: FC<Props> = ({ role, onClose }) => {
     if (!isPaid) {
       const basicErr = validateBasic();
       if (basicErr) return setError(basicErr);
-      const portErr = validateInternshipPortfolio();
-      if (portErr) return setError(portErr);
+      const extrasErr = validateInternshipExtras();
+      if (extrasErr) return setError(extrasErr);
     }
 
     setSubmitting(true);
@@ -207,6 +222,44 @@ const ApplicationForm: FC<Props> = ({ role, onClose }) => {
 
               {!isPaid && (
                 <>
+                  <div className="relative">
+                    <label className={labelClass}>School you attend or attended</label>
+                    <input
+                      type="text"
+                      required
+                      autoComplete="off"
+                      value={school}
+                      onChange={(e) => setSchool(e.target.value)}
+                      onFocus={() => {
+                        if (schoolBlurTimeout.current) clearTimeout(schoolBlurTimeout.current);
+                        setSchoolFocused(true);
+                      }}
+                      onBlur={() => {
+                        schoolBlurTimeout.current = setTimeout(() => setSchoolFocused(false), 120);
+                      }}
+                      className={inputClass}
+                      placeholder="Start typing your school name..."
+                    />
+                    {schoolFocused && schoolSuggestions.length > 0 && (
+                      <div className="absolute z-20 left-0 right-0 mt-1 bg-white border border-neutral-100 rounded-xl shadow-lg max-h-64 overflow-y-auto">
+                        {schoolSuggestions.map((s) => (
+                          <button
+                            key={s}
+                            type="button"
+                            onMouseDown={(e) => {
+                              e.preventDefault();
+                              setSchool(s);
+                              setSchoolFocused(false);
+                            }}
+                            className="block w-full text-left px-4 py-2.5 text-sm text-neutral-700 hover:bg-neutral-50 transition-colors"
+                          >
+                            {s}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                    <p className="text-[11px] text-neutral-400 mt-1.5">Pick from the list or type your own.</p>
+                  </div>
                   <div>
                     <label className={labelClass}>Link to portfolio, GitHub, LinkedIn, or CV</label>
                     <input
