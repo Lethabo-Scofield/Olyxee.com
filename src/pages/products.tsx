@@ -245,7 +245,7 @@ const ProductsPage: FC = () => {
             className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-black shadow-[0_30px_80px_-20px_rgba(0,0,0,0.55)] ring-1 ring-black/10"
           >
             <Image
-              src="/images/products-intro-banner.png"
+              src="/images/products-hero-bg.png"
               alt=""
               fill
               priority
