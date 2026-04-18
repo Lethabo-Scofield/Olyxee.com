@@ -253,7 +253,7 @@ function ImageShowcase() {
   const renderCard = (img: { src: string; alt: string; caption: string }, idx: number) => (
     <div
       key={`${img.alt}-${idx}`}
-      className="group relative flex-shrink-0 w-[260px] sm:w-[360px] lg:w-[440px] aspect-[16/10] rounded-2xl overflow-hidden"
+      className="group relative flex-shrink-0 w-[260px] sm:w-[360px] lg:w-[440px] aspect-[16/10] rounded-2xl overflow-hidden shadow-[0_20px_50px_-12px_rgba(15,23,42,0.35)] hover:shadow-[0_30px_70px_-12px_rgba(15,23,42,0.5)] transition-shadow duration-500"
     >
       <Image
         src={img.src}
