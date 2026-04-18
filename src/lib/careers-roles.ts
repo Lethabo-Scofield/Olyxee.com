@@ -12,18 +12,24 @@ export interface Role {
 
 export const roles: Role[] = [
   {
-    title: "AI Research Intern",
+    title: "AI Researcher",
     team: "AI Research & Development",
     location: "Remote",
-    type: "internship",
-    description: "Push the boundaries of what's possible in AI verification and evaluation. Work on research that shapes how the industry thinks about AI reliability.",
+    type: "paid",
+    description: "Lead original research on AI verification, evaluation, and reliability. Your work will set the technical direction for how the industry trusts AI systems.",
     responsibilities: [
-      "Design and run experiments on model verification and evaluation methods",
-      "Build research prototypes that turn into real products",
-      "Tackle open problems in AI reliability that no one else is solving",
+      "Define and lead a research agenda on model verification, evaluation, and reliability",
+      "Design and run rigorous experiments, then turn results into shipped product capabilities",
+      "Publish findings, influence the broader research community, and represent Olyxee externally",
+      "Mentor engineers and interns and raise the technical bar across the team",
     ],
     requirements: [
-      "Link to portfolio, GitHub, or projects you have worked on",
+      "Master's degree in computer science, machine learning, statistics, or a closely related field. PhD strongly preferred.",
+      "3+ years of applied or academic research experience in ML, NLP, or AI systems.",
+      "Track record of peer-reviewed publications at venues such as NeurIPS, ICML, ICLR, ACL, or EMNLP. Share links to your publications.",
+      "Strong programming skills in Python and deep familiarity with modern ML frameworks (PyTorch, JAX, or similar).",
+      "Experience taking research from idea to working prototype, not just paper.",
+      "Share your CV, Google Scholar or publications page, and GitHub in your application.",
     ],
   },
   {
