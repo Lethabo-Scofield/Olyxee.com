@@ -229,7 +229,7 @@ function HeroSection() {
               transition={{ duration: 1, delay: 0.3 }}
               className="font-serif text-3xl sm:text-5xl lg:text-6xl text-white leading-[1.08] tracking-tight mb-6 sm:mb-8"
             >
-              You belong on this team.
+              Work with people who set the bar.
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -237,7 +237,7 @@ function HeroSection() {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="text-base sm:text-lg text-white/70 max-w-xl leading-relaxed font-light mb-8 sm:mb-10"
             >
-              If you've ever wanted to work on something that actually matters, this is your invitation. We're a small, focused team building the reliability layer the entire AI industry depends on. Bring your craft, your curiosity, and the thing you've been waiting to build. We'll make room for it.
+              We hire a small number of exceptional people and trust them with serious problems. We're building the reliability layer the AI industry runs on. If that's the kind of work you want your name on, take a look at what's open.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 15 }}
