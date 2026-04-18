@@ -356,7 +356,7 @@ function RolesSection() {
 
   return (
     <>
-      <section id="roles" className="py-32 sm:py-44 border-t border-neutral-100">
+      <section id="roles" className="py-16 sm:py-24 lg:py-32 border-t border-neutral-100">
         <div className="max-w-4xl mx-auto px-6 sm:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
