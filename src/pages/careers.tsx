@@ -356,14 +356,14 @@ function RolesSection() {
 
   return (
     <>
-      <section id="roles" className="py-16 sm:py-24 lg:py-32 border-t border-neutral-100">
-        <div className="max-w-4xl mx-auto px-6 sm:px-8">
+      <section id="roles" className="py-16 sm:py-24 lg:py-32 border-t border-neutral-100 bg-white">
+        <div className="max-w-6xl mx-auto px-6 sm:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="mb-16"
+            className="mb-10"
           >
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-4">
               Open roles
@@ -378,7 +378,7 @@ function RolesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.05 }}
-            className="inline-flex items-center gap-1 p-1 mb-5 rounded-full bg-neutral-100"
+            className="inline-flex items-center gap-1 p-1 mb-10 rounded-full bg-neutral-100"
           >
             {([
               { key: "all", label: `All (${roles.length})` },
@@ -399,75 +399,84 @@ function RolesSection() {
             ))}
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="flex flex-wrap gap-2 mb-12"
-          >
-            {["All", ...visibleTeams].map(team => (
-              <button
-                key={team}
-                onClick={() => setFilterTeam(team)}
-                className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${
-                  filterTeam === team
-                    ? 'bg-neutral-900 text-white shadow-lg shadow-neutral-900/20'
-                    : 'bg-neutral-100 text-neutral-500 hover:bg-neutral-200 hover:text-neutral-700'
-                }`}
-              >
-                {team}
-              </button>
-            ))}
-          </motion.div>
-
-          <div className="space-y-0 divide-y divide-neutral-100">
-            <AnimatePresence mode="popLayout">
-              {filteredRoles.map((role, idx) => (
-                <motion.button
-                  key={role.title}
-                  layout
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.4, delay: idx * 0.04 }}
-                  onClick={() => setSelectedRole(role)}
-                  className="w-full text-left py-7 sm:py-8 group flex items-center justify-between gap-6 transition-all"
-                >
-                  <div className="flex-1 min-w-0">
-                    <div className="flex flex-wrap items-center gap-3 mb-2">
-                      <h3 className="text-lg sm:text-xl tracking-tight text-neutral-900 group-hover:text-neutral-600 transition-colors">{role.title}</h3>
-                      <span className={`text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full ${
-                        role.type === "paid"
-                          ? "bg-emerald-50 text-emerald-700"
-                          : "bg-blue-50 text-blue-700"
-                      }`}>
-                        {role.type === "paid" ? "Paid" : "Internship"}
-                      </span>
-                    </div>
-                    <p className="text-sm text-neutral-400 leading-relaxed max-w-xl">{role.description}</p>
-                    <div className="flex flex-wrap items-center gap-4 mt-3 text-xs text-neutral-400">
-                      <span className="flex items-center gap-1.5"><Briefcase className="w-3.5 h-3.5" />{role.team}</span>
-                      <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5" />{role.location}</span>
-                    </div>
-                  </div>
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-neutral-100 flex items-center justify-center group-hover:bg-neutral-900 group-hover:text-white transition-all duration-300">
-                    <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-white transition-colors" />
-                  </div>
-                </motion.button>
-              ))}
-            </AnimatePresence>
-          </div>
-
-          {filteredRoles.length === 0 && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-center py-20"
+          <div className="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-10 lg:gap-16">
+            <motion.aside
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="lg:sticky lg:top-28 lg:self-start"
             >
-              <p className="text-neutral-400 text-sm">No open positions on this team right now.</p>
-            </motion.div>
-          )}
+              <p className="text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.18em] mb-4">
+                Teams
+              </p>
+              <nav className="flex flex-col">
+                {["All", ...visibleTeams].map(team => (
+                  <button
+                    key={team}
+                    onClick={() => setFilterTeam(team)}
+                    className={`text-left py-2 text-sm transition-colors duration-200 ${
+                      filterTeam === team
+                        ? 'text-neutral-900 font-medium'
+                        : 'text-neutral-400 hover:text-neutral-700'
+                    }`}
+                  >
+                    {team}
+                  </button>
+                ))}
+              </nav>
+            </motion.aside>
+
+            <div>
+              <div className="space-y-0 divide-y divide-neutral-100 border-t border-neutral-100">
+                <AnimatePresence mode="popLayout">
+                  {filteredRoles.map((role, idx) => (
+                    <motion.button
+                      key={role.title}
+                      layout
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.4, delay: idx * 0.04 }}
+                      onClick={() => setSelectedRole(role)}
+                      className="w-full text-left py-7 sm:py-8 group flex items-center justify-between gap-6 transition-all"
+                    >
+                      <div className="flex-1 min-w-0">
+                        <div className="flex flex-wrap items-center gap-3 mb-2">
+                          <h3 className="text-lg sm:text-xl tracking-tight text-neutral-900 group-hover:text-neutral-600 transition-colors">{role.title}</h3>
+                          <span className={`text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full ${
+                            role.type === "paid"
+                              ? "bg-emerald-50 text-emerald-700"
+                              : "bg-blue-50 text-blue-700"
+                          }`}>
+                            {role.type === "paid" ? "Paid" : "Internship"}
+                          </span>
+                        </div>
+                        <p className="text-sm text-neutral-400 leading-relaxed max-w-xl">{role.description}</p>
+                        <div className="flex flex-wrap items-center gap-4 mt-3 text-xs text-neutral-400">
+                          <span className="flex items-center gap-1.5"><Briefcase className="w-3.5 h-3.5" />{role.team}</span>
+                          <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5" />{role.location}</span>
+                        </div>
+                      </div>
+                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-neutral-100 flex items-center justify-center group-hover:bg-neutral-900 group-hover:text-white transition-all duration-300">
+                        <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-white transition-colors" />
+                      </div>
+                    </motion.button>
+                  ))}
+                </AnimatePresence>
+              </div>
+
+              {filteredRoles.length === 0 && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="text-center py-20"
+                >
+                  <p className="text-neutral-400 text-sm">No open positions on this team right now.</p>
+                </motion.div>
+              )}
+            </div>
+          </div>
         </div>
       </section>
 
