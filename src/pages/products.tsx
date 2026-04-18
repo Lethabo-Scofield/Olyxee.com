@@ -285,56 +285,6 @@ const ProductsPage: FC = () => {
           </motion.div>
 
           <GrysicsSpotlight />
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-12 sm:mt-16 mb-16 sm:mb-24">
-            <motion.a
-              href="https://grysics.olyxee.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              custom={0}
-              variants={fadeUp}
-              className="rounded-2xl border-2 border-orange-300 bg-neutral-50/60 p-6 sm:p-8 flex flex-col cursor-pointer hover:border-orange-400 hover:shadow-lg hover:shadow-orange-100/50 transition-all duration-300"
-            >
-              <div className="flex items-center gap-3 mb-3">
-                <Image src="/images/grysics-logo.png" alt="Grysics" width={28} height={28} className="rounded-lg" style={{ width: 28, height: 28 }} />
-                <h3 className="text-lg sm:text-xl font-serif tracking-tight text-neutral-900">Grysics</h3>
-              </div>
-              <p className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-1">AI Execution System</p>
-              <p className="text-sm text-neutral-500 font-light leading-relaxed mt-auto">Converts goals into completed workflows across tools and data sources.</p>
-              <span className="inline-flex items-center gap-1.5 text-xs font-medium text-orange-500 mt-4">
-                Visit Grysics <ArrowRight className="w-3 h-3" />
-              </span>
-            </motion.a>
-
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              custom={1}
-              variants={fadeUp}
-              className="rounded-2xl border border-neutral-200 bg-neutral-50/40 p-6 sm:p-8 flex flex-col opacity-60"
-            >
-              <h3 className="text-lg sm:text-xl font-serif tracking-tight text-neutral-500 mb-3">AI Systems Infrastructure Layer</h3>
-              <p className="text-xs font-semibold text-neutral-300 uppercase tracking-wider mb-1">Runtime Infrastructure</p>
-              <p className="text-sm text-neutral-400 font-light leading-relaxed mt-auto">Executing AI workflows across distributed tools with stateful coordination.</p>
-            </motion.div>
-
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              custom={2}
-              variants={fadeUp}
-              className="rounded-2xl border border-neutral-200 bg-neutral-50/40 p-6 sm:p-8 flex flex-col opacity-60"
-            >
-              <h3 className="text-lg sm:text-xl font-serif tracking-tight text-neutral-500 mb-3">Composability Framework</h3>
-              <p className="text-xs font-semibold text-neutral-300 uppercase tracking-wider mb-1">System Architecture</p>
-              <p className="text-sm text-neutral-400 font-light leading-relaxed mt-auto">Connecting models, tools, and workflows into unified execution pipelines.</p>
-            </motion.div>
-          </div>
         </div>
       </section>
 
