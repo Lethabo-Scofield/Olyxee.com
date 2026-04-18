@@ -17,7 +17,6 @@ const fadeUp = {
 };
 
 const galleryImages = [
-  { src: "/images/products-grysics.png", label: "System Integrations" },
   { src: "/images/products-fintech-agents.png", label: "Fintech Agents" },
   { src: "/images/products-multi-agent.png", label: "Multi-Agent Systems" },
   { src: "/images/products-financial-ops.png", label: "Financial Operations" },
