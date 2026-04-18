@@ -171,11 +171,11 @@ function GrysicsSpotlight() {
 
 function ResearchRoadmap() {
   const stations = [
-    { x: 80, y: 320, title: "Execution Architectures", code: "R-01", note: "How AI systems run, not just think" },
-    { x: 240, y: 180, title: "Multi-step Coordination", code: "R-02", note: "Sequencing decisions across tools" },
-    { x: 410, y: 300, title: "Stateful Systems", code: "R-03", note: "Memory that survives across runs" },
-    { x: 600, y: 160, title: "Tool & Environment Integration", code: "R-04", note: "Wiring AI into real software" },
-    { x: 800, y: 280, title: "Reliability in Autonomy", code: "R-05", note: "Verifiable, auditable execution" },
+    { x: 80, y: 320, title: "Execution Architectures", code: "R-01", note: "How AI systems run, not just think", labelPos: "below" as const },
+    { x: 240, y: 180, title: "Multi-step Coordination", code: "R-02", note: "Sequencing decisions across tools", labelPos: "above" as const },
+    { x: 410, y: 300, title: "Stateful Systems", code: "R-03", note: "Memory that survives across runs", labelPos: "below" as const },
+    { x: 600, y: 160, title: "Tool & Environment Integration", code: "R-04", note: "Wiring AI into real software", labelPos: "above" as const },
+    { x: 800, y: 280, title: "Reliability in Autonomy", code: "R-05", note: "Verifiable, auditable execution", labelPos: "below" as const },
   ];
 
   const pathD = "M 80 320 C 150 320, 180 180, 240 180 S 350 380, 410 300 S 540 80, 600 160 S 740 360, 800 280";
@@ -260,41 +260,34 @@ function ResearchRoadmap() {
               </animateMotion>
             </circle>
 
-            {stations.map((s, i) => (
-              <g key={s.code}>
-                <circle cx={s.x} cy={s.y} r="14" fill="#ffffff" stroke="#e5e5e5" strokeWidth="1.5" />
-                <circle cx={s.x} cy={s.y} r="6" fill={i === 2 ? "#fb923c" : "#0a0a0a"} />
-                {i === 2 && (
-                  <circle cx={s.x} cy={s.y} r="14" fill="none" stroke="#fb923c" strokeWidth="1.5" opacity="0.6">
-                    <animate attributeName="r" from="14" to="26" dur="1.8s" repeatCount="indefinite" />
-                    <animate attributeName="opacity" from="0.6" to="0" dur="1.8s" repeatCount="indefinite" />
-                  </circle>
-                )}
-                <text x={s.x} y={s.y - 22} textAnchor="middle" fontSize="9" fontFamily="ui-monospace, monospace" fill="#a3a3a3">{s.code}</text>
-              </g>
-            ))}
-          </svg>
+            {stations.map((s, i) => {
+              const above = s.labelPos === "above";
+              const blockY = above ? s.y - 78 : s.y + 24;
+              const tickY1 = above ? s.y - 14 : s.y + 14;
+              const tickY2 = above ? s.y - 24 : s.y + 24;
+              return (
+                <g key={s.code}>
+                  <line x1={s.x} y1={tickY1} x2={s.x} y2={tickY2} stroke="#d4d4d4" strokeWidth="1" strokeDasharray="2 2" />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mt-6 sm:mt-8 relative z-10">
-            {stations.map((s, i) => (
-              <motion.div
-                key={s.code}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                custom={i}
-                variants={fadeUp}
-                className="group"
-              >
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-[10px] font-mono text-neutral-400">{s.code}</span>
-                  {i === 2 && <span className="text-[9px] font-mono text-orange-500 uppercase tracking-wider">active</span>}
-                </div>
-                <p className="text-sm font-medium text-neutral-900 group-hover:text-blue-500 transition-colors leading-snug">{s.title}</p>
-                <p className="text-xs text-neutral-500 font-light mt-1 leading-relaxed">{s.note}</p>
-              </motion.div>
-            ))}
-          </div>
+                  <g transform={`translate(${s.x - 90}, ${blockY})`}>
+                    <rect width="180" height="54" rx="10" fill="#ffffff" stroke={i === 2 ? "#fb923c" : "#e5e5e5"} strokeWidth={i === 2 ? 1.5 : 1} />
+                    <text x="10" y="18" fontSize="9" fontFamily="ui-monospace, monospace" fill="#a3a3a3">{s.code}{i === 2 ? "  ·  ACTIVE" : ""}</text>
+                    <text x="10" y="33" fontSize="11" fontWeight="600" fill="#0a0a0a">{s.title}</text>
+                    <text x="10" y="47" fontSize="9" fill="#737373">{s.note}</text>
+                  </g>
+
+                  <circle cx={s.x} cy={s.y} r="14" fill="#ffffff" stroke="#e5e5e5" strokeWidth="1.5" />
+                  <circle cx={s.x} cy={s.y} r="6" fill={i === 2 ? "#fb923c" : "#0a0a0a"} />
+                  {i === 2 && (
+                    <circle cx={s.x} cy={s.y} r="14" fill="none" stroke="#fb923c" strokeWidth="1.5" opacity="0.6">
+                      <animate attributeName="r" from="14" to="26" dur="1.8s" repeatCount="indefinite" />
+                      <animate attributeName="opacity" from="0.6" to="0" dur="1.8s" repeatCount="indefinite" />
+                    </circle>
+                  )}
+                </g>
+              );
+            })}
+          </svg>
         </motion.div>
       </div>
     </section>
