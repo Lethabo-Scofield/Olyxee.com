@@ -30,6 +30,142 @@ const galleryImages = [
   { src: "/images/product-supply-network.png", label: "Supply Network Routing" },
 ];
 
+function GrysicsArchitecture() {
+  const tools = [
+    { y: 60, label: "API" },
+    { y: 130, label: "DB" },
+    { y: 200, label: "Email" },
+    { y: 270, label: "Docs" },
+    { y: 340, label: "Code" },
+  ];
+
+  const dots = [
+    { id: "p-goal", dur: "2.6s", color: "#fb923c", begin: "0s" },
+    { id: "p-plan", dur: "2.2s", color: "#3b82f6", begin: "0.4s" },
+    { id: "p-mem", dur: "2.4s", color: "#a855f7", begin: "0.8s" },
+    ...tools.map((_, i) => ({
+      id: `p-t${i}`,
+      dur: `${2 + i * 0.25}s`,
+      color: "#10b981",
+      begin: `${0.2 * i}s`,
+    })),
+  ];
+
+  return (
+    <div className="relative rounded-2xl border border-neutral-200 bg-gradient-to-br from-white to-neutral-50/80 p-4 sm:p-6 overflow-hidden shadow-[0_20px_50px_-25px_rgba(0,0,0,0.25)]">
+      <div className="flex items-center justify-between mb-3 sm:mb-4">
+        <div className="flex items-center gap-2">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+          </span>
+          <span className="text-[10px] sm:text-[11px] font-mono text-neutral-500 uppercase tracking-widest">Live system architecture</span>
+        </div>
+        <span className="hidden sm:inline text-[11px] font-mono text-neutral-400">grysics.olyxee.com</span>
+      </div>
+
+      <svg viewBox="0 0 620 400" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+        <path id="p-goal" d="M 80 200 C 160 200, 220 200, 270 200" fill="none" stroke="#e5e5e5" strokeWidth="1.5" strokeDasharray="3 3" />
+        <path id="p-plan" d="M 320 160 C 320 120, 280 90, 220 70" fill="none" stroke="#e5e5e5" strokeWidth="1.5" strokeDasharray="3 3" />
+        <path id="p-mem" d="M 320 240 C 320 280, 280 320, 220 350" fill="none" stroke="#e5e5e5" strokeWidth="1.5" strokeDasharray="3 3" />
+        {tools.map((t, i) => (
+          <path
+            key={i}
+            id={`p-t${i}`}
+            d={`M 370 200 C 450 200, 480 ${t.y}, 510 ${t.y}`}
+            fill="none"
+            stroke="#e5e5e5"
+            strokeWidth="1.5"
+            strokeDasharray="3 3"
+          />
+        ))}
+
+        {dots.map((d, i) => (
+          <circle key={i} r="4" fill={d.color}>
+            <animateMotion dur={d.dur} begin={d.begin} repeatCount="indefinite">
+              <mpath href={`#${d.id}`} />
+            </animateMotion>
+          </circle>
+        ))}
+
+        <g>
+          <circle cx="50" cy="200" r="26" fill="#ffffff" stroke="#d4d4d4" />
+          <text x="50" y="204" textAnchor="middle" fontSize="10" fill="#525252" fontFamily="ui-monospace, monospace">GOAL</text>
+        </g>
+
+        <g>
+          <rect x="270" y="160" width="100" height="80" rx="14" fill="#0a0a0a" />
+          <text x="320" y="195" textAnchor="middle" fontSize="13" fill="#ffffff" fontWeight="600">Grysics</text>
+          <text x="320" y="215" textAnchor="middle" fontSize="10" fill="#a3a3a3" fontFamily="ui-monospace, monospace">core</text>
+        </g>
+
+        <g>
+          <rect x="160" y="46" width="120" height="48" rx="10" fill="#dbeafe" stroke="#bfdbfe" />
+          <text x="220" y="74" textAnchor="middle" fontSize="11" fill="#1e40af" fontWeight="500">Planner</text>
+        </g>
+
+        <g>
+          <rect x="160" y="326" width="120" height="48" rx="10" fill="#f3e8ff" stroke="#e9d5ff" />
+          <text x="220" y="354" textAnchor="middle" fontSize="11" fill="#6b21a8" fontWeight="500">Memory</text>
+        </g>
+
+        {tools.map((t, i) => (
+          <g key={i}>
+            <rect x={510 - 32} y={t.y - 16} width="64" height="32" rx="8" fill="#ecfdf5" stroke="#bbf7d0" />
+            <text x={510} y={t.y + 4} textAnchor="middle" fontSize="11" fill="#065f46" fontWeight="500">{t.label}</text>
+          </g>
+        ))}
+      </svg>
+
+      <div className="flex items-center justify-between mt-3 sm:mt-4 text-[10px] sm:text-[11px] font-mono text-neutral-400">
+        <span>↻ goal → plan → execute → verify</span>
+        <span>uptime · stateful</span>
+      </div>
+    </div>
+  );
+}
+
+function GrysicsSpotlight() {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.7 }}
+      className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mt-14 sm:mt-20"
+    >
+      <div className="lg:col-span-5 space-y-5">
+        <div className="flex items-center gap-3">
+          <Image src="/images/grysics-logo.png" alt="Grysics" width={36} height={36} className="rounded-lg" style={{ width: 36, height: 36 }} />
+          <div>
+            <p className="text-[11px] font-semibold text-orange-500 uppercase tracking-[0.2em]">Featured · Live</p>
+            <h2 className="font-serif text-3xl sm:text-4xl tracking-tight text-neutral-900 mt-1">Grysics</h2>
+          </div>
+        </div>
+        <p className="text-base sm:text-lg text-neutral-600 font-light leading-relaxed">
+          An AI execution system that turns a single goal into a coordinated chain of tool calls, data lookups, and verifications, running across your stack with stateful memory.
+        </p>
+        <ul className="space-y-2 text-sm text-neutral-600">
+          <li className="flex gap-2"><span className="text-orange-400">•</span> Goal-to-workflow planning across distributed tools</li>
+          <li className="flex gap-2"><span className="text-orange-400">•</span> Stateful memory that persists across runs</li>
+          <li className="flex gap-2"><span className="text-orange-400">•</span> Verifiable, audit-friendly execution traces</li>
+        </ul>
+        <a
+          href="https://grysics.olyxee.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 hover:text-orange-600 transition-colors"
+        >
+          Visit Grysics <ArrowRight className="w-3.5 h-3.5" />
+        </a>
+      </div>
+      <div className="lg:col-span-7">
+        <GrysicsArchitecture />
+      </div>
+    </motion.div>
+  );
+}
+
 function ProductGallery() {
   return (
     <section className="py-20 sm:py-28 px-4 sm:px-6 border-t border-neutral-100">
@@ -149,6 +285,8 @@ const ProductsPage: FC = () => {
               </motion.p>
             </div>
           </motion.div>
+
+          <GrysicsSpotlight />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-12 sm:mt-16 mb-16 sm:mb-24">
             <motion.a
