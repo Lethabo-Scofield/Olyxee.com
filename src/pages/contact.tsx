@@ -64,6 +64,24 @@ const Contact: FC = () => {
         title="Contact"
         description="Get in touch with Olyxee. Reach out for sales, enterprise pilots, partnerships, research collaboration, support, press, careers, or general inquiries."
         path="/contact"
+        keywords={["Contact Olyxee", "Olyxee sales", "Olyxee support", "Olyxee partnerships", "AI infrastructure contact"]}
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          name: "Contact Olyxee",
+          url: "https://olyxee.com/contact",
+          mainEntity: {
+            "@type": "Organization",
+            name: "Olyxee",
+            url: "https://olyxee.com",
+            email: "scofield@olyxee.com",
+            contactPoint: [
+              { "@type": "ContactPoint", contactType: "Sales", email: "scofield@olyxee.com" },
+              { "@type": "ContactPoint", contactType: "Support", email: "scofield@olyxee.com" },
+              { "@type": "ContactPoint", contactType: "Press", email: "scofield@olyxee.com" }
+            ]
+          }
+        }}
       />
       <div className="grain" />
       <Header />

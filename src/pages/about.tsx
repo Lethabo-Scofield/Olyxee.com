@@ -19,7 +19,25 @@ const fadeUp = {
 const About: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO title="About" description="Olyxee is an AI infrastructure company. We build systems that let organizations put AI to work across their operations: reliably, transparently, and at scale." path="/about" />
+      <SEO
+        title="About"
+        description="Olyxee is an AI infrastructure company. We build systems that let organizations put AI to work across their operations: reliably, transparently, and at scale."
+        path="/about"
+        keywords={["About Olyxee", "AI infrastructure company", "Olyxee team", "AI reliability mission", "Lethabo Scofield"]}
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          name: "About Olyxee",
+          url: "https://olyxee.com/about",
+          mainEntity: {
+            "@type": "Organization",
+            name: "Olyxee",
+            url: "https://olyxee.com",
+            logo: "https://olyxee.com/Logo/Olyxee_Logo.png",
+            description: "Olyxee is an AI infrastructure company building verification, evaluation, and monitoring systems for production AI."
+          }
+        }}
+      />
       <div className="grain" />
       <Header />
 

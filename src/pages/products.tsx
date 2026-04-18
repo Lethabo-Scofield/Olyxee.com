@@ -69,7 +69,8 @@ function GrysicsArchitecture() {
         <span className="hidden sm:inline text-[11px] font-mono text-neutral-400">grysics.olyxee.com</span>
       </div>
 
-      <svg viewBox="0 0 800 420" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+      <div className="-mx-4 sm:mx-0 overflow-x-auto sm:overflow-visible px-4 sm:px-0">
+      <svg viewBox="0 0 800 420" className="w-full h-auto min-w-[640px] sm:min-w-0" xmlns="http://www.w3.org/2000/svg">
         <g fontFamily="ui-monospace, monospace">
           <text x="450" y="14" fontSize="9" fill="#a3a3a3" textAnchor="middle">SOURCES</text>
           <text x="680" y="14" fontSize="9" fill="#a3a3a3" textAnchor="middle">DELIVERABLES</text>
@@ -152,6 +153,7 @@ function GrysicsArchitecture() {
           </g>
         ))}
       </svg>
+      </div>
 
       <div className="flex items-center justify-between mt-3 sm:mt-4 text-[10px] sm:text-[11px] font-mono text-neutral-400">
         <span>↻ read sources → reconcile → deliver</span>
@@ -253,7 +255,8 @@ function ResearchRoadmap() {
             you are here
           </div>
 
-          <svg viewBox="0 0 880 420" className="w-full h-auto relative">
+          <div className="-mx-3 sm:mx-0 overflow-x-auto sm:overflow-visible px-3 sm:px-0">
+          <svg viewBox="0 0 880 420" className="w-full h-auto relative min-w-[700px] sm:min-w-0">
             <defs>
               <linearGradient id="route-grad" x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop offset="0%" stopColor="#3b82f6" />
@@ -321,6 +324,7 @@ function ResearchRoadmap() {
               );
             })}
           </svg>
+          </div>
         </motion.div>
       </div>
     </section>

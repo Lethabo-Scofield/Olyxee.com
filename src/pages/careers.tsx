@@ -427,7 +427,25 @@ function CTASection() {
 const Careers: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO title="Careers" description="Join Olyxee and build the infrastructure that makes AI trustworthy. 10 remote internships across AI research, engineering, design, and operations. Ship real work from day one." path="/careers" />
+      <SEO
+        title="Careers"
+        description="Join Olyxee and build the infrastructure that makes AI trustworthy. 10 remote internships across AI research, engineering, design, and operations. Ship real work from day one."
+        path="/careers"
+        keywords={["Olyxee careers", "AI internships", "AI research internship", "AI engineering jobs", "remote AI internship", "Olyxee jobs", "machine learning internship"]}
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "Careers at Olyxee",
+          url: "https://olyxee.com/careers",
+          about: "Open internships and roles at Olyxee, the AI infrastructure company.",
+          publisher: {
+            "@type": "Organization",
+            name: "Olyxee",
+            url: "https://olyxee.com",
+            logo: "https://olyxee.com/Logo/Olyxee_Logo.png"
+          }
+        }}
+      />
       <Header />
 
       <main>
