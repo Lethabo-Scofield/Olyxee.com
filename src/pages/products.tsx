@@ -456,23 +456,6 @@ const ProductsPage: FC = () => {
       <ResearchRoadmap />
 
 
-      <section className="py-20 sm:py-32 border-t border-neutral-100">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            custom={0}
-            variants={fadeUp}
-          >
-            <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900 mb-6 leading-snug">
-              Intelligence alone is not enough.<br />
-              <em className="text-blue-400">Execution is the missing layer.</em>
-            </h2>
-          </motion.div>
-        </div>
-      </section>
-
       <section className="relative pt-24 sm:pt-36 pb-32 sm:pb-44 overflow-hidden" style={{ background: 'linear-gradient(to bottom, #ffffff 0%, #f5f5f5 12%, #e5e5e5 25%, #a3a3a3 42%, #525252 58%, #262626 72%, #171717 85%, #0a0a0a 100%)' }}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
           <motion.div
