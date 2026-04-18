@@ -108,15 +108,15 @@ export const roles: Role[] = [
     ],
   },
   {
-    title: "DevOps / MLOps Intern",
+    title: "Cloud Engineering Intern",
     team: "Infrastructure & Platform",
     location: "Remote",
     type: "internship",
-    description: "Build the infrastructure that keeps Olyxee running at scale. You'll design systems where uptime and reliability aren't negotiable.",
+    description: "Build and operate the cloud foundation Olyxee runs on. You'll work on the systems that keep our platform fast, secure, and always on.",
     responsibilities: [
-      "Design CI/CD pipelines that make deployments fast and fearless",
-      "Build infrastructure automation that scales with the platform",
-      "Create monitoring and alerting systems that catch issues before they matter",
+      "Provision and manage cloud infrastructure across compute, storage, and networking",
+      "Automate deployments, scaling, and observability with infrastructure-as-code",
+      "Harden security, cost, and reliability of services running in production",
     ],
     requirements: [
       "Link to portfolio, GitHub, or projects you have worked on",
