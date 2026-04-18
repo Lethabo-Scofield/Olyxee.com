@@ -278,7 +278,7 @@ function RolesSection() {
                     >
                       <div className="flex-1 min-w-0">
                         <div className="flex flex-wrap items-center gap-3 mb-2">
-                          <h3 className="text-lg sm:text-xl tracking-tight text-neutral-900 group-hover:text-neutral-600 transition-colors">{role.title}</h3>
+                          <h3 className="font-serif text-xl sm:text-2xl tracking-tight text-neutral-900 group-hover:text-neutral-600 transition-colors">{role.title}</h3>
                           <span className={`text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full ${
                             role.type === "paid"
                               ? "bg-emerald-50 text-emerald-700"
@@ -334,7 +334,7 @@ function RolesSection() {
             >
               <div className="sticky top-0 z-10 bg-white/95 backdrop-blur-xl border-b border-neutral-100 px-5 sm:px-8 py-4 sm:py-5 flex items-center justify-between gap-3">
                 <div className="min-w-0 flex-1">
-                  <h3 className="text-base font-semibold text-neutral-900 truncate">{selectedRole.title}</h3>
+                  <h3 className="font-serif text-xl sm:text-2xl tracking-tight text-neutral-900 truncate">{selectedRole.title}</h3>
                   <p className="text-xs text-neutral-400 mt-0.5 truncate">{selectedRole.team} · {selectedRole.location}</p>
                 </div>
                 <button
@@ -385,7 +385,7 @@ function RolesSection() {
                       <div className="w-14 h-14 rounded-full bg-green-50 flex items-center justify-center mx-auto mb-5">
                         <CheckCircle className="w-7 h-7 text-green-500" />
                       </div>
-                      <h4 className="text-lg text-neutral-900 mb-1">Application received</h4>
+                      <h4 className="font-serif text-2xl tracking-tight text-neutral-900 mb-1">Application received</h4>
                       <p className="text-sm text-neutral-500 max-w-xs mx-auto">Thanks, we've got it. If we'd like to move forward, you'll hear from us at the email you provided.</p>
                       <button
                         onClick={closeModal}
