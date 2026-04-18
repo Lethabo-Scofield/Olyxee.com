@@ -6,203 +6,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, MapPin, X, CheckCircle, Briefcase } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { roles, teams, type Role, type RoleType } from "../lib/careers-roles";
 
-type RoleType = "internship" | "paid";
-
-interface Role {
-  title: string;
-  team: string;
-  location: string;
-  type: RoleType;
-  description: string;
-  responsibilities: string[];
-  requirements: string[];
-}
-
-const roles: Role[] = [
-  {
-    title: "AI Research Intern",
-    team: "AI Research & Development",
-    location: "Remote",
-    type: "internship",
-    description: "Push the boundaries of what's possible in AI verification and evaluation. Work on research that shapes how the industry thinks about AI reliability.",
-    responsibilities: [
-      "Design and run experiments on model verification and evaluation methods",
-      "Build research prototypes that turn into real products",
-      "Tackle open problems in AI reliability that no one else is solving",
-    ],
-    requirements: [
-      "Link to portfolio, GitHub, or projects you have worked on",
-    ],
-  },
-  {
-    title: "AI Engineering Intern",
-    team: "AI Research & Development",
-    location: "Remote",
-    type: "internship",
-    description: "Turn cutting-edge research into production systems. You'll bridge the gap between what's possible in a lab and what works at scale.",
-    responsibilities: [
-      "Build and deploy AI models that power real verification workflows",
-      "Design data pipelines that handle production-scale AI evaluation",
-      "Work directly with researchers to bring new ideas to life in code",
-    ],
-    requirements: [
-      "Link to portfolio, GitHub, or projects you have worked on",
-    ],
-  },
-  {
-    title: "Full Stack Developer Intern",
-    team: "Infrastructure & Platform",
-    location: "Remote",
-    type: "internship",
-    description: "Build the platform that teams rely on to trust their AI. You'll own entire features from idea to deployment, across every layer of the stack.",
-    responsibilities: [
-      "Architect and build features across frontend, backend, and data layers",
-      "Design systems that handle the complexity of real-time AI monitoring",
-      "Own what you build. Ship it, measure it, improve it.",
-    ],
-    requirements: [
-      "Link to portfolio, GitHub, or projects you have worked on",
-    ],
-  },
-  {
-    title: "ML Engineering Intern",
-    team: "AI Research & Development",
-    location: "Remote",
-    type: "internship",
-    description: "Make AI systems faster, more accurate, and production-ready. Your work directly impacts how reliable AI is for thousands of teams.",
-    responsibilities: [
-      "Build training and evaluation pipelines that set the standard for quality",
-      "Optimize models for real-world performance, not just benchmarks",
-      "Design testing frameworks that catch problems before users do",
-    ],
-    requirements: [
-      "Link to portfolio, GitHub, or projects you have worked on",
-    ],
-  },
-  {
-    title: "Backend Engineering Intern",
-    team: "Infrastructure & Platform",
-    location: "Remote",
-    type: "internship",
-    description: "Build the APIs and services that power AI verification at scale. The systems you create will handle millions of evaluation requests.",
-    responsibilities: [
-      "Design and build APIs that are fast, reliable, and well-documented",
-      "Architect backend services that scale with growing demand",
-      "Shape the database and service layer that everything else depends on",
-    ],
-    requirements: [
-      "Link to portfolio, GitHub, or projects you have worked on",
-    ],
-  },
-  {
-    title: "Frontend Engineering Intern",
-    team: "Infrastructure & Platform",
-    location: "Remote",
-    type: "internship",
-    description: "Design and build the interfaces that make complex AI data simple and actionable. Your work defines how teams experience Olyxee.",
-    responsibilities: [
-      "Build dashboards and visualizations that turn raw AI data into clear insights",
-      "Create developer tools that engineers actually enjoy using",
-      "Craft interfaces that make complex verification workflows feel effortless",
-    ],
-    requirements: [
-      "Link to portfolio, GitHub, or projects you have worked on",
-    ],
-  },
-  {
-    title: "DevOps / MLOps Intern",
-    team: "Infrastructure & Platform",
-    location: "Remote",
-    type: "internship",
-    description: "Build the infrastructure that keeps Olyxee running at scale. You'll design systems where uptime and reliability aren't negotiable.",
-    responsibilities: [
-      "Design CI/CD pipelines that make deployments fast and fearless",
-      "Build infrastructure automation that scales with the platform",
-      "Create monitoring and alerting systems that catch issues before they matter",
-    ],
-    requirements: [
-      "Link to portfolio, GitHub, or projects you have worked on",
-    ],
-  },
-  {
-    title: "Product Design Intern",
-    team: "Product & Design",
-    location: "Remote",
-    type: "internship",
-    description: "Shape how the world's best engineering teams interact with AI infrastructure. Your designs will define what trust looks like in software.",
-    responsibilities: [
-      "Design end-to-end experiences for complex technical workflows",
-      "Create prototypes that influence product direction, not just visuals",
-      "Talk to real users and turn their pain points into elegant solutions",
-    ],
-    requirements: [
-      "Link to portfolio, GitHub, or projects you have worked on",
-    ],
-  },
-  {
-    title: "QA / Testing Intern",
-    team: "QA & Testing",
-    location: "Remote",
-    type: "internship",
-    description: "Be the last line of defense before our tools reach production. You'll ensure that the platform teams trust to verify AI is itself bulletproof.",
-    responsibilities: [
-      "Design and execute test strategies that catch what others miss",
-      "Build automated test suites that scale with the platform",
-      "Set the quality bar for a product where reliability is the entire promise",
-    ],
-    requirements: [
-      "Link to portfolio, GitHub, or projects you have worked on",
-    ],
-  },
-  {
-    title: "Project Management Intern",
-    team: "Operations & Strategy",
-    location: "Remote",
-    type: "internship",
-    description: "Keep the engine running. You'll coordinate roadmaps, unblock teams, and turn ambitious goals into shipped product across research, engineering, and design.",
-    responsibilities: [
-      "Run sprint planning, stand-ups, and retros across cross-functional pods",
-      "Track milestones, dependencies, and risks so teams stay focused on building",
-      "Translate strategy into clear briefs, timelines, and accountable owners",
-    ],
-    requirements: [
-      "Link to portfolio, notion docs, or past projects you have shipped",
-    ],
-  },
-  {
-    title: "Marketing Lead",
-    team: "Marketing & Growth",
-    location: "Remote",
-    type: "paid",
-    description: "Tell the Olyxee story to the people who need to hear it. You'll shape how engineers, founders, and enterprises discover and trust our work.",
-    responsibilities: [
-      "Plan and execute campaigns across social, email, and developer communities",
-      "Write product launches, blog posts, and landing pages that convert",
-      "Run experiments on positioning, messaging, and growth channels",
-    ],
-    requirements: [
-      "Link to portfolio, writing samples, or past campaigns you have run",
-    ],
-  },
-  {
-    title: "Accountant (Grysics)",
-    team: "Finance & Accounting",
-    location: "Remote",
-    type: "paid",
-    description: "Own the financial heartbeat of Grysics. You'll keep books accurate, reporting clean, and help the team make sharper decisions with real numbers.",
-    responsibilities: [
-      "Maintain bookkeeping, reconciliations, and monthly close for Grysics",
-      "Prepare invoices, expense reports, and cash-flow summaries for leadership",
-      "Support budgeting, forecasting, and basic financial analysis",
-    ],
-    requirements: [
-      "Background in accounting or finance. Share your CV or LinkedIn.",
-    ],
-  },
-];
-
-const teams = Array.from(new Set(roles.map(r => r.team)));
 
 function HeroSection() {
   return (
@@ -237,7 +42,7 @@ function HeroSection() {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="text-base sm:text-lg text-white/70 max-w-xl leading-relaxed font-light mb-8 sm:mb-10"
             >
-              We hire a small number of exceptional people and trust them with serious problems. We're building the reliability layer the AI industry runs on. If that's the kind of work you want your name on, take a look at what's open.
+              We hire a small number of exceptional people and trust them with serious problems.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 15 }}
@@ -330,6 +135,8 @@ function RolesSection() {
   const [selectedRole, setSelectedRole] = useState<Role | null>(null);
   const [formData, setFormData] = useState({ name: "", email: "", portfolio: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const typeFilteredRoles = filterType === "all" ? roles : roles.filter(r => r.type === filterType);
   const visibleTeams = Array.from(new Set(typeFilteredRoles.map(r => r.team)));
@@ -338,20 +145,46 @@ function RolesSection() {
   const paidCount = roles.filter(r => r.type === "paid").length;
   const internshipCount = roles.filter(r => r.type === "internship").length;
 
-  const handleApply = (e: React.FormEvent) => {
+  const handleApply = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!selectedRole) return;
-    const subject = encodeURIComponent(`Application: ${selectedRole.title}`);
-    const body = encodeURIComponent(
-      `Role: ${selectedRole.title}\nTeam: ${selectedRole.team}\n\nName: ${formData.name}\nEmail: ${formData.email}\nPortfolio/LinkedIn: ${formData.portfolio}\n\n${formData.message}`
-    );
-    window.location.href = `mailto:scofield@olyxee.com?subject=${subject}&body=${body}`;
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setSelectedRole(null);
+    if (!selectedRole || submitting) return;
+    setSubmitting(true);
+    setSubmitError(null);
+    try {
+      const res = await fetch("/api/careers/apply", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          role_title: selectedRole.title,
+          role_team: selectedRole.team,
+          role_type: selectedRole.type,
+          full_name: formData.name,
+          email: formData.email,
+          portfolio: formData.portfolio,
+          message: formData.message,
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setSubmitError(data.error || "Something went wrong. Please try again.");
+        setSubmitting(false);
+        return;
+      }
+      setSubmitted(true);
+      setSubmitting(false);
       setFormData({ name: "", email: "", portfolio: "", message: "" });
-    }, 3000);
+    } catch (err) {
+      console.error("apply submit error", err);
+      setSubmitError("Network error. Please check your connection and try again.");
+      setSubmitting(false);
+    }
+  };
+
+  const closeModal = () => {
+    setSelectedRole(null);
+    setSubmitted(false);
+    setSubmitError(null);
+    setSubmitting(false);
   };
 
   return (
@@ -378,25 +211,27 @@ function RolesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.05 }}
-            className="inline-flex items-center gap-1 p-1 mb-10 rounded-full bg-neutral-100"
+            className="-mx-6 sm:mx-0 px-6 sm:px-0 mb-8 sm:mb-10 overflow-x-auto scrollbar-hide"
           >
-            {([
-              { key: "all", label: `All (${roles.length})` },
-              { key: "paid", label: `Paid roles (${paidCount})` },
-              { key: "internship", label: `Internships (${internshipCount})` },
-            ] as { key: "all" | RoleType; label: string }[]).map(opt => (
-              <button
-                key={opt.key}
-                onClick={() => { setFilterType(opt.key); setFilterTeam("All"); }}
-                className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${
-                  filterType === opt.key
-                    ? 'bg-neutral-900 text-white shadow-lg shadow-neutral-900/20'
-                    : 'text-neutral-500 hover:text-neutral-900'
-                }`}
-              >
-                {opt.label}
-              </button>
-            ))}
+            <div className="inline-flex items-center gap-1 p-1 rounded-full bg-neutral-100 whitespace-nowrap">
+              {([
+                { key: "all", label: `All (${roles.length})` },
+                { key: "paid", label: `Paid roles (${paidCount})` },
+                { key: "internship", label: `Internships (${internshipCount})` },
+              ] as { key: "all" | RoleType; label: string }[]).map(opt => (
+                <button
+                  key={opt.key}
+                  onClick={() => { setFilterType(opt.key); setFilterTeam("All"); }}
+                  className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${
+                    filterType === opt.key
+                      ? 'bg-neutral-900 text-white shadow-lg shadow-neutral-900/20'
+                      : 'text-neutral-500 hover:text-neutral-900'
+                  }`}
+                >
+                  {opt.label}
+                </button>
+              ))}
+            </div>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-10 lg:gap-16">
@@ -489,28 +324,29 @@ function RolesSection() {
             transition={{ duration: 0.25 }}
             className="fixed inset-0 z-[2000] flex items-end sm:items-center justify-center"
           >
-            <div className="absolute inset-0 bg-black/50 backdrop-blur-md" onClick={() => { setSelectedRole(null); setSubmitted(false); }} />
+            <div className="absolute inset-0 bg-black/50 backdrop-blur-md" onClick={closeModal} />
             <motion.div
               initial={{ opacity: 0, y: 40, scale: 0.97 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 40, scale: 0.97 }}
               transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-              className="relative w-full max-w-lg bg-white rounded-t-3xl sm:rounded-3xl shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto"
+              className="relative w-full sm:max-w-lg bg-white rounded-t-3xl sm:rounded-3xl shadow-2xl overflow-hidden max-h-[92vh] sm:max-h-[90vh] overflow-y-auto"
             >
-              <div className="sticky top-0 z-10 bg-white/90 backdrop-blur-xl border-b border-neutral-100 px-6 sm:px-8 py-5 flex items-center justify-between">
-                <div>
-                  <h3 className="text-base font-semibold text-neutral-900">{selectedRole.title}</h3>
-                  <p className="text-xs text-neutral-400 mt-0.5">{selectedRole.team} · {selectedRole.location}</p>
+              <div className="sticky top-0 z-10 bg-white/95 backdrop-blur-xl border-b border-neutral-100 px-5 sm:px-8 py-4 sm:py-5 flex items-center justify-between gap-3">
+                <div className="min-w-0 flex-1">
+                  <h3 className="text-base font-semibold text-neutral-900 truncate">{selectedRole.title}</h3>
+                  <p className="text-xs text-neutral-400 mt-0.5 truncate">{selectedRole.team} · {selectedRole.location}</p>
                 </div>
                 <button
-                  onClick={() => { setSelectedRole(null); setSubmitted(false); }}
-                  className="w-8 h-8 rounded-full bg-neutral-100 hover:bg-neutral-200 flex items-center justify-center transition-colors"
+                  onClick={closeModal}
+                  aria-label="Close"
+                  className="flex-shrink-0 w-10 h-10 rounded-full bg-neutral-100 hover:bg-neutral-200 flex items-center justify-center transition-colors"
                 >
                   <X className="w-4 h-4 text-neutral-500" />
                 </button>
               </div>
 
-              <div className="px-6 sm:px-8 py-6">
+              <div className="px-5 sm:px-8 py-6">
                 <p className="text-[15px] text-neutral-600 leading-relaxed mb-8">{selectedRole.description}</p>
 
                 <div className="mb-8">
@@ -549,8 +385,14 @@ function RolesSection() {
                       <div className="w-14 h-14 rounded-full bg-green-50 flex items-center justify-center mx-auto mb-5">
                         <CheckCircle className="w-7 h-7 text-green-500" />
                       </div>
-                      <h4 className="text-lg text-neutral-900 mb-1">Application sent</h4>
-                      <p className="text-sm text-neutral-500">Your email client should have opened. We'll be in touch.</p>
+                      <h4 className="text-lg text-neutral-900 mb-1">Application received</h4>
+                      <p className="text-sm text-neutral-500 max-w-xs mx-auto">Thanks, we've got it. If we'd like to move forward, you'll hear from us at the email you provided.</p>
+                      <button
+                        onClick={closeModal}
+                        className="mt-6 text-sm text-neutral-900 font-medium hover:text-neutral-600 transition-colors"
+                      >
+                        Close
+                      </button>
                     </motion.div>
                   ) : (
                     <form onSubmit={handleApply} className="space-y-4">
@@ -558,40 +400,52 @@ function RolesSection() {
                       <input
                         type="text"
                         required
+                        autoComplete="name"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-4 py-3 bg-neutral-50 border-0 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900/10 text-sm text-neutral-900 placeholder:text-neutral-400"
+                        className="w-full px-4 py-3.5 bg-neutral-50 border-0 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900/10 text-base sm:text-sm text-neutral-900 placeholder:text-neutral-400"
                         placeholder="Full name"
                       />
                       <input
                         type="email"
                         required
+                        autoComplete="email"
+                        inputMode="email"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-4 py-3 bg-neutral-50 border-0 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900/10 text-sm text-neutral-900 placeholder:text-neutral-400"
+                        className="w-full px-4 py-3.5 bg-neutral-50 border-0 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900/10 text-base sm:text-sm text-neutral-900 placeholder:text-neutral-400"
                         placeholder="Email address"
                       />
                       <input
-                        type="text"
+                        type="url"
+                        required
+                        autoComplete="url"
+                        inputMode="url"
                         value={formData.portfolio}
                         onChange={(e) => setFormData({ ...formData, portfolio: e.target.value })}
-                        className="w-full px-4 py-3 bg-neutral-50 border-0 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900/10 text-sm text-neutral-900 placeholder:text-neutral-400"
-                        placeholder="Link to portfolio, GitHub, or project"
-                        required
+                        className="w-full px-4 py-3.5 bg-neutral-50 border-0 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900/10 text-base sm:text-sm text-neutral-900 placeholder:text-neutral-400"
+                        placeholder="Link to portfolio, GitHub, LinkedIn, or CV"
                       />
                       <textarea
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        className="w-full px-4 py-3 bg-neutral-50 border-0 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900/10 text-sm text-neutral-900 placeholder:text-neutral-400 resize-none"
-                        rows={3}
-                        placeholder="Tell us about yourself..."
+                        className="w-full px-4 py-3.5 bg-neutral-50 border-0 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900/10 text-base sm:text-sm text-neutral-900 placeholder:text-neutral-400 resize-none"
+                        rows={4}
+                        placeholder="Why this role? Anything we should know."
                       />
+                      {submitError && (
+                        <p className="text-sm text-red-600 leading-relaxed">{submitError}</p>
+                      )}
                       <button
                         type="submit"
-                        className="w-full py-3.5 bg-neutral-900 text-white rounded-xl font-medium text-sm hover:bg-black transition-colors"
+                        disabled={submitting}
+                        className="w-full py-4 bg-neutral-900 text-white rounded-xl font-medium text-sm hover:bg-black transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                       >
-                        Submit Application
+                        {submitting ? "Sending..." : "Submit application"}
                       </button>
+                      <p className="text-[11px] text-neutral-400 text-center pt-1">
+                        Your information is sent directly to our hiring team. No third parties.
+                      </p>
                     </form>
                   )}
                 </div>
