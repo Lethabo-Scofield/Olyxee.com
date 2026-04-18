@@ -236,15 +236,21 @@ function ResearchAreas() {
 function ImageShowcase() {
   const rowA = [
     { src: "/images/visualising-ai.png", alt: "Visualising AI", caption: "Visualising AI" },
+    { src: "/images/showcase/research.png", alt: "AI Research", caption: "Mathematical Reasoning" },
     { src: "/images/ai-structures.png", alt: "AI Structures", caption: "Biological Structures" },
+    { src: "/images/showcase/agents.png", alt: "AI Agents", caption: "Agent Builders" },
     { src: "/images/ai-robot.png", alt: "AI Robotics", caption: "Embodied Intelligence" },
+    { src: "/images/showcase/commerce.png", alt: "AI Commerce", caption: "Personalised Commerce" },
     { src: "/images/ai-analysis.png", alt: "AI Analysis", caption: "Language Understanding" },
   ];
   const rowB = [
+    { src: "/images/showcase/insights.png", alt: "AI Insights", caption: "Operational Insights" },
+    { src: "/images/showcase/safety.png", alt: "AI Safety", caption: "Workplace Safety Vision" },
+    { src: "/images/showcase/search.png", alt: "AI Search", caption: "Search & Discovery" },
+    { src: "/images/showcase/robotics.png", alt: "Warehouse Robotics", caption: "Warehouse Automation" },
     { src: "/images/ai-analysis.png", alt: "AI Analysis", caption: "Language Understanding" },
-    { src: "/images/ai-robot.png", alt: "AI Robotics", caption: "Embodied Intelligence" },
-    { src: "/images/visualising-ai.png", alt: "Visualising AI", caption: "Visualising AI" },
-    { src: "/images/ai-structures.png", alt: "AI Structures", caption: "Biological Structures" },
+    { src: "/images/showcase/research.png", alt: "AI Research", caption: "Mathematical Reasoning" },
+    { src: "/images/showcase/agents.png", alt: "AI Agents", caption: "Agent Builders" },
   ];
 
   const doubledA = [...rowA, ...rowA];
