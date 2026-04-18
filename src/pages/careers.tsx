@@ -153,6 +153,51 @@ const roles: Role[] = [
       "Link to portfolio, GitHub, or projects you have worked on",
     ],
   },
+  {
+    title: "Project Management Intern",
+    team: "Operations & Strategy",
+    location: "Remote",
+    type: "internship",
+    description: "Keep the engine running. You'll coordinate roadmaps, unblock teams, and turn ambitious goals into shipped product across research, engineering, and design.",
+    responsibilities: [
+      "Run sprint planning, stand-ups, and retros across cross-functional pods",
+      "Track milestones, dependencies, and risks so teams stay focused on building",
+      "Translate strategy into clear briefs, timelines, and accountable owners",
+    ],
+    requirements: [
+      "Link to portfolio, notion docs, or past projects you have shipped",
+    ],
+  },
+  {
+    title: "Marketing Intern",
+    team: "Marketing & Growth",
+    location: "Remote",
+    type: "internship",
+    description: "Tell the Olyxee story to the people who need to hear it. You'll shape how engineers, founders, and enterprises discover and trust our work.",
+    responsibilities: [
+      "Plan and execute campaigns across social, email, and developer communities",
+      "Write product launches, blog posts, and landing pages that convert",
+      "Run experiments on positioning, messaging, and growth channels",
+    ],
+    requirements: [
+      "Link to portfolio, writing samples, or past campaigns you have run",
+    ],
+  },
+  {
+    title: "Accounting Intern — Grysics",
+    team: "Finance & Accounting",
+    location: "Remote",
+    type: "internship",
+    description: "Own the financial heartbeat of Grysics. You'll keep books accurate, reporting clean, and help the team make sharper decisions with real numbers.",
+    responsibilities: [
+      "Maintain bookkeeping, reconciliations, and monthly close for Grysics",
+      "Prepare invoices, expense reports, and cash-flow summaries for leadership",
+      "Support budgeting, forecasting, and basic financial analysis",
+    ],
+    requirements: [
+      "Studying accounting, finance, or a related field — share your CV or LinkedIn",
+    ],
+  },
 ];
 
 const teams = Array.from(new Set(roles.map(r => r.team)));
