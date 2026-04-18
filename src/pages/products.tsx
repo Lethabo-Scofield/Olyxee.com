@@ -168,6 +168,24 @@ const ProductsPage: FC = () => {
             Systems built from Olyxee research for real-world AI operation.
           </motion.p>
 
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.15 }}
+            className="relative mt-12 sm:mt-16 rounded-2xl sm:rounded-3xl overflow-hidden bg-black shadow-[0_30px_80px_-20px_rgba(0,0,0,0.45)] ring-1 ring-black/10"
+          >
+            <Image
+              src="/images/products-intro-banner.png"
+              alt="A panoramic gallery of AI-driven visualisations curved across the horizon"
+              width={2048}
+              height={540}
+              priority
+              className="w-full h-auto block"
+              sizes="(max-width: 1024px) 100vw, 1024px"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+          </motion.div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-12 sm:mt-16 mb-16 sm:mb-24">
             <motion.a
               href="https://grysics.olyxee.com/"
