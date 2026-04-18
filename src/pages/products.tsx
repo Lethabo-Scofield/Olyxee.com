@@ -29,25 +29,33 @@ const galleryImages = [
 ];
 
 function GrysicsArchitecture() {
-  const tools = [
-    { y: 50, label: "Gmail", icon: "https://www.google.com/s2/favicons?domain=gmail.com&sz=128" },
-    { y: 122, label: "Stripe", icon: "https://www.google.com/s2/favicons?domain=stripe.com&sz=128" },
-    { y: 194, label: "QuickBooks", icon: "https://www.google.com/s2/favicons?domain=quickbooks.intuit.com&sz=128" },
-    { y: 266, label: "Xero", icon: "https://www.google.com/s2/favicons?domain=xero.com&sz=128" },
-    { y: 338, label: "Slack", icon: "https://www.google.com/s2/favicons?domain=slack.com&sz=128" },
+  const sources = [
+    { y: 40, label: "Gmail", icon: "https://www.google.com/s2/favicons?domain=gmail.com&sz=128" },
+    { y: 100, label: "Stripe", icon: "https://www.google.com/s2/favicons?domain=stripe.com&sz=128" },
+    { y: 160, label: "QuickBooks", icon: "https://www.google.com/s2/favicons?domain=quickbooks.intuit.com&sz=128" },
+    { y: 220, label: "Xero", icon: "https://www.google.com/s2/favicons?domain=xero.com&sz=128" },
+    { y: 280, label: "Slack", icon: "https://www.google.com/s2/favicons?domain=slack.com&sz=128" },
   ];
 
-  const dots = [
-    { id: "p-goal", dur: "2.6s", color: "#fb923c", begin: "0s" },
-    { id: "p-plan", dur: "2.2s", color: "#3b82f6", begin: "0.4s" },
-    { id: "p-mem", dur: "2.4s", color: "#a855f7", begin: "0.8s" },
-    ...tools.map((_, i) => ({
-      id: `p-t${i}`,
-      dur: `${2 + i * 0.25}s`,
-      color: "#10b981",
-      begin: `${0.2 * i}s`,
-    })),
+  const outputs = [
+    { y: 70, label: "Finance Reports", sub: "PDF · Sheets", color: "#0e7490", bg: "#ecfeff", border: "#a5f3fc" },
+    { y: 200, label: "Notifications", sub: "Email · Slack", color: "#9a3412", bg: "#fff7ed", border: "#fed7aa" },
+    { y: 330, label: "Audit Trail", sub: "Tamper-proof log", color: "#3730a3", bg: "#eef2ff", border: "#c7d2fe" },
   ];
+
+  const sourceDots = sources.map((_, i) => ({
+    id: `p-s${i}`,
+    dur: `${2 + i * 0.25}s`,
+    color: "#10b981",
+    begin: `${0.2 * i}s`,
+  }));
+
+  const outputDots = outputs.map((_, i) => ({
+    id: `p-o${i}`,
+    dur: `${2.2 + i * 0.3}s`,
+    color: outputs[i].color,
+    begin: `${0.3 * i + 0.1}s`,
+  }));
 
   return (
     <div className="relative rounded-2xl border border-neutral-200 bg-gradient-to-br from-white to-neutral-50/80 p-4 sm:p-6 overflow-hidden shadow-[0_20px_50px_-25px_rgba(0,0,0,0.25)]">
@@ -61,15 +69,21 @@ function GrysicsArchitecture() {
         <span className="hidden sm:inline text-[11px] font-mono text-neutral-400">grysics.olyxee.com</span>
       </div>
 
-      <svg viewBox="0 0 620 400" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
-        <path id="p-goal" d="M 90 200 C 170 200, 220 200, 260 200" fill="none" stroke="#e5e5e5" strokeWidth="1.5" strokeDasharray="3 3" />
-        <path id="p-plan" d="M 320 160 C 320 120, 280 90, 220 70" fill="none" stroke="#e5e5e5" strokeWidth="1.5" strokeDasharray="3 3" />
-        <path id="p-mem" d="M 320 240 C 320 280, 280 320, 220 350" fill="none" stroke="#e5e5e5" strokeWidth="1.5" strokeDasharray="3 3" />
-        {tools.map((t, i) => (
+      <svg viewBox="0 0 800 420" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+        <g fontFamily="ui-monospace, monospace">
+          <text x="450" y="14" fontSize="9" fill="#a3a3a3" textAnchor="middle">SOURCES</text>
+          <text x="680" y="14" fontSize="9" fill="#a3a3a3" textAnchor="middle">DELIVERABLES</text>
+        </g>
+
+        <path id="p-goal" d="M 80 210 C 160 210, 200 210, 240 210" fill="none" stroke="#e5e5e5" strokeWidth="1.5" strokeDasharray="3 3" />
+        <path id="p-plan" d="M 300 170 C 300 130, 260 90, 200 70" fill="none" stroke="#e5e5e5" strokeWidth="1.5" strokeDasharray="3 3" />
+        <path id="p-mem" d="M 300 250 C 300 290, 260 330, 200 350" fill="none" stroke="#e5e5e5" strokeWidth="1.5" strokeDasharray="3 3" />
+
+        {sources.map((t, i) => (
           <path
-            key={i}
-            id={`p-t${i}`}
-            d={`M 380 200 C 460 200, 490 ${t.y}, 520 ${t.y}`}
+            key={`s${i}`}
+            id={`p-s${i}`}
+            d={`M 360 210 C 410 210, 420 ${t.y}, 450 ${t.y}`}
             fill="none"
             stroke="#e5e5e5"
             strokeWidth="1.5"
@@ -77,7 +91,19 @@ function GrysicsArchitecture() {
           />
         ))}
 
-        {dots.map((d, i) => (
+        {outputs.map((o, i) => (
+          <path
+            key={`o${i}`}
+            id={`p-o${i}`}
+            d={`M 360 210 C 500 210, 580 ${o.y}, 640 ${o.y}`}
+            fill="none"
+            stroke={o.border}
+            strokeWidth="1.5"
+            strokeDasharray="4 3"
+          />
+        ))}
+
+        {[...sourceDots, ...outputDots, { id: "p-goal", dur: "2.6s", color: "#fb923c", begin: "0s" }, { id: "p-plan", dur: "2.2s", color: "#3b82f6", begin: "0.4s" }, { id: "p-mem", dur: "2.4s", color: "#a855f7", begin: "0.8s" }].map((d, i) => (
           <circle key={i} r="4" fill={d.color}>
             <animateMotion dur={d.dur} begin={d.begin} repeatCount="indefinite">
               <mpath href={`#${d.id}`} />
@@ -86,41 +112,49 @@ function GrysicsArchitecture() {
         ))}
 
         <g>
-          <circle cx="50" cy="200" r="30" fill="#ffffff" stroke="#d4d4d4" />
-          <text x="50" y="196" textAnchor="middle" fontSize="9" fill="#737373" fontFamily="ui-monospace, monospace">FINANCE</text>
-          <text x="50" y="210" textAnchor="middle" fontSize="9" fill="#737373" fontFamily="ui-monospace, monospace">GOAL</text>
+          <circle cx="40" cy="210" r="32" fill="#ffffff" stroke="#d4d4d4" />
+          <text x="40" y="206" textAnchor="middle" fontSize="9" fill="#737373" fontFamily="ui-monospace, monospace">FINANCE</text>
+          <text x="40" y="220" textAnchor="middle" fontSize="9" fill="#737373" fontFamily="ui-monospace, monospace">GOAL</text>
         </g>
 
         <g>
-          <rect x="260" y="158" width="120" height="84" rx="16" fill="#0a0a0a" />
-          <image href="/images/grysics-logo.png" x="290" y="170" width="28" height="28" />
-          <text x="328" y="190" fontSize="13" fill="#ffffff" fontWeight="600">Grysics</text>
-          <text x="320" y="220" textAnchor="middle" fontSize="9" fill="#a3a3a3" fontFamily="ui-monospace, monospace">execution core</text>
+          <rect x="240" y="168" width="120" height="84" rx="16" fill="#0a0a0a" />
+          <image href="/images/grysics-logo.png" x="270" y="180" width="28" height="28" />
+          <text x="308" y="200" fontSize="13" fill="#ffffff" fontWeight="600">Grysics</text>
+          <text x="300" y="232" textAnchor="middle" fontSize="9" fill="#a3a3a3" fontFamily="ui-monospace, monospace">execution core</text>
         </g>
 
         <g>
-          <rect x="160" y="46" width="120" height="48" rx="10" fill="#dbeafe" stroke="#bfdbfe" />
-          <text x="220" y="68" textAnchor="middle" fontSize="11" fill="#1e40af" fontWeight="600">Planner</text>
-          <text x="220" y="84" textAnchor="middle" fontSize="9" fill="#3b82f6" fontFamily="ui-monospace, monospace">decompose goal</text>
+          <rect x="140" y="46" width="120" height="48" rx="10" fill="#dbeafe" stroke="#bfdbfe" />
+          <text x="200" y="68" textAnchor="middle" fontSize="11" fill="#1e40af" fontWeight="600">Planner</text>
+          <text x="200" y="84" textAnchor="middle" fontSize="9" fill="#3b82f6" fontFamily="ui-monospace, monospace">decompose goal</text>
         </g>
 
         <g>
-          <rect x="160" y="326" width="120" height="48" rx="10" fill="#f3e8ff" stroke="#e9d5ff" />
-          <text x="220" y="348" textAnchor="middle" fontSize="11" fill="#6b21a8" fontWeight="600">Memory</text>
-          <text x="220" y="364" textAnchor="middle" fontSize="9" fill="#a855f7" fontFamily="ui-monospace, monospace">ledger context</text>
+          <rect x="140" y="326" width="120" height="48" rx="10" fill="#f3e8ff" stroke="#e9d5ff" />
+          <text x="200" y="348" textAnchor="middle" fontSize="11" fill="#6b21a8" fontWeight="600">Memory</text>
+          <text x="200" y="364" textAnchor="middle" fontSize="9" fill="#a855f7" fontFamily="ui-monospace, monospace">ledger context</text>
         </g>
 
-        {tools.map((t, i) => (
-          <g key={i}>
-            <rect x={520 - 50} y={t.y - 18} width="100" height="36" rx="10" fill="#ffffff" stroke="#e5e5e5" />
-            <image href={t.icon} x={520 - 42} y={t.y - 12} width="24" height="24" />
-            <text x={520 + 4} y={t.y + 4} textAnchor="middle" fontSize="11" fill="#404040" fontWeight="500">{t.label}</text>
+        {sources.map((t, i) => (
+          <g key={`src-${i}`}>
+            <rect x={450 - 50} y={t.y - 16} width="100" height="32" rx="10" fill="#ffffff" stroke="#e5e5e5" />
+            <image href={t.icon} x={450 - 42} y={t.y - 10} width="20" height="20" />
+            <text x={450 + 6} y={t.y + 4} textAnchor="middle" fontSize="10" fill="#404040" fontWeight="500">{t.label}</text>
+          </g>
+        ))}
+
+        {outputs.map((o, i) => (
+          <g key={`out-${i}`}>
+            <rect x={640 - 60} y={o.y - 22} width="120" height="44" rx="10" fill={o.bg} stroke={o.border} strokeWidth="1.5" />
+            <text x={640} y={o.y - 4} textAnchor="middle" fontSize="11" fill={o.color} fontWeight="600">{o.label}</text>
+            <text x={640} y={o.y + 12} textAnchor="middle" fontSize="9" fill={o.color} opacity="0.7" fontFamily="ui-monospace, monospace">{o.sub}</text>
           </g>
         ))}
       </svg>
 
       <div className="flex items-center justify-between mt-3 sm:mt-4 text-[10px] sm:text-[11px] font-mono text-neutral-400">
-        <span>↻ goal → plan → execute → reconcile</span>
+        <span>↻ read sources → reconcile → deliver</span>
         <span>finance · stateful</span>
       </div>
     </div>
