@@ -234,14 +234,40 @@ function ResearchAreas() {
 
 
 function ImageShowcase() {
-  const images = [
+  const rowA = [
     { src: "/images/visualising-ai.png", alt: "Visualising AI", caption: "Visualising AI" },
     { src: "/images/ai-structures.png", alt: "AI Structures", caption: "Biological Structures" },
     { src: "/images/ai-robot.png", alt: "AI Robotics", caption: "Embodied Intelligence" },
     { src: "/images/ai-analysis.png", alt: "AI Analysis", caption: "Language Understanding" },
   ];
+  const rowB = [
+    { src: "/images/ai-analysis.png", alt: "AI Analysis", caption: "Language Understanding" },
+    { src: "/images/ai-robot.png", alt: "AI Robotics", caption: "Embodied Intelligence" },
+    { src: "/images/visualising-ai.png", alt: "Visualising AI", caption: "Visualising AI" },
+    { src: "/images/ai-structures.png", alt: "AI Structures", caption: "Biological Structures" },
+  ];
 
-  const doubled = [...images, ...images];
+  const doubledA = [...rowA, ...rowA];
+  const doubledB = [...rowB, ...rowB];
+
+  const renderCard = (img: { src: string; alt: string; caption: string }, idx: number) => (
+    <div
+      key={`${img.alt}-${idx}`}
+      className="group relative flex-shrink-0 w-[260px] sm:w-[360px] lg:w-[440px] aspect-[16/10] rounded-2xl overflow-hidden"
+    >
+      <Image
+        src={img.src}
+        alt={img.alt}
+        fill
+        className="object-cover transition-transform duration-700 group-hover:scale-105"
+        sizes="(max-width: 640px) 260px, (max-width: 1024px) 360px, 440px"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+        <p className="text-white text-sm sm:text-base font-medium">{img.caption}</p>
+      </div>
+    </div>
+  );
 
   return (
     <section className="py-16 sm:py-24 overflow-hidden">
@@ -260,29 +286,22 @@ function ImageShowcase() {
         </motion.div>
       </div>
 
-      <div className="relative w-full">
+      <div className="relative w-full space-y-5 sm:space-y-6">
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-12 sm:w-24 bg-gradient-to-r from-white to-transparent z-10" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-12 sm:w-24 bg-gradient-to-l from-white to-transparent z-10" />
+
         <div
-          className="flex gap-6 hover:[animation-play-state:paused]"
-          style={{ animation: 'image-scroll 30s linear infinite' }}
+          className="flex gap-5 sm:gap-6 hover:[animation-play-state:paused] will-change-transform"
+          style={{ animation: 'image-scroll 38s linear infinite' }}
         >
-          {doubled.map((img, idx) => (
-            <div
-              key={`${img.alt}-${idx}`}
-              className="group relative flex-shrink-0 w-[340px] sm:w-[480px] lg:w-[560px] aspect-[16/10] rounded-2xl overflow-hidden"
-            >
-              <Image
-                src={img.src}
-                alt={img.alt}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-                sizes="(max-width: 640px) 340px, (max-width: 1024px) 480px, 560px"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                <p className="text-white text-sm sm:text-base font-medium">{img.caption}</p>
-              </div>
-            </div>
-          ))}
+          {doubledA.map(renderCard)}
+        </div>
+
+        <div
+          className="flex gap-5 sm:gap-6 hover:[animation-play-state:paused] will-change-transform"
+          style={{ animation: 'image-scroll 46s linear infinite reverse' }}
+        >
+          {doubledB.map(renderCard)}
         </div>
       </div>
     </section>
