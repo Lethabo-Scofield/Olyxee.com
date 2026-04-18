@@ -4,9 +4,10 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, MapPin, X, CheckCircle, Briefcase } from "lucide-react";
+import { ArrowRight, MapPin, X, Briefcase } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { roles, teams, type Role, type RoleType } from "../lib/careers-roles";
+import ApplicationForm from "../components/careers/ApplicationForm";
 
 
 function HeroSection() {
@@ -133,10 +134,6 @@ function RolesSection() {
   const [filterType, setFilterType] = useState<"all" | RoleType>("all");
   const [filterTeam, setFilterTeam] = useState<string>("All");
   const [selectedRole, setSelectedRole] = useState<Role | null>(null);
-  const [formData, setFormData] = useState({ name: "", email: "", portfolio: "", message: "" });
-  const [submitted, setSubmitted] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
-  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const typeFilteredRoles = filterType === "all" ? roles : roles.filter(r => r.type === filterType);
   const visibleTeams = Array.from(new Set(typeFilteredRoles.map(r => r.team)));
@@ -145,47 +142,7 @@ function RolesSection() {
   const paidCount = roles.filter(r => r.type === "paid").length;
   const internshipCount = roles.filter(r => r.type === "internship").length;
 
-  const handleApply = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!selectedRole || submitting) return;
-    setSubmitting(true);
-    setSubmitError(null);
-    try {
-      const res = await fetch("/api/careers/apply", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          role_title: selectedRole.title,
-          role_team: selectedRole.team,
-          role_type: selectedRole.type,
-          full_name: formData.name,
-          email: formData.email,
-          portfolio: formData.portfolio,
-          message: formData.message,
-        }),
-      });
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok) {
-        setSubmitError(data.error || "Something went wrong. Please try again.");
-        setSubmitting(false);
-        return;
-      }
-      setSubmitted(true);
-      setSubmitting(false);
-      setFormData({ name: "", email: "", portfolio: "", message: "" });
-    } catch (err) {
-      console.error("apply submit error", err);
-      setSubmitError("Network error. Please check your connection and try again.");
-      setSubmitting(false);
-    }
-  };
-
-  const closeModal = () => {
-    setSelectedRole(null);
-    setSubmitted(false);
-    setSubmitError(null);
-    setSubmitting(false);
-  };
+  const closeModal = () => setSelectedRole(null);
 
   return (
     <>
@@ -376,78 +333,7 @@ function RolesSection() {
                 </div>
 
                 <div className="border-t border-neutral-100 pt-6">
-                  {submitted ? (
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      className="text-center py-10"
-                    >
-                      <div className="w-14 h-14 rounded-full bg-green-50 flex items-center justify-center mx-auto mb-5">
-                        <CheckCircle className="w-7 h-7 text-green-500" />
-                      </div>
-                      <h4 className="font-serif text-2xl tracking-tight text-neutral-900 mb-1">Application received</h4>
-                      <p className="text-sm text-neutral-500 max-w-xs mx-auto">Thanks, we've got it. If we'd like to move forward, you'll hear from us at the email you provided.</p>
-                      <button
-                        onClick={closeModal}
-                        className="mt-6 text-sm text-neutral-900 font-medium hover:text-neutral-600 transition-colors"
-                      >
-                        Close
-                      </button>
-                    </motion.div>
-                  ) : (
-                    <form onSubmit={handleApply} className="space-y-4">
-                      <h4 className="text-xs font-semibold text-neutral-400 uppercase tracking-widest mb-2">Apply now</h4>
-                      <input
-                        type="text"
-                        required
-                        autoComplete="name"
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-4 py-3.5 bg-neutral-50 border-0 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900/10 text-base sm:text-sm text-neutral-900 placeholder:text-neutral-400"
-                        placeholder="Full name"
-                      />
-                      <input
-                        type="email"
-                        required
-                        autoComplete="email"
-                        inputMode="email"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-4 py-3.5 bg-neutral-50 border-0 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900/10 text-base sm:text-sm text-neutral-900 placeholder:text-neutral-400"
-                        placeholder="Email address"
-                      />
-                      <input
-                        type="url"
-                        required
-                        autoComplete="url"
-                        inputMode="url"
-                        value={formData.portfolio}
-                        onChange={(e) => setFormData({ ...formData, portfolio: e.target.value })}
-                        className="w-full px-4 py-3.5 bg-neutral-50 border-0 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900/10 text-base sm:text-sm text-neutral-900 placeholder:text-neutral-400"
-                        placeholder="Link to portfolio, GitHub, LinkedIn, or CV"
-                      />
-                      <textarea
-                        value={formData.message}
-                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        className="w-full px-4 py-3.5 bg-neutral-50 border-0 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900/10 text-base sm:text-sm text-neutral-900 placeholder:text-neutral-400 resize-none"
-                        rows={4}
-                        placeholder="Why this role? Anything we should know."
-                      />
-                      {submitError && (
-                        <p className="text-sm text-red-600 leading-relaxed">{submitError}</p>
-                      )}
-                      <button
-                        type="submit"
-                        disabled={submitting}
-                        className="w-full py-4 bg-neutral-900 text-white rounded-xl font-medium text-sm hover:bg-black transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
-                      >
-                        {submitting ? "Sending..." : "Submit application"}
-                      </button>
-                      <p className="text-[11px] text-neutral-400 text-center pt-1">
-                        Your information is sent directly to our hiring team. No third parties.
-                      </p>
-                    </form>
-                  )}
+                  <ApplicationForm key={selectedRole.title} role={selectedRole} onClose={closeModal} />
                 </div>
               </div>
             </motion.div>

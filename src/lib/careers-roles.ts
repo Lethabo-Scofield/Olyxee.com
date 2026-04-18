@@ -1,5 +1,18 @@
 export type RoleType = "internship" | "paid";
 
+export type QuestionType = "text" | "textarea" | "url" | "select";
+
+export interface Question {
+  id: string;
+  label: string;
+  placeholder?: string;
+  type: QuestionType;
+  required?: boolean;
+  options?: string[];
+  inputMode?: "text" | "email" | "url" | "numeric";
+  autoComplete?: string;
+}
+
 export interface Role {
   title: string;
   team: string;
@@ -8,6 +21,7 @@ export interface Role {
   description: string;
   responsibilities: string[];
   requirements: string[];
+  questions?: Question[];
 }
 
 export const roles: Role[] = [
@@ -30,6 +44,47 @@ export const roles: Role[] = [
       "Strong programming skills in Python and deep familiarity with modern ML frameworks (PyTorch, JAX, or similar).",
       "Experience taking research from idea to working prototype, not just paper.",
       "Share your CV, Google Scholar or publications page, and GitHub in your application.",
+    ],
+    questions: [
+      {
+        id: "highest_degree",
+        label: "Highest degree completed",
+        type: "select",
+        required: true,
+        options: ["PhD", "Master's", "Currently in PhD program", "Other"],
+      },
+      {
+        id: "years_experience",
+        label: "Years of research experience",
+        placeholder: "e.g. 7",
+        type: "text",
+        required: true,
+        inputMode: "numeric",
+      },
+      {
+        id: "scholar_link",
+        label: "Google Scholar or publications page",
+        placeholder: "https://scholar.google.com/...",
+        type: "url",
+        required: true,
+        inputMode: "url",
+        autoComplete: "url",
+      },
+      {
+        id: "github_link",
+        label: "GitHub or code portfolio (optional)",
+        placeholder: "https://github.com/yourhandle",
+        type: "url",
+        required: false,
+        inputMode: "url",
+      },
+      {
+        id: "key_publication",
+        label: "Most impactful publication or research project",
+        placeholder: "Title, venue, your role, and what made it matter.",
+        type: "textarea",
+        required: true,
+      },
     ],
   },
   {
@@ -187,6 +242,48 @@ export const roles: Role[] = [
       "Excellent written English and confident communicating with both engineers and executives.",
       "Share your CV or LinkedIn and links to past work in your application.",
     ],
+    questions: [
+      {
+        id: "years_experience",
+        label: "Years of marketing experience",
+        placeholder: "e.g. 9",
+        type: "text",
+        required: true,
+        inputMode: "numeric",
+      },
+      {
+        id: "years_lead",
+        label: "Years owning a marketing function (lead, head, or director)",
+        placeholder: "e.g. 4",
+        type: "text",
+        required: true,
+        inputMode: "numeric",
+      },
+      {
+        id: "linkedin_link",
+        label: "LinkedIn profile",
+        placeholder: "https://linkedin.com/in/...",
+        type: "url",
+        required: true,
+        inputMode: "url",
+        autoComplete: "url",
+      },
+      {
+        id: "portfolio_link",
+        label: "Portfolio, campaign examples, or company sites (optional)",
+        placeholder: "https://...",
+        type: "url",
+        required: false,
+        inputMode: "url",
+      },
+      {
+        id: "best_campaign",
+        label: "Best campaign you've led and the measurable outcome",
+        placeholder: "What you ran, who it was for, and the numbers it moved.",
+        type: "textarea",
+        required: true,
+      },
+    ],
   },
   {
     title: "Accountant (Grysics)",
@@ -207,6 +304,54 @@ export const roles: Role[] = [
       "Strong working knowledge of GAAP or IFRS and standard tax compliance.",
       "High attention to detail, comfortable owning numbers leadership will act on.",
       "Share your CV or LinkedIn in your application.",
+    ],
+    questions: [
+      {
+        id: "qualification",
+        label: "Professional qualification",
+        type: "select",
+        required: true,
+        options: ["CPA", "ACCA", "CA(SA)", "CIMA", "Other equivalent", "In progress"],
+      },
+      {
+        id: "years_experience",
+        label: "Years of professional accounting experience",
+        placeholder: "e.g. 8",
+        type: "text",
+        required: true,
+        inputMode: "numeric",
+      },
+      {
+        id: "industry_experience",
+        label: "Years owning the books for a tech, SaaS, or growth-stage company",
+        placeholder: "e.g. 3",
+        type: "text",
+        required: true,
+        inputMode: "numeric",
+      },
+      {
+        id: "linkedin_link",
+        label: "LinkedIn profile",
+        placeholder: "https://linkedin.com/in/...",
+        type: "url",
+        required: true,
+        inputMode: "url",
+        autoComplete: "url",
+      },
+      {
+        id: "tools_used",
+        label: "Accounting tools you've worked with",
+        placeholder: "e.g. QuickBooks, Xero, NetSuite, Sage",
+        type: "text",
+        required: true,
+      },
+      {
+        id: "scope_owned",
+        label: "Most complex close, audit, or financial process you've owned",
+        placeholder: "What you owned, the size of the business, and the outcome.",
+        type: "textarea",
+        required: true,
+      },
     ],
   },
 ];
