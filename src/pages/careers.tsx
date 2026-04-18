@@ -162,13 +162,17 @@ function HeroSection() {
     <section className="relative pt-20 sm:pt-24">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="relative max-w-6xl mx-auto rounded-2xl sm:rounded-3xl overflow-hidden min-h-[480px] sm:min-h-[540px] lg:min-h-[600px]">
-          <Image
-            src="/images/team-photo.png"
-            alt="Team collaborating on code"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center"
+          <video
+            src="/videos/careers-hero.mp4"
+            poster="/images/careers-hero.webp"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            aria-hidden="true"
+            tabIndex={-1}
+            className="absolute inset-0 w-full h-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-black/55" />
           <div className="absolute inset-0 flex flex-col justify-end p-8 sm:p-12 lg:p-16">
