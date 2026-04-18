@@ -1,13 +1,13 @@
 import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 import { findRoleByTitle } from "@/lib/careers-roles";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const HIRING_EMAIL = "scofield@olyxee.com";
-const SMTP_USER = "scofield@olyxee.com";
-const FROM_ADDRESS = `"Olyxee Careers" <${SMTP_USER}>`;
+const HIRING_EMAIL = process.env.CAREERS_TO_EMAIL || "scofield@olyxee.com";
+const FROM_ADDRESS =
+  process.env.CAREERS_FROM_EMAIL || "Olyxee Careers <onboarding@resend.dev>";
 
 const MAX_LEN = {
   name: 120,
@@ -137,18 +137,13 @@ function buildHtml(a: BuildArgs): string {
   </body></html>`;
 }
 
-let cachedTransporter: nodemailer.Transporter | null = null;
-function getTransporter(): nodemailer.Transporter | null {
-  const pass = process.env.TITAN_SMTP_PASSWORD;
-  if (!pass) return null;
-  if (cachedTransporter) return cachedTransporter;
-  cachedTransporter = nodemailer.createTransport({
-    host: "smtp.titan.email",
-    port: 465,
-    secure: true,
-    auth: { user: SMTP_USER, pass },
-  });
-  return cachedTransporter;
+let cachedResend: Resend | null = null;
+function getResend(): Resend | null {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) return null;
+  if (cachedResend) return cachedResend;
+  cachedResend = new Resend(apiKey);
+  return cachedResend;
 }
 
 export async function POST(req: Request) {
@@ -235,9 +230,9 @@ export async function POST(req: Request) {
       }
     }
 
-    const transporter = getTransporter();
-    if (!transporter) {
-      console.error("TITAN_SMTP_PASSWORD not configured");
+    const resend = getResend();
+    if (!resend) {
+      console.error("RESEND_API_KEY not configured");
       return NextResponse.json(
         { error: "Email service is not configured. Please try again later." },
         { status: 500 }
@@ -257,7 +252,7 @@ export async function POST(req: Request) {
     const subject = `New application: ${role.title} — ${full_name}`;
 
     try {
-      await transporter.sendMail({
+      const { error: sendErr } = await resend.emails.send({
         from: FROM_ADDRESS,
         to: HIRING_EMAIL,
         replyTo: email,
@@ -265,8 +260,15 @@ export async function POST(req: Request) {
         text: buildText(args),
         html: buildHtml(args),
       });
+      if (sendErr) {
+        console.error("Resend send error", sendErr);
+        return NextResponse.json(
+          { error: "We couldn't deliver your application. Please try again in a moment." },
+          { status: 502 }
+        );
+      }
     } catch (sendErr) {
-      console.error("SMTP send error", sendErr);
+      console.error("Resend send exception", sendErr);
       return NextResponse.json(
         { error: "We couldn't deliver your application. Please try again in a moment." },
         { status: 502 }
