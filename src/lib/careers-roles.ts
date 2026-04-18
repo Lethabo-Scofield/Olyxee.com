@@ -28,7 +28,7 @@ export const roles: Role[] = [
   {
     title: "AI Researcher",
     team: "AI Research & Development",
-    location: "Remote",
+    location: "Hybrid · Johannesburg",
     type: "paid",
     description: "Lead original research on AI verification, evaluation, and reliability. Your work will set the technical direction for how the industry trusts AI systems.",
     responsibilities: [
@@ -225,7 +225,7 @@ export const roles: Role[] = [
   {
     title: "Marketing Lead",
     team: "Marketing & Growth",
-    location: "Remote",
+    location: "Hybrid · Johannesburg",
     type: "paid",
     description: "Own how the world hears about Olyxee. You'll set the strategy, lead the channels, and turn a technical product into a story engineers, founders, and enterprises actually trust.",
     responsibilities: [
@@ -288,7 +288,7 @@ export const roles: Role[] = [
   {
     title: "Accountant (Grysics)",
     team: "Finance & Accounting",
-    location: "Remote",
+    location: "Hybrid · Johannesburg",
     type: "paid",
     description: "Own the financial heartbeat of Grysics. You'll keep books accurate, reporting clean, and help leadership make sharper decisions with real numbers.",
     responsibilities: [
