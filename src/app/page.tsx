@@ -104,7 +104,7 @@ function HeroSection() {
         >
           Research and Infrastructure
           <br />
-          for <em className="text-blue-400">artificial intelligence</em>
+          for <em className="text-blue-600">artificial intelligence</em>
         </motion.h1>
 
       </motion.div>
@@ -178,7 +178,7 @@ function ResearchAreas() {
             transition={{ duration: 0.8 }}
             className="text-center mb-12 sm:mb-16 lg:mb-20"
           >
-            <p className="text-xs font-semibold text-blue-400 uppercase tracking-[0.2em] mb-4">What We Do</p>
+            <p className="text-xs font-semibold text-blue-600 uppercase tracking-[0.2em] mb-4">What We Do</p>
             <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900">
               From intelligence to <em className="text-blue-500">reliable execution</em>
             </h2>
@@ -295,7 +295,7 @@ function ImageShowcase() {
           transition={{ duration: 0.7 }}
           className="text-center"
         >
-          <p className="text-xs font-semibold text-blue-400 uppercase tracking-[0.2em] mb-4">Visual Research</p>
+          <p className="text-xs font-semibold text-blue-600 uppercase tracking-[0.2em] mb-4">Visual Research</p>
           <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900">
             Exploring AI through <em className="text-blue-500">new perspectives</em>
           </h2>
@@ -336,9 +336,9 @@ function ApproachSection() {
             transition={{ duration: 0.8 }}
             className="mb-10 sm:mb-16 lg:mb-20"
           >
-            <p className="text-xs font-semibold text-blue-400 uppercase tracking-[0.2em] mb-4">Our Approach</p>
+            <p className="text-xs font-semibold text-blue-600 uppercase tracking-[0.2em] mb-4">Our Approach</p>
             <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 max-w-3xl">
-              Built at the intersection of <em className="text-blue-400">research and engineering</em>
+              Built at the intersection of <em className="text-blue-600">research and engineering</em>
             </h2>
           </motion.div>
 
@@ -590,7 +590,7 @@ function CTASection() {
           transition={{ duration: 0.8 }}
           className="font-serif text-3xl sm:text-5xl lg:text-6xl xl:text-7xl text-neutral-900 tracking-tight mb-5 sm:mb-6"
         >
-          The future of AI<br />needs <em className="text-blue-400">better foundations</em>
+          The future of AI<br />needs <em className="text-blue-600">better foundations</em>
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
