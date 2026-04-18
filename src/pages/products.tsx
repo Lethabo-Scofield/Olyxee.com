@@ -1,9 +1,9 @@
-import { FC, useRef, useState, useEffect } from "react";
+import { FC } from "react";
 import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
@@ -26,90 +26,48 @@ const galleryImages = [
   { src: "/images/product-pipeline.png", label: "Pipeline Architecture" },
 ];
 
-function StickyImageGallery() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const total = galleryImages.length;
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      const scrollableHeight = containerRef.current.offsetHeight - window.innerHeight;
-      if (scrollableHeight <= 0) { setActiveIndex(0); return; }
-      const scrolled = -rect.top;
-      const progress = Math.max(0, Math.min(1, scrolled / scrollableHeight));
-      const idx = Math.min(total - 1, Math.floor(progress * total));
-      setActiveIndex(prev => prev === idx ? prev : idx);
-    };
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
-    };
-  }, [total]);
-
+function ProductGallery() {
   return (
-    <section
-      ref={containerRef}
-      style={{ height: `${total * 70}vh` }}
-      className="relative"
-    >
-      <div className="sticky top-0 h-screen flex flex-col items-center justify-center px-4 sm:px-6">
-        <div className="max-w-6xl w-full mx-auto">
-          <div className="flex items-center justify-between mb-3 sm:mb-6">
-            <div className="flex items-center gap-3">
-              <span className="text-xs font-mono text-neutral-300">0{activeIndex + 1}</span>
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={activeIndex}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.25 }}
-                  className="text-sm font-medium text-neutral-500"
-                >
-                  {galleryImages[activeIndex].label}
-                </motion.span>
-              </AnimatePresence>
-            </div>
-            <div className="flex items-center gap-1.5">
-              {galleryImages.map((_, idx) => (
-                <div
-                  key={idx}
-                  className={`h-1 rounded-full transition-all duration-300 ${
-                    idx === activeIndex ? "w-6 bg-neutral-900" : "w-1.5 bg-neutral-200"
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
+    <section className="py-20 sm:py-28 px-4 sm:px-6 border-t border-neutral-100">
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7 }}
+          className="mb-12 sm:mb-16 max-w-2xl"
+        >
+          <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Inside the system</p>
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl tracking-tight text-neutral-900 leading-[1.1]">
+            How the pieces fit together
+          </h2>
+        </motion.div>
 
-          <div className="relative w-full rounded-2xl overflow-hidden bg-neutral-50 border border-neutral-100 aspect-[4/3] sm:aspect-[16/9]">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeIndex}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.4 }}
-                className="absolute inset-0"
-              >
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+          {galleryImages.map((img, idx) => (
+            <motion.figure
+              key={img.src}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.55, delay: Math.min(idx * 0.06, 0.3) }}
+              className="group rounded-2xl overflow-hidden border border-neutral-100 bg-neutral-50 hover:border-neutral-200 hover:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.2)] transition-all duration-500"
+            >
+              <div className="relative aspect-[4/3] overflow-hidden bg-white">
                 <Image
-                  src={galleryImages[activeIndex].src}
-                  alt={galleryImages[activeIndex].label}
+                  src={img.src}
+                  alt={img.label}
                   fill
-                  className="object-contain"
-                  sizes="(max-width: 768px) 100vw, 1152px"
-                  priority
+                  className="object-contain p-4 transition-transform duration-700 group-hover:scale-[1.03]"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 384px"
                 />
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          <p className="text-xs text-neutral-300 text-center mt-4">Scroll to explore</p>
+              </div>
+              <figcaption className="px-5 py-4 flex items-center justify-between">
+                <span className="text-sm font-medium text-neutral-700">{img.label}</span>
+                <span className="text-xs font-mono text-neutral-300">0{idx + 1}</span>
+              </figcaption>
+            </motion.figure>
+          ))}
         </div>
       </div>
     </section>
@@ -240,7 +198,7 @@ const ProductsPage: FC = () => {
         </div>
       </section>
 
-      <StickyImageGallery />
+      <ProductGallery />
 
       <section className="py-20 sm:py-32 border-t border-neutral-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
