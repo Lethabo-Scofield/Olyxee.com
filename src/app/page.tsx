@@ -158,40 +158,107 @@ function LogoStrip() {
   return (
     <div className="w-full max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 py-10 sm:py-14">
       <p className="text-center text-[11px] font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-8 sm:mb-10">Collaborators</p>
-      <div className="flex items-center justify-center flex-wrap gap-x-8 sm:gap-x-14 gap-y-7 sm:gap-y-8">
-        {slots.map((slot, idx) => (
-          <motion.div
-            key={slot.front.name}
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: idx * 0.04 }}
-            className="logo-flip select-none"
-            style={{ ['--flip-delay' as any]: `${idx * 0.6}s` }}
-            aria-label={`${slot.front.name} / ${slot.back.name}`}
-            title={`${slot.front.name} / ${slot.back.name}`}
-          >
-            <div className="logo-flip-inner h-8 sm:h-10 w-20 sm:w-28">
-              <div className="logo-face logo-front">
-                <img
-                  src={`/logos/collaborators/${slot.front.file}.svg`}
-                  alt={slot.front.name}
-                  loading="lazy"
-                  className="max-h-full max-w-full w-auto object-contain"
-                />
-              </div>
-              <div className="logo-face logo-back">
-                <img
-                  src={`/logos/collaborators/${slot.back.file}.svg`}
-                  alt={slot.back.name}
-                  loading="lazy"
-                  className="max-h-full max-w-full w-auto object-contain"
-                />
-              </div>
-            </div>
-          </motion.div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="relative px-6 sm:px-10 py-8 sm:py-10"
+      >
+        {/* dashed marching-ants selection border */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 rounded-md crop-marquee pointer-events-none"
+        />
+        {/* corner handles */}
+        {[
+          "-top-1 -left-1",
+          "-top-1 -right-1",
+          "-bottom-1 -left-1",
+          "-bottom-1 -right-1",
+        ].map((pos) => (
+          <span
+            key={pos}
+            aria-hidden="true"
+            className={`absolute ${pos} w-2.5 h-2.5 bg-white border border-blue-500 rounded-[2px] shadow-sm`}
+          />
         ))}
-      </div>
+        {/* edge handles */}
+        {[
+          "-top-1 left-1/2 -translate-x-1/2",
+          "-bottom-1 left-1/2 -translate-x-1/2",
+          "top-1/2 -left-1 -translate-y-1/2",
+          "top-1/2 -right-1 -translate-y-1/2",
+        ].map((pos) => (
+          <span
+            key={pos}
+            aria-hidden="true"
+            className={`absolute ${pos} w-2 h-2 bg-white border border-blue-500 rounded-[2px] hidden sm:block`}
+          />
+        ))}
+
+        {/* dimension label */}
+        <span
+          aria-hidden="true"
+          className="absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] font-mono px-1.5 py-0.5 rounded bg-blue-500 text-white whitespace-nowrap"
+        >
+          1200 × 120
+        </span>
+
+        {/* colored cursor at bottom-right */}
+        <div
+          aria-hidden="true"
+          className="absolute -bottom-6 -right-3 sm:-bottom-7 sm:-right-5 flex items-end gap-1 pointer-events-none z-10"
+        >
+          <svg viewBox="0 0 24 24" className="w-5 h-5 sm:w-6 sm:h-6 drop-shadow-md" fill="none">
+            <path
+              d="M5 3 L5 19 L9 15 L11.5 21 L13.8 20 L11.3 14 L17 14 Z"
+              fill="#3b82f6"
+              stroke="white"
+              strokeWidth="1.2"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-blue-500 text-white -translate-y-1">
+            you
+          </span>
+        </div>
+
+        <div className="flex items-center justify-center flex-wrap gap-x-8 sm:gap-x-14 gap-y-7 sm:gap-y-8">
+          {slots.map((slot, idx) => (
+            <motion.div
+              key={slot.front.name}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: idx * 0.04 }}
+              className="logo-flip select-none"
+              style={{ ['--flip-delay' as any]: `${idx * 0.6}s` }}
+              aria-label={`${slot.front.name} / ${slot.back.name}`}
+              title={`${slot.front.name} / ${slot.back.name}`}
+            >
+              <div className="logo-flip-inner h-8 sm:h-10 w-20 sm:w-28">
+                <div className="logo-face logo-front">
+                  <img
+                    src={`/logos/collaborators/${slot.front.file}.svg`}
+                    alt={slot.front.name}
+                    loading="lazy"
+                    className="max-h-full max-w-full w-auto object-contain"
+                  />
+                </div>
+                <div className="logo-face logo-back">
+                  <img
+                    src={`/logos/collaborators/${slot.back.file}.svg`}
+                    alt={slot.back.name}
+                    loading="lazy"
+                    className="max-h-full max-w-full w-auto object-contain"
+                  />
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
     </div>
   );
 }
