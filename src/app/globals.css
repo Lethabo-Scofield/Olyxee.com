@@ -99,17 +99,17 @@ html, body {
 }
 
 .image-scroll-row-a {
-  animation: image-scroll 30s linear infinite;
+  animation: image-scroll 40s linear infinite;
 }
 .image-scroll-row-b {
-  animation: image-scroll 38s linear infinite reverse;
+  animation: image-scroll 50s linear infinite reverse;
 }
 @media (min-width: 768px) {
   .image-scroll-row-a {
-    animation-duration: 60s;
+    animation-duration: 45s;
   }
   .image-scroll-row-b {
-    animation-duration: 75s;
+    animation-duration: 55s;
   }
 }
 
