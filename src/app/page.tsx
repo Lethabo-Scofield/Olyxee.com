@@ -7,6 +7,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import {
+  GoogleLogo,
+  OpenAILogo,
+  NvidiaLogo,
+  MetaLogo,
+  AnthropicLogo,
+  MistralLogo,
+  CohereLogo,
+  DeepMindLogo,
+  xAILogo,
+} from "../components/company-logos";
 
 
 export default function HomePage() {
@@ -100,11 +111,12 @@ function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.1 }}
-          className="font-serif text-[2.25rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] text-neutral-900 leading-[1.05] tracking-tight px-2 sm:px-0"
+          className="font-serif text-neutral-900 leading-[1.05] tracking-tight px-2 sm:px-0 text-[clamp(1.55rem,7.2vw,5.5rem)] sm:text-6xl md:text-7xl lg:text-[5.5rem]"
         >
-          Research and Infrastructure
-          <br />
-          for <em className="text-blue-600">artificial intelligence</em>
+          <span className="block whitespace-nowrap">Research and Infrastructure</span>
+          <span className="block">
+            for <em className="text-blue-600">artificial intelligence</em>
+          </span>
         </motion.h1>
 
       </motion.div>
@@ -140,23 +152,35 @@ function HeroSection() {
 
 
 function LogoStrip() {
-  const names = ["OpenAI", "Google", "Anthropic", "NVIDIA", "Meta", "Mistral", "xAI", "DeepMind", "Cohere"];
+  const logos: { name: string; Logo: React.ComponentType<{ className?: string }>; className?: string }[] = [
+    { name: "OpenAI", Logo: OpenAILogo, className: "h-5 sm:h-6 w-auto" },
+    { name: "Google", Logo: GoogleLogo, className: "h-5 sm:h-6 w-auto" },
+    { name: "Anthropic", Logo: AnthropicLogo, className: "h-4 sm:h-5 w-auto" },
+    { name: "NVIDIA", Logo: NvidiaLogo, className: "h-4 sm:h-5 w-auto" },
+    { name: "Meta", Logo: MetaLogo, className: "h-4 sm:h-5 w-auto" },
+    { name: "Mistral", Logo: MistralLogo, className: "h-5 sm:h-6 w-auto" },
+    { name: "xAI", Logo: xAILogo, className: "h-5 sm:h-6 w-auto" },
+    { name: "DeepMind", Logo: DeepMindLogo, className: "h-4 sm:h-5 w-auto" },
+    { name: "Cohere", Logo: CohereLogo, className: "h-4 sm:h-5 w-auto" },
+  ];
 
   return (
     <div className="relative z-10 w-full max-w-5xl mx-auto py-8 sm:py-10 px-4 sm:px-8 lg:px-12">
       <p className="text-center text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-6 sm:mb-8">Collaborators</p>
-      <div className="flex items-center justify-center flex-wrap gap-x-6 sm:gap-x-10 gap-y-3">
-        {names.map((name, idx) => (
-          <motion.span
+      <div className="flex items-center justify-center flex-wrap gap-x-7 sm:gap-x-12 gap-y-5 sm:gap-y-6">
+        {logos.map(({ name, Logo, className }, idx) => (
+          <motion.div
             key={name}
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: idx * 0.04 }}
-            className="text-sm sm:text-base font-medium text-neutral-400/70 hover:text-neutral-600 transition-colors duration-300 tracking-wide select-none"
+            className="text-neutral-400/80 hover:text-neutral-700 transition-colors duration-300 select-none"
+            aria-label={name}
+            title={name}
           >
-            {name}
-          </motion.span>
+            <Logo className={className} />
+          </motion.div>
         ))}
       </div>
     </div>
