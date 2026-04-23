@@ -18,7 +18,7 @@ const Support: FC = () => {
             <span className="accent-dot" />
             <span className="text-sm font-medium text-neutral-400 uppercase tracking-widest">Support</span>
           </motion.div>
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }} className="font-serif text-5xl sm:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-6">
+          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }} className="font-serif text-4xl sm:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-6">
             Coming <em className="text-neutral-400">soon</em>
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="text-xl text-neutral-500 leading-relaxed max-w-2xl mx-auto font-light mb-10">

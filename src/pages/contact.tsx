@@ -88,7 +88,7 @@ const Contact: FC = () => {
 
       <section className="pt-32 sm:pt-44 pb-12 sm:pb-16 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
-          <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl text-neutral-900 tracking-tight leading-[1.02] max-w-4xl">
+          <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl text-neutral-900 tracking-tight leading-[1.02] max-w-4xl">
             Contact us
           </h1>
           <p className="mt-6 text-lg sm:text-xl text-neutral-500 font-light leading-relaxed max-w-2xl">
