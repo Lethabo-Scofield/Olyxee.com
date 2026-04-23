@@ -355,15 +355,15 @@ function EmergingTalentSection() {
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl tracking-tight text-neutral-900 mb-6">
               Emerging talent
             </h2>
-            <p className="text-base sm:text-lg text-neutral-500 leading-relaxed font-light mb-8 max-w-xl">
+            <p className="text-base sm:text-lg text-neutral-500 leading-relaxed font-light mb-8">
               Join us in building safe, beneficial AI for everyone. We welcome curious, driven people early in their professional journey through internships, residencies, and full-time roles.
             </p>
-            <a
-              href="#roles"
+            <Link
+              href="/about"
               className="group inline-flex items-center gap-2 text-sm font-medium text-neutral-900 border-b border-neutral-900 pb-1 hover:gap-3 transition-all"
             >
               Find out more <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-            </a>
+            </Link>
           </motion.div>
         </div>
       </div>
