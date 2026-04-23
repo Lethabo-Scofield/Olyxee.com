@@ -23,7 +23,8 @@ const ApplicationForm: FC<Props> = ({ role, onClose }) => {
   const totalSteps = isPaid ? 3 : 1;
 
   const [step, setStep] = useState(0);
-  const [name, setName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
   const [school, setSchool] = useState("");
   const [schoolFocused, setSchoolFocused] = useState(false);
@@ -48,7 +49,8 @@ const ApplicationForm: FC<Props> = ({ role, onClose }) => {
     setAnswers((prev) => ({ ...prev, [id]: value }));
 
   const validateBasic = (): string | null => {
-    if (!name.trim()) return "Please enter your full name.";
+    if (!firstName.trim()) return "Please enter your first name.";
+    if (!surname.trim()) return "Please enter your surname.";
     if (!email.trim()) return "Please enter your email.";
     if (!EMAIL_RE.test(email.trim())) return "Please enter a valid email address.";
     return null;
@@ -91,7 +93,9 @@ const ApplicationForm: FC<Props> = ({ role, onClose }) => {
   const buildPayload = () => {
     const body: Record<string, unknown> = {
       role_title: role.title,
-      full_name: name.trim(),
+      first_name: firstName.trim(),
+      surname: surname.trim(),
+      full_name: `${firstName.trim()} ${surname.trim()}`,
       email: email.trim(),
       message: whyMessage.trim(),
     };
@@ -193,17 +197,31 @@ const ApplicationForm: FC<Props> = ({ role, onClose }) => {
         >
           {step === 0 && (
             <>
-              <div>
-                <label className={labelClass}>Full name</label>
-                <input
-                  type="text"
-                  required
-                  autoComplete="name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className={inputClass}
-                  placeholder="Your full name"
-                />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className={labelClass}>First name</label>
+                  <input
+                    type="text"
+                    required
+                    autoComplete="given-name"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                    className={inputClass}
+                    placeholder="First name"
+                  />
+                </div>
+                <div>
+                  <label className={labelClass}>Surname</label>
+                  <input
+                    type="text"
+                    required
+                    autoComplete="family-name"
+                    value={surname}
+                    onChange={(e) => setSurname(e.target.value)}
+                    className={inputClass}
+                    placeholder="Last name"
+                  />
+                </div>
               </div>
               <div>
                 <label className={labelClass}>Email address</label>
