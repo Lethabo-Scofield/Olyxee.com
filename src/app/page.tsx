@@ -6,7 +6,7 @@ import Footer from '../components/footer';
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 
 
 export default function HomePage() {
@@ -561,64 +561,53 @@ function IntegrationSection() {
 
 function CTASection() {
   return (
-    <section
-      className="relative pt-24 sm:pt-36 pb-32 sm:pb-44 overflow-hidden"
-      style={{ background: 'linear-gradient(to bottom, #ffffff 0%, #f5f5f5 12%, #e5e5e5 25%, #a3a3a3 42%, #525252 58%, #262626 72%, #171717 85%, #0a0a0a 100%)' }}
-    >
-      <div className="max-w-4xl mx-auto px-4 sm:px-8 lg:px-12 text-center relative z-10">
+    <section className="relative py-20 sm:py-28 lg:py-32 bg-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-8"
-        >
-          <Image
-            src="/Logo/Olyxee_Logo.png"
-            alt="Olyxee"
-            width={48}
-            height={48}
-            loading="lazy"
-            className="mx-auto opacity-30"
-          />
-        </motion.div>
-        <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="font-serif text-3xl sm:text-5xl lg:text-6xl xl:text-7xl text-neutral-900 tracking-tight mb-5 sm:mb-6"
+          transition={{ duration: 0.7 }}
+          className="relative rounded-3xl bg-neutral-100 border border-neutral-200/70 px-6 sm:px-12 lg:px-20 py-14 sm:py-20 lg:py-24 overflow-hidden"
         >
-          The future of AI<br />needs <em className="text-blue-600">better foundations</em>
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1, duration: 0.7 }}
-          className="text-neutral-500 text-base sm:text-xl max-w-xl mx-auto mb-8 sm:mb-10 font-light leading-relaxed px-2 sm:px-0"
-        >
-          We are building those foundations. Join us on the journey.
-        </motion.p>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2, duration: 0.7 }}
-          className="flex flex-col sm:flex-row gap-3 justify-center"
-        >
-          <Link
-            href="/contact"
-            className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-blue-400 text-white rounded-full font-medium hover:bg-blue-500 transition-all text-sm tracking-wide shadow-lg shadow-blue-400/20"
-          >
-            Get in Touch <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-          </Link>
-          <Link
-            href="/about"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 text-neutral-300 bg-transparent border border-neutral-500 rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide"
-          >
-            About
-          </Link>
+          <div
+            aria-hidden="true"
+            className="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-blue-100/50 blur-3xl"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute -bottom-32 -left-24 w-80 h-80 rounded-full bg-neutral-200/60 blur-3xl"
+          />
+
+          <div className="relative text-center max-w-2xl mx-auto">
+            <span className="font-handwritten text-blue-600 text-2xl sm:text-3xl block mb-3 -rotate-2">
+              ready when you are —
+            </span>
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-5 leading-[1.05]">
+              Get started with <em className="not-italic font-normal text-blue-600">Ordo</em>
+            </h2>
+            <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-9 max-w-lg mx-auto">
+              Bring Ordo into your stack and turn scattered work into one accountable workflow.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <a
+                href="https://ordo.olyxee.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide shadow-lg shadow-neutral-900/10"
+              >
+                <Download className="w-4 h-4" />
+                Download
+              </a>
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 text-neutral-900 bg-white border border-neutral-300 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide"
+              >
+                Talk to us
+              </Link>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
