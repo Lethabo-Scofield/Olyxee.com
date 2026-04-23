@@ -272,8 +272,9 @@ html, body {
 }
 
 .font-serif {
-  font-family: var(--font-sans), "Geist", "Söhne", "Inter", system-ui, sans-serif;
-  letter-spacing: -0.025em;
+  font-family: var(--font-serif), "Instrument Serif", "Iowan Old Style", "Apple Garamond", Baskerville, "Times New Roman", serif;
+  letter-spacing: -0.015em;
+  font-weight: 400;
 }
 
 
