@@ -409,20 +409,20 @@ function OrdoSection() {
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, scale: 0.85 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 20, rotate: 3 }}
+                whileInView={{ opacity: 1, y: 0, rotate: 3 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center gap-2"
+                className="absolute -bottom-5 sm:-bottom-7 right-4 sm:right-8 z-20 flex flex-col items-center gap-1"
               >
-                <span className="font-handwritten text-blue-600 text-xl sm:text-2xl rotate-[-6deg] -translate-x-8 mb-1 hidden sm:block">
+                <span className="font-handwritten text-blue-600 text-xl sm:text-2xl rotate-[-8deg] -translate-x-10 -mb-1 hidden sm:block">
                   give it a spin →
                 </span>
                 <a
                   href="https://ordo.olyxee.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm sm:text-base tracking-wide shadow-2xl shadow-neutral-900/30 hover:shadow-neutral-900/50 hover:scale-105"
+                  className="group inline-flex items-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide shadow-2xl shadow-neutral-900/30 hover:shadow-neutral-900/50 hover:scale-105"
                 >
                   Try Ordo
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
