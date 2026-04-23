@@ -69,13 +69,16 @@ function RolesSection() {
   const [filterType, setFilterType] = useState<"all" | RoleType>("all");
   const [filterTeam, setFilterTeam] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [showAll, setShowAll] = useState<boolean>(false);
   const [selectedRole, setSelectedRole] = useState<Role | null>(null);
+
+  const INITIAL_VISIBLE = 6;
 
   const typeFilteredRoles = filterType === "all" ? roles : roles.filter(r => r.type === filterType);
   const visibleTeams = Array.from(new Set(typeFilteredRoles.map(r => r.team)));
   const teamFilteredRoles = filterTeam === "All" ? typeFilteredRoles : typeFilteredRoles.filter(r => r.team === filterTeam);
   const q = searchQuery.trim().toLowerCase();
-  const filteredRoles = q
+  const matchedRoles = q
     ? teamFilteredRoles.filter(r =>
         r.title.toLowerCase().includes(q) ||
         r.team.toLowerCase().includes(q) ||
@@ -83,6 +86,11 @@ function RolesSection() {
         r.location.toLowerCase().includes(q)
       )
     : teamFilteredRoles;
+
+  const isDefaultView = filterType === "all" && filterTeam === "All" && !q;
+  const shouldCollapse = isDefaultView && !showAll && matchedRoles.length > INITIAL_VISIBLE;
+  const filteredRoles = shouldCollapse ? matchedRoles.slice(0, INITIAL_VISIBLE) : matchedRoles;
+  const hiddenCount = matchedRoles.length - filteredRoles.length;
 
   const paidCount = roles.filter(r => r.type === "paid").length;
   const internshipCount = roles.filter(r => r.type === "internship").length;
@@ -225,6 +233,25 @@ function RolesSection() {
                   ))}
                 </AnimatePresence>
               </div>
+
+              {(shouldCollapse || (isDefaultView && showAll && matchedRoles.length > INITIAL_VISIBLE)) && (
+                <div className="pt-8 flex flex-col items-center gap-2">
+                  <button
+                    onClick={() => setShowAll(v => !v)}
+                    className="group inline-flex items-center gap-2 px-6 py-3 rounded-full border border-neutral-300 text-sm font-medium text-neutral-900 hover:border-neutral-900 hover:bg-neutral-900 hover:text-white transition-all"
+                  >
+                    {showAll
+                      ? `Show fewer roles`
+                      : `View ${hiddenCount} more ${hiddenCount === 1 ? "role" : "roles"}`}
+                    <ArrowRight className={`w-4 h-4 transition-transform ${showAll ? "-rotate-90" : "rotate-90"}`} />
+                  </button>
+                  <p className="text-xs text-neutral-400">
+                    {showAll
+                      ? `Showing all ${matchedRoles.length} open roles`
+                      : `Showing ${filteredRoles.length} of ${matchedRoles.length} open roles`}
+                  </p>
+                </div>
+              )}
 
               {filteredRoles.length === 0 && (
                 <motion.div
