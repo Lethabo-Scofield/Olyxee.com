@@ -90,6 +90,7 @@ function RolesSection() {
             transition={{ duration: 0.8 }}
             className="mb-10"
           >
+            <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Early career</p>
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-4">
               Open roles
             </h2>
