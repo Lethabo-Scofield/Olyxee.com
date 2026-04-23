@@ -308,6 +308,56 @@ function ResearchRoadmap() {
   );
 }
 
+function IntegrationsSection() {
+  return (
+    <section className="py-20 sm:py-28 px-4 sm:px-6 border-t border-neutral-100 bg-gradient-to-b from-white to-neutral-50/60">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+          className="lg:col-span-5 order-2 lg:order-1"
+        >
+          <p className="text-xs font-semibold text-blue-600 uppercase tracking-[0.25em] mb-5">Integrations</p>
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl tracking-tight text-neutral-900 mb-6 leading-[1.1]">
+            Works with the tools you already use.
+          </h2>
+          <p className="text-base sm:text-lg text-neutral-600 font-light leading-relaxed mb-6">
+            Ordo plugs into your existing stack — no rip and replace. Connect your finance, sales, support and productivity tools, and Ordo handles the rest.
+          </p>
+          <ul className="space-y-2 text-sm text-neutral-600">
+            <li className="flex gap-2"><span className="text-blue-500">•</span> Microsoft 365, Office, Outlook</li>
+            <li className="flex gap-2"><span className="text-blue-500">•</span> Salesforce, Zendesk, Freshdesk</li>
+            <li className="flex gap-2"><span className="text-blue-500">•</span> Xero, QuickBooks, Stripe</li>
+            <li className="flex gap-2"><span className="text-blue-500">•</span> Slack, Teams, Notion, Sheets</li>
+          </ul>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7 }}
+          className="lg:col-span-7 order-1 lg:order-2"
+        >
+          <div className="relative">
+            <div className="absolute inset-0 bg-blue-100/40 blur-3xl rounded-full" aria-hidden />
+            <Image
+              src="/images/integrations-cluster.png"
+              alt="A floating cluster of integration logos including Microsoft 365, Salesforce, Xero, Outlook, Zendesk and others that Ordo connects to."
+              width={970}
+              height={550}
+              className="relative w-full h-auto"
+              sizes="(max-width: 1024px) 100vw, 600px"
+            />
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
 function ProductGallery() {
   return (
     <section className="py-20 sm:py-28 px-4 sm:px-6 border-t border-neutral-100">
@@ -425,7 +475,7 @@ const ProductsPage: FC = () => {
 
       <ProductGallery />
 
-      <ResearchRoadmap />
+      <IntegrationsSection />
 
 
       <section className="relative py-20 sm:py-28 px-4 sm:px-6 bg-white">
