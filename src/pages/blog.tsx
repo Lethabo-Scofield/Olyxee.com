@@ -254,13 +254,15 @@ const Blog: FC = () => {
                       ))}
 
                       <div className="flex items-center gap-4 pt-6 border-t border-neutral-100">
-                        <Link
-                          href="/products/ordo"
+                        <a
+                          href="https://ordo.olyxee.com"
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="inline-flex items-center gap-2 px-5 py-2.5 bg-neutral-900 text-white text-sm font-medium rounded-full hover:bg-black transition-colors"
                         >
                           Try Ordo
                           <ArrowRight className="w-3.5 h-3.5" />
-                        </Link>
+                        </a>
                         <span className="text-xs text-neutral-400">Free during beta</span>
                       </div>
                     </motion.div>

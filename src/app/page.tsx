@@ -124,12 +124,14 @@ function HeroSection() {
           />
           <div className="absolute inset-0 rounded-2xl sm:rounded-3xl pointer-events-none ring-1 ring-inset ring-black/5" />
           <div className="absolute bottom-3 right-3 sm:bottom-6 sm:right-6 z-20">
-            <Link
-              href="/products"
+            <a
+              href="https://ordo.olyxee.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-7 sm:py-3.5 bg-white/90 backdrop-blur-md text-neutral-900 rounded-full font-medium hover:bg-white transition-all text-xs sm:text-sm tracking-wide shadow-lg shadow-black/10 border border-white/60"
             >
               Try Ordo <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-            </Link>
+            </a>
           </div>
         </div>
       </motion.div>

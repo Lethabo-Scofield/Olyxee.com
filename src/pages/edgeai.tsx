@@ -186,12 +186,14 @@ const EdgeAI: FC = () => {
             >
               Explore OEB <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </Link>
-            <Link
-              href="/products/ordo"
+            <a
+              href="https://ordo.olyxee.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-neutral-600 border border-neutral-200 rounded-full font-medium hover:bg-neutral-50 hover:text-neutral-900 transition-all text-sm"
             >
               Try Ordo
-            </Link>
+            </a>
           </motion.div>
         </div>
       </section>
