@@ -442,21 +442,51 @@ const ProductsPage: FC = () => {
       <div className="grain" />
       <Header />
 
-      <section className="pt-28 sm:pt-36 pb-16 sm:pb-24 px-4 sm:px-6">
+      <section className="pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="max-w-3xl"
+            transition={{ duration: 0.9 }}
+            className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-black shadow-[0_30px_80px_-20px_rgba(0,0,0,0.55)] ring-1 ring-black/10"
           >
-            <p className="text-xs font-semibold text-blue-600 uppercase tracking-[0.25em] mb-5">Products</p>
-            <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl tracking-tight text-neutral-900 leading-[1.05] mb-6">
-              Research, shipped as <em className="text-blue-600">working systems</em>.
-            </h1>
-            <p className="text-lg sm:text-xl text-neutral-500 leading-relaxed font-light max-w-2xl">
-              Olyxee turns research into products you can actually run. Today that means <span className="text-neutral-800 font-normal">Ordo</span> - an AI execution system for real business operations.
-            </p>
+            <Image
+              src="/images/products-hero-bg-v2.jpeg"
+              alt=""
+              fill
+              priority
+              className="object-cover object-center"
+              sizes="(max-width: 1024px) 100vw, 1152px"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/35" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-black/20" />
+
+            <div className="relative px-6 sm:px-12 lg:px-16 py-20 sm:py-28 lg:py-36 max-w-3xl">
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.15 }}
+                className="text-xs font-semibold text-blue-300 uppercase tracking-[0.25em] mb-5"
+              >
+                Products
+              </motion.p>
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-white leading-[1.08] mb-6 drop-shadow-[0_2px_20px_rgba(0,0,0,0.5)]"
+              >
+                Research, shipped as <em className="text-blue-300">working systems</em>.
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.25 }}
+                className="text-base sm:text-xl text-white/80 leading-relaxed max-w-xl font-light drop-shadow-[0_1px_8px_rgba(0,0,0,0.4)]"
+              >
+                Olyxee turns research into products you can actually run. Today that means <span className="text-white font-normal">Ordo</span> — an AI execution system for real business operations.
+              </motion.p>
+            </div>
           </motion.div>
 
           <OrdoSpotlight />
