@@ -344,6 +344,53 @@ function RolesSection() {
   );
 }
 
+function EmergingTalentSection() {
+  return (
+    <section className="py-16 sm:py-24 lg:py-32 border-t border-neutral-100">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="relative aspect-square w-full overflow-hidden rounded-2xl sm:rounded-3xl bg-neutral-100"
+          >
+            <Image
+              src="/images/emerging-talent.png"
+              alt="Three early-career colleagues talking together in a sunlit office"
+              fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover"
+            />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+          >
+            <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Early career</p>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl tracking-tight text-neutral-900 mb-6">
+              Emerging talent
+            </h2>
+            <p className="text-base sm:text-lg text-neutral-500 leading-relaxed font-light mb-8 max-w-xl">
+              Join us in building safe, beneficial AI for everyone. We welcome curious, driven people early in their professional journey through internships, residencies, and full-time roles.
+            </p>
+            <a
+              href="#roles"
+              className="group inline-flex items-center gap-2 text-sm font-medium text-neutral-900 border-b border-neutral-900 pb-1 hover:gap-3 transition-all"
+            >
+              Find out more <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+            </a>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function ProcessSection() {
   const steps = [
     { num: "01", title: "Apply", desc: "Send us your work. No cover letter needed. Just show us what you've built and what excites you." },
@@ -452,6 +499,7 @@ const Careers: FC = () => {
         <HeroSection />
         <ValuesSection />
         <RolesSection />
+        <EmergingTalentSection />
         <ProcessSection />
         <CTASection />
       </main>
