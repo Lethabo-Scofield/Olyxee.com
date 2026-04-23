@@ -306,17 +306,11 @@ function ImageShowcase() {
         <div className="pointer-events-none absolute inset-y-0 left-0 w-12 sm:w-24 bg-gradient-to-r from-white to-transparent z-10" />
         <div className="pointer-events-none absolute inset-y-0 right-0 w-12 sm:w-24 bg-gradient-to-l from-white to-transparent z-10" />
 
-        <div
-          className="flex gap-5 sm:gap-6 hover:[animation-play-state:paused] will-change-transform"
-          style={{ animation: 'image-scroll 60s linear infinite' }}
-        >
+        <div className="image-scroll-row-a flex gap-5 sm:gap-6 hover:[animation-play-state:paused] will-change-transform">
           {doubledA.map(renderCard)}
         </div>
 
-        <div
-          className="flex gap-5 sm:gap-6 hover:[animation-play-state:paused] will-change-transform"
-          style={{ animation: 'image-scroll 75s linear infinite reverse' }}
-        >
+        <div className="image-scroll-row-b flex gap-5 sm:gap-6 hover:[animation-play-state:paused] will-change-transform">
           {doubledB.map(renderCard)}
         </div>
       </div>

@@ -98,6 +98,21 @@ html, body {
   100% { transform: translateX(-50%); }
 }
 
+.image-scroll-row-a {
+  animation: image-scroll 30s linear infinite;
+}
+.image-scroll-row-b {
+  animation: image-scroll 38s linear infinite reverse;
+}
+@media (min-width: 768px) {
+  .image-scroll-row-a {
+    animation-duration: 60s;
+  }
+  .image-scroll-row-b {
+    animation-duration: 75s;
+  }
+}
+
 @keyframes gradient-shift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
