@@ -30,6 +30,27 @@ const SEO: FC<SEOProps> = ({
 
   const jsonLdArray = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
 
+  // Auto-generate BreadcrumbList from the URL path so every page gets one for free
+  const segments = path.split("/").filter(Boolean);
+  if (segments.length > 0) {
+    const breadcrumbItems = [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+      ...segments.map((seg, i) => ({
+        "@type": "ListItem",
+        position: i + 2,
+        name: seg
+          .replace(/-/g, " ")
+          .replace(/\b\w/g, (c) => c.toUpperCase()),
+        item: `${siteUrl}/${segments.slice(0, i + 1).join("/")}`,
+      })),
+    ];
+    jsonLdArray.push({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: breadcrumbItems,
+    });
+  }
+
   return (
     <Head>
       <title>{fullTitle}</title>

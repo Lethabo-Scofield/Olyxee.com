@@ -564,22 +564,57 @@ const Careers: FC = () => {
     <div className="min-h-screen bg-white text-neutral-900 relative">
       <SEO
         title="Careers"
-        description="Join Olyxee and build the infrastructure that makes AI trustworthy. 10 remote internships across AI research, engineering, design, and operations. Ship real work from day one."
+        description="Join Olyxee and build the infrastructure that makes AI trustworthy. Open internships and paid roles across AI research, engineering, design, and operations. Ship real work from day one."
         path="/careers"
-        keywords={["Olyxee careers", "AI internships", "AI research internship", "AI engineering jobs", "remote AI internship", "Olyxee jobs", "machine learning internship"]}
-        jsonLd={{
-          "@context": "https://schema.org",
-          "@type": "CollectionPage",
-          name: "Careers at Olyxee",
-          url: "https://olyxee.com/careers",
-          about: "Open internships and roles at Olyxee, the AI infrastructure company.",
-          publisher: {
-            "@type": "Organization",
-            name: "Olyxee",
-            url: "https://olyxee.com",
-            logo: "https://olyxee.com/Logo/Olyxee_Logo.png"
-          }
-        }}
+        keywords={["Olyxee careers", "AI internships", "AI research internship", "AI engineering jobs", "remote AI internship", "Olyxee jobs", "machine learning internship", "AI jobs Johannesburg", "AI jobs South Africa"]}
+        jsonLd={[
+          {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            name: "Careers at Olyxee",
+            url: "https://olyxee.com/careers",
+            about: "Open internships and roles at Olyxee, the AI infrastructure company.",
+            publisher: {
+              "@type": "Organization",
+              name: "Olyxee",
+              url: "https://olyxee.com",
+              logo: "https://olyxee.com/Logo/Olyxee_Logo.png"
+            }
+          },
+          ...roles.map((role) => ({
+            "@context": "https://schema.org",
+            "@type": "JobPosting",
+            title: role.title,
+            description: `${role.description}\n\nResponsibilities:\n- ${role.responsibilities.join("\n- ")}\n\nRequirements:\n- ${role.requirements.join("\n- ")}`,
+            datePosted: "2026-01-01",
+            validThrough: "2026-12-31",
+            employmentType: role.type === "internship" ? "INTERN" : "FULL_TIME",
+            hiringOrganization: {
+              "@type": "Organization",
+              name: "Olyxee",
+              sameAs: "https://olyxee.com",
+              logo: "https://olyxee.com/Logo/Olyxee_Logo.png",
+            },
+            jobLocation: {
+              "@type": "Place",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: role.location.includes("Johannesburg") ? "Johannesburg" : undefined,
+                addressCountry: "ZA",
+              },
+            },
+            jobLocationType: role.location.toLowerCase().includes("remote") ? "TELECOMMUTE" : undefined,
+            applicantLocationRequirements: role.location.toLowerCase().includes("remote")
+              ? { "@type": "Country", name: "Worldwide" }
+              : undefined,
+            industry: "Artificial Intelligence",
+            occupationalCategory: role.team,
+            url: `https://olyxee.com/careers#${role.title.toLowerCase().replace(/\s+/g, "-")}`,
+            ...(role.type === "internship"
+              ? { baseSalary: { "@type": "MonetaryAmount", currency: "USD", value: { "@type": "QuantitativeValue", value: 0, unitText: "MONTH" } } }
+              : {}),
+          })),
+        ]}
       />
       <Header />
 
