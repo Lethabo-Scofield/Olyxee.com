@@ -65,6 +65,7 @@ function OrdoArchitecture() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
           </span>
+          <span className="text-[11px] font-mono text-neutral-500 uppercase tracking-wider">Live · Ordo runtime</span>
         </div>
         <span className="hidden sm:inline text-[11px] font-mono text-neutral-400">ordo.olyxee.com</span>
       </div>
@@ -403,52 +404,21 @@ const ProductsPage: FC = () => {
       <div className="grain" />
       <Header />
 
-      <section className="pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6">
+      <section className="pt-28 sm:pt-36 pb-16 sm:pb-24 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9 }}
-            className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-black shadow-[0_30px_80px_-20px_rgba(0,0,0,0.55)] ring-1 ring-black/10"
+            transition={{ duration: 0.7 }}
+            className="max-w-3xl"
           >
-            <Image
-              src="/images/products-hero-bg-v2.jpeg"
-              alt=""
-              fill
-              priority
-              className="object-cover object-center"
-              sizes="(max-width: 1024px) 100vw, 1152px"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/30" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
-
-            <div className="relative px-6 sm:px-12 lg:px-16 py-20 sm:py-28 lg:py-36 max-w-3xl">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.15 }}
-                className="flex items-center gap-3 mb-6"
-              >
-                <Image src="/Logo/Olyxee_Logo.png" alt="Olyxee" width={24} height={24} className="opacity-80 invert" />
-                <span className="text-sm font-medium text-white/70 uppercase tracking-widest">Products</span>
-              </motion.div>
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-white leading-[1.08] mb-6 drop-shadow-[0_2px_20px_rgba(0,0,0,0.5)]"
-              >
-                Products
-              </motion.h1>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.25 }}
-                className="text-base sm:text-xl text-white/80 leading-relaxed max-w-xl font-light drop-shadow-[0_1px_8px_rgba(0,0,0,0.4)]"
-              >
-                Systems built from Olyxee research for real-world AI operation.
-              </motion.p>
-            </div>
+            <p className="text-xs font-semibold text-blue-600 uppercase tracking-[0.25em] mb-5">Products</p>
+            <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl tracking-tight text-neutral-900 leading-[1.05] mb-6">
+              Research, shipped as <em className="text-blue-600">working systems</em>.
+            </h1>
+            <p className="text-lg sm:text-xl text-neutral-500 leading-relaxed font-light max-w-2xl">
+              Olyxee turns research into products you can actually run. Today that means <span className="text-neutral-800 font-normal">Ordo</span> - an AI execution system for real business operations.
+            </p>
           </motion.div>
 
           <OrdoSpotlight />
@@ -460,8 +430,8 @@ const ProductsPage: FC = () => {
       <ResearchRoadmap />
 
 
-      <section className="relative pt-24 sm:pt-36 pb-32 sm:pb-44 overflow-hidden" style={{ background: 'linear-gradient(to bottom, #ffffff 0%, #f5f5f5 12%, #e5e5e5 25%, #a3a3a3 42%, #525252 58%, #262626 72%, #171717 85%, #0a0a0a 100%)' }}>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
+      <section className="relative py-24 sm:py-36 px-4 sm:px-6 border-t border-neutral-100 bg-white">
+        <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -469,9 +439,9 @@ const ProductsPage: FC = () => {
             custom={0}
             variants={fadeUp}
           >
-            <p className="text-sm font-semibold text-neutral-400 uppercase tracking-[0.25em] mb-6">What comes next</p>
-            <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-800 mb-6 leading-snug">
-              AI needs better foundations.
+            <p className="text-xs font-semibold text-blue-600 uppercase tracking-[0.25em] mb-5">What comes next</p>
+            <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900 mb-6 leading-[1.1]">
+              AI needs <em className="text-blue-600">better foundations</em>.
             </h2>
             <p className="text-base sm:text-xl text-neutral-500 font-light leading-relaxed max-w-2xl mx-auto mb-10">
               We are building those foundations. Join us on the journey.
