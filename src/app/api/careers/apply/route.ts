@@ -98,6 +98,50 @@ function buildText(a: BuildArgs): string {
   return lines.join("\n");
 }
 
+function buildApplicantConfirmationHtml(a: BuildArgs): string {
+  const firstName = a.full_name.split(" ")[0] || a.full_name;
+  return `<!doctype html><html><body style="margin:0;padding:24px;background:#f3f4f6;font-family:-apple-system,BlinkMacSystemFont,Inter,sans-serif">
+    <div style="max-width:560px;margin:0 auto;background:#ffffff;border-radius:16px;overflow:hidden;border:1px solid #e5e7eb">
+      <div style="padding:32px 32px 24px">
+        <div style="font-size:12px;color:#6b7280;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Olyxee Careers</div>
+        <h1 style="font-size:22px;color:#111827;font-weight:600;margin:0 0 16px">We've got your application</h1>
+        <p style="font-size:15px;color:#374151;line-height:1.6;margin:0 0 16px">Hi ${escapeHtml(firstName)},</p>
+        <p style="font-size:15px;color:#374151;line-height:1.6;margin:0 0 16px">
+          Thanks for applying to <strong style="color:#111827">${escapeHtml(a.role.title)}</strong> on the ${escapeHtml(a.role.team)} team. Your application has landed safely with us — no further action is needed from you right now.
+        </p>
+        <p style="font-size:15px;color:#374151;line-height:1.6;margin:0 0 16px">
+          Our team reviews every application carefully. If we'd like to take the next step, we'll reach out to this email address within the next two to three weeks. If you don't hear back in that window, we encourage you to apply again for future roles that fit.
+        </p>
+        ${a.role.type === "internship" ? `<div style="margin:20px 0;padding:14px 16px;background:#f9fafb;border-radius:10px;font-size:13px;color:#6b7280;line-height:1.6">Reminder: this is an unpaid internship designed for hands-on experience, mentorship, and a written reference.</div>` : ""}
+        <p style="font-size:15px;color:#374151;line-height:1.6;margin:0 0 16px">
+          In the meantime, feel free to follow our work or get in touch if anything changes about your application.
+        </p>
+        <p style="font-size:15px;color:#374151;line-height:1.6;margin:24px 0 4px">— The Olyxee team</p>
+      </div>
+      <div style="padding:16px 32px;background:#f9fafb;border-top:1px solid #f3f4f6;font-size:12px;color:#9ca3af">
+        This is an automated confirmation. You don't need to reply.
+      </div>
+    </div>
+  </body></html>`;
+}
+
+function buildApplicantConfirmationText(a: BuildArgs): string {
+  const firstName = a.full_name.split(" ")[0] || a.full_name;
+  const lines: string[] = [];
+  lines.push(`Hi ${firstName},`);
+  lines.push("");
+  lines.push(`Thanks for applying to ${a.role.title} on the ${a.role.team} team. Your application has landed safely with us — no further action is needed from you right now.`);
+  lines.push("");
+  lines.push("Our team reviews every application carefully. If we'd like to take the next step, we'll reach out to this email address within the next two to three weeks. If you don't hear back in that window, we encourage you to apply again for future roles that fit.");
+  if (a.role.type === "internship") {
+    lines.push("");
+    lines.push("Reminder: this is an unpaid internship designed for hands-on experience, mentorship, and a written reference.");
+  }
+  lines.push("");
+  lines.push("— The Olyxee team");
+  return lines.join("\n");
+}
+
 function buildHtml(a: BuildArgs): string {
   const row = (label: string, value: string) =>
     `<tr><td style="padding:8px 12px;color:#6b7280;font-size:12px;text-transform:uppercase;letter-spacing:.05em;width:160px;vertical-align:top">${escapeHtml(label)}</td><td style="padding:8px 12px;color:#111827;font-size:14px;vertical-align:top">${value}</td></tr>`;
@@ -210,12 +254,6 @@ export async function POST(req: Request) {
         answersForEmail.push({ label: q.label, value });
       }
     } else {
-      if (!school) {
-        return NextResponse.json(
-          { error: "Please tell us which school you attend or attended." },
-          { status: 400 }
-        );
-      }
       if (!portfolio) {
         return NextResponse.json(
           { error: "Please share a link to your portfolio, GitHub, LinkedIn, or CV." },
@@ -274,6 +312,20 @@ export async function POST(req: Request) {
         { status: 502 }
       );
     }
+
+    resend.emails
+      .send({
+        from: FROM_ADDRESS,
+        to: email,
+        replyTo: HIRING_EMAIL,
+        subject: `We've received your application for ${role.title}`,
+        text: buildApplicantConfirmationText(args),
+        html: buildApplicantConfirmationHtml(args),
+      })
+      .then(({ error }) => {
+        if (error) console.error("Applicant confirmation send error", error);
+      })
+      .catch((err) => console.error("Applicant confirmation send exception", err));
 
     return NextResponse.json({ success: true });
   } catch (err) {
