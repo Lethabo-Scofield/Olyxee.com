@@ -2,28 +2,20 @@ import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import { AnimatePresence, motion } from "framer-motion";
-import { Inter, Instrument_Serif } from "next/font/google";
+import { Geist } from "next/font/google";
 import "../app/globals.css";
 
-const inter = Inter({
+const geist = Geist({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-inter",
-});
-
-const instrumentSerif = Instrument_Serif({
-  weight: "400",
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-instrument",
-  style: ["normal", "italic"],
+  variable: "--font-sans",
 });
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   return (
-    <div className={`${inter.variable} ${instrumentSerif.variable}`}>
+    <div className={geist.variable}>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <meta name="robots" content="index, follow" />

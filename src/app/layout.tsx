@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Instrument_Serif } from "next/font/google";
+import { Geist } from "next/font/google";
 import "./globals.css";
 import "katex/dist/katex.min.css";
 import VisualEditsMessenger from "../visual-edits/VisualEditsMessenger";
@@ -7,18 +7,10 @@ import ErrorReporter from "@/components/ErrorReporter";
 import PageTransitionLoader from "@/components/PageTransitionLoader";
 import Script from "next/script";
 
-const inter = Inter({
+const geist = Geist({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-inter",
-});
-
-const instrumentSerif = Instrument_Serif({
-  weight: "400",
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-instrument",
-  style: ["normal", "italic"],
+  variable: "--font-sans",
 });
 
 const siteUrl = "https://olyxee.com";
@@ -169,7 +161,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.variable} ${instrumentSerif.variable} antialiased`}>
+      <body className={`${geist.variable} antialiased`}>
         <ErrorReporter />
         <PageTransitionLoader />
         <Script

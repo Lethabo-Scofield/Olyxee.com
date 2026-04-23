@@ -160,7 +160,7 @@ html, body {
   body {
     background-color: #fafafa;
     color: var(--foreground);
-    font-family: var(--font-inter), "Inter", system-ui, sans-serif;
+    font-family: var(--font-sans), "Geist", "Söhne", "Inter", system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -202,7 +202,8 @@ html, body {
 }
 
 .font-serif {
-  font-family: var(--font-instrument), "Instrument Serif", Georgia, serif;
+  font-family: var(--font-sans), "Geist", "Söhne", "Inter", system-ui, sans-serif;
+  letter-spacing: -0.025em;
 }
 
 
