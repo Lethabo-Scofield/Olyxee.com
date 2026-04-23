@@ -439,7 +439,7 @@ const Careers: FC = () => {
         <CTASection />
       </main>
 
-      <Footer />
+      <Footer variant="light" />
     </div>
   );
 };

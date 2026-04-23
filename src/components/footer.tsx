@@ -41,23 +41,51 @@ const footerData = {
   ],
 };
 
-export default function Footer() {
+type FooterVariant = "dark" | "light";
+
+interface FooterProps {
+  variant?: FooterVariant;
+}
+
+export default function Footer({ variant = "dark" }: FooterProps) {
+  const isLight = variant === "light";
+
+  const styles = isLight
+    ? {
+        wrapper: "bg-white text-neutral-900 border-t border-neutral-200",
+        columnTitle: "text-neutral-500",
+        link: "text-neutral-600 hover:text-neutral-900",
+        divider: "border-neutral-200",
+        copyright: "text-neutral-500",
+        social: "text-neutral-400 hover:text-neutral-900",
+        logoOpacity: "opacity-70",
+      }
+    : {
+        wrapper: "bg-neutral-950 text-white",
+        columnTitle: "text-neutral-500",
+        link: "text-neutral-400 hover:text-white",
+        divider: "border-white/10",
+        copyright: "text-neutral-500",
+        social: "text-neutral-500 hover:text-white",
+        logoOpacity: "opacity-40",
+      };
+
   return (
-    <footer className="bg-neutral-950 text-white" aria-label="Site footer">
+    <footer className={styles.wrapper} aria-label="Site footer">
       <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 pt-16 sm:pt-24 pb-12 sm:pb-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 sm:gap-x-8 gap-y-10 sm:gap-y-14 mb-16 sm:mb-24">
           {footerData.columns.map((column) => (
             <div key={column.title}>
-              <h3 className="text-[10px] font-semibold text-neutral-500 uppercase tracking-widest mb-6">{column.title}</h3>
+              <h3 className={`text-[10px] font-semibold ${styles.columnTitle} uppercase tracking-widest mb-6`}>{column.title}</h3>
               <ul className="space-y-3.5">
                 {column.links.map((link: any) => (
                   <li key={link.name}>
                     {link.external ? (
-                      <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-sm text-neutral-400 hover:text-white transition-colors duration-300 font-light">
+                      <a href={link.href} target="_blank" rel="noopener noreferrer" className={`text-sm ${styles.link} transition-colors duration-300 font-light`}>
                         {link.name}
                       </a>
                     ) : (
-                      <Link href={link.href} className="text-sm text-neutral-400 hover:text-white transition-colors duration-300 font-light">
+                      <Link href={link.href} className={`text-sm ${styles.link} transition-colors duration-300 font-light`}>
                         {link.name}
                       </Link>
                     )}
@@ -67,10 +95,10 @@ export default function Footer() {
             </div>
           ))}
         </div>
-        <div className="pt-8 border-t border-white/10 flex flex-col-reverse items-center gap-y-6 sm:flex-row sm:justify-between">
+        <div className={`pt-8 border-t ${styles.divider} flex flex-col-reverse items-center gap-y-6 sm:flex-row sm:justify-between`}>
           <div className="flex items-center gap-3">
-            <Image src="/Logo/Olyxee_Logo.png" alt="Olyxee" width={18} height={18} className="opacity-40" />
-            <p className="text-xs text-neutral-500 font-light">&copy; {new Date().getFullYear()} Olyxee. All rights reserved.</p>
+            <Image src="/Logo/Olyxee_Logo.png" alt="Olyxee" width={18} height={18} className={styles.logoOpacity} />
+            <p className={`text-xs ${styles.copyright} font-light`}>&copy; {new Date().getFullYear()} Olyxee. All rights reserved.</p>
           </div>
           <div className="flex items-center gap-x-1">
             {footerData.socials.map((social) => {
@@ -82,7 +110,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.name}
-                  className="w-9 h-9 flex items-center justify-center rounded-full text-neutral-500 hover:text-white transition-all duration-300"
+                  className={`w-9 h-9 flex items-center justify-center rounded-full ${styles.social} transition-all duration-300`}
                 >
                   <SocialIcon className="h-4 w-4" />
                 </a>
