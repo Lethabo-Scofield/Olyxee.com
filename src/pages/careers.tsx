@@ -4,7 +4,7 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, MapPin, X, Briefcase } from "lucide-react";
+import { ArrowRight, MapPin, X, Briefcase, Search } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { roles, teams, type Role, type RoleType } from "../lib/careers-roles";
 import ApplicationForm from "../components/careers/ApplicationForm";
@@ -68,11 +68,21 @@ function HeroSection() {
 function RolesSection() {
   const [filterType, setFilterType] = useState<"all" | RoleType>("all");
   const [filterTeam, setFilterTeam] = useState<string>("All");
+  const [searchQuery, setSearchQuery] = useState<string>("");
   const [selectedRole, setSelectedRole] = useState<Role | null>(null);
 
   const typeFilteredRoles = filterType === "all" ? roles : roles.filter(r => r.type === filterType);
   const visibleTeams = Array.from(new Set(typeFilteredRoles.map(r => r.team)));
-  const filteredRoles = filterTeam === "All" ? typeFilteredRoles : typeFilteredRoles.filter(r => r.team === filterTeam);
+  const teamFilteredRoles = filterTeam === "All" ? typeFilteredRoles : typeFilteredRoles.filter(r => r.team === filterTeam);
+  const q = searchQuery.trim().toLowerCase();
+  const filteredRoles = q
+    ? teamFilteredRoles.filter(r =>
+        r.title.toLowerCase().includes(q) ||
+        r.team.toLowerCase().includes(q) ||
+        r.description.toLowerCase().includes(q) ||
+        r.location.toLowerCase().includes(q)
+      )
+    : teamFilteredRoles;
 
   const paidCount = roles.filter(r => r.type === "paid").length;
   const internshipCount = roles.filter(r => r.type === "internship").length;
@@ -103,26 +113,49 @@ function RolesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.05 }}
-            className="-mx-6 sm:mx-0 px-6 sm:px-0 mb-8 sm:mb-10 overflow-x-auto scrollbar-hide"
+            className="mb-6 sm:mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
           >
-            <div className="inline-flex items-center gap-1 p-1 rounded-full bg-neutral-100 whitespace-nowrap">
-              {([
-                { key: "all", label: `All (${roles.length})` },
-                { key: "paid", label: `Paid roles (${paidCount})` },
-                { key: "internship", label: `Internships (${internshipCount})` },
-              ] as { key: "all" | RoleType; label: string }[]).map(opt => (
+            <div className="-mx-6 sm:mx-0 px-6 sm:px-0 overflow-x-auto scrollbar-hide">
+              <div className="inline-flex items-center gap-1 p-1 rounded-full bg-neutral-100 whitespace-nowrap">
+                {([
+                  { key: "all", label: `All (${roles.length})` },
+                  { key: "paid", label: `Paid roles (${paidCount})` },
+                  { key: "internship", label: `Internships (${internshipCount})` },
+                ] as { key: "all" | RoleType; label: string }[]).map(opt => (
+                  <button
+                    key={opt.key}
+                    onClick={() => { setFilterType(opt.key); setFilterTeam("All"); }}
+                    className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${
+                      filterType === opt.key
+                        ? 'bg-neutral-900 text-white shadow-lg shadow-neutral-900/20'
+                        : 'text-neutral-500 hover:text-neutral-900'
+                    }`}
+                  >
+                    {opt.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="relative w-full sm:w-80">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400 pointer-events-none" />
+              <input
+                type="search"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search roles, teams, or skills"
+                aria-label="Search roles"
+                className="w-full pl-11 pr-10 py-2.5 text-sm rounded-full bg-neutral-100 border border-transparent text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:bg-white focus:border-neutral-300 focus:ring-2 focus:ring-neutral-200 transition-all"
+              />
+              {searchQuery && (
                 <button
-                  key={opt.key}
-                  onClick={() => { setFilterType(opt.key); setFilterTeam("All"); }}
-                  className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${
-                    filterType === opt.key
-                      ? 'bg-neutral-900 text-white shadow-lg shadow-neutral-900/20'
-                      : 'text-neutral-500 hover:text-neutral-900'
-                  }`}
+                  onClick={() => setSearchQuery("")}
+                  aria-label="Clear search"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-neutral-200 hover:bg-neutral-300 flex items-center justify-center transition-colors"
                 >
-                  {opt.label}
+                  <X className="w-3 h-3 text-neutral-600" />
                 </button>
-              ))}
+              )}
             </div>
           </motion.div>
 
@@ -199,7 +232,19 @@ function RolesSection() {
                   animate={{ opacity: 1 }}
                   className="text-center py-20"
                 >
-                  <p className="text-neutral-400 text-sm">No open positions on this team right now.</p>
+                  <p className="text-neutral-500 text-sm mb-4">
+                    {q
+                      ? `No roles match "${searchQuery}".`
+                      : "No open positions on this team right now."}
+                  </p>
+                  {q && (
+                    <button
+                      onClick={() => setSearchQuery("")}
+                      className="text-sm font-medium text-neutral-900 underline underline-offset-4 hover:no-underline"
+                    >
+                      Clear search
+                    </button>
+                  )}
                 </motion.div>
               )}
             </div>
