@@ -10,13 +10,13 @@ import { ArrowRight } from "lucide-react";
 import {
   GoogleLogo,
   OpenAILogo,
-  NvidiaLogo,
   MetaLogo,
   AnthropicLogo,
-  MistralLogo,
   CohereLogo,
   DeepMindLogo,
-  xAILogo,
+  GitHubLogo,
+  CiscoLogo,
+  CourseraLogo,
 } from "../components/company-logos";
 
 
@@ -156,10 +156,10 @@ function LogoStrip() {
     { name: "OpenAI", Logo: OpenAILogo, className: "h-5 sm:h-6 w-auto" },
     { name: "Google", Logo: GoogleLogo, className: "h-5 sm:h-6 w-auto" },
     { name: "Anthropic", Logo: AnthropicLogo, className: "h-4 sm:h-5 w-auto" },
-    { name: "NVIDIA", Logo: NvidiaLogo, className: "h-4 sm:h-5 w-auto" },
+    { name: "GitHub", Logo: GitHubLogo, className: "h-5 sm:h-6 w-auto" },
     { name: "Meta", Logo: MetaLogo, className: "h-4 sm:h-5 w-auto" },
-    { name: "Mistral", Logo: MistralLogo, className: "h-5 sm:h-6 w-auto" },
-    { name: "xAI", Logo: xAILogo, className: "h-5 sm:h-6 w-auto" },
+    { name: "Cisco", Logo: CiscoLogo, className: "h-5 sm:h-6 w-auto" },
+    { name: "Coursera", Logo: CourseraLogo, className: "h-5 sm:h-6 w-auto" },
     { name: "DeepMind", Logo: DeepMindLogo, className: "h-4 sm:h-5 w-auto" },
     { name: "Cohere", Logo: CohereLogo, className: "h-4 sm:h-5 w-auto" },
   ];
