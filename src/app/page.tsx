@@ -101,7 +101,7 @@ function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.1 }}
-          className="font-serif text-neutral-900 leading-[1.05] tracking-tight px-2 sm:px-0 text-[clamp(1.55rem,7.2vw,5.5rem)] sm:text-6xl md:text-7xl lg:text-[5.5rem]"
+          className="font-serif text-neutral-900 leading-[1.02] tracking-tight px-2 sm:px-0 text-[clamp(2.5rem,11.5vw,5.5rem)] sm:text-6xl md:text-7xl lg:text-[5.5rem]"
         >
           <span className="block">Research and Infrastructure</span>
           <span className="block">
