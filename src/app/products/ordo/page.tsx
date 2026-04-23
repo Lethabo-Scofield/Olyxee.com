@@ -41,7 +41,7 @@ function TerminalDemo() {
   const [visibleLines, setVisibleLines] = useState(0);
 
   const lines = [
-    { type: 'cmd', text: '$ grysics execute --goal "Reconcile Q1 financial transactions"' },
+    { type: 'cmd', text: '$ ordo execute --goal "Reconcile Q1 financial transactions"' },
     { type: 'info', text: '◼ Connecting to systems... ERP + Bank' },
     { type: 'info', text: '◼ Planning execution steps...' },
     { type: 'blank', text: '' },
@@ -80,7 +80,7 @@ function TerminalDemo() {
             <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500/70" />
           </div>
           <div className="flex-1 flex items-center justify-center">
-            <span className="text-[10px] sm:text-[11px] text-neutral-500 font-mono">grysics / execution</span>
+            <span className="text-[10px] sm:text-[11px] text-neutral-500 font-mono">ordo / execution</span>
           </div>
         </div>
         <div className="p-3 sm:p-6 font-mono text-[10px] sm:text-[13px] leading-5 sm:leading-6 min-h-[260px] sm:min-h-[340px] overflow-x-auto no-scrollbar">
@@ -117,9 +117,9 @@ function TerminalDemo() {
 function CodePreview() {
   const [copied, setCopied] = useState(false);
 
-  const code = `import grysics
+  const code = `import ordo
 
-result = grysics.execute(
+result = ordo.execute(
     goal="Reconcile Q1 financial transactions",
     systems=["erp", "bank"],
     options={
@@ -130,7 +130,7 @@ result = grysics.execute(
 )
 
 if result.complete:
-    grysics.deliver(result)`;
+    ordo.deliver(result)`;
 
   return (
     <div className="relative bg-[#0d1117] rounded-xl sm:rounded-2xl border border-neutral-200 overflow-hidden shadow-lg shadow-neutral-200/30">
@@ -152,7 +152,7 @@ if result.complete:
           highlighted = highlighted.replace(/(import|from|if)/g, '<kw>$1</kw>');
           highlighted = highlighted.replace(/(".*?")/g, '<str>$1</str>');
           highlighted = highlighted.replace(/(\d+\.?\d*)/g, '<num>$1</num>');
-          highlighted = highlighted.replace(/(grysics)/g, '<fn>$1</fn>');
+          highlighted = highlighted.replace(/(ordo)/g, '<fn>$1</fn>');
 
           return (
             <div key={i} className="flex">
@@ -199,7 +199,7 @@ function EarlyAccessForm() {
         </div>
         <div>
           <p className="text-sm font-semibold text-green-900">You're on the list!</p>
-          <p className="text-xs text-green-600">We'll notify you when Grysics launches.</p>
+          <p className="text-xs text-green-600">We'll notify you when Ordo launches.</p>
         </div>
       </motion.div>
     );
@@ -230,7 +230,7 @@ function EarlyAccessForm() {
   );
 }
 
-export default function GrysicsPage() {
+export default function OrdoPage() {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
       <div className="grain" />
@@ -239,7 +239,7 @@ export default function GrysicsPage() {
       <section className="pt-24 sm:pt-40 pb-8 sm:pb-12 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto text-center">
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="flex flex-col items-center gap-4 mb-6">
-            <Image src="/images/grysics-logo.png" alt="Grysics" width={48} height={48} className="rounded-xl" style={{ width: 48, height: 48 }} priority />
+            <Image src="/images/ordo-logo.png" alt="Ordo" width={48} height={48} className="rounded-xl" style={{ width: 48, height: 48 }} priority />
             <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-neutral-100 text-neutral-500 rounded-full text-xs font-medium border border-neutral-200/60">
               <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
               Now in limited beta
@@ -263,7 +263,7 @@ export default function GrysicsPage() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="text-base sm:text-xl text-neutral-500 leading-relaxed font-light mb-10 max-w-2xl mx-auto px-2"
           >
-            Describe what needs to be done. Grysics plans, coordinates, and executes across your tools and systems end-to-end.
+            Describe what needs to be done. Ordo plans, coordinates, and executes across your tools and systems end-to-end.
           </motion.p>
 
           <motion.div
@@ -321,7 +321,7 @@ export default function GrysicsPage() {
               Any goal. Any system.
             </h2>
             <p className="text-neutral-500 mt-4 text-lg font-light max-w-2xl mx-auto">
-              Finance, compliance, HR, operations. Grysics executes it all across your connected systems.
+              Finance, compliance, HR, operations. Ordo executes it all across your connected systems.
             </p>
           </motion.div>
 
@@ -361,10 +361,10 @@ export default function GrysicsPage() {
                 Three lines to execute
               </h2>
               <p className="text-neutral-500 text-base sm:text-lg font-light leading-relaxed mb-8">
-                Import, describe, execute. Grysics fits into your existing stack with a Python SDK, CLI, and API integrations.
+                Import, describe, execute. Ordo fits into your existing stack with a Python SDK, CLI, and API integrations.
               </p>
               <div className="flex flex-wrap gap-3">
-                {['pip install grysics', 'REST API', 'Python SDK'].map((item) => (
+                {['pip install ordo', 'REST API', 'Python SDK'].map((item) => (
                   <span key={item} className="inline-flex items-center px-3 py-1.5 bg-neutral-100 text-neutral-600 rounded-lg text-xs font-mono border border-neutral-200/60">
                     {item}
                   </span>
@@ -412,10 +412,10 @@ export default function GrysicsPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             {[
-              { label: "Execution Speed", grysics: "2 min", others: "4+ hrs", grysicsWidth: "7%", othersWidth: "100%" },
-              { label: "Accuracy", grysics: "99.2%", others: "92%", grysicsWidth: "99%", othersWidth: "92%" },
-              { label: "Systems Connected", grysics: "50+", others: "3-5", grysicsWidth: "100%", othersWidth: "10%" },
-              { label: "Success Rate", grysics: "99.9%", others: "87%", grysicsWidth: "99%", othersWidth: "87%" },
+              { label: "Execution Speed", ordo: "2 min", others: "4+ hrs", ordoWidth: "7%", othersWidth: "100%" },
+              { label: "Accuracy", ordo: "99.2%", others: "92%", ordoWidth: "99%", othersWidth: "92%" },
+              { label: "Systems Connected", ordo: "50+", others: "3-5", ordoWidth: "100%", othersWidth: "10%" },
+              { label: "Success Rate", ordo: "99.9%", others: "87%", ordoWidth: "99%", othersWidth: "87%" },
             ].map((item, idx) => (
               <motion.div
                 key={item.label}
@@ -429,16 +429,16 @@ export default function GrysicsPage() {
                 <p className="text-xs font-medium text-neutral-500 mb-3">{item.label}</p>
                 <div className="space-y-2">
                   <div className="flex items-center gap-3">
-                    <span className="text-[10px] font-mono text-neutral-500 w-12">Grysics</span>
+                    <span className="text-[10px] font-mono text-neutral-500 w-12">Ordo</span>
                     <div className="flex-1 h-6 bg-neutral-100 rounded-md overflow-hidden">
                       <motion.div
                         className="h-full bg-neutral-900 rounded-md flex items-center justify-end pr-2"
                         initial={{ width: 0 }}
-                        whileInView={{ width: item.grysicsWidth }}
+                        whileInView={{ width: item.ordoWidth }}
                         viewport={{ once: true }}
                         transition={{ duration: 1, delay: idx * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
                       >
-                        <span className="text-[10px] font-bold text-white">{item.grysics}</span>
+                        <span className="text-[10px] font-bold text-white">{item.ordo}</span>
                       </motion.div>
                     </div>
                   </div>
@@ -476,12 +476,12 @@ export default function GrysicsPage() {
               {
                 step: "01",
                 title: "Describe",
-                description: "Define your business goal in plain language. Grysics interprets it and identifies the systems, data, and steps required.",
+                description: "Define your business goal in plain language. Ordo interprets it and identifies the systems, data, and steps required.",
               },
               {
                 step: "02",
                 title: "Execute",
-                description: "Grysics plans and executes across your connected systems including ERP, databases, spreadsheets, and communication tools.",
+                description: "Ordo plans and executes across your connected systems including ERP, databases, spreadsheets, and communication tools.",
               },
               {
                 step: "03",
@@ -511,7 +511,7 @@ export default function GrysicsPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="text-center mb-16">
             <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900">
-              Why teams choose Grysics
+              Why teams choose Ordo
             </h2>
             <p className="text-neutral-500 mt-4 text-base sm:text-lg font-light max-w-2xl mx-auto">
               Six reasons teams move from manual workflows to AI-driven execution.
@@ -520,7 +520,7 @@ export default function GrysicsPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { title: "No Manual Workflows", description: "Stop building complex automations. Just describe the goal and Grysics handles the rest.", severity: "Critical" },
+              { title: "No Manual Workflows", description: "Stop building complex automations. Just describe the goal and Ordo handles the rest.", severity: "Critical" },
               { title: "Works With Your Systems", description: "Connects to ERP, Excel, databases, payment platforms, and more without custom integrations.", severity: "High" },
               { title: "Reduces Workload", description: "Free your team from repetitive operational tasks that follow the same pattern every time.", severity: "Critical" },
               { title: "Accurate Outputs", description: "Consistent results every time. No human error from manual data entry or copy-paste mistakes.", severity: "High" },

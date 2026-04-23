@@ -80,7 +80,7 @@ const Concepts: FC = () => {
         <section>
           <h2 className="text-xl font-semibold text-gray-900 mb-4 pb-2 border-b border-gray-100">System abstraction</h2>
           <p>
-            Grysics provides a unified interface across all connected business systems. You describe the goal once, and the platform handles system-specific details: API authentication, data format conversion, error handling, and retry logic.
+            Ordo provides a unified interface across all connected business systems. You describe the goal once, and the platform handles system-specific details: API authentication, data format conversion, error handling, and retry logic.
           </p>
           <p className="mt-3">
             This means the same goal can execute across ERP systems, databases, spreadsheets, and communication tools without changes to your configuration.

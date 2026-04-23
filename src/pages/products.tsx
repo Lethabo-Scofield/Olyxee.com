@@ -28,7 +28,7 @@ const galleryImages = [
   { src: "/images/product-supply-network.png", label: "Supply Network Routing" },
 ];
 
-function GrysicsArchitecture() {
+function OrdoArchitecture() {
   const sources = [
     { y: 40, label: "Gmail", icon: "https://www.google.com/s2/favicons?domain=gmail.com&sz=128" },
     { y: 100, label: "Stripe", icon: "https://www.google.com/s2/favicons?domain=stripe.com&sz=128" },
@@ -66,7 +66,7 @@ function GrysicsArchitecture() {
             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
           </span>
         </div>
-        <span className="hidden sm:inline text-[11px] font-mono text-neutral-400">grysics.olyxee.com</span>
+        <span className="hidden sm:inline text-[11px] font-mono text-neutral-400">ordo.olyxee.com</span>
       </div>
 
       <div className="-mx-4 sm:mx-0 overflow-x-auto sm:overflow-visible px-4 sm:px-0">
@@ -120,8 +120,8 @@ function GrysicsArchitecture() {
 
         <g>
           <rect x="240" y="168" width="120" height="84" rx="16" fill="#0a0a0a" />
-          <image href="/images/grysics-logo.png" x="270" y="180" width="28" height="28" />
-          <text x="308" y="200" fontSize="13" fill="#ffffff" fontWeight="600">Grysics</text>
+          <image href="/images/ordo-logo.png" x="270" y="180" width="28" height="28" />
+          <text x="308" y="200" fontSize="13" fill="#ffffff" fontWeight="600">Ordo</text>
           <text x="300" y="232" textAnchor="middle" fontSize="9" fill="#a3a3a3" fontFamily="ui-monospace, monospace">execution core</text>
         </g>
 
@@ -163,7 +163,7 @@ function GrysicsArchitecture() {
   );
 }
 
-function GrysicsSpotlight() {
+function OrdoSpotlight() {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -174,10 +174,10 @@ function GrysicsSpotlight() {
     >
       <div className="lg:col-span-5 space-y-5">
         <div className="flex items-center gap-3">
-          <Image src="/images/grysics-logo.png" alt="Grysics" width={36} height={36} className="rounded-lg" style={{ width: 36, height: 36 }} />
+          <Image src="/images/ordo-logo.png" alt="Ordo" width={36} height={36} className="rounded-lg" style={{ width: 36, height: 36 }} />
           <div>
             <p className="text-[11px] font-semibold text-orange-500 uppercase tracking-[0.2em]">Featured · Live</p>
-            <h2 className="font-serif text-3xl sm:text-4xl tracking-tight text-neutral-900 mt-1">Grysics</h2>
+            <h2 className="font-serif text-3xl sm:text-4xl tracking-tight text-neutral-900 mt-1">Ordo</h2>
           </div>
         </div>
         <p className="text-base sm:text-lg text-neutral-600 font-light leading-relaxed">
@@ -189,16 +189,16 @@ function GrysicsSpotlight() {
           <li className="flex gap-2"><span className="text-orange-400">•</span> Verifiable, audit-friendly execution traces</li>
         </ul>
         <a
-          href="https://grysics.olyxee.com/"
+          href="https://ordo.olyxee.com/"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 hover:text-orange-600 transition-colors"
         >
-          Visit Grysics <ArrowRight className="w-3.5 h-3.5" />
+          Visit Ordo <ArrowRight className="w-3.5 h-3.5" />
         </a>
       </div>
       <div className="lg:col-span-7">
-        <GrysicsArchitecture />
+        <OrdoArchitecture />
       </div>
     </motion.div>
   );
@@ -384,12 +384,12 @@ const ProductsPage: FC = () => {
     <div className="min-h-screen bg-white text-neutral-900 relative">
       <SEO
         title="Products"
-        description="Systems built from Olyxee research for real-world AI operation. Grysics is an AI execution system that converts goals into completed workflows."
+        description="Systems built from Olyxee research for real-world AI operation. Ordo is an AI execution system that converts goals into completed workflows."
         path="/products"
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "SoftwareApplication",
-          name: "Grysics",
+          name: "Ordo",
           applicationCategory: "DeveloperApplication",
           operatingSystem: "Cloud",
           description: "AI execution system that converts high-level goals into completed operational workflows across tools and data sources.",
@@ -451,7 +451,7 @@ const ProductsPage: FC = () => {
             </div>
           </motion.div>
 
-          <GrysicsSpotlight />
+          <OrdoSpotlight />
         </div>
       </section>
 

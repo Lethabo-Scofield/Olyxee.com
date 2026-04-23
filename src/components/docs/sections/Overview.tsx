@@ -55,8 +55,8 @@ const Overview: FC<OverviewProps> = ({ onNavigate }) => {
         <h2 className="text-xl font-semibold text-gray-900 mb-4 pb-2 border-b border-gray-100">Key capabilities</h2>
         <div className="space-y-3">
           {[
-            { title: "Goal Interpretation", description: "Describe what needs to be done. Grysics breaks down business goals into structured, executable task plans automatically." },
-            { title: "System Integration", description: "Connects to ERP, Excel, databases, and more. Grysics works with your existing tools without manual workflow building." },
+            { title: "Goal Interpretation", description: "Describe what needs to be done. Ordo breaks down business goals into structured, executable task plans automatically." },
+            { title: "System Integration", description: "Connects to ERP, Excel, databases, and more. Ordo works with your existing tools without manual workflow building." },
             { title: "Cross-system Execution", description: "Automated execution across connected systems for finance, compliance, HR, and enterprise operations." },
             { title: "Transparent Audit Trail", description: "Every action logged with timestamps, inputs, and outputs. Full traceability for compliance." },
           ].map((item) => (

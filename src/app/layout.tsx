@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     "AI monitoring",
     "AI reliability",
     "AI observability",
-    "Grysics",
+    "Ordo",
     "hallucination detection",
     "LLM evaluation",
     "LLM testing",

@@ -7,7 +7,7 @@ const Guides: FC = () => {
       <div className="mb-10">
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight mb-3">Getting Started</h1>
         <p className="text-gray-500 text-lg leading-relaxed">
-          Step-by-step guide to executing your first business workflow with Grysics.
+          Step-by-step guide to executing your first business workflow with Ordo.
         </p>
       </div>
 
@@ -16,26 +16,26 @@ const Guides: FC = () => {
           <h2 className="text-xl font-semibold text-gray-900 mb-4 pb-2 border-b border-gray-100">Prerequisites</h2>
           <ul className="list-disc pl-6 space-y-2">
             <li>Python 3.9 or later</li>
-            <li>Access to the systems you want Grysics to connect to (ERP, databases, etc.)</li>
+            <li>Access to the systems you want Ordo to connect to (ERP, databases, etc.)</li>
             <li>API credentials for your connected systems</li>
-            <li>The Grysics SDK installed (<code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">pip install grysics</code>)</li>
+            <li>The Ordo SDK installed (<code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">pip install ordo</code>)</li>
           </ul>
         </section>
 
         <section>
           <h2 className="text-xl font-semibold text-gray-900 mb-4 pb-2 border-b border-gray-100">Step 1: Connect your systems</h2>
           <p>
-            Start by connecting Grysics to your business systems. The SDK automatically detects available data sources.
+            Start by connecting Ordo to your business systems. The SDK automatically detects available data sources.
           </p>
           <div className="relative group rounded-xl overflow-hidden border border-gray-200 bg-gray-950 my-4">
             <div className="flex items-center justify-between px-4 py-2 bg-gray-900 border-b border-gray-800">
               <span className="text-xs text-gray-400 font-mono">python</span>
             </div>
             <pre className="p-4 overflow-x-auto text-sm leading-relaxed">
-              <code className="text-gray-300 font-mono whitespace-pre">{`import grysics
+              <code className="text-gray-300 font-mono whitespace-pre">{`import ordo
 
 # Connect to your business systems
-workspace = grysics.connect(
+workspace = ordo.connect(
     systems=["erp", "bank", "excel"],
     env="production"
 )
@@ -126,7 +126,7 @@ print(f"Monitoring: {app.monitor_status}")
             {[
               { title: "Add RAG evaluation", description: "Test retrieval relevance and context utilization for RAG pipelines." },
               { title: "Write more test cases", description: "Cover edge cases, multi-turn conversations, and adversarial inputs." },
-              { title: "Set up CI integration", description: "Run Grysics execution workflows automatically on every trigger." },
+              { title: "Set up CI integration", description: "Run Ordo execution workflows automatically on every trigger." },
             ].map((item) => (
               <div key={item.title} className="flex gap-3 items-start group cursor-pointer">
                 <ArrowRight className="w-4 h-4 text-gray-400 mt-1 flex-shrink-0 group-hover:text-gray-900 transition-colors" />

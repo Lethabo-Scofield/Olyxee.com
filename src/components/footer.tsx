@@ -9,7 +9,7 @@ const footerData = {
     {
       title: "Products",
       links: [
-        { name: "Grysics", href: "/products/grysics" },
+        { name: "Ordo", href: "/products/ordo" },
       ],
     },
     {

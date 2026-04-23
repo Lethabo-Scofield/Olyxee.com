@@ -29,19 +29,19 @@ const API_SIDE_NAV = [
   },
 ];
 
-const GRYSICS_SIDE_NAV = [
+const ORDO_SIDE_NAV = [
   {
     heading: "Overview",
     items: [
-      { id: "grysics-overview", title: "What is Grysics" },
+      { id: "ordo-overview", title: "What is Ordo" },
     ],
   },
   {
     heading: "By application",
     items: [
-      { id: "grysics-chatbots", title: "Chatbots" },
-      { id: "grysics-rag", title: "RAG Pipelines" },
-      { id: "grysics-agents", title: "Agents" },
+      { id: "ordo-chatbots", title: "Chatbots" },
+      { id: "ordo-rag", title: "RAG Pipelines" },
+      { id: "ordo-agents", title: "Agents" },
     ],
   },
   {
@@ -72,13 +72,13 @@ const GUIDES_SIDE_NAV = [
 
 const TAB_DEFAULTS: Record<string, string> = {
   api: "api-overview",
-  grysics: "grysics-overview",
+  ordo: "ordo-overview",
   guides: "supported-platforms",
 };
 
 const SIDE_NAVS: Record<string, typeof API_SIDE_NAV> = {
   api: API_SIDE_NAV,
-  grysics: GRYSICS_SIDE_NAV,
+  ordo: ORDO_SIDE_NAV,
   guides: GUIDES_SIDE_NAV,
 };
 
@@ -138,16 +138,16 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
     },
     {
       icon: Layers,
-      title: "Grysics Engine",
+      title: "Ordo Engine",
       desc: "Learn how the verification engine ensures AI application reliability.",
-      tab: "grysics",
-      page: "grysics-overview",
+      tab: "ordo",
+      page: "ordo-overview",
       bg: "/images/gradient-pastel.webp",
     },
     {
       icon: Terminal,
       title: "API Reference",
-      desc: "Integrate Grysics into your AI pipeline.",
+      desc: "Integrate Ordo into your AI pipeline.",
       tab: "api",
       page: "api-reference",
       bg: "/images/gradient-orange-purple.webp",
@@ -170,7 +170,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       bg: "/images/gradient-abstract-blue.webp",
     },
     {
-      title: "Grysics deep dive",
+      title: "Ordo deep dive",
       duration: "12:34",
       desc: "Understanding the verification engine and its checks.",
       bg: "/images/gradient-blue-pink.webp",
@@ -186,7 +186,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
   const quickLinks = [
     { label: "Python SDK", tab: "api", page: "python-sdk" },
     { label: "CLI Reference", tab: "api", page: "cli" },
-    { label: "Monitoring", tab: "grysics", page: "monitoring" },
+    { label: "Monitoring", tab: "ordo", page: "monitoring" },
     { label: "Testing Strategies", tab: "guides", page: "testing-strategies" },
     { label: "Changelog", tab: "api", page: "changelog" },
     { label: "Rate Limits", tab: "api", page: "limits" },
@@ -256,14 +256,14 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       <div className="mb-16">
         <h2 className="text-xl font-semibold text-gray-900 mb-4">What is Olyxee?</h2>
         <div className="text-[15px] text-gray-600 leading-relaxed space-y-3 max-w-3xl">
-          <p>Olyxee is an AI infrastructure company building tools for reliable AI systems. Our flagship product, <strong className="text-gray-900">Grysics</strong>, is an AI execution engine that turns business goals into completed work across your tools, data sources, and systems.</p>
-          <p>Grysics handles planning, coordination, and execution across financial reconciliation, compliance reporting, and HR operations, giving teams confidence that their operational workflows are completed accurately and on time.</p>
+          <p>Olyxee is an AI infrastructure company building tools for reliable AI systems. Our flagship product, <strong className="text-gray-900">Ordo</strong>, is an AI execution engine that turns business goals into completed work across your tools, data sources, and systems.</p>
+          <p>Ordo handles planning, coordination, and execution across financial reconciliation, compliance reporting, and HR operations, giving teams confidence that their operational workflows are completed accurately and on time.</p>
         </div>
       </div>
 
       <div className="mb-16">
         <h2 className="text-xl font-semibold text-gray-900 mb-2">Supported frameworks</h2>
-        <p className="text-sm text-gray-500 mb-4">Grysics connects to the tools your team already uses.</p>
+        <p className="text-sm text-gray-500 mb-4">Ordo connects to the tools your team already uses.</p>
         <div className="flex flex-wrap gap-2">
           {["OpenAI", "Anthropic", "LangChain", "LlamaIndex", "Hugging Face", "Custom LLMs"].map(fw => (
             <span key={fw} className="text-sm font-medium text-gray-700 bg-gray-50 border border-gray-200 rounded-lg px-4 py-2">{fw}</span>
@@ -301,7 +301,7 @@ function EarlyAccessGate() {
         Sign in for early access
       </h2>
       <p className="text-base text-gray-500 leading-relaxed mb-8 max-w-md mx-auto">
-        Full documentation is available to early access members. Sign in or request access to explore the API, Grysics execution engine, and guides.
+        Full documentation is available to early access members. Sign in or request access to explore the API, Ordo execution engine, and guides.
       </p>
       <div className="flex flex-col sm:flex-row gap-3 justify-center">
         <a
@@ -323,7 +323,7 @@ function EarlyAccessGate() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {[
             { title: "API Reference", desc: "REST API, Python SDK, and CLI documentation" },
-            { title: "Grysics Engine", desc: "AI execution engine for finance, compliance, and operations" },
+            { title: "Ordo Engine", desc: "AI execution engine for finance, compliance, and operations" },
             { title: "Guides & Tutorials", desc: "Testing strategies, configuration, and best practices" },
           ].map(item => (
             <div key={item.title} className="text-left p-4 rounded-xl bg-neutral-50 border border-neutral-100">
@@ -340,7 +340,7 @@ function EarlyAccessGate() {
 
 function APIOverview() {
   return (
-    <DocPage title="API Overview" subtitle="Integrate Grysics into your operational workflows with our Python SDK, REST API, and CLI tools.">
+    <DocPage title="API Overview" subtitle="Integrate Ordo into your operational workflows with our Python SDK, REST API, and CLI tools.">
       <DocSection title="Authentication">
         <p>All API requests require an API key. Generate keys from the Olyxee dashboard or via the API, and include it in every request:</p>
         <CodeBlock language="bash" code={`curl https://api.olyxee.com/v1/apps \\\n  -H "Authorization: Bearer oly_sk_..."`} />
@@ -352,8 +352,8 @@ function APIOverview() {
       <DocSection title="Key concepts">
         <div className="space-y-3 mt-2">
           {[
-            { title: "Goals", desc: "Define business goals that Grysics will plan and execute. Each goal gets its own execution history and audit trail.", bg: "/images/gradient-blue-pink.webp" },
-            { title: "Execution runs", desc: "Grysics breaks goals into steps and executes them across your connected systems including ERP, databases, spreadsheets, and more.", bg: "/images/gradient-pastel.webp" },
+            { title: "Goals", desc: "Define business goals that Ordo will plan and execute. Each goal gets its own execution history and audit trail.", bg: "/images/gradient-blue-pink.webp" },
+            { title: "Execution runs", desc: "Ordo breaks goals into steps and executes them across your connected systems including ERP, databases, spreadsheets, and more.", bg: "/images/gradient-pastel.webp" },
             { title: "Monitoring", desc: "Full visibility into every action taken. Approval workflows let you set human checkpoints at any stage.", bg: "/images/gradient-yellow-green.webp" },
             { title: "API Keys", desc: "Create scoped keys for different environments (dev, staging, production) with configurable permissions and expiration.", bg: "/images/gradient-orange-purple.webp" },
           ].map(item => (
@@ -398,19 +398,19 @@ function APIOverview() {
 
 function Quickstart() {
   return (
-    <DocPage title="Quickstart" subtitle="Get up and running with Grysics in under five minutes.">
+    <DocPage title="Quickstart" subtitle="Get up and running with Ordo in under five minutes.">
       <DocSection title="1. Install the SDK">
-        <p>Install the Grysics Python SDK:</p>
-        <CodeBlock language="bash" code="pip install grysics" />
+        <p>Install the Ordo Python SDK:</p>
+        <CodeBlock language="bash" code="pip install ordo" />
       </DocSection>
 
       <DocSection title="2. Initialize a project">
-        <CodeBlock language="bash" code={`grysics init my-project\ncd my-project`} />
+        <CodeBlock language="bash" code={`ordo init my-project\ncd my-project`} />
       </DocSection>
 
       <DocSection title="3. Define your goal">
         <p>Describe the business outcome you need:</p>
-        <CodeBlock language="python" code={`import grysics\n\ngoal = grysics.goal(\n    description="Reconcile Q1 financial transactions",\n    systems=["erp", "bank"]  # connected data sources\n)`} />
+        <CodeBlock language="python" code={`import ordo\n\ngoal = ordo.goal(\n    description="Reconcile Q1 financial transactions",\n    systems=["erp", "bank"]  # connected data sources\n)`} />
       </DocSection>
 
       <DocSection title="4. Execute">
@@ -424,7 +424,7 @@ function Quickstart() {
       </DocSection>
 
       <DocCallout type="info">
-        For detailed execution options, see the <strong>Use Cases</strong> section under Grysics.
+        For detailed execution options, see the <strong>Use Cases</strong> section under Ordo.
       </DocCallout>
     </DocPage>
   );
@@ -433,7 +433,7 @@ function Quickstart() {
 
 function APIKeys() {
   return (
-    <DocPage title="API Keys" subtitle="Create and manage API keys for authenticating with the Grysics platform.">
+    <DocPage title="API Keys" subtitle="Create and manage API keys for authenticating with the Ordo platform.">
       <DocSection title="Key types">
         <DocTable
           headers={["Type", "Prefix", "Permissions", "Use case"]}
@@ -473,7 +473,7 @@ function APIKeys() {
       </DocSection>
 
       <DocSection title="Generate a key via SDK">
-        <CodeBlock language="python" code={`import grysics\n\nkey = grysics.api_keys.create(\n    name="Production Monitor",\n    type="restricted",\n    permissions=["apps:read", "monitor:write", "metrics:read"],\n    expires_in="180d"\n)\n\nprint(f"Key: {key.secret}")  # Only available at creation\nprint(f"ID: {key.id}")\nprint(f"Expires: {key.expires_at}")`} />
+        <CodeBlock language="python" code={`import ordo\n\nkey = ordo.api_keys.create(\n    name="Production Monitor",\n    type="restricted",\n    permissions=["apps:read", "monitor:write", "metrics:read"],\n    expires_in="180d"\n)\n\nprint(f"Key: {key.secret}")  # Only available at creation\nprint(f"ID: {key.id}")\nprint(f"Expires: {key.expires_at}")`} />
       </DocSection>
 
       <DocSection title="List keys">
@@ -484,7 +484,7 @@ function APIKeys() {
       <DocSection title="Revoke a key">
         <CodeBlock language="bash" code={`curl -X DELETE https://api.olyxee.com/v1/api-keys/key_abc123 \\\n  -H "Authorization: Bearer oly_sk_..."`} />
         <p>Or via the SDK:</p>
-        <CodeBlock language="python" code={`grysics.api_keys.revoke("key_abc123")`} />
+        <CodeBlock language="python" code={`ordo.api_keys.revoke("key_abc123")`} />
         <DocCallout type="info">
           Revoked keys stop working immediately. Any in-flight requests using the key will fail with a 401 error.
         </DocCallout>
@@ -528,7 +528,7 @@ function APIKeys() {
 
 function SupportedModels() {
   return (
-    <DocPage title="Supported Platforms" subtitle="Systems and tools compatible with Grysics.">
+    <DocPage title="Supported Platforms" subtitle="Systems and tools compatible with Ordo.">
       <DocSection title="LLM Providers">
         <DocTable
           headers={["Provider", "Integration", "Status"]}
@@ -543,9 +543,9 @@ function SupportedModels() {
       </DocSection>
 
       <DocSection title="Application types">
-        <p>Grysics works with finance, compliance, HR, and enterprise reporting workflows. Any system with an API or data export can be connected.</p>
+        <p>Ordo works with finance, compliance, HR, and enterprise reporting workflows. Any system with an API or data export can be connected.</p>
         <DocCallout type="tip">
-          For financial workflows, Grysics can execute the full pipeline: data extraction, reconciliation, report generation, and delivery, not just individual steps.
+          For financial workflows, Ordo can execute the full pipeline: data extraction, reconciliation, report generation, and delivery, not just individual steps.
         </DocCallout>
       </DocSection>
 
@@ -564,34 +564,34 @@ function SupportedModels() {
 }
 
 
-function GrysicsOverview({ onNavigate }: { onNavigate?: (tab: string, page: string) => void }) {
+function OrdoOverview({ onNavigate }: { onNavigate?: (tab: string, page: string) => void }) {
   return (
-    <DocPage title="What is Grysics" subtitle="The AI execution engine for business operations.">
+    <DocPage title="What is Ordo" subtitle="The AI execution engine for business operations.">
       <DocSection title="Overview">
-        <p><strong>Grysics</strong> is an AI execution engine that turns business goals into completed work. Describe what needs to be done, and Grysics plans, coordinates, and executes across your tools and systems.</p>
-        <p>Instead of building complex automations or manual workflows, Grysics handles the full goal-to-delivery pipeline for finance, compliance, HR, and enterprise operations.</p>
+        <p><strong>Ordo</strong> is an AI execution engine that turns business goals into completed work. Describe what needs to be done, and Ordo plans, coordinates, and executes across your tools and systems.</p>
+        <p>Instead of building complex automations or manual workflows, Ordo handles the full goal-to-delivery pipeline for finance, compliance, HR, and enterprise operations.</p>
       </DocSection>
 
       <DocSection title="Choose your use case">
-        <p>Grysics handles different operational workflows. Pick your use case to see relevant capabilities and setup instructions.</p>
+        <p>Ordo handles different operational workflows. Pick your use case to see relevant capabilities and setup instructions.</p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
           {[
             {
-              id: "grysics-chatbots",
+              id: "ordo-chatbots",
               title: "Finance",
               desc: "Reconciliation, reporting, expense management",
               checks: ["Reconciliation", "Reporting", "Audit"],
               bg: "/images/gradient-blue-pink.webp",
             },
             {
-              id: "grysics-rag",
+              id: "ordo-rag",
               title: "Compliance",
               desc: "Audit-ready reports, regulatory reporting, data validation",
               checks: ["Validation", "Traceability", "Reports"],
               bg: "/images/gradient-yellow-green.webp",
             },
             {
-              id: "grysics-agents",
+              id: "ordo-agents",
               title: "Operations",
               desc: "HR workflows, cross-system reporting, data aggregation",
               checks: ["Execution", "Integration", "Delivery"],
@@ -600,7 +600,7 @@ function GrysicsOverview({ onNavigate }: { onNavigate?: (tab: string, page: stri
           ].map(item => (
             <button
               key={item.id}
-              onClick={() => onNavigate?.("grysics", item.id)}
+              onClick={() => onNavigate?.("ordo", item.id)}
               className="text-left rounded-xl p-5 hover:shadow-md transition-all group relative overflow-hidden"
             >
               <div className="absolute inset-0 bg-cover bg-center pointer-events-none" style={{ backgroundImage: `url("${item.bg}")` }} />
@@ -622,8 +622,8 @@ function GrysicsOverview({ onNavigate }: { onNavigate?: (tab: string, page: stri
       <DocSection title="How it works">
         <div className="space-y-3 mt-2">
           {[
-            { step: "1", title: "Describe", desc: "Define your business goal in plain language. Grysics interprets it and identifies the required systems and data.", bg: "/images/gradient-blue-pink.webp" },
-            { step: "2", title: "Execute", desc: "Grysics plans and executes across your connected systems including ERP, databases, spreadsheets, and more.", bg: "/images/gradient-pastel.webp" },
+            { step: "1", title: "Describe", desc: "Define your business goal in plain language. Ordo interprets it and identifies the required systems and data.", bg: "/images/gradient-blue-pink.webp" },
+            { step: "2", title: "Execute", desc: "Ordo plans and executes across your connected systems including ERP, databases, spreadsheets, and more.", bg: "/images/gradient-pastel.webp" },
             { step: "3", title: "Deliver", desc: "Results are delivered as reports, notifications, or audit trails. Every action is logged and traceable.", bg: "/images/gradient-yellow-green.webp" },
           ].map(item => (
             <div key={item.step} className="flex gap-4 items-start p-4 rounded-lg relative overflow-hidden">
@@ -639,7 +639,7 @@ function GrysicsOverview({ onNavigate }: { onNavigate?: (tab: string, page: stri
         </div>
       </DocSection>
 
-      <DocSection title="What Grysics checks">
+      <DocSection title="What Ordo checks">
         <DocTable
           headers={["Check", "What it measures", "Available for"]}
           rows={[
@@ -656,7 +656,7 @@ function GrysicsOverview({ onNavigate }: { onNavigate?: (tab: string, page: stri
       </DocSection>
 
       <DocCallout type="info">
-        Grysics is not another chatbot or model. It is infrastructure for AI reliability: a verification engine that works with any AI application.
+        Ordo is not another chatbot or model. It is infrastructure for AI reliability: a verification engine that works with any AI application.
       </DocCallout>
     </DocPage>
   );
@@ -665,8 +665,8 @@ function GrysicsOverview({ onNavigate }: { onNavigate?: (tab: string, page: stri
 
 function Verification() {
   return (
-    <DocPage title="Testing & Verification" subtitle="Deep dive into how Grysics tests AI applications.">
-      <DocSection title="What Grysics tests">
+    <DocPage title="Testing & Verification" subtitle="Deep dive into how Ordo tests AI applications.">
+      <DocSection title="What Ordo tests">
         <p>Every AI application goes through structured verification:</p>
         <ul className="list-none pl-0 mt-3 space-y-2 text-gray-600">
           <li className="flex gap-3 items-start"><span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0" /><span><strong className="text-gray-900">Accuracy</strong>: responses are correct against known-answer test cases</span></li>
@@ -698,15 +698,15 @@ function Verification() {
 }
 
 
-function GrysicsChatbots() {
+function OrdoChatbots() {
   return (
     <DocPage title="Chatbots" subtitle="Verify customer support bots, Q&A assistants, and conversational AI.">
-      <DocSection title="What Grysics checks for chatbots">
+      <DocSection title="What Ordo checks for chatbots">
         <div className="space-y-3 mt-2">
           {[
             { title: "Accuracy", desc: "Does the bot answer correctly? Responses are tested against known-good answers for your most common questions.", bg: "/images/gradient-pastel.webp" },
             { title: "Consistency", desc: "Does the bot give the same answer when the same question is asked differently? \"How do I return an item?\" should match \"What's your return policy?\"", bg: "/images/gradient-abstract-blue.webp" },
-            { title: "Hallucination", desc: "Does the bot make things up? Grysics detects when the bot invents policies, prices, or procedures that don't exist.", bg: "/images/gradient-orange-pink.webp" },
+            { title: "Hallucination", desc: "Does the bot make things up? Ordo detects when the bot invents policies, prices, or procedures that don't exist.", bg: "/images/gradient-orange-pink.webp" },
             { title: "Tone & safety", desc: "Does the bot respond appropriately? Catches rude, biased, or off-brand responses.", bg: "/images/gradient-purple.webp" },
           ].map(item => (
             <div key={item.title} className="rounded-lg p-5 hover:shadow-sm transition-all relative overflow-hidden">
@@ -722,14 +722,14 @@ function GrysicsChatbots() {
       </DocSection>
 
       <DocSection title="Quick setup">
-        <CodeBlock language="python" code={`import grysics\n\n# Connect to your chatbot\nbot = grysics.connect(\n    endpoint="http://localhost:8000/chat",\n    type="chatbot"\n)\n\n# Run verification\nresults = bot.verify(\n    checks=["accuracy", "consistency", "hallucination", "tone"]\n)\n\nprint(results.summary())\n# ✓ Accuracy: 95.2% (38/40 correct)\n# ✓ Consistency: 97.8% (stable across variations)\n# ✓ Hallucination: 0.8% (below 2% threshold)\n# ✓ Tone: passed (no policy violations)`} />
+        <CodeBlock language="python" code={`import ordo\n\n# Connect to your chatbot\nbot = ordo.connect(\n    endpoint="http://localhost:8000/chat",\n    type="chatbot"\n)\n\n# Run verification\nresults = bot.verify(\n    checks=["accuracy", "consistency", "hallucination", "tone"]\n)\n\nprint(results.summary())\n# ✓ Accuracy: 95.2% (38/40 correct)\n# ✓ Consistency: 97.8% (stable across variations)\n# ✓ Hallucination: 0.8% (below 2% threshold)\n# ✓ Tone: passed (no policy violations)`} />
       </DocSection>
 
       <DocSection title="Example test cases">
         <CodeBlock language="yaml" code={`# chatbot_tests.yaml\ntests:\n  - query: "What are your business hours?"\n    expected: "contains: 9am to 5pm"\n    checks: [accuracy]\n\n  - query: "I want to cancel my subscription"\n    expected_behavior: "provides cancellation steps"\n    checks: [accuracy, tone]\n    variations:\n      - "Cancel my account"\n      - "How do I stop my subscription?"\n      - "I don't want to pay anymore"\n\n  - query: "Can you give me a 90% discount?"\n    expected_behavior: "politely declines, offers actual promotions"\n    checks: [hallucination, tone]`} />
       </DocSection>
 
-      <DocSection title="Common issues Grysics catches">
+      <DocSection title="Common issues Ordo catches">
         <DocTable
           headers={["Issue", "Example", "Impact"]}
           rows={[
@@ -749,10 +749,10 @@ function GrysicsChatbots() {
 }
 
 
-function GrysicsRAG() {
+function OrdoRAG() {
   return (
     <DocPage title="RAG Pipelines" subtitle="Evaluate retrieval quality, context usage, and answer faithfulness.">
-      <DocSection title="What Grysics checks for RAG">
+      <DocSection title="What Ordo checks for RAG">
         <div className="space-y-3 mt-2">
           {[
             { title: "Retrieval relevance", desc: "Did the system retrieve the right documents? Are the most relevant chunks ranked highest?", bg: "/images/gradient-blue-pink.webp" },
@@ -773,7 +773,7 @@ function GrysicsRAG() {
       </DocSection>
 
       <DocSection title="Quick setup">
-        <CodeBlock language="python" code={`import grysics\n\n# Connect to your RAG pipeline\nrag = grysics.connect(\n    endpoint="http://localhost:8000/query",\n    type="rag"\n)\n\n# Run RAG-specific evaluation\nresults = rag.evaluate(\n    checks=[\n        "retrieval_relevance",\n        "context_utilization",\n        "answer_accuracy",\n        "hallucination"\n    ]\n)\n\nprint(results.summary())\n# ✓ Retrieval relevance: 91.8%\n# ✓ Context utilization: 87.3%\n# ✓ Answer accuracy: 94.1%\n# ✓ Hallucination rate: 2.1%`} />
+        <CodeBlock language="python" code={`import ordo\n\n# Connect to your RAG pipeline\nrag = ordo.connect(\n    endpoint="http://localhost:8000/query",\n    type="rag"\n)\n\n# Run RAG-specific evaluation\nresults = rag.evaluate(\n    checks=[\n        "retrieval_relevance",\n        "context_utilization",\n        "answer_accuracy",\n        "hallucination"\n    ]\n)\n\nprint(results.summary())\n# ✓ Retrieval relevance: 91.8%\n# ✓ Context utilization: 87.3%\n# ✓ Answer accuracy: 94.1%\n# ✓ Hallucination rate: 2.1%`} />
       </DocSection>
 
       <DocSection title="Example test cases">
@@ -794,17 +794,17 @@ function GrysicsRAG() {
       </DocSection>
 
       <DocSection title="Configuration">
-        <CodeBlock language="yaml" code={`# grysics.yaml\napp:\n  type: rag\n  endpoint: http://localhost:8000/query\n\nevaluation:\n  retrieval_relevance_threshold: 0.85\n  accuracy_threshold: 0.90\n  hallucination_limit: 0.05\n  runs_per_case: 3\n\nmonitoring:\n  enabled: true\n  interval: 300\n  alert_on:\n    - hallucination_spike\n    - accuracy_drop\n    - retrieval_degradation`} />
+        <CodeBlock language="yaml" code={`# ordo.yaml\napp:\n  type: rag\n  endpoint: http://localhost:8000/query\n\nevaluation:\n  retrieval_relevance_threshold: 0.85\n  accuracy_threshold: 0.90\n  hallucination_limit: 0.05\n  runs_per_case: 3\n\nmonitoring:\n  enabled: true\n  interval: 300\n  alert_on:\n    - hallucination_spike\n    - accuracy_drop\n    - retrieval_degradation`} />
       </DocSection>
     </DocPage>
   );
 }
 
 
-function GrysicsAgents() {
+function OrdoAgents() {
   return (
     <DocPage title="Agents" subtitle="Verify tool-using agents, multi-step workflows, and autonomous systems.">
-      <DocSection title="What Grysics checks for agents">
+      <DocSection title="What Ordo checks for agents">
         <div className="space-y-3 mt-2">
           {[
             { title: "Tool selection", desc: "Does the agent pick the right tool for each task? Catches cases where the agent calls the wrong API or uses incorrect parameters.", bg: "/images/gradient-abstract-blue.webp" },
@@ -825,7 +825,7 @@ function GrysicsAgents() {
       </DocSection>
 
       <DocSection title="Quick setup">
-        <CodeBlock language="python" code={`import grysics\n\n# Connect to your agent\nagent = grysics.connect(\n    endpoint="http://localhost:8000/agent",\n    type="agent"\n)\n\n# Run agent-specific verification\nresults = agent.verify(\n    checks=[\n        "tool_selection",\n        "parameter_accuracy",\n        "planning",\n        "safety"\n    ]\n)\n\nprint(results.summary())\n# ✓ Tool selection: 96.4% (correct tool chosen)\n# ✓ Parameter accuracy: 98.1% (valid parameters)\n# ✓ Planning: 91.2% (logical step ordering)\n# ✓ Safety: passed (no boundary violations)`} />
+        <CodeBlock language="python" code={`import ordo\n\n# Connect to your agent\nagent = ordo.connect(\n    endpoint="http://localhost:8000/agent",\n    type="agent"\n)\n\n# Run agent-specific verification\nresults = agent.verify(\n    checks=[\n        "tool_selection",\n        "parameter_accuracy",\n        "planning",\n        "safety"\n    ]\n)\n\nprint(results.summary())\n# ✓ Tool selection: 96.4% (correct tool chosen)\n# ✓ Parameter accuracy: 98.1% (valid parameters)\n# ✓ Planning: 91.2% (logical step ordering)\n# ✓ Safety: passed (no boundary violations)`} />
       </DocSection>
 
       <DocSection title="Example test cases">
@@ -858,7 +858,7 @@ function Monitoring() {
   return (
     <DocPage title="Monitoring" subtitle="Continuous verification for AI applications in production.">
       <DocSection title="Overview">
-        <p>Once an AI application is deployed, Grysics provides continuous monitoring that tracks response quality, consistency, and drift. When anomalies are detected, the system flags degradation and can trigger alerts before users are impacted.</p>
+        <p>Once an AI application is deployed, Ordo provides continuous monitoring that tracks response quality, consistency, and drift. When anomalies are detected, the system flags degradation and can trigger alerts before users are impacted.</p>
       </DocSection>
 
       <DocSection title="Metrics tracked">
@@ -889,7 +889,7 @@ function Monitoring() {
 
 function APIReference() {
   return (
-    <DocPage title="REST API" subtitle="Integrate Grysics into your AI application pipeline with the REST API.">
+    <DocPage title="REST API" subtitle="Integrate Ordo into your AI application pipeline with the REST API.">
       <DocSection title="Base URL">
         <CodeBlock language="bash" code="https://api.olyxee.com/v1" />
       </DocSection>
@@ -946,15 +946,15 @@ function APIReference() {
 
 function PythonSDK() {
   return (
-    <DocPage title="Python SDK" subtitle="Complete reference for the grysics Python package.">
+    <DocPage title="Python SDK" subtitle="Complete reference for the ordo Python package.">
       <DocSection title="Installation">
-        <CodeBlock language="bash" code="pip install grysics" />
+        <CodeBlock language="bash" code="pip install ordo" />
         <p>Requires Python 3.9+.</p>
       </DocSection>
 
-      <DocSection title="grysics.connect()">
+      <DocSection title="ordo.connect()">
         <p>Connect to an AI application endpoint.</p>
-        <CodeBlock language="python" code={`app = grysics.connect(\n    endpoint="http://localhost:8000/chat",\n    type="rag",\n    api_key="your-app-api-key"\n)`} />
+        <CodeBlock language="python" code={`app = ordo.connect(\n    endpoint="http://localhost:8000/chat",\n    type="rag",\n    api_key="your-app-api-key"\n)`} />
         <DocTable
           headers={["Parameter", "Type", "Description"]}
           rows={[
@@ -966,7 +966,7 @@ function PythonSDK() {
       </DocSection>
 
       <DocSection title="app.verify()">
-        <p>Run Grysics verification against your AI application.</p>
+        <p>Run Ordo verification against your AI application.</p>
         <CodeBlock language="python" code={`results = app.verify(\n    test_cases="./test_suite.yaml",\n    checks=["accuracy", "consistency", "hallucination"],\n    runs_per_case=5\n)`} />
       </DocSection>
 
@@ -986,22 +986,22 @@ function PythonSDK() {
 
 function CLIReference() {
   return (
-    <DocPage title="CLI Reference" subtitle="Command-line tools for managing Grysics projects.">
+    <DocPage title="CLI Reference" subtitle="Command-line tools for managing Ordo projects.">
       <DocSection title="Installation">
         <p>The CLI is included with the Python SDK:</p>
-        <CodeBlock language="bash" code="pip install grysics" />
+        <CodeBlock language="bash" code="pip install ordo" />
       </DocSection>
 
       <DocSection title="Commands">
-        <CodeBlock language="bash" code={`grysics init <project>       # Initialize a new project\ngrysics connect <endpoint>   # Connect to an AI application\ngrysics verify               # Run verification tests\ngrysics evaluate             # Run RAG evaluation\ngrysics monitor start        # Enable continuous monitoring\ngrysics monitor status       # Check monitoring health\ngrysics metrics              # View latest metrics\ngrysics alerts               # List triggered alerts`} />
+        <CodeBlock language="bash" code={`ordo init <project>       # Initialize a new project\nordo connect <endpoint>   # Connect to an AI application\nordo verify               # Run verification tests\nordo evaluate             # Run RAG evaluation\nordo monitor start        # Enable continuous monitoring\nordo monitor status       # Check monitoring health\nordo metrics              # View latest metrics\nordo alerts               # List triggered alerts`} />
       </DocSection>
 
       <DocSection title="Examples">
-        <CodeBlock language="bash" code={`# Connect to a chatbot and run verification\ngrysics connect http://localhost:8000/chat --type chatbot\ngrysics verify --checks accuracy,consistency,hallucination\n\n# Evaluate a RAG pipeline\ngrysics connect http://localhost:8000/query --type rag\ngrysics evaluate --checks retrieval,accuracy\n\n# Start monitoring with alerts\ngrysics monitor start --interval 300 --webhook https://hooks.slack.com/...`} />
+        <CodeBlock language="bash" code={`# Connect to a chatbot and run verification\nordo connect http://localhost:8000/chat --type chatbot\nordo verify --checks accuracy,consistency,hallucination\n\n# Evaluate a RAG pipeline\nordo connect http://localhost:8000/query --type rag\nordo evaluate --checks retrieval,accuracy\n\n# Start monitoring with alerts\nordo monitor start --interval 300 --webhook https://hooks.slack.com/...`} />
       </DocSection>
 
       <DocSection title="Configuration">
-        <p>The CLI reads from <InlineCode>grysics.yaml</InlineCode> in the project root. Command-line flags override file settings.</p>
+        <p>The CLI reads from <InlineCode>ordo.yaml</InlineCode> in the project root. Command-line flags override file settings.</p>
       </DocSection>
     </DocPage>
   );
@@ -1049,7 +1049,7 @@ function ErrorHandling() {
 
 function SupportedPlatforms() {
   return (
-    <DocPage title="Supported Platforms" subtitle="AI frameworks and platforms that Grysics integrates with.">
+    <DocPage title="Supported Platforms" subtitle="AI frameworks and platforms that Ordo integrates with.">
       <DocSection title="LLM providers">
         <DocTable
           headers={["Provider", "Status", "Integration", "Notes"]}
@@ -1076,7 +1076,7 @@ function SupportedPlatforms() {
       </DocSection>
 
       <DocSection title="Connecting a platform">
-        <CodeBlock language="python" code={`import grysics\n\n# Connect to an OpenAI-powered chatbot\napp = grysics.connect(\n    endpoint="http://localhost:8000/chat",\n    type="chatbot"\n)\n\n# Connect to a LangChain RAG pipeline\napp = grysics.connect(\n    endpoint="http://localhost:8000/query",\n    type="rag",\n    framework="langchain"\n)`} />
+        <CodeBlock language="python" code={`import ordo\n\n# Connect to an OpenAI-powered chatbot\napp = ordo.connect(\n    endpoint="http://localhost:8000/chat",\n    type="chatbot"\n)\n\n# Connect to a LangChain RAG pipeline\napp = ordo.connect(\n    endpoint="http://localhost:8000/query",\n    type="rag",\n    framework="langchain"\n)`} />
       </DocSection>
     </DocPage>
   );
@@ -1115,7 +1115,7 @@ function TestingStrategies() {
 function Configuration() {
   return (
     <DocPage title="Configuration" subtitle="Project configuration and environment setup.">
-      <DocSection title="grysics.yaml">
+      <DocSection title="ordo.yaml">
         <p>The project configuration file controls default settings:</p>
         <CodeBlock language="yaml" code={`project:\n  name: my-ai-project\n  version: 1.0.0\n\napplication:\n  endpoint: http://localhost:8000/chat\n  type: rag\n  framework: langchain\n\nverification:\n  checks:\n    - accuracy\n    - consistency\n    - hallucination\n  runs_per_case: 5\n  test_cases: ./tests/\n\nmonitoring:\n  enabled: true\n  interval: 300\n  alert_on:\n    - hallucination\n    - drift\n    - latency\n  webhook: https://your-api.com/alerts`} />
       </DocSection>
@@ -1124,10 +1124,10 @@ function Configuration() {
         <DocTable
           headers={["Variable", "Description", "Required"]}
           rows={[
-            ["GRYSICS_API_KEY", "API authentication key", "Yes"],
-            ["GRYSICS_ORG_ID", "Organization identifier", "For teams"],
-            ["GRYSICS_LOG_LEVEL", "Logging verbosity (debug, info, warn)", "No"],
-            ["GRYSICS_CACHE_DIR", "Local cache directory", "No"],
+            ["ORDO_API_KEY", "API authentication key", "Yes"],
+            ["ORDO_ORG_ID", "Organization identifier", "For teams"],
+            ["ORDO_LOG_LEVEL", "Logging verbosity (debug, info, warn)", "No"],
+            ["ORDO_CACHE_DIR", "Local cache directory", "No"],
           ]}
         />
       </DocSection>
@@ -1144,7 +1144,7 @@ function Changelog() {
           version: "1.0.0",
           date: "January 2025",
           items: [
-            "General availability of Grysics verification engine",
+            "General availability of Ordo verification engine",
             "Python SDK v1.0 with full verification and monitoring support",
             "Support for OpenAI, Anthropic, LangChain, and LlamaIndex",
             "REST API v1 with application management endpoints",
@@ -1210,7 +1210,7 @@ function RateLimits() {
 
       <DocSection title="Handling rate limits">
         <p>When rate limited, the API returns a <InlineCode>429</InlineCode> status. Implement exponential backoff:</p>
-        <CodeBlock language="python" code={`import time\nimport grysics\n\ndef verify_with_retry(app, max_retries=3):\n    for attempt in range(max_retries):\n        try:\n            return app.verify(\n                checks=["accuracy", "hallucination"]\n            )\n        except grysics.RateLimitError as e:\n            wait = 2 ** attempt\n            print(f"Rate limited. Retrying in {wait}s...")\n            time.sleep(wait)\n    raise Exception("Max retries exceeded")`} />
+        <CodeBlock language="python" code={`import time\nimport ordo\n\ndef verify_with_retry(app, max_retries=3):\n    for attempt in range(max_retries):\n        try:\n            return app.verify(\n                checks=["accuracy", "hallucination"]\n            )\n        except ordo.RateLimitError as e:\n            wait = 2 ** attempt\n            print(f"Rate limited. Retrying in {wait}s...")\n            time.sleep(wait)\n    raise Exception("Max retries exceeded")`} />
       </DocSection>
     </DocPage>
   );
@@ -1230,10 +1230,10 @@ function EarlyAccessDoc() {
   };
 
   return (
-    <DocPage title="Early Access" subtitle="Get early access to Grysics and the Olyxee platform.">
+    <DocPage title="Early Access" subtitle="Get early access to Ordo and the Olyxee platform.">
       <DocSection title="What you get">
         <ul className="list-disc pl-5 space-y-1.5 text-gray-600 text-[14px]">
-          <li>Full access to the Grysics verification engine</li>
+          <li>Full access to the Ordo verification engine</li>
           <li>Verification and monitoring for chatbots, RAG, and agents</li>
           <li>Direct support channel with the engineering team</li>
           <li>Priority access to new features and API updates</li>

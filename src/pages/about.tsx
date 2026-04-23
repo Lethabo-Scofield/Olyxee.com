@@ -233,7 +233,7 @@ const About: FC = () => {
             >
               {[
                 { value: "2024", label: "Founded" },
-                { value: "Grysics", label: "Flagship product" },
+                { value: "Ordo", label: "Flagship product" },
                 { value: "Open", label: "By design" },
                 { value: "Global", label: "From day one" },
               ].map((stat) => (

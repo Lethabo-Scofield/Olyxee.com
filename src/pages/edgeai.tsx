@@ -187,10 +187,10 @@ const EdgeAI: FC = () => {
               Explore OEB <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </Link>
             <Link
-              href="/products/grysics"
+              href="/products/ordo"
               className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-neutral-600 border border-neutral-200 rounded-full font-medium hover:bg-neutral-50 hover:text-neutral-900 transition-all text-sm"
             >
-              Try Grysics
+              Try Ordo
             </Link>
           </motion.div>
         </div>
@@ -251,7 +251,7 @@ const EdgeAI: FC = () => {
                 highlight: true,
               },
               {
-                label: "Grysics",
+                label: "Ordo",
                 role: "Execution Engine",
                 description: "Turns business goals into completed operations. Plans, coordinates, and executes across tools and systems end-to-end.",
                 bg: "/images/gradient-yellow-green.webp",

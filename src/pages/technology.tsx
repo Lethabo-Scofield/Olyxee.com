@@ -18,7 +18,7 @@ const fadeUp = {
 const Technology: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO title="Technology" description="The architecture powering Olyxee's Grysics platform. Learn about our AI execution engine, goal-to-task pipeline, and operational infrastructure." path="/technology" />
+      <SEO title="Technology" description="The architecture powering Olyxee's Ordo platform. Learn about our AI execution engine, goal-to-task pipeline, and operational infrastructure." path="/technology" />
       <div className="grain" />
       <Header />
 
@@ -61,7 +61,7 @@ const Technology: FC = () => {
             </div>
           </motion.div>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.5 }} className="text-lg text-neutral-500 leading-relaxed max-w-3xl font-light">
-            Built on Grysics, our AI execution engine. It turns business goals into completed work,
+            Built on Ordo, our AI execution engine. It turns business goals into completed work,
             handling planning, coordination, and execution across your tools and systems.
           </motion.p>
         </div>
@@ -73,7 +73,7 @@ const Technology: FC = () => {
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="mb-20">
             <span className="block w-12 h-0.5 bg-white/30 mb-6" />
             <h2 className="font-serif text-4xl sm:text-5xl tracking-tight mb-4">
-              Grysics <em className="text-neutral-500">Architecture</em>
+              Ordo <em className="text-neutral-500">Architecture</em>
             </h2>
             <p className="text-neutral-400 text-lg max-w-3xl font-light leading-relaxed">
               The AI execution engine and infrastructure layer powering Olyxee's operational platform.
@@ -81,7 +81,7 @@ const Technology: FC = () => {
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5 rounded-2xl overflow-hidden">
             {[
-              { icon: Shield, title: "Goal Interpretation", description: "Describe what needs to be done. Grysics breaks down business goals into structured, executable task plans automatically." },
+              { icon: Shield, title: "Goal Interpretation", description: "Describe what needs to be done. Ordo breaks down business goals into structured, executable task plans automatically." },
               { icon: Layers, title: "System Integration", description: "Connects to ERP, Excel, databases, and more. Works with your existing tools without manual workflow building." },
               { icon: BarChart3, title: "Transparent Execution", description: "Every action is logged with timestamps, inputs, and outputs. Full audit trail for compliance and traceability." },
             ].map((item, idx) => {
@@ -108,8 +108,8 @@ const Technology: FC = () => {
           </motion.div>
           <div className="divide-y divide-neutral-200 max-w-3xl">
             {[
-              { step: "01", title: "Goal Input", description: "Describe the business outcome you need. Grysics interprets the goal and identifies the systems, data, and steps required.", icon: GitBranch },
-              { step: "02", title: "Planning", description: "Grysics creates a structured execution plan, mapping each step to the right tools and data sources.", icon: Shield },
+              { step: "01", title: "Goal Input", description: "Describe the business outcome you need. Ordo interprets the goal and identifies the systems, data, and steps required.", icon: GitBranch },
+              { step: "02", title: "Planning", description: "Ordo creates a structured execution plan, mapping each step to the right tools and data sources.", icon: Shield },
               { step: "03", title: "Execution", description: "Automated execution across connected systems including ERP, databases, spreadsheets, and communication tools.", icon: Cpu },
               { step: "04", title: "Delivery", description: "Results are delivered as reports, notifications, or audit trails. Every output is traceable.", icon: Zap },
               { step: "05", title: "Monitoring", description: "Full visibility into every action taken. Approval workflows let you set human checkpoints at any stage.", icon: BarChart3 },
@@ -165,7 +165,7 @@ const Technology: FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp}>
             <h2 className="font-serif text-4xl sm:text-5xl tracking-tight text-neutral-900 mb-6">
-              Get started <em className="text-neutral-400">with Grysics</em>
+              Get started <em className="text-neutral-400">with Ordo</em>
             </h2>
             <Link href="/developers" className="inline-flex items-center gap-2 px-8 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-black transition-all text-sm tracking-wide">
               Get Started <ArrowRight className="w-4 h-4" />

@@ -17,8 +17,8 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   redirects: async () => [
     {
-      source: "/products/grysics",
-      destination: "https://grysics.olyxee.com",
+      source: "/products/ordo",
+      destination: "https://ordo.olyxee.com",
       permanent: false,
     },
   ],

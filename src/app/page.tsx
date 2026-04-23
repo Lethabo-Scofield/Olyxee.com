@@ -128,7 +128,7 @@ function HeroSection() {
               href="/products"
               className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-7 sm:py-3.5 bg-white/90 backdrop-blur-md text-neutral-900 rounded-full font-medium hover:bg-white transition-all text-xs sm:text-sm tracking-wide shadow-lg shadow-black/10 border border-white/60"
             >
-              Try Grysics <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+              Try Ordo <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </Link>
           </div>
         </div>
@@ -526,15 +526,15 @@ function IntegrationSection() {
               />
               <div className="relative px-8 sm:px-14 lg:px-20 py-14 sm:py-20 text-center">
                 <div className="flex items-center justify-center gap-3 mb-6">
-                  <Image src="/images/grysics-logo.png" alt="Grysics" width={32} height={32} className="rounded-lg" style={{ width: 32, height: 32 }} />
-                  <span className="text-sm font-semibold text-neutral-400 uppercase tracking-widest">Grysics</span>
+                  <Image src="/images/ordo-logo.png" alt="Ordo" width={32} height={32} className="rounded-lg" style={{ width: 32, height: 32 }} />
+                  <span className="text-sm font-semibold text-neutral-400 uppercase tracking-widest">Ordo</span>
                 </div>
                 <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] tracking-tight text-neutral-900 leading-tight mb-6">
                   AI execution for{" "}
                   <em className="text-orange-400">your workflows</em>.
                 </h2>
                 <p className="text-neutral-500 text-base sm:text-lg font-light leading-relaxed mb-10 max-w-lg mx-auto">
-                  Turn business goals into completed operations. Grysics plans, coordinates, and executes across your tools and systems end-to-end.
+                  Turn business goals into completed operations. Ordo plans, coordinates, and executes across your tools and systems end-to-end.
                 </p>
                 <Link
                   href="/products"

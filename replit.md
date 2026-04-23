@@ -64,17 +64,17 @@ Company-level website for Olyxee, a reliability-first AI infrastructure company.
 ## Organizational Hierarchy
 - **Olyxee** = the company (brain/strategy) — defines vision, conducts research, builds core AI
 - **OEB / EdgeAI** = sub-division (hands/execution) — deploys AI to edge devices (IoT, drones, robots, wearables, cameras, medical devices). Handles model deployment, optimization (quantization/pruning), fleet orchestration, monitoring & updates
-- **Grysics** = verification engine for AI applications (chatbots, RAG, agents) — ensures reliability before and after deployment. Integrates with OEB for edge verification
+- **Ordo** = verification engine for AI applications (chatbots, RAG, agents) — ensures reliability before and after deployment. Integrates with OEB for edge verification
 
 ## Site Structure & Navigation
 Navigation: Products | Research | Community | About | Contact
 Desktop CTA: "Get in Touch"
 - "Products" links to `/products` (separate page, not a scroll anchor)
-- Grysics is NOT yet released — positioned as "Coming Soon" throughout the site
+- Ordo is NOT yet released — positioned as "Coming Soon" throughout the site
 - No fake stats, testimonials, or partner logos — Olyxee is a new company
 
 ## Routing
-- **App Router** (`src/app/`): `/`, `/products/grysics`, `/products/nrn`
+- **App Router** (`src/app/`): `/`, `/products/ordo`, `/products/nrn`
 - **Pages Router** (`src/pages/`): `/products`, `/about`, `/lab`, `/research`, `/technology`, `/developers`, `/safety`, `/use-cases`, `/careers`, `/blog`, `/contact`, `/docs`, `/community`, `/support`
 - Global CSS is imported via `src/pages/_app.tsx` for Pages Router routes
 - KaTeX CSS is imported in `src/app/layout.tsx` for App Router routes
@@ -87,11 +87,11 @@ Desktop CTA: "Get in Touch"
 
 ## Key Pages
 - **Homepage** (`src/app/page.tsx`): Company-focused landing page. Cinematic full-viewport hero with parallax scrolling. Sections: LogoStrip (focus areas), MissionSection (who we are + values), ResearchAreas (dark section: verification, safety, monitoring), ApproachSection (bento grid: AI safety infrastructure, hallucination research, behavioral evaluation, enterprise/regulated), CTASection (light gradient). No fake stats, testimonials, or partner logos.
-- **Products** (`src/pages/products.tsx`): Dedicated products page with hero and Grysics "Coming Soon" section with terminal mockup and verification score chart.
+- **Products** (`src/pages/products.tsx`): Dedicated products page with hero and Ordo "Coming Soon" section with terminal mockup and verification score chart.
 - **About** (`src/pages/about.tsx`): Mission, problem statement, approach, philosophy
 - **Olyxee Lab** (`src/pages/lab.tsx`): Research division — 6 research areas, recent publications, approach section, LinkedIn CTA
-- **Products**: Grysics (verification engine with animated canvas network), NRN (interpretable AI), WAVE (core platform)
-- **Docs** (`src/pages/docs.tsx`): OpenAI-style documentation with centered tab navbar. Tabs: Home, API (Overview, Quickstart, API Keys, Supported Platforms, REST API, Python SDK, CLI, Error Handling, Changelog, Rate Limits), Grysics (What is Grysics, Chatbots, RAG Pipelines, Agents, Testing & Verification, Monitoring, Early Access), Guides (Supported Platforms, Testing Strategies, Configuration)
+- **Products**: Ordo (verification engine with animated canvas network), NRN (interpretable AI), WAVE (core platform)
+- **Docs** (`src/pages/docs.tsx`): OpenAI-style documentation with centered tab navbar. Tabs: Home, API (Overview, Quickstart, API Keys, Supported Platforms, REST API, Python SDK, CLI, Error Handling, Changelog, Rate Limits), Ordo (What is Ordo, Chatbots, RAG Pipelines, Agents, Testing & Verification, Monitoring, Early Access), Guides (Supported Platforms, Testing Strategies, Configuration)
 - **Careers** (`src/pages/careers.tsx`): Internship listings with clickable apply modal that fires mailto:scofieldx911@gmail.com
 - **Community** (`src/pages/community.tsx`): Hero banner image, channel cards with animated stats
 - **Research** (`src/pages/research.tsx`): Papers on AI reliability, interpretability, optimization
@@ -102,11 +102,11 @@ Desktop CTA: "Get in Touch"
 - **Layout metadata** (`src/app/layout.tsx`): Full Next.js Metadata export with title template ("Olyxee | Research and Infrastructure for AI"), description, 18 keywords, OG, Twitter cards, robots directives, and icons
 - **Pages Router SEO** (`src/components/SEO.tsx`): Reusable component with `<Head>` — title, description, canonical, OG (with locale and image alt), Twitter. Supports optional `jsonLd` prop for page-specific structured data. Used on all Pages Router pages.
 - **Pages Router defaults** (`src/pages/_app.tsx`): Auto-canonical URLs, robots meta, og:site_name, twitter:card/creator fallbacks
-- **Product metadata**: `src/app/products/grysics/layout.tsx` and `nrn/layout.tsx` export page-specific Metadata
-- **JSON-LD**: Organization + WebSite structured data in layout.tsx; Organization on homepage; SoftwareApplication (Grysics) on products page
+- **Product metadata**: `src/app/products/ordo/layout.tsx` and `nrn/layout.tsx` export page-specific Metadata
+- **JSON-LD**: Organization + WebSite structured data in layout.tsx; Organization on homepage; SoftwareApplication (Ordo) on products page
 - **OG Image**: Dynamic edge-rendered OG image at `/api/og` (1200×630)
 - **robots.txt**: `public/robots.txt` — allows all crawlers, disallows /api/ and /_next/, references sitemap
-- **sitemap.xml**: `public/sitemap.xml` — only real pages (/, /about, /products, /products/grysics, /research, /careers, /signup, /contact, /privacy, /terms). No ghost pages.
+- **sitemap.xml**: `public/sitemap.xml` — only real pages (/, /about, /products, /products/ordo, /research, /careers, /signup, /contact, /privacy, /terms). No ghost pages.
 - **Heading hierarchy**: Every page has exactly one `<h1>` in its hero section
 - **_document.tsx**: `src/pages/_document.tsx` — favicon, apple-touch-icon, theme-color, format-detection for Pages Router
 - **Global CSS**: `overflow-x: hidden` on html/body, `-webkit-text-size-adjust: 100%`, tap-highlight transparent

@@ -361,13 +361,13 @@ export const roles: Role[] = [
     ],
   },
   {
-    title: "Accountant (Grysics)",
+    title: "Accountant (Ordo)",
     team: "Finance & Accounting",
     location: "Hybrid · Johannesburg",
     type: "paid",
-    description: "Own the financial heartbeat of Grysics. You'll keep books accurate, reporting clean, and help leadership make sharper decisions with real numbers.",
+    description: "Own the financial heartbeat of Ordo. You'll keep books accurate, reporting clean, and help leadership make sharper decisions with real numbers.",
     responsibilities: [
-      "Own end-to-end bookkeeping, reconciliations, and monthly and annual close for Grysics",
+      "Own end-to-end bookkeeping, reconciliations, and monthly and annual close for Ordo",
       "Prepare invoices, expense reports, payroll inputs, and cash-flow statements for leadership",
       "Lead budgeting, forecasting, and financial analysis to inform product and hiring decisions",
       "Ensure compliance with tax, audit, and reporting requirements across jurisdictions",
