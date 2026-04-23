@@ -144,14 +144,14 @@ function HeroSection() {
 
 function LogoStrip() {
   const slots: { front: { name: string; file: string }; back: { name: string; file: string } }[] = [
-    { front: { name: "OpenAI", file: "openai" }, back: { name: "NVIDIA", file: "nvidia" } },
-    { front: { name: "Google", file: "google" }, back: { name: "Microsoft", file: "microsoft" } },
-    { front: { name: "Anthropic", file: "anthropic" }, back: { name: "AWS", file: "amazonwebservices" } },
+    { front: { name: "OpenAI", file: "openai" }, back: { name: "Microsoft", file: "microsoft" } },
+    { front: { name: "Google", file: "google" }, back: { name: "AWS", file: "amazonwebservices" } },
+    { front: { name: "Anthropic", file: "anthropic" }, back: { name: "DeepMind", file: "deepmind" } },
     { front: { name: "GitHub", file: "github" }, back: { name: "Hugging Face", file: "huggingface" } },
     { front: { name: "Meta", file: "meta" }, back: { name: "Intel", file: "intel" } },
     { front: { name: "Cisco", file: "cisco" }, back: { name: "IBM", file: "ibm" } },
     { front: { name: "Coursera", file: "coursera" }, back: { name: "Stripe", file: "stripe" } },
-    { front: { name: "DeepMind", file: "deepmind" }, back: { name: "Slack", file: "slack" } },
+    { front: { name: "NVIDIA", file: "nvidia" }, back: { name: "Slack", file: "slack" } },
     { front: { name: "Cohere", file: "cohere" }, back: { name: "Notion", file: "notion" } },
   ];
 
