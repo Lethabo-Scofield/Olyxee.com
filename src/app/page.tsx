@@ -349,61 +349,30 @@ function OrdoSection() {
             transition={{ duration: 0.7 }}
             className="lg:col-span-5"
           >
-            <div className="inline-flex items-center gap-2 mb-5">
-              <span className="text-xs font-semibold text-blue-600 uppercase tracking-[0.2em]">Introducing</span>
-              <span className="h-px w-8 bg-blue-600/40" />
-            </div>
+            <span className="font-handwritten text-blue-600 text-2xl sm:text-3xl block mb-2 -rotate-2">
+              Say hello to —
+            </span>
 
-            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-6 leading-[1.05]">
-              Meet <em className="text-blue-600 not-italic font-normal">Ordo</em>
-              <span className="block text-neutral-500 text-2xl sm:text-3xl lg:text-4xl font-light mt-3">
-                Where work and AI finally agree.
-              </span>
+            <h2 className="font-serif text-5xl sm:text-6xl lg:text-7xl tracking-tight text-neutral-900 mb-6 leading-[1]">
+              <em className="not-italic font-normal">Ordo</em>
             </h2>
 
-            <p className="text-base sm:text-lg text-neutral-600 font-light leading-relaxed mb-8 max-w-xl">
-              Ordo turns scattered tools, requests, and approvals into a single accountable workflow. Ask in plain English, and it acts across every system you already use — with a clear record of who did what, and when.
+            <p className="text-lg sm:text-xl text-neutral-700 leading-snug mb-8 max-w-md font-light">
+              Ask in plain English. Ordo gets it done across the tools you already use — and keeps the receipts.
             </p>
 
-            <ul className="space-y-4 mb-10">
+            <ul className="space-y-3 mb-2">
               {[
-                {
-                  title: "Connects to the tools you already have",
-                  desc: "Drive, Teams, SharePoint, Dropbox, and dozens more — Ordo plugs in and gets to work.",
-                },
-                {
-                  title: "Turns natural-language requests into completed work",
-                  desc: "From expense reports to sprint updates, Ordo coordinates the steps and follows through.",
-                },
-                {
-                  title: "Built for compliance from day one",
-                  desc: "Every task is assigned, timestamped, and reviewable — designed for industries that can't afford black boxes.",
-                },
-              ].map((f) => (
-                <li key={f.title} className="flex gap-4">
-                  <span className="flex-shrink-0 mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-600" />
-                  <div>
-                    <p className="text-neutral-900 font-medium text-[15px] mb-1">{f.title}</p>
-                    <p className="text-sm text-neutral-500 font-light leading-relaxed">{f.desc}</p>
-                  </div>
+                "Plugs into Drive, Teams, SharePoint & more",
+                "Turns requests into completed work",
+                "Every step assigned, timestamped, reviewable",
+              ].map((t) => (
+                <li key={t} className="flex items-start gap-3 text-[15px] text-neutral-600">
+                  <span className="flex-shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-blue-600" />
+                  <span>{t}</span>
                 </li>
               ))}
             </ul>
-
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Link
-                href="/products"
-                className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide"
-              >
-                Explore Ordo <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-neutral-900 bg-white border border-neutral-200 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide"
-              >
-                Request a demo
-              </Link>
-            </div>
           </motion.div>
 
           <div className="lg:col-span-7 relative">
@@ -438,6 +407,27 @@ function OrdoSection() {
                   height={1200}
                   className="w-full h-auto"
                 />
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0.85 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center gap-2"
+              >
+                <span className="font-handwritten text-blue-600 text-xl sm:text-2xl rotate-[-6deg] -translate-x-8 mb-1 hidden sm:block">
+                  give it a spin →
+                </span>
+                <a
+                  href="https://ordo.olyxee.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm sm:text-base tracking-wide shadow-2xl shadow-neutral-900/30 hover:shadow-neutral-900/50 hover:scale-105"
+                >
+                  Try Ordo
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                </a>
               </motion.div>
 
               <div
