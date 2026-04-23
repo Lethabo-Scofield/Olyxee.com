@@ -172,8 +172,7 @@ function LogoStrip() {
               src={`/logos/collaborators/${file}.svg`}
               alt={name}
               loading="lazy"
-              className="h-6 sm:h-7 w-auto opacity-70 hover:opacity-100 transition-opacity duration-300"
-              style={{ filter: "grayscale(1) brightness(0.55)" }}
+              className="h-6 sm:h-7 w-auto opacity-90 hover:opacity-100 transition-opacity duration-300"
             />
           </motion.div>
         ))}
