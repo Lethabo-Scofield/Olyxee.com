@@ -56,9 +56,9 @@ const Overview: FC<OverviewProps> = ({ onNavigate }) => {
         <div className="space-y-3">
           {[
             { title: "Plain-English requests", description: "Describe the outcome you want. Ordo translates it into a structured, reviewable plan before doing anything." },
-            { title: "Connects to your stack", description: "Drive, Teams, SharePoint, Dropbox, ERPs, ticketing — Ordo plugs into the tools you already pay for, no new workflow builder required." },
+            { title: "Connects to your stack", description: "Drive, Teams, SharePoint, Dropbox, ERPs, ticketing - Ordo plugs into the tools you already pay for, no new workflow builder required." },
             { title: "Coordinated execution", description: "Ordo runs the steps across systems, asks for approvals when needed, and follows through until the task is done." },
-            { title: "Receipts on everything", description: "Every step is assigned, timestamped, and reviewable — designed for industries that can't afford black boxes." },
+            { title: "Receipts on everything", description: "Every step is assigned, timestamped, and reviewable - designed for industries that can't afford black boxes." },
           ].map((item) => (
             <div key={item.title} className="flex gap-3 items-start">
               <div className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-2.5 flex-shrink-0" />

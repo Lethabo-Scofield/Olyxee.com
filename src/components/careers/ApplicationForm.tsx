@@ -57,7 +57,7 @@ const ApplicationForm: FC<Props> = ({ role, onClose }) => {
   };
 
   const validateInternshipExtras = (): string | null => {
-    if (!portfolio.trim()) return "Please share a link to your work — LinkedIn, GitHub, portfolio, or CV.";
+    if (!portfolio.trim()) return "Please share a link to your work - LinkedIn, GitHub, portfolio, or CV.";
     if (!URL_RE.test(portfolio.trim())) return "That link doesn't look right. Make sure it starts with http:// or https://";
     return null;
   };

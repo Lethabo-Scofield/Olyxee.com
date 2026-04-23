@@ -361,7 +361,7 @@ function OrdoSection() {
             className="lg:col-span-5"
           >
             <span className="font-handwritten text-blue-600 text-2xl sm:text-3xl block mb-2 -rotate-2">
-              Say hello to —
+              Say hello to -
             </span>
 
             <h2 className="font-serif text-5xl sm:text-6xl lg:text-7xl tracking-tight text-neutral-900 mb-6 leading-[1]">
@@ -369,7 +369,7 @@ function OrdoSection() {
             </h2>
 
             <p className="text-lg sm:text-xl text-neutral-700 leading-snug mb-8 max-w-md font-light">
-              Ask in plain English. Ordo gets it done across the tools you already use — and keeps the receipts.
+              Ask in plain English. Ordo gets it done across the tools you already use - and keeps the receipts.
             </p>
 
             <ul className="space-y-3 mb-2">
@@ -593,7 +593,7 @@ function CTASection() {
 
           <div className="relative text-center max-w-2xl mx-auto">
             <span className="font-handwritten text-blue-600 text-2xl sm:text-3xl block mb-3 -rotate-2">
-              ready when you are —
+              ready when you are -
             </span>
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-5 leading-[1.05]">
               Get started with <em className="not-italic font-normal text-blue-600">Ordo</em>

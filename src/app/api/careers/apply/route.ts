@@ -107,7 +107,7 @@ function buildApplicantConfirmationHtml(a: BuildArgs): string {
         <h1 style="font-size:22px;color:#111827;font-weight:600;margin:0 0 16px">We've got your application</h1>
         <p style="font-size:15px;color:#374151;line-height:1.6;margin:0 0 16px">Hi ${escapeHtml(firstName)},</p>
         <p style="font-size:15px;color:#374151;line-height:1.6;margin:0 0 16px">
-          Thanks for applying to <strong style="color:#111827">${escapeHtml(a.role.title)}</strong> on the ${escapeHtml(a.role.team)} team. Your application has landed safely with us — no further action is needed from you right now.
+          Thanks for applying to <strong style="color:#111827">${escapeHtml(a.role.title)}</strong> on the ${escapeHtml(a.role.team)} team. Your application has landed safely with us - no further action is needed from you right now.
         </p>
         <p style="font-size:15px;color:#374151;line-height:1.6;margin:0 0 16px">
           Our team reviews every application carefully. If we'd like to take the next step, we'll reach out to this email address within the next two to three weeks. If you don't hear back in that window, we encourage you to apply again for future roles that fit.
@@ -116,7 +116,7 @@ function buildApplicantConfirmationHtml(a: BuildArgs): string {
         <p style="font-size:15px;color:#374151;line-height:1.6;margin:0 0 16px">
           In the meantime, feel free to follow our work or get in touch if anything changes about your application.
         </p>
-        <p style="font-size:15px;color:#374151;line-height:1.6;margin:24px 0 4px">— The Olyxee team</p>
+        <p style="font-size:15px;color:#374151;line-height:1.6;margin:24px 0 4px">- The Olyxee team</p>
       </div>
       <div style="padding:16px 32px;background:#f9fafb;border-top:1px solid #f3f4f6;font-size:12px;color:#9ca3af">
         This is an automated confirmation. You don't need to reply.
@@ -130,7 +130,7 @@ function buildApplicantConfirmationText(a: BuildArgs): string {
   const lines: string[] = [];
   lines.push(`Hi ${firstName},`);
   lines.push("");
-  lines.push(`Thanks for applying to ${a.role.title} on the ${a.role.team} team. Your application has landed safely with us — no further action is needed from you right now.`);
+  lines.push(`Thanks for applying to ${a.role.title} on the ${a.role.team} team. Your application has landed safely with us - no further action is needed from you right now.`);
   lines.push("");
   lines.push("Our team reviews every application carefully. If we'd like to take the next step, we'll reach out to this email address within the next two to three weeks. If you don't hear back in that window, we encourage you to apply again for future roles that fit.");
   if (a.role.type === "internship") {
@@ -138,7 +138,7 @@ function buildApplicantConfirmationText(a: BuildArgs): string {
     lines.push("Reminder: this is an unpaid internship designed for hands-on experience, mentorship, and a written reference.");
   }
   lines.push("");
-  lines.push("— The Olyxee team");
+  lines.push("- The Olyxee team");
   return lines.join("\n");
 }
 
@@ -287,7 +287,7 @@ export async function POST(req: Request) {
       answers: role.questions ? answersForEmail : undefined,
     };
 
-    const subject = `New application: ${role.title} — ${full_name}`;
+    const subject = `New application: ${role.title} - ${full_name}`;
 
     try {
       const { error: sendErr } = await resend.emails.send({

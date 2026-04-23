@@ -342,10 +342,10 @@ function RolesSection() {
                 {selectedRole.type === "internship" && (
                   <div className="mb-6 rounded-2xl border border-neutral-200 bg-neutral-50 p-5">
                     <p className="text-xs font-semibold text-neutral-900 uppercase tracking-widest mb-2">
-                      Heads up — this is an unpaid internship
+                      Heads up - this is an unpaid internship
                     </p>
                     <p className="text-sm text-neutral-600 leading-relaxed">
-                      This role is designed for people who want hands-on experience working on real AI problems alongside our team. You'll get mentorship, a written reference, and meaningful work you can point to — but no salary or stipend. Apply only if that trade-off works for you right now.
+                      This role is designed for people who want hands-on experience working on real AI problems alongside our team. You'll get mentorship, a written reference, and meaningful work you can point to - but no salary or stipend. Apply only if that trade-off works for you right now.
                     </p>
                   </div>
                 )}
@@ -414,7 +414,7 @@ function ProcessSection() {
     {
       num: "01",
       title: "Apply",
-      desc: "Send us your work — a portfolio, GitHub, blog post, or CV. No cover letter required. We read every application carefully and reply within two to three weeks if we'd like to take the next step.",
+      desc: "Send us your work - a portfolio, GitHub, blog post, or CV. No cover letter required. We read every application carefully and reply within two to three weeks if we'd like to take the next step.",
     },
     {
       num: "02",
@@ -424,7 +424,7 @@ function ProcessSection() {
     {
       num: "03",
       title: "Skills assessment",
-      desc: "A short, role-relevant exercise you can do in your own time — usually 2 to 4 hours of work. We want to see how you approach real problems, not trick questions or whiteboard puzzles. Paid for paid roles.",
+      desc: "A short, role-relevant exercise you can do in your own time - usually 2 to 4 hours of work. We want to see how you approach real problems, not trick questions or whiteboard puzzles. Paid for paid roles.",
     },
     {
       num: "04",
@@ -434,7 +434,7 @@ function ProcessSection() {
     {
       num: "05",
       title: "Decision & offer",
-      desc: "We move fast. You'll usually hear our decision within a week of the final interview. If it's a yes, you'll get a written offer with all the details — compensation, start date, and how the first weeks will go.",
+      desc: "We move fast. You'll usually hear our decision within a week of the final interview. If it's a yes, you'll get a written offer with all the details - compensation, start date, and how the first weeks will go.",
     },
   ];
 
