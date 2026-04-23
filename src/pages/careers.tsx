@@ -4,7 +4,7 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, MapPin, X, Briefcase, Search } from "lucide-react";
+import { ArrowRight, MapPin, X, Briefcase, Search, Plus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { roles, teams, type Role, type RoleType } from "../lib/careers-roles";
 import ApplicationForm from "../components/careers/ApplicationForm";
@@ -411,11 +411,34 @@ function EmergingTalentSection() {
 
 function ProcessSection() {
   const steps = [
-    { num: "01", title: "Apply", desc: "Send us your work. No cover letter needed. Just show us what you've built and what excites you." },
-    { num: "02", title: "Chat", desc: "A casual conversation about what drives you, how you think, and where you want to go." },
-    { num: "03", title: "Build", desc: "A short, relevant challenge. We want to see how you approach real problems, not trick questions." },
-    { num: "04", title: "Join", desc: "Get onboarded, meet your team, and start shipping. You'll have real ownership from day one." },
+    {
+      num: "01",
+      title: "Apply",
+      desc: "Send us your work — a portfolio, GitHub, blog post, or CV. No cover letter required. We read every application carefully and reply within two to three weeks if we'd like to take the next step.",
+    },
+    {
+      num: "02",
+      title: "Intro conversation",
+      desc: "A 30-minute chat with someone on the team. We'll talk about what drives you, what you've built, and what you want to work on next. You'll get a clear picture of the role and the team.",
+    },
+    {
+      num: "03",
+      title: "Skills assessment",
+      desc: "A short, role-relevant exercise you can do in your own time — usually 2 to 4 hours of work. We want to see how you approach real problems, not trick questions or whiteboard puzzles. Paid for paid roles.",
+    },
+    {
+      num: "04",
+      title: "Team interviews",
+      desc: "Two or three conversations with people you'd work with directly. We'll dig into your past work, talk through your assessment, and answer anything you want to know about how the team operates.",
+    },
+    {
+      num: "05",
+      title: "Decision & offer",
+      desc: "We move fast. You'll usually hear our decision within a week of the final interview. If it's a yes, you'll get a written offer with all the details — compensation, start date, and how the first weeks will go.",
+    },
   ];
+
+  const [openIdx, setOpenIdx] = useState<number | null>(0);
 
   return (
     <section className="py-16 sm:py-24 lg:py-32 border-t border-neutral-100">
@@ -425,29 +448,75 @@ function ProcessSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="mb-12 sm:mb-16"
+          className="mb-10 sm:mb-14"
         >
           <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Process</p>
-          <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900">
-            Four steps to joining
+          <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900 mb-5">
+            How we hire
           </h2>
+          <p className="text-base sm:text-lg text-neutral-500 leading-relaxed font-light max-w-2xl">
+            Our interview process is designed to find thoughtful people with diverse expertise. Here's what to expect at each stage.
+          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-8">
-          {steps.map((step, idx) => (
-            <motion.div
-              key={step.num}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
-            >
-              <div className="text-3xl font-serif text-neutral-200 mb-4">{step.num}</div>
-              <h3 className="text-lg font-semibold text-neutral-900 mb-2">{step.title}</h3>
-              <p className="text-sm text-neutral-500 leading-relaxed font-light">{step.desc}</p>
-            </motion.div>
-          ))}
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="border-t border-neutral-200"
+        >
+          {steps.map((step, idx) => {
+            const isOpen = openIdx === idx;
+            return (
+              <div key={step.num} className="border-b border-neutral-200">
+                <button
+                  type="button"
+                  onClick={() => setOpenIdx(isOpen ? null : idx)}
+                  aria-expanded={isOpen}
+                  className="w-full flex items-center justify-between gap-4 sm:gap-6 py-5 sm:py-7 text-left group"
+                >
+                  <div className="flex items-baseline gap-4 sm:gap-6 min-w-0">
+                    <span className="text-xs sm:text-sm font-mono text-neutral-400 tabular-nums flex-shrink-0">
+                      {step.num}
+                    </span>
+                    <h3 className="text-lg sm:text-xl font-medium text-neutral-900 group-hover:text-neutral-600 transition-colors">
+                      {step.title}
+                    </h3>
+                  </div>
+                  <span
+                    className={`flex-shrink-0 w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-neutral-200 flex items-center justify-center text-neutral-500 group-hover:border-neutral-900 group-hover:text-neutral-900 transition-all ${
+                      isOpen ? "rotate-45 border-neutral-900 text-neutral-900" : ""
+                    }`}
+                    style={{ transition: "transform 0.3s ease, border-color 0.2s, color 0.2s" }}
+                    aria-hidden="true"
+                  >
+                    <Plus className="w-4 h-4" />
+                  </span>
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      key="content"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                      className="overflow-hidden"
+                    >
+                      <div className="pb-6 sm:pb-8 pl-10 sm:pl-14 pr-12 sm:pr-16">
+                        <p className="text-sm sm:text-base text-neutral-500 leading-relaxed font-light max-w-2xl">
+                          {step.desc}
+                        </p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            );
+          })}
+        </motion.div>
       </div>
     </section>
   );
