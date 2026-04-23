@@ -52,13 +52,13 @@ export default function Footer({ variant = "dark" }: FooterProps) {
 
   const styles = isLight
     ? {
-        wrapper: "bg-white text-neutral-900 border-t border-neutral-200",
-        columnTitle: "text-neutral-500",
-        link: "text-neutral-600 hover:text-neutral-900",
-        divider: "border-neutral-200",
-        copyright: "text-neutral-500",
-        social: "text-neutral-400 hover:text-neutral-900",
-        logoOpacity: "opacity-70",
+        wrapper: "bg-neutral-50 text-neutral-900 border-t border-neutral-200",
+        columnTitle: "text-neutral-900",
+        link: "text-neutral-700 hover:text-neutral-900",
+        divider: "border-neutral-300",
+        copyright: "text-neutral-700",
+        social: "text-neutral-600 hover:text-neutral-900",
+        logoOpacity: "opacity-90",
       }
     : {
         wrapper: "bg-neutral-950 text-white",
