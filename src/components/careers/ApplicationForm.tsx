@@ -55,9 +55,8 @@ const ApplicationForm: FC<Props> = ({ role, onClose }) => {
   };
 
   const validateInternshipExtras = (): string | null => {
-    if (!school.trim()) return "Please tell us which school you attend or attended.";
-    if (!portfolio.trim()) return "Please share a link to your work.";
-    if (!URL_RE.test(portfolio.trim())) return "Please enter a valid URL (starting with http:// or https://).";
+    if (!portfolio.trim()) return "Please share a link to your work — LinkedIn, GitHub, portfolio, or CV.";
+    if (!URL_RE.test(portfolio.trim())) return "That link doesn't look right. Make sure it starts with http:// or https://";
     return null;
   };
 
@@ -167,7 +166,7 @@ const ApplicationForm: FC<Props> = ({ role, onClose }) => {
     <form onSubmit={handleSubmit} className="space-y-5">
       <div className="flex items-center justify-between">
         <h4 className="text-xs font-semibold text-neutral-400 uppercase tracking-widest">
-          {isPaid ? `Apply now · Step ${step + 1} of ${totalSteps}` : "Apply now"}
+          {isPaid ? `Apply now · Step ${step + 1} of ${totalSteps}` : "Apply now · About 1 minute"}
         </h4>
         {isPaid && (
           <div className="flex items-center gap-1.5">
@@ -223,10 +222,9 @@ const ApplicationForm: FC<Props> = ({ role, onClose }) => {
               {!isPaid && (
                 <>
                   <div className="relative">
-                    <label className={labelClass}>School you attend or attended</label>
+                    <label className={labelClass}>School you attend or attended <span className="text-neutral-400 font-normal normal-case">(optional)</span></label>
                     <input
                       type="text"
-                      required
                       autoComplete="off"
                       value={school}
                       onChange={(e) => setSchool(e.target.value)}
@@ -274,13 +272,13 @@ const ApplicationForm: FC<Props> = ({ role, onClose }) => {
                     />
                   </div>
                   <div>
-                    <label className={labelClass}>Anything you'd like us to know (optional)</label>
+                    <label className={labelClass}>A few sentences about why you're interested <span className="text-neutral-400 font-normal normal-case">(optional)</span></label>
                     <textarea
                       value={whyMessage}
                       onChange={(e) => setWhyMessage(e.target.value)}
                       className={`${inputClass} resize-none`}
-                      rows={4}
-                      placeholder="Why this role? What are you most excited to work on?"
+                      rows={3}
+                      placeholder="What you're hoping to learn, or anything you've built that you're proud of."
                     />
                   </div>
                 </>

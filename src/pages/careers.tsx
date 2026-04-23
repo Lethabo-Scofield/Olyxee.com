@@ -312,6 +312,17 @@ function RolesSection() {
                   </div>
                 </div>
 
+                {selectedRole.type === "internship" && (
+                  <div className="mb-6 rounded-2xl border border-neutral-200 bg-neutral-50 p-5">
+                    <p className="text-xs font-semibold text-neutral-900 uppercase tracking-widest mb-2">
+                      Heads up — this is an unpaid internship
+                    </p>
+                    <p className="text-sm text-neutral-600 leading-relaxed">
+                      This role is designed for people who want hands-on experience working on real AI problems alongside our team. You'll get mentorship, a written reference, and meaningful work you can point to — but no salary or stipend. Apply only if that trade-off works for you right now.
+                    </p>
+                  </div>
+                )}
+
                 <div className="border-t border-neutral-100 pt-6">
                   <ApplicationForm key={selectedRole.title} role={selectedRole} onClose={closeModal} />
                 </div>
