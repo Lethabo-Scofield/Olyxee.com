@@ -206,23 +206,21 @@ function LogoStrip() {
         </span>
 
         {/* colored cursor at bottom-right */}
-        <div
+        <svg
           aria-hidden="true"
-          className="absolute -bottom-6 -right-3 sm:-bottom-7 sm:-right-5 flex items-end gap-1 pointer-events-none z-10"
+          viewBox="0 0 28 28"
+          className="absolute -bottom-5 -right-2 sm:-bottom-6 sm:-right-3 w-5 h-5 sm:w-6 sm:h-6 z-10 pointer-events-none"
+          style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.25))' }}
         >
-          <svg viewBox="0 0 24 24" className="w-5 h-5 sm:w-6 sm:h-6 drop-shadow-md" fill="none">
-            <path
-              d="M5 3 L5 19 L9 15 L11.5 21 L13.8 20 L11.3 14 L17 14 Z"
-              fill="#3b82f6"
-              stroke="white"
-              strokeWidth="1.2"
-              strokeLinejoin="round"
-            />
-          </svg>
-          <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-blue-500 text-white -translate-y-1">
-            you
-          </span>
-        </div>
+          <path
+            d="M6 3.2 L6 22 L11.1 17.4 L13.7 23.8 L16.6 22.6 L14 16.2 L20.7 16.2 Z"
+            fill="#3b82f6"
+            stroke="white"
+            strokeWidth="1.6"
+            strokeLinejoin="round"
+            strokeLinecap="round"
+          />
+        </svg>
 
         <div className="flex items-center justify-between flex-nowrap gap-2 sm:gap-4">
           {slots.map((slot, idx) => (
