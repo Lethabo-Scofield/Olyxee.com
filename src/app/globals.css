@@ -161,17 +161,17 @@ img, svg, video, canvas, iframe, table {
 }
 
 .image-scroll-row-a {
-  animation: image-scroll 40s linear infinite;
+  animation: image-scroll 18s linear infinite;
 }
 .image-scroll-row-b {
-  animation: image-scroll 50s linear infinite reverse;
+  animation: image-scroll 22s linear infinite reverse;
 }
 @media (min-width: 768px) {
   .image-scroll-row-a {
-    animation-duration: 45s;
+    animation-duration: 22s;
   }
   .image-scroll-row-b {
-    animation-duration: 55s;
+    animation-duration: 26s;
   }
 }
 
