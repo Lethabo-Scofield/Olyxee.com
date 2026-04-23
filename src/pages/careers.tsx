@@ -65,71 +65,6 @@ function HeroSection() {
   );
 }
 
-function ValuesSection() {
-  const values = [
-    {
-      num: "01",
-      title: "Your work ships to production",
-      desc: "No sandbox projects. No busywork. From your first week, you're building features that real teams depend on to run AI in production.",
-      gradient: "/images/gradient-orange-pink.webp",
-    },
-    {
-      num: "02",
-      title: "Grow faster than anywhere else",
-      desc: "Small team, big problems. You'll take on responsibilities most companies wouldn't hand to someone for years. That's how we like it.",
-      gradient: "/images/gradient-blue-pink.webp",
-    },
-    {
-      num: "03",
-      title: "Remote, flexible, outcome-driven",
-      desc: "Work from anywhere in the world. We don't track hours. We track impact. Show up, do great work, and own your schedule.",
-      gradient: "/images/gradient-yellow-green.webp",
-    },
-  ];
-
-  return (
-    <section className="py-16 sm:py-24 lg:py-32 border-t border-neutral-100">
-      <div className="max-w-4xl mx-auto px-6 sm:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="mb-12 sm:mb-16"
-        >
-          <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Why Olyxee</p>
-          <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900">
-            Built for people who want to do work that matters.
-          </h2>
-        </motion.div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5">
-          {values.map((v, idx) => (
-            <motion.div
-              key={v.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="relative rounded-2xl sm:rounded-3xl overflow-hidden p-7 sm:p-8 min-h-[220px] flex flex-col justify-end group"
-            >
-              <div className="absolute inset-0">
-                <Image src={v.gradient} alt="" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
-              </div>
-              <div className="absolute inset-0 bg-white/80 group-hover:bg-white/70 transition-all duration-500" />
-              <div className="relative">
-                <div className="text-3xl font-serif text-neutral-300 mb-4">{v.num}</div>
-                <h3 className="text-lg font-semibold text-neutral-900 mb-2">{v.title}</h3>
-                <p className="text-sm text-neutral-500 leading-relaxed font-light">{v.desc}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function RolesSection() {
   const [filterType, setFilterType] = useState<"all" | RoleType>("all");
   const [filterTeam, setFilterTeam] = useState<string>("All");
@@ -497,7 +432,6 @@ const Careers: FC = () => {
 
       <main>
         <HeroSection />
-        <ValuesSection />
         <RolesSection />
         <EmergingTalentSection />
         <ProcessSection />
