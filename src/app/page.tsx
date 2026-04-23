@@ -7,17 +7,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import {
-  GoogleLogo,
-  OpenAILogo,
-  MetaLogo,
-  AnthropicLogo,
-  CohereLogo,
-  DeepMindLogo,
-  GitHubLogo,
-  CiscoLogo,
-  CourseraLogo,
-} from "../components/company-logos";
 
 
 export default function HomePage() {
@@ -152,34 +141,40 @@ function HeroSection() {
 
 
 function LogoStrip() {
-  const logos: { name: string; Logo: React.ComponentType<{ className?: string }>; className?: string }[] = [
-    { name: "OpenAI", Logo: OpenAILogo, className: "h-5 sm:h-6 w-auto" },
-    { name: "Google", Logo: GoogleLogo, className: "h-5 sm:h-6 w-auto" },
-    { name: "Anthropic", Logo: AnthropicLogo, className: "h-4 sm:h-5 w-auto" },
-    { name: "GitHub", Logo: GitHubLogo, className: "h-5 sm:h-6 w-auto" },
-    { name: "Meta", Logo: MetaLogo, className: "h-4 sm:h-5 w-auto" },
-    { name: "Cisco", Logo: CiscoLogo, className: "h-5 sm:h-6 w-auto" },
-    { name: "Coursera", Logo: CourseraLogo, className: "h-5 sm:h-6 w-auto" },
-    { name: "DeepMind", Logo: DeepMindLogo, className: "h-4 sm:h-5 w-auto" },
-    { name: "Cohere", Logo: CohereLogo, className: "h-4 sm:h-5 w-auto" },
+  const logos: { name: string; file: string }[] = [
+    { name: "OpenAI", file: "openai" },
+    { name: "Google", file: "google" },
+    { name: "Anthropic", file: "anthropic" },
+    { name: "GitHub", file: "github" },
+    { name: "Meta", file: "meta" },
+    { name: "Cisco", file: "cisco" },
+    { name: "Coursera", file: "coursera" },
+    { name: "DeepMind", file: "deepmind" },
+    { name: "Cohere", file: "cohere" },
   ];
 
   return (
     <div className="relative z-10 w-full max-w-5xl mx-auto py-8 sm:py-10 px-4 sm:px-8 lg:px-12">
       <p className="text-center text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-6 sm:mb-8">Collaborators</p>
       <div className="flex items-center justify-center flex-wrap gap-x-7 sm:gap-x-12 gap-y-5 sm:gap-y-6">
-        {logos.map(({ name, Logo, className }, idx) => (
+        {logos.map(({ name, file }, idx) => (
           <motion.div
             key={name}
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: idx * 0.04 }}
-            className="text-neutral-400/80 hover:text-neutral-700 transition-colors duration-300 select-none"
+            className="select-none"
             aria-label={name}
             title={name}
           >
-            <Logo className={className} />
+            <img
+              src={`/logos/collaborators/${file}.svg`}
+              alt={name}
+              loading="lazy"
+              className="h-6 sm:h-7 w-auto opacity-70 hover:opacity-100 transition-opacity duration-300"
+              style={{ filter: "grayscale(1) brightness(0.55)" }}
+            />
           </motion.div>
         ))}
       </div>
