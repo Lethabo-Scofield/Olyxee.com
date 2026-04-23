@@ -143,39 +143,52 @@ function HeroSection() {
 
 
 function LogoStrip() {
-  const logos: { name: string; file: string }[] = [
-    { name: "OpenAI", file: "openai" },
-    { name: "Google", file: "google" },
-    { name: "Anthropic", file: "anthropic" },
-    { name: "GitHub", file: "github" },
-    { name: "Meta", file: "meta" },
-    { name: "Cisco", file: "cisco" },
-    { name: "Coursera", file: "coursera" },
-    { name: "DeepMind", file: "deepmind" },
-    { name: "Cohere", file: "cohere" },
+  const slots: { front: { name: string; file: string }; back: { name: string; file: string } }[] = [
+    { front: { name: "OpenAI", file: "openai" }, back: { name: "NVIDIA", file: "nvidia" } },
+    { front: { name: "Google", file: "google" }, back: { name: "Microsoft", file: "microsoft" } },
+    { front: { name: "Anthropic", file: "anthropic" }, back: { name: "AWS", file: "amazonwebservices" } },
+    { front: { name: "GitHub", file: "github" }, back: { name: "Hugging Face", file: "huggingface" } },
+    { front: { name: "Meta", file: "meta" }, back: { name: "Intel", file: "intel" } },
+    { front: { name: "Cisco", file: "cisco" }, back: { name: "IBM", file: "ibm" } },
+    { front: { name: "Coursera", file: "coursera" }, back: { name: "Stripe", file: "stripe" } },
+    { front: { name: "DeepMind", file: "deepmind" }, back: { name: "Slack", file: "slack" } },
+    { front: { name: "Cohere", file: "cohere" }, back: { name: "Notion", file: "notion" } },
   ];
 
   return (
     <div className="w-full max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 py-10 sm:py-14">
       <p className="text-center text-[11px] font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-8 sm:mb-10">Collaborators</p>
       <div className="flex items-center justify-center flex-wrap gap-x-8 sm:gap-x-14 gap-y-7 sm:gap-y-8">
-        {logos.map(({ name, file }, idx) => (
+        {slots.map((slot, idx) => (
           <motion.div
-            key={name}
+            key={slot.front.name}
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: idx * 0.04 }}
-            className="select-none"
-            aria-label={name}
-            title={name}
+            className="logo-flip select-none"
+            style={{ ['--flip-delay' as any]: `${idx * 0.6}s` }}
+            aria-label={`${slot.front.name} / ${slot.back.name}`}
+            title={`${slot.front.name} / ${slot.back.name}`}
           >
-            <img
-              src={`/logos/collaborators/${file}.svg`}
-              alt={name}
-              loading="lazy"
-              className="h-8 sm:h-10 w-auto opacity-95 hover:opacity-100 hover:scale-105 transition-all duration-300"
-            />
+            <div className="logo-flip-inner h-8 sm:h-10 w-20 sm:w-28">
+              <div className="logo-face logo-front">
+                <img
+                  src={`/logos/collaborators/${slot.front.file}.svg`}
+                  alt={slot.front.name}
+                  loading="lazy"
+                  className="max-h-full max-w-full w-auto object-contain"
+                />
+              </div>
+              <div className="logo-face logo-back">
+                <img
+                  src={`/logos/collaborators/${slot.back.file}.svg`}
+                  alt={slot.back.name}
+                  loading="lazy"
+                  className="max-h-full max-w-full w-auto object-contain"
+                />
+              </div>
+            </div>
           </motion.div>
         ))}
       </div>
