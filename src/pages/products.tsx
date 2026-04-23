@@ -175,9 +175,9 @@ function OrdoSpotlight() {
     >
       <div className="lg:col-span-5 space-y-5">
         <div className="flex items-center gap-3">
-          <Image src="/images/ordo-logo.png" alt="Ordo" width={36} height={36} className="rounded-lg" style={{ width: 36, height: 36 }} />
+          <Image src="/images/ordo-logo.png" alt="Ordo" width={44} height={44} className="rounded-xl" style={{ width: 44, height: 44 }} />
           <div>
-            <p className="text-[11px] font-semibold text-orange-500 uppercase tracking-[0.2em]">Featured · Live</p>
+            <p className="text-[11px] font-semibold text-blue-600 uppercase tracking-[0.2em]">Featured · Live</p>
             <h2 className="font-serif text-3xl sm:text-4xl tracking-tight text-neutral-900 mt-1">Ordo</h2>
           </div>
         </div>
@@ -185,15 +185,15 @@ function OrdoSpotlight() {
           An AI execution system that turns a single goal into a coordinated chain of tool calls, data lookups, and verifications, running across your stack with stateful memory.
         </p>
         <ul className="space-y-2 text-sm text-neutral-600">
-          <li className="flex gap-2"><span className="text-orange-400">•</span> Goal-to-workflow planning across distributed tools</li>
-          <li className="flex gap-2"><span className="text-orange-400">•</span> Stateful memory that persists across runs</li>
-          <li className="flex gap-2"><span className="text-orange-400">•</span> Verifiable, audit-friendly execution traces</li>
+          <li className="flex gap-2"><span className="text-blue-500">•</span> Goal-to-workflow planning across distributed tools</li>
+          <li className="flex gap-2"><span className="text-blue-500">•</span> Stateful memory that persists across runs</li>
+          <li className="flex gap-2"><span className="text-blue-500">•</span> Verifiable, audit-friendly execution traces</li>
         </ul>
         <a
           href="https://ordo.olyxee.com/"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 hover:text-orange-600 transition-colors"
+          className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors"
         >
           Visit Ordo <ArrowRight className="w-3.5 h-3.5" />
         </a>
@@ -212,7 +212,7 @@ function ResearchRoadmap() {
     { x: 410, y: 300, title: "Stateful Systems", code: "R-03", note: "Memory that survives across runs", labelPos: "below" as const },
     { x: 600, y: 160, title: "Tool & Environment Integration", code: "R-04", note: "Wiring AI into real software", labelPos: "above" as const },
     { x: 800, y: 280, title: "Reliability in Autonomy", code: "R-05", note: "Verifiable, auditable execution", labelPos: "below" as const },
-  ];
+  ] as const;
 
   const pathD = "M 80 320 C 150 320, 180 180, 240 180 S 350 380, 410 300 S 540 80, 600 160 S 740 360, 800 280";
 
@@ -229,7 +229,7 @@ function ResearchRoadmap() {
         >
           <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.25em] mb-4">Research Roadmap</p>
           <h2 className="font-serif text-3xl sm:text-4xl tracking-tight text-neutral-900 mb-4">
-            The route from <em className="text-blue-500">intelligence</em> to <em className="text-orange-500">execution</em>
+            The route from <em className="text-blue-500">intelligence</em> to <em className="text-blue-700">execution</em>
           </h2>
           <p className="text-base text-neutral-500 font-light leading-relaxed">
             Each station marks a research area we are actively shipping into Olyxee products.
@@ -250,8 +250,8 @@ function ResearchRoadmap() {
 
           <div className="absolute top-4 right-4 sm:top-6 sm:right-6 flex items-center gap-2 text-[10px] font-mono text-neutral-400 uppercase tracking-widest z-10">
             <span className="relative flex h-1.5 w-1.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-orange-500" />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-blue-500" />
             </span>
             you are here
           </div>
@@ -260,9 +260,9 @@ function ResearchRoadmap() {
           <svg viewBox="0 0 880 420" className="w-full h-auto relative min-w-[700px] sm:min-w-0">
             <defs>
               <linearGradient id="route-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#3b82f6" />
-                <stop offset="50%" stopColor="#a855f7" />
-                <stop offset="100%" stopColor="#fb923c" />
+                <stop offset="0%" stopColor="#60a5fa" />
+                <stop offset="50%" stopColor="#3b82f6" />
+                <stop offset="100%" stopColor="#1e3a8a" />
               </linearGradient>
               <filter id="soft-glow">
                 <feGaussianBlur stdDeviation="3" result="blur" />
@@ -286,7 +286,7 @@ function ResearchRoadmap() {
             <path id="research-route" d={pathD} fill="none" stroke="#e5e5e5" strokeWidth="6" strokeLinecap="round" />
             <path d={pathD} fill="none" stroke="url(#route-grad)" strokeWidth="2.5" strokeDasharray="6 6" strokeLinecap="round" filter="url(#soft-glow)" />
 
-            <circle r="7" fill="#fb923c" filter="url(#soft-glow)">
+            <circle r="7" fill="#1e3a8a" filter="url(#soft-glow)">
               <animateMotion dur="14s" repeatCount="indefinite" rotate="auto">
                 <mpath href="#research-route" />
               </animateMotion>
@@ -307,16 +307,16 @@ function ResearchRoadmap() {
                   <line x1={s.x} y1={tickY1} x2={s.x} y2={tickY2} stroke="#d4d4d4" strokeWidth="1" strokeDasharray="2 2" />
 
                   <g transform={`translate(${s.x - 90}, ${blockY})`}>
-                    <rect width="180" height="54" rx="10" fill="#ffffff" stroke={i === 2 ? "#fb923c" : "#e5e5e5"} strokeWidth={i === 2 ? 1.5 : 1} />
+                    <rect width="180" height="54" rx="10" fill="#ffffff" stroke={i === 2 ? "#3b82f6" : "#e5e5e5"} strokeWidth={i === 2 ? 1.5 : 1} />
                     <text x="10" y="18" fontSize="9" fontFamily="ui-monospace, monospace" fill="#a3a3a3">{s.code}{i === 2 ? "  ·  ACTIVE" : ""}</text>
                     <text x="10" y="33" fontSize="11" fontWeight="600" fill="#0a0a0a">{s.title}</text>
                     <text x="10" y="47" fontSize="9" fill="#737373">{s.note}</text>
                   </g>
 
                   <circle cx={s.x} cy={s.y} r="14" fill="#ffffff" stroke="#e5e5e5" strokeWidth="1.5" />
-                  <circle cx={s.x} cy={s.y} r="6" fill={i === 2 ? "#fb923c" : "#0a0a0a"} />
+                  <circle cx={s.x} cy={s.y} r="6" fill={i === 2 ? "#3b82f6" : "#0a0a0a"} />
                   {i === 2 && (
-                    <circle cx={s.x} cy={s.y} r="14" fill="none" stroke="#fb923c" strokeWidth="1.5" opacity="0.6">
+                    <circle cx={s.x} cy={s.y} r="14" fill="none" stroke="#3b82f6" strokeWidth="1.5" opacity="0.6">
                       <animate attributeName="r" from="14" to="26" dur="1.8s" repeatCount="indefinite" />
                       <animate attributeName="opacity" from="0.6" to="0" dur="1.8s" repeatCount="indefinite" />
                     </circle>
