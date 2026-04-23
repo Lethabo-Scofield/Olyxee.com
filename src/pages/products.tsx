@@ -191,11 +191,23 @@ function OrdoSpotlight() {
       className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mt-14 sm:mt-20"
     >
       <div className="lg:col-span-5 space-y-5">
-        <div className="flex items-center gap-3">
-          <Image src="/images/ordo-logo.png" alt="Ordo" width={44} height={44} className="rounded-xl" style={{ width: 44, height: 44 }} />
-          <div>
-            <p className="text-[11px] font-semibold text-blue-600 uppercase tracking-[0.2em]">Featured · Live</p>
-            <h2 className="font-serif text-3xl sm:text-4xl tracking-tight text-neutral-900 mt-1">Ordo</h2>
+        <p className="text-[11px] font-semibold text-blue-600 uppercase tracking-[0.2em]">Featured · Live</p>
+        <div className="flex items-center gap-4">
+          <div className="relative shrink-0">
+            <div className="absolute inset-0 rounded-2xl bg-blue-100/60 blur-xl" aria-hidden />
+            <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white border border-neutral-200 shadow-sm flex items-center justify-center overflow-hidden">
+              <Image
+                src="/images/ordo-logo.png"
+                alt="Ordo"
+                width={96}
+                height={96}
+                className="w-[88%] h-[88%] object-contain"
+              />
+            </div>
+          </div>
+          <div className="min-w-0">
+            <h2 className="font-serif text-4xl sm:text-5xl tracking-tight text-neutral-900 leading-none">Ordo</h2>
+            <p className="text-sm text-neutral-500 mt-2 font-mono">ordo.olyxee.com</p>
           </div>
         </div>
         <p className="text-base sm:text-lg text-neutral-600 font-light leading-relaxed">
