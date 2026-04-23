@@ -29,29 +29,30 @@ const galleryImages = [
 ];
 
 function OrdoArchitecture() {
-  // What Ordo combines internally (reasoning models + workflow runner + tool connectors)
-  const stack = [
-    { y: 150, label: "Reasoning",    sub: "GPT-4 · Claude · DeepSeek",   color: "#1d4ed8", bg: "#dbeafe" },
-    { y: 200, label: "Orchestration",sub: "Plan · coordinate · verify",   color: "#1e3a8a", bg: "#e0e7ff" },
-    { y: 250, label: "Tool runtime", sub: "n8n-style, stateful",          color: "#0369a1", bg: "#e0f2fe" },
-  ];
-
-  // Connected tools Ordo can read/act on
+  // Apps Ordo can use on your behalf
   const tools = [
-    { y: 50,  label: "Gmail",      icon: "https://www.google.com/s2/favicons?domain=gmail.com&sz=128" },
-    { y: 100, label: "Stripe",     icon: "https://www.google.com/s2/favicons?domain=stripe.com&sz=128" },
-    { y: 150, label: "QuickBooks", icon: "https://www.google.com/s2/favicons?domain=quickbooks.intuit.com&sz=128" },
-    { y: 200, label: "Salesforce", icon: "https://www.google.com/s2/favicons?domain=salesforce.com&sz=128" },
-    { y: 250, label: "Notion",     icon: "https://www.google.com/s2/favicons?domain=notion.so&sz=128" },
-    { y: 300, label: "Slack",      icon: "https://www.google.com/s2/favicons?domain=slack.com&sz=128" },
+    { y: 70,  label: "Gmail",      icon: "https://www.google.com/s2/favicons?domain=gmail.com&sz=128" },
+    { y: 130, label: "Stripe",     icon: "https://www.google.com/s2/favicons?domain=stripe.com&sz=128" },
+    { y: 190, label: "QuickBooks", icon: "https://www.google.com/s2/favicons?domain=quickbooks.intuit.com&sz=128" },
+    { y: 250, label: "Salesforce", icon: "https://www.google.com/s2/favicons?domain=salesforce.com&sz=128" },
+    { y: 310, label: "Notion",     icon: "https://www.google.com/s2/favicons?domain=notion.so&sz=128" },
+    { y: 370, label: "Slack",      icon: "https://www.google.com/s2/favicons?domain=slack.com&sz=128" },
   ];
 
-  // Completed business deliverables
+  // What you get back at the end
   const outputs = [
-    { y: 90,  label: "Reconciled report", sub: "PDF · Sheets",       color: "#0e7490", bg: "#ecfeff", border: "#a5f3fc" },
-    { y: 200, label: "Tasks completed",   sub: "Updates pushed",     color: "#15803d", bg: "#f0fdf4", border: "#bbf7d0" },
-    { y: 310, label: "Audit trail",       sub: "Every step logged",  color: "#3730a3", bg: "#eef2ff", border: "#c7d2fe" },
+    { y: 110, label: "Finished report",  color: "#0e7490", bg: "#ecfeff", border: "#a5f3fc" },
+    { y: 220, label: "Updates sent",     color: "#15803d", bg: "#f0fdf4", border: "#bbf7d0" },
+    { y: 330, label: "Full audit trail", color: "#3730a3", bg: "#eef2ff", border: "#c7d2fe" },
   ];
+
+  // Step badge helper
+  const StepBadge = ({ x, n }: { x: number; n: number }) => (
+    <g>
+      <circle cx={x} cy={28} r="13" fill="#0a0a0a" />
+      <text x={x} y={33} textAnchor="middle" fontSize="13" fontWeight="700" fill="#ffffff">{n}</text>
+    </g>
+  );
 
   return (
     <div className="relative rounded-2xl border border-neutral-200 bg-gradient-to-br from-white to-neutral-50/80 p-4 sm:p-6 overflow-hidden shadow-[0_20px_50px_-25px_rgba(0,0,0,0.25)]">
@@ -61,121 +62,129 @@ function OrdoArchitecture() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
           </span>
-          <span className="text-[11px] font-mono text-neutral-500 uppercase tracking-wider">Live · Ordo runtime</span>
+          <span className="text-[11px] font-mono text-neutral-500 uppercase tracking-wider">How Ordo works</span>
         </div>
         <span className="hidden sm:inline text-[11px] font-mono text-neutral-400">ordo.olyxee.com</span>
       </div>
 
       <div className="w-full">
-      <svg viewBox="0 0 820 420" className="w-full h-auto block" xmlns="http://www.w3.org/2000/svg">
-        {/* column labels */}
-        <g fontFamily="ui-monospace, monospace" fontSize="9" fill="#a3a3a3">
-          <text x="100" y="22" textAnchor="middle">PLAIN-ENGLISH GOAL</text>
-          <text x="380" y="22" textAnchor="middle">ORDO</text>
-          <text x="600" y="22" textAnchor="middle">YOUR TOOLS</text>
-          <text x="760" y="22" textAnchor="middle">DELIVERED</text>
+      <svg viewBox="0 0 860 460" className="w-full h-auto block" xmlns="http://www.w3.org/2000/svg">
+        {/* Step badges */}
+        <StepBadge x={110} n={1} />
+        <StepBadge x={400} n={2} />
+        <StepBadge x={605} n={3} />
+        <StepBadge x={780} n={4} />
+
+        {/* Plain-English step titles */}
+        <g fontFamily="ui-sans-serif, system-ui" fontSize="13" fontWeight="700" fill="#0a0a0a">
+          <text x="135" y="33">You ask</text>
+          <text x="425" y="33">Ordo thinks</text>
+          <text x="630" y="33">Uses your apps</text>
+          <text x="805" y="33">Done</text>
         </g>
 
-        {/* goal → ordo path */}
-        <path id="p-goal-in" d="M 200 210 C 250 210, 280 200, 300 200" fill="none" stroke="#cbd5e1" strokeWidth="1.5" strokeDasharray="4 4" />
-
-        {/* ordo → tools paths */}
+        {/* Connecting paths */}
+        <path id="p-goal-in" d="M 215 230 C 280 230, 310 220, 335 220" fill="none" stroke="#cbd5e1" strokeWidth="2" strokeDasharray="5 5" />
         {tools.map((t, i) => (
           <path
             key={`pt${i}`}
             id={`p-tool-${i}`}
-            d={`M 470 200 C 520 200, 540 ${t.y}, 575 ${t.y}`}
+            d={`M 470 220 C 520 220, 540 ${t.y}, 575 ${t.y}`}
             fill="none"
             stroke="#e5e5e5"
-            strokeWidth="1.25"
-            strokeDasharray="3 3"
+            strokeWidth="1.5"
+            strokeDasharray="3 4"
           />
         ))}
-
-        {/* ordo → deliverables paths */}
         {outputs.map((o, i) => (
           <path
             key={`po${i}`}
             id={`p-out-${i}`}
-            d={`M 470 200 C 600 200, 680 ${o.y}, 720 ${o.y}`}
+            d={`M 698 ${o.y} C 720 ${o.y}, 730 ${o.y}, 752 ${o.y}`}
             fill="none"
             stroke={o.border}
-            strokeWidth="1.5"
-            strokeDasharray="4 3"
+            strokeWidth="2"
+            strokeDasharray="4 4"
           />
         ))}
 
-        {/* animated flowing dots */}
-        <circle r="4" fill="#3b82f6">
+        {/* Animated flow dots */}
+        <circle r="5" fill="#3b82f6">
           <animateMotion dur="2.4s" repeatCount="indefinite">
             <mpath href="#p-goal-in" />
           </animateMotion>
         </circle>
         {tools.map((_, i) => (
-          <circle key={`dt${i}`} r="3.5" fill="#10b981">
-            <animateMotion dur={`${2.4 + i * 0.2}s`} begin={`${i * 0.18}s`} repeatCount="indefinite">
+          <circle key={`dt${i}`} r="4" fill="#10b981">
+            <animateMotion dur={`${2.6 + i * 0.2}s`} begin={`${i * 0.18}s`} repeatCount="indefinite">
               <mpath href={`#p-tool-${i}`} />
             </animateMotion>
           </circle>
         ))}
         {outputs.map((o, i) => (
-          <circle key={`do${i}`} r="4" fill={o.color}>
-            <animateMotion dur={`${2.6 + i * 0.25}s`} begin={`${i * 0.3 + 0.4}s`} repeatCount="indefinite">
+          <circle key={`do${i}`} r="5" fill={o.color}>
+            <animateMotion dur={`${2.4 + i * 0.2}s`} begin={`${i * 0.3 + 0.4}s`} repeatCount="indefinite">
               <mpath href={`#p-out-${i}`} />
             </animateMotion>
           </circle>
         ))}
 
-        {/* GOAL — speech bubble with example */}
+        {/* STEP 1 — Speech bubble with plain example */}
         <g>
-          <rect x="20" y="170" width="180" height="80" rx="14" fill="#ffffff" stroke="#e5e5e5" />
-          <text x="32" y="190" fontSize="9" fill="#a3a3a3" fontFamily="ui-monospace, monospace">YOU SAY</text>
-          <text x="32" y="208" fontSize="11" fill="#0a0a0a" fontWeight="600">"Reconcile Q1</text>
-          <text x="32" y="223" fontSize="11" fill="#0a0a0a" fontWeight="600">finances and email</text>
-          <text x="32" y="238" fontSize="11" fill="#0a0a0a" fontWeight="600">leadership."</text>
-          {/* tail */}
-          <path d="M 200 210 L 212 215 L 200 222 Z" fill="#ffffff" stroke="#e5e5e5" />
+          <rect x="20" y="170" width="195" height="120" rx="14" fill="#ffffff" stroke="#e5e5e5" strokeWidth="1.5" />
+          <text x="34" y="195" fontSize="10" fill="#94a3b8" fontFamily="ui-monospace, monospace">YOU SAY:</text>
+          <text x="34" y="220" fontSize="14" fill="#0a0a0a" fontWeight="600">“Reconcile our</text>
+          <text x="34" y="240" fontSize="14" fill="#0a0a0a" fontWeight="600">Q1 finances and</text>
+          <text x="34" y="260" fontSize="14" fill="#0a0a0a" fontWeight="600">email leadership</text>
+          <text x="34" y="280" fontSize="14" fill="#0a0a0a" fontWeight="600">the summary.”</text>
+          <path d="M 215 225 L 230 232 L 215 240 Z" fill="#ffffff" stroke="#e5e5e5" strokeWidth="1.5" />
         </g>
 
-        {/* ORDO — internal stack visible */}
+        {/* STEP 2 — Ordo black box, simplified (no jargon stack) */}
         <g>
-          <rect x="300" y="100" width="170" height="220" rx="18" fill="#0a0a0a" />
-          <image href="/images/ordo-logo.png" x="316" y="116" width="22" height="22" />
-          <text x="346" y="132" fontSize="13" fill="#ffffff" fontWeight="600">Ordo</text>
-          <text x="316" y="146" fontSize="8" fill="#a3a3a3" fontFamily="ui-monospace, monospace">execution engine</text>
+          <rect x="335" y="115" width="135" height="210" rx="18" fill="#0a0a0a" />
+          <image href="/images/ordo-logo.png" x="385" y="140" width="36" height="36" />
+          <text x="402" y="200" textAnchor="middle" fontSize="18" fill="#ffffff" fontWeight="700" fontFamily="ui-serif, Georgia">Ordo</text>
 
-          {stack.map((s) => (
-            <g key={s.label}>
-              <rect x="316" y={s.y - 18} width="138" height="38" rx="8" fill={s.bg} />
-              <text x="324" y={s.y - 4} fontSize="11" fill={s.color} fontWeight="700">{s.label}</text>
-              <text x="324" y={s.y + 10} fontSize="8.5" fill={s.color} opacity="0.8" fontFamily="ui-monospace, monospace">{s.sub}</text>
+          {/* 3 simple plain-English actions */}
+          <g fontFamily="ui-sans-serif, system-ui" fontSize="11" fill="#ffffff">
+            <g>
+              <circle cx="352" cy="232" r="3" fill="#60a5fa" />
+              <text x="362" y="236" fontWeight="500">Plans the steps</text>
             </g>
-          ))}
+            <g>
+              <circle cx="352" cy="262" r="3" fill="#60a5fa" />
+              <text x="362" y="266" fontWeight="500">Picks the right tools</text>
+            </g>
+            <g>
+              <circle cx="352" cy="292" r="3" fill="#60a5fa" />
+              <text x="362" y="296" fontWeight="500">Checks its work</text>
+            </g>
+          </g>
         </g>
 
-        {/* TOOLS — connected systems */}
+        {/* STEP 3 — Tool icons */}
         {tools.map((t) => (
           <g key={`tool-${t.label}`}>
-            <rect x={575} y={t.y - 14} width="90" height="28" rx="8" fill="#ffffff" stroke="#e5e5e5" />
-            <image href={t.icon} x={583} y={t.y - 9} width="18" height="18" />
-            <text x={608} y={t.y + 4} fontSize="10" fill="#404040" fontWeight="500">{t.label}</text>
+            <rect x={575} y={t.y - 16} width="123" height="32" rx="9" fill="#ffffff" stroke="#e5e5e5" strokeWidth="1.25" />
+            <image href={t.icon} x={585} y={t.y - 10} width="20" height="20" />
+            <text x={613} y={t.y + 5} fontSize="12" fill="#262626" fontWeight="500">{t.label}</text>
           </g>
         ))}
 
-        {/* DELIVERABLES — completed work */}
+        {/* STEP 4 — Deliverables */}
         {outputs.map((o) => (
           <g key={`out-${o.label}`}>
-            <rect x={720} y={o.y - 22} width="92" height="44" rx="10" fill={o.bg} stroke={o.border} strokeWidth="1.5" />
-            <text x={766} y={o.y - 4} textAnchor="middle" fontSize="10" fill={o.color} fontWeight="700">{o.label}</text>
-            <text x={766} y={o.y + 11} textAnchor="middle" fontSize="8.5" fill={o.color} opacity="0.75" fontFamily="ui-monospace, monospace">{o.sub}</text>
+            <rect x={752} y={o.y - 22} width="96" height="44" rx="10" fill={o.bg} stroke={o.border} strokeWidth="1.75" />
+            <text x={800} y={o.y + 4} textAnchor="middle" fontSize="11" fill={o.color} fontWeight="700">{o.label}</text>
           </g>
         ))}
       </svg>
       </div>
 
-      <div className="flex items-center justify-between mt-3 sm:mt-4 text-[10px] sm:text-[11px] font-mono text-neutral-400">
-        <span>goal → plan → tools → done</span>
-        <span>stateful · auditable</span>
+      <div className="flex items-center justify-between mt-3 sm:mt-4 text-[11px] sm:text-[12px] text-neutral-500">
+        <span className="font-medium">Tell it your goal → it does the work for you</span>
+        <span className="hidden sm:inline font-mono text-neutral-400">remembers · auditable</span>
       </div>
     </div>
   );
