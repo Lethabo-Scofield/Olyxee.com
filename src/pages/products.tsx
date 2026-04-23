@@ -67,9 +67,11 @@ function OrdoArchitecture() {
         {/* === MIDDLE: Ordo black box === */}
         <g>
           <rect x="270" y="180" width="140" height="120" rx="18" fill="#0a0a0a" />
+          {/* white badge so the navy avatar reads clearly on the black box */}
+          <rect x="316" y="194" width="48" height="48" rx="12" fill="#ffffff" />
           <image href="/images/ordo-logo.png" x="320" y="198" width="40" height="40" />
-          <text x="340" y="262" textAnchor="middle" fontSize="18" fill="#ffffff" fontWeight="700" fontFamily="ui-serif, Georgia">Ordo</text>
-          <text x="340" y="282" textAnchor="middle" fontSize="10" fill="#a3a3a3" fontFamily="ui-monospace, monospace">plans 4 steps →</text>
+          <text x="340" y="266" textAnchor="middle" fontSize="18" fill="#ffffff" fontWeight="700" fontFamily="ui-serif, Georgia">Ordo</text>
+          <text x="340" y="284" textAnchor="middle" fontSize="10" fill="#a3a3a3" fontFamily="ui-monospace, monospace">plans 4 steps →</text>
         </g>
 
         {/* arrow from speech bubble into Ordo */}
