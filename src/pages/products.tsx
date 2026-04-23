@@ -482,11 +482,11 @@ const ProductsPage: FC = () => {
             viewport={{ once: true, amount: 0.3 }}
             custom={0}
             variants={fadeUp}
-            className="rounded-2xl sm:rounded-3xl bg-neutral-100 ring-1 ring-neutral-200/70 px-6 sm:px-12 py-16 sm:py-24 text-center shadow-[0_20px_50px_-30px_rgba(0,0,0,0.25)]"
+            className="rounded-2xl sm:rounded-3xl bg-neutral-100 px-6 sm:px-12 py-16 sm:py-24 text-center"
           >
             <p className="text-xs font-semibold text-blue-600 uppercase tracking-[0.25em] mb-5">What comes next</p>
-            <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900 mb-6 leading-[1.1]">
-              AI needs <em className="text-blue-600">better foundations</em>.
+            <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-neutral-900 mb-6 leading-[1.1]">
+              AI needs <span className="text-blue-600">better foundations</span>.
             </h2>
             <p className="text-base sm:text-xl text-neutral-600 font-light leading-relaxed max-w-2xl mx-auto mb-10">
               We are building those foundations. Join us on the journey.
