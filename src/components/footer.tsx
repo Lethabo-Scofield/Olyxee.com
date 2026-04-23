@@ -10,6 +10,7 @@ const footerData = {
       title: "Products",
       links: [
         { name: "Ordo", href: "/products/ordo" },
+        { name: "Try Ordo →", href: "https://ordo.olyxee.com", external: true },
       ],
     },
     {
@@ -47,17 +48,17 @@ interface FooterProps {
   variant?: FooterVariant;
 }
 
-export default function Footer({ variant = "dark" }: FooterProps) {
+export default function Footer({ variant = "light" }: FooterProps) {
   const isLight = variant === "light";
 
   const styles = isLight
     ? {
-        wrapper: "bg-neutral-50 text-neutral-900 border-t border-neutral-200",
-        columnTitle: "text-neutral-900",
+        wrapper: "bg-white text-neutral-900 border-t border-neutral-200",
+        columnTitle: "text-neutral-500",
         link: "text-neutral-700 hover:text-neutral-900",
-        divider: "border-neutral-300",
-        copyright: "text-neutral-700",
-        social: "text-neutral-600 hover:text-neutral-900",
+        divider: "border-neutral-200",
+        copyright: "text-neutral-500",
+        social: "text-neutral-500 hover:text-neutral-900",
         logoOpacity: "opacity-90",
       }
     : {
