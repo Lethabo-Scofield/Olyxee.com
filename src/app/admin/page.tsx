@@ -14,12 +14,20 @@ interface Intern {
 }
 
 const ROLE_OPTIONS = [
-  "AI/ML Engineering Intern",
-  "AI Research Intern",
-  "AI Engineering Intern",
-  "Software Engineering Intern",
-  "Product Intern",
-  "Design Intern",
+  "AI Engineer (Intern)",
+  "Machine Learning Engineer (Intern)",
+  "Backend Software Engineer (Intern)",
+  "Frontend Software Engineer (Intern)",
+  "Cloud / DevOps Engineer (Intern)",
+  "QA / Test Engineer (Intern)",
+  "Data Analyst (Intern)",
+  "Data Annotation Specialist (Intern)",
+  "Product Manager (Intern)",
+  "Business Analyst (Intern)",
+  "Marketing / Growth Intern",
+  "Technical Support / Operations Intern",
+  "Compliance / Risk Analyst (Intern)",
+  "Technical Writer (Intern)",
   "Other",
 ];
 
