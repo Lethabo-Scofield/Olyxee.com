@@ -158,26 +158,36 @@ function LogoStrip() {
   return (
     <div className="relative z-10 w-full max-w-6xl mx-auto py-10 sm:py-14 px-4 sm:px-8 lg:px-12">
       <p className="text-center text-[11px] font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-8 sm:mb-10">Collaborators</p>
-      <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-9 gap-3 sm:gap-4">
-        {logos.map(({ name, file }, idx) => (
-          <motion.div
-            key={name}
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: idx * 0.04 }}
-            aria-label={name}
-            title={name}
-            className="group flex items-center justify-center h-16 sm:h-20 rounded-xl bg-white border border-neutral-200/80 shadow-sm hover:shadow-md hover:border-neutral-300 transition-all duration-300 px-3 sm:px-4 select-none"
-          >
-            <img
-              src={`/logos/collaborators/${file}.svg`}
-              alt={name}
-              loading="lazy"
-              className="max-h-8 sm:max-h-10 w-auto max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
-            />
-          </motion.div>
-        ))}
+      <div className="relative">
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 -inset-y-6 sm:-inset-y-10 rounded-[2.5rem] pointer-events-none"
+          style={{
+            background:
+              'radial-gradient(ellipse at center, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.75) 55%, rgba(255,255,255,0) 100%)',
+          }}
+        />
+        <div className="relative flex items-center justify-center flex-wrap gap-x-8 sm:gap-x-14 gap-y-7 sm:gap-y-8">
+          {logos.map(({ name, file }, idx) => (
+            <motion.div
+              key={name}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: idx * 0.04 }}
+              className="select-none"
+              aria-label={name}
+              title={name}
+            >
+              <img
+                src={`/logos/collaborators/${file}.svg`}
+                alt={name}
+                loading="lazy"
+                className="h-8 sm:h-10 w-auto opacity-95 hover:opacity-100 hover:scale-105 transition-all duration-300"
+              />
+            </motion.div>
+          ))}
+        </div>
       </div>
     </div>
   );
