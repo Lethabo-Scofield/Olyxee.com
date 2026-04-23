@@ -90,7 +90,6 @@ function RolesSection() {
             transition={{ duration: 0.8 }}
             className="mb-10"
           >
-            <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Early career</p>
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-4">
               Open roles
             </h2>
@@ -373,18 +372,19 @@ function ProcessSection() {
 
 function CTASection() {
   return (
-    <section className="py-20 sm:py-28 lg:py-36 border-t border-neutral-100">
-      <div className="max-w-4xl mx-auto px-6 sm:px-8 text-center">
+    <section className="py-16 sm:py-24 lg:py-32">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
+          className="bg-neutral-100 rounded-2xl sm:rounded-3xl px-6 sm:px-12 lg:px-16 py-16 sm:py-20 lg:py-24 text-center"
         >
           <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-5 sm:mb-6">
             Don't see your role?
           </h2>
-          <p className="text-neutral-500 text-lg max-w-lg mx-auto mb-10 font-light leading-relaxed">
+          <p className="text-neutral-600 text-lg max-w-lg mx-auto mb-10 font-light leading-relaxed">
             We hire for talent, not just titles. If you're exceptional at what you do and excited about making AI more reliable, reach out. We'll find a place for you.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -396,7 +396,7 @@ function CTASection() {
             </Link>
             <a
               href="#roles"
-              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-neutral-900 border border-neutral-200 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide"
+              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-neutral-900 bg-white border border-neutral-200 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide"
             >
               Browse roles
             </a>
@@ -433,8 +433,8 @@ const Careers: FC = () => {
 
       <main>
         <HeroSection />
-        <RolesSection />
         <EmergingTalentSection />
+        <RolesSection />
         <ProcessSection />
         <CTASection />
       </main>
