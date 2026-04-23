@@ -80,7 +80,7 @@ export default function HomePage() {
         <HeroSection />
         <ResearchAreas />
         <ImageShowcase />
-        <ApproachSection />
+        <OrdoSection />
         <CTASection />
       </main>
       <Footer />
@@ -342,117 +342,114 @@ function ImageShowcase() {
   );
 }
 
-function ApproachSection() {
+function OrdoSection() {
   return (
-    <section className="py-20 sm:py-32 lg:py-40">
+    <section className="py-20 sm:py-32 lg:py-40 bg-neutral-50/60 border-y border-neutral-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
-        <div className="sm:p-8 lg:p-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="mb-10 sm:mb-16 lg:mb-20"
+            transition={{ duration: 0.7 }}
+            className="lg:col-span-5"
           >
-            <p className="text-xs font-semibold text-blue-600 uppercase tracking-[0.2em] mb-4">Our Approach</p>
-            <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 max-w-3xl">
-              Built at the intersection of <em className="text-blue-600">research and engineering</em>
+            <div className="inline-flex items-center gap-2 mb-5">
+              <span className="text-xs font-semibold text-blue-600 uppercase tracking-[0.2em]">Introducing</span>
+              <span className="h-px w-8 bg-blue-600/40" />
+            </div>
+
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-6 leading-[1.05]">
+              Meet <em className="text-blue-600 not-italic font-normal">Ordo</em>
+              <span className="block text-neutral-500 text-2xl sm:text-3xl lg:text-4xl font-light mt-3">
+                Where work and AI finally agree.
+              </span>
             </h2>
-          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="md:col-span-2 relative group rounded-2xl border border-neutral-200/60 overflow-hidden"
-          >
-            <div className="absolute inset-0">
-              <Image src="/images/gradient-orange-pink.webp" alt="" fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 66vw" />
-              <div className="absolute inset-0 bg-white/75 group-hover:bg-white/65 transition-colors duration-300" />
-            </div>
-            <div className="relative p-8 sm:p-10">
-              <div className="flex items-center gap-3 mb-4">
-                <Image src="/images/grysics-logo.png" alt="Grysics" width={32} height={32} className="rounded-lg" style={{ width: 32, height: 32 }} />
-                <h3 className="text-xl sm:text-2xl font-semibold text-neutral-900 tracking-tight">Grysics</h3>
-              </div>
-              <p className="text-neutral-500 text-sm sm:text-[15px] font-light leading-relaxed max-w-lg mb-6">
-                An AI execution system that converts high-level business goals into completed operational workflows across tools, data sources, and systems.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {["Execution", "Orchestration", "Multi-step Workflows", "Cross-system"].map(t => (
-                  <span key={t} className="text-[11px] text-neutral-600 bg-white/70 border border-neutral-200/50 rounded-full px-3 py-1">{t}</span>
-                ))}
-              </div>
-            </div>
-          </motion.div>
+            <p className="text-base sm:text-lg text-neutral-600 font-light leading-relaxed mb-8 max-w-xl">
+              Ordo turns scattered tools, requests, and approvals into a single accountable workflow. Ask in plain English, and it acts across every system you already use — with a clear record of who did what, and when.
+            </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.06 }}
-            className="group rounded-2xl overflow-hidden border border-neutral-200/60 hover:border-neutral-300/60 hover:shadow-lg hover:shadow-neutral-200/40 transition-all duration-300 relative"
-          >
-            <div className="absolute inset-0">
-              <Image src="/images/gradient-yellow-green.webp" alt="" fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" />
-              <div className="absolute inset-0 bg-white/75 group-hover:bg-white/65 transition-colors duration-300" />
-            </div>
-            <div className="relative p-8 sm:p-10">
-              <h3 className="text-lg font-semibold text-neutral-900 mb-3 tracking-tight">Task Execution Research</h3>
-              <p className="text-sm text-neutral-600 font-light leading-relaxed mb-4">
-                Studying how AI can plan, coordinate, and complete multi-step operations across real-world environments.
-              </p>
+            <ul className="space-y-4 mb-10">
+              {[
+                {
+                  title: "Connects to the tools you already have",
+                  desc: "Drive, Teams, SharePoint, Dropbox, and dozens more — Ordo plugs in and gets to work.",
+                },
+                {
+                  title: "Turns natural-language requests into completed work",
+                  desc: "From expense reports to sprint updates, Ordo coordinates the steps and follows through.",
+                },
+                {
+                  title: "Built for compliance from day one",
+                  desc: "Every task is assigned, timestamped, and reviewable — designed for industries that can't afford black boxes.",
+                },
+              ].map((f) => (
+                <li key={f.title} className="flex gap-4">
+                  <span className="flex-shrink-0 mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-600" />
+                  <div>
+                    <p className="text-neutral-900 font-medium text-[15px] mb-1">{f.title}</p>
+                    <p className="text-sm text-neutral-500 font-light leading-relaxed">{f.desc}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Link
+                href="/products"
+                className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide"
+              >
+                Explore Ordo <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-neutral-900 bg-white border border-neutral-200 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide"
+              >
+                Request a demo
+              </Link>
             </div>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.12 }}
-            className="group rounded-2xl overflow-hidden border border-neutral-200/60 hover:border-neutral-300/60 hover:shadow-lg hover:shadow-neutral-200/40 transition-all duration-300 relative"
-          >
-            <div className="absolute inset-0">
-              <Image src="/images/gradient-pink-cyan.webp" alt="" fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" />
-              <div className="absolute inset-0 bg-white/75 group-hover:bg-white/65 transition-colors duration-300" />
-            </div>
-            <div className="relative p-8 sm:p-10">
-              <h3 className="text-lg font-semibold text-neutral-900 mb-3 tracking-tight">System Composability</h3>
-              <p className="text-sm text-neutral-600 font-light leading-relaxed">
-                Designing architectures where models, tools, and workflows compose into unified operational systems.
-              </p>
-            </div>
-          </motion.div>
+          <div className="lg:col-span-7 relative">
+            <div className="relative aspect-[5/4] sm:aspect-[6/5] w-full">
+              <motion.div
+                initial={{ opacity: 0, y: 40, rotate: -2 }}
+                whileInView={{ opacity: 1, y: 0, rotate: -2 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="absolute top-0 left-0 sm:left-2 w-[78%] sm:w-[70%] rounded-2xl overflow-hidden shadow-2xl shadow-neutral-300/50 border border-neutral-200/60 bg-white"
+              >
+                <Image
+                  src="/images/ordo/integrations.jpeg"
+                  alt="Ordo connects natural-language requests to your existing tools"
+                  width={1200}
+                  height={675}
+                  className="w-full h-auto"
+                />
+              </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.18 }}
-            className="md:col-span-2 lg:col-span-2 group rounded-2xl overflow-hidden border border-neutral-200/60 hover:border-neutral-300/60 hover:shadow-lg hover:shadow-neutral-200/40 transition-all duration-300 relative"
-          >
-            <div className="absolute inset-0">
-              <Image src="/images/gradient-yellow-blue.webp" alt="" fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 66vw" />
-              <div className="absolute inset-0 bg-white/75 group-hover:bg-white/65 transition-colors duration-300" />
+              <motion.div
+                initial={{ opacity: 0, y: 40, rotate: 3 }}
+                whileInView={{ opacity: 1, y: 0, rotate: 3 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+                className="absolute bottom-0 right-0 sm:right-2 w-[72%] sm:w-[62%] rounded-2xl overflow-hidden shadow-2xl shadow-neutral-300/50 border border-neutral-200/60 bg-white"
+              >
+                <Image
+                  src="/images/ordo/tasks.png"
+                  alt="Ordo tracks every task with clear ownership and timestamps"
+                  width={1200}
+                  height={1200}
+                  className="w-full h-auto"
+                />
+              </motion.div>
+
+              <div
+                aria-hidden="true"
+                className="absolute -inset-x-8 -inset-y-12 -z-10 bg-gradient-to-tr from-blue-100/40 via-transparent to-emerald-100/30 blur-3xl"
+              />
             </div>
-            <div className="relative p-8 sm:p-10">
-              <div className="flex flex-col sm:flex-row gap-6 sm:gap-10 items-start">
-                <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-neutral-900 mb-3 tracking-tight">Enterprise & Cross-System Operations</h3>
-                  <p className="text-sm text-neutral-600 font-light leading-relaxed">
-                    End-to-end AI execution for industries where reliability and cross-system coordination are essential.
-                  </p>
-                </div>
-                <div className="flex-shrink-0 flex flex-wrap gap-2">
-                  {["Healthcare", "Legal", "Finance", "Enterprise"].map(t => (
-                    <span key={t} className="text-[11px] text-neutral-600 bg-white/60 border border-neutral-200/60 rounded-full px-3 py-1">{t}</span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </motion.div>
           </div>
         </div>
       </div>
