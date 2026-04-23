@@ -412,18 +412,10 @@ const ProductsPage: FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-white leading-[1.08] mb-6 drop-shadow-[0_2px_20px_rgba(0,0,0,0.5)]"
+                className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-white leading-[1.08] drop-shadow-[0_2px_20px_rgba(0,0,0,0.5)]"
               >
-                Research, shipped as <em className="text-blue-300">working systems</em>.
+                Research, shipped as <span className="text-blue-300 italic font-normal">working systems</span>.
               </motion.h1>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.25 }}
-                className="text-base sm:text-xl text-white/80 leading-relaxed max-w-xl font-light drop-shadow-[0_1px_8px_rgba(0,0,0,0.4)]"
-              >
-                Olyxee turns research into products you can actually run. Today that means <span className="text-white font-normal">Ordo</span> — an AI execution system for real business operations.
-              </motion.p>
             </div>
           </motion.div>
 
