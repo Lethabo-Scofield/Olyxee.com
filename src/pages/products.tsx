@@ -139,17 +139,16 @@ function OrdoSpotlight() {
       transition={{ duration: 0.7 }}
       className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mt-14 sm:mt-20"
     >
-      <div className="lg:col-span-5 space-y-5">
-        <p className="text-[11px] font-semibold text-blue-600 uppercase tracking-[0.2em]">Featured · Live</p>
+      <div className="lg:col-span-5 space-y-6">
         <div className="flex items-center gap-4">
           <div className="relative shrink-0">
             <div className="absolute inset-0 rounded-2xl bg-blue-100/60 blur-xl" aria-hidden />
-            <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white border border-neutral-200 shadow-sm flex items-center justify-center overflow-hidden">
+            <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white border border-neutral-200 shadow-sm flex items-center justify-center overflow-hidden">
               <Image
                 src="/images/ordo-logo.png"
                 alt="Ordo"
-                width={96}
-                height={96}
+                width={80}
+                height={80}
                 className="w-[88%] h-[88%] object-contain"
               />
             </div>
@@ -160,20 +159,15 @@ function OrdoSpotlight() {
           </div>
         </div>
         <p className="text-base sm:text-lg text-neutral-600 font-light leading-relaxed">
-          An AI execution system that turns a single goal into a coordinated chain of tool calls, data lookups, and verifications, running across your stack with stateful memory.
+          Tell Ordo a goal in plain English. It plans the steps, uses your apps, and ships the finished work.
         </p>
-        <ul className="space-y-2 text-sm text-neutral-600">
-          <li className="flex gap-2"><span className="text-blue-500">•</span> Goal-to-workflow planning across distributed tools</li>
-          <li className="flex gap-2"><span className="text-blue-500">•</span> Stateful memory that persists across runs</li>
-          <li className="flex gap-2"><span className="text-blue-500">•</span> Verifiable, audit-friendly execution traces</li>
-        </ul>
         <a
           href="https://ordo.olyxee.com/"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors"
+          className="inline-flex items-center gap-2 text-sm font-medium text-white bg-neutral-900 hover:bg-neutral-800 px-5 py-2.5 rounded-full transition-colors"
         >
-          Visit Ordo <ArrowRight className="w-3.5 h-3.5" />
+          Visit Ordo <ArrowRight className="w-4 h-4" />
         </a>
       </div>
       <div className="lg:col-span-7">
