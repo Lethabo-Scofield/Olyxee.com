@@ -224,7 +224,7 @@ function LogoStrip() {
           </span>
         </div>
 
-        <div className="flex items-center justify-center flex-wrap gap-x-8 sm:gap-x-14 gap-y-7 sm:gap-y-8">
+        <div className="flex items-center justify-between flex-nowrap gap-2 sm:gap-4">
           {slots.map((slot, idx) => (
             <motion.div
               key={slot.front.name}
@@ -232,12 +232,12 @@ function LogoStrip() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.04 }}
-              className="logo-flip select-none"
+              className="logo-flip select-none flex-1 min-w-0 flex justify-center"
               style={{ ['--flip-delay' as any]: `${idx * 0.6}s` }}
               aria-label={`${slot.front.name} / ${slot.back.name}`}
               title={`${slot.front.name} / ${slot.back.name}`}
             >
-              <div className="logo-flip-inner h-8 sm:h-10 w-20 sm:w-28">
+              <div className="logo-flip-inner h-6 sm:h-9 w-full max-w-[80px] sm:max-w-[110px]">
                 <div className="logo-face logo-front">
                   <img
                     src={`/logos/collaborators/${slot.front.file}.svg`}
