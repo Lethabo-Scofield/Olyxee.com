@@ -67,6 +67,7 @@ export default function HomePage() {
       <Header />
       <main>
         <HeroSection />
+        <LogoStrip />
         <ResearchAreas />
         <ImageShowcase />
         <OrdoSection />
@@ -136,7 +137,6 @@ function HeroSection() {
         </div>
       </motion.div>
 
-      <LogoStrip />
     </section>
   );
 }
