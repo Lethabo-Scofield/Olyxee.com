@@ -121,6 +121,59 @@ const Research: FC = () => {
         </div>
       </section>
 
+      <section className="py-20 sm:py-28 border-t border-neutral-100 bg-neutral-50/60">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7 }}
+            className="mb-12 sm:mb-16"
+          >
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-tight leading-[1.1] mb-4">
+              Research Directions
+            </h2>
+            <p className="text-base sm:text-lg text-neutral-500 leading-relaxed max-w-2xl font-light">
+              Exploring the next generation of AI systems beyond software.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="max-w-3xl"
+          >
+            <div className="text-xs text-neutral-400 font-medium uppercase tracking-widest mb-4">
+              Research Division
+            </div>
+            <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-neutral-900 tracking-tight leading-[1.15] mb-5">
+              Olyxee Robotics
+            </h3>
+            <p className="text-base sm:text-[17px] text-neutral-600 leading-relaxed font-light mb-8">
+              Olyxee Robotics focuses on embodied intelligence — building systems that bring AI into the physical world through perception, decision-making, and action.
+            </p>
+            <ul className="space-y-3 border-t border-neutral-200/80 pt-6">
+              {[
+                "Embodied intelligence",
+                "Real-world interaction systems",
+                "Autonomous decision layers",
+                "Hardware-integrated AI",
+              ].map((item) => (
+                <li
+                  key={item}
+                  className="flex items-baseline gap-3 text-sm sm:text-[15px] text-neutral-600 font-light"
+                >
+                  <span className="text-neutral-300 text-xs leading-none translate-y-[1px]">—</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        </div>
+      </section>
+
       <section className="py-20 sm:py-32 border-t border-neutral-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <motion.div
