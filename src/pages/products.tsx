@@ -231,97 +231,160 @@ function AddupReconciliation() {
   );
 }
 
-function AddupSpotlight() {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.7 }}
-      className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mt-14 sm:mt-20"
-    >
-      <div className="lg:col-span-5 space-y-6">
-        <div className="flex items-center gap-4">
-          <div className="relative shrink-0">
-            <div className="absolute inset-0 rounded-2xl bg-blue-100/60 blur-xl" aria-hidden />
-            <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white border border-neutral-200 shadow-sm flex items-center justify-center overflow-hidden">
-              <Image
-                src="/images/addup-logo.png"
-                alt="Addup"
-                width={80}
-                height={80}
-                className="w-[88%] h-[88%] object-contain"
-              />
-            </div>
-          </div>
-          <div className="min-w-0">
-            <h2 className="font-serif text-4xl sm:text-5xl tracking-tight text-neutral-900 leading-none">Addup</h2>
-            <p className="text-sm text-neutral-500 mt-2 font-mono">addup.olyxee.com</p>
-          </div>
-        </div>
-        <p className="text-base sm:text-lg text-neutral-600 font-light leading-relaxed">
-          Addup cleans, matches, and verifies financial data so teams close books faster with less manual work.
-        </p>
-        <a
-          href="https://addup.olyxee.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-sm font-medium text-white bg-neutral-900 hover:bg-neutral-800 px-5 py-2.5 rounded-full transition-colors"
-        >
-          Visit Addup <ArrowRight className="w-4 h-4" />
-        </a>
-      </div>
-      <div className="lg:col-span-7">
-        <AddupReconciliation />
-      </div>
-    </motion.div>
-  );
-}
+type AccentTheme = {
+  text: string;
+  dot: string;
+  halo: string;
+  underline: string;
+  marker: string;
+};
 
-function OrdoSpotlight() {
+const ORDO_ACCENT: AccentTheme = {
+  text: "text-blue-600",
+  dot: "bg-blue-500",
+  halo: "bg-blue-200/70",
+  underline: "decoration-blue-300/70",
+  marker: "text-blue-500",
+};
+
+const ADDUP_ACCENT: AccentTheme = {
+  text: "text-emerald-600",
+  dot: "bg-emerald-500",
+  halo: "bg-emerald-200/70",
+  underline: "decoration-emerald-300/70",
+  marker: "text-emerald-500",
+};
+
+type ProductFeatureProps = {
+  index: string;
+  label: string;
+  name: string;
+  tagline: React.ReactNode;
+  description: string;
+  features: string[];
+  url: string;
+  domain: string;
+  logoSrc: string;
+  accent: AccentTheme;
+  visual: React.ReactNode;
+  flip?: boolean;
+};
+
+function ProductFeature({
+  index,
+  label,
+  name,
+  tagline,
+  description,
+  features,
+  url,
+  domain,
+  logoSrc,
+  accent,
+  visual,
+  flip = false,
+}: ProductFeatureProps) {
   return (
-    <motion.div
+    <motion.article
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.7 }}
-      className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mt-14 sm:mt-20"
+      className="mt-20 sm:mt-28 lg:mt-36"
     >
-      <div className="lg:col-span-5 space-y-6">
-        <div className="flex items-center gap-4">
-          <div className="relative shrink-0">
-            <div className="absolute inset-0 rounded-2xl bg-blue-100/60 blur-xl" aria-hidden />
-            <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white border border-neutral-200 shadow-sm flex items-center justify-center overflow-hidden">
-              <Image
-                src="/images/ordo-logo.png"
-                alt="Ordo"
-                width={80}
-                height={80}
-                className="w-[88%] h-[88%] object-contain"
-              />
+      {/* chapter rule */}
+      <div className="flex items-center gap-4 mb-10 sm:mb-14">
+        <span className={`text-xs font-mono tracking-[0.2em] ${accent.text}`}>
+          {index}
+        </span>
+        <span className={`h-px flex-1 bg-gradient-to-r from-neutral-300 to-transparent`} />
+        <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.28em] text-neutral-400">
+          {label}
+        </span>
+      </div>
+
+      <div
+        className={`grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center ${flip ? "lg:[&>*:first-child]:order-2" : ""}`}
+      >
+        {/* text column */}
+        <div className="lg:col-span-5 space-y-7">
+          {/* logo + domain row */}
+          <div className="flex items-center gap-4">
+            <div className="relative shrink-0">
+              <div className={`absolute inset-0 rounded-2xl ${accent.halo} blur-2xl`} aria-hidden />
+              <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white border border-neutral-200/80 shadow-sm flex items-center justify-center overflow-hidden">
+                <Image
+                  src={logoSrc}
+                  alt={name}
+                  width={64}
+                  height={64}
+                  className="w-[86%] h-[86%] object-contain"
+                />
+              </div>
+            </div>
+            <div className="min-w-0">
+              <p className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.22em] text-neutral-400">
+                Live
+              </p>
+              <p className="text-sm text-neutral-600 mt-1 font-mono">{domain}</p>
             </div>
           </div>
-          <div className="min-w-0">
-            <h2 className="font-serif text-4xl sm:text-5xl tracking-tight text-neutral-900 leading-none">Ordo</h2>
-            <p className="text-sm text-neutral-500 mt-2 font-mono">ordo.olyxee.com</p>
+
+          {/* display name */}
+          <h2 className="font-serif text-[clamp(3.75rem,11vw,6.5rem)] leading-[0.95] tracking-[-0.02em] text-neutral-900">
+            {name}
+          </h2>
+
+          {/* italic poetic tagline */}
+          <p className="font-serif text-2xl sm:text-3xl leading-tight text-neutral-700 italic font-light -mt-2">
+            {tagline}
+          </p>
+
+          {/* body */}
+          <p className="text-base sm:text-[17px] text-neutral-600 leading-relaxed font-light max-w-md">
+            {description}
+          </p>
+
+          {/* feature highlights */}
+          <ul className="space-y-2.5 pt-2 border-t border-neutral-200/70">
+            {features.map((f) => (
+              <li
+                key={f}
+                className="flex items-baseline gap-3 text-sm sm:text-[15px] text-neutral-700 font-light"
+              >
+                <span className={`text-base leading-none ${accent.marker}`}>+</span>
+                <span>{f}</span>
+              </li>
+            ))}
+          </ul>
+
+          {/* CTAs */}
+          <div className="flex flex-wrap items-center gap-5 pt-2">
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 text-sm font-medium text-white bg-neutral-900 hover:bg-neutral-800 px-6 py-3 rounded-full transition-colors"
+            >
+              Visit {name}
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+            </a>
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`group inline-flex items-center gap-1.5 text-sm font-medium ${accent.text} hover:opacity-80 transition-opacity`}
+            >
+              <span className={`underline underline-offset-4 ${accent.underline}`}>See how it works</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+            </a>
           </div>
         </div>
-        <p className="text-base sm:text-lg text-neutral-600 font-light leading-relaxed">
-          Tell Ordo a goal in plain English. It plans the steps, uses your apps, and ships the finished work.
-        </p>
-        <a
-          href="https://ordo.olyxee.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-sm font-medium text-white bg-neutral-900 hover:bg-neutral-800 px-5 py-2.5 rounded-full transition-colors"
-        >
-          Visit Ordo <ArrowRight className="w-4 h-4" />
-        </a>
+
+        {/* visual column */}
+        <div className="lg:col-span-7">{visual}</div>
       </div>
-      <div className="lg:col-span-7">
-        <OrdoArchitecture />
-      </div>
-    </motion.div>
+    </motion.article>
   );
 }
 
@@ -594,27 +657,74 @@ const ProductsPage: FC = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-black/20" />
 
             <div className="relative px-6 sm:px-12 lg:px-16 py-20 sm:py-28 lg:py-36 max-w-3xl">
-              <motion.p
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.15 }}
-                className="text-xs font-semibold text-blue-300 uppercase tracking-[0.25em] mb-5"
+                className="flex items-center gap-3 mb-6"
               >
-                Products
-              </motion.p>
+                <span className="h-px w-10 bg-blue-300/60" />
+                <span className="text-[10px] font-mono uppercase text-blue-100/90 tracking-[0.3em]">
+                  Products · Two systems
+                </span>
+              </motion.div>
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-white leading-[1.08] drop-shadow-[0_2px_20px_rgba(0,0,0,0.5)]"
+                transition={{ duration: 0.85, delay: 0.2 }}
+                className="font-serif text-white tracking-[-0.015em] leading-[1.02] text-[clamp(2.75rem,7.5vw,5.25rem)] drop-shadow-[0_2px_20px_rgba(0,0,0,0.5)]"
               >
-                Research, shipped as <span className="text-blue-300 italic font-normal">working systems</span>.
+                Research, shipped as
+                <br />
+                <em className="font-normal text-blue-300">working systems</em>.
               </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.85, delay: 0.32 }}
+                className="mt-7 text-base sm:text-lg text-white/70 font-light max-w-xl leading-relaxed"
+              >
+                Two products. One thesis: AI is most useful when it does the work, end to end, and shows you the receipts.
+              </motion.p>
             </div>
           </motion.div>
 
-          <OrdoSpotlight />
-          <AddupSpotlight />
+          <ProductFeature
+            index="01"
+            label="Execution"
+            name="Ordo"
+            tagline={<>Goals, in. <span className="not-italic">Finished work, out.</span></>}
+            description="Tell Ordo a goal in plain English. It plans the steps, calls the right tools, and ships the finished work — with a clear trail of what it did and why."
+            features={[
+              "Plain-English goals → multi-step plans",
+              "Acts across the apps your team already uses",
+              "Audit trail for every decision and tool call",
+            ]}
+            url="https://ordo.olyxee.com/"
+            domain="ordo.olyxee.com"
+            logoSrc="/images/ordo-logo.png"
+            accent={ORDO_ACCENT}
+            visual={<OrdoArchitecture />}
+          />
+
+          <ProductFeature
+            index="02"
+            label="Reconciliation"
+            name="Addup"
+            tagline={<>Numbers that <span className="not-italic">match.</span></>}
+            description="Addup ingests source-of-truth data from banks and ledgers, reconciles every line, and flags what doesn't agree — so finance teams close books in hours, not days."
+            features={[
+              "Bank, card, and ledger ingestion out of the box",
+              "Auto-matching with explainable variance fixes",
+              "Books-closed view with one-click drill-down",
+            ]}
+            url="https://addup.olyxee.com/"
+            domain="addup.olyxee.com"
+            logoSrc="/images/addup-logo.png"
+            accent={ADDUP_ACCENT}
+            visual={<AddupReconciliation />}
+            flip
+          />
         </div>
       </section>
 
