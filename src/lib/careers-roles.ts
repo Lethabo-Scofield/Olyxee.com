@@ -298,6 +298,66 @@ export const roles: Role[] = [
     ],
   },
   {
+    title: "Financial Data Engineer (Intern)",
+    team: "Finance Data (Addup)",
+    location: "Remote",
+    type: "internship",
+    description: "Work on Addup, our financial data reliability product. You'll build the pipelines that ingest, clean, and standardize financial data from accounting systems, banks, and spreadsheets.",
+    responsibilities: [
+      "Build connectors and ETL pipelines that pull data from accounting platforms, banks, and CSV/Excel sources",
+      "Design schemas and transformations that turn messy ledger data into clean, queryable records",
+      "Write tests and validations that catch broken or malformed financial data before it reaches users",
+    ],
+    requirements: [
+      "Link to portfolio, GitHub, or projects involving data pipelines, SQL, or financial datasets",
+    ],
+  },
+  {
+    title: "Data Reconciliation Analyst (Intern)",
+    team: "Finance Data (Addup)",
+    location: "Remote",
+    type: "internship",
+    description: "Help finance teams trust their numbers. You'll design and refine the matching, verification, and reconciliation logic that powers Addup.",
+    responsibilities: [
+      "Define matching rules that reconcile transactions across banks, ledgers, and invoices",
+      "Investigate edge cases, mismatches, and exceptions and turn them into product improvements",
+      "Build evaluation sets and quality benchmarks for reconciliation accuracy",
+    ],
+    requirements: [
+      "Link to portfolio, GitHub, coursework, or examples of detail-oriented analytical work",
+    ],
+  },
+  {
+    title: "Accounting Operations Intern",
+    team: "Finance Data (Addup)",
+    location: "Remote",
+    type: "internship",
+    description: "Bring real accounting domain expertise into Addup. You'll partner with engineers and product to make sure what we ship matches how finance teams actually close their books.",
+    responsibilities: [
+      "Map real-world close, reconciliation, and review workflows into product requirements",
+      "Test new features against realistic ledgers and surface gaps before launch",
+      "Translate accounting standards and finance team feedback into clear specs",
+    ],
+    requirements: [
+      "Studying accounting, finance, or related; share coursework, internships, or relevant projects",
+    ],
+  },
+  {
+    title: "Frontend Engineer – Finance UI (Intern)",
+    team: "Finance Data (Addup)",
+    location: "Remote",
+    type: "internship",
+    description: "Design and build the dashboards and review screens finance teams use every day in Addup. Your work makes complex reconciliation work feel calm and obvious.",
+    responsibilities: [
+      "Build dashboards, review queues, and ledger views with clear, accessible UX",
+      "Implement interactions for matching, approving, and exporting financial records",
+      "Polish performance and details so workflows stay fast on real-world data volumes",
+    ],
+    requirements: [
+      "Link to portfolio, GitHub, or projects showing frontend work (React/Next.js a plus)",
+    ],
+  },
+  {
     title: "Marketing Lead",
     team: "Marketing & Growth",
     location: "Hybrid · Johannesburg",
