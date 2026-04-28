@@ -127,6 +127,157 @@ function OrdoArchitecture() {
   );
 }
 
+function AddupReconciliation() {
+  // ONE concrete worked example — Addup reconciles bank rows against ledger entries
+  const rows = [
+    { y: 90,  bank: { src: "Stripe payout",      amt: "$12,480.00" }, ledger: { ref: "INV-2031",   amt: "$12,480.00" }, status: "match"    as const },
+    { y: 175, bank: { src: "Bank deposit",       amt: "$  4,250.00" }, ledger: { ref: "INV-2032",   amt: "$  4,250.00" }, status: "match"    as const },
+    { y: 260, bank: { src: "Wire — Acme Co.",    amt: "$  9,800.00" }, ledger: { ref: "INV-2033",   amt: "$  9,820.00" }, status: "fixed"    as const },
+    { y: 345, bank: { src: "Card settlement",    amt: "$  2,140.00" }, ledger: { ref: "INV-2034",   amt: "$  2,140.00" }, status: "match"    as const },
+  ];
+
+  const colorFor = (s: "match" | "fixed") => (s === "match" ? "#15803d" : "#0369a1");
+  const fillFor  = (s: "match" | "fixed") => (s === "match" ? "#f0fdf4" : "#eff6ff");
+  const ringFor  = (s: "match" | "fixed") => (s === "match" ? "#86efac" : "#bae6fd");
+
+  return (
+    <div className="relative rounded-2xl border border-neutral-200 bg-gradient-to-br from-white to-neutral-50/80 p-4 sm:p-6 overflow-hidden shadow-[0_20px_50px_-25px_rgba(0,0,0,0.25)]">
+      <div className="flex items-center justify-between mb-3 sm:mb-4">
+        <div className="flex items-center gap-2">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+          </span>
+          <span className="text-[11px] font-mono text-neutral-500 uppercase tracking-wider">A real example</span>
+        </div>
+        <span className="hidden sm:inline text-[11px] font-mono text-neutral-400">addup.olyxee.com</span>
+      </div>
+
+      <div className="w-full">
+      <svg viewBox="0 0 860 480" className="w-full h-auto block" xmlns="http://www.w3.org/2000/svg">
+        {/* === LEFT column header: bank/source rows === */}
+        <text x="20" y="56" fontSize="10" fill="#94a3b8" fontFamily="ui-monospace, monospace" letterSpacing="1">BANK & SOURCES</text>
+        {rows.map((r, i) => (
+          <g key={`b-${i}`}>
+            <rect x="20" y={r.y - 24} width="240" height="48" rx="10" fill="#ffffff" stroke="#e5e5e5" strokeWidth="1.25" />
+            <text x="32" y={r.y - 4} fontSize="12" fill="#404040" fontWeight="600">{r.bank.src}</text>
+            <text x="32" y={r.y + 14} fontSize="13" fill="#0a0a0a" fontFamily="ui-monospace, monospace">{r.bank.amt}</text>
+            {/* arrow into Addup */}
+            <path d={`M 260 ${r.y} L 296 ${r.y}`} fill="none" stroke="#0a0a0a" strokeWidth="1.25" />
+          </g>
+        ))}
+
+        {/* === MIDDLE: Addup black box === */}
+        <g>
+          <rect x="296" y="180" width="170" height="120" rx="18" fill="#0a0a0a" />
+          <rect x="346" y="194" width="70" height="48" rx="10" fill="#ffffff" />
+          <image href="/images/addup-logo.png" x="350" y="200" width="62" height="36" preserveAspectRatio="xMidYMid meet" />
+          <text x="381" y="266" textAnchor="middle" fontSize="18" fill="#ffffff" fontWeight="700" fontFamily="ui-serif, Georgia">Addup</text>
+          <text x="381" y="284" textAnchor="middle" fontSize="10" fill="#a3a3a3" fontFamily="ui-monospace, monospace">matches & verifies →</text>
+        </g>
+
+        {/* arrows from Addup out to each ledger row */}
+        {rows.map((r, i) => (
+          <path key={`o-${i}`} d={`M 466 240 C 480 240, 490 ${r.y}, 510 ${r.y}`} fill="none" stroke="#0a0a0a" strokeWidth="1.25" />
+        ))}
+
+        {/* animated dot moving down ledger column */}
+        <circle r="6" fill="#3b82f6">
+          <animate attributeName="cx" values="510;510;510;510;510" keyTimes="0;0.25;0.5;0.75;1" dur="6s" repeatCount="indefinite" />
+          <animate attributeName="cy" values="90;175;260;345;90" keyTimes="0;0.25;0.5;0.75;1" dur="6s" repeatCount="indefinite" />
+        </circle>
+
+        {/* === RIGHT column: matched ledger entries === */}
+        <text x="510" y="56" fontSize="10" fill="#94a3b8" fontFamily="ui-monospace, monospace" letterSpacing="1">LEDGER · RECONCILED</text>
+        {rows.map((r, i) => (
+          <g key={`l-${i}`}>
+            <rect x="510" y={r.y - 24} width="335" height="48" rx="10" fill={fillFor(r.status)} stroke={ringFor(r.status)} strokeWidth="1.5" />
+            {/* status badge */}
+            <circle cx="535" cy={r.y} r="13" fill={colorFor(r.status)} />
+            {r.status === "match" ? (
+              <path d={`M 529 ${r.y} L 534 ${r.y + 5} L 542 ${r.y - 4}`} fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+            ) : (
+              <>
+                <line x1="530" y1={r.y - 4} x2="540" y2={r.y - 4} stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" />
+                <line x1="530" y1={r.y + 4} x2="540" y2={r.y + 4} stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" />
+              </>
+            )}
+            {/* invoice ref */}
+            <text x="558" y={r.y - 4} fontSize="12" fill="#262626" fontWeight="600">{r.ledger.ref}</text>
+            <text x="558" y={r.y + 14} fontSize="11" fill={colorFor(r.status)} fontWeight="600" fontFamily="ui-monospace, monospace">
+              {r.status === "match" ? "matched" : "auto-fixed · $20 fee"}
+            </text>
+            {/* amount */}
+            <text x="833" y={r.y + 4} textAnchor="end" fontSize="13" fill="#0a0a0a" fontFamily="ui-monospace, monospace" fontWeight="600">{r.ledger.amt}</text>
+          </g>
+        ))}
+
+        {/* === FINAL OUTPUT row at bottom === */}
+        <g>
+          <rect x="20" y="410" width="825" height="50" rx="10" fill="#f0fdf4" stroke="#86efac" strokeWidth="2" />
+          <circle cx="46" cy="435" r="13" fill="#15803d" />
+          <path d="M 40 435 L 45 440 L 53 431" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+          <text x="70" y="431" fontSize="13" fill="#14532d" fontWeight="700">Books closed</text>
+          <text x="70" y="448" fontSize="11" fill="#166534">4 of 4 reconciled · 1 variance auto-resolved · audit trail saved</text>
+        </g>
+      </svg>
+      </div>
+
+      <div className="flex items-center justify-between mt-3 sm:mt-4 text-[11px] sm:text-[12px] text-neutral-500">
+        <span className="font-medium">Messy ledgers in → matched, verified records out</span>
+        <span className="hidden sm:inline font-mono text-neutral-400">auditable · close-ready</span>
+      </div>
+    </div>
+  );
+}
+
+function AddupSpotlight() {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.7 }}
+      className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mt-14 sm:mt-20"
+    >
+      <div className="lg:col-span-5 space-y-6">
+        <div className="flex items-center gap-4">
+          <div className="relative shrink-0">
+            <div className="absolute inset-0 rounded-2xl bg-blue-100/60 blur-xl" aria-hidden />
+            <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white border border-neutral-200 shadow-sm flex items-center justify-center overflow-hidden">
+              <Image
+                src="/images/addup-logo.png"
+                alt="Addup"
+                width={80}
+                height={80}
+                className="w-[88%] h-[88%] object-contain"
+              />
+            </div>
+          </div>
+          <div className="min-w-0">
+            <h2 className="font-serif text-4xl sm:text-5xl tracking-tight text-neutral-900 leading-none">Addup</h2>
+            <p className="text-sm text-neutral-500 mt-2 font-mono">addup.olyxee.com</p>
+          </div>
+        </div>
+        <p className="text-base sm:text-lg text-neutral-600 font-light leading-relaxed">
+          Addup cleans, matches, and verifies financial data so teams close books faster with less manual work.
+        </p>
+        <a
+          href="https://addup.olyxee.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 text-sm font-medium text-white bg-neutral-900 hover:bg-neutral-800 px-5 py-2.5 rounded-full transition-colors"
+        >
+          Visit Addup <ArrowRight className="w-4 h-4" />
+        </a>
+      </div>
+      <div className="lg:col-span-7">
+        <AddupReconciliation />
+      </div>
+    </motion.div>
+  );
+}
+
 function OrdoSpotlight() {
   return (
     <motion.div
@@ -463,6 +614,7 @@ const ProductsPage: FC = () => {
           </motion.div>
 
           <OrdoSpotlight />
+          <AddupSpotlight />
         </div>
       </section>
 
