@@ -96,12 +96,24 @@ function HeroSection() {
         <Image src="/hero-bg.webp" alt="Olyxee hero background with mountain landscape" fill className="object-cover" priority sizes="100vw" />
       </div>
 
-      <motion.div style={mounted ? { y, opacity } : undefined} className="relative z-10 text-center max-w-5xl mx-auto pt-20 sm:pt-24">
+      <motion.div style={mounted ? { y, opacity } : undefined} className="relative z-10 text-center max-w-5xl mx-auto pt-16 sm:pt-24">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="flex justify-center mb-4 sm:mb-6"
+        >
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/70 backdrop-blur-md border border-neutral-200/80 text-neutral-700 text-[11px] sm:text-xs font-medium tracking-wide uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+            AI Research Lab
+          </span>
+        </motion.div>
+
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.1 }}
-          className="font-serif text-neutral-900 leading-[1.02] tracking-tight px-2 sm:px-0 text-[clamp(2.5rem,11.5vw,5.5rem)] sm:text-6xl md:text-7xl lg:text-[5.5rem]"
+          className="font-serif text-neutral-900 leading-[1.02] tracking-tight px-2 sm:px-0 text-[clamp(2.25rem,10.5vw,5.5rem)] sm:text-6xl md:text-7xl lg:text-[5.5rem]"
         >
           <span className="block">Research and Infrastructure</span>
           <span className="block">
@@ -109,13 +121,43 @@ function HeroSection() {
           </span>
         </motion.h1>
 
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.25 }}
+          className="mt-4 sm:mt-6 mx-auto max-w-md sm:max-w-2xl text-neutral-700 text-sm sm:text-base md:text-lg leading-relaxed px-2 sm:px-0"
+        >
+          Olyxee builds the research and infrastructure that lets AI operate reliably across any tool, domain, or environment.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.35 }}
+          className="mt-5 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-5"
+        >
+          <a
+            href="https://ordo.olyxee.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3 sm:px-7 sm:py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide shadow-lg shadow-neutral-900/10"
+          >
+            Try Ordo <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+          </a>
+          <Link
+            href="/research"
+            className="group inline-flex items-center justify-center gap-1.5 text-neutral-800 hover:text-neutral-950 font-medium text-sm tracking-wide transition-colors"
+          >
+            Read research <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+          </Link>
+        </motion.div>
       </motion.div>
 
       <motion.div
-        className="relative z-10 w-full max-w-5xl mt-10 sm:mt-16 mb-8 px-2 sm:px-0"
+        className="relative z-10 w-full max-w-5xl mt-8 sm:mt-16 mb-8 px-2 sm:px-0"
         initial={{ opacity: 0, y: 60, scale: 0.97 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 1.2, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 1.2, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-neutral-200/80 shadow-2xl shadow-neutral-300/40">
           <video
