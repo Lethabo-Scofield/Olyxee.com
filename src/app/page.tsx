@@ -68,7 +68,6 @@ export default function HomePage() {
       <main>
         <HeroSection />
         <LogoStrip />
-        <PartnersSection />
         <ResearchAreas />
         <ImageShowcase />
         <OrdoSection />
@@ -258,51 +257,6 @@ function LogoStrip() {
         </div>
       </motion.div>
     </div>
-  );
-}
-
-
-function PartnersSection() {
-  const partners: { name: string; file: string }[] = [
-    { name: "OpenAI", file: "openai" },
-    { name: "Anthropic", file: "anthropic" },
-    { name: "Google", file: "google" },
-    { name: "Meta", file: "meta" },
-    { name: "Mistral", file: "mistral" },
-    { name: "NVIDIA", file: "nvidia" },
-    { name: "Hugging Face", file: "huggingface" },
-  ];
-
-  return (
-    <section
-      aria-label="Partners"
-      className="w-full max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 pt-4 pb-14 sm:pt-6 sm:pb-20"
-    >
-      <p className="text-center text-[11px] font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-8 sm:mb-10">
-        Partners
-      </p>
-      <motion.ul
-        initial={{ opacity: 0, y: 12 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-60px" }}
-        transition={{ duration: 0.6 }}
-        className="flex flex-wrap lg:flex-nowrap items-center justify-center gap-x-8 gap-y-6 sm:gap-x-12 sm:gap-y-8 lg:gap-x-14"
-      >
-        {partners.map((partner) => (
-          <li
-            key={partner.name}
-            className="flex items-center justify-center"
-          >
-            <img
-              src={`/partner-logos/${partner.file}.svg`}
-              alt={partner.name}
-              loading="lazy"
-              className="h-7 sm:h-8 lg:h-9 w-auto object-contain"
-            />
-          </li>
-        ))}
-      </motion.ul>
-    </section>
   );
 }
 
