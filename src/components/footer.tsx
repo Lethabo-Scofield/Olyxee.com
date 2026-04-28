@@ -10,9 +10,7 @@ const footerData = {
       title: "Products",
       links: [
         { name: "Ordo", href: "/products/ordo" },
-        { name: "Try Ordo →", href: "https://ordo.olyxee.com", external: true },
         { name: "Addup", href: "/products/addup" },
-        { name: "Try Addup →", href: "https://addup.olyxee.com", external: true },
       ],
     },
     {
