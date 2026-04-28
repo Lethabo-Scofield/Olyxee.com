@@ -171,6 +171,112 @@ const Research: FC = () => {
               ))}
             </ul>
           </motion.div>
+
+          {/* Editorial mosaic — Olyxee Robotics in the field */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.8, delay: 0.15 }}
+            className="mt-14 sm:mt-20"
+          >
+            <div className="flex items-baseline justify-between mb-5">
+              <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.25em] text-neutral-400">
+                Fig. 01 — Field log
+              </span>
+              <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-300">
+                Olyxee Robotics · 2025
+              </span>
+            </div>
+
+            {/* Top row: hero (humanoid) + stacked pair (partnerships, hardware) */}
+            <div className="flex flex-col lg:flex-row gap-4 sm:gap-5 lg:min-h-[560px] xl:min-h-[620px]">
+              {/* Hero image — humanoid manipulation */}
+              <figure className="lg:flex-[1.4] group flex flex-col">
+                <div className="relative flex-1 min-h-0 aspect-[4/3] lg:aspect-auto overflow-hidden rounded-2xl bg-neutral-100 ring-1 ring-neutral-200/80">
+                  <Image
+                    src="/images/robotics/humanoid-manipulation.png"
+                    alt="Humanoid robot manipulating objects on a table"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 700px"
+                    className="object-cover transition-transform duration-[900ms] group-hover:scale-[1.02]"
+                  />
+                </div>
+                <figcaption className="flex items-baseline justify-between mt-3 px-1">
+                  <span className="text-sm font-medium text-neutral-700">
+                    Humanoid manipulation
+                  </span>
+                  <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-400">
+                    Embodied intelligence · 01
+                  </span>
+                </figcaption>
+              </figure>
+
+              {/* Right stack — partnerships above, hardware below */}
+              <div className="lg:flex-1 flex flex-col gap-4 sm:gap-5">
+                <figure className="group flex-1 flex flex-col">
+                  <div className="relative flex-1 min-h-0 aspect-[16/10] lg:aspect-auto overflow-hidden rounded-2xl bg-neutral-900 ring-1 ring-neutral-200/80">
+                    <Image
+                      src="/images/robotics/foundation-partnerships.png"
+                      alt="Boston Dynamics and Google DeepMind on stage"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 480px"
+                      className="object-cover transition-transform duration-[900ms] group-hover:scale-[1.02]"
+                    />
+                  </div>
+                  <figcaption className="flex items-baseline justify-between mt-3 px-1">
+                    <span className="text-sm font-medium text-neutral-700">
+                      Foundation partnerships
+                    </span>
+                    <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-400">
+                      Ecosystem · 02
+                    </span>
+                  </figcaption>
+                </figure>
+
+                <figure className="group flex-1 flex flex-col">
+                  <div className="relative flex-1 min-h-0 aspect-[16/10] lg:aspect-auto overflow-hidden rounded-2xl bg-neutral-100 ring-1 ring-neutral-200/80">
+                    <Image
+                      src="/images/robotics/hardware-design.png"
+                      alt="Engineer reviewing CAD blueprints on a monitor"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 480px"
+                      className="object-cover transition-transform duration-[900ms] group-hover:scale-[1.02]"
+                    />
+                  </div>
+                  <figcaption className="flex items-baseline justify-between mt-3 px-1">
+                    <span className="text-sm font-medium text-neutral-700">
+                      Hardware design
+                    </span>
+                    <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-400">
+                      Engineering · 03
+                    </span>
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+
+            {/* Field deployment — full width below */}
+            <figure className="group mt-4 sm:mt-5">
+              <div className="relative aspect-[21/9] overflow-hidden rounded-2xl bg-neutral-100 ring-1 ring-neutral-200/80">
+                <Image
+                  src="/images/robotics/field-deployment.png"
+                  alt="Students and engineers around a solar-powered vehicle prototype"
+                  fill
+                  sizes="100vw"
+                  className="object-cover object-center transition-transform duration-[900ms] group-hover:scale-[1.02]"
+                />
+              </div>
+              <figcaption className="flex items-baseline justify-between mt-3 px-1">
+                <span className="text-sm font-medium text-neutral-700">
+                  Field deployment
+                </span>
+                <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-400">
+                  Real-world programs · 04
+                </span>
+              </figcaption>
+            </figure>
+          </motion.div>
         </div>
       </section>
 
