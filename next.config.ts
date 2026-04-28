@@ -21,6 +21,11 @@ const nextConfig: NextConfig = {
       destination: "https://ordo.olyxee.com",
       permanent: false,
     },
+    {
+      source: "/products/addup",
+      destination: "https://addup.olyxee.com",
+      permanent: false,
+    },
   ],
   headers: async () => [
     {
