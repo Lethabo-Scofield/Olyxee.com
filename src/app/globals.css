@@ -161,10 +161,10 @@ img, svg, video, canvas, iframe, table {
 }
 
 .image-scroll-row-a {
-  animation: image-scroll 18s linear infinite;
+  animation: image-scroll 10s linear infinite;
 }
 .image-scroll-row-b {
-  animation: image-scroll 22s linear infinite reverse;
+  animation: image-scroll 12s linear infinite reverse;
 }
 @media (min-width: 768px) {
   .image-scroll-row-a {
