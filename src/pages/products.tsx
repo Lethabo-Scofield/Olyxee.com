@@ -233,27 +233,35 @@ function AddupReconciliation() {
 
 type AccentTheme = {
   text: string;
-  dot: string;
-  halo: string;
-  underline: string;
+  ring: string;
+  bgWash: string;
+  watermark: string;
   marker: string;
+  caption: string;
+  rule: string;
 };
 
 const ORDO_ACCENT: AccentTheme = {
-  text: "text-blue-600",
-  dot: "bg-blue-500",
-  halo: "bg-blue-200/70",
-  underline: "decoration-blue-300/70",
+  text: "text-blue-700",
+  ring: "ring-blue-200/70",
+  bgWash: "bg-[radial-gradient(ellipse_at_top_left,#dbeafe_0%,#eff6ff_30%,#ffffff_75%)]",
+  watermark: "text-blue-100/60",
   marker: "text-blue-500",
+  caption: "text-blue-700",
+  rule: "bg-blue-300/60",
 };
 
 const ADDUP_ACCENT: AccentTheme = {
-  text: "text-emerald-600",
-  dot: "bg-emerald-500",
-  halo: "bg-emerald-200/70",
-  underline: "decoration-emerald-300/70",
+  text: "text-emerald-700",
+  ring: "ring-emerald-200/70",
+  bgWash: "bg-[radial-gradient(ellipse_at_top_right,#d1fae5_0%,#ecfdf5_30%,#ffffff_75%)]",
+  watermark: "text-emerald-100/60",
   marker: "text-emerald-500",
+  caption: "text-emerald-700",
+  rule: "bg-emerald-300/60",
 };
+
+type SpecRow = { k: string; v: string };
 
 type ProductFeatureProps = {
   index: string;
@@ -262,6 +270,9 @@ type ProductFeatureProps = {
   tagline: React.ReactNode;
   description: string;
   features: string[];
+  specs: SpecRow[];
+  fig: string;
+  figCaption: string;
   url: string;
   domain: string;
   logoSrc: string;
@@ -277,6 +288,9 @@ function ProductFeature({
   tagline,
   description,
   features,
+  specs,
+  fig,
+  figCaption,
   url,
   domain,
   logoSrc,
@@ -285,106 +299,201 @@ function ProductFeature({
   flip = false,
 }: ProductFeatureProps) {
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 30 }}
+    <motion.section
+      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: 0.7 }}
-      className="mt-20 sm:mt-28 lg:mt-36"
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{ duration: 0.8 }}
+      className={`relative ${accent.bgWash} border-y border-neutral-200/60 overflow-hidden`}
     >
-      {/* chapter rule */}
-      <div className="flex items-center gap-4 mb-10 sm:mb-14">
-        <span className={`text-xs font-mono tracking-[0.2em] ${accent.text}`}>
-          {index}
-        </span>
-        <span className={`h-px flex-1 bg-gradient-to-r from-neutral-300 to-transparent`} />
-        <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.28em] text-neutral-400">
-          {label}
-        </span>
+      {/* metadata strip — full-width header */}
+      <div className="relative z-10 border-b border-neutral-200/70 bg-white/40 backdrop-blur-sm">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center gap-2 sm:gap-4 flex-wrap text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-500">
+          <span className={`font-semibold ${accent.text}`}>Product {index}</span>
+          <span className="text-neutral-300">·</span>
+          <span className="text-neutral-700">{name}</span>
+          <span className="text-neutral-300">·</span>
+          <span>{label}</span>
+          <span className="text-neutral-300 hidden sm:inline">·</span>
+          <span className="hidden sm:inline-flex items-center gap-2">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
+            </span>
+            <span className="text-neutral-500">Live · 2025</span>
+          </span>
+          <span className="text-neutral-300 hidden md:inline">·</span>
+          <span className="hidden md:inline normal-case tracking-normal font-sans text-neutral-500 lowercase">
+            {domain}
+          </span>
+        </div>
       </div>
 
+      {/* watermark product name — huge outlined stencil, bleeds off edge */}
       <div
-        className={`grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center ${flip ? "lg:[&>*:first-child]:order-2" : ""}`}
+        aria-hidden
+        className={`pointer-events-none select-none absolute inset-x-0 top-10 sm:top-16 font-serif font-light leading-[0.85] tracking-[-0.04em] text-[28vw] lg:text-[22vw] ${flip ? "text-right" : "text-left"} px-4 sm:px-6 whitespace-nowrap`}
+        style={{
+          color: "transparent",
+          WebkitTextStroke: `1px ${accent === ORDO_ACCENT ? "rgba(59,130,246,0.18)" : "rgba(16,185,129,0.18)"}`,
+        }}
       >
-        {/* text column */}
-        <div className="lg:col-span-5 space-y-7">
-          {/* logo + domain row */}
-          <div className="flex items-center gap-4">
-            <div className="relative shrink-0">
-              <div className={`absolute inset-0 rounded-2xl ${accent.halo} blur-2xl`} aria-hidden />
-              <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white border border-neutral-200/80 shadow-sm flex items-center justify-center overflow-hidden">
+        {name.toLowerCase()}
+      </div>
+
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-20 sm:py-28 lg:py-32">
+        <div
+          className={`grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start ${flip ? "lg:[&>*:first-child]:order-2" : ""}`}
+        >
+          {/* TEXT COLUMN */}
+          <div className="lg:col-span-5 space-y-8 lg:pt-10">
+            {/* logo */}
+            <div className="flex items-center gap-4">
+              <div className={`relative w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-white ring-1 ${accent.ring} shadow-sm flex items-center justify-center overflow-hidden`}>
                 <Image
                   src={logoSrc}
                   alt={name}
-                  width={64}
-                  height={64}
+                  width={56}
+                  height={56}
                   className="w-[86%] h-[86%] object-contain"
                 />
               </div>
+              <span className={`h-px w-10 ${accent.rule}`} />
+              <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500">
+                {label}
+              </span>
             </div>
-            <div className="min-w-0">
-              <p className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.22em] text-neutral-400">
-                Live
-              </p>
-              <p className="text-sm text-neutral-600 mt-1 font-mono">{domain}</p>
+
+            {/* display name */}
+            <h2 className="font-serif text-[clamp(3.5rem,10vw,7rem)] leading-[0.92] tracking-[-0.025em] text-neutral-900">
+              {name}.
+            </h2>
+
+            {/* italic tagline */}
+            <p className="font-serif text-2xl sm:text-3xl leading-[1.15] text-neutral-700 italic font-light -mt-3">
+              {tagline}
+            </p>
+
+            {/* description with drop cap */}
+            <p className="text-base sm:text-[17px] text-neutral-700 leading-[1.65] font-light max-w-md">
+              <span className={`float-left font-serif ${accent.caption} text-[3.5rem] leading-[0.85] mr-2 mt-1`}>
+                {description.charAt(0)}
+              </span>
+              {description.slice(1)}
+            </p>
+
+            {/* feature list */}
+            <ul className="space-y-3 pt-4 border-t border-neutral-300/60 max-w-md">
+              {features.map((f) => (
+                <li key={f} className="flex items-baseline gap-3 text-sm sm:text-[15px] text-neutral-700 font-light">
+                  <span className={`text-base leading-none ${accent.marker} shrink-0`}>+</span>
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+
+            {/* SPEC table */}
+            <dl className="pt-4 border-t border-neutral-300/60 max-w-md grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
+              {specs.map((s) => (
+                <div key={s.k} className="flex flex-col">
+                  <dt className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-400 mb-1">
+                    {s.k}
+                  </dt>
+                  <dd className="text-sm font-medium text-neutral-800">{s.v}</dd>
+                </div>
+              ))}
+            </dl>
+
+            {/* CTAs */}
+            <div className="flex flex-wrap items-center gap-5 pt-4">
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 text-sm font-medium text-white bg-neutral-900 hover:bg-neutral-800 px-6 py-3 rounded-full transition-colors"
+              >
+                Visit {name}
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+              </a>
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`group inline-flex items-center gap-1.5 text-sm font-medium ${accent.text} hover:opacity-80 transition-opacity`}
+              >
+                <span className="underline underline-offset-4 decoration-current/40">
+                  See how it works
+                </span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+              </a>
             </div>
           </div>
 
-          {/* display name */}
-          <h2 className="font-serif text-[clamp(3.75rem,11vw,6.5rem)] leading-[0.95] tracking-[-0.02em] text-neutral-900">
-            {name}
-          </h2>
-
-          {/* italic poetic tagline */}
-          <p className="font-serif text-2xl sm:text-3xl leading-tight text-neutral-700 italic font-light -mt-2">
-            {tagline}
-          </p>
-
-          {/* body */}
-          <p className="text-base sm:text-[17px] text-neutral-600 leading-relaxed font-light max-w-md">
-            {description}
-          </p>
-
-          {/* feature highlights */}
-          <ul className="space-y-2.5 pt-2 border-t border-neutral-200/70">
-            {features.map((f) => (
-              <li
-                key={f}
-                className="flex items-baseline gap-3 text-sm sm:text-[15px] text-neutral-700 font-light"
-              >
-                <span className={`text-base leading-none ${accent.marker}`}>+</span>
-                <span>{f}</span>
-              </li>
-            ))}
-          </ul>
-
-          {/* CTAs */}
-          <div className="flex flex-wrap items-center gap-5 pt-2">
-            <a
-              href={url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 text-sm font-medium text-white bg-neutral-900 hover:bg-neutral-800 px-6 py-3 rounded-full transition-colors"
-            >
-              Visit {name}
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-            </a>
-            <a
-              href={url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`group inline-flex items-center gap-1.5 text-sm font-medium ${accent.text} hover:opacity-80 transition-opacity`}
-            >
-              <span className={`underline underline-offset-4 ${accent.underline}`}>See how it works</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-            </a>
+          {/* VISUAL COLUMN — framed as a magazine plate */}
+          <div className="lg:col-span-7">
+            <figure className="relative">
+              {/* fig caption above */}
+              <figcaption className="flex items-baseline justify-between mb-3 px-1">
+                <span className={`text-[10px] font-mono uppercase tracking-[0.25em] ${accent.text}`}>
+                  Fig. {fig}
+                </span>
+                <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-400">
+                  {figCaption}
+                </span>
+              </figcaption>
+              <div className="relative">
+                {/* offset accent shadow plate */}
+                <div className={`absolute inset-0 translate-x-2 translate-y-2 rounded-2xl ring-1 ${accent.ring}`} aria-hidden />
+                <div className="relative">{visual}</div>
+              </div>
+              <div className="flex items-baseline justify-between mt-3 px-1">
+                <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-400">
+                  Recorded from {domain}
+                </span>
+                <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-400">
+                  /{index}
+                </span>
+              </div>
+            </figure>
           </div>
         </div>
-
-        {/* visual column */}
-        <div className="lg:col-span-7">{visual}</div>
       </div>
-    </motion.article>
+    </motion.section>
+  );
+}
+
+function ManifestoStrip() {
+  const tiles = [
+    { k: "Products", v: "02", note: "Live & shipping" },
+    { k: "Built for", v: "Operators", note: "Not just researchers" },
+    { k: "Promise", v: "Receipts", note: "Every action, audited" },
+    { k: "Status", v: "2025", note: "Public roadmap" },
+  ];
+  return (
+    <section className="bg-neutral-950 text-white border-y border-neutral-900">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
+        <div className="grid grid-cols-2 lg:grid-cols-4 divide-y divide-neutral-800 lg:divide-y-0 lg:divide-x lg:divide-neutral-800">
+          {tiles.map((t, i) => (
+            <motion.div
+              key={t.k}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{ duration: 0.5, delay: i * 0.06 }}
+              className="px-4 sm:px-6 py-6 lg:py-2 first:pt-0 lg:first:pl-0 last:pb-0 lg:last:pr-0"
+            >
+              <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-3">
+                {t.k}
+              </p>
+              <p className="font-serif text-3xl sm:text-4xl lg:text-5xl text-white leading-none mb-2 tracking-tight">
+                {t.v}
+              </p>
+              <p className="text-xs text-neutral-400 font-light">{t.note}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -637,125 +746,197 @@ const ProductsPage: FC = () => {
       <div className="grain" />
       <Header />
 
-      <section className="pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9 }}
-            className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-black shadow-[0_30px_80px_-20px_rgba(0,0,0,0.55)] ring-1 ring-black/10"
-          >
-            <Image
-              src="/images/products-hero-bg-v2.jpeg"
-              alt=""
-              fill
-              priority
-              className="object-cover object-center"
-              sizes="(max-width: 1024px) 100vw, 1152px"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/35" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-black/20" />
+      {/* === HERO: editorial magazine cover === */}
+      <section className="relative bg-neutral-950 text-white overflow-hidden pt-32 sm:pt-40 pb-24 sm:pb-32">
+        {/* blueprint grid */}
+        <div
+          className="absolute inset-0 opacity-[0.06] pointer-events-none"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)",
+            backgroundSize: "64px 64px",
+          }}
+          aria-hidden
+        />
+        {/* radial glow */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 80% 60% at 30% 30%, rgba(59,130,246,0.18), transparent 60%)",
+          }}
+          aria-hidden
+        />
+        {/* ghost outlined word */}
+        <div
+          aria-hidden
+          className="pointer-events-none select-none absolute inset-x-0 -bottom-6 sm:-bottom-10 lg:-bottom-16 font-serif font-light leading-[0.85] tracking-[-0.04em] text-[36vw] lg:text-[26vw] whitespace-nowrap text-center"
+          style={{
+            color: "transparent",
+            WebkitTextStroke: "1px rgba(255,255,255,0.08)",
+          }}
+        >
+          products
+        </div>
 
-            <div className="relative px-6 sm:px-12 lg:px-16 py-20 sm:py-28 lg:py-36 max-w-3xl">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.15 }}
-                className="flex items-center gap-3 mb-6"
-              >
-                <span className="h-px w-10 bg-blue-300/60" />
-                <span className="text-[10px] font-mono uppercase text-blue-100/90 tracking-[0.3em]">
-                  Products · Two systems
-                </span>
-              </motion.div>
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.85, delay: 0.2 }}
-                className="font-serif text-white tracking-[-0.015em] leading-[1.02] text-[clamp(2.75rem,7.5vw,5.25rem)] drop-shadow-[0_2px_20px_rgba(0,0,0,0.5)]"
-              >
-                Research, shipped as
-                <br />
-                <em className="font-normal text-blue-300">working systems</em>.
-              </motion.h1>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.85, delay: 0.32 }}
-                className="mt-7 text-base sm:text-lg text-white/70 font-light max-w-xl leading-relaxed"
-              >
-                Two products. One thesis: AI is most useful when it does the work, end to end, and shows you the receipts.
-              </motion.p>
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
+          {/* top issue masthead */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="flex items-center justify-between mb-12 sm:mb-16 text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.28em] text-white/60"
+          >
+            <div className="flex items-center gap-3">
+              <span className="h-px w-8 bg-white/30" />
+              <span>Olyxee · Issue 02</span>
             </div>
+            <span className="hidden sm:inline">Two systems · One thesis</span>
+            <span>2025</span>
           </motion.div>
 
-          <ProductFeature
-            index="01"
-            label="Execution"
-            name="Ordo"
-            tagline={<>Goals, in. <span className="not-italic">Finished work, out.</span></>}
-            description="Tell Ordo a goal in plain English. It plans the steps, calls the right tools, and ships the finished work — with a clear trail of what it did and why."
-            features={[
-              "Plain-English goals → multi-step plans",
-              "Acts across the apps your team already uses",
-              "Audit trail for every decision and tool call",
-            ]}
-            url="https://ordo.olyxee.com/"
-            domain="ordo.olyxee.com"
-            logoSrc="/images/ordo-logo.png"
-            accent={ORDO_ACCENT}
-            visual={<OrdoArchitecture />}
-          />
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.1 }}
+            className="font-serif text-white tracking-[-0.025em] leading-[0.9] text-[clamp(3.5rem,11vw,8.5rem)]"
+          >
+            Research,
+            <br />
+            shipped as
+            <br />
+            <em className="font-normal text-blue-300">working systems</em>
+            <span className="text-blue-300">.</span>
+          </motion.h1>
 
-          <ProductFeature
-            index="02"
-            label="Reconciliation"
-            name="Addup"
-            tagline={<>Numbers that <span className="not-italic">match.</span></>}
-            description="Addup ingests source-of-truth data from banks and ledgers, reconciles every line, and flags what doesn't agree — so finance teams close books in hours, not days."
-            features={[
-              "Bank, card, and ledger ingestion out of the box",
-              "Auto-matching with explainable variance fixes",
-              "Books-closed view with one-click drill-down",
-            ]}
-            url="https://addup.olyxee.com/"
-            domain="addup.olyxee.com"
-            logoSrc="/images/addup-logo.png"
-            accent={ADDUP_ACCENT}
-            visual={<AddupReconciliation />}
-            flip
-          />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.85, delay: 0.3 }}
+            className="mt-12 sm:mt-16 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end"
+          >
+            <p className="lg:col-span-7 text-lg sm:text-xl text-white/70 font-light leading-[1.55] max-w-2xl">
+              Two products. One thesis: AI is most useful when it does the work,
+              end to end — and shows you the receipts. Below: the systems we
+              ship, and the research that powers them.
+            </p>
+            <div className="lg:col-span-5 lg:justify-self-end">
+              <div className="flex items-center gap-4 text-[10px] font-mono uppercase tracking-[0.28em] text-white/50">
+                <span>Scroll</span>
+                <span className="h-px w-12 bg-white/30" />
+                <span>Spread 01</span>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
+
+      <ManifestoStrip />
+
+      <ProductFeature
+        index="01"
+        label="Execution"
+        name="Ordo"
+        tagline={<>Goals, in. <span className="not-italic">Finished work, out.</span></>}
+        description="Tell Ordo a goal in plain English. It plans the steps, calls the right tools, and ships the finished work — with a clear trail of what it did and why."
+        features={[
+          "Plain-English goals → multi-step plans",
+          "Acts across the apps your team already uses",
+          "Audit trail for every decision and tool call",
+        ]}
+        specs={[
+          { k: "Status", v: "Live" },
+          { k: "Category", v: "Execution agent" },
+          { k: "Built for", v: "Operators & teams" },
+          { k: "Surface", v: "Web · API" },
+        ]}
+        fig="01 — Worked example"
+        figCaption="Q1 reconciliation, end to end"
+        url="https://ordo.olyxee.com/"
+        domain="ordo.olyxee.com"
+        logoSrc="/images/ordo-logo.png"
+        accent={ORDO_ACCENT}
+        visual={<OrdoArchitecture />}
+      />
+
+      <ProductFeature
+        index="02"
+        label="Reconciliation"
+        name="Addup"
+        tagline={<>Numbers that <span className="not-italic">match.</span></>}
+        description="Addup ingests source-of-truth data from banks and ledgers, reconciles every line, and flags what doesn't agree — so finance teams close books in hours, not days."
+        features={[
+          "Bank, card, and ledger ingestion out of the box",
+          "Auto-matching with explainable variance fixes",
+          "Books-closed view with one-click drill-down",
+        ]}
+        specs={[
+          { k: "Status", v: "Live" },
+          { k: "Category", v: "Financial reconciliation" },
+          { k: "Built for", v: "Finance & ops" },
+          { k: "Surface", v: "Web · CSV · API" },
+        ]}
+        fig="02 — Worked example"
+        figCaption="Bank rows ↔ ledger entries"
+        url="https://addup.olyxee.com/"
+        domain="addup.olyxee.com"
+        logoSrc="/images/addup-logo.png"
+        accent={ADDUP_ACCENT}
+        visual={<AddupReconciliation />}
+        flip
+      />
 
       <ProductGallery />
 
       <IntegrationsSection />
 
-
-      <section className="relative py-20 sm:py-28 px-4 sm:px-6 bg-white">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            custom={0}
-            variants={fadeUp}
-            className="rounded-2xl sm:rounded-3xl bg-neutral-100 px-6 sm:px-12 py-16 sm:py-24 text-center"
-          >
-            <p className="text-xs font-semibold text-blue-600 uppercase tracking-[0.25em] mb-5">What comes next</p>
-            <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-neutral-900 mb-6 leading-[1.1]">
-              AI needs <span className="text-blue-600">better foundations</span>.
-            </h2>
-            <p className="text-base sm:text-xl text-neutral-600 font-light leading-relaxed max-w-2xl mx-auto mb-10">
-              We are building those foundations. Join us on the journey.
-            </p>
-            <Link href="/careers" className="inline-flex items-center gap-2 text-sm font-medium text-white bg-neutral-900 hover:bg-neutral-800 px-6 py-3 rounded-full transition-colors duration-200">
+      {/* === BOTTOM CTA — editorial reprise === */}
+      <section className="relative py-24 sm:py-32 px-4 sm:px-6 bg-neutral-950 text-white overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-[0.05] pointer-events-none"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)",
+            backgroundSize: "64px 64px",
+          }}
+          aria-hidden
+        />
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.75 }}
+          className="relative max-w-5xl mx-auto"
+        >
+          <div className="flex items-center gap-3 mb-8">
+            <span className="h-px w-10 bg-blue-300/60" />
+            <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-blue-200/90">
+              Colophon · What comes next
+            </span>
+          </div>
+          <h2 className="font-serif text-[clamp(2.5rem,7vw,5rem)] leading-[0.95] tracking-[-0.02em] text-white max-w-3xl">
+            AI needs <em className="font-normal text-blue-300">better foundations</em>.
+          </h2>
+          <p className="text-lg sm:text-xl text-white/70 font-light leading-relaxed max-w-2xl mt-8">
+            We are building those foundations — system by system, paper by paper. If you want to help build them, the door is open.
+          </p>
+          <div className="flex flex-wrap items-center gap-5 mt-10">
+            <Link
+              href="/careers"
+              className="group inline-flex items-center gap-2 text-sm font-medium text-neutral-950 bg-white hover:bg-neutral-200 px-6 py-3 rounded-full transition-colors"
+            >
               View open roles
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </Link>
-          </motion.div>
-        </div>
+            <Link
+              href="/research"
+              className="group inline-flex items-center gap-1.5 text-sm font-medium text-blue-300 hover:opacity-80"
+            >
+              <span className="underline underline-offset-4 decoration-blue-300/40">Read the research</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+            </Link>
+          </div>
+        </motion.div>
       </section>
 
       <Footer />
