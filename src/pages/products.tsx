@@ -23,9 +23,6 @@ const galleryImages = [
   { src: "/images/product-clustering.png", label: "Visual Embeddings" },
   { src: "/images/product-classifier.png", label: "Classifier Alignment" },
   { src: "/images/product-pipeline.png", label: "Pipeline Architecture" },
-  { src: "/images/product-vision-inventory.png", label: "Vision Inventory Tracking" },
-  { src: "/images/product-digital-twin.png", label: "Digital Twin Operations" },
-  { src: "/images/product-supply-network.png", label: "Supply Network Routing" },
 ];
 
 function OrdoArchitecture() {
