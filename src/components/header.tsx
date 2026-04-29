@@ -223,7 +223,7 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                                                         aria-label={`${item.name} menu`}
                                                     >
                                                         <div
-                                                            className="w-72 p-3 rounded-2xl"
+                                                            className="w-[26rem] max-w-[min(calc(100vw-2rem),720px)] p-3 rounded-2xl"
                                                             style={{
                                                                 background: 'rgba(255,255,255,0.85)',
                                                                 backdropFilter: 'blur(24px) saturate(180%)',
