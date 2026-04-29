@@ -7,7 +7,6 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
-  ArrowUpRight,
   Boxes,
   Rocket,
   Plug,
@@ -331,6 +330,36 @@ const Enterprise: FC = () => {
         </div>
       </section>
 
+      {/* === EDITORIAL PHOTO 03 === */}
+      <section className="px-4 sm:px-6 pb-16 sm:pb-24">
+        <div className="max-w-6xl mx-auto">
+          <motion.figure
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+          >
+            <div className="relative overflow-hidden rounded-xl ring-1 ring-neutral-900/10 aspect-[16/9] sm:aspect-[21/9] bg-neutral-100">
+              <Image
+                src="/images/enterprise/sync.png"
+                alt="Distributed team on a video call reviewing a project together"
+                fill
+                sizes="(min-width: 1024px) 1024px, 100vw"
+                className="object-cover"
+              />
+            </div>
+            <figcaption className="mt-4 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+              <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-500">
+                Fig. 03 · Distributed customer review
+              </p>
+              <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-400">
+                Sync
+              </p>
+            </figcaption>
+          </motion.figure>
+        </div>
+      </section>
+
       {/* === HOW A DEPLOYMENT WORKS (timeline) === */}
       <section id="how" className="py-20 sm:py-32 bg-gradient-to-b from-neutral-50/60 to-white border-t border-neutral-200/70">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -429,6 +458,36 @@ const Enterprise: FC = () => {
         </div>
       </section>
 
+      {/* === EDITORIAL PHOTO 04 === */}
+      <section className="px-4 sm:px-6 py-16 sm:py-24 border-t border-neutral-200/70">
+        <div className="max-w-6xl mx-auto">
+          <motion.figure
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+          >
+            <div className="relative overflow-hidden rounded-xl ring-1 ring-neutral-900/10 aspect-[16/9] sm:aspect-[21/9] bg-neutral-100">
+              <Image
+                src="/images/enterprise/planning.png"
+                alt="A team mapping out a workflow on a digital kanban board"
+                fill
+                sizes="(min-width: 1024px) 1024px, 100vw"
+                className="object-cover"
+              />
+            </div>
+            <figcaption className="mt-4 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+              <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-500">
+                Fig. 04 · Workflow mapping with a customer team
+              </p>
+              <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-400">
+                Planning
+              </p>
+            </figcaption>
+          </motion.figure>
+        </div>
+      </section>
+
       {/* === BUILT FOR PRODUCTION (trust pills) === */}
       <section id="security" className="py-20 sm:py-32 border-t border-neutral-200/70">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -493,72 +552,33 @@ const Enterprise: FC = () => {
         </div>
       </section>
 
-      {/* === PRODUCTS === */}
-      <section className="py-20 sm:py-28 border-t border-neutral-200/70">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
+      {/* === EDITORIAL PHOTO 05 === */}
+      <section className="px-4 sm:px-6 py-16 sm:py-24 border-t border-neutral-200/70">
+        <div className="max-w-6xl mx-auto">
+          <motion.figure
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
-            custom={0}
-            variants={fadeUp}
-            className="mb-12"
+            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            <p className="text-sm font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-4">Products</p>
-            <div className="w-12 h-px bg-neutral-200" />
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              custom={1}
-              variants={fadeUp}
-              className="p-8 sm:p-10 border border-neutral-200 rounded-2xl flex flex-col justify-between gap-10 hover:border-neutral-300 transition-colors"
-            >
-              <div>
-                <p className="text-xs font-mono text-blue-500 tracking-wider mb-4">ORDO</p>
-                <h3 className="font-serif text-2xl sm:text-3xl text-neutral-900 leading-snug tracking-tight mb-4">
-                  Our core AI execution system.
-                </h3>
-                <p className="text-sm sm:text-base text-neutral-500 leading-relaxed font-light">
-                  Ordo runs end-to-end business workflows across your existing tools, with approval layers and full audit logs.
-                </p>
-              </div>
-              <Link
-                href="/products/ordo"
-                className="group inline-flex items-center gap-1.5 text-sm font-medium text-neutral-900"
-              >
-                Learn about Ordo
-                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </Link>
-            </motion.div>
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              custom={2}
-              variants={fadeUp}
-              className="p-8 sm:p-10 border border-neutral-200 rounded-2xl flex flex-col justify-between gap-10 hover:border-neutral-300 transition-colors"
-            >
-              <div>
-                <p className="text-xs font-mono text-emerald-500 tracking-wider mb-4">ADDUP</p>
-                <h3 className="font-serif text-2xl sm:text-3xl text-neutral-900 leading-snug tracking-tight mb-4">
-                  Our first focused application.
-                </h3>
-                <p className="text-sm sm:text-base text-neutral-500 leading-relaxed font-light">
-                  Addup applies the Olyxee execution model to accounting, starting with reconciliation and mismatch explanation.
-                </p>
-              </div>
-              <Link
-                href="/products/addup"
-                className="group inline-flex items-center gap-1.5 text-sm font-medium text-neutral-900"
-              >
-                Learn about Addup
-                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </Link>
-            </motion.div>
-          </div>
+            <div className="relative overflow-hidden rounded-xl ring-1 ring-neutral-900/10 aspect-[16/9] sm:aspect-[21/9] bg-neutral-100">
+              <Image
+                src="/images/enterprise/operations.png"
+                alt="A scheduling and approvals view used to coordinate operations across teams"
+                fill
+                sizes="(min-width: 1024px) 1024px, 100vw"
+                className="object-cover"
+              />
+            </div>
+            <figcaption className="mt-4 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+              <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-500">
+                Fig. 05 · Scheduling and approvals across the organization
+              </p>
+              <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-400">
+                Operations
+              </p>
+            </figcaption>
+          </motion.figure>
         </div>
       </section>
 
