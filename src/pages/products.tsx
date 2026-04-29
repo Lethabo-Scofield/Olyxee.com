@@ -36,48 +36,48 @@ function OrdoArchitecture() {
 
   const pills = [
     {
-      title: "Pull payments",
-      service: "Stripe",
+      title: "Pull access logs",
+      service: "Okta",
       iconBg: "#EDE9FE",
       iconStroke: "#6D28D9",
       icon: (
         <>
-          <rect width="20" height="14" x="2" y="5" rx="2" fill="none" />
-          <path d="M2 10h20" />
+          <rect width="18" height="11" x="3" y="11" rx="2" fill="none" />
+          <path d="M7 11V7a5 5 0 0 1 10 0v4" fill="none" />
         </>
       ),
       isDone: false,
     },
     {
-      title: "Match invoices",
-      service: "QuickBooks",
+      title: "Check controls",
+      service: "Vanta",
       iconBg: "#DCFCE7",
       iconStroke: "#15803D",
       icon: (
         <>
-          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" fill="none" />
-          <path d="m9 11 3 3L22 4" fill="none" />
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="none" />
+          <path d="m9 12 2 2 4-4" fill="none" />
         </>
       ),
       isDone: false,
     },
     {
-      title: "Build summary",
-      service: "Google Sheets",
-      iconBg: "#D1FAE5",
-      iconStroke: "#047857",
+      title: "Build evidence pack",
+      service: "Drive",
+      iconBg: "#DBEAFE",
+      iconStroke: "#1D4ED8",
       icon: (
         <>
-          <rect width="18" height="18" x="3" y="3" rx="2" fill="none" />
-          <path d="M12 3v18" />
-          <path d="M3 9h18" />
-          <path d="M3 15h18" />
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" fill="none" />
+          <polyline points="14 2 14 8 20 8" fill="none" />
+          <path d="M8 13h8" />
+          <path d="M8 17h5" />
         </>
       ),
       isDone: false,
     },
     {
-      title: "Email leadership",
+      title: "Email audit team",
       service: "Gmail",
       iconBg: "#FFE4E6",
       iconStroke: "#BE123C",
@@ -91,7 +91,7 @@ function OrdoArchitecture() {
     },
     {
       title: "Done",
-      service: "Reconciled · audit trail saved",
+      service: "Evidence packaged · audit trail saved",
       iconBg: "#BBF7D0",
       iconStroke: "#15803D",
       icon: <polyline points="20 6 9 17 4 12" fill="none" />,
@@ -109,12 +109,13 @@ function OrdoArchitecture() {
           role="img"
           aria-labelledby={`${titleId} ${descId}`}
         >
-          <title id={titleId}>How Ordo executes a finance reconciliation goal</title>
+          <title id={titleId}>How Ordo executes a SOC 2 access review goal</title>
           <desc id={descId}>
-            From the user prompt &ldquo;Reconcile Q1 books and email leadership the summary,&rdquo;
-            Ordo plans and executes five sequential steps: pull payments from Stripe,
-            match invoices in QuickBooks, build a summary in Google Sheets,
-            email leadership in Gmail, and complete with an audit trail saved.
+            From the user prompt &ldquo;Run a SOC 2 access review and email findings
+            to the audit team,&rdquo; Ordo plans and executes five sequential steps:
+            pull access logs from Okta, check controls in Vanta, build an evidence
+            pack in Drive, email the audit team in Gmail, and complete with an
+            audit trail saved.
           </desc>
           <defs>
             <linearGradient id={gradId} x1="0%" y1="0%" x2="100%" y2="100%">
@@ -130,8 +131,8 @@ function OrdoArchitecture() {
           <rect width={VB_W} height={VB_H} fill={`url(#${gradId})`} />
 
           <text x={PILL_X} y="40" fontSize="10" fontFamily="ui-monospace, monospace" letterSpacing="2" fill="#475569">USER PROMPT</text>
-          <text x={PILL_X} y="70" fontSize="15" fill="#0a0a0a" fontFamily="ui-serif, Georgia" fontStyle="italic">&ldquo;Reconcile Q1 books and email</text>
-          <text x={PILL_X} y="90" fontSize="15" fill="#0a0a0a" fontFamily="ui-serif, Georgia" fontStyle="italic">leadership the summary.&rdquo;</text>
+          <text x={PILL_X} y="70" fontSize="15" fill="#0a0a0a" fontFamily="ui-serif, Georgia" fontStyle="italic">&ldquo;Run a SOC 2 access review and</text>
+          <text x={PILL_X} y="90" fontSize="15" fill="#0a0a0a" fontFamily="ui-serif, Georgia" fontStyle="italic">email findings to the audit team.&rdquo;</text>
 
           {[0, 1, 2, 3].map((i) => {
             const isRight = i % 2 === 0;
@@ -403,7 +404,7 @@ const ProductsPage: FC = () => {
                 <div className="relative w-10 h-10 rounded-lg bg-white ring-1 ring-blue-200/70 shadow-sm flex items-center justify-center overflow-hidden">
                   <Image src="/images/ordo-logo.png" alt="Ordo" width={32} height={32} className="w-[80%] h-[80%] object-contain" />
                 </div>
-                <span className="text-[10px] font-mono text-blue-500 uppercase tracking-[0.25em]">Core AI execution</span>
+                <span className="text-[10px] font-mono text-blue-500 uppercase tracking-[0.25em]">Compliance and operations</span>
               </div>
 
               <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-8">
