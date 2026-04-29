@@ -284,10 +284,11 @@ const Enterprise: FC = () => {
               variants={fadeUp}
             >
               <p className="font-serif text-2xl sm:text-3xl lg:text-[2.5rem] text-neutral-900 leading-snug tracking-tight mb-8">
-                Built around your systems, your policies, and your teams.
+                Custom AI agents and systems,{" "}
+                <em className="text-neutral-500 not-italic">built for your business</em>.
               </p>
               <p className="text-base sm:text-lg text-neutral-500 leading-relaxed font-light max-w-2xl">
-                Enterprise engagements with Olyxee are scoped, measurable, and delivered with the operational guardrails that production environments require.
+                Olyxee builds bespoke AI for your operations. Agents that execute end-to-end workflows. Systems that connect to the tools you already run. Engagements scoped to ship in weeks, not quarters.
               </p>
             </motion.div>
           </div>
