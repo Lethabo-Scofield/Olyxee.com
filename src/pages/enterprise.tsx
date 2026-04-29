@@ -7,11 +7,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
-  Boxes,
-  Rocket,
-  Plug,
   ShieldCheck,
-  Headphones,
   Key,
   Lock,
   Server,
@@ -35,46 +31,53 @@ const STATS = [
   { value: "Owned", label: "Your data, your policies, your environment" },
 ];
 
-const ENTERPRISE_BLOCKS = [
+const ENGAGEMENT_TIERS = [
   {
-    num: "01",
-    icon: Boxes,
-    iconBg: "bg-blue-50",
-    iconText: "text-blue-700",
-    title: "Custom Ordo deployments",
-    text: "Tailored installations of our AI execution system, configured around your data, tools, and operational policies.",
+    name: "Pilot",
+    kicker: "Scoped pilot",
+    description: "Move a single high-value workflow from manual to AI-executed, with measurable outcomes in weeks.",
+    features: [
+      "Discovery workshop with your team",
+      "Workflow mapping and success metrics",
+      "Pilot run on real data with real approvals",
+      "Defined acceptance criteria",
+      "Four to six week scope",
+    ],
+    ctaLabel: "Talk to us",
+    ctaSubject: "Enterprise: Pilot inquiry",
+    highlight: false,
   },
   {
-    num: "02",
-    icon: Rocket,
-    iconBg: "bg-violet-50",
-    iconText: "text-violet-700",
-    title: "Pilot projects for business workflows",
-    text: "Scoped engagements that move a single high-value workflow from manual to AI-executed, with measurable outcomes.",
+    name: "Custom Deployment",
+    kicker: "Production AI",
+    description: "Tailored Ordo install configured around your data, tools, and operational policies.",
+    features: [
+      "Everything in Pilot",
+      "Tailored Ordo deployment",
+      "Native integrations with your APIs and ledgers",
+      "Human approval layers and audit logs",
+      "RBAC, SSO, and customer-managed keys",
+      "Dedicated implementation support",
+    ],
+    ctaLabel: "Talk to us",
+    ctaSubject: "Enterprise: Custom deployment inquiry",
+    highlight: true,
   },
   {
-    num: "03",
-    icon: Plug,
-    iconBg: "bg-emerald-50",
-    iconText: "text-emerald-700",
-    title: "Integration with APIs, databases, and internal systems",
-    text: "Native connections to the systems your teams already rely on, including ERPs, CRMs, ledgers, and proprietary tools.",
-  },
-  {
-    num: "04",
-    icon: ShieldCheck,
-    iconBg: "bg-amber-50",
-    iconText: "text-amber-700",
-    title: "Human approval layers and audit logs",
-    text: "Configurable checkpoints, role-based controls, and complete audit trails so every action is reviewable and defensible.",
-  },
-  {
-    num: "05",
-    icon: Headphones,
-    iconBg: "bg-rose-50",
-    iconText: "text-rose-700",
-    title: "Dedicated implementation support",
-    text: "A direct line to our engineering team during rollout, integration, and ongoing operation.",
+    name: "Enterprise",
+    kicker: "Full custom",
+    description: "For organizations with custom requirements, regulated environments, or multi-region operations.",
+    features: [
+      "Everything in Custom Deployment",
+      "Dedicated implementation team",
+      "VPC or on-prem deployment",
+      "Custom SLAs and compliance reviews",
+      "Quarterly roadmap input",
+      "Direct line to engineering",
+    ],
+    ctaLabel: "Talk to us",
+    ctaSubject: "Enterprise: Full custom inquiry",
+    highlight: false,
   },
 ];
 
@@ -295,35 +298,113 @@ const Enterprise: FC = () => {
         </div>
       </section>
 
-      {/* === CAPABILITIES (with icons + colors) === */}
-      <section className="pb-20 sm:pb-32">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-neutral-200 rounded-2xl overflow-hidden bg-white">
-            {ENTERPRISE_BLOCKS.map((item, idx) => {
-              const Icon = item.icon;
-              const isLastOdd = idx === ENTERPRISE_BLOCKS.length - 1 && ENTERPRISE_BLOCKS.length % 2 !== 0;
-              const borderRight = idx % 2 === 0 && !isLastOdd ? "md:border-r" : "";
-              const borderBottom = idx < ENTERPRISE_BLOCKS.length - 1 ? "border-b md:border-b" : "";
-              const lastRowStart = ENTERPRISE_BLOCKS.length - (ENTERPRISE_BLOCKS.length % 2 === 0 ? 2 : 1);
-              const noBottomOnLastRow = idx >= lastRowStart ? "md:border-b-0" : "";
+      {/* === ENGAGEMENT (pricing-style tiers, contact instead of numbers) === */}
+      <section id="engagement" className="pb-20 sm:pb-32">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            custom={0}
+            variants={fadeUp}
+            className="mb-10 sm:mb-14 max-w-2xl"
+          >
+            <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
+              Engagement
+            </p>
+            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-neutral-900 leading-snug tracking-tight">
+              Three ways to start,{" "}
+              <em className="text-neutral-500 not-italic">all scoped to your business</em>.
+            </h2>
+            <p className="mt-5 text-sm sm:text-base text-neutral-500 font-light leading-relaxed">
+              Every engagement is custom-priced based on scope. Talk to us and we&apos;ll outline the right starting point and a quote.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-5">
+            {ENGAGEMENT_TIERS.map((tier, idx) => {
+              const isDark = tier.highlight;
               return (
                 <motion.div
-                  key={item.num}
+                  key={tier.name}
                   initial="hidden"
                   whileInView="visible"
-                  viewport={{ once: true, amount: 0.3 }}
+                  viewport={{ once: true, amount: 0.2 }}
                   custom={idx}
                   variants={fadeUp}
-                  className={`group relative p-8 sm:p-10 border-neutral-200 transition-colors hover:bg-neutral-50/40 ${borderRight} ${borderBottom} ${noBottomOnLastRow} ${isLastOdd ? "md:col-span-2" : ""}`}
+                  className={`relative flex flex-col p-7 sm:p-8 rounded-2xl border transition-colors ${
+                    isDark
+                      ? "bg-neutral-950 text-white border-neutral-950"
+                      : "bg-white text-neutral-900 border-neutral-200 hover:border-neutral-300"
+                  }`}
                 >
-                  <div className="flex items-start justify-between mb-6">
-                    <div className={`inline-flex w-11 h-11 items-center justify-center rounded-xl ${item.iconBg} ${item.iconText}`}>
-                      <Icon aria-hidden="true" focusable="false" className="w-5 h-5" strokeWidth={1.75} />
-                    </div>
-                    <span className="text-xs font-mono text-neutral-300 tracking-wider">{item.num}</span>
+                  <p
+                    className={`text-[10px] font-mono uppercase tracking-[0.28em] mb-5 ${
+                      isDark ? "text-neutral-400" : "text-neutral-500"
+                    }`}
+                  >
+                    {tier.kicker}
+                  </p>
+
+                  <h3
+                    className={`font-serif text-2xl sm:text-[1.75rem] tracking-tight leading-tight mb-3 ${
+                      isDark ? "text-white" : "text-neutral-900"
+                    }`}
+                  >
+                    {tier.name}
+                  </h3>
+
+                  <p
+                    className={`text-sm font-light leading-relaxed mb-6 ${
+                      isDark ? "text-neutral-400" : "text-neutral-500"
+                    }`}
+                  >
+                    {tier.description}
+                  </p>
+
+                  <div className="mb-6">
+                    <p
+                      className={`text-[2rem] sm:text-[2.25rem] font-serif tracking-tight leading-none ${
+                        isDark ? "text-white" : "text-neutral-900"
+                      }`}
+                    >
+                      Custom
+                    </p>
+                    <p
+                      className={`mt-1.5 text-[12px] font-mono uppercase tracking-[0.18em] ${
+                        isDark ? "text-neutral-500" : "text-neutral-400"
+                      }`}
+                    >
+                      Quoted on scope
+                    </p>
                   </div>
-                  <h3 className="text-lg font-semibold text-neutral-900 mb-3 leading-snug">{item.title}</h3>
-                  <p className="text-sm text-neutral-500 leading-relaxed font-light">{item.text}</p>
+
+                  <a
+                    href={`mailto:scofield@olyxee.com?subject=${encodeURIComponent(tier.ctaSubject)}`}
+                    className={`group inline-flex w-full items-center justify-center gap-2 py-3 rounded-md text-sm font-medium tracking-wide transition-colors ${
+                      isDark
+                        ? "bg-white text-neutral-950 hover:bg-neutral-100"
+                        : "bg-neutral-900 text-white hover:bg-black"
+                    }`}
+                  >
+                    {tier.ctaLabel}
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                  </a>
+
+                  <ul className="mt-8">
+                    {tier.features.map((feature) => (
+                      <li
+                        key={feature}
+                        className={`py-3 text-sm font-light leading-relaxed border-b ${
+                          isDark
+                            ? "border-white/10 text-neutral-300"
+                            : "border-neutral-200 text-neutral-700"
+                        } first:border-t ${isDark ? "first:border-white/10" : "first:border-neutral-200"}`}
+                      >
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
                 </motion.div>
               );
             })}
