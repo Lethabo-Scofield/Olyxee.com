@@ -318,7 +318,7 @@ const Research: FC = () => {
       {/* === TAB BAR === */}
       <section className="pt-32 sm:pt-40 pb-6 sm:pb-8 px-4 sm:px-6 border-b border-neutral-200/70 bg-white">
         <div className="max-w-5xl mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2.5 text-[18px] sm:text-[20px] font-semibold tracking-tight text-neutral-900 leading-none">
             <Image
               src="/Logo/Olyxee_Logo.png"
               alt="Olyxee"
@@ -327,14 +327,27 @@ const Research: FC = () => {
               className="w-7 h-7"
               priority
             />
-            <span className="font-semibold text-neutral-900 text-[17px] tracking-tight">
-              Olyxee
-            </span>
-            <span aria-hidden className="text-neutral-300 mx-1">
+            <span>Olyxee</span>
+            <span aria-hidden className="text-neutral-300 font-normal mx-0.5">
               /
             </span>
-            <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-neutral-500">
-              {tab === "research" ? "Research" : "Robotics"}
+            <span
+              className="relative inline-grid overflow-hidden align-baseline"
+              style={{ height: "1em", lineHeight: 1 }}
+              aria-live="polite"
+            >
+              <AnimatePresence initial={false}>
+                <motion.span
+                  key={tab}
+                  initial={{ y: "-110%" }}
+                  animate={{ y: 0 }}
+                  exit={{ y: "110%" }}
+                  transition={{ duration: 0.45, ease: [0.65, 0, 0.35, 1] }}
+                  className="col-start-1 row-start-1 whitespace-nowrap"
+                >
+                  {tab === "research" ? "Research" : "Robotics"}
+                </motion.span>
+              </AnimatePresence>
             </span>
           </div>
 
