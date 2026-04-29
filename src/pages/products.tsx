@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useId } from "react";
 import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
@@ -17,84 +17,167 @@ const fadeUp = {
 };
 
 function OrdoArchitecture() {
-  const steps = [
-    { n: 1, y: 90,  app: "Stripe",     desc: "Pull all Q1 payments",   icon: "https://www.google.com/s2/favicons?domain=stripe.com&sz=128" },
-    { n: 2, y: 175, app: "QuickBooks", desc: "Match against invoices", icon: "https://www.google.com/s2/favicons?domain=quickbooks.intuit.com&sz=128" },
-    { n: 3, y: 260, app: "Sheets",     desc: "Build summary report",   icon: "https://www.google.com/s2/favicons?domain=sheets.google.com&sz=128" },
-    { n: 4, y: 345, app: "Gmail",      desc: "Email it to leadership", icon: "https://www.google.com/s2/favicons?domain=gmail.com&sz=128" },
+  const PILL_X = 50;
+  const PILL_W = 360;
+  const PILL_H = 60;
+  const PILL_SPACING = 92;
+  const FIRST_PILL_Y = 110;
+  const VB_W = 460;
+  const VB_H = 600;
+  const pillCenterY = (i: number) => FIRST_PILL_Y + i * PILL_SPACING + PILL_H / 2;
+  const pillRightX = PILL_X + PILL_W;
+  const pillLeftX = PILL_X;
+
+  const reactId = useId();
+  const gradId = `ordo-bg-grad-${reactId}`;
+  const shadowId = `ordo-pill-shadow-${reactId}`;
+  const titleId = `ordo-title-${reactId}`;
+  const descId = `ordo-desc-${reactId}`;
+
+  const pills = [
+    {
+      title: "Pull payments",
+      service: "Stripe",
+      iconBg: "#EDE9FE",
+      iconStroke: "#6D28D9",
+      icon: (
+        <>
+          <rect width="20" height="14" x="2" y="5" rx="2" fill="none" />
+          <path d="M2 10h20" />
+        </>
+      ),
+      isDone: false,
+    },
+    {
+      title: "Match invoices",
+      service: "QuickBooks",
+      iconBg: "#DCFCE7",
+      iconStroke: "#15803D",
+      icon: (
+        <>
+          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" fill="none" />
+          <path d="m9 11 3 3L22 4" fill="none" />
+        </>
+      ),
+      isDone: false,
+    },
+    {
+      title: "Build summary",
+      service: "Google Sheets",
+      iconBg: "#D1FAE5",
+      iconStroke: "#047857",
+      icon: (
+        <>
+          <rect width="18" height="18" x="3" y="3" rx="2" fill="none" />
+          <path d="M12 3v18" />
+          <path d="M3 9h18" />
+          <path d="M3 15h18" />
+        </>
+      ),
+      isDone: false,
+    },
+    {
+      title: "Email leadership",
+      service: "Gmail",
+      iconBg: "#FFE4E6",
+      iconStroke: "#BE123C",
+      icon: (
+        <>
+          <rect width="20" height="16" x="2" y="4" rx="2" fill="none" />
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+        </>
+      ),
+      isDone: false,
+    },
+    {
+      title: "Done",
+      service: "Reconciled · audit trail saved",
+      iconBg: "#BBF7D0",
+      iconStroke: "#15803D",
+      icon: <polyline points="20 6 9 17 4 12" fill="none" />,
+      isDone: true,
+    },
   ];
 
   return (
-    <div className="relative rounded-2xl border border-neutral-200 bg-white p-4 sm:p-6 overflow-hidden shadow-[0_20px_50px_-30px_rgba(0,0,0,0.18)]">
-      <div className="flex items-center justify-between mb-3 sm:mb-4">
-        <div className="flex items-center gap-2">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-          </span>
-          <span className="text-[11px] font-mono text-neutral-500 uppercase tracking-wider">Worked example</span>
-        </div>
-        <span className="hidden sm:inline text-[11px] font-mono text-neutral-400">ordo.olyxee.com</span>
-      </div>
+    <div>
+      <div className="relative max-w-[500px] mx-auto rounded-3xl overflow-hidden border border-neutral-200 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.25)]">
+        <svg
+          viewBox={`0 0 ${VB_W} ${VB_H}`}
+          className="w-full h-auto block"
+          xmlns="http://www.w3.org/2000/svg"
+          role="img"
+          aria-labelledby={`${titleId} ${descId}`}
+        >
+          <title id={titleId}>How Ordo executes a finance reconciliation goal</title>
+          <desc id={descId}>
+            From the user prompt &ldquo;Reconcile Q1 books and email leadership the summary,&rdquo;
+            Ordo plans and executes five sequential steps: pull payments from Stripe,
+            match invoices in QuickBooks, build a summary in Google Sheets,
+            email leadership in Gmail, and complete with an audit trail saved.
+          </desc>
+          <defs>
+            <linearGradient id={gradId} x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#FFE7D6" />
+              <stop offset="45%" stopColor="#DBEAFE" />
+              <stop offset="100%" stopColor="#E0F2FE" />
+            </linearGradient>
+            <filter id={shadowId} x="-20%" y="-100%" width="140%" height="300%">
+              <feDropShadow dx="0" dy="3" stdDeviation="4" floodColor="#0a0a0a" floodOpacity="0.08" />
+            </filter>
+          </defs>
 
-      <div className="w-full">
-        <svg viewBox="0 0 860 480" className="w-full h-auto block" xmlns="http://www.w3.org/2000/svg">
-          <g>
-            <rect x="20" y="170" width="220" height="140" rx="16" fill="#ffffff" stroke="#0a0a0a" strokeWidth="1.5" />
-            <text x="36" y="198" fontSize="10" fill="#94a3b8" fontFamily="ui-monospace, monospace" letterSpacing="1">YOU SAY:</text>
-            <text x="36" y="226" fontSize="15" fill="#0a0a0a" fontWeight="600">&ldquo;Reconcile our</text>
-            <text x="36" y="248" fontSize="15" fill="#0a0a0a" fontWeight="600">Q1 finances and</text>
-            <text x="36" y="270" fontSize="15" fill="#0a0a0a" fontWeight="600">email leadership</text>
-            <text x="36" y="292" fontSize="15" fill="#0a0a0a" fontWeight="600">the summary.&rdquo;</text>
-            <path d="M 240 232 L 256 240 L 240 248 Z" fill="#ffffff" stroke="#0a0a0a" strokeWidth="1.5" />
-          </g>
+          <rect width={VB_W} height={VB_H} fill={`url(#${gradId})`} />
 
-          <g>
-            <rect x="270" y="180" width="140" height="120" rx="18" fill="#0a0a0a" />
-            <rect x="316" y="194" width="48" height="48" rx="12" fill="#ffffff" />
-            <image href="/images/ordo-logo.png" x="320" y="198" width="40" height="40" />
-            <text x="340" y="266" textAnchor="middle" fontSize="18" fill="#ffffff" fontWeight="700" fontFamily="ui-serif, Georgia">Ordo</text>
-            <text x="340" y="284" textAnchor="middle" fontSize="10" fill="#a3a3a3" fontFamily="ui-monospace, monospace">plans 4 steps →</text>
-          </g>
+          <text x={PILL_X} y="40" fontSize="10" fontFamily="ui-monospace, monospace" letterSpacing="2" fill="#475569">USER PROMPT</text>
+          <text x={PILL_X} y="70" fontSize="15" fill="#0a0a0a" fontFamily="ui-serif, Georgia" fontStyle="italic">&ldquo;Reconcile Q1 books and email</text>
+          <text x={PILL_X} y="90" fontSize="15" fill="#0a0a0a" fontFamily="ui-serif, Georgia" fontStyle="italic">leadership the summary.&rdquo;</text>
 
-          <path d="M 256 240 L 270 240" fill="none" stroke="#0a0a0a" strokeWidth="2" />
-          <line x1="445" y1="60" x2="445" y2="375" stroke="#e5e5e5" strokeWidth="2" strokeDasharray="4 4" />
-          <path d="M 410 240 C 425 240, 435 90, 445 90" fill="none" stroke="#0a0a0a" strokeWidth="1.5" />
+          {[0, 1, 2, 3].map((i) => {
+            const isRight = i % 2 === 0;
+            const startX = isRight ? pillRightX : pillLeftX;
+            const ctrlOffset = 50;
+            const ctrlX = isRight ? startX + ctrlOffset : startX - ctrlOffset;
+            const arrowheadDx = isRight ? 8 : -8;
+            const cy0 = pillCenterY(i);
+            const cy1 = pillCenterY(i + 1);
+            return (
+              <g key={i}>
+                <path
+                  d={`M ${startX} ${cy0} C ${ctrlX} ${cy0}, ${ctrlX} ${cy1}, ${startX} ${cy1}`}
+                  fill="none"
+                  stroke="#94A3B8"
+                  strokeWidth="1.5"
+                />
+                <polygon
+                  points={`${startX},${cy1} ${startX + arrowheadDx},${cy1 - 5} ${startX + arrowheadDx},${cy1 + 5}`}
+                  fill="#94A3B8"
+                />
+              </g>
+            );
+          })}
 
-          <circle r="6" fill="#3b82f6">
-            <animate attributeName="cx" values="445;445;445;445;445" keyTimes="0;0.25;0.5;0.75;1" dur="6s" repeatCount="indefinite" />
-            <animate attributeName="cy" values="90;175;260;345;90" keyTimes="0;0.25;0.5;0.75;1" dur="6s" repeatCount="indefinite" />
-          </circle>
-
-          {steps.map((s) => (
-            <g key={s.n}>
-              <circle cx="445" cy={s.y} r="14" fill="#ffffff" stroke="#0a0a0a" strokeWidth="2" />
-              <text x="445" y={s.y + 5} textAnchor="middle" fontSize="13" fontWeight="700" fill="#0a0a0a">{s.n}</text>
-              <rect x="475" y={s.y - 24} width="370" height="48" rx="10" fill="#ffffff" stroke="#e5e5e5" strokeWidth="1.25" />
-              <rect x="487" y={s.y - 14} width="104" height="28" rx="7" fill="#f8fafc" stroke="#e5e5e5" />
-              <image href={s.icon} x={495} y={s.y - 9} width="18" height="18" />
-              <text x={518} y={s.y + 4} fontSize="12" fill="#262626" fontWeight="600">{s.app}</text>
-              <text x={605} y={s.y + 4} fontSize="13" fill="#404040" fontWeight="500">{s.desc}</text>
-            </g>
-          ))}
-
-          <g>
-            <rect x="475" y="410" width="370" height="50" rx="10" fill="#f0fdf4" stroke="#86efac" strokeWidth="2" />
-            <circle cx="500" cy="435" r="13" fill="#15803d" />
-            <path d="M 494 435 L 499 440 L 507 431" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-            <text x={524} y="431" fontSize="13" fill="#14532d" fontWeight="700">Done</text>
-            <text x={524} y="448" fontSize="11" fill="#166534">Reconciled report sent to 3 leaders · audit trail saved</text>
-          </g>
-
-          <line x1="445" y1="360" x2="445" y2="435" stroke="#86efac" strokeWidth="2" strokeDasharray="4 4" />
-          <path d="M 445 435 L 475 435" fill="none" stroke="#86efac" strokeWidth="2" />
+          {pills.map((p, i) => {
+            const cy = pillCenterY(i);
+            const yTop = cy - PILL_H / 2;
+            return (
+              <g key={i}>
+                <rect x={PILL_X} y={yTop} width={PILL_W} height={PILL_H} rx={PILL_H / 2} fill="#ffffff" filter={`url(#${shadowId})`} />
+                <rect x={PILL_X + 14} y={cy - 16} width="32" height="32" rx="8" fill={p.iconBg} />
+                <g transform={`translate(${PILL_X + 18}, ${cy - 12})`} stroke={p.iconStroke} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none">
+                  {p.icon}
+                </g>
+                <text x={PILL_X + 60} y={cy - 2} fontSize="14" fontWeight="600" fill="#0a0a0a">{p.title}</text>
+                <text x={PILL_X + 60} y={cy + 16} fontSize="11" fill={p.isDone ? "#15803D" : "#737373"} fontWeight={p.isDone ? "500" : "400"}>{p.service}</text>
+              </g>
+            );
+          })}
         </svg>
       </div>
 
-      <div className="flex items-center justify-between mt-3 sm:mt-4 text-[11px] sm:text-[12px] text-neutral-500">
-        <span className="font-medium">One goal in → 4 steps planned → finished work out</span>
-        <span className="hidden sm:inline font-mono text-neutral-400">stateful · auditable</span>
-      </div>
+      <p className="mt-4 text-center text-[11px] font-mono text-neutral-400 uppercase tracking-widest">
+        Worked example · ordo.olyxee.com
+      </p>
     </div>
   );
 }
