@@ -382,7 +382,7 @@ const Enterprise: FC = () => {
                   alt="Two engineers collaborating at code monitors during an integration session"
                   fill
                   sizes="360px"
-                  className="object-cover grayscale contrast-[1.04]"
+                  className="object-cover"
                 />
               </div>
               <figcaption className="mt-3 flex items-baseline justify-between gap-4">
