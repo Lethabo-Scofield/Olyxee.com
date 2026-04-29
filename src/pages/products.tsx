@@ -4,15 +4,15 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, delay: i * 0.08, ease: [0.25, 0.46, 0.45, 0.94] },
+    transition: { duration: 0.7, delay: i * 0.08, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] },
   }),
 };
 
@@ -280,12 +280,14 @@ const ORDO_FEATURES = [
   "Acts across the apps your team already uses",
   "Audit trail for every decision and tool call",
   "Human approvals at any step you choose",
+  "Custom skill packs for your team's workflows",
 ];
 
 const ADDUP_FEATURES_FREE = [
   "Connect bank, card, and ledger sources",
   "Automatic matching with variance detection",
   "Clear explanations for every mismatch",
+  "Single-entity, single-currency books",
 ];
 
 const ADDUP_FEATURES_UPGRADE = [
@@ -380,85 +382,14 @@ const ProductsPage: FC = () => {
         </div>
       </section>
 
-      {/* === PRODUCT OVERVIEW CARDS === */}
-      <section className="pb-20 sm:pb-28 px-4 sm:px-6">
+      {/* === ORDO === one canonical product section, features-led === */}
+      <section id="ordo" className="py-20 sm:py-28 px-4 sm:px-6 border-t border-neutral-200/70">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Ordo card */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              custom={0}
-              variants={fadeUp}
-              className="relative p-8 sm:p-10 border border-neutral-200 rounded-2xl bg-white hover:border-neutral-300 transition-colors flex flex-col"
-            >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="relative w-10 h-10 rounded-lg bg-white ring-1 ring-blue-200/70 shadow-sm flex items-center justify-center overflow-hidden">
-                  <Image src="/images/ordo-logo.png" alt="Ordo" width={32} height={32} className="w-[80%] h-[80%] object-contain" />
-                </div>
-                <span className="text-[10px] font-mono text-blue-500 uppercase tracking-[0.25em]">Core system</span>
-              </div>
-              <h2 className="font-serif text-3xl sm:text-4xl text-neutral-900 tracking-tight leading-tight mb-3">Ordo</h2>
-              <p className="text-base text-neutral-500 font-light leading-relaxed mb-8">
-                The core Olyxee AI execution system. Tell Ordo a goal in plain English. It plans the steps, calls the right tools, and ships the finished work — with a clear trail of what it did and why.
-              </p>
-              <div className="mt-auto flex items-center gap-4">
-                <a
-                  href="https://ordo.olyxee.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 text-sm font-medium text-white bg-neutral-900 hover:bg-black px-5 py-2.5 rounded-full transition-colors"
-                >
-                  Visit Ordo
-                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </a>
-              </div>
-            </motion.div>
-
-            {/* Addup card */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              custom={1}
-              variants={fadeUp}
-              className="relative p-8 sm:p-10 border border-neutral-200 rounded-2xl bg-white hover:border-neutral-300 transition-colors flex flex-col"
-            >
-              <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center gap-3">
-                  <div className="relative w-10 h-10 rounded-lg bg-white ring-1 ring-emerald-200/70 shadow-sm flex items-center justify-center overflow-hidden">
-                    <Image src="/images/addup-logo.png" alt="Addup" width={32} height={32} className="w-[80%] h-[80%] object-contain" />
-                  </div>
-                  <span className="text-[10px] font-mono text-emerald-600 uppercase tracking-[0.25em]">Focused application</span>
-                </div>
-                <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-semibold tracking-wide border border-emerald-200/70">
-                  Free
-                </span>
-              </div>
-              <h2 className="font-serif text-3xl sm:text-4xl text-neutral-900 tracking-tight leading-tight mb-3">Addup</h2>
-              <p className="text-base text-neutral-500 font-light leading-relaxed mb-8">
-                Our first focused application, starting with accounting reconciliation. Ingests source-of-truth data from banks and ledgers, reconciles every line, and explains what doesn&apos;t agree. Free to use, with paid upgrades for advanced features.
-              </p>
-              <div className="mt-auto flex items-center gap-4">
-                <a
-                  href="https://addup.olyxee.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 text-sm font-medium text-white bg-neutral-900 hover:bg-black px-5 py-2.5 rounded-full transition-colors"
-                >
-                  Try Addup free
-                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </a>
-              </div>
-            </motion.div>
+          <div className="flex items-center justify-between pb-6 sm:pb-8 mb-10 sm:mb-12 border-b border-neutral-200 text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500">
+            <span>01</span>
+            <span className="text-neutral-700">Ordo · Core system</span>
           </div>
-        </div>
-      </section>
 
-      {/* === ORDO DEEP DIVE === */}
-      <section id="ordo" className="py-20 sm:py-32 px-4 sm:px-6 border-t border-neutral-200/70 bg-gradient-to-b from-white to-neutral-50/60">
-        <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             <motion.div
               initial="hidden"
@@ -468,15 +399,21 @@ const ProductsPage: FC = () => {
               variants={fadeUp}
               className="lg:col-span-5"
             >
-              <p className="text-xs font-semibold text-blue-600 uppercase tracking-[0.25em] mb-5">Ordo · Core AI execution system</p>
-              <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-6">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="relative w-10 h-10 rounded-lg bg-white ring-1 ring-blue-200/70 shadow-sm flex items-center justify-center overflow-hidden">
+                  <Image src="/images/ordo-logo.png" alt="Ordo" width={32} height={32} className="w-[80%] h-[80%] object-contain" />
+                </div>
+                <span className="text-[10px] font-mono text-blue-500 uppercase tracking-[0.25em]">Core AI execution</span>
+              </div>
+
+              <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-8">
                 Goals in. <em className="text-neutral-500 not-italic">Finished work out.</em>
               </h2>
-              <p className="text-base sm:text-lg text-neutral-500 font-light leading-relaxed mb-10 max-w-md">
-                Ordo runs end-to-end business workflows across your existing tools. Every step is auditable, every action is reviewable, and human approvals can be added wherever they&apos;re needed.
-              </p>
 
-              <ul className="space-y-3 border-t border-neutral-200 pt-6">
+              <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 mb-4">
+                What&apos;s in this version
+              </p>
+              <ul className="space-y-3 border-t border-neutral-200 pt-5">
                 {ORDO_FEATURES.map((f) => (
                   <li key={f} className="flex items-start gap-3 text-sm sm:text-base text-neutral-700 font-light">
                     <Check className="w-4 h-4 text-blue-500 shrink-0 mt-1" />
@@ -514,9 +451,14 @@ const ProductsPage: FC = () => {
         </div>
       </section>
 
-      {/* === ADDUP DEEP DIVE === */}
-      <section id="addup" className="py-20 sm:py-32 px-4 sm:px-6 border-t border-neutral-200/70">
+      {/* === ADDUP === one canonical product section, features-led === */}
+      <section id="addup" className="py-20 sm:py-28 px-4 sm:px-6 border-t border-neutral-200/70 bg-gradient-to-b from-white to-neutral-50/60">
         <div className="max-w-6xl mx-auto">
+          <div className="flex items-center justify-between pb-6 sm:pb-8 mb-10 sm:mb-12 border-b border-neutral-200 text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500">
+            <span>02</span>
+            <span className="text-neutral-700">Addup · Focused application</span>
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -536,18 +478,21 @@ const ProductsPage: FC = () => {
               variants={fadeUp}
               className="lg:col-span-5 order-1 lg:order-2"
             >
-              <p className="text-xs font-semibold text-emerald-600 uppercase tracking-[0.25em] mb-5">Addup · Reconciliation</p>
-              <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-6">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="relative w-10 h-10 rounded-lg bg-white ring-1 ring-emerald-200/70 shadow-sm flex items-center justify-center overflow-hidden">
+                  <Image src="/images/addup-logo.png" alt="Addup" width={32} height={32} className="w-[80%] h-[80%] object-contain" />
+                </div>
+                <span className="text-[10px] font-mono text-emerald-600 uppercase tracking-[0.25em]">Reconciliation</span>
+              </div>
+
+              <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-8">
                 Numbers that <em className="text-neutral-500 not-italic">match.</em>
               </h2>
-              <p className="text-base sm:text-lg text-neutral-500 font-light leading-relaxed mb-10 max-w-md">
-                Addup applies the Olyxee execution model to accounting. Connect your sources, and Addup matches every line and explains every mismatch — so finance teams close books in hours, not days.
-              </p>
 
               <div className="border border-neutral-200 rounded-2xl divide-y divide-neutral-200 overflow-hidden bg-white">
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <p className="text-sm font-semibold text-neutral-900">Free</p>
+                    <p className="text-sm font-semibold text-neutral-900">Free version</p>
                     <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-semibold tracking-wide border border-emerald-200/70">
                       Get started
                     </span>
@@ -563,7 +508,7 @@ const ProductsPage: FC = () => {
                 </div>
                 <div className="p-6 bg-neutral-50/60">
                   <div className="flex items-center justify-between mb-4">
-                    <p className="text-sm font-semibold text-neutral-900">Upgrade for more features</p>
+                    <p className="text-sm font-semibold text-neutral-900">Upgrade adds</p>
                     <span className="text-[11px] font-mono text-neutral-400 uppercase tracking-[0.2em]">Paid</span>
                   </div>
                   <ul className="space-y-2.5">
@@ -600,8 +545,13 @@ const ProductsPage: FC = () => {
       </section>
 
       {/* === INTEGRATIONS === */}
-      <section className="py-20 sm:py-28 px-4 sm:px-6 border-t border-neutral-200/70 bg-gradient-to-b from-white to-neutral-50/60">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      <section className="py-20 sm:py-28 px-4 sm:px-6 border-t border-neutral-200/70">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex items-center justify-between pb-6 sm:pb-8 mb-10 sm:mb-12 border-b border-neutral-200 text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500">
+            <span>03</span>
+            <span className="text-neutral-700">Integrations</span>
+          </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -609,14 +559,13 @@ const ProductsPage: FC = () => {
             transition={{ duration: 0.6 }}
             className="lg:col-span-5 order-2 lg:order-1"
           >
-            <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.25em] mb-5">Integrations</p>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-tight leading-[1.1] mb-6">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-tight leading-[1.1] mb-8">
               Works with the tools you already use.
             </h2>
-            <p className="text-base text-neutral-500 font-light leading-relaxed mb-8 max-w-md">
-              No rip and replace. Connect the systems your team already runs on, and Olyxee handles the work between them.
+            <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 mb-4">
+              Connects to
             </p>
-            <ul className="space-y-2.5 border-t border-neutral-200 pt-6 max-w-md">
+            <ul className="space-y-2.5 border-t border-neutral-200 pt-5 max-w-md">
               {INTEGRATIONS.map((i) => (
                 <li key={i} className="flex items-start gap-3 text-sm text-neutral-700 font-light">
                   <Check className="w-4 h-4 text-neutral-400 shrink-0 mt-0.5" />
@@ -645,6 +594,7 @@ const ProductsPage: FC = () => {
               />
             </div>
           </motion.div>
+        </div>
         </div>
       </section>
 
