@@ -413,9 +413,6 @@ const ProductsPage: FC = () => {
                   Visit Ordo
                   <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </a>
-                <a href="#ordo" className="text-sm font-medium text-neutral-700 hover:text-neutral-900 transition-colors">
-                  See how it works
-                </a>
               </div>
             </motion.div>
 
@@ -452,9 +449,6 @@ const ProductsPage: FC = () => {
                 >
                   Try Addup free
                   <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </a>
-                <a href="#addup" className="text-sm font-medium text-neutral-700 hover:text-neutral-900 transition-colors">
-                  See how it works
                 </a>
               </div>
             </motion.div>

@@ -14,7 +14,7 @@ const papers = [
     venue: "ICLR 2026",
     year: "2026",
     category: "Architecture",
-    description: "Proposes a residual-augmented sparse attention mechanism that preserves long-range dependencies while reducing quadratic complexity. By routing residual pathways through sparse attention heads, the method achieves near-full attention quality at a fraction of the compute cost, enabling efficient inference on sequences exceeding 128K tokens.",
+    description: "A residual-augmented sparse attention mechanism that preserves long-range dependencies at a fraction of the compute cost, enabling efficient inference on sequences over 128K tokens.",
     url: "https://arxiv.org/abs/2603.15031",
   },
   {
@@ -23,7 +23,7 @@ const papers = [
     venue: "NeurIPS 2025",
     year: "2025",
     category: "Verification",
-    description: "Presents a lightweight verification layer that sits between any LLM and the end user, catching factual inconsistencies and unsupported claims before they reach production. Reduces hallucination rates by up to 62% in RAG-based applications without adding meaningful latency.",
+    description: "A lightweight verification layer that catches factual inconsistencies before they reach the user. Reduces hallucination rates by up to 62% in RAG applications without adding meaningful latency.",
     url: "https://arxiv.org/abs/2510.22751",
   },
   {
@@ -32,7 +32,7 @@ const papers = [
     venue: "ICML 2025",
     year: "2025",
     category: "Evaluation",
-    description: "Introduces an always-on evaluation system that monitors AI application outputs in real time, scoring accuracy, consistency, and safety across every response. Enables teams to detect quality drift within minutes instead of waiting for user complaints.",
+    description: "An always-on evaluation system that scores accuracy, consistency, and safety on every response, so teams catch quality drift in minutes instead of waiting for user complaints.",
     url: "https://arxiv.org/abs/2603.26718",
   },
   {
@@ -41,7 +41,7 @@ const papers = [
     venue: "AAAI 2026",
     year: "2026",
     category: "Monitoring",
-    description: "Defines an observability stack purpose-built for multi-step AI agent workflows, providing trace-level visibility into each decision point, tool call, and retrieval step. Helps engineering teams debug, optimize, and trust complex AI systems running in production.",
+    description: "An observability stack for multi-step agent workflows, with trace-level visibility into every decision, tool call, and retrieval step running in production.",
     url: "https://arxiv.org/abs/2512.08769",
   },
 ];
@@ -94,7 +94,7 @@ const Research: FC = () => {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-base sm:text-lg text-neutral-500 leading-relaxed font-light max-w-2xl"
           >
-            Selected papers shaping verification, evaluation, and observability for AI applications in production. We publish our notes here as the field moves.
+            Selected papers shaping verification, evaluation, and observability for AI in production.
           </motion.p>
 
           <motion.div
@@ -255,7 +255,7 @@ const Research: FC = () => {
               Where we&apos;re looking next.
             </h2>
             <p className="text-base sm:text-lg text-neutral-500 leading-relaxed max-w-2xl font-light">
-              Our active research areas reach beyond software, into systems that perceive and act in the physical world.
+              Active research areas that reach beyond software, into systems that perceive and act in the physical world.
             </p>
           </motion.div>
 
@@ -273,7 +273,7 @@ const Research: FC = () => {
               Olyxee Robotics
             </h3>
             <p className="text-base sm:text-[17px] text-neutral-600 leading-relaxed font-light mb-8">
-              Olyxee Robotics focuses on embodied intelligence: building systems that bring AI into the physical world through perception, decision-making, and action.
+              Embodied intelligence: bringing AI into the physical world through perception, decision-making, and action.
             </p>
             <ul className="space-y-3 border-t border-neutral-200/80 pt-6">
               {[
