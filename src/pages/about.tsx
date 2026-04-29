@@ -41,18 +41,7 @@ const About: FC = () => {
       <div className="grain" />
       <Header />
 
-      <section className="relative pt-36 sm:pt-48 pb-24 sm:pb-36 px-4 sm:px-6 overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/gradient-abstract-blue.webp"
-            alt=""
-            fill
-            sizes="100vw"
-            className="object-cover opacity-30"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/40 to-white" />
-        </div>
+      <section className="relative pt-36 sm:pt-48 pb-24 sm:pb-36 px-4 sm:px-6 bg-white">
         <div className="relative max-w-4xl mx-auto text-center">
           <motion.p
             initial={{ opacity: 0, y: 20 }}

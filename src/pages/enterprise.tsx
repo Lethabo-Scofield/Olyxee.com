@@ -3,7 +3,6 @@ import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -144,18 +143,7 @@ const Enterprise: FC = () => {
       <Header />
 
       {/* === HERO === */}
-      <section className="relative pt-36 sm:pt-48 pb-24 sm:pb-32 px-4 sm:px-6 overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/gradient-abstract-blue.webp"
-            alt=""
-            fill
-            sizes="100vw"
-            className="object-cover opacity-30"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/40 to-white" />
-        </div>
+      <section className="relative pt-36 sm:pt-48 pb-24 sm:pb-32 px-4 sm:px-6 bg-white">
         <div className="relative max-w-4xl mx-auto text-center">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
