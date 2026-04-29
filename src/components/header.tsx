@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, ArrowUpRight } from 'lucide-react';
 
 type MenuChild = { name: string; href: string; description?: string };
 type MenuItem = {
@@ -27,6 +27,37 @@ const menuItems: MenuItem[] = [
             { name: "Careers", href: "/careers", description: "Open roles and how we hire" },
             { name: "Brand Guidelines", href: "/brand", description: "Logo, colors, and usage" },
         ],
+    },
+];
+
+type SignInOption = {
+    name: string;
+    description: string;
+    href: string;
+    logo?: string;
+    external: boolean;
+};
+
+const SIGNIN_OPTIONS: SignInOption[] = [
+    {
+        name: "Ordo",
+        description: "Core AI execution system",
+        href: "https://ordo.olyxee.com/",
+        logo: "/images/ordo-logo.png",
+        external: true,
+    },
+    {
+        name: "Addup",
+        description: "Reconciliation app",
+        href: "https://addup.olyxee.com/",
+        logo: "/images/addup-logo.png",
+        external: true,
+    },
+    {
+        name: "API integrations",
+        description: "Developers and enterprise",
+        href: "/enterprise",
+        external: false,
     },
 ];
 
@@ -294,14 +325,99 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: 0.3, type: 'spring', stiffness: 400, damping: 25 }}
-                            className="hidden sm:block"
+                            className="hidden sm:block relative"
+                            onMouseEnter={() => openDropdownNow("Sign in")}
+                            onMouseLeave={closeDropdownSoon}
                         >
-                            <Link
-                                href="/signup"
-                                className="inline-flex items-center px-4 py-1.5 text-[13px] font-medium bg-neutral-900 text-white rounded-full hover:bg-black transition-all"
+                            <button
+                                type="button"
+                                onClick={() =>
+                                    setOpenDropdown(openDropdown === "Sign in" ? null : "Sign in")
+                                }
+                                onFocus={() => openDropdownNow("Sign in")}
+                                aria-haspopup="menu"
+                                aria-expanded={openDropdown === "Sign in"}
+                                className="inline-flex items-center gap-1.5 px-4 py-1.5 text-[13px] font-medium bg-neutral-900 text-white rounded-full hover:bg-black transition-all focus:outline-none"
                             >
-                                Sign up
-                            </Link>
+                                Sign in
+                                <ChevronDown
+                                    className={`w-3 h-3 transition-transform ${openDropdown === "Sign in" ? 'rotate-180' : ''}`}
+                                    aria-hidden
+                                />
+                            </button>
+                            <AnimatePresence>
+                                {openDropdown === "Sign in" && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: -6, scale: 0.98 }}
+                                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                                        exit={{ opacity: 0, y: -6, scale: 0.98 }}
+                                        transition={{ duration: 0.15, ease: 'easeOut' }}
+                                        className="absolute right-0 top-full pt-3 z-[1003]"
+                                        role="menu"
+                                        aria-label="Sign in menu"
+                                    >
+                                        <div
+                                            className="w-[20rem] max-w-[calc(100vw-2rem)] p-2 rounded-2xl"
+                                            style={{
+                                                background: 'rgba(255,255,255,0.85)',
+                                                backdropFilter: 'blur(24px) saturate(180%)',
+                                                WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+                                                boxShadow: '0 20px 60px rgba(0,0,0,0.12), 0 6px 16px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.7)',
+                                            }}
+                                        >
+                                            <div className="px-3 pt-2 pb-2.5">
+                                                <p className="text-[10px] font-semibold text-neutral-400 uppercase tracking-[0.22em]">
+                                                    Sign in to
+                                                </p>
+                                            </div>
+                                            <ul className="space-y-0.5">
+                                                {SIGNIN_OPTIONS.map((opt) => (
+                                                    <li key={opt.name}>
+                                                        <a
+                                                            href={opt.href}
+                                                            target={opt.external ? "_blank" : undefined}
+                                                            rel={opt.external ? "noopener noreferrer" : undefined}
+                                                            role="menuitem"
+                                                            onClick={() => setOpenDropdown(null)}
+                                                            className="group flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-neutral-100/80 active:bg-neutral-200/60 transition-colors focus:outline-none"
+                                                        >
+                                                            <div className="relative w-8 h-8 rounded-lg bg-white ring-1 ring-neutral-200/70 shadow-sm flex items-center justify-center overflow-hidden flex-shrink-0">
+                                                                {opt.logo ? (
+                                                                    <Image
+                                                                        src={opt.logo}
+                                                                        alt=""
+                                                                        width={24}
+                                                                        height={24}
+                                                                        className="w-[78%] h-[78%] object-contain"
+                                                                    />
+                                                                ) : (
+                                                                    <span className="text-[10px] font-mono font-semibold text-neutral-500">
+                                                                        API
+                                                                    </span>
+                                                                )}
+                                                            </div>
+                                                            <div className="min-w-0 flex-1">
+                                                                <p className="text-[14px] font-semibold text-neutral-900 group-hover:text-neutral-950">
+                                                                    {opt.name}
+                                                                </p>
+                                                                <p className="text-[12px] text-neutral-500 font-light leading-snug mt-0.5 truncate">
+                                                                    {opt.description}
+                                                                </p>
+                                                            </div>
+                                                            {opt.external && (
+                                                                <ArrowUpRight
+                                                                    className="w-3.5 h-3.5 text-neutral-400 group-hover:text-neutral-700 transition-colors flex-shrink-0"
+                                                                    aria-hidden
+                                                                />
+                                                            )}
+                                                        </a>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
                         </motion.div>
                         <div className="md:hidden">
                             <motion.button
@@ -441,18 +557,54 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                             </nav>
 
                             <motion.div
-                                className="absolute bottom-0 left-0 right-0 p-5 flex flex-col gap-2.5"
+                                className="absolute bottom-0 left-0 right-0 p-5 flex flex-col gap-2"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.4, type: 'spring', stiffness: 300, damping: 25 }}
                             >
-                                <Link
-                                    href="/signup"
-                                    onClick={() => setMobileMenuOpen(false)}
-                                    className="w-full py-3 bg-neutral-900 text-white rounded-2xl flex items-center justify-center active:scale-[0.98] transition-all font-semibold text-sm focus:outline-none"
-                                >
-                                    Sign up for early access
-                                </Link>
+                                <p className="text-[10px] font-semibold text-neutral-400 uppercase tracking-[0.22em] px-1 mb-1">
+                                    Sign in to
+                                </p>
+                                {SIGNIN_OPTIONS.map((opt) => (
+                                    <a
+                                        key={opt.name}
+                                        href={opt.href}
+                                        target={opt.external ? "_blank" : undefined}
+                                        rel={opt.external ? "noopener noreferrer" : undefined}
+                                        onClick={() => setMobileMenuOpen(false)}
+                                        className="w-full flex items-center gap-3 px-3.5 py-2.5 bg-white/70 hover:bg-white border border-neutral-200/70 rounded-2xl active:scale-[0.98] transition-all focus:outline-none"
+                                    >
+                                        <div className="relative w-8 h-8 rounded-lg bg-white ring-1 ring-neutral-200/70 shadow-sm flex items-center justify-center overflow-hidden flex-shrink-0">
+                                            {opt.logo ? (
+                                                <Image
+                                                    src={opt.logo}
+                                                    alt=""
+                                                    width={24}
+                                                    height={24}
+                                                    className="w-[78%] h-[78%] object-contain"
+                                                />
+                                            ) : (
+                                                <span className="text-[10px] font-mono font-semibold text-neutral-500">
+                                                    API
+                                                </span>
+                                            )}
+                                        </div>
+                                        <div className="min-w-0 flex-1 text-left">
+                                            <p className="text-[14px] font-semibold text-neutral-900 leading-tight">
+                                                {opt.name}
+                                            </p>
+                                            <p className="text-[11px] text-neutral-500 font-light leading-tight mt-0.5">
+                                                {opt.description}
+                                            </p>
+                                        </div>
+                                        {opt.external && (
+                                            <ArrowUpRight
+                                                className="w-3.5 h-3.5 text-neutral-400 flex-shrink-0"
+                                                aria-hidden
+                                            />
+                                        )}
+                                    </a>
+                                ))}
                             </motion.div>
                         </motion.div>
                     </>
