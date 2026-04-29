@@ -19,7 +19,6 @@ const menuItems: MenuItem[] = [
     { name: "Research", href: "/research" },
     { name: "Products", href: "/products" },
     { name: "Enterprise", href: "/enterprise" },
-    { name: "Partnerships", href: "/partnerships" },
     {
         name: "Company",
         childrenLabel: "Explore Company",
