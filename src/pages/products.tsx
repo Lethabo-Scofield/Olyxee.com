@@ -284,6 +284,24 @@ const ORDO_FEATURES = [
   "Custom skill packs for your team's workflows",
 ];
 
+const ORDO_USE_CASES = [
+  {
+    src: "/images/ordo-vendor-risk.png",
+    title: "Third-party risk management",
+    body: "Continuously score vendors against your policies and surface high-risk relationships before they become incidents.",
+  },
+  {
+    src: "/images/ordo-checks.png",
+    title: "Accelerate compliance checks",
+    body: "Run, queue, and validate controls in parallel so evidence is ready before the auditor asks.",
+  },
+  {
+    src: "/images/ordo-frameworks.png",
+    title: "Frameworks built in",
+    body: "ISO, NIST AI RMF, and the EU AI Act mapped to your controls, with progress tracked end to end.",
+  },
+];
+
 const ADDUP_FEATURES_FREE = [
   "Connect bank, card, and ledger sources",
   "Automatic matching with variance detection",
@@ -448,6 +466,50 @@ const ProductsPage: FC = () => {
             >
               <OrdoArchitecture />
             </motion.div>
+          </div>
+
+          <div id="ordo-use-cases" className="mt-20 sm:mt-28 pt-10 sm:pt-12 border-t border-neutral-200 scroll-mt-24">
+            <div className="flex items-baseline justify-between mb-8 sm:mb-10">
+              <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500">
+                Compliance workflows
+              </p>
+              <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-400">
+                03 examples
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10">
+              {ORDO_USE_CASES.map((uc, i) => (
+                <motion.div
+                  key={uc.title}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.2 }}
+                  custom={i}
+                  variants={fadeUp}
+                  className="group"
+                >
+                  <div className="relative aspect-[5/4] overflow-hidden rounded-2xl bg-neutral-950 ring-1 ring-neutral-200">
+                    <Image
+                      src={uc.src}
+                      alt={uc.title}
+                      fill
+                      sizes="(min-width: 768px) 33vw, 100vw"
+                      className="object-contain p-2 transition-transform duration-700 group-hover:scale-[1.02]"
+                    />
+                  </div>
+                  <p className="mt-5 text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-400">
+                    {String(i + 1).padStart(2, "0")}
+                  </p>
+                  <h3 className="mt-2 font-serif text-2xl text-neutral-900 tracking-tight leading-snug">
+                    {uc.title}
+                  </h3>
+                  <p className="mt-3 text-sm text-neutral-500 font-light leading-relaxed">
+                    {uc.body}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
