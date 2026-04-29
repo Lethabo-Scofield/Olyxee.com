@@ -5,7 +5,7 @@ import Footer from "../components/footer";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -38,8 +38,8 @@ function OrdoArchitecture() {
     {
       title: "Pull access logs",
       service: "Okta",
-      iconBg: "#EDE9FE",
-      iconStroke: "#6D28D9",
+      iconBg: "#F5F5F4",
+      iconStroke: "#404040",
       icon: (
         <>
           <rect width="18" height="11" x="3" y="11" rx="2" fill="none" />
@@ -51,8 +51,8 @@ function OrdoArchitecture() {
     {
       title: "Check controls",
       service: "Vanta",
-      iconBg: "#DCFCE7",
-      iconStroke: "#15803D",
+      iconBg: "#F5F5F4",
+      iconStroke: "#404040",
       icon: (
         <>
           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="none" />
@@ -64,8 +64,8 @@ function OrdoArchitecture() {
     {
       title: "Build evidence pack",
       service: "Drive",
-      iconBg: "#DBEAFE",
-      iconStroke: "#1D4ED8",
+      iconBg: "#F5F5F4",
+      iconStroke: "#404040",
       icon: (
         <>
           <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" fill="none" />
@@ -79,8 +79,8 @@ function OrdoArchitecture() {
     {
       title: "Email audit team",
       service: "Gmail",
-      iconBg: "#FFE4E6",
-      iconStroke: "#BE123C",
+      iconBg: "#F5F5F4",
+      iconStroke: "#404040",
       icon: (
         <>
           <rect width="20" height="16" x="2" y="4" rx="2" fill="none" />
@@ -92,8 +92,8 @@ function OrdoArchitecture() {
     {
       title: "Done",
       service: "Evidence packaged · audit trail saved",
-      iconBg: "#BBF7D0",
-      iconStroke: "#15803D",
+      iconBg: "#0a0a0a",
+      iconStroke: "#ffffff",
       icon: <polyline points="20 6 9 17 4 12" fill="none" />,
       isDone: true,
     },
@@ -118,19 +118,18 @@ function OrdoArchitecture() {
             audit trail saved.
           </desc>
           <defs>
-            <linearGradient id={gradId} x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#FFE7D6" />
-              <stop offset="45%" stopColor="#DBEAFE" />
-              <stop offset="100%" stopColor="#E0F2FE" />
+            <linearGradient id={gradId} x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#FAFAFA" />
+              <stop offset="100%" stopColor="#F4F4F5" />
             </linearGradient>
             <filter id={shadowId} x="-20%" y="-100%" width="140%" height="300%">
-              <feDropShadow dx="0" dy="3" stdDeviation="4" floodColor="#0a0a0a" floodOpacity="0.08" />
+              <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="#0a0a0a" floodOpacity="0.06" />
             </filter>
           </defs>
 
           <rect width={VB_W} height={VB_H} fill={`url(#${gradId})`} />
 
-          <text x={PILL_X} y="40" fontSize="10" fontFamily="ui-monospace, monospace" letterSpacing="2" fill="#475569">USER PROMPT</text>
+          <text x={PILL_X} y="40" fontSize="10" fontFamily="ui-monospace, monospace" letterSpacing="2" fill="#737373">USER PROMPT</text>
           <text x={PILL_X} y="70" fontSize="15" fill="#0a0a0a" fontFamily="ui-serif, Georgia" fontStyle="italic">&ldquo;Run a SOC 2 access review and</text>
           <text x={PILL_X} y="90" fontSize="15" fill="#0a0a0a" fontFamily="ui-serif, Georgia" fontStyle="italic">email findings to the audit team.&rdquo;</text>
 
@@ -147,12 +146,12 @@ function OrdoArchitecture() {
                 <path
                   d={`M ${startX} ${cy0} C ${ctrlX} ${cy0}, ${ctrlX} ${cy1}, ${startX} ${cy1}`}
                   fill="none"
-                  stroke="#94A3B8"
-                  strokeWidth="1.5"
+                  stroke="#A3A3A3"
+                  strokeWidth="1.25"
                 />
                 <polygon
                   points={`${startX},${cy1} ${startX + arrowheadDx},${cy1 - 5} ${startX + arrowheadDx},${cy1 + 5}`}
-                  fill="#94A3B8"
+                  fill="#A3A3A3"
                 />
               </g>
             );
@@ -161,15 +160,18 @@ function OrdoArchitecture() {
           {pills.map((p, i) => {
             const cy = pillCenterY(i);
             const yTop = cy - PILL_H / 2;
+            const pillFill = p.isDone ? "#0a0a0a" : "#ffffff";
+            const titleFill = p.isDone ? "#ffffff" : "#0a0a0a";
+            const serviceFill = p.isDone ? "#A3A3A3" : "#737373";
             return (
               <g key={i}>
-                <rect x={PILL_X} y={yTop} width={PILL_W} height={PILL_H} rx={PILL_H / 2} fill="#ffffff" filter={`url(#${shadowId})`} />
+                <rect x={PILL_X} y={yTop} width={PILL_W} height={PILL_H} rx={PILL_H / 2} fill={pillFill} stroke={p.isDone ? "#0a0a0a" : "#E5E5E5"} strokeWidth="1" filter={`url(#${shadowId})`} />
                 <rect x={PILL_X + 14} y={cy - 16} width="32" height="32" rx="8" fill={p.iconBg} />
                 <g transform={`translate(${PILL_X + 18}, ${cy - 12})`} stroke={p.iconStroke} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none">
                   {p.icon}
                 </g>
-                <text x={PILL_X + 60} y={cy - 2} fontSize="14" fontWeight="600" fill="#0a0a0a">{p.title}</text>
-                <text x={PILL_X + 60} y={cy + 16} fontSize="11" fill={p.isDone ? "#15803D" : "#737373"} fontWeight={p.isDone ? "500" : "400"}>{p.service}</text>
+                <text x={PILL_X + 60} y={cy - 2} fontSize="14" fontWeight="600" fill={titleFill}>{p.title}</text>
+                <text x={PILL_X + 60} y={cy + 16} fontSize="11" fill={serviceFill} fontWeight="400">{p.service}</text>
               </g>
             );
           })}
@@ -191,17 +193,17 @@ function AddupReconciliation() {
     { y: 345, bank: { src: "Card settlement", amt: "$  2,140.00" }, ledger: { ref: "INV-2034", amt: "$  2,140.00" }, status: "match" as const },
   ];
 
-  const colorFor = (s: "match" | "fixed") => (s === "match" ? "#15803d" : "#0369a1");
-  const fillFor  = (s: "match" | "fixed") => (s === "match" ? "#f0fdf4" : "#eff6ff");
-  const ringFor  = (s: "match" | "fixed") => (s === "match" ? "#86efac" : "#bae6fd");
+  const colorFor = (s: "match" | "fixed") => (s === "match" ? "#0a0a0a" : "#404040");
+  const fillFor  = (_s: "match" | "fixed") => "#ffffff";
+  const ringFor  = (s: "match" | "fixed") => (s === "match" ? "#e5e5e5" : "#d4d4d4");
+  const subFor   = (s: "match" | "fixed") => (s === "match" ? "#737373" : "#404040");
 
   return (
     <div className="relative rounded-2xl border border-neutral-200 bg-white p-4 sm:p-6 overflow-hidden shadow-[0_20px_50px_-30px_rgba(0,0,0,0.18)]">
       <div className="flex items-center justify-between mb-3 sm:mb-4">
         <div className="flex items-center gap-2">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+          <span className="relative flex h-1.5 w-1.5">
+            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-neutral-900" />
           </span>
           <span className="text-[11px] font-mono text-neutral-500 uppercase tracking-wider">Worked example</span>
         </div>
@@ -232,26 +234,25 @@ function AddupReconciliation() {
             <path key={`o-${i}`} d={`M 466 240 C 480 240, 490 ${r.y}, 510 ${r.y}`} fill="none" stroke="#0a0a0a" strokeWidth="1.25" />
           ))}
 
-          <circle r="6" fill="#3b82f6">
+          <circle r="5" fill="#0a0a0a">
             <animate attributeName="cx" values="510;510;510;510;510" keyTimes="0;0.25;0.5;0.75;1" dur="6s" repeatCount="indefinite" />
             <animate attributeName="cy" values="90;175;260;345;90" keyTimes="0;0.25;0.5;0.75;1" dur="6s" repeatCount="indefinite" />
           </circle>
 
-          <text x="510" y="56" fontSize="10" fill="#94a3b8" fontFamily="ui-monospace, monospace" letterSpacing="1">LEDGER · RECONCILED</text>
+          <text x="510" y="56" fontSize="10" fill="#a3a3a3" fontFamily="ui-monospace, monospace" letterSpacing="1">LEDGER · RECONCILED</text>
           {rows.map((r, i) => (
             <g key={`l-${i}`}>
-              <rect x="510" y={r.y - 24} width="335" height="48" rx="10" fill={fillFor(r.status)} stroke={ringFor(r.status)} strokeWidth="1.5" />
-              <circle cx="535" cy={r.y} r="13" fill={colorFor(r.status)} />
+              <rect x="510" y={r.y - 24} width="335" height="48" rx="10" fill={fillFor(r.status)} stroke={ringFor(r.status)} strokeWidth="1.25" />
               {r.status === "match" ? (
-                <path d={`M 529 ${r.y} L 534 ${r.y + 5} L 542 ${r.y - 4}`} fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                <path d={`M 528 ${r.y} L 535 ${r.y + 6} L 547 ${r.y - 5}`} fill="none" stroke={colorFor(r.status)} strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
               ) : (
                 <>
-                  <line x1="530" y1={r.y - 4} x2="540" y2={r.y - 4} stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" />
-                  <line x1="530" y1={r.y + 4} x2="540" y2={r.y + 4} stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" />
+                  <line x1="528" y1={r.y - 5} x2="546" y2={r.y - 5} stroke={colorFor(r.status)} strokeWidth="1.75" strokeLinecap="round" />
+                  <line x1="528" y1={r.y + 5} x2="546" y2={r.y + 5} stroke={colorFor(r.status)} strokeWidth="1.75" strokeLinecap="round" />
                 </>
               )}
-              <text x="558" y={r.y - 4} fontSize="12" fill="#262626" fontWeight="600">{r.ledger.ref}</text>
-              <text x="558" y={r.y + 14} fontSize="11" fill={colorFor(r.status)} fontWeight="600" fontFamily="ui-monospace, monospace">
+              <text x="560" y={r.y - 4} fontSize="12" fill="#262626" fontWeight="600">{r.ledger.ref}</text>
+              <text x="560" y={r.y + 14} fontSize="11" fill={subFor(r.status)} fontWeight="500" fontFamily="ui-monospace, monospace">
                 {r.status === "match" ? "matched" : "auto-fixed · variance flagged"}
               </text>
               <text x="833" y={r.y + 4} textAnchor="end" fontSize="13" fill="#0a0a0a" fontFamily="ui-monospace, monospace" fontWeight="600">{r.ledger.amt}</text>
@@ -259,11 +260,10 @@ function AddupReconciliation() {
           ))}
 
           <g>
-            <rect x="20" y="410" width="825" height="50" rx="10" fill="#f0fdf4" stroke="#86efac" strokeWidth="2" />
-            <circle cx="46" cy="435" r="13" fill="#15803d" />
-            <path d="M 40 435 L 45 440 L 53 431" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-            <text x="70" y="431" fontSize="13" fill="#14532d" fontWeight="700">Books closed</text>
-            <text x="70" y="448" fontSize="11" fill="#166534">4 of 4 reconciled · 1 variance auto-resolved · audit trail saved</text>
+            <rect x="20" y="410" width="825" height="50" rx="10" fill="#fafafa" stroke="#e5e5e5" strokeWidth="1.25" />
+            <circle cx="46" cy="435" r="4" fill="#0a0a0a" />
+            <text x="62" y="431" fontSize="13" fill="#0a0a0a" fontWeight="700">Books closed</text>
+            <text x="62" y="448" fontSize="11" fill="#737373">4 of 4 reconciled · 1 variance auto-resolved · audit trail saved</text>
           </g>
         </svg>
       </div>
@@ -419,10 +419,10 @@ const ProductsPage: FC = () => {
               className="lg:col-span-5"
             >
               <div className="flex items-center gap-3 mb-6">
-                <div className="relative w-10 h-10 rounded-lg bg-white ring-1 ring-blue-200/70 shadow-sm flex items-center justify-center overflow-hidden">
+                <div className="relative w-10 h-10 rounded-lg bg-white ring-1 ring-neutral-200 shadow-sm flex items-center justify-center overflow-hidden">
                   <Image src="/images/ordo-logo.png" alt="Ordo" width={32} height={32} className="w-[80%] h-[80%] object-contain" />
                 </div>
-                <span className="text-[10px] font-mono text-blue-500 uppercase tracking-[0.25em]">Compliance and operations</span>
+                <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.25em]">Compliance and operations</span>
               </div>
 
               <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-8">
@@ -432,11 +432,13 @@ const ProductsPage: FC = () => {
               <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 mb-4">
                 What&apos;s in this version
               </p>
-              <ul className="space-y-3 border-t border-neutral-200 pt-5">
+              <ul className="border-t border-neutral-200">
                 {ORDO_FEATURES.map((f) => (
-                  <li key={f} className="flex items-start gap-3 text-sm sm:text-base text-neutral-700 font-light">
-                    <Check className="w-4 h-4 text-blue-500 shrink-0 mt-1" />
-                    <span>{f}</span>
+                  <li
+                    key={f}
+                    className="py-3.5 sm:py-4 border-b border-neutral-200 text-sm sm:text-[15px] text-neutral-800 font-light leading-relaxed"
+                  >
+                    {f}
                   </li>
                 ))}
               </ul>
@@ -515,7 +517,7 @@ const ProductsPage: FC = () => {
       </section>
 
       {/* === ADDUP === one canonical product section, features-led === */}
-      <section id="addup" className="py-20 sm:py-28 px-4 sm:px-6 border-t border-neutral-200/70 bg-gradient-to-b from-white to-neutral-50/60">
+      <section id="addup" className="py-20 sm:py-28 px-4 sm:px-6 border-t border-neutral-200/70 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center justify-between pb-6 sm:pb-8 mb-10 sm:mb-12 border-b border-neutral-200 text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500">
             <span>02</span>
@@ -542,47 +544,46 @@ const ProductsPage: FC = () => {
               className="lg:col-span-5 order-1 lg:order-2"
             >
               <div className="flex items-center gap-3 mb-6">
-                <div className="relative w-10 h-10 rounded-lg bg-white ring-1 ring-emerald-200/70 shadow-sm flex items-center justify-center overflow-hidden">
+                <div className="relative w-10 h-10 rounded-lg bg-white ring-1 ring-neutral-200 shadow-sm flex items-center justify-center overflow-hidden">
                   <Image src="/images/addup-logo.png" alt="Addup" width={32} height={32} className="w-[80%] h-[80%] object-contain" />
                 </div>
-                <span className="text-[10px] font-mono text-emerald-600 uppercase tracking-[0.25em]">Reconciliation</span>
+                <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.25em]">Reconciliation</span>
               </div>
 
               <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-8">
                 Numbers that <em className="text-neutral-500 not-italic">match.</em>
               </h2>
 
-              <div className="border border-neutral-200 rounded-2xl divide-y divide-neutral-200 overflow-hidden bg-white">
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <p className="text-sm font-semibold text-neutral-900">Free version</p>
-                    <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-semibold tracking-wide border border-emerald-200/70">
-                      Get started
-                    </span>
-                  </div>
-                  <ul className="space-y-2.5">
-                    {ADDUP_FEATURES_FREE.map((f) => (
-                      <li key={f} className="flex items-start gap-3 text-sm text-neutral-700 font-light">
-                        <Check className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                        <span>{f}</span>
-                      </li>
-                    ))}
-                  </ul>
+              <div>
+                <div className="flex items-baseline justify-between mb-3">
+                  <p className="text-sm font-semibold text-neutral-900">Free version</p>
+                  <span className="text-[11px] font-mono text-neutral-400 uppercase tracking-[0.2em]">Free</span>
                 </div>
-                <div className="p-6 bg-neutral-50/60">
-                  <div className="flex items-center justify-between mb-4">
-                    <p className="text-sm font-semibold text-neutral-900">Upgrade adds</p>
-                    <span className="text-[11px] font-mono text-neutral-400 uppercase tracking-[0.2em]">Paid</span>
-                  </div>
-                  <ul className="space-y-2.5">
-                    {ADDUP_FEATURES_UPGRADE.map((f) => (
-                      <li key={f} className="flex items-start gap-3 text-sm text-neutral-700 font-light">
-                        <span className="text-base leading-none text-neutral-400 shrink-0 mt-0.5">+</span>
-                        <span>{f}</span>
-                      </li>
-                    ))}
-                  </ul>
+                <ul className="border-t border-neutral-200">
+                  {ADDUP_FEATURES_FREE.map((f) => (
+                    <li
+                      key={f}
+                      className="py-3.5 border-b border-neutral-200 text-sm sm:text-[15px] text-neutral-800 font-light leading-relaxed"
+                    >
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="flex items-baseline justify-between mt-10 mb-3">
+                  <p className="text-sm font-semibold text-neutral-900">Upgrade adds</p>
+                  <span className="text-[11px] font-mono text-neutral-400 uppercase tracking-[0.2em]">Paid</span>
                 </div>
+                <ul className="border-t border-neutral-200">
+                  {ADDUP_FEATURES_UPGRADE.map((f) => (
+                    <li
+                      key={f}
+                      className="py-3.5 border-b border-neutral-200 text-sm sm:text-[15px] text-neutral-500 font-light leading-relaxed"
+                    >
+                      {f}
+                    </li>
+                  ))}
+                </ul>
               </div>
 
               <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -628,11 +629,13 @@ const ProductsPage: FC = () => {
             <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 mb-4">
               Connects to
             </p>
-            <ul className="space-y-2.5 border-t border-neutral-200 pt-5 max-w-md">
+            <ul className="border-t border-neutral-200 max-w-md">
               {INTEGRATIONS.map((i) => (
-                <li key={i} className="flex items-start gap-3 text-sm text-neutral-700 font-light">
-                  <Check className="w-4 h-4 text-neutral-400 shrink-0 mt-0.5" />
-                  <span>{i}</span>
+                <li
+                  key={i}
+                  className="py-3.5 border-b border-neutral-200 text-sm sm:text-[15px] text-neutral-800 font-light leading-relaxed"
+                >
+                  {i}
                 </li>
               ))}
             </ul>
@@ -646,7 +649,6 @@ const ProductsPage: FC = () => {
             className="lg:col-span-7 order-1 lg:order-2"
           >
             <div className="relative">
-              <div className="absolute inset-0 bg-blue-100/40 blur-3xl rounded-full" aria-hidden />
               <Image
                 src="/images/integrations-cluster.png"
                 alt="Integration logos including Microsoft 365, Salesforce, Xero, Outlook, Zendesk and others that Olyxee connects to."
