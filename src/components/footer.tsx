@@ -20,6 +20,7 @@ const footerData = {
         { name: "Enterprise", href: "/enterprise" },
         { name: "Partnerships", href: "/partnerships" },
         { name: "Careers", href: "/careers" },
+        { name: "Brand Guidelines", href: "/brand" },
         { name: "Contact", href: "/contact" },
       ],
     },

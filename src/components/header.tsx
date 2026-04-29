@@ -5,23 +5,41 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 
-const menuItems = [
+type MenuChild = { name: string; href: string; description?: string };
+type MenuItem = {
+    name: string;
+    href?: string;
+    childrenLabel?: string;
+    children?: MenuChild[];
+};
+
+const menuItems: MenuItem[] = [
     { name: "Research", href: "/research" },
     { name: "Products", href: "/products" },
     { name: "Enterprise", href: "/enterprise" },
     { name: "Partnerships", href: "/partnerships" },
-    { name: "About", href: "/about" },
-    { name: "Careers", href: "/careers" },
+    {
+        name: "Company",
+        childrenLabel: "Explore Company",
+        children: [
+            { name: "About Us", href: "/about", description: "Our mission, beliefs, and team" },
+            { name: "Careers", href: "/careers", description: "Open roles and how we hire" },
+            { name: "Brand Guidelines", href: "/brand", description: "Logo, colors, and usage" },
+        ],
+    },
 ];
 
 const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [visible, setVisible] = useState(true);
+    const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+    const [mobileExpanded, setMobileExpanded] = useState<Record<string, boolean>>({});
     const lastScrollY = useRef(0);
     const firstFocusableRef = useRef<HTMLButtonElement | null>(null);
+    const dropdownTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
     const pathname = usePathname();
 
     const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -34,6 +52,20 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
             }
         }
     }, [pathname]);
+
+    const openDropdownNow = useCallback((name: string) => {
+        if (dropdownTimeout.current) clearTimeout(dropdownTimeout.current);
+        setOpenDropdown(name);
+    }, []);
+
+    const closeDropdownSoon = useCallback(() => {
+        if (dropdownTimeout.current) clearTimeout(dropdownTimeout.current);
+        dropdownTimeout.current = setTimeout(() => setOpenDropdown(null), 120);
+    }, []);
+
+    useEffect(() => () => {
+        if (dropdownTimeout.current) clearTimeout(dropdownTimeout.current);
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -60,7 +92,10 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
 
     useEffect(() => {
         const handleEscape = (e: KeyboardEvent) => {
-            if (e.key === 'Escape') setMobileMenuOpen(false);
+            if (e.key === 'Escape') {
+                setMobileMenuOpen(false);
+                setOpenDropdown(null);
+            }
         };
         if (mobileMenuOpen) {
             document.addEventListener('keydown', handleEscape);
@@ -72,6 +107,14 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
             document.body.style.overflow = 'unset';
         };
     }, [mobileMenuOpen]);
+
+    useEffect(() => {
+        const handleEscape = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') setOpenDropdown(null);
+        };
+        if (openDropdown) document.addEventListener('keydown', handleEscape);
+        return () => document.removeEventListener('keydown', handleEscape);
+    }, [openDropdown]);
 
     const handleBackdropClick = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
         if (e.target === e.currentTarget) setMobileMenuOpen(false);
@@ -125,27 +168,107 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
 
                     <nav className="hidden md:flex h-full ml-auto mr-auto" aria-label="Main navigation">
                         <ul className="flex h-full items-center gap-1">
-                            {menuItems.map((item, i) => (
-                                <motion.li
-                                    key={item.name}
-                                    initial={{ opacity: 0, y: -10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.05 + i * 0.04, type: 'spring', stiffness: 400, damping: 25 }}
-                                >
-                                    <Link
-                                        href={item.href}
-                                        prefetch={!item.href.startsWith('/#')}
-                                        onClick={(e) => handleNavClick(e, item.href)}
-                                        className={`text-[13px] font-medium transition-colors focus:outline-none px-3.5 py-1.5 relative ${
-                                            theme === "dark" && !scrolled
-                                                ? "text-white/60 hover:text-white"
-                                                : "text-neutral-500 hover:text-neutral-900"
-                                        }`}
+                            {menuItems.map((item, i) => {
+                                const hasChildren = !!item.children?.length;
+                                const isOpen = openDropdown === item.name;
+                                const linkColor = theme === "dark" && !scrolled
+                                    ? "text-white/60 hover:text-white"
+                                    : "text-neutral-500 hover:text-neutral-900";
+
+                                return (
+                                    <motion.li
+                                        key={item.name}
+                                        initial={{ opacity: 0, y: -10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.05 + i * 0.04, type: 'spring', stiffness: 400, damping: 25 }}
+                                        className="relative"
+                                        onMouseEnter={() => hasChildren && openDropdownNow(item.name)}
+                                        onMouseLeave={() => hasChildren && closeDropdownSoon()}
                                     >
-                                        {item.name}
-                                    </Link>
-                                </motion.li>
-                            ))}
+                                        {hasChildren ? (
+                                            <button
+                                                type="button"
+                                                onFocus={() => openDropdownNow(item.name)}
+                                                onClick={() => setOpenDropdown(isOpen ? null : item.name)}
+                                                aria-haspopup="menu"
+                                                aria-expanded={isOpen}
+                                                className={`text-[13px] font-medium transition-colors focus:outline-none px-3.5 py-1.5 inline-flex items-center gap-1 ${linkColor}`}
+                                            >
+                                                {item.name}
+                                                <ChevronDown
+                                                    className={`w-3 h-3 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+                                                    aria-hidden
+                                                />
+                                            </button>
+                                        ) : (
+                                            <Link
+                                                href={item.href!}
+                                                prefetch={!item.href!.startsWith('/#')}
+                                                onClick={(e) => handleNavClick(e, item.href!)}
+                                                className={`text-[13px] font-medium transition-colors focus:outline-none px-3.5 py-1.5 relative ${linkColor}`}
+                                            >
+                                                {item.name}
+                                            </Link>
+                                        )}
+
+                                        {hasChildren && (
+                                            <AnimatePresence>
+                                                {isOpen && (
+                                                    <motion.div
+                                                        initial={{ opacity: 0, y: -6, scale: 0.98 }}
+                                                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                                                        exit={{ opacity: 0, y: -6, scale: 0.98 }}
+                                                        transition={{ duration: 0.15, ease: 'easeOut' }}
+                                                        className="absolute left-1/2 -translate-x-1/2 top-full pt-3 z-[1003]"
+                                                        role="menu"
+                                                        aria-label={`${item.name} menu`}
+                                                    >
+                                                        <div
+                                                            className="w-72 p-3 rounded-2xl"
+                                                            style={{
+                                                                background: 'rgba(255,255,255,0.85)',
+                                                                backdropFilter: 'blur(24px) saturate(180%)',
+                                                                WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+                                                                boxShadow: '0 20px 60px rgba(0,0,0,0.12), 0 6px 16px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.7)',
+                                                            }}
+                                                        >
+                                                            {item.childrenLabel && (
+                                                                <div className="px-3 pt-1 pb-3">
+                                                                    <p className="text-[10px] font-semibold text-neutral-400 uppercase tracking-[0.22em]">
+                                                                        {item.childrenLabel}
+                                                                    </p>
+                                                                </div>
+                                                            )}
+                                                            <ul className="space-y-0.5">
+                                                                {item.children!.map((child) => (
+                                                                    <li key={child.name}>
+                                                                        <Link
+                                                                            href={child.href}
+                                                                            prefetch
+                                                                            role="menuitem"
+                                                                            onClick={() => setOpenDropdown(null)}
+                                                                            className="group block px-3 py-2.5 rounded-xl hover:bg-neutral-100/80 active:bg-neutral-200/60 transition-colors focus:outline-none"
+                                                                        >
+                                                                            <p className="text-[14px] font-semibold text-neutral-900 group-hover:text-neutral-950">
+                                                                                {child.name}
+                                                                            </p>
+                                                                            {child.description && (
+                                                                                <p className="text-[12px] text-neutral-500 font-light leading-snug mt-0.5">
+                                                                                    {child.description}
+                                                                                </p>
+                                                                            )}
+                                                                        </Link>
+                                                                    </li>
+                                                                ))}
+                                                            </ul>
+                                                        </div>
+                                                    </motion.div>
+                                                )}
+                                            </AnimatePresence>
+                                        )}
+                                    </motion.li>
+                                );
+                            })}
                         </ul>
                     </nav>
 
@@ -247,24 +370,74 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
 
                             <nav className="p-5 overflow-y-auto h-[calc(100%-140px)]">
                                 <ul className="space-y-0.5">
-                                    {menuItems.map((item, i) => (
-                                        <motion.li
-                                            key={item.name}
-                                            initial={{ opacity: 0, x: 30 }}
-                                            animate={{ opacity: 1, x: 0 }}
-                                            transition={{ delay: 0.08 + i * 0.05, type: 'spring', stiffness: 400, damping: 30 }}
-                                        >
-                                            <Link
-                                                href={item.href}
-                                                prefetch={!item.href.startsWith('/#')}
-                                                className="flex items-center justify-between py-3 px-4 hover:bg-blue-50/50 active:bg-blue-50/80 rounded-2xl transition-all text-neutral-900 font-medium text-[15px] focus:outline-none hover:text-blue-600"
-                                                onClick={(e) => { handleNavClick(e, item.href); setMobileMenuOpen(false); }}
+                                    {menuItems.map((item, i) => {
+                                        const hasChildren = !!item.children?.length;
+                                        const expanded = !!mobileExpanded[item.name];
+                                        return (
+                                            <motion.li
+                                                key={item.name}
+                                                initial={{ opacity: 0, x: 30 }}
+                                                animate={{ opacity: 1, x: 0 }}
+                                                transition={{ delay: 0.08 + i * 0.05, type: 'spring', stiffness: 400, damping: 30 }}
                                             >
-                                                {item.name}
-                                                <span className="text-neutral-400 text-xs">→</span>
-                                            </Link>
-                                        </motion.li>
-                                    ))}
+                                                {hasChildren ? (
+                                                    <>
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => setMobileExpanded((s) => ({ ...s, [item.name]: !s[item.name] }))}
+                                                            aria-expanded={expanded}
+                                                            className="w-full flex items-center justify-between py-3 px-4 hover:bg-blue-50/50 active:bg-blue-50/80 rounded-2xl transition-all text-neutral-900 font-medium text-[15px] focus:outline-none hover:text-blue-600"
+                                                        >
+                                                            {item.name}
+                                                            <ChevronDown className={`w-4 h-4 text-neutral-400 transition-transform ${expanded ? 'rotate-180' : ''}`} />
+                                                        </button>
+                                                        <AnimatePresence initial={false}>
+                                                            {expanded && (
+                                                                <motion.ul
+                                                                    initial={{ opacity: 0, height: 0 }}
+                                                                    animate={{ opacity: 1, height: 'auto' }}
+                                                                    exit={{ opacity: 0, height: 0 }}
+                                                                    transition={{ duration: 0.2, ease: 'easeOut' }}
+                                                                    className="overflow-hidden pl-3 pt-1"
+                                                                >
+                                                                    {item.childrenLabel && (
+                                                                        <li className="px-4 pt-2 pb-1">
+                                                                            <p className="text-[10px] font-semibold text-neutral-400 uppercase tracking-[0.22em]">
+                                                                                {item.childrenLabel}
+                                                                            </p>
+                                                                        </li>
+                                                                    )}
+                                                                    {item.children!.map((child) => (
+                                                                        <li key={child.name}>
+                                                                            <Link
+                                                                                href={child.href}
+                                                                                prefetch
+                                                                                onClick={() => setMobileMenuOpen(false)}
+                                                                                className="flex items-center justify-between py-2.5 px-4 hover:bg-blue-50/50 active:bg-blue-50/80 rounded-2xl transition-all text-neutral-700 hover:text-blue-600 text-[14px] focus:outline-none"
+                                                                            >
+                                                                                {child.name}
+                                                                                <span className="text-neutral-400 text-xs">→</span>
+                                                                            </Link>
+                                                                        </li>
+                                                                    ))}
+                                                                </motion.ul>
+                                                            )}
+                                                        </AnimatePresence>
+                                                    </>
+                                                ) : (
+                                                    <Link
+                                                        href={item.href!}
+                                                        prefetch={!item.href!.startsWith('/#')}
+                                                        className="flex items-center justify-between py-3 px-4 hover:bg-blue-50/50 active:bg-blue-50/80 rounded-2xl transition-all text-neutral-900 font-medium text-[15px] focus:outline-none hover:text-blue-600"
+                                                        onClick={(e) => { handleNavClick(e, item.href!); setMobileMenuOpen(false); }}
+                                                    >
+                                                        {item.name}
+                                                        <span className="text-neutral-400 text-xs">→</span>
+                                                    </Link>
+                                                )}
+                                            </motion.li>
+                                        );
+                                    })}
                                 </ul>
                             </nav>
 
