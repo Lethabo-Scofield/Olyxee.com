@@ -55,8 +55,8 @@ const SIGNIN_OPTIONS: SignInOption[] = [
     },
     {
         name: "API integrations",
-        description: "Developers and enterprise",
-        href: "/enterprise",
+        description: "Join the waitlist · read the docs",
+        href: "/signup?tool=api",
         external: false,
     },
 ];
