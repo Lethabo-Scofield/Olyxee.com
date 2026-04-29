@@ -381,14 +381,14 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                                                             onClick={() => setOpenDropdown(null)}
                                                             className="group flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-neutral-100/80 active:bg-neutral-200/60 transition-colors focus:outline-none"
                                                         >
-                                                            <div className="relative w-8 h-8 rounded-lg bg-white ring-1 ring-neutral-200/70 shadow-sm flex items-center justify-center overflow-hidden flex-shrink-0">
+                                                            <div className="relative w-9 h-9 rounded-lg bg-white ring-1 ring-neutral-200/70 shadow-sm flex items-center justify-center overflow-hidden flex-shrink-0">
                                                                 {opt.logo ? (
                                                                     <Image
                                                                         src={opt.logo}
                                                                         alt=""
-                                                                        width={24}
-                                                                        height={24}
-                                                                        className="w-[78%] h-[78%] object-contain"
+                                                                        width={36}
+                                                                        height={36}
+                                                                        className="w-[88%] h-[88%] object-contain"
                                                                     />
                                                                 ) : (
                                                                     <span className="text-[10px] font-mono font-semibold text-neutral-500">
