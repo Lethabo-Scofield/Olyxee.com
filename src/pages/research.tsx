@@ -1,11 +1,12 @@
-import { FC } from "react";
+import { FC, KeyboardEvent, useEffect, useRef, useState } from "react";
+import { useRouter } from "next/router";
 import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, ArrowUpRight, BookOpen } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const papers = [
   {
@@ -46,8 +47,6 @@ const papers = [
   },
 ];
 
-const TOPICS = ["Architecture", "Verification", "Evaluation", "Monitoring", "Agents", "Long context"];
-
 const CATEGORY_COLORS: Record<string, string> = {
   Architecture: "bg-violet-50 text-violet-700",
   Verification: "bg-emerald-50 text-emerald-700",
@@ -55,84 +54,63 @@ const CATEGORY_COLORS: Record<string, string> = {
   Monitoring: "bg-blue-50 text-blue-700",
 };
 
-const Research: FC = () => {
+const TABS = [
+  { id: "research", label: "Research" },
+  { id: "robotics", label: "Robotics" },
+] as const;
+
+type TabId = (typeof TABS)[number]["id"];
+
+const ROBOTICS_FIGURES = [
+  {
+    src: "/images/robotics/humanoid-manipulation.png",
+    alt: "Humanoid robot manipulating objects on a table",
+    label: "Humanoid manipulation",
+    meta: "Embodied intelligence · 01",
+  },
+  {
+    src: "/images/robotics/foundation-partnerships.png",
+    alt: "Boston Dynamics and Google DeepMind on stage",
+    label: "Foundation partnerships",
+    meta: "Ecosystem · 02",
+  },
+  {
+    src: "/images/robotics/hardware-design.png",
+    alt: "Engineer reviewing CAD blueprints on a monitor",
+    label: "Hardware design",
+    meta: "Engineering · 03",
+  },
+  {
+    src: "/images/robotics/field-deployment.png",
+    alt: "Students and engineers around a solar-powered vehicle prototype",
+    label: "Field deployment",
+    meta: "Real-world programs · 04",
+  },
+];
+
+const ResearchView: FC = () => {
   const featured = papers[0];
   const rest = papers.slice(1);
 
   return (
-    <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO
-        title="Research We Follow"
-        description="Key papers and publications shaping AI verification, evaluation, and observability. Research that informs how Olyxee builds infrastructure for reliable AI applications."
-        path="/research"
-      />
-      <div className="grain" />
-      <Header />
-
-      {/* === DOCUMENT HEADER === */}
-      <section className="pt-32 sm:pt-40 pb-12 sm:pb-16 px-4 sm:px-6 border-b border-neutral-200/70 bg-white">
+    <>
+      {/* Hero line — single sentence */}
+      <section className="px-4 sm:px-6 pt-10 sm:pt-14 pb-2">
         <div className="max-w-5xl mx-auto">
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-[11px] font-mono text-neutral-500 uppercase tracking-[0.25em] mb-5"
-          >
-            Olyxee · Research
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.05 }}
-            className="font-serif text-4xl sm:text-5xl lg:text-[3.5rem] text-neutral-900 tracking-tight leading-[1.1] mb-5"
-          >
-            Research we follow.
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-base sm:text-lg text-neutral-500 leading-relaxed font-light max-w-2xl"
-          >
-            Selected papers shaping verification, evaluation, and observability for AI in production.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.18 }}
-            className="mt-8 flex flex-wrap gap-2"
-          >
-            {TOPICS.map((t) => (
-              <span
-                key={t}
-                className="inline-flex items-center px-3 py-1 rounded-full bg-neutral-100 text-neutral-700 text-xs font-medium tracking-wide"
-              >
-                {t}
-              </span>
-            ))}
-          </motion.div>
+          <h1 className="font-serif text-3xl sm:text-4xl lg:text-[2.75rem] text-neutral-900 tracking-tight leading-[1.1] max-w-3xl">
+            Papers shaping verification, evaluation, and observability for AI in production.
+          </h1>
         </div>
       </section>
 
-      {/* === FEATURED PAPER === */}
-      <section className="px-4 sm:px-6 pt-12 sm:pt-16 pb-4">
+      {/* Featured paper */}
+      <section className="px-4 sm:px-6 pt-10 sm:pt-14 pb-4">
         <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6 }}
-            className="flex items-center gap-2 mb-5 text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500"
-          >
+          <div className="flex items-center gap-2 mb-5 text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500">
             <BookOpen className="w-3.5 h-3.5" aria-hidden="true" focusable="false" />
             Featured paper
-          </motion.div>
-          <motion.a
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7, delay: 0.05 }}
+          </div>
+          <a
             href={featured.url}
             target="_blank"
             rel="noopener noreferrer"
@@ -168,32 +146,20 @@ const Research: FC = () => {
                 />
               </span>
             </div>
-          </motion.a>
+          </a>
         </div>
       </section>
 
-      {/* === MORE PAPERS === */}
-      <section className="pb-20 sm:pb-32 pt-8 sm:pt-12 px-4 sm:px-6">
+      {/* More papers */}
+      <section className="pb-20 sm:pb-28 pt-8 sm:pt-12 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6 }}
-            className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 mb-5"
-          >
+          <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 mb-5">
             More from the field
-          </motion.p>
+          </p>
 
           <ul className="rounded-2xl border border-neutral-200 overflow-hidden divide-y divide-neutral-200 bg-white">
-            {rest.map((paper, idx) => (
-              <motion.li
-                key={paper.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.55, delay: 0.05 + idx * 0.06 }}
-              >
+            {rest.map((paper) => (
+              <li key={paper.title}>
                 <a
                   href={paper.url}
                   target="_blank"
@@ -232,192 +198,299 @@ const Research: FC = () => {
                     </div>
                   </div>
                 </a>
-              </motion.li>
+              </li>
             ))}
           </ul>
         </div>
       </section>
+    </>
+  );
+};
 
-      {/* === RESEARCH DIRECTIONS === */}
-      <section className="py-20 sm:py-28 border-t border-neutral-200/70 bg-neutral-50/60">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7 }}
-            className="mb-12 sm:mb-16"
-          >
-            <p className="text-[11px] font-mono uppercase tracking-[0.25em] text-neutral-500 mb-4">
-              Internal · Research directions
-            </p>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-tight leading-[1.1] mb-4">
-              Where we&apos;re looking next.
-            </h2>
-            <p className="text-base sm:text-lg text-neutral-500 leading-relaxed max-w-2xl font-light">
-              Active research areas that reach beyond software, into systems that perceive and act in the physical world.
-            </p>
-          </motion.div>
+const RoboticsView: FC = () => (
+  <>
+    {/* Hero line — single sentence + one supporting line */}
+    <section className="px-4 sm:px-6 pt-10 sm:pt-14 pb-2">
+      <div className="max-w-5xl mx-auto">
+        <h1 className="font-serif text-3xl sm:text-4xl lg:text-[2.75rem] text-neutral-900 tracking-tight leading-[1.1] max-w-3xl">
+          Embodied intelligence: AI systems that perceive and act in the physical world.
+        </h1>
+        <p className="mt-5 text-base sm:text-lg text-neutral-500 font-light leading-relaxed max-w-2xl">
+          A small program inside Olyxee working on perception, manipulation, and hardware-integrated systems with academic and industry partners.
+        </p>
+      </div>
+    </section>
 
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="max-w-3xl"
-          >
-            <div className="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.25em] mb-4">
-              Research Division
+    {/* Editorial mosaic */}
+    <section className="px-4 sm:px-6 pt-10 sm:pt-14 pb-20 sm:pb-28">
+      <div className="max-w-5xl mx-auto">
+        <div className="flex items-baseline justify-between mb-5">
+          <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.25em] text-neutral-500">
+            Fig. 01 · Field log
+          </span>
+          <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-400">
+            Olyxee Robotics · 2025
+          </span>
+        </div>
+
+        <div className="flex flex-col lg:flex-row gap-4 sm:gap-5 lg:min-h-[560px] xl:min-h-[620px]">
+          <figure className="lg:flex-[1.4] group flex flex-col">
+            <div className="relative flex-1 min-h-0 aspect-[4/3] lg:aspect-auto overflow-hidden rounded-2xl bg-neutral-100 ring-1 ring-neutral-200/80">
+              <Image
+                src={ROBOTICS_FIGURES[0].src}
+                alt={ROBOTICS_FIGURES[0].alt}
+                fill
+                sizes="(max-width: 1024px) 100vw, 700px"
+                className="object-cover transition-transform duration-[900ms] group-hover:scale-[1.02]"
+              />
             </div>
-            <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-neutral-900 tracking-tight leading-[1.15] mb-5">
-              Olyxee Robotics
-            </h3>
-            <p className="text-base sm:text-[17px] text-neutral-600 leading-relaxed font-light mb-8">
-              Embodied intelligence: bringing AI into the physical world through perception, decision-making, and action.
-            </p>
-            <ul className="space-y-3 border-t border-neutral-200/80 pt-6">
-              {[
-                "Embodied intelligence",
-                "Real-world interaction systems",
-                "Autonomous decision layers",
-                "Hardware-integrated AI",
-              ].map((item) => (
-                <li
-                  key={item}
-                  className="flex items-baseline gap-3 text-sm sm:text-[15px] text-neutral-700 font-light"
+            <figcaption className="flex items-baseline justify-between mt-3 px-1">
+              <span className="text-sm font-medium text-neutral-700">{ROBOTICS_FIGURES[0].label}</span>
+              <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-500">
+                {ROBOTICS_FIGURES[0].meta}
+              </span>
+            </figcaption>
+          </figure>
+
+          <div className="lg:flex-1 flex flex-col gap-4 sm:gap-5">
+            {[ROBOTICS_FIGURES[1], ROBOTICS_FIGURES[2]].map((fig, idx) => (
+              <figure key={fig.src} className="group flex-1 flex flex-col">
+                <div
+                  className={`relative flex-1 min-h-0 aspect-[16/10] lg:aspect-auto overflow-hidden rounded-2xl ring-1 ring-neutral-200/80 ${
+                    idx === 0 ? "bg-neutral-900" : "bg-neutral-100"
+                  }`}
                 >
-                  <span aria-hidden className="text-neutral-300 text-[11px] leading-none translate-y-[1px]">
-                    ●
-                  </span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
-          {/* Editorial mosaic — Olyxee Robotics in the field */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.8, delay: 0.15 }}
-            className="mt-14 sm:mt-20"
-          >
-            <div className="flex items-baseline justify-between mb-5">
-              <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.25em] text-neutral-500">
-                Fig. 01 · Field log
-              </span>
-              <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-400">
-                Olyxee Robotics · 2025
-              </span>
-            </div>
-
-            <div className="flex flex-col lg:flex-row gap-4 sm:gap-5 lg:min-h-[560px] xl:min-h-[620px]">
-              <figure className="lg:flex-[1.4] group flex flex-col">
-                <div className="relative flex-1 min-h-0 aspect-[4/3] lg:aspect-auto overflow-hidden rounded-2xl bg-neutral-100 ring-1 ring-neutral-200/80">
                   <Image
-                    src="/images/robotics/humanoid-manipulation.png"
-                    alt="Humanoid robot manipulating objects on a table"
+                    src={fig.src}
+                    alt={fig.alt}
                     fill
-                    sizes="(max-width: 1024px) 100vw, 700px"
+                    sizes="(max-width: 1024px) 100vw, 480px"
                     className="object-cover transition-transform duration-[900ms] group-hover:scale-[1.02]"
                   />
                 </div>
                 <figcaption className="flex items-baseline justify-between mt-3 px-1">
-                  <span className="text-sm font-medium text-neutral-700">Humanoid manipulation</span>
+                  <span className="text-sm font-medium text-neutral-700">{fig.label}</span>
                   <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-500">
-                    Embodied intelligence · 01
+                    {fig.meta}
                   </span>
                 </figcaption>
               </figure>
+            ))}
+          </div>
+        </div>
 
-              <div className="lg:flex-1 flex flex-col gap-4 sm:gap-5">
-                <figure className="group flex-1 flex flex-col">
-                  <div className="relative flex-1 min-h-0 aspect-[16/10] lg:aspect-auto overflow-hidden rounded-2xl bg-neutral-900 ring-1 ring-neutral-200/80">
-                    <Image
-                      src="/images/robotics/foundation-partnerships.png"
-                      alt="Boston Dynamics and Google DeepMind on stage"
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 480px"
-                      className="object-cover transition-transform duration-[900ms] group-hover:scale-[1.02]"
+        <figure className="group mt-4 sm:mt-5">
+          <div className="relative aspect-[21/9] overflow-hidden rounded-2xl bg-neutral-100 ring-1 ring-neutral-200/80">
+            <Image
+              src={ROBOTICS_FIGURES[3].src}
+              alt={ROBOTICS_FIGURES[3].alt}
+              fill
+              sizes="100vw"
+              className="object-cover object-center transition-transform duration-[900ms] group-hover:scale-[1.02]"
+            />
+          </div>
+          <figcaption className="flex items-baseline justify-between mt-3 px-1">
+            <span className="text-sm font-medium text-neutral-700">{ROBOTICS_FIGURES[3].label}</span>
+            <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-500">
+              {ROBOTICS_FIGURES[3].meta}
+            </span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+  </>
+);
+
+const isTabId = (v: unknown): v is TabId =>
+  v === "research" || v === "robotics";
+
+const Research: FC = () => {
+  const router = useRouter();
+  const [tab, setTab] = useState<TabId>("research");
+  const tabRefs = useRef<Record<TabId, HTMLButtonElement | null>>({
+    research: null,
+    robotics: null,
+  });
+  const panelTopRef = useRef<HTMLDivElement | null>(null);
+  const isUserSwitchRef = useRef(false);
+
+  // Initialize from URL on first client render and keep in sync with back/forward.
+  useEffect(() => {
+    if (!router.isReady) return;
+    const q = router.query.tab;
+    const next = Array.isArray(q) ? q[0] : q;
+    if (isTabId(next) && next !== tab) {
+      setTab(next);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router.isReady, router.query.tab]);
+
+  // When the user switches a tab, push to the URL (shallow) and scroll panel into view.
+  const handleSelect = (next: TabId, focus = true) => {
+    if (next === tab) return;
+    isUserSwitchRef.current = true;
+    setTab(next);
+    router.replace(
+      { pathname: router.pathname, query: { ...router.query, tab: next } },
+      undefined,
+      { shallow: true, scroll: false },
+    );
+    if (focus) {
+      // Move keyboard focus to the newly selected tab (roving tabindex pattern).
+      requestAnimationFrame(() => tabRefs.current[next]?.focus());
+    }
+  };
+
+  // After the new panel mounts, scroll its top into view to avoid jank when
+  // switching between panels of different heights.
+  useEffect(() => {
+    if (!isUserSwitchRef.current) return;
+    isUserSwitchRef.current = false;
+    const top = panelTopRef.current;
+    if (!top) return;
+    const rect = top.getBoundingClientRect();
+    if (rect.top < 0) {
+      const y = window.scrollY + rect.top - 16;
+      window.scrollTo({ top: Math.max(y, 0), behavior: "smooth" });
+    }
+  }, [tab]);
+
+  const onTabKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
+    const ids = TABS.map((t) => t.id);
+    const idx = ids.indexOf(tab);
+    if (e.key === "ArrowRight") {
+      e.preventDefault();
+      handleSelect(ids[(idx + 1) % ids.length]);
+    } else if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      handleSelect(ids[(idx - 1 + ids.length) % ids.length]);
+    } else if (e.key === "Home") {
+      e.preventDefault();
+      handleSelect(ids[0]);
+    } else if (e.key === "End") {
+      e.preventDefault();
+      handleSelect(ids[ids.length - 1]);
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-white text-neutral-900 relative">
+      <SEO
+        title="Research We Follow"
+        description="Key papers and publications shaping AI verification, evaluation, and observability. Research that informs how Olyxee builds infrastructure for reliable AI applications."
+        path="/research"
+      />
+      <div className="grain" />
+      <Header />
+
+      {/* === TAB BAR === */}
+      <section className="pt-32 sm:pt-40 pb-6 sm:pb-8 px-4 sm:px-6 border-b border-neutral-200/70 bg-white">
+        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
+          <div className="flex items-center gap-2.5">
+            <Image
+              src="/Logo/Olyxee_Logo.png"
+              alt="Olyxee"
+              width={28}
+              height={28}
+              className="w-7 h-7"
+              priority
+            />
+            <span className="font-semibold text-neutral-900 text-[17px] tracking-tight">
+              Olyxee
+            </span>
+            <span aria-hidden className="text-neutral-300 mx-1">
+              /
+            </span>
+            <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-neutral-500">
+              {tab === "research" ? "Research" : "Robotics"}
+            </span>
+          </div>
+
+          <div
+            role="tablist"
+            aria-label="Section"
+            className="inline-flex self-start sm:self-auto rounded-full bg-neutral-100 p-1"
+          >
+            {TABS.map((t) => {
+              const isActive = tab === t.id;
+              return (
+                <button
+                  key={t.id}
+                  ref={(el) => {
+                    tabRefs.current[t.id] = el;
+                  }}
+                  type="button"
+                  role="tab"
+                  aria-selected={isActive}
+                  aria-controls="research-tabpanel"
+                  id={`tab-${t.id}`}
+                  tabIndex={isActive ? 0 : -1}
+                  onClick={() => handleSelect(t.id, false)}
+                  onKeyDown={onTabKeyDown}
+                  className={`relative px-4 sm:px-5 py-1.5 rounded-full text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-300 ${
+                    isActive ? "text-neutral-900" : "text-neutral-500 hover:text-neutral-900"
+                  }`}
+                >
+                  {isActive && (
+                    <motion.span
+                      layoutId="research-tab-pill"
+                      className="absolute inset-0 bg-white rounded-full shadow-sm ring-1 ring-neutral-200/70"
+                      transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                      aria-hidden
                     />
-                  </div>
-                  <figcaption className="flex items-baseline justify-between mt-3 px-1">
-                    <span className="text-sm font-medium text-neutral-700">Foundation partnerships</span>
-                    <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-500">
-                      Ecosystem · 02
-                    </span>
-                  </figcaption>
-                </figure>
-
-                <figure className="group flex-1 flex flex-col">
-                  <div className="relative flex-1 min-h-0 aspect-[16/10] lg:aspect-auto overflow-hidden rounded-2xl bg-neutral-100 ring-1 ring-neutral-200/80">
-                    <Image
-                      src="/images/robotics/hardware-design.png"
-                      alt="Engineer reviewing CAD blueprints on a monitor"
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 480px"
-                      className="object-cover transition-transform duration-[900ms] group-hover:scale-[1.02]"
-                    />
-                  </div>
-                  <figcaption className="flex items-baseline justify-between mt-3 px-1">
-                    <span className="text-sm font-medium text-neutral-700">Hardware design</span>
-                    <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-500">
-                      Engineering · 03
-                    </span>
-                  </figcaption>
-                </figure>
-              </div>
-            </div>
-
-            <figure className="group mt-4 sm:mt-5">
-              <div className="relative aspect-[21/9] overflow-hidden rounded-2xl bg-neutral-100 ring-1 ring-neutral-200/80">
-                <Image
-                  src="/images/robotics/field-deployment.png"
-                  alt="Students and engineers around a solar-powered vehicle prototype"
-                  fill
-                  sizes="100vw"
-                  className="object-cover object-center transition-transform duration-[900ms] group-hover:scale-[1.02]"
-                />
-              </div>
-              <figcaption className="flex items-baseline justify-between mt-3 px-1">
-                <span className="text-sm font-medium text-neutral-700">Field deployment</span>
-                <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-500">
-                  Real-world programs · 04
-                </span>
-              </figcaption>
-            </figure>
-          </motion.div>
+                  )}
+                  <span className="relative z-10">{t.label}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
       </section>
 
-      {/* === BOTTOM CTA === */}
-      <section className="py-20 sm:py-32 border-t border-neutral-200/70">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      {/* === TAB CONTENT === */}
+      <div ref={panelTopRef} aria-hidden className="scroll-mt-24" />
+      <div
+        id="research-tabpanel"
+        role="tabpanel"
+        aria-labelledby={`tab-${tab}`}
+      >
+        <AnimatePresence mode="wait">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            key={tab}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900 mb-5 sm:mb-6">
-              Want to collaborate on research?
-            </h2>
-            <p className="text-neutral-500 text-base sm:text-lg max-w-lg mx-auto mb-8 sm:mb-10 font-light leading-relaxed">
-              We work with teams building AI applications who want to improve reliability, accuracy, and observability.
-            </p>
-            <Link
-              href="/contact"
-              className="group inline-flex items-center gap-2 px-8 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide"
-            >
-              Get in touch
-              <ArrowRight
-                className="w-4 h-4 group-hover:translate-x-0.5 transition-transform"
-                aria-hidden="true"
-                focusable="false"
-              />
-            </Link>
+            {tab === "research" ? <ResearchView /> : <RoboticsView />}
           </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* === BOTTOM CTA === */}
+      <section className="py-20 sm:py-28 border-t border-neutral-200/70">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+          <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900 mb-5 sm:mb-6">
+            {tab === "research"
+              ? "Want to collaborate on research?"
+              : "Building in the physical world?"}
+          </h2>
+          <p className="text-neutral-500 text-base sm:text-lg max-w-lg mx-auto mb-8 sm:mb-10 font-light leading-relaxed">
+            {tab === "research"
+              ? "We work with teams building AI applications who want to improve reliability, accuracy, and observability."
+              : "We partner on embodied AI, perception, and hardware-integrated systems."}
+          </p>
+          <Link
+            href="/contact"
+            className="group inline-flex items-center gap-2 px-8 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide"
+          >
+            Get in touch
+            <ArrowRight
+              className="w-4 h-4 group-hover:translate-x-0.5 transition-transform"
+              aria-hidden="true"
+              focusable="false"
+            />
+          </Link>
         </div>
       </section>
 
