@@ -10,6 +10,8 @@ import { Menu, X } from 'lucide-react';
 const menuItems = [
     { name: "Research", href: "/research" },
     { name: "Products", href: "/products" },
+    { name: "Enterprise", href: "/enterprise" },
+    { name: "Partnerships", href: "/partnerships" },
     { name: "About", href: "/about" },
     { name: "Careers", href: "/careers" },
 ];
