@@ -41,14 +41,14 @@ type SignInOption = {
 const SIGNIN_OPTIONS: SignInOption[] = [
     {
         name: "Ordo",
-        description: "Core AI execution system",
+        description: "Compliance workflows",
         href: "https://ordo.olyxee.com/",
         logo: "/images/ordo-logo.png",
         external: true,
     },
     {
         name: "Addup",
-        description: "Reconciliation app",
+        description: "Accounting and reconciliation",
         href: "https://addup.olyxee.com/",
         logo: "/images/addup-logo.png",
         external: true,

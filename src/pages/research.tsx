@@ -5,54 +5,39 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, ArrowUpRight, BookOpen } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const papers = [
   {
     title: "Attention Residuals: Scalable Sparse Attention with Residual Connections for Efficient Long-Context Transformers",
     authors: "S. Rao, K. Müller, A. Desai, N. Ivanov",
-    venue: "ICLR 2026",
+    venue: "ICLR",
     year: "2026",
-    category: "Architecture",
-    description: "A residual-augmented sparse attention mechanism that preserves long-range dependencies at a fraction of the compute cost, enabling efficient inference on sequences over 128K tokens.",
     url: "https://arxiv.org/abs/2603.15031",
   },
   {
     title: "Reducing Hallucinations in Production AI Applications Through Real-Time Verification Pipelines",
     authors: "J. Chen, M. Patel, S. Liu",
-    venue: "NeurIPS 2025",
+    venue: "NeurIPS",
     year: "2025",
-    category: "Verification",
-    description: "A lightweight verification layer that catches factual inconsistencies before they reach the user. Reduces hallucination rates by up to 62% in RAG applications without adding meaningful latency.",
     url: "https://arxiv.org/abs/2510.22751",
   },
   {
     title: "Continuous Evaluation Frameworks for AI-Powered Applications in Production",
     authors: "R. Kumar, A. Zhang, T. Nakamura",
-    venue: "ICML 2025",
+    venue: "ICML",
     year: "2025",
-    category: "Evaluation",
-    description: "An always-on evaluation system that scores accuracy, consistency, and safety on every response, so teams catch quality drift in minutes instead of waiting for user complaints.",
     url: "https://arxiv.org/abs/2603.26718",
   },
   {
     title: "Observability Infrastructure for Agentic AI Workflows",
     authors: "L. Wang, D. Fischer, P. Okonkwo",
-    venue: "AAAI 2026",
+    venue: "AAAI",
     year: "2026",
-    category: "Monitoring",
-    description: "An observability stack for multi-step agent workflows, with trace-level visibility into every decision, tool call, and retrieval step running in production.",
     url: "https://arxiv.org/abs/2512.08769",
   },
 ];
-
-const CATEGORY_COLORS: Record<string, string> = {
-  Architecture: "bg-violet-50 text-violet-700",
-  Verification: "bg-emerald-50 text-emerald-700",
-  Evaluation: "bg-amber-50 text-amber-700",
-  Monitoring: "bg-blue-50 text-blue-700",
-};
 
 const TABS = [
   { id: "research", label: "Research" },
@@ -89,9 +74,6 @@ const ROBOTICS_FIGURES = [
 ];
 
 const ResearchView: FC = () => {
-  const featured = papers[0];
-  const rest = papers.slice(1);
-
   return (
     <>
       {/* Hero line — single sentence */}
@@ -103,99 +85,49 @@ const ResearchView: FC = () => {
         </div>
       </section>
 
-      {/* Featured paper */}
-      <section className="px-4 sm:px-6 pt-10 sm:pt-14 pb-4">
+      {/* Papers — editorial list, dim-on-hover */}
+      <section className="px-4 sm:px-6 pt-12 sm:pt-16 pb-20 sm:pb-28">
         <div className="max-w-5xl mx-auto">
-          <div className="flex items-center gap-2 mb-5 text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500">
-            <BookOpen className="w-3.5 h-3.5" aria-hidden="true" focusable="false" />
-            Featured paper
-          </div>
-          <a
-            href={featured.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group block rounded-2xl border border-neutral-200 bg-neutral-50/60 hover:bg-white hover:border-neutral-300 transition-all p-6 sm:p-8 lg:p-10"
-          >
-            <div className="flex flex-wrap items-center gap-2 mb-5 text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-500">
-              <span>{featured.venue}</span>
-              <span aria-hidden className="text-neutral-300">·</span>
-              <span>{featured.year}</span>
-              <span aria-hidden className="text-neutral-300">·</span>
-              <span
-                className={`inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-medium tracking-wide normal-case ${
-                  CATEGORY_COLORS[featured.category] ?? "bg-neutral-100 text-neutral-700"
-                }`}
-              >
-                {featured.category}
-              </span>
-            </div>
-            <h2 className="font-serif text-2xl sm:text-3xl lg:text-[2.25rem] text-neutral-900 tracking-tight leading-[1.15] mb-4 group-hover:text-blue-700 transition-colors">
-              {featured.title}
-            </h2>
-            <p className="text-base text-neutral-600 leading-relaxed font-light max-w-3xl mb-6">
-              {featured.description}
+          <div className="flex items-baseline justify-between mb-6 pb-4 border-b border-neutral-300">
+            <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500">
+              Selected work
             </p>
-            <div className="flex flex-wrap items-center justify-between gap-3 pt-5 border-t border-neutral-200/80">
-              <p className="text-sm text-neutral-500 font-light">{featured.authors}</p>
-              <span className="inline-flex items-center gap-1.5 text-sm font-medium text-neutral-700 group-hover:text-blue-700 transition-colors">
-                Read paper
-                <ArrowUpRight
-                  className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                  aria-hidden="true"
-                  focusable="false"
-                />
-              </span>
-            </div>
-          </a>
-        </div>
-      </section>
+            <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-400">
+              {papers.length.toString().padStart(2, "0")} papers
+            </p>
+          </div>
 
-      {/* More papers */}
-      <section className="pb-20 sm:pb-28 pt-8 sm:pt-12 px-4 sm:px-6">
-        <div className="max-w-5xl mx-auto">
-          <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 mb-5">
-            More from the field
-          </p>
-
-          <ul className="rounded-2xl border border-neutral-200 overflow-hidden divide-y divide-neutral-200 bg-white">
-            {rest.map((paper) => (
+          <ul className="divide-y divide-neutral-200">
+            {papers.map((paper) => (
               <li key={paper.title}>
                 <a
                   href={paper.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group grid grid-cols-1 md:grid-cols-[200px_1fr] gap-4 md:gap-8 px-5 sm:px-6 py-6 sm:py-8 hover:bg-neutral-50/60 transition-colors"
+                  className="group block py-7 sm:py-9 transition-opacity duration-200 hover:opacity-50 focus:outline-none focus-visible:opacity-50"
                 >
-                  <div className="flex md:flex-col flex-wrap items-start gap-2 md:gap-1">
-                    <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-700">
-                      {paper.venue} <span className="text-neutral-500">· {paper.year}</span>
+                  <div className="grid grid-cols-[64px_1fr_auto] sm:grid-cols-[88px_1fr_auto] gap-4 sm:gap-8 items-baseline">
+                    <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-500 tabular-nums">
+                      {paper.year}
                     </p>
-                    <span
-                      className={`inline-flex items-center md:mt-3 px-2 py-0.5 rounded-md text-[10px] font-medium tracking-wide ${
-                        CATEGORY_COLORS[paper.category] ?? "bg-neutral-100 text-neutral-700"
-                      }`}
-                    >
-                      {paper.category}
-                    </span>
-                  </div>
-                  <div className="min-w-0">
-                    <h3 className="font-serif text-xl sm:text-2xl text-neutral-900 tracking-tight leading-snug mb-3 group-hover:text-blue-700 transition-colors">
+                    <h3 className="font-serif text-xl sm:text-2xl lg:text-[1.65rem] text-neutral-900 tracking-tight leading-[1.2]">
                       {paper.title}
                     </h3>
-                    <p className="text-sm sm:text-[15px] text-neutral-600 leading-relaxed font-light max-w-3xl mb-4">
-                      {paper.description}
-                    </p>
-                    <div className="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-neutral-100">
-                      <p className="text-xs sm:text-sm text-neutral-500 font-light">{paper.authors}</p>
-                      <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-neutral-700 group-hover:text-blue-700 transition-colors">
-                        Read paper
-                        <ArrowUpRight
-                          className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                          aria-hidden="true"
-                          focusable="false"
-                        />
+                    <ArrowUpRight
+                      className="w-4 h-4 text-neutral-400 mt-1 sm:mt-1.5 self-start"
+                      aria-hidden="true"
+                      focusable="false"
+                    />
+                  </div>
+                  <div className="grid grid-cols-[64px_1fr] sm:grid-cols-[88px_1fr] gap-4 sm:gap-8 mt-3">
+                    <span aria-hidden />
+                    <p className="text-[12px] sm:text-[13px] font-light text-neutral-500">
+                      {paper.authors}
+                      <span aria-hidden className="text-neutral-300 mx-2">·</span>
+                      <span className="font-mono uppercase tracking-[0.22em] text-[11px]">
+                        {paper.venue}
                       </span>
-                    </div>
+                    </p>
                   </div>
                 </a>
               </li>
