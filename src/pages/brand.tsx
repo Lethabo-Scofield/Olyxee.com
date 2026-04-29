@@ -123,7 +123,7 @@ const Brand: FC = () => {
               Download logo <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </a>
             <a
-              href="mailto:hello@olyxee.com?subject=Press%20%26%20brand%20inquiry"
+              href="mailto:scofield@olyxee.com?subject=Brand%20Guidelines%20%E2%80%94%20Press%20%26%20brand%20inquiry"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 text-neutral-900 border border-neutral-200 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide"
             >
               Press & brand inquiries
@@ -236,7 +236,7 @@ const Brand: FC = () => {
                 <p className="text-xs text-neutral-500 font-light">Use when both elements are needed together</p>
               </div>
               <a
-                href="mailto:hello@olyxee.com?subject=Brand%20asset%20request"
+                href="mailto:scofield@olyxee.com?subject=Brand%20Guidelines%20%E2%80%94%20Logo%20vector%20%2F%20asset%20request"
                 className="text-xs font-medium text-neutral-700 hover:text-neutral-900 inline-flex items-center gap-1"
               >
                 Request SVG
@@ -456,7 +456,7 @@ const Brand: FC = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a
-                href="mailto:hello@olyxee.com?subject=Press%20%26%20brand%20inquiry"
+                href="mailto:scofield@olyxee.com?subject=Brand%20Guidelines%20%E2%80%94%20Press%20%26%20brand%20inquiry"
                 className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide"
               >
                 Contact press & brand <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />

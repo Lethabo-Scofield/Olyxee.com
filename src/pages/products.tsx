@@ -522,7 +522,7 @@ const ProductsPage: FC = () => {
                   <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </a>
                 <a
-                  href="mailto:hello@olyxee.com?subject=Addup%20upgrade%20inquiry"
+                  href="mailto:scofield@olyxee.com?subject=Addup%20%E2%80%94%20Upgrade%20inquiry"
                   className="text-sm font-medium text-neutral-700 hover:text-neutral-900 transition-colors"
                 >
                   Talk to us about upgrading →

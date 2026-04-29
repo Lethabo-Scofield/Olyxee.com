@@ -113,7 +113,7 @@ const Partnerships: FC = () => {
             className="mt-10 flex flex-col sm:flex-row gap-3 justify-center"
           >
             <a
-              href="mailto:hello@olyxee.com?subject=Partnership%20inquiry"
+              href="mailto:scofield@olyxee.com?subject=Partnerships%20%E2%80%94%20New%20partnership%20inquiry"
               className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-neutral-900 text-white rounded-full font-medium hover:bg-black transition-all text-sm tracking-wide"
             >
               Contact partnerships <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
@@ -275,7 +275,7 @@ const Partnerships: FC = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a
-                href="mailto:hello@olyxee.com?subject=Partnership%20inquiry"
+                href="mailto:scofield@olyxee.com?subject=Partnerships%20%E2%80%94%20New%20partnership%20inquiry"
                 className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide"
               >
                 Contact partnerships <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />

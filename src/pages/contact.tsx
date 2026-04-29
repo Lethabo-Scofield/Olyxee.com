@@ -9,37 +9,37 @@ const CONTACT_OPTIONS = [
   {
     label: "Sales",
     title: "Talk to our team about Olyxee for your company.",
-    href: "mailto:scofield@olyxee.com?subject=Sales%20inquiry",
+    href: "mailto:scofield@olyxee.com?subject=Contact%20%E2%80%94%20Sales%20inquiry",
     cta: "Contact sales",
   },
   {
     label: "Enterprise",
     title: "Custom deployments, pilots, and dedicated support.",
-    href: "mailto:scofield@olyxee.com?subject=Enterprise%20inquiry",
+    href: "mailto:scofield@olyxee.com?subject=Contact%20%E2%80%94%20Enterprise%20inquiry",
     cta: "Contact enterprise",
   },
   {
     label: "Partnerships",
     title: "Vendors, integrators, cloud and infrastructure partners.",
-    href: "mailto:scofield@olyxee.com?subject=Partnership%20inquiry",
+    href: "mailto:scofield@olyxee.com?subject=Contact%20%E2%80%94%20Partnership%20inquiry",
     cta: "Contact partnerships",
   },
   {
     label: "Research",
     title: "Joint research, datasets, and academic collaboration.",
-    href: "mailto:scofield@olyxee.com?subject=Research%20collaboration",
+    href: "mailto:scofield@olyxee.com?subject=Contact%20%E2%80%94%20Research%20collaboration",
     cta: "Contact research",
   },
   {
     label: "Support",
     title: "Existing customer with a question or issue.",
-    href: "mailto:scofield@olyxee.com?subject=Support%20request",
+    href: "mailto:scofield@olyxee.com?subject=Contact%20%E2%80%94%20Support%20request",
     cta: "Contact support",
   },
   {
     label: "Press",
     title: "Media, interviews, and brand assets.",
-    href: "mailto:scofield@olyxee.com?subject=Press%20inquiry",
+    href: "mailto:scofield@olyxee.com?subject=Contact%20%E2%80%94%20Press%20inquiry",
     cta: "Contact press",
   },
   {
@@ -52,7 +52,7 @@ const CONTACT_OPTIONS = [
   {
     label: "General",
     title: "Anything else, including questions about what we're building.",
-    href: "mailto:scofield@olyxee.com",
+    href: "mailto:scofield@olyxee.com?subject=Contact%20%E2%80%94%20General%20inquiry",
     cta: "Send a message",
   },
 ];
