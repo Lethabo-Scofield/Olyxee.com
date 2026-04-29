@@ -1,4 +1,5 @@
 import { FC } from "react";
+import Image from "next/image";
 import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
@@ -206,6 +207,37 @@ const Enterprise: FC = () => {
         </div>
       </section>
 
+      {/* === EDITORIAL PHOTO 01 === */}
+      <section className="px-4 sm:px-6 pb-16 sm:pb-24 -mt-4 sm:-mt-8">
+        <div className="max-w-6xl mx-auto">
+          <motion.figure
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+          >
+            <div className="relative overflow-hidden rounded-xl ring-1 ring-neutral-900/10 aspect-[16/9] sm:aspect-[21/9] bg-neutral-100">
+              <Image
+                src="/images/enterprise/team.png"
+                alt="A cross-functional team reviewing operational metrics around a conference table"
+                fill
+                priority
+                sizes="(min-width: 1024px) 1024px, 100vw"
+                className="object-cover grayscale contrast-[1.04]"
+              />
+            </div>
+            <figcaption className="mt-4 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+              <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-500">
+                Fig. 01 · Operations review with a customer team
+              </p>
+              <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-400">
+                Discovery
+              </p>
+            </figcaption>
+          </motion.figure>
+        </div>
+      </section>
+
       {/* === STATS BAND === */}
       <section id="stats" className="relative border-y border-neutral-200/80 bg-neutral-50/50 py-14 sm:py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -302,38 +334,66 @@ const Enterprise: FC = () => {
       {/* === HOW A DEPLOYMENT WORKS (timeline) === */}
       <section id="how" className="py-20 sm:py-32 bg-gradient-to-b from-neutral-50/60 to-white border-t border-neutral-200/70">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="max-w-3xl">
-            <motion.p
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              custom={0}
-              variants={fadeUp}
-              className="text-sm font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-4"
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-10 lg:gap-16 items-end">
+            <div className="max-w-3xl">
+              <motion.p
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                custom={0}
+                variants={fadeUp}
+                className="text-sm font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-4"
+              >
+                How a deployment works
+              </motion.p>
+              <motion.h2
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                custom={1}
+                variants={fadeUp}
+                className="font-serif text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-tight leading-[1.1]"
+              >
+                From discovery to production in a quarter,{" "}
+                <em className="text-neutral-500 not-italic">not a year</em>.
+              </motion.h2>
+              <motion.p
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                custom={2}
+                variants={fadeUp}
+                className="mt-6 text-base sm:text-lg text-neutral-500 leading-relaxed font-light"
+              >
+                Each engagement starts narrow, ships fast, and expands as trust compounds. No multi-year procurement cycles, no vaporware roadmaps.
+              </motion.p>
+            </div>
+
+            <motion.figure
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="hidden lg:block"
             >
-              How a deployment works
-            </motion.p>
-            <motion.h2
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              custom={1}
-              variants={fadeUp}
-              className="font-serif text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-tight leading-[1.1]"
-            >
-              From discovery to production in a quarter,{" "}
-              <em className="text-neutral-500 not-italic">not a year</em>.
-            </motion.h2>
-            <motion.p
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              custom={2}
-              variants={fadeUp}
-              className="mt-6 text-base sm:text-lg text-neutral-500 leading-relaxed font-light"
-            >
-              Each engagement starts narrow, ships fast, and expands as trust compounds. No multi-year procurement cycles, no vaporware roadmaps.
-            </motion.p>
+              <div className="relative overflow-hidden rounded-xl ring-1 ring-neutral-900/10 aspect-[4/3] bg-neutral-100">
+                <Image
+                  src="/images/enterprise/engineering.png"
+                  alt="Two engineers collaborating at code monitors during an integration session"
+                  fill
+                  sizes="360px"
+                  className="object-cover grayscale contrast-[1.04]"
+                />
+              </div>
+              <figcaption className="mt-3 flex items-baseline justify-between gap-4">
+                <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-500">
+                  Fig. 02 · Integration session
+                </p>
+                <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-400">
+                  Pilot
+                </p>
+              </figcaption>
+            </motion.figure>
           </div>
 
           <div className="mt-16 sm:mt-20 relative">
