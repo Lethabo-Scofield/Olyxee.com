@@ -17,20 +17,27 @@ const fadeUp: Variants = {
 };
 
 function HeroWaves() {
-  // Each wave's wavelength (= 2 × T spacing) must evenly divide 1200 so the
-  // CSS translateX(-1200px) loop is seamless across breakpoints.
+  // Each wave is one large smooth sine, wavelength 1200 (T spacing 600),
+  // so translateX(-1200px) loops seamlessly. Bands are well-separated
+  // vertically (Stripe-style stacked ribbons) instead of overlapping.
   const waves = [
-    // wavelength 600 (T spacing 300) -> 2 cycles per 1200
-    { d: "M0,310 Q150,210 300,310 T600,310 T900,310 T1200,310 T1500,310 T1800,310 T2100,310 T2400,310", stroke: "#0a0a0a", opacity: 0.07, duration: 28, strokeWidth: 1 },
-    // wavelength 600 (T spacing 300) -> 2 cycles per 1200, deeper dip
-    { d: "M0,360 Q150,250 300,360 T600,360 T900,360 T1200,360 T1500,360 T1800,360 T2100,360 T2400,360", stroke: "#171717", opacity: 0.09, duration: 20, strokeWidth: 1 },
-    // wavelength 400 (T spacing 200) -> 3 cycles per 1200, blue accent
-    { d: "M0,330 Q100,255 200,330 T400,330 T600,330 T800,330 T1000,330 T1200,330 T1400,330 T1600,330 T1800,330 T2000,330 T2200,330 T2400,330", stroke: "#3b82f6", opacity: 0.16, duration: 14, strokeWidth: 1.25 },
-    // wavelength 600 (T spacing 300) -> 2 cycles per 1200, lower band
-    { d: "M0,395 Q150,310 300,395 T600,395 T900,395 T1200,395 T1500,395 T1800,395 T2100,395 T2400,395", stroke: "#525252", opacity: 0.08, duration: 23, strokeWidth: 1 },
-    // wavelength 300 (T spacing 150) -> 4 cycles per 1200, tight blue zigzag
-    { d: "M0,275 Q75,215 150,275 T300,275 T450,275 T600,275 T750,275 T900,275 T1050,275 T1200,275 T1350,275 T1500,275 T1650,275 T1800,275 T1950,275 T2100,275 T2250,275 T2400,275", stroke: "#3b82f6", opacity: 0.10, duration: 17, strokeWidth: 1 },
+    // Top neutral wisp
+    { y: 150, amp: 70, stroke: "#d4d4d4", opacity: 0.6, strokeWidth: 2,   duration: 38 },
+    // Mid-upper neutral
+    { y: 240, amp: 80, stroke: "#a3a3a3", opacity: 0.55, strokeWidth: 2.5, duration: 30 },
+    // Center hero ribbon - orange accent (matches the underline)
+    { y: 330, amp: 95, stroke: "#f97316", opacity: 0.85, strokeWidth: 3.5, duration: 24 },
+    // Lower blue accent
+    { y: 425, amp: 80, stroke: "#3b82f6", opacity: 0.7, strokeWidth: 3,   duration: 28 },
+    // Bottom neutral wisp
+    { y: 515, amp: 70, stroke: "#737373", opacity: 0.45, strokeWidth: 2,   duration: 34 },
   ];
+
+  const buildPath = (y: number, amp: number) => {
+    // Quadratic + smooth-quad continuation, wavelength 1200, repeats to x=2400
+    const top = y - amp;
+    return `M0,${y} Q300,${top} 600,${y} T1200,${y} T1800,${y} T2400,${y}`;
+  };
 
   return (
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -49,7 +56,7 @@ function HeroWaves() {
             }}
           >
             <path
-              d={w.d}
+              d={buildPath(w.y, w.amp)}
               stroke={w.stroke}
               strokeWidth={w.strokeWidth}
               strokeLinecap="round"
@@ -60,8 +67,11 @@ function HeroWaves() {
           </g>
         ))}
       </svg>
-      <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-white to-transparent" />
+      {/* Edge fades into the white hero */}
+      <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-white to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white to-transparent" />
+      <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent" />
+      <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent" />
     </div>
   );
 }
