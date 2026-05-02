@@ -674,7 +674,7 @@ function StoriesSection() {
         >
           <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Stories</p>
           <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900 max-w-2xl">
-            AI at work, across the operations that matter
+            Olyxee AI Infrastructure at work, across the operations that matter
           </h2>
         </motion.div>
 
