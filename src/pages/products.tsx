@@ -17,26 +17,26 @@ const fadeUp: Variants = {
 };
 
 function HeroWaves() {
-  // Each wave is one large smooth sine, wavelength 1200 (T spacing 600),
-  // so translateX(-1200px) loops seamlessly. Bands are well-separated
-  // vertically (Stripe-style stacked ribbons) instead of overlapping.
+  // Realistic stacked wave layers (filled shapes that close to the bottom),
+  // not stroked lines. Wavelength 1200 (T spacing 600) so translateX(-1200px)
+  // loops seamlessly. Layers blend with multiply-style opacity for depth.
   const waves = [
-    // Top neutral wisp
-    { y: 150, amp: 70, stroke: "#d4d4d4", opacity: 0.6, strokeWidth: 2,   duration: 38 },
-    // Mid-upper neutral
-    { y: 240, amp: 80, stroke: "#a3a3a3", opacity: 0.55, strokeWidth: 2.5, duration: 30 },
-    // Center hero ribbon - orange accent (matches the underline)
-    { y: 330, amp: 95, stroke: "#f97316", opacity: 0.85, strokeWidth: 3.5, duration: 24 },
-    // Lower blue accent
-    { y: 425, amp: 80, stroke: "#3b82f6", opacity: 0.7, strokeWidth: 3,   duration: 28 },
-    // Bottom neutral wisp
-    { y: 515, amp: 70, stroke: "#737373", opacity: 0.45, strokeWidth: 2,   duration: 34 },
+    // Back layer - tallest, lightest neutral
+    { y: 360, amp: 75, fill: "#e5e5e5", opacity: 0.55, duration: 42 },
+    // Mid neutral wash
+    { y: 410, amp: 65, fill: "#a3a3a3", opacity: 0.35, duration: 34 },
+    // Blue band
+    { y: 455, amp: 60, fill: "#3b82f6", opacity: 0.32, duration: 30 },
+    // Orange band - the focal accent
+    { y: 500, amp: 55, fill: "#f97316", opacity: 0.5,  duration: 24 },
+    // Front dark layer - smallest, anchors the bottom
+    { y: 545, amp: 40, fill: "#171717", opacity: 0.55, duration: 28 },
   ];
 
   const buildPath = (y: number, amp: number) => {
-    // Quadratic + smooth-quad continuation, wavelength 1200, repeats to x=2400
+    // Wavy top edge, then close down to the bottom of the viewBox to fill.
     const top = y - amp;
-    return `M0,${y} Q300,${top} 600,${y} T1200,${y} T1800,${y} T2400,${y}`;
+    return `M0,${y} Q300,${top} 600,${y} T1200,${y} T1800,${y} T2400,${y} L2400,600 L0,600 Z`;
   };
 
   return (
@@ -53,25 +53,22 @@ function HeroWaves() {
             style={{
               animation: `wave-drift ${w.duration}s linear infinite`,
               willChange: "transform",
+              mixBlendMode: "multiply",
             }}
           >
             <path
               d={buildPath(w.y, w.amp)}
-              stroke={w.stroke}
-              strokeWidth={w.strokeWidth}
-              strokeLinecap="round"
+              fill={w.fill}
               opacity={w.opacity}
-              vectorEffect="non-scaling-stroke"
-              fill="none"
             />
           </g>
         ))}
       </svg>
-      {/* Edge fades into the white hero */}
-      <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-white to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white to-transparent" />
-      <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent" />
-      <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent" />
+      {/* Edge fades blend the waves into the white hero */}
+      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-white via-white/80 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white to-transparent" />
+      <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent" />
+      <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent" />
     </div>
   );
 }
