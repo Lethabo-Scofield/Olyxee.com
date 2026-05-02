@@ -104,6 +104,16 @@ const DEPLOYMENT_STAGES = [
   },
 ];
 
+const TRUST_LOGOS = [
+  { name: "OpenAI", src: "/logos/collaborators/openai.svg" },
+  { name: "Anthropic", src: "/logos/collaborators/anthropic.svg" },
+  { name: "Google", src: "/logos/collaborators/google.svg" },
+  { name: "Microsoft", src: "/logos/collaborators/microsoft.svg" },
+  { name: "Meta", src: "/logos/collaborators/meta.svg" },
+  { name: "NVIDIA", src: "/logos/collaborators/nvidia.svg" },
+  { name: "Stripe", src: "/logos/collaborators/stripe.svg" },
+];
+
 const DOMAINS = [
   {
     icon: Calculator,
@@ -462,51 +472,47 @@ const Enterprise: FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.05 }}
-            className="font-serif text-4xl sm:text-6xl lg:text-7xl text-neutral-900 tracking-tight leading-[1.05] mb-8"
+            className="font-serif text-4xl sm:text-6xl lg:text-7xl text-neutral-900 tracking-tight leading-[1.05]"
           >
             Custom AI systems for business execution.
           </motion.h1>
+        </div>
+      </section>
+
+      {/* === TRUSTED BY === */}
+      <section className="px-4 sm:px-6 pb-16 sm:pb-20 -mt-8 sm:-mt-12">
+        <div className="max-w-5xl mx-auto">
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-lg sm:text-xl text-neutral-500 leading-relaxed font-light max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.6 }}
+            className="text-center text-[11px] sm:text-xs font-mono uppercase tracking-[0.28em] text-neutral-500 mb-8 sm:mb-10"
           >
-            Olyxee helps companies deploy AI systems that execute workflows, integrate with internal tools, and support real operational decisions.
+            Trusted by teams building with
           </motion.p>
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.18 }}
-            className="mt-10 flex flex-col sm:flex-row gap-3 justify-center"
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7, delay: 0.05 }}
+            className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-7 gap-x-8 sm:gap-x-12 gap-y-8 items-center justify-items-center"
           >
-            <a
-              href="mailto:scofield@olyxee.com?subject=Enterprise%20%E2%80%94%20Custom%20deployment%20inquiry"
-              className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-neutral-900 text-white rounded-full font-medium hover:bg-black transition-all text-sm tracking-wide"
-            >
-              Contact enterprise <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-            </a>
-            <Link
-              href="/products"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 text-neutral-900 border border-neutral-200 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide"
-            >
-              Explore the products
-            </Link>
+            {TRUST_LOGOS.map((logo) => (
+              <div
+                key={logo.name}
+                className="relative h-7 sm:h-8 w-full max-w-[140px] opacity-60 hover:opacity-100 transition-opacity"
+              >
+                <Image
+                  src={logo.src}
+                  alt={logo.name}
+                  fill
+                  sizes="140px"
+                  className="object-contain grayscale brightness-0"
+                />
+              </div>
+            ))}
           </motion.div>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="mt-10 text-[11px] font-mono text-neutral-500 tracking-wider"
-          >
-            <span className="inline-flex items-center gap-2">
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
-              </span>
-              ACCEPTING NEW PILOT ENGAGEMENTS · Q2&nbsp;2026
-            </span>
-          </motion.p>
         </div>
       </section>
 
