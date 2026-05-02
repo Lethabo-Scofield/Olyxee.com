@@ -51,7 +51,7 @@ export default function FreightShiftStory() {
           >
             <Image
               src="/images/stories/logistics.png"
-              alt="Robotic arm in a FreightShift logistics warehouse"
+              alt="Warehouse worker in safety vest packaging shipments at FreightShift"
               fill
               priority
               sizes="(min-width: 768px) 768px, 100vw"

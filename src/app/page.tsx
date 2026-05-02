@@ -636,7 +636,7 @@ const STORIES = [
     tag: "Logistics",
     headline: "How FreightShift cut shipment exception response time by 70%.",
     image: "/images/stories/logistics.png",
-    alt: "Robotic arm in a logistics warehouse picking packages from shelves",
+    alt: "Warehouse worker in safety vest packaging shipments on the line",
     href: "/stories/freightshift",
   },
   {
