@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 
@@ -98,11 +98,52 @@ export default function FreightShiftStory() {
             </blockquote>
           </motion.div>
 
+          <motion.aside
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="mt-16 pt-10 border-t border-neutral-100"
+          >
+            <p className="text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.28em] mb-5">
+              About the customer
+            </p>
+            <a
+              href="https://www.freightshiftlogistics.co.za/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block rounded-2xl border border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50/60 transition-colors p-5 sm:p-6"
+            >
+              <div className="flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-6">
+                <div className="relative w-full sm:w-44 aspect-[16/10] rounded-lg overflow-hidden bg-neutral-100 ring-1 ring-neutral-900/10 flex-shrink-0">
+                  <Image
+                    src="/images/stories/logistics.png"
+                    alt="FreightShift website preview"
+                    fill
+                    sizes="(min-width: 640px) 176px, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="font-serif text-xl sm:text-2xl text-neutral-900 tracking-tight leading-snug mb-1">
+                    FreightShift International Logistics
+                  </p>
+                  <p className="text-sm text-neutral-500 font-light leading-relaxed mb-3">
+                    Door-to-door freight from China to South Africa, with live tracking and a no-surprises promise.
+                  </p>
+                  <span className="inline-flex items-center gap-1.5 text-sm font-medium text-neutral-900">
+                    freightshiftlogistics.co.za
+                    <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </span>
+                </div>
+              </div>
+            </a>
+          </motion.aside>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.35 }}
-            className="mt-16 pt-10 border-t border-neutral-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
+            className="mt-12 pt-10 border-t border-neutral-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
           >
             <div>
               <p className="text-sm font-semibold text-neutral-900 mb-1">Want this for your logistics operations?</p>
