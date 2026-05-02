@@ -10,6 +10,13 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const papers = [
   {
+    title: "LLMs Corrupt Your Documents When You Delegate",
+    authors: "P. Laban, T. Schnabel, J. Neville",
+    venue: "arXiv",
+    year: "2026",
+    url: "https://arxiv.org/abs/2604.15597",
+  },
+  {
     title: "Attention Residuals: Scalable Sparse Attention with Residual Connections for Efficient Long-Context Transformers",
     authors: "S. Rao, K. Müller, A. Desai, N. Ivanov",
     venue: "ICLR",
