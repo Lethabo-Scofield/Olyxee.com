@@ -13,6 +13,7 @@ const papers = [
     title: "LLMs Corrupt Your Documents When You Delegate",
     authors: "P. Laban, T. Schnabel, J. Neville",
     venue: "arXiv",
+    month: "Apr",
     year: "2026",
     url: "https://arxiv.org/abs/2604.15597",
   },
@@ -20,6 +21,7 @@ const papers = [
     title: "Attention Residuals: Scalable Sparse Attention with Residual Connections for Efficient Long-Context Transformers",
     authors: "S. Rao, K. Müller, A. Desai, N. Ivanov",
     venue: "ICLR",
+    month: "Mar",
     year: "2026",
     url: "https://arxiv.org/abs/2603.15031",
   },
@@ -27,6 +29,7 @@ const papers = [
     title: "Reducing Hallucinations in Production AI Applications Through Real-Time Verification Pipelines",
     authors: "J. Chen, M. Patel, S. Liu",
     venue: "NeurIPS",
+    month: "Dec",
     year: "2025",
     url: "https://arxiv.org/abs/2510.22751",
   },
@@ -34,6 +37,7 @@ const papers = [
     title: "Continuous Evaluation Frameworks for AI-Powered Applications in Production",
     authors: "R. Kumar, A. Zhang, T. Nakamura",
     venue: "ICML",
+    month: "Jul",
     year: "2025",
     url: "https://arxiv.org/abs/2603.26718",
   },
@@ -41,6 +45,7 @@ const papers = [
     title: "Observability Infrastructure for Agentic AI Workflows",
     authors: "L. Wang, D. Fischer, P. Okonkwo",
     venue: "AAAI",
+    month: "Feb",
     year: "2026",
     url: "https://arxiv.org/abs/2512.08769",
   },
@@ -113,9 +118,9 @@ const ResearchView: FC = () => {
                   rel="noopener noreferrer"
                   className="group block py-7 sm:py-9 transition-opacity duration-200 hover:opacity-50 focus:outline-none focus-visible:opacity-50"
                 >
-                  <div className="grid grid-cols-[64px_1fr_auto] sm:grid-cols-[88px_1fr_auto] gap-4 sm:gap-8 items-baseline">
+                  <div className="grid grid-cols-[72px_1fr_auto] sm:grid-cols-[104px_1fr_auto] gap-4 sm:gap-8 items-baseline">
                     <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-500 tabular-nums">
-                      {paper.year}
+                      {paper.month} {paper.year}
                     </p>
                     <h3 className="font-serif text-xl sm:text-2xl lg:text-[1.65rem] text-neutral-900 tracking-tight leading-[1.2]">
                       {paper.title}
@@ -126,7 +131,7 @@ const ResearchView: FC = () => {
                       focusable="false"
                     />
                   </div>
-                  <div className="grid grid-cols-[64px_1fr] sm:grid-cols-[88px_1fr] gap-4 sm:gap-8 mt-3">
+                  <div className="grid grid-cols-[72px_1fr] sm:grid-cols-[104px_1fr] gap-4 sm:gap-8 mt-3">
                     <span aria-hidden />
                     <p className="text-[12px] sm:text-[13px] font-light text-neutral-500">
                       {paper.authors}
