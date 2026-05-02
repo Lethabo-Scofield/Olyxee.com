@@ -605,6 +605,63 @@ const ProductsPage: FC = () => {
               </div>
             </motion.div>
           </div>
+
+          {/* Financial Close — templates showcase */}
+          <div id="addup-templates" className="mt-20 sm:mt-28 pt-10 sm:pt-12 border-t border-neutral-200 scroll-mt-24">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.7 }}
+                className="lg:col-span-5"
+              >
+                <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
+                  Financial close · Templates
+                </p>
+                <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-tight leading-[1.08] mb-6">
+                  Pre-built reports that close the books for you.
+                </h3>
+                <p className="text-base text-neutral-500 font-light leading-relaxed mb-6">
+                  Start from a library of ready-made workflows — variance analysis, tax reconciliation, payments reconciliation — each with the rules and checks already wired in. Generate a finished report in a click.
+                </p>
+                <ul className="border-t border-neutral-200 max-w-md">
+                  {[
+                    "P&L Revenues Variance Analysis",
+                    "Tax Reconciliation",
+                    "Payments Reconciliation",
+                  ].map((t) => (
+                    <li
+                      key={t}
+                      className="py-3.5 border-b border-neutral-200 text-sm sm:text-[15px] text-neutral-800 font-light leading-relaxed"
+                    >
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0.96 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.8 }}
+                className="lg:col-span-7 relative"
+              >
+                <div aria-hidden className="absolute -inset-8 -z-10 bg-gradient-to-br from-blue-50/60 via-white to-indigo-50/40 blur-2xl rounded-[2rem]" />
+                <div className="relative">
+                  <Image
+                    src="/images/products/financial-close-cards.png"
+                    alt="Three Financial Close report templates: P&L Revenues Variance Analysis, Tax Reconciliation, and Payments Reconciliation, each with a Generate Report button"
+                    width={1024}
+                    height={1024}
+                    className="w-full h-auto"
+                    sizes="(max-width: 1024px) 100vw, 600px"
+                  />
+                </div>
+              </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 
