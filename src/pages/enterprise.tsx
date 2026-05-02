@@ -13,6 +13,10 @@ import {
   Server,
   Eye,
   CheckCheck,
+  Calculator,
+  Truck,
+  Workflow,
+  Bot,
 } from "lucide-react";
 
 const fadeUp = {
@@ -101,6 +105,37 @@ const DEPLOYMENT_STAGES = [
     week: "Ongoing",
     title: "Production",
     desc: "Operate, expand to adjacent workflows, and tune the system as your business evolves.",
+  },
+];
+
+const DOMAINS = [
+  {
+    icon: Calculator,
+    name: "AI Accounting",
+    description:
+      "Automate reconciliations, invoice processing, expense categorisation, and financial reporting. AI that reads your ledgers, flags anomalies, and closes the books faster.",
+    examples: ["AP/AR automation", "Reconciliation agents", "Anomaly detection", "Financial close workflows"],
+  },
+  {
+    icon: Truck,
+    name: "AI Logistics",
+    description:
+      "Intelligent agents that track shipments, optimise routes, manage supplier communications, and surface exceptions before they become delays.",
+    examples: ["Shipment tracking & alerts", "Supplier coordination", "Route optimisation", "Exception management"],
+  },
+  {
+    icon: Workflow,
+    name: "Automation & Workflows",
+    description:
+      "End-to-end workflow automation that connects your systems, enforces approval chains, and executes multi-step processes without manual handoffs.",
+    examples: ["Multi-step process automation", "Human-in-the-loop approvals", "Cross-system orchestration", "Scheduled & event-driven runs"],
+  },
+  {
+    icon: Bot,
+    name: "Custom Agents",
+    description:
+      "Purpose-built AI agents scoped to your operations — from internal copilots to fully autonomous executors that act within the boundaries you define.",
+    examples: ["Domain-specific copilots", "Autonomous execution agents", "Policy-aware decision agents", "Embedded agents in existing tools"],
   },
 ];
 
@@ -294,6 +329,70 @@ const Enterprise: FC = () => {
                 Olyxee builds bespoke AI for your operations. Agents that execute end-to-end workflows. Systems that connect to the tools you already run. Engagements scoped to ship in weeks, not quarters.
               </p>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* === DOMAINS (Accounting, Logistics, Automation, Custom Agents) === */}
+      <section id="domains" className="pb-20 sm:pb-32 border-t border-neutral-200/70">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-20 sm:pt-28">
+          <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-10 lg:gap-20 mb-14 sm:mb-20">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              custom={0}
+              variants={fadeUp}
+            >
+              <p className="text-sm font-semibold text-neutral-500 uppercase tracking-[0.2em] lg:pt-2 mb-2">What we build</p>
+              <div className="w-12 h-px bg-neutral-200" />
+            </motion.div>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              custom={1}
+              variants={fadeUp}
+            >
+              <p className="font-serif text-2xl sm:text-3xl lg:text-[2.5rem] text-neutral-900 leading-snug tracking-tight mb-6">
+                AI across the operations that{" "}
+                <em className="text-neutral-500 not-italic">move your business</em>.
+              </p>
+              <p className="text-base sm:text-lg text-neutral-500 leading-relaxed font-light max-w-2xl">
+                We deploy purpose-built AI in the functions where manual work compounds — accounting, logistics, cross-system workflows, and custom agents tailored to how your teams operate.
+              </p>
+            </motion.div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+            {DOMAINS.map((d, i) => {
+              const Icon = d.icon;
+              return (
+                <motion.div
+                  key={d.name}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.2 }}
+                  custom={i}
+                  variants={fadeUp}
+                  className="group flex flex-col p-7 sm:p-8 rounded-2xl border border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50/60 transition-all"
+                >
+                  <div className="shrink-0 w-11 h-11 rounded-xl bg-neutral-900 flex items-center justify-center mb-5 group-hover:bg-black transition-colors">
+                    <Icon aria-hidden="true" focusable="false" className="w-5 h-5 text-white" strokeWidth={1.75} />
+                  </div>
+                  <h3 className="font-serif text-xl sm:text-2xl text-neutral-900 tracking-tight mb-3">{d.name}</h3>
+                  <p className="text-sm text-neutral-500 font-light leading-relaxed mb-6">{d.description}</p>
+                  <ul className="mt-auto space-y-2">
+                    {d.examples.map((ex) => (
+                      <li key={ex} className="flex items-center gap-2 text-[13px] text-neutral-500 font-light">
+                        <span className="w-1 h-1 rounded-full bg-neutral-400 shrink-0" />
+                        {ex}
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
