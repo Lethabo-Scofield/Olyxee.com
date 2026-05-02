@@ -642,33 +642,24 @@ function IntegrationSection() {
 const STORIES = [
   {
     tag: "Logistics",
-    headline: "Shipment exceptions caught before they cause delays.",
-    body: "A logistics operator used Olyxee to monitor live freight corridors, surface exceptions the moment they arose, and automatically coordinate with suppliers — cutting manual tracking hours by over 70%.",
-    metric: "70%",
-    metricLabel: "less manual tracking",
+    headline: "How FreightShift cut shipment exception response time by 70%.",
     image: "/images/stories/logistics.png",
-    alt: "FreightShift logistics — live freight corridor tracking",
-    href: "/enterprise",
+    alt: "Robotic arm in a logistics warehouse picking packages from shelves",
+    href: "/stories/freightshift",
   },
   {
     tag: "Accounting",
     headline: "Month-end close dropped from five days to overnight.",
-    body: "An AI accounting agent reconciled transactions, flagged anomalies, and prepared close-ready reports autonomously — letting the finance team review rather than rebuild every month.",
-    metric: "5×",
-    metricLabel: "faster financial close",
     image: "/images/stories/accounting.png",
     alt: "AI-powered financial operations dashboard",
-    href: "/enterprise",
+    href: "/stories/accounting",
   },
   {
     tag: "Automation",
     headline: "Supplier onboarding fully automated, end to end.",
-    body: "A cross-functional workflow agent handled intake forms, compliance checks, approval routing, and system provisioning — removing weeks of back-and-forth from every new supplier relationship.",
-    metric: "0",
-    metricLabel: "manual handoffs",
     image: "/images/stories/automation.png",
     alt: "Automated operations and scheduling workflow",
-    href: "/enterprise",
+    href: "/stories/automation",
   },
 ];
 
@@ -690,7 +681,7 @@ function StoriesSection() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-10">
           {STORIES.map((story, i) => (
             <motion.article
               key={story.tag}
@@ -698,46 +689,27 @@ function StoriesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="group flex flex-col rounded-2xl border border-neutral-200 overflow-hidden hover:border-neutral-300 hover:shadow-lg hover:shadow-neutral-100 transition-all duration-300"
             >
-              <div className="relative aspect-[16/9] overflow-hidden bg-neutral-100">
-                <Image
-                  src={story.image}
-                  alt={story.alt}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                  className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/90 backdrop-blur-sm text-[11px] font-semibold text-neutral-700 uppercase tracking-widest border border-white/60">
+              <Link href={story.href} className="group block">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-neutral-100 mb-5">
+                  <Image
+                    src={story.image}
+                    alt={story.alt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+                <p className="text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.18em] mb-2">
                   {story.tag}
+                </p>
+                <h3 className="font-serif text-xl sm:text-2xl text-neutral-900 tracking-tight leading-snug group-hover:text-neutral-600 transition-colors">
+                  {story.headline}
+                </h3>
+                <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-neutral-500 group-hover:text-neutral-900 transition-colors">
+                  Read story <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                 </span>
-              </div>
-
-              <div className="flex flex-col flex-1 p-6 sm:p-7">
-                <div className="mb-5">
-                  <p className="font-serif text-2xl text-neutral-900 tracking-tight leading-snug mb-3">
-                    {story.headline}
-                  </p>
-                  <p className="text-sm text-neutral-500 font-light leading-relaxed">
-                    {story.body}
-                  </p>
-                </div>
-
-                <div className="mt-auto pt-5 border-t border-neutral-100 flex items-end justify-between">
-                  <div>
-                    <p className="font-serif text-3xl text-neutral-900 tracking-tight leading-none">{story.metric}</p>
-                    <p className="text-[12px] text-neutral-400 font-light mt-1 uppercase tracking-wider">{story.metricLabel}</p>
-                  </div>
-                  <Link
-                    href={story.href}
-                    className="group/link inline-flex items-center gap-1.5 text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors"
-                  >
-                    Learn more
-                    <ArrowRight className="w-4 h-4 group-hover/link:translate-x-0.5 transition-transform" />
-                  </Link>
-                </div>
-              </div>
+              </Link>
             </motion.article>
           ))}
         </div>
