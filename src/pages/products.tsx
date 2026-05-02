@@ -491,7 +491,7 @@ const ProductsPage: FC = () => {
                   variants={fadeUp}
                   className="group"
                 >
-                  <div className="relative aspect-[5/4] overflow-hidden rounded-2xl bg-neutral-950 ring-1 ring-neutral-200">
+                  <div className="relative aspect-[5/4] overflow-hidden rounded-2xl bg-neutral-100 ring-1 ring-neutral-200">
                     <Image
                       src={uc.src}
                       alt={uc.title}
