@@ -16,6 +16,56 @@ const fadeUp: Variants = {
   }),
 };
 
+function HeroWaves() {
+  // Each wave's wavelength (= 2 × T spacing) must evenly divide 1200 so the
+  // CSS translateX(-1200px) loop is seamless across breakpoints.
+  const waves = [
+    // wavelength 600 (T spacing 300) -> 2 cycles per 1200
+    { d: "M0,310 Q150,210 300,310 T600,310 T900,310 T1200,310 T1500,310 T1800,310 T2100,310 T2400,310", stroke: "#0a0a0a", opacity: 0.07, duration: 28, strokeWidth: 1 },
+    // wavelength 600 (T spacing 300) -> 2 cycles per 1200, deeper dip
+    { d: "M0,360 Q150,250 300,360 T600,360 T900,360 T1200,360 T1500,360 T1800,360 T2100,360 T2400,360", stroke: "#171717", opacity: 0.09, duration: 20, strokeWidth: 1 },
+    // wavelength 400 (T spacing 200) -> 3 cycles per 1200, blue accent
+    { d: "M0,330 Q100,255 200,330 T400,330 T600,330 T800,330 T1000,330 T1200,330 T1400,330 T1600,330 T1800,330 T2000,330 T2200,330 T2400,330", stroke: "#3b82f6", opacity: 0.16, duration: 14, strokeWidth: 1.25 },
+    // wavelength 600 (T spacing 300) -> 2 cycles per 1200, lower band
+    { d: "M0,395 Q150,310 300,395 T600,395 T900,395 T1200,395 T1500,395 T1800,395 T2100,395 T2400,395", stroke: "#525252", opacity: 0.08, duration: 23, strokeWidth: 1 },
+    // wavelength 300 (T spacing 150) -> 4 cycles per 1200, tight blue zigzag
+    { d: "M0,275 Q75,215 150,275 T300,275 T450,275 T600,275 T750,275 T900,275 T1050,275 T1200,275 T1350,275 T1500,275 T1650,275 T1800,275 T1950,275 T2100,275 T2250,275 T2400,275", stroke: "#3b82f6", opacity: 0.10, duration: 17, strokeWidth: 1 },
+  ];
+
+  return (
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+      <svg
+        className="absolute left-0 top-0 h-full w-[200%]"
+        viewBox="0 0 2400 600"
+        preserveAspectRatio="none"
+        fill="none"
+      >
+        {waves.map((w, i) => (
+          <g
+            key={i}
+            style={{
+              animation: `wave-drift ${w.duration}s linear infinite`,
+              willChange: "transform",
+            }}
+          >
+            <path
+              d={w.d}
+              stroke={w.stroke}
+              strokeWidth={w.strokeWidth}
+              strokeLinecap="round"
+              opacity={w.opacity}
+              vectorEffect="non-scaling-stroke"
+              fill="none"
+            />
+          </g>
+        ))}
+      </svg>
+      <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-white to-transparent" />
+    </div>
+  );
+}
+
 function OrdoArchitecture() {
   const PILL_X = 50;
   const PILL_W = 360;
@@ -282,8 +332,9 @@ const ProductsPage: FC = () => {
       <Header />
 
       {/* === HERO - light, centered, consistent with About / Enterprise === */}
-      <section className="relative pt-36 sm:pt-48 pb-20 sm:pb-28 px-4 sm:px-6 bg-white">
-        <div className="relative max-w-4xl mx-auto text-center">
+      <section className="relative pt-36 sm:pt-48 pb-20 sm:pb-28 px-4 sm:px-6 bg-white overflow-hidden">
+        <HeroWaves />
+        <div className="relative z-10 max-w-4xl mx-auto text-center">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

@@ -176,6 +176,17 @@ img, svg, video, canvas, iframe, table {
   100% { background-position: 0% 50%; }
 }
 
+@keyframes wave-drift {
+  from { transform: translateX(0); }
+  to { transform: translateX(-1200px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [style*="wave-drift"] {
+    animation: none !important;
+  }
+}
+
 @layer base {
   *,
   ::after,
