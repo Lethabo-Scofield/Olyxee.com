@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import Image from "next/image";
 import SEO from "../components/SEO";
 import Header from "../components/header";
@@ -11,6 +11,8 @@ import {
   Truck,
   Workflow,
   Bot,
+  Check,
+  ChevronDown,
 } from "lucide-react";
 
 const fadeUp = {
@@ -239,6 +241,180 @@ const DesktopCollage: FC = () => {
   );
 };
 
+const IndustryEngagement: FC = () => {
+  const [industryIdx, setIndustryIdx] = useState(0);
+  const industry = DOMAINS[industryIdx];
+  const IndustryIcon = industry.icon;
+
+  return (
+    <section id="engagement" className="pb-20 sm:pb-32 border-t border-neutral-200/70 pt-20 sm:pt-28">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          custom={0}
+          variants={fadeUp}
+          className="mb-10 sm:mb-14 max-w-2xl"
+        >
+          <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
+            Engagement
+          </p>
+          <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-neutral-900 leading-snug tracking-tight">
+            Three ways to start, all scoped to your business.
+          </h2>
+          <p className="mt-5 text-sm sm:text-base text-neutral-500 font-light leading-relaxed">
+            Every engagement is custom-priced based on scope. Pick the focus area for your business and we&apos;ll outline the right starting point and a quote.
+          </p>
+        </motion.div>
+
+        {/* Industry selector + offering panel */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          custom={1}
+          variants={fadeUp}
+          className="mb-10 sm:mb-14 rounded-2xl border border-neutral-200 bg-neutral-50/60 p-6 sm:p-8"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-6 lg:gap-10 items-start">
+            <div>
+              <label htmlFor="industry-select" className="block text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-3">
+                Your focus area
+              </label>
+              <div className="relative">
+                <div className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-lg bg-neutral-900 flex items-center justify-center pointer-events-none">
+                  <IndustryIcon aria-hidden="true" focusable="false" className="w-4 h-4 text-white" strokeWidth={1.75} />
+                </div>
+                <select
+                  id="industry-select"
+                  value={industryIdx}
+                  onChange={(e) => setIndustryIdx(Number(e.target.value))}
+                  className="w-full appearance-none bg-white border border-neutral-300 rounded-xl pl-16 pr-11 py-3.5 text-sm sm:text-[15px] font-medium text-neutral-900 cursor-pointer hover:border-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-900 focus:border-neutral-900 transition-colors"
+                >
+                  {DOMAINS.map((d, i) => (
+                    <option key={d.name} value={i}>
+                      {d.name}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown aria-hidden="true" focusable="false" className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-500 pointer-events-none" />
+              </div>
+            </div>
+
+            <div className="min-w-0">
+              <h3 className="font-serif text-xl sm:text-2xl text-neutral-900 tracking-tight mb-3">
+                {industry.name}
+              </h3>
+              <p className="text-sm sm:text-[15px] text-neutral-600 font-light leading-relaxed mb-5 max-w-2xl">
+                {industry.description}
+              </p>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
+                {industry.examples.map((ex) => (
+                  <li key={ex} className="flex items-start gap-2 text-[13px] sm:text-sm text-neutral-700 font-light leading-relaxed">
+                    <Check aria-hidden="true" focusable="false" className="w-3.5 h-3.5 text-neutral-900 mt-1 shrink-0" strokeWidth={2.25} />
+                    {ex}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-5">
+          {ENGAGEMENT_TIERS.map((tier, idx) => {
+            const isDark = tier.highlight;
+            const subjectWithIndustry = `${tier.ctaSubject} — ${industry.name}`;
+            return (
+              <motion.div
+                key={tier.name}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                custom={idx}
+                variants={fadeUp}
+                className={`relative flex flex-col p-7 sm:p-8 rounded-2xl border transition-colors ${
+                  isDark
+                    ? "bg-neutral-950 text-white border-neutral-950"
+                    : "bg-white text-neutral-900 border-neutral-200 hover:border-neutral-300"
+                }`}
+              >
+                <p
+                  className={`text-[10px] font-mono uppercase tracking-[0.28em] mb-5 ${
+                    isDark ? "text-neutral-400" : "text-neutral-500"
+                  }`}
+                >
+                  {tier.kicker}
+                </p>
+
+                <h3
+                  className={`font-serif text-2xl sm:text-[1.75rem] tracking-tight leading-tight mb-3 ${
+                    isDark ? "text-white" : "text-neutral-900"
+                  }`}
+                >
+                  {tier.name}
+                </h3>
+
+                <p
+                  className={`text-sm font-light leading-relaxed mb-6 ${
+                    isDark ? "text-neutral-400" : "text-neutral-500"
+                  }`}
+                >
+                  {tier.description}
+                </p>
+
+                <div className="mb-6">
+                  <p
+                    className={`text-[2rem] sm:text-[2.25rem] font-serif tracking-tight leading-none ${
+                      isDark ? "text-white" : "text-neutral-900"
+                    }`}
+                  >
+                    Custom
+                  </p>
+                  <p
+                    className={`mt-1.5 text-[12px] font-mono uppercase tracking-[0.18em] ${
+                      isDark ? "text-neutral-500" : "text-neutral-400"
+                    }`}
+                  >
+                    Quoted on scope · {industry.name}
+                  </p>
+                </div>
+
+                <a
+                  href={`mailto:scofield@olyxee.com?subject=${encodeURIComponent(subjectWithIndustry)}`}
+                  className={`group inline-flex w-full items-center justify-center gap-2 py-3 rounded-md text-sm font-medium tracking-wide transition-colors ${
+                    isDark
+                      ? "bg-white text-neutral-950 hover:bg-neutral-100"
+                      : "bg-neutral-900 text-white hover:bg-black"
+                  }`}
+                >
+                  {tier.ctaLabel}
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                </a>
+
+                <ul className="mt-8">
+                  {tier.features.map((feature) => (
+                    <li
+                      key={feature}
+                      className={`py-3 text-sm font-light leading-relaxed border-b ${
+                        isDark
+                          ? "border-white/10 text-neutral-300"
+                          : "border-neutral-200 text-neutral-700"
+                      } first:border-t ${isDark ? "first:border-white/10" : "first:border-neutral-200"}`}
+                    >
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const Enterprise: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
@@ -390,181 +566,8 @@ const Enterprise: FC = () => {
         </div>
       </section>
 
-      {/* === DOMAINS (Accounting, Logistics, Automation, Custom Agents) === */}
-      <section id="domains" className="pb-20 sm:pb-32 border-t border-neutral-200/70">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-20 sm:pt-28">
-          <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-10 lg:gap-20 mb-14 sm:mb-20">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              custom={0}
-              variants={fadeUp}
-            >
-              <p className="text-sm font-semibold text-neutral-500 uppercase tracking-[0.2em] lg:pt-2 mb-2">What we build</p>
-              <div className="w-12 h-px bg-neutral-200" />
-            </motion.div>
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              custom={1}
-              variants={fadeUp}
-            >
-              <p className="font-serif text-2xl sm:text-3xl lg:text-[2.5rem] text-neutral-900 leading-snug tracking-tight mb-6">
-                AI across the operations that move your business.
-              </p>
-              <p className="text-base sm:text-lg text-neutral-500 leading-relaxed font-light max-w-2xl">
-                We deploy purpose-built AI in the functions where manual work compounds — accounting, logistics, cross-system workflows, and custom agents tailored to how your teams operate.
-              </p>
-            </motion.div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
-            {DOMAINS.map((d, i) => {
-              const Icon = d.icon;
-              return (
-                <motion.div
-                  key={d.name}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.2 }}
-                  custom={i}
-                  variants={fadeUp}
-                  className="group flex flex-col p-7 sm:p-8 rounded-2xl border border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50/60 transition-all"
-                >
-                  <div className="shrink-0 w-11 h-11 rounded-xl bg-neutral-900 flex items-center justify-center mb-5 group-hover:bg-black transition-colors">
-                    <Icon aria-hidden="true" focusable="false" className="w-5 h-5 text-white" strokeWidth={1.75} />
-                  </div>
-                  <h3 className="font-serif text-xl sm:text-2xl text-neutral-900 tracking-tight mb-3">{d.name}</h3>
-                  <p className="text-sm text-neutral-500 font-light leading-relaxed mb-6">{d.description}</p>
-                  <ul className="mt-auto space-y-2">
-                    {d.examples.map((ex) => (
-                      <li key={ex} className="flex items-center gap-2 text-[13px] text-neutral-500 font-light">
-                        <span className="w-1 h-1 rounded-full bg-neutral-400 shrink-0" />
-                        {ex}
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* === ENGAGEMENT (pricing-style tiers, contact instead of numbers) === */}
-      <section id="engagement" className="pb-20 sm:pb-32">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            custom={0}
-            variants={fadeUp}
-            className="mb-10 sm:mb-14 max-w-2xl"
-          >
-            <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
-              Engagement
-            </p>
-            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-neutral-900 leading-snug tracking-tight">
-              Three ways to start, all scoped to your business.
-            </h2>
-            <p className="mt-5 text-sm sm:text-base text-neutral-500 font-light leading-relaxed">
-              Every engagement is custom-priced based on scope. Talk to us and we&apos;ll outline the right starting point and a quote.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-5">
-            {ENGAGEMENT_TIERS.map((tier, idx) => {
-              const isDark = tier.highlight;
-              return (
-                <motion.div
-                  key={tier.name}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.2 }}
-                  custom={idx}
-                  variants={fadeUp}
-                  className={`relative flex flex-col p-7 sm:p-8 rounded-2xl border transition-colors ${
-                    isDark
-                      ? "bg-neutral-950 text-white border-neutral-950"
-                      : "bg-white text-neutral-900 border-neutral-200 hover:border-neutral-300"
-                  }`}
-                >
-                  <p
-                    className={`text-[10px] font-mono uppercase tracking-[0.28em] mb-5 ${
-                      isDark ? "text-neutral-400" : "text-neutral-500"
-                    }`}
-                  >
-                    {tier.kicker}
-                  </p>
-
-                  <h3
-                    className={`font-serif text-2xl sm:text-[1.75rem] tracking-tight leading-tight mb-3 ${
-                      isDark ? "text-white" : "text-neutral-900"
-                    }`}
-                  >
-                    {tier.name}
-                  </h3>
-
-                  <p
-                    className={`text-sm font-light leading-relaxed mb-6 ${
-                      isDark ? "text-neutral-400" : "text-neutral-500"
-                    }`}
-                  >
-                    {tier.description}
-                  </p>
-
-                  <div className="mb-6">
-                    <p
-                      className={`text-[2rem] sm:text-[2.25rem] font-serif tracking-tight leading-none ${
-                        isDark ? "text-white" : "text-neutral-900"
-                      }`}
-                    >
-                      Custom
-                    </p>
-                    <p
-                      className={`mt-1.5 text-[12px] font-mono uppercase tracking-[0.18em] ${
-                        isDark ? "text-neutral-500" : "text-neutral-400"
-                      }`}
-                    >
-                      Quoted on scope
-                    </p>
-                  </div>
-
-                  <a
-                    href={`mailto:scofield@olyxee.com?subject=${encodeURIComponent(tier.ctaSubject)}`}
-                    className={`group inline-flex w-full items-center justify-center gap-2 py-3 rounded-md text-sm font-medium tracking-wide transition-colors ${
-                      isDark
-                        ? "bg-white text-neutral-950 hover:bg-neutral-100"
-                        : "bg-neutral-900 text-white hover:bg-black"
-                    }`}
-                  >
-                    {tier.ctaLabel}
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                  </a>
-
-                  <ul className="mt-8">
-                    {tier.features.map((feature) => (
-                      <li
-                        key={feature}
-                        className={`py-3 text-sm font-light leading-relaxed border-b ${
-                          isDark
-                            ? "border-white/10 text-neutral-300"
-                            : "border-neutral-200 text-neutral-700"
-                        } first:border-t ${isDark ? "first:border-white/10" : "first:border-neutral-200"}`}
-                      >
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      {/* === ENGAGEMENT === */}
+      <IndustryEngagement />
 
       {/* === EDITORIAL PHOTO 03 === */}
       <section className="px-4 sm:px-6 pb-16 sm:pb-24">

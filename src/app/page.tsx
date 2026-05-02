@@ -644,7 +644,6 @@ const STORIES = [
     image: "/images/stories/logistics.png",
     alt: "Warehouse worker in safety vest packaging shipments on the line",
     href: "/stories/freightshift",
-    profile: { name: "FreightShift Ops", role: "Fulfillment team", focal: "object-[50%_30%]" },
   },
   {
     tag: "Accounting",
@@ -652,7 +651,6 @@ const STORIES = [
     image: "/images/stories/accounting.png",
     alt: "Finance team reviewing an operations dashboard together",
     href: "/stories/accounting",
-    profile: { name: "Northwind Finance", role: "Controllership", focal: "object-[50%_40%]" },
   },
   {
     tag: "Automation",
@@ -660,7 +658,6 @@ const STORIES = [
     image: "/images/stories/automation.png",
     alt: "Distributed team celebrating a launch together at the desk",
     href: "/stories/automation",
-    profile: { name: "Lumen Procurement", role: "Supplier ops team", focal: "object-[50%_25%]" },
   },
 ];
 
@@ -706,27 +703,6 @@ function StoriesSection() {
                 <h3 className="font-serif text-xl sm:text-2xl text-neutral-900 tracking-tight leading-snug group-hover:text-neutral-600 transition-colors">
                   {story.headline}
                 </h3>
-
-                {/* customer profile */}
-                <div className="mt-5 flex items-center gap-3">
-                  <div className="relative w-9 h-9 rounded-full overflow-hidden ring-1 ring-neutral-200 bg-neutral-100 shrink-0">
-                    <Image
-                      src={story.image}
-                      alt=""
-                      fill
-                      sizes="36px"
-                      className={`object-cover ${story.profile.focal}`}
-                    />
-                  </div>
-                  <div className="min-w-0">
-                    <p className="text-[13px] font-medium text-neutral-900 leading-tight truncate">
-                      {story.profile.name}
-                    </p>
-                    <p className="text-[11px] text-neutral-500 leading-tight truncate">
-                      {story.profile.role}
-                    </p>
-                  </div>
-                </div>
 
                 <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-neutral-500 group-hover:text-neutral-900 transition-colors">
                   Read story <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
