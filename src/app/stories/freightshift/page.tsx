@@ -149,12 +149,12 @@ export default function FreightShiftStory() {
               <p className="text-sm font-semibold text-neutral-900 mb-1">Want this for your logistics operations?</p>
               <p className="text-sm text-neutral-500 font-light">Talk to us about a pilot scoped to your freight corridors.</p>
             </div>
-            <a
-              href="mailto:scofield@olyxee.com?subject=Logistics%20AI%20Pilot%20Inquiry"
+            <Link
+              href="/contact"
               className="group inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white rounded-full text-sm font-medium hover:bg-black transition-colors whitespace-nowrap"
             >
               Start a conversation <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-            </a>
+            </Link>
           </motion.div>
         </div>
       </main>

@@ -102,12 +102,12 @@ export default function AccountingStory() {
               <p className="text-sm font-semibold text-neutral-900 mb-1">Ready to transform your close process?</p>
               <p className="text-sm text-neutral-500 font-light">Let's scope an AI accounting pilot for your team.</p>
             </div>
-            <a
-              href="mailto:scofield@olyxee.com?subject=Accounting%20AI%20Pilot%20Inquiry"
+            <Link
+              href="/contact"
               className="group inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white rounded-full text-sm font-medium hover:bg-black transition-colors whitespace-nowrap"
             >
               Start a conversation <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-            </a>
+            </Link>
           </motion.div>
         </div>
       </main>

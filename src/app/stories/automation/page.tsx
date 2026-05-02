@@ -105,12 +105,12 @@ export default function AutomationStory() {
               <p className="text-sm font-semibold text-neutral-900 mb-1">Have a workflow that needs automating?</p>
               <p className="text-sm text-neutral-500 font-light">Let's map it out and scope a pilot together.</p>
             </div>
-            <a
-              href="mailto:scofield@olyxee.com?subject=Workflow%20Automation%20Pilot%20Inquiry"
+            <Link
+              href="/contact"
               className="group inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white rounded-full text-sm font-medium hover:bg-black transition-colors whitespace-nowrap"
             >
               Start a conversation <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-            </a>
+            </Link>
           </motion.div>
         </div>
       </main>
