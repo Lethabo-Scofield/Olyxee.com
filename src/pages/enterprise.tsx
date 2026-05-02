@@ -62,37 +62,27 @@ const STATS = [
 const ENGAGEMENT_TIERS = [
   {
     name: "Pilot",
-    kicker: "Scoped pilot",
-    description: "Move a single high-value workflow from manual to AI-executed, with measurable outcomes in weeks.",
-    agents: "Up to 3",
-    agentsLabel: "agents deployed",
+    description: "One workflow, live on real data, in weeks.",
+    agents: "Up to 3 agents",
     access: "1 Olyxee product",
-    accessDetail: "Scoped to your pilot workflow",
     features: [
-      "Discovery workshop with your team",
-      "Workflow mapping and success metrics",
-      "Pilot run on real data with real approvals",
+      "Discovery workshop",
+      "Pilot on real data",
       "Defined acceptance criteria",
-      "Four to six week scope",
     ],
-    ctaLabel: "Talk to us",
+    ctaLabel: "Start a pilot",
     ctaSubject: "Enterprise: Pilot inquiry",
     highlight: false,
   },
   {
     name: "Custom Deployment",
-    kicker: "Production AI",
-    description: "Tailored Ordo install configured around your data, tools, and operational policies.",
-    agents: "Up to 15",
-    agentsLabel: "agents deployed",
+    description: "A tailored Ordo install across your tools and policies.",
+    agents: "Up to 15 agents",
     access: "Full product suite",
-    accessDetail: "Access to all Olyxee products",
     features: [
       "Everything in Pilot",
-      "Tailored Ordo deployment",
-      "Native integrations with your APIs and ledgers",
-      "Human approval layers and audit logs",
-      "RBAC, SSO, and customer-managed keys",
+      "Native API & ledger integrations",
+      "SSO, RBAC, customer-managed keys",
       "Dedicated implementation support",
     ],
     ctaLabel: "Talk to us",
@@ -101,18 +91,13 @@ const ENGAGEMENT_TIERS = [
   },
   {
     name: "Enterprise",
-    kicker: "Full custom",
-    description: "For organizations with custom requirements, regulated environments, or multi-region operations.",
-    agents: "Unlimited",
-    agentsLabel: "agents deployed",
+    description: "Custom, regulated, or multi-region operations.",
+    agents: "Unlimited agents",
     access: "Full suite + early access",
-    accessDetail: "All products plus pre-release features",
     features: [
       "Everything in Custom Deployment",
-      "Dedicated implementation team",
       "VPC or on-prem deployment",
-      "Custom SLAs and compliance reviews",
-      "Quarterly roadmap input",
+      "Custom SLAs & compliance reviews",
       "Direct line to engineering",
     ],
     ctaLabel: "Talk to us",
@@ -418,118 +403,52 @@ const IndustryEngagement: FC = () => {
                   </div>
                 )}
 
-                <p
-                  className={`text-[10px] font-mono uppercase tracking-[0.28em] mb-5 ${
-                    isDark ? "text-neutral-400" : "text-neutral-500"
-                  }`}
-                >
-                  {tier.kicker}
-                </p>
-
+                {/* Tier name + tagline */}
                 <h3
-                  className={`font-serif tracking-tight leading-tight mb-3 ${
+                  className={`font-serif tracking-tight leading-tight mb-2 ${
                     isDark
-                      ? "text-white text-[1.85rem] sm:text-[2.1rem]"
-                      : "text-neutral-900 text-2xl sm:text-[1.75rem]"
+                      ? "text-white text-[1.75rem] sm:text-[2rem]"
+                      : "text-neutral-900 text-[1.5rem] sm:text-[1.75rem]"
                   }`}
                 >
                   {tier.name}
                 </h3>
-
                 <p
-                  className={`text-sm font-light leading-relaxed mb-6 ${
+                  className={`text-[13px] sm:text-sm font-light leading-relaxed mb-7 ${
                     isDark ? "text-neutral-400" : "text-neutral-500"
                   }`}
                 >
                   {tier.description}
                 </p>
 
-                <div
-                  className="mb-6"
-                  aria-live="polite"
-                  aria-atomic="true"
-                >
-                  {/* Agents — primary metric */}
-                  <div className="flex items-baseline gap-2.5">
-                    <p
+                {/* Price — hero metric (changes with industry) */}
+                <div className="mb-2" aria-live="polite" aria-atomic="true">
+                  <AnimatePresence mode="wait" initial={false}>
+                    <motion.p
+                      key={`${industry.name}-${idx}-price`}
+                      initial={{ opacity: 0, y: 4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -4 }}
+                      transition={{ duration: 0.25 }}
                       className={`font-serif tracking-tight leading-none ${
                         isDark
-                          ? "text-white text-[2.5rem] sm:text-[2.75rem]"
-                          : "text-neutral-900 text-[2rem] sm:text-[2.25rem]"
+                          ? "text-white text-[2rem] sm:text-[2.25rem]"
+                          : "text-neutral-900 text-[1.75rem] sm:text-[2rem]"
                       }`}
                     >
-                      {tier.agents}
-                    </p>
-                    <p
-                      className={`text-[13px] font-light leading-tight pb-1 ${
-                        isDark ? "text-neutral-300" : "text-neutral-500"
-                      }`}
-                    >
-                      {tier.agentsLabel}
-                    </p>
-                  </div>
-
-                  {/* Product access */}
-                  <div
-                    className={`mt-4 flex items-start gap-2.5 pt-4 border-t ${
-                      isDark ? "border-white/10" : "border-neutral-200"
-                    }`}
-                  >
-                    <Layers
-                      aria-hidden="true"
-                      focusable="false"
-                      className={`w-3.5 h-3.5 mt-0.5 shrink-0 ${isDark ? "text-white" : "text-neutral-900"}`}
-                      strokeWidth={2}
-                    />
-                    <div className="min-w-0">
-                      <p
-                        className={`text-[13px] font-medium leading-snug ${
-                          isDark ? "text-white" : "text-neutral-900"
-                        }`}
-                      >
-                        {tier.access}
-                      </p>
-                      <p
-                        className={`mt-0.5 text-[12px] font-light leading-snug ${
-                          isDark ? "text-neutral-400" : "text-neutral-500"
-                        }`}
-                      >
-                        {tier.accessDetail}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Industry chip + timeline + quote — animates per industry */}
-                  <div className="mt-4 min-h-[44px]">
-                    <AnimatePresence mode="wait" initial={false}>
-                      <motion.div
-                        key={`${industry.name}-${idx}`}
-                        initial={{ opacity: 0, y: 6, filter: "blur(3px)" }}
-                        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                        exit={{ opacity: 0, y: -6, filter: "blur(3px)" }}
-                        transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-                        className={`flex flex-wrap items-center gap-x-2 gap-y-1.5 text-[11px] font-mono uppercase tracking-[0.18em] ${
-                          isDark ? "text-neutral-300" : "text-neutral-500"
-                        }`}
-                      >
-                        <span
-                          className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full ${
-                            isDark
-                              ? "bg-white/10 text-white"
-                              : "bg-neutral-100 text-neutral-700"
-                          }`}
-                        >
-                          <IndustryIcon aria-hidden="true" focusable="false" className="w-3 h-3 shrink-0" strokeWidth={2} />
-                          <span className="truncate">{industry.name}</span>
-                        </span>
-                        <span aria-hidden="true" className={isDark ? "text-neutral-500" : "text-neutral-400"}>·</span>
-                        <span>{timeline}</span>
-                        <span aria-hidden="true" className={isDark ? "text-neutral-500" : "text-neutral-400"}>·</span>
-                        <span>{price}</span>
-                      </motion.div>
-                    </AnimatePresence>
-                  </div>
+                      {price}
+                    </motion.p>
+                  </AnimatePresence>
                 </div>
+
+                {/* Meta: timeline · agents */}
+                <p
+                  className={`mb-7 text-[12px] font-mono uppercase tracking-[0.18em] ${
+                    isDark ? "text-neutral-400" : "text-neutral-500"
+                  }`}
+                >
+                  {timeline} · {tier.agents}
+                </p>
 
                 <a
                   href={`mailto:scofield@olyxee.com?subject=${encodeURIComponent(subjectWithIndustry)}`}
@@ -543,16 +462,41 @@ const IndustryEngagement: FC = () => {
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                 </a>
 
-                <ul className="mt-8">
+                {/* Includes */}
+                <p
+                  className={`mt-8 mb-3 text-[10px] font-mono uppercase tracking-[0.28em] ${
+                    isDark ? "text-neutral-500" : "text-neutral-400"
+                  }`}
+                >
+                  Includes
+                </p>
+                <ul className="space-y-2.5">
+                  <li
+                    className={`flex items-start gap-2.5 text-[13px] sm:text-sm font-light leading-snug ${
+                      isDark ? "text-neutral-200" : "text-neutral-800"
+                    }`}
+                  >
+                    <Check
+                      aria-hidden="true"
+                      focusable="false"
+                      className={`w-3.5 h-3.5 mt-1 shrink-0 ${isDark ? "text-emerald-400" : "text-neutral-900"}`}
+                      strokeWidth={2.5}
+                    />
+                    {tier.access}
+                  </li>
                   {tier.features.map((feature) => (
                     <li
                       key={feature}
-                      className={`py-3 text-sm font-light leading-relaxed border-b ${
-                        isDark
-                          ? "border-white/10 text-neutral-300"
-                          : "border-neutral-200 text-neutral-700"
-                      } first:border-t ${isDark ? "first:border-white/10" : "first:border-neutral-200"}`}
+                      className={`flex items-start gap-2.5 text-[13px] sm:text-sm font-light leading-snug ${
+                        isDark ? "text-neutral-300" : "text-neutral-700"
+                      }`}
                     >
+                      <Check
+                        aria-hidden="true"
+                        focusable="false"
+                        className={`w-3.5 h-3.5 mt-1 shrink-0 ${isDark ? "text-emerald-400/80" : "text-neutral-400"}`}
+                        strokeWidth={2.25}
+                      />
                       {feature}
                     </li>
                   ))}
