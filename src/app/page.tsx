@@ -643,21 +643,21 @@ const STORIES = [
     tag: "Accounting",
     headline: "Month-end close dropped from five days to overnight.",
     image: "/images/stories/accounting.png",
-    alt: "AI-powered financial operations dashboard",
+    alt: "Finance team reviewing an operations dashboard together",
     href: "/stories/accounting",
   },
   {
     tag: "Automation",
     headline: "Supplier onboarding fully automated, end to end.",
     image: "/images/stories/automation.png",
-    alt: "Automated operations and scheduling workflow",
+    alt: "Distributed team celebrating a launch together at the desk",
     href: "/stories/automation",
   },
 ];
 
 function StoriesSection() {
   return (
-    <section className="py-20 sm:py-32 lg:py-40 bg-white border-t border-neutral-100">
+    <section id="stories" className="py-20 sm:py-32 lg:py-40 bg-white border-t border-neutral-100 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

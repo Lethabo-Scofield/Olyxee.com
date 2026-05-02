@@ -51,7 +51,7 @@ export default function AutomationStory() {
           >
             <Image
               src="/images/stories/automation.png"
-              alt="Automated operations and scheduling workflow"
+              alt="Distributed team celebrating a launch together at the desk"
               fill
               priority
               sizes="(min-width: 768px) 768px, 100vw"

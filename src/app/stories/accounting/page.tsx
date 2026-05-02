@@ -51,7 +51,7 @@ export default function AccountingStory() {
           >
             <Image
               src="/images/stories/accounting.png"
-              alt="AI-powered financial operations dashboard"
+              alt="Finance team reviewing an operations dashboard together"
               fill
               priority
               sizes="(min-width: 768px) 768px, 100vw"
