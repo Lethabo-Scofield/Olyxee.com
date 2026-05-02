@@ -17,7 +17,7 @@ const fadeUp = {
 };
 
 const OBJECTIVES = [
-  "Make AI execute, not just advise — across real systems and real workflows.",
+  "Make AI execute, not just advise - across real systems and real workflows.",
   "Give every action an audit trail so teams can trust what runs in production.",
   "Hide infrastructure complexity behind clear outcomes and simple controls.",
   "Reach a thousand operating teams running on Olyxee by 2027.",
@@ -121,7 +121,7 @@ const About: FC = () => {
             transition={{ duration: 0.7, delay: 0.15 }}
             className="mt-8 text-lg sm:text-xl text-neutral-500 leading-relaxed font-light max-w-2xl"
           >
-            Olyxee is an AI infrastructure company. We build systems that let organizations put AI to work across their operations — reliably, transparently, and at scale.
+            Olyxee is an AI infrastructure company. We build systems that let organizations put AI to work across their operations - reliably, transparently, and at scale.
           </motion.p>
 
           {/* Meta strip */}
@@ -212,7 +212,7 @@ const About: FC = () => {
                 <em className="text-neutral-400 not-italic">runs</em> the operations that move organizations forward.
               </p>
               <p className="text-base sm:text-lg text-neutral-500 leading-relaxed font-light max-w-2xl">
-                We see a future where the work of running a company — reconciling, coordinating, deciding, executing — happens on top of an AI infrastructure that any team can trust, audit, and direct in their own words.
+                We see a future where the work of running a company - reconciling, coordinating, deciding, executing - happens on top of an AI infrastructure that any team can trust, audit, and direct in their own words.
               </p>
             </motion.div>
           </div>
@@ -418,7 +418,7 @@ const About: FC = () => {
                 &ldquo;We started Olyxee because the hardest part of AI isn&apos;t intelligence. It&apos;s getting that intelligence to actually do something useful.&rdquo;
               </blockquote>
               <p className="text-base text-neutral-400 leading-relaxed font-light mb-10 max-w-2xl">
-                The models are smart enough. What&apos;s missing is the infrastructure that lets them operate — connecting to real systems, executing real workflows, and doing it in a way teams can trust.
+                The models are smart enough. What&apos;s missing is the infrastructure that lets them operate - connecting to real systems, executing real workflows, and doing it in a way teams can trust.
               </p>
               <a
                 href="https://www.linkedin.com/in/lethabo-scofield-17b37a257/"
@@ -493,7 +493,7 @@ const About: FC = () => {
               Build AI that actually works.
             </h3>
             <p className="text-base sm:text-lg text-neutral-500 mb-10 max-w-xl mx-auto leading-relaxed font-light">
-              We&apos;re building a team of people who want to make AI work in the real world — not just in demos.
+              We&apos;re building a team of people who want to make AI work in the real world - not just in demos.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link

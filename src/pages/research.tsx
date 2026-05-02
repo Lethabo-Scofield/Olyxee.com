@@ -88,7 +88,7 @@ const ROBOTICS_FIGURES = [
 const ResearchView: FC = () => {
   return (
     <>
-      {/* Hero line — single sentence */}
+      {/* Hero line - single sentence */}
       <section className="px-4 sm:px-6 pt-10 sm:pt-14 pb-2">
         <div className="max-w-5xl mx-auto">
           <h1 className="font-serif text-3xl sm:text-4xl lg:text-[2.75rem] text-neutral-900 tracking-tight leading-[1.1] max-w-3xl">
@@ -97,7 +97,7 @@ const ResearchView: FC = () => {
         </div>
       </section>
 
-      {/* Papers — editorial list, dim-on-hover */}
+      {/* Papers - editorial list, dim-on-hover */}
       <section className="px-4 sm:px-6 pt-12 sm:pt-16 pb-20 sm:pb-28">
         <div className="max-w-5xl mx-auto">
           <div className="flex items-baseline justify-between mb-6 pb-4 border-b border-neutral-300">
@@ -153,7 +153,7 @@ const ResearchView: FC = () => {
 
 const RoboticsView: FC = () => (
   <>
-    {/* Hero line — single sentence + one supporting line */}
+    {/* Hero line - single sentence + one supporting line */}
     <section className="px-4 sm:px-6 pt-10 sm:pt-14 pb-2">
       <div className="max-w-5xl mx-auto">
         <h1 className="font-serif text-3xl sm:text-4xl lg:text-[2.75rem] text-neutral-900 tracking-tight leading-[1.1] max-w-3xl">

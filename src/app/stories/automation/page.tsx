@@ -67,7 +67,7 @@ export default function AutomationStory() {
           >
             <h2>The challenge</h2>
             <p>
-              Every new supplier relationship at this company started the same way: a procurement manager chasing forms, a compliance team waiting on documents, an IT team waiting on both before provisioning system access. The average onboarding took three to four weeks — not because anything was complicated, but because every handoff was manual and every team had its own queue.
+              Every new supplier relationship at this company started the same way: a procurement manager chasing forms, a compliance team waiting on documents, an IT team waiting on both before provisioning system access. The average onboarding took three to four weeks - not because anything was complicated, but because every handoff was manual and every team had its own queue.
             </p>
             <p>
               By the time a new supplier was fully activated, the relationship had already started on the wrong foot. And with dozens of onboardings running in parallel at any given time, the procurement team spent more time coordinating than buying.
@@ -75,7 +75,7 @@ export default function AutomationStory() {
 
             <h2>What Olyxee built</h2>
             <p>
-              We built a supplier onboarding workflow agent that orchestrates the entire process from intake to activation. When a new supplier is added to the pipeline, the agent sends the intake questionnaire, collects the required compliance documents, runs them through the verification checklist, and routes the approval request to the relevant stakeholder — all without manual intervention.
+              We built a supplier onboarding workflow agent that orchestrates the entire process from intake to activation. When a new supplier is added to the pipeline, the agent sends the intake questionnaire, collects the required compliance documents, runs them through the verification checklist, and routes the approval request to the relevant stakeholder - all without manual intervention.
             </p>
             <p>
               Approvals happen through a simple review interface. Once signed off, the agent triggers IT provisioning and sends the supplier their access credentials and onboarding guide. Every step is logged, every handoff is timestamped, and the procurement manager has a live view of where each supplier stands.
@@ -86,12 +86,12 @@ export default function AutomationStory() {
               Average onboarding time dropped from three to four weeks to under three days. Zero manual handoffs between teams. The procurement team's coordination overhead was cut by more than half, and compliance sign-off rates improved because documents were collected and reviewed systematically rather than chased over email.
             </p>
             <p>
-              The same workflow agent has since been adapted for contractor onboarding — a parallel process with similar friction and similar results.
+              The same workflow agent has since been adapted for contractor onboarding - a parallel process with similar friction and similar results.
             </p>
 
             <blockquote>
               "It used to feel like herding cats. Now the whole thing just moves on its own. People approve when they need to approve, and everything else happens automatically."
-              <cite>— Head of Procurement, operations company</cite>
+              <cite>- Head of Procurement, operations company</cite>
             </blockquote>
           </motion.div>
 

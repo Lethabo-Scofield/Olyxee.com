@@ -67,7 +67,7 @@ export default function AccountingStory() {
           >
             <h2>The challenge</h2>
             <p>
-              Every month, the finance team at this mid-market firm spent five gruelling days on close. Reconciling accounts across multiple ledgers, chasing down anomalies, and assembling reports that leadership needed to make decisions — all of it manual, all of it deadline-driven.
+              Every month, the finance team at this mid-market firm spent five gruelling days on close. Reconciling accounts across multiple ledgers, chasing down anomalies, and assembling reports that leadership needed to make decisions - all of it manual, all of it deadline-driven.
             </p>
             <p>
               The team was capable. The bottleneck was the work itself: repetitive, data-heavy tasks that required precision but not judgement. Every month the same patterns, the same corrections, the same late nights.
@@ -75,20 +75,20 @@ export default function AccountingStory() {
 
             <h2>What Olyxee built</h2>
             <p>
-              We deployed an AI accounting agent that plugs into their ERP and banking data feeds. Each month, the agent runs the reconciliation automatically — matching transactions, flagging discrepancies above a configurable threshold, and preparing a close-ready report with every exception documented and explained.
+              We deployed an AI accounting agent that plugs into their ERP and banking data feeds. Each month, the agent runs the reconciliation automatically - matching transactions, flagging discrepancies above a configurable threshold, and preparing a close-ready report with every exception documented and explained.
             </p>
             <p>
-              Anomalies that previously required a senior analyst to investigate are surfaced with context: what changed, why it might have changed, and what the likely resolution is. The team reviews, approves, and signs off — rather than rebuilding from scratch.
+              Anomalies that previously required a senior analyst to investigate are surfaced with context: what changed, why it might have changed, and what the likely resolution is. The team reviews, approves, and signs off - rather than rebuilding from scratch.
             </p>
 
             <h2>The result</h2>
             <p>
-              Month-end close now completes overnight. The finance team arrives on the first day of each new month to a report that is ready for review, not ready to be built. What took five days now takes hours — and the accuracy has improved because exceptions are caught systematically, not by whoever happened to notice.
+              Month-end close now completes overnight. The finance team arrives on the first day of each new month to a report that is ready for review, not ready to be built. What took five days now takes hours - and the accuracy has improved because exceptions are caught systematically, not by whoever happened to notice.
             </p>
 
             <blockquote>
               "We used to dread the last week of every month. Now close just happens. The team is working on things that actually require their expertise."
-              <cite>— CFO, financial services firm</cite>
+              <cite>- CFO, financial services firm</cite>
             </blockquote>
           </motion.div>
 

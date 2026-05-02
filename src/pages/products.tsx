@@ -281,7 +281,7 @@ const ProductsPage: FC = () => {
       <div className="grain" />
       <Header />
 
-      {/* === HERO — light, centered, consistent with About / Enterprise === */}
+      {/* === HERO - light, centered, consistent with About / Enterprise === */}
       <section className="relative pt-36 sm:pt-48 pb-20 sm:pb-28 px-4 sm:px-6 bg-white">
         <div className="relative max-w-4xl mx-auto text-center">
           <motion.p
@@ -584,7 +584,7 @@ const ProductsPage: FC = () => {
         </div>
       </section>
 
-      {/* === BOTTOM CTA — matches enterprise/partnerships dark CTA === */}
+      {/* === BOTTOM CTA - matches enterprise/partnerships dark CTA === */}
       <section className="py-20 sm:py-32 bg-neutral-950 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <motion.div

@@ -140,7 +140,7 @@ const Brand: FC = () => {
 
       {/* === SPECIMEN PLATES === */}
       <div className="pb-8">
-        {/* 01 — Olyxee mark, split light + dark */}
+        {/* 01 - Olyxee mark, split light + dark */}
         <motion.section
           id="logos"
           initial="hidden"
@@ -205,7 +205,7 @@ const Brand: FC = () => {
           </div>
         </motion.section>
 
-        {/* 02 — Ordo */}
+        {/* 02 - Ordo */}
         <Plate
           num="02"
           name="Ordo · Product mark"
@@ -233,7 +233,7 @@ const Brand: FC = () => {
           />
         </Plate>
 
-        {/* 03 — Addup */}
+        {/* 03 - Addup */}
         <Plate
           num="03"
           name="Addup · Wordmark"
@@ -261,7 +261,7 @@ const Brand: FC = () => {
           />
         </Plate>
 
-        {/* 04 — Lockup */}
+        {/* 04 - Lockup */}
         <Plate
           num="04"
           name="Olyxee · Lockup"
@@ -293,7 +293,7 @@ const Brand: FC = () => {
           </div>
         </Plate>
 
-        {/* 05 — Typography */}
+        {/* 05 - Typography */}
         <Plate id="typography" num="05" name="Type · Editorial Serif" bg="bg-white" borderless>
           <span
             aria-hidden="true"
@@ -325,7 +325,7 @@ const Brand: FC = () => {
           </div>
         </div>
 
-        {/* 07 — Color */}
+        {/* 07 - Color */}
         <section id="color" className="border-t border-neutral-200 scroll-mt-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="flex items-center justify-between py-3 sm:py-4 text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500">
@@ -364,7 +364,7 @@ const Brand: FC = () => {
           </div>
         </section>
 
-        {/* 08 — Usage */}
+        {/* 08 - Usage */}
         <section id="usage" className="border-t border-neutral-200 scroll-mt-24 mt-4">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="flex items-center justify-between py-3 sm:py-4 text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500">
@@ -420,7 +420,7 @@ const Brand: FC = () => {
           </div>
         </section>
 
-        {/* 09 — Downloads */}
+        {/* 09 - Downloads */}
         <section id="downloads" className="border-t border-neutral-200 scroll-mt-24 mt-4">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="flex items-center justify-between py-3 sm:py-4 text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500">
@@ -460,7 +460,7 @@ const Brand: FC = () => {
           </div>
         </section>
 
-        {/* 10 — Press */}
+        {/* 10 - Press */}
         <section id="press" className="border-t border-neutral-200 scroll-mt-24 mt-4">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="flex items-center justify-between py-3 sm:py-4 text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500">

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 const description =
-  "Ordo is an AI execution system by Olyxee. Tell it a business goal in plain English and it plans, calls the right tools, and ships the completed work — combining GPT/Claude reasoning with n8n-style workflow orchestration across Gmail, Stripe, QuickBooks, Salesforce, Notion, Slack and more.";
+  "Ordo is an AI execution system by Olyxee. Tell it a business goal in plain English and it plans, calls the right tools, and ships the completed work - combining GPT/Claude reasoning with n8n-style workflow orchestration across Gmail, Stripe, QuickBooks, Salesforce, Notion, Slack and more.";
 
 export const metadata: Metadata = {
   title: "Ordo | AI Execution System for Business Operations",

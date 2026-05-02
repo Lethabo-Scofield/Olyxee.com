@@ -46,7 +46,7 @@ const STATS = [
   {
     value: "Integrated",
     label: "Native connections to your tools",
-    detail: "First-class hooks into your ledgers, ERPs, ticketing, and APIs — no brittle middleware.",
+    detail: "First-class hooks into your ledgers, ERPs, ticketing, and APIs - no brittle middleware.",
     icon: Plug,
     metric: "40+ native connectors",
   },
@@ -175,7 +175,7 @@ const DOMAINS = [
     icon: Bot,
     name: "Custom Agents",
     description:
-      "Purpose-built AI agents scoped to your operations — from internal copilots to fully autonomous executors that act within the boundaries you define.",
+      "Purpose-built AI agents scoped to your operations - from internal copilots to fully autonomous executors that act within the boundaries you define.",
     examples: ["Domain-specific copilots", "Autonomous execution agents", "Policy-aware decision agents", "Embedded agents in existing tools"],
     pricing: ["Scoped quote", "Tailored quote", "Custom quote"],
     timeline: ["6–8 weeks", "12–18 weeks", "18+ weeks"],
@@ -374,7 +374,7 @@ const IndustryEngagement: FC = () => {
         <div className="-mx-4 sm:-mx-6 lg:mx-0 flex snap-x snap-mandatory overflow-x-auto scroll-smooth scrollbar-hide pl-4 pr-4 sm:pl-6 sm:pr-6 lg:p-0 gap-4 sm:gap-5 lg:grid lg:grid-cols-[1fr_1.35fr_1fr] lg:overflow-visible lg:items-start pb-2 lg:pb-0">
           {ENGAGEMENT_TIERS.map((tier, idx) => {
             const isDark = tier.highlight;
-            const subjectWithIndustry = `${tier.ctaSubject} — ${industry.name}`;
+            const subjectWithIndustry = `${tier.ctaSubject} - ${industry.name}`;
             const price = industry.pricing[idx];
             const timeline = industry.timeline[idx];
             return (
@@ -421,7 +421,7 @@ const IndustryEngagement: FC = () => {
                   {tier.description}
                 </p>
 
-                {/* Price — hero metric (changes with industry) */}
+                {/* Price - hero metric (changes with industry) */}
                 <div className="mb-2" aria-live="polite" aria-atomic="true">
                   <AnimatePresence mode="wait" initial={false}>
                     <motion.p

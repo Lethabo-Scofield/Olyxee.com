@@ -67,18 +67,18 @@ export default function FreightShiftStory() {
           >
             <h2>The challenge</h2>
             <p>
-              FreightShift International Logistics moves thousands of containers per month between China and South Africa. With that volume, exceptions — delayed customs clearances, missed handoffs, supplier communication gaps — are inevitable. The problem wasn't frequency; it was response time. By the time a human analyst caught an exception in their tracking dashboard, the delay had already compounded.
+              FreightShift International Logistics moves thousands of containers per month between China and South Africa. With that volume, exceptions - delayed customs clearances, missed handoffs, supplier communication gaps - are inevitable. The problem wasn't frequency; it was response time. By the time a human analyst caught an exception in their tracking dashboard, the delay had already compounded.
             </p>
             <p>
-              Their operations team was spending upwards of six hours a day manually reviewing shipment statuses across three freight systems, two supplier portals, and an internal tracking tool — none of which talked to each other. Exceptions were caught late, escalations were reactive, and customer updates arrived after the fact.
+              Their operations team was spending upwards of six hours a day manually reviewing shipment statuses across three freight systems, two supplier portals, and an internal tracking tool - none of which talked to each other. Exceptions were caught late, escalations were reactive, and customer updates arrived after the fact.
             </p>
 
             <h2>What Olyxee built</h2>
             <p>
-              We deployed a logistics monitoring agent that connects directly to FreightShift's freight management system, supplier communication channels, and customs data feeds. The agent runs continuously, watching for deviation from expected transit milestones and flagging exceptions the moment they emerge — before they become customer-facing delays.
+              We deployed a logistics monitoring agent that connects directly to FreightShift's freight management system, supplier communication channels, and customs data feeds. The agent runs continuously, watching for deviation from expected transit milestones and flagging exceptions the moment they emerge - before they become customer-facing delays.
             </p>
             <p>
-              When an exception is detected, the agent doesn't just log it. It automatically drafts supplier follow-up messages, updates the internal status record, and — for high-priority shipments — escalates to the operations lead with a full context summary. Human review happens at the decision point, not at every data collection step.
+              When an exception is detected, the agent doesn't just log it. It automatically drafts supplier follow-up messages, updates the internal status record, and - for high-priority shipments - escalates to the operations lead with a full context summary. Human review happens at the decision point, not at every data collection step.
             </p>
             <p>
               The system also generates a morning briefing each day: a ranked list of active exceptions, their current status, and the next expected checkpoint. The operations team arrives knowing exactly where to focus.
@@ -86,7 +86,7 @@ export default function FreightShiftStory() {
 
             <h2>The result</h2>
             <p>
-              Within eight weeks of deployment, FreightShift's average exception response time dropped by 70%. Analysts who previously spent their mornings combing through dashboards now begin the day with a clear queue. Supplier follow-ups that used to take hours now happen in minutes — and without manual drafting.
+              Within eight weeks of deployment, FreightShift's average exception response time dropped by 70%. Analysts who previously spent their mornings combing through dashboards now begin the day with a clear queue. Supplier follow-ups that used to take hours now happen in minutes - and without manual drafting.
             </p>
             <p>
               The team has since expanded the agent's scope to cover their air freight corridor, applying the same monitoring and escalation logic to a faster-moving, higher-stakes part of the business.
@@ -94,7 +94,7 @@ export default function FreightShiftStory() {
 
             <blockquote>
               "Before, we were always one step behind. Now the system tells us something's off before we've even had our morning coffee. That's a different way of operating."
-              <cite>— Operations Lead, FreightShift International Logistics</cite>
+              <cite>- Operations Lead, FreightShift International Logistics</cite>
             </blockquote>
           </motion.div>
 
