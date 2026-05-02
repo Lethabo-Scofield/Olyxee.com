@@ -64,6 +64,10 @@ const ENGAGEMENT_TIERS = [
     name: "Pilot",
     kicker: "Scoped pilot",
     description: "Move a single high-value workflow from manual to AI-executed, with measurable outcomes in weeks.",
+    agents: "Up to 3",
+    agentsLabel: "agents deployed",
+    access: "1 Olyxee product",
+    accessDetail: "Scoped to your pilot workflow",
     features: [
       "Discovery workshop with your team",
       "Workflow mapping and success metrics",
@@ -79,6 +83,10 @@ const ENGAGEMENT_TIERS = [
     name: "Custom Deployment",
     kicker: "Production AI",
     description: "Tailored Ordo install configured around your data, tools, and operational policies.",
+    agents: "Up to 15",
+    agentsLabel: "agents deployed",
+    access: "Full product suite",
+    accessDetail: "Access to all Olyxee products",
     features: [
       "Everything in Pilot",
       "Tailored Ordo deployment",
@@ -95,6 +103,10 @@ const ENGAGEMENT_TIERS = [
     name: "Enterprise",
     kicker: "Full custom",
     description: "For organizations with custom requirements, regulated environments, or multi-region operations.",
+    agents: "Unlimited",
+    agentsLabel: "agents deployed",
+    access: "Full suite + early access",
+    accessDetail: "All products plus pre-release features",
     features: [
       "Everything in Custom Deployment",
       "Dedicated implementation team",
@@ -314,7 +326,7 @@ const IndustryEngagement: FC = () => {
             Three ways to start, all scoped to your business.
           </h2>
           <p className="mt-5 text-sm sm:text-base text-neutral-500 font-light leading-relaxed">
-            Every engagement is custom-priced based on scope. Pick the focus area for your business and we&apos;ll outline the right starting point and a quote.
+            Each plan combines access to our products with a defined number of AI agents deployed inside your work environment. Pick the focus area for your business and we&apos;ll outline the right starting point and a quote.
           </p>
         </motion.div>
 
@@ -430,29 +442,70 @@ const IndustryEngagement: FC = () => {
                 </p>
 
                 <div
-                  className="mb-6 min-h-[96px]"
+                  className="mb-6"
                   aria-live="polite"
                   aria-atomic="true"
                 >
-                  <AnimatePresence mode="wait" initial={false}>
-                    <motion.div
-                      key={`${industry.name}-${idx}`}
-                      initial={{ opacity: 0, y: 8, filter: "blur(4px)" }}
-                      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                      exit={{ opacity: 0, y: -8, filter: "blur(4px)" }}
-                      transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  {/* Agents — primary metric */}
+                  <div className="flex items-baseline gap-2.5">
+                    <p
+                      className={`font-serif tracking-tight leading-none ${
+                        isDark
+                          ? "text-white text-[2.5rem] sm:text-[2.75rem]"
+                          : "text-neutral-900 text-[2rem] sm:text-[2.25rem]"
+                      }`}
                     >
+                      {tier.agents}
+                    </p>
+                    <p
+                      className={`text-[13px] font-light leading-tight pb-1 ${
+                        isDark ? "text-neutral-300" : "text-neutral-500"
+                      }`}
+                    >
+                      {tier.agentsLabel}
+                    </p>
+                  </div>
+
+                  {/* Product access */}
+                  <div
+                    className={`mt-4 flex items-start gap-2.5 pt-4 border-t ${
+                      isDark ? "border-white/10" : "border-neutral-200"
+                    }`}
+                  >
+                    <Layers
+                      aria-hidden="true"
+                      focusable="false"
+                      className={`w-3.5 h-3.5 mt-0.5 shrink-0 ${isDark ? "text-white" : "text-neutral-900"}`}
+                      strokeWidth={2}
+                    />
+                    <div className="min-w-0">
                       <p
-                        className={`font-serif tracking-tight leading-none ${
-                          isDark
-                            ? "text-white text-[2.5rem] sm:text-[2.75rem]"
-                            : "text-neutral-900 text-[2rem] sm:text-[2.25rem]"
+                        className={`text-[13px] font-medium leading-snug ${
+                          isDark ? "text-white" : "text-neutral-900"
                         }`}
                       >
-                        {price}
+                        {tier.access}
                       </p>
-                      <div
-                        className={`mt-2 flex flex-wrap items-center gap-x-2 gap-y-1.5 text-[11px] font-mono uppercase tracking-[0.18em] ${
+                      <p
+                        className={`mt-0.5 text-[12px] font-light leading-snug ${
+                          isDark ? "text-neutral-400" : "text-neutral-500"
+                        }`}
+                      >
+                        {tier.accessDetail}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Industry chip + timeline + quote — animates per industry */}
+                  <div className="mt-4 min-h-[44px]">
+                    <AnimatePresence mode="wait" initial={false}>
+                      <motion.div
+                        key={`${industry.name}-${idx}`}
+                        initial={{ opacity: 0, y: 6, filter: "blur(3px)" }}
+                        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                        exit={{ opacity: 0, y: -6, filter: "blur(3px)" }}
+                        transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+                        className={`flex flex-wrap items-center gap-x-2 gap-y-1.5 text-[11px] font-mono uppercase tracking-[0.18em] ${
                           isDark ? "text-neutral-300" : "text-neutral-500"
                         }`}
                       >
@@ -468,9 +521,11 @@ const IndustryEngagement: FC = () => {
                         </span>
                         <span aria-hidden="true" className={isDark ? "text-neutral-500" : "text-neutral-400"}>·</span>
                         <span>{timeline}</span>
-                      </div>
-                    </motion.div>
-                  </AnimatePresence>
+                        <span aria-hidden="true" className={isDark ? "text-neutral-500" : "text-neutral-400"}>·</span>
+                        <span>{price}</span>
+                      </motion.div>
+                    </AnimatePresence>
+                  </div>
                 </div>
 
                 <a
