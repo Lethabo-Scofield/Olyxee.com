@@ -149,7 +149,7 @@ const DOMAINS = [
     description:
       "Automate reconciliations, invoice processing, expense categorisation, and financial reporting. AI that reads your ledgers, flags anomalies, and closes the books faster.",
     examples: ["AP/AR automation", "Reconciliation agents", "Anomaly detection", "Financial close workflows"],
-    pricing: ["From $18K", "From $65K", "Custom"],
+    pricing: ["Scoped quote", "Tailored quote", "Custom quote"],
     timeline: ["4–6 weeks", "8–14 weeks", "12+ weeks"],
   },
   {
@@ -158,7 +158,7 @@ const DOMAINS = [
     description:
       "Intelligent agents that track shipments, optimise routes, manage supplier communications, and surface exceptions before they become delays.",
     examples: ["Shipment tracking & alerts", "Supplier coordination", "Route optimisation", "Exception management"],
-    pricing: ["From $28K", "From $95K", "Custom"],
+    pricing: ["Scoped quote", "Tailored quote", "Custom quote"],
     timeline: ["5–7 weeks", "10–16 weeks", "16+ weeks"],
   },
   {
@@ -167,7 +167,7 @@ const DOMAINS = [
     description:
       "End-to-end workflow automation that connects your systems, enforces approval chains, and executes multi-step processes without manual handoffs.",
     examples: ["Multi-step process automation", "Human-in-the-loop approvals", "Cross-system orchestration", "Scheduled & event-driven runs"],
-    pricing: ["From $22K", "From $80K", "Custom"],
+    pricing: ["Scoped quote", "Tailored quote", "Custom quote"],
     timeline: ["4–6 weeks", "10–14 weeks", "14+ weeks"],
   },
   {
@@ -176,7 +176,7 @@ const DOMAINS = [
     description:
       "Purpose-built AI agents scoped to your operations — from internal copilots to fully autonomous executors that act within the boundaries you define.",
     examples: ["Domain-specific copilots", "Autonomous execution agents", "Policy-aware decision agents", "Embedded agents in existing tools"],
-    pricing: ["From $35K", "From $120K", "Custom"],
+    pricing: ["Scoped quote", "Tailored quote", "Custom quote"],
     timeline: ["6–8 weeks", "12–18 weeks", "18+ weeks"],
   },
 ];
