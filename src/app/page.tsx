@@ -678,7 +678,7 @@ function StoriesSection() {
               Olyxee AI Infrastructure
               <svg
                 aria-hidden="true"
-                className="pointer-events-none absolute left-0 right-0 -bottom-2 sm:-bottom-3 w-full h-3 sm:h-[18px] overflow-visible text-neutral-900"
+                className="pointer-events-none absolute left-0 right-0 -bottom-2 sm:-bottom-3 w-full h-3 sm:h-[18px] overflow-visible text-orange-500"
                 viewBox="0 0 300 18"
                 preserveAspectRatio="none"
                 fill="none"
