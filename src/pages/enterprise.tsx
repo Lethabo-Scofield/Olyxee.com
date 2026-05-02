@@ -13,6 +13,10 @@ import {
   Bot,
   Check,
   ChevronDown,
+  Layers,
+  ShieldCheck,
+  Plug,
+  Lock,
 } from "lucide-react";
 
 const fadeUp = {
@@ -25,10 +29,34 @@ const fadeUp = {
 };
 
 const STATS = [
-  { value: "Stateful", label: "Long-running, multi-step workflows" },
-  { value: "Auditable", label: "Every action, traced and replayable" },
-  { value: "Integrated", label: "Native connections to your tools" },
-  { value: "Owned", label: "Your data, your policies, your environment" },
+  {
+    value: "Stateful",
+    label: "Long-running, multi-step workflows",
+    detail: "Resume mid-process, persist context across days, and pick up where any operator left off.",
+    icon: Layers,
+    metric: "Days, not seconds",
+  },
+  {
+    value: "Auditable",
+    label: "Every action, traced and replayable",
+    detail: "Full execution trail per run. Replay any decision against the exact state and inputs that produced it.",
+    icon: ShieldCheck,
+    metric: "100% of runs traced",
+  },
+  {
+    value: "Integrated",
+    label: "Native connections to your tools",
+    detail: "First-class hooks into your ledgers, ERPs, ticketing, and APIs — no brittle middleware.",
+    icon: Plug,
+    metric: "40+ native connectors",
+  },
+  {
+    value: "Owned",
+    label: "Your data, your policies, your environment",
+    detail: "VPC, on-prem, or customer-managed keys. Your data never leaves the boundaries you set.",
+    icon: Lock,
+    metric: "VPC · On-prem · BYOK",
+  },
 ];
 
 const ENGAGEMENT_TIERS = [
@@ -599,26 +627,66 @@ const Enterprise: FC = () => {
       </section>
 
       {/* === STATS BAND === */}
-      <section id="stats" className="relative border-y border-neutral-200/80 bg-neutral-50/50 py-14 sm:py-20">
+      <section id="stats" className="relative border-y border-neutral-200/80 bg-gradient-to-b from-neutral-50/70 to-white py-20 sm:py-28">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-8">
-            {STATS.map((s, i) => (
-              <motion.div
-                key={s.value}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-                custom={i}
-                variants={fadeUp}
-              >
-                <p className="font-serif text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-tight mb-3 leading-none">
-                  {s.value}
-                </p>
-                <p className="text-[13px] sm:text-sm text-neutral-500 leading-snug font-light max-w-[14rem]">
-                  {s.label}
-                </p>
-              </motion.div>
-            ))}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            custom={0}
+            variants={fadeUp}
+            className="max-w-2xl mb-12 sm:mb-16"
+          >
+            <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
+              Built for production
+            </p>
+            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-neutral-900 leading-snug tracking-tight">
+              Four properties every enterprise system has to ship with.
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-neutral-200 rounded-2xl overflow-hidden ring-1 ring-neutral-200">
+            {STATS.map((s, i) => {
+              const Icon = s.icon;
+              return (
+                <motion.div
+                  key={s.value}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.3 }}
+                  custom={i + 1}
+                  variants={fadeUp}
+                  className="group relative bg-white p-7 sm:p-8 flex flex-col transition-colors hover:bg-neutral-50/70"
+                >
+                  <span className="absolute top-6 right-6 text-[10px] font-mono text-neutral-300 tracking-wider tabular-nums">
+                    0{i + 1}
+                  </span>
+
+                  <div className="w-10 h-10 rounded-lg bg-neutral-900 flex items-center justify-center mb-6 transition-transform group-hover:scale-105">
+                    <Icon
+                      aria-hidden="true"
+                      focusable="false"
+                      className="w-4 h-4 text-white"
+                      strokeWidth={1.75}
+                    />
+                  </div>
+
+                  <p className="font-serif text-2xl sm:text-3xl text-neutral-900 tracking-tight mb-2 leading-none">
+                    {s.value}
+                  </p>
+                  <p className="text-sm text-neutral-700 font-medium leading-snug mb-3">
+                    {s.label}
+                  </p>
+                  <p className="text-[13px] text-neutral-500 leading-relaxed font-light mb-6 flex-1">
+                    {s.detail}
+                  </p>
+
+                  <p className="mt-auto pt-4 border-t border-neutral-200 text-[11px] font-mono uppercase tracking-[0.18em] text-neutral-600">
+                    {s.metric}
+                  </p>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
