@@ -16,21 +16,29 @@ const fadeUp = {
   }),
 };
 
-const BELIEFS = [
+const OBJECTIVES = [
+  "Make AI execute, not just advise — across real systems and real workflows.",
+  "Give every action an audit trail so teams can trust what runs in production.",
+  "Hide infrastructure complexity behind clear outcomes and simple controls.",
+  "Reach a thousand operating teams running on Olyxee by 2027.",
+];
+
+const VALUES = [
   {
-    num: "01",
-    title: "AI should do work, not just generate answers",
-    text: "The most valuable AI connects to your systems, understands your goals, and completes tasks end-to-end.",
+    name: "Verified by default",
+    text: "Every output, action, and decision is logged and reviewable. Trust is earned by being checkable.",
   },
   {
-    num: "02",
-    title: "Trust is built through transparency",
-    text: "In high-stakes environments, every step must be auditable. We design for organizations that need to verify.",
+    name: "Outcomes over noise",
+    text: "We measure ourselves by what runs in the background, not by how loudly we announce it.",
   },
   {
-    num: "03",
-    title: "Infrastructure should disappear",
-    text: "Teams should describe outcomes and get results, without worrying about orchestration underneath.",
+    name: "Narrow, then deep",
+    text: "We earn the right to do more by making the first thing work end-to-end.",
+  },
+  {
+    name: "Build for operators",
+    text: "Real users, real workflows, real consequences. We design for the people on the hook.",
   },
 ];
 
@@ -178,6 +186,85 @@ const About: FC = () => {
         </div>
       </section>
 
+      {/* === VISION === */}
+      <section className="py-20 sm:py-28 border-t border-neutral-200/70">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-[240px_1fr] gap-10 lg:gap-20">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              custom={0}
+              variants={fadeUp}
+            >
+              <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 lg:pt-3">
+                Vision
+              </p>
+            </motion.div>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              custom={1}
+              variants={fadeUp}
+            >
+              <p className="font-serif text-2xl sm:text-3xl lg:text-[2.5rem] text-neutral-900 leading-[1.15] tracking-tight mb-8">
+                A world where AI quietly{" "}
+                <em className="text-neutral-400 not-italic">runs</em> the operations that move organizations forward.
+              </p>
+              <p className="text-base sm:text-lg text-neutral-500 leading-relaxed font-light max-w-2xl">
+                We see a future where the work of running a company — reconciling, coordinating, deciding, executing — happens on top of an AI infrastructure that any team can trust, audit, and direct in their own words.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* === OBJECTIVES === */}
+      <section className="py-20 sm:py-28 border-t border-neutral-200/70">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-[240px_1fr] gap-10 lg:gap-20">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              custom={0}
+              variants={fadeUp}
+            >
+              <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 lg:pt-3">
+                Objectives
+              </p>
+            </motion.div>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              custom={1}
+              variants={fadeUp}
+            >
+              <p className="font-serif text-2xl sm:text-3xl lg:text-[2.5rem] text-neutral-900 leading-[1.15] tracking-tight mb-10">
+                What we&apos;re working toward.
+              </p>
+              <ul className="divide-y divide-neutral-200 border-t border-b border-neutral-200">
+                {OBJECTIVES.map((obj, i) => (
+                  <li
+                    key={obj}
+                    className="grid grid-cols-[2.5rem_1fr] gap-4 py-5 items-baseline"
+                  >
+                    <span className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-400">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <p className="text-base sm:text-[17px] text-neutral-800 leading-relaxed font-light">
+                      {obj}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* === HERO IMAGE === */}
       <section className="px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
@@ -214,43 +301,40 @@ const About: FC = () => {
         </div>
       </section>
 
-      {/* === WHAT WE BELIEVE === */}
-      <section className="py-20 sm:py-32">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+      {/* === VALUES === */}
+      <section className="py-20 sm:py-28 border-t border-neutral-200/70">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             custom={0}
             variants={fadeUp}
-            className="max-w-3xl mb-12 sm:mb-16"
+            className="mb-12 sm:mb-16 max-w-3xl"
           >
             <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
-              What we believe
+              Values
             </p>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-tight leading-[1.1]">
-              Three convictions that shape every product decision.
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[2.75rem] text-neutral-900 tracking-tight leading-[1.1]">
+              How we behave when no one&apos;s watching.
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-neutral-200 rounded-2xl overflow-hidden ring-1 ring-neutral-200">
-            {BELIEFS.map((item, idx) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-10 sm:gap-y-14">
+            {VALUES.map((item, idx) => (
               <motion.div
-                key={item.num}
+                key={item.name}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }}
                 custom={idx}
                 variants={fadeUp}
-                className="bg-white p-8 sm:p-10 hover:bg-neutral-50/60 transition-colors"
+                className="border-t border-neutral-200 pt-6"
               >
-                <span className="inline-block text-[11px] font-mono text-neutral-400 tracking-[0.22em] mb-8">
-                  {item.num}
-                </span>
-                <h3 className="font-serif text-xl sm:text-2xl text-neutral-900 mb-4 leading-snug tracking-tight">
-                  {item.title}
+                <h3 className="font-serif text-xl sm:text-[1.4rem] text-neutral-900 mb-3 leading-snug tracking-tight">
+                  {item.name}
                 </h3>
-                <p className="text-sm text-neutral-500 leading-relaxed font-light">
+                <p className="text-sm sm:text-[15px] text-neutral-500 leading-relaxed font-light">
                   {item.text}
                 </p>
               </motion.div>
@@ -259,7 +343,7 @@ const About: FC = () => {
         </div>
       </section>
 
-      {/* === HOW WE WORK === */}
+      {/* === PRINCIPLES === */}
       <section className="py-20 sm:py-32 bg-neutral-50/60 border-t border-b border-neutral-200/70">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <motion.div
@@ -271,7 +355,7 @@ const About: FC = () => {
             className="max-w-3xl mb-12 sm:mb-16"
           >
             <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
-              How we work
+              Principles
             </p>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-tight leading-[1.1]">
               The principles behind how we build, ship, and operate.
