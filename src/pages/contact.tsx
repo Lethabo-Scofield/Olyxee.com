@@ -1,63 +1,134 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, X } from "lucide-react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import ContactForm, { type ContactTopic } from "../components/contact/ContactForm";
 
-const CONTACT_OPTIONS = [
+interface FormOption {
+  kind: "form";
+  topic: ContactTopic;
+  title: string;
+  cta: string;
+}
+
+interface LinkOption {
+  kind: "link";
+  label: string;
+  title: string;
+  href: string;
+  cta: string;
+}
+
+type ContactOption = FormOption | LinkOption;
+
+const CONTACT_OPTIONS: ContactOption[] = [
   {
-    label: "Sales",
+    kind: "form",
+    topic: {
+      key: "sales",
+      label: "Sales",
+      title: "Talk to our team about Olyxee for your company.",
+      placeholder: "Tell us about your company, what you're trying to solve, and any timelines we should know about.",
+    },
     title: "Talk to our team about Olyxee for your company.",
-    href: "mailto:scofield@olyxee.com?subject=Contact%20%E2%80%94%20Sales%20inquiry",
     cta: "Contact sales",
   },
   {
-    label: "Enterprise",
+    kind: "form",
+    topic: {
+      key: "enterprise",
+      label: "Enterprise",
+      title: "Custom deployments, pilots, and dedicated support.",
+      placeholder: "Tell us about your environment, the workflows you want to automate, and how many seats or agents you need.",
+    },
     title: "Custom deployments, pilots, and dedicated support.",
-    href: "mailto:scofield@olyxee.com?subject=Contact%20%E2%80%94%20Enterprise%20inquiry",
     cta: "Contact enterprise",
   },
   {
-    label: "Partnerships",
+    kind: "form",
+    topic: {
+      key: "partnerships",
+      label: "Partnerships",
+      title: "Vendors, integrators, cloud and infrastructure partners.",
+      placeholder: "Tell us about your company and what kind of partnership you have in mind.",
+    },
     title: "Vendors, integrators, cloud and infrastructure partners.",
-    href: "mailto:scofield@olyxee.com?subject=Contact%20%E2%80%94%20Partnership%20inquiry",
     cta: "Contact partnerships",
   },
   {
-    label: "Research",
+    kind: "form",
+    topic: {
+      key: "research",
+      label: "Research",
+      title: "Joint research, datasets, and academic collaboration.",
+      placeholder: "Tell us about your research focus, your team, and what kind of collaboration you have in mind.",
+    },
     title: "Joint research, datasets, and academic collaboration.",
-    href: "mailto:scofield@olyxee.com?subject=Contact%20%E2%80%94%20Research%20collaboration",
     cta: "Contact research",
   },
   {
-    label: "Support",
+    kind: "form",
+    topic: {
+      key: "support",
+      label: "Support",
+      title: "Existing customer with a question or issue.",
+      placeholder: "Share what's happening, the product or workspace it relates to, and any error messages you're seeing.",
+    },
     title: "Existing customer with a question or issue.",
-    href: "mailto:scofield@olyxee.com?subject=Contact%20%E2%80%94%20Support%20request",
     cta: "Contact support",
   },
   {
-    label: "Press",
+    kind: "form",
+    topic: {
+      key: "press",
+      label: "Press",
+      title: "Media, interviews, and brand assets.",
+      placeholder: "Share your outlet, the story you're working on, your deadline, and what you'd like from us.",
+    },
     title: "Media, interviews, and brand assets.",
-    href: "mailto:scofield@olyxee.com?subject=Contact%20%E2%80%94%20Press%20inquiry",
     cta: "Contact press",
   },
   {
+    kind: "link",
     label: "Careers",
     title: "Open paid roles and the paid internship program.",
     href: "/careers",
     cta: "View open roles",
-    internal: true,
   },
   {
-    label: "General",
+    kind: "form",
+    topic: {
+      key: "general",
+      label: "General",
+      title: "Anything else, including questions about what we're building.",
+      placeholder: "Tell us what's on your mind.",
+    },
     title: "Anything else, including questions about what we're building.",
-    href: "mailto:scofield@olyxee.com?subject=Contact%20%E2%80%94%20General%20inquiry",
     cta: "Send a message",
   },
 ];
 
 const Contact: FC = () => {
+  const [activeTopic, setActiveTopic] = useState<ContactTopic | null>(null);
+  const closeModal = () => setActiveTopic(null);
+
+  useEffect(() => {
+    if (!activeTopic) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setActiveTopic(null);
+    };
+    window.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [activeTopic]);
+
   return (
     <div className="min-h-screen bg-white text-neutral-900">
       <SEO
@@ -101,10 +172,11 @@ const Contact: FC = () => {
         <div className="max-w-6xl mx-auto border-t border-neutral-200">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-neutral-200">
             {CONTACT_OPTIONS.map((opt, idx) => {
+              const label = opt.kind === "form" ? opt.topic.label : opt.label;
               const content = (
-                <div className="group h-full flex flex-col justify-between gap-10 p-6 sm:p-8 lg:p-10 hover:bg-neutral-50 transition-colors">
+                <div className="group h-full flex flex-col justify-between gap-10 p-6 sm:p-8 lg:p-10 hover:bg-neutral-50 transition-colors text-left">
                   <div>
-                    <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">{opt.label}</p>
+                    <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">{label}</p>
                     <p className="font-serif text-xl sm:text-2xl text-neutral-900 leading-snug tracking-tight">{opt.title}</p>
                   </div>
                   <span className="inline-flex items-center gap-1.5 text-sm font-medium text-neutral-900">
@@ -113,20 +185,23 @@ const Contact: FC = () => {
                   </span>
                 </div>
               );
-              const borderClass =
-                idx >= 3 ? "lg:border-t border-neutral-200" : "";
-              return opt.internal ? (
-                <Link key={opt.label} href={opt.href} className={`block ${borderClass}`}>
-                  {content}
-                </Link>
-              ) : (
-                <a
-                  key={opt.label}
-                  href={opt.href}
-                  className={`block ${borderClass}`}
+              const borderClass = idx >= 3 ? "lg:border-t border-neutral-200" : "";
+              if (opt.kind === "link") {
+                return (
+                  <Link key={label} href={opt.href} className={`block ${borderClass}`}>
+                    {content}
+                  </Link>
+                );
+              }
+              return (
+                <button
+                  key={label}
+                  type="button"
+                  onClick={() => setActiveTopic(opt.topic)}
+                  className={`block w-full ${borderClass}`}
                 >
                   {content}
-                </a>
+                </button>
               );
             })}
           </div>
@@ -152,6 +227,50 @@ const Contact: FC = () => {
       </section>
 
       <Footer />
+
+      <AnimatePresence>
+        {activeTopic && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-[2000] flex items-end sm:items-center justify-center"
+          >
+            <div className="absolute inset-0 bg-black/50 backdrop-blur-md" onClick={closeModal} aria-hidden="true" />
+            <motion.div
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="contact-modal-title"
+              initial={{ opacity: 0, y: 40, scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 40, scale: 0.97 }}
+              transition={{ type: "spring", stiffness: 350, damping: 30 }}
+              className="relative w-full sm:max-w-lg bg-white rounded-t-3xl sm:rounded-3xl shadow-2xl overflow-hidden max-h-[92vh] sm:max-h-[90vh] overflow-y-auto"
+            >
+              <div className="sticky top-0 z-10 bg-white/95 backdrop-blur-xl border-b border-neutral-100 px-5 sm:px-8 py-4 sm:py-5 flex items-center justify-between gap-3">
+                <div className="min-w-0 flex-1">
+                  <h3 id="contact-modal-title" className="font-serif text-xl sm:text-2xl tracking-tight text-neutral-900 truncate">
+                    Contact {activeTopic.label.toLowerCase()}
+                  </h3>
+                  <p className="text-xs text-neutral-400 mt-0.5 truncate">{activeTopic.title}</p>
+                </div>
+                <button
+                  onClick={closeModal}
+                  aria-label="Close"
+                  className="flex-shrink-0 w-10 h-10 rounded-full bg-neutral-100 hover:bg-neutral-200 flex items-center justify-center transition-colors"
+                >
+                  <X className="w-4 h-4 text-neutral-500" />
+                </button>
+              </div>
+
+              <div className="px-5 sm:px-8 py-6">
+                <ContactForm key={activeTopic.key} topic={activeTopic} onClose={closeModal} />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
