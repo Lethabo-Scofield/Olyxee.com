@@ -7,12 +7,6 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
-  ShieldCheck,
-  Key,
-  Lock,
-  Server,
-  Eye,
-  CheckCheck,
   Calculator,
   Truck,
   Workflow,
@@ -139,14 +133,6 @@ const DOMAINS = [
   },
 ];
 
-const TRUST_FEATURES = [
-  { icon: ShieldCheck, title: "SOC 2 Type II", subtitle: "Controls in progress" },
-  { icon: Key, title: "Customer-managed keys", subtitle: "BYOK encryption for enterprise deployments" },
-  { icon: Lock, title: "RBAC + SSO", subtitle: "Integrates with Okta, Azure AD, Google Workspace" },
-  { icon: Server, title: "VPC or on-prem", subtitle: "Deploy where your workloads run" },
-  { icon: Eye, title: "Full audit trail", subtitle: "Every action logged and reviewable on demand" },
-  { icon: CheckCheck, title: "Approval workflows", subtitle: "Configurable human-in-the-loop checkpoints" },
-];
 
 const Enterprise: FC = () => {
   return (
@@ -663,100 +649,6 @@ const Enterprise: FC = () => {
               </p>
               <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-400">
                 Planning
-              </p>
-            </figcaption>
-          </motion.figure>
-        </div>
-      </section>
-
-      {/* === BUILT FOR PRODUCTION (trust pills) === */}
-      <section id="security" className="py-20 sm:py-32 border-t border-neutral-200/70">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="max-w-3xl">
-            <motion.p
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              custom={0}
-              variants={fadeUp}
-              className="text-sm font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-4"
-            >
-              Built for production
-            </motion.p>
-            <motion.h2
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              custom={1}
-              variants={fadeUp}
-              className="font-serif text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-tight leading-[1.1]"
-            >
-              Enterprise-grade security, identity,{" "}
-              <em className="text-neutral-500 not-italic">and auditability</em>.
-            </motion.h2>
-            <motion.p
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              custom={2}
-              variants={fadeUp}
-              className="mt-6 text-base sm:text-lg text-neutral-500 leading-relaxed font-light"
-            >
-              Every Olyxee deployment ships with the controls compliance, security, and operations teams expect from production AI systems.
-            </motion.p>
-          </div>
-
-          <div className="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-            {TRUST_FEATURES.map((f, i) => {
-              const Icon = f.icon;
-              return (
-                <motion.div
-                  key={f.title}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.3 }}
-                  custom={i}
-                  variants={fadeUp}
-                  className="group flex items-start gap-4 p-5 sm:p-6 rounded-2xl border border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50/60 transition-all"
-                >
-                  <div className="shrink-0 w-10 h-10 rounded-xl bg-neutral-900 flex items-center justify-center group-hover:bg-black transition-colors">
-                    <Icon aria-hidden="true" focusable="false" className="w-[18px] h-[18px] text-white" strokeWidth={1.75} />
-                  </div>
-                  <div className="min-w-0">
-                    <p className="text-sm font-semibold text-neutral-900 leading-tight">{f.title}</p>
-                    <p className="text-[13px] text-neutral-500 mt-1 leading-snug font-light">{f.subtitle}</p>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* === EDITORIAL PHOTO 05 === */}
-      <section className="px-4 sm:px-6 py-16 sm:py-24 border-t border-neutral-200/70">
-        <div className="max-w-6xl mx-auto">
-          <motion.figure
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-          >
-            <div className="relative overflow-hidden rounded-xl ring-1 ring-neutral-900/10 aspect-[16/9] sm:aspect-[21/9] bg-neutral-100">
-              <Image
-                src="/images/enterprise/operations.png"
-                alt="A scheduling and approvals view used to coordinate operations across teams"
-                fill
-                sizes="(min-width: 1024px) 1024px, 100vw"
-                className="object-cover"
-              />
-            </div>
-            <figcaption className="mt-4 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-              <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-500">
-                Fig. 05 · Scheduling and approvals across the organization
-              </p>
-              <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-400">
-                Operations
               </p>
             </figcaption>
           </motion.figure>
