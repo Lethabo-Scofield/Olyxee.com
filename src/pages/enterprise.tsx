@@ -626,36 +626,6 @@ const Enterprise: FC = () => {
       {/* === ENGAGEMENT === */}
       <IndustryEngagement />
 
-      {/* === EDITORIAL PHOTO 03 === */}
-      <section className="px-4 sm:px-6 pb-16 sm:pb-24">
-        <div className="max-w-6xl mx-auto">
-          <motion.figure
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-          >
-            <div className="relative overflow-hidden rounded-xl ring-1 ring-neutral-900/10 aspect-[16/9] sm:aspect-[21/9] bg-neutral-100">
-              <Image
-                src="/images/enterprise/sync.png"
-                alt="Distributed team on a video call reviewing a project together"
-                fill
-                sizes="(min-width: 1024px) 1024px, 100vw"
-                className="object-cover"
-              />
-            </div>
-            <figcaption className="mt-4 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-              <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-500">
-                Fig. 03 · Distributed customer review
-              </p>
-              <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-400">
-                Sync
-              </p>
-            </figcaption>
-          </motion.figure>
-        </div>
-      </section>
-
       {/* === HOW A DEPLOYMENT WORKS (timeline) === */}
       <section id="how" className="py-20 sm:py-32 bg-gradient-to-b from-neutral-50/60 to-white border-t border-neutral-200/70">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
