@@ -64,7 +64,7 @@ const ENGAGEMENT_TIERS = [
     name: "Pilot",
     description: "One workflow, live on real data, in weeks.",
     agents: "Up to 3 agents",
-    access: "1 Olyxee product",
+    access: "Ordo or Addup (choose one)",
     features: [
       "Discovery workshop",
       "Pilot on real data",
@@ -78,7 +78,7 @@ const ENGAGEMENT_TIERS = [
     name: "Custom Deployment",
     description: "A tailored Ordo install across your tools and policies.",
     agents: "Up to 15 agents",
-    access: "Full product suite",
+    access: "Ordo + Addup (full suite)",
     features: [
       "Everything in Pilot",
       "Native API & ledger integrations",
@@ -93,7 +93,7 @@ const ENGAGEMENT_TIERS = [
     name: "Enterprise",
     description: "Custom, regulated, or multi-region operations.",
     agents: "Unlimited agents",
-    access: "Full suite + early access",
+    access: "Ordo + Addup + early access to new products",
     features: [
       "Everything in Custom Deployment",
       "VPC or on-prem deployment",
