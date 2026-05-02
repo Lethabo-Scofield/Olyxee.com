@@ -71,6 +71,7 @@ export default function HomePage() {
         <ResearchAreas />
         <ImageShowcase />
         <OrdoSection />
+        <StoriesSection />
         <CTASection />
       </main>
       <Footer />
@@ -637,6 +638,113 @@ function IntegrationSection() {
   );
 }
 
+
+const STORIES = [
+  {
+    tag: "Logistics",
+    headline: "Shipment exceptions caught before they cause delays.",
+    body: "A logistics operator used Olyxee to monitor live freight corridors, surface exceptions the moment they arose, and automatically coordinate with suppliers — cutting manual tracking hours by over 70%.",
+    metric: "70%",
+    metricLabel: "less manual tracking",
+    image: "/images/stories/logistics.png",
+    alt: "FreightShift logistics — live freight corridor tracking",
+    href: "/enterprise",
+  },
+  {
+    tag: "Accounting",
+    headline: "Month-end close dropped from five days to overnight.",
+    body: "An AI accounting agent reconciled transactions, flagged anomalies, and prepared close-ready reports autonomously — letting the finance team review rather than rebuild every month.",
+    metric: "5×",
+    metricLabel: "faster financial close",
+    image: "/images/stories/accounting.png",
+    alt: "AI-powered financial operations dashboard",
+    href: "/enterprise",
+  },
+  {
+    tag: "Automation",
+    headline: "Supplier onboarding fully automated, end to end.",
+    body: "A cross-functional workflow agent handled intake forms, compliance checks, approval routing, and system provisioning — removing weeks of back-and-forth from every new supplier relationship.",
+    metric: "0",
+    metricLabel: "manual handoffs",
+    image: "/images/stories/automation.png",
+    alt: "Automated operations and scheduling workflow",
+    href: "/enterprise",
+  },
+];
+
+function StoriesSection() {
+  return (
+    <section className="py-20 sm:py-32 lg:py-40 bg-white border-t border-neutral-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="mb-14 sm:mb-20"
+        >
+          <p className="text-xs font-semibold text-blue-600 uppercase tracking-[0.2em] mb-4">Stories</p>
+          <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900 max-w-2xl">
+            AI at work, across the{" "}
+            <em className="text-blue-500">operations that matter</em>
+          </h2>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+          {STORIES.map((story, i) => (
+            <motion.article
+              key={story.tag}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              className="group flex flex-col rounded-2xl border border-neutral-200 overflow-hidden hover:border-neutral-300 hover:shadow-lg hover:shadow-neutral-100 transition-all duration-300"
+            >
+              <div className="relative aspect-[16/9] overflow-hidden bg-neutral-100">
+                <Image
+                  src={story.image}
+                  alt={story.alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                  className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/90 backdrop-blur-sm text-[11px] font-semibold text-neutral-700 uppercase tracking-widest border border-white/60">
+                  {story.tag}
+                </span>
+              </div>
+
+              <div className="flex flex-col flex-1 p-6 sm:p-7">
+                <div className="mb-5">
+                  <p className="font-serif text-2xl text-neutral-900 tracking-tight leading-snug mb-3">
+                    {story.headline}
+                  </p>
+                  <p className="text-sm text-neutral-500 font-light leading-relaxed">
+                    {story.body}
+                  </p>
+                </div>
+
+                <div className="mt-auto pt-5 border-t border-neutral-100 flex items-end justify-between">
+                  <div>
+                    <p className="font-serif text-3xl text-neutral-900 tracking-tight leading-none">{story.metric}</p>
+                    <p className="text-[12px] text-neutral-400 font-light mt-1 uppercase tracking-wider">{story.metricLabel}</p>
+                  </div>
+                  <Link
+                    href={story.href}
+                    className="group/link inline-flex items-center gap-1.5 text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors"
+                  >
+                    Learn more
+                    <ArrowRight className="w-4 h-4 group-hover/link:translate-x-0.5 transition-transform" />
+                  </Link>
+                </div>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 function CTASection() {
   return (
