@@ -424,7 +424,7 @@ function ImageShowcase() {
 
 function OrdoSection() {
   return (
-    <section className="py-20 sm:py-32 lg:py-40 bg-neutral-50/60 border-y border-neutral-100">
+    <section className="py-20 sm:py-32 lg:py-40 bg-neutral-50/60 border-y border-neutral-100 overflow-x-clip">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <motion.div
@@ -459,10 +459,10 @@ function OrdoSection() {
           <div className="lg:col-span-7 relative">
             <div className="relative aspect-[5/4] sm:aspect-[6/5] w-full">
               <motion.div
-                initial={{ opacity: 0, y: 40, rotate: -2 }}
-                whileInView={{ opacity: 1, y: 0, rotate: -2 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                initial={{ opacity: 0, x: "-65%", y: -30, rotate: -14, scale: 0.92 }}
+                whileInView={{ opacity: 1, x: 0, y: 0, rotate: -2, scale: 1 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 1.05, ease: [0.16, 1, 0.3, 1] }}
                 className="absolute top-0 left-0 sm:left-2 w-[78%] sm:w-[70%] rounded-2xl overflow-hidden shadow-2xl shadow-neutral-300/50 border border-neutral-200/60 bg-white"
               >
                 <Image
@@ -475,10 +475,10 @@ function OrdoSection() {
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, y: 40, rotate: 3 }}
-                whileInView={{ opacity: 1, y: 0, rotate: 3 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+                initial={{ opacity: 0, x: "65%", y: 40, rotate: 16, scale: 0.92 }}
+                whileInView={{ opacity: 1, x: 0, y: 0, rotate: 3, scale: 1 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 1.05, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
                 className="absolute bottom-0 right-0 sm:right-2 w-[72%] sm:w-[62%] rounded-2xl overflow-hidden shadow-2xl shadow-neutral-300/50 border border-neutral-200/60 bg-white"
               >
                 <Image
@@ -491,10 +491,10 @@ function OrdoSection() {
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, y: 20, rotate: 3 }}
-                whileInView={{ opacity: 1, y: 0, rotate: 3 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                initial={{ opacity: 0, y: 20, scale: 0.9, rotate: 3 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1, rotate: 3 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.55, delay: 0.95, ease: [0.16, 1, 0.3, 1] }}
                 className="absolute -bottom-5 sm:-bottom-7 right-4 sm:right-8 z-20 flex flex-col items-center gap-1"
               >
                 <a
