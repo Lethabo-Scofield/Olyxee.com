@@ -620,33 +620,110 @@ const Enterprise: FC = () => {
         </div>
       </section>
 
-      {/* === EDITORIAL PHOTO 04 === */}
-      <section className="px-4 sm:px-6 py-16 sm:py-24 border-t border-neutral-200/70">
-        <div className="max-w-6xl mx-auto">
-          <motion.figure
-            initial={{ opacity: 0, y: 24 }}
+      {/* === DESKTOP SCREENS COLLAGE (playful) === */}
+      <section id="in-production" className="relative px-4 sm:px-6 py-20 sm:py-32 overflow-hidden border-t border-neutral-200/70 scroll-mt-24">
+        {/* soft color blobs */}
+        <div aria-hidden className="absolute -top-24 -left-24 w-[28rem] h-[28rem] rounded-full bg-gradient-to-br from-violet-200/40 to-pink-200/30 blur-3xl" />
+        <div aria-hidden className="absolute top-1/2 -right-32 w-[32rem] h-[32rem] rounded-full bg-gradient-to-tr from-sky-200/40 to-emerald-200/30 blur-3xl" />
+        <div aria-hidden className="absolute bottom-0 left-1/3 w-[24rem] h-[24rem] rounded-full bg-gradient-to-tl from-amber-200/30 to-rose-200/30 blur-3xl" />
+
+        <div className="relative max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7 }}
+            className="text-center max-w-2xl mx-auto mb-16 sm:mb-20"
           >
-            <div className="relative overflow-hidden rounded-xl ring-1 ring-neutral-900/10 aspect-[16/9] sm:aspect-[21/9] bg-neutral-100">
-              <Image
-                src="/images/enterprise/planning.png"
-                alt="A team mapping out a workflow on a digital kanban board"
-                fill
-                sizes="(min-width: 1024px) 1024px, 100vw"
-                className="object-cover"
-              />
-            </div>
-            <figcaption className="mt-4 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-              <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-500">
-                Fig. 04 · Workflow mapping with a customer team
-              </p>
-              <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-400">
-                Planning
-              </p>
-            </figcaption>
-          </motion.figure>
+            <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
+              In production
+            </p>
+            <h2 className="font-serif text-3xl sm:text-5xl text-neutral-900 tracking-tight leading-[1.1]">
+              What it actually looks like.
+            </h2>
+            <p className="mt-5 text-base sm:text-lg text-neutral-500 font-light leading-relaxed">
+              Real surfaces, real teams, real workflows running in the background.
+            </p>
+          </motion.div>
+
+          {/* Scattered desktop screens */}
+          <div className="relative h-[640px] sm:h-[720px] lg:h-[760px]">
+            {/* Screen 1 — top left, tilted left */}
+            <motion.div
+              initial={{ opacity: 0, y: 40, rotate: -10 }}
+              whileInView={{ opacity: 1, y: 0, rotate: -6 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="absolute top-0 left-0 sm:left-4 lg:left-8 w-[58%] sm:w-[46%] lg:w-[40%] z-10"
+            >
+              <div className="relative aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl shadow-neutral-900/15 ring-1 ring-neutral-900/10 bg-white">
+                <Image
+                  src="/images/enterprise/desktops/teamsync.png"
+                  alt="Team Sync kanban workflow on a desktop screen"
+                  fill
+                  sizes="(min-width: 1024px) 480px, 60vw"
+                  className="object-cover"
+                />
+              </div>
+            </motion.div>
+
+            {/* Screen 2 — top right, tilted right */}
+            <motion.div
+              initial={{ opacity: 0, y: 40, rotate: 10 }}
+              whileInView={{ opacity: 1, y: 0, rotate: 5 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="absolute top-8 sm:top-4 right-0 sm:right-6 lg:right-12 w-[55%] sm:w-[44%] lg:w-[38%] z-20"
+            >
+              <div className="relative aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl shadow-neutral-900/20 ring-1 ring-neutral-900/10 bg-white">
+                <Image
+                  src="/images/enterprise/desktops/dashboard.png"
+                  alt="Operations dashboard screen with team behind it"
+                  fill
+                  sizes="(min-width: 1024px) 460px, 55vw"
+                  className="object-cover"
+                />
+              </div>
+            </motion.div>
+
+            {/* Screen 3 — middle/bottom-left, slight left tilt */}
+            <motion.div
+              initial={{ opacity: 0, y: 40, rotate: -8 }}
+              whileInView={{ opacity: 1, y: 0, rotate: -3 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="absolute bottom-4 left-2 sm:left-12 lg:left-20 w-[60%] sm:w-[46%] lg:w-[42%] z-30"
+            >
+              <div className="relative aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl shadow-neutral-900/20 ring-1 ring-neutral-900/10 bg-white">
+                <Image
+                  src="/images/enterprise/desktops/meeting.png"
+                  alt="Distributed team meeting on a desktop video call"
+                  fill
+                  sizes="(min-width: 1024px) 500px, 60vw"
+                  className="object-cover"
+                />
+              </div>
+            </motion.div>
+
+            {/* Screen 4 — bottom right, tilted right */}
+            <motion.div
+              initial={{ opacity: 0, y: 40, rotate: 12 }}
+              whileInView={{ opacity: 1, y: 0, rotate: 7 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.55, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="absolute bottom-0 right-0 sm:right-4 lg:right-8 w-[56%] sm:w-[42%] lg:w-[36%] z-40"
+            >
+              <div className="relative aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl shadow-neutral-900/20 ring-1 ring-neutral-900/10 bg-white">
+                <Image
+                  src="/images/enterprise/desktops/absentify.png"
+                  alt="Absentify scheduling app on a desktop screen"
+                  fill
+                  sizes="(min-width: 1024px) 440px, 55vw"
+                  className="object-cover"
+                />
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
