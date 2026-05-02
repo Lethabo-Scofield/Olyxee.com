@@ -183,8 +183,7 @@ const Enterprise: FC = () => {
             transition={{ duration: 0.8, delay: 0.05 }}
             className="font-serif text-4xl sm:text-6xl lg:text-7xl text-neutral-900 tracking-tight leading-[1.05] mb-8"
           >
-            Custom AI systems for{" "}
-            <em className="text-neutral-500 not-italic">business execution</em>.
+            Custom AI systems for business execution.
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -308,8 +307,7 @@ const Enterprise: FC = () => {
               variants={fadeUp}
             >
               <p className="font-serif text-2xl sm:text-3xl lg:text-[2.5rem] text-neutral-900 leading-snug tracking-tight mb-8">
-                Custom AI agents and systems,{" "}
-                <em className="text-neutral-500 not-italic">built for your business</em>.
+                Custom AI agents and systems, built for your business.
               </p>
               <p className="text-base sm:text-lg text-neutral-500 leading-relaxed font-light max-w-2xl">
                 Olyxee builds bespoke AI for your operations. Agents that execute end-to-end workflows. Systems that connect to the tools you already run. Engagements scoped to ship in weeks, not quarters.
@@ -341,8 +339,7 @@ const Enterprise: FC = () => {
               variants={fadeUp}
             >
               <p className="font-serif text-2xl sm:text-3xl lg:text-[2.5rem] text-neutral-900 leading-snug tracking-tight mb-6">
-                AI across the operations that{" "}
-                <em className="text-neutral-500 not-italic">move your business</em>.
+                AI across the operations that move your business.
               </p>
               <p className="text-base sm:text-lg text-neutral-500 leading-relaxed font-light max-w-2xl">
                 We deploy purpose-built AI in the functions where manual work compounds — accounting, logistics, cross-system workflows, and custom agents tailored to how your teams operate.
@@ -398,8 +395,7 @@ const Enterprise: FC = () => {
               Engagement
             </p>
             <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-neutral-900 leading-snug tracking-tight">
-              Three ways to start,{" "}
-              <em className="text-neutral-500 not-italic">all scoped to your business</em>.
+              Three ways to start, all scoped to your business.
             </h2>
             <p className="mt-5 text-sm sm:text-base text-neutral-500 font-light leading-relaxed">
               Every engagement is custom-priced based on scope. Talk to us and we&apos;ll outline the right starting point and a quote.
@@ -550,8 +546,7 @@ const Enterprise: FC = () => {
                 variants={fadeUp}
                 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-tight leading-[1.1]"
               >
-                From discovery to production in a quarter,{" "}
-                <em className="text-neutral-500 not-italic">not a year</em>.
+                From discovery to production in a quarter, not a year.
               </motion.h2>
               <motion.p
                 initial="hidden"

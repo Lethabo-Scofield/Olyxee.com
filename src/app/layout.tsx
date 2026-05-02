@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Instrument_Serif } from "next/font/google";
+import { Geist, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import "katex/dist/katex.min.css";
 import VisualEditsMessenger from "../visual-edits/VisualEditsMessenger";
@@ -13,12 +13,11 @@ const geist = Geist({
   variable: "--font-sans",
 });
 
-const instrumentSerif = Instrument_Serif({
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
-  variable: "--font-serif",
+  variable: "--font-display",
 });
 
 const siteUrl = "https://olyxee.com";
@@ -169,7 +168,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${geist.variable} ${instrumentSerif.variable} antialiased`}>
+      <body className={`${geist.variable} ${plusJakartaSans.variable} antialiased`}>
         <ErrorReporter />
         <PageTransitionLoader />
         <Script

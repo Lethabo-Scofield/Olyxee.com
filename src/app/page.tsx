@@ -106,7 +106,7 @@ function HeroSection() {
         >
           <span className="block whitespace-nowrap">Research and Infrastructure</span>
           <span className="block whitespace-nowrap">
-            for <em className="text-blue-600">artificial intelligence</em>
+            for artificial intelligence
           </span>
         </motion.h1>
       </motion.div>
@@ -276,9 +276,9 @@ function ResearchAreas() {
             transition={{ duration: 0.8 }}
             className="text-center mb-12 sm:mb-16 lg:mb-20"
           >
-            <p className="text-xs font-semibold text-blue-600 uppercase tracking-[0.2em] mb-4">What We Do</p>
+            <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">What We Do</p>
             <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900">
-              From intelligence to <em className="text-blue-500">reliable execution</em>
+              From intelligence to reliable execution
             </h2>
           </motion.div>
 
@@ -393,9 +393,9 @@ function ImageShowcase() {
           transition={{ duration: 0.7 }}
           className="text-center"
         >
-          <p className="text-xs font-semibold text-blue-600 uppercase tracking-[0.2em] mb-4">Visual Research</p>
+          <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Visual Research</p>
           <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900">
-            Exploring AI through <em className="text-blue-500">new perspectives</em>
+            Exploring AI through new perspectives
           </h2>
         </motion.div>
       </div>
@@ -428,12 +428,8 @@ function OrdoSection() {
             transition={{ duration: 0.7 }}
             className="lg:col-span-5"
           >
-            <span className="font-handwritten text-blue-600 text-2xl sm:text-3xl block mb-2 -rotate-2">
-              Say hello to -
-            </span>
-
             <h2 className="font-serif text-5xl sm:text-6xl lg:text-7xl tracking-tight text-neutral-900 mb-6 leading-[1]">
-              <em className="not-italic font-normal">Ordo</em>
+              Ordo
             </h2>
 
             <p className="text-lg sm:text-xl text-neutral-700 leading-snug mb-8 max-w-md font-light">
@@ -447,7 +443,7 @@ function OrdoSection() {
                 "Every step assigned, timestamped, reviewable",
               ].map((t) => (
                 <li key={t} className="flex items-start gap-3 text-[15px] text-neutral-600">
-                  <span className="flex-shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-blue-600" />
+                  <span className="flex-shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-neutral-400" />
                   <span>{t}</span>
                 </li>
               ))}
@@ -599,8 +595,7 @@ function IntegrationSection() {
                   <span className="text-sm font-semibold text-neutral-400 uppercase tracking-widest">Ordo</span>
                 </div>
                 <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] tracking-tight text-neutral-900 leading-tight mb-6">
-                  AI execution for{" "}
-                  <em className="text-orange-400">your workflows</em>.
+                  AI execution for your workflows.
                 </h2>
                 <p className="text-neutral-500 text-base sm:text-lg font-light leading-relaxed mb-10 max-w-lg mx-auto">
                   Turn business goals into completed operations. Ordo plans, coordinates, and executes across your tools and systems end-to-end.
@@ -674,10 +669,9 @@ function StoriesSection() {
           transition={{ duration: 0.7 }}
           className="mb-14 sm:mb-20"
         >
-          <p className="text-xs font-semibold text-blue-600 uppercase tracking-[0.2em] mb-4">Stories</p>
+          <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Stories</p>
           <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900 max-w-2xl">
-            AI at work, across the{" "}
-            <em className="text-blue-500">operations that matter</em>
+            AI at work, across the operations that matter
           </h2>
         </motion.div>
 
@@ -739,11 +733,8 @@ function CTASection() {
           />
 
           <div className="relative text-center max-w-2xl mx-auto">
-            <span className="font-handwritten text-blue-600 text-2xl sm:text-3xl block mb-3 -rotate-2">
-              ready when you are -
-            </span>
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-5 leading-[1.05]">
-              Get started with <em className="not-italic font-normal text-blue-600">Ordo</em>
+              Get started with Ordo
             </h2>
             <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-9 max-w-lg mx-auto">
               Bring Ordo into your stack and turn scattered work into one accountable workflow.
