@@ -114,21 +114,25 @@ const DEPLOYMENT_STAGES = [
     week: "Week 1–2",
     title: "Discovery",
     desc: "Map a high-impact workflow, define success metrics, and identify the systems and policies involved.",
+    deliverables: ["Workflow map", "Success metrics", "Systems audit"],
   },
   {
     week: "Week 2–6",
     title: "Pilot",
     desc: "Stand up a scoped pilot with real data, real approvals, and a single measurable outcome.",
+    deliverables: ["Live pilot run", "Approval flows", "Acceptance criteria"],
   },
   {
     week: "Week 4–12",
     title: "Integration",
     desc: "Wire into your tools and ledgers. Add SSO, RBAC, and the audit posture your environment requires.",
+    deliverables: ["Native API hooks", "SSO + RBAC", "Audit trail"],
   },
   {
     week: "Ongoing",
     title: "Production",
     desc: "Operate, expand to adjacent workflows, and tune the system as your business evolves.",
+    deliverables: ["24/7 monitoring", "Workflow expansion", "Quarterly tuning"],
   },
 ];
 
@@ -697,73 +701,75 @@ const Enterprise: FC = () => {
       {/* === HOW A DEPLOYMENT WORKS (timeline) === */}
       <section id="how" className="py-20 sm:py-32 bg-gradient-to-b from-neutral-50/60 to-white border-t border-neutral-200/70">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-10 lg:gap-16 items-end">
-            <div className="max-w-3xl">
-              <motion.p
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-                custom={0}
-                variants={fadeUp}
-                className="text-sm font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-4"
-              >
-                How a deployment works
-              </motion.p>
-              <motion.h2
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-                custom={1}
-                variants={fadeUp}
-                className="font-serif text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-tight leading-[1.1]"
-              >
-                From discovery to production in a quarter, not a year.
-              </motion.h2>
-              <motion.p
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-                custom={2}
-                variants={fadeUp}
-                className="mt-6 text-base sm:text-lg text-neutral-500 leading-relaxed font-light"
-              >
-                Each engagement starts narrow, ships fast, and expands as trust compounds. No multi-year procurement cycles, no vaporware roadmaps.
-              </motion.p>
-            </div>
-
-            <motion.figure
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="hidden lg:block"
+          {/* Header */}
+          <div className="max-w-3xl mb-10 sm:mb-14">
+            <motion.p
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              custom={0}
+              variants={fadeUp}
+              className="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.28em] mb-4"
             >
-              <div className="relative overflow-hidden rounded-xl ring-1 ring-neutral-900/10 aspect-[4/3] bg-neutral-100">
-                <Image
-                  src="/images/enterprise/engineering.png"
-                  alt="Two engineers collaborating at code monitors during an integration session"
-                  fill
-                  sizes="360px"
-                  className="object-cover"
-                />
-              </div>
-              <figcaption className="mt-3 flex items-baseline justify-between gap-4">
-                <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-500">
-                  Fig. 02 · Integration session
-                </p>
-                <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-400">
-                  Pilot
-                </p>
-              </figcaption>
-            </motion.figure>
+              How a deployment works
+            </motion.p>
+            <motion.h2
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              custom={1}
+              variants={fadeUp}
+              className="font-serif text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-tight leading-[1.1]"
+            >
+              From discovery to production in a quarter, not a year.
+            </motion.h2>
+            <motion.p
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              custom={2}
+              variants={fadeUp}
+              className="mt-6 text-base sm:text-lg text-neutral-500 leading-relaxed font-light"
+            >
+              Each engagement starts narrow, ships fast, and expands as trust compounds. No multi-year procurement cycles, no vaporware roadmaps.
+            </motion.p>
           </div>
 
-          <div className="mt-16 sm:mt-20 relative">
+          {/* Large hero image */}
+          <motion.figure
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="mb-16 sm:mb-24"
+          >
+            <div className="relative overflow-hidden rounded-2xl ring-1 ring-neutral-900/10 shadow-xl shadow-neutral-900/10 aspect-[16/9] sm:aspect-[21/9] bg-neutral-100">
+              <Image
+                src="/images/enterprise/engineering.png"
+                alt="Two engineers collaborating at code monitors during an integration session"
+                fill
+                sizes="(min-width: 1280px) 1152px, 100vw"
+                className="object-cover"
+              />
+              <div aria-hidden className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl pointer-events-none" />
+            </div>
+            <figcaption className="mt-4 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+              <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-500">
+                Fig. 02 · Integration session
+              </p>
+              <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-400">
+                Pilot · In production
+              </p>
+            </figcaption>
+          </motion.figure>
+
+          {/* Timeline stages */}
+          <div className="relative">
             <div
               aria-hidden
               className="hidden md:block absolute top-5 left-[8%] right-[8%] h-px bg-gradient-to-r from-transparent via-neutral-300 to-transparent"
             />
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 relative">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-5 relative">
               {DEPLOYMENT_STAGES.map((stage, i) => (
                 <motion.div
                   key={stage.title}
@@ -772,18 +778,38 @@ const Enterprise: FC = () => {
                   viewport={{ once: true, amount: 0.3 }}
                   custom={i}
                   variants={fadeUp}
-                  className="relative"
+                  className="relative bg-white rounded-xl border border-neutral-200 p-6 sm:p-7 hover:border-neutral-300 transition-colors"
                 >
                   <div className="flex items-center gap-3 mb-5">
-                    <div className="relative z-10 w-10 h-10 rounded-full bg-white border border-neutral-200 flex items-center justify-center font-mono text-[13px] font-semibold text-neutral-900 shadow-sm">
+                    <div className="relative z-10 w-10 h-10 rounded-full bg-neutral-900 flex items-center justify-center font-mono text-[12px] font-semibold text-white shadow-sm">
                       {String(i + 1).padStart(2, "0")}
                     </div>
                     <span className="text-[11px] font-mono text-neutral-500 uppercase tracking-widest">
                       {stage.week}
                     </span>
                   </div>
-                  <h3 className="font-serif text-2xl text-neutral-900 mb-3 tracking-tight">{stage.title}</h3>
-                  <p className="text-sm text-neutral-500 leading-relaxed font-light">{stage.desc}</p>
+                  <h3 className="font-serif text-2xl text-neutral-900 mb-3 tracking-tight">
+                    {stage.title}
+                  </h3>
+                  <p className="text-sm text-neutral-500 leading-relaxed font-light mb-5">
+                    {stage.desc}
+                  </p>
+                  <ul className="pt-4 border-t border-neutral-100 space-y-2">
+                    {stage.deliverables.map((d) => (
+                      <li
+                        key={d}
+                        className="flex items-start gap-2 text-[12.5px] text-neutral-700 font-light leading-snug"
+                      >
+                        <Check
+                          aria-hidden="true"
+                          focusable="false"
+                          className="w-3.5 h-3.5 text-neutral-900 mt-0.5 shrink-0"
+                          strokeWidth={2.25}
+                        />
+                        {d}
+                      </li>
+                    ))}
+                  </ul>
                 </motion.div>
               ))}
             </div>
