@@ -383,7 +383,10 @@ const IndustryEngagement: FC = () => {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.35fr_1fr] gap-4 sm:gap-5 lg:items-start">
+        <p className="lg:hidden mb-4 text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-400">
+          Swipe to compare plans →
+        </p>
+        <div className="-mx-4 sm:-mx-6 lg:mx-0 flex snap-x snap-mandatory overflow-x-auto scroll-smooth scrollbar-hide pl-4 pr-4 sm:pl-6 sm:pr-6 lg:p-0 gap-4 sm:gap-5 lg:grid lg:grid-cols-[1fr_1.35fr_1fr] lg:overflow-visible lg:items-start pb-2 lg:pb-0">
           {ENGAGEMENT_TIERS.map((tier, idx) => {
             const isDark = tier.highlight;
             const subjectWithIndustry = `${tier.ctaSubject} — ${industry.name}`;
@@ -397,7 +400,7 @@ const IndustryEngagement: FC = () => {
                 viewport={{ once: true, amount: 0.2 }}
                 custom={idx}
                 variants={fadeUp}
-                className={`relative flex flex-col rounded-2xl border transition-colors ${
+                className={`relative flex flex-col rounded-2xl border transition-colors w-[88%] sm:w-[60%] flex-shrink-0 snap-center lg:w-auto lg:flex-shrink lg:snap-align-none ${
                   isDark
                     ? "bg-neutral-950 text-white border-neutral-950 p-8 sm:p-10 lg:-mt-6 lg:-mb-6 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.45)]"
                     : "bg-white text-neutral-900 border-neutral-200 hover:border-neutral-300 p-7 sm:p-8"
