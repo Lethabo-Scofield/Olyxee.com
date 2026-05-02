@@ -4,7 +4,7 @@ import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
   ArrowRight,
   Calculator,
@@ -121,6 +121,8 @@ const DOMAINS = [
     description:
       "Automate reconciliations, invoice processing, expense categorisation, and financial reporting. AI that reads your ledgers, flags anomalies, and closes the books faster.",
     examples: ["AP/AR automation", "Reconciliation agents", "Anomaly detection", "Financial close workflows"],
+    pricing: ["From $18K", "From $65K", "Custom"],
+    timeline: ["4–6 weeks", "8–14 weeks", "12+ weeks"],
   },
   {
     icon: Truck,
@@ -128,6 +130,8 @@ const DOMAINS = [
     description:
       "Intelligent agents that track shipments, optimise routes, manage supplier communications, and surface exceptions before they become delays.",
     examples: ["Shipment tracking & alerts", "Supplier coordination", "Route optimisation", "Exception management"],
+    pricing: ["From $28K", "From $95K", "Custom"],
+    timeline: ["5–7 weeks", "10–16 weeks", "16+ weeks"],
   },
   {
     icon: Workflow,
@@ -135,6 +139,8 @@ const DOMAINS = [
     description:
       "End-to-end workflow automation that connects your systems, enforces approval chains, and executes multi-step processes without manual handoffs.",
     examples: ["Multi-step process automation", "Human-in-the-loop approvals", "Cross-system orchestration", "Scheduled & event-driven runs"],
+    pricing: ["From $22K", "From $80K", "Custom"],
+    timeline: ["4–6 weeks", "10–14 weeks", "14+ weeks"],
   },
   {
     icon: Bot,
@@ -142,6 +148,8 @@ const DOMAINS = [
     description:
       "Purpose-built AI agents scoped to your operations — from internal copilots to fully autonomous executors that act within the boundaries you define.",
     examples: ["Domain-specific copilots", "Autonomous execution agents", "Policy-aware decision agents", "Embedded agents in existing tools"],
+    pricing: ["From $35K", "From $120K", "Custom"],
+    timeline: ["6–8 weeks", "12–18 weeks", "18+ weeks"],
   },
 ];
 
@@ -331,10 +339,12 @@ const IndustryEngagement: FC = () => {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-5">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.35fr_1fr] gap-4 sm:gap-5 lg:items-start">
           {ENGAGEMENT_TIERS.map((tier, idx) => {
             const isDark = tier.highlight;
             const subjectWithIndustry = `${tier.ctaSubject} — ${industry.name}`;
+            const price = industry.pricing[idx];
+            const timeline = industry.timeline[idx];
             return (
               <motion.div
                 key={tier.name}
@@ -343,12 +353,24 @@ const IndustryEngagement: FC = () => {
                 viewport={{ once: true, amount: 0.2 }}
                 custom={idx}
                 variants={fadeUp}
-                className={`relative flex flex-col p-7 sm:p-8 rounded-2xl border transition-colors ${
+                className={`relative flex flex-col rounded-2xl border transition-colors ${
                   isDark
-                    ? "bg-neutral-950 text-white border-neutral-950"
-                    : "bg-white text-neutral-900 border-neutral-200 hover:border-neutral-300"
+                    ? "bg-neutral-950 text-white border-neutral-950 p-8 sm:p-10 lg:-mt-6 lg:-mb-6 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.45)]"
+                    : "bg-white text-neutral-900 border-neutral-200 hover:border-neutral-300 p-7 sm:p-8"
                 }`}
               >
+                {isDark && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-neutral-950 text-[10px] font-mono uppercase tracking-[0.22em] shadow-sm ring-1 ring-neutral-900/10">
+                      <span className="relative flex h-1.5 w-1.5">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
+                      </span>
+                      Most chosen
+                    </span>
+                  </div>
+                )}
+
                 <p
                   className={`text-[10px] font-mono uppercase tracking-[0.28em] mb-5 ${
                     isDark ? "text-neutral-400" : "text-neutral-500"
@@ -358,8 +380,10 @@ const IndustryEngagement: FC = () => {
                 </p>
 
                 <h3
-                  className={`font-serif text-2xl sm:text-[1.75rem] tracking-tight leading-tight mb-3 ${
-                    isDark ? "text-white" : "text-neutral-900"
+                  className={`font-serif tracking-tight leading-tight mb-3 ${
+                    isDark
+                      ? "text-white text-[1.85rem] sm:text-[2.1rem]"
+                      : "text-neutral-900 text-2xl sm:text-[1.75rem]"
                   }`}
                 >
                   {tier.name}
@@ -373,21 +397,48 @@ const IndustryEngagement: FC = () => {
                   {tier.description}
                 </p>
 
-                <div className="mb-6">
-                  <p
-                    className={`text-[2rem] sm:text-[2.25rem] font-serif tracking-tight leading-none ${
-                      isDark ? "text-white" : "text-neutral-900"
-                    }`}
-                  >
-                    Custom
-                  </p>
-                  <p
-                    className={`mt-1.5 text-[12px] font-mono uppercase tracking-[0.18em] ${
-                      isDark ? "text-neutral-500" : "text-neutral-400"
-                    }`}
-                  >
-                    Quoted on scope · {industry.name}
-                  </p>
+                <div
+                  className="mb-6 min-h-[96px]"
+                  aria-live="polite"
+                  aria-atomic="true"
+                >
+                  <AnimatePresence mode="wait" initial={false}>
+                    <motion.div
+                      key={`${industry.name}-${idx}`}
+                      initial={{ opacity: 0, y: 8, filter: "blur(4px)" }}
+                      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                      exit={{ opacity: 0, y: -8, filter: "blur(4px)" }}
+                      transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    >
+                      <p
+                        className={`font-serif tracking-tight leading-none ${
+                          isDark
+                            ? "text-white text-[2.5rem] sm:text-[2.75rem]"
+                            : "text-neutral-900 text-[2rem] sm:text-[2.25rem]"
+                        }`}
+                      >
+                        {price}
+                      </p>
+                      <div
+                        className={`mt-2 flex flex-wrap items-center gap-x-2 gap-y-1.5 text-[11px] font-mono uppercase tracking-[0.18em] ${
+                          isDark ? "text-neutral-300" : "text-neutral-500"
+                        }`}
+                      >
+                        <span
+                          className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full ${
+                            isDark
+                              ? "bg-white/10 text-white"
+                              : "bg-neutral-100 text-neutral-700"
+                          }`}
+                        >
+                          <IndustryIcon aria-hidden="true" focusable="false" className="w-3 h-3 shrink-0" strokeWidth={2} />
+                          <span className="truncate">{industry.name}</span>
+                        </span>
+                        <span aria-hidden="true" className={isDark ? "text-neutral-500" : "text-neutral-400"}>·</span>
+                        <span>{timeline}</span>
+                      </div>
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
 
                 <a
