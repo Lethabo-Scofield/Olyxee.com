@@ -674,7 +674,25 @@ function StoriesSection() {
         >
           <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Stories</p>
           <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900 max-w-2xl">
-            Olyxee AI Infrastructure at work, across the operations that matter
+            <span className="relative inline-block">
+              Olyxee AI Infrastructure
+              <svg
+                aria-hidden="true"
+                className="pointer-events-none absolute left-0 right-0 -bottom-2 sm:-bottom-3 w-full h-3 sm:h-[18px] overflow-visible text-neutral-900"
+                viewBox="0 0 300 18"
+                preserveAspectRatio="none"
+                fill="none"
+              >
+                <path
+                  d="M3 11 C 55 4, 105 16, 155 8 S 250 15, 297 6"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  vectorEffect="non-scaling-stroke"
+                />
+              </svg>
+            </span>
+            {" "}at work, across the operations that matter
           </h2>
         </motion.div>
 
