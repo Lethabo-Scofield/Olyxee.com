@@ -491,9 +491,6 @@ function OrdoSection() {
                 transition={{ duration: 0.6, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 className="absolute -bottom-5 sm:-bottom-7 right-4 sm:right-8 z-20 flex flex-col items-center gap-1"
               >
-                <span className="font-handwritten text-blue-600 text-xl sm:text-2xl rotate-[-8deg] -translate-x-10 -mb-1 hidden sm:block">
-                  give it a spin →
-                </span>
                 <a
                   href="https://ordo.olyxee.com"
                   target="_blank"

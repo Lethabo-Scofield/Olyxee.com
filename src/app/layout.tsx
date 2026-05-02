@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Plus_Jakarta_Sans } from "next/font/google";
+import { Geist, Inter } from "next/font/google";
 import "./globals.css";
 import "katex/dist/katex.min.css";
 import VisualEditsMessenger from "../visual-edits/VisualEditsMessenger";
@@ -13,9 +13,9 @@ const geist = Geist({
   variable: "--font-sans",
 });
 
-const plusJakartaSans = Plus_Jakarta_Sans({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
   variable: "--font-display",
 });
@@ -168,7 +168,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${geist.variable} ${plusJakartaSans.variable} antialiased`}>
+      <body className={`${geist.variable} ${inter.variable} antialiased`}>
         <ErrorReporter />
         <PageTransitionLoader />
         <Script
