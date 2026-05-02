@@ -63,33 +63,59 @@ export default function FreightShiftStory() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="prose prose-neutral prose-lg max-w-none"
+            className="prose prose-neutral prose-lg max-w-none prose-headings:font-serif prose-headings:tracking-tight prose-h2:text-2xl sm:prose-h2:text-[1.75rem] prose-h2:mt-16 prose-h2:mb-6 prose-p:leading-[1.75] prose-p:text-neutral-700 prose-li:text-neutral-700 prose-li:leading-relaxed prose-strong:text-neutral-900 prose-blockquote:border-l-neutral-900 prose-blockquote:not-italic prose-blockquote:font-serif prose-blockquote:text-xl prose-blockquote:text-neutral-800 prose-blockquote:leading-snug"
           >
+            <p className="not-prose text-xl sm:text-[1.375rem] font-light leading-relaxed text-neutral-900 border-l-2 border-neutral-900 pl-5 sm:pl-6 mb-14">
+              International freight is a chain of handoffs, and every handoff is a chance for something to slip. We rebuilt FreightShift's exception loop so the system catches deviations the moment they happen - not the morning after.
+            </p>
+
             <h2>The challenge</h2>
             <p>
-              FreightShift International Logistics moves thousands of containers per month between China and South Africa. With that volume, exceptions - delayed customs clearances, missed handoffs, supplier communication gaps - are inevitable. The problem wasn't frequency; it was response time. By the time a human analyst caught an exception in their tracking dashboard, the delay had already compounded.
+              FreightShift moves thousands of containers each month between China and South Africa. At that volume, exceptions are inevitable: delayed customs clearances, missed handoffs, supplier communication gaps.
             </p>
             <p>
-              Their operations team was spending upwards of six hours a day manually reviewing shipment statuses across three freight systems, two supplier portals, and an internal tracking tool - none of which talked to each other. Exceptions were caught late, escalations were reactive, and customer updates arrived after the fact.
-            </p>
-
-            <h2>What Olyxee built</h2>
-            <p>
-              We deployed a logistics monitoring agent that connects directly to FreightShift's freight management system, supplier communication channels, and customs data feeds. The agent runs continuously, watching for deviation from expected transit milestones and flagging exceptions the moment they emerge - before they become customer-facing delays.
+              The real problem wasn't frequency. It was <strong>response time</strong>. By the time an analyst caught an exception in the tracking dashboard, the delay had already compounded.
             </p>
             <p>
-              When an exception is detected, the agent doesn't just log it. It automatically drafts supplier follow-up messages, updates the internal status record, and - for high-priority shipments - escalates to the operations lead with a full context summary. Human review happens at the decision point, not at every data collection step.
-            </p>
-            <p>
-              The system also generates a morning briefing each day: a ranked list of active exceptions, their current status, and the next expected checkpoint. The operations team arrives knowing exactly where to focus.
+              Their operations team was spending upwards of six hours a day reviewing shipment statuses across three freight systems, two supplier portals, and an internal tracking tool - none of which talked to each other. Exceptions surfaced late, escalations were reactive, and customer updates arrived after the fact.
             </p>
 
-            <h2>The result</h2>
+            <h2>What we built</h2>
             <p>
-              Within eight weeks of deployment, FreightShift's average exception response time dropped by 70%. Analysts who previously spent their mornings combing through dashboards now begin the day with a clear queue. Supplier follow-ups that used to take hours now happen in minutes - and without manual drafting.
+              We deployed a logistics monitoring agent that connects directly to FreightShift's freight management system, supplier channels, and customs data feeds. It runs continuously, watching for deviation from expected transit milestones.
+            </p>
+            <ul>
+              <li><strong>Continuous monitoring.</strong> Every active shipment is tracked against its expected milestones in near real time.</li>
+              <li><strong>Drafted follow-ups.</strong> When an exception fires, the agent drafts the supplier message and updates the internal status record automatically.</li>
+              <li><strong>Smart escalation.</strong> High-priority shipments are routed to the operations lead with a full context summary, not a raw alert.</li>
+              <li><strong>Morning briefing.</strong> Each day starts with a ranked queue of active exceptions and the next expected checkpoint for each.</li>
+            </ul>
+            <p>
+              Humans stay in the loop where it matters - at the decision point, not at every data-collection step.
+            </p>
+
+            <h2>The numbers</h2>
+            <div className="not-prose my-10 grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-10 border-y border-neutral-200 py-10">
+              <div>
+                <p className="font-serif text-4xl sm:text-[2.5rem] text-neutral-900 leading-none mb-3 tracking-tight">70%</p>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-neutral-500">Faster exception response</p>
+              </div>
+              <div>
+                <p className="font-serif text-4xl sm:text-[2.5rem] text-neutral-900 leading-none mb-3 tracking-tight">8 wks</p>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-neutral-500">From kickoff to live</p>
+              </div>
+              <div>
+                <p className="font-serif text-4xl sm:text-[2.5rem] text-neutral-900 leading-none mb-3 tracking-tight">~6h/day</p>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-neutral-500">Manual review reclaimed</p>
+              </div>
+            </div>
+
+            <h2>What changed</h2>
+            <p>
+              Within eight weeks, FreightShift's average exception response time dropped by 70%. Analysts who used to spend their mornings combing through dashboards now begin the day with a clear queue.
             </p>
             <p>
-              The team has since expanded the agent's scope to cover their air freight corridor, applying the same monitoring and escalation logic to a faster-moving, higher-stakes part of the business.
+              Supplier follow-ups that took hours now happen in minutes, and without manual drafting. The team has since extended the same monitoring and escalation logic to their air freight corridor - a faster-moving, higher-stakes part of the business.
             </p>
 
             <blockquote>

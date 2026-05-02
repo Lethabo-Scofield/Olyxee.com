@@ -63,27 +63,56 @@ export default function AccountingStory() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="prose prose-neutral prose-lg max-w-none"
+            className="prose prose-neutral prose-lg max-w-none prose-headings:font-serif prose-headings:tracking-tight prose-h2:text-2xl sm:prose-h2:text-[1.75rem] prose-h2:mt-16 prose-h2:mb-6 prose-p:leading-[1.75] prose-p:text-neutral-700 prose-li:text-neutral-700 prose-li:leading-relaxed prose-strong:text-neutral-900 prose-blockquote:border-l-neutral-900 prose-blockquote:not-italic prose-blockquote:font-serif prose-blockquote:text-xl prose-blockquote:text-neutral-800 prose-blockquote:leading-snug"
           >
+            <p className="not-prose text-xl sm:text-[1.375rem] font-light leading-relaxed text-neutral-900 border-l-2 border-neutral-900 pl-5 sm:pl-6 mb-14">
+              Closing the books is mechanical work that demands precision. The team had the precision; what they lacked was time. We built an agent that does the mechanics overnight.
+            </p>
+
             <h2>The challenge</h2>
             <p>
-              Every month, the finance team at this mid-market firm spent five gruelling days on close. Reconciling accounts across multiple ledgers, chasing down anomalies, and assembling reports that leadership needed to make decisions - all of it manual, all of it deadline-driven.
+              Every month, this mid-market finance team spent five gruelling days on close. Reconciling accounts across multiple ledgers, chasing down anomalies, and assembling the reports leadership needed - all manual, all deadline-driven.
             </p>
             <p>
-              The team was capable. The bottleneck was the work itself: repetitive, data-heavy tasks that required precision but not judgement. Every month the same patterns, the same corrections, the same late nights.
-            </p>
-
-            <h2>What Olyxee built</h2>
-            <p>
-              We deployed an AI accounting agent that plugs into their ERP and banking data feeds. Each month, the agent runs the reconciliation automatically - matching transactions, flagging discrepancies above a configurable threshold, and preparing a close-ready report with every exception documented and explained.
-            </p>
-            <p>
-              Anomalies that previously required a senior analyst to investigate are surfaced with context: what changed, why it might have changed, and what the likely resolution is. The team reviews, approves, and signs off - rather than rebuilding from scratch.
+              The team was capable. The bottleneck was the <strong>work itself</strong>: repetitive, data-heavy tasks that required precision but not judgement. Every month, the same patterns, the same corrections, the same late nights.
             </p>
 
-            <h2>The result</h2>
+            <h2>What we built</h2>
             <p>
-              Month-end close now completes overnight. The finance team arrives on the first day of each new month to a report that is ready for review, not ready to be built. What took five days now takes hours - and the accuracy has improved because exceptions are caught systematically, not by whoever happened to notice.
+              We deployed an AI accounting agent that plugs directly into the firm's ERP and banking data feeds. Each month it runs reconciliation automatically and prepares a close-ready report.
+            </p>
+            <ul>
+              <li><strong>Auto-reconciliation.</strong> Transactions are matched across ledgers and bank feeds without manual intervention.</li>
+              <li><strong>Threshold-based flagging.</strong> Discrepancies above a configurable threshold are surfaced for review.</li>
+              <li><strong>Explained anomalies.</strong> Each exception comes with context - what changed, why it likely changed, and the probable resolution.</li>
+              <li><strong>Close-ready reports.</strong> Output is structured for leadership review, not raw data the team has to repackage.</li>
+            </ul>
+            <p>
+              The team reviews, approves, and signs off - instead of rebuilding the close from scratch.
+            </p>
+
+            <h2>The numbers</h2>
+            <div className="not-prose my-10 grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-10 border-y border-neutral-200 py-10">
+              <div>
+                <p className="font-serif text-4xl sm:text-[2.5rem] text-neutral-900 leading-none mb-3 tracking-tight">5 days → 1 night</p>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-neutral-500">Month-end close</p>
+              </div>
+              <div>
+                <p className="font-serif text-4xl sm:text-[2.5rem] text-neutral-900 leading-none mb-3 tracking-tight">~80%</p>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-neutral-500">Manual time eliminated</p>
+              </div>
+              <div>
+                <p className="font-serif text-4xl sm:text-[2.5rem] text-neutral-900 leading-none mb-3 tracking-tight">Day 1</p>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-neutral-500">Report ready each month</p>
+              </div>
+            </div>
+
+            <h2>What changed</h2>
+            <p>
+              Month-end close now completes overnight. The finance team arrives on day one to a report that's ready for review, not ready to be built.
+            </p>
+            <p>
+              What took five days now takes hours - and accuracy has improved, because exceptions are caught systematically rather than by whoever happens to notice.
             </p>
 
             <blockquote>

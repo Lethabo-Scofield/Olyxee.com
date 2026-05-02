@@ -63,27 +63,53 @@ export default function AutomationStory() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="prose prose-neutral prose-lg max-w-none"
+            className="prose prose-neutral prose-lg max-w-none prose-headings:font-serif prose-headings:tracking-tight prose-h2:text-2xl sm:prose-h2:text-[1.75rem] prose-h2:mt-16 prose-h2:mb-6 prose-p:leading-[1.75] prose-p:text-neutral-700 prose-li:text-neutral-700 prose-li:leading-relaxed prose-strong:text-neutral-900 prose-blockquote:border-l-neutral-900 prose-blockquote:not-italic prose-blockquote:font-serif prose-blockquote:text-xl prose-blockquote:text-neutral-800 prose-blockquote:leading-snug"
           >
+            <p className="not-prose text-xl sm:text-[1.375rem] font-light leading-relaxed text-neutral-900 border-l-2 border-neutral-900 pl-5 sm:pl-6 mb-14">
+              Onboarding a supplier is mostly waiting - for documents, for signatures, for IT access. We built an agent that does the chasing, so people only show up to make decisions.
+            </p>
+
             <h2>The challenge</h2>
             <p>
-              Every new supplier relationship at this company started the same way: a procurement manager chasing forms, a compliance team waiting on documents, an IT team waiting on both before provisioning system access. The average onboarding took three to four weeks - not because anything was complicated, but because every handoff was manual and every team had its own queue.
+              Every new supplier started the same way: a procurement manager chasing forms, a compliance team waiting on documents, an IT team waiting on both before provisioning access.
             </p>
             <p>
-              By the time a new supplier was fully activated, the relationship had already started on the wrong foot. And with dozens of onboardings running in parallel at any given time, the procurement team spent more time coordinating than buying.
-            </p>
-
-            <h2>What Olyxee built</h2>
-            <p>
-              We built a supplier onboarding workflow agent that orchestrates the entire process from intake to activation. When a new supplier is added to the pipeline, the agent sends the intake questionnaire, collects the required compliance documents, runs them through the verification checklist, and routes the approval request to the relevant stakeholder - all without manual intervention.
-            </p>
-            <p>
-              Approvals happen through a simple review interface. Once signed off, the agent triggers IT provisioning and sends the supplier their access credentials and onboarding guide. Every step is logged, every handoff is timestamped, and the procurement manager has a live view of where each supplier stands.
+              Average onboarding took three to four weeks - not because anything was complicated, but because every handoff was manual and every team had its own queue. With dozens of onboardings running in parallel, the procurement team was spending more time <strong>coordinating</strong> than buying.
             </p>
 
-            <h2>The result</h2>
+            <h2>What we built</h2>
             <p>
-              Average onboarding time dropped from three to four weeks to under three days. Zero manual handoffs between teams. The procurement team's coordination overhead was cut by more than half, and compliance sign-off rates improved because documents were collected and reviewed systematically rather than chased over email.
+              We built a supplier onboarding workflow agent that orchestrates the entire process from intake to activation. When a new supplier enters the pipeline, the agent runs the playbook end to end.
+            </p>
+            <ul>
+              <li><strong>Intake automation.</strong> The questionnaire goes out automatically and collects required compliance documents.</li>
+              <li><strong>Verification checks.</strong> Documents are run through the verification checklist and flagged where review is needed.</li>
+              <li><strong>Approval routing.</strong> The right stakeholder is pulled in at the right step through a simple review interface.</li>
+              <li><strong>IT provisioning.</strong> Once approved, the agent triggers access provisioning and sends credentials and onboarding guide to the supplier.</li>
+            </ul>
+            <p>
+              Every step is logged, every handoff is timestamped, and the procurement manager has a live view of where each supplier stands.
+            </p>
+
+            <h2>The numbers</h2>
+            <div className="not-prose my-10 grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-10 border-y border-neutral-200 py-10">
+              <div>
+                <p className="font-serif text-4xl sm:text-[2.5rem] text-neutral-900 leading-none mb-3 tracking-tight">3 wks → 3 days</p>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-neutral-500">Average onboarding time</p>
+              </div>
+              <div>
+                <p className="font-serif text-4xl sm:text-[2.5rem] text-neutral-900 leading-none mb-3 tracking-tight">0</p>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-neutral-500">Manual handoffs between teams</p>
+              </div>
+              <div>
+                <p className="font-serif text-4xl sm:text-[2.5rem] text-neutral-900 leading-none mb-3 tracking-tight">50%+</p>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-neutral-500">Coordination overhead removed</p>
+              </div>
+            </div>
+
+            <h2>What changed</h2>
+            <p>
+              Onboardings finish in days, not weeks. Compliance sign-off rates improved too, because documents are collected and reviewed systematically rather than chased over email.
             </p>
             <p>
               The same workflow agent has since been adapted for contractor onboarding - a parallel process with similar friction and similar results.
