@@ -139,7 +139,7 @@ export default function RootLayout({
               url: "https://olyxee.com",
               logo: "https://olyxee.com/Logo/Olyxee_Logo.png",
               description: "Olyxee builds verification, evaluation, and monitoring infrastructure so teams can ship AI with confidence. We make AI applications more reliable, accurate, and observable in production.",
-              foundingDate: "2024",
+              foundingDate: "2025",
               sameAs: [
                 "https://twitter.com/olyxee",
                 "https://www.linkedin.com/company/olyxee/",

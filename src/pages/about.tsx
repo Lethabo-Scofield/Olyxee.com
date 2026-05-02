@@ -64,9 +64,8 @@ const APPROACH = [
 ];
 
 const TIMELINE = [
-  { year: "2024", label: "Olyxee founded in Johannesburg" },
-  { year: "2025", label: "First production deployments" },
-  { year: "2026", label: "Scaling across logistics and finance" },
+  { year: "2025", label: "Olyxee founded in Johannesburg" },
+  { year: "2026", label: "First production deployments across logistics and finance" },
 ];
 
 const About: FC = () => {
@@ -134,7 +133,7 @@ const About: FC = () => {
           >
             <div>
               <p className="text-neutral-400 mb-1.5">Founded</p>
-              <p className="text-neutral-900">2024</p>
+              <p className="text-neutral-900">2025</p>
             </div>
             <div>
               <p className="text-neutral-400 mb-1.5">Headquarters</p>

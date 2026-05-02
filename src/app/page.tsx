@@ -28,7 +28,7 @@ export default function HomePage() {
     logo: "https://olyxee.com/Logo/Olyxee_Logo.png",
     description: "Olyxee builds the research and infrastructure that enables AI to operate reliably across any domain, tool, or environment.",
     sameAs: ["https://www.linkedin.com/company/olyxeelab/"],
-    foundingDate: "2024",
+    foundingDate: "2025",
     knowsAbout: [
       "Artificial Intelligence",
       "AI Execution Systems",
