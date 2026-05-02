@@ -185,96 +185,6 @@ function OrdoArchitecture() {
   );
 }
 
-function AddupReconciliation() {
-  const rows = [
-    { y: 90,  bank: { src: "Stripe payout",   amt: "$12,480.00" }, ledger: { ref: "INV-2031", amt: "$12,480.00" }, status: "match" as const },
-    { y: 175, bank: { src: "Bank deposit",    amt: "$  4,250.00" }, ledger: { ref: "INV-2032", amt: "$  4,250.00" }, status: "match" as const },
-    { y: 260, bank: { src: "Wire — Acme Co.", amt: "$  9,800.00" }, ledger: { ref: "INV-2033", amt: "$  9,820.00" }, status: "fixed" as const },
-    { y: 345, bank: { src: "Card settlement", amt: "$  2,140.00" }, ledger: { ref: "INV-2034", amt: "$  2,140.00" }, status: "match" as const },
-  ];
-
-  const colorFor = (s: "match" | "fixed") => (s === "match" ? "#0a0a0a" : "#404040");
-  const fillFor  = (_s: "match" | "fixed") => "#ffffff";
-  const ringFor  = (s: "match" | "fixed") => (s === "match" ? "#e5e5e5" : "#d4d4d4");
-  const subFor   = (s: "match" | "fixed") => (s === "match" ? "#737373" : "#404040");
-
-  return (
-    <div className="relative rounded-2xl border border-neutral-200 bg-white p-4 sm:p-6 overflow-hidden shadow-[0_20px_50px_-30px_rgba(0,0,0,0.18)]">
-      <div className="flex items-center justify-between mb-3 sm:mb-4">
-        <div className="flex items-center gap-2">
-          <span className="relative flex h-1.5 w-1.5">
-            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-neutral-900" />
-          </span>
-          <span className="text-[11px] font-mono text-neutral-500 uppercase tracking-wider">Worked example</span>
-        </div>
-        <span className="hidden sm:inline text-[11px] font-mono text-neutral-400">addup.olyxee.com</span>
-      </div>
-
-      <div className="w-full">
-        <svg viewBox="0 0 860 480" className="w-full h-auto block" xmlns="http://www.w3.org/2000/svg">
-          <text x="20" y="56" fontSize="10" fill="#94a3b8" fontFamily="ui-monospace, monospace" letterSpacing="1">BANK & SOURCES</text>
-          {rows.map((r, i) => (
-            <g key={`b-${i}`}>
-              <rect x="20" y={r.y - 24} width="240" height="48" rx="10" fill="#ffffff" stroke="#e5e5e5" strokeWidth="1.25" />
-              <text x="32" y={r.y - 4} fontSize="12" fill="#404040" fontWeight="600">{r.bank.src}</text>
-              <text x="32" y={r.y + 14} fontSize="13" fill="#0a0a0a" fontFamily="ui-monospace, monospace">{r.bank.amt}</text>
-              <path d={`M 260 ${r.y} L 296 ${r.y}`} fill="none" stroke="#0a0a0a" strokeWidth="1.25" />
-            </g>
-          ))}
-
-          <g>
-            <rect x="296" y="180" width="170" height="120" rx="18" fill="#0a0a0a" />
-            <rect x="346" y="194" width="70" height="48" rx="10" fill="#ffffff" />
-            <image href="/images/addup-logo.png" x="350" y="200" width="62" height="36" preserveAspectRatio="xMidYMid meet" />
-            <text x="381" y="266" textAnchor="middle" fontSize="18" fill="#ffffff" fontWeight="700" fontFamily="ui-serif, Georgia">Addup</text>
-            <text x="381" y="284" textAnchor="middle" fontSize="10" fill="#a3a3a3" fontFamily="ui-monospace, monospace">matches & verifies →</text>
-          </g>
-
-          {rows.map((r, i) => (
-            <path key={`o-${i}`} d={`M 466 240 C 480 240, 490 ${r.y}, 510 ${r.y}`} fill="none" stroke="#0a0a0a" strokeWidth="1.25" />
-          ))}
-
-          <circle r="5" fill="#0a0a0a">
-            <animate attributeName="cx" values="510;510;510;510;510" keyTimes="0;0.25;0.5;0.75;1" dur="6s" repeatCount="indefinite" />
-            <animate attributeName="cy" values="90;175;260;345;90" keyTimes="0;0.25;0.5;0.75;1" dur="6s" repeatCount="indefinite" />
-          </circle>
-
-          <text x="510" y="56" fontSize="10" fill="#a3a3a3" fontFamily="ui-monospace, monospace" letterSpacing="1">LEDGER · RECONCILED</text>
-          {rows.map((r, i) => (
-            <g key={`l-${i}`}>
-              <rect x="510" y={r.y - 24} width="335" height="48" rx="10" fill={fillFor(r.status)} stroke={ringFor(r.status)} strokeWidth="1.25" />
-              {r.status === "match" ? (
-                <path d={`M 528 ${r.y} L 535 ${r.y + 6} L 547 ${r.y - 5}`} fill="none" stroke={colorFor(r.status)} strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
-              ) : (
-                <>
-                  <line x1="528" y1={r.y - 5} x2="546" y2={r.y - 5} stroke={colorFor(r.status)} strokeWidth="1.75" strokeLinecap="round" />
-                  <line x1="528" y1={r.y + 5} x2="546" y2={r.y + 5} stroke={colorFor(r.status)} strokeWidth="1.75" strokeLinecap="round" />
-                </>
-              )}
-              <text x="560" y={r.y - 4} fontSize="12" fill="#262626" fontWeight="600">{r.ledger.ref}</text>
-              <text x="560" y={r.y + 14} fontSize="11" fill={subFor(r.status)} fontWeight="500" fontFamily="ui-monospace, monospace">
-                {r.status === "match" ? "matched" : "auto-fixed · variance flagged"}
-              </text>
-              <text x="833" y={r.y + 4} textAnchor="end" fontSize="13" fill="#0a0a0a" fontFamily="ui-monospace, monospace" fontWeight="600">{r.ledger.amt}</text>
-            </g>
-          ))}
-
-          <g>
-            <rect x="20" y="410" width="825" height="50" rx="10" fill="#fafafa" stroke="#e5e5e5" strokeWidth="1.25" />
-            <circle cx="46" cy="435" r="4" fill="#0a0a0a" />
-            <text x="62" y="431" fontSize="13" fill="#0a0a0a" fontWeight="700">Books closed</text>
-            <text x="62" y="448" fontSize="11" fill="#737373">4 of 4 reconciled · 1 variance auto-resolved · audit trail saved</text>
-          </g>
-        </svg>
-      </div>
-
-      <div className="flex items-center justify-between mt-3 sm:mt-4 text-[11px] sm:text-[12px] text-neutral-500">
-        <span className="font-medium">Messy ledgers in → matched, verified records out</span>
-        <span className="hidden sm:inline font-mono text-neutral-400">auditable · close-ready</span>
-      </div>
-    </div>
-  );
-}
 
 const ORDO_FEATURES = [
   "Plain-English goals turned into multi-step plans",
@@ -530,9 +440,19 @@ const ProductsPage: FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.8 }}
-              className="lg:col-span-7 order-2 lg:order-1"
+              className="lg:col-span-7 order-2 lg:order-1 relative"
             >
-              <AddupReconciliation />
+              <div aria-hidden className="absolute -inset-8 -z-10 bg-gradient-to-br from-blue-50/60 via-white to-indigo-50/40 blur-2xl rounded-[2rem]" />
+              <div className="relative">
+                <Image
+                  src="/images/products/financial-close-cards.png"
+                  alt="Three Financial Close report templates: P&L Revenues Variance Analysis, Tax Reconciliation, and Payments Reconciliation, each with a Generate Report button"
+                  width={1024}
+                  height={1024}
+                  className="w-full h-auto"
+                  sizes="(max-width: 1024px) 100vw, 720px"
+                />
+              </div>
             </motion.div>
 
             <motion.div
@@ -606,62 +526,6 @@ const ProductsPage: FC = () => {
             </motion.div>
           </div>
 
-          {/* Financial Close — templates showcase */}
-          <div id="addup-templates" className="mt-20 sm:mt-28 pt-10 sm:pt-12 border-t border-neutral-200 scroll-mt-24">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.7 }}
-                className="lg:col-span-5"
-              >
-                <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
-                  Financial close · Templates
-                </p>
-                <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-tight leading-[1.08] mb-6">
-                  Pre-built reports that close the books for you.
-                </h3>
-                <p className="text-base text-neutral-500 font-light leading-relaxed mb-6">
-                  Start from a library of ready-made workflows — variance analysis, tax reconciliation, payments reconciliation — each with the rules and checks already wired in. Generate a finished report in a click.
-                </p>
-                <ul className="border-t border-neutral-200 max-w-md">
-                  {[
-                    "P&L Revenues Variance Analysis",
-                    "Tax Reconciliation",
-                    "Payments Reconciliation",
-                  ].map((t) => (
-                    <li
-                      key={t}
-                      className="py-3.5 border-b border-neutral-200 text-sm sm:text-[15px] text-neutral-800 font-light leading-relaxed"
-                    >
-                      {t}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, scale: 0.96 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.8 }}
-                className="lg:col-span-7 relative"
-              >
-                <div aria-hidden className="absolute -inset-8 -z-10 bg-gradient-to-br from-blue-50/60 via-white to-indigo-50/40 blur-2xl rounded-[2rem]" />
-                <div className="relative">
-                  <Image
-                    src="/images/products/financial-close-cards.png"
-                    alt="Three Financial Close report templates: P&L Revenues Variance Analysis, Tax Reconciliation, and Payments Reconciliation, each with a Generate Report button"
-                    width={1024}
-                    height={1024}
-                    className="w-full h-auto"
-                    sizes="(max-width: 1024px) 100vw, 600px"
-                  />
-                </div>
-              </motion.div>
-            </div>
-          </div>
         </div>
       </section>
 
