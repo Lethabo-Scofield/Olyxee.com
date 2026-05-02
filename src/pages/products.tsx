@@ -17,58 +17,77 @@ const fadeUp: Variants = {
 };
 
 function HeroWaves() {
-  // Realistic stacked wave layers (filled shapes that close to the bottom),
-  // not stroked lines. Wavelength 1200 (T spacing 600) so translateX(-1200px)
-  // loops seamlessly. Layers blend with multiply-style opacity for depth.
-  const waves = [
-    // Back layer - tallest, lightest neutral
-    { y: 360, amp: 75, fill: "#e5e5e5", opacity: 0.55, duration: 42 },
-    // Mid neutral wash
-    { y: 410, amp: 65, fill: "#a3a3a3", opacity: 0.35, duration: 34 },
-    // Blue band
-    { y: 455, amp: 60, fill: "#3b82f6", opacity: 0.32, duration: 30 },
-    // Orange band - the focal accent
-    { y: 500, amp: 55, fill: "#f97316", opacity: 0.5,  duration: 24 },
-    // Front dark layer - smallest, anchors the bottom
-    { y: 545, amp: 40, fill: "#171717", opacity: 0.55, duration: 28 },
-  ];
-
-  const buildPath = (y: number, amp: number) => {
-    // Wavy top edge, then close down to the bottom of the viewBox to fill.
-    const top = y - amp;
-    return `M0,${y} Q300,${top} 600,${y} T1200,${y} T1800,${y} T2400,${y} L2400,600 L0,600 Z`;
-  };
-
+  // Stripe-style aurora: a flowing painterly gradient sculpture anchored to the
+  // upper-right of the hero. Multiple translucent ribbon shapes layered with
+  // heavy blur and multiply blending to produce that silky, twisted look.
   return (
-    <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute -top-32 -right-24 sm:-right-16 h-[140%] w-[90%] sm:w-[65%] overflow-visible"
+    >
       <svg
-        className="absolute left-0 top-0 h-full w-[200%]"
-        viewBox="0 0 2400 600"
-        preserveAspectRatio="none"
+        className="absolute inset-0 h-full w-full"
+        viewBox="0 0 800 900"
+        preserveAspectRatio="xMidYMid slice"
         fill="none"
       >
-        {waves.map((w, i) => (
-          <g
-            key={i}
-            style={{
-              animation: `wave-drift ${w.duration}s linear infinite`,
-              willChange: "transform",
-              mixBlendMode: "multiply",
-            }}
-          >
-            <path
-              d={buildPath(w.y, w.amp)}
-              fill={w.fill}
-              opacity={w.opacity}
-            />
-          </g>
-        ))}
+        <defs>
+          <linearGradient id="ribbon-orange" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#fb923c" />
+            <stop offset="55%" stopColor="#f97316" />
+            <stop offset="100%" stopColor="#ea580c" />
+          </linearGradient>
+          <linearGradient id="ribbon-pink" x1="100%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#fb923c" />
+            <stop offset="55%" stopColor="#ec4899" />
+            <stop offset="100%" stopColor="#a855f7" />
+          </linearGradient>
+          <linearGradient id="ribbon-blue" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#3b82f6" />
+            <stop offset="50%" stopColor="#8b5cf6" />
+            <stop offset="100%" stopColor="#ec4899" />
+          </linearGradient>
+          <linearGradient id="ribbon-warm" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#a855f7" />
+            <stop offset="50%" stopColor="#f97316" />
+            <stop offset="100%" stopColor="#fbbf24" />
+          </linearGradient>
+          <filter id="aurora-blur" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="22" />
+          </filter>
+        </defs>
+
+        <g filter="url(#aurora-blur)" style={{ mixBlendMode: "multiply" }}>
+          {/* Back ribbon - blue/purple flowing diagonally */}
+          <path
+            d="M 720,-50 C 520,150 380,300 340,500 C 320,650 440,820 640,820 C 800,820 860,640 820,440 C 790,260 800,80 720,-50 Z"
+            fill="url(#ribbon-blue)"
+            opacity="0.55"
+            style={{ animation: "aurora-drift-a 26s ease-in-out infinite" }}
+          />
+          {/* Pink/purple twist */}
+          <path
+            d="M 660,-40 C 480,180 360,360 380,560 C 400,720 540,820 700,780 C 840,740 860,540 820,360 C 780,200 740,80 660,-40 Z"
+            fill="url(#ribbon-pink)"
+            opacity="0.7"
+            style={{ animation: "aurora-drift-b 32s ease-in-out infinite" }}
+          />
+          {/* Warm purple-to-yellow accent */}
+          <path
+            d="M 600,0 C 460,200 380,400 440,580 C 500,720 660,760 780,640 C 880,520 860,340 800,200 C 740,80 680,20 600,0 Z"
+            fill="url(#ribbon-warm)"
+            opacity="0.55"
+            style={{ animation: "aurora-drift-c 28s ease-in-out infinite" }}
+          />
+          {/* Foreground orange ribbon - the focal accent */}
+          <path
+            d="M 580,-20 C 460,160 380,340 460,520 C 540,680 700,720 800,580 C 880,460 880,300 820,180 C 760,80 660,20 580,-20 Z"
+            fill="url(#ribbon-orange)"
+            opacity="0.85"
+            style={{ animation: "aurora-drift-d 22s ease-in-out infinite" }}
+          />
+        </g>
       </svg>
-      {/* Edge fades blend the waves into the white hero */}
-      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-white via-white/80 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white to-transparent" />
-      <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent" />
-      <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent" />
     </div>
   );
 }
