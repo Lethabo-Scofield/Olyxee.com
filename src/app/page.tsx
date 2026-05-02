@@ -640,21 +640,21 @@ function IntegrationSection() {
 const STORIES = [
   {
     tag: "Logistics",
-    headline: "How FreightShift cut shipment exception response time by 70%.",
+    headline: "Response times cut by 70%.",
     image: "/images/stories/logistics.png",
     alt: "Warehouse worker in safety vest packaging shipments on the line",
     href: "/stories/freightshift",
   },
   {
     tag: "Accounting",
-    headline: "Month-end close dropped from five days to overnight.",
+    headline: "Five-day close, now overnight.",
     image: "/images/stories/accounting.png",
     alt: "Finance team reviewing an operations dashboard together",
     href: "/stories/accounting",
   },
   {
     tag: "Automation",
-    headline: "Supplier onboarding fully automated, end to end.",
+    headline: "Supplier onboarding, fully automated.",
     image: "/images/stories/automation.png",
     alt: "Distributed team celebrating a launch together at the desk",
     href: "/stories/automation",
@@ -687,14 +687,14 @@ function StoriesSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
             >
-              <Link href={story.href} className="group block">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-neutral-100 mb-5">
+              <Link href={story.href} className="group block cursor-pointer">
+                <div className="relative aspect-[5/4] overflow-hidden rounded-2xl bg-neutral-100 mb-6 ring-1 ring-neutral-900/5">
                   <Image
                     src={story.image}
                     alt={story.alt}
                     fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 540px"
+                    className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                   />
                 </div>
                 <p className="text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.18em] mb-2">
@@ -703,10 +703,6 @@ function StoriesSection() {
                 <h3 className="font-serif text-xl sm:text-2xl text-neutral-900 tracking-tight leading-snug group-hover:text-neutral-600 transition-colors">
                   {story.headline}
                 </h3>
-
-                <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-neutral-500 group-hover:text-neutral-900 transition-colors">
-                  Read story <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                </span>
               </Link>
             </motion.article>
           ))}
