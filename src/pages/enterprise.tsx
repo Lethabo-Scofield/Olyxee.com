@@ -623,15 +623,23 @@ const Enterprise: FC = () => {
       {/* === TRUSTED BY === */}
       <section className="px-4 sm:px-6 pb-16 sm:pb-20 -mt-8 sm:-mt-12">
         <div className="max-w-5xl mx-auto">
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.6 }}
-            className="text-center text-[11px] sm:text-xs font-mono uppercase tracking-[0.28em] text-neutral-500 mb-8 sm:mb-10"
+            className="text-center mb-10 sm:mb-12"
           >
-            Trusted by teams building with
-          </motion.p>
+            <p className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.28em] text-neutral-400 mb-4">
+              Trusted by
+            </p>
+            <h2 className="font-serif text-2xl sm:text-3xl lg:text-[2rem] tracking-tight text-neutral-900 leading-tight">
+              Teams running real operations on Olyxee.
+            </h2>
+            <p className="mt-3 text-sm sm:text-[15px] text-neutral-500 font-light max-w-xl mx-auto">
+              From early-stage startups to established operators, these are the companies building with our infrastructure today.
+            </p>
+          </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
