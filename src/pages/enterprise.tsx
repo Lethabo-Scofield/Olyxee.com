@@ -577,14 +577,6 @@ const Enterprise: FC = () => {
           >
             Custom AI systems for business execution.
           </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.15 }}
-            className="mt-8 text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-500"
-          >
-            Fig. 01 · Operations review with a customer team
-          </motion.p>
         </div>
       </section>
 
