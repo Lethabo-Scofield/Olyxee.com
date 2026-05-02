@@ -199,9 +199,19 @@ img, svg, video, canvas, iframe, table {
   50%      { transform: translate3d(14px, 20px, 0) rotate(4deg) scale(1.06); }
 }
 
+@keyframes brand-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.brand-marquee {
+  animation: brand-marquee 45s linear infinite;
+  will-change: transform;
+}
+
 @media (prefers-reduced-motion: reduce) {
   [style*="wave-drift"],
-  [style*="aurora-drift"] {
+  [style*="aurora-drift"],
+  .brand-marquee {
     animation: none !important;
   }
 }
