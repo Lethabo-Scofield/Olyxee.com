@@ -599,7 +599,23 @@ const Enterprise: FC = () => {
       <Header />
 
       {/* === HERO === */}
-      <section className="relative pt-36 sm:pt-48 pb-24 sm:pb-32 px-4 sm:px-6 bg-white">
+      <section className="relative pt-36 sm:pt-48 pb-32 sm:pb-48 lg:pb-56 px-4 sm:px-6 bg-white overflow-hidden">
+        {/* Background photo */}
+        <div className="absolute inset-0 -z-0">
+          <Image
+            src="/images/enterprise/team.png"
+            alt=""
+            aria-hidden="true"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center grayscale contrast-[1.04] opacity-[0.32] sm:opacity-40"
+          />
+          {/* Soft white scrim for legibility */}
+          <div className="absolute inset-0 bg-gradient-to-b from-white via-white/70 to-white" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-transparent to-white/80" />
+        </div>
+
         <div className="relative max-w-4xl mx-auto text-center">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -617,6 +633,14 @@ const Enterprise: FC = () => {
           >
             Custom AI systems for business execution.
           </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.15 }}
+            className="mt-8 text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-500"
+          >
+            Fig. 01 · Operations review with a customer team
+          </motion.p>
         </div>
       </section>
 
@@ -662,37 +686,6 @@ const Enterprise: FC = () => {
               </div>
             ))}
           </motion.div>
-        </div>
-      </section>
-
-      {/* === EDITORIAL PHOTO 01 === */}
-      <section className="px-4 sm:px-6 pb-16 sm:pb-24 -mt-4 sm:-mt-8">
-        <div className="max-w-6xl mx-auto">
-          <motion.figure
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-          >
-            <div className="relative overflow-hidden rounded-xl ring-1 ring-neutral-900/10 aspect-[16/9] sm:aspect-[21/9] bg-neutral-100">
-              <Image
-                src="/images/enterprise/team.png"
-                alt="A cross-functional team reviewing operational metrics around a conference table"
-                fill
-                priority
-                sizes="(min-width: 1024px) 1024px, 100vw"
-                className="object-cover grayscale contrast-[1.04]"
-              />
-            </div>
-            <figcaption className="mt-4 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-              <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-500">
-                Fig. 01 · Operations review with a customer team
-              </p>
-              <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-400">
-                Discovery
-              </p>
-            </figcaption>
-          </motion.figure>
         </div>
       </section>
 
