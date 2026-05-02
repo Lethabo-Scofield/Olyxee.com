@@ -106,7 +106,13 @@ function HeroSection() {
         >
           <span className="block whitespace-nowrap">Research and Infrastructure</span>
           <span className="block whitespace-nowrap">
-            for artificial intelligence
+            for{" "}
+            <span
+              className="font-handwritten text-blue-600 italic font-semibold tracking-tight"
+              style={{ fontFamily: "var(--font-handwritten), cursive" }}
+            >
+              artificial intelligence
+            </span>
           </span>
         </motion.h1>
       </motion.div>

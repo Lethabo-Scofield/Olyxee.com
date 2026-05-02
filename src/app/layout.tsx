@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Inter } from "next/font/google";
+import { Geist, Inter, Caveat } from "next/font/google";
 import "./globals.css";
 import "katex/dist/katex.min.css";
 import VisualEditsMessenger from "../visual-edits/VisualEditsMessenger";
@@ -18,6 +18,13 @@ const inter = Inter({
   weight: ["400", "500", "600", "700"],
   display: "swap",
   variable: "--font-display",
+});
+
+const caveat = Caveat({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  display: "swap",
+  variable: "--font-handwritten",
 });
 
 const siteUrl = "https://olyxee.com";
@@ -168,7 +175,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${geist.variable} ${inter.variable} antialiased`}>
+      <body className={`${geist.variable} ${inter.variable} ${caveat.variable} antialiased`}>
         <ErrorReporter />
         <PageTransitionLoader />
         <Script
