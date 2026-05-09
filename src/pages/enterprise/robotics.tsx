@@ -210,69 +210,64 @@ const Robotics: FC = () => {
               "radial-gradient(120% 90% at 80% 20%, #eaf3ff 0%, #f5f9ff 45%, #ffffff 80%)",
           }}
         >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          <div className="lg:col-span-5 order-2 lg:order-1">
-            <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">
-              Olyxee Robotics Accelerator
-            </p>
-            <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.75rem] tracking-tight text-neutral-900 leading-[1.05]">
-              Supporting the new generation of{" "}
-              <span
-                className="font-handwritten text-blue-600 italic font-semibold tracking-tight"
-                style={{ fontFamily: "var(--font-handwritten), cursive" }}
-              >
-                physical AI
-              </span>
-              .
-            </h2>
-            <p className="mt-6 text-neutral-600 text-base sm:text-lg font-light leading-relaxed">
-              Our mission is to empower high potential, early stage startups through hands-on technical mentorship, compute and hardware access, and a direct path to deploy embodied AI into the real world.
-            </p>
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <Link
-                href="/contact?subject=Olyxee%20Robotics%20Accelerator%20application"
-                className="group inline-flex items-center gap-2 px-7 py-3 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-colors text-sm tracking-wide"
-              >
-                Apply to the program
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden />
-              </Link>
-              <Link
-                href="/contact?subject=Olyxee%20Robotics%20Accelerator%20inquiry"
-                className="inline-flex items-center gap-2 px-7 py-3 text-neutral-900 bg-white border border-neutral-300 rounded-full font-medium hover:bg-neutral-50 transition-colors text-sm tracking-wide"
-              >
-                Learn more
-              </Link>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+            <div className="lg:col-span-5 order-2 lg:order-1">
+              <p className="text-xs font-semibold text-blue-600 uppercase tracking-[0.2em] mb-4">
+                Olyxee Robotics Accelerator
+              </p>
+              <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] tracking-tight text-neutral-900 leading-[1.05]">
+                Backing the next wave of{" "}
+                <span
+                  className="font-handwritten text-blue-600 italic font-semibold tracking-tight"
+                  style={{ fontFamily: "var(--font-handwritten), cursive" }}
+                >
+                  physical AI
+                </span>
+                .
+              </h2>
+              <p className="mt-6 text-neutral-600 text-base sm:text-lg font-light leading-relaxed">
+                Mentorship, compute, and robots for early-stage teams shipping embodied AI into the real world.
+              </p>
+              <div className="mt-8">
+                <Link
+                  href="/contact?subject=Olyxee%20Robotics%20Accelerator%20application"
+                  className="group inline-flex items-center gap-2 px-7 py-3 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-colors text-sm tracking-wide"
+                >
+                  Apply to the program
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden />
+                </Link>
+              </div>
             </div>
 
-            <div className="mt-12 grid grid-cols-3 gap-6 max-w-md">
-              {[
-                { k: "Mentorship", v: "1:1 technical" },
-                { k: "Compute", v: "GPU credits" },
-                { k: "Hardware", v: "Robot access" },
-              ].map((item) => (
-                <div key={item.k}>
-                  <div className="text-[10px] font-semibold text-neutral-400 uppercase tracking-[0.2em]">
-                    {item.k}
-                  </div>
-                  <div className="mt-1.5 text-sm text-neutral-700 font-light">
-                    {item.v}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+            <div className="lg:col-span-7 order-1 lg:order-2">
+              <div className="relative aspect-[4/3] w-full">
+                <Image
+                  src="/images/robotics/accelerator-pointcloud.png"
+                  alt="Point cloud rendering of a robotic figure"
+                  fill
+                  className="object-contain"
+                  sizes="(min-width: 1024px) 60vw, 100vw"
+                />
 
-          <div className="lg:col-span-7 order-1 lg:order-2">
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
-              <Image
-                src="/images/robotics/accelerator-pointcloud.png"
-                alt="Point cloud rendering of a robotic figure"
-                fill
-                className="object-contain"
-                sizes="(min-width: 1024px) 60vw, 100vw"
-              />
+                {[
+                  { label: "Mentorship", className: "top-[8%] left-[4%]" },
+                  { label: "Compute", className: "top-[40%] right-[2%]" },
+                  { label: "Hardware", className: "bottom-[10%] left-[18%]" },
+                ].map((tag, i) => (
+                  <motion.span
+                    key={tag.label}
+                    initial={{ opacity: 0, y: 8 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
+                    className={`hidden sm:inline-flex absolute ${tag.className} items-center gap-1.5 px-3 py-1.5 rounded-full bg-white text-[11px] font-medium text-neutral-700 tracking-wide ring-1 ring-neutral-900/5 shadow-sm`}
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500" aria-hidden />
+                    {tag.label}
+                  </motion.span>
+                ))}
+              </div>
             </div>
-          </div>
           </div>
         </motion.div>
       </section>
