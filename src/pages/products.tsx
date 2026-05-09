@@ -273,24 +273,6 @@ const ORDO_FEATURES = [
   "Custom skill packs for your team's workflows",
 ];
 
-const ORDO_USE_CASES = [
-  {
-    src: "/images/ordo-vendor-risk.png",
-    title: "Third-party risk management",
-    body: "Continuously score vendors against your policies and surface high-risk relationships before they become incidents.",
-  },
-  {
-    src: "/images/ordo-checks.png",
-    title: "Accelerate compliance checks",
-    body: "Run, queue, and validate controls in parallel so evidence is ready before the auditor asks.",
-  },
-  {
-    src: "/images/ordo-frameworks.png",
-    title: "Frameworks built in",
-    body: "ISO, NIST AI RMF, and the EU AI Act mapped to your controls, with progress tracked end to end.",
-  },
-];
-
 const ADDUP_FEATURES_FREE = [
   "Connect bank, card, and ledger sources",
   "Automatic matching with variance detection",
@@ -394,11 +376,6 @@ const ProductsPage: FC = () => {
       {/* === ORDO === one canonical product section, features-led === */}
       <section id="ordo" className="py-20 sm:py-28 px-4 sm:px-6 border-t border-neutral-200/70">
         <div className="max-w-6xl mx-auto">
-          <div className="flex items-center justify-between pb-6 sm:pb-8 mb-10 sm:mb-12 border-b border-neutral-200 text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500">
-            <span>01</span>
-            <span className="text-neutral-700">Ordo · Core system</span>
-          </div>
-
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             <motion.div
               initial="hidden"
@@ -460,51 +437,12 @@ const ProductsPage: FC = () => {
             </motion.div>
           </div>
 
-          <div id="ordo-use-cases" className="mt-20 sm:mt-28 pt-10 sm:pt-12 border-t border-neutral-200 scroll-mt-24">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10">
-              {ORDO_USE_CASES.map((uc, i) => (
-                <motion.div
-                  key={uc.title}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.2 }}
-                  custom={i}
-                  variants={fadeUp}
-                  className="group"
-                >
-                  <div className="relative aspect-[5/4] overflow-hidden rounded-2xl bg-neutral-100 ring-1 ring-neutral-200">
-                    <Image
-                      src={uc.src}
-                      alt={uc.title}
-                      fill
-                      sizes="(min-width: 768px) 33vw, 100vw"
-                      className="object-contain p-2 transition-transform duration-700 group-hover:scale-[1.02]"
-                    />
-                  </div>
-                  <p className="mt-5 text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-400">
-                    {String(i + 1).padStart(2, "0")}
-                  </p>
-                  <h3 className="mt-2 font-serif text-2xl text-neutral-900 tracking-tight leading-snug">
-                    {uc.title}
-                  </h3>
-                  <p className="mt-3 text-sm text-neutral-500 font-light leading-relaxed">
-                    {uc.body}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 
       {/* === ADDUP === one canonical product section, features-led === */}
       <section id="addup" className="py-20 sm:py-28 px-4 sm:px-6 border-t border-neutral-200/70 bg-white">
         <div className="max-w-6xl mx-auto">
-          <div className="flex items-center justify-between pb-6 sm:pb-8 mb-10 sm:mb-12 border-b border-neutral-200 text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500">
-            <span>02</span>
-            <span className="text-neutral-700">Addup · Focused application</span>
-          </div>
-
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -603,10 +541,6 @@ const ProductsPage: FC = () => {
       {/* === INTEGRATIONS === */}
       <section className="py-20 sm:py-28 px-4 sm:px-6 border-t border-neutral-200/70">
         <div className="max-w-6xl mx-auto">
-          <div className="flex items-center justify-between pb-6 sm:pb-8 mb-10 sm:mb-12 border-b border-neutral-200 text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500">
-            <span>03</span>
-            <span className="text-neutral-700">Integrations</span>
-          </div>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
