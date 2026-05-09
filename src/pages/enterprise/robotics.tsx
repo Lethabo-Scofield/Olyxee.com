@@ -138,29 +138,39 @@ const Robotics: FC = () => {
       </section>
 
       {/* === MARQUEE STATEMENT === */}
-      <section className="px-4 sm:px-8 lg:px-12 py-24 sm:py-36 bg-white border-b border-neutral-200/70">
-        <div className="max-w-5xl mx-auto">
-          <p className="text-[11px] font-semibold text-neutral-500 uppercase tracking-[0.28em] mb-8">
+      <section className="px-4 sm:px-8 lg:px-12 py-20 sm:py-32 lg:py-40 bg-white border-t border-neutral-100">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="max-w-5xl mx-auto"
+        >
+          <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">
             Foundation models for the physical world
           </p>
           <h2 className="font-serif text-3xl sm:text-5xl lg:text-[4.25rem] leading-[1.05] tracking-tight text-neutral-900">
             Robots of <em className="text-blue-500">any shape and size</em>, perceiving, reasoning, and using tools in the world around them.
           </h2>
-        </div>
+        </motion.div>
       </section>
 
       {/* === HIGHLIGHTS (Editorial alternating layout) === */}
-      <section className="px-4 sm:px-8 lg:px-12 py-24 sm:py-32 bg-white">
-        <div className="max-w-6xl mx-auto space-y-28 sm:space-y-40">
+      <section className="px-4 sm:px-8 lg:px-12 py-20 sm:py-32 lg:py-40 bg-white border-t border-neutral-100">
+        <div className="max-w-6xl mx-auto space-y-24 sm:space-y-36">
           {HIGHLIGHTS.map((h, idx) => {
             const reverse = idx % 2 === 1;
             return (
-              <div
+              <motion.div
                 key={h.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7 }}
                 className={`grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-14 items-center`}
               >
                 <div className={`lg:col-span-7 ${reverse ? "lg:order-2" : ""}`}>
-                  <div className="relative aspect-[16/10] w-full overflow-hidden rounded-3xl bg-neutral-100">
+                  <div className="relative aspect-[16/10] w-full overflow-hidden rounded-3xl bg-neutral-100 ring-1 ring-neutral-900/5">
                     <Image
                       src={h.image}
                       alt={h.alt}
@@ -171,40 +181,46 @@ const Robotics: FC = () => {
                   </div>
                 </div>
                 <div className={`lg:col-span-5 ${reverse ? "lg:order-1" : ""}`}>
-                  <p className="text-[11px] font-semibold text-neutral-500 uppercase tracking-[0.28em] mb-5">
+                  <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">
                     {h.meta}
                   </p>
                   <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl tracking-tight text-neutral-900 leading-[1.1]">
                     {h.title}
                   </h3>
-                  <p className="mt-5 text-base sm:text-lg text-neutral-500 font-light leading-relaxed">
+                  <p className="mt-5 text-neutral-600 text-base sm:text-lg font-light leading-relaxed">
                     {h.body}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
       </section>
 
       {/* === STATS BAND === */}
-      <section className="px-4 sm:px-8 lg:px-12 py-20 sm:py-28 bg-neutral-50 border-y border-neutral-200/70">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-12 sm:gap-8">
+      <section className="px-4 sm:px-8 lg:px-12 py-20 sm:py-28 bg-neutral-50 border-t border-neutral-100">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-12 sm:gap-8"
+        >
           {STATS.map((s) => (
             <div key={s.label} className="text-center sm:text-left">
               <div className="font-serif text-5xl sm:text-6xl lg:text-7xl tracking-tight text-neutral-900">
                 <em className="text-blue-500">{s.value}</em>
               </div>
-              <div className="mt-3 text-xs sm:text-sm text-neutral-500 font-light tracking-[0.2em] uppercase">
+              <div className="mt-3 text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em]">
                 {s.label}
               </div>
             </div>
           ))}
-        </div>
+        </motion.div>
       </section>
 
       {/* === ACCELERATOR === */}
-      <section className="relative px-4 sm:px-8 lg:px-12 py-24 sm:py-36 bg-white overflow-hidden">
+      <section className="relative px-4 sm:px-8 lg:px-12 py-20 sm:py-32 lg:py-40 bg-white border-t border-neutral-100 overflow-hidden">
         <div
           aria-hidden
           className="absolute inset-0 pointer-events-none"
@@ -213,31 +229,36 @@ const Robotics: FC = () => {
               "radial-gradient(60% 50% at 80% 30%, rgba(59,130,246,0.06), transparent 70%)",
           }}
         />
-        <div className="relative max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="relative max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center"
+        >
           <div className="lg:col-span-5 order-2 lg:order-1">
-            <p className="text-[11px] font-semibold text-neutral-500 uppercase tracking-[0.28em] mb-5">
+            <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">
               Olyxee Robotics Accelerator
             </p>
             <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.75rem] tracking-tight text-neutral-900 leading-[1.05]">
               Supporting the new generation of <em className="text-blue-500">physical AI</em>.
             </h2>
-            <p className="mt-7 text-base sm:text-lg text-neutral-500 font-light leading-relaxed">
+            <p className="mt-6 text-neutral-600 text-base sm:text-lg font-light leading-relaxed">
               Our mission is to empower high potential, early stage startups through hands-on technical mentorship, compute and hardware access, and a direct path to deploy embodied AI into the real world.
             </p>
-            <div className="mt-9 flex flex-wrap items-center gap-3">
+            <div className="mt-8 flex flex-wrap items-center gap-3">
               <Link
                 href="/contact?subject=Olyxee%20Robotics%20Accelerator%20application"
-                className="group inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide"
+                className="group inline-flex items-center gap-2 px-7 py-3 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-colors text-sm tracking-wide"
               >
                 Apply to the program
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden />
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden />
               </Link>
               <Link
                 href="/contact?subject=Olyxee%20Robotics%20Accelerator%20inquiry"
-                className="inline-flex items-center gap-2 text-sm font-medium text-neutral-900 group px-2"
+                className="inline-flex items-center gap-2 px-7 py-3 text-neutral-900 bg-white border border-neutral-300 rounded-full font-medium hover:bg-neutral-50 transition-colors text-sm tracking-wide"
               >
                 Learn more
-                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
               </Link>
             </div>
 
@@ -248,7 +269,7 @@ const Robotics: FC = () => {
                 { k: "Hardware", v: "Robot access" },
               ].map((item) => (
                 <div key={item.k}>
-                  <div className="text-[10px] font-semibold text-neutral-400 uppercase tracking-[0.22em]">
+                  <div className="text-[10px] font-semibold text-neutral-400 uppercase tracking-[0.2em]">
                     {item.k}
                   </div>
                   <div className="mt-1.5 text-sm text-neutral-700 font-light">
@@ -260,7 +281,7 @@ const Robotics: FC = () => {
           </div>
 
           <div className="lg:col-span-7 order-1 lg:order-2">
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-neutral-50 border border-neutral-200/60">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-neutral-50 ring-1 ring-neutral-900/5">
               <Image
                 src="/images/robotics/accelerator-pointcloud.png"
                 alt="Point cloud rendering of a robotic figure"
@@ -270,20 +291,26 @@ const Robotics: FC = () => {
               />
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* === PARTNERSHIPS / ECOSYSTEM === */}
-      <section className="px-4 sm:px-8 lg:px-12 py-24 sm:py-32 bg-white">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <section className="px-4 sm:px-8 lg:px-12 py-20 sm:py-32 lg:py-40 bg-white border-t border-neutral-100">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
+        >
           <div className="lg:col-span-5">
-            <p className="text-[11px] font-semibold text-neutral-500 uppercase tracking-[0.28em] mb-5">
+            <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">
               04 · Ecosystem
             </p>
             <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl tracking-tight text-neutral-900 leading-[1.1]">
               Built with the <em className="text-blue-500">leading</em> robotics teams.
             </h3>
-            <p className="mt-5 text-base sm:text-lg text-neutral-500 font-light leading-relaxed">
+            <p className="mt-5 text-neutral-600 text-base sm:text-lg font-light leading-relaxed">
               We partner with hardware OEMs, foundation model labs, and field operators to bring reliable embodied AI from research into production.
             </p>
             <Link
@@ -295,7 +322,7 @@ const Robotics: FC = () => {
             </Link>
           </div>
           <div className="lg:col-span-7">
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-neutral-100">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-neutral-100 ring-1 ring-neutral-900/5">
               <Image
                 src="/images/robotics/foundation-partnerships.png"
                 alt="Partnerships across robotics labs and platforms"
@@ -305,14 +332,20 @@ const Robotics: FC = () => {
               />
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* === EXPERIENCE / WAITLIST === */}
-      <section className="px-4 sm:px-8 lg:px-12 py-24 sm:py-32 bg-white border-t border-neutral-200/70">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-end">
+      <section className="px-4 sm:px-8 lg:px-12 py-20 sm:py-32 lg:py-40 bg-white border-t border-neutral-100">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-end"
+        >
           <div className="lg:col-span-7">
-            <p className="text-[11px] font-semibold text-neutral-500 uppercase tracking-[0.28em] mb-5">
+            <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">
               Early access
             </p>
             <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] tracking-tight text-neutral-900 leading-[1.05]">
@@ -320,18 +353,18 @@ const Robotics: FC = () => {
             </h2>
           </div>
           <div className="lg:col-span-5">
-            <p className="text-base sm:text-lg text-neutral-500 font-light leading-relaxed">
+            <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed">
               If you're interested in testing our models, please share a few details to join the waitlist.
             </p>
             <Link
               href="/contact?subject=Olyxee%20Robotics%20waitlist"
-              className="group mt-7 inline-flex items-center gap-2 px-7 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide"
+              className="group mt-7 inline-flex items-center gap-2 px-7 py-3 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-colors text-sm tracking-wide"
             >
               Join the waitlist
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden />
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden />
             </Link>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* === BOTTOM CTA === */}
