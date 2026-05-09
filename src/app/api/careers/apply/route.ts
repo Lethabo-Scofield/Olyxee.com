@@ -100,26 +100,29 @@ function buildText(a: BuildArgs): string {
 
 function buildApplicantConfirmationHtml(a: BuildArgs): string {
   const firstName = a.full_name.split(" ")[0] || a.full_name;
+  const isInternship = a.role.type === "internship";
   return `<!doctype html><html><body style="margin:0;padding:24px;background:#f3f4f6;font-family:-apple-system,BlinkMacSystemFont,Inter,sans-serif">
     <div style="max-width:560px;margin:0 auto;background:#ffffff;border-radius:16px;overflow:hidden;border:1px solid #e5e7eb">
       <div style="padding:32px 32px 24px">
-        <div style="font-size:12px;color:#6b7280;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Olyxee Careers</div>
-        <h1 style="font-size:22px;color:#111827;font-weight:600;margin:0 0 16px">We've got your application</h1>
-        <p style="font-size:15px;color:#374151;line-height:1.6;margin:0 0 16px">Hi ${escapeHtml(firstName)},</p>
-        <p style="font-size:15px;color:#374151;line-height:1.6;margin:0 0 16px">
-          Thanks for applying to <strong style="color:#111827">${escapeHtml(a.role.title)}</strong> on the ${escapeHtml(a.role.team)} team. Your application has landed safely with us - no further action is needed from you right now.
+        <div style="font-size:12px;color:#6b7280;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px">Olyxee Careers</div>
+        <h1 style="font-size:22px;color:#111827;font-weight:600;margin:0 0 18px;line-height:1.3">Your application has been received</h1>
+        <p style="font-size:15px;color:#374151;line-height:1.65;margin:0 0 16px">Hi ${escapeHtml(firstName)},</p>
+        <p style="font-size:15px;color:#374151;line-height:1.65;margin:0 0 16px">
+          Thank you for applying to <strong style="color:#111827">${escapeHtml(a.role.title)}</strong> on our ${escapeHtml(a.role.team)} team. Your application has been received, and a member of our team is already reviewing it.
         </p>
-        <p style="font-size:15px;color:#374151;line-height:1.6;margin:0 0 16px">
-          Our team reviews every application carefully. If we'd like to take the next step, we'll reach out to this email address within the next two to three weeks. If you don't hear back in that window, we encourage you to apply again for future roles that fit.
+        <p style="font-size:15px;color:#374151;line-height:1.65;margin:0 0 16px">
+          We take every application seriously. Our team is currently looking through submissions, and if your background is a strong match for the role, we will reach out to this email address within the next two to three weeks to schedule the next step.
         </p>
-        ${a.role.type === "internship" ? `<div style="margin:20px 0;padding:14px 16px;background:#f9fafb;border-radius:10px;font-size:13px;color:#6b7280;line-height:1.6">Reminder: this is an unpaid internship designed for hands-on experience, mentorship, and a written reference.</div>` : ""}
-        <p style="font-size:15px;color:#374151;line-height:1.6;margin:0 0 16px">
-          In the meantime, feel free to follow our work or get in touch if anything changes about your application.
+        <p style="font-size:15px;color:#374151;line-height:1.65;margin:0 0 16px">
+          If you do not hear from us within that window, please know it was a competitive process and we genuinely appreciate the time and care you put into your application. We would be glad to see you apply again as new roles open up.
         </p>
-        <p style="font-size:15px;color:#374151;line-height:1.6;margin:24px 0 4px">- The Olyxee team</p>
+        ${isInternship ? `<div style="margin:22px 0;padding:14px 16px;background:#f9fafb;border-radius:10px;font-size:13px;color:#6b7280;line-height:1.6">A quick note: this internship is structured for hands-on experience, mentorship, and a written letter of reference at the end of the program.</div>` : ""}
+        <p style="font-size:15px;color:#374151;line-height:1.65;margin:24px 0 4px">Warm regards,</p>
+        <p style="font-size:15px;color:#111827;line-height:1.65;margin:0 0 4px;font-weight:600">The Olyxee Talent Team</p>
+        <p style="font-size:13px;color:#9ca3af;margin:2px 0 0">olyxee.com</p>
       </div>
-      <div style="padding:16px 32px;background:#f9fafb;border-top:1px solid #f3f4f6;font-size:12px;color:#9ca3af">
-        This is an automated confirmation. You don't need to reply.
+      <div style="padding:16px 32px;background:#f9fafb;border-top:1px solid #f3f4f6;font-size:12px;color:#9ca3af;line-height:1.5">
+        This is an automated confirmation, no reply is needed. If anything about your application changes, you can reach us at <a href="mailto:${escapeHtml(HIRING_EMAIL)}" style="color:#6b7280;text-decoration:underline">${escapeHtml(HIRING_EMAIL)}</a>.
       </div>
     </div>
   </body></html>`;
@@ -127,18 +130,23 @@ function buildApplicantConfirmationHtml(a: BuildArgs): string {
 
 function buildApplicantConfirmationText(a: BuildArgs): string {
   const firstName = a.full_name.split(" ")[0] || a.full_name;
+  const isInternship = a.role.type === "internship";
   const lines: string[] = [];
   lines.push(`Hi ${firstName},`);
   lines.push("");
-  lines.push(`Thanks for applying to ${a.role.title} on the ${a.role.team} team. Your application has landed safely with us - no further action is needed from you right now.`);
+  lines.push(`Thank you for applying to ${a.role.title} on our ${a.role.team} team. Your application has been received, and a member of our team is already reviewing it.`);
   lines.push("");
-  lines.push("Our team reviews every application carefully. If we'd like to take the next step, we'll reach out to this email address within the next two to three weeks. If you don't hear back in that window, we encourage you to apply again for future roles that fit.");
-  if (a.role.type === "internship") {
+  lines.push("We take every application seriously. Our team is currently looking through submissions, and if your background is a strong match for the role, we will reach out to this email address within the next two to three weeks to schedule the next step.");
+  lines.push("");
+  lines.push("If you do not hear from us within that window, please know it was a competitive process and we genuinely appreciate the time and care you put into your application. We would be glad to see you apply again as new roles open up.");
+  if (isInternship) {
     lines.push("");
-    lines.push("Reminder: this is an unpaid internship designed for hands-on experience, mentorship, and a written reference.");
+    lines.push("A quick note: this internship is structured for hands-on experience, mentorship, and a written letter of reference at the end of the program.");
   }
   lines.push("");
-  lines.push("- The Olyxee team");
+  lines.push("Warm regards,");
+  lines.push("The Olyxee Talent Team");
+  lines.push("olyxee.com");
   return lines.join("\n");
 }
 
