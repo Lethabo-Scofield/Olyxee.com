@@ -252,23 +252,31 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                                             <AnimatePresence>
                                                 {isOpen && (
                                                     <motion.div
-                                                        initial={{ opacity: 0, y: -6, scale: 0.98 }}
-                                                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                                                        exit={{ opacity: 0, y: -6, scale: 0.98 }}
-                                                        transition={{ duration: 0.15, ease: 'easeOut' }}
+                                                        initial={{ opacity: 0, y: -10, scale: 0.96, filter: 'blur(8px)' }}
+                                                        animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
+                                                        exit={{ opacity: 0, y: -8, scale: 0.97, filter: 'blur(6px)' }}
+                                                        transition={{ type: 'spring', stiffness: 320, damping: 28, mass: 0.6 }}
                                                         className="absolute left-1/2 -translate-x-1/2 top-full pt-3 z-[1003]"
                                                         role="menu"
                                                         aria-label={`${item.name} menu`}
                                                     >
                                                         <div
-                                                            className="w-[26rem] max-w-[min(calc(100vw-2rem),720px)] p-3 rounded-2xl"
+                                                            className="relative w-[26rem] max-w-[min(calc(100vw-2rem),720px)] p-3 rounded-3xl overflow-hidden"
                                                             style={{
-                                                                background: 'rgba(255,255,255,0.85)',
-                                                                backdropFilter: 'blur(24px) saturate(180%)',
-                                                                WebkitBackdropFilter: 'blur(24px) saturate(180%)',
-                                                                boxShadow: '0 20px 60px rgba(0,0,0,0.12), 0 6px 16px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.7)',
+                                                                background: 'rgba(255,255,255,0.55)',
+                                                                backdropFilter: 'blur(40px) saturate(200%)',
+                                                                WebkitBackdropFilter: 'blur(40px) saturate(200%)',
+                                                                border: '1px solid rgba(255,255,255,0.5)',
+                                                                boxShadow: '0 24px 80px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.9), inset 0 -1px 0 rgba(255,255,255,0.3)',
                                                             }}
                                                         >
+                                                            <div
+                                                                aria-hidden
+                                                                className="pointer-events-none absolute inset-0 rounded-3xl"
+                                                                style={{
+                                                                    background: 'linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 60%)',
+                                                                }}
+                                                            />
                                                             {item.childrenLabel && (
                                                                 <div className="px-3 pt-1 pb-3">
                                                                     <p className="text-[10px] font-semibold text-neutral-400 uppercase tracking-[0.22em]">
@@ -355,23 +363,31 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                             <AnimatePresence>
                                 {openDropdown === "Sign in" && (
                                     <motion.div
-                                        initial={{ opacity: 0, y: -6, scale: 0.98 }}
-                                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                                        exit={{ opacity: 0, y: -6, scale: 0.98 }}
-                                        transition={{ duration: 0.15, ease: 'easeOut' }}
+                                        initial={{ opacity: 0, y: -10, scale: 0.96, filter: 'blur(8px)' }}
+                                        animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
+                                        exit={{ opacity: 0, y: -8, scale: 0.97, filter: 'blur(6px)' }}
+                                        transition={{ type: 'spring', stiffness: 320, damping: 28, mass: 0.6 }}
                                         className="absolute right-0 top-full pt-3 z-[1003]"
                                         role="menu"
                                         aria-label="Sign in menu"
                                     >
                                         <div
-                                            className="w-[20rem] max-w-[calc(100vw-2rem)] p-2 rounded-2xl"
+                                            className="relative w-[20rem] max-w-[calc(100vw-2rem)] p-2 rounded-3xl overflow-hidden"
                                             style={{
-                                                background: 'rgba(255,255,255,0.85)',
-                                                backdropFilter: 'blur(24px) saturate(180%)',
-                                                WebkitBackdropFilter: 'blur(24px) saturate(180%)',
-                                                boxShadow: '0 20px 60px rgba(0,0,0,0.12), 0 6px 16px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.7)',
+                                                background: 'rgba(255,255,255,0.55)',
+                                                backdropFilter: 'blur(40px) saturate(200%)',
+                                                WebkitBackdropFilter: 'blur(40px) saturate(200%)',
+                                                border: '1px solid rgba(255,255,255,0.5)',
+                                                boxShadow: '0 24px 80px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.9), inset 0 -1px 0 rgba(255,255,255,0.3)',
                                             }}
                                         >
+                                            <div
+                                                aria-hidden
+                                                className="pointer-events-none absolute inset-0 rounded-3xl"
+                                                style={{
+                                                    background: 'linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 60%)',
+                                                }}
+                                            />
                                             <div className="px-3 pt-2 pb-2.5">
                                                 <p className="text-[10px] font-semibold text-neutral-400 uppercase tracking-[0.22em]">
                                                     Sign in to
