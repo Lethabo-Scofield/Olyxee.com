@@ -461,15 +461,6 @@ const ProductsPage: FC = () => {
           </div>
 
           <div id="ordo-use-cases" className="mt-20 sm:mt-28 pt-10 sm:pt-12 border-t border-neutral-200 scroll-mt-24">
-            <div className="flex items-baseline justify-between mb-8 sm:mb-10">
-              <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500">
-                Compliance workflows
-              </p>
-              <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-400">
-                03 examples
-              </p>
-            </div>
-
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10">
               {ORDO_USE_CASES.map((uc, i) => (
                 <motion.div
