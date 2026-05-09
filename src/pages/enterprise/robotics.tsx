@@ -308,6 +308,32 @@ const Robotics: FC = () => {
         </div>
       </section>
 
+      {/* === EXPERIENCE / WAITLIST === */}
+      <section className="px-4 sm:px-8 lg:px-12 py-24 sm:py-32 bg-white border-t border-neutral-200/70">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-end">
+          <div className="lg:col-span-7">
+            <p className="text-[11px] font-semibold text-neutral-500 uppercase tracking-[0.28em] mb-5">
+              Early access
+            </p>
+            <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] tracking-tight text-neutral-900 leading-[1.05]">
+              Experience <em className="text-blue-500">Olyxee Robotics</em>.
+            </h2>
+          </div>
+          <div className="lg:col-span-5">
+            <p className="text-base sm:text-lg text-neutral-500 font-light leading-relaxed">
+              If you're interested in testing our models, please share a few details to join the waitlist.
+            </p>
+            <Link
+              href="/contact?subject=Olyxee%20Robotics%20waitlist"
+              className="group mt-7 inline-flex items-center gap-2 px-7 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide"
+            >
+              Join the waitlist
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* === BOTTOM CTA === */}
       <section className="relative py-20 sm:py-28 lg:py-32 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
