@@ -168,45 +168,38 @@ const Robotics: FC = () => {
         </motion.div>
       </section>
 
-      {/* === HIGHLIGHTS (Editorial alternating layout) === */}
-      <section className="px-4 sm:px-8 lg:px-12 py-20 sm:py-32 lg:py-40 bg-white border-t border-neutral-100">
-        <div className="max-w-6xl mx-auto space-y-24 sm:space-y-36">
-          {HIGHLIGHTS.map((h, idx) => {
-            const reverse = idx % 2 === 1;
-            return (
-              <motion.div
-                key={h.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7 }}
-                className={`grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-14 items-center`}
-              >
-                <div className={`lg:col-span-7 ${reverse ? "lg:order-2" : ""}`}>
-                  <div className="relative aspect-[16/10] w-full overflow-hidden rounded-3xl bg-neutral-100 ring-1 ring-neutral-900/5">
-                    <Image
-                      src={h.image}
-                      alt={h.alt}
-                      fill
-                      className="object-cover"
-                      sizes="(min-width: 1024px) 60vw, 100vw"
-                    />
-                  </div>
-                </div>
-                <div className={`lg:col-span-5 ${reverse ? "lg:order-1" : ""}`}>
-                  <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">
-                    {h.meta}
-                  </p>
-                  <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl tracking-tight text-neutral-900 leading-[1.1]">
-                    {h.title}
-                  </h3>
-                  <p className="mt-5 text-neutral-600 text-base sm:text-lg font-light leading-relaxed">
-                    {h.body}
-                  </p>
-                </div>
-              </motion.div>
-            );
-          })}
+      {/* === HIGHLIGHTS (3-up horizontal cards) === */}
+      <section className="px-4 sm:px-8 lg:px-12 pb-20 sm:pb-32 lg:pb-40 bg-white">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          {HIGHLIGHTS.map((h, idx) => (
+            <motion.article
+              key={h.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: idx * 0.1 }}
+              className="group flex flex-col"
+            >
+              <div className="relative aspect-[5/4] w-full overflow-hidden rounded-2xl bg-neutral-100 ring-1 ring-neutral-900/5 mb-6">
+                <Image
+                  src={h.image}
+                  alt={h.alt}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                />
+              </div>
+              <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-3">
+                {h.meta}
+              </p>
+              <h3 className="font-serif text-xl sm:text-2xl lg:text-[1.6rem] tracking-tight text-neutral-900 leading-snug">
+                {h.title}
+              </h3>
+              <p className="mt-3 text-neutral-600 text-sm sm:text-[15px] font-light leading-relaxed">
+                {h.body}
+              </p>
+            </motion.article>
+          ))}
         </div>
       </section>
 
