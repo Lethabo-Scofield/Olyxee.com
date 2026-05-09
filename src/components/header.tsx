@@ -18,7 +18,14 @@ type MenuItem = {
 const menuItems: MenuItem[] = [
     { name: "Research", href: "/research" },
     { name: "Products", href: "/products" },
-    { name: "Enterprise", href: "/enterprise" },
+    {
+        name: "Enterprise",
+        childrenLabel: "Enterprise Solutions",
+        children: [
+            { name: "Enterprise Software", href: "/enterprise", description: "AI infrastructure, Logistics, and platform tools" },
+            { name: "Enterprise Hardware", href: "/enterprise/robotics", description: "Olyxee Robotics solutions" },
+        ],
+    },
     {
         name: "Company",
         childrenLabel: "Explore Company",

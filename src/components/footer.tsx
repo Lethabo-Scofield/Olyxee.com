@@ -27,7 +27,7 @@ const footerData = {
         {
           title: "Enterprise Hardware",
           links: [
-            { name: "Olyxee Robotics", href: "/enterprise#robotics", logo: "/Logo/Olyxee_Robotics_Logo.png" },
+            { name: "Olyxee Robotics", href: "/enterprise/robotics", logo: "/Logo/Olyxee_Robotics_Logo.png" },
           ],
         },
       ],
