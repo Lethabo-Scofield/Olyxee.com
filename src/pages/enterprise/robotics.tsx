@@ -198,14 +198,14 @@ const Robotics: FC = () => {
       </section>
 
       {/* === STATS BAND === */}
-      <section className="bg-neutral-950 text-white px-4 sm:px-8 lg:px-12 py-20 sm:py-28">
+      <section className="px-4 sm:px-8 lg:px-12 py-20 sm:py-28 bg-neutral-50 border-y border-neutral-200/70">
         <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-12 sm:gap-8">
           {STATS.map((s) => (
             <div key={s.label} className="text-center sm:text-left">
-              <div className="font-serif text-5xl sm:text-6xl lg:text-7xl tracking-tight text-white">
-                {s.value}
+              <div className="font-serif text-5xl sm:text-6xl lg:text-7xl tracking-tight text-neutral-900">
+                <em className="text-blue-500">{s.value}</em>
               </div>
-              <div className="mt-3 text-sm text-white/50 font-light tracking-wide uppercase">
+              <div className="mt-3 text-xs sm:text-sm text-neutral-500 font-light tracking-[0.2em] uppercase">
                 {s.label}
               </div>
             </div>
@@ -249,42 +249,40 @@ const Robotics: FC = () => {
       </section>
 
       {/* === BOTTOM CTA === */}
-      <section className="bg-neutral-950 text-white py-28 sm:py-40 px-4 sm:px-8 lg:px-12 relative overflow-hidden">
-        <div
-          aria-hidden
-          className="absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(50% 50% at 50% 50%, rgba(59,130,246,0.28), transparent 60%)",
-            filter: "blur(80px) saturate(1.5)",
-          }}
-        />
-        <div className="max-w-4xl mx-auto text-center relative">
-          <h2 className="font-serif text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.05]">
-            Building in the <em className="text-blue-400">physical world</em>?
-          </h2>
-          <p className="mt-6 text-base sm:text-lg text-white/50 font-light max-w-xl mx-auto leading-relaxed">
-            We partner on embodied AI, perception stacks, and hardware-integrated deployments — from pilot to fleet.
-          </p>
-          <div className="mt-12 flex flex-wrap items-center justify-center gap-3">
-            <Link
-              href="/contact?subject=Olyxee%20Robotics%20inquiry"
-              className="group inline-flex items-center gap-2 px-8 py-3.5 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide"
-            >
-              Get in touch
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden />
-            </Link>
-            <Link
-              href="/enterprise"
-              className="inline-flex items-center gap-2 px-8 py-3.5 bg-white/10 text-white rounded-full font-medium hover:bg-white/15 transition-all text-sm tracking-wide backdrop-blur-md ring-1 ring-white/15"
-            >
-              Enterprise Software
-            </Link>
+      <section className="relative py-20 sm:py-28 lg:py-32 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
+          <div className="relative rounded-3xl bg-neutral-100 border border-neutral-200/70 px-6 sm:px-12 lg:px-20 py-14 sm:py-20 lg:py-24 overflow-hidden">
+            <div aria-hidden className="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-blue-100/50 blur-3xl" />
+            <div aria-hidden className="absolute -bottom-32 -left-24 w-80 h-80 rounded-full bg-neutral-200/60 blur-3xl" />
+
+            <div className="relative text-center max-w-2xl mx-auto">
+              <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-5 leading-[1.05]">
+                Building in the <em className="text-blue-500">physical world</em>?
+              </h2>
+              <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-9 max-w-lg mx-auto">
+                We partner on embodied AI, perception stacks, and hardware-integrated deployments, from pilot to fleet.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <Link
+                  href="/contact?subject=Olyxee%20Robotics%20inquiry"
+                  className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide shadow-lg shadow-neutral-900/10"
+                >
+                  Get in touch
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden />
+                </Link>
+                <Link
+                  href="/enterprise"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 text-neutral-900 bg-white border border-neutral-300 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide"
+                >
+                  Enterprise Software
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <Footer variant="dark" />
+      <Footer />
     </div>
   );
 };
