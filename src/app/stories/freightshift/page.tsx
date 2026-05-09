@@ -33,7 +33,7 @@ export default function FreightShiftStory() {
             </p>
 
             <h1 className="font-serif text-3xl sm:text-5xl text-neutral-900 tracking-tight leading-[1.08] mb-8">
-              How FreightShift cut shipment exception response time by 70%.
+              Moving freight across continents requires more than transportation.
             </h1>
 
             <div className="flex items-center gap-4 text-sm text-neutral-400 font-light mb-12 pb-10 border-b border-neutral-100">
@@ -66,62 +66,82 @@ export default function FreightShiftStory() {
             className="prose prose-neutral prose-lg max-w-none prose-headings:font-serif prose-headings:tracking-tight prose-h2:text-2xl sm:prose-h2:text-[1.75rem] prose-h2:mt-16 prose-h2:mb-6 prose-p:leading-[1.75] prose-p:text-neutral-700 prose-li:text-neutral-700 prose-li:leading-relaxed prose-strong:text-neutral-900 prose-blockquote:border-l-neutral-900 prose-blockquote:not-italic prose-blockquote:font-serif prose-blockquote:text-xl prose-blockquote:text-neutral-800 prose-blockquote:leading-snug"
           >
             <p className="not-prose text-xl sm:text-[1.375rem] font-light leading-relaxed text-neutral-900 border-l-2 border-neutral-900 pl-5 sm:pl-6 mb-14">
-              International freight is a chain of handoffs, and every handoff is a chance for something to slip. We rebuilt FreightShift's exception loop so the system catches deviations the moment they happen - not the morning after.
+              For FreightShift International Logistics, moving cargo between China and South Africa is the visible part of the business. The harder part is the coordination behind it. Olyxee is partnering with FreightShift to build the operational infrastructure that makes that coordination scale.
             </p>
 
-            <h2>The challenge</h2>
             <p>
-              FreightShift moves thousands of containers each month between China and South Africa. At that volume, exceptions are inevitable: delayed customs clearances, missed handoffs, supplier communication gaps.
+              FreightShift International Logistics (Pty) Ltd manages cargo movement between China and South Africa while handling customs clearance, domestic transportation, warehousing, and distribution for businesses across multiple industries.
             </p>
             <p>
-              The real problem wasn't frequency. It was <strong>response time</strong>. By the time an analyst caught an exception in the tracking dashboard, the delay had already compounded.
+              As operations expanded, so did the complexity behind them. Shipments generated constant streams of documents, customer communications, customs updates, delivery coordination, and operational decisions. Most of that work still moved through fragmented systems.
             </p>
             <p>
-              Their operations team was spending upwards of six hours a day reviewing shipment statuses across three freight systems, two supplier portals, and an internal tracking tool - none of which talked to each other. Exceptions surfaced late, escalations were reactive, and customer updates arrived after the fact.
+              Information lived across emails, spreadsheets, WhatsApp conversations, supplier documents, and tracking portals. Teams often spent more time coordinating operations than executing them.
+            </p>
+            <p>
+              FreightShift did not have a transportation problem. It had an operational visibility problem. That is where Olyxee entered the conversation.
             </p>
 
-            <h2>What we built</h2>
+            <h2>Building operational infrastructure</h2>
             <p>
-              We deployed a logistics monitoring agent that connects directly to FreightShift's freight management system, supplier channels, and customs data feeds. It runs continuously, watching for deviation from expected transit milestones.
+              Olyxee began working with FreightShift around a simple question: what would logistics operations look like if information moved as efficiently as cargo?
             </p>
+            <p>
+              The goal was not to replace existing workflows overnight. Instead, the focus was on building operational infrastructure capable of supporting growth without increasing operational friction.
+            </p>
+            <p>Together, the companies are exploring systems for:</p>
             <ul>
-              <li><strong>Continuous monitoring.</strong> Every active shipment is tracked against its expected milestones in near real time.</li>
-              <li><strong>Drafted follow-ups.</strong> When an exception fires, the agent drafts the supplier message and updates the internal status record automatically.</li>
-              <li><strong>Smart escalation.</strong> High-priority shipments are routed to the operations lead with a full context summary, not a raw alert.</li>
-              <li><strong>Morning briefing.</strong> Each day starts with a ranked queue of active exceptions and the next expected checkpoint for each.</li>
+              <li>centralized shipment visibility,</li>
+              <li>workflow coordination,</li>
+              <li>operational tracking,</li>
+              <li>internal execution flows,</li>
+              <li>and customer communication.</li>
+            </ul>
+
+            <h2>Reducing coordination overhead</h2>
+            <p>
+              In logistics, delays are not always caused by transportation. Many delays happen because teams are waiting for approvals, missing documents, shipment confirmations, customer updates, or internal coordination.
+            </p>
+            <p>
+              FreightShift already had strong logistics expertise. What Olyxee introduced was infrastructure thinking. The partnership focused on reducing the amount of manual coordination required for day-to-day operations.
+            </p>
+            <p>This included exploring systems capable of:</p>
+            <ul>
+              <li>organizing operational data,</li>
+              <li>tracking shipment states,</li>
+              <li>routing tasks internally,</li>
+              <li>and improving communication visibility across workflows.</li>
             </ul>
             <p>
-              Humans stay in the loop where it matters - at the decision point, not at every data-collection step.
+              The result was not fewer people. It was fewer operational bottlenecks.
             </p>
 
-            <h2>The numbers</h2>
-            <div className="not-prose my-10 grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-10 border-y border-neutral-200 py-10">
-              <div>
-                <p className="font-serif text-4xl sm:text-[2.5rem] text-neutral-900 leading-none mb-3 tracking-tight">70%</p>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-neutral-500">Faster exception response</p>
-              </div>
-              <div>
-                <p className="font-serif text-4xl sm:text-[2.5rem] text-neutral-900 leading-none mb-3 tracking-tight">8 wks</p>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-neutral-500">From kickoff to live</p>
-              </div>
-              <div>
-                <p className="font-serif text-4xl sm:text-[2.5rem] text-neutral-900 leading-none mb-3 tracking-tight">~6h/day</p>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-neutral-500">Manual review reclaimed</p>
-              </div>
-            </div>
-
-            <h2>What changed</h2>
+            <h2>Visibility as a competitive advantage</h2>
             <p>
-              Within eight weeks, FreightShift's average exception response time dropped by 70%. Analysts who used to spend their mornings combing through dashboards now begin the day with a clear queue.
+              FreightShift places strong emphasis on transparency and reliability. For customers, that means knowing where shipments are, understanding delays early, and receiving accurate communication throughout the logistics process.
             </p>
             <p>
-              Supplier follow-ups that took hours now happen in minutes, and without manual drafting. The team has since extended the same monitoring and escalation logic to their air freight corridor - a faster-moving, higher-stakes part of the business.
+              Olyxee approached this as a systems problem. The companies explored ways to create more structured operational records, clearer shipment tracking, faster communication cycles, and better coordination between logistics activities.
+            </p>
+            <p>
+              In practice, this meant building toward operations that become easier to manage as the company grows, not harder.
             </p>
 
-            <blockquote>
-              "Before, we were always one step behind. Now the system tells us something's off before we've even had our morning coffee. That's a different way of operating."
-              <cite>- Operations Lead, FreightShift International Logistics</cite>
-            </blockquote>
+            <h2>Logistics infrastructure for a growing trade corridor</h2>
+            <p>
+              Trade between China and South Africa continues to grow in complexity and scale. FreightShift operates directly inside that environment, helping businesses move goods across international and domestic supply chains efficiently and reliably.
+            </p>
+            <p>
+              Olyxee saw an opportunity to support that growth through operational intelligence and automation infrastructure. Not as a replacement for logistics expertise, but as a layer that strengthens it.
+            </p>
+
+            <h2>Looking ahead</h2>
+            <p>
+              Modern logistics companies are increasingly defined by how well they manage information, coordination, and operational execution. FreightShift International Logistics represents a new generation of logistics businesses focused not only on transportation, but on operational excellence.
+            </p>
+            <p>
+              At Olyxee, we are proud to support companies building the future of logistics infrastructure across Africa and international markets.
+            </p>
           </motion.div>
 
           <motion.aside

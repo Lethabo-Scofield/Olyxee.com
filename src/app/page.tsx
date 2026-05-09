@@ -640,7 +640,7 @@ function IntegrationSection() {
 const STORIES = [
   {
     tag: "Logistics",
-    headline: "Response times cut by 70%.",
+    headline: "Operational infrastructure for cross-continent freight.",
     image: "/images/stories/logistics.png",
     alt: "Warehouse worker in safety vest packaging shipments on the line",
     href: "/stories/freightshift",
