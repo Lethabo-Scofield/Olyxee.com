@@ -1,7 +1,7 @@
-import { FC } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import SEO from "../../components/SEO";
 import Header from "../../components/header";
@@ -33,6 +33,128 @@ const HIGHLIGHTS = [
     meta: "03 · Operations",
   },
 ];
+
+const HighlightsSlider: FC = () => {
+  const [index, setIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const total = HIGHLIGHTS.length;
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const DURATION_MS = 3000;
+
+  useEffect(() => {
+    if (isPaused) return;
+    intervalRef.current = setInterval(() => {
+      setIndex((i) => (i + 1) % total);
+    }, DURATION_MS);
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [isPaused, total]);
+
+  const goTo = (i: number) => setIndex(((i % total) + total) % total);
+  const active = HIGHLIGHTS[index];
+
+  return (
+    <section
+      className="relative w-full h-screen min-h-[640px] overflow-hidden bg-neutral-950 text-white"
+      aria-roledescription="carousel"
+      aria-label="Olyxee Robotics foundation pillars"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onFocus={() => setIsPaused(true)}
+      onBlur={() => setIsPaused(false)}
+    >
+      <AnimatePresence mode="sync">
+        <motion.div
+          key={active.title}
+          initial={{ opacity: 0, scale: 1.04 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 1 }}
+          transition={{ duration: 1.1, ease: [0.25, 0.1, 0.25, 1] }}
+          className="absolute inset-0"
+        >
+          <Image
+            src={active.image}
+            alt={active.alt}
+            fill
+            priority={index === 0}
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div
+            aria-hidden
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 35%, rgba(0,0,0,0.55) 70%, rgba(0,0,0,0.85) 100%)",
+            }}
+          />
+        </motion.div>
+      </AnimatePresence>
+
+      <div className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 flex flex-col justify-end pb-20 sm:pb-28">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={active.title + "-text"}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
+            className="max-w-3xl"
+          >
+            <p className="text-xs font-semibold text-white/60 uppercase tracking-[0.2em] mb-5">
+              {active.meta}
+            </p>
+            <h3 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] leading-[1.05] tracking-tight">
+              {active.title}
+            </h3>
+            <p className="mt-5 text-white/75 text-base sm:text-lg font-light leading-relaxed max-w-2xl">
+              {active.body}
+            </p>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Progress bars */}
+        <div className="mt-10 sm:mt-14 flex items-center gap-3">
+          {HIGHLIGHTS.map((h, i) => {
+            const isActive = i === index;
+            return (
+              <button
+                key={h.title}
+                type="button"
+                onClick={() => goTo(i)}
+                aria-label={`Show slide ${i + 1}: ${h.meta}`}
+                className="group relative flex-1 max-w-[120px] h-[3px] rounded-full bg-white/15 overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+              >
+                <span
+                  key={`${index}-${i}-${isPaused}`}
+                  className="absolute inset-y-0 left-0 bg-white"
+                  style={{
+                    width: isActive ? "100%" : i < index ? "100%" : "0%",
+                    animation:
+                      isActive && !isPaused
+                        ? `slide-progress ${DURATION_MS}ms linear forwards`
+                        : undefined,
+                  }}
+                />
+              </button>
+            );
+          })}
+          <span className="ml-4 text-[11px] font-medium text-white/50 tracking-[0.18em] uppercase tabular-nums">
+            {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+          </span>
+        </div>
+      </div>
+
+      <style jsx>{`
+        @keyframes slide-progress {
+          from { width: 0%; }
+          to { width: 100%; }
+        }
+      `}</style>
+    </section>
+  );
+};
 
 const Robotics: FC = () => {
   return (
@@ -162,40 +284,8 @@ const Robotics: FC = () => {
         </motion.div>
       </section>
 
-      {/* === HIGHLIGHTS (3-up horizontal cards) === */}
-      <section className="px-4 sm:px-8 lg:px-12 pb-20 sm:pb-32 lg:pb-40 bg-white">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-          {HIGHLIGHTS.map((h, idx) => (
-            <motion.article
-              key={h.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="group flex flex-col"
-            >
-              <div className="relative aspect-[5/4] w-full overflow-hidden rounded-2xl bg-neutral-100 ring-1 ring-neutral-900/5 mb-6">
-                <Image
-                  src={h.image}
-                  alt={h.alt}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                />
-              </div>
-              <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-3">
-                {h.meta}
-              </p>
-              <h3 className="font-serif text-xl sm:text-2xl lg:text-[1.6rem] tracking-tight text-neutral-900 leading-snug">
-                {h.title}
-              </h3>
-              <p className="mt-3 text-neutral-600 text-sm sm:text-[15px] font-light leading-relaxed">
-                {h.body}
-              </p>
-            </motion.article>
-          ))}
-        </div>
-      </section>
+      {/* === HIGHLIGHTS (Fullscreen auto-advancing slider) === */}
+      <HighlightsSlider />
 
       {/* === ACCELERATOR === */}
       <section className="relative px-4 sm:px-8 lg:px-12 py-20 sm:py-32 lg:py-40 bg-white border-t border-neutral-100">
