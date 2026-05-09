@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Twitter, Linkedin, Youtube } from "lucide-react";
+import { Twitter, Linkedin, Youtube, ArrowUpRight } from "lucide-react";
 
 const footerData = {
   columns: [
@@ -67,27 +67,91 @@ export default function Footer({ variant = "light" }: FooterProps) {
   const styles = isLight
     ? {
         wrapper: "bg-white text-neutral-900 border-t border-neutral-200",
-        columnTitle: "text-neutral-500",
+        eyebrow: "text-neutral-400",
+        headline: "text-neutral-900",
+        muted: "text-neutral-500",
+        columnTitle: "text-neutral-400",
         link: "text-neutral-700 hover:text-neutral-900",
         divider: "border-neutral-200",
         copyright: "text-neutral-500",
-        social: "text-neutral-500 hover:text-neutral-900",
+        social:
+          "text-neutral-500 hover:text-neutral-900 ring-1 ring-neutral-200 hover:ring-neutral-300 bg-white",
+        ctaPrimary:
+          "bg-neutral-900 text-white hover:bg-neutral-800",
+        ctaSecondary:
+          "text-neutral-900 bg-white ring-1 ring-neutral-200 hover:ring-neutral-300",
         logoOpacity: "opacity-90",
+        wordmark: "text-neutral-900",
       }
     : {
         wrapper: "bg-neutral-950 text-white",
+        eyebrow: "text-neutral-500",
+        headline: "text-white",
+        muted: "text-neutral-400",
         columnTitle: "text-neutral-500",
         link: "text-neutral-400 hover:text-white",
         divider: "border-white/10",
         copyright: "text-neutral-500",
-        social: "text-neutral-500 hover:text-white",
-        logoOpacity: "opacity-40",
+        social:
+          "text-neutral-400 hover:text-white ring-1 ring-white/10 hover:ring-white/20 bg-white/[0.02]",
+        ctaPrimary:
+          "bg-white text-neutral-900 hover:bg-neutral-100",
+        ctaSecondary:
+          "text-white bg-white/[0.04] ring-1 ring-white/10 hover:ring-white/20",
+        logoOpacity: "opacity-70",
+        wordmark: "text-white",
       };
 
   return (
     <footer className={styles.wrapper} aria-label="Site footer">
-      <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 pt-16 sm:pt-24 pb-12 sm:pb-16">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-6 sm:gap-x-8 gap-y-10 sm:gap-y-14 mb-16 sm:mb-24">
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 pt-20 sm:pt-28 pb-10 sm:pb-14">
+        {/* === Top brand band === */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 pb-16 sm:pb-20">
+          <div className="lg:col-span-7">
+            <div className="flex items-center gap-3 mb-8">
+              <Image
+                src="/Logo/Olyxee_Logo.png"
+                alt="Olyxee"
+                width={28}
+                height={28}
+                className={styles.logoOpacity}
+              />
+              <span className={`text-base font-semibold tracking-tight ${styles.wordmark}`}>
+                Olyxee
+              </span>
+            </div>
+            <h2 className={`font-serif text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.1] tracking-tight ${styles.headline} max-w-2xl`}>
+              Reliability-first AI infrastructure for the physical and digital world.
+            </h2>
+            <p className={`mt-5 text-sm sm:text-base font-light leading-relaxed max-w-xl ${styles.muted}`}>
+              Research, software, and hardware built for teams shipping AI into production.
+            </p>
+          </div>
+
+          <div className="lg:col-span-5 flex flex-col justify-end">
+            <p className={`text-[10px] font-semibold uppercase tracking-[0.2em] mb-4 ${styles.eyebrow}`}>
+              Get in touch
+            </p>
+            <div className="flex flex-wrap items-center gap-3">
+              <Link
+                href="/contact"
+                className={`group inline-flex items-center gap-2 px-6 py-3 rounded-full font-medium text-sm tracking-wide transition-colors ${styles.ctaPrimary}`}
+              >
+                Contact sales
+                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden />
+              </Link>
+              <Link
+                href="/careers"
+                className={`inline-flex items-center gap-2 px-6 py-3 rounded-full font-medium text-sm tracking-wide transition-colors ${styles.ctaSecondary}`}
+              >
+                See open roles
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* === Link columns === */}
+        <div className={`pt-12 sm:pt-16 border-t ${styles.divider} grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-6 sm:gap-x-8 gap-y-12 mb-16 sm:mb-20`}>
           {footerData.columns.map((column: any) => {
             const renderLink = (link: any) => {
               const content = (
@@ -102,6 +166,9 @@ export default function Footer({ variant = "light" }: FooterProps) {
                     />
                   )}
                   <span>{link.name}</span>
+                  {link.external && (
+                    <ArrowUpRight className="w-3 h-3 opacity-60" aria-hidden />
+                  )}
                 </span>
               );
               return link.external ? (
@@ -125,41 +192,33 @@ export default function Footer({ variant = "light" }: FooterProps) {
 
             return (
               <div key={column.title}>
-                <h3 className={`text-[10px] font-semibold ${styles.columnTitle} uppercase tracking-widest mb-6`}>
+                <h3 className={`text-[10px] font-semibold ${styles.columnTitle} uppercase tracking-[0.18em] mb-5`}>
                   {column.title}
                 </h3>
-                {column.groups ? (
-                  <div className="space-y-6">
-                    {column.groups.map((group: any) => (
-                      <div key={group.title}>
-                        <h4 className={`text-[10px] font-medium ${styles.columnTitle} uppercase tracking-wider mb-3 opacity-80`}>
-                          {group.title}
-                        </h4>
-                        <ul className="space-y-3.5">
-                          {group.links.map((link: any) => (
-                            <li key={link.name}>{renderLink(link)}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <ul className="space-y-3.5">
-                    {column.links.map((link: any) => (
-                      <li key={link.name}>{renderLink(link)}</li>
-                    ))}
-                  </ul>
-                )}
+                <ul className="space-y-3.5">
+                  {column.links.map((link: any) => (
+                    <li key={link.name}>{renderLink(link)}</li>
+                  ))}
+                </ul>
               </div>
             );
           })}
         </div>
+
+        {/* === Bottom bar === */}
         <div className={`pt-8 border-t ${styles.divider} flex flex-col-reverse items-center gap-y-6 sm:flex-row sm:justify-between`}>
-          <div className="flex items-center gap-3">
-            <Image src="/Logo/Olyxee_Logo.png" alt="Olyxee" width={18} height={18} className={styles.logoOpacity} />
-            <p className={`text-xs ${styles.copyright} font-light`}>&copy; {new Date().getFullYear()} Olyxee. All rights reserved.</p>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 justify-center sm:justify-start">
+            <p className={`text-xs ${styles.copyright} font-light`}>
+              &copy; {new Date().getFullYear()} Olyxee, Inc. All rights reserved.
+            </p>
+            <Link href="/privacy" className={`text-xs font-light ${styles.link} transition-colors`}>
+              Privacy
+            </Link>
+            <Link href="/terms" className={`text-xs font-light ${styles.link} transition-colors`}>
+              Terms
+            </Link>
           </div>
-          <div className="flex items-center gap-x-1">
+          <div className="flex items-center gap-x-2">
             {footerData.socials.map((social) => {
               const SocialIcon = social.icon;
               return (
@@ -169,7 +228,7 @@ export default function Footer({ variant = "light" }: FooterProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.name}
-                  className={`w-9 h-9 flex items-center justify-center rounded-full ${styles.social} transition-all duration-300`}
+                  className={`w-9 h-9 flex items-center justify-center rounded-full transition-all duration-300 ${styles.social}`}
                 >
                   <SocialIcon className="h-4 w-4" />
                 </a>
