@@ -559,7 +559,7 @@ const Enterprise: FC = () => {
               Trusted by
             </p>
             <h2 className="font-serif text-2xl sm:text-3xl lg:text-[2rem] tracking-tight text-neutral-900 leading-tight">
-              Teams running real operations on Olyxee.
+              Teams we're working with.
             </h2>
             <p className="mt-3 text-sm sm:text-[15px] text-neutral-500 font-light max-w-xl mx-auto">
               From early-stage startups to established operators, these are the companies building with our infrastructure today.
