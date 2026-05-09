@@ -91,24 +91,6 @@ const Robotics: FC = () => {
           />
 
         <div className="relative z-10 min-h-[inherit] flex flex-col items-center justify-center px-4 sm:px-8 lg:px-12 pt-24 sm:pt-32 pb-20 text-center" style={{ minHeight: "min(88vh, 880px)" }}>
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.05, ease: [0.25, 0.1, 0.25, 1] }}
-            className="flex items-center gap-2.5 mb-8"
-          >
-            <Image
-              src="/Logo/Olyxee_Robotics_Logo.png"
-              alt="Olyxee Robotics"
-              width={28}
-              height={28}
-              className="rounded-md"
-            />
-            <span className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/70">
-              Olyxee Robotics
-            </span>
-          </motion.div>
-
           <motion.h1
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
