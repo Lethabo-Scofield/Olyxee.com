@@ -45,7 +45,7 @@ const Robotics: FC = () => {
     <div className="min-h-screen bg-white text-neutral-900 relative">
       <SEO
         title="Olyxee Robotics · Enterprise Hardware"
-        description="Olyxee Robotics powers an era of physical agents — embodied AI for industrial, logistics, and field operations with on-device intelligence, hardware integration, and verified fleet deployment."
+        description="Olyxee Robotics powers an era of physical agents, embodied AI for industrial, logistics, and field operations with on-device intelligence, hardware integration, and verified fleet deployment."
         path="/enterprise/robotics"
       />
       <div className="grain" />
@@ -124,7 +124,7 @@ const Robotics: FC = () => {
             transition={{ duration: 0.9, delay: 0.3 }}
             className="mt-8 text-base sm:text-xl text-white/70 font-light max-w-2xl leading-relaxed"
           >
-            Powering an era of physical agents — embodied AI that perceives, reasons, and acts reliably in the real world.
+            Powering an era of physical agents, embodied AI that perceives, reasons, and acts reliably in the real world.
           </motion.p>
 
           <motion.div
@@ -162,7 +162,7 @@ const Robotics: FC = () => {
             Foundation models for the physical world
           </p>
           <h2 className="font-serif text-3xl sm:text-5xl lg:text-[4.25rem] leading-[1.05] tracking-tight text-neutral-900">
-            Robots of <em className="text-blue-500">any shape and size</em> — perceiving, reasoning, and using tools in the world around them.
+            Robots of <em className="text-blue-500">any shape and size</em>, perceiving, reasoning, and using tools in the world around them.
           </h2>
         </div>
       </section>

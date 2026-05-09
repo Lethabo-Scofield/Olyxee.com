@@ -49,7 +49,7 @@ const VOICE: { word: string; rule: string; sample: string }[] = [
 ];
 
 function BrandAurora() {
-  // Subtle painterly gradient anchored to the upper-right of the hero —
+  // Subtle painterly gradient anchored to the upper-right of the hero,
   // brand-cohesive with the /products aurora. Heavily blurred, decorative.
   return (
     <div
@@ -182,7 +182,7 @@ const ColorSwatch: FC<{
 /* === Aurora gradient swatch (marketing only) === */
 const AuroraSwatch: FC = () => (
   <div
-    aria-label="Aurora gradient swatch — marketing surfaces only"
+    aria-label="Aurora gradient swatch, marketing surfaces only"
     className="relative flex flex-col justify-end aspect-[3/4] sm:aspect-[2/3] p-4 sm:p-5 text-white overflow-hidden"
     style={{
       background:
