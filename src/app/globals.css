@@ -182,6 +182,19 @@ img, svg, video, canvas, iframe, table {
   to { transform: translateX(-1200px); }
 }
 
+@keyframes wave-flow-a {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50%      { transform: translate3d(-40px, 24px, 0) scale(1.05); }
+}
+@keyframes wave-flow-b {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50%      { transform: translate3d(36px, -28px, 0) scale(1.07); }
+}
+@keyframes wave-flow-c {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50%      { transform: translate3d(-24px, -32px, 0) scale(1.04); }
+}
+
 @keyframes aurora-drift-a {
   0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); }
   50%      { transform: translate3d(-18px, 22px, 0) rotate(-4deg) scale(1.04); }
@@ -210,6 +223,7 @@ img, svg, video, canvas, iframe, table {
 
 @media (prefers-reduced-motion: reduce) {
   [style*="wave-drift"],
+  [style*="wave-flow"],
   [style*="aurora-drift"],
   .brand-marquee {
     animation: none !important;

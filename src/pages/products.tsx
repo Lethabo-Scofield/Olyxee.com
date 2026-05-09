@@ -17,72 +17,80 @@ const fadeUp: Variants = {
 };
 
 function HeroWaves() {
-  // Stripe-style aurora: a flowing painterly gradient sculpture anchored to the
-  // upper-right of the hero. Multiple translucent ribbon shapes layered with
-  // heavy blur and multiply blending to produce that silky, twisted look.
+  // Refined Stripe-style aurora: silky diagonal ribbons that flow behind the
+  // headline rather than across it. Heavy blur, soft pastel palette, low
+  // opacity for an editorial, premium feel that doesn't fight the type.
   return (
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
       <svg
-        className="absolute left-0 top-0 h-full w-[200%]"
-        viewBox="0 0 2400 700"
-        preserveAspectRatio="none"
+        className="absolute inset-0 h-full w-full"
+        viewBox="0 0 1600 800"
+        preserveAspectRatio="xMidYMid slice"
         fill="none"
       >
         <defs>
-          <linearGradient id="wg-blue" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="2400" y2="0">
-            <stop offset="0%"   stopColor="#60a5fa" />
-            <stop offset="50%"  stopColor="#3b82f6" />
-            <stop offset="100%" stopColor="#8b5cf6" />
+          <linearGradient id="wg-aurora-1" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1600" y2="600">
+            <stop offset="0%"   stopColor="#dbeafe" stopOpacity="0" />
+            <stop offset="35%"  stopColor="#93c5fd" />
+            <stop offset="70%"  stopColor="#a78bfa" />
+            <stop offset="100%" stopColor="#f9a8d4" stopOpacity="0" />
           </linearGradient>
-          <linearGradient id="wg-purple" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="2400" y2="0">
-            <stop offset="0%"   stopColor="#8b5cf6" />
-            <stop offset="50%"  stopColor="#a855f7" />
-            <stop offset="100%" stopColor="#ec4899" />
+          <linearGradient id="wg-aurora-2" gradientUnits="userSpaceOnUse" x1="0" y1="200" x2="1600" y2="800">
+            <stop offset="0%"   stopColor="#fed7aa" stopOpacity="0" />
+            <stop offset="40%"  stopColor="#fdba74" />
+            <stop offset="70%"  stopColor="#f0abfc" />
+            <stop offset="100%" stopColor="#c4b5fd" stopOpacity="0" />
           </linearGradient>
-          <linearGradient id="wg-orange" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="2400" y2="0">
-            <stop offset="0%"   stopColor="#fbbf24" />
-            <stop offset="35%"  stopColor="#fb923c" />
-            <stop offset="65%"  stopColor="#f97316" />
-            <stop offset="100%" stopColor="#ec4899" />
+          <linearGradient id="wg-aurora-3" gradientUnits="userSpaceOnUse" x1="0" y1="100" x2="1600" y2="700">
+            <stop offset="0%"   stopColor="#bae6fd" stopOpacity="0" />
+            <stop offset="50%"  stopColor="#67e8f9" />
+            <stop offset="100%" stopColor="#a5b4fc" stopOpacity="0" />
           </linearGradient>
-          <linearGradient id="wg-pink" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="2400" y2="0">
-            <stop offset="0%"   stopColor="#ec4899" />
-            <stop offset="50%"  stopColor="#f472b6" />
-            <stop offset="100%" stopColor="#a855f7" />
-          </linearGradient>
-          <linearGradient id="wg-warm" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="2400" y2="0">
-            <stop offset="0%"   stopColor="#fbbf24" />
-            <stop offset="50%"  stopColor="#f97316" />
-            <stop offset="100%" stopColor="#ec4899" />
-          </linearGradient>
-          <filter id="wave-blur" x="-10%" y="-20%" width="120%" height="140%">
-            <feGaussianBlur stdDeviation="14" />
+          <filter id="wave-soft-blur" x="-20%" y="-30%" width="140%" height="160%">
+            <feGaussianBlur stdDeviation="50" />
           </filter>
         </defs>
 
-        <g filter="url(#wave-blur)" style={{ mixBlendMode: "multiply" }}>
-          <g style={{ animation: "wave-drift 38s linear infinite", willChange: "transform" }}>
-            <path d="M0,180 Q300,90 600,180 T1200,180 T1800,180 T2400,180" stroke="url(#wg-blue)"   strokeWidth="70"  strokeLinecap="round" opacity="0.55" fill="none" />
+        <g filter="url(#wave-soft-blur)" style={{ mixBlendMode: "multiply" }}>
+          <g style={{ transformOrigin: "50% 50%", animation: "wave-flow-a 22s ease-in-out infinite", willChange: "transform" }}>
+            <path
+              d="M-200,420 C200,260 600,560 1000,360 C1300,210 1500,420 1800,300"
+              stroke="url(#wg-aurora-1)"
+              strokeWidth="180"
+              strokeLinecap="round"
+              opacity="0.55"
+              fill="none"
+            />
           </g>
-          <g style={{ animation: "wave-drift 30s linear infinite", willChange: "transform" }}>
-            <path d="M0,270 Q300,160 600,270 T1200,270 T1800,270 T2400,270" stroke="url(#wg-purple)" strokeWidth="80"  strokeLinecap="round" opacity="0.6"  fill="none" />
+          <g style={{ transformOrigin: "50% 50%", animation: "wave-flow-b 28s ease-in-out infinite", willChange: "transform" }}>
+            <path
+              d="M-200,520 C300,380 700,640 1100,460 C1400,330 1600,520 1900,420"
+              stroke="url(#wg-aurora-2)"
+              strokeWidth="200"
+              strokeLinecap="round"
+              opacity="0.45"
+              fill="none"
+            />
           </g>
-          <g style={{ animation: "wave-drift 24s linear infinite", willChange: "transform" }}>
-            <path d="M0,360 Q300,230 600,360 T1200,360 T1800,360 T2400,360" stroke="url(#wg-orange)" strokeWidth="110" strokeLinecap="round" opacity="0.85" fill="none" />
-          </g>
-          <g style={{ animation: "wave-drift 28s linear infinite", willChange: "transform" }}>
-            <path d="M0,450 Q300,350 600,450 T1200,450 T1800,450 T2400,450" stroke="url(#wg-pink)"   strokeWidth="75"  strokeLinecap="round" opacity="0.6"  fill="none" />
-          </g>
-          <g style={{ animation: "wave-drift 34s linear infinite", willChange: "transform" }}>
-            <path d="M0,540 Q300,460 600,540 T1200,540 T1800,540 T2400,540" stroke="url(#wg-warm)"   strokeWidth="60"  strokeLinecap="round" opacity="0.5"  fill="none" />
+          <g style={{ transformOrigin: "50% 50%", animation: "wave-flow-c 34s ease-in-out infinite", willChange: "transform" }}>
+            <path
+              d="M-200,320 C200,200 700,440 1100,260 C1400,140 1600,320 1900,220"
+              stroke="url(#wg-aurora-3)"
+              strokeWidth="140"
+              strokeLinecap="round"
+              opacity="0.35"
+              fill="none"
+            />
           </g>
         </g>
       </svg>
-      {/* Edge fades blend the waves into the white hero */}
-      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-white via-white/85 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-white to-transparent" />
-      <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent" />
-      <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent" />
+      {/* Soft white wash so the aurora sits behind the type */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/30 to-white/70" />
+      {/* Edge fades */}
+      <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent" />
+      <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent" />
+      <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent" />
     </div>
   );
 }
