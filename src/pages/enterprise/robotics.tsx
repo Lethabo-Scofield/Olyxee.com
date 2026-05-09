@@ -39,7 +39,7 @@ const HighlightsSlider: FC = () => {
   const [isPaused, setIsPaused] = useState(false);
   const total = HIGHLIGHTS.length;
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const DURATION_MS = 3000;
+  const DURATION_MS = 4000;
 
   useEffect(() => {
     if (isPaused) return;
@@ -144,14 +144,14 @@ const HighlightsSlider: FC = () => {
               className="group relative flex-1 max-w-[120px] h-[3px] rounded-full bg-neutral-200 overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40"
             >
               <span
-                key={`${index}-${i}-${isPaused}`}
+                key={`${index}-${i}`}
                 className="absolute inset-y-0 left-0 bg-neutral-900"
                 style={{
-                  width: isActive ? "100%" : i < index ? "100%" : "0%",
-                  animation:
-                    isActive && !isPaused
-                      ? `slide-progress ${DURATION_MS}ms linear forwards`
-                      : undefined,
+                  width: isActive ? "0%" : i < index ? "100%" : "0%",
+                  animation: isActive
+                    ? `slide-progress ${DURATION_MS}ms linear forwards`
+                    : undefined,
+                  animationPlayState: isPaused ? "paused" : "running",
                 }}
               />
             </button>
