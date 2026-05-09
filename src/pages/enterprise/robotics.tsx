@@ -54,20 +54,22 @@ const Robotics: FC = () => {
       {/* === CINEMATIC HERO === */}
       <section className="relative min-h-screen w-full overflow-hidden bg-neutral-950 text-white">
         <div className="absolute inset-0">
-          <Image
-            src="/images/robotics/humanoid-manipulation.png"
-            alt=""
-            fill
-            priority
-            className="object-cover opacity-70"
-            sizes="100vw"
+          <video
+            src="/videos/robotics-hero.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            poster="/images/robotics/humanoid-manipulation.png"
+            className="absolute inset-0 w-full h-full object-cover"
           />
           <div
             aria-hidden
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0.7) 100%)",
+                "linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.75) 100%)",
             }}
           />
           <div
