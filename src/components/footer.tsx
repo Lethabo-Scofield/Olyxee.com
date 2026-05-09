@@ -11,14 +11,20 @@ const footerData = {
       links: [
         { name: "Ordo", href: "/products/ordo" },
         { name: "Addup", href: "/products/addup" },
+      ],
+    },
+    {
+      title: "Enterprise",
+      links: [
+        { name: "Overview", href: "/enterprise" },
         { name: "Logistics", href: "https://logistics.olyxee.com/login", external: true },
+        { name: "Contact Sales", href: "/contact" },
       ],
     },
     {
       title: "Company",
       links: [
         { name: "About", href: "/about" },
-        { name: "Enterprise", href: "/enterprise" },
         { name: "Careers", href: "/careers" },
         { name: "Brand Guidelines", href: "/brand" },
         { name: "Contact", href: "/contact" },
@@ -77,7 +83,7 @@ export default function Footer({ variant = "light" }: FooterProps) {
   return (
     <footer className={styles.wrapper} aria-label="Site footer">
       <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 pt-16 sm:pt-24 pb-12 sm:pb-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 sm:gap-x-8 gap-y-10 sm:gap-y-14 mb-16 sm:mb-24">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-6 sm:gap-x-8 gap-y-10 sm:gap-y-14 mb-16 sm:mb-24">
           {footerData.columns.map((column) => (
             <div key={column.title}>
               <h3 className={`text-[10px] font-semibold ${styles.columnTitle} uppercase tracking-widest mb-6`}>{column.title}</h3>
