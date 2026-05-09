@@ -233,22 +233,19 @@ const Robotics: FC = () => {
       </section>
 
       {/* === ACCELERATOR === */}
-      <section className="relative px-4 sm:px-8 lg:px-12 py-20 sm:py-32 lg:py-40 bg-white border-t border-neutral-100 overflow-hidden">
-        <div
-          aria-hidden
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(60% 50% at 80% 30%, rgba(59,130,246,0.06), transparent 70%)",
-          }}
-        />
+      <section className="relative px-4 sm:px-8 lg:px-12 py-20 sm:py-32 lg:py-40 bg-white border-t border-neutral-100">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="relative max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center"
+          className="relative max-w-7xl mx-auto rounded-3xl overflow-hidden ring-1 ring-neutral-900/5 px-6 sm:px-12 lg:px-16 py-14 sm:py-20 lg:py-24"
+          style={{
+            background:
+              "radial-gradient(120% 90% at 80% 20%, #eaf3ff 0%, #f5f9ff 45%, #ffffff 80%)",
+          }}
         >
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <div className="lg:col-span-5 order-2 lg:order-1">
             <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">
               Olyxee Robotics Accelerator
@@ -301,15 +298,16 @@ const Robotics: FC = () => {
           </div>
 
           <div className="lg:col-span-7 order-1 lg:order-2">
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-neutral-50 ring-1 ring-neutral-900/5">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
               <Image
                 src="/images/robotics/accelerator-pointcloud.png"
                 alt="Point cloud rendering of a robotic figure"
                 fill
-                className="object-cover"
+                className="object-contain"
                 sizes="(min-width: 1024px) 60vw, 100vw"
               />
             </div>
+          </div>
           </div>
         </motion.div>
       </section>
