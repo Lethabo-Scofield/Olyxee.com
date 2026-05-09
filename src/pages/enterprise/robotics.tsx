@@ -215,7 +215,7 @@ const Robotics: FC = () => {
           >
             Olyxee{" "}
             <span
-              className="font-handwritten text-blue-400 italic font-semibold tracking-tight"
+              className="font-handwritten text-blue-400 font-semibold tracking-tight"
               style={{ fontFamily: "var(--font-handwritten), cursive" }}
             >
               Robotics
@@ -274,7 +274,7 @@ const Robotics: FC = () => {
           <h2 className="font-serif text-3xl sm:text-5xl lg:text-[4.25rem] leading-[1.05] tracking-tight text-neutral-900">
             Robots of{" "}
             <span
-              className="font-handwritten text-blue-600 italic font-semibold tracking-tight"
+              className="font-handwritten text-blue-600 font-semibold tracking-tight"
               style={{ fontFamily: "var(--font-handwritten), cursive" }}
             >
               any shape and size
@@ -308,7 +308,7 @@ const Robotics: FC = () => {
               <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] tracking-tight text-neutral-900 leading-[1.05]">
                 Backing the next wave of{" "}
                 <span
-                  className="font-handwritten text-blue-600 italic font-semibold tracking-tight"
+                  className="font-handwritten text-blue-600 font-semibold tracking-tight"
                   style={{ fontFamily: "var(--font-handwritten), cursive" }}
                 >
                   physical AI
@@ -378,7 +378,7 @@ const Robotics: FC = () => {
             <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl tracking-tight text-neutral-900 leading-[1.1]">
               Built with the{" "}
               <span
-                className="font-handwritten text-blue-600 italic font-semibold tracking-tight"
+                className="font-handwritten text-blue-600 font-semibold tracking-tight"
                 style={{ fontFamily: "var(--font-handwritten), cursive" }}
               >
                 leading
@@ -421,7 +421,7 @@ const Robotics: FC = () => {
               <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-5 leading-[1.05]">
                 Building in the{" "}
                 <span
-                  className="font-handwritten text-blue-600 italic font-semibold tracking-tight"
+                  className="font-handwritten text-blue-600 font-semibold tracking-tight"
                   style={{ fontFamily: "var(--font-handwritten), cursive" }}
                 >
                   physical world
