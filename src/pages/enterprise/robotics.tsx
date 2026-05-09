@@ -34,12 +34,6 @@ const HIGHLIGHTS = [
   },
 ];
 
-const STATS = [
-  { value: "<10ms", label: "On-device perception" },
-  { value: "24/7", label: "Fleet observability" },
-  { value: "100%", label: "Pre-deploy verification" },
-];
-
 const Robotics: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
@@ -201,28 +195,6 @@ const Robotics: FC = () => {
             </motion.article>
           ))}
         </div>
-      </section>
-
-      {/* === STATS BAND === */}
-      <section className="px-4 sm:px-8 lg:px-12 py-20 sm:py-28 bg-neutral-50 border-t border-neutral-100">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-12 sm:gap-8"
-        >
-          {STATS.map((s) => (
-            <div key={s.label} className="text-center sm:text-left">
-              <div className="font-serif text-5xl sm:text-6xl lg:text-7xl tracking-tight text-neutral-900">
-                {s.value}
-              </div>
-              <div className="mt-3 text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em]">
-                {s.label}
-              </div>
-            </div>
-          ))}
-        </motion.div>
       </section>
 
       {/* === ACCELERATOR === */}
