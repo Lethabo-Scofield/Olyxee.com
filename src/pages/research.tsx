@@ -153,7 +153,7 @@ const Research: FC = () => {
         </div>
       </section>
 
-      <Footer />
+      <Footer showBrandBand={false} />
     </div>
   );
 };

@@ -59,9 +59,10 @@ type FooterVariant = "dark" | "light";
 
 interface FooterProps {
   variant?: FooterVariant;
+  showBrandBand?: boolean;
 }
 
-export default function Footer({ variant = "light" }: FooterProps) {
+export default function Footer({ variant = "light", showBrandBand = true }: FooterProps) {
   const isLight = variant === "light";
 
   const styles = isLight
@@ -104,8 +105,9 @@ export default function Footer({ variant = "light" }: FooterProps) {
 
   return (
     <footer className={styles.wrapper} aria-label="Site footer">
-      <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 pt-20 sm:pt-28 pb-10 sm:pb-14">
+      <div className={`max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 ${showBrandBand ? "pt-20 sm:pt-28" : "pt-12 sm:pt-16"} pb-10 sm:pb-14`}>
         {/* === Top brand band === */}
+        {showBrandBand && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 pb-16 sm:pb-20">
           <div className="lg:col-span-7">
             <div className="flex items-center gap-3 mb-8">
@@ -149,6 +151,7 @@ export default function Footer({ variant = "light" }: FooterProps) {
             </div>
           </div>
         </div>
+        )}
 
         {/* === Link columns === */}
         <div className={`pt-12 sm:pt-16 border-t ${styles.divider} grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-6 sm:gap-x-8 gap-y-12 mb-16 sm:mb-20`}>
