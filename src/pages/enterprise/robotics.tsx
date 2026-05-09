@@ -97,7 +97,13 @@ const Robotics: FC = () => {
             transition={{ duration: 1.0, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
             className="font-serif text-[3rem] sm:text-7xl lg:text-[8rem] leading-[0.95] tracking-tight"
           >
-            Olyxee <em className="text-blue-400">Robotics</em>
+            Olyxee{" "}
+            <span
+              className="font-handwritten text-blue-400 italic font-semibold tracking-tight"
+              style={{ fontFamily: "var(--font-handwritten), cursive" }}
+            >
+              Robotics
+            </span>
           </motion.h1>
 
           <motion.p
@@ -150,7 +156,14 @@ const Robotics: FC = () => {
             Foundation models for the physical world
           </p>
           <h2 className="font-serif text-3xl sm:text-5xl lg:text-[4.25rem] leading-[1.05] tracking-tight text-neutral-900">
-            Robots of <em className="text-blue-500">any shape and size</em>, perceiving, reasoning, and using tools in the world around them.
+            Robots of{" "}
+            <span
+              className="font-handwritten text-blue-600 italic font-semibold tracking-tight"
+              style={{ fontFamily: "var(--font-handwritten), cursive" }}
+            >
+              any shape and size
+            </span>
+            , perceiving, reasoning, and using tools in the world around them.
           </h2>
         </motion.div>
       </section>
@@ -209,7 +222,7 @@ const Robotics: FC = () => {
           {STATS.map((s) => (
             <div key={s.label} className="text-center sm:text-left">
               <div className="font-serif text-5xl sm:text-6xl lg:text-7xl tracking-tight text-neutral-900">
-                <em className="text-blue-500">{s.value}</em>
+                {s.value}
               </div>
               <div className="mt-3 text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em]">
                 {s.label}
@@ -241,7 +254,14 @@ const Robotics: FC = () => {
               Olyxee Robotics Accelerator
             </p>
             <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.75rem] tracking-tight text-neutral-900 leading-[1.05]">
-              Supporting the new generation of <em className="text-blue-500">physical AI</em>.
+              Supporting the new generation of{" "}
+              <span
+                className="font-handwritten text-blue-600 italic font-semibold tracking-tight"
+                style={{ fontFamily: "var(--font-handwritten), cursive" }}
+              >
+                physical AI
+              </span>
+              .
             </h2>
             <p className="mt-6 text-neutral-600 text-base sm:text-lg font-light leading-relaxed">
               Our mission is to empower high potential, early stage startups through hands-on technical mentorship, compute and hardware access, and a direct path to deploy embodied AI into the real world.
@@ -308,7 +328,14 @@ const Robotics: FC = () => {
               04 · Ecosystem
             </p>
             <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl tracking-tight text-neutral-900 leading-[1.1]">
-              Built with the <em className="text-blue-500">leading</em> robotics teams.
+              Built with the{" "}
+              <span
+                className="font-handwritten text-blue-600 italic font-semibold tracking-tight"
+                style={{ fontFamily: "var(--font-handwritten), cursive" }}
+              >
+                leading
+              </span>{" "}
+              robotics teams.
             </h3>
             <p className="mt-5 text-neutral-600 text-base sm:text-lg font-light leading-relaxed">
               We partner with hardware OEMs, foundation model labs, and field operators to bring reliable embodied AI from research into production.
@@ -349,7 +376,14 @@ const Robotics: FC = () => {
               Early access
             </p>
             <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] tracking-tight text-neutral-900 leading-[1.05]">
-              Experience <em className="text-blue-500">Olyxee Robotics</em>.
+              Experience{" "}
+              <span
+                className="font-handwritten text-blue-600 italic font-semibold tracking-tight"
+                style={{ fontFamily: "var(--font-handwritten), cursive" }}
+              >
+                Olyxee Robotics
+              </span>
+              .
             </h2>
           </div>
           <div className="lg:col-span-5">
@@ -376,7 +410,14 @@ const Robotics: FC = () => {
 
             <div className="relative text-center max-w-2xl mx-auto">
               <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-5 leading-[1.05]">
-                Building in the <em className="text-blue-500">physical world</em>?
+                Building in the{" "}
+                <span
+                  className="font-handwritten text-blue-600 italic font-semibold tracking-tight"
+                  style={{ fontFamily: "var(--font-handwritten), cursive" }}
+                >
+                  physical world
+                </span>
+                ?
               </h2>
               <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-9 max-w-lg mx-auto">
                 We partner on embodied AI, perception stacks, and hardware-integrated deployments, from pilot to fleet.
