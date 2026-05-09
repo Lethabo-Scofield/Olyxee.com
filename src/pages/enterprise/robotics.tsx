@@ -56,7 +56,7 @@ const HighlightsSlider: FC = () => {
 
   return (
     <section
-      className="relative w-full h-screen min-h-[640px] overflow-hidden bg-neutral-950 text-white"
+      className="relative w-full bg-white py-10 sm:py-16"
       aria-roledescription="carousel"
       aria-label="Olyxee Robotics foundation pillars"
       onMouseEnter={() => setIsPaused(true)}
@@ -64,58 +64,13 @@ const HighlightsSlider: FC = () => {
       onFocus={() => setIsPaused(true)}
       onBlur={() => setIsPaused(false)}
     >
-      <AnimatePresence mode="sync">
+      <div className="relative w-full overflow-hidden">
         <motion.div
-          key={active.title}
-          initial={{ opacity: 0, scale: 1.04 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 1 }}
-          transition={{ duration: 1.1, ease: [0.25, 0.1, 0.25, 1] }}
-          className="absolute inset-0"
+          className="flex items-stretch"
+          style={{ paddingLeft: "6vw", paddingRight: "6vw", gap: "2vw" }}
+          animate={{ x: `calc(${-index} * (88vw + 2vw))` }}
+          transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          <Image
-            src={active.image}
-            alt={active.alt}
-            fill
-            priority={index === 0}
-            className="object-cover"
-            sizes="100vw"
-          />
-          <div
-            aria-hidden
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 35%, rgba(0,0,0,0.55) 70%, rgba(0,0,0,0.85) 100%)",
-            }}
-          />
-        </motion.div>
-      </AnimatePresence>
-
-      <div className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 flex flex-col justify-end pb-20 sm:pb-28">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={active.title + "-text"}
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-            className="max-w-3xl"
-          >
-            <p className="text-xs font-semibold text-white/60 uppercase tracking-[0.2em] mb-5">
-              {active.meta}
-            </p>
-            <h3 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] leading-[1.05] tracking-tight">
-              {active.title}
-            </h3>
-            <p className="mt-5 text-white/75 text-base sm:text-lg font-light leading-relaxed max-w-2xl">
-              {active.body}
-            </p>
-          </motion.div>
-        </AnimatePresence>
-
-        {/* Progress bars */}
-        <div className="mt-10 sm:mt-14 flex items-center gap-3">
           {HIGHLIGHTS.map((h, i) => {
             const isActive = i === index;
             return (
@@ -124,26 +79,87 @@ const HighlightsSlider: FC = () => {
                 type="button"
                 onClick={() => goTo(i)}
                 aria-label={`Show slide ${i + 1}: ${h.meta}`}
-                className="group relative flex-1 max-w-[120px] h-[3px] rounded-full bg-white/15 overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+                aria-current={isActive ? "true" : undefined}
+                className="group relative shrink-0 w-[88vw] h-[78vh] min-h-[560px] rounded-[28px] overflow-hidden text-left text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/60"
               >
-                <span
-                  key={`${index}-${i}-${isPaused}`}
-                  className="absolute inset-y-0 left-0 bg-white"
+                <Image
+                  src={h.image}
+                  alt={h.alt}
+                  fill
+                  priority={i === 0}
+                  className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
+                  sizes="88vw"
+                />
+                <div
+                  aria-hidden
+                  className="absolute inset-0 transition-opacity duration-700"
                   style={{
-                    width: isActive ? "100%" : i < index ? "100%" : "0%",
-                    animation:
-                      isActive && !isPaused
-                        ? `slide-progress ${DURATION_MS}ms linear forwards`
-                        : undefined,
+                    background:
+                      "linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.15) 30%, rgba(0,0,0,0.55) 70%, rgba(0,0,0,0.88) 100%)",
+                    opacity: isActive ? 1 : 0.85,
                   }}
                 />
+                <div
+                  aria-hidden
+                  className="absolute inset-0 transition-opacity duration-700 pointer-events-none"
+                  style={{
+                    background: "rgba(0,0,0,0.35)",
+                    opacity: isActive ? 0 : 1,
+                  }}
+                />
+
+                <div className="absolute inset-x-0 bottom-0 px-6 sm:px-12 lg:px-16 pb-12 sm:pb-16">
+                  <motion.div
+                    animate={{ opacity: isActive ? 1 : 0.6, y: isActive ? 0 : 8 }}
+                    transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+                    className="max-w-3xl"
+                  >
+                    <p className="text-[11px] sm:text-xs font-semibold text-white/70 uppercase tracking-[0.2em] mb-4 sm:mb-5">
+                      {h.meta}
+                    </p>
+                    <h3 className="font-serif text-2xl sm:text-4xl lg:text-[3rem] leading-[1.05] tracking-tight">
+                      {h.title}
+                    </h3>
+                    <p className="mt-4 sm:mt-5 text-white/80 text-sm sm:text-base lg:text-lg font-light leading-relaxed max-w-2xl">
+                      {h.body}
+                    </p>
+                  </motion.div>
+                </div>
               </button>
             );
           })}
-          <span className="ml-4 text-[11px] font-medium text-white/50 tracking-[0.18em] uppercase tabular-nums">
-            {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
-          </span>
-        </div>
+        </motion.div>
+      </div>
+
+      {/* Progress + indicator */}
+      <div className="mt-8 sm:mt-10 px-[6vw] flex items-center gap-3">
+        {HIGHLIGHTS.map((h, i) => {
+          const isActive = i === index;
+          return (
+            <button
+              key={h.title}
+              type="button"
+              onClick={() => goTo(i)}
+              aria-label={`Go to slide ${i + 1}: ${h.meta}`}
+              className="group relative flex-1 max-w-[120px] h-[3px] rounded-full bg-neutral-200 overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40"
+            >
+              <span
+                key={`${index}-${i}-${isPaused}`}
+                className="absolute inset-y-0 left-0 bg-neutral-900"
+                style={{
+                  width: isActive ? "100%" : i < index ? "100%" : "0%",
+                  animation:
+                    isActive && !isPaused
+                      ? `slide-progress ${DURATION_MS}ms linear forwards`
+                      : undefined,
+                }}
+              />
+            </button>
+          );
+        })}
+        <span className="ml-4 text-[11px] font-medium text-neutral-500 tracking-[0.18em] uppercase tabular-nums">
+          {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+        </span>
       </div>
 
       <style jsx>{`
