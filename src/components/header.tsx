@@ -22,7 +22,7 @@ const menuItems: MenuItem[] = [
         name: "Enterprise",
         childrenLabel: "Enterprise Solutions",
         children: [
-            { name: "Enterprise Software", href: "/enterprise", description: "AI infrastructure, Logistics, and platform tools" },
+            { name: "Enterprise Software", href: "/enterprise", description: "AI infrastructure and tools" },
             { name: "Enterprise Hardware", href: "/enterprise/robotics", description: "Olyxee Robotics solutions" },
         ],
     },
