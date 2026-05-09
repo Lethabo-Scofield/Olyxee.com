@@ -203,6 +203,76 @@ const Robotics: FC = () => {
         </div>
       </section>
 
+      {/* === ACCELERATOR === */}
+      <section className="relative px-4 sm:px-8 lg:px-12 py-24 sm:py-36 bg-white overflow-hidden">
+        <div
+          aria-hidden
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(60% 50% at 80% 30%, rgba(59,130,246,0.06), transparent 70%)",
+          }}
+        />
+        <div className="relative max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <div className="lg:col-span-5 order-2 lg:order-1">
+            <p className="text-[11px] font-semibold text-neutral-500 uppercase tracking-[0.28em] mb-5">
+              Olyxee Robotics Accelerator
+            </p>
+            <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.75rem] tracking-tight text-neutral-900 leading-[1.05]">
+              Supporting the new generation of <em className="text-blue-500">physical AI</em>.
+            </h2>
+            <p className="mt-7 text-base sm:text-lg text-neutral-500 font-light leading-relaxed">
+              Our mission is to empower high potential, early stage startups through hands-on technical mentorship, compute and hardware access, and a direct path to deploy embodied AI into the real world.
+            </p>
+            <div className="mt-9 flex flex-wrap items-center gap-3">
+              <Link
+                href="/contact?subject=Olyxee%20Robotics%20Accelerator%20application"
+                className="group inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide"
+              >
+                Apply to the program
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden />
+              </Link>
+              <Link
+                href="/contact?subject=Olyxee%20Robotics%20Accelerator%20inquiry"
+                className="inline-flex items-center gap-2 text-sm font-medium text-neutral-900 group px-2"
+              >
+                Learn more
+                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
+              </Link>
+            </div>
+
+            <div className="mt-12 grid grid-cols-3 gap-6 max-w-md">
+              {[
+                { k: "Mentorship", v: "1:1 technical" },
+                { k: "Compute", v: "GPU credits" },
+                { k: "Hardware", v: "Robot access" },
+              ].map((item) => (
+                <div key={item.k}>
+                  <div className="text-[10px] font-semibold text-neutral-400 uppercase tracking-[0.22em]">
+                    {item.k}
+                  </div>
+                  <div className="mt-1.5 text-sm text-neutral-700 font-light">
+                    {item.v}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="lg:col-span-7 order-1 lg:order-2">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-neutral-50 border border-neutral-200/60">
+              <Image
+                src="/images/robotics/accelerator-pointcloud.png"
+                alt="Point cloud rendering of a robotic figure"
+                fill
+                className="object-cover"
+                sizes="(min-width: 1024px) 60vw, 100vw"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* === PARTNERSHIPS / ECOSYSTEM === */}
       <section className="px-4 sm:px-8 lg:px-12 py-24 sm:py-32 bg-white">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
