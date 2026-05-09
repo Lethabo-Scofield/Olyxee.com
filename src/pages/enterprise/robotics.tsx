@@ -49,10 +49,10 @@ const Robotics: FC = () => {
         path="/enterprise/robotics"
       />
       <div className="grain" />
-      <Header theme="dark" />
+      <Header />
 
       {/* === CINEMATIC HERO === */}
-      <section className="relative w-full bg-neutral-950 text-white pt-20 sm:pt-24 pb-6 sm:pb-8 px-3 sm:px-5">
+      <section className="relative w-full bg-white text-white pt-20 sm:pt-24 pb-6 sm:pb-8 px-3 sm:px-5">
         <div
           className="relative w-full overflow-hidden"
           style={{
