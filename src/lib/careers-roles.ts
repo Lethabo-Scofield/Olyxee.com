@@ -489,6 +489,77 @@ export const roles: Role[] = [
       },
     ],
   },
+  {
+    title: "Robotics Engineer (Intern)",
+    team: "Olyxee Robotics",
+    location: "Remote",
+    type: "internship",
+    description: "Help us bring embodied AI into the real world. You'll work on perception, control, and on-device deployment for robotic platforms ranging from manipulators to mobile bases.",
+    responsibilities: [
+      "Prototype perception, planning, or control modules for robotic platforms",
+      "Run experiments in simulation and on physical hardware, then iterate quickly",
+      "Help integrate foundation models with low-level control for real-world tasks",
+    ],
+    requirements: [
+      "Hands-on experience with ROS, Isaac Sim, MuJoCo, Gazebo, or similar robotics stacks",
+      "Comfort with Python and C++; familiarity with PyTorch or JAX is a plus",
+      "Share your GitHub, demo videos, or links to robotics projects you've shipped",
+    ],
+  },
+  {
+    title: "Robotics Research (Intern)",
+    team: "Olyxee Robotics",
+    location: "Remote",
+    type: "internship",
+    description: "Push the boundary of what physical AI systems can do. Work alongside our research team on spatial reasoning, dexterous manipulation, and learned control.",
+    responsibilities: [
+      "Investigate open problems in embodied AI: perception, planning, manipulation, sim-to-real",
+      "Design and run experiments, then translate findings into engineering work",
+      "Co-author write-ups and contribute to internal and external publications",
+    ],
+    requirements: [
+      "Strong fundamentals in machine learning and robotics; coursework, projects, or papers in either",
+      "Programming fluency in Python; experience with reinforcement learning or imitation learning is a plus",
+      "Share your CV, GitHub, and any publications, demos, or course projects",
+    ],
+  },
+  {
+    title: "Electrical Engineer",
+    team: "Olyxee Robotics",
+    location: "Hybrid · Johannesburg",
+    type: "paid",
+    description: "Own the electrical design of our robotic platforms end to end, from schematic and PCB to power, motor drives, and sensor integration on real hardware.",
+    responsibilities: [
+      "Design schematics and multi-layer PCBs for compute, power, and sensor subsystems",
+      "Specify and integrate motors, drivers, batteries, and safety circuits",
+      "Bring up new boards, debug at the bench, and work closely with mechanical and firmware teams",
+      "Own DFM, validation, and the path from prototype to small-batch production",
+    ],
+    requirements: [
+      "BSc/BEng or higher in Electrical, Electronic, or Mechatronic Engineering",
+      "3+ years designing schematics and PCBs in Altium, KiCad, or equivalent",
+      "Hands-on experience with motor control, power electronics, and high-speed digital interfaces",
+      "Comfortable in the lab with oscilloscopes, logic analyzers, and bring-up of new hardware",
+      "Share your CV and links to portfolios, project write-ups, or boards you've shipped",
+    ],
+  },
+  {
+    title: "Electrical Engineer (Intern)",
+    team: "Olyxee Robotics",
+    location: "Remote",
+    type: "internship",
+    description: "Get hands-on with the electrical systems behind real robots. Support PCB design, bring-up, and validation across our robotics platforms.",
+    responsibilities: [
+      "Assist with schematic capture, PCB layout, and BOM management",
+      "Help bring up new boards and run validation tests on the bench",
+      "Document designs, test results, and lessons learned for the team",
+    ],
+    requirements: [
+      "Studying Electrical, Electronic, or Mechatronic Engineering, or equivalent self-taught background",
+      "Familiarity with at least one EDA tool (Altium, KiCad, Eagle) and basic lab equipment",
+      "Share your CV and any project portfolios, GitHub, or boards you've designed or built",
+    ],
+  },
 ];
 
 export const teams = Array.from(new Set(roles.map((r) => r.team)));
