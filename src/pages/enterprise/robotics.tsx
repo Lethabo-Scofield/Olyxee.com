@@ -52,8 +52,16 @@ const Robotics: FC = () => {
       <Header theme="dark" />
 
       {/* === CINEMATIC HERO === */}
-      <section className="relative min-h-screen w-full overflow-hidden bg-neutral-950 text-white">
-        <div className="absolute inset-0">
+      <section className="relative w-full bg-neutral-950 text-white pt-20 sm:pt-24 pb-6 sm:pb-8 px-3 sm:px-5">
+        <div
+          className="relative w-full overflow-hidden"
+          style={{
+            borderRadius: 32,
+            minHeight: "min(88vh, 880px)",
+            boxShadow:
+              "0 30px 80px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.08)",
+          }}
+        >
           <video
             src="/videos/robotics-hero.mp4"
             autoPlay
@@ -69,7 +77,7 @@ const Robotics: FC = () => {
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.75) 100%)",
+                "linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.8) 100%)",
             }}
           />
           <div
@@ -81,9 +89,8 @@ const Robotics: FC = () => {
               filter: "blur(60px) saturate(1.4)",
             }}
           />
-        </div>
 
-        <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 sm:px-8 lg:px-12 pt-32 pb-20 text-center">
+        <div className="relative z-10 min-h-[inherit] flex flex-col items-center justify-center px-4 sm:px-8 lg:px-12 pt-24 sm:pt-32 pb-20 text-center" style={{ minHeight: "min(88vh, 880px)" }}>
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -142,8 +149,9 @@ const Robotics: FC = () => {
           </motion.div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 text-[11px] uppercase tracking-[0.28em] text-white/50">
-          Explore the latest
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 text-[11px] uppercase tracking-[0.28em] text-white/50">
+            Explore the latest
+          </div>
         </div>
       </section>
 
