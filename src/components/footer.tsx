@@ -14,22 +14,17 @@ const footerData = {
       ],
     },
     {
-      title: "Enterprise",
-      groups: [
-        {
-          title: "Enterprise Software",
-          links: [
-            { name: "Overview", href: "/enterprise" },
-            { name: "Logistics", href: "https://logistics.olyxee.com/login", external: true },
-            { name: "Contact Sales", href: "/contact" },
-          ],
-        },
-        {
-          title: "Enterprise Hardware",
-          links: [
-            { name: "Olyxee Robotics", href: "/enterprise/robotics" },
-          ],
-        },
+      title: "Enterprise Software",
+      links: [
+        { name: "Overview", href: "/enterprise" },
+        { name: "Logistics", href: "https://logistics.olyxee.com/login", external: true },
+        { name: "Contact Sales", href: "/contact" },
+      ],
+    },
+    {
+      title: "Enterprise Hardware",
+      links: [
+        { name: "Olyxee Robotics", href: "/enterprise/robotics" },
       ],
     },
     {
