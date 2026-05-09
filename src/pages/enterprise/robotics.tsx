@@ -2,32 +2,42 @@ import { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Cpu, Cog, Radar, ShieldCheck } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import SEO from "../../components/SEO";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 
-const CAPABILITIES = [
+const HIGHLIGHTS = [
   {
-    icon: Cpu,
-    title: "On-device intelligence",
-    desc: "Optimized perception, planning, and control models running on edge silicon — no cloud round-trip.",
+    eyebrow: "Embodied intelligence",
+    title: "Perceive, reason, and act in the real world.",
+    body: "Foundation models tuned for spatial reasoning and dexterous control, deployed on-device with deterministic latency. Robots that adapt to new objects, environments, and tasks without retraining from scratch.",
+    image: "/images/robotics/humanoid-manipulation.png",
+    alt: "Humanoid robot manipulating objects on a workbench",
+    meta: "01 · Models",
   },
   {
-    icon: Cog,
-    title: "Hardware integration",
-    desc: "Reference designs and SDKs for arms, mobile bases, and humanoid platforms across industrial and field settings.",
+    eyebrow: "Hardware design",
+    title: "Reference platforms, built for production.",
+    body: "Mechanical, electrical, and compute designs co-developed with our partners across arms, mobile bases, and humanoids. Open SDKs from teleop to autonomy.",
+    image: "/images/robotics/hardware-design.png",
+    alt: "Engineer reviewing CAD blueprints on a monitor",
+    meta: "02 · Hardware",
   },
   {
-    icon: Radar,
-    title: "Fleet orchestration",
-    desc: "Deploy, monitor, and update thousands of robots in production with rollback-safe model delivery.",
+    eyebrow: "Fleet operations",
+    title: "Deploy, monitor, and update at scale.",
+    body: "Roll out new policies to thousands of robots with rollback-safe delivery, live observability, and OTA updates verified by Ordo before they ever touch a physical system.",
+    image: "/images/robotics/field-deployment.png",
+    alt: "Field deployment of robotic systems",
+    meta: "03 · Operations",
   },
-  {
-    icon: ShieldCheck,
-    title: "Verified behavior",
-    desc: "Every policy is tested against safety constraints with Ordo before it reaches a physical system.",
-  },
+];
+
+const STATS = [
+  { value: "<10ms", label: "On-device perception" },
+  { value: "24/7", label: "Fleet observability" },
+  { value: "100%", label: "Pre-deploy verification" },
 ];
 
 const Robotics: FC = () => {
@@ -35,152 +45,244 @@ const Robotics: FC = () => {
     <div className="min-h-screen bg-white text-neutral-900 relative">
       <SEO
         title="Olyxee Robotics · Enterprise Hardware"
-        description="Olyxee Robotics builds verified embodied AI systems for industrial, logistics, and field operations. On-device intelligence, hardware integration, and fleet orchestration."
+        description="Olyxee Robotics powers an era of physical agents — embodied AI for industrial, logistics, and field operations with on-device intelligence, hardware integration, and verified fleet deployment."
         path="/enterprise/robotics"
       />
       <div className="grain" />
-      <Header />
+      <Header theme="dark" />
 
-      {/* HERO */}
-      <section className="relative pt-32 sm:pt-44 pb-20 sm:pb-28 px-4 sm:px-8 lg:px-12 overflow-hidden">
-        <div
-          aria-hidden
-          className="absolute inset-0 -z-10"
-          style={{
-            background:
-              "radial-gradient(60% 50% at 50% 0%, rgba(59,130,246,0.10), transparent 60%)",
-          }}
-        />
-        <div className="max-w-5xl mx-auto text-center">
+      {/* === CINEMATIC HERO === */}
+      <section className="relative min-h-screen w-full overflow-hidden bg-neutral-950 text-white">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/robotics/humanoid-manipulation.png"
+            alt=""
+            fill
+            priority
+            className="object-cover opacity-70"
+            sizes="100vw"
+          />
+          <div
+            aria-hidden
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0.7) 100%)",
+            }}
+          />
+          <div
+            aria-hidden
+            className="absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(60% 50% at 50% 40%, rgba(59,130,246,0.18), transparent 65%)",
+              filter: "blur(60px) saturate(1.4)",
+            }}
+          />
+        </div>
+
+        <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 sm:px-8 lg:px-12 pt-32 pb-20 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-            className="flex justify-center mb-8"
+            transition={{ duration: 0.8, delay: 0.05, ease: [0.25, 0.1, 0.25, 1] }}
+            className="flex items-center gap-2.5 mb-8"
           >
             <Image
               src="/Logo/Olyxee_Robotics_Logo.png"
               alt="Olyxee Robotics"
-              width={88}
-              height={88}
-              className="rounded-2xl"
-              priority
+              width={28}
+              height={28}
+              className="rounded-md"
             />
+            <span className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/70">
+              Olyxee Robotics
+            </span>
           </motion.div>
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.05 }}
-            className="text-[11px] font-semibold text-blue-600 uppercase tracking-[0.22em] mb-5"
-          >
-            Enterprise Hardware
-          </motion.p>
+
           <motion.h1
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="font-serif text-4xl sm:text-6xl lg:text-7xl tracking-tight text-neutral-900 leading-[1.05]"
+            transition={{ duration: 1.0, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
+            className="font-serif text-[3rem] sm:text-7xl lg:text-[8rem] leading-[0.95] tracking-tight"
           >
-            Olyxee <em className="text-blue-500">Robotics</em>
+            Olyxee <em className="text-blue-400">Robotics</em>
           </motion.h1>
+
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.18 }}
-            className="mt-6 sm:mt-8 text-base sm:text-xl text-neutral-500 font-light leading-relaxed max-w-2xl mx-auto"
+            transition={{ duration: 0.9, delay: 0.3 }}
+            className="mt-8 text-base sm:text-xl text-white/70 font-light max-w-2xl leading-relaxed"
           >
-            Verified embodied AI for industrial, logistics, and field operations. We bring reliability-first infrastructure to the physical world.
+            Powering an era of physical agents — embodied AI that perceives, reasons, and acts reliably in the real world.
           </motion.p>
+
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.28 }}
-            className="mt-10 flex flex-wrap items-center justify-center gap-3"
+            transition={{ duration: 0.7, delay: 0.45 }}
+            className="mt-12 flex flex-wrap items-center justify-center gap-3"
           >
             <Link
-              href="/contact?subject=Olyxee%20Robotics%20inquiry"
-              className="group inline-flex items-center gap-2 px-7 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-black transition-all text-sm tracking-wide"
+              href="/contact?subject=Olyxee%20Robotics%20early%20access"
+              className="group inline-flex items-center gap-2 px-7 py-3.5 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide"
             >
-              Talk to robotics team
+              Join waitlist for early access
               <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden />
             </Link>
             <Link
-              href="/enterprise"
-              className="inline-flex items-center gap-2 px-7 py-3.5 bg-neutral-100 text-neutral-900 rounded-full font-medium hover:bg-neutral-200 transition-all text-sm tracking-wide"
+              href="/contact?subject=Olyxee%20Robotics%20partnership"
+              className="inline-flex items-center gap-2 px-7 py-3.5 bg-white/10 text-white rounded-full font-medium hover:bg-white/15 transition-all text-sm tracking-wide backdrop-blur-md ring-1 ring-white/15"
             >
-              Enterprise Software
+              Talk to robotics team
             </Link>
           </motion.div>
         </div>
+
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 text-[11px] uppercase tracking-[0.28em] text-white/50">
+          Explore the latest
+        </div>
       </section>
 
-      {/* CAPABILITIES */}
-      <section className="px-4 sm:px-8 lg:px-12 py-20 sm:py-28 border-t border-neutral-200/70">
-        <div className="max-w-6xl mx-auto">
-          <div className="max-w-3xl mb-14 sm:mb-20">
-            <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 leading-[1.1]">
-              Reliability for systems that <em className="text-blue-500">move, sense, and act</em>.
-            </h2>
-            <p className="mt-6 text-base sm:text-xl text-neutral-500 font-light leading-relaxed">
-              Robotics fails differently from software. We build the verification, deployment, and monitoring layer purpose-built for hardware in the loop.
-            </p>
-          </div>
+      {/* === MARQUEE STATEMENT === */}
+      <section className="px-4 sm:px-8 lg:px-12 py-24 sm:py-36 bg-white border-b border-neutral-200/70">
+        <div className="max-w-5xl mx-auto">
+          <p className="text-[11px] font-semibold text-neutral-500 uppercase tracking-[0.28em] mb-8">
+            Foundation models for the physical world
+          </p>
+          <h2 className="font-serif text-3xl sm:text-5xl lg:text-[4.25rem] leading-[1.05] tracking-tight text-neutral-900">
+            Robots of <em className="text-blue-500">any shape and size</em> — perceiving, reasoning, and using tools in the world around them.
+          </h2>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-            {CAPABILITIES.map((cap) => {
-              const Icon = cap.icon;
-              return (
-                <div
-                  key={cap.title}
-                  className="rounded-3xl bg-neutral-50 hover:bg-neutral-100/80 transition-colors p-7 sm:p-10"
-                >
-                  <div className="w-11 h-11 rounded-xl bg-neutral-100 flex items-center justify-center mb-6">
-                    <Icon className="w-5 h-5 text-neutral-600" aria-hidden />
+      {/* === HIGHLIGHTS (Editorial alternating layout) === */}
+      <section className="px-4 sm:px-8 lg:px-12 py-24 sm:py-32 bg-white">
+        <div className="max-w-6xl mx-auto space-y-28 sm:space-y-40">
+          {HIGHLIGHTS.map((h, idx) => {
+            const reverse = idx % 2 === 1;
+            return (
+              <div
+                key={h.title}
+                className={`grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-14 items-center`}
+              >
+                <div className={`lg:col-span-7 ${reverse ? "lg:order-2" : ""}`}>
+                  <div className="relative aspect-[16/10] w-full overflow-hidden rounded-3xl bg-neutral-100">
+                    <Image
+                      src={h.image}
+                      alt={h.alt}
+                      fill
+                      className="object-cover"
+                      sizes="(min-width: 1024px) 60vw, 100vw"
+                    />
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-medium text-neutral-900 tracking-tight">
-                    {cap.title}
+                </div>
+                <div className={`lg:col-span-5 ${reverse ? "lg:order-1" : ""}`}>
+                  <p className="text-[11px] font-semibold text-neutral-500 uppercase tracking-[0.28em] mb-5">
+                    {h.meta}
+                  </p>
+                  <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl tracking-tight text-neutral-900 leading-[1.1]">
+                    {h.title}
                   </h3>
-                  <p className="mt-3 text-sm sm:text-base text-neutral-500 font-light leading-relaxed">
-                    {cap.desc}
+                  <p className="mt-5 text-base sm:text-lg text-neutral-500 font-light leading-relaxed">
+                    {h.body}
                   </p>
                 </div>
-              );
-            })}
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* === STATS BAND === */}
+      <section className="bg-neutral-950 text-white px-4 sm:px-8 lg:px-12 py-20 sm:py-28">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-12 sm:gap-8">
+          {STATS.map((s) => (
+            <div key={s.label} className="text-center sm:text-left">
+              <div className="font-serif text-5xl sm:text-6xl lg:text-7xl tracking-tight text-white">
+                {s.value}
+              </div>
+              <div className="mt-3 text-sm text-white/50 font-light tracking-wide uppercase">
+                {s.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* === PARTNERSHIPS / ECOSYSTEM === */}
+      <section className="px-4 sm:px-8 lg:px-12 py-24 sm:py-32 bg-white">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-5">
+            <p className="text-[11px] font-semibold text-neutral-500 uppercase tracking-[0.28em] mb-5">
+              04 · Ecosystem
+            </p>
+            <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl tracking-tight text-neutral-900 leading-[1.1]">
+              Built with the <em className="text-blue-500">leading</em> robotics teams.
+            </h3>
+            <p className="mt-5 text-base sm:text-lg text-neutral-500 font-light leading-relaxed">
+              We partner with hardware OEMs, foundation model labs, and field operators to bring reliable embodied AI from research into production.
+            </p>
+            <Link
+              href="/contact?subject=Olyxee%20Robotics%20partnership"
+              className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-neutral-900 group"
+            >
+              Become a partner
+              <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
+            </Link>
+          </div>
+          <div className="lg:col-span-7">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-neutral-100">
+              <Image
+                src="/images/robotics/foundation-partnerships.png"
+                alt="Partnerships across robotics labs and platforms"
+                fill
+                className="object-cover"
+                sizes="(min-width: 1024px) 60vw, 100vw"
+              />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-neutral-950 text-white py-24 sm:py-32 px-4 sm:px-8 lg:px-12 relative overflow-hidden">
+      {/* === BOTTOM CTA === */}
+      <section className="bg-neutral-950 text-white py-28 sm:py-40 px-4 sm:px-8 lg:px-12 relative overflow-hidden">
         <div
           aria-hidden
-          className="absolute inset-0 opacity-60"
+          className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(50% 50% at 50% 50%, rgba(59,130,246,0.25), transparent 60%)",
+              "radial-gradient(50% 50% at 50% 50%, rgba(59,130,246,0.28), transparent 60%)",
             filter: "blur(80px) saturate(1.5)",
           }}
         />
         <div className="max-w-4xl mx-auto text-center relative">
-          <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.1]">
+          <h2 className="font-serif text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.05]">
             Building in the <em className="text-blue-400">physical world</em>?
           </h2>
           <p className="mt-6 text-base sm:text-lg text-white/50 font-light max-w-xl mx-auto leading-relaxed">
             We partner on embodied AI, perception stacks, and hardware-integrated deployments — from pilot to fleet.
           </p>
-          <div className="mt-10">
+          <div className="mt-12 flex flex-wrap items-center justify-center gap-3">
             <Link
-              href="/contact?subject=Olyxee%20Robotics%20partnership"
+              href="/contact?subject=Olyxee%20Robotics%20inquiry"
               className="group inline-flex items-center gap-2 px-8 py-3.5 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide"
             >
               Get in touch
               <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden />
             </Link>
+            <Link
+              href="/enterprise"
+              className="inline-flex items-center gap-2 px-8 py-3.5 bg-white/10 text-white rounded-full font-medium hover:bg-white/15 transition-all text-sm tracking-wide backdrop-blur-md ring-1 ring-white/15"
+            >
+              Enterprise Software
+            </Link>
           </div>
         </div>
       </section>
 
-      <Footer />
+      <Footer variant="dark" />
     </div>
   );
 };
