@@ -263,20 +263,11 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                                                         <div
                                                             className="relative w-[26rem] max-w-[min(calc(100vw-2rem),720px)] p-3 rounded-3xl overflow-hidden"
                                                             style={{
-                                                                background: 'rgba(255,255,255,0.55)',
-                                                                backdropFilter: 'blur(40px) saturate(200%)',
-                                                                WebkitBackdropFilter: 'blur(40px) saturate(200%)',
-                                                                border: '1px solid rgba(255,255,255,0.5)',
-                                                                boxShadow: '0 24px 80px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.9), inset 0 -1px 0 rgba(255,255,255,0.3)',
+                                                                background: '#ffffff',
+                                                                border: '1px solid rgba(0,0,0,0.06)',
+                                                                boxShadow: '0 24px 80px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.06)',
                                                             }}
                                                         >
-                                                            <div
-                                                                aria-hidden
-                                                                className="pointer-events-none absolute inset-0 rounded-3xl"
-                                                                style={{
-                                                                    background: 'linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 60%)',
-                                                                }}
-                                                            />
                                                             {item.childrenLabel && (
                                                                 <div className="px-3 pt-1 pb-3">
                                                                     <p className="text-[10px] font-semibold text-neutral-400 uppercase tracking-[0.22em]">
@@ -374,20 +365,11 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                                         <div
                                             className="relative w-[20rem] max-w-[calc(100vw-2rem)] p-2 rounded-3xl overflow-hidden"
                                             style={{
-                                                background: 'rgba(255,255,255,0.55)',
-                                                backdropFilter: 'blur(40px) saturate(200%)',
-                                                WebkitBackdropFilter: 'blur(40px) saturate(200%)',
-                                                border: '1px solid rgba(255,255,255,0.5)',
-                                                boxShadow: '0 24px 80px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.9), inset 0 -1px 0 rgba(255,255,255,0.3)',
+                                                background: '#ffffff',
+                                                border: '1px solid rgba(0,0,0,0.06)',
+                                                boxShadow: '0 24px 80px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.06)',
                                             }}
                                         >
-                                            <div
-                                                aria-hidden
-                                                className="pointer-events-none absolute inset-0 rounded-3xl"
-                                                style={{
-                                                    background: 'linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 60%)',
-                                                }}
-                                            />
                                             <div className="px-3 pt-2 pb-2.5">
                                                 <p className="text-[10px] font-semibold text-neutral-400 uppercase tracking-[0.22em]">
                                                     Sign in to
