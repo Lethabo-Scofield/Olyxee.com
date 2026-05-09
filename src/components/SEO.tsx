@@ -26,7 +26,7 @@ const SEO: FC<SEOProps> = ({
 }) => {
   const fullTitle = `${title} | Olyxee`;
   const url = `${siteUrl}${path}`;
-  const image = ogImage ?? `${siteUrl}/api/og`;
+  const image = ogImage ?? `${siteUrl}/og-image.jpg`;
 
   const jsonLdArray = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
 

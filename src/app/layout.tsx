@@ -79,7 +79,7 @@ export const metadata: Metadata = {
       "Olyxee builds verification, evaluation, and monitoring infrastructure so teams can ship AI with confidence.",
     images: [
       {
-        url: "/api/og",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Olyxee - Research and Infrastructure for AI",
@@ -91,7 +91,7 @@ export const metadata: Metadata = {
     title: "Olyxee | Research and Infrastructure for Artificial Intelligence",
     description:
       "Olyxee builds verification, evaluation, and monitoring infrastructure so teams can ship AI with confidence.",
-    images: ["/api/og"],
+    images: ["/og-image.jpg"],
     creator: "@Olyxee",
   },
   robots: {
