@@ -261,20 +261,13 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                                                         aria-label={`${item.name} menu`}
                                                     >
                                                         <div
-                                                            className="relative w-[26rem] max-w-[min(calc(100vw-2rem),720px)] p-3 rounded-3xl overflow-hidden"
+                                                            className="relative w-[16rem] max-w-[calc(100vw-2rem)] p-2 rounded-2xl overflow-hidden"
                                                             style={{
                                                                 background: '#ffffff',
                                                                 border: '1px solid rgba(0,0,0,0.06)',
                                                                 boxShadow: '0 24px 80px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.06)',
                                                             }}
                                                         >
-                                                            {item.childrenLabel && (
-                                                                <div className="px-3 pt-1 pb-3">
-                                                                    <p className="text-[10px] font-semibold text-neutral-400 uppercase tracking-[0.22em]">
-                                                                        {item.childrenLabel}
-                                                                    </p>
-                                                                </div>
-                                                            )}
                                                             <ul className="space-y-0.5">
                                                                 {item.children!.map((child) => (
                                                                     <li key={child.name}>
@@ -283,16 +276,9 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                                                                             prefetch
                                                                             role="menuitem"
                                                                             onClick={() => setOpenDropdown(null)}
-                                                                            className="group block px-3 py-2.5 rounded-xl hover:bg-neutral-100/80 active:bg-neutral-200/60 transition-colors focus:outline-none"
+                                                                            className="block px-3 py-2 rounded-lg hover:bg-neutral-100/80 active:bg-neutral-200/60 transition-colors focus:outline-none text-[14px] font-medium text-neutral-900"
                                                                         >
-                                                                            <p className="text-[14px] font-semibold text-neutral-900 group-hover:text-neutral-950">
-                                                                                {child.name}
-                                                                            </p>
-                                                                            {child.description && (
-                                                                                <p className="text-[12px] text-neutral-500 font-light leading-snug mt-0.5">
-                                                                                    {child.description}
-                                                                                </p>
-                                                                            )}
+                                                                            {child.name}
                                                                         </Link>
                                                                     </li>
                                                                 ))}
@@ -520,13 +506,6 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                                                                     transition={{ duration: 0.2, ease: 'easeOut' }}
                                                                     className="overflow-hidden pl-3 pt-1"
                                                                 >
-                                                                    {item.childrenLabel && (
-                                                                        <li className="px-4 pt-2 pb-1">
-                                                                            <p className="text-[10px] font-semibold text-neutral-400 uppercase tracking-[0.22em]">
-                                                                                {item.childrenLabel}
-                                                                            </p>
-                                                                        </li>
-                                                                    )}
                                                                     {item.children!.map((child) => (
                                                                         <li key={child.name}>
                                                                             <Link
