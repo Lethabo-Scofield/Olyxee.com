@@ -263,16 +263,24 @@ const ProductsPage: FC = () => {
       <div className="grain" />
       <Header />
 
-      {/* === HERO - just an eyebrow, ultra-minimal === */}
-      <section className="relative pt-40 sm:pt-48 pb-16 sm:pb-20 px-4 sm:px-6 bg-white">
-        <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <motion.h1
+      {/* === HERO - clean, catchy === */}
+      <section className="relative pt-40 sm:pt-48 pb-20 sm:pb-28 px-4 sm:px-6 bg-white">
+        <div className="relative z-10 max-w-5xl mx-auto text-center">
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-[11px] font-mono uppercase tracking-[0.28em] text-neutral-500"
+            className="text-[11px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-8"
           >
             Products
+          </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.05 }}
+            className="font-serif text-5xl sm:text-7xl lg:text-[5.5rem] text-neutral-900 tracking-tight leading-[1.02]"
+          >
+            Just ask. <em className="text-neutral-400 not-italic">It&apos;s done.</em>
           </motion.h1>
         </div>
       </section>
