@@ -349,7 +349,7 @@ const Robotics: FC = () => {
           </div>
         </motion.div>
 
-        {/* === Field gallery strip === */}
+        {/* === Field marquee === */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -361,32 +361,56 @@ const Robotics: FC = () => {
               From the field
             </p>
             <p className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.28em] text-neutral-400">
-              06 / Frames
+              Live · Auto
             </p>
           </div>
-          <div className="flex gap-2 sm:gap-3 overflow-x-auto pb-2 -mx-3 px-3 sm:mx-0 sm:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden snap-x snap-mandatory">
-            {[
-              { src: "/images/robotics/gallery/students-cars.png", alt: "Students with robotics cars" },
-              { src: "/images/robotics/gallery/manipulation-grid.png", alt: "Robot arm manipulation grid" },
-              { src: "/images/robotics/gallery/dual-arm-bag.png", alt: "Dual-arm robot grasping" },
-              { src: "/images/robotics/gallery/stool-prompt.png", alt: "Robot building stool from prompt" },
-              { src: "/images/robotics/gallery/engineer-build.png", alt: "Engineer assembling robot" },
-              { src: "/images/robotics/gallery/students-lego.png", alt: "Students building robotics kits" },
-            ].map((img) => (
-              <div
-                key={img.src}
-                className="relative shrink-0 snap-start w-[180px] sm:w-[220px] lg:w-[260px] aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden ring-1 ring-neutral-900/10 bg-neutral-100"
-              >
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  sizes="(max-width: 640px) 180px, (max-width: 1024px) 220px, 260px"
-                  className="object-cover"
-                />
-              </div>
-            ))}
+          <div
+            className="relative overflow-hidden"
+            style={{
+              maskImage:
+                "linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%)",
+              WebkitMaskImage:
+                "linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%)",
+            }}
+          >
+            <div className="flex gap-2 sm:gap-3 w-max animate-[robotics-marquee_38s_linear_infinite]">
+              {[...Array(2)].map((_, loopIdx) => (
+                <div key={loopIdx} className="flex gap-2 sm:gap-3 shrink-0" aria-hidden={loopIdx === 1}>
+                  {[
+                    { src: "/images/robotics/gallery/students-cars.png", alt: "Students with robotics cars" },
+                    { src: "/images/robotics/gallery/manipulation-grid.png", alt: "Robot arm manipulation grid" },
+                    { src: "/images/robotics/gallery/dual-arm-bag.png", alt: "Dual-arm robot grasping" },
+                    { src: "/images/robotics/gallery/stool-prompt.png", alt: "Robot building stool from prompt" },
+                    { src: "/images/robotics/gallery/engineer-build.png", alt: "Engineer assembling robot" },
+                    { src: "/images/robotics/gallery/students-lego.png", alt: "Students building robotics kits" },
+                  ].map((img) => (
+                    <div
+                      key={`${loopIdx}-${img.src}`}
+                      className="relative shrink-0 w-[200px] sm:w-[240px] lg:w-[280px] aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden ring-1 ring-neutral-900/10 bg-neutral-100"
+                    >
+                      <Image
+                        src={img.src}
+                        alt={img.alt}
+                        fill
+                        sizes="(max-width: 640px) 200px, (max-width: 1024px) 240px, 280px"
+                        className="object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
+          <style jsx>{`
+            @keyframes robotics-marquee {
+              0% {
+                transform: translateX(0);
+              }
+              100% {
+                transform: translateX(-50%);
+              }
+            }
+          `}</style>
         </motion.div>
       </section>
 
