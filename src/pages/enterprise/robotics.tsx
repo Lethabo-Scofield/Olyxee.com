@@ -1,7 +1,7 @@
 import { FC, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import SEO from "../../components/SEO";
 import Header from "../../components/header";
@@ -52,7 +52,6 @@ const HighlightsSlider: FC = () => {
   }, [isPaused, total]);
 
   const goTo = (i: number) => setIndex(((i % total) + total) % total);
-  const active = HIGHLIGHTS[index];
 
   return (
     <section
@@ -80,7 +79,7 @@ const HighlightsSlider: FC = () => {
                 onClick={() => goTo(i)}
                 aria-label={`Show slide ${i + 1}: ${h.meta}`}
                 aria-current={isActive ? "true" : undefined}
-                className="group relative shrink-0 w-[88vw] h-[70vh] min-h-[460px] sm:h-[78vh] sm:min-h-[560px] rounded-[20px] sm:rounded-[28px] overflow-hidden text-left text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/60"
+                className="group relative shrink-0 w-[88vw] h-[70vh] min-h-[460px] sm:h-[78vh] sm:min-h-[560px] rounded-[20px] sm:rounded-[28px] overflow-hidden text-left text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400/60"
               >
                 <Image
                   src={h.image}
@@ -141,7 +140,7 @@ const HighlightsSlider: FC = () => {
               type="button"
               onClick={() => goTo(i)}
               aria-label={`Go to slide ${i + 1}: ${h.meta}`}
-              className="group relative flex-1 max-w-[80px] sm:max-w-[120px] h-[3px] rounded-full bg-neutral-200 overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40"
+              className="group relative flex-1 max-w-[80px] sm:max-w-[120px] h-[3px] rounded-full bg-neutral-200 overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400/40"
             >
               <span
                 key={`${index}-${i}`}
@@ -173,6 +172,8 @@ const HighlightsSlider: FC = () => {
 };
 
 const Robotics: FC = () => {
+  const heroRef = useRef<HTMLElement | null>(null);
+
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
       <SEO
@@ -253,58 +254,39 @@ const Robotics: FC = () => {
       <div className="grain" />
       <Header />
 
-      {/* === CINEMATIC HERO === */}
-      <section className="relative w-full bg-white text-white pt-20 sm:pt-24 pb-6 sm:pb-8 px-3 sm:px-5">
-        <div
-          className="relative w-full overflow-hidden"
-          style={{
-            borderRadius: 32,
-            minHeight: "min(88vh, 880px)",
-            boxShadow:
-              "0 30px 80px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.08)",
-          }}
-        >
-          <video
-            src="/videos/robotics-hero.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            poster="/images/robotics/humanoid-manipulation.png"
-            className="absolute inset-0 w-full h-full object-cover"
+      {/* === CLEAN HERO (matches homepage style) === */}
+      <section
+        ref={heroRef}
+        aria-label="Hero"
+        className="relative w-full min-h-[100svh] flex flex-col items-center justify-center px-4 md:px-8 lg:px-16 overflow-hidden"
+      >
+        <div className="absolute inset-0 w-full h-full">
+          <Image
+            src="/hero-bg.webp"
+            alt="Olyxee Robotics hero background"
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
           />
-          <div
-            aria-hidden
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.8) 100%)",
-            }}
-          />
-          <div
-            aria-hidden
-            className="absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(60% 50% at 50% 40%, rgba(59,130,246,0.18), transparent 65%)",
-              filter: "blur(60px) saturate(1.4)",
-            }}
-          />
+        </div>
 
-        <div className="relative z-10 min-h-[inherit] flex flex-col items-center justify-center px-4 sm:px-8 lg:px-12 pt-20 sm:pt-32 pb-24 sm:pb-20 text-center" style={{ minHeight: "min(88vh, 880px)" }}>
+        <div className="relative z-10 text-center max-w-5xl mx-auto pt-16">
           <motion.h1
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.0, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
-            className="font-serif text-[2.5rem] sm:text-6xl md:text-7xl lg:text-[8rem] leading-[0.95] tracking-tight"
+            transition={{ duration: 0.9, delay: 0.1 }}
+            className="font-serif text-neutral-900 leading-[1.02] tracking-tight px-2 sm:px-0 text-[clamp(1.4rem,6.6vw,5.5rem)] sm:text-6xl md:text-7xl lg:text-[5.5rem]"
           >
-            Olyxee{" "}
-            <span
-              className="font-handwritten text-blue-400 font-semibold tracking-tight"
-              style={{ fontFamily: "var(--font-handwritten), cursive" }}
-            >
-              Robotics
+            <span className="block whitespace-nowrap">Olyxee Robotics</span>
+            <span className="block whitespace-nowrap">
+              for the{" "}
+              <span
+                className="font-handwritten text-neutral-900 italic font-semibold tracking-tight"
+                style={{ fontFamily: "var(--font-handwritten), cursive" }}
+              >
+                physical world
+              </span>
             </span>
           </motion.h1>
 
@@ -312,40 +294,56 @@ const Robotics: FC = () => {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.3 }}
-            className="mt-6 sm:mt-8 text-sm sm:text-xl text-white/70 font-light max-w-2xl leading-relaxed px-2"
+            className="mt-6 sm:mt-8 text-sm sm:text-xl text-neutral-600 font-light max-w-2xl mx-auto leading-relaxed px-2"
           >
-            Powering an era of physical agents, embodied AI that perceives, reasons, and acts reliably in the real world.
+            Embodied AI that perceives, reasons, and acts reliably in the real world.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.45 }}
-            className="mt-8 sm:mt-12 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center justify-center gap-3 w-full max-w-sm sm:max-w-none"
+            className="mt-8 sm:mt-10 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center justify-center gap-3 w-full max-w-sm sm:max-w-none mx-auto"
           >
             <Link
               href="/contact?subject=Olyxee%20Robotics%20early%20access"
-              className="group inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide"
+              className="group inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide"
             >
               Join waitlist for early access
               <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden />
             </Link>
             <Link
               href="/contact?subject=Olyxee%20Robotics%20partnership"
-              className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 bg-white/10 text-white rounded-full font-medium hover:bg-white/15 transition-all text-sm tracking-wide backdrop-blur-md ring-1 ring-white/15"
+              className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 text-neutral-900 bg-white border border-neutral-200 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide"
             >
               Talk to robotics team
             </Link>
           </motion.div>
         </div>
 
-          <div className="absolute bottom-5 sm:bottom-8 left-1/2 -translate-x-1/2 z-10 text-[10px] sm:text-[11px] uppercase tracking-[0.24em] sm:tracking-[0.28em] text-white/50 whitespace-nowrap">
-            Explore the latest
+        <motion.div
+          className="relative z-10 w-full max-w-5xl mt-10 mb-8 px-2 sm:px-0"
+          initial={{ opacity: 0, y: 60, scale: 0.97 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1.2, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-neutral-200/80 shadow-2xl shadow-neutral-300/40">
+            <video
+              src="/videos/robotics-hero.mp4"
+              className="w-full aspect-video object-cover"
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+              poster="/images/robotics/humanoid-manipulation.png"
+            />
+            <div className="absolute inset-0 rounded-2xl sm:rounded-3xl pointer-events-none ring-1 ring-inset ring-black/5" />
           </div>
-        </div>
+        </motion.div>
       </section>
 
-      {/* === MARQUEE STATEMENT === */}
+      {/* === STATEMENT === */}
       <section className="px-4 sm:px-8 lg:px-12 py-16 sm:py-32 lg:py-40 bg-white border-t border-neutral-100">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -358,19 +356,12 @@ const Robotics: FC = () => {
             Foundation models for the physical world
           </p>
           <h2 className="font-serif text-[1.75rem] sm:text-5xl lg:text-[4.25rem] leading-[1.1] sm:leading-[1.05] tracking-tight text-neutral-900">
-            Robots of{" "}
-            <span
-              className="font-handwritten text-blue-600 font-semibold tracking-tight"
-              style={{ fontFamily: "var(--font-handwritten), cursive" }}
-            >
-              any shape and size
-            </span>
-            , perceiving, reasoning, and using tools in the world around them.
+            Robots of any shape and size, perceiving, reasoning, and using tools in the world around them.
           </h2>
         </motion.div>
       </section>
 
-      {/* === HIGHLIGHTS (Fullscreen auto-advancing slider) === */}
+      {/* === HIGHLIGHTS === */}
       <HighlightsSlider />
 
       {/* === ACCELERATOR === */}
@@ -380,26 +371,15 @@ const Robotics: FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="relative max-w-7xl mx-auto rounded-2xl sm:rounded-3xl overflow-hidden ring-1 ring-neutral-900/5 px-5 sm:px-12 lg:px-16 py-10 sm:py-20 lg:py-24"
-          style={{
-            background:
-              "radial-gradient(120% 90% at 80% 20%, #eaf3ff 0%, #f5f9ff 45%, #ffffff 80%)",
-          }}
+          className="relative max-w-7xl mx-auto rounded-2xl sm:rounded-3xl overflow-hidden ring-1 ring-neutral-900/5 px-5 sm:px-12 lg:px-16 py-10 sm:py-20 lg:py-24 bg-neutral-50"
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-12 items-center">
             <div className="lg:col-span-5 order-2 lg:order-1">
-              <p className="text-[11px] sm:text-xs font-semibold text-blue-600 uppercase tracking-[0.18em] sm:tracking-[0.2em] mb-3 sm:mb-4">
+              <p className="text-[11px] sm:text-xs font-semibold text-neutral-500 uppercase tracking-[0.18em] sm:tracking-[0.2em] mb-3 sm:mb-4">
                 Olyxee Robotics Accelerator
               </p>
               <h2 className="font-serif text-[1.75rem] sm:text-5xl lg:text-[3.5rem] tracking-tight text-neutral-900 leading-[1.1] sm:leading-[1.05]">
-                Backing the next wave of{" "}
-                <span
-                  className="font-handwritten text-blue-600 font-semibold tracking-tight"
-                  style={{ fontFamily: "var(--font-handwritten), cursive" }}
-                >
-                  physical AI
-                </span>
-                .
+                Backing the next wave of physical AI.
               </h2>
               <p className="mt-4 sm:mt-6 text-neutral-600 text-sm sm:text-lg font-light leading-relaxed">
                 Mentorship, compute, and robots for early-stage teams shipping embodied AI into the real world.
@@ -438,7 +418,7 @@ const Robotics: FC = () => {
                     transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
                     className={`inline-flex absolute ${tag.className} items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-white text-[10px] sm:text-[11px] font-medium text-neutral-700 tracking-wide ring-1 ring-neutral-900/5 shadow-sm`}
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500" aria-hidden />
+                    <span className="w-1.5 h-1.5 rounded-full bg-neutral-400" aria-hidden />
                     {tag.label}
                   </motion.span>
                 ))}
@@ -462,14 +442,7 @@ const Robotics: FC = () => {
               04 · Ecosystem
             </p>
             <h3 className="font-serif text-[1.75rem] sm:text-4xl lg:text-5xl tracking-tight text-neutral-900 leading-[1.1]">
-              Built with the{" "}
-              <span
-                className="font-handwritten text-blue-600 font-semibold tracking-tight"
-                style={{ fontFamily: "var(--font-handwritten), cursive" }}
-              >
-                leading
-              </span>{" "}
-              robotics teams.
+              Built with the leading robotics teams.
             </h3>
             <p className="mt-4 sm:mt-5 text-neutral-600 text-sm sm:text-lg font-light leading-relaxed">
               We partner with hardware OEMs, foundation model labs, and field operators to bring reliable embodied AI from research into production.
@@ -499,20 +472,10 @@ const Robotics: FC = () => {
       {/* === BOTTOM CTA === */}
       <section className="relative py-16 sm:py-28 lg:py-32 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
-          <div className="relative rounded-2xl sm:rounded-3xl bg-neutral-100 border border-neutral-200/70 px-5 sm:px-12 lg:px-20 py-10 sm:py-20 lg:py-24 overflow-hidden">
-            <div aria-hidden className="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-blue-100/50 blur-3xl" />
-            <div aria-hidden className="absolute -bottom-32 -left-24 w-80 h-80 rounded-full bg-neutral-200/60 blur-3xl" />
-
+          <div className="relative rounded-2xl sm:rounded-3xl bg-neutral-50 border border-neutral-200/70 px-5 sm:px-12 lg:px-20 py-10 sm:py-20 lg:py-24 overflow-hidden">
             <div className="relative text-center max-w-2xl mx-auto">
               <h2 className="font-serif text-[1.85rem] sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-4 sm:mb-5 leading-[1.1] sm:leading-[1.05]">
-                Building in the{" "}
-                <span
-                  className="font-handwritten text-blue-600 font-semibold tracking-tight"
-                  style={{ fontFamily: "var(--font-handwritten), cursive" }}
-                >
-                  physical world
-                </span>
-                ?
+                Building in the physical world?
               </h2>
               <p className="text-neutral-600 text-sm sm:text-lg font-light leading-relaxed mb-7 sm:mb-9 max-w-lg mx-auto">
                 We partner on embodied AI, perception stacks, and hardware-integrated deployments, from pilot to fleet.
@@ -520,14 +483,14 @@ const Robotics: FC = () => {
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Link
                   href="/contact?subject=Olyxee%20Robotics%20inquiry"
-                  className="group inline-flex items-center justify-center gap-2 px-7 sm:px-8 py-3.5 sm:py-4 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide shadow-lg shadow-neutral-900/10"
+                  className="group inline-flex items-center justify-center gap-2 px-7 sm:px-8 py-3.5 sm:py-4 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide"
                 >
                   Get in touch
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden />
                 </Link>
                 <Link
                   href="/enterprise"
-                  className="inline-flex items-center justify-center gap-2 px-7 sm:px-8 py-3.5 sm:py-4 text-neutral-900 bg-white border border-neutral-300 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide"
+                  className="inline-flex items-center justify-center gap-2 px-7 sm:px-8 py-3.5 sm:py-4 text-neutral-900 bg-white border border-neutral-200 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide"
                 >
                   Enterprise Software
                 </Link>
