@@ -15,6 +15,25 @@ import {
   Headphones,
   Check,
 } from "lucide-react";
+import {
+  SiSalesforce,
+  SiZendesk,
+  SiIntercom,
+  SiXero,
+  SiQuickbooks,
+  SiStripe,
+  SiSlack,
+  SiNotion,
+  SiGooglesheets,
+  SiOkta,
+  SiGoogledrive,
+  SiGmail,
+  SiHubspot,
+  SiAsana,
+  SiLinear,
+  SiGithub,
+} from "react-icons/si";
+import { PiMicrosoftOutlookLogoFill, PiMicrosoftTeamsLogoFill } from "react-icons/pi";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -209,10 +228,26 @@ const ADDUP_PRO = [
   { icon: Headphones, label: "Priority support and onboarding" },
 ];
 
-const INTEGRATION_CHIPS = [
-  "Microsoft 365", "Outlook", "Salesforce", "Zendesk", "Freshdesk",
-  "Xero", "QuickBooks", "Stripe", "Slack", "Teams", "Notion", "Google Sheets",
-  "Okta", "Vanta", "Drive", "Gmail",
+type BrandIcon = React.ComponentType<{ className?: string; style?: React.CSSProperties }>;
+const INTEGRATION_CHIPS: { name: string; Icon: BrandIcon; color: string }[] = [
+  { name: "Salesforce",    Icon: SiSalesforce,               color: "#00A1E0" },
+  { name: "HubSpot",       Icon: SiHubspot,                  color: "#FF7A59" },
+  { name: "Outlook",       Icon: PiMicrosoftOutlookLogoFill, color: "#0078D4" },
+  { name: "Gmail",         Icon: SiGmail,                    color: "#EA4335" },
+  { name: "Slack",         Icon: SiSlack,                    color: "#4A154B" },
+  { name: "Teams",         Icon: PiMicrosoftTeamsLogoFill,   color: "#4B53BC" },
+  { name: "Notion",        Icon: SiNotion,                   color: "#111111" },
+  { name: "Linear",        Icon: SiLinear,                   color: "#5E6AD2" },
+  { name: "Asana",         Icon: SiAsana,                    color: "#F06A6A" },
+  { name: "GitHub",        Icon: SiGithub,                   color: "#181717" },
+  { name: "Google Sheets", Icon: SiGooglesheets,             color: "#0F9D58" },
+  { name: "Drive",         Icon: SiGoogledrive,              color: "#1FA463" },
+  { name: "Stripe",        Icon: SiStripe,                   color: "#635BFF" },
+  { name: "QuickBooks",    Icon: SiQuickbooks,               color: "#2CA01C" },
+  { name: "Xero",          Icon: SiXero,                     color: "#13B5EA" },
+  { name: "Zendesk",       Icon: SiZendesk,                  color: "#03363D" },
+  { name: "Intercom",      Icon: SiIntercom,                 color: "#1F8DED" },
+  { name: "Okta",          Icon: SiOkta,                     color: "#007DC1" },
 ];
 
 const ProductsPage: FC = () => {
@@ -461,7 +496,7 @@ const ProductsPage: FC = () => {
       </section>
 
       {/* === INTEGRATIONS === */}
-      <section className="py-20 sm:py-28 px-4 sm:px-6 border-t border-neutral-200/70 bg-neutral-50/50 relative overflow-hidden">
+      <section id="integrations" className="py-20 sm:py-28 px-4 sm:px-6 border-t border-neutral-200/70 bg-neutral-50/50 relative overflow-hidden">
         <div
           aria-hidden
           className="absolute inset-0 opacity-[0.4] pointer-events-none"
@@ -497,11 +532,12 @@ const ProductsPage: FC = () => {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 max-w-4xl mx-auto"
           >
-            {INTEGRATION_CHIPS.map((name, i) => (
+            {INTEGRATION_CHIPS.map(({ name, Icon, color }) => (
               <span
                 key={name}
-                className="px-3.5 sm:px-4 py-2 rounded-full bg-white ring-1 ring-neutral-200 shadow-sm text-xs sm:text-sm font-medium text-neutral-800"
+                className="inline-flex items-center gap-2 pl-2.5 pr-3.5 sm:pl-3 sm:pr-4 py-1.5 sm:py-2 rounded-full bg-white ring-1 ring-neutral-200 shadow-sm text-xs sm:text-sm font-medium text-neutral-800"
               >
+                <Icon className="w-4 h-4 shrink-0" style={{ color }} />
                 {name}
               </span>
             ))}
