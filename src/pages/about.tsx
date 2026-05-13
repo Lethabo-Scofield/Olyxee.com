@@ -99,123 +99,123 @@ const About: FC = () => {
 
       <main>
       {/* === HERO === */}
-      <section className="relative pt-32 sm:pt-40 pb-16 sm:pb-24 px-4 sm:px-6 bg-white">
+      <section className="relative pt-28 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 bg-white">
         <div className="relative max-w-6xl mx-auto">
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-6"
-          >
-            About Olyxee
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.05 }}
-            className="font-serif text-4xl sm:text-6xl lg:text-[5rem] text-neutral-900 tracking-tight leading-[1.02] max-w-4xl"
-          >
-            Building the infrastructure for AI that{" "}
-            <em className="text-neutral-400 not-italic">operates</em>.
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.15 }}
-            className="mt-8 text-lg sm:text-xl text-neutral-500 leading-relaxed font-light max-w-2xl"
-          >
-            Olyxee is an AI infrastructure company. We build systems that let organizations put AI to work across their operations - reliably, transparently, and at scale.
-          </motion.p>
-
-          {/* === TEAM HERO CARD (in hero) === */}
-          <motion.figure
-            initial={{ opacity: 0, y: 28 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="mt-12 sm:mt-16"
-          >
-            <div className="relative overflow-hidden rounded-3xl ring-1 ring-neutral-900/10 shadow-2xl shadow-neutral-900/10 aspect-[16/10] sm:aspect-[21/9] lg:aspect-[5/2] bg-neutral-950">
-              <Image
-                src="/images/olyxee-team.png"
-                alt="The Olyxee team collaborating around a laptop in their Johannesburg office"
-                fill
-                priority
-                sizes="(min-width: 1280px) 1152px, 100vw"
-                className="object-cover object-right"
-              />
-              {/* Left-side scrim so text reads against the dark side of the photo */}
-              <div
-                aria-hidden
-                className="absolute inset-0"
-                style={{
-                  background:
-                    "linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.55) 35%, rgba(0,0,0,0.05) 60%, rgba(0,0,0,0) 100%)",
-                }}
-              />
-              {/* Subtle grain inside the card */}
-              <div
-                aria-hidden
-                className="absolute inset-0 opacity-[0.06] mix-blend-overlay pointer-events-none"
-                style={{
-                  backgroundImage:
-                    "radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px)",
-                  backgroundSize: "3px 3px",
-                }}
-              />
-
-              {/* Top-left meta */}
-              <div className="absolute top-5 sm:top-7 left-5 sm:left-8 flex items-center gap-3">
-                <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" aria-hidden />
-                <p className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.28em] text-white/70">
-                  Olyxee HQ · Johannesburg, ZA
-                </p>
-              </div>
-
-              {/* Bottom-left text block */}
-              <div className="absolute inset-y-0 left-0 flex flex-col justify-end p-5 sm:p-10 lg:p-14 max-w-md sm:max-w-lg lg:max-w-xl">
-                <p className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.28em] text-white/50 mb-3 sm:mb-4">
-                  The team
-                </p>
-                <p className="text-white font-serif text-xl sm:text-3xl lg:text-[2.4rem] leading-[1.1] tracking-tight">
-                  Built by a small team in Johannesburg, <em className="not-italic text-white/60">for the world</em>.
-                </p>
-                <div className="mt-5 sm:mt-7 flex items-center gap-4 text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.22em] text-white/55">
-                  <span>Est. 2025</span>
-                  <span className="w-px h-3 bg-white/20" aria-hidden />
-                  <span>Operating globally</span>
-                </div>
-              </div>
-
-              {/* Bottom-right registration mark */}
-              <div className="absolute bottom-5 right-5 sm:bottom-7 sm:right-8 hidden sm:flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.28em] text-white/40">
-                <span>Fig. 01</span>
-                <span className="w-6 h-px bg-white/30" aria-hidden />
-              </div>
-            </div>
-          </motion.figure>
-
-          {/* Meta strip */}
+          {/* Hero card: team image with hero text overlaid */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-            className="mt-12 pt-8 border-t border-neutral-200 flex flex-wrap gap-x-10 gap-y-4 text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-500"
+            transition={{ duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="relative overflow-hidden rounded-3xl ring-1 ring-neutral-900/10 shadow-2xl shadow-neutral-900/10 bg-neutral-950 min-h-[560px] sm:min-h-[620px] lg:min-h-[680px]"
           >
-            <div>
-              <p className="text-neutral-400 mb-1.5">Founded</p>
-              <p className="text-neutral-900">2025</p>
+            <Image
+              src="/images/olyxee-team.png"
+              alt="The Olyxee team collaborating around a laptop in their Johannesburg office"
+              fill
+              priority
+              sizes="(min-width: 1280px) 1152px, 100vw"
+              className="object-cover object-right"
+            />
+            {/* Scrim — strong on left so the headline reads, soft on right */}
+            <div
+              aria-hidden
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(90deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.78) 30%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.05) 80%, rgba(0,0,0,0) 100%)",
+              }}
+            />
+            {/* Bottom fade so the meta strip reads */}
+            <div
+              aria-hidden
+              className="absolute inset-x-0 bottom-0 h-40"
+              style={{
+                background:
+                  "linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 100%)",
+              }}
+            />
+            {/* Subtle grain inside the card */}
+            <div
+              aria-hidden
+              className="absolute inset-0 opacity-[0.06] mix-blend-overlay pointer-events-none"
+              style={{
+                backgroundImage:
+                  "radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px)",
+                backgroundSize: "3px 3px",
+              }}
+            />
+
+            {/* Top status pill */}
+            <div className="absolute top-6 sm:top-8 left-6 sm:left-10 flex items-center gap-3">
+              <span
+                className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"
+                aria-hidden
+              />
+              <p className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.28em] text-white/70">
+                Olyxee HQ · Johannesburg, ZA
+              </p>
             </div>
-            <div>
-              <p className="text-neutral-400 mb-1.5">Headquarters</p>
-              <p className="text-neutral-900">Johannesburg, ZA</p>
+
+            {/* Top-right registration mark */}
+            <div className="absolute top-6 sm:top-8 right-6 sm:right-10 hidden sm:flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.28em] text-white/45">
+              <span className="w-6 h-px bg-white/30" aria-hidden />
+              <span>Fig. 01 · The team</span>
             </div>
-            <div>
-              <p className="text-neutral-400 mb-1.5">Reach</p>
-              <p className="text-neutral-900">Global</p>
-            </div>
-            <div>
-              <p className="text-neutral-400 mb-1.5">Flagship</p>
-              <p className="text-neutral-900">Ordo</p>
+
+            {/* Hero copy — overlaid, lower-left */}
+            <div className="relative z-10 flex flex-col justify-end h-full min-h-[560px] sm:min-h-[620px] lg:min-h-[680px] p-6 sm:p-12 lg:p-16 max-w-2xl lg:max-w-3xl">
+              <motion.p
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.15 }}
+                className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.28em] text-white/55 mb-6"
+              >
+                About Olyxee
+              </motion.p>
+              <motion.h1
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.85, delay: 0.25 }}
+                className="font-serif text-white text-[2.25rem] sm:text-5xl lg:text-[4.25rem] tracking-tight leading-[1.04]"
+              >
+                Building the infrastructure for AI that{" "}
+                <em className="text-white/55 not-italic">operates</em>.
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.75, delay: 0.4 }}
+                className="mt-6 sm:mt-8 text-base sm:text-lg lg:text-xl text-white/70 leading-relaxed font-light max-w-xl"
+              >
+                Olyxee is an AI infrastructure company. We build systems that
+                let organizations put AI to work across their operations -
+                reliably, transparently, and at scale.
+              </motion.p>
+
+              {/* In-card meta strip */}
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.55 }}
+                className="mt-8 sm:mt-12 pt-6 border-t border-white/15 flex flex-wrap gap-x-10 gap-y-4 text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.22em]"
+              >
+                <div>
+                  <p className="text-white/40 mb-1.5">Founded</p>
+                  <p className="text-white">2025</p>
+                </div>
+                <div>
+                  <p className="text-white/40 mb-1.5">Headquarters</p>
+                  <p className="text-white">Johannesburg, ZA</p>
+                </div>
+                <div>
+                  <p className="text-white/40 mb-1.5">Reach</p>
+                  <p className="text-white">Global</p>
+                </div>
+                <div>
+                  <p className="text-white/40 mb-1.5">Flagship</p>
+                  <p className="text-white">Ordo</p>
+                </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
