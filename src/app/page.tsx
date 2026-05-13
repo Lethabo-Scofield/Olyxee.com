@@ -422,39 +422,118 @@ function ImageShowcase() {
   );
 }
 
+const ORDO_SLIDES = [
+  {
+    key: "ordo",
+    name: "Ordo",
+    tagline:
+      "Ask in plain English. Ordo gets it done across the tools you already use - and keeps the receipts.",
+    points: [
+      "Plugs into Drive, Teams, SharePoint & more",
+      "Turns requests into completed work",
+      "Every step assigned, timestamped, reviewable",
+    ],
+    ctaLabel: "Try Ordo",
+    ctaHref: "https://ordo.olyxee.com",
+  },
+  {
+    key: "addup",
+    name: "Addup",
+    tagline:
+      "The financial close, on autopilot. Addup reconciles, drafts, and reviews the books while your team approves.",
+    points: [
+      "Connects to Xero, QuickBooks & your bank feeds",
+      "Turns transactions into a clean monthly close",
+      "Every entry sourced, explained, audit-ready",
+    ],
+    ctaLabel: "Try Addup",
+    ctaHref: "https://addup.olyxee.com",
+  },
+] as const;
+
 function OrdoSection() {
+  const slides = ORDO_SLIDES;
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce || paused) return;
+    const t = setInterval(() => setActive((i) => (i + 1) % slides.length), 6500);
+    return () => clearInterval(t);
+  }, [slides.length, paused]);
+
+  const slide = slides[active];
+
   return (
     <section className="py-20 sm:py-32 lg:py-40 bg-neutral-50/60 border-y border-neutral-100 overflow-x-clip">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="lg:col-span-5"
-          >
-            <h2 className="font-serif text-5xl sm:text-6xl lg:text-7xl tracking-tight text-neutral-900 mb-6 leading-[1]">
-              Ordo
-            </h2>
+          <div className="lg:col-span-5">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={slide.key}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <h2 className="font-serif text-5xl sm:text-6xl lg:text-7xl tracking-tight text-neutral-900 mb-6 leading-[1]">
+                  {slide.name}
+                </h2>
 
-            <p className="text-lg sm:text-xl text-neutral-700 leading-snug mb-8 max-w-md font-light">
-              Ask in plain English. Ordo gets it done across the tools you already use - and keeps the receipts.
-            </p>
+                <p className="text-lg sm:text-xl text-neutral-700 leading-snug mb-8 max-w-md font-light">
+                  {slide.tagline}
+                </p>
 
-            <ul className="space-y-3 mb-2">
-              {[
-                "Plugs into Drive, Teams, SharePoint & more",
-                "Turns requests into completed work",
-                "Every step assigned, timestamped, reviewable",
-              ].map((t) => (
-                <li key={t} className="flex items-start gap-3 text-[15px] text-neutral-600">
-                  <span className="flex-shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-neutral-400" />
-                  <span>{t}</span>
-                </li>
+                <ul className="space-y-3 mb-2">
+                  {slide.points.map((t) => (
+                    <li key={t} className="flex items-start gap-3 text-[15px] text-neutral-600">
+                      <span className="flex-shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-neutral-400" />
+                      <span>{t}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            </AnimatePresence>
+
+            <div
+              className="flex items-center gap-3 mt-10"
+              aria-label="Featured products"
+              onMouseEnter={() => setPaused(true)}
+              onMouseLeave={() => setPaused(false)}
+              onFocusCapture={() => setPaused(true)}
+              onBlurCapture={() => setPaused(false)}
+            >
+              {slides.map((s, i) => (
+                <button
+                  key={s.key}
+                  type="button"
+                  aria-label={`Show ${s.name}`}
+                  aria-pressed={active === i}
+                  onClick={() => setActive(i)}
+                  className="group relative inline-flex items-center justify-center h-9 min-w-[36px] px-1 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900/40"
+                >
+                  <span
+                    className="relative h-1.5 rounded-full overflow-hidden block transition-all"
+                    style={{ width: active === i ? 40 : 18 }}
+                  >
+                    <span className="absolute inset-0 bg-neutral-300 group-hover:bg-neutral-400 transition-colors" />
+                    {active === i && (
+                      <motion.span
+                        key={s.key + "-bar-" + (paused ? "p" : "r")}
+                        initial={{ width: paused ? "100%" : 0 }}
+                        animate={{ width: "100%" }}
+                        transition={{ duration: paused ? 0 : 6.5, ease: "linear" }}
+                        className="absolute inset-y-0 left-0 bg-neutral-900"
+                      />
+                    )}
+                  </span>
+                </button>
               ))}
-            </ul>
-          </motion.div>
+            </div>
+          </div>
 
           <div className="lg:col-span-7 relative">
             <div className="relative aspect-[5/4] sm:aspect-[6/5] w-full">
@@ -467,7 +546,7 @@ function OrdoSection() {
               >
                 <Image
                   src="/images/ordo/integrations.jpeg"
-                  alt="Ordo connects natural-language requests to your existing tools"
+                  alt="Connects natural-language requests to your existing tools"
                   width={1200}
                   height={675}
                   className="w-full h-auto"
@@ -483,7 +562,7 @@ function OrdoSection() {
               >
                 <Image
                   src="/images/ordo/tasks.png"
-                  alt="Ordo tracks every task with clear ownership and timestamps"
+                  alt="Tracks every task with clear ownership and timestamps"
                   width={1200}
                   height={1200}
                   className="w-full h-auto"
@@ -497,15 +576,22 @@ function OrdoSection() {
                 transition={{ duration: 0.55, delay: 0.95, ease: [0.16, 1, 0.3, 1] }}
                 className="absolute -bottom-5 sm:-bottom-7 right-4 sm:right-8 z-20 flex flex-col items-center gap-1"
               >
-                <a
-                  href="https://ordo.olyxee.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide shadow-2xl shadow-neutral-900/30 hover:shadow-neutral-900/50 hover:scale-105"
-                >
-                  Try Ordo
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                </a>
+                <AnimatePresence mode="wait">
+                  <motion.a
+                    key={slide.key + "-cta"}
+                    href={slide.ctaHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                    className="group inline-flex items-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide shadow-2xl shadow-neutral-900/30 hover:shadow-neutral-900/50 hover:scale-105"
+                  >
+                    {slide.ctaLabel}
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                  </motion.a>
+                </AnimatePresence>
               </motion.div>
 
               <div
