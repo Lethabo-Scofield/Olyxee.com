@@ -422,7 +422,21 @@ function ImageShowcase() {
   );
 }
 
-const ORDO_SLIDES = [
+type ProductBlock = {
+  key: string;
+  name: string;
+  tagline: string;
+  points: readonly string[];
+  ctaLabel: string;
+  ctaHref: string;
+  imageSide: "left" | "right";
+  images: {
+    a: { src: string; alt: string; w: number; h: number };
+    b: { src: string; alt: string; w: number; h: number };
+  };
+};
+
+const PRODUCT_BLOCKS: readonly ProductBlock[] = [
   {
     key: "ordo",
     name: "Ordo",
@@ -435,6 +449,7 @@ const ORDO_SLIDES = [
     ],
     ctaLabel: "Try Ordo",
     ctaHref: "https://ordo.olyxee.com",
+    imageSide: "right",
     images: {
       a: { src: "/images/ordo/integrations.jpeg", alt: "Connects natural-language requests to your existing tools", w: 1200, h: 675 },
       b: { src: "/images/ordo/tasks.png", alt: "Tracks every task with clear ownership and timestamps", w: 1200, h: 1200 },
@@ -452,192 +467,102 @@ const ORDO_SLIDES = [
     ],
     ctaLabel: "Try Addup",
     ctaHref: "https://addup.olyxee.com",
+    imageSide: "left",
     images: {
       a: { src: "/images/addup/reconciliation.png", alt: "Reconciliation statement with AI suggestions and variance analysis", w: 1440, h: 900 },
       b: { src: "/images/addup/integrations.png", alt: "Drag-and-drop connectors for PayPal, Chase, SAP and more", w: 1200, h: 1000 },
     },
   },
-] as const;
+];
 
-function OrdoSection() {
-  const slides = ORDO_SLIDES;
-  const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce || paused) return;
-    const t = setInterval(() => setActive((i) => (i + 1) % slides.length), 6500);
-    return () => clearInterval(t);
-  }, [slides.length, paused]);
-
-  const slide = slides[active];
-
+function ProductBlockRow({ p }: { p: ProductBlock }) {
+  const imageRight = p.imageSide === "right";
   return (
-    <section className="py-20 sm:py-32 lg:py-40 bg-neutral-50/60 border-y border-neutral-100 overflow-x-clip">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          <div className="lg:col-span-5">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={slide.key}
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <h2 className="font-serif text-5xl sm:text-6xl lg:text-7xl tracking-tight text-neutral-900 mb-6 leading-[1]">
-                  {slide.name}
-                </h2>
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.7 }}
+        className={`lg:col-span-5 ${imageRight ? "" : "lg:order-2"}`}
+      >
+        <h2 className="font-serif text-5xl sm:text-6xl lg:text-7xl tracking-tight text-neutral-900 mb-6 leading-[1]">
+          {p.name}
+        </h2>
+        <p className="text-lg sm:text-xl text-neutral-700 leading-snug mb-8 max-w-md font-light">
+          {p.tagline}
+        </p>
+        <ul className="space-y-3">
+          {p.points.map((t) => (
+            <li key={t} className="flex items-start gap-3 text-[15px] text-neutral-600">
+              <span className="flex-shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-neutral-400" />
+              <span>{t}</span>
+            </li>
+          ))}
+        </ul>
+      </motion.div>
 
-                <p className="text-lg sm:text-xl text-neutral-700 leading-snug mb-8 max-w-md font-light">
-                  {slide.tagline}
-                </p>
+      <div className={`lg:col-span-7 relative ${imageRight ? "" : "lg:order-1"}`}>
+        <div className="relative aspect-[5/4] sm:aspect-[6/5] w-full">
+          <motion.div
+            initial={{ opacity: 0, x: imageRight ? "-65%" : "65%", y: -30, rotate: imageRight ? -14 : 14, scale: 0.92 }}
+            whileInView={{ opacity: 1, x: 0, y: 0, rotate: imageRight ? -2 : 2, scale: 1 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.05, ease: [0.16, 1, 0.3, 1] }}
+            className={`absolute top-0 ${imageRight ? "left-0 sm:left-2" : "right-0 sm:right-2"} w-[78%] sm:w-[70%] rounded-2xl overflow-hidden shadow-2xl shadow-neutral-300/50 border border-neutral-200/60 bg-white`}
+          >
+            <Image src={p.images.a.src} alt={p.images.a.alt} width={p.images.a.w} height={p.images.a.h} className="w-full h-auto" />
+          </motion.div>
 
-                <ul className="space-y-3 mb-2">
-                  {slide.points.map((t) => (
-                    <li key={t} className="flex items-start gap-3 text-[15px] text-neutral-600">
-                      <span className="flex-shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-neutral-400" />
-                      <span>{t}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            </AnimatePresence>
+          <motion.div
+            initial={{ opacity: 0, x: imageRight ? "65%" : "-65%", y: 40, rotate: imageRight ? 16 : -16, scale: 0.92 }}
+            whileInView={{ opacity: 1, x: 0, y: 0, rotate: imageRight ? 3 : -3, scale: 1 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.05, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+            className={`absolute bottom-0 ${imageRight ? "right-0 sm:right-2" : "left-0 sm:left-2"} w-[72%] sm:w-[62%] rounded-2xl overflow-hidden shadow-2xl shadow-neutral-300/50 border border-neutral-200/60 bg-white`}
+          >
+            <Image src={p.images.b.src} alt={p.images.b.alt} width={p.images.b.w} height={p.images.b.h} className="w-full h-auto" />
+          </motion.div>
 
-            <div
-              className="flex items-center gap-3 mt-10"
-              aria-label="Featured products"
-              onMouseEnter={() => setPaused(true)}
-              onMouseLeave={() => setPaused(false)}
-              onFocusCapture={() => setPaused(true)}
-              onBlurCapture={() => setPaused(false)}
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.9 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.55, delay: 0.95, ease: [0.16, 1, 0.3, 1] }}
+            className={`absolute -bottom-5 sm:-bottom-7 ${imageRight ? "right-4 sm:right-8" : "left-4 sm:left-8"} z-20`}
+          >
+            <a
+              href={p.ctaHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide shadow-2xl shadow-neutral-900/30 hover:shadow-neutral-900/50 hover:scale-105"
             >
-              {slides.map((s, i) => (
-                <button
-                  key={s.key}
-                  type="button"
-                  aria-label={`Show ${s.name}`}
-                  aria-pressed={active === i}
-                  onClick={() => setActive(i)}
-                  className="group relative inline-flex items-center justify-center h-9 min-w-[36px] px-1 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900/40"
-                >
-                  <span
-                    className="relative h-1.5 rounded-full overflow-hidden block transition-all"
-                    style={{ width: active === i ? 40 : 18 }}
-                  >
-                    <span className="absolute inset-0 bg-neutral-300 group-hover:bg-neutral-400 transition-colors" />
-                    {active === i && (
-                      <motion.span
-                        key={s.key + "-bar-" + (paused ? "p" : "r")}
-                        initial={{ width: paused ? "100%" : 0 }}
-                        animate={{ width: "100%" }}
-                        transition={{ duration: paused ? 0 : 6.5, ease: "linear" }}
-                        className="absolute inset-y-0 left-0 bg-neutral-900"
-                      />
-                    )}
-                  </span>
-                </button>
-              ))}
-            </div>
-          </div>
+              {p.ctaLabel}
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+            </a>
+          </motion.div>
 
           <div
-            className="lg:col-span-7 relative"
-            onMouseEnter={() => setPaused(true)}
-            onMouseLeave={() => setPaused(false)}
-          >
-            <div className="relative aspect-[5/4] sm:aspect-[6/5] w-full">
-              <motion.div
-                initial={{ opacity: 0, x: "-65%", y: -30, rotate: -14, scale: 0.92 }}
-                whileInView={{ opacity: 1, x: 0, y: 0, rotate: -2, scale: 1 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 1.05, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute top-0 left-0 sm:left-2 w-[78%] sm:w-[70%] rounded-2xl overflow-hidden shadow-2xl shadow-neutral-300/50 border border-neutral-200/60 bg-white"
-              >
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={slide.key + "-img-a"}
-                    initial={{ opacity: 0, scale: 1.04 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.98 }}
-                    transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-                  >
-                    <Image
-                      src={slide.images.a.src}
-                      alt={slide.images.a.alt}
-                      width={slide.images.a.w}
-                      height={slide.images.a.h}
-                      className="w-full h-auto"
-                    />
-                  </motion.div>
-                </AnimatePresence>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: "65%", y: 40, rotate: 16, scale: 0.92 }}
-                whileInView={{ opacity: 1, x: 0, y: 0, rotate: 3, scale: 1 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 1.05, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute bottom-0 right-0 sm:right-2 w-[72%] sm:w-[62%] rounded-2xl overflow-hidden shadow-2xl shadow-neutral-300/50 border border-neutral-200/60 bg-white"
-              >
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={slide.key + "-img-b"}
-                    initial={{ opacity: 0, scale: 1.04 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.98 }}
-                    transition={{ duration: 0.55, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
-                  >
-                    <Image
-                      src={slide.images.b.src}
-                      alt={slide.images.b.alt}
-                      width={slide.images.b.w}
-                      height={slide.images.b.h}
-                      className="w-full h-auto"
-                    />
-                  </motion.div>
-                </AnimatePresence>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20, scale: 0.9, rotate: 3 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1, rotate: 3 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.55, delay: 0.95, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute -bottom-5 sm:-bottom-7 right-4 sm:right-8 z-20 flex flex-col items-center gap-1"
-              >
-                <AnimatePresence mode="wait">
-                  <motion.a
-                    key={slide.key + "-cta"}
-                    href={slide.ctaHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -6 }}
-                    transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                    className="group inline-flex items-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide shadow-2xl shadow-neutral-900/30 hover:shadow-neutral-900/50 hover:scale-105"
-                  >
-                    {slide.ctaLabel}
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                  </motion.a>
-                </AnimatePresence>
-              </motion.div>
-
-              <div
-                aria-hidden="true"
-                className="absolute -inset-x-8 -inset-y-12 -z-10 bg-gradient-to-tr from-blue-100/40 via-transparent to-emerald-100/30 blur-3xl"
-              />
-            </div>
-          </div>
+            aria-hidden="true"
+            className="absolute -inset-x-8 -inset-y-12 -z-10 bg-gradient-to-tr from-blue-100/40 via-transparent to-emerald-100/30 blur-3xl"
+          />
         </div>
+      </div>
+    </div>
+  );
+}
+
+function OrdoSection() {
+  return (
+    <section className="py-20 sm:py-32 lg:py-40 bg-neutral-50/60 border-y border-neutral-100 overflow-x-clip">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 space-y-28 sm:space-y-40">
+        {PRODUCT_BLOCKS.map((p) => (
+          <ProductBlockRow key={p.key} p={p} />
+        ))}
       </div>
     </section>
   );
 }
-
 
 function IntegrationSection() {
   const scatteredCards = useMemo(() => [
