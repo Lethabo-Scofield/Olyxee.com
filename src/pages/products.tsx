@@ -5,7 +5,22 @@ import Footer from "../components/footer";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Sparkles,
+  Workflow,
+  ScrollText,
+  ShieldCheck,
+  Puzzle,
+  Link2,
+  Layers,
+  CircleDollarSign,
+  Users,
+  Headphones,
+  Check,
+  Zap,
+} from "lucide-react";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -265,33 +280,33 @@ function OrdoArchitecture() {
 }
 
 
-const ORDO_FEATURES = [
-  "Plain-English goals turned into multi-step plans",
-  "Acts across the apps your team already uses",
-  "Audit trail for every decision and tool call",
-  "Human approvals at any step you choose",
-  "Custom skill packs for your team's workflows",
+const ORDO_CAPABILITIES = [
+  { icon: Sparkles, label: "Plain-English goals", sub: "Turned into multi-step plans" },
+  { icon: Workflow, label: "Acts across your stack", sub: "Apps your team already uses" },
+  { icon: ScrollText, label: "Full audit trail", sub: "Every decision and tool call" },
+  { icon: ShieldCheck, label: "Human approvals", sub: "Pause at any step" },
+  { icon: Puzzle, label: "Custom skill packs", sub: "Tailored to your workflows" },
+  { icon: Zap, label: "Built for compliance", sub: "SOC 2, GDPR, and beyond" },
 ];
 
-const ADDUP_FEATURES_FREE = [
+const ADDUP_FREE = [
   "Connect bank, card, and ledger sources",
   "Automatic matching with variance detection",
   "Clear explanations for every mismatch",
   "Single-entity, single-currency books",
 ];
 
-const ADDUP_FEATURES_UPGRADE = [
-  "Higher transaction volumes",
-  "Multi-entity and multi-currency",
-  "Team workspaces with roles and approvals",
-  "Priority support and dedicated onboarding",
+const ADDUP_PRO = [
+  { icon: Layers, label: "Higher transaction volumes" },
+  { icon: CircleDollarSign, label: "Multi-entity, multi-currency" },
+  { icon: Users, label: "Team workspaces with roles" },
+  { icon: Headphones, label: "Priority support and onboarding" },
 ];
 
-const INTEGRATIONS = [
-  "Microsoft 365, Outlook, Office",
-  "Salesforce, Zendesk, Freshdesk",
-  "Xero, QuickBooks, Stripe",
-  "Slack, Teams, Notion, Sheets",
+const INTEGRATION_CHIPS = [
+  "Microsoft 365", "Outlook", "Salesforce", "Zendesk", "Freshdesk",
+  "Xero", "QuickBooks", "Stripe", "Slack", "Teams", "Notion", "Google Sheets",
+  "Okta", "Vanta", "Drive", "Gmail",
 ];
 
 const ProductsPage: FC = () => {
@@ -362,13 +377,43 @@ const ProductsPage: FC = () => {
           >
             AI systems that <em className="text-neutral-500 not-italic">execute</em>.
           </motion.h1>
+
+          {/* Product chips — at-a-glance */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10"
+          >
+            <a
+              href="#ordo"
+              className="group inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-white ring-1 ring-neutral-200 hover:ring-neutral-300 shadow-sm text-xs sm:text-sm font-medium text-neutral-800 transition-all"
+            >
+              <span className="relative w-5 h-5 rounded-md bg-neutral-50 ring-1 ring-neutral-200 flex items-center justify-center overflow-hidden">
+                <Image src="/images/ordo-logo.png" alt="" width={16} height={16} className="w-3.5 h-3.5 object-contain" />
+              </span>
+              Ordo
+              <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-400">Execution</span>
+            </a>
+            <a
+              href="#addup"
+              className="group inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-white ring-1 ring-neutral-200 hover:ring-neutral-300 shadow-sm text-xs sm:text-sm font-medium text-neutral-800 transition-all"
+            >
+              <span className="relative w-5 h-5 rounded-md bg-neutral-50 ring-1 ring-neutral-200 flex items-center justify-center overflow-hidden">
+                <Image src="/images/addup-logo.png" alt="" width={16} height={16} className="w-3.5 h-3.5 object-contain" />
+              </span>
+              Addup
+              <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-400">Reconciliation</span>
+            </a>
+          </motion.div>
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-lg sm:text-xl text-neutral-500 leading-relaxed font-light max-w-2xl mx-auto"
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="text-base sm:text-lg text-neutral-500 leading-relaxed font-light max-w-xl mx-auto"
           >
-            Ordo is our core AI execution system. Addup is our first focused application, starting with accounting reconciliation.
+            Goals in. Finished work out.
           </motion.p>
         </div>
       </section>
@@ -396,19 +441,30 @@ const ProductsPage: FC = () => {
                 Goals in. <em className="text-neutral-500 not-italic">Finished work out.</em>
               </h2>
 
-              <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 mb-4">
-                What&apos;s in this version
+              <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 mb-5">
+                What it does
               </p>
-              <ul className="border-t border-neutral-200">
-                {ORDO_FEATURES.map((f) => (
-                  <li
-                    key={f}
-                    className="py-3.5 sm:py-4 border-b border-neutral-200 text-sm sm:text-[15px] text-neutral-800 font-light leading-relaxed"
-                  >
-                    {f}
-                  </li>
-                ))}
-              </ul>
+              <div className="grid grid-cols-2 gap-2.5">
+                {ORDO_CAPABILITIES.map((c) => {
+                  const Icon = c.icon;
+                  return (
+                    <div
+                      key={c.label}
+                      className="group relative p-4 rounded-2xl bg-white ring-1 ring-neutral-200 hover:ring-neutral-300 hover:shadow-sm transition-all"
+                    >
+                      <div className="w-9 h-9 rounded-xl bg-neutral-100 flex items-center justify-center mb-3">
+                        <Icon className="w-4 h-4 text-neutral-700" strokeWidth={1.75} />
+                      </div>
+                      <p className="text-[13px] font-medium text-neutral-900 leading-snug">
+                        {c.label}
+                      </p>
+                      <p className="text-[11px] text-neutral-500 font-light leading-snug mt-1">
+                        {c.sub}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
 
               <div className="mt-10 flex flex-wrap items-center gap-4">
                 <a
@@ -483,36 +539,59 @@ const ProductsPage: FC = () => {
                 Numbers that <em className="text-neutral-500 not-italic">match.</em>
               </h2>
 
-              <div>
-                <div className="flex items-baseline justify-between mb-3">
-                  <p className="text-sm font-semibold text-neutral-900">Free version</p>
-                  <span className="text-[11px] font-mono text-neutral-400 uppercase tracking-[0.2em]">Free</span>
+              {/* Plan cards */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {/* FREE plan card */}
+                <div className="relative p-5 sm:p-6 rounded-2xl bg-white ring-1 ring-neutral-200">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm font-semibold text-neutral-900">Free</span>
+                      <span className="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[10px] font-mono uppercase tracking-[0.18em]">
+                        Live
+                      </span>
+                    </div>
+                    <span className="font-serif text-2xl text-neutral-900">$0</span>
+                  </div>
+                  <ul className="space-y-2">
+                    {ADDUP_FREE.map((f) => (
+                      <li key={f} className="flex items-start gap-2 text-[13px] text-neutral-700 font-light leading-relaxed">
+                        <Check className="w-3.5 h-3.5 text-emerald-600 mt-0.5 shrink-0" strokeWidth={2.5} />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <ul className="border-t border-neutral-200">
-                  {ADDUP_FEATURES_FREE.map((f) => (
-                    <li
-                      key={f}
-                      className="py-3.5 border-b border-neutral-200 text-sm sm:text-[15px] text-neutral-800 font-light leading-relaxed"
-                    >
-                      {f}
-                    </li>
-                  ))}
-                </ul>
 
-                <div className="flex items-baseline justify-between mt-10 mb-3">
-                  <p className="text-sm font-semibold text-neutral-900">Upgrade adds</p>
-                  <span className="text-[11px] font-mono text-neutral-400 uppercase tracking-[0.2em]">Paid</span>
+                {/* PRO plan card */}
+                <div className="relative p-5 sm:p-6 rounded-2xl bg-neutral-950 text-white ring-1 ring-neutral-900 overflow-hidden">
+                  <div
+                    aria-hidden
+                    className="absolute -top-12 -right-12 w-40 h-40 rounded-full"
+                    style={{ background: "radial-gradient(circle, rgba(99,102,241,0.35) 0%, transparent 70%)" }}
+                  />
+                  <div className="relative flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm font-semibold text-white">Pro</span>
+                      <span className="px-2 py-0.5 rounded-full bg-white/10 text-white/70 text-[10px] font-mono uppercase tracking-[0.18em]">
+                        Upgrade
+                      </span>
+                    </div>
+                    <span className="font-serif text-sm text-white/60 italic">Talk to us</span>
+                  </div>
+                  <div className="relative grid grid-cols-1 gap-y-3">
+                    {ADDUP_PRO.map((p) => {
+                      const Icon = p.icon;
+                      return (
+                        <div key={p.label} className="flex items-start gap-2">
+                          <div className="w-7 h-7 rounded-lg bg-white/[0.06] ring-1 ring-white/10 flex items-center justify-center shrink-0">
+                            <Icon className="w-3.5 h-3.5 text-white/70" strokeWidth={1.75} />
+                          </div>
+                          <p className="text-[12px] text-white/80 font-light leading-snug pt-1">{p.label}</p>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
-                <ul className="border-t border-neutral-200">
-                  {ADDUP_FEATURES_UPGRADE.map((f) => (
-                    <li
-                      key={f}
-                      className="py-3.5 border-b border-neutral-200 text-sm sm:text-[15px] text-neutral-500 font-light leading-relaxed"
-                    >
-                      {f}
-                    </li>
-                  ))}
-                </ul>
               </div>
 
               <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -539,53 +618,54 @@ const ProductsPage: FC = () => {
       </section>
 
       {/* === INTEGRATIONS === */}
-      <section className="py-20 sm:py-28 px-4 sm:px-6 border-t border-neutral-200/70">
-        <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
+      <section className="py-20 sm:py-28 px-4 sm:px-6 border-t border-neutral-200/70 bg-neutral-50/50 relative overflow-hidden">
+        <div
+          aria-hidden
+          className="absolute inset-0 opacity-[0.4] pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(60% 50% at 50% 0%, rgba(165,180,252,0.18) 0%, transparent 70%)",
+          }}
+        />
+        <div className="relative max-w-5xl mx-auto text-center">
+          <motion.p
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-5 order-2 lg:order-1"
+            transition={{ duration: 0.5 }}
+            className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.28em] text-neutral-500 mb-5 inline-flex items-center gap-2"
           >
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-tight leading-[1.1] mb-8">
-              Works with the tools you already use.
-            </h2>
-            <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 mb-4">
-              Connects to
-            </p>
-            <ul className="border-t border-neutral-200 max-w-md">
-              {INTEGRATIONS.map((i) => (
-                <li
-                  key={i}
-                  className="py-3.5 border-b border-neutral-200 text-sm sm:text-[15px] text-neutral-800 font-light leading-relaxed"
-                >
-                  {i}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            <Link2 className="w-3 h-3" aria-hidden /> Integrations
+          </motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.7 }}
-            className="lg:col-span-7 order-1 lg:order-2"
+            className="font-serif text-3xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-12 max-w-3xl mx-auto"
           >
-            <div className="relative">
-              <Image
-                src="/images/integrations-cluster.png"
-                alt="Integration logos including Microsoft 365, Salesforce, Xero, Outlook, Zendesk and others that Olyxee connects to."
-                width={970}
-                height={550}
-                className="relative w-full h-auto"
-                sizes="(max-width: 1024px) 100vw, 600px"
-              />
-            </div>
+            Plugs into the tools you <em className="text-neutral-500 not-italic">already use.</em>
+          </motion.h2>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 max-w-4xl mx-auto"
+          >
+            {INTEGRATION_CHIPS.map((name, i) => (
+              <span
+                key={name}
+                className="px-3.5 sm:px-4 py-2 rounded-full bg-white ring-1 ring-neutral-200 shadow-sm text-xs sm:text-sm font-medium text-neutral-800"
+              >
+                {name}
+              </span>
+            ))}
+            <span className="px-3.5 sm:px-4 py-2 rounded-full bg-neutral-900 text-white text-xs sm:text-sm font-medium">
+              + your stack
+            </span>
           </motion.div>
-        </div>
         </div>
       </section>
 
