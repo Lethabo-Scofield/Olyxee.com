@@ -48,18 +48,21 @@ const APPROACH = [
     label: "How we ship",
     title: "Narrow first, then expand",
     text: "Every engagement starts with a single workflow. We earn the right to do more by proving the first one works.",
+    gradient: "/images/gradient-orange-pink.png",
   },
   {
     icon: ShieldCheck,
     label: "How we build",
     title: "Verify before you trust",
     text: "Every action an Olyxee agent takes is logged, traceable, and reviewable. Production AI without an audit trail is not production AI.",
+    gradient: "/images/gradient-blue.png",
   },
   {
     icon: EyeOff,
     label: "How we operate",
     title: "Quiet by default",
     text: "We measure success by what runs in the background, not by how loud we are. The work speaks for itself.",
+    gradient: "/images/gradient-purple.png",
   },
 ];
 
@@ -264,38 +267,73 @@ const About: FC = () => {
         </div>
       </section>
 
-      {/* === HERO IMAGE === */}
+      {/* === TEAM HERO CARD === */}
       <section className="px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <motion.figure
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            <div className="relative overflow-hidden rounded-2xl ring-1 ring-neutral-900/10 shadow-xl shadow-neutral-900/10 aspect-[16/9] sm:aspect-[21/9] bg-neutral-100">
+            <div className="relative overflow-hidden rounded-3xl ring-1 ring-neutral-900/10 shadow-2xl shadow-neutral-900/10 aspect-[16/10] sm:aspect-[21/9] lg:aspect-[5/2] bg-neutral-950">
               <Image
-                src="/images/about-hero.png"
-                alt="Olyxee team building AI infrastructure together"
+                src="/images/olyxee-team.png"
+                alt="The Olyxee team collaborating around a laptop in their Johannesburg office"
                 fill
+                priority
                 sizes="(min-width: 1280px) 1152px, 100vw"
-                className="object-cover"
+                className="object-cover object-right"
               />
-              <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-neutral-900/55 via-neutral-900/10 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-10">
-                <p className="text-white font-serif text-xl sm:text-2xl lg:text-3xl leading-tight tracking-tight max-w-2xl">
-                  Building from Johannesburg, for the world.
+              {/* Left-side scrim so text reads against the dark side of the photo */}
+              <div
+                aria-hidden
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.55) 35%, rgba(0,0,0,0.05) 60%, rgba(0,0,0,0) 100%)",
+                }}
+              />
+              {/* Subtle grain inside the card */}
+              <div
+                aria-hidden
+                className="absolute inset-0 opacity-[0.06] mix-blend-overlay pointer-events-none"
+                style={{
+                  backgroundImage:
+                    "radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px)",
+                  backgroundSize: "3px 3px",
+                }}
+              />
+
+              {/* Top-left meta */}
+              <div className="absolute top-5 sm:top-7 left-5 sm:left-8 flex items-center gap-3">
+                <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" aria-hidden />
+                <p className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.28em] text-white/70">
+                  Olyxee HQ · Johannesburg, ZA
                 </p>
               </div>
+
+              {/* Bottom-left text block */}
+              <div className="absolute inset-y-0 left-0 flex flex-col justify-end p-5 sm:p-10 lg:p-14 max-w-md sm:max-w-lg lg:max-w-xl">
+                <p className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.28em] text-white/50 mb-3 sm:mb-4">
+                  The team
+                </p>
+                <p className="text-white font-serif text-xl sm:text-3xl lg:text-[2.4rem] leading-[1.1] tracking-tight">
+                  Built by a small team in Johannesburg, <em className="not-italic text-white/60">for the world</em>.
+                </p>
+                <div className="mt-5 sm:mt-7 flex items-center gap-4 text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.22em] text-white/55">
+                  <span>Est. 2025</span>
+                  <span className="w-px h-3 bg-white/20" aria-hidden />
+                  <span>Operating globally</span>
+                </div>
+              </div>
+
+              {/* Bottom-right registration mark */}
+              <div className="absolute bottom-5 right-5 sm:bottom-7 sm:right-8 hidden sm:flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.28em] text-white/40">
+                <span>Fig. 01</span>
+                <span className="w-6 h-px bg-white/30" aria-hidden />
+              </div>
             </div>
-            <figcaption className="mt-4 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-              <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-500">
-                Fig. 01 · Olyxee HQ
-              </p>
-              <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-400">
-                Johannesburg, ZA
-              </p>
-            </figcaption>
           </motion.figure>
         </div>
       </section>
@@ -361,7 +399,7 @@ const About: FC = () => {
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
             {APPROACH.map((item, idx) => {
               const Icon = item.icon;
               return (
@@ -372,27 +410,57 @@ const About: FC = () => {
                   viewport={{ once: true, amount: 0.3 }}
                   custom={idx}
                   variants={fadeUp}
-                  className="bg-white rounded-xl border border-neutral-200 p-7 sm:p-8 hover:border-neutral-300 transition-colors"
+                  className="group relative overflow-hidden rounded-3xl bg-white ring-1 ring-neutral-900/[0.06] hover:ring-neutral-900/15 transition-all duration-500 flex flex-col"
                 >
-                  <div className="flex items-center justify-between mb-8">
-                    <div className="w-10 h-10 rounded-lg bg-neutral-900 flex items-center justify-center">
-                      <Icon
-                        aria-hidden="true"
-                        focusable="false"
-                        className="w-4 h-4 text-white"
-                        strokeWidth={1.75}
-                      />
+                  {/* Gradient image visual */}
+                  <div className="relative aspect-[5/4] sm:aspect-[4/3] overflow-hidden">
+                    <Image
+                      src={item.gradient}
+                      alt=""
+                      fill
+                      sizes="(min-width: 768px) 33vw, 100vw"
+                      className="object-cover scale-110 group-hover:scale-[1.18] transition-transform duration-[1200ms] ease-out"
+                      aria-hidden
+                    />
+                    {/* Subtle inner highlight */}
+                    <div
+                      aria-hidden
+                      className="absolute inset-0"
+                      style={{
+                        background:
+                          "linear-gradient(180deg, rgba(255,255,255,0) 60%, rgba(255,255,255,0.12) 100%)",
+                      }}
+                    />
+                    {/* Floating icon chip */}
+                    <div className="absolute top-4 left-4 sm:top-5 sm:left-5">
+                      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/90 backdrop-blur-md ring-1 ring-white/60 flex items-center justify-center shadow-sm">
+                        <Icon
+                          aria-hidden="true"
+                          focusable="false"
+                          className="w-4 h-4 text-neutral-900"
+                          strokeWidth={1.75}
+                        />
+                      </div>
                     </div>
-                    <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-400">
+                    {/* Label chip */}
+                    <span className="absolute top-5 right-5 text-[10px] font-mono uppercase tracking-[0.22em] text-white/85 bg-black/25 backdrop-blur-md px-2.5 py-1 rounded-full ring-1 ring-white/15">
                       {item.label}
                     </span>
                   </div>
-                  <h3 className="font-serif text-xl sm:text-[1.4rem] text-neutral-900 mb-3 leading-snug tracking-tight">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-neutral-500 leading-relaxed font-light">
-                    {item.text}
-                  </p>
+
+                  {/* Text body */}
+                  <div className="p-6 sm:p-7 flex-1 flex flex-col">
+                    <h3 className="font-serif text-xl sm:text-[1.45rem] text-neutral-900 mb-3 leading-snug tracking-tight">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-neutral-500 leading-relaxed font-light">
+                      {item.text}
+                    </p>
+                    <span className="mt-6 inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-400">
+                      {String(idx + 1).padStart(2, "0")}
+                      <span className="w-6 h-px bg-neutral-200" aria-hidden />
+                    </span>
+                  </div>
                 </motion.div>
               );
             })}
