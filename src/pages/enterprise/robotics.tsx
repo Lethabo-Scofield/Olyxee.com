@@ -84,20 +84,18 @@ const HIGHLIGHTS = [
 
 const HighlightsSlider: FC = () => {
   const [index, setIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
   const total = HIGHLIGHTS.length;
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const DURATION_MS = 4000;
 
   useEffect(() => {
-    if (isPaused) return;
     intervalRef.current = setInterval(() => {
       setIndex((i) => (i + 1) % total);
     }, DURATION_MS);
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, [isPaused, total]);
+  }, [total]);
 
   const goTo = (i: number) => setIndex(((i % total) + total) % total);
 
@@ -106,10 +104,6 @@ const HighlightsSlider: FC = () => {
       className="relative w-full bg-white py-10 sm:py-16"
       aria-roledescription="carousel"
       aria-label="Olyxee Robotics foundation pillars"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-      onFocus={() => setIsPaused(true)}
-      onBlur={() => setIsPaused(false)}
     >
       <div className="relative w-full overflow-hidden">
         <motion.div
@@ -127,7 +121,7 @@ const HighlightsSlider: FC = () => {
                 onClick={() => goTo(i)}
                 aria-label={`Show slide ${i + 1}: ${h.meta}`}
                 aria-current={isActive ? "true" : undefined}
-                className="group relative shrink-0 w-[88vw] h-[70vh] min-h-[460px] sm:h-[78vh] sm:min-h-[560px] rounded-[20px] sm:rounded-[28px] overflow-hidden text-left text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400/60"
+                className="group relative shrink-0 w-[88vw] h-[48vh] min-h-[340px] sm:h-[58vh] sm:min-h-[420px] lg:h-[62vh] lg:min-h-[480px] rounded-[20px] sm:rounded-[28px] overflow-hidden text-left text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400/60"
               >
                 <Image
                   src={h.image}
@@ -198,7 +192,6 @@ const HighlightsSlider: FC = () => {
                   animation: isActive
                     ? `slide-progress ${DURATION_MS}ms linear forwards`
                     : undefined,
-                  animationPlayState: isPaused ? "paused" : "running",
                 }}
               />
             </button>
