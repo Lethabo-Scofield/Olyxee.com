@@ -195,7 +195,7 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                     }}
                 >
                     <Link href="/" prefetch className="focus:outline-none rounded-full transition-transform hover:scale-105 flex items-center gap-2.5 flex-shrink-0">
-                        <Image src="/Logo/Olyxee_Logo.png" alt="Olyxee Logo" width={30} height={30} className="cursor-pointer" />
+                        <Image src="/Logo/Olyxee_Logo.png" alt="Olyxee Logo" width={36} height={36} className="cursor-pointer" style={{ width: 36, height: 36 }} unoptimized />
                         <span className={`text-[15px] font-bold hidden sm:inline transition-colors ${
                             theme === "dark" && !scrolled ? "text-white" : "text-neutral-900"
                         }`}>
