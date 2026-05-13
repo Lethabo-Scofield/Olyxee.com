@@ -163,7 +163,7 @@ function LogoStrip() {
 
   return (
     <div className="w-full max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 py-10 sm:py-14">
-      <p className="text-center text-[11px] font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-8 sm:mb-10">Works with the tools you already use</p>
+      <p className="text-center text-[11px] font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-8 sm:mb-10">Built alongside the AI ecosystem</p>
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
