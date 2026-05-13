@@ -99,8 +99,8 @@ const About: FC = () => {
 
       <main>
       {/* === HERO === */}
-      <section className="relative pt-32 sm:pt-44 pb-20 sm:pb-28 px-4 sm:px-6 bg-white">
-        <div className="relative max-w-5xl mx-auto">
+      <section className="relative pt-32 sm:pt-40 pb-16 sm:pb-24 px-4 sm:px-6 bg-white">
+        <div className="relative max-w-6xl mx-auto">
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -127,11 +127,78 @@ const About: FC = () => {
             Olyxee is an AI infrastructure company. We build systems that let organizations put AI to work across their operations - reliably, transparently, and at scale.
           </motion.p>
 
+          {/* === TEAM HERO CARD (in hero) === */}
+          <motion.figure
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="mt-12 sm:mt-16"
+          >
+            <div className="relative overflow-hidden rounded-3xl ring-1 ring-neutral-900/10 shadow-2xl shadow-neutral-900/10 aspect-[16/10] sm:aspect-[21/9] lg:aspect-[5/2] bg-neutral-950">
+              <Image
+                src="/images/olyxee-team.png"
+                alt="The Olyxee team collaborating around a laptop in their Johannesburg office"
+                fill
+                priority
+                sizes="(min-width: 1280px) 1152px, 100vw"
+                className="object-cover object-right"
+              />
+              {/* Left-side scrim so text reads against the dark side of the photo */}
+              <div
+                aria-hidden
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.55) 35%, rgba(0,0,0,0.05) 60%, rgba(0,0,0,0) 100%)",
+                }}
+              />
+              {/* Subtle grain inside the card */}
+              <div
+                aria-hidden
+                className="absolute inset-0 opacity-[0.06] mix-blend-overlay pointer-events-none"
+                style={{
+                  backgroundImage:
+                    "radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px)",
+                  backgroundSize: "3px 3px",
+                }}
+              />
+
+              {/* Top-left meta */}
+              <div className="absolute top-5 sm:top-7 left-5 sm:left-8 flex items-center gap-3">
+                <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" aria-hidden />
+                <p className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.28em] text-white/70">
+                  Olyxee HQ · Johannesburg, ZA
+                </p>
+              </div>
+
+              {/* Bottom-left text block */}
+              <div className="absolute inset-y-0 left-0 flex flex-col justify-end p-5 sm:p-10 lg:p-14 max-w-md sm:max-w-lg lg:max-w-xl">
+                <p className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.28em] text-white/50 mb-3 sm:mb-4">
+                  The team
+                </p>
+                <p className="text-white font-serif text-xl sm:text-3xl lg:text-[2.4rem] leading-[1.1] tracking-tight">
+                  Built by a small team in Johannesburg, <em className="not-italic text-white/60">for the world</em>.
+                </p>
+                <div className="mt-5 sm:mt-7 flex items-center gap-4 text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.22em] text-white/55">
+                  <span>Est. 2025</span>
+                  <span className="w-px h-3 bg-white/20" aria-hidden />
+                  <span>Operating globally</span>
+                </div>
+              </div>
+
+              {/* Bottom-right registration mark */}
+              <div className="absolute bottom-5 right-5 sm:bottom-7 sm:right-8 hidden sm:flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.28em] text-white/40">
+                <span>Fig. 01</span>
+                <span className="w-6 h-px bg-white/30" aria-hidden />
+              </div>
+            </div>
+          </motion.figure>
+
           {/* Meta strip */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.25 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
             className="mt-12 pt-8 border-t border-neutral-200 flex flex-wrap gap-x-10 gap-y-4 text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-500"
           >
             <div>
@@ -264,77 +331,6 @@ const About: FC = () => {
               </ul>
             </motion.div>
           </div>
-        </div>
-      </section>
-
-      {/* === TEAM HERO CARD === */}
-      <section className="px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto">
-          <motion.figure
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
-          >
-            <div className="relative overflow-hidden rounded-3xl ring-1 ring-neutral-900/10 shadow-2xl shadow-neutral-900/10 aspect-[16/10] sm:aspect-[21/9] lg:aspect-[5/2] bg-neutral-950">
-              <Image
-                src="/images/olyxee-team.png"
-                alt="The Olyxee team collaborating around a laptop in their Johannesburg office"
-                fill
-                priority
-                sizes="(min-width: 1280px) 1152px, 100vw"
-                className="object-cover object-right"
-              />
-              {/* Left-side scrim so text reads against the dark side of the photo */}
-              <div
-                aria-hidden
-                className="absolute inset-0"
-                style={{
-                  background:
-                    "linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.55) 35%, rgba(0,0,0,0.05) 60%, rgba(0,0,0,0) 100%)",
-                }}
-              />
-              {/* Subtle grain inside the card */}
-              <div
-                aria-hidden
-                className="absolute inset-0 opacity-[0.06] mix-blend-overlay pointer-events-none"
-                style={{
-                  backgroundImage:
-                    "radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px)",
-                  backgroundSize: "3px 3px",
-                }}
-              />
-
-              {/* Top-left meta */}
-              <div className="absolute top-5 sm:top-7 left-5 sm:left-8 flex items-center gap-3">
-                <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" aria-hidden />
-                <p className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.28em] text-white/70">
-                  Olyxee HQ · Johannesburg, ZA
-                </p>
-              </div>
-
-              {/* Bottom-left text block */}
-              <div className="absolute inset-y-0 left-0 flex flex-col justify-end p-5 sm:p-10 lg:p-14 max-w-md sm:max-w-lg lg:max-w-xl">
-                <p className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.28em] text-white/50 mb-3 sm:mb-4">
-                  The team
-                </p>
-                <p className="text-white font-serif text-xl sm:text-3xl lg:text-[2.4rem] leading-[1.1] tracking-tight">
-                  Built by a small team in Johannesburg, <em className="not-italic text-white/60">for the world</em>.
-                </p>
-                <div className="mt-5 sm:mt-7 flex items-center gap-4 text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.22em] text-white/55">
-                  <span>Est. 2025</span>
-                  <span className="w-px h-3 bg-white/20" aria-hidden />
-                  <span>Operating globally</span>
-                </div>
-              </div>
-
-              {/* Bottom-right registration mark */}
-              <div className="absolute bottom-5 right-5 sm:bottom-7 sm:right-8 hidden sm:flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.28em] text-white/40">
-                <span>Fig. 01</span>
-                <span className="w-6 h-px bg-white/30" aria-hidden />
-              </div>
-            </div>
-          </motion.figure>
         </div>
       </section>
 
