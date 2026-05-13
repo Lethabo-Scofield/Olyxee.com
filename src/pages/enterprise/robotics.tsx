@@ -254,82 +254,86 @@ const Robotics: FC = () => {
       <div className="grain" />
       <Header />
 
-      {/* === HERO (typography only, no background imagery) === */}
+      {/* === HERO (video background behind heading) === */}
       <section
         ref={heroRef}
         aria-label="Hero"
-        className="relative w-full px-4 sm:px-8 lg:px-12 pt-32 sm:pt-44 lg:pt-52 pb-16 sm:pb-24 lg:pb-32"
+        className="relative w-full min-h-[100svh] flex items-end overflow-hidden bg-neutral-950"
       >
-        <div className="relative max-w-6xl mx-auto">
-          <motion.p
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.28em] text-neutral-500 mb-6 sm:mb-8"
-          >
-            Olyxee Robotics
-          </motion.p>
+        {/* Video background */}
+        <video
+          src="/videos/robotics-hero.mp4"
+          className="absolute inset-0 w-full h-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          poster="/images/robotics/humanoid-manipulation.png"
+          aria-hidden
+        />
+        {/* Cinematic dark scrim so the heading reads */}
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 35%, rgba(0,0,0,0.55) 70%, rgba(0,0,0,0.85) 100%)",
+          }}
+        />
 
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.1 }}
-            className="font-serif text-neutral-900 leading-[1.02] tracking-tight text-[2.25rem] sm:text-6xl md:text-7xl lg:text-[6rem]"
-          >
-            Robotics for the <em className="italic">physical world</em>.
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.3 }}
-            className="mt-6 sm:mt-10 text-base sm:text-xl lg:text-2xl text-neutral-600 font-light max-w-2xl leading-relaxed"
-          >
-            Embodied AI that perceives, reasons, and acts reliably in the real world.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.45 }}
-            className="mt-8 sm:mt-12 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3"
-          >
-            <Link
-              href="/contact?subject=Olyxee%20Robotics%20early%20access"
-              className="group inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide"
+        {/* Content */}
+        <div className="relative z-10 w-full px-4 sm:px-8 lg:px-12 pt-32 sm:pt-44 pb-16 sm:pb-24 lg:pb-28">
+          <div className="max-w-6xl mx-auto">
+            <motion.p
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.28em] text-white/65 mb-6 sm:mb-8"
             >
-              Join waitlist for early access
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden />
-            </Link>
-            <Link
-              href="/contact?subject=Olyxee%20Robotics%20partnership"
-              className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 text-neutral-900 bg-white border border-neutral-200 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide"
-            >
-              Talk to robotics team
-            </Link>
-          </motion.div>
+              Olyxee Robotics
+            </motion.p>
 
-          {/* === Hero video card === */}
-          <motion.div
-            initial={{ opacity: 0, y: 60, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 1.2, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-12 sm:mt-16"
-          >
-            <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-neutral-200/80 shadow-2xl shadow-neutral-300/40">
-              <video
-                src="/videos/robotics-hero.mp4"
-                className="w-full aspect-video object-cover"
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="metadata"
-                poster="/images/robotics/humanoid-manipulation.png"
-              />
-              <div className="absolute inset-0 rounded-2xl sm:rounded-3xl pointer-events-none ring-1 ring-inset ring-black/5" />
-            </div>
-          </motion.div>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.1 }}
+              className="font-serif text-white leading-[1.02] tracking-tight text-[2.25rem] sm:text-6xl md:text-7xl lg:text-[6rem]"
+            >
+              Robotics for the{" "}
+              <em className="italic text-white/65">physical world</em>.
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.3 }}
+              className="mt-6 sm:mt-10 text-base sm:text-xl lg:text-2xl text-white/75 font-light max-w-2xl leading-relaxed"
+            >
+              Embodied AI that perceives, reasons, and acts reliably in the real world.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.45 }}
+              className="mt-8 sm:mt-12 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3"
+            >
+              <Link
+                href="/contact?subject=Olyxee%20Robotics%20early%20access"
+                className="group inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide"
+              >
+                Join waitlist for early access
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden />
+              </Link>
+              <Link
+                href="/contact?subject=Olyxee%20Robotics%20partnership"
+                className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 text-white bg-white/10 backdrop-blur-md border border-white/20 rounded-full font-medium hover:bg-white/15 transition-all text-sm tracking-wide"
+              >
+                Talk to robotics team
+              </Link>
+            </motion.div>
+          </div>
         </div>
       </section>
 
