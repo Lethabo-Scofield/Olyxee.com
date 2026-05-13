@@ -426,98 +426,71 @@ const About: FC = () => {
             From the founder
           </motion.p>
 
-          <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-10 lg:gap-16 items-start">
-            {/* Portrait card */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.85, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="relative w-full max-w-[280px] sm:max-w-[320px] lg:w-[300px] mx-auto lg:mx-0"
+          {/* Quote — message-first */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.85, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="max-w-4xl"
+          >
+            {/* Decorative quote glyph */}
+            <span
+              aria-hidden
+              className="font-serif italic text-white/15 text-[7rem] sm:text-[10rem] leading-none block -mb-10 sm:-mb-16 -ml-1"
             >
-              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden ring-1 ring-white/10">
-                <Image
-                  src="/images/lethabo-scofield.png"
-                  alt="Lethabo Scofield, Founder and CEO of Olyxee"
-                  fill
-                  sizes="(min-width: 1024px) 300px, 320px"
-                  className="object-cover"
-                />
-                <div
-                  aria-hidden
-                  className="absolute inset-0"
-                  style={{
-                    background:
-                      "linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.55) 100%)",
-                  }}
-                />
-                <div className="absolute bottom-0 inset-x-0 p-4 sm:p-5">
-                  <p className="font-serif text-lg sm:text-xl text-white leading-tight tracking-tight">
+              &ldquo;
+            </span>
+            <blockquote className="font-serif text-[1.85rem] sm:text-4xl lg:text-[3.25rem] text-white leading-[1.12] tracking-tight">
+              We started Olyxee because the hardest part of AI isn&apos;t
+              intelligence. It&apos;s getting that intelligence to actually{" "}
+              <em className="not-italic text-white/55">do something useful</em>.
+            </blockquote>
+            <p className="mt-10 text-base sm:text-lg text-white/55 leading-relaxed font-light max-w-2xl">
+              The models are smart enough. What&apos;s missing is the
+              infrastructure that lets them operate, connecting to real systems,
+              executing real workflows, and doing it in a way teams can trust.
+            </p>
+
+            {/* Signature row — profile-size avatar + name + LinkedIn arrow */}
+            <div className="mt-12 sm:mt-14 pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-y-5 gap-x-6">
+              <div className="flex items-center gap-4">
+                <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden ring-1 ring-white/15">
+                  <Image
+                    src="/images/lethabo-scofield.png"
+                    alt="Lethabo Scofield, Founder and CEO of Olyxee"
+                    fill
+                    sizes="56px"
+                    className="object-cover"
+                  />
+                </div>
+                <div>
+                  <p className="font-serif italic text-lg sm:text-xl text-white tracking-tight leading-tight">
                     Lethabo Scofield
                   </p>
-                  <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-white/55 mt-1">
+                  <p className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.22em] text-white/45 mt-1">
                     Founder &amp; CEO
                   </p>
                 </div>
               </div>
-              {/* Hairline year tag */}
-              <div className="mt-4 flex items-center justify-between text-[10px] font-mono uppercase tracking-[0.28em] text-white/40">
-                <span>Johannesburg, ZA</span>
-                <span>Est. 2025</span>
-              </div>
-            </motion.div>
-
-            {/* Quote */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.85, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="lg:pt-2"
-            >
-              {/* Decorative quote glyph */}
-              <span
-                aria-hidden
-                className="font-serif italic text-white/15 text-[6rem] sm:text-[8rem] leading-none block -mb-8 sm:-mb-12 -ml-1"
+              <a
+                href="https://www.linkedin.com/in/lethabo-scofield-17b37a257/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-3 text-[11px] font-mono uppercase tracking-[0.22em] text-white/55 hover:text-white transition-colors"
               >
-                &ldquo;
-              </span>
-              <blockquote className="font-serif text-[1.6rem] sm:text-3xl lg:text-[2.6rem] text-white leading-[1.18] tracking-tight max-w-3xl">
-                We started Olyxee because the hardest part of AI isn&apos;t
-                intelligence. It&apos;s getting that intelligence to actually{" "}
-                <em className="not-italic text-white/55">do something useful</em>.
-              </blockquote>
-              <p className="mt-8 text-base sm:text-lg text-white/55 leading-relaxed font-light max-w-2xl">
-                The models are smart enough. What&apos;s missing is the
-                infrastructure that lets them operate, connecting to real
-                systems, executing real workflows, and doing it in a way teams
-                can trust.
-              </p>
-
-              {/* Signature row + LinkedIn link */}
-              <div className="mt-10 sm:mt-12 pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
-                <p className="font-serif italic text-xl sm:text-2xl text-white tracking-tight">
-                  — Lethabo Scofield
-                </p>
-                <a
-                  href="https://www.linkedin.com/in/lethabo-scofield-17b37a257/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 text-[11px] font-mono uppercase tracking-[0.22em] text-white/55 hover:text-white transition-colors"
-                >
-                  Connect on LinkedIn
-                  <span className="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center group-hover:bg-white group-hover:border-white transition-colors">
-                    <ArrowUpRight
-                      aria-hidden="true"
-                      focusable="false"
-                      className="w-4 h-4 text-white group-hover:text-neutral-900 transition-colors"
-                      strokeWidth={1.75}
-                    />
-                  </span>
-                </a>
-              </div>
-            </motion.div>
-          </div>
+                Connect on LinkedIn
+                <span className="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center group-hover:bg-white group-hover:border-white transition-colors">
+                  <ArrowUpRight
+                    aria-hidden="true"
+                    focusable="false"
+                    className="w-4 h-4 text-white group-hover:text-neutral-900 transition-colors"
+                    strokeWidth={1.75}
+                  />
+                </span>
+              </a>
+            </div>
+          </motion.div>
 
           {/* Horizontal timeline strip */}
           <motion.div
