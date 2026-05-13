@@ -299,7 +299,6 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: 0.25, type: 'spring', stiffness: 400, damping: 25 }}
-                            className="hidden sm:block"
                         >
                             <a
                                 href="https://www.linkedin.com/company/olyxee/?viewAsMember=true"
@@ -317,7 +316,7 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: 0.3, type: 'spring', stiffness: 400, damping: 25 }}
-                            className="hidden sm:block relative"
+                            className="relative"
                             onMouseEnter={() => openDropdownNow("Sign in")}
                             onMouseLeave={closeDropdownSoon}
                         >
@@ -329,7 +328,7 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                                 onFocus={() => openDropdownNow("Sign in")}
                                 aria-haspopup="menu"
                                 aria-expanded={openDropdown === "Sign in"}
-                                className="inline-flex items-center gap-1.5 px-4 py-1.5 text-[13px] font-medium bg-neutral-900 text-white rounded-full hover:bg-black transition-all focus:outline-none"
+                                className="inline-flex items-center gap-1 sm:gap-1.5 px-3 sm:px-4 py-1.5 text-[12px] sm:text-[13px] font-medium bg-neutral-900 text-white rounded-full hover:bg-black transition-all focus:outline-none"
                             >
                                 Sign in
                                 <ChevronDown
