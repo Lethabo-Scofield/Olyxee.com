@@ -548,38 +548,49 @@ const ProductsPage: FC = () => {
         </div>
       </section>
 
-      {/* === BOTTOM CTA - matches enterprise/partnerships dark CTA === */}
-      <section className="py-20 sm:py-32 bg-neutral-950 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      {/* === BOTTOM CTA - matches landing page CTASection === */}
+      <section className="relative py-20 sm:py-28 lg:py-32 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
           <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            custom={0}
-            variants={fadeUp}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="relative rounded-3xl bg-neutral-100 border border-neutral-200/70 px-6 sm:px-12 lg:px-20 py-14 sm:py-20 lg:py-24 overflow-hidden"
           >
-            <p className="text-xs font-semibold text-neutral-500 uppercase tracking-[0.25em] mb-6">Get started</p>
-            <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.05] mb-6">
-              Put Olyxee to work in your business.
-            </h2>
-            <p className="text-base sm:text-lg text-neutral-400 leading-relaxed font-light max-w-2xl mx-auto mb-10">
-              Try Addup for free, or talk to us about a custom Ordo deployment for your team&apos;s workflows.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <a
-                href="https://addup.olyxee.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide"
-              >
-                Try Addup free <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-              </a>
-              <Link
-                href="/enterprise"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 text-white border border-white/20 rounded-full font-medium hover:bg-white/10 transition-all text-sm tracking-wide"
-              >
-                Talk to enterprise
-              </Link>
+            <div
+              aria-hidden="true"
+              className="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-blue-100/50 blur-3xl"
+            />
+            <div
+              aria-hidden="true"
+              className="absolute -bottom-32 -left-24 w-80 h-80 rounded-full bg-neutral-200/60 blur-3xl"
+            />
+
+            <div className="relative text-center max-w-2xl mx-auto">
+              <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-5 leading-[1.05]">
+                Put Olyxee to work
+              </h2>
+              <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-9 max-w-lg mx-auto">
+                Try Addup for free, or talk to us about a custom Ordo deployment for your team&apos;s workflows.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <a
+                  href="https://addup.olyxee.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide shadow-lg shadow-neutral-900/10"
+                >
+                  Try Addup free <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                </a>
+                <Link
+                  href="/enterprise"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 text-neutral-900 bg-white border border-neutral-300 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide"
+                >
+                  Talk to enterprise
+                </Link>
+              </div>
             </div>
           </motion.div>
         </div>
