@@ -62,7 +62,7 @@ interface FooterProps {
   showBrandBand?: boolean;
 }
 
-export default function Footer({ variant = "light", showBrandBand = true }: FooterProps) {
+export default function Footer({ variant = "light" }: FooterProps) {
   const isLight = variant === "light";
 
   const styles = isLight
@@ -105,56 +105,9 @@ export default function Footer({ variant = "light", showBrandBand = true }: Foot
 
   return (
     <footer className={styles.wrapper} aria-label="Site footer">
-      <div className={`max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 ${showBrandBand ? "pt-20 sm:pt-28" : "pt-12 sm:pt-16"} pb-10 sm:pb-14`}>
-        {/* === Top brand band === */}
-        {showBrandBand && (
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 pb-16 sm:pb-20">
-          <div className="lg:col-span-7">
-            <div className="flex items-center gap-3 mb-8">
-              <Image
-                src="/Logo/Olyxee_Logo.png"
-                alt="Olyxee"
-                width={28}
-                height={28}
-                className={styles.logoOpacity}
-              />
-              <span className={`text-base font-semibold tracking-tight ${styles.wordmark}`}>
-                Olyxee
-              </span>
-            </div>
-            <h2 className={`font-serif text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.1] tracking-tight ${styles.headline} max-w-2xl`}>
-              Reliability-first AI infrastructure for the physical and digital world.
-            </h2>
-            <p className={`mt-5 text-sm sm:text-base font-light leading-relaxed max-w-xl ${styles.muted}`}>
-              Research, software, and hardware built for teams shipping AI into production.
-            </p>
-          </div>
-
-          <div className="lg:col-span-5 flex flex-col justify-end">
-            <p className={`text-[10px] font-semibold uppercase tracking-[0.2em] mb-4 ${styles.eyebrow}`}>
-              Get in touch
-            </p>
-            <div className="flex flex-wrap items-center gap-3">
-              <Link
-                href="/contact"
-                className={`group inline-flex items-center gap-2 px-6 py-3 rounded-full font-medium text-sm tracking-wide transition-colors ${styles.ctaPrimary}`}
-              >
-                Contact sales
-                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden />
-              </Link>
-              <Link
-                href="/careers"
-                className={`inline-flex items-center gap-2 px-6 py-3 rounded-full font-medium text-sm tracking-wide transition-colors ${styles.ctaSecondary}`}
-              >
-                See open roles
-              </Link>
-            </div>
-          </div>
-        </div>
-        )}
-
+      <div className={`max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 pt-12 sm:pt-16 pb-10 sm:pb-14`}>
         {/* === Link columns === */}
-        <div className={`pt-12 sm:pt-16 border-t ${styles.divider} grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-6 sm:gap-x-8 gap-y-12 mb-16 sm:mb-20`}>
+        <div className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-6 sm:gap-x-8 gap-y-12 mb-16 sm:mb-20`}>
           {footerData.columns.map((column: any) => {
             const renderLink = (link: any) => {
               const content = (
