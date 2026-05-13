@@ -399,69 +399,64 @@ const About: FC = () => {
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-14 sm:gap-y-16">
             {APPROACH.map((item, idx) => {
-              const Icon = item.icon;
+              const numeral = ["I", "II", "III"][idx] ?? String(idx + 1);
               return (
-                <motion.div
+                <motion.article
                   key={item.title}
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.3 }}
                   custom={idx}
                   variants={fadeUp}
-                  className="group relative overflow-hidden rounded-3xl bg-white ring-1 ring-neutral-900/[0.06] hover:ring-neutral-900/15 transition-all duration-500 flex flex-col"
+                  className="group flex flex-col"
                 >
-                  {/* Gradient image visual */}
-                  <div className="relative aspect-[5/4] sm:aspect-[4/3] overflow-hidden">
+                  {/* Print-style plate: gradient with huge serif numeral, no rounded chrome around it */}
+                  <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
                     <Image
                       src={item.gradient}
                       alt=""
                       fill
                       sizes="(min-width: 768px) 33vw, 100vw"
-                      className="object-cover scale-110 group-hover:scale-[1.18] transition-transform duration-[1200ms] ease-out"
+                      className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
                       aria-hidden
                     />
-                    {/* Subtle inner highlight */}
+                    {/* Soft vignette so the numeral always reads */}
                     <div
                       aria-hidden
                       className="absolute inset-0"
                       style={{
                         background:
-                          "linear-gradient(180deg, rgba(255,255,255,0) 60%, rgba(255,255,255,0.12) 100%)",
+                          "linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,0.18) 100%)",
                       }}
                     />
-                    {/* Floating icon chip */}
-                    <div className="absolute top-4 left-4 sm:top-5 sm:left-5">
-                      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/90 backdrop-blur-md ring-1 ring-white/60 flex items-center justify-center shadow-sm">
-                        <Icon
-                          aria-hidden="true"
-                          focusable="false"
-                          className="w-4 h-4 text-neutral-900"
-                          strokeWidth={1.75}
-                        />
-                      </div>
+                    {/* Top hairline meta strip */}
+                    <div className="absolute top-0 inset-x-0 px-5 pt-4 flex items-center justify-between text-[10px] font-mono uppercase tracking-[0.28em] text-white/85">
+                      <span>Principle</span>
+                      <span>{String(idx + 1).padStart(2, "0")} / 03</span>
                     </div>
-                    {/* Label chip */}
-                    <span className="absolute top-5 right-5 text-[10px] font-mono uppercase tracking-[0.22em] text-white/85 bg-black/25 backdrop-blur-md px-2.5 py-1 rounded-full ring-1 ring-white/15">
-                      {item.label}
-                    </span>
+                    {/* The numeral, lower-left, oversized serif italic */}
+                    <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6 flex items-end justify-between">
+                      <span className="font-serif italic text-white leading-none tracking-tight text-[6rem] sm:text-[7rem] lg:text-[8rem] [text-shadow:0_2px_24px_rgba(0,0,0,0.18)]">
+                        {numeral}
+                      </span>
+                      <span className="font-mono uppercase tracking-[0.26em] text-[10px] text-white/85 pb-2 sm:pb-3 [writing-mode:vertical-rl] rotate-180">
+                        {item.label}
+                      </span>
+                    </div>
                   </div>
 
-                  {/* Text body */}
-                  <div className="p-6 sm:p-7 flex-1 flex flex-col">
-                    <h3 className="font-serif text-xl sm:text-[1.45rem] text-neutral-900 mb-3 leading-snug tracking-tight">
+                  {/* Editorial text block — print-style, no card outline */}
+                  <div className="mt-6 sm:mt-7">
+                    <h3 className="font-serif text-2xl sm:text-[1.7rem] text-neutral-900 leading-[1.15] tracking-tight mb-3">
                       {item.title}
                     </h3>
-                    <p className="text-sm text-neutral-500 leading-relaxed font-light">
+                    <p className="text-[15px] text-neutral-500 leading-relaxed font-light max-w-[34ch]">
                       {item.text}
                     </p>
-                    <span className="mt-6 inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-400">
-                      {String(idx + 1).padStart(2, "0")}
-                      <span className="w-6 h-px bg-neutral-200" aria-hidden />
-                    </span>
                   </div>
-                </motion.div>
+                </motion.article>
               );
             })}
           </div>
