@@ -309,23 +309,13 @@ const Robotics: FC = () => {
                   transition={{ duration: 0.9, delay: 0.3 }}
                   className="font-serif text-white leading-[1.02] tracking-tight text-[2rem] sm:text-6xl md:text-7xl lg:text-[5.5rem]"
                 >
-                  Robotics for the{" "}
-                  <em className="italic text-white/65">physical world</em>.
+                  Robotics for the physical world.
                 </motion.h1>
-
-                <motion.p
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.9, delay: 0.5 }}
-                  className="mt-6 sm:mt-8 text-base sm:text-xl lg:text-2xl text-white/75 font-light max-w-2xl leading-relaxed"
-                >
-                  Embodied AI that perceives, reasons, and acts reliably in the real world.
-                </motion.p>
 
                 <motion.div
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7, delay: 0.65 }}
+                  transition={{ duration: 0.7, delay: 0.5 }}
                   className="mt-8 sm:mt-10 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3"
                 >
                   <Link
