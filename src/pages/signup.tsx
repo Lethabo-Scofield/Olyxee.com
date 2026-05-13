@@ -66,7 +66,7 @@ const SignUp: FC = () => {
   const tool: Tool = router.query.tool === "api" ? "api" : "general";
   const config = useMemo(() => TOOL_CONFIG[tool], [tool]);
 
-  const [formData, setFormData] = useState({ name: "", email: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", company: "", business: "" });
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [serverMessage, setServerMessage] = useState<string | null>(null);
@@ -90,7 +90,9 @@ const SignUp: FC = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email: formData.email,
-          message: formData.name ? `Name: ${formData.name}` : "",
+          name: formData.name,
+          company: formData.company,
+          business: formData.business,
           tool,
         }),
       });
@@ -187,6 +189,41 @@ const SignUp: FC = () => {
                   placeholder="you@company.com"
                 />
               </div>
+
+              {tool === "api" && (
+                <>
+                  <div>
+                    <label htmlFor="company" className="block text-[13px] font-medium text-neutral-800 mb-1.5">
+                      Company
+                    </label>
+                    <input
+                      id="company"
+                      type="text"
+                      required
+                      disabled={submitting}
+                      value={formData.company}
+                      onChange={e => setFormData(prev => ({ ...prev, company: e.target.value }))}
+                      className={inputClass}
+                      placeholder="Company name"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="business" className="block text-[13px] font-medium text-neutral-800 mb-1.5">
+                      Tell us about your business
+                    </label>
+                    <textarea
+                      id="business"
+                      required
+                      disabled={submitting}
+                      rows={4}
+                      value={formData.business}
+                      onChange={e => setFormData(prev => ({ ...prev, business: e.target.value }))}
+                      className={`${inputClass} resize-none`}
+                      placeholder="What you do, what you'd build with the API, and any integrations you need."
+                    />
+                  </div>
+                </>
+              )}
 
               {errorMessage && (
                 <p className="text-sm text-red-600" role="alert">

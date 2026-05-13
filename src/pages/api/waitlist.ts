@@ -19,7 +19,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { email: rawEmail, message, tool } = req.body;
+  const { email: rawEmail, name, company, business, message, tool } = req.body;
 
   if (!rawEmail || typeof rawEmail !== "string" || !rawEmail.includes("@")) {
     return res.status(400).json({ error: "Valid email is required" });
@@ -40,7 +40,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     entries.push({
       email,
-      message: message?.trim() || "",
+      name: typeof name === "string" ? name.trim() : "",
+      company: typeof company === "string" ? company.trim() : "",
+      business: typeof business === "string" ? business.trim() : "",
+      message: typeof message === "string" ? message.trim() : "",
       tool: tool || "general",
       timestamp: new Date().toISOString(),
     });
