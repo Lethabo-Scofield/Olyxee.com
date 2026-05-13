@@ -22,12 +22,16 @@ const COLORS = [
 ];
 
 const SECTIONS: { label: string; href: string }[] = [
-  { label: "Logos",     href: "#logos" },
-  { label: "Type",      href: "#typography" },
-  { label: "Voice",     href: "#voice" },
-  { label: "Color",     href: "#color" },
-  { label: "Usage",     href: "#usage" },
-  { label: "Downloads", href: "#downloads" },
+  { label: "Logos",         href: "#logos" },
+  { label: "Construction",  href: "#construction" },
+  { label: "Clear space",   href: "#clear-space" },
+  { label: "Tonal",         href: "#tonal" },
+  { label: "Divisional",    href: "#divisional" },
+  { label: "Type",          href: "#typography" },
+  { label: "Voice",         href: "#voice" },
+  { label: "Color",         href: "#color" },
+  { label: "Usage",         href: "#usage" },
+  { label: "Downloads",     href: "#downloads" },
 ];
 
 const VOICE: { word: string; rule: string; sample: string }[] = [
@@ -111,8 +115,179 @@ const DONTS = [
 const DOWNLOADS = [
   { label: "Olyxee mark · Light", path: "/Logo/Olyxee_Logo.png", format: "PNG" },
   { label: "Olyxee mark · Dark", path: "/Logo/Olyxee_trans.png", format: "PNG" },
+  { label: "Olyxee mark · Tonal frame", path: "/brand/olyxee-logo-darkframe.png", format: "PNG" },
+  { label: "Olyxee Robotics · Wave mark", path: "/brand/robotics-logo.png", format: "PNG" },
+  { label: "Logo construction · Draft", path: "/brand/logo-design-draft.png", format: "PNG" },
   { label: "Ordo mark", path: "/images/ordo-logo.png", format: "PNG" },
   { label: "Addup wordmark", path: "/images/addup-logo.png", format: "PNG" },
+];
+
+/* === Logo construction blueprint: real measurements from the design draft === */
+const LogoConstruction: FC = () => {
+  // unit: x = 4px → 120x = 480px, center at (300, 300), padding for labels
+  const cx = 300, cy = 300;
+  const Rout = 240;   // 120x / 2
+  const Rin = 180;    // 90x  / 2
+  const Rtop = 60;    // 30x  / 2  → center y = cy - (Rin - Rtop) = 300 - 120 = 180
+  const Rbot = 90;    // 45x  / 2  → center y ≈ cy + 30
+  const topCY = cy - (Rin - Rtop);     // 180
+  const botCY = cy + 30;
+  const Rside = 150;  // 75x  / 2 (illustrative side arcs)
+
+  const dash = "6 6";
+  const axis = "#a3a3a3";
+  const ink  = "#0a0a0a";
+  const dim  = "#737373";
+
+  return (
+    <div className="grid grid-cols-1 lg:grid-cols-2 w-full">
+      {/* Left · original draft photograph */}
+      <div className="relative aspect-[3/4] sm:aspect-[4/5] bg-[#efe8d6] border-b lg:border-b-0 lg:border-r border-neutral-200/80 flex items-center justify-center overflow-hidden">
+        <Image
+          src="/brand/logo-design-draft.png"
+          alt="Original Olyxee logo construction draft, hand-drawn on paper with dimensions"
+          fill
+          className="object-contain p-4 sm:p-8"
+          sizes="(min-width: 1024px) 50vw, 100vw"
+        />
+        <span className="absolute bottom-3 left-4 text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-700/70">
+          Original draft · 24/05/2024
+        </span>
+      </div>
+
+      {/* Right · clean construction diagram with real measurements */}
+      <div className="relative aspect-[3/4] sm:aspect-[4/5] bg-white p-4 sm:p-8 flex items-center justify-center">
+        <svg
+          viewBox="0 0 600 600"
+          className="w-full h-full"
+          aria-label="Olyxee mark geometric construction diagram with measurements"
+          role="img"
+        >
+          <defs>
+            <marker id="arr" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill={dim} />
+            </marker>
+          </defs>
+
+          {/* Cross axes */}
+          <line x1={cx} y1={cy - Rout - 30} x2={cx} y2={cy + Rout + 30} stroke={axis} strokeWidth="0.75" strokeDasharray={dash} />
+          <line x1={cx - Rout - 30} y1={cy} x2={cx + Rout + 30} y2={cy} stroke={axis} strokeWidth="0.75" strokeDasharray={dash} />
+
+          {/* Outer boundary 120x */}
+          <circle cx={cx} cy={cy} r={Rout} fill="none" stroke={axis} strokeWidth="1" strokeDasharray={dash} />
+          {/* Inner guide 90x */}
+          <circle cx={cx} cy={cy} r={Rin} fill="none" stroke={axis} strokeWidth="0.75" strokeDasharray="3 4" />
+
+          {/* Construction circles filled in ink */}
+          <circle cx={cx} cy={topCY} r={Rtop} fill={ink} opacity="0.92" />
+          <circle cx={cx} cy={botCY} r={Rbot} fill={ink} opacity="0.92" />
+
+          {/* Side arc guides (75x circles, symmetrical) */}
+          <circle cx={cx - 90} cy={cy} r={Rside} fill="none" stroke={ink} strokeWidth="1.25" opacity="0.55" />
+          <circle cx={cx + 90} cy={cy} r={Rside} fill="none" stroke={ink} strokeWidth="1.25" opacity="0.55" />
+
+          {/* Tangency dots */}
+          {[
+            [cx, cy - Rout],
+            [cx, cy + Rout],
+            [cx - Rout, cy],
+            [cx + Rout, cy],
+          ].map(([x, y], i) => (
+            <circle key={i} cx={x} cy={y} r={2.5} fill={ink} />
+          ))}
+
+          {/* TOP dimension · 120x */}
+          <g>
+            <line x1={cx - Rout} y1={45} x2={cx + Rout} y2={45} stroke={dim} strokeWidth="0.75" markerStart="url(#arr)" markerEnd="url(#arr)" />
+            <line x1={cx - Rout} y1={40} x2={cx - Rout} y2={cy - Rout} stroke={dim} strokeWidth="0.5" strokeDasharray="2 3" />
+            <line x1={cx + Rout} y1={40} x2={cx + Rout} y2={cy - Rout} stroke={dim} strokeWidth="0.5" strokeDasharray="2 3" />
+            <text x={cx} y={36} textAnchor="middle" fontSize="13" fontFamily="ui-monospace, monospace" fill={ink} letterSpacing="2">120x</text>
+          </g>
+
+          {/* RIGHT dimension · 37.5x + 37.5x = 120x */}
+          <g>
+            <line x1={555} y1={cy - Rout} x2={555} y2={cy} stroke={dim} strokeWidth="0.75" markerStart="url(#arr)" markerEnd="url(#arr)" />
+            <line x1={555} y1={cy} x2={555} y2={cy + Rout} stroke={dim} strokeWidth="0.75" markerStart="url(#arr)" markerEnd="url(#arr)" />
+            <line x1={cx + Rout} y1={cy - Rout} x2={560} y2={cy - Rout} stroke={dim} strokeWidth="0.5" strokeDasharray="2 3" />
+            <line x1={cx + Rout} y1={cy} x2={560} y2={cy} stroke={dim} strokeWidth="0.5" strokeDasharray="2 3" />
+            <line x1={cx + Rout} y1={cy + Rout} x2={560} y2={cy + Rout} stroke={dim} strokeWidth="0.5" strokeDasharray="2 3" />
+            <text x={550} y={cy - Rout / 2 + 4} textAnchor="end" fontSize="11" fontFamily="ui-monospace, monospace" fill={ink} letterSpacing="1.5">37.5x</text>
+            <text x={550} y={cy + Rout / 2 + 4} textAnchor="end" fontSize="11" fontFamily="ui-monospace, monospace" fill={ink} letterSpacing="1.5">37.5x</text>
+            {/* Outer 120x bracket */}
+            <line x1={580} y1={cy - Rout} x2={580} y2={cy + Rout} stroke={dim} strokeWidth="0.75" markerStart="url(#arr)" markerEnd="url(#arr)" />
+            <text x={595} y={cy + 4} textAnchor="middle" fontSize="13" fontFamily="ui-monospace, monospace" fill={ink} letterSpacing="2" transform={`rotate(90 595 ${cy})`}>120x</text>
+          </g>
+
+          {/* BOTTOM dimension · 37.5x | 45x | 37.5x */}
+          <g>
+            <line x1={cx - Rout} y1={555} x2={cx - Rbot} y2={555} stroke={dim} strokeWidth="0.75" markerStart="url(#arr)" markerEnd="url(#arr)" />
+            <line x1={cx - Rbot} y1={555} x2={cx + Rbot} y2={555} stroke={dim} strokeWidth="0.75" markerStart="url(#arr)" markerEnd="url(#arr)" />
+            <line x1={cx + Rbot} y1={555} x2={cx + Rout} y2={555} stroke={dim} strokeWidth="0.75" markerStart="url(#arr)" markerEnd="url(#arr)" />
+            <line x1={cx - Rbot} y1={cy + Rout} x2={cx - Rbot} y2={560} stroke={dim} strokeWidth="0.5" strokeDasharray="2 3" />
+            <line x1={cx + Rbot} y1={cy + Rout} x2={cx + Rbot} y2={560} stroke={dim} strokeWidth="0.5" strokeDasharray="2 3" />
+            <text x={(cx - Rout + cx - Rbot) / 2} y={573} textAnchor="middle" fontSize="11" fontFamily="ui-monospace, monospace" fill={ink} letterSpacing="1.5">37.5x</text>
+            <text x={cx} y={573} textAnchor="middle" fontSize="11" fontFamily="ui-monospace, monospace" fill={ink} letterSpacing="1.5">45x</text>
+            <text x={(cx + Rout + cx + Rbot) / 2} y={573} textAnchor="middle" fontSize="11" fontFamily="ui-monospace, monospace" fill={ink} letterSpacing="1.5">37.5x</text>
+          </g>
+
+          {/* Inner-circle radial label */}
+          <text x={cx + Rin * 0.7} y={cy - Rin * 0.7 - 6} fontSize="10" fontFamily="ui-monospace, monospace" fill={dim} letterSpacing="1.2">90x guide</text>
+          <text x={cx - 18} y={topCY + 4} fontSize="10" fontFamily="ui-monospace, monospace" fill="#ffffff" letterSpacing="1.2">30x</text>
+          <text x={cx - 12} y={botCY + 5} fontSize="11" fontFamily="ui-monospace, monospace" fill="#ffffff" letterSpacing="1.5">45x</text>
+        </svg>
+        <span className="absolute bottom-3 left-4 text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500">
+          x = 1 unit · scales proportionally
+        </span>
+      </div>
+    </div>
+  );
+};
+
+/* === Geometry breakdown: structured spec rows === */
+const GEOMETRY = [
+  { label: "Outer boundary", value: "120x", note: "Defines the safe boundary circle." },
+  { label: "Inner guide",    value: "90x",  note: "Anchors the inner shapes." },
+  { label: "Top circle",     value: "30x",  note: "Centered on the vertical axis." },
+  { label: "Bottom circle",  value: "45x",  note: "Centered on the vertical axis." },
+  { label: "Side arcs",      value: "75x",  note: "Symmetrical, tangent to inner guide." },
+  { label: "Clear space",    value: "0.25x", note: "Minimum padding on all four sides." },
+];
+
+/* === Clear space spec === */
+const ClearSpace: FC = () => (
+  <div className="relative w-full max-w-md mx-auto">
+    {/* dashed clear-space frame */}
+    <div className="relative aspect-square border border-dashed border-neutral-300 p-[18%] bg-neutral-50">
+      <div className="relative w-full h-full bg-white ring-1 ring-neutral-200 flex items-center justify-center">
+        <Image
+          src="/Logo/Olyxee_Logo.png"
+          alt="Olyxee mark with minimum clear space"
+          width={200}
+          height={200}
+          className="w-2/3 h-auto object-contain"
+        />
+      </div>
+
+      {/* Top label */}
+      <span className="absolute top-1 left-1/2 -translate-x-1/2 text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-600">0.25x</span>
+      {/* Bottom label */}
+      <span className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-600">0.25x</span>
+      {/* Left label */}
+      <span className="absolute top-1/2 left-1 -translate-y-1/2 -rotate-90 origin-center text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-600">0.25x</span>
+      {/* Right label */}
+      <span className="absolute top-1/2 right-1 -translate-y-1/2 rotate-90 origin-center text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-600">0.25x</span>
+    </div>
+    <p className="mt-4 text-center text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500">
+      Minimum clear space = 0.25x on every side
+    </p>
+  </div>
+);
+
+/* === Tonal range card === */
+const TONAL = [
+  { name: "Dark shade",  hex: "#0A0A0A", desc: "Primary mark on light surfaces." },
+  { name: "Mid shade",   hex: "#262626", desc: "Inner relief, depth, subtle layering." },
+  { name: "Light shade", hex: "#404040", desc: "Highlights and tonal separation." },
 ];
 
 /* === Color swatch: tap to copy hex === */
@@ -392,9 +567,207 @@ const Brand: FC = () => {
           </div>
         </motion.section>
 
-        {/* 02 - Ordo */}
+        {/* 02 - Construction */}
+        <motion.section
+          id="construction"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          variants={fadeUp}
+          className="border-t border-neutral-200 scroll-mt-24"
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <div className="flex items-center justify-between py-3 sm:py-4 text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500">
+              <span>02</span>
+              <span className="text-neutral-700">Construction · Geometry &amp; ratios</span>
+            </div>
+            <div className="rounded-2xl overflow-hidden ring-1 ring-neutral-200/80 bg-white">
+              <LogoConstruction />
+            </div>
+
+            {/* Geometry breakdown spec rows */}
+            <div className="mt-6 sm:mt-8 grid grid-cols-1 lg:grid-cols-3 gap-px bg-neutral-200 rounded-2xl overflow-hidden ring-1 ring-neutral-200">
+              <div className="bg-white p-6 sm:p-8 lg:col-span-1">
+                <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 mb-3">Notes</p>
+                <ul className="space-y-2.5 text-sm text-neutral-700 font-light leading-relaxed">
+                  <li>· All elements centered on the main axis.</li>
+                  <li>· Curves are tangent to each other.</li>
+                  <li>· Symmetrical along the vertical axis.</li>
+                  <li>· Balanced visual weight across shapes.</li>
+                  <li>· Scalable, minimal, optical-first.</li>
+                </ul>
+              </div>
+              <div className="bg-white p-6 sm:p-8 lg:col-span-2">
+                <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 mb-4">Geometry breakdown</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
+                  {GEOMETRY.map((g) => (
+                    <div key={g.label} className="flex items-baseline justify-between gap-4 border-b border-neutral-100 pb-2.5">
+                      <span className="text-sm text-neutral-700 font-light">{g.label}</span>
+                      <span className="font-mono text-[13px] tracking-wider text-neutral-900">{g.value}</span>
+                    </div>
+                  ))}
+                </div>
+                <p className="mt-5 text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500">
+                  x = unit of measurement · example: if 120x = 120mm, then x = 1mm
+                </p>
+              </div>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* 03 - Clear space */}
+        <motion.section
+          id="clear-space"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          variants={fadeUp}
+          className="border-t border-neutral-200 scroll-mt-24"
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <div className="flex items-center justify-between py-3 sm:py-4 text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500">
+              <span>03</span>
+              <span className="text-neutral-700">Clear space · Breathing room</span>
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-0 rounded-2xl overflow-hidden ring-1 ring-neutral-200/80 bg-white">
+              <div className="lg:col-span-3 p-6 sm:p-12 lg:p-16 flex items-center justify-center bg-neutral-50 border-b lg:border-b-0 lg:border-r border-neutral-200/80">
+                <ClearSpace />
+              </div>
+              <div className="lg:col-span-2 p-6 sm:p-10 flex flex-col justify-center">
+                <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 mb-3">The 0.25x rule</p>
+                <p className="font-serif text-2xl sm:text-3xl text-neutral-900 leading-snug tracking-tight mb-5">
+                  Always leave at least <em className="not-italic text-orange-500">0.25x</em> of clear space on every side of the mark.
+                </p>
+                <p className="text-sm text-neutral-600 font-light leading-relaxed">
+                  Where x is the unit of measurement (typically the width of one construction circle). Never let other elements, type, or imagery enter the clear-space zone.
+                </p>
+                <div className="mt-6 grid grid-cols-2 gap-3 text-[10px] font-mono uppercase tracking-[0.25em]">
+                  <div className="rounded-lg ring-1 ring-neutral-200 px-3 py-3">
+                    <p className="text-neutral-500 mb-1">Min digital size</p>
+                    <p className="text-neutral-900 normal-case tracking-normal font-sans text-sm">24 px</p>
+                  </div>
+                  <div className="rounded-lg ring-1 ring-neutral-200 px-3 py-3">
+                    <p className="text-neutral-500 mb-1">Min print size</p>
+                    <p className="text-neutral-900 normal-case tracking-normal font-sans text-sm">8 mm</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* 04 - Tonal range */}
+        <motion.section
+          id="tonal"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          variants={fadeUp}
+          className="border-t border-neutral-200 scroll-mt-24"
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <div className="flex items-center justify-between py-3 sm:py-4 text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500">
+              <span>04</span>
+              <span className="text-neutral-700">Tonal range · Three shades</span>
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-5 rounded-2xl overflow-hidden ring-1 ring-neutral-200/80">
+              <div className="relative lg:col-span-3 aspect-square lg:aspect-auto bg-neutral-950 min-h-[320px]">
+                <Image
+                  src="/brand/olyxee-logo-darkframe.png"
+                  alt="Olyxee mark in tonal dark study"
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 1024px) 60vw, 100vw"
+                />
+                <span className="absolute bottom-3 left-4 text-[10px] font-mono uppercase tracking-[0.25em] text-white/60">
+                  Tonal study · ink on ink
+                </span>
+              </div>
+              <div className="lg:col-span-2 bg-white p-6 sm:p-10 flex flex-col">
+                <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 mb-4">Layered tonality</p>
+                <p className="font-serif text-2xl sm:text-3xl text-neutral-900 leading-snug tracking-tight mb-6">
+                  Three shades give the mark its depth without adding color.
+                </p>
+                <div className="space-y-3">
+                  {TONAL.map((t) => (
+                    <div key={t.name} className="flex items-center gap-4 ring-1 ring-neutral-200 rounded-xl p-3">
+                      <span
+                        className="w-10 h-10 rounded-lg ring-1 ring-black/10 shrink-0"
+                        style={{ backgroundColor: t.hex }}
+                        aria-hidden
+                      />
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm text-neutral-900 font-medium">{t.name}</p>
+                        <p className="text-xs text-neutral-500 font-light">{t.desc}</p>
+                      </div>
+                      <span className="text-[10px] font-mono tracking-[0.18em] text-neutral-500">{t.hex}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* 05 - Divisional marks · Olyxee Robotics */}
+        <motion.section
+          id="divisional"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          variants={fadeUp}
+          className="border-t border-neutral-200 scroll-mt-24"
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <div className="flex items-center justify-between py-3 sm:py-4 text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500">
+              <span>05</span>
+              <span className="text-neutral-700">Divisional marks · Olyxee Robotics</span>
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-5 rounded-2xl overflow-hidden ring-1 ring-neutral-200/80 bg-white">
+              <div className="lg:col-span-3 relative bg-neutral-50 min-h-[360px] sm:min-h-[460px] flex items-center justify-center p-10 sm:p-16 border-b lg:border-b-0 lg:border-r border-neutral-200/80">
+                <Image
+                  src="/brand/robotics-logo.png"
+                  alt="Olyxee Robotics divisional wave mark"
+                  width={420}
+                  height={420}
+                  className="w-44 sm:w-60 lg:w-72 h-auto object-contain drop-shadow-[0_12px_40px_rgba(15,23,42,0.18)]"
+                />
+                <span className="absolute bottom-3 left-4 text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500">
+                  Olyxee Robotics · Wave mark
+                </span>
+              </div>
+              <div className="lg:col-span-2 p-6 sm:p-10 flex flex-col">
+                <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 mb-3">Divisional identity</p>
+                <p className="font-serif text-2xl sm:text-3xl text-neutral-900 leading-snug tracking-tight mb-5">
+                  Olyxee Robotics carries its own mark for hardware and embodied AI surfaces.
+                </p>
+                <p className="text-sm text-neutral-600 font-light leading-relaxed mb-6">
+                  Layered waves in four blue tones evoke perception, motion, and depth. Use only on robotics-product surfaces &mdash; never as a substitute for the Olyxee corporate mark.
+                </p>
+                <div className="grid grid-cols-4 gap-2">
+                  {["#BFDCEB", "#5C9DCB", "#1F5E92", "#0E2C4F"].map((hex) => (
+                    <div key={hex} className="text-center">
+                      <div className="aspect-square rounded-lg ring-1 ring-black/5" style={{ backgroundColor: hex }} aria-hidden />
+                      <p className="mt-2 text-[9px] font-mono tracking-[0.15em] text-neutral-500">{hex}</p>
+                    </div>
+                  ))}
+                </div>
+                <a
+                  href="/brand/robotics-logo.png"
+                  download
+                  className="mt-6 inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-[0.2em] text-neutral-700 hover:text-neutral-900 transition-colors w-fit"
+                >
+                  Download wave mark
+                  <ArrowUpRight className="w-3 h-3" aria-hidden="true" focusable="false" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* 06 - Ordo */}
         <Plate
-          num="02"
+          num="06"
           name="Ordo · Product mark"
           bg="bg-neutral-50"
           caption={
@@ -420,9 +793,9 @@ const Brand: FC = () => {
           />
         </Plate>
 
-        {/* 03 - Addup */}
+        {/* 07 - Addup */}
         <Plate
-          num="03"
+          num="07"
           name="Addup · Wordmark"
           bg="bg-neutral-50"
           caption={
@@ -448,9 +821,9 @@ const Brand: FC = () => {
           />
         </Plate>
 
-        {/* 04 - Lockup */}
+        {/* 08 - Lockup */}
         <Plate
-          num="04"
+          num="08"
           name="Olyxee · Lockup"
           bg="bg-neutral-50"
           caption={
@@ -480,8 +853,8 @@ const Brand: FC = () => {
           </div>
         </Plate>
 
-        {/* 05 - Typography */}
-        <Plate id="typography" num="05" name="Type · Editorial Serif" bg="bg-white" borderless>
+        {/* 09 - Typography */}
+        <Plate id="typography" num="09" name="Type · Editorial Serif" bg="bg-white" borderless>
           <span
             aria-hidden="true"
             style={{ fontSize: "clamp(7rem, 28vw, 26rem)" }}
@@ -516,7 +889,7 @@ const Brand: FC = () => {
         <section id="voice" className="border-t border-neutral-200 scroll-mt-24 mt-4">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="flex items-center justify-between py-3 sm:py-4 text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500">
-              <span>06</span>
+              <span>10</span>
               <span className="text-neutral-700">Voice · How we sound</span>
             </div>
             <motion.div
@@ -574,7 +947,7 @@ const Brand: FC = () => {
         <section id="color" className="border-t border-neutral-200 scroll-mt-24 mt-4">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="flex items-center justify-between py-3 sm:py-4 text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500">
-              <span>07</span>
+              <span>11</span>
               <span className="text-neutral-700">Color · Palette</span>
             </div>
             <motion.div
@@ -615,7 +988,7 @@ const Brand: FC = () => {
         <section id="usage" className="border-t border-neutral-200 scroll-mt-24 mt-4">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="flex items-center justify-between py-3 sm:py-4 text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500">
-              <span>08</span>
+              <span>12</span>
               <span className="text-neutral-700">Usage · Do &amp; don&apos;t</span>
             </div>
             <motion.div
@@ -671,7 +1044,7 @@ const Brand: FC = () => {
         <section id="downloads" className="border-t border-neutral-200 scroll-mt-24 mt-4">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="flex items-center justify-between py-3 sm:py-4 text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500">
-              <span>09</span>
+              <span>13</span>
               <span className="text-neutral-700">Downloads · Asset library</span>
             </div>
             <motion.ul
@@ -711,7 +1084,7 @@ const Brand: FC = () => {
         <section id="press" className="border-t border-neutral-200 scroll-mt-24 mt-4">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="flex items-center justify-between py-3 sm:py-4 text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500">
-              <span>10</span>
+              <span>14</span>
               <span className="text-neutral-700">Press · Contact</span>
             </div>
             <motion.div
