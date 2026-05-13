@@ -254,47 +254,36 @@ const Robotics: FC = () => {
       <div className="grain" />
       <Header />
 
-      {/* === CLEAN HERO (matches homepage style) === */}
+      {/* === HERO (typography only, no background imagery) === */}
       <section
         ref={heroRef}
         aria-label="Hero"
-        className="relative w-full min-h-[100svh] flex flex-col items-center justify-center px-4 md:px-8 lg:px-16 overflow-hidden"
+        className="relative w-full px-4 sm:px-8 lg:px-12 pt-32 sm:pt-44 lg:pt-52 pb-16 sm:pb-24 lg:pb-32"
       >
-        <div className="absolute inset-0 w-full h-full">
-          <Image
-            src="/hero-bg.webp"
-            alt="Olyxee Robotics hero background"
-            fill
-            className="object-cover"
-            priority
-            sizes="100vw"
-          />
-        </div>
+        <div className="relative max-w-6xl mx-auto">
+          <motion.p
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.28em] text-neutral-500 mb-6 sm:mb-8"
+          >
+            Olyxee Robotics
+          </motion.p>
 
-        <div className="relative z-10 text-center max-w-5xl mx-auto pt-16">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.1 }}
-            className="font-serif text-neutral-900 leading-[1.02] tracking-tight px-2 sm:px-0 text-[clamp(1.4rem,6.6vw,5.5rem)] sm:text-6xl md:text-7xl lg:text-[5.5rem]"
+            className="font-serif text-neutral-900 leading-[1.02] tracking-tight text-[2.25rem] sm:text-6xl md:text-7xl lg:text-[6rem]"
           >
-            <span className="block whitespace-nowrap">Olyxee Robotics</span>
-            <span className="block whitespace-nowrap">
-              for the{" "}
-              <span
-                className="font-handwritten text-neutral-900 italic font-semibold tracking-tight"
-                style={{ fontFamily: "var(--font-handwritten), cursive" }}
-              >
-                physical world
-              </span>
-            </span>
+            Robotics for the <em className="italic">physical world</em>.
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.3 }}
-            className="mt-6 sm:mt-8 text-sm sm:text-xl text-neutral-600 font-light max-w-2xl mx-auto leading-relaxed px-2"
+            className="mt-6 sm:mt-10 text-base sm:text-xl lg:text-2xl text-neutral-600 font-light max-w-2xl leading-relaxed"
           >
             Embodied AI that perceives, reasons, and acts reliably in the real world.
           </motion.p>
@@ -303,7 +292,7 @@ const Robotics: FC = () => {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.45 }}
-            className="mt-8 sm:mt-10 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center justify-center gap-3 w-full max-w-sm sm:max-w-none mx-auto"
+            className="mt-8 sm:mt-12 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3"
           >
             <Link
               href="/contact?subject=Olyxee%20Robotics%20early%20access"
@@ -320,27 +309,6 @@ const Robotics: FC = () => {
             </Link>
           </motion.div>
         </div>
-
-        <motion.div
-          className="relative z-10 w-full max-w-5xl mt-10 mb-8 px-2 sm:px-0"
-          initial={{ opacity: 0, y: 60, scale: 0.97 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 1.2, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-neutral-200/80 shadow-2xl shadow-neutral-300/40">
-            <video
-              src="/videos/robotics-hero.mp4"
-              className="w-full aspect-video object-cover"
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="metadata"
-              poster="/images/robotics/humanoid-manipulation.png"
-            />
-            <div className="absolute inset-0 rounded-2xl sm:rounded-3xl pointer-events-none ring-1 ring-inset ring-black/5" />
-          </div>
-        </motion.div>
       </section>
 
       {/* === STATEMENT === */}
