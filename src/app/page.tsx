@@ -104,8 +104,8 @@ function HeroSection() {
           transition={{ duration: 0.9, delay: 0.1 }}
           className="font-serif text-neutral-900 leading-[1.02] tracking-tight px-2 sm:px-0 text-[clamp(1.4rem,6.6vw,5.5rem)] sm:text-6xl md:text-7xl lg:text-[5.5rem]"
         >
-          <span className="block whitespace-nowrap">Research and Infrastructure</span>
-          <span className="block whitespace-nowrap">
+          <span className="block sm:whitespace-nowrap">Research and Infrastructure</span>
+          <span className="block sm:whitespace-nowrap">
             for{" "}
             <span
               className="font-handwritten text-blue-600 font-semibold tracking-tight"
