@@ -349,18 +349,13 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                                         aria-label="Sign in menu"
                                     >
                                         <div
-                                            className="relative w-[20rem] max-w-[calc(100vw-2rem)] p-2 rounded-3xl overflow-hidden"
+                                            className="relative w-[14rem] max-w-[calc(100vw-2rem)] p-2 rounded-2xl overflow-hidden"
                                             style={{
                                                 background: '#ffffff',
                                                 border: '1px solid rgba(0,0,0,0.06)',
                                                 boxShadow: '0 24px 80px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.06)',
                                             }}
                                         >
-                                            <div className="px-3 pt-2 pb-2.5">
-                                                <p className="text-[10px] font-semibold text-neutral-400 uppercase tracking-[0.22em]">
-                                                    Sign in to
-                                                </p>
-                                            </div>
                                             <ul className="space-y-0.5">
                                                 {SIGNIN_OPTIONS.map((opt) => (
                                                     <li key={opt.name}>
@@ -370,37 +365,9 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                                                             rel={opt.external ? "noopener noreferrer" : undefined}
                                                             role="menuitem"
                                                             onClick={() => setOpenDropdown(null)}
-                                                            className="group flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-neutral-100/80 active:bg-neutral-200/60 transition-colors focus:outline-none"
+                                                            className="block px-3 py-2 rounded-lg hover:bg-neutral-100/80 active:bg-neutral-200/60 transition-colors focus:outline-none text-[14px] font-medium text-neutral-900"
                                                         >
-                                                            <div className="relative w-9 h-9 rounded-lg bg-white ring-1 ring-neutral-200/70 shadow-sm flex items-center justify-center overflow-hidden flex-shrink-0">
-                                                                {opt.logo ? (
-                                                                    <Image
-                                                                        src={opt.logo}
-                                                                        alt=""
-                                                                        width={36}
-                                                                        height={36}
-                                                                        className="w-[88%] h-[88%] object-contain"
-                                                                    />
-                                                                ) : (
-                                                                    <span className="text-[10px] font-mono font-semibold text-neutral-500">
-                                                                        API
-                                                                    </span>
-                                                                )}
-                                                            </div>
-                                                            <div className="min-w-0 flex-1">
-                                                                <p className="text-[14px] font-semibold text-neutral-900 group-hover:text-neutral-950">
-                                                                    {opt.name}
-                                                                </p>
-                                                                <p className="text-[12px] text-neutral-500 font-light leading-snug mt-0.5 truncate">
-                                                                    {opt.description}
-                                                                </p>
-                                                            </div>
-                                                            {opt.external && (
-                                                                <ArrowUpRight
-                                                                    className="w-3.5 h-3.5 text-neutral-400 group-hover:text-neutral-700 transition-colors flex-shrink-0"
-                                                                    aria-hidden
-                                                                />
-                                                            )}
+                                                            {opt.name}
                                                         </a>
                                                     </li>
                                                 ))}
