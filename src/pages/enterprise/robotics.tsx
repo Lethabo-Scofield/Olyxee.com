@@ -307,7 +307,7 @@ const Robotics: FC = () => {
           transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
           className="relative max-w-[1500px] mx-auto"
         >
-          <div className="relative overflow-hidden rounded-2xl sm:rounded-[36px] ring-1 ring-neutral-900/10 shadow-[0_40px_100px_-30px_rgba(0,0,0,0.45)] bg-neutral-950 min-h-[560px] sm:min-h-[600px] lg:min-h-[640px] flex items-end">
+          <div className="relative overflow-hidden ring-1 ring-neutral-900/10 shadow-[0_40px_100px_-30px_rgba(0,0,0,0.45)] bg-neutral-950 min-h-[560px] sm:min-h-[600px] lg:min-h-[640px] flex items-end">
             {/* Video background */}
             <video
               src="/videos/robotics-hero.mp4"
@@ -330,7 +330,7 @@ const Robotics: FC = () => {
               }}
             />
             {/* Inner highlight ring */}
-            <div className="absolute inset-0 rounded-2xl sm:rounded-[36px] pointer-events-none ring-1 ring-inset ring-white/10" />
+            <div className="absolute inset-0 pointer-events-none ring-1 ring-inset ring-white/10" />
 
             {/* Content inside the card */}
             <div className="relative z-10 w-full px-6 sm:px-12 lg:px-20 py-12 sm:py-16 lg:py-20">
