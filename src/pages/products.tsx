@@ -296,36 +296,46 @@ const ProductsPage: FC = () => {
         ]}
       />
       <div className="grain" />
-      <Header theme="dark" />
+      <Header />
 
-      {/* === HERO - image background === */}
-      <section className="relative pt-40 sm:pt-48 pb-24 sm:pb-32 px-4 sm:px-6 overflow-hidden">
-        <Image
-          src="/images/products/hero-presentation.png"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-        <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
-        <div className="relative z-10 max-w-5xl mx-auto text-center">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-[11px] font-mono uppercase tracking-[0.28em] text-white/70 mb-8"
+      {/* === HERO - heading + image card === */}
+      <section className="relative pt-40 sm:pt-48 pb-20 sm:pb-28 px-4 sm:px-6 bg-white">
+        <div className="relative z-10 max-w-6xl mx-auto">
+          <div className="text-center mb-12 sm:mb-16">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-[11px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-8"
+            >
+              Products
+            </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.05 }}
+              className="font-serif text-5xl sm:text-7xl lg:text-[5.5rem] text-neutral-900 tracking-tight leading-[1.02]"
+            >
+              Rethinking <em className="text-neutral-400 not-italic">Machine Intelligence.</em>
+            </motion.h1>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="relative rounded-3xl overflow-hidden border border-neutral-200/80 shadow-2xl shadow-neutral-300/40 aspect-[16/9]"
           >
-            Products
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.05 }}
-            className="font-serif text-5xl sm:text-7xl lg:text-[5.5rem] text-white tracking-tight leading-[1.02] drop-shadow-[0_2px_24px_rgba(0,0,0,0.45)]"
-          >
-            Rethinking <em className="text-white/60 not-italic">Machine Intelligence.</em>
-          </motion.h1>
+            <Image
+              src="/images/products/hero-presentation.png"
+              alt="Olyxee presentation: Making business operations effortless with AI automation"
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 1152px"
+              className="object-cover object-center"
+            />
+            <div aria-hidden className="absolute inset-0 rounded-3xl pointer-events-none ring-1 ring-inset ring-black/5" />
+          </motion.div>
         </div>
       </section>
 
