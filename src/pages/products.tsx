@@ -8,18 +8,12 @@ import { motion, type Variants } from "framer-motion";
 import {
   ArrowRight,
   ArrowUpRight,
-  Sparkles,
-  Workflow,
-  ScrollText,
-  ShieldCheck,
-  Puzzle,
   Link2,
   Layers,
   CircleDollarSign,
   Users,
   Headphones,
   Check,
-  Zap,
 } from "lucide-react";
 
 const fadeUp: Variants = {
@@ -30,85 +24,6 @@ const fadeUp: Variants = {
     transition: { duration: 0.7, delay: i * 0.08, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] },
   }),
 };
-
-function HeroWaves() {
-  // Refined Stripe-style aurora: silky diagonal ribbons that flow behind the
-  // headline rather than across it. Heavy blur, soft pastel palette, low
-  // opacity for an editorial, premium feel that doesn't fight the type.
-  return (
-    <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-      <svg
-        className="absolute inset-0 h-full w-full"
-        viewBox="0 0 1600 800"
-        preserveAspectRatio="xMidYMid slice"
-        fill="none"
-      >
-        <defs>
-          <linearGradient id="wg-aurora-1" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1600" y2="600">
-            <stop offset="0%"   stopColor="#dbeafe" stopOpacity="0" />
-            <stop offset="35%"  stopColor="#93c5fd" />
-            <stop offset="70%"  stopColor="#a78bfa" />
-            <stop offset="100%" stopColor="#f9a8d4" stopOpacity="0" />
-          </linearGradient>
-          <linearGradient id="wg-aurora-2" gradientUnits="userSpaceOnUse" x1="0" y1="200" x2="1600" y2="800">
-            <stop offset="0%"   stopColor="#fed7aa" stopOpacity="0" />
-            <stop offset="40%"  stopColor="#fdba74" />
-            <stop offset="70%"  stopColor="#f0abfc" />
-            <stop offset="100%" stopColor="#c4b5fd" stopOpacity="0" />
-          </linearGradient>
-          <linearGradient id="wg-aurora-3" gradientUnits="userSpaceOnUse" x1="0" y1="100" x2="1600" y2="700">
-            <stop offset="0%"   stopColor="#bae6fd" stopOpacity="0" />
-            <stop offset="50%"  stopColor="#67e8f9" />
-            <stop offset="100%" stopColor="#a5b4fc" stopOpacity="0" />
-          </linearGradient>
-          <filter id="wave-soft-blur" x="-20%" y="-30%" width="140%" height="160%">
-            <feGaussianBlur stdDeviation="50" />
-          </filter>
-        </defs>
-
-        <g filter="url(#wave-soft-blur)" style={{ mixBlendMode: "multiply" }}>
-          <g style={{ transformOrigin: "50% 50%", animation: "wave-flow-a 22s ease-in-out infinite", willChange: "transform" }}>
-            <path
-              d="M-200,420 C200,260 600,560 1000,360 C1300,210 1500,420 1800,300"
-              stroke="url(#wg-aurora-1)"
-              strokeWidth="180"
-              strokeLinecap="round"
-              opacity="0.55"
-              fill="none"
-            />
-          </g>
-          <g style={{ transformOrigin: "50% 50%", animation: "wave-flow-b 28s ease-in-out infinite", willChange: "transform" }}>
-            <path
-              d="M-200,520 C300,380 700,640 1100,460 C1400,330 1600,520 1900,420"
-              stroke="url(#wg-aurora-2)"
-              strokeWidth="200"
-              strokeLinecap="round"
-              opacity="0.45"
-              fill="none"
-            />
-          </g>
-          <g style={{ transformOrigin: "50% 50%", animation: "wave-flow-c 34s ease-in-out infinite", willChange: "transform" }}>
-            <path
-              d="M-200,320 C200,200 700,440 1100,260 C1400,140 1600,320 1900,220"
-              stroke="url(#wg-aurora-3)"
-              strokeWidth="140"
-              strokeLinecap="round"
-              opacity="0.35"
-              fill="none"
-            />
-          </g>
-        </g>
-      </svg>
-      {/* Soft white wash so the aurora sits behind the type */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/30 to-white/70" />
-      {/* Edge fades */}
-      <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent" />
-      <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent" />
-      <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent" />
-    </div>
-  );
-}
 
 function OrdoArchitecture() {
   const PILL_X = 50;
@@ -280,15 +195,6 @@ function OrdoArchitecture() {
 }
 
 
-const ORDO_CAPABILITIES = [
-  { icon: Sparkles, label: "Plain-English goals", sub: "Turned into multi-step plans" },
-  { icon: Workflow, label: "Acts across your stack", sub: "Apps your team already uses" },
-  { icon: ScrollText, label: "Full audit trail", sub: "Every decision and tool call" },
-  { icon: ShieldCheck, label: "Human approvals", sub: "Pause at any step" },
-  { icon: Puzzle, label: "Custom skill packs", sub: "Tailored to your workflows" },
-  { icon: Zap, label: "Built for compliance", sub: "SOC 2, GDPR, and beyond" },
-];
-
 const ADDUP_FREE = [
   "Connect bank, card, and ledger sources",
   "Automatic matching with variance detection",
@@ -357,15 +263,14 @@ const ProductsPage: FC = () => {
       <div className="grain" />
       <Header />
 
-      {/* === HERO - light, centered, consistent with About / Enterprise === */}
-      <section className="relative pt-36 sm:pt-48 pb-20 sm:pb-28 px-4 sm:px-6 bg-white overflow-hidden">
-        <HeroWaves />
+      {/* === HERO - clean, centered, no decoration === */}
+      <section className="relative pt-40 sm:pt-52 pb-24 sm:pb-32 px-4 sm:px-6 bg-white">
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-sm font-medium text-neutral-400 uppercase tracking-widest mb-6"
+            className="text-[11px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-8"
           >
             Products
           </motion.p>
@@ -373,48 +278,10 @@ const ProductsPage: FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.05 }}
-            className="font-serif text-4xl sm:text-6xl lg:text-7xl text-neutral-900 tracking-tight leading-[1.05] mb-8"
+            className="font-serif text-5xl sm:text-7xl lg:text-[5.5rem] text-neutral-900 tracking-tight leading-[1.02]"
           >
-            AI systems that <em className="text-neutral-500 not-italic">execute</em>.
+            AI systems that <em className="text-neutral-400 not-italic">execute</em>.
           </motion.h1>
-
-          {/* Product chips — at-a-glance */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.15 }}
-            className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10"
-          >
-            <a
-              href="#ordo"
-              className="group inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-white ring-1 ring-neutral-200 hover:ring-neutral-300 shadow-sm text-xs sm:text-sm font-medium text-neutral-800 transition-all"
-            >
-              <span className="relative w-5 h-5 rounded-md bg-neutral-50 ring-1 ring-neutral-200 flex items-center justify-center overflow-hidden">
-                <Image src="/images/ordo-logo.png" alt="" width={16} height={16} className="w-3.5 h-3.5 object-contain" />
-              </span>
-              Ordo
-              <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-400">Execution</span>
-            </a>
-            <a
-              href="#addup"
-              className="group inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-white ring-1 ring-neutral-200 hover:ring-neutral-300 shadow-sm text-xs sm:text-sm font-medium text-neutral-800 transition-all"
-            >
-              <span className="relative w-5 h-5 rounded-md bg-neutral-50 ring-1 ring-neutral-200 flex items-center justify-center overflow-hidden">
-                <Image src="/images/addup-logo.png" alt="" width={16} height={16} className="w-3.5 h-3.5 object-contain" />
-              </span>
-              Addup
-              <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-400">Reconciliation</span>
-            </a>
-          </motion.div>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-base sm:text-lg text-neutral-500 leading-relaxed font-light max-w-xl mx-auto"
-          >
-            Goals in. Finished work out.
-          </motion.p>
         </div>
       </section>
 
@@ -430,43 +297,19 @@ const ProductsPage: FC = () => {
               variants={fadeUp}
               className="lg:col-span-5"
             >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="relative w-10 h-10 rounded-lg bg-white ring-1 ring-neutral-200 shadow-sm flex items-center justify-center overflow-hidden">
-                  <Image src="/images/ordo-logo.png" alt="Ordo" width={32} height={32} className="w-[80%] h-[80%] object-contain" />
-                </div>
-                <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.25em]">Compliance and operations</span>
-              </div>
+              <p className="text-[11px] font-mono text-neutral-500 uppercase tracking-[0.28em] mb-6">
+                Ordo
+              </p>
 
-              <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-8">
-                Goals in. <em className="text-neutral-500 not-italic">Finished work out.</em>
+              <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-6">
+                Goals in. <em className="text-neutral-400 not-italic">Finished work out.</em>
               </h2>
 
-              <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 mb-5">
-                What it does
+              <p className="text-base sm:text-lg text-neutral-500 font-light leading-relaxed max-w-md mb-10">
+                Describe what you need. Ordo plans the steps, runs the work across your tools, and shows you the trail.
               </p>
-              <div className="grid grid-cols-2 gap-2.5">
-                {ORDO_CAPABILITIES.map((c) => {
-                  const Icon = c.icon;
-                  return (
-                    <div
-                      key={c.label}
-                      className="group relative p-4 rounded-2xl bg-white ring-1 ring-neutral-200 hover:ring-neutral-300 hover:shadow-sm transition-all"
-                    >
-                      <div className="w-9 h-9 rounded-xl bg-neutral-100 flex items-center justify-center mb-3">
-                        <Icon className="w-4 h-4 text-neutral-700" strokeWidth={1.75} />
-                      </div>
-                      <p className="text-[13px] font-medium text-neutral-900 leading-snug">
-                        {c.label}
-                      </p>
-                      <p className="text-[11px] text-neutral-500 font-light leading-snug mt-1">
-                        {c.sub}
-                      </p>
-                    </div>
-                  );
-                })}
-              </div>
 
-              <div className="mt-10 flex flex-wrap items-center gap-4">
+              <div className="flex flex-wrap items-center gap-4">
                 <a
                   href="https://ordo.olyxee.com/"
                   target="_blank"
