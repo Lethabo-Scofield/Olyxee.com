@@ -393,78 +393,163 @@ const About: FC = () => {
       </section>
 
       {/* === FROM THE FOUNDER === */}
-      <section className="py-20 sm:py-32 bg-neutral-950 text-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-12 lg:gap-20 items-start">
+      <section className="relative py-24 sm:py-36 bg-neutral-950 text-white overflow-hidden">
+        {/* Ambient gradient glow */}
+        <div
+          aria-hidden
+          className="absolute -top-40 -left-40 w-[520px] h-[520px] rounded-full opacity-[0.18] pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(99,102,241,0.55) 0%, rgba(0,0,0,0) 60%)",
+            filter: "blur(60px)",
+          }}
+        />
+        <div
+          aria-hidden
+          className="absolute -bottom-40 -right-40 w-[520px] h-[520px] rounded-full opacity-[0.15] pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(244,114,182,0.45) 0%, rgba(0,0,0,0) 60%)",
+            filter: "blur(60px)",
+          }}
+        />
+
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.6 }}
+            className="text-[10px] font-mono uppercase tracking-[0.28em] text-white/40 mb-12 sm:mb-16"
+          >
+            <span className="inline-block w-6 h-px bg-white/30 align-middle mr-3" />
+            From the founder
+          </motion.p>
+
+          <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-10 lg:gap-16 items-start">
+            {/* Portrait card */}
             <motion.div
-              initial="hidden"
-              whileInView="visible"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              custom={0}
-              variants={fadeUp}
+              transition={{ duration: 0.85, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="relative w-full max-w-[280px] sm:max-w-[320px] lg:w-[300px] mx-auto lg:mx-0"
             >
-              <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-8">
-                From the founder
-              </p>
-              <blockquote className="font-serif text-2xl sm:text-3xl lg:text-[2.5rem] text-white leading-[1.2] mb-8 tracking-tight">
-                &ldquo;We started Olyxee because the hardest part of AI isn&apos;t intelligence. It&apos;s getting that intelligence to actually do something useful.&rdquo;
-              </blockquote>
-              <p className="text-base text-neutral-400 leading-relaxed font-light mb-10 max-w-2xl">
-                The models are smart enough. What&apos;s missing is the infrastructure that lets them operate - connecting to real systems, executing real workflows, and doing it in a way teams can trust.
-              </p>
-              <a
-                href="https://www.linkedin.com/in/lethabo-scofield-17b37a257/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-4 hover:opacity-80 transition-opacity"
-              >
+              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden ring-1 ring-white/10">
                 <Image
                   src="/images/lethabo-scofield.png"
-                  alt="Lethabo Scofield"
-                  width={48}
-                  height={48}
-                  className="rounded-full object-cover ring-2 ring-neutral-800"
+                  alt="Lethabo Scofield, Founder and CEO of Olyxee"
+                  fill
+                  sizes="(min-width: 1024px) 300px, 320px"
+                  className="object-cover"
                 />
-                <div>
-                  <p className="text-sm font-semibold text-white group-hover:text-neutral-300 transition-colors inline-flex items-center gap-1.5">
+                <div
+                  aria-hidden
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      "linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.55) 100%)",
+                  }}
+                />
+                <div className="absolute bottom-0 inset-x-0 p-4 sm:p-5">
+                  <p className="font-serif text-lg sm:text-xl text-white leading-tight tracking-tight">
                     Lethabo Scofield
-                    <ArrowUpRight aria-hidden="true" focusable="false" className="w-3.5 h-3.5 text-neutral-500 group-hover:text-neutral-300 transition-colors" />
                   </p>
-                  <p className="text-xs text-neutral-500">Founder &amp; CEO</p>
+                  <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-white/55 mt-1">
+                    Founder &amp; CEO
+                  </p>
                 </div>
-              </a>
+              </div>
+              {/* Hairline year tag */}
+              <div className="mt-4 flex items-center justify-between text-[10px] font-mono uppercase tracking-[0.28em] text-white/40">
+                <span>Johannesburg, ZA</span>
+                <span>Est. 2025</span>
+              </div>
             </motion.div>
 
-            {/* Timeline */}
+            {/* Quote */}
             <motion.div
-              initial="hidden"
-              whileInView="visible"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              custom={1}
-              variants={fadeUp}
-              className="lg:pt-3"
+              transition={{ duration: 0.85, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="lg:pt-2"
             >
-              <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-6">
-                Where we are
+              {/* Decorative quote glyph */}
+              <span
+                aria-hidden
+                className="font-serif italic text-white/15 text-[6rem] sm:text-[8rem] leading-none block -mb-8 sm:-mb-12 -ml-1"
+              >
+                &ldquo;
+              </span>
+              <blockquote className="font-serif text-[1.6rem] sm:text-3xl lg:text-[2.6rem] text-white leading-[1.18] tracking-tight max-w-3xl">
+                We started Olyxee because the hardest part of AI isn&apos;t
+                intelligence. It&apos;s getting that intelligence to actually{" "}
+                <em className="not-italic text-white/55">do something useful</em>.
+              </blockquote>
+              <p className="mt-8 text-base sm:text-lg text-white/55 leading-relaxed font-light max-w-2xl">
+                The models are smart enough. What&apos;s missing is the
+                infrastructure that lets them operate, connecting to real
+                systems, executing real workflows, and doing it in a way teams
+                can trust.
               </p>
-              <ol className="relative border-l border-neutral-800 pl-6 space-y-7">
-                {TIMELINE.map((item) => (
-                  <li key={item.year} className="relative">
-                    <span
-                      aria-hidden
-                      className="absolute -left-[29px] top-1.5 w-2.5 h-2.5 rounded-full bg-neutral-700 ring-4 ring-neutral-950"
+
+              {/* Signature row + LinkedIn link */}
+              <div className="mt-10 sm:mt-12 pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+                <p className="font-serif italic text-xl sm:text-2xl text-white tracking-tight">
+                  — Lethabo Scofield
+                </p>
+                <a
+                  href="https://www.linkedin.com/in/lethabo-scofield-17b37a257/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-2 text-[11px] font-mono uppercase tracking-[0.22em] text-white/55 hover:text-white transition-colors"
+                >
+                  Connect on LinkedIn
+                  <span className="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center group-hover:bg-white group-hover:border-white transition-colors">
+                    <ArrowUpRight
+                      aria-hidden="true"
+                      focusable="false"
+                      className="w-4 h-4 text-white group-hover:text-neutral-900 transition-colors"
+                      strokeWidth={1.75}
                     />
-                    <p className="font-serif text-2xl text-white tracking-tight leading-none mb-1">
-                      {item.year}
-                    </p>
-                    <p className="text-sm text-neutral-400 font-light leading-snug">
-                      {item.label}
-                    </p>
-                  </li>
-                ))}
-              </ol>
+                  </span>
+                </a>
+              </div>
             </motion.div>
           </div>
+
+          {/* Horizontal timeline strip */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="mt-16 sm:mt-24 pt-10 border-t border-white/10"
+          >
+            <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-white/40 mb-6">
+              Where we are
+            </p>
+            <ol className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12">
+              {TIMELINE.map((item, i) => (
+                <li key={item.year} className="relative pl-6 sm:pl-0 sm:pt-6 sm:border-t border-white/15">
+                  <span
+                    aria-hidden
+                    className="absolute left-0 top-1.5 sm:top-0 sm:left-0 sm:-translate-y-1/2 w-1.5 h-1.5 rounded-full bg-white/60"
+                  />
+                  <p className="font-serif text-2xl sm:text-3xl text-white tracking-tight leading-none mb-2">
+                    {item.year}
+                  </p>
+                  <p className="text-sm text-white/50 font-light leading-snug max-w-xs">
+                    {item.label}
+                  </p>
+                  <span className="absolute right-0 top-0 hidden sm:block text-[10px] font-mono uppercase tracking-[0.22em] text-white/30 pt-6">
+                    {String(i + 1).padStart(2, "0")} / 0{TIMELINE.length}
+                  </span>
+                </li>
+              ))}
+            </ol>
+          </motion.div>
         </div>
       </section>
 
