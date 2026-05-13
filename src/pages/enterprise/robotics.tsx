@@ -308,6 +308,28 @@ const Robotics: FC = () => {
               Talk to robotics team
             </Link>
           </motion.div>
+
+          {/* === Hero video card === */}
+          <motion.div
+            initial={{ opacity: 0, y: 60, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 1.2, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-12 sm:mt-16"
+          >
+            <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-neutral-200/80 shadow-2xl shadow-neutral-300/40">
+              <video
+                src="/videos/robotics-hero.mp4"
+                className="w-full aspect-video object-cover"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                poster="/images/robotics/humanoid-manipulation.png"
+              />
+              <div className="absolute inset-0 rounded-2xl sm:rounded-3xl pointer-events-none ring-1 ring-inset ring-black/5" />
+            </div>
+          </motion.div>
         </div>
       </section>
 
