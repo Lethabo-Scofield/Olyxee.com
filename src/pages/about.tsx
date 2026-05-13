@@ -99,7 +99,7 @@ const About: FC = () => {
 
       <main>
       {/* === HERO === */}
-      <section className="relative pt-28 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 bg-white">
+      <section className="relative pt-36 sm:pt-44 lg:pt-48 pb-16 sm:pb-20 px-4 sm:px-6 bg-white">
         <div className="relative max-w-6xl mx-auto">
           {/* Hero card: team image with just the headline overlaid */}
           <motion.div
