@@ -335,6 +335,20 @@ const Robotics: FC = () => {
             </motion.div>
           </div>
         </div>
+
+        {/* Video credit */}
+        <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-8 z-10">
+          <a
+            href="https://deepmind.google/discover/blog/gemini-robotics-brings-ai-into-the-physical-world/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-[0.22em] text-white/55 hover:text-white transition-colors bg-black/30 backdrop-blur-md px-2.5 py-1.5 rounded-full ring-1 ring-white/10"
+          >
+            <span>Video</span>
+            <span className="w-3 h-px bg-white/30" aria-hidden />
+            <span>Gemini Robotics</span>
+          </a>
+        </div>
       </section>
 
       {/* === STATEMENT === */}
