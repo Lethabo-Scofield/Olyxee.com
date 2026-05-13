@@ -348,6 +348,46 @@ const Robotics: FC = () => {
             </a>
           </div>
         </motion.div>
+
+        {/* === Field gallery strip === */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="relative max-w-[1500px] mx-auto mt-6 sm:mt-8"
+        >
+          <div className="flex items-center justify-between mb-3 sm:mb-4 px-1">
+            <p className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.28em] text-neutral-500">
+              From the field
+            </p>
+            <p className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.28em] text-neutral-400">
+              06 / Frames
+            </p>
+          </div>
+          <div className="flex gap-2 sm:gap-3 overflow-x-auto pb-2 -mx-3 px-3 sm:mx-0 sm:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden snap-x snap-mandatory">
+            {[
+              { src: "/images/robotics/gallery/students-cars.png", alt: "Students with robotics cars" },
+              { src: "/images/robotics/gallery/manipulation-grid.png", alt: "Robot arm manipulation grid" },
+              { src: "/images/robotics/gallery/dual-arm-bag.png", alt: "Dual-arm robot grasping" },
+              { src: "/images/robotics/gallery/stool-prompt.png", alt: "Robot building stool from prompt" },
+              { src: "/images/robotics/gallery/engineer-build.png", alt: "Engineer assembling robot" },
+              { src: "/images/robotics/gallery/students-lego.png", alt: "Students building robotics kits" },
+            ].map((img) => (
+              <div
+                key={img.src}
+                className="relative shrink-0 snap-start w-[180px] sm:w-[220px] lg:w-[260px] aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden ring-1 ring-neutral-900/10 bg-neutral-100"
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  sizes="(max-width: 640px) 180px, (max-width: 1024px) 220px, 260px"
+                  className="object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </section>
 
       {/* === STATEMENT === */}
