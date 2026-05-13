@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
@@ -66,9 +66,31 @@ const APPROACH = [
   },
 ];
 
-const TIMELINE = [
+const TIMELINE: { year: string; label: ReactNode }[] = [
   { year: "2025", label: "Olyxee founded in Johannesburg" },
-  { year: "2026", label: "First production deployments across logistics and finance" },
+  {
+    year: "2026",
+    label: (
+      <>
+        First production deployments across{" "}
+        <a
+          href="https://logistics.olyxee.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-white/80 underline decoration-white/25 underline-offset-4 hover:text-white hover:decoration-white/60 transition-colors"
+        >
+          logistics
+        </a>{" "}
+        and{" "}
+        <Link
+          href="/products/addup"
+          className="text-white/80 underline decoration-white/25 underline-offset-4 hover:text-white hover:decoration-white/60 transition-colors"
+        >
+          finance
+        </Link>
+      </>
+    ),
+  },
 ];
 
 const About: FC = () => {
