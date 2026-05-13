@@ -315,7 +315,7 @@ const ProductsPage: FC = () => {
             transition={{ duration: 0.8, delay: 0.05 }}
             className="font-serif text-5xl sm:text-7xl lg:text-[5.5rem] text-neutral-900 tracking-tight leading-[1.02]"
           >
-            Software that <em className="text-neutral-400 not-italic">finishes the work.</em>
+            Rethinking <em className="text-neutral-400 not-italic">Machine Intelligence.</em>
           </motion.h1>
         </div>
       </section>
