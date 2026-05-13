@@ -24,11 +24,37 @@ export default function HomePage() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Olyxee",
+    legalName: "Olyxee",
     url: "https://olyxee.com",
     logo: "https://olyxee.com/Logo/Olyxee_Logo.png",
+    image: "https://olyxee.com/og-image.jpg",
     description: "Olyxee builds the research and infrastructure that enables AI to operate reliably across any domain, tool, or environment.",
-    sameAs: ["https://www.linkedin.com/company/olyxeelab/"],
+    sameAs: [
+      "https://www.linkedin.com/company/olyxee/",
+      "https://twitter.com/olyxee",
+      "https://github.com/olyxee",
+      "https://www.youtube.com/@olyxee",
+    ],
     foundingDate: "2025",
+    founder: {
+      "@type": "Person",
+      name: "Lethabo Scofield",
+      url: "https://lethaboscofield.web.app/",
+    },
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Johannesburg",
+      addressCountry: "ZA",
+    },
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        contactType: "customer support",
+        email: "scofield@olyxee.com",
+        url: "https://olyxee.com/contact",
+        availableLanguage: ["English"],
+      },
+    ],
     knowsAbout: [
       "Artificial Intelligence",
       "AI Execution Systems",
@@ -43,27 +69,59 @@ export default function HomePage() {
     slogan: "Research and Infrastructure for artificial intelligence",
   };
 
-  const websiteJsonLd = {
+  const faqJsonLd = {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: "Olyxee",
-    url: "https://olyxee.com",
-    description: "Research and Infrastructure for artificial intelligence",
-    publisher: {
-      "@type": "Organization",
-      name: "Olyxee",
-      logo: {
-        "@type": "ImageObject",
-        url: "https://olyxee.com/Logo/Olyxee_Logo.png",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What is Olyxee?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Olyxee is an AI infrastructure company. We build the research and systems that let organizations put AI to work across their operations: reliably, transparently, and at scale.",
+        },
       },
-    },
+      {
+        "@type": "Question",
+        name: "What is Ordo?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Ordo is Olyxee's AI execution system. You describe a business goal in plain English and Ordo plans the steps, runs the work across your tools (Gmail, Stripe, QuickBooks, Salesforce, Notion, Slack and more), and shows you a full audit trail.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What is Addup?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Addup is Olyxee's reconciliation product for finance teams. It connects to your banks, payment processors, and ERP, then matches transactions and produces close-ready reports automatically.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Where is Olyxee based?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Olyxee is headquartered in Johannesburg, South Africa, and operates remotely with collaborators worldwide.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How can I get in touch with Olyxee?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "You can reach the team at scofield@olyxee.com, or use the contact page at https://olyxee.com/contact for sales, partnerships, press, careers, or general inquiries.",
+        },
+      },
+    ],
   };
+
 
   return (
     <div className="min-h-screen bg-white relative">
       <div className="grain" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <Header />
       <main>
         <HeroSection />

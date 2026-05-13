@@ -10,7 +10,7 @@ const footerData = {
       title: "Products",
       links: [
         { name: "Ordo", href: "/products/ordo" },
-        { name: "Addup", href: "/products/addup" },
+        { name: "Addup", href: "/products#addup" },
       ],
     },
     {

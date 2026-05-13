@@ -5,10 +5,11 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: '*',
-        allow: '/',
+        allow: ['/', '/api/og'],
         disallow: ['/api/', '/admin', '/admin/', '/verify', '/verify/'],
       },
     ],
     sitemap: 'https://olyxee.com/sitemap.xml',
+    host: 'https://olyxee.com',
   }
 }
