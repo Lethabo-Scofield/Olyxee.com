@@ -435,6 +435,10 @@ const ORDO_SLIDES = [
     ],
     ctaLabel: "Try Ordo",
     ctaHref: "https://ordo.olyxee.com",
+    images: {
+      a: { src: "/images/ordo/integrations.jpeg", alt: "Connects natural-language requests to your existing tools", w: 1200, h: 675 },
+      b: { src: "/images/ordo/tasks.png", alt: "Tracks every task with clear ownership and timestamps", w: 1200, h: 1200 },
+    },
   },
   {
     key: "addup",
@@ -448,6 +452,10 @@ const ORDO_SLIDES = [
     ],
     ctaLabel: "Try Addup",
     ctaHref: "https://addup.olyxee.com",
+    images: {
+      a: { src: "/images/addup/reconciliation.png", alt: "Reconciliation statement with AI suggestions and variance analysis", w: 1440, h: 900 },
+      b: { src: "/images/addup/integrations.png", alt: "Drag-and-drop connectors for PayPal, Chase, SAP and more", w: 1200, h: 1000 },
+    },
   },
 ] as const;
 
@@ -535,7 +543,11 @@ function OrdoSection() {
             </div>
           </div>
 
-          <div className="lg:col-span-7 relative">
+          <div
+            className="lg:col-span-7 relative"
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+          >
             <div className="relative aspect-[5/4] sm:aspect-[6/5] w-full">
               <motion.div
                 initial={{ opacity: 0, x: "-65%", y: -30, rotate: -14, scale: 0.92 }}
@@ -544,13 +556,23 @@ function OrdoSection() {
                 transition={{ duration: 1.05, ease: [0.16, 1, 0.3, 1] }}
                 className="absolute top-0 left-0 sm:left-2 w-[78%] sm:w-[70%] rounded-2xl overflow-hidden shadow-2xl shadow-neutral-300/50 border border-neutral-200/60 bg-white"
               >
-                <Image
-                  src="/images/ordo/integrations.jpeg"
-                  alt="Connects natural-language requests to your existing tools"
-                  width={1200}
-                  height={675}
-                  className="w-full h-auto"
-                />
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={slide.key + "-img-a"}
+                    initial={{ opacity: 0, scale: 1.04 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.98 }}
+                    transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    <Image
+                      src={slide.images.a.src}
+                      alt={slide.images.a.alt}
+                      width={slide.images.a.w}
+                      height={slide.images.a.h}
+                      className="w-full h-auto"
+                    />
+                  </motion.div>
+                </AnimatePresence>
               </motion.div>
 
               <motion.div
@@ -560,13 +582,23 @@ function OrdoSection() {
                 transition={{ duration: 1.05, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
                 className="absolute bottom-0 right-0 sm:right-2 w-[72%] sm:w-[62%] rounded-2xl overflow-hidden shadow-2xl shadow-neutral-300/50 border border-neutral-200/60 bg-white"
               >
-                <Image
-                  src="/images/ordo/tasks.png"
-                  alt="Tracks every task with clear ownership and timestamps"
-                  width={1200}
-                  height={1200}
-                  className="w-full h-auto"
-                />
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={slide.key + "-img-b"}
+                    initial={{ opacity: 0, scale: 1.04 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.98 }}
+                    transition={{ duration: 0.55, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    <Image
+                      src={slide.images.b.src}
+                      alt={slide.images.b.alt}
+                      width={slide.images.b.w}
+                      height={slide.images.b.h}
+                      className="w-full h-auto"
+                    />
+                  </motion.div>
+                </AnimatePresence>
               </motion.div>
 
               <motion.div
