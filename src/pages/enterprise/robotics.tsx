@@ -254,106 +254,99 @@ const Robotics: FC = () => {
       <div className="grain" />
       <Header />
 
-      {/* === HERO === */}
+      {/* === HERO (video as full background) === */}
       <section
         ref={heroRef}
         aria-label="Hero"
-        className="relative w-full px-4 sm:px-6 lg:px-8 pt-32 sm:pt-44 lg:pt-48 pb-16 sm:pb-24"
+        className="relative w-full min-h-[100svh] flex items-end overflow-hidden bg-neutral-950"
       >
-        <div className="max-w-7xl mx-auto">
-          <motion.p
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.28em] text-neutral-500 mb-6 sm:mb-8"
-          >
-            Olyxee Robotics
-          </motion.p>
+        {/* Video background */}
+        <video
+          src="/videos/robotics-hero.mp4"
+          className="absolute inset-0 w-full h-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          poster="/images/robotics/humanoid-manipulation.png"
+          aria-hidden
+        />
+        {/* Cinematic dark scrim so the heading reads */}
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 35%, rgba(0,0,0,0.55) 70%, rgba(0,0,0,0.85) 100%)",
+          }}
+        />
 
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.1 }}
-            className="font-serif text-neutral-900 leading-[1.02] tracking-tight text-[2.25rem] sm:text-6xl md:text-7xl lg:text-[6rem] max-w-5xl"
-          >
-            Robotics for the <em className="italic">physical world</em>.
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.3 }}
-            className="mt-6 sm:mt-10 text-base sm:text-xl lg:text-2xl text-neutral-600 font-light max-w-2xl leading-relaxed"
-          >
-            Embodied AI that perceives, reasons, and acts reliably in the real world.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.45 }}
-            className="mt-8 sm:mt-12 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3"
-          >
-            <Link
-              href="/contact?subject=Olyxee%20Robotics%20early%20access"
-              className="group inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide"
+        {/* Content */}
+        <div className="relative z-10 w-full px-4 sm:px-8 lg:px-12 pt-32 sm:pt-44 pb-16 sm:pb-24 lg:pb-28">
+          <div className="max-w-6xl mx-auto">
+            <motion.p
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.28em] text-white/65 mb-6 sm:mb-8"
             >
-              Join waitlist for early access
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden />
-            </Link>
-            <Link
-              href="/contact?subject=Olyxee%20Robotics%20partnership"
-              className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 text-neutral-900 bg-white border border-neutral-200 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide"
+              Olyxee Robotics
+            </motion.p>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.1 }}
+              className="font-serif text-white leading-[1.02] tracking-tight text-[2.25rem] sm:text-6xl md:text-7xl lg:text-[6rem]"
             >
-              Talk to robotics team
-            </Link>
-          </motion.div>
+              Robotics for the{" "}
+              <em className="italic text-white/65">physical world</em>.
+            </motion.h1>
 
-          {/* === LARGE hero video card === */}
-          <motion.figure
-            initial={{ opacity: 0, y: 60, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 1.2, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="relative mt-14 sm:mt-20"
-          >
-            <div className="relative rounded-2xl sm:rounded-[32px] overflow-hidden ring-1 ring-neutral-900/10 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.25)] bg-neutral-950 aspect-[4/5] sm:aspect-[16/10] lg:aspect-[21/9]">
-              <video
-                src="/videos/robotics-hero.mp4"
-                className="absolute inset-0 w-full h-full object-cover"
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="metadata"
-                poster="/images/robotics/humanoid-manipulation.png"
-                aria-hidden
-              />
-              {/* Soft bottom fade for credit legibility */}
-              <div
-                aria-hidden
-                className="absolute inset-x-0 bottom-0 h-32 pointer-events-none"
-                style={{
-                  background:
-                    "linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%)",
-                }}
-              />
-              {/* Inner highlight ring */}
-              <div className="absolute inset-0 rounded-2xl sm:rounded-[32px] pointer-events-none ring-1 ring-inset ring-white/5" />
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.3 }}
+              className="mt-6 sm:mt-10 text-base sm:text-xl lg:text-2xl text-white/75 font-light max-w-2xl leading-relaxed"
+            >
+              Embodied AI that perceives, reasons, and acts reliably in the real world.
+            </motion.p>
 
-              {/* Credit chip — bottom-right inside the card */}
-              <a
-                href="https://deepmind.google/discover/blog/gemini-robotics-brings-ai-into-the-physical-world/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-[0.22em] text-white/65 hover:text-white transition-colors bg-black/35 backdrop-blur-md px-2.5 py-1.5 rounded-full ring-1 ring-white/10"
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.45 }}
+              className="mt-8 sm:mt-12 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3"
+            >
+              <Link
+                href="/contact?subject=Olyxee%20Robotics%20early%20access"
+                className="group inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide"
               >
-                <span>Video</span>
-                <span className="w-3 h-px bg-white/30" aria-hidden />
-                <span>Gemini Robotics</span>
-              </a>
-            </div>
-          </motion.figure>
+                Join waitlist for early access
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden />
+              </Link>
+              <Link
+                href="/contact?subject=Olyxee%20Robotics%20partnership"
+                className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 text-white bg-white/10 backdrop-blur-md border border-white/20 rounded-full font-medium hover:bg-white/15 transition-all text-sm tracking-wide"
+              >
+                Talk to robotics team
+              </Link>
+            </motion.div>
+          </div>
         </div>
+
+        {/* Video credit */}
+        <a
+          href="https://deepmind.google/discover/blog/gemini-robotics-brings-ai-into-the-physical-world/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute bottom-4 right-4 sm:bottom-6 sm:right-8 z-10 inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-[0.22em] text-white/65 hover:text-white transition-colors bg-black/35 backdrop-blur-md px-2.5 py-1.5 rounded-full ring-1 ring-white/10"
+        >
+          <span>Video</span>
+          <span className="w-3 h-px bg-white/30" aria-hidden />
+          <span>Gemini Robotics</span>
+        </a>
       </section>
 
       {/* === STATEMENT === */}
