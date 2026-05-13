@@ -296,16 +296,25 @@ const ProductsPage: FC = () => {
         ]}
       />
       <div className="grain" />
-      <Header />
+      <Header theme="dark" />
 
-      {/* === HERO - clean, catchy === */}
-      <section className="relative pt-40 sm:pt-48 pb-20 sm:pb-28 px-4 sm:px-6 bg-white">
+      {/* === HERO - image background === */}
+      <section className="relative pt-40 sm:pt-48 pb-24 sm:pb-32 px-4 sm:px-6 overflow-hidden">
+        <Image
+          src="/images/products/hero-presentation.png"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
         <div className="relative z-10 max-w-5xl mx-auto text-center">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-[11px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-8"
+            className="text-[11px] font-mono uppercase tracking-[0.28em] text-white/70 mb-8"
           >
             Products
           </motion.p>
@@ -313,9 +322,9 @@ const ProductsPage: FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.05 }}
-            className="font-serif text-5xl sm:text-7xl lg:text-[5.5rem] text-neutral-900 tracking-tight leading-[1.02]"
+            className="font-serif text-5xl sm:text-7xl lg:text-[5.5rem] text-white tracking-tight leading-[1.02] drop-shadow-[0_2px_24px_rgba(0,0,0,0.45)]"
           >
-            Rethinking <em className="text-neutral-400 not-italic">Machine Intelligence.</em>
+            Rethinking <em className="text-white/60 not-italic">Machine Intelligence.</em>
           </motion.h1>
         </div>
       </section>
