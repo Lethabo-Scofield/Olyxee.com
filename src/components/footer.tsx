@@ -78,19 +78,19 @@ export default function Footer({ variant = "light" }: FooterProps) {
   const styles = isLight
     ? {
         wrapper: "bg-white text-neutral-900 border-t border-neutral-200",
-        columnTitle: "text-neutral-900",
-        link: "text-neutral-500 hover:text-neutral-900",
+        columnTitle: "text-neutral-500",
+        link: "text-neutral-900 hover:text-neutral-500",
         divider: "border-neutral-200",
         copyright: "text-neutral-500",
-        social: "text-neutral-500 hover:text-neutral-900",
+        social: "text-neutral-900 hover:text-neutral-500",
       }
     : {
         wrapper: "bg-neutral-950 text-white",
-        columnTitle: "text-white",
-        link: "text-white/55 hover:text-white",
+        columnTitle: "text-white/50",
+        link: "text-white hover:text-white/60",
         divider: "border-white/10",
         copyright: "text-white/55",
-        social: "text-white/55 hover:text-white",
+        social: "text-white hover:text-white/60",
       };
 
   return (
