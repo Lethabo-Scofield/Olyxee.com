@@ -259,86 +259,76 @@ const IndustryEngagement: FC = () => {
   const IndustryIcon = industry.icon;
 
   return (
-    <section id="engagement" className="pb-20 sm:pb-32 border-t border-neutral-200/70 pt-20 sm:pt-28">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+    <section id="engagement" className="py-24 sm:py-32 lg:py-40 border-t border-neutral-200/70 bg-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
+        {/* Header */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           custom={0}
           variants={fadeUp}
-          className="mb-10 sm:mb-14 max-w-2xl"
+          className="mb-16 sm:mb-20 max-w-3xl"
         >
-          <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
+          <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-neutral-500 mb-5">
             Engagement
           </p>
-          <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-neutral-900 leading-snug tracking-tight">
-            Three ways to start, all scoped to your business.
+          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 leading-[1.05] tracking-tight">
+            Three ways to start, scoped to your business.
           </h2>
-          <p className="mt-5 text-sm sm:text-base text-neutral-500 font-light leading-relaxed">
-            Each plan combines access to our products with a defined number of AI agents deployed inside your work environment. Pick the focus area for your business and we&apos;ll outline the right starting point and a quote.
+          <p className="mt-6 text-base sm:text-lg text-neutral-500 font-light leading-relaxed max-w-2xl">
+            Each plan combines access to our products with a defined number of AI agents deployed inside your work environment. Pick a focus area and we&apos;ll outline the right starting point.
           </p>
         </motion.div>
 
-        {/* Industry selector + offering panel */}
+        {/* Focus area selector — clean inline */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           custom={1}
           variants={fadeUp}
-          className="mb-10 sm:mb-14 rounded-2xl border border-neutral-200 bg-neutral-50/60 p-6 sm:p-8"
+          className="mb-12 sm:mb-16 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 pb-8 border-b border-neutral-200/70"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-6 lg:gap-10 items-start">
-            <div>
-              <label htmlFor="industry-select" className="block text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-3">
-                Your focus area
-              </label>
-              <div className="relative">
-                <div className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-lg bg-neutral-900 flex items-center justify-center pointer-events-none">
-                  <IndustryIcon aria-hidden="true" focusable="false" className="w-4 h-4 text-white" strokeWidth={1.75} />
-                </div>
-                <select
-                  id="industry-select"
-                  value={industryIdx}
-                  onChange={(e) => setIndustryIdx(Number(e.target.value))}
-                  className="w-full appearance-none bg-white border border-neutral-300 rounded-xl pl-16 pr-11 py-3.5 text-sm sm:text-[15px] font-medium text-neutral-900 cursor-pointer hover:border-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-900 focus:border-neutral-900 transition-colors"
-                >
-                  {DOMAINS.map((d, i) => (
-                    <option key={d.name} value={i}>
-                      {d.name}
-                    </option>
-                  ))}
-                </select>
-                <ChevronDown aria-hidden="true" focusable="false" className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-500 pointer-events-none" />
-              </div>
+          <label htmlFor="industry-select" className="text-[11px] font-medium uppercase tracking-[0.22em] text-neutral-500 shrink-0">
+            Focus area
+          </label>
+          <div className="relative w-full sm:max-w-xs">
+            <div className="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none">
+              <IndustryIcon aria-hidden="true" focusable="false" className="w-4 h-4 text-neutral-500" strokeWidth={1.75} />
             </div>
-
-            <div className="min-w-0">
-              <h3 className="font-serif text-xl sm:text-2xl text-neutral-900 tracking-tight mb-3">
-                {industry.name}
-              </h3>
-              <p className="text-sm sm:text-[15px] text-neutral-600 font-light leading-relaxed mb-5 max-w-2xl">
-                {industry.description}
-              </p>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
-                {industry.examples.map((ex) => (
-                  <li key={ex} className="flex items-start gap-2 text-[13px] sm:text-sm text-neutral-700 font-light leading-relaxed">
-                    <Check aria-hidden="true" focusable="false" className="w-3.5 h-3.5 text-neutral-900 mt-1 shrink-0" strokeWidth={2.25} />
-                    {ex}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <select
+              id="industry-select"
+              value={industryIdx}
+              onChange={(e) => setIndustryIdx(Number(e.target.value))}
+              className="w-full appearance-none bg-transparent border border-neutral-300 rounded-full pl-10 pr-10 py-2.5 text-sm font-medium text-neutral-900 cursor-pointer hover:border-neutral-900 focus:outline-none focus:ring-2 focus:ring-neutral-900/10 focus:border-neutral-900 transition-colors"
+            >
+              {DOMAINS.map((d, i) => (
+                <option key={d.name} value={i}>
+                  {d.name}
+                </option>
+              ))}
+            </select>
+            <ChevronDown aria-hidden="true" focusable="false" className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-500 pointer-events-none" />
           </div>
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.p
+              key={industry.name}
+              initial={{ opacity: 0, y: 4 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -4 }}
+              transition={{ duration: 0.2 }}
+              className="text-sm text-neutral-500 font-light leading-relaxed sm:flex-1"
+            >
+              {industry.description}
+            </motion.p>
+          </AnimatePresence>
         </motion.div>
 
-        <p className="lg:hidden mb-4 text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-400">
-          Swipe to compare plans →
-        </p>
-        <div className="-mx-4 sm:-mx-6 lg:mx-0 flex snap-x snap-mandatory overflow-x-auto scroll-smooth scrollbar-hide pl-4 pr-4 sm:pl-6 sm:pr-6 lg:p-0 gap-4 sm:gap-5 lg:grid lg:grid-cols-[1fr_1.35fr_1fr] lg:overflow-visible lg:items-start pb-2 lg:pb-0">
+        {/* Tier cards — clean uniform grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-neutral-200/70 rounded-3xl overflow-hidden border border-neutral-200/70">
           {ENGAGEMENT_TIERS.map((tier, idx) => {
-            const isDark = tier.highlight;
+            const isHighlight = tier.highlight;
             const subjectWithIndustry = `${tier.ctaSubject} - ${industry.name}`;
             const price = industry.pricing[idx];
             const timeline = industry.timeline[idx];
@@ -350,44 +340,26 @@ const IndustryEngagement: FC = () => {
                 viewport={{ once: true, amount: 0.2 }}
                 custom={idx}
                 variants={fadeUp}
-                className={`relative flex flex-col rounded-2xl border transition-colors w-[88%] sm:w-[60%] flex-shrink-0 snap-center lg:w-auto lg:flex-shrink lg:snap-align-none ${
-                  isDark
-                    ? "bg-neutral-950 text-white border-neutral-950 p-8 sm:p-10 lg:-mt-6 lg:-mb-6 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.45)]"
-                    : "bg-white text-neutral-900 border-neutral-200 hover:border-neutral-300 p-7 sm:p-8"
-                }`}
+                className="relative flex flex-col bg-white p-8 sm:p-10"
               >
-                {isDark && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-neutral-950 text-[10px] font-mono uppercase tracking-[0.22em] shadow-sm ring-1 ring-neutral-900/10">
-                      <span className="relative flex h-1.5 w-1.5">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
-                      </span>
-                      Most chosen
+                {/* Header row: name + optional badge */}
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="font-serif text-2xl sm:text-[1.75rem] tracking-tight text-neutral-900 leading-tight">
+                    {tier.name}
+                  </h3>
+                  {isHighlight && (
+                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full bg-neutral-900 text-white text-[10px] font-medium uppercase tracking-[0.18em]">
+                      Popular
                     </span>
-                  </div>
-                )}
+                  )}
+                </div>
 
-                {/* Tier name + tagline */}
-                <h3
-                  className={`font-serif tracking-tight leading-tight mb-2 ${
-                    isDark
-                      ? "text-white text-[1.75rem] sm:text-[2rem]"
-                      : "text-neutral-900 text-[1.5rem] sm:text-[1.75rem]"
-                  }`}
-                >
-                  {tier.name}
-                </h3>
-                <p
-                  className={`text-[13px] sm:text-sm font-light leading-relaxed mb-7 ${
-                    isDark ? "text-neutral-400" : "text-neutral-500"
-                  }`}
-                >
+                <p className="text-sm text-neutral-500 font-light leading-relaxed mb-8 min-h-[2.5rem]">
                   {tier.description}
                 </p>
 
-                {/* Price - hero metric (changes with industry) */}
-                <div className="mb-2" aria-live="polite" aria-atomic="true">
+                {/* Price */}
+                <div aria-live="polite" aria-atomic="true">
                   <AnimatePresence mode="wait" initial={false}>
                     <motion.p
                       key={`${industry.name}-${idx}-price`}
@@ -395,32 +367,22 @@ const IndustryEngagement: FC = () => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -4 }}
                       transition={{ duration: 0.25 }}
-                      className={`font-serif tracking-tight leading-none ${
-                        isDark
-                          ? "text-white text-[2rem] sm:text-[2.25rem]"
-                          : "text-neutral-900 text-[1.75rem] sm:text-[2rem]"
-                      }`}
+                      className="font-serif text-3xl sm:text-4xl tracking-tight text-neutral-900 leading-none"
                     >
                       {price}
                     </motion.p>
                   </AnimatePresence>
                 </div>
-
-                {/* Meta: timeline · agents */}
-                <p
-                  className={`mb-7 text-[12px] font-mono uppercase tracking-[0.18em] ${
-                    isDark ? "text-neutral-400" : "text-neutral-500"
-                  }`}
-                >
+                <p className="mt-3 mb-8 text-xs text-neutral-500 font-light">
                   {timeline} · {tier.agents}
                 </p>
 
                 <a
                   href={`mailto:scofield@olyxee.com?subject=${encodeURIComponent(subjectWithIndustry)}`}
-                  className={`group inline-flex w-full items-center justify-center gap-2 py-3 rounded-md text-sm font-medium tracking-wide transition-colors ${
-                    isDark
-                      ? "bg-white text-neutral-950 hover:bg-neutral-100"
-                      : "bg-neutral-900 text-white hover:bg-black"
+                  className={`group inline-flex w-full items-center justify-center gap-2 py-3 rounded-full text-sm font-medium tracking-wide transition-colors ${
+                    isHighlight
+                      ? "bg-neutral-900 text-white hover:bg-black"
+                      : "bg-white text-neutral-900 border border-neutral-300 hover:border-neutral-900"
                   }`}
                 >
                   {tier.ctaLabel}
@@ -428,44 +390,23 @@ const IndustryEngagement: FC = () => {
                 </a>
 
                 {/* Includes */}
-                <p
-                  className={`mt-8 mb-3 text-[10px] font-mono uppercase tracking-[0.28em] ${
-                    isDark ? "text-neutral-500" : "text-neutral-400"
-                  }`}
-                >
-                  Includes
-                </p>
-                <ul className="space-y-2.5">
-                  <li
-                    className={`flex items-start gap-2.5 text-[13px] sm:text-sm font-light leading-snug ${
-                      isDark ? "text-neutral-200" : "text-neutral-800"
-                    }`}
-                  >
-                    <Check
-                      aria-hidden="true"
-                      focusable="false"
-                      className={`w-3.5 h-3.5 mt-1 shrink-0 ${isDark ? "text-emerald-400" : "text-neutral-900"}`}
-                      strokeWidth={2.5}
-                    />
-                    {tier.access}
-                  </li>
-                  {tier.features.map((feature) => (
-                    <li
-                      key={feature}
-                      className={`flex items-start gap-2.5 text-[13px] sm:text-sm font-light leading-snug ${
-                        isDark ? "text-neutral-300" : "text-neutral-700"
-                      }`}
-                    >
-                      <Check
-                        aria-hidden="true"
-                        focusable="false"
-                        className={`w-3.5 h-3.5 mt-1 shrink-0 ${isDark ? "text-emerald-400/80" : "text-neutral-400"}`}
-                        strokeWidth={2.25}
-                      />
-                      {feature}
+                <div className="mt-10 pt-8 border-t border-neutral-200/70">
+                  <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.22em] text-neutral-500">
+                    Includes
+                  </p>
+                  <ul className="space-y-3">
+                    <li className="flex items-start gap-3 text-sm text-neutral-800 font-light leading-relaxed">
+                      <Check aria-hidden="true" focusable="false" className="w-4 h-4 text-neutral-900 mt-0.5 shrink-0" strokeWidth={2} />
+                      {tier.access}
                     </li>
-                  ))}
-                </ul>
+                    {tier.features.map((feature) => (
+                      <li key={feature} className="flex items-start gap-3 text-sm text-neutral-700 font-light leading-relaxed">
+                        <Check aria-hidden="true" focusable="false" className="w-4 h-4 text-neutral-400 mt-0.5 shrink-0" strokeWidth={2} />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </motion.div>
             );
           })}
