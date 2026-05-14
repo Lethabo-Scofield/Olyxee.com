@@ -1,70 +1,50 @@
 import { FC } from "react";
-import SEO from "../components/SEO";
-import Header from "../components/header";
-import Footer from "../components/footer";
-import { motion } from "framer-motion";
+import LegalLayout, { LegalSection } from "../components/LegalLayout";
 
-const sections = [
+const sections: LegalSection[] = [
   {
-    title: "1. What are cookies?",
-    body: "Cookies are small text files placed on your device when you visit a website. They are widely used to make sites work, or to work more efficiently, as well as to provide reporting information.",
+    title: "1. What Are Cookies",
+    content: "Cookies are small text files placed on your device when you visit a website. They are widely used to make websites work, work more efficiently, and provide reporting information to site owners. Similar technologies, including pixels and local storage, are also covered by this policy."
   },
   {
-    title: "2. How we use cookies",
-    body: "Olyxee uses cookies to keep you signed in, remember preferences, measure aggregate usage, and improve product performance. We do not sell your personal information.",
+    title: "2. How We Use Cookies",
+    content: "Olyxee uses cookies to:\n\n• Keep you signed in to your account\n• Remember your preferences and settings\n• Measure aggregate usage to improve product performance\n• Detect, prevent, and investigate fraudulent or abusive activity\n\nWe do not sell your personal information, and we do not use advertising cookies."
   },
   {
     title: "3. Categories",
-    body: "Strictly necessary cookies are required for core site functionality. Analytics cookies help us understand how our site is used in aggregate. Preference cookies remember choices you make. We do not use advertising cookies.",
+    content: "• Strictly necessary, required for core functionality such as authentication and security. These cannot be disabled.\n• Preference, remember choices you make to personalize your experience.\n• Analytics, help us understand how our site and product are used in aggregate.\n\nWe do not use marketing or advertising cookies."
   },
   {
-    title: "4. Managing cookies",
-    body: "You can control cookies through your browser settings. Disabling certain cookies may impact functionality of the site or product.",
+    title: "4. Third-Party Cookies",
+    content: "Some cookies may be set by third-party services we use to operate our site, such as analytics or content delivery. These providers are bound by contractual obligations consistent with our privacy commitments."
   },
   {
-    title: "5. Updates",
-    body: "We may update this policy as our services evolve. Material changes will be reflected by the updated date below.",
+    title: "5. Managing Cookies",
+    content: "You can control cookies through your browser settings, including blocking or deleting cookies. Disabling certain cookies may impact functionality of the site or product. Most browsers also offer a \"Do Not Track\" signal, which we honor where technically feasible."
   },
   {
-    title: "6. Contact",
-    body: "For questions about this policy, contact privacy@olyxee.com.",
+    title: "6. Updates to This Policy",
+    content: "We may update this policy as our services evolve. Material changes will be reflected by an updated effective date and, where required, additional notice."
+  },
+  {
+    title: "7. Contact",
+    content: "For questions about this policy, contact privacy@olyxee.com."
   },
 ];
 
-const CookiePolicy: FC = () => {
-  return (
-    <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO title="Cookie Policy" description="How Olyxee uses cookies and similar technologies." path="/cookie-policy" />
-      <div className="grain" />
-      <Header />
-
-      <section className="pt-32 sm:pt-44 pb-12 px-4 sm:px-6">
-        <div className="max-w-3xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="flex items-center gap-2 mb-8">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-            <span className="text-sm font-medium text-neutral-400 uppercase tracking-widest">Cookie Policy</span>
-          </motion.div>
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="font-serif text-4xl sm:text-5xl tracking-tight leading-[1.08] mb-4">
-            Cookie Policy
-          </motion.h1>
-          <p className="text-neutral-400 text-sm">Last updated: May 2026</p>
-        </div>
-      </section>
-
-      <section className="pb-32 px-4 sm:px-6">
-        <div className="max-w-3xl mx-auto space-y-10">
-          {sections.map((s) => (
-            <div key={s.title}>
-              <h2 className="text-base font-semibold text-neutral-900 mb-3">{s.title}</h2>
-              <p className="text-[15px] text-neutral-500 leading-relaxed font-light">{s.body}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <Footer />
-    </div>
-  );
-};
+const CookiePolicy: FC = () => (
+  <LegalLayout
+    documentTitle="Cookie Policy"
+    documentNumber="OLX-LGL-003"
+    version="1.3"
+    effectiveDate="May 2026"
+    description="How Olyxee uses cookies and similar technologies."
+    path="/cookie-policy"
+    intro="This policy explains how Olyxee uses cookies and similar technologies on our websites and in our products."
+    sections={sections}
+    downloadFilename="Olyxee_Cookie_Policy.txt"
+    contactEmail="privacy@olyxee.com"
+  />
+);
 
 export default CookiePolicy;

@@ -1,12 +1,7 @@
-import { FC, useRef } from "react";
-import SEO from "../components/SEO";
-import Header from "../components/header";
-import Footer from "../components/footer";
-import Image from "next/image";
-import { motion } from "framer-motion";
-import { Download } from "lucide-react";
+import { FC } from "react";
+import LegalLayout, { LegalSection } from "../components/LegalLayout";
 
-const sections = [
+const sections: LegalSection[] = [
   {
     title: "1. Acceptance of Terms",
     content: "By accessing or using any of Olyxee's services, websites, APIs, SDKs, or related products (collectively, \"Services\"), you agree to be bound by these Terms of Use. If you do not agree to these terms, you may not access or use our Services.\n\nThese terms constitute a legally binding agreement between you (or the entity you represent) and Olyxee."
@@ -57,90 +52,23 @@ const sections = [
   },
   {
     title: "13. Contact",
-    content: "For questions about these Terms of Use, contact us at:\n\nscofield@olyxee.com"
+    content: "For questions about these Terms of Service, contact us at legal@olyxee.com."
   },
 ];
 
-const Terms: FC = () => {
-  const contentRef = useRef<HTMLDivElement>(null);
-
-  const handleDownload = () => {
-    let text = "OLYXEE | TERMS OF USE\nLast updated: May 2026\n\n";
-    sections.forEach((s) => {
-      text += `${s.title}\n\n${s.content}\n\n`;
-    });
-    const blob = new Blob([text], { type: "text/plain" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "Olyxee_Terms_of_Use.txt";
-    a.click();
-    URL.revokeObjectURL(url);
-  };
-
-  return (
-    <div className="min-h-screen bg-[#fafafa] text-neutral-900 relative">
-      <SEO title="Terms of Use" description="Olyxee's terms of use governing access to our platform and services." path="/terms" />
-      <div className="grain" />
-      <Header />
-      <section className="pt-36 sm:pt-44 pb-28 sm:pb-36 px-6 sm:px-8">
-        <div className="max-w-3xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-            className="mb-14"
-          >
-            <div className="flex items-center gap-3 mb-10">
-              <Image src="/Logo/Olyxee_trans.png" alt="Olyxee" width={32} height={32} />
-              <span className="text-sm font-medium text-neutral-400 uppercase tracking-widest">Legal</span>
-            </div>
-            <h1 className="font-serif text-4xl sm:text-5xl text-neutral-900 tracking-tight leading-[1.08] mb-3">
-              Terms of Use
-            </h1>
-            <div className="flex flex-col items-start sm:flex-row sm:items-center justify-between gap-3">
-              <p className="text-neutral-400 text-sm">Last updated: May 2026</p>
-              <button
-                onClick={handleDownload}
-                className="inline-flex items-center gap-2 px-4 py-2 text-sm text-neutral-500 hover:text-neutral-900 border border-neutral-200 rounded-full hover:bg-neutral-50 transition-all"
-              >
-                <Download className="w-3.5 h-3.5" />
-                Download
-              </button>
-            </div>
-          </motion.div>
-
-          <motion.div
-            ref={contentRef}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
-            className="space-y-10"
-          >
-            {sections.map((section) => (
-              <div key={section.title} className="group">
-                <h2 className="text-base font-semibold text-neutral-900 mb-3">{section.title}</h2>
-                <p className="text-[15px] text-neutral-500 leading-relaxed font-light whitespace-pre-line">{section.content}</p>
-              </div>
-            ))}
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="mt-16 pt-8 border-t border-neutral-200"
-          >
-            <div className="flex items-center gap-3">
-              <Image src="/Logo/Olyxee_trans.png" alt="Olyxee" width={24} height={24} />
-              <span className="text-sm text-neutral-400">© {new Date().getFullYear()} Olyxee. All rights reserved.</span>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-      <Footer />
-    </div>
-  );
-};
+const Terms: FC = () => (
+  <LegalLayout
+    documentTitle="Terms of Service"
+    documentNumber="OLX-LGL-002"
+    version="2.4"
+    effectiveDate="May 2026"
+    description="Olyxee's Terms of Service governing access to our platform and services."
+    path="/terms"
+    intro="These Terms of Service govern your access to and use of Olyxee's websites, products, APIs, and services. Please read them carefully."
+    sections={sections}
+    downloadFilename="Olyxee_Terms_of_Service.txt"
+    contactEmail="legal@olyxee.com"
+  />
+);
 
 export default Terms;

@@ -1,70 +1,66 @@
 import { FC } from "react";
-import SEO from "../components/SEO";
-import Header from "../components/header";
-import Footer from "../components/footer";
-import { motion } from "framer-motion";
-import { ShieldCheck, Lock, Eye, KeyRound, Server, FileWarning } from "lucide-react";
+import LegalLayout, { LegalSection } from "../components/LegalLayout";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (i: number) => ({
-    opacity: 1, y: 0,
-    transition: { duration: 0.6, delay: i * 0.08, ease: [0.25, 0.46, 0.45, 0.94] },
-  }),
-};
-
-const pillars = [
-  { icon: ShieldCheck, title: "Defense in depth", description: "Multiple layers of protection across infrastructure, application, and data planes." },
-  { icon: Lock, title: "Encryption everywhere", description: "TLS 1.3 in transit and AES-256 at rest, with customer-managed key options." },
-  { icon: KeyRound, title: "Identity & access", description: "SSO, SCIM, RBAC, and short-lived credentials by default for every workload." },
-  { icon: Eye, title: "Continuous monitoring", description: "24/7 detection across logs, network, and runtime, with on-call response." },
-  { icon: Server, title: "Secure infrastructure", description: "Isolated workloads, hardened images, automated patching, and least-privilege networking." },
-  { icon: FileWarning, title: "Responsible disclosure", description: "We work with security researchers. Report issues to security@olyxee.com." },
+const sections: LegalSection[] = [
+  {
+    title: "1. Our Security Posture",
+    content: "Security is a first-class primitive at Olyxee. Our program covers infrastructure, application, data, and the AI lifecycle itself. We design defensively, default to least privilege, and assume that any layer can fail."
+  },
+  {
+    title: "2. Defense in Depth",
+    content: "We operate multiple, independent layers of protection across our infrastructure, application, and data planes. No single control is relied upon for the security of customer data, and controls are continuously tested through automated assessments and red-team exercises."
+  },
+  {
+    title: "3. Encryption",
+    content: "All customer data is encrypted in transit using TLS 1.2 or higher (TLS 1.3 preferred) and at rest using AES-256. Cryptographic keys are managed through hardened key management systems with strict access policies. Customer-managed keys (CMK) are available for enterprise deployments."
+  },
+  {
+    title: "4. Identity and Access",
+    content: "Access to production systems is governed by strong identity controls:\n\n• Single Sign-On (SSO) and SCIM provisioning\n• Role-Based Access Control (RBAC) with least-privilege defaults\n• Mandatory hardware-backed multi-factor authentication for personnel\n• Short-lived credentials and just-in-time access for sensitive operations\n• Comprehensive audit logging of all administrative actions"
+  },
+  {
+    title: "5. Infrastructure Security",
+    content: "Workloads run on hardened, isolated infrastructure with automated patching, vulnerability scanning, and immutable images. Network segmentation, private connectivity, and least-privilege firewall policies are enforced across all environments."
+  },
+  {
+    title: "6. Monitoring and Response",
+    content: "Olyxee maintains continuous monitoring across logs, network telemetry, and runtime behavior. Security events are triaged 24/7 by an on-call response team. Incident response playbooks are tested regularly and customers are notified of incidents that materially affect their data, in line with contractual and legal obligations."
+  },
+  {
+    title: "7. Application Security",
+    content: "Our software development lifecycle includes mandatory peer review, automated static and dynamic analysis, dependency scanning, and pre-deployment security gates. High-risk changes receive additional architectural review."
+  },
+  {
+    title: "8. Data Handling",
+    content: "Customer data is segregated by tenant, encrypted, and accessed only as necessary to deliver the service. Production data is not used in development or test environments. Backups are encrypted and retention policies follow customer agreements and regulatory obligations."
+  },
+  {
+    title: "9. AI Lifecycle Security",
+    content: "Models, prompts, and verification artifacts are treated as sensitive assets. We protect against model exfiltration, prompt injection, and unauthorized model modification through input validation, output verification (Ordo), provenance tracking, and access controls scoped to model artifacts."
+  },
+  {
+    title: "10. Responsible Disclosure",
+    content: "We welcome reports from security researchers. If you believe you have found a vulnerability, please report it to security@olyxee.com. We commit to acknowledging reports promptly, working in good faith on remediation, and recognizing valid disclosures. Please act in good faith, avoid privacy violations, and do not disrupt our services."
+  },
+  {
+    title: "11. Contact",
+    content: "Security inquiries: security@olyxee.com\nVulnerability reports: security@olyxee.com (PGP key on request)"
+  },
 ];
 
-const Security: FC = () => {
-  return (
-    <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO title="Security" description="How Olyxee secures your data, models, and infrastructure." path="/security" />
-      <div className="grain" />
-      <Header />
-
-      <section className="pt-32 sm:pt-44 pb-20 px-4 sm:px-6">
-        <div className="max-w-5xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="flex items-center gap-2 mb-8">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-            <span className="text-sm font-medium text-neutral-400 uppercase tracking-widest">Security</span>
-          </motion.div>
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }} className="font-serif text-4xl sm:text-6xl tracking-tight leading-[1.05] mb-6">
-            Security is a <em className="text-blue-500">first-class</em> primitive
-          </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-xl text-neutral-500 leading-relaxed max-w-3xl font-light">
-            Olyxee is built for teams that cannot afford to compromise. Our security program covers
-            infrastructure, application, data, and the AI lifecycle itself.
-          </motion.p>
-        </div>
-      </section>
-
-      <section className="pb-32 px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-neutral-100 rounded-3xl overflow-hidden">
-          {pillars.map((p, idx) => {
-            const Icon = p.icon;
-            return (
-              <motion.div key={p.title} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={idx} variants={fadeUp} className="bg-white p-8 sm:p-10">
-                <div className="w-10 h-10 rounded-xl bg-neutral-100 flex items-center justify-center mb-5">
-                  <Icon className="w-5 h-5 text-neutral-600" />
-                </div>
-                <h3 className="text-lg font-semibold mb-2">{p.title}</h3>
-                <p className="text-sm text-neutral-500 leading-relaxed">{p.description}</p>
-              </motion.div>
-            );
-          })}
-        </div>
-      </section>
-
-      <Footer />
-    </div>
-  );
-};
+const Security: FC = () => (
+  <LegalLayout
+    documentTitle="Security"
+    documentNumber="OLX-SEC-001"
+    version="2.0"
+    effectiveDate="May 2026"
+    description="How Olyxee secures customer data, models, and infrastructure."
+    path="/security"
+    intro="An overview of Olyxee's technical and organizational security controls. This document is intended for security teams evaluating or operating Olyxee in production environments."
+    sections={sections}
+    downloadFilename="Olyxee_Security.txt"
+    contactEmail="security@olyxee.com"
+  />
+);
 
 export default Security;
