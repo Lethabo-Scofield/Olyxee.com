@@ -67,14 +67,35 @@ const EnterpriseAutomation: FC = () => {
         </div>
       </section>
 
-      <section className="py-24 sm:py-32 bg-neutral-950 text-white relative overflow-hidden">
-        <div className="absolute top-0 left-1/2 w-[600px] h-[600px] -translate-x-1/2 -translate-y-1/3 bg-orange-500/20 rounded-full blur-[120px]" />
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center relative">
-          <h2 className="font-serif text-3xl sm:text-5xl tracking-tight mb-6">Bring automation under control.</h2>
-          <p className="text-neutral-400 text-lg font-light mb-10">We work with enterprise teams to design, deploy, and verify agents on real workflows.</p>
-          <Link href="/contact" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-neutral-900 text-sm font-medium hover:bg-neutral-200 transition-colors">
-            Talk to our team <ArrowRight className="w-4 h-4" />
-          </Link>
+      <section className="relative py-20 sm:py-28 lg:py-32 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="relative rounded-3xl bg-neutral-100 border border-neutral-200/70 px-6 sm:px-12 lg:px-20 py-14 sm:py-20 lg:py-24 overflow-hidden"
+          >
+            <div aria-hidden="true" className="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-orange-100/60 blur-3xl" />
+            <div aria-hidden="true" className="absolute -bottom-32 -left-24 w-80 h-80 rounded-full bg-neutral-200/60 blur-3xl" />
+
+            <div className="relative text-center max-w-2xl mx-auto">
+              <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-5 leading-[1.05]">
+                Bring automation under control.
+              </h2>
+              <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-9 max-w-lg mx-auto">
+                We work with enterprise teams to design, deploy, and verify agents on real workflows.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <Link
+                  href="/contact"
+                  className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide shadow-lg shadow-neutral-900/10"
+                >
+                  Talk to our team <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
