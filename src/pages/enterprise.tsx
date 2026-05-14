@@ -656,36 +656,41 @@ const Enterprise: FC = () => {
       {/* === DESKTOP SCREENS COLLAGE (playful) === */}
       <DesktopCollage />
 
-      {/* === DARK CTA === */}
-      <section className="py-20 sm:py-32 bg-neutral-950 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      {/* === GET IN TOUCH CTA === */}
+      <section className="relative py-20 sm:py-28 lg:py-32 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
           <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            custom={0}
-            variants={fadeUp}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="relative rounded-3xl bg-neutral-100 border border-neutral-200/70 px-6 sm:px-12 lg:px-20 py-14 sm:py-20 lg:py-24 overflow-hidden"
           >
-            <p className="text-xs font-semibold text-neutral-500 uppercase tracking-[0.25em] mb-6">Get in touch</p>
-            <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.05] mb-6">
-              Talk to us about your workflows.
-            </h2>
-            <p className="text-base sm:text-lg text-neutral-400 leading-relaxed font-light max-w-2xl mx-auto mb-10">
-              Tell us where AI execution would have the highest impact in your business. We&apos;ll outline a pilot, the integration scope, and how success would be measured.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <a
-                href="mailto:scofield@olyxee.com?subject=Enterprise%20%E2%80%94%20Custom%20deployment%20inquiry"
-                className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide"
-              >
-                Contact enterprise <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-              </a>
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 text-white border border-white/20 rounded-full font-medium hover:bg-white/10 transition-all text-sm tracking-wide"
-              >
-                All contact options
-              </Link>
+            <div aria-hidden="true" className="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-blue-100/50 blur-3xl" />
+            <div aria-hidden="true" className="absolute -bottom-32 -left-24 w-80 h-80 rounded-full bg-neutral-200/60 blur-3xl" />
+
+            <div className="relative text-center max-w-2xl mx-auto">
+              <p className="text-[11px] font-medium text-neutral-500 uppercase tracking-[0.22em] mb-5">Get in touch</p>
+              <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-5 leading-[1.05]">
+                Talk to us about your workflows.
+              </h2>
+              <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-9 max-w-lg mx-auto">
+                Tell us where AI execution would have the highest impact in your business. We&apos;ll outline a pilot, the integration scope, and how success would be measured.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <a
+                  href="mailto:scofield@olyxee.com?subject=Enterprise%20%E2%80%94%20Custom%20deployment%20inquiry"
+                  className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide shadow-lg shadow-neutral-900/10"
+                >
+                  Contact enterprise <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                </a>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 text-neutral-900 bg-white border border-neutral-300 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide"
+                >
+                  All contact options
+                </Link>
+              </div>
             </div>
           </motion.div>
         </div>
