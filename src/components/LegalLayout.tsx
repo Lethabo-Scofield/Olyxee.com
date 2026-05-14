@@ -66,21 +66,170 @@ const LegalLayout: FC<LegalLayoutProps> = ({
     return () => window.removeEventListener("scroll", handler);
   }, [sections]);
 
-  const handleDownload = () => {
-    let text = `OLYXEE | ${documentTitle.toUpperCase()}\n`;
-    text += `Document: ${documentNumber}    Version: ${version}    Effective: ${effectiveDate}\n\n`;
-    if (intro) text += `${intro}\n\n`;
-    sections.forEach((s) => {
-      text += `${s.title}\n${"-".repeat(s.title.length)}\n${s.content}\n\n`;
+  const handleDownload = async () => {
+    const { jsPDF } = await import("jspdf");
+    const doc = new jsPDF({ unit: "pt", format: "a4" });
+
+    const pageW = doc.internal.pageSize.getWidth();
+    const pageH = doc.internal.pageSize.getHeight();
+    const marginX = 56;
+    const marginTop = 64;
+    const marginBottom = 64;
+    const contentW = pageW - marginX * 2;
+    let y = marginTop;
+    let pageNum = 1;
+
+    const drawWatermark = () => {
+      doc.saveGraphicsState();
+      // @ts-expect-error - jsPDF GState typing
+      doc.setGState(new doc.GState({ opacity: 0.04 }));
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(140);
+      doc.setTextColor(0, 0, 0);
+      doc.text("OLYXEE", pageW / 2, pageH / 2 + 30, {
+        align: "center",
+        angle: -28,
+      });
+      doc.restoreGraphicsState();
+    };
+
+    const drawPageChrome = () => {
+      drawWatermark();
+      // header rule
+      doc.setDrawColor(220);
+      doc.setLineWidth(0.5);
+      doc.line(marginX, 40, pageW - marginX, 40);
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(8);
+      doc.setTextColor(120);
+      doc.text("OLYXEE", marginX, 32);
+      doc.setFont("helvetica", "normal");
+      doc.text(documentTitle.toUpperCase(), pageW - marginX, 32, { align: "right" });
+      // footer
+      doc.line(marginX, pageH - 40, pageW - marginX, pageH - 40);
+      doc.setFontSize(8);
+      doc.setTextColor(140);
+      doc.text(
+        `${documentNumber} · v${version} · ${effectiveDate}`,
+        marginX,
+        pageH - 26
+      );
+      doc.text(`Page ${pageNum}`, pageW - marginX, pageH - 26, { align: "right" });
+    };
+
+    const newPage = () => {
+      doc.addPage();
+      pageNum += 1;
+      drawPageChrome();
+      y = marginTop;
+    };
+
+    const ensureSpace = (h: number) => {
+      if (y + h > pageH - marginBottom) newPage();
+    };
+
+    drawPageChrome();
+
+    // === Title block ===
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(9);
+    doc.setTextColor(120);
+    doc.text("LEGAL DOCUMENT", marginX, y);
+    y += 22;
+
+    doc.setFont("times", "bold");
+    doc.setFontSize(28);
+    doc.setTextColor(20);
+    doc.text(documentTitle, marginX, y);
+    y += 30;
+
+    if (intro) {
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(10.5);
+      doc.setTextColor(90);
+      const introLines = doc.splitTextToSize(intro, contentW);
+      doc.text(introLines, marginX, y);
+      y += introLines.length * 14 + 10;
+    }
+
+    // metadata strip
+    doc.setDrawColor(220);
+    doc.line(marginX, y, pageW - marginX, y);
+    y += 16;
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(8);
+    doc.setTextColor(140);
+    const colW = contentW / 3;
+    doc.text("DOCUMENT", marginX, y);
+    doc.text("VERSION", marginX + colW, y);
+    doc.text("EFFECTIVE", marginX + colW * 2, y);
+    y += 12;
+    doc.setFont("courier", "normal");
+    doc.setFontSize(10);
+    doc.setTextColor(40);
+    doc.text(documentNumber, marginX, y);
+    doc.text(version, marginX + colW, y);
+    doc.text(effectiveDate, marginX + colW * 2, y);
+    y += 14;
+    doc.setDrawColor(220);
+    doc.line(marginX, y, pageW - marginX, y);
+    y += 26;
+
+    // === Sections ===
+    sections.forEach((s, idx) => {
+      const sectionNum = `§${String(idx + 1).padStart(2, "0")}`;
+      const cleanTitle = s.title.replace(/^\d+\.\s*/, "");
+
+      ensureSpace(60);
+      doc.setFont("courier", "normal");
+      doc.setFontSize(9);
+      doc.setTextColor(150);
+      doc.text(sectionNum, marginX, y);
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(13);
+      doc.setTextColor(20);
+      const titleLines = doc.splitTextToSize(cleanTitle, contentW - 36);
+      doc.text(titleLines, marginX + 36, y);
+      y += titleLines.length * 16 + 8;
+
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(10.5);
+      doc.setTextColor(70);
+      const paragraphs = s.content.split("\n");
+      paragraphs.forEach((para) => {
+        if (para.trim() === "") {
+          y += 8;
+          return;
+        }
+        const lines = doc.splitTextToSize(para, contentW - 36);
+        lines.forEach((line: string) => {
+          ensureSpace(16);
+          doc.text(line, marginX + 36, y);
+          y += 14;
+        });
+      });
+      y += 18;
     });
-    text += `\n© ${new Date().getFullYear()} Olyxee, Inc. All rights reserved.\n`;
-    const blob = new Blob([text], { type: "text/plain" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = downloadFilename || `Olyxee_${documentTitle.replace(/\s+/g, "_")}.txt`;
-    a.click();
-    URL.revokeObjectURL(url);
+
+    // === Closing block ===
+    ensureSpace(80);
+    doc.setDrawColor(220);
+    doc.line(marginX, y, pageW - marginX, y);
+    y += 18;
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(10);
+    doc.setTextColor(20);
+    doc.text("Olyxee, Inc.", marginX, y);
+    y += 14;
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(9);
+    doc.setTextColor(120);
+    doc.text(`© ${new Date().getFullYear()} Olyxee, Inc. All rights reserved.`, marginX, y);
+    y += 12;
+    doc.text(`Questions: ${contactEmail}`, marginX, y);
+
+    const baseName = (downloadFilename || `Olyxee_${documentTitle.replace(/\s+/g, "_")}`).replace(/\.(txt|pdf)$/i, "");
+    doc.save(`${baseName}.pdf`);
   };
 
   return (
