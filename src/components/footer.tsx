@@ -11,13 +11,32 @@ const footerData = {
       links: [
         { name: "Ordo", href: "/products/ordo" },
         { name: "Addup", href: "/products#addup" },
+        { name: "Olyxee Document Integrity", href: "/products#document-integrity" },
       ],
     },
     {
-      title: "Enterprise",
+      title: "Solutions",
       links: [
-        { name: "Logistics", href: "https://logistics.olyxee.com/login", external: true },
-        { name: "Robotics", href: "/enterprise/robotics" },
+        { name: "Logistics", href: "/solutions/logistics" },
+        { name: "Enterprise Automation", href: "/solutions/enterprise-automation" },
+      ],
+    },
+    {
+      title: "Research",
+      links: [
+        { name: "Olyxee Research", href: "/research" },
+        { name: "Papers", href: "/research#papers" },
+        { name: "Technical Reports", href: "/research#technical-reports" },
+      ],
+    },
+    {
+      title: "Resources",
+      links: [
+        { name: "Documentation", href: "/docs" },
+        { name: "API Reference", href: "/docs#api-reference" },
+        { name: "Blog", href: "/blog" },
+        { name: "Case Studies", href: "/case-studies" },
+        { name: "Status", href: "/status" },
       ],
     },
     {
@@ -25,14 +44,18 @@ const footerData = {
       links: [
         { name: "About", href: "/about" },
         { name: "Careers", href: "/careers" },
+        { name: "Stories", href: "/stories" },
         { name: "Contact", href: "/contact" },
       ],
     },
     {
-      title: "Resources",
+      title: "Terms & Policies",
       links: [
-        { name: "Documentation", href: "/docs" },
-        { name: "Brand", href: "/brand" },
+        { name: "Privacy Policy", href: "/privacy" },
+        { name: "Terms of Service", href: "/terms" },
+        { name: "Security", href: "/security" },
+        { name: "Compliance", href: "/compliance" },
+        { name: "Cookie Policy", href: "/cookie-policy" },
       ],
     },
   ],
@@ -75,7 +98,7 @@ export default function Footer({ variant = "light" }: FooterProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
         {/* === Link columns === */}
         <div className="pt-16 sm:pt-20 pb-12 sm:pb-16">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 sm:gap-x-8 gap-y-12">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-6 sm:gap-x-8 gap-y-12">
             {footerData.columns.map((column) => (
               <div key={column.title}>
                 <h3 className={`text-sm font-medium ${styles.columnTitle} mb-5`}>
