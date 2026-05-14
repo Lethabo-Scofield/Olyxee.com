@@ -11,7 +11,7 @@ const footerData = {
       links: [
         { name: "Ordo", href: "/products/ordo" },
         { name: "Addup", href: "/products#addup" },
-        { name: "Olyxee Document Integrity", href: "/products#document-integrity" },
+        { name: "Olyxee Document Integrity", href: "/document-integrity" },
       ],
     },
     {
@@ -34,9 +34,6 @@ const footerData = {
       links: [
         { name: "Documentation", href: "/docs" },
         { name: "API Reference", href: "/docs#api-reference" },
-        { name: "Blog", href: "/blog" },
-        { name: "Case Studies", href: "/case-studies" },
-        { name: "Status", href: "/status" },
       ],
     },
     {
