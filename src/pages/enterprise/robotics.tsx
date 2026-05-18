@@ -404,7 +404,7 @@ const Robotics: FC = () => {
             Execution infrastructure for the enterprise
           </p>
           <h2 className="font-serif text-[1.75rem] sm:text-5xl lg:text-[4.25rem] leading-[1.1] sm:leading-[1.05] tracking-tight text-neutral-900">
-            Olyxee develops intelligent execution systems that connect AI, enterprise workflows, hardware, and human decision-making into reliable operational environments.
+            Olyxee develops <em className="not-italic text-blue-500">intelligent execution systems</em> that connect <span className="text-neutral-500">AI, enterprise workflows, hardware, and human decision-making</span> into <em className="not-italic text-orange-400">reliable operational environments</em>.
           </h2>
         </motion.div>
       </section>
