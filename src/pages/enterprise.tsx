@@ -16,100 +16,241 @@ const fadeUp = {
   }),
 };
 
-const ENGAGEMENT_TIERS = [
+type Phase = { window: string; title: string; bullets: string[] };
+type Outcome = {
+  id: string;
+  label: string;
+  short: string;
+  metric: { headline: string; before: string; after: string };
+  phases: [Phase, Phase, Phase];
+  requires: string[];
+  systems: string[];
+};
+
+const OUTCOMES: Outcome[] = [
   {
-    name: "Pilot",
-    description: "One workflow, live on real data, in weeks.",
-    agents: "Up to 3 agents",
-    access: "Ordo or Addup (choose one)",
-    features: [
-      "Discovery workshop",
-      "Pilot on real data",
-      "Defined acceptance criteria",
+    id: "close-books",
+    label: "Close the books faster",
+    short: "Finance",
+    metric: {
+      headline: "Cut month-end close from 12 days to 3.",
+      before: "12 days",
+      after: "3 days",
+    },
+    phases: [
+      {
+        window: "Days 0–30",
+        title: "Reconciliation agent, live",
+        bullets: [
+          "Read-only ledger sync with QBO or NetSuite",
+          "Auto-match 80%+ of transactions on day one",
+          "Anomalies routed to a Slack channel your team owns",
+        ],
+      },
+      {
+        window: "Days 30–60",
+        title: "Approvals and exception flows",
+        bullets: [
+          "Human-in-the-loop approval queues",
+          "Decision rationale captured per item",
+          "Full audit trail wired to your warehouse",
+        ],
+      },
+      {
+        window: "Days 60–90",
+        title: "End-to-end close orchestration",
+        bullets: [
+          "Cross-entity consolidation",
+          "Auto-prepared close packet for review",
+          "Weekly variance reports to leadership",
+        ],
+      },
     ],
-    ctaLabel: "Start a pilot",
+    requires: [
+      "Read access to your accounting system",
+      "One finance lead as decision owner",
+      "Samples of your last three closes",
+    ],
+    systems: ["QuickBooks", "NetSuite", "Xero", "Snowflake", "Slack"],
+  },
+  {
+    id: "shipments",
+    label: "Track every shipment, every minute",
+    short: "Logistics",
+    metric: {
+      headline: "Catch 70% more shipment exceptions before they hit the customer.",
+      before: "Caught late",
+      after: "Caught early",
+    },
+    phases: [
+      {
+        window: "Days 0–30",
+        title: "Carrier and WMS ingest",
+        bullets: [
+          "Live tracking from your top five carriers",
+          "Status normalised across providers",
+          "Exception detection rules tuned to your lanes",
+        ],
+      },
+      {
+        window: "Days 30–60",
+        title: "Supplier coordination agent",
+        bullets: [
+          "Auto-pings on stalled shipments",
+          "Exceptions routed to the right ops owner",
+          "Daily exception digest, scoped per region",
+        ],
+      },
+      {
+        window: "Days 60–90",
+        title: "Predictive ETA and re-routing",
+        bullets: [
+          "ETA model trained on your lane history",
+          "Suggested re-routes for at-risk freight",
+          "Customer-facing status pages",
+        ],
+      },
+    ],
+    requires: [
+      "TMS or WMS API access",
+      "One ops lead as decision owner",
+      "12 months of historical shipment data",
+    ],
+    systems: ["Project44", "FourKites", "SAP TM", "Shopify", "Slack"],
+  },
+  {
+    id: "approvals",
+    label: "Replace manual approval chains",
+    short: "Operations",
+    metric: {
+      headline: "Drop median approval time from 4 days to 4 hours.",
+      before: "4 days",
+      after: "4 hours",
+    },
+    phases: [
+      {
+        window: "Days 0–30",
+        title: "Policy-aware approval agent",
+        bullets: [
+          "Codify your current policy as auditable rules",
+          "Agent drafts decisions with rationale",
+          "Edge cases routed to named humans",
+        ],
+      },
+      {
+        window: "Days 30–60",
+        title: "Multi-system orchestration",
+        bullets: [
+          "Wire into Workday, SAP, or Jira",
+          "Audit trail per approval, exportable",
+          "Slack and email surfaces for reviewers",
+        ],
+      },
+      {
+        window: "Days 60–90",
+        title: "Continuous policy tuning",
+        bullets: [
+          "Decision-quality dashboard",
+          "Policy-drift detection on real outcomes",
+          "Quarterly tuning loop owned by Olyxee",
+        ],
+      },
+    ],
+    requires: [
+      "Current approval policy docs",
+      "An operations workflow owner",
+      "Read access to source systems",
+    ],
+    systems: ["Workday", "SAP", "Jira", "ServiceNow", "Okta"],
+  },
+  {
+    id: "vendor",
+    label: "Replace a third-party AI vendor",
+    short: "Migration",
+    metric: {
+      headline: "Bring a workflow in-house with no functionality loss.",
+      before: "Vendor-owned",
+      after: "In-house",
+    },
+    phases: [
+      {
+        window: "Days 0–30",
+        title: "Parity audit",
+        bullets: [
+          "Map every input and output of the current vendor",
+          "Reproduce on Ordo against your live data",
+          "Side-by-side accuracy and latency comparison",
+        ],
+      },
+      {
+        window: "Days 30–60",
+        title: "Shadow deployment",
+        bullets: [
+          "Run Ordo in shadow mode in production",
+          "Track delta vs. vendor on every request",
+          "Hand-off plan with documented rollback",
+        ],
+      },
+      {
+        window: "Days 60–90",
+        title: "Cutover and ownership",
+        bullets: [
+          "Vendor cancellation handover",
+          "Internal runbooks and on-call rotation",
+          "Quarterly model refresh on your data",
+        ],
+      },
+    ],
+    requires: [
+      "Current vendor contract terms",
+      "An engineering point of contact",
+      "30 days of vendor input/output samples",
+    ],
+    systems: ["OpenAI", "Anthropic", "Cohere", "Custom RAG", "Your stack"],
+  },
+];
+
+type Scope = {
+  id: string;
+  label: string;
+  phaseCount: 1 | 3;
+  duration: string;
+  ctaSubject: string;
+  extras?: string[];
+  pricing: string;
+};
+
+const SCOPES: Scope[] = [
+  {
+    id: "pilot",
+    label: "Pilot",
+    phaseCount: 1,
+    duration: "30 days to first production run",
     ctaSubject: "Enterprise: Pilot inquiry",
-    highlight: false,
+    pricing: "Fixed-fee pilot",
   },
   {
-    name: "Custom Deployment",
-    description: "A tailored Ordo install across your tools and policies.",
-    agents: "Up to 15 agents",
-    access: "Ordo + Addup (full suite)",
-    features: [
-      "Everything in Pilot",
-      "Native API & ledger integrations",
-      "SSO, RBAC, customer-managed keys",
-      "Dedicated implementation support",
-    ],
-    ctaLabel: "Talk to us",
-    ctaSubject: "Enterprise: Custom deployment inquiry",
-    highlight: true,
+    id: "custom",
+    label: "Custom build",
+    phaseCount: 3,
+    duration: "90 days to full production",
+    ctaSubject: "Enterprise: Custom build inquiry",
+    extras: ["SSO + RBAC", "Customer-managed keys", "Dedicated implementation engineer"],
+    pricing: "Fixed-fee build + monthly platform",
   },
   {
-    name: "Enterprise",
-    description: "Custom, regulated, or multi-region operations.",
-    agents: "Unlimited agents",
-    access: "Ordo + Addup + early access to new products",
-    features: [
-      "Everything in Custom Deployment",
+    id: "embedded",
+    label: "Embedded team",
+    phaseCount: 3,
+    duration: "90-day build, then ongoing",
+    ctaSubject: "Enterprise: Embedded team inquiry",
+    extras: [
       "VPC or on-prem deployment",
-      "Custom SLAs & compliance reviews",
-      "Direct line to engineering",
+      "Dedicated solutions engineer",
+      "Custom SLA and compliance review",
+      "Direct line to founding engineering",
     ],
-    ctaLabel: "Talk to us",
-    ctaSubject: "Enterprise: Full custom inquiry",
-    highlight: false,
-  },
-];
-
-const DEPLOYMENT_STAGES = [
-  {
-    week: "Week 1–2",
-    title: "Discovery",
-    desc: "Map a high-impact workflow, define success metrics, and identify the systems and policies involved.",
-    deliverables: ["Workflow map", "Success metrics", "Systems audit"],
-  },
-  {
-    week: "Week 2–6",
-    title: "Pilot",
-    desc: "Stand up a scoped pilot with real data, real approvals, and a single measurable outcome.",
-    deliverables: ["Live pilot run", "Approval flows", "Acceptance criteria"],
-  },
-  {
-    week: "Week 4–12",
-    title: "Integration",
-    desc: "Wire into your tools and ledgers. Add SSO, RBAC, and the audit posture your environment requires.",
-    deliverables: ["Native API hooks", "SSO + RBAC", "Audit trail"],
-  },
-  {
-    week: "Ongoing",
-    title: "Production",
-    desc: "Operate, expand to adjacent workflows, and tune the system as your business evolves.",
-    deliverables: ["24/7 monitoring", "Workflow expansion", "Quarterly tuning"],
-  },
-];
-
-const DOMAINS = [
-  {
-    name: "AI Accounting",
-    pricing: ["Scoped quote", "Tailored quote", "Custom quote"],
-    timeline: ["4–6 weeks", "8–14 weeks", "12+ weeks"],
-  },
-  {
-    name: "AI Logistics",
-    pricing: ["Scoped quote", "Tailored quote", "Custom quote"],
-    timeline: ["5–7 weeks", "10–16 weeks", "16+ weeks"],
-  },
-  {
-    name: "Automation & Workflows",
-    pricing: ["Scoped quote", "Tailored quote", "Custom quote"],
-    timeline: ["4–6 weeks", "10–14 weeks", "14+ weeks"],
-  },
-  {
-    name: "Custom Agents",
-    pricing: ["Scoped quote", "Tailored quote", "Custom quote"],
-    timeline: ["6–8 weeks", "12–18 weeks", "18+ weeks"],
+    pricing: "Retainer + platform",
   },
 ];
 
@@ -219,9 +360,19 @@ const DesktopCollage: FC = () => {
   );
 };
 
-const IndustryEngagement: FC = () => {
-  const [industryIdx, setIndustryIdx] = useState(0);
-  const industry = DOMAINS[industryIdx];
+const BriefComposer: FC = () => {
+  const [outcomeIdx, setOutcomeIdx] = useState(0);
+  const [scopeIdx, setScopeIdx] = useState(1);
+  const outcome = OUTCOMES[outcomeIdx];
+  const scope = SCOPES[scopeIdx];
+  const visiblePhases = outcome.phases.slice(0, scope.phaseCount);
+  const briefKey = `${outcome.id}-${scope.id}`;
+  const subject = `${scope.ctaSubject} - ${outcome.label}`;
+  const todayLabel = new Date().toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
 
   return (
     <section
@@ -236,112 +387,272 @@ const IndustryEngagement: FC = () => {
           viewport={{ once: true, amount: 0.3 }}
           custom={0}
           variants={fadeUp}
-          className="mb-12 sm:mb-16 max-w-3xl"
+          className="mb-10 sm:mb-14 max-w-3xl"
         >
           <p className="text-[11px] font-mono uppercase tracking-[0.28em] text-neutral-400 mb-5">
-            Engagement
+            Live engagement brief
           </p>
           <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 leading-[1.05] tracking-tight">
-            Three ways in, scoped to your business.
+            Compose your engagement. We build the rest.
           </h2>
+          <p className="mt-6 text-base sm:text-lg text-neutral-500 font-light leading-relaxed max-w-2xl">
+            Pick the outcome you care about and the shape of the work. The brief below rewrites itself with the deliverables, the rhythm, and what we&apos;ll need from your team to make it real.
+          </p>
         </motion.div>
 
-        {/* Focus area pills */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          custom={1}
-          variants={fadeUp}
-          className="mb-10 sm:mb-12 flex flex-wrap gap-2"
-        >
-          {DOMAINS.map((d, i) => {
-            const active = i === industryIdx;
-            return (
-              <button
-                key={d.name}
-                type="button"
-                onClick={() => setIndustryIdx(i)}
-                aria-pressed={active}
-                className={`inline-flex items-center px-4 py-2 rounded-full border text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900/20 focus-visible:ring-offset-2 ${
-                  active
-                    ? "bg-neutral-900 text-white border-neutral-900"
-                    : "bg-white text-neutral-700 border-neutral-200 hover:border-neutral-400 hover:text-neutral-900"
-                }`}
-              >
-                {d.name}
-              </button>
-            );
-          })}
-        </motion.div>
+        {/* Composer controls */}
+        <div className="mb-8 sm:mb-10 space-y-5">
+          <div>
+            <p className="text-[10px] font-mono uppercase tracking-[0.24em] text-neutral-400 mb-3">
+              01 · Outcome
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {OUTCOMES.map((o, i) => {
+                const active = i === outcomeIdx;
+                return (
+                  <button
+                    key={o.id}
+                    type="button"
+                    onClick={() => setOutcomeIdx(i)}
+                    aria-pressed={active}
+                    className={`inline-flex items-center px-4 py-2 rounded-full border text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900/20 focus-visible:ring-offset-2 ${
+                      active
+                        ? "bg-neutral-900 text-white border-neutral-900"
+                        : "bg-white text-neutral-700 border-neutral-200 hover:border-neutral-400 hover:text-neutral-900"
+                    }`}
+                  >
+                    {o.label}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+          <div>
+            <p className="text-[10px] font-mono uppercase tracking-[0.24em] text-neutral-400 mb-3">
+              02 · Shape of work
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {SCOPES.map((s, i) => {
+                const active = i === scopeIdx;
+                return (
+                  <button
+                    key={s.id}
+                    type="button"
+                    onClick={() => setScopeIdx(i)}
+                    aria-pressed={active}
+                    className={`group inline-flex items-baseline gap-2 px-4 py-2 rounded-full border text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900/20 focus-visible:ring-offset-2 ${
+                      active
+                        ? "bg-neutral-900 text-white border-neutral-900"
+                        : "bg-white text-neutral-700 border-neutral-200 hover:border-neutral-400 hover:text-neutral-900"
+                    }`}
+                  >
+                    <span>{s.label}</span>
+                    <span className={`text-[11px] font-mono tracking-tight ${active ? "text-white/55" : "text-neutral-400"}`}>
+                      {s.phaseCount === 1 ? "30d" : "90d"}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
 
-        {/* Ledger — horizontal tier rows */}
-        <div className="rounded-3xl border border-neutral-200 bg-neutral-50/60 overflow-hidden">
-          {ENGAGEMENT_TIERS.map((tier, idx) => {
-            const subjectWithIndustry = `${tier.ctaSubject} - ${industry.name}`;
-            const price = industry.pricing[idx];
-            const timeline = industry.timeline[idx];
-            return (
-              <motion.div
-                key={tier.name}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.15 }}
-                custom={idx}
-                variants={fadeUp}
-                className={`relative bg-white ${idx > 0 ? "border-t border-neutral-200" : ""}`}
-              >
-                <div className="grid grid-cols-12 gap-x-6 gap-y-6 p-6 sm:p-10">
-                  {/* Index + name */}
-                  <div className="col-span-12 md:col-span-5 flex items-start gap-5">
-                    <div className="font-mono text-[11px] tracking-[0.22em] text-neutral-400 pt-2 shrink-0">
-                      {String(idx + 1).padStart(2, "0")}
+        {/* The brief document */}
+        <AnimatePresence mode="wait">
+          <motion.article
+            key={briefKey}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="relative rounded-3xl border border-neutral-200 bg-white overflow-hidden shadow-[0_1px_0_rgba(0,0,0,0.04),0_24px_60px_-30px_rgba(0,0,0,0.18)]"
+          >
+            {/* Memo header bar */}
+            <header className="px-6 sm:px-12 pt-8 sm:pt-12 pb-6 sm:pb-8 border-b border-neutral-200">
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-400">
+                <span>Engagement brief</span>
+                <span className="hidden sm:inline text-neutral-300">/</span>
+                <span className="text-neutral-600">{outcome.short}</span>
+                <span className="hidden sm:inline text-neutral-300">/</span>
+                <span className="text-neutral-600">{scope.label}</span>
+                <span className="ml-auto text-neutral-400">Drafted {todayLabel}</span>
+              </div>
+              <h3 className="mt-5 font-serif text-3xl sm:text-4xl lg:text-[2.75rem] text-neutral-900 tracking-tight leading-[1.1]">
+                {outcome.label}, delivered as a {scope.label.toLowerCase()}.
+              </h3>
+            </header>
+
+            {/* Outcome metric — the value statement */}
+            <section className="px-6 sm:px-12 py-8 sm:py-10 border-b border-neutral-200 bg-neutral-50/40">
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-start">
+                <div className="md:col-span-7">
+                  <p className="text-[10px] font-mono uppercase tracking-[0.24em] text-neutral-400 mb-3">
+                    Outcome we&apos;ll be measured on
+                  </p>
+                  <p className="font-serif text-2xl sm:text-3xl text-neutral-900 leading-[1.2] tracking-tight">
+                    {outcome.metric.headline}
+                  </p>
+                </div>
+                <div className="md:col-span-5">
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="rounded-2xl border border-neutral-200 bg-white px-5 py-5">
+                      <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-400 mb-2">Today</p>
+                      <p className="font-serif text-xl sm:text-2xl text-neutral-400 leading-tight line-through decoration-neutral-300">
+                        {outcome.metric.before}
+                      </p>
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-serif text-2xl sm:text-[1.75rem] tracking-tight text-neutral-900 leading-tight mb-2">
-                        {tier.name}
-                      </h3>
-                      <p className="text-sm text-neutral-500 font-light leading-relaxed">
-                        {tier.description}
+                    <div className="rounded-2xl border border-neutral-900 bg-neutral-900 px-5 py-5">
+                      <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-white/50 mb-2">With Olyxee</p>
+                      <p className="font-serif text-xl sm:text-2xl text-white leading-tight">
+                        {outcome.metric.after}
                       </p>
                     </div>
                   </div>
-
-                  {/* Price + timeline */}
-                  <div className="col-span-12 md:col-span-3 flex md:flex-col gap-6 md:gap-3 md:pl-2">
-                    <AnimatePresence mode="wait" initial={false}>
-                      <motion.div
-                        key={`${industry.name}-${idx}-meta`}
-                        initial={{ opacity: 0, y: 4 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -4 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <p className="font-serif text-lg sm:text-xl text-neutral-900 leading-tight">
-                          {price}
-                        </p>
-                        <p className="mt-1 text-xs text-neutral-500 font-light">
-                          {timeline}
-                        </p>
-                      </motion.div>
-                    </AnimatePresence>
-                  </div>
-
-                  {/* CTA */}
-                  <div className="col-span-12 md:col-span-4 flex md:justify-end md:items-start">
-                    <a
-                      href={`mailto:scofield@olyxee.com?subject=${encodeURIComponent(subjectWithIndustry)}`}
-                      className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium tracking-wide transition-colors bg-neutral-900 text-white hover:bg-neutral-800"
-                    >
-                      {tier.ctaLabel}
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                    </a>
-                  </div>
                 </div>
-              </motion.div>
-            );
-          })}
-        </div>
+              </div>
+            </section>
+
+            {/* Delivery rhythm — phases */}
+            <section className="px-6 sm:px-12 py-10 sm:py-12 border-b border-neutral-200">
+              <div className="flex items-baseline justify-between gap-4 mb-7">
+                <p className="text-[10px] font-mono uppercase tracking-[0.24em] text-neutral-400">
+                  Delivery rhythm
+                </p>
+                <p className="text-[11px] font-mono text-neutral-500">
+                  {scope.duration}
+                </p>
+              </div>
+              <div className="relative">
+                <span
+                  aria-hidden
+                  className="absolute left-[11px] top-2 bottom-2 w-px bg-gradient-to-b from-neutral-200 via-neutral-200 to-transparent"
+                />
+                <ol className="relative space-y-7">
+                {visiblePhases.map((phase, i) => (
+                  <li key={phase.window} className="relative pl-9">
+                    <span
+                      aria-hidden
+                      className="absolute left-0 top-1 w-[23px] h-[23px] rounded-full bg-white border border-neutral-300 flex items-center justify-center font-mono text-[10px] text-neutral-700"
+                    >
+                      {i + 1}
+                    </span>
+                    <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-2">
+                      <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-neutral-500">
+                        {phase.window}
+                      </p>
+                      <h4 className="font-serif text-xl sm:text-2xl text-neutral-900 tracking-tight leading-tight">
+                        {phase.title}
+                      </h4>
+                    </div>
+                    <ul className="space-y-1.5">
+                      {phase.bullets.map((b) => (
+                        <li
+                          key={b}
+                          className="flex items-start gap-2.5 text-[14px] text-neutral-600 font-light leading-relaxed"
+                        >
+                          <Check
+                            aria-hidden
+                            className="w-3.5 h-3.5 text-neutral-900 mt-1 shrink-0"
+                            strokeWidth={2.5}
+                          />
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
+                ))}
+                {scope.phaseCount === 1 && (
+                  <li className="relative pl-9">
+                    <span
+                      aria-hidden
+                      className="absolute left-0 top-1 w-[23px] h-[23px] rounded-full bg-neutral-100 border border-dashed border-neutral-300 flex items-center justify-center font-mono text-[10px] text-neutral-400"
+                    >
+                      +
+                    </span>
+                    <p className="text-[13px] text-neutral-500 font-light leading-relaxed">
+                      Phases 2 and 3 unlock if we extend to a custom build. Same team, no re-pitching.
+                    </p>
+                  </li>
+                )}
+                </ol>
+              </div>
+            </section>
+
+            {/* Requirements + extras */}
+            <section className="px-6 sm:px-12 py-10 sm:py-12 border-b border-neutral-200 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14">
+              <div>
+                <p className="text-[10px] font-mono uppercase tracking-[0.24em] text-neutral-400 mb-4">
+                  What we&apos;ll need from you
+                </p>
+                <ul className="space-y-2.5">
+                  {outcome.requires.map((r) => (
+                    <li
+                      key={r}
+                      className="flex items-start gap-3 text-[14px] text-neutral-700 font-light leading-relaxed"
+                    >
+                      <span aria-hidden className="mt-2 w-1 h-1 rounded-full bg-neutral-400 shrink-0" />
+                      <span>{r}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-5 text-[12px] text-neutral-400 font-light leading-relaxed">
+                  No procurement marathons. We sign a mutual NDA, scope in one workshop, and start.
+                </p>
+              </div>
+              <div>
+                <p className="text-[10px] font-mono uppercase tracking-[0.24em] text-neutral-400 mb-4">
+                  {scope.extras ? `Included at ${scope.label.toLowerCase()}` : "Pilot scope"}
+                </p>
+                {scope.extras ? (
+                  <ul className="space-y-2.5">
+                    {scope.extras.map((e) => (
+                      <li
+                        key={e}
+                        className="flex items-start gap-3 text-[14px] text-neutral-700 font-light leading-relaxed"
+                      >
+                        <Check
+                          aria-hidden
+                          className="w-3.5 h-3.5 text-neutral-900 mt-1 shrink-0"
+                          strokeWidth={2.5}
+                        />
+                        <span>{e}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-[14px] text-neutral-600 font-light leading-relaxed">
+                    One workflow, one decision owner, one production milestone. Fixed fee, fixed timeline. You keep everything we ship, even if we don&apos;t continue.
+                  </p>
+                )}
+                <p className="mt-5 text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-500">
+                  {scope.pricing}
+                </p>
+                <div className="mt-2 text-[12px] text-neutral-400 font-light leading-relaxed">
+                  Likely systems in scope: <span className="text-neutral-600">{outcome.systems.join(", ")}</span>.
+                </div>
+              </div>
+            </section>
+
+            {/* Footer / CTA */}
+            <footer className="px-6 sm:px-12 py-8 sm:py-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+              <div>
+                <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-500">
+                  Next step
+                </p>
+                <p className="mt-1.5 text-[15px] text-neutral-700 font-light leading-relaxed max-w-md">
+                  Send this brief over. We&apos;ll come back within 48 hours with named engineers and a draft scope.
+                </p>
+              </div>
+              <a
+                href={`mailto:scofield@olyxee.com?subject=${encodeURIComponent(subject)}`}
+                className="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-neutral-900 text-white text-sm font-medium tracking-wide hover:bg-neutral-800 transition-colors shrink-0"
+              >
+                Send this brief
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+              </a>
+            </footer>
+          </motion.article>
+        </AnimatePresence>
       </div>
     </section>
   );
@@ -445,126 +756,7 @@ const Enterprise: FC = () => {
       </section>
 
       {/* === ENGAGEMENT === */}
-      <IndustryEngagement />
-
-      {/* === HOW A DEPLOYMENT WORKS (timeline) === */}
-      <section id="how" className="py-20 sm:py-32 bg-gradient-to-b from-neutral-50/60 to-white border-t border-neutral-200/70">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          {/* Header */}
-          <div className="max-w-3xl mb-10 sm:mb-14">
-            <motion.p
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              custom={0}
-              variants={fadeUp}
-              className="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.28em] mb-4"
-            >
-              How a deployment works
-            </motion.p>
-            <motion.h2
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              custom={1}
-              variants={fadeUp}
-              className="font-serif text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-tight leading-[1.1]"
-            >
-              From discovery to production in a quarter, not a year.
-            </motion.h2>
-            <motion.p
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              custom={2}
-              variants={fadeUp}
-              className="mt-6 text-base sm:text-lg text-neutral-500 leading-relaxed font-light"
-            >
-              Each engagement starts narrow, ships fast, and expands as trust compounds. No multi-year procurement cycles, no vaporware roadmaps.
-            </motion.p>
-          </div>
-
-          {/* Large hero image */}
-          <motion.figure
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="mb-16 sm:mb-24"
-          >
-            <div className="relative overflow-hidden rounded-2xl ring-1 ring-neutral-900/10 shadow-xl shadow-neutral-900/10 aspect-[16/9] sm:aspect-[21/9] bg-neutral-100">
-              <Image
-                src="/images/enterprise/engineering.png"
-                alt="Two engineers collaborating at code monitors during an integration session"
-                fill
-                sizes="(min-width: 1280px) 1152px, 100vw"
-                className="object-cover"
-              />
-              <div aria-hidden className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl pointer-events-none" />
-            </div>
-            <figcaption className="mt-4 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-              <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-500">
-                Fig. 02 · Integration session
-              </p>
-              <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-400">
-                Pilot · In production
-              </p>
-            </figcaption>
-          </motion.figure>
-
-          {/* Timeline stages */}
-          <div className="relative">
-            <div
-              aria-hidden
-              className="hidden md:block absolute top-5 left-[8%] right-[8%] h-px bg-gradient-to-r from-transparent via-neutral-300 to-transparent"
-            />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-5 relative">
-              {DEPLOYMENT_STAGES.map((stage, i) => (
-                <motion.div
-                  key={stage.title}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.3 }}
-                  custom={i}
-                  variants={fadeUp}
-                  className="relative bg-white rounded-xl border border-neutral-200 p-6 sm:p-7 hover:border-neutral-300 transition-colors"
-                >
-                  <div className="flex items-center gap-3 mb-5">
-                    <div className="relative z-10 w-10 h-10 rounded-full bg-neutral-900 flex items-center justify-center font-mono text-[12px] font-semibold text-white shadow-sm">
-                      {String(i + 1).padStart(2, "0")}
-                    </div>
-                    <span className="text-[11px] font-mono text-neutral-500 uppercase tracking-widest">
-                      {stage.week}
-                    </span>
-                  </div>
-                  <h3 className="font-serif text-2xl text-neutral-900 mb-3 tracking-tight">
-                    {stage.title}
-                  </h3>
-                  <p className="text-sm text-neutral-500 leading-relaxed font-light mb-5">
-                    {stage.desc}
-                  </p>
-                  <ul className="pt-4 border-t border-neutral-100 space-y-2">
-                    {stage.deliverables.map((d) => (
-                      <li
-                        key={d}
-                        className="flex items-start gap-2 text-[12.5px] text-neutral-700 font-light leading-snug"
-                      >
-                        <Check
-                          aria-hidden="true"
-                          focusable="false"
-                          className="w-3.5 h-3.5 text-neutral-900 mt-0.5 shrink-0"
-                          strokeWidth={2.25}
-                        />
-                        {d}
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <BriefComposer />
 
       {/* === DESKTOP SCREENS COLLAGE (playful) === */}
       <DesktopCollage />
