@@ -163,6 +163,37 @@ const Logistics: FC = () => {
         `}</style>
       </section>
 
+      {/* === ON-TIME DELIVERY BANNER === */}
+      <section className="relative px-4 sm:px-8 pt-16 sm:pt-24">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1, ease }}
+            className="relative aspect-[16/9] sm:aspect-[21/9] rounded-[2rem] overflow-hidden ring-1 ring-neutral-200/80 shadow-[0_40px_100px_-40px_rgba(0,0,0,0.3)]"
+          >
+            <Image
+              src="/images/logistics/on-time-delivery.png"
+              alt="A courier delivering a package to a customer's door, on time"
+              fill
+              sizes="(max-width: 1024px) 100vw, 1200px"
+              className="object-cover"
+            />
+            <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-10 bg-gradient-to-t from-black/70 via-black/20 to-transparent">
+              <div className="flex items-end justify-between gap-6 flex-wrap">
+                <p className="font-serif text-white text-3xl sm:text-5xl tracking-tight leading-[1.05] max-w-2xl">
+                  Every box, <em className="text-amber-400 italic">on time.</em>
+                </p>
+                <span className="font-mono text-[11px] tracking-[0.3em] text-white/70">
+                  ON-TIME · DELIVERY
+                </span>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* === CHAPTER 01, CREATE === */}
       <section className="py-24 sm:py-32 px-4 sm:px-8">
         <div className="max-w-7xl mx-auto grid grid-cols-12 gap-8 items-center">
