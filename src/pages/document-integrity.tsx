@@ -162,6 +162,45 @@ const DocumentIntegrity: FC = () => {
               Back to home
             </Link>
           </motion.div>
+
+          {/* What to expect */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.55 }}
+            className="mt-20 sm:mt-24 max-w-2xl mx-auto text-left"
+          >
+            <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-neutral-400 text-center mb-6">
+              What to expect
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6">
+              <div>
+                <h3 className="font-serif text-xl text-neutral-900 mb-2">A faster pipeline</h3>
+                <p className="text-sm text-neutral-500 font-light leading-relaxed">
+                  Verification runs and document checks return results noticeably quicker once we&apos;re back online.
+                </p>
+              </div>
+              <div>
+                <h3 className="font-serif text-xl text-neutral-900 mb-2">A cleaner audit ledger</h3>
+                <p className="text-sm text-neutral-500 font-light leading-relaxed">
+                  Improved indexing makes it easier to trace, filter, and export the history of every document you&apos;ve verified.
+                </p>
+              </div>
+              <div>
+                <h3 className="font-serif text-xl text-neutral-900 mb-2">Your data is safe</h3>
+                <p className="text-sm text-neutral-500 font-light leading-relaxed">
+                  All historic records remain untouched. No action is required from you, just sign back in when we&apos;re live.
+                </p>
+              </div>
+            </div>
+            <p className="text-xs text-neutral-400 text-center mt-10 font-light">
+              Need help in the meantime? Reach us at{" "}
+              <a href="mailto:support@olyxee.com" className="text-neutral-700 hover:text-neutral-900 underline underline-offset-4">
+                support@olyxee.com
+              </a>
+              .
+            </p>
+          </motion.div>
         </div>
       </section>
 
