@@ -126,7 +126,7 @@ const HighlightsSlider: FC = () => {
                     <p className="text-[10px] sm:text-xs font-semibold text-white/70 uppercase tracking-[0.18em] sm:tracking-[0.2em] mb-3 sm:mb-5">
                       {h.meta}
                     </p>
-                    <h3 className="font-sans font-semibold text-[1.65rem] sm:text-4xl lg:text-[3rem] leading-[1.08] sm:leading-[1.05] tracking-[-0.02em]">
+                    <h3 className="font-serif text-[1.65rem] sm:text-4xl lg:text-[3rem] leading-[1.08] sm:leading-[1.05] tracking-tight">
                       {h.title}
                     </h3>
                     <p className="mt-3 sm:mt-5 text-white/80 text-[13px] sm:text-base lg:text-lg font-light leading-relaxed max-w-2xl line-clamp-4 sm:line-clamp-none">
@@ -320,7 +320,7 @@ const Robotics: FC = () => {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.9, delay: 0.3 }}
-                  className="font-sans font-semibold text-white leading-[1.02] tracking-[-0.03em] text-[2rem] sm:text-6xl md:text-7xl lg:text-[5.5rem]"
+                  className="font-serif text-white leading-[1.02] tracking-tight text-[2rem] sm:text-6xl md:text-7xl lg:text-[5.5rem]"
                 >
                   Operational Intelligence in Motion.
                 </motion.h1>
@@ -375,8 +375,8 @@ const Robotics: FC = () => {
           <p className="text-[11px] sm:text-xs font-semibold text-neutral-400 uppercase tracking-[0.18em] sm:tracking-[0.2em] mb-3 sm:mb-4">
             Execution infrastructure for the enterprise
           </p>
-          <h2 className="font-sans font-semibold text-[1.75rem] sm:text-5xl lg:text-[4.25rem] leading-[1.1] sm:leading-[1.05] tracking-[-0.03em] text-neutral-900">
-            Olyxee develops <span className="text-neutral-900">intelligent execution systems</span> that connect <span className="text-neutral-500">AI, enterprise workflows, hardware, and human decision-making</span> into <span className="text-neutral-900">reliable operational environments</span>.
+          <h2 className="font-serif text-[1.75rem] sm:text-5xl lg:text-[4.25rem] leading-[1.1] sm:leading-[1.05] tracking-tight text-neutral-900">
+            Olyxee develops <em className="not-italic text-blue-500">intelligent execution systems</em> that connect <span className="text-neutral-500">AI, enterprise workflows, hardware, and human decision-making</span> into <em className="not-italic text-orange-400">reliable operational environments</em>.
           </h2>
         </motion.div>
       </section>
@@ -398,7 +398,7 @@ const Robotics: FC = () => {
               <p className="text-[11px] sm:text-xs font-semibold text-neutral-500 uppercase tracking-[0.18em] sm:tracking-[0.2em] mb-3 sm:mb-4">
                 Olyxee Enterprise Accelerator
               </p>
-              <h2 className="font-sans font-semibold text-[1.75rem] sm:text-5xl lg:text-[3.5rem] tracking-[-0.03em] text-neutral-900 leading-[1.1] sm:leading-[1.05]">
+              <h2 className="font-serif text-[1.75rem] sm:text-5xl lg:text-[3.5rem] tracking-tight text-neutral-900 leading-[1.1] sm:leading-[1.05]">
                 Backing the next wave of operational intelligence.
               </h2>
               <p className="mt-4 sm:mt-6 text-neutral-600 text-sm sm:text-lg font-light leading-relaxed">
@@ -461,7 +461,7 @@ const Robotics: FC = () => {
             <p className="text-[11px] sm:text-xs font-semibold text-neutral-400 uppercase tracking-[0.18em] sm:tracking-[0.2em] mb-3 sm:mb-4">
               04 · Ecosystem
             </p>
-            <h3 className="font-sans font-semibold text-[1.75rem] sm:text-4xl lg:text-5xl tracking-[-0.03em] text-neutral-900 leading-[1.1]">
+            <h3 className="font-serif text-[1.75rem] sm:text-4xl lg:text-5xl tracking-tight text-neutral-900 leading-[1.1]">
               Built with leading enterprise and infrastructure teams.
             </h3>
             <p className="mt-4 sm:mt-5 text-neutral-600 text-sm sm:text-lg font-light leading-relaxed">
@@ -494,7 +494,7 @@ const Robotics: FC = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
           <div className="relative rounded-2xl sm:rounded-3xl bg-neutral-50 border border-neutral-200/70 px-5 sm:px-12 lg:px-20 py-10 sm:py-20 lg:py-24 overflow-hidden">
             <div className="relative text-center max-w-2xl mx-auto">
-              <h2 className="font-sans font-semibold text-[1.85rem] sm:text-5xl lg:text-6xl tracking-[-0.03em] text-neutral-900 mb-4 sm:mb-5 leading-[1.1] sm:leading-[1.05]">
+              <h2 className="font-serif text-[1.85rem] sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-4 sm:mb-5 leading-[1.1] sm:leading-[1.05]">
                 Building real-world operational systems?
               </h2>
               <p className="text-neutral-600 text-sm sm:text-lg font-light leading-relaxed mb-7 sm:mb-9 max-w-lg mx-auto">
