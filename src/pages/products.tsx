@@ -14,6 +14,10 @@ import {
   Users,
   Headphones,
   Check,
+  Truck,
+  Bell,
+  MapPin,
+  PackageCheck,
 } from "lucide-react";
 import {
   SiSalesforce,
@@ -514,6 +518,118 @@ const ProductsPage: FC = () => {
         </div>
       </section>
 
+      {/* === LOGISTICS === */}
+      <section id="logistics" className="py-20 sm:py-28 px-4 sm:px-6 border-t border-neutral-200/70 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              custom={0}
+              variants={fadeUp}
+              className="lg:col-span-5"
+            >
+              <div className="flex items-center gap-3 mb-6">
+                <div className="relative w-10 h-10 rounded-lg bg-white ring-1 ring-neutral-200 shadow-sm flex items-center justify-center">
+                  <Truck className="w-5 h-5 text-neutral-700" strokeWidth={1.75} />
+                </div>
+                <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.25em]">Order updates</span>
+                <span className="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[10px] font-mono uppercase tracking-[0.18em]">
+                  Live
+                </span>
+              </div>
+
+              <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-6">
+                Keep every customer <em className="text-neutral-500 not-italic">in the loop.</em>
+              </h2>
+
+              <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-8 max-w-md">
+                Olyxee Logistics lets anyone who sells, from a one-person shop to a full operations team, send clean order-status updates to their customers, from confirmed to delivered.
+              </p>
+
+              <div className="flex flex-wrap items-center gap-4">
+                <a
+                  href="https://logistics.olyxee.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-2 text-sm font-medium text-white bg-neutral-900 hover:bg-black px-6 py-3 rounded-full transition-colors"
+                >
+                  Open Logistics
+                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </a>
+                <a
+                  href="mailto:scofield@olyxee.com?subject=Olyxee%20Logistics%20%E2%80%94%20Inquiry"
+                  className="text-sm font-medium text-neutral-700 hover:text-neutral-900 transition-colors"
+                >
+                  Talk to us →
+                </a>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.8 }}
+              className="lg:col-span-7 relative"
+            >
+              <div aria-hidden className="absolute -inset-8 -z-10 bg-gradient-to-br from-emerald-50/60 via-white to-blue-50/40 blur-2xl rounded-[2rem]" />
+              <div className="relative rounded-3xl bg-white ring-1 ring-neutral-200 shadow-sm p-6 sm:p-8">
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                    <span className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Order #OLX-4827</span>
+                  </div>
+                  <span className="text-[11px] text-neutral-400">Updated just now</span>
+                </div>
+
+                <ol className="relative space-y-5">
+                  {[
+                    { Icon: Check, label: "Order confirmed", time: "Mon, 10:24", state: "done" },
+                    { Icon: PackageCheck, label: "Packed and ready", time: "Mon, 14:02", state: "done" },
+                    { Icon: Truck, label: "Out for delivery", time: "Tue, 09:11", state: "active" },
+                    { Icon: MapPin, label: "Delivered to customer", time: "Pending", state: "pending" },
+                  ].map(({ Icon, label, time, state }, i) => (
+                    <li key={label} className="flex items-start gap-4">
+                      <div
+                        className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 ring-1 ${
+                          state === "done"
+                            ? "bg-neutral-900 text-white ring-neutral-900"
+                            : state === "active"
+                            ? "bg-emerald-50 text-emerald-700 ring-emerald-200"
+                            : "bg-white text-neutral-400 ring-neutral-200"
+                        }`}
+                      >
+                        <Icon className="w-4 h-4" strokeWidth={2} />
+                      </div>
+                      <div className="flex-1 pt-1.5">
+                        <div className="flex items-baseline justify-between gap-3">
+                          <span
+                            className={`text-sm font-medium ${
+                              state === "pending" ? "text-neutral-400" : "text-neutral-900"
+                            }`}
+                          >
+                            {label}
+                          </span>
+                          <span className="text-[11px] font-mono text-neutral-400">{time}</span>
+                        </div>
+                        {state === "active" && (
+                          <p className="mt-1 text-[12px] text-neutral-500 font-light inline-flex items-center gap-1.5">
+                            <Bell className="w-3 h-3 text-emerald-600" />
+                            Customer notified by SMS and email
+                          </p>
+                        )}
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* === INTEGRATIONS === */}
       <section id="integrations" className="py-20 sm:py-28 px-4 sm:px-6 border-t border-neutral-200/70 bg-neutral-50/50 relative overflow-hidden">
         <div
@@ -591,10 +707,10 @@ const ProductsPage: FC = () => {
                 Put Olyxee to work
               </h2>
               <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-9 max-w-lg mx-auto">
-                Try Addup for free, or talk to us about a custom Ordo deployment for your team&apos;s workflows.
+                Try Addup or Logistics for free, or talk to us about a custom Ordo deployment for your team&apos;s workflows.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <div className="flex flex-col sm:flex-row gap-3 justify-center flex-wrap">
                 <a
                   href="https://addup.olyxee.com/"
                   target="_blank"
@@ -602,6 +718,14 @@ const ProductsPage: FC = () => {
                   className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide shadow-lg shadow-neutral-900/10"
                 >
                   Try Addup free <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                </a>
+                <a
+                  href="https://logistics.olyxee.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center justify-center gap-2 px-8 py-4 text-neutral-900 bg-white border border-neutral-300 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide"
+                >
+                  Open Logistics <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </a>
                 <Link
                   href="/enterprise"
