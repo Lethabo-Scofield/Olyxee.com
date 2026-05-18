@@ -5,7 +5,7 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -16,14 +16,15 @@ const fadeUp = {
   }),
 };
 
-type Phase = { window: string; title: string; bullets: string[] };
+type Phase = { window: string; title: string };
 type Outcome = {
   id: string;
   label: string;
   short: string;
-  metric: { headline: string; before: string; after: string };
+  tagline: string;
+  gradient: string;
+  metric: { before: string; after: string; unit: string };
   phases: [Phase, Phase, Phase];
-  requires: string[];
 };
 
 const OUTCOMES: Outcome[] = [
@@ -31,160 +32,52 @@ const OUTCOMES: Outcome[] = [
     id: "close-books",
     label: "Close the books faster",
     short: "Finance",
-    metric: {
-      headline: "Cut month-end close from 12 days to 3.",
-      before: "12 days",
-      after: "3 days",
-    },
+    tagline: "Reconciled by the agent. Closed by your team.",
+    gradient: "/images/gradient-blue-pink.png",
+    metric: { before: "12", after: "3", unit: "days to close" },
     phases: [
-      {
-        window: "Days 0–30",
-        title: "Reconciliation agent, live",
-        bullets: [
-          "Ledger sync with QBO or NetSuite",
-          "Auto-match 80%+ of transactions",
-        ],
-      },
-      {
-        window: "Days 30–60",
-        title: "Approvals and exception flows",
-        bullets: [
-          "Human-in-the-loop queues",
-          "Audit trail wired to your warehouse",
-        ],
-      },
-      {
-        window: "Days 60–90",
-        title: "End-to-end close orchestration",
-        bullets: [
-          "Cross-entity consolidation",
-          "Auto-prepared close packet",
-        ],
-      },
-    ],
-    requires: [
-      "Read access to your accounting system",
-      "One finance lead as owner",
+      { window: "0–30", title: "Reconciliation agent, live" },
+      { window: "30–60", title: "Approvals + exception flows" },
+      { window: "60–90", title: "End-to-end close orchestration" },
     ],
   },
   {
     id: "shipments",
     label: "Track every shipment, every minute",
     short: "Logistics",
-    metric: {
-      headline: "Catch 70% more shipment exceptions before they hit the customer.",
-      before: "Caught late",
-      after: "Caught early",
-    },
+    tagline: "Exceptions caught, not chased.",
+    gradient: "/images/gradient-yellow-green.png",
+    metric: { before: "30%", after: "100%", unit: "shipments observed live" },
     phases: [
-      {
-        window: "Days 0–30",
-        title: "Carrier and WMS ingest",
-        bullets: [
-          "Live tracking from your top carriers",
-          "Status normalised across providers",
-        ],
-      },
-      {
-        window: "Days 30–60",
-        title: "Supplier coordination agent",
-        bullets: [
-          "Auto-pings on stalled shipments",
-          "Daily exception digest per region",
-        ],
-      },
-      {
-        window: "Days 60–90",
-        title: "Predictive ETA and re-routing",
-        bullets: [
-          "ETA model on your lane history",
-          "Re-route suggestions for at-risk freight",
-        ],
-      },
-    ],
-    requires: [
-      "TMS or WMS API access",
-      "One ops lead as owner",
+      { window: "0–30", title: "Carrier + WMS ingest" },
+      { window: "30–60", title: "Supplier coordination agent" },
+      { window: "60–90", title: "Predictive ETA + re-routing" },
     ],
   },
   {
     id: "approvals",
     label: "Replace manual approval chains",
     short: "Operations",
-    metric: {
-      headline: "Drop median approval time from 4 days to 4 hours.",
-      before: "4 days",
-      after: "4 hours",
-    },
+    tagline: "Policy in the loop. Humans on the exceptions.",
+    gradient: "/images/gradient-purple.png",
+    metric: { before: "4d", after: "4h", unit: "median approval time" },
     phases: [
-      {
-        window: "Days 0–30",
-        title: "Policy-aware approval agent",
-        bullets: [
-          "Policy codified as auditable rules",
-          "Agent drafts decisions with rationale",
-        ],
-      },
-      {
-        window: "Days 30–60",
-        title: "Multi-system orchestration",
-        bullets: [
-          "Wired into Workday, SAP, or Jira",
-          "Exportable audit trail per approval",
-        ],
-      },
-      {
-        window: "Days 60–90",
-        title: "Continuous policy tuning",
-        bullets: [
-          "Decision-quality dashboard",
-          "Quarterly tuning loop owned by Olyxee",
-        ],
-      },
-    ],
-    requires: [
-      "Current approval policy docs",
-      "An operations workflow owner",
+      { window: "0–30", title: "Policy-aware approval agent" },
+      { window: "30–60", title: "Multi-system orchestration" },
+      { window: "60–90", title: "Continuous policy tuning" },
     ],
   },
   {
     id: "vendor",
     label: "Replace a third-party AI vendor",
     short: "Migration",
-    metric: {
-      headline: "Bring a workflow in-house with no functionality loss.",
-      before: "Vendor-owned",
-      after: "In-house",
-    },
+    tagline: "Same outputs. Your stack. Your ownership.",
+    gradient: "/images/gradient-orange-pink.png",
+    metric: { before: "Vendor", after: "In-house", unit: "ownership of the workflow" },
     phases: [
-      {
-        window: "Days 0–30",
-        title: "Parity audit",
-        bullets: [
-          "Map every vendor input and output",
-          "Side-by-side accuracy comparison",
-        ],
-      },
-      {
-        window: "Days 30–60",
-        title: "Shadow deployment",
-        bullets: [
-          "Ordo runs in shadow in production",
-          "Hand-off plan with documented rollback",
-        ],
-      },
-      {
-        window: "Days 60–90",
-        title: "Cutover and ownership",
-        bullets: [
-          "Vendor cancellation handover",
-          "Internal runbooks and on-call",
-        ],
-      },
-    ],
-    requires: [
-      "Current vendor contract terms",
-      "An engineering point of contact",
+      { window: "0–30", title: "Parity audit" },
+      { window: "30–60", title: "Shadow deployment" },
+      { window: "60–90", title: "Cutover + ownership" },
     ],
   },
 ];
@@ -195,7 +88,6 @@ type Scope = {
   phaseCount: 1 | 3;
   duration: string;
   ctaSubject: string;
-  extras?: string[];
   pricing: string;
 };
 
@@ -204,31 +96,24 @@ const SCOPES: Scope[] = [
     id: "pilot",
     label: "Pilot",
     phaseCount: 1,
-    duration: "30 days to first production run",
+    duration: "30 days",
     ctaSubject: "Enterprise: Pilot inquiry",
-    pricing: "Fixed-fee pilot",
+    pricing: "Fixed fee",
   },
   {
     id: "custom",
     label: "Custom build",
     phaseCount: 3,
-    duration: "90 days to full production",
+    duration: "90 days",
     ctaSubject: "Enterprise: Custom build inquiry",
-    extras: ["SSO + RBAC", "Customer-managed keys", "Dedicated implementation engineer"],
-    pricing: "Fixed-fee build + monthly platform",
+    pricing: "Fixed fee + platform",
   },
   {
     id: "embedded",
     label: "Embedded team",
     phaseCount: 3,
-    duration: "90-day build, then ongoing",
+    duration: "90d then ongoing",
     ctaSubject: "Enterprise: Embedded team inquiry",
-    extras: [
-      "VPC or on-prem deployment",
-      "Dedicated solutions engineer",
-      "Custom SLA and compliance review",
-      "Direct line to founding engineering",
-    ],
     pricing: "Retainer + platform",
   },
 ];
@@ -342,6 +227,7 @@ const DesktopCollage: FC = () => {
 const BriefComposer: FC = () => {
   const [outcomeIdx, setOutcomeIdx] = useState(0);
   const [scopeIdx, setScopeIdx] = useState(1);
+  const prefersReducedMotion = useReducedMotion();
   const outcome = OUTCOMES[outcomeIdx];
   const scope = SCOPES[scopeIdx];
   const visiblePhases = outcome.phases.slice(0, scope.phaseCount);
@@ -436,183 +322,102 @@ const BriefComposer: FC = () => {
           </div>
         </div>
 
-        {/* The brief document */}
+        {/* The brief poster */}
         <AnimatePresence mode="wait">
           <motion.article
             key={briefKey}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="relative rounded-3xl border border-neutral-200 bg-white overflow-hidden shadow-[0_1px_0_rgba(0,0,0,0.04),0_24px_60px_-30px_rgba(0,0,0,0.18)]"
+            initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 12 }}
+            animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+            exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: -8 }}
+            transition={{ duration: prefersReducedMotion ? 0.2 : 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="relative rounded-3xl overflow-hidden shadow-[0_1px_0_rgba(0,0,0,0.04),0_30px_80px_-30px_rgba(0,0,0,0.25)]"
           >
-            {/* Memo header bar */}
-            <header className="relative px-6 sm:px-12 pt-8 sm:pt-12 pb-8 sm:pb-10 border-b border-neutral-200 overflow-hidden">
+            {/* Poster face — gradient takes the whole frame */}
+            <div className="relative aspect-[16/11] sm:aspect-[16/9] min-h-[460px] sm:min-h-[520px] w-full overflow-hidden">
               <Image
-                src="/images/gradient-pastel.png"
+                src={outcome.gradient}
                 alt=""
                 aria-hidden
                 fill
+                priority
                 sizes="(min-width: 1024px) 1024px, 100vw"
-                className="object-cover opacity-60 pointer-events-none select-none"
+                className="object-cover scale-110 pointer-events-none select-none"
               />
+              {/* Top scrim for chip legibility */}
               <div
                 aria-hidden
-                className="absolute inset-0 bg-gradient-to-r from-white via-white/70 to-white/40 pointer-events-none"
+                className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-neutral-950/55 to-transparent pointer-events-none"
               />
-              <div className="relative">
-                <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-500">
-                  <span>Engagement brief</span>
-                  <span className="hidden sm:inline text-neutral-400">/</span>
-                  <span className="text-neutral-700">{outcome.short}</span>
-                  <span className="hidden sm:inline text-neutral-400">/</span>
-                  <span className="text-neutral-700">{scope.label}</span>
-                  <span className="ml-auto text-neutral-500">Drafted {todayLabel}</span>
-                </div>
-                <h3 className="mt-5 font-serif text-3xl sm:text-4xl lg:text-[2.75rem] text-neutral-900 tracking-tight leading-[1.1] max-w-2xl">
-                  {outcome.label}.
-                </h3>
+              {/* Soft darkening from bottom for legibility */}
+              <div
+                aria-hidden
+                className="absolute inset-0 bg-gradient-to-t from-neutral-950/85 via-neutral-950/35 to-transparent pointer-events-none"
+              />
+              {/* Top: breadcrumb + drafted date */}
+              <div className="absolute top-6 sm:top-8 left-6 sm:left-10 right-6 sm:right-10 flex flex-wrap items-center gap-x-3 gap-y-2 text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.24em] text-white">
+                <span className="px-2.5 py-1 rounded-full bg-neutral-950/55 backdrop-blur-md border border-white/15">
+                  {outcome.short}
+                </span>
+                <span className="px-2.5 py-1 rounded-full bg-neutral-950/55 backdrop-blur-md border border-white/15">
+                  {scope.label} · {scope.duration}
+                </span>
+                <span className="ml-auto text-white/75 hidden sm:inline">{todayLabel}</span>
               </div>
-            </header>
 
-            {/* Outcome metric — the value statement */}
-            <section className="px-6 sm:px-12 py-8 sm:py-10 border-b border-neutral-200 bg-neutral-50/40">
-              <p className="text-[10px] font-mono uppercase tracking-[0.24em] text-neutral-400 mb-4">
-                What changes
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr] gap-3 sm:gap-5 items-stretch">
-                <div className="rounded-2xl border border-neutral-200 bg-white px-5 py-5">
-                  <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-400 mb-2">Today</p>
-                  <p className="font-serif text-xl sm:text-2xl text-neutral-400 leading-tight line-through decoration-neutral-300">
+              {/* Center: the huge before → after */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-5 sm:px-8">
+                <p className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.3em] text-white/70 mb-4 sm:mb-6">
+                  From {"  →  "} To
+                </p>
+                <div className="flex flex-wrap items-baseline justify-center gap-x-4 gap-y-2 sm:gap-x-8 max-w-full">
+                  <span
+                    className="font-serif italic text-white/40 leading-none line-through decoration-white/30 decoration-[3px] break-words"
+                    style={{ fontSize: "clamp(2.75rem, 12vw, 7.5rem)" }}
+                  >
                     {outcome.metric.before}
-                  </p>
-                </div>
-                <div className="hidden sm:flex items-center justify-center text-neutral-400">
-                  <ArrowRight className="w-5 h-5" />
-                </div>
-                <div className="rounded-2xl border border-neutral-900 bg-neutral-900 px-5 py-5">
-                  <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-white/50 mb-2">With Olyxee</p>
-                  <p className="font-serif text-xl sm:text-2xl text-white leading-tight">
+                  </span>
+                  <ArrowRight className="w-5 h-5 sm:w-8 sm:h-8 text-white/75 shrink-0" />
+                  <span
+                    className="font-serif italic text-white leading-none break-words"
+                    style={{ fontSize: "clamp(2.75rem, 12vw, 7.5rem)" }}
+                  >
                     {outcome.metric.after}
-                  </p>
+                  </span>
+                </div>
+                <p className="mt-4 sm:mt-6 text-[11px] sm:text-sm text-white/75 font-mono uppercase tracking-[0.22em]">
+                  {outcome.metric.unit}
+                </p>
+                <p className="mt-5 sm:mt-7 max-w-xl font-serif italic text-base sm:text-2xl text-white leading-snug">
+                  &ldquo;{outcome.tagline}&rdquo;
+                </p>
+              </div>
+
+              {/* Bottom: phase chips inline on the poster */}
+              <div className="absolute bottom-6 sm:bottom-8 left-6 sm:left-10 right-6 sm:right-10">
+                <div className="flex flex-wrap gap-2 sm:gap-3 justify-center">
+                  {visiblePhases.map((phase, i) => (
+                    <div
+                      key={phase.window}
+                      className="flex items-center gap-2.5 px-3.5 py-2 rounded-full bg-neutral-950/55 backdrop-blur-md border border-white/15 text-white"
+                    >
+                      <span className="inline-flex w-5 h-5 items-center justify-center rounded-full bg-white/20 font-mono text-[10px]">
+                        {i + 1}
+                      </span>
+                      <span className="text-[12px] sm:text-[13px] font-light">{phase.title}</span>
+                      <span className="text-[10px] font-mono text-white/65">d{phase.window}</span>
+                    </div>
+                  ))}
+                  {scope.phaseCount === 1 && (
+                    <div className="flex items-center gap-2 px-3.5 py-2 rounded-full bg-neutral-950/35 backdrop-blur-md border border-dashed border-white/30 text-white/75">
+                      <span className="text-[12px] sm:text-[13px] font-light">+ phases 2–3 on extension</span>
+                    </div>
+                  )}
                 </div>
               </div>
-            </section>
+            </div>
 
-            {/* Delivery rhythm — phases */}
-            <section className="px-6 sm:px-12 py-10 sm:py-12 border-b border-neutral-200">
-              <div className="flex items-baseline justify-between gap-4 mb-7">
-                <p className="text-[10px] font-mono uppercase tracking-[0.24em] text-neutral-400">
-                  Delivery rhythm
-                </p>
-                <p className="text-[11px] font-mono text-neutral-500">
-                  {scope.duration}
-                </p>
-              </div>
-              <div className="relative">
-                <span
-                  aria-hidden
-                  className="absolute left-[11px] top-2 bottom-2 w-px bg-gradient-to-b from-neutral-200 via-neutral-200 to-transparent"
-                />
-                <ol className="relative space-y-7">
-                {visiblePhases.map((phase, i) => (
-                  <li key={phase.window} className="relative pl-9">
-                    <span
-                      aria-hidden
-                      className="absolute left-0 top-1 w-[23px] h-[23px] rounded-full bg-white border border-neutral-300 flex items-center justify-center font-mono text-[10px] text-neutral-700"
-                    >
-                      {i + 1}
-                    </span>
-                    <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-2">
-                      <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-neutral-500">
-                        {phase.window}
-                      </p>
-                      <h4 className="font-serif text-xl sm:text-2xl text-neutral-900 tracking-tight leading-tight">
-                        {phase.title}
-                      </h4>
-                    </div>
-                    <ul className="space-y-1.5">
-                      {phase.bullets.map((b) => (
-                        <li
-                          key={b}
-                          className="flex items-start gap-2.5 text-[14px] text-neutral-600 font-light leading-relaxed"
-                        >
-                          <Check
-                            aria-hidden
-                            className="w-3.5 h-3.5 text-neutral-900 mt-1 shrink-0"
-                            strokeWidth={2.5}
-                          />
-                          <span>{b}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </li>
-                ))}
-                {scope.phaseCount === 1 && (
-                  <li className="relative pl-9">
-                    <span
-                      aria-hidden
-                      className="absolute left-0 top-1 w-[23px] h-[23px] rounded-full bg-neutral-100 border border-dashed border-neutral-300 flex items-center justify-center font-mono text-[10px] text-neutral-400"
-                    >
-                      +
-                    </span>
-                    <p className="text-[13px] text-neutral-500 font-light leading-relaxed">
-                      Phases 2 and 3 unlock on extension.
-                    </p>
-                  </li>
-                )}
-                </ol>
-              </div>
-            </section>
-
-            {/* Requirements + extras */}
-            <section className="px-6 sm:px-12 py-8 sm:py-10 border-b border-neutral-200 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14">
-              <div>
-                <p className="text-[10px] font-mono uppercase tracking-[0.24em] text-neutral-400 mb-3">
-                  From you
-                </p>
-                <ul className="space-y-2">
-                  {outcome.requires.map((r) => (
-                    <li
-                      key={r}
-                      className="flex items-start gap-3 text-[14px] text-neutral-700 font-light leading-snug"
-                    >
-                      <span aria-hidden className="mt-2 w-1 h-1 rounded-full bg-neutral-400 shrink-0" />
-                      <span>{r}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <p className="text-[10px] font-mono uppercase tracking-[0.24em] text-neutral-400 mb-3">
-                  {scope.extras ? "Included" : "Pilot scope"}
-                </p>
-                {scope.extras ? (
-                  <ul className="space-y-2">
-                    {scope.extras.map((e) => (
-                      <li
-                        key={e}
-                        className="flex items-start gap-3 text-[14px] text-neutral-700 font-light leading-snug"
-                      >
-                        <Check
-                          aria-hidden
-                          className="w-3.5 h-3.5 text-neutral-900 mt-1 shrink-0"
-                          strokeWidth={2.5}
-                        />
-                        <span>{e}</span>
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p className="text-[14px] text-neutral-600 font-light leading-snug">
-                    One workflow, fixed fee, fixed timeline. You keep what we ship.
-                  </p>
-                )}
-              </div>
-            </section>
-
-            {/* Footer / CTA */}
-            <footer className="px-6 sm:px-12 py-7 sm:py-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
+            {/* Thin footer strip — pricing + send */}
+            <footer className="bg-white px-6 sm:px-10 py-5 sm:py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-t border-neutral-200">
               <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-500">
                 {scope.pricing}
               </p>
