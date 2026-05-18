@@ -12,7 +12,6 @@ import {
   Workflow,
   Bot,
   Check,
-  ChevronDown,
 } from "lucide-react";
 
 const fadeUp = {
@@ -98,50 +97,28 @@ const DEPLOYMENT_STAGES = [
   },
 ];
 
-const TRUST_LOGOS = [
-  { name: "OpenAI", src: "/logos/collaborators/openai.svg" },
-  { name: "Anthropic", src: "/logos/collaborators/anthropic.svg" },
-  { name: "Google", src: "/logos/collaborators/google.svg" },
-  { name: "Microsoft", src: "/logos/collaborators/microsoft.svg" },
-  { name: "Meta", src: "/logos/collaborators/meta.svg" },
-  { name: "NVIDIA", src: "/logos/collaborators/nvidia.svg" },
-  { name: "Stripe", src: "/logos/collaborators/stripe.svg" },
-];
-
 const DOMAINS = [
   {
     icon: Calculator,
     name: "AI Accounting",
-    description:
-      "Automate reconciliations, invoice processing, expense categorisation, and financial reporting. AI that reads your ledgers, flags anomalies, and closes the books faster.",
-    examples: ["AP/AR automation", "Reconciliation agents", "Anomaly detection", "Financial close workflows"],
     pricing: ["Scoped quote", "Tailored quote", "Custom quote"],
     timeline: ["4–6 weeks", "8–14 weeks", "12+ weeks"],
   },
   {
     icon: Truck,
     name: "AI Logistics",
-    description:
-      "Intelligent agents that track shipments, optimise routes, manage supplier communications, and surface exceptions before they become delays.",
-    examples: ["Shipment tracking & alerts", "Supplier coordination", "Route optimisation", "Exception management"],
     pricing: ["Scoped quote", "Tailored quote", "Custom quote"],
     timeline: ["5–7 weeks", "10–16 weeks", "16+ weeks"],
   },
   {
     icon: Workflow,
     name: "Automation & Workflows",
-    description:
-      "End-to-end workflow automation that connects your systems, enforces approval chains, and executes multi-step processes without manual handoffs.",
-    examples: ["Multi-step process automation", "Human-in-the-loop approvals", "Cross-system orchestration", "Scheduled & event-driven runs"],
     pricing: ["Scoped quote", "Tailored quote", "Custom quote"],
     timeline: ["4–6 weeks", "10–14 weeks", "14+ weeks"],
   },
   {
     icon: Bot,
     name: "Custom Agents",
-    description:
-      "Purpose-built AI agents scoped to your operations - from internal copilots to fully autonomous executors that act within the boundaries you define.",
-    examples: ["Domain-specific copilots", "Autonomous execution agents", "Policy-aware decision agents", "Embedded agents in existing tools"],
     pricing: ["Scoped quote", "Tailored quote", "Custom quote"],
     timeline: ["6–8 weeks", "12–18 weeks", "18+ weeks"],
   },
@@ -255,12 +232,35 @@ const DesktopCollage: FC = () => {
 
 const IndustryEngagement: FC = () => {
   const [industryIdx, setIndustryIdx] = useState(0);
+  const [activeTier, setActiveTier] = useState(1);
   const industry = DOMAINS[industryIdx];
-  const IndustryIcon = industry.icon;
 
   return (
-    <section id="engagement" className="py-24 sm:py-32 lg:py-40 border-t border-neutral-200/70 bg-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
+    <section
+      id="engagement"
+      className="relative py-24 sm:py-32 lg:py-40 border-t border-neutral-200/70 bg-neutral-950 text-white overflow-hidden"
+    >
+      {/* Ambient glow */}
+      <div
+        aria-hidden
+        className="absolute -top-40 left-1/3 w-[40rem] h-[40rem] rounded-full opacity-[0.18] pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(125,211,252,0.6) 0%, rgba(125,211,252,0) 60%)",
+          filter: "blur(80px) saturate(1.4)",
+        }}
+      />
+      <div
+        aria-hidden
+        className="absolute bottom-0 right-0 w-[34rem] h-[34rem] rounded-full opacity-[0.15] pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(251,146,60,0.5) 0%, rgba(251,146,60,0) 60%)",
+          filter: "blur(80px) saturate(1.4)",
+        }}
+      />
+
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
         {/* Header */}
         <motion.div
           initial="hidden"
@@ -268,67 +268,54 @@ const IndustryEngagement: FC = () => {
           viewport={{ once: true, amount: 0.3 }}
           custom={0}
           variants={fadeUp}
-          className="mb-16 sm:mb-20 max-w-3xl"
+          className="mb-14 sm:mb-20 max-w-3xl"
         >
-          <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-neutral-500 mb-5">
+          <p className="text-[11px] font-mono uppercase tracking-[0.28em] text-white/40 mb-5">
             Engagement
           </p>
-          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 leading-[1.05] tracking-tight">
-            Three ways to start, scoped to your business.
+          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl leading-[1.05] tracking-tight">
+            Three ways in, <em className="text-sky-300 not-italic">scoped to your business.</em>
           </h2>
-          <p className="mt-6 text-base sm:text-lg text-neutral-500 font-light leading-relaxed max-w-2xl">
-            Each plan combines access to our products with a defined number of AI agents deployed inside your work environment. Pick a focus area and we&apos;ll outline the right starting point.
+          <p className="mt-6 text-base sm:text-lg text-white/55 font-light leading-relaxed max-w-2xl">
+            Pick a focus area. We&apos;ll outline the right starting point: a pilot, a custom deployment, or a full enterprise build.
           </p>
         </motion.div>
 
-        {/* Focus area selector — clean inline */}
+        {/* Focus area pills */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           custom={1}
           variants={fadeUp}
-          className="mb-12 sm:mb-16 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 pb-8 border-b border-neutral-200/70"
+          className="mb-10 sm:mb-14 flex flex-wrap gap-2"
         >
-          <label htmlFor="industry-select" className="text-[11px] font-medium uppercase tracking-[0.22em] text-neutral-500 shrink-0">
-            Focus area
-          </label>
-          <div className="relative w-full sm:max-w-xs">
-            <div className="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none">
-              <IndustryIcon aria-hidden="true" focusable="false" className="w-4 h-4 text-neutral-500" strokeWidth={1.75} />
-            </div>
-            <select
-              id="industry-select"
-              value={industryIdx}
-              onChange={(e) => setIndustryIdx(Number(e.target.value))}
-              className="w-full appearance-none bg-transparent border border-neutral-300 rounded-full pl-10 pr-10 py-2.5 text-sm font-medium text-neutral-900 cursor-pointer hover:border-neutral-900 focus:outline-none focus:ring-2 focus:ring-neutral-900/10 focus:border-neutral-900 transition-colors"
-            >
-              {DOMAINS.map((d, i) => (
-                <option key={d.name} value={i}>
-                  {d.name}
-                </option>
-              ))}
-            </select>
-            <ChevronDown aria-hidden="true" focusable="false" className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-500 pointer-events-none" />
-          </div>
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.p
-              key={industry.name}
-              initial={{ opacity: 0, y: 4 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -4 }}
-              transition={{ duration: 0.2 }}
-              className="text-sm text-neutral-500 font-light leading-relaxed sm:flex-1"
-            >
-              {industry.description}
-            </motion.p>
-          </AnimatePresence>
+          {DOMAINS.map((d, i) => {
+            const Icon = d.icon;
+            const active = i === industryIdx;
+            return (
+              <button
+                key={d.name}
+                type="button"
+                onClick={() => setIndustryIdx(i)}
+                aria-pressed={active}
+                className={`group inline-flex items-center gap-2 pl-3 pr-4 py-2 rounded-full border text-sm font-medium transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 ${
+                  active
+                    ? "bg-white text-neutral-900 border-white shadow-lg shadow-white/10"
+                    : "bg-white/5 text-white/70 border-white/15 hover:bg-white/10 hover:text-white"
+                }`}
+              >
+                <Icon aria-hidden className="w-4 h-4" strokeWidth={1.75} />
+                {d.name}
+              </button>
+            );
+          })}
         </motion.div>
 
-        {/* Tier cards — clean uniform grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-neutral-200/70 rounded-3xl overflow-hidden border border-neutral-200/70">
+        {/* Ledger — horizontal tier rows */}
+        <div className="rounded-3xl border border-white/10 bg-white/[0.025] backdrop-blur-sm overflow-hidden">
           {ENGAGEMENT_TIERS.map((tier, idx) => {
-            const isHighlight = tier.highlight;
+            const isActive = idx === activeTier;
             const subjectWithIndustry = `${tier.ctaSubject} - ${industry.name}`;
             const price = industry.pricing[idx];
             const timeline = industry.timeline[idx];
@@ -337,80 +324,131 @@ const IndustryEngagement: FC = () => {
                 key={tier.name}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={{ once: true, amount: 0.15 }}
                 custom={idx}
                 variants={fadeUp}
-                className="relative flex flex-col bg-white p-8 sm:p-10"
+                onMouseEnter={() => setActiveTier(idx)}
+                onFocus={() => setActiveTier(idx)}
+                className={`relative transition-colors ${
+                  idx > 0 ? "border-t border-white/10" : ""
+                } ${isActive ? "bg-white/[0.04]" : ""}`}
               >
-                {/* Header row: name + optional badge */}
-                <div className="flex items-center justify-between mb-3">
-                  <h3 className="font-serif text-2xl sm:text-[1.75rem] tracking-tight text-neutral-900 leading-tight">
-                    {tier.name}
-                  </h3>
-                  {isHighlight && (
-                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full bg-neutral-900 text-white text-[10px] font-medium uppercase tracking-[0.18em]">
-                      Popular
-                    </span>
-                  )}
-                </div>
-
-                <p className="text-sm text-neutral-500 font-light leading-relaxed mb-8 min-h-[2.5rem]">
-                  {tier.description}
-                </p>
-
-                {/* Price */}
-                <div aria-live="polite" aria-atomic="true">
-                  <AnimatePresence mode="wait" initial={false}>
-                    <motion.p
-                      key={`${industry.name}-${idx}-price`}
-                      initial={{ opacity: 0, y: 4 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -4 }}
-                      transition={{ duration: 0.25 }}
-                      className="font-serif text-3xl sm:text-4xl tracking-tight text-neutral-900 leading-none"
-                    >
-                      {price}
-                    </motion.p>
-                  </AnimatePresence>
-                </div>
-                <p className="mt-3 mb-8 text-xs text-neutral-500 font-light">
-                  {timeline} · {tier.agents}
-                </p>
-
-                <a
-                  href={`mailto:scofield@olyxee.com?subject=${encodeURIComponent(subjectWithIndustry)}`}
-                  className={`group inline-flex w-full items-center justify-center gap-2 py-3 rounded-full text-sm font-medium tracking-wide transition-colors ${
-                    isHighlight
-                      ? "bg-neutral-900 text-white hover:bg-black"
-                      : "bg-white text-neutral-900 border border-neutral-300 hover:border-neutral-900"
+                {/* Left accent bar */}
+                <span
+                  aria-hidden
+                  className={`absolute left-0 top-0 bottom-0 w-[3px] transition-all ${
+                    isActive ? "bg-sky-300" : "bg-transparent"
                   }`}
-                >
-                  {tier.ctaLabel}
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                </a>
+                />
 
-                {/* Includes */}
-                <div className="mt-10 pt-8 border-t border-neutral-200/70">
-                  <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.22em] text-neutral-500">
-                    Includes
-                  </p>
-                  <ul className="space-y-3">
-                    <li className="flex items-start gap-3 text-sm text-neutral-800 font-light leading-relaxed">
-                      <Check aria-hidden="true" focusable="false" className="w-4 h-4 text-neutral-900 mt-0.5 shrink-0" strokeWidth={2} />
-                      {tier.access}
-                    </li>
-                    {tier.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-3 text-sm text-neutral-700 font-light leading-relaxed">
-                        <Check aria-hidden="true" focusable="false" className="w-4 h-4 text-neutral-400 mt-0.5 shrink-0" strokeWidth={2} />
-                        {feature}
+                <div className="grid grid-cols-12 gap-x-6 gap-y-6 p-6 sm:p-10">
+                  {/* Index + name */}
+                  <div className="col-span-12 md:col-span-4 flex items-start gap-5">
+                    <div className="font-mono text-[11px] tracking-[0.22em] text-white/40 pt-2">
+                      {String(idx + 1).padStart(2, "0")}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-3 mb-2 flex-wrap">
+                        <h3 className="font-serif text-2xl sm:text-[1.85rem] tracking-tight leading-tight">
+                          {tier.name}
+                        </h3>
+                        {tier.highlight && (
+                          <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-sky-300/15 text-sky-200 text-[10px] font-medium uppercase tracking-[0.18em] border border-sky-300/30">
+                            Most fit
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-sm text-white/55 font-light leading-relaxed">
+                        {tier.description}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Spec metrics */}
+                  <div className="col-span-12 md:col-span-4 grid grid-cols-3 gap-4">
+                    <div>
+                      <p className="font-mono text-[10px] tracking-[0.22em] text-white/35 uppercase mb-2">
+                        Investment
+                      </p>
+                      <AnimatePresence mode="wait" initial={false}>
+                        <motion.p
+                          key={`${industry.name}-${idx}-price`}
+                          initial={{ opacity: 0, y: 4 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -4 }}
+                          transition={{ duration: 0.25 }}
+                          className="font-serif text-lg sm:text-xl text-white leading-tight"
+                        >
+                          {price}
+                        </motion.p>
+                      </AnimatePresence>
+                    </div>
+                    <div>
+                      <p className="font-mono text-[10px] tracking-[0.22em] text-white/35 uppercase mb-2">
+                        Timeline
+                      </p>
+                      <AnimatePresence mode="wait" initial={false}>
+                        <motion.p
+                          key={`${industry.name}-${idx}-timeline`}
+                          initial={{ opacity: 0, y: 4 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -4 }}
+                          transition={{ duration: 0.25 }}
+                          className="font-serif text-lg sm:text-xl text-white leading-tight"
+                        >
+                          {timeline}
+                        </motion.p>
+                      </AnimatePresence>
+                    </div>
+                    <div>
+                      <p className="font-mono text-[10px] tracking-[0.22em] text-white/35 uppercase mb-2">
+                        Agents
+                      </p>
+                      <p className="font-serif text-lg sm:text-xl text-white leading-tight">
+                        {tier.agents.replace(/^Up to |^/, "")}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Includes + CTA */}
+                  <div className="col-span-12 md:col-span-4 flex flex-col gap-5">
+                    <ul className="space-y-2">
+                      <li className="flex items-start gap-2.5 text-[13px] text-white/80 font-light leading-relaxed">
+                        <Check aria-hidden className="w-3.5 h-3.5 text-sky-300 mt-1 shrink-0" strokeWidth={2.25} />
+                        <span>{tier.access}</span>
                       </li>
-                    ))}
-                  </ul>
+                      {tier.features.slice(0, 3).map((feature) => (
+                        <li
+                          key={feature}
+                          className="flex items-start gap-2.5 text-[13px] text-white/60 font-light leading-relaxed"
+                        >
+                          <Check aria-hidden className="w-3.5 h-3.5 text-white/30 mt-1 shrink-0" strokeWidth={2.25} />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <a
+                      href={`mailto:scofield@olyxee.com?subject=${encodeURIComponent(subjectWithIndustry)}`}
+                      className={`group inline-flex items-center justify-between gap-3 px-5 py-3 rounded-full text-sm font-medium tracking-wide transition-colors w-full sm:w-auto ${
+                        tier.highlight
+                          ? "bg-white text-neutral-900 hover:bg-neutral-200"
+                          : "bg-white/[0.06] text-white border border-white/15 hover:bg-white/10 hover:border-white/30"
+                      }`}
+                    >
+                      <span>{tier.ctaLabel}</span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                    </a>
+                  </div>
                 </div>
               </motion.div>
             );
           })}
         </div>
+
+        {/* Footnote */}
+        <p className="mt-8 text-xs text-white/40 font-light leading-relaxed max-w-2xl">
+          Pricing and timeline ranges are indicative for <span className="text-white/70">{industry.name}</span>. Every engagement is scoped against your data, integrations, and compliance posture before any commitment.
+        </p>
       </div>
     </section>
   );
@@ -486,45 +524,27 @@ const Enterprise: FC = () => {
         </div>
       </section>
 
-      {/* === TRUSTED BY === */}
-      <section className="px-4 sm:px-6 pb-16 sm:pb-20 -mt-8 sm:-mt-12">
+      {/* === PRINCIPLES STRIP === */}
+      <section className="px-4 sm:px-6 pb-20 sm:pb-28 -mt-8 sm:-mt-12">
         <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-10 sm:mb-12"
-          >
-            <p className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.28em] text-neutral-400 mb-4">
-              Trusted by
-            </p>
-            <h2 className="font-serif text-2xl sm:text-3xl lg:text-[2rem] tracking-tight text-neutral-900 leading-tight">
-              Teams we're working with.
-            </h2>
-            <p className="mt-3 text-sm sm:text-[15px] text-neutral-500 font-light max-w-xl mx-auto">
-              From early-stage startups to established operators, these are the companies building with our infrastructure today.
-            </p>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7, delay: 0.05 }}
-            className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-7 gap-x-8 sm:gap-x-12 gap-y-8 items-center justify-items-center"
+            transition={{ duration: 0.7 }}
+            className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-neutral-200/70 border-y border-neutral-200/70"
           >
-            {TRUST_LOGOS.map((logo) => (
-              <div
-                key={logo.name}
-                className="relative h-7 sm:h-8 w-full max-w-[140px] opacity-60 hover:opacity-100 transition-opacity"
-              >
-                <Image
-                  src={logo.src}
-                  alt={logo.name}
-                  fill
-                  sizes="140px"
-                  className="object-contain grayscale brightness-0"
-                />
+            {[
+              { k: "01", t: "Scoped, not sold", d: "We start with one workflow and a measurable outcome, never a multi-year contract." },
+              { k: "02", t: "Inside your environment", d: "Ordo runs in your cloud, with your data, under your access controls." },
+              { k: "03", t: "Built with you", d: "Our engineers ship alongside yours. No reseller hand-off, no implementation partner." },
+            ].map((p) => (
+              <div key={p.k} className="px-6 sm:px-8 py-8 sm:py-10">
+                <p className="font-mono text-[11px] tracking-[0.22em] text-neutral-400 mb-3">{p.k}</p>
+                <h3 className="font-serif text-xl sm:text-2xl text-neutral-900 tracking-tight mb-2 leading-tight">
+                  {p.t}
+                </h3>
+                <p className="text-sm text-neutral-500 font-light leading-relaxed">{p.d}</p>
               </div>
             ))}
           </motion.div>
@@ -679,7 +699,7 @@ const Enterprise: FC = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <a
-                  href="mailto:scofield@olyxee.com?subject=Enterprise%20%E2%80%94%20Custom%20deployment%20inquiry"
+                  href="mailto:scofield@olyxee.com?subject=Enterprise%3A%20Custom%20deployment%20inquiry"
                   className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide shadow-lg shadow-neutral-900/10"
                 >
                   Contact enterprise <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
