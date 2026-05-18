@@ -9,76 +9,76 @@ import Footer from "../../components/footer";
 
 const HIGHLIGHTS = [
   {
-    eyebrow: "Embodied intelligence",
-    title: "Perceive, reason, and act in the real world.",
-    body: "Foundation models tuned for spatial reasoning and dexterous control, deployed on-device with deterministic latency. Robots that adapt to new objects, environments, and tasks without retraining from scratch.",
+    eyebrow: "Edge intelligence",
+    title: "AI execution at the edge of the enterprise.",
+    body: "On-device intelligence tuned for deterministic latency, deployed across connected hardware, sensors, and operational endpoints. Systems that adapt to new environments and workflows without rebuilding from scratch.",
     image: "/images/robotics/humanoid-manipulation.png",
-    alt: "Humanoid robot manipulating objects on a workbench",
-    meta: "01 · Models",
+    alt: "Edge AI execution across connected enterprise hardware",
+    meta: "01 · Edge AI",
   },
   {
-    eyebrow: "Hardware design",
-    title: "Reference platforms, built for production.",
-    body: "Mechanical, electrical, and compute designs co-developed with our partners across arms, mobile bases, and humanoids. Open SDKs from teleop to autonomy.",
+    eyebrow: "Hardware infrastructure",
+    title: "Connected hardware, built for production environments.",
+    body: "Compute, sensing, and integration platforms co-developed with our partners across industrial, logistics, and field deployments. Open SDKs from instrumentation to autonomous execution.",
     image: "/images/robotics/hardware-design.png",
-    alt: "Engineer reviewing CAD blueprints on a monitor",
+    alt: "Engineer reviewing infrastructure designs on a monitor",
     meta: "02 · Hardware",
   },
   {
     eyebrow: "Fleet operations",
     title: "Deploy, monitor, and update at scale.",
-    body: "Roll out new policies to thousands of robots with rollback-safe delivery, live observability, and OTA updates verified by Ordo before they ever touch a physical system.",
+    body: "Roll out new policies across thousands of endpoints with rollback-safe delivery, live observability, and OTA updates verified by Ordo before they reach a production system.",
     image: "/images/robotics/field-deployment.png",
-    alt: "Field deployment of robotic systems",
+    alt: "Field deployment of connected enterprise systems",
     meta: "03 · Operations",
   },
   {
-    eyebrow: "Education",
-    title: "Building the next generation of roboticists.",
-    body: "From classrooms in Johannesburg to global STEM programs, we partner with schools to put real robotics hardware and curriculum in the hands of students who will define the next decade.",
+    eyebrow: "Workforce enablement",
+    title: "Equipping the next generation of operators.",
+    body: "From training programs in Johannesburg to global enablement initiatives, we partner with organizations and institutions to put real infrastructure, tooling, and curriculum in the hands of the people running tomorrow's operations.",
     image: "/images/robotics/gallery/students-cars.png",
-    alt: "Students smiling with robotic cars on a desk",
-    meta: "04 · Education",
+    alt: "Operators training with connected hardware on a desk",
+    meta: "04 · Enablement",
   },
   {
-    eyebrow: "Manipulation",
-    title: "Dexterous skills, learned from real-world data.",
-    body: "Folding cloth, sorting parts, picking from clutter. Olyxee Robotics policies generalize across grippers and embodiments, learned from millions of teleoperated and autonomous trajectories.",
+    eyebrow: "Operational automation",
+    title: "Reliable execution, learned from real-world workflows.",
+    body: "Sorting, routing, inspecting, handling. Olyxee execution policies generalize across hardware and environments, refined from millions of supervised and autonomous operational traces.",
     image: "/images/robotics/gallery/manipulation-grid.png",
-    alt: "Grid of robot arms performing manipulation tasks",
-    meta: "05 · Manipulation",
+    alt: "Grid of automated operations across connected endpoints",
+    meta: "05 · Automation",
   },
   {
-    eyebrow: "Bimanual",
-    title: "Two arms, one intent.",
-    body: "Coordinated bimanual control lets robots handle deformable, asymmetric, and contact-rich tasks, bagging, threading, assembling, that single-arm systems cannot solve reliably.",
+    eyebrow: "Multi-agent coordination",
+    title: "Many systems, one operational intent.",
+    body: "Coordinated control across fleets of agents and devices handles complex, contact-rich, and contingent workflows, packing, routing, assembling, that single-endpoint systems cannot solve reliably.",
     image: "/images/robotics/gallery/dual-arm-bag.png",
-    alt: "Two robotic arms loading items into a bag",
-    meta: "06 · Bimanual",
+    alt: "Coordinated multi-agent operation across connected hardware",
+    meta: "06 · Coordination",
   },
   {
-    eyebrow: "Language to action",
-    title: "From a sentence to a working object.",
-    body: "Natural-language prompts compile down to motion plans, fabrication steps, and verified executions. Tell a robot what you want, watch it build it.",
+    eyebrow: "Intent to execution",
+    title: "From a sentence to a completed workflow.",
+    body: "Natural-language directives compile down to operational plans, execution steps, and verified outcomes across the enterprise stack. Describe the outcome, watch the system deliver it.",
     image: "/images/robotics/gallery/stool-prompt.png",
-    alt: "Robot interpreting the prompt 'I want a simple stool' and building a structure",
-    meta: "07 · Language → Action",
+    alt: "System interpreting an operational directive and executing it",
+    meta: "07 · Intent → Execution",
   },
   {
     eyebrow: "Engineering",
-    title: "Built by engineers, for the field.",
-    body: "Mechatronics, perception, and control engineers iterating on real hardware, in real labs. Every policy ships only after it survives the bench.",
+    title: "Built by engineers, for real operations.",
+    body: "Systems, perception, and controls engineers iterating on real infrastructure, in real environments. Every policy ships only after it survives the field.",
     image: "/images/robotics/gallery/engineer-build.png",
-    alt: "Engineer assembling a robot in a lab",
+    alt: "Engineer assembling enterprise hardware in a lab",
     meta: "08 · Engineering",
   },
   {
-    eyebrow: "Community",
-    title: "Open access to robotics, from day one.",
-    body: "Workshops, kits, and open SDKs that lower the barrier to building real robots, so curiosity in a classroom can compound into a career in the field.",
+    eyebrow: "Human-in-the-loop",
+    title: "Autonomy with operators in control.",
+    body: "Tooling, dashboards, and approval flows that keep human decision-making at the center of automated operations, so teams can trust, audit, and intervene in every execution.",
     image: "/images/robotics/gallery/students-lego.png",
-    alt: "Young students collaborating on a robotics kit",
-    meta: "09 · Community",
+    alt: "Operators collaborating around a connected hardware workstation",
+    meta: "09 · Human-in-the-loop",
   },
 ];
 
@@ -103,7 +103,7 @@ const HighlightsSlider: FC = () => {
     <section
       className="relative w-full bg-white py-10 sm:py-16"
       aria-roledescription="carousel"
-      aria-label="Olyxee Robotics foundation pillars"
+      aria-label="Olyxee Enterprise Hardware pillars"
     >
       <div className="relative w-full overflow-hidden">
         <motion.div
@@ -218,24 +218,24 @@ const Robotics: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
       <SEO
-        title="Olyxee Robotics, Enterprise Hardware for Embodied AI"
-        description="Olyxee Robotics powers an era of physical agents, embodied AI for industrial, logistics, and field operations with on-device intelligence, hardware integration, and verified fleet deployment at scale."
+        title="Olyxee Enterprise Hardware, Operational Intelligence in Motion"
+        description="Olyxee develops enterprise hardware and intelligent execution infrastructure for autonomous operations, connected systems, and real-world enterprise environments, with edge AI, fleet operations, and verified deployment at scale."
         path="/enterprise/robotics"
         keywords={[
-          "Olyxee Robotics",
-          "embodied AI",
-          "physical AI",
-          "robotics foundation models",
-          "humanoid robots",
-          "industrial robotics",
-          "fleet operations",
+          "enterprise hardware",
+          "operational intelligence",
           "edge AI",
-          "robotic perception",
-          "robot deployment",
-          "robotics accelerator",
-          "enterprise robotics",
+          "AI execution infrastructure",
+          "connected hardware",
+          "autonomous workflows",
+          "industrial automation",
+          "multi-agent coordination",
+          "robotics infrastructure",
+          "fleet operations",
+          "human-in-the-loop operations",
+          "enterprise orchestration",
           "on-device AI",
-          "OTA robot updates",
+          "OTA updates",
           "Ordo verification",
         ]}
         ogImage="https://olyxee.com/images/robotics/humanoid-manipulation.png"
@@ -243,8 +243,8 @@ const Robotics: FC = () => {
           {
             "@context": "https://schema.org",
             "@type": "Service",
-            name: "Olyxee Robotics",
-            serviceType: "Embodied AI and Robotics Platform",
+            name: "Olyxee Enterprise Hardware",
+            serviceType: "Enterprise Hardware and AI Execution Infrastructure",
             provider: {
               "@type": "Organization",
               name: "Olyxee",
@@ -252,12 +252,12 @@ const Robotics: FC = () => {
             },
             areaServed: "Worldwide",
             description:
-              "Olyxee Robotics builds foundation models, hardware reference designs, and fleet operations tooling for physical agents that perceive, reason, and act in the real world.",
+              "Olyxee Enterprise Hardware builds intelligent execution infrastructure, edge AI systems, and connected hardware for autonomous operations and real-world enterprise environments.",
             url: "https://olyxee.com/enterprise/robotics",
             offers: {
               "@type": "Offer",
               availability: "https://schema.org/PreOrder",
-              url: "https://olyxee.com/contact?subject=Olyxee%20Robotics%20early%20access",
+              url: "https://olyxee.com/contact?subject=Olyxee%20Enterprise%20Hardware%20early%20access",
             },
           },
           {
@@ -266,26 +266,26 @@ const Robotics: FC = () => {
             mainEntity: [
               {
                 "@type": "Question",
-                name: "What is Olyxee Robotics?",
+                name: "What is Olyxee Enterprise Hardware?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Olyxee Robotics is the enterprise hardware division of Olyxee, focused on embodied AI: foundation models, reference hardware platforms, and fleet operations for physical agents in industrial, logistics, and field environments.",
+                  text: "Olyxee Enterprise Hardware is the operational infrastructure division of Olyxee, focused on intelligent execution systems, edge AI, connected hardware, and fleet operations for autonomous enterprise environments.",
                 },
               },
               {
                 "@type": "Question",
-                name: "How do I get early access to Olyxee Robotics?",
+                name: "How do I get early access to Olyxee Enterprise Hardware?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Join the early access waitlist or contact the robotics team through the Olyxee contact page to discuss pilots, partnerships, or accelerator participation.",
+                  text: "Join the early access waitlist or contact the enterprise team through the Olyxee contact page to discuss pilots, partnerships, or program participation.",
                 },
               },
               {
                 "@type": "Question",
-                name: "What is the Olyxee Robotics Accelerator?",
+                name: "What is the Olyxee Enterprise Accelerator?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "The Olyxee Robotics Accelerator backs early-stage teams shipping embodied AI with mentorship, compute, and access to robotic hardware platforms.",
+                  text: "The Olyxee Enterprise Accelerator backs early-stage teams shipping intelligent execution infrastructure with mentorship, compute, and access to connected hardware platforms.",
                 },
               },
             ],
@@ -341,7 +341,7 @@ const Robotics: FC = () => {
                   transition={{ duration: 0.6, delay: 0.2 }}
                   className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.28em] text-white/65 mb-6 sm:mb-8"
                 >
-                  Olyxee Robotics
+                  Enterprise Hardware
                 </motion.p>
 
                 <motion.h1
@@ -350,7 +350,7 @@ const Robotics: FC = () => {
                   transition={{ duration: 0.9, delay: 0.3 }}
                   className="font-serif text-white leading-[1.02] tracking-tight text-[2rem] sm:text-6xl md:text-7xl lg:text-[5.5rem]"
                 >
-                  Robotics for the physical world.
+                  Operational Intelligence in Motion.
                 </motion.h1>
 
                 <motion.div
@@ -360,17 +360,17 @@ const Robotics: FC = () => {
                   className="mt-8 sm:mt-10 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3"
                 >
                   <Link
-                    href="/contact?subject=Olyxee%20Robotics%20early%20access"
+                    href="/contact?subject=Olyxee%20Enterprise%20Hardware%20early%20access"
                     className="group inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide"
                   >
                     Join waitlist for early access
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden />
                   </Link>
                   <Link
-                    href="/contact?subject=Olyxee%20Robotics%20partnership"
+                    href="/contact?subject=Olyxee%20Enterprise%20Hardware%20partnership"
                     className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 text-white bg-white/10 backdrop-blur-md border border-white/20 rounded-full font-medium hover:bg-white/15 transition-all text-sm tracking-wide"
                   >
-                    Talk to robotics team
+                    Talk to the enterprise team
                   </Link>
                 </motion.div>
               </div>
@@ -401,10 +401,10 @@ const Robotics: FC = () => {
           className="max-w-5xl mx-auto"
         >
           <p className="text-[11px] sm:text-xs font-semibold text-neutral-400 uppercase tracking-[0.18em] sm:tracking-[0.2em] mb-3 sm:mb-4">
-            Foundation models for the physical world
+            Execution infrastructure for the enterprise
           </p>
           <h2 className="font-serif text-[1.75rem] sm:text-5xl lg:text-[4.25rem] leading-[1.1] sm:leading-[1.05] tracking-tight text-neutral-900">
-            Robots of any shape and size, perceiving, reasoning, and using tools in the world around them.
+            Olyxee develops intelligent execution systems that connect AI, enterprise workflows, hardware, and human decision-making into reliable operational environments.
           </h2>
         </motion.div>
       </section>
@@ -424,17 +424,17 @@ const Robotics: FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-12 items-center">
             <div className="lg:col-span-5 order-2 lg:order-1">
               <p className="text-[11px] sm:text-xs font-semibold text-neutral-500 uppercase tracking-[0.18em] sm:tracking-[0.2em] mb-3 sm:mb-4">
-                Olyxee Robotics Accelerator
+                Olyxee Enterprise Accelerator
               </p>
               <h2 className="font-serif text-[1.75rem] sm:text-5xl lg:text-[3.5rem] tracking-tight text-neutral-900 leading-[1.1] sm:leading-[1.05]">
-                Backing the next wave of physical AI.
+                Backing the next wave of operational intelligence.
               </h2>
               <p className="mt-4 sm:mt-6 text-neutral-600 text-sm sm:text-lg font-light leading-relaxed">
-                Mentorship, compute, and robots for early-stage teams shipping embodied AI into the real world.
+                Mentorship, compute, and connected hardware for early-stage teams shipping AI execution infrastructure into real enterprise environments.
               </p>
               <div className="mt-6 sm:mt-8">
                 <Link
-                  href="/contact?subject=Olyxee%20Robotics%20Accelerator%20application"
+                  href="/contact?subject=Olyxee%20Enterprise%20Accelerator%20application"
                   className="group inline-flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-colors text-sm tracking-wide"
                 >
                   Apply to the program
@@ -447,7 +447,7 @@ const Robotics: FC = () => {
               <div className="relative aspect-[4/3] w-full">
                 <Image
                   src="/images/robotics/accelerator-pointcloud.png"
-                  alt="Point cloud rendering of a robotic figure"
+                  alt="Abstract point cloud rendering of a connected operational system"
                   fill
                   className="object-contain"
                   sizes="(min-width: 1024px) 60vw, 100vw"
@@ -490,13 +490,13 @@ const Robotics: FC = () => {
               04 · Ecosystem
             </p>
             <h3 className="font-serif text-[1.75rem] sm:text-4xl lg:text-5xl tracking-tight text-neutral-900 leading-[1.1]">
-              Built with the leading robotics teams.
+              Built with leading enterprise and infrastructure teams.
             </h3>
             <p className="mt-4 sm:mt-5 text-neutral-600 text-sm sm:text-lg font-light leading-relaxed">
-              We partner with hardware OEMs, foundation model labs, and field operators to bring reliable embodied AI from research into production.
+              We partner with hardware OEMs, foundation model labs, and operations teams to bring reliable AI execution from research into real enterprise environments.
             </p>
             <Link
-              href="/contact?subject=Olyxee%20Robotics%20partnership"
+              href="/contact?subject=Olyxee%20Enterprise%20Hardware%20partnership"
               className="mt-6 sm:mt-8 inline-flex items-center gap-2 text-sm font-medium text-neutral-900 group"
             >
               Become a partner
@@ -507,7 +507,7 @@ const Robotics: FC = () => {
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-neutral-100 ring-1 ring-neutral-900/5">
               <Image
                 src="/images/robotics/foundation-partnerships.png"
-                alt="Partnerships across robotics labs and platforms"
+                alt="Partnerships across enterprise infrastructure and hardware platforms"
                 fill
                 className="object-cover"
                 sizes="(min-width: 1024px) 60vw, 100vw"
@@ -523,14 +523,14 @@ const Robotics: FC = () => {
           <div className="relative rounded-2xl sm:rounded-3xl bg-neutral-50 border border-neutral-200/70 px-5 sm:px-12 lg:px-20 py-10 sm:py-20 lg:py-24 overflow-hidden">
             <div className="relative text-center max-w-2xl mx-auto">
               <h2 className="font-serif text-[1.85rem] sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-4 sm:mb-5 leading-[1.1] sm:leading-[1.05]">
-                Building in the physical world?
+                Building real-world operational systems?
               </h2>
               <p className="text-neutral-600 text-sm sm:text-lg font-light leading-relaxed mb-7 sm:mb-9 max-w-lg mx-auto">
-                We partner on embodied AI, perception stacks, and hardware-integrated deployments, from pilot to fleet.
+                We partner on edge AI, execution infrastructure, and hardware-integrated deployments, from pilot to fleet.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Link
-                  href="/contact?subject=Olyxee%20Robotics%20inquiry"
+                  href="/contact?subject=Olyxee%20Enterprise%20Hardware%20inquiry"
                   className="group inline-flex items-center justify-center gap-2 px-7 sm:px-8 py-3.5 sm:py-4 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide"
                 >
                   Get in touch
