@@ -1,4 +1,5 @@
 import { FC } from "react";
+import Image from "next/image";
 import SEO from "../../components/SEO";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
@@ -9,13 +10,11 @@ import {
   ArrowUpRight,
   Truck,
   Bell,
-  PackageCheck,
   MapPin,
   MessageSquare,
   Link2,
   ShieldCheck,
   BarChart3,
-  Check,
 } from "lucide-react";
 
 const fadeUp = {
@@ -131,7 +130,7 @@ const Logistics: FC = () => {
               </motion.div>
             </div>
 
-            {/* Mock order timeline */}
+            {/* Orders dashboard preview */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -142,58 +141,123 @@ const Logistics: FC = () => {
                 aria-hidden
                 className="absolute -inset-8 -z-10 bg-gradient-to-br from-emerald-50/60 via-white to-blue-50/40 blur-2xl rounded-[2rem]"
               />
-              <div className="relative rounded-3xl bg-white ring-1 ring-neutral-200 shadow-sm p-6 sm:p-7">
-                <div className="flex items-center justify-between mb-6">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                    <span className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">
-                      Order #OLX-4827
-                    </span>
-                  </div>
-                  <span className="text-[11px] text-neutral-400">Updated just now</span>
-                </div>
-
-                <ol className="relative space-y-5">
-                  {[
-                    { Icon: Check, label: "Order confirmed", time: "Mon, 10:24", state: "done" as const },
-                    { Icon: PackageCheck, label: "Packed and ready", time: "Mon, 14:02", state: "done" as const },
-                    { Icon: Truck, label: "Out for delivery", time: "Tue, 09:11", state: "active" as const },
-                    { Icon: MapPin, label: "Delivered to customer", time: "Pending", state: "pending" as const },
-                  ].map(({ Icon, label, time, state }) => (
-                    <li key={label} className="flex items-start gap-4">
-                      <div
-                        className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 ring-1 ${
-                          state === "done"
-                            ? "bg-neutral-900 text-white ring-neutral-900"
-                            : state === "active"
-                            ? "bg-emerald-50 text-emerald-700 ring-emerald-200"
-                            : "bg-white text-neutral-400 ring-neutral-200"
-                        }`}
-                      >
-                        <Icon className="w-4 h-4" strokeWidth={2} />
-                      </div>
-                      <div className="flex-1 pt-1.5">
-                        <div className="flex items-baseline justify-between gap-3">
-                          <span
-                            className={`text-sm font-medium ${
-                              state === "pending" ? "text-neutral-400" : "text-neutral-900"
-                            }`}
-                          >
-                            {label}
-                          </span>
-                          <span className="text-[11px] font-mono text-neutral-400">{time}</span>
-                        </div>
-                        {state === "active" && (
-                          <p className="mt-1 text-[12px] text-neutral-500 font-light inline-flex items-center gap-1.5">
-                            <Bell className="w-3 h-3 text-emerald-600" />
-                            Customer notified by SMS and email
-                          </p>
-                        )}
-                      </div>
-                    </li>
-                  ))}
-                </ol>
+              <div className="relative rounded-3xl overflow-hidden ring-1 ring-neutral-200/80 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.25)]">
+                <Image
+                  src="/images/logistics/orders-dashboard.png"
+                  alt="Olyxee Logistics orders dashboard showing pickup, delivery, and status across recent orders"
+                  width={1600}
+                  height={1200}
+                  priority
+                  className="w-full h-auto object-cover"
+                />
               </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* === HOW IT WORKS (isometric) === */}
+      <section className="py-20 sm:py-28 border-t border-neutral-100 bg-neutral-50/60">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="relative order-2 lg:order-1"
+            >
+              <div className="relative aspect-square max-w-md mx-auto">
+                <Image
+                  src="/images/logistics/hero-iso.png"
+                  alt="Olyxee Logistics network connecting trucks, packages, tracking, and delivery"
+                  fill
+                  sizes="(max-width: 1024px) 90vw, 480px"
+                  className="object-contain"
+                />
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="order-1 lg:order-2"
+            >
+              <p className="text-[11px] sm:text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">
+                How it works
+              </p>
+              <h2 className="font-serif text-3xl sm:text-5xl tracking-tight leading-[1.05] mb-6">
+                One loop, from <em className="text-blue-500">pickup to doorstep.</em>
+              </h2>
+              <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-8">
+                Every order flows through a single, verified loop. You create the order, Olyxee
+                Logistics tracks each stage, and your customer gets notified the moment something
+                changes, with no back-and-forth required.
+              </p>
+              <ul className="space-y-4">
+                {[
+                  { n: "01", t: "Create the order", d: "Add the customer, items, and delivery info in seconds." },
+                  { n: "02", t: "Update the status", d: "Mark it confirmed, packed, shipped, or delivered as it moves." },
+                  { n: "03", t: "Customer stays in the loop", d: "Branded SMS and email go out automatically at every step." },
+                ].map((s) => (
+                  <li key={s.n} className="flex items-start gap-4">
+                    <span className="font-mono text-xs text-neutral-400 pt-1 w-8 shrink-0">{s.n}</span>
+                    <div>
+                      <p className="text-neutral-900 font-medium">{s.t}</p>
+                      <p className="text-sm text-neutral-500 font-light leading-relaxed">{s.d}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* === TRACKING MAP === */}
+      <section className="py-20 sm:py-28 border-t border-neutral-100">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
+              <p className="text-[11px] sm:text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">
+                Live tracking
+              </p>
+              <h2 className="font-serif text-3xl sm:text-5xl tracking-tight leading-[1.05] mb-6">
+                A tracking page your <em className="text-orange-500">customers actually open.</em>
+              </h2>
+              <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-6">
+                Every order comes with a clean, branded tracking page. No app to install, no account
+                to create, just a link your customer can revisit any time to see exactly where their
+                package is.
+              </p>
+              <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-neutral-600">
+                <span className="inline-flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500" /> Real-time updates</span>
+                <span className="inline-flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-blue-500" /> Shareable links</span>
+                <span className="inline-flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-orange-500" /> Mobile friendly</span>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="relative rounded-3xl overflow-hidden ring-1 ring-neutral-200/80 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.18)]"
+            >
+              <Image
+                src="/images/logistics/tracking-map.png"
+                alt="Live tracking map showing shipment route and current location"
+                width={1600}
+                height={1000}
+                className="w-full h-auto object-cover"
+              />
             </motion.div>
           </div>
         </div>
@@ -231,6 +295,78 @@ const Logistics: FC = () => {
                 </motion.div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* === BUILT FOR (lifestyle pair) === */}
+      <section className="py-20 sm:py-28 border-t border-neutral-100 bg-neutral-50/60">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="max-w-3xl mb-12 sm:mb-16">
+            <p className="text-[11px] sm:text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">
+              Built for real workflows
+            </p>
+            <h2 className="font-serif text-3xl sm:text-5xl tracking-tight leading-[1.05]">
+              From the back office to the <em className="text-blue-500">front door.</em>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="group relative rounded-3xl overflow-hidden bg-neutral-900 aspect-[4/5] sm:aspect-[4/3]"
+            >
+              <Image
+                src="/images/logistics/seller-support.jpg"
+                alt="Seller coordinating an order over the phone from a stockroom"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover opacity-90 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 p-7 sm:p-9 text-white">
+                <p className="text-[11px] font-mono uppercase tracking-[0.2em] text-white/60 mb-2">
+                  For sellers
+                </p>
+                <h3 className="font-serif text-2xl sm:text-3xl tracking-tight leading-tight mb-2">
+                  Less time on the phone, more time selling.
+                </h3>
+                <p className="text-sm text-white/75 font-light max-w-md">
+                  Stop fielding "where is my order?" calls. Automated updates keep your customers informed so your team can focus on the work that matters.
+                </p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="group relative rounded-3xl overflow-hidden bg-neutral-900 aspect-[4/5] sm:aspect-[4/3]"
+            >
+              <Image
+                src="/images/logistics/delivery-handoff.jpg"
+                alt="Customer accepting a package from a courier at her doorstep"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover opacity-90 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 p-7 sm:p-9 text-white">
+                <p className="text-[11px] font-mono uppercase tracking-[0.2em] text-white/60 mb-2">
+                  For customers
+                </p>
+                <h3 className="font-serif text-2xl sm:text-3xl tracking-tight leading-tight mb-2">
+                  No more wondering where it is.
+                </h3>
+                <p className="text-sm text-white/75 font-light max-w-md">
+                  Customers know exactly when their order is confirmed, shipped, and arriving, so the only surprise at the door is the package.
+                </p>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
