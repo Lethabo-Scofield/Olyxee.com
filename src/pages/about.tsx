@@ -176,116 +176,136 @@ const About: FC = () => {
         </div>
       </section>
 
-      {/* === MISSION === */}
-      <section className="py-20 sm:py-28 border-t border-neutral-200/70">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-[240px_1fr] gap-10 lg:gap-20">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              custom={0}
-              variants={fadeUp}
-            >
-              <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 lg:pt-3">
-                Mission
-              </p>
-            </motion.div>
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              custom={1}
-              variants={fadeUp}
-            >
-              <p className="font-serif text-2xl sm:text-3xl lg:text-[2.5rem] text-neutral-900 leading-[1.15] tracking-tight mb-8">
-                Most AI today advises. We believe it should{" "}
-                <em className="text-neutral-400 not-italic">execute</em>.
-              </p>
-              <p className="text-base sm:text-lg text-neutral-500 leading-relaxed font-light max-w-2xl">
-                Our mission is to close the gap between what AI can understand and what it can actually do inside an organization. Teams everywhere are stuck translating AI recommendations into manual work. We&apos;re building the layer that removes that gap entirely.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      {/* === MANIFESTO: Mission / Vision / Objectives === */}
+      <section className="relative bg-neutral-950 text-white overflow-hidden">
+        {/* glow */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[1200px] h-[600px] rounded-full opacity-25"
+          style={{
+            background:
+              "radial-gradient(closest-side, rgba(251,191,36,0.35), rgba(59,130,246,0.18) 45%, transparent 75%)",
+            filter: "blur(80px) saturate(1.4)",
+          }}
+        />
 
-      {/* === VISION === */}
-      <section className="py-20 sm:py-28 border-t border-neutral-200/70">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-[240px_1fr] gap-10 lg:gap-20">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              custom={0}
-              variants={fadeUp}
-            >
-              <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 lg:pt-3">
-                Vision
-              </p>
-            </motion.div>
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              custom={1}
-              variants={fadeUp}
-            >
-              <p className="font-serif text-2xl sm:text-3xl lg:text-[2.5rem] text-neutral-900 leading-[1.15] tracking-tight mb-8">
-                A world where AI quietly{" "}
-                <em className="text-neutral-400 not-italic">runs</em> the operations that move organizations forward.
-              </p>
-              <p className="text-base sm:text-lg text-neutral-500 leading-relaxed font-light max-w-2xl">
-                We see a future where the work of running a company - reconciling, coordinating, deciding, executing - happens on top of an AI infrastructure that any team can trust, audit, and direct in their own words.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-24 sm:py-36">
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="font-mono text-[11px] uppercase tracking-[0.3em] text-white/40 mb-16 sm:mb-24"
+          >
+            ⟶ The Manifesto
+          </motion.p>
 
-      {/* === OBJECTIVES === */}
-      <section className="py-20 sm:py-28 border-t border-neutral-200/70">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-[240px_1fr] gap-10 lg:gap-20">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              custom={0}
-              variants={fadeUp}
-            >
-              <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 lg:pt-3">
-                Objectives
+          {/* MOVEMENT 01 — MISSION */}
+          <motion.article
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
+            className="relative grid grid-cols-12 gap-y-6 gap-x-6 sm:gap-x-10 items-start pb-20 sm:pb-28 border-b border-white/10"
+          >
+            <div className="col-span-12 sm:col-span-4 lg:col-span-5">
+              <p className="font-mono text-[11px] tracking-[0.3em] text-amber-400 mb-3">
+                01 · MISSION
               </p>
-            </motion.div>
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              custom={1}
-              variants={fadeUp}
-            >
-              <p className="font-serif text-2xl sm:text-3xl lg:text-[2.5rem] text-neutral-900 leading-[1.15] tracking-tight mb-10">
-                What we&apos;re working toward.
+              <span
+                aria-hidden="true"
+                className="block font-serif italic text-[10rem] sm:text-[14rem] lg:text-[18rem] leading-[0.78] tracking-[-0.05em] text-transparent"
+                style={{ WebkitTextStroke: "1px rgba(251,191,36,0.55)" }}
+              >
+                M.
+              </span>
+            </div>
+            <div className="col-span-12 sm:col-span-8 lg:col-span-7 lg:pt-6">
+              <p className="font-serif text-3xl sm:text-4xl lg:text-[3rem] leading-[1.08] tracking-tight mb-8">
+                Most AI today <em className="italic text-white/40 not-italic">advises.</em>{" "}
+                We&apos;re building one that <em className="italic text-amber-400">executes.</em>
               </p>
-              <ul className="divide-y divide-neutral-200 border-t border-b border-neutral-200">
+              <p className="text-base sm:text-lg text-white/55 leading-relaxed font-light max-w-xl">
+                Close the gap between what AI understands and what it actually does inside a company. Stop teams from translating AI recommendations into manual work.
+              </p>
+            </div>
+          </motion.article>
+
+          {/* MOVEMENT 02 — VISION */}
+          <motion.article
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
+            className="relative grid grid-cols-12 gap-y-6 gap-x-6 sm:gap-x-10 items-start py-20 sm:py-28 border-b border-white/10"
+          >
+            <div className="col-span-12 sm:col-span-8 lg:col-span-7 lg:pt-6 order-2 sm:order-1">
+              <p className="font-serif text-3xl sm:text-4xl lg:text-[3rem] leading-[1.08] tracking-tight mb-8">
+                A world where AI <em className="italic text-sky-400">quietly runs</em> the operations that move organizations forward.
+              </p>
+              <p className="text-base sm:text-lg text-white/55 leading-relaxed font-light max-w-xl">
+                Reconciling, coordinating, deciding, executing — happening on infrastructure any team can trust, audit, and direct in their own words.
+              </p>
+            </div>
+            <div className="col-span-12 sm:col-span-4 lg:col-span-5 order-1 sm:order-2 sm:text-right">
+              <p className="font-mono text-[11px] tracking-[0.3em] text-sky-400 mb-3">
+                02 · VISION
+              </p>
+              <span
+                aria-hidden="true"
+                className="block font-serif italic text-[10rem] sm:text-[14rem] lg:text-[18rem] leading-[0.78] tracking-[-0.05em] text-transparent"
+                style={{ WebkitTextStroke: "1px rgba(56,189,248,0.55)" }}
+              >
+                V.
+              </span>
+            </div>
+          </motion.article>
+
+          {/* MOVEMENT 03 — OBJECTIVES */}
+          <motion.article
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
+            className="relative grid grid-cols-12 gap-y-6 gap-x-6 sm:gap-x-10 items-start pt-20 sm:pt-28"
+          >
+            <div className="col-span-12 sm:col-span-4 lg:col-span-5">
+              <p className="font-mono text-[11px] tracking-[0.3em] text-emerald-400 mb-3">
+                03 · OBJECTIVES
+              </p>
+              <span
+                aria-hidden="true"
+                className="block font-serif italic text-[10rem] sm:text-[14rem] lg:text-[18rem] leading-[0.78] tracking-[-0.05em] text-transparent"
+                style={{ WebkitTextStroke: "1px rgba(52,211,153,0.55)" }}
+              >
+                O.
+              </span>
+            </div>
+            <div className="col-span-12 sm:col-span-8 lg:col-span-7 lg:pt-6">
+              <p className="font-serif text-3xl sm:text-4xl lg:text-[3rem] leading-[1.08] tracking-tight mb-10">
+                What we&apos;re <em className="italic text-emerald-400">working toward.</em>
+              </p>
+              <ol className="space-y-0">
                 {OBJECTIVES.map((obj, i) => (
-                  <li
+                  <motion.li
                     key={obj}
-                    className="grid grid-cols-[2.5rem_1fr] gap-4 py-5 items-baseline"
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: i * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
+                    className="group grid grid-cols-[3.25rem_1fr] gap-4 sm:gap-6 py-5 border-t border-white/10 last:border-b items-baseline"
                   >
-                    <span className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-400">
-                      {String(i + 1).padStart(2, "0")}
+                    <span className="font-mono text-[11px] tracking-[0.2em] text-emerald-400/80">
+                      / {String(i + 1).padStart(2, "0")}
                     </span>
-                    <p className="text-base sm:text-[17px] text-neutral-800 leading-relaxed font-light">
+                    <p className="text-base sm:text-lg text-white/85 leading-relaxed font-light group-hover:text-white transition-colors">
                       {obj}
                     </p>
-                  </li>
+                  </motion.li>
                 ))}
-              </ul>
-            </motion.div>
-          </div>
+              </ol>
+            </div>
+          </motion.article>
         </div>
       </section>
 
