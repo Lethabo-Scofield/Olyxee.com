@@ -17,7 +17,7 @@ const footerData = {
     {
       title: "Solutions",
       links: [
-        { name: "Logistics", href: "/solutions/logistics" },
+        { name: "Ordor Loop", href: "/solutions/logistics" },
         { name: "Enterprise Automation", href: "/enterprise" },
       ],
     },
