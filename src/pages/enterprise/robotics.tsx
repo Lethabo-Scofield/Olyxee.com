@@ -306,8 +306,12 @@ const Robotics: FC = () => {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
           className="relative max-w-[1500px] mx-auto"
+          style={{
+            filter: "drop-shadow(0 30px 60px rgba(0,0,0,0.25))",
+            WebkitFilter: "drop-shadow(0 30px 60px rgba(0,0,0,0.25))",
+          }}
         >
-          <div className="relative overflow-hidden rounded-3xl sm:rounded-[2rem] lg:rounded-[2.5rem] ring-1 ring-neutral-900/10 shadow-[0_40px_100px_-30px_rgba(0,0,0,0.45)] bg-neutral-950 min-h-[560px] sm:min-h-[600px] lg:min-h-[640px] flex items-end">
+          <div className="relative overflow-hidden rounded-3xl sm:rounded-[2rem] lg:rounded-[2.5rem] bg-neutral-950 min-h-[560px] sm:min-h-[600px] lg:min-h-[640px] flex items-end transform-gpu">
             {/* Video background */}
             <video
               src="/videos/robotics-hero.mp4"
