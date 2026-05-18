@@ -57,7 +57,7 @@ const Logistics: FC = () => {
               transition={{ duration: 0.8, delay: 0.3, ease }}
               className="col-span-12 lg:col-span-3 lg:pb-6"
             >
-              <p className="text-base sm:text-lg text-neutral-600 font-light leading-snug max-w-xs">
+              <p className="text-lg sm:text-xl text-neutral-700 leading-relaxed max-w-sm">
                 Order status updates that keep every customer in the loop, from confirmed to delivered.
               </p>
             </motion.div>
