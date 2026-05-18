@@ -39,26 +39,6 @@ const Logistics: FC = () => {
       {/* === HERO === */}
       <section className="relative pt-32 sm:pt-40 pb-12 sm:pb-20 px-4 sm:px-8">
         <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex items-center justify-between mb-12 sm:mb-16"
-          >
-            <div className="flex items-center gap-3">
-              <span className="font-mono text-[11px] tracking-[0.25em] text-neutral-400">
-                OLX / LOGISTICS / 001
-              </span>
-            </div>
-            <span className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.2em] text-neutral-500">
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
-                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
-              </span>
-              LIVE
-            </span>
-          </motion.div>
-
           <div className="grid grid-cols-12 gap-y-10 gap-x-6 items-end">
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
