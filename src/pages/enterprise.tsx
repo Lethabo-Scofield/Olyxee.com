@@ -24,7 +24,6 @@ type Outcome = {
   metric: { headline: string; before: string; after: string };
   phases: [Phase, Phase, Phase];
   requires: string[];
-  systems: string[];
 };
 
 const OUTCOMES: Outcome[] = [
@@ -42,18 +41,16 @@ const OUTCOMES: Outcome[] = [
         window: "Days 0–30",
         title: "Reconciliation agent, live",
         bullets: [
-          "Read-only ledger sync with QBO or NetSuite",
-          "Auto-match 80%+ of transactions on day one",
-          "Anomalies routed to a Slack channel your team owns",
+          "Ledger sync with QBO or NetSuite",
+          "Auto-match 80%+ of transactions",
         ],
       },
       {
         window: "Days 30–60",
         title: "Approvals and exception flows",
         bullets: [
-          "Human-in-the-loop approval queues",
-          "Decision rationale captured per item",
-          "Full audit trail wired to your warehouse",
+          "Human-in-the-loop queues",
+          "Audit trail wired to your warehouse",
         ],
       },
       {
@@ -61,17 +58,14 @@ const OUTCOMES: Outcome[] = [
         title: "End-to-end close orchestration",
         bullets: [
           "Cross-entity consolidation",
-          "Auto-prepared close packet for review",
-          "Weekly variance reports to leadership",
+          "Auto-prepared close packet",
         ],
       },
     ],
     requires: [
       "Read access to your accounting system",
-      "One finance lead as decision owner",
-      "Samples of your last three closes",
+      "One finance lead as owner",
     ],
-    systems: ["QuickBooks", "NetSuite", "Xero", "Snowflake", "Slack"],
   },
   {
     id: "shipments",
@@ -87,9 +81,8 @@ const OUTCOMES: Outcome[] = [
         window: "Days 0–30",
         title: "Carrier and WMS ingest",
         bullets: [
-          "Live tracking from your top five carriers",
+          "Live tracking from your top carriers",
           "Status normalised across providers",
-          "Exception detection rules tuned to your lanes",
         ],
       },
       {
@@ -97,26 +90,22 @@ const OUTCOMES: Outcome[] = [
         title: "Supplier coordination agent",
         bullets: [
           "Auto-pings on stalled shipments",
-          "Exceptions routed to the right ops owner",
-          "Daily exception digest, scoped per region",
+          "Daily exception digest per region",
         ],
       },
       {
         window: "Days 60–90",
         title: "Predictive ETA and re-routing",
         bullets: [
-          "ETA model trained on your lane history",
-          "Suggested re-routes for at-risk freight",
-          "Customer-facing status pages",
+          "ETA model on your lane history",
+          "Re-route suggestions for at-risk freight",
         ],
       },
     ],
     requires: [
       "TMS or WMS API access",
-      "One ops lead as decision owner",
-      "12 months of historical shipment data",
+      "One ops lead as owner",
     ],
-    systems: ["Project44", "FourKites", "SAP TM", "Shopify", "Slack"],
   },
   {
     id: "approvals",
@@ -132,18 +121,16 @@ const OUTCOMES: Outcome[] = [
         window: "Days 0–30",
         title: "Policy-aware approval agent",
         bullets: [
-          "Codify your current policy as auditable rules",
+          "Policy codified as auditable rules",
           "Agent drafts decisions with rationale",
-          "Edge cases routed to named humans",
         ],
       },
       {
         window: "Days 30–60",
         title: "Multi-system orchestration",
         bullets: [
-          "Wire into Workday, SAP, or Jira",
-          "Audit trail per approval, exportable",
-          "Slack and email surfaces for reviewers",
+          "Wired into Workday, SAP, or Jira",
+          "Exportable audit trail per approval",
         ],
       },
       {
@@ -151,7 +138,6 @@ const OUTCOMES: Outcome[] = [
         title: "Continuous policy tuning",
         bullets: [
           "Decision-quality dashboard",
-          "Policy-drift detection on real outcomes",
           "Quarterly tuning loop owned by Olyxee",
         ],
       },
@@ -159,9 +145,7 @@ const OUTCOMES: Outcome[] = [
     requires: [
       "Current approval policy docs",
       "An operations workflow owner",
-      "Read access to source systems",
     ],
-    systems: ["Workday", "SAP", "Jira", "ServiceNow", "Okta"],
   },
   {
     id: "vendor",
@@ -177,17 +161,15 @@ const OUTCOMES: Outcome[] = [
         window: "Days 0–30",
         title: "Parity audit",
         bullets: [
-          "Map every input and output of the current vendor",
-          "Reproduce on Ordo against your live data",
-          "Side-by-side accuracy and latency comparison",
+          "Map every vendor input and output",
+          "Side-by-side accuracy comparison",
         ],
       },
       {
         window: "Days 30–60",
         title: "Shadow deployment",
         bullets: [
-          "Run Ordo in shadow mode in production",
-          "Track delta vs. vendor on every request",
+          "Ordo runs in shadow in production",
           "Hand-off plan with documented rollback",
         ],
       },
@@ -196,17 +178,14 @@ const OUTCOMES: Outcome[] = [
         title: "Cutover and ownership",
         bullets: [
           "Vendor cancellation handover",
-          "Internal runbooks and on-call rotation",
-          "Quarterly model refresh on your data",
+          "Internal runbooks and on-call",
         ],
       },
     ],
     requires: [
       "Current vendor contract terms",
       "An engineering point of contact",
-      "30 days of vendor input/output samples",
     ],
-    systems: ["OpenAI", "Anthropic", "Cohere", "Custom RAG", "Your stack"],
   },
 ];
 
@@ -396,7 +375,7 @@ const BriefComposer: FC = () => {
             Compose your engagement. We build the rest.
           </h2>
           <p className="mt-6 text-base sm:text-lg text-neutral-500 font-light leading-relaxed max-w-2xl">
-            Pick the outcome you care about and the shape of the work. The brief below rewrites itself with the deliverables, the rhythm, and what we&apos;ll need from your team to make it real.
+            Pick an outcome and a shape. The brief below rewrites itself.
           </p>
         </motion.div>
 
@@ -468,46 +447,54 @@ const BriefComposer: FC = () => {
             className="relative rounded-3xl border border-neutral-200 bg-white overflow-hidden shadow-[0_1px_0_rgba(0,0,0,0.04),0_24px_60px_-30px_rgba(0,0,0,0.18)]"
           >
             {/* Memo header bar */}
-            <header className="px-6 sm:px-12 pt-8 sm:pt-12 pb-6 sm:pb-8 border-b border-neutral-200">
-              <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-400">
-                <span>Engagement brief</span>
-                <span className="hidden sm:inline text-neutral-300">/</span>
-                <span className="text-neutral-600">{outcome.short}</span>
-                <span className="hidden sm:inline text-neutral-300">/</span>
-                <span className="text-neutral-600">{scope.label}</span>
-                <span className="ml-auto text-neutral-400">Drafted {todayLabel}</span>
+            <header className="relative px-6 sm:px-12 pt-8 sm:pt-12 pb-8 sm:pb-10 border-b border-neutral-200 overflow-hidden">
+              <Image
+                src="/images/gradient-pastel.png"
+                alt=""
+                aria-hidden
+                fill
+                sizes="(min-width: 1024px) 1024px, 100vw"
+                className="object-cover opacity-60 pointer-events-none select-none"
+              />
+              <div
+                aria-hidden
+                className="absolute inset-0 bg-gradient-to-r from-white via-white/70 to-white/40 pointer-events-none"
+              />
+              <div className="relative">
+                <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-500">
+                  <span>Engagement brief</span>
+                  <span className="hidden sm:inline text-neutral-400">/</span>
+                  <span className="text-neutral-700">{outcome.short}</span>
+                  <span className="hidden sm:inline text-neutral-400">/</span>
+                  <span className="text-neutral-700">{scope.label}</span>
+                  <span className="ml-auto text-neutral-500">Drafted {todayLabel}</span>
+                </div>
+                <h3 className="mt-5 font-serif text-3xl sm:text-4xl lg:text-[2.75rem] text-neutral-900 tracking-tight leading-[1.1] max-w-2xl">
+                  {outcome.label}.
+                </h3>
               </div>
-              <h3 className="mt-5 font-serif text-3xl sm:text-4xl lg:text-[2.75rem] text-neutral-900 tracking-tight leading-[1.1]">
-                {outcome.label}, delivered as a {scope.label.toLowerCase()}.
-              </h3>
             </header>
 
             {/* Outcome metric — the value statement */}
             <section className="px-6 sm:px-12 py-8 sm:py-10 border-b border-neutral-200 bg-neutral-50/40">
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-start">
-                <div className="md:col-span-7">
-                  <p className="text-[10px] font-mono uppercase tracking-[0.24em] text-neutral-400 mb-3">
-                    Outcome we&apos;ll be measured on
-                  </p>
-                  <p className="font-serif text-2xl sm:text-3xl text-neutral-900 leading-[1.2] tracking-tight">
-                    {outcome.metric.headline}
+              <p className="text-[10px] font-mono uppercase tracking-[0.24em] text-neutral-400 mb-4">
+                What changes
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr] gap-3 sm:gap-5 items-stretch">
+                <div className="rounded-2xl border border-neutral-200 bg-white px-5 py-5">
+                  <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-400 mb-2">Today</p>
+                  <p className="font-serif text-xl sm:text-2xl text-neutral-400 leading-tight line-through decoration-neutral-300">
+                    {outcome.metric.before}
                   </p>
                 </div>
-                <div className="md:col-span-5">
-                  <div className="grid grid-cols-2 gap-3">
-                    <div className="rounded-2xl border border-neutral-200 bg-white px-5 py-5">
-                      <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-400 mb-2">Today</p>
-                      <p className="font-serif text-xl sm:text-2xl text-neutral-400 leading-tight line-through decoration-neutral-300">
-                        {outcome.metric.before}
-                      </p>
-                    </div>
-                    <div className="rounded-2xl border border-neutral-900 bg-neutral-900 px-5 py-5">
-                      <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-white/50 mb-2">With Olyxee</p>
-                      <p className="font-serif text-xl sm:text-2xl text-white leading-tight">
-                        {outcome.metric.after}
-                      </p>
-                    </div>
-                  </div>
+                <div className="hidden sm:flex items-center justify-center text-neutral-400">
+                  <ArrowRight className="w-5 h-5" />
+                </div>
+                <div className="rounded-2xl border border-neutral-900 bg-neutral-900 px-5 py-5">
+                  <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-white/50 mb-2">With Olyxee</p>
+                  <p className="font-serif text-xl sm:text-2xl text-white leading-tight">
+                    {outcome.metric.after}
+                  </p>
                 </div>
               </div>
             </section>
@@ -570,7 +557,7 @@ const BriefComposer: FC = () => {
                       +
                     </span>
                     <p className="text-[13px] text-neutral-500 font-light leading-relaxed">
-                      Phases 2 and 3 unlock if we extend to a custom build. Same team, no re-pitching.
+                      Phases 2 and 3 unlock on extension.
                     </p>
                   </li>
                 )}
@@ -579,36 +566,33 @@ const BriefComposer: FC = () => {
             </section>
 
             {/* Requirements + extras */}
-            <section className="px-6 sm:px-12 py-10 sm:py-12 border-b border-neutral-200 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14">
+            <section className="px-6 sm:px-12 py-8 sm:py-10 border-b border-neutral-200 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14">
               <div>
-                <p className="text-[10px] font-mono uppercase tracking-[0.24em] text-neutral-400 mb-4">
-                  What we&apos;ll need from you
+                <p className="text-[10px] font-mono uppercase tracking-[0.24em] text-neutral-400 mb-3">
+                  From you
                 </p>
-                <ul className="space-y-2.5">
+                <ul className="space-y-2">
                   {outcome.requires.map((r) => (
                     <li
                       key={r}
-                      className="flex items-start gap-3 text-[14px] text-neutral-700 font-light leading-relaxed"
+                      className="flex items-start gap-3 text-[14px] text-neutral-700 font-light leading-snug"
                     >
                       <span aria-hidden className="mt-2 w-1 h-1 rounded-full bg-neutral-400 shrink-0" />
                       <span>{r}</span>
                     </li>
                   ))}
                 </ul>
-                <p className="mt-5 text-[12px] text-neutral-400 font-light leading-relaxed">
-                  No procurement marathons. We sign a mutual NDA, scope in one workshop, and start.
-                </p>
               </div>
               <div>
-                <p className="text-[10px] font-mono uppercase tracking-[0.24em] text-neutral-400 mb-4">
-                  {scope.extras ? `Included at ${scope.label.toLowerCase()}` : "Pilot scope"}
+                <p className="text-[10px] font-mono uppercase tracking-[0.24em] text-neutral-400 mb-3">
+                  {scope.extras ? "Included" : "Pilot scope"}
                 </p>
                 {scope.extras ? (
-                  <ul className="space-y-2.5">
+                  <ul className="space-y-2">
                     {scope.extras.map((e) => (
                       <li
                         key={e}
-                        className="flex items-start gap-3 text-[14px] text-neutral-700 font-light leading-relaxed"
+                        className="flex items-start gap-3 text-[14px] text-neutral-700 font-light leading-snug"
                       >
                         <Check
                           aria-hidden
@@ -620,29 +604,18 @@ const BriefComposer: FC = () => {
                     ))}
                   </ul>
                 ) : (
-                  <p className="text-[14px] text-neutral-600 font-light leading-relaxed">
-                    One workflow, one decision owner, one production milestone. Fixed fee, fixed timeline. You keep everything we ship, even if we don&apos;t continue.
+                  <p className="text-[14px] text-neutral-600 font-light leading-snug">
+                    One workflow, fixed fee, fixed timeline. You keep what we ship.
                   </p>
                 )}
-                <p className="mt-5 text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-500">
-                  {scope.pricing}
-                </p>
-                <div className="mt-2 text-[12px] text-neutral-400 font-light leading-relaxed">
-                  Likely systems in scope: <span className="text-neutral-600">{outcome.systems.join(", ")}</span>.
-                </div>
               </div>
             </section>
 
             {/* Footer / CTA */}
-            <footer className="px-6 sm:px-12 py-8 sm:py-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-              <div>
-                <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-500">
-                  Next step
-                </p>
-                <p className="mt-1.5 text-[15px] text-neutral-700 font-light leading-relaxed max-w-md">
-                  Send this brief over. We&apos;ll come back within 48 hours with named engineers and a draft scope.
-                </p>
-              </div>
+            <footer className="px-6 sm:px-12 py-7 sm:py-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
+              <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-500">
+                {scope.pricing}
+              </p>
               <a
                 href={`mailto:scofield@olyxee.com?subject=${encodeURIComponent(subject)}`}
                 className="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-neutral-900 text-white text-sm font-medium tracking-wide hover:bg-neutral-800 transition-colors shrink-0"
