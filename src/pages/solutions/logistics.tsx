@@ -340,46 +340,58 @@ const Logistics: FC = () => {
       </section>
 
       {/* === CLOSING === */}
-      <section className="relative py-32 sm:py-44 px-4 sm:px-8 border-t border-neutral-200">
+      <section className="relative px-4 sm:px-8 pt-20 sm:pt-28 pb-20 sm:pb-28">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-12 gap-8 items-end">
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.9, ease }}
-              className="col-span-12 lg:col-span-8 font-serif text-5xl sm:text-7xl lg:text-[6.5rem] tracking-[-0.02em] leading-[0.92]"
-            >
-              Close the
-              <br />
-              <em className="text-amber-500 not-italic italic">loop today.</em>
-            </motion.h2>
+          <div className="relative rounded-[2rem] overflow-hidden">
+            <Image
+              src="/images/logistics/close-loop-bg.png"
+              alt=""
+              width={2048}
+              height={680}
+              className="absolute inset-0 w-full h-full object-cover"
+              priority={false}
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/20" />
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.15, ease }}
-              className="col-span-12 lg:col-span-4 flex flex-col gap-3"
-            >
-              <a
-                href="https://logistics.olyxee.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center justify-between gap-6 px-7 py-5 bg-neutral-900 text-white rounded-full hover:bg-black transition-colors"
+            <div className="relative px-6 sm:px-12 lg:px-16 py-20 sm:py-32 lg:py-40 grid grid-cols-12 gap-8 items-end">
+              <motion.h2
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.9, ease }}
+                className="col-span-12 lg:col-span-8 font-serif text-white text-5xl sm:text-7xl lg:text-[6.5rem] tracking-[-0.02em] leading-[0.92]"
               >
-                <span className="text-sm font-medium tracking-wide">Open the app</span>
-                <span className="w-9 h-9 rounded-full bg-amber-400 text-neutral-900 flex items-center justify-center group-hover:rotate-45 transition-transform duration-500">
-                  <ArrowUpRight className="w-4 h-4" />
-                </span>
-              </a>
-              <Link
-                href="/contact?subject=Olyxee%20Logistics%20%E2%80%94%20Inquiry"
-                className="font-mono text-[11px] tracking-[0.22em] text-neutral-400 hover:text-neutral-900 transition-colors pl-2"
+                Close the
+                <br />
+                <em className="text-amber-400 italic">loop today.</em>
+              </motion.h2>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.15, ease }}
+                className="col-span-12 lg:col-span-4 flex flex-col gap-3"
               >
-                → TALK TO THE TEAM
-              </Link>
-            </motion.div>
+                <a
+                  href="https://logistics.olyxee.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center justify-between gap-6 px-7 py-5 bg-white text-neutral-900 rounded-full hover:bg-amber-400 transition-colors"
+                >
+                  <span className="text-sm font-medium tracking-wide">Open the app</span>
+                  <span className="w-9 h-9 rounded-full bg-neutral-900 text-white flex items-center justify-center group-hover:rotate-45 transition-transform duration-500">
+                    <ArrowUpRight className="w-4 h-4" />
+                  </span>
+                </a>
+                <Link
+                  href="/contact?subject=Olyxee%20Logistics%20%E2%80%94%20Inquiry"
+                  className="font-mono text-[11px] tracking-[0.22em] text-white/70 hover:text-white transition-colors pl-2"
+                >
+                  → TALK TO THE TEAM
+                </Link>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
