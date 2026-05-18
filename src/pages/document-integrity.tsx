@@ -1,4 +1,5 @@
 import { FC, useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import SEO from "../components/SEO";
 import Header from "../components/header";
@@ -6,6 +7,14 @@ import Footer from "../components/footer";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowLeft, Clock, CalendarDays, ShieldCheck } from "lucide-react";
+
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
+
+const MAINTENANCE_LOTTIE_URLS = [
+  "https://assets1.lottiefiles.com/private_files/lf30_y9czxcb9.json",
+  "https://assets9.lottiefiles.com/packages/lf20_kkflmtur.json",
+  "https://assets10.lottiefiles.com/packages/lf20_2cwDXD.json",
+];
 
 const MAINTENANCE_END = new Date("2026-05-21T18:00:00Z");
 
@@ -29,6 +38,29 @@ const pad = (n: number) => n.toString().padStart(2, "0");
 
 const DocumentIntegrity: FC = () => {
   const { days, hours, minutes, seconds, ready } = useCountdown(MAINTENANCE_END);
+  const [animationData, setAnimationData] = useState<object | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      for (const url of MAINTENANCE_LOTTIE_URLS) {
+        try {
+          const res = await fetch(url);
+          if (!res.ok) continue;
+          const json = await res.json();
+          if (!cancelled) {
+            setAnimationData(json);
+            return;
+          }
+        } catch {
+          // try next url
+        }
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const startedAt = "May 12, 2026 · 09:00 UTC";
   const expectedBack = MAINTENANCE_END.toLocaleString("en-US", {
@@ -195,15 +227,25 @@ const DocumentIntegrity: FC = () => {
                 transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
                 className="relative mx-auto w-full max-w-sm"
               >
-                <div className="relative rounded-3xl overflow-hidden bg-white border border-neutral-200/80 aspect-square shadow-[0_30px_80px_-30px_rgba(0,0,0,0.18)]">
-                  <Image
-                    src="/images/under-construction.gif"
-                    alt="Under construction"
-                    fill
-                    unoptimized
-                    sizes="(max-width: 1024px) 100vw, 400px"
-                    className="object-cover"
-                  />
+                <div className="relative rounded-3xl overflow-hidden bg-white border border-neutral-200/80 aspect-square shadow-[0_30px_80px_-30px_rgba(0,0,0,0.18)] flex items-center justify-center">
+                  {animationData ? (
+                    <Lottie
+                      animationData={animationData}
+                      loop
+                      autoplay
+                      className="w-full h-full"
+                      rendererSettings={{ preserveAspectRatio: "xMidYMid meet" }}
+                    />
+                  ) : (
+                    <Image
+                      src="/images/under-construction.gif"
+                      alt="Under construction"
+                      fill
+                      unoptimized
+                      sizes="(max-width: 1024px) 100vw, 400px"
+                      className="object-cover"
+                    />
+                  )}
                 </div>
                 <div className="mt-4 text-center">
                   <p className="text-[11px] font-medium text-neutral-500 uppercase tracking-[0.22em]">
