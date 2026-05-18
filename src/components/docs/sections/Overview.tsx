@@ -16,7 +16,7 @@ const Overview: FC<OverviewProps> = ({ onNavigate }) => {
   return (
     <div className="w-full max-w-3xl mx-auto px-6 sm:px-8 py-10 sm:py-14">
       <div className="mb-10">
-        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight mb-3">Ordo Documentation</h1>
+        <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight mb-3">Ordo Documentation</h2>
         <p className="text-gray-500 text-lg leading-relaxed">
           Learn how to plug Ordo into the tools you already use, write requests in plain English, and keep a clean audit trail of every action.
         </p>

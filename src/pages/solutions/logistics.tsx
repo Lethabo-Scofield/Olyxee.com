@@ -64,7 +64,7 @@ const Logistics: FC = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.1, ease }}
-              className="col-span-12 lg:col-span-9 font-serif text-[3.25rem] sm:text-[6rem] lg:text-[9rem] tracking-[-0.03em] leading-[0.88]"
+              className="col-span-12 lg:col-span-9 font-serif text-[2.75rem] sm:text-[5rem] md:text-[6.5rem] lg:text-[8rem] xl:text-[9rem] tracking-[-0.03em] leading-[0.9] break-words"
             >
               The
               <br />
@@ -286,7 +286,7 @@ const Logistics: FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.9, ease }}
-            className="col-span-12 lg:col-span-7 relative aspect-[4/5] lg:aspect-auto rounded-[2rem] overflow-hidden"
+            className="col-span-12 lg:col-span-7 relative aspect-[4/5] lg:aspect-auto lg:min-h-[640px] rounded-[2rem] overflow-hidden"
           >
             <Image
               src="/images/logistics/delivery-handoff.jpg"
@@ -328,7 +328,7 @@ const Logistics: FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.9, ease }}
-                className="col-span-12 lg:col-span-8 font-serif text-white text-5xl sm:text-7xl lg:text-[6.5rem] tracking-[-0.02em] leading-[0.92]"
+                className="col-span-12 lg:col-span-8 font-serif text-white text-4xl sm:text-6xl md:text-7xl lg:text-[6.5rem] tracking-[-0.02em] leading-[0.95] break-words"
               >
                 Close the
                 <br />

@@ -10,6 +10,8 @@ const pages: Entry[] = [
   { path: '', priority: 1.0, changeFrequency: 'weekly' },
   { path: '/products', priority: 0.9, changeFrequency: 'monthly' },
   { path: '/products/ordo', priority: 0.9, changeFrequency: 'monthly' },
+  { path: '/solutions/logistics', priority: 0.9, changeFrequency: 'weekly' },
+  { path: '/document-integrity', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/research', priority: 0.9, changeFrequency: 'monthly' },
   { path: '/about', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/careers', priority: 0.8, changeFrequency: 'weekly' },
@@ -31,8 +33,13 @@ const pages: Entry[] = [
   { path: '/stories/accounting', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/stories/automation', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/stories/freightshift', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/case-studies', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/status', priority: 0.4, changeFrequency: 'daily' },
+  { path: '/security', priority: 0.5, changeFrequency: 'yearly' },
+  { path: '/compliance', priority: 0.5, changeFrequency: 'yearly' },
   { path: '/privacy', priority: 0.3, changeFrequency: 'yearly' },
   { path: '/terms', priority: 0.3, changeFrequency: 'yearly' },
+  { path: '/cookie-policy', priority: 0.3, changeFrequency: 'yearly' },
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {

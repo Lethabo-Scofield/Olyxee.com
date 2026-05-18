@@ -5,7 +5,7 @@ const Guides: FC = () => {
   return (
     <div className="w-full max-w-3xl mx-auto px-6 sm:px-8 py-10 sm:py-14">
       <div className="mb-10">
-        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight mb-3">Getting Started</h1>
+        <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight mb-3">Getting Started</h2>
         <p className="text-gray-500 text-lg leading-relaxed">
           Step-by-step guide to executing your first business workflow with Ordo.
         </p>
