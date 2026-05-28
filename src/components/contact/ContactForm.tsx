@@ -113,7 +113,7 @@ const ContactForm: FC<Props> = ({ topic, onClose }) => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className={labelClass}>First name</label>
+          <label className={labelClass}>First name <span className="text-neutral-400">*</span></label>
           <input
             type="text"
             required
@@ -125,7 +125,7 @@ const ContactForm: FC<Props> = ({ topic, onClose }) => {
           />
         </div>
         <div>
-          <label className={labelClass}>Surname</label>
+          <label className={labelClass}>Surname <span className="text-neutral-400">*</span></label>
           <input
             type="text"
             required
@@ -139,7 +139,7 @@ const ContactForm: FC<Props> = ({ topic, onClose }) => {
       </div>
 
       <div>
-        <label className={labelClass}>Email address</label>
+        <label className={labelClass}>Email address <span className="text-neutral-400">*</span></label>
         <input
           type="email"
           required
@@ -167,7 +167,7 @@ const ContactForm: FC<Props> = ({ topic, onClose }) => {
       </div>
 
       <div>
-        <label className={labelClass}>Message</label>
+        <label className={labelClass}>Message <span className="text-neutral-400">*</span></label>
         <textarea
           required
           value={message}

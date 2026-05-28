@@ -183,7 +183,7 @@ export default function EnterpriseTierModal({ open, onClose, tierName }: Props) 
 
                   <div>
                     <p className="text-[11px] font-mono uppercase tracking-[0.18em] text-neutral-500 mb-2 flex items-center gap-1.5">
-                      <Calendar className="w-3.5 h-3.5" /> Preferred meeting
+                      <Calendar className="w-3.5 h-3.5" /> Preferred meeting <span className="text-neutral-400 normal-case tracking-normal">*</span>
                     </p>
                     <div className="grid grid-cols-2 gap-3">
                       <input

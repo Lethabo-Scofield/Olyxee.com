@@ -160,7 +160,7 @@ const SignUp: FC = () => {
             <form onSubmit={handleSubmit} aria-busy={submitting} className="space-y-5">
               <div>
                 <label htmlFor="name" className="block text-[13px] font-medium text-neutral-800 mb-1.5">
-                  Full name
+                  Full name <span className="text-neutral-400">*</span>
                 </label>
                 <input
                   id="name"
@@ -176,7 +176,7 @@ const SignUp: FC = () => {
 
               <div>
                 <label htmlFor="email" className="block text-[13px] font-medium text-neutral-800 mb-1.5">
-                  Email
+                  Email <span className="text-neutral-400">*</span>
                 </label>
                 <input
                   id="email"
@@ -194,7 +194,7 @@ const SignUp: FC = () => {
                 <>
                   <div>
                     <label htmlFor="company" className="block text-[13px] font-medium text-neutral-800 mb-1.5">
-                      Company
+                      Company <span className="text-neutral-400">*</span>
                     </label>
                     <input
                       id="company"
@@ -209,7 +209,7 @@ const SignUp: FC = () => {
                   </div>
                   <div>
                     <label htmlFor="business" className="block text-[13px] font-medium text-neutral-800 mb-1.5">
-                      Tell us about your business
+                      Tell us about your business <span className="text-neutral-400">*</span>
                     </label>
                     <textarea
                       id="business"

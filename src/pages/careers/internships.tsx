@@ -342,7 +342,7 @@ const InternshipsPage: FC = () => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className={labelClass}>First name</label>
+                    <label className={labelClass}>First name <span className="text-neutral-400">*</span></label>
                     <input
                       type="text"
                       required
@@ -353,7 +353,7 @@ const InternshipsPage: FC = () => {
                     />
                   </div>
                   <div>
-                    <label className={labelClass}>Surname</label>
+                    <label className={labelClass}>Surname <span className="text-neutral-400">*</span></label>
                     <input
                       type="text"
                       required
@@ -366,7 +366,7 @@ const InternshipsPage: FC = () => {
                 </div>
 
                 <div>
-                  <label className={labelClass}>Email</label>
+                  <label className={labelClass}>Email <span className="text-neutral-400">*</span></label>
                   <input
                     type="email"
                     required
@@ -380,7 +380,7 @@ const InternshipsPage: FC = () => {
                 </div>
 
                 <div>
-                  <label className={labelClass}>Which internship?</label>
+                  <label className={labelClass}>Which internship? <span className="text-neutral-400">*</span></label>
                   <select
                     required
                     value={roleSlug}
@@ -447,7 +447,7 @@ const InternshipsPage: FC = () => {
 
                 <div>
                   <label className={labelClass}>
-                    Link to your work (LinkedIn, GitHub, portfolio, or CV)
+                    Link to your work (LinkedIn, GitHub, portfolio, or CV) <span className="text-neutral-400">*</span>
                   </label>
                   <input
                     type="url"

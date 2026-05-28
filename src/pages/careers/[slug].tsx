@@ -307,7 +307,7 @@ const PaidRolePage: FC<Props> = ({ role }) => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className={labelClass}>First name</label>
+                    <label className={labelClass}>First name <span className="text-neutral-400">*</span></label>
                     <input
                       type="text"
                       required
@@ -318,7 +318,7 @@ const PaidRolePage: FC<Props> = ({ role }) => {
                     />
                   </div>
                   <div>
-                    <label className={labelClass}>Surname</label>
+                    <label className={labelClass}>Surname <span className="text-neutral-400">*</span></label>
                     <input
                       type="text"
                       required
@@ -330,7 +330,7 @@ const PaidRolePage: FC<Props> = ({ role }) => {
                   </div>
                 </div>
                 <div>
-                  <label className={labelClass}>Email</label>
+                  <label className={labelClass}>Email <span className="text-neutral-400">*</span></label>
                   <input
                     type="email"
                     required
