@@ -1,11 +1,10 @@
 import { useState, FC, useCallback } from "react";
 import { useRouter } from "next/router";
-import Image from "next/image";
 import Link from "next/link";
 import SEO from "../components/SEO";
 import DocsLayout from "../layouts/DocsLayout";
 import Header from '../components/header';
-import { ArrowRight, ArrowLeft, BookOpen, Terminal, Layers, Cpu, ChevronRight, Play, Lock, Sparkles, FileCheck2, Workflow, Wallet, Brain, Truck, ExternalLink } from "lucide-react";
+import { ArrowLeft, ChevronRight, ExternalLink } from "lucide-react";
 
 const TABS: { id: string; label: string }[] = [];
 
@@ -129,19 +128,14 @@ const Docs: FC = () => {
 export default Docs;
 
 
-type ProductCard = {
-  icon: typeof Workflow;
+type ProductRow = {
   name: string;
-  wordmark?: { src: string; alt: string; width: number; height: number };
-  tagline: string;
   description: string;
   status: "available" | "private" | "early-access";
   action:
     | { kind: "external"; href: string; label: string }
     | { kind: "internal"; href: string; label: string }
-    | { kind: "internal-tab"; tab: string; page: string; label: string }
-    | { kind: "request"; label: string };
-  bg: string;
+    | { kind: "internal-tab"; tab: string; page: string; label: string };
 };
 
 function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => void }) {
@@ -155,57 +149,36 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
     }
   }, [router]);
 
-  const products: ProductCard[] = [
+  const products: ProductRow[] = [
     {
-      icon: Workflow,
       name: "Ordo",
-      tagline: "Autonomous workflow execution",
-      description:
-        "Documentation for autonomous workflow execution, job handling, integrations, and operational automation across your stack.",
+      description: "Autonomous workflow execution, job handling, integrations, and operational automation across your stack.",
       status: "early-access",
       action: { kind: "internal-tab", tab: "ordo", page: "ordo-overview", label: "Open Ordo docs" },
-      bg: "/images/gradient-blue-pink.webp",
     },
     {
-      icon: Wallet,
       name: "Addup",
-      wordmark: { src: "/Logo/Addup_Logo.png", alt: "Addup", width: 1024, height: 416 },
-      tagline: "Reconciliation and financial validation",
-      description:
-        "Documentation for reconciliation workflows, financial data validation, matching logic, exception handling, and reporting.",
+      description: "Reconciliation workflows, financial data validation, matching logic, exception handling, and reporting.",
       status: "available",
       action: { kind: "external", href: "https://addup.olyxee.com", label: "Visit Addup" },
-      bg: "/images/gradient-pastel.webp",
     },
     {
-      icon: FileCheck2,
       name: "Olyxee Document Integrity",
-      tagline: "Verification and extraction integrity",
-      description:
-        "Documentation for document verification, integrity checks, extraction validation, and API-based verification workflows.",
+      description: "Document verification, integrity checks, extraction validation, and API-based verification workflows.",
       status: "private",
       action: { kind: "internal", href: "/document-integrity", label: "View ODI status" },
-      bg: "/images/gradient-orange-purple.webp",
     },
     {
-      icon: Brain,
       name: "Olyxee Cortex",
-      tagline: "Organizational cognition layer",
-      description:
-        "Documentation for organizational cognition, memory infrastructure, workflow context, coordination, and long-running enterprise intelligence.",
+      description: "Organizational cognition, memory infrastructure, workflow context, coordination, and long-running enterprise intelligence.",
       status: "private",
       action: { kind: "internal", href: "/research/cortex", label: "Learn about Cortex" },
-      bg: "/images/gradient-abstract-blue.webp",
     },
     {
-      icon: Truck,
       name: "Courier Loop",
-      tagline: "Logistics and dispatch operations",
-      description:
-        "Documentation for logistics operations, delivery workflows, dispatch coordination, and forthcoming logistics APIs.",
+      description: "Logistics operations, delivery workflows, dispatch coordination, and forthcoming logistics APIs.",
       status: "available",
       action: { kind: "external", href: "https://logistics.olyxee.com/", label: "Visit Courier Loop" },
-      bg: "/images/gradient-yellow-green.webp",
     },
   ];
 
@@ -218,201 +191,128 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
     { label: "Changelog", tab: "api", page: "changelog" },
   ];
 
-  const statusStyles: Record<ProductCard["status"], { label: string; cls: string }> = {
-    available: { label: "Available", cls: "bg-emerald-50 text-emerald-700 border-emerald-200" },
-    "early-access": { label: "Early access", cls: "bg-amber-50 text-amber-700 border-amber-200" },
-    private: { label: "Private", cls: "bg-neutral-100 text-neutral-700 border-neutral-200" },
+  const statusLabel: Record<ProductRow["status"], string> = {
+    available: "Available",
+    "early-access": "Early access",
+    private: "Private",
+  };
+
+  const renderRow = (product: ProductRow) => {
+    const isExternal = product.action.kind === "external";
+    const inner = (
+      <div className="flex items-start justify-between gap-6 py-6 group">
+        <div className="min-w-0 flex-1">
+          <div className="flex items-center gap-3 mb-1.5">
+            <h3 className="text-[15px] font-medium text-neutral-900 tracking-tight">
+              {product.name}
+            </h3>
+            <span className="text-[11px] text-neutral-400">
+              {statusLabel[product.status]}
+            </span>
+          </div>
+          <p className="text-[14px] text-neutral-500 leading-relaxed max-w-2xl">
+            {product.description}
+          </p>
+        </div>
+        <div className="shrink-0 inline-flex items-center gap-1 text-[13px] text-neutral-500 group-hover:text-neutral-900 transition-colors pt-1">
+          <span className="hidden sm:inline">{product.action.label}</span>
+          {isExternal ? (
+            <ExternalLink className="w-3.5 h-3.5" strokeWidth={1.75} />
+          ) : (
+            <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+          )}
+        </div>
+      </div>
+    );
+
+    if (product.action.kind === "external") {
+      return (
+        <a key={product.name} href={product.action.href} target="_blank" rel="noopener noreferrer" className="block border-b border-neutral-100 last:border-b-0 hover:bg-neutral-50/60 -mx-4 px-4 transition-colors">
+          {inner}
+        </a>
+      );
+    }
+    if (product.action.kind === "internal") {
+      return (
+        <Link key={product.name} href={product.action.href} className="block border-b border-neutral-100 last:border-b-0 hover:bg-neutral-50/60 -mx-4 px-4 transition-colors">
+          {inner}
+        </Link>
+      );
+    }
+    const tab = product.action.tab;
+    const page = product.action.page;
+    return (
+      <button key={product.name} type="button" onClick={() => onNavigate(tab, page)} className="block w-full text-left border-b border-neutral-100 last:border-b-0 hover:bg-neutral-50/60 -mx-4 px-4 transition-colors">
+        {inner}
+      </button>
+    );
   };
 
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-8 py-10 sm:py-16">
+    <div className="max-w-3xl mx-auto px-6 sm:px-8 py-10 sm:py-16">
       {/* Back button */}
       <button
         type="button"
         onClick={handleBack}
-        className="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-neutral-900 transition-colors mb-10"
+        className="inline-flex items-center gap-1.5 text-[13px] text-neutral-500 hover:text-neutral-900 transition-colors mb-12"
       >
-        <ArrowLeft className="w-4 h-4" strokeWidth={1.75} />
+        <ArrowLeft className="w-3.5 h-3.5" strokeWidth={2} />
         Back
       </button>
 
       {/* Header */}
-      <div className="mb-14 max-w-3xl">
-        <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
-          Olyxee Documentation
-        </p>
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-[-0.025em] leading-[1.05] font-medium mb-5">
-          The hub for product guides,{" "}
-          <em className="font-serif italic font-normal text-neutral-500">
-            API references, and integration notes.
-          </em>
+      <div className="mb-14">
+        <h1 className="text-[34px] sm:text-[40px] font-semibold text-neutral-900 tracking-[-0.02em] leading-[1.1] mb-4">
+          Olyxee documentation
         </h1>
-        <p className="text-neutral-500 text-base sm:text-lg leading-relaxed font-light">
-          Research and infrastructure for artificial intelligence. Find technical resources for every Olyxee product, from autonomous workflows to document integrity, with everything your team needs to build, integrate, and operate on top of Olyxee.
+        <p className="text-neutral-600 text-[17px] leading-[1.55]">
+          Technical resources for every Olyxee product. Guides, API references, and integration notes to help your team build, integrate, and operate on top of Olyxee.
         </p>
       </div>
 
       {/* Access notice */}
-      <div className="mb-12 flex items-start gap-3 rounded-2xl border border-neutral-200 bg-neutral-50/70 px-5 py-4">
-        <Lock className="w-4 h-4 text-neutral-500 mt-0.5 flex-shrink-0" strokeWidth={1.75} />
-        <p className="text-[13px] sm:text-sm text-neutral-600 leading-relaxed">
-          Some API documentation is private, limited, or available only to approved enterprise partners.{" "}
-          <a href="/contact" className="text-neutral-900 underline underline-offset-2 decoration-neutral-300 hover:decoration-neutral-900">
-            Contact us
-          </a>{" "}
-          to request access.
-        </p>
-      </div>
+      <p className="mb-14 text-[14px] text-neutral-500 leading-relaxed">
+        Some API documentation is private or limited to approved enterprise partners.{" "}
+        <a href="/contact" className="text-neutral-900 underline underline-offset-2 decoration-neutral-300 hover:decoration-neutral-900">
+          Contact us
+        </a>{" "}
+        to request access.
+      </p>
 
       {/* Products */}
-      <div className="mb-16">
-        <div className="flex items-baseline justify-between mb-6">
-          <h2 className="text-xl font-semibold text-neutral-900 tracking-tight">Products</h2>
-          <span className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-400">
-            05 systems
-          </span>
+      <section className="mb-16">
+        <h2 className="text-[13px] font-semibold text-neutral-900 uppercase tracking-wider mb-3">
+          Products
+        </h2>
+        <div className="border-t border-neutral-100">
+          {products.map(renderRow)}
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {products.map((product) => {
-            const Icon = product.icon;
-            const status = statusStyles[product.status];
-            const isExternal = product.action.kind === "external";
-            const isRequest = product.action.kind === "request";
-            const commonContent = (
-              <>
-                <div
-                  className="absolute inset-0 bg-cover bg-center opacity-60"
-                  style={{ backgroundImage: `url("${product.bg}")` }}
-                  aria-hidden
-                />
-                <div className="absolute inset-0 bg-white/85 backdrop-blur-[2px]" aria-hidden />
-                <div className="relative flex flex-col h-full">
-                  <div className="flex items-start justify-between gap-3 mb-5">
-                    {product.wordmark ? (
-                      <div className="h-9 sm:h-10 flex items-center">
-                        <Image
-                          src={product.wordmark.src}
-                          alt={product.wordmark.alt}
-                          width={product.wordmark.width}
-                          height={product.wordmark.height}
-                          className="h-full w-auto object-contain"
-                          style={{ height: "100%", width: "auto" }}
-                        />
-                      </div>
-                    ) : (
-                      <div className="w-10 h-10 rounded-xl bg-white border border-neutral-200 flex items-center justify-center flex-shrink-0">
-                        <Icon className="w-4.5 h-4.5 text-neutral-700" strokeWidth={1.5} />
-                      </div>
-                    )}
-                    <span className={`text-[10px] font-mono uppercase tracking-[0.18em] px-2 py-1 rounded-full border ${status.cls}`}>
-                      {status.label}
-                    </span>
-                  </div>
-                  {!product.wordmark && (
-                    <h3 className="text-[17px] font-semibold text-neutral-900 mb-1 tracking-tight">
-                      {product.name}
-                    </h3>
-                  )}
-                  <p className="text-[12px] font-mono uppercase tracking-[0.18em] text-neutral-500 mb-3">
-                    {product.tagline}
-                  </p>
-                  <p className="text-sm text-neutral-600 leading-relaxed font-light mb-6 flex-1">
-                    {product.description}
-                  </p>
-                  <div className="inline-flex items-center gap-1.5 text-sm font-medium text-neutral-900">
-                    {product.action.label}
-                    {isExternal ? (
-                      <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" strokeWidth={1.75} />
-                    ) : (
-                      <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                    )}
-                  </div>
-                </div>
-              </>
-            );
-
-            const className =
-              "group relative text-left rounded-2xl p-6 sm:p-7 overflow-hidden ring-1 ring-neutral-200 hover:ring-neutral-300 hover:shadow-sm transition-all bg-white";
-
-            if (product.action.kind === "external") {
-              return (
-                <a
-                  key={product.name}
-                  href={product.action.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={className}
-                >
-                  {commonContent}
-                </a>
-              );
-            }
-
-            if (product.action.kind === "internal") {
-              return (
-                <Link
-                  key={product.name}
-                  href={product.action.href}
-                  className={className}
-                >
-                  {commonContent}
-                </Link>
-              );
-            }
-
-            if (product.action.kind === "internal-tab") {
-              const tab = product.action.tab;
-              const page = product.action.page;
-              return (
-                <button
-                  key={product.name}
-                  type="button"
-                  onClick={() => onNavigate(tab, page)}
-                  className={className}
-                >
-                  {commonContent}
-                </button>
-              );
-            }
-
-            // request access
-            return (
-              <a
-                key={product.name}
-                href="/contact"
-                className={className}
-              >
-                {commonContent}
-              </a>
-            );
-          })}
-        </div>
-      </div>
+      </section>
 
       {/* Resources */}
-      <div className="mb-16">
-        <h2 className="text-xl font-semibold text-neutral-900 mb-2 tracking-tight">Technical resources</h2>
-        <p className="text-sm text-neutral-500 mb-5 font-light">
-          References, SDKs, and integration guides for teams building on Olyxee.
-        </p>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+      <section className="mb-16">
+        <h2 className="text-[13px] font-semibold text-neutral-900 uppercase tracking-wider mb-3">
+          Technical resources
+        </h2>
+        <ul className="border-t border-neutral-100">
           {resources.map((link) => (
-            <button
-              key={link.page}
-              type="button"
-              onClick={() => onNavigate(link.tab, link.page)}
-              className="text-left px-4 py-3 rounded-xl border border-neutral-200 text-sm text-neutral-600 hover:text-neutral-900 hover:border-neutral-300 hover:bg-neutral-50 transition-all flex items-center justify-between"
-            >
-              {link.label}
-              <ChevronRight className="w-3.5 h-3.5 text-neutral-300" />
-            </button>
+            <li key={link.page} className="border-b border-neutral-100 last:border-b-0">
+              <button
+                type="button"
+                onClick={() => onNavigate(link.tab, link.page)}
+                className="w-full flex items-center justify-between py-3.5 -mx-4 px-4 text-[14px] text-neutral-700 hover:text-neutral-900 hover:bg-neutral-50/60 transition-colors group"
+              >
+                <span>{link.label}</span>
+                <ChevronRight className="w-4 h-4 text-neutral-300 group-hover:text-neutral-500 group-hover:translate-x-0.5 transition-all" />
+              </button>
+            </li>
           ))}
-        </div>
-      </div>
+        </ul>
+      </section>
 
       {/* Footer note */}
-      <div className="border-t border-neutral-200 pt-8">
-        <p className="text-xs text-neutral-500 leading-relaxed max-w-2xl">
+      <div className="border-t border-neutral-100 pt-8">
+        <p className="text-[12px] text-neutral-400 leading-relaxed">
           Olyxee, Research and Infrastructure for Artificial Intelligence. Documentation, schemas, and APIs are continuously evolving; some surfaces are intentionally gated while they stabilize for production use.
         </p>
       </div>
@@ -423,45 +323,43 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
 
 function EarlyAccessGate() {
   return (
-    <div className="max-w-2xl mx-auto px-4 sm:px-8 py-20 sm:py-32 text-center">
-      <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-neutral-900 text-white mb-8">
-        <Lock className="w-7 h-7" strokeWidth={1.5} />
-      </div>
-      <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 tracking-tight mb-4">
+    <div className="max-w-2xl mx-auto px-6 sm:px-8 py-20 sm:py-28">
+      <h2 className="text-[28px] sm:text-[32px] font-semibold text-neutral-900 tracking-[-0.02em] mb-4">
         Sign in for early access
       </h2>
-      <p className="text-base text-gray-500 leading-relaxed mb-8 max-w-md mx-auto">
-        Full documentation is available to early access members. Sign in or request access to explore the API, Ordo execution engine, and guides.
+      <p className="text-[16px] text-neutral-600 leading-relaxed mb-8 max-w-lg">
+        Full documentation is available to early access members. Sign in or request access to explore the API, the Ordo execution engine, and guides.
       </p>
-      <div className="flex flex-col sm:flex-row gap-3 justify-center">
+      <div className="flex flex-col sm:flex-row gap-3 mb-14">
         <a
           href="/products"
-          className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-neutral-900 text-white rounded-full text-sm font-medium hover:bg-black transition-all shadow-lg shadow-neutral-900/15"
+          className="inline-flex items-center justify-center px-5 py-2.5 bg-neutral-900 text-white rounded-full text-[14px] font-medium hover:bg-black transition-colors"
         >
-          <Sparkles className="w-4 h-4" />
-          Request Early Access
+          Request early access
         </a>
         <a
           href="/products"
-          className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-neutral-700 border border-neutral-200 rounded-full text-sm font-medium hover:bg-neutral-50 transition-all"
+          className="inline-flex items-center justify-center px-5 py-2.5 text-neutral-900 border border-neutral-200 rounded-full text-[14px] font-medium hover:bg-neutral-50 transition-colors"
         >
-          Sign In
+          Sign in
         </a>
       </div>
-      <div className="mt-12 pt-8 border-t border-neutral-100">
-        <p className="text-xs text-neutral-400 uppercase tracking-widest font-semibold mb-4">What you get with early access</p>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div className="border-t border-neutral-100 pt-8">
+        <h3 className="text-[13px] font-semibold text-neutral-900 uppercase tracking-wider mb-4">
+          What you get
+        </h3>
+        <ul className="space-y-5">
           {[
-            { title: "API Reference", desc: "REST API, Python SDK, and CLI documentation" },
-            { title: "Ordo Engine", desc: "AI execution engine for finance, compliance, and operations" },
-            { title: "Guides & Tutorials", desc: "Testing strategies, configuration, and best practices" },
+            { title: "API Reference", desc: "REST API, Python SDK, and CLI documentation." },
+            { title: "Ordo Engine", desc: "AI execution engine for finance, compliance, and operations." },
+            { title: "Guides & Tutorials", desc: "Testing strategies, configuration, and best practices." },
           ].map(item => (
-            <div key={item.title} className="text-left p-4 rounded-xl bg-neutral-50 border border-neutral-100">
-              <h4 className="text-sm font-semibold text-neutral-900 mb-1">{item.title}</h4>
-              <p className="text-xs text-neutral-500 leading-relaxed">{item.desc}</p>
-            </div>
+            <li key={item.title}>
+              <h4 className="text-[14px] font-medium text-neutral-900 mb-0.5">{item.title}</h4>
+              <p className="text-[14px] text-neutral-500 leading-relaxed">{item.desc}</p>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </div>
   );
