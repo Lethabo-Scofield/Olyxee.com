@@ -178,13 +178,13 @@ const About: FC = () => {
               className="relative grid grid-cols-12 gap-y-6 gap-x-6 sm:gap-x-10 items-start pb-20 sm:pb-28 border-b border-neutral-200"
             >
               <div className="col-span-12 sm:col-span-4 lg:col-span-5">
-                <p className="font-mono text-[11px] tracking-[0.3em] text-neutral-500 mb-3">
+                <p className="font-mono text-[11px] tracking-[0.3em] text-amber-600 mb-3">
                   01 · MISSION
                 </p>
                 <span
                   aria-hidden="true"
                   className="block font-serif italic text-[10rem] sm:text-[14rem] lg:text-[18rem] leading-[0.78] tracking-[-0.05em] text-transparent"
-                  style={{ WebkitTextStroke: "1px rgba(23,23,23,0.18)" }}
+                  style={{ WebkitTextStroke: "1px rgba(217,119,6,0.55)" }}
                 >
                   M.
                 </span>
@@ -217,13 +217,13 @@ const About: FC = () => {
                 </p>
               </div>
               <div className="col-span-12 sm:col-span-4 lg:col-span-5 order-1 sm:order-2 sm:text-right">
-                <p className="font-mono text-[11px] tracking-[0.3em] text-neutral-500 mb-3">
+                <p className="font-mono text-[11px] tracking-[0.3em] text-blue-600 mb-3">
                   02 · VISION
                 </p>
                 <span
                   aria-hidden="true"
                   className="block font-serif italic text-[10rem] sm:text-[14rem] lg:text-[18rem] leading-[0.78] tracking-[-0.05em] text-transparent"
-                  style={{ WebkitTextStroke: "1px rgba(23,23,23,0.18)" }}
+                  style={{ WebkitTextStroke: "1px rgba(37,99,235,0.55)" }}
                 >
                   V.
                 </span>
@@ -239,13 +239,13 @@ const About: FC = () => {
               className="relative grid grid-cols-12 gap-y-6 gap-x-6 sm:gap-x-10 items-start pt-20 sm:pt-28"
             >
               <div className="col-span-12 sm:col-span-4 lg:col-span-5">
-                <p className="font-mono text-[11px] tracking-[0.3em] text-neutral-500 mb-3">
+                <p className="font-mono text-[11px] tracking-[0.3em] text-emerald-600 mb-3">
                   03 · OBJECTIVES
                 </p>
                 <span
                   aria-hidden="true"
                   className="block font-serif italic text-[10rem] sm:text-[14rem] lg:text-[18rem] leading-[0.78] tracking-[-0.05em] text-transparent"
-                  style={{ WebkitTextStroke: "1px rgba(23,23,23,0.18)" }}
+                  style={{ WebkitTextStroke: "1px rgba(5,150,105,0.55)" }}
                 >
                   O.
                 </span>
