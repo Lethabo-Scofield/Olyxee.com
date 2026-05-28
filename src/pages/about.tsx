@@ -147,7 +147,7 @@ const About: FC = () => {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.45 }}
-              className="mt-10 sm:mt-12 text-lg sm:text-xl text-neutral-500 leading-relaxed font-light max-w-2xl"
+              className="mt-10 sm:mt-12 text-lg sm:text-xl text-neutral-700 leading-relaxed max-w-2xl"
             >
               Olyxee is an AI infrastructure company. We build systems that let
               organizations put AI to work across their operations, reliably,
@@ -194,7 +194,7 @@ const About: FC = () => {
                   Most AI today <span className="text-neutral-400">advises.</span>{" "}
                   We&apos;re building one that <em className="font-serif italic font-normal text-neutral-500">executes.</em>
                 </p>
-                <p className="text-base sm:text-lg text-neutral-500 leading-relaxed font-light max-w-xl">
+                <p className="text-base sm:text-lg text-neutral-700 leading-relaxed max-w-xl">
                   Close the gap between what AI understands and what it actually does inside a company. Stop teams from translating AI recommendations into manual work.
                 </p>
               </div>
@@ -212,7 +212,7 @@ const About: FC = () => {
                 <p className="text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.1] tracking-[-0.02em] font-medium mb-8 text-neutral-900">
                   A world where AI <em className="font-serif italic font-normal text-neutral-500">quietly runs</em> the operations that move organizations forward.
                 </p>
-                <p className="text-base sm:text-lg text-neutral-500 leading-relaxed font-light max-w-xl">
+                <p className="text-base sm:text-lg text-neutral-700 leading-relaxed max-w-xl">
                   Reconciling, coordinating, deciding, executing, all happening on infrastructure any team can trust, audit, and direct in their own words.
                 </p>
               </div>
@@ -267,7 +267,7 @@ const About: FC = () => {
                       <span className="font-mono text-[11px] tracking-[0.2em] text-neutral-500">
                         / {String(i + 1).padStart(2, "0")}
                       </span>
-                      <p className="text-base sm:text-lg text-neutral-700 leading-relaxed font-light group-hover:text-neutral-900 transition-colors">
+                      <p className="text-base sm:text-lg text-neutral-700 leading-relaxed group-hover:text-neutral-900 transition-colors">
                         {obj}
                       </p>
                     </motion.li>
@@ -317,7 +317,7 @@ const About: FC = () => {
                   />
                 </div>
                 <figcaption className="mt-5 flex items-baseline justify-between gap-6">
-                  <p className="text-[15px] sm:text-base text-white font-light leading-snug max-w-md">
+                  <p className="text-[15px] sm:text-base text-white leading-snug max-w-md">
                     Sharing how we think about reliable AI infrastructure at TechWeek.
                   </p>
                   <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-white/40 shrink-0">
@@ -344,7 +344,7 @@ const About: FC = () => {
                   />
                 </div>
                 <figcaption className="mt-5 flex items-baseline justify-between gap-6">
-                  <p className="text-[15px] sm:text-base text-white font-light leading-snug max-w-xs">
+                  <p className="text-[15px] sm:text-base text-white leading-snug max-w-xs">
                     Walking partners through the product suite, in the room.
                   </p>
                   <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-white/40 shrink-0">
@@ -425,7 +425,7 @@ const About: FC = () => {
                       <h3 className="text-xl sm:text-[1.4rem] text-neutral-900 leading-[1.2] tracking-[-0.015em] font-medium mb-3">
                         {item.title}
                       </h3>
-                      <p className="text-[15px] text-neutral-500 leading-relaxed font-light max-w-[34ch]">
+                      <p className="text-[15px] text-neutral-700 leading-relaxed max-w-[34ch]">
                         {item.text}
                       </p>
                     </div>
@@ -468,7 +468,7 @@ const About: FC = () => {
                 intelligence. It&apos;s getting that intelligence to actually{" "}
                 <em className="font-serif italic font-normal text-neutral-500">do something useful</em>.
               </blockquote>
-              <p className="mt-10 text-base sm:text-lg text-neutral-500 leading-relaxed font-light max-w-2xl">
+              <p className="mt-10 text-base sm:text-lg text-neutral-700 leading-relaxed max-w-2xl">
                 The models are smart enough. What&apos;s missing is the
                 infrastructure that lets them operate, connecting to real systems,
                 executing real workflows, and doing it in a way teams can trust.
@@ -535,7 +535,7 @@ const About: FC = () => {
                 We&apos;re early. The work is{" "}
                 <em className="font-serif italic font-normal text-neutral-500">real, shipped, and in production.</em>
               </h3>
-              <p className="text-base sm:text-lg text-neutral-500 font-light leading-relaxed max-w-2xl mb-14 sm:mb-16">
+              <p className="text-base sm:text-lg text-neutral-700 leading-relaxed max-w-2xl mb-14 sm:mb-16">
                 Olyxee was founded in Johannesburg in 2025 and turned on its
                 first production deployments inside a year. We are still small
                 by design, building the infrastructure underneath every customer
@@ -586,7 +586,7 @@ const About: FC = () => {
                     <p className="text-base sm:text-lg text-neutral-900 font-medium leading-snug tracking-[-0.01em] mb-2">
                       {value}
                     </p>
-                    <p className="text-[12px] sm:text-[13px] text-neutral-500 font-light leading-snug mt-auto">
+                    <p className="text-[12px] sm:text-[13px] text-neutral-700 leading-snug mt-auto">
                       {hint}
                     </p>
                   </div>
@@ -599,7 +599,7 @@ const About: FC = () => {
                   <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-3">
                     Milestones
                   </p>
-                  <p className="text-[15px] sm:text-base text-neutral-500 font-light leading-relaxed max-w-xs">
+                  <p className="text-[15px] sm:text-base text-neutral-700 leading-relaxed max-w-xs">
                     The short version of how we got here, dated and verifiable.
                   </p>
                 </div>
@@ -616,7 +616,7 @@ const About: FC = () => {
                       <p className="font-mono text-[11px] tracking-[0.2em] text-neutral-500">
                         {item.year}
                       </p>
-                      <p className="text-[15px] sm:text-base text-neutral-700 font-light leading-relaxed">
+                      <p className="text-[15px] sm:text-base text-neutral-700 leading-relaxed">
                         {item.label}
                       </p>
                     </motion.li>
@@ -630,7 +630,7 @@ const About: FC = () => {
                   <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-3">
                     What we&apos;re focused on
                   </p>
-                  <p className="text-[15px] sm:text-base text-neutral-500 font-light leading-relaxed max-w-xs">
+                  <p className="text-[15px] sm:text-base text-neutral-700 leading-relaxed max-w-xs">
                     Three priorities are getting all of our attention right now.
                     Everything else waits.
                   </p>
@@ -663,7 +663,7 @@ const About: FC = () => {
                       <p className="text-base sm:text-[1.05rem] text-neutral-900 font-medium leading-snug tracking-[-0.01em] mb-3">
                         {f.title}
                       </p>
-                      <p className="text-[13.5px] text-neutral-500 font-light leading-relaxed">
+                      <p className="text-[13.5px] text-neutral-700 leading-relaxed">
                         {f.body}
                       </p>
                     </li>
@@ -691,7 +691,7 @@ const About: FC = () => {
               <h3 className="text-3xl sm:text-5xl tracking-[-0.025em] mb-5 text-neutral-900 leading-[1.05] font-medium">
                 Build AI that <em className="font-serif italic font-normal text-neutral-500">actually works.</em>
               </h3>
-              <p className="text-base sm:text-lg text-neutral-500 mb-10 max-w-xl mx-auto leading-relaxed font-light">
+              <p className="text-base sm:text-lg text-neutral-700 mb-10 max-w-xl mx-auto leading-relaxed">
                 We&apos;re building a team of people who want to make AI work in the real world, not just in demos.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
