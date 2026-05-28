@@ -183,7 +183,7 @@ const About: FC = () => {
                 </p>
                 <span
                   aria-hidden="true"
-                  className="block font-serif italic text-[10rem] sm:text-[14rem] lg:text-[18rem] leading-[0.78] tracking-[-0.05em] text-transparent"
+                  className="block font-serif italic text-[6rem] sm:text-[14rem] lg:text-[18rem] leading-[0.78] tracking-[-0.05em] text-transparent"
                   style={{ WebkitTextStroke: "1px rgba(217,119,6,0.55)" }}
                 >
                   M.
@@ -222,7 +222,7 @@ const About: FC = () => {
                 </p>
                 <span
                   aria-hidden="true"
-                  className="block font-serif italic text-[10rem] sm:text-[14rem] lg:text-[18rem] leading-[0.78] tracking-[-0.05em] text-transparent"
+                  className="block font-serif italic text-[6rem] sm:text-[14rem] lg:text-[18rem] leading-[0.78] tracking-[-0.05em] text-transparent"
                   style={{ WebkitTextStroke: "1px rgba(37,99,235,0.55)" }}
                 >
                   V.
@@ -244,7 +244,7 @@ const About: FC = () => {
                 </p>
                 <span
                   aria-hidden="true"
-                  className="block font-serif italic text-[10rem] sm:text-[14rem] lg:text-[18rem] leading-[0.78] tracking-[-0.05em] text-transparent"
+                  className="block font-serif italic text-[6rem] sm:text-[14rem] lg:text-[18rem] leading-[0.78] tracking-[-0.05em] text-transparent"
                   style={{ WebkitTextStroke: "1px rgba(5,150,105,0.55)" }}
                 >
                   O.

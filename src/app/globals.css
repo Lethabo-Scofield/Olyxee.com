@@ -89,6 +89,8 @@ img, svg, video, canvas, iframe, table {
 }
 
 @theme {
+  --breakpoint-xs: 23rem;
+
   --color-background: #ffffff;
   --color-foreground: #171717;
 

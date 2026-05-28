@@ -69,13 +69,13 @@ const DocumentIntegrity: FC = () => {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.35 }}
-            className="mt-10 flex items-center justify-center gap-6 sm:gap-10"
+            className="mt-10 flex items-center justify-center gap-3 xs:gap-5 sm:gap-10"
           >
             {segments.map((s) => (
               <div key={s.label} className="text-center">
                 <p
                   suppressHydrationWarning
-                  className="font-serif text-3xl sm:text-4xl tracking-tight tabular-nums text-neutral-900"
+                  className="font-serif text-2xl sm:text-4xl tracking-tight tabular-nums text-neutral-900"
                 >
                   {ready ? s.value : "—"}
                 </p>

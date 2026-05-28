@@ -173,7 +173,7 @@ const DesktopCollage: FC = () => {
           </p>
         </motion.div>
 
-        <div className="relative h-[640px] sm:h-[720px] lg:h-[760px]">
+        <div className="relative h-[420px] xs:h-[500px] sm:h-[720px] lg:h-[760px]">
           {DESKTOP_SCREENS.map((screen) => (
             <motion.div
               key={screen.src}

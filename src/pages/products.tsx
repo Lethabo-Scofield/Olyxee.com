@@ -318,7 +318,7 @@ const ProductsPage: FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.05 }}
-              className="font-serif text-5xl sm:text-7xl lg:text-[5.5rem] text-neutral-900 tracking-tight leading-[1.02]"
+              className="font-serif text-[2.25rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] text-neutral-900 tracking-tight leading-[1.05]"
             >
               AI infrastructure, <em className="text-neutral-400 not-italic">built for the enterprise.</em>
             </motion.h1>
