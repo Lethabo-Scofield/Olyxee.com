@@ -1,5 +1,4 @@
 import { FC, useEffect, useState } from "react";
-import dynamic from "next/dynamic";
 import Image from "next/image";
 import SEO from "../components/SEO";
 import Header from "../components/header";
@@ -8,15 +7,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 
-const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
-
-const MAINTENANCE_LOTTIE_URLS = [
-  "https://assets1.lottiefiles.com/private_files/lf30_y9czxcb9.json",
-  "https://assets9.lottiefiles.com/packages/lf20_kkflmtur.json",
-  "https://assets10.lottiefiles.com/packages/lf20_2cwDXD.json",
-];
-
-const MAINTENANCE_END = new Date("2026-05-21T18:00:00Z");
+const MAINTENANCE_END = new Date("2026-07-15T18:00:00Z");
 
 function useCountdown(target: Date) {
   const [now, setNow] = useState<Date | null>(null);
@@ -38,29 +29,6 @@ const pad = (n: number) => n.toString().padStart(2, "0");
 
 const DocumentIntegrity: FC = () => {
   const { days, hours, minutes, seconds, ready } = useCountdown(MAINTENANCE_END);
-  const [animationData, setAnimationData] = useState<object | null>(null);
-
-  useEffect(() => {
-    let cancelled = false;
-    (async () => {
-      for (const url of MAINTENANCE_LOTTIE_URLS) {
-        try {
-          const res = await fetch(url);
-          if (!res.ok) continue;
-          const json = await res.json();
-          if (!cancelled) {
-            setAnimationData(json);
-            return;
-          }
-        } catch {
-          // try next url
-        }
-      }
-    })();
-    return () => {
-      cancelled = true;
-    };
-  }, []);
 
   const segments = [
     { label: "Days", value: pad(days) },
@@ -87,26 +55,17 @@ const DocumentIntegrity: FC = () => {
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             className="mx-auto w-full max-w-md aspect-square"
           >
-            {animationData ? (
-              <Lottie
-                animationData={animationData}
-                loop
-                autoplay
-                className="w-full h-full"
-                rendererSettings={{ preserveAspectRatio: "xMidYMid meet" }}
+            <div className="relative w-full h-full">
+              <Image
+                src="/images/under-construction.gif"
+                alt="Olyxee Document Integrity under construction"
+                fill
+                unoptimized
+                priority
+                sizes="(max-width: 768px) 100vw, 400px"
+                className="object-contain"
               />
-            ) : (
-              <div className="relative w-full h-full">
-                <Image
-                  src="/images/under-construction.gif"
-                  alt="Under construction"
-                  fill
-                  unoptimized
-                  sizes="(max-width: 768px) 100vw, 400px"
-                  className="object-contain"
-                />
-              </div>
-            )}
+            </div>
           </motion.div>
 
           <motion.h1

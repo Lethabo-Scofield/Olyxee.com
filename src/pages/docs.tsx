@@ -184,7 +184,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       description:
         "Documentation for document verification, integrity checks, extraction validation, and API-based verification workflows.",
       status: "private",
-      action: { kind: "request", label: "Request access" },
+      action: { kind: "internal", href: "/document-integrity", label: "View ODI status" },
       bg: "/images/gradient-orange-purple.webp",
     },
     {

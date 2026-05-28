@@ -38,7 +38,7 @@ const footerData = {
       title: "Solutions",
       links: [
         { name: "Courier Loop", href: "https://logistics.olyxee.com/", external: true },
-        { name: "Document Integrity", href: "/solutions/document-integrity" },
+        { name: "Document Integrity", href: "/document-integrity" },
         { name: "Enterprise Automation", href: "/solutions/enterprise-automation" },
       ],
     },
