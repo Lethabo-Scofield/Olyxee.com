@@ -1,0 +1,42 @@
+# Olyxee
+
+> Olyxee is a reliability-first AI infrastructure company. We build verification, evaluation, and monitoring systems so teams can ship AI with confidence. Our products turn frontier models into dependable enterprise software across operations, finance, logistics, and organisational cognition.
+
+Olyxee is structured around four product surfaces and one research engine:
+
+- **Ordo** — Autonomous workflow execution: job handling, integrations, and operational automation. (Early access)
+- **Addup** — Financial reconciliation: workflows, data validation, matching, exception handling, and reporting. (Available)
+- **Olyxee Document Integrity (ODI)** — Document verification, integrity checks, extraction validation, and API-based verification workflows. (Private)
+- **Olyxee Cortex** — Organisational cognition, memory infrastructure, workflow context, and long-running enterprise intelligence. (Private)
+- **Courier Loop** — Logistics operations, delivery workflows, dispatch coordination, and logistics APIs. (Available)
+- **Olyxee Lab** — Internal research on AI reliability, verification, interpretability, and evaluation.
+
+## Core pages
+
+- [Home](https://olyxee.com/): Company overview, mission, focus areas.
+- [About](https://olyxee.com/about): Who Olyxee is, the problem we work on, and how we operate.
+- [Products](https://olyxee.com/products): All Olyxee products with status.
+- [Ordo](https://olyxee.com/products/ordo): Autonomous workflow execution platform.
+- [Document Integrity](https://olyxee.com/document-integrity): Document verification and extraction validation.
+- [Research](https://olyxee.com/research): Research agenda, papers, and ongoing work.
+- [Cortex](https://olyxee.com/research/cortex): Organisational cognition research.
+- [Olyxee Lab](https://olyxee.com/lab): Research division and publications.
+- [Technology](https://olyxee.com/technology): Architecture and deployment pipeline.
+- [Safety](https://olyxee.com/safety): Reliability, evaluation, and safety approach.
+- [Use cases](https://olyxee.com/use-cases): Real-world deployments across industries.
+- [Enterprise](https://olyxee.com/enterprise): Working with Olyxee at enterprise scale.
+- [EdgeAI](https://olyxee.com/edgeai): Deployment to edge devices (IoT, robotics, wearables).
+- [Developers](https://olyxee.com/developers): SDKs, CLI, and APIs.
+- [Docs](https://olyxee.com/docs): Full product and API documentation.
+- [Blog](https://olyxee.com/blog): Engineering and research writing.
+- [Case studies](https://olyxee.com/case-studies): How teams deploy Olyxee in production.
+- [Community](https://olyxee.com/community): Channels for developers and researchers.
+- [Careers](https://olyxee.com/careers): Open paid roles and internships.
+- [Contact](https://olyxee.com/contact): Get in touch.
+- [Brand](https://olyxee.com/brand): Logos, colours, and brand guidelines.
+
+## Optional
+
+- [Sitemap](https://olyxee.com/sitemap.xml)
+- [Status](https://olyxee.com/status)
+- [Support](https://olyxee.com/support)
