@@ -1,8 +1,9 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import Image from "next/image";
 import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
+import EnterpriseTierModal from "../components/EnterpriseTierModal";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, Wallet, Workflow, Truck, Brain, Check } from "lucide-react";
@@ -209,6 +210,7 @@ const DesktopCollage: FC = () => {
 };
 
 const Enterprise: FC = () => {
+  const [openTier, setOpenTier] = useState<string | null>(null);
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
       <SEO
@@ -463,10 +465,9 @@ const Enterprise: FC = () => {
                     </li>
                   ))}
                 </ul>
-                <a
-                  href={`mailto:scofield@olyxee.com?subject=${encodeURIComponent(
-                    `Enterprise: ${tier.name} inquiry`,
-                  )}`}
+                <button
+                  type="button"
+                  onClick={() => setOpenTier(tier.name)}
                   className={`mt-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full text-sm font-medium tracking-wide transition-colors ${
                     tier.emphasis
                       ? "bg-white text-neutral-900 hover:bg-neutral-100"
@@ -475,7 +476,7 @@ const Enterprise: FC = () => {
                 >
                   Discuss this tier
                   <ArrowRight className="w-4 h-4" />
-                </a>
+                </button>
               </motion.article>
             ))}
           </div>
@@ -547,6 +548,12 @@ const Enterprise: FC = () => {
       </section>
 
       <Footer />
+
+      <EnterpriseTierModal
+        open={openTier !== null}
+        onClose={() => setOpenTier(null)}
+        tierName={openTier ?? ""}
+      />
     </div>
   );
 };
