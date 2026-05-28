@@ -8,8 +8,7 @@ Company-level website for Olyxee, a reliability-first AI infrastructure company.
 - **Styling**: Tailwind CSS v4
 - **UI Components**: Radix UI, shadcn/ui
 - **Animations**: Framer Motion, Three.js, React Three Fiber
-- **Auth**: better-auth
-- **Database**: LibSQL / Drizzle ORM (legacy), and Replit-managed PostgreSQL via `pg` for the internship verification system
+- **Database**: Replit-managed PostgreSQL via `pg` for the internship verification system
 
 ## Internship Verification System
 - **Public verify page**: `/verify` — code input that returns intern details or "Invalid Code"
