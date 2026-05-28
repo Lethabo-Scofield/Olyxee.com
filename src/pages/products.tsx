@@ -355,9 +355,16 @@ const ProductsPage: FC = () => {
               variants={fadeUp}
               className="lg:col-span-5"
             >
-              <p className="text-[11px] font-mono text-neutral-500 uppercase tracking-[0.28em] mb-6">
-                Ordo
-              </p>
+              <div className="mb-6">
+                <Image
+                  src="/images/ordo-logo.png"
+                  alt="Ordo"
+                  width={220}
+                  height={72}
+                  className="h-10 sm:h-12 w-auto object-contain"
+                  style={{ width: "auto", height: "auto" }}
+                />
+              </div>
 
               <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-6">
                 Goals in. <em className="text-neutral-400 not-italic">Finished work out.</em>
