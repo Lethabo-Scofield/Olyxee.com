@@ -1,11 +1,11 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import Image from "next/image";
 import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import Link from "next/link";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowRight, Wallet, Workflow, Truck, Brain, Check } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -16,108 +16,87 @@ const fadeUp = {
   }),
 };
 
-type Phase = { window: string; title: string };
-type Outcome = {
-  id: string;
-  label: string;
-  short: string;
+type SolutionCategory = {
+  icon: typeof Workflow;
+  name: string;
   tagline: string;
-  gradient: string;
-  metric: { before: string; after: string; unit: string };
-  phases: [Phase, Phase, Phase];
+  capabilities: string[];
+  poweredBy: string[];
 };
 
-const OUTCOMES: Outcome[] = [
+const SOLUTION_CATEGORIES: SolutionCategory[] = [
   {
-    id: "close-books",
-    label: "Close the books faster",
-    short: "Finance",
-    tagline: "Reconciled by the agent. Closed by your team.",
-    gradient: "/images/gradient-blue-pink.png",
-    metric: { before: "12", after: "3", unit: "days to close" },
-    phases: [
-      { window: "0–30", title: "Reconciliation agent, live" },
-      { window: "30–60", title: "Approvals + exception flows" },
-      { window: "60–90", title: "End-to-end close orchestration" },
-    ],
+    icon: Wallet,
+    name: "Financial Operations",
+    tagline: "Reconciliation, integrity, and audit intelligence.",
+    capabilities: ["Reconciliation", "Integrity systems", "Validation", "Audit intelligence"],
+    poweredBy: ["Addup", "ODI"],
   },
   {
-    id: "shipments",
-    label: "Track every shipment, every minute",
-    short: "Logistics",
-    tagline: "Exceptions caught, not chased.",
-    gradient: "/images/gradient-yellow-green.png",
-    metric: { before: "30%", after: "100%", unit: "shipments observed live" },
-    phases: [
-      { window: "0–30", title: "Carrier + WMS ingest" },
-      { window: "30–60", title: "Supplier coordination agent" },
-      { window: "60–90", title: "Predictive ETA + re-routing" },
-    ],
+    icon: Workflow,
+    name: "Enterprise Workflow Automation",
+    tagline: "Execution, approvals, and system coordination.",
+    capabilities: ["Workflow execution", "Approvals", "Operational coordination", "System integrations"],
+    poweredBy: ["Ordo"],
   },
   {
-    id: "approvals",
-    label: "Replace manual approval chains",
-    short: "Operations",
-    tagline: "Policy in the loop. Humans on the exceptions.",
-    gradient: "/images/gradient-purple.png",
-    metric: { before: "4d", after: "4h", unit: "median approval time" },
-    phases: [
-      { window: "0–30", title: "Policy-aware approval agent" },
-      { window: "30–60", title: "Multi-system orchestration" },
-      { window: "60–90", title: "Continuous policy tuning" },
-    ],
+    icon: Truck,
+    name: "Logistics & Delivery Operations",
+    tagline: "Dispatch, routing, and delivery intelligence.",
+    capabilities: ["Dispatch systems", "Operational coordination", "Delivery intelligence", "Workflow automation"],
+    poweredBy: ["Courier Loop"],
   },
   {
-    id: "vendor",
-    label: "Replace a third-party AI vendor",
-    short: "Migration",
-    tagline: "Same outputs. Your stack. Your ownership.",
-    gradient: "/images/gradient-orange-pink.png",
-    metric: { before: "Vendor", after: "In-house", unit: "ownership of the workflow" },
-    phases: [
-      { window: "0–30", title: "Parity audit" },
-      { window: "30–60", title: "Shadow deployment" },
-      { window: "60–90", title: "Cutover + ownership" },
-    ],
+    icon: Brain,
+    name: "Organizational Intelligence",
+    tagline: "Memory, context, and persistent cognition.",
+    capabilities: ["Memory systems", "Contextual reasoning", "Operational cognition", "Long-running workflows"],
+    poweredBy: ["Cortex"],
   },
 ];
 
-type Scope = {
-  id: string;
-  label: string;
-  phaseCount: 1 | 3;
-  duration: string;
-  ctaSubject: string;
-  pricing: string;
+type PricingTier = {
+  name: string;
+  audience: string;
+  description: string;
+  includes: string[];
+  emphasis?: boolean;
 };
 
-const SCOPES: Scope[] = [
+const PRICING_TIERS: PricingTier[] = [
   {
-    id: "pilot",
-    label: "Pilot",
-    phaseCount: 1,
-    duration: "30 days",
-    ctaSubject: "Enterprise: Pilot inquiry",
-    pricing: "Fixed fee",
+    name: "Starter Infrastructure",
+    audience: "Small businesses and growing operations",
+    description: "A baseline operational stack to get core workflows running on Olyxee.",
+    includes: ["Addup access", "Basic automation", "Reporting", "Standard integrations"],
   },
   {
-    id: "custom",
-    label: "Custom build",
-    phaseCount: 3,
-    duration: "90 days",
-    ctaSubject: "Enterprise: Custom build inquiry",
-    pricing: "Fixed fee + platform",
+    name: "Operational Systems",
+    audience: "Operational teams that need coordination and automation",
+    description: "Workflow execution and integrations across your operational stack.",
+    includes: [
+      "Ordo capabilities",
+      "Operational workflows",
+      "API integrations",
+      "Enterprise automation",
+      "Support",
+    ],
+    emphasis: true,
   },
   {
-    id: "embedded",
-    label: "Embedded team",
-    phaseCount: 3,
-    duration: "90d then ongoing",
-    ctaSubject: "Enterprise: Embedded team inquiry",
-    pricing: "Retainer + platform",
+    name: "Enterprise Intelligence",
+    audience: "Custom enterprise intelligence infrastructure",
+    description: "A bespoke deployment built around Cortex, ODI, and multi-agent coordination.",
+    includes: [
+      "Cortex-based systems",
+      "ODI integrations",
+      "Operational cognition",
+      "Multi-agent workflows",
+      "Custom enterprise architecture",
+      "Dedicated infrastructure",
+    ],
   },
 ];
-
 
 const DESKTOP_SCREENS = [
   {
@@ -224,243 +203,33 @@ const DesktopCollage: FC = () => {
   );
 };
 
-const BriefComposer: FC = () => {
-  const [outcomeIdx, setOutcomeIdx] = useState(0);
-  const [scopeIdx, setScopeIdx] = useState(1);
-  const prefersReducedMotion = useReducedMotion();
-  const outcome = OUTCOMES[outcomeIdx];
-  const scope = SCOPES[scopeIdx];
-  const visiblePhases = outcome.phases.slice(0, scope.phaseCount);
-  const briefKey = `${outcome.id}-${scope.id}`;
-  const subject = `${scope.ctaSubject} - ${outcome.label}`;
-  const todayLabel = new Date().toLocaleDateString("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  });
-
-  return (
-    <section
-      id="engagement"
-      className="relative py-24 sm:py-32 lg:py-40 border-t border-neutral-200/70 bg-white"
-    >
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
-        {/* Header */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          custom={0}
-          variants={fadeUp}
-          className="mb-10 sm:mb-14 max-w-3xl"
-        >
-          <p className="text-[11px] font-mono uppercase tracking-[0.28em] text-neutral-400 mb-5">
-            Live engagement brief
-          </p>
-          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 leading-[1.05] tracking-tight">
-            Compose your engagement. We build the rest.
-          </h2>
-          <p className="mt-6 text-base sm:text-lg text-neutral-500 font-light leading-relaxed max-w-2xl">
-            Pick an outcome and a shape. The brief below rewrites itself.
-          </p>
-        </motion.div>
-
-        {/* Composer controls */}
-        <div className="mb-8 sm:mb-10 space-y-5">
-          <div>
-            <p className="text-[10px] font-mono uppercase tracking-[0.24em] text-neutral-400 mb-3">
-              01 · Outcome
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {OUTCOMES.map((o, i) => {
-                const active = i === outcomeIdx;
-                return (
-                  <button
-                    key={o.id}
-                    type="button"
-                    onClick={() => setOutcomeIdx(i)}
-                    aria-pressed={active}
-                    className={`inline-flex items-center px-4 py-2 rounded-full border text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900/20 focus-visible:ring-offset-2 ${
-                      active
-                        ? "bg-neutral-900 text-white border-neutral-900"
-                        : "bg-white text-neutral-700 border-neutral-200 hover:border-neutral-400 hover:text-neutral-900"
-                    }`}
-                  >
-                    {o.label}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-          <div>
-            <p className="text-[10px] font-mono uppercase tracking-[0.24em] text-neutral-400 mb-3">
-              02 · Shape of work
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {SCOPES.map((s, i) => {
-                const active = i === scopeIdx;
-                return (
-                  <button
-                    key={s.id}
-                    type="button"
-                    onClick={() => setScopeIdx(i)}
-                    aria-pressed={active}
-                    className={`group inline-flex items-baseline gap-2 px-4 py-2 rounded-full border text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900/20 focus-visible:ring-offset-2 ${
-                      active
-                        ? "bg-neutral-900 text-white border-neutral-900"
-                        : "bg-white text-neutral-700 border-neutral-200 hover:border-neutral-400 hover:text-neutral-900"
-                    }`}
-                  >
-                    <span>{s.label}</span>
-                    <span className={`text-[11px] font-mono tracking-tight ${active ? "text-white/55" : "text-neutral-400"}`}>
-                      {s.phaseCount === 1 ? "30d" : "90d"}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-
-        {/* The brief poster */}
-        <AnimatePresence mode="wait">
-          <motion.article
-            key={briefKey}
-            initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 12 }}
-            animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
-            exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: -8 }}
-            transition={{ duration: prefersReducedMotion ? 0.2 : 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="relative rounded-3xl overflow-hidden shadow-[0_1px_0_rgba(0,0,0,0.04),0_30px_80px_-30px_rgba(0,0,0,0.25)]"
-          >
-            {/* Poster face — gradient takes the whole frame */}
-            <div className="relative aspect-[16/11] sm:aspect-[16/9] min-h-[460px] sm:min-h-[520px] w-full overflow-hidden">
-              <Image
-                src={outcome.gradient}
-                alt=""
-                aria-hidden
-                fill
-                priority
-                sizes="(min-width: 1024px) 1024px, 100vw"
-                className="object-cover scale-110 pointer-events-none select-none"
-              />
-              {/* Top scrim for chip legibility */}
-              <div
-                aria-hidden
-                className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-neutral-950/55 to-transparent pointer-events-none"
-              />
-              {/* Soft darkening from bottom for legibility */}
-              <div
-                aria-hidden
-                className="absolute inset-0 bg-gradient-to-t from-neutral-950/85 via-neutral-950/35 to-transparent pointer-events-none"
-              />
-              {/* Top: breadcrumb + drafted date */}
-              <div className="absolute top-6 sm:top-8 left-6 sm:left-10 right-6 sm:right-10 flex flex-wrap items-center gap-x-3 gap-y-2 text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.24em] text-white">
-                <span className="px-2.5 py-1 rounded-full bg-neutral-950/55 backdrop-blur-md border border-white/15">
-                  {outcome.short}
-                </span>
-                <span className="px-2.5 py-1 rounded-full bg-neutral-950/55 backdrop-blur-md border border-white/15">
-                  {scope.label} · {scope.duration}
-                </span>
-                <span className="ml-auto text-white/75 hidden sm:inline">{todayLabel}</span>
-              </div>
-
-              {/* Center: the huge before → after */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-5 sm:px-8">
-                <p className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.3em] text-white/70 mb-4 sm:mb-6">
-                  From {"  →  "} To
-                </p>
-                <div className="flex flex-wrap items-baseline justify-center gap-x-4 gap-y-2 sm:gap-x-8 max-w-full">
-                  <span
-                    className="font-serif italic text-white/40 leading-none line-through decoration-white/30 decoration-[3px] break-words"
-                    style={{ fontSize: "clamp(2.75rem, 12vw, 7.5rem)" }}
-                  >
-                    {outcome.metric.before}
-                  </span>
-                  <ArrowRight className="w-5 h-5 sm:w-8 sm:h-8 text-white/75 shrink-0" />
-                  <span
-                    className="font-serif italic text-white leading-none break-words"
-                    style={{ fontSize: "clamp(2.75rem, 12vw, 7.5rem)" }}
-                  >
-                    {outcome.metric.after}
-                  </span>
-                </div>
-                <p className="mt-4 sm:mt-6 text-[11px] sm:text-sm text-white/75 font-mono uppercase tracking-[0.22em]">
-                  {outcome.metric.unit}
-                </p>
-                <p className="mt-5 sm:mt-7 max-w-xl font-serif italic text-base sm:text-2xl text-white leading-snug">
-                  &ldquo;{outcome.tagline}&rdquo;
-                </p>
-              </div>
-
-              {/* Bottom: phase chips inline on the poster */}
-              <div className="absolute bottom-6 sm:bottom-8 left-6 sm:left-10 right-6 sm:right-10">
-                <div className="flex flex-wrap gap-2 sm:gap-3 justify-center">
-                  {visiblePhases.map((phase, i) => (
-                    <div
-                      key={phase.window}
-                      className="flex items-center gap-2.5 px-3.5 py-2 rounded-full bg-neutral-950/55 backdrop-blur-md border border-white/15 text-white"
-                    >
-                      <span className="inline-flex w-5 h-5 items-center justify-center rounded-full bg-white/20 font-mono text-[10px]">
-                        {i + 1}
-                      </span>
-                      <span className="text-[12px] sm:text-[13px] font-light">{phase.title}</span>
-                      <span className="text-[10px] font-mono text-white/65">d{phase.window}</span>
-                    </div>
-                  ))}
-                  {scope.phaseCount === 1 && (
-                    <div className="flex items-center gap-2 px-3.5 py-2 rounded-full bg-neutral-950/35 backdrop-blur-md border border-dashed border-white/30 text-white/75">
-                      <span className="text-[12px] sm:text-[13px] font-light">+ phases 2–3 on extension</span>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-
-            {/* Thin footer strip — pricing + send */}
-            <footer className="bg-white px-6 sm:px-10 py-5 sm:py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-t border-neutral-200">
-              <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-500">
-                {scope.pricing}
-              </p>
-              <a
-                href={`mailto:scofield@olyxee.com?subject=${encodeURIComponent(subject)}`}
-                className="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-neutral-900 text-white text-sm font-medium tracking-wide hover:bg-neutral-800 transition-colors shrink-0"
-              >
-                Send this brief
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-              </a>
-            </footer>
-          </motion.article>
-        </AnimatePresence>
-      </div>
-    </section>
-  );
-};
-
 const Enterprise: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
       <SEO
-        title="Enterprise"
-        description="Custom AI systems for business execution. Olyxee helps companies deploy AI systems that execute workflows, integrate with internal tools, and support real operational decisions."
+        title="Enterprise Systems"
+        description="Olyxee designs enterprise AI systems for workflow execution, operational intelligence, financial integrity, logistics coordination, and persistent organizational cognition."
         path="/enterprise"
         keywords={[
           "Olyxee Enterprise",
-          "Custom AI systems",
-          "Ordo enterprise deployment",
-          "AI workflow automation",
-          "AI for business operations",
+          "Enterprise AI systems",
+          "Operational intelligence",
+          "Workflow automation",
+          "Reconciliation",
+          "Logistics coordination",
+          "Organizational cognition",
         ]}
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "Service",
-          name: "Olyxee Enterprise",
+          name: "Olyxee Enterprise Systems",
           provider: {
             "@type": "Organization",
             name: "Olyxee",
             url: "https://olyxee.com",
           },
           description:
-            "Custom AI execution systems, pilots, integrations, and dedicated implementation support for enterprises.",
+            "Enterprise AI systems for workflow execution, financial integrity, logistics coordination, and organizational cognition.",
           areaServed: "Global",
           url: "https://olyxee.com/enterprise",
         }}
@@ -469,8 +238,7 @@ const Enterprise: FC = () => {
       <Header />
 
       {/* === HERO === */}
-      <section className="relative pt-36 sm:pt-48 pb-32 sm:pb-48 lg:pb-56 px-4 sm:px-6 bg-white overflow-hidden">
-        {/* Background photo */}
+      <section className="relative pt-36 sm:pt-48 pb-28 sm:pb-40 px-4 sm:px-6 bg-white overflow-hidden">
         <div className="absolute inset-0 -z-0">
           <Image
             src="/images/enterprise/team.png"
@@ -479,9 +247,8 @@ const Enterprise: FC = () => {
             fill
             priority
             sizes="100vw"
-            className="object-cover object-center grayscale contrast-[1.04] opacity-[0.32] sm:opacity-40"
+            className="object-cover object-center grayscale contrast-[1.04] opacity-[0.28] sm:opacity-[0.34]"
           />
-          {/* Soft white scrim for legibility */}
           <div className="absolute inset-0 bg-gradient-to-b from-white via-white/70 to-white" />
           <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-transparent to-white/80" />
         </div>
@@ -491,55 +258,261 @@ const Enterprise: FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-sm font-medium text-neutral-500 uppercase tracking-widest mb-6"
+            className="text-[11px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-6"
           >
-            Enterprise
+            Enterprise Systems
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.05 }}
-            className="font-serif text-4xl sm:text-6xl lg:text-7xl text-neutral-900 tracking-tight leading-[1.05]"
+            className="text-4xl sm:text-6xl lg:text-7xl text-neutral-900 tracking-[-0.025em] leading-[1.05] font-medium"
           >
-            Custom AI systems for business execution.
+            Operational intelligence systems{" "}
+            <em className="font-serif italic font-normal text-neutral-500">
+              designed for modern organizations.
+            </em>
           </motion.h1>
-        </div>
-      </section>
-
-      {/* === PRINCIPLES STRIP === */}
-      <section className="px-4 sm:px-6 pb-20 sm:pb-28 -mt-8 sm:-mt-12">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7 }}
-            className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-neutral-200/70 border-y border-neutral-200/70"
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.15 }}
+            className="mt-8 max-w-2xl mx-auto text-base sm:text-lg text-neutral-500 font-light leading-relaxed"
           >
-            {[
-              { k: "01", t: "Scoped, not sold", d: "We start with one workflow and a measurable outcome, never a multi-year contract." },
-              { k: "02", t: "Inside your environment", d: "Ordo runs in your cloud, with your data, under your access controls." },
-              { k: "03", t: "Built with you", d: "Our engineers ship alongside yours. No reseller hand-off, no implementation partner." },
-            ].map((p) => (
-              <div key={p.k} className="px-6 sm:px-8 py-8 sm:py-10">
-                <p className="font-mono text-[11px] tracking-[0.22em] text-neutral-400 mb-3">{p.k}</p>
-                <h3 className="font-serif text-xl sm:text-2xl text-neutral-900 tracking-tight mb-2 leading-tight">
-                  {p.t}
-                </h3>
-                <p className="text-sm text-neutral-500 font-light leading-relaxed">{p.d}</p>
-              </div>
-            ))}
+            Olyxee designs enterprise AI systems for workflow execution, operational intelligence, financial integrity, logistics coordination, and persistent organizational cognition.
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.25 }}
+            className="mt-10 flex flex-col sm:flex-row gap-3 justify-center"
+          >
+            <a
+              href="#solutions"
+              className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide shadow-lg shadow-neutral-900/10"
+            >
+              Explore Solutions
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+            </a>
+            <a
+              href="mailto:scofield@olyxee.com?subject=Enterprise%3A%20Build%20With%20Olyxee"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 text-neutral-900 bg-white border border-neutral-300 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide"
+            >
+              Contact Enterprise Team
+            </a>
           </motion.div>
         </div>
       </section>
 
-      {/* === ENGAGEMENT === */}
-      <BriefComposer />
+      {/* === SOLUTION CATEGORIES === */}
+      <section id="solutions" className="px-4 sm:px-6 py-20 sm:py-28 lg:py-32 border-t border-neutral-200/70 scroll-mt-24">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            custom={0}
+            variants={fadeUp}
+            className="max-w-3xl mb-12 sm:mb-16"
+          >
+            <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
+              What we build
+            </p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-[-0.025em] leading-[1.05] font-medium">
+              Solutions for{" "}
+              <em className="font-serif italic font-normal text-neutral-500">
+                operational teams.
+              </em>
+            </h2>
+            <p className="mt-5 text-base sm:text-lg text-neutral-500 font-light leading-relaxed">
+              Four core problem spaces where Olyxee deploys systems, each one powered by a product in our stack.
+            </p>
+          </motion.div>
 
-      {/* === DESKTOP SCREENS COLLAGE (playful) === */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+            {SOLUTION_CATEGORIES.map((cat, idx) => {
+              const Icon = cat.icon;
+              return (
+                <motion.article
+                  key={cat.name}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.25 }}
+                  custom={idx}
+                  variants={fadeUp}
+                  className="group relative rounded-3xl bg-white ring-1 ring-neutral-200 hover:ring-neutral-300 hover:shadow-sm transition-all p-7 sm:p-9 flex flex-col"
+                >
+                  <div className="w-11 h-11 rounded-xl bg-neutral-100 flex items-center justify-center mb-6">
+                    <Icon className="w-5 h-5 text-neutral-700" strokeWidth={1.5} />
+                  </div>
+                  <h3 className="text-xl sm:text-2xl text-neutral-900 tracking-[-0.015em] font-medium mb-2 leading-snug">
+                    {cat.name}
+                  </h3>
+                  <p className="text-[13px] sm:text-sm text-neutral-500 font-light leading-relaxed mb-5">
+                    {cat.tagline}
+                  </p>
+                  <ul className="space-y-1.5 mb-6">
+                    {cat.capabilities.map((c) => (
+                      <li key={c} className="flex items-baseline gap-2.5 text-[13px] text-neutral-600 font-light">
+                        <span aria-hidden className="inline-block w-1 h-1 rounded-full bg-neutral-400 translate-y-[-2px]" />
+                        {c}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-auto pt-5 border-t border-neutral-100 flex items-center gap-3">
+                    <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-400">
+                      Powered by
+                    </span>
+                    <div className="flex flex-wrap gap-1.5">
+                      {cat.poweredBy.map((p) => (
+                        <span
+                          key={p}
+                          className="inline-flex items-center px-2.5 py-1 rounded-full bg-neutral-900 text-white text-[11px] font-medium tracking-tight"
+                        >
+                          {p}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </motion.article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* === ENGAGEMENT MODEL / PRICING === */}
+      <section id="engagement" className="px-4 sm:px-6 py-20 sm:py-28 lg:py-32 bg-neutral-50/70 border-t border-neutral-200/70">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            custom={0}
+            variants={fadeUp}
+            className="max-w-3xl mb-12 sm:mb-16"
+          >
+            <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
+              Engagement model
+            </p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-[-0.025em] leading-[1.05] font-medium">
+              Three ways to{" "}
+              <em className="font-serif italic font-normal text-neutral-500">
+                build with us.
+              </em>
+            </h2>
+            <p className="mt-5 text-base sm:text-lg text-neutral-500 font-light leading-relaxed">
+              Olyxee delivers systems and infrastructure, not packaged SaaS. Engagements scale with operational complexity and the depth of the systems you need.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
+            {PRICING_TIERS.map((tier, idx) => (
+              <motion.article
+                key={tier.name}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.25 }}
+                custom={idx}
+                variants={fadeUp}
+                className={`relative rounded-3xl p-7 sm:p-9 flex flex-col h-full ${
+                  tier.emphasis
+                    ? "bg-neutral-900 text-white ring-1 ring-neutral-900 shadow-xl shadow-neutral-900/15"
+                    : "bg-white ring-1 ring-neutral-200"
+                }`}
+              >
+                {tier.emphasis && (
+                  <span className="absolute -top-3 left-7 sm:left-9 inline-flex px-2.5 py-1 rounded-full bg-white text-neutral-900 text-[10px] font-mono uppercase tracking-[0.22em] ring-1 ring-neutral-200">
+                    Most common
+                  </span>
+                )}
+                <p
+                  className={`text-[10px] font-mono uppercase tracking-[0.22em] mb-4 ${
+                    tier.emphasis ? "text-white/55" : "text-neutral-400"
+                  }`}
+                >
+                  Tier 0{idx + 1}
+                </p>
+                <h3
+                  className={`text-xl sm:text-2xl tracking-[-0.015em] font-medium mb-2 leading-snug ${
+                    tier.emphasis ? "text-white" : "text-neutral-900"
+                  }`}
+                >
+                  {tier.name}
+                </h3>
+                <p
+                  className={`text-[13px] font-light leading-relaxed mb-3 ${
+                    tier.emphasis ? "text-white/65" : "text-neutral-500"
+                  }`}
+                >
+                  {tier.audience}.
+                </p>
+                <p
+                  className={`text-sm font-light leading-relaxed mb-6 ${
+                    tier.emphasis ? "text-white/80" : "text-neutral-600"
+                  }`}
+                >
+                  {tier.description}
+                </p>
+                <p
+                  className={`text-[10px] font-mono uppercase tracking-[0.22em] mb-3 ${
+                    tier.emphasis ? "text-white/45" : "text-neutral-400"
+                  }`}
+                >
+                  Includes
+                </p>
+                <ul className="space-y-2.5 mb-8">
+                  {tier.includes.map((item) => (
+                    <li
+                      key={item}
+                      className={`flex items-start gap-2.5 text-sm font-light ${
+                        tier.emphasis ? "text-white/85" : "text-neutral-700"
+                      }`}
+                    >
+                      <Check
+                        className={`w-3.5 h-3.5 mt-1 shrink-0 ${
+                          tier.emphasis ? "text-white/60" : "text-neutral-400"
+                        }`}
+                        strokeWidth={2}
+                      />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href={`mailto:scofield@olyxee.com?subject=${encodeURIComponent(
+                    `Enterprise: ${tier.name} inquiry`,
+                  )}`}
+                  className={`mt-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full text-sm font-medium tracking-wide transition-colors ${
+                    tier.emphasis
+                      ? "bg-white text-neutral-900 hover:bg-neutral-100"
+                      : "bg-neutral-900 text-white hover:bg-neutral-800"
+                  }`}
+                >
+                  Discuss this tier
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+              </motion.article>
+            ))}
+          </div>
+
+          <motion.p
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            custom={3}
+            variants={fadeUp}
+            className="mt-10 sm:mt-12 max-w-3xl text-sm text-neutral-500 font-light leading-relaxed"
+          >
+            Solutions vary depending on industry requirements, operational complexity, integrations, and infrastructure needs. Most engagements combine packaged products with custom architecture, integration work, and a defined operating model.
+          </motion.p>
+        </div>
+      </section>
+
+      {/* === IN PRODUCTION (UNTOUCHED) === */}
       <DesktopCollage />
 
-      {/* === GET IN TOUCH CTA === */}
+      {/* === BUILD WITH OLYXEE === */}
       <section className="relative py-20 sm:py-28 lg:py-32 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
           <motion.div
@@ -553,27 +526,37 @@ const Enterprise: FC = () => {
             <div aria-hidden="true" className="absolute -bottom-32 -left-24 w-80 h-80 rounded-full bg-neutral-200/60 blur-3xl" />
 
             <div className="relative text-center max-w-2xl mx-auto">
-              <p className="text-[11px] font-medium text-neutral-500 uppercase tracking-[0.22em] mb-5">Get in touch</p>
-              <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-5 leading-[1.05]">
-                Talk to us about your workflows.
+              <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-500 mb-5">
+                Enterprise inquiry
+              </p>
+              <h2 className="text-3xl sm:text-5xl lg:text-6xl tracking-[-0.025em] text-neutral-900 mb-5 leading-[1.05] font-medium">
+                Build With <em className="font-serif italic font-normal text-neutral-500">Olyxee.</em>
               </h2>
               <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-9 max-w-lg mx-auto">
-                Tell us where AI execution would have the highest impact in your business. We&apos;ll outline a pilot, the integration scope, and how success would be measured.
+                Work with Olyxee to design operational intelligence systems tailored to your organization. Tell us about your workflows, integrations, and operating environment, and we will scope the engagement with you.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <a
-                  href="mailto:scofield@olyxee.com?subject=Enterprise%3A%20Custom%20deployment%20inquiry"
+                  href="mailto:scofield@olyxee.com?subject=Enterprise%3A%20Build%20With%20Olyxee"
                   className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide shadow-lg shadow-neutral-900/10"
                 >
-                  Contact enterprise <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                  Request a consultation
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                 </a>
                 <Link
                   href="/contact"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 text-neutral-900 bg-white border border-neutral-300 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide"
                 >
-                  All contact options
+                  Enterprise inquiry form
                 </Link>
               </div>
+              <p className="mt-6 text-xs text-neutral-500">
+                Or email us directly at{" "}
+                <a href="mailto:enterprise@olyxee.com" className="text-neutral-900 underline underline-offset-4 hover:no-underline">
+                  enterprise@olyxee.com
+                </a>
+                .
+              </p>
             </div>
           </motion.div>
         </div>

@@ -1,0 +1,137 @@
+1. Hero Section
+Enterprise Systems
+Operational intelligence systems designed for modern organizations.
+
+Small supporting text:
+
+Olyxee designs enterprise AI systems for workflow execution, operational intelligence, financial integrity, logistics coordination, and persistent organizational cognition.
+
+Buttons:
+
+Explore Solutions
+Contact Enterprise Team
+
+Background:
+
+dark operational visuals
+infrastructure
+logistics
+enterprise dashboards
+AI systems coordination
+2. Industry / Solution Categories
+
+This section answers:
+“What can Olyxee build for us?”
+
+Use cards.
+
+Financial Operations
+reconciliation
+integrity systems
+validation
+audit intelligence
+
+Powered by:
+
+Addup
+ODI
+Enterprise Workflow Automation
+workflow execution
+approvals
+operational coordination
+system integrations
+
+Powered by:
+
+Ordo
+Logistics & Delivery Operations
+dispatch systems
+operational coordination
+delivery intelligence
+workflow automation
+
+Powered by:
+
+Courier Loop
+Organizational Intelligence
+memory systems
+contextual reasoning
+operational cognition
+long-running workflows
+
+Powered by:
+
+Cortex
+
+This is MUCH stronger than “our services.”
+
+3. Pricing / Engagement Model
+
+This is where clarity matters.
+
+Do NOT use:
+
+“Basic / Pro / Premium”
+
+Too SaaS-like.
+
+Use enterprise-oriented tiers.
+
+Starter Infrastructure
+
+For small businesses and growing operations.
+
+Includes:
+
+Addup access
+basic automation
+reporting
+standard integrations
+Operational Systems
+
+For operational teams requiring workflow coordination and automation.
+
+Includes:
+
+Ordo capabilities
+operational workflows
+API integrations
+enterprise automation
+support
+Enterprise Intelligence
+
+Custom enterprise intelligence infrastructure.
+
+Includes:
+
+Cortex-based systems
+ODI integrations
+operational cognition
+multi-agent workflows
+custom enterprise architecture
+dedicated infrastructure
+
+Then:
+
+Solutions vary depending on industry requirements, operational complexity, integrations, and infrastructure needs.
+
+This is important because:
+
+you are not selling fixed software only,
+you are selling systems + infrastructure + customization.
+4. Enterprise Contact Section
+
+Instead of:
+“Book a free call”
+
+Use:
+
+Build With Olyxee
+
+Work with Olyxee to design operational intelligence systems tailored to your organization.
+
+Then:
+
+enterprise inquiry form
+email
+consultation request
