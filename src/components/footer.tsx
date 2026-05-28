@@ -2,7 +2,28 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Twitter, Linkedin, Youtube, ArrowUpRight } from "lucide-react";
+import { Twitter, Linkedin, Youtube, Instagram, Facebook, ArrowUpRight } from "lucide-react";
+import type { SVGProps } from "react";
+
+const HuggingFaceIcon = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.6"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+    {...props}
+  >
+    <circle cx="12" cy="12" r="9" />
+    <circle cx="8.5" cy="10.5" r="1" fill="currentColor" stroke="none" />
+    <circle cx="15.5" cy="10.5" r="1" fill="currentColor" stroke="none" />
+    <path d="M8.5 15c1 1.2 2.2 1.8 3.5 1.8s2.5-.6 3.5-1.8" />
+    <path d="M5 13c-.7-.2-1.3.4-1.1 1.1.2.7.9 1.1 1.6.9" />
+    <path d="M19 13c.7-.2 1.3.4 1.1 1.1-.2.7-.9 1.1-1.6.9" />
+  </svg>
+);
 
 const footerData = {
   columns: [
@@ -58,9 +79,12 @@ const footerData = {
     },
   ],
   socials: [
-    { name: "Twitter", href: "https://twitter.com/olyxee", icon: Twitter },
-    { name: "YouTube", href: "https://www.youtube.com/@olyxee", icon: Youtube },
+    { name: "Twitter", href: "https://twitter.com/Olyxee", icon: Twitter },
+    { name: "YouTube", href: "https://www.youtube.com/@Olyxee", icon: Youtube },
     { name: "LinkedIn", href: "https://www.linkedin.com/company/olyxee", icon: Linkedin },
+    { name: "Instagram", href: "https://www.instagram.com/olyxee", icon: Instagram },
+    { name: "Facebook", href: "https://www.facebook.com/olyxee", icon: Facebook },
+    { name: "Hugging Face", href: "https://huggingface.co/Olyxee", icon: HuggingFaceIcon },
   ],
 };
 
