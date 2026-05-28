@@ -135,52 +135,68 @@ const InternshipsPage: FC = () => {
             All open roles
           </Link>
 
-          {/* HEADER */}
+          {/* HEADER — when a role is selected, the H1 becomes a short summary of that role */}
           <motion.header
+            key={selectedRole?.slug ?? "default"}
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5 }}
             className="border-b border-neutral-200 pb-10"
           >
             <p className="text-[11px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
-              Internships at Olyxee
+              {selectedRole
+                ? `${selectedRole.team} · Internship · ${selectedRole.location}`
+                : "Internships at Olyxee"}
             </p>
-            <h1 className="text-3xl sm:text-4xl lg:text-[3rem] tracking-[-0.025em] leading-[1.05] font-medium text-neutral-900 mb-6">
-              Build alongside the team, on{" "}
-              <em className="font-serif italic font-normal text-neutral-500">
-                real work.
-              </em>
+            <h1 className="text-3xl sm:text-4xl lg:text-[3rem] tracking-[-0.025em] leading-[1.05] font-medium text-neutral-900 mb-5">
+              {selectedRole ? (
+                <>
+                  {selectedRole.title}
+                  <span className="block text-neutral-500 font-normal text-lg sm:text-xl mt-3 tracking-normal leading-snug">
+                    {selectedRole.description}
+                  </span>
+                </>
+              ) : (
+                <>
+                  Build alongside the team, on{" "}
+                  <em className="font-serif italic font-normal text-neutral-500">
+                    real work.
+                  </em>
+                </>
+              )}
             </h1>
-            <p className="text-lg text-neutral-700 leading-relaxed max-w-2xl">
-              Our internships are open to people early in their career,
-              curious, technical or otherwise, who want hands-on experience
-              shipping with a real team.
-            </p>
+            {!selectedRole && (
+              <p className="text-lg text-neutral-700 leading-relaxed max-w-2xl">
+                Our internships are open to people early in their career,
+                curious, technical or otherwise, who want hands-on experience
+                shipping with a real team.
+              </p>
+            )}
           </motion.header>
 
-          {/* UNPAID NOTICE — neutral, no colors */}
-          <section className="mt-10 rounded-3xl border border-neutral-300 bg-neutral-50 p-6 sm:p-8">
-            <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-900 mb-3">
+          {/* UNPAID NOTICE — clearly visible amber treatment */}
+          <section className="mt-10 rounded-3xl border-2 border-amber-300 bg-amber-50 p-6 sm:p-8">
+            <p className="text-[13px] sm:text-sm font-semibold uppercase tracking-[0.18em] text-amber-900 mb-3">
               Heads up · these internships are unpaid
             </p>
-            <p className="text-[15px] sm:text-base text-neutral-800 leading-relaxed">
+            <p className="text-base sm:text-lg text-neutral-900 leading-relaxed font-medium">
               You will get meaningful work alongside our team, mentorship from
               senior operators, and a written reference at the end. You will
               not receive a salary or stipend. Apply only if that trade-off
               works for you right now.
             </p>
-            <ul className="mt-5 space-y-2 text-[15px] text-neutral-700 leading-relaxed">
+            <ul className="mt-5 space-y-2 text-[15px] text-neutral-800 leading-relaxed">
               <li className="flex items-start gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-neutral-400 mt-2 flex-shrink-0" />
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-600 mt-2 flex-shrink-0" />
                 Remote-first. Most roles are flexible on hours.
               </li>
               <li className="flex items-start gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-neutral-400 mt-2 flex-shrink-0" />
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-600 mt-2 flex-shrink-0" />
                 Typically 3 to 6 months, with the option to extend or convert
                 to a paid role for exceptional work.
               </li>
               <li className="flex items-start gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-neutral-400 mt-2 flex-shrink-0" />
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-600 mt-2 flex-shrink-0" />
                 One simple form. We read every application and respond within
                 14 days.
               </li>
