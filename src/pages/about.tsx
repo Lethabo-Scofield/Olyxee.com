@@ -279,7 +279,7 @@ const About: FC = () => {
         </section>
 
         {/* === IN THE FIELD === */}
-        <section className="relative py-20 sm:py-28 lg:py-36 bg-neutral-50/60 border-t border-neutral-200/70 overflow-hidden">
+        <section className="relative py-20 sm:py-28 lg:py-36 bg-neutral-950 text-white overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
             <motion.div
               initial="hidden"
@@ -289,12 +289,12 @@ const About: FC = () => {
               variants={fadeUp}
               className="max-w-3xl mb-12 sm:mb-16"
             >
-              <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
+              <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-white/50 mb-4">
                 In the field
               </p>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-[-0.025em] leading-[1.05] font-medium">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl text-white tracking-[-0.025em] leading-[1.05] font-medium">
                 Bringing our work to the rooms where{" "}
-                <em className="font-serif italic font-normal text-neutral-500">decisions get made.</em>
+                <em className="font-serif italic font-normal text-white/50">decisions get made.</em>
               </h2>
             </motion.div>
 
@@ -307,7 +307,7 @@ const About: FC = () => {
                 variants={fadeUp}
                 className="lg:col-span-8 group"
               >
-                <div className="relative aspect-[4/3] sm:aspect-[16/10] overflow-hidden rounded-3xl ring-1 ring-neutral-200 bg-neutral-100">
+                <div className="relative aspect-[4/3] sm:aspect-[16/10] overflow-hidden rounded-3xl ring-1 ring-white/10 bg-neutral-900">
                   <Image
                     src="/images/olyxee-tech-talk.png"
                     alt="Olyxee speaker presenting at TechWeek"
@@ -317,10 +317,10 @@ const About: FC = () => {
                   />
                 </div>
                 <figcaption className="mt-5 flex items-baseline justify-between gap-6">
-                  <p className="text-[15px] sm:text-base text-neutral-900 font-light leading-snug max-w-md">
+                  <p className="text-[15px] sm:text-base text-white font-light leading-snug max-w-md">
                     Sharing how we think about reliable AI infrastructure at TechWeek.
                   </p>
-                  <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-400 shrink-0">
+                  <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-white/40 shrink-0">
                     TechWeek · 2026
                   </span>
                 </figcaption>
@@ -334,7 +334,7 @@ const About: FC = () => {
                 variants={fadeUp}
                 className="lg:col-span-4 group"
               >
-                <div className="relative aspect-[4/3] lg:aspect-[3/4] overflow-hidden rounded-3xl ring-1 ring-neutral-200 bg-neutral-100">
+                <div className="relative aspect-[4/3] lg:aspect-[3/4] overflow-hidden rounded-3xl ring-1 ring-white/10 bg-neutral-900">
                   <Image
                     src="/images/olyxee-presentation.png"
                     alt="Olyxee team briefing a client on the product suite"
@@ -344,10 +344,10 @@ const About: FC = () => {
                   />
                 </div>
                 <figcaption className="mt-5 flex items-baseline justify-between gap-6">
-                  <p className="text-[15px] sm:text-base text-neutral-900 font-light leading-snug max-w-xs">
+                  <p className="text-[15px] sm:text-base text-white font-light leading-snug max-w-xs">
                     Walking partners through the product suite, in the room.
                   </p>
-                  <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-400 shrink-0">
+                  <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-white/40 shrink-0">
                     Briefing
                   </span>
                 </figcaption>
