@@ -52,7 +52,7 @@ const Privacy: FC = () => (
     effectiveDate="May 2026"
     description="Olyxee's privacy policy. How we collect, use, and protect your data."
     path="/privacy"
-    intro="This policy describes how Olyxee, Inc. collects, uses, and safeguards information when you use our websites, products, and services."
+    intro="This policy describes how Olyxee (Pty) Ltd (Registration No. 2026/326516/07), trading as Olyxee, collects, uses, and safeguards information when you use our websites, products, and services."
     sections={sections}
     downloadFilename="Olyxee_Privacy_Policy.txt"
     contactEmail="privacy@olyxee.com"

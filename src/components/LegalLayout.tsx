@@ -219,12 +219,16 @@ const LegalLayout: FC<LegalLayoutProps> = ({
     doc.setFont("helvetica", "bold");
     doc.setFontSize(10);
     doc.setTextColor(20);
-    doc.text("Olyxee, Inc.", marginX, y);
+    doc.text("Olyxee (Pty) Ltd", marginX, y);
     y += 14;
     doc.setFont("helvetica", "normal");
     doc.setFontSize(9);
     doc.setTextColor(120);
-    doc.text(`© ${new Date().getFullYear()} Olyxee, Inc. All rights reserved.`, marginX, y);
+    doc.text("Research and Infrastructure for Artificial Intelligence", marginX, y);
+    y += 12;
+    doc.text("Registration No. 2026/326516/07", marginX, y);
+    y += 12;
+    doc.text(`© ${new Date().getFullYear()} Olyxee (Pty) Ltd. All rights reserved.`, marginX, y);
     y += 12;
     doc.text(`Questions: ${contactEmail}`, marginX, y);
 
@@ -397,8 +401,9 @@ const LegalLayout: FC<LegalLayoutProps> = ({
                   <div className="flex items-center gap-3">
                     <Image src="/Logo/Olyxee_Logo_ClearBack.png" alt="Olyxee" width={26} height={26} />
                     <div>
-                      <p className="text-sm font-semibold text-neutral-900">Olyxee, Inc.</p>
-                      <p className="text-xs text-neutral-400">© {new Date().getFullYear()} All rights reserved.</p>
+                      <p className="text-sm font-semibold text-neutral-900">Olyxee (Pty) Ltd</p>
+                      <p className="text-xs text-neutral-500">Research and Infrastructure for Artificial Intelligence</p>
+                      <p className="text-xs text-neutral-400 mt-0.5">Reg. No. 2026/326516/07 · © {new Date().getFullYear()} All rights reserved.</p>
                     </div>
                   </div>
                   <div className="text-xs text-neutral-500">

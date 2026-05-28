@@ -4,7 +4,7 @@ import LegalLayout, { LegalSection } from "../components/LegalLayout";
 const sections: LegalSection[] = [
   {
     title: "1. Acceptance of Terms",
-    content: "By accessing or using any of Olyxee's services, websites, APIs, SDKs, or related products (collectively, \"Services\"), you agree to be bound by these Terms of Use. If you do not agree to these terms, you may not access or use our Services.\n\nThese terms constitute a legally binding agreement between you (or the entity you represent) and Olyxee."
+    content: "By accessing or using any of Olyxee's services, websites, APIs, SDKs, or related products (collectively, \"Services\"), you agree to be bound by these Terms of Use. If you do not agree to these terms, you may not access or use our Services.\n\nThese terms constitute a legally binding agreement between you (or the entity you represent) and Olyxee (Pty) Ltd (Registration No. 2026/326516/07), a company incorporated in South Africa (\"Olyxee\", \"we\", or \"us\")."
   },
   {
     title: "2. Eligibility",
@@ -48,7 +48,7 @@ const sections: LegalSection[] = [
   },
   {
     title: "12. Governing Law",
-    content: "These terms shall be governed by and construed in accordance with the laws of the jurisdiction in which Olyxee operates, without regard to its conflict of law principles."
+    content: "These terms shall be governed by and construed in accordance with the laws of the Republic of South Africa, without regard to its conflict of law principles. You and Olyxee (Pty) Ltd agree to submit to the exclusive jurisdiction of the South African courts for the resolution of any disputes arising out of or relating to these terms."
   },
   {
     title: "13. Contact",
@@ -64,7 +64,7 @@ const Terms: FC = () => (
     effectiveDate="May 2026"
     description="Olyxee's Terms of Service governing access to our platform and services."
     path="/terms"
-    intro="These Terms of Service govern your access to and use of Olyxee's websites, products, APIs, and services. Please read them carefully."
+    intro="These Terms of Service govern your access to and use of websites, products, APIs, and services provided by Olyxee (Pty) Ltd (Registration No. 2026/326516/07), a company incorporated in South Africa and trading as Olyxee, Research and Infrastructure for Artificial Intelligence. Please read them carefully."
     sections={sections}
     downloadFilename="Olyxee_Terms_of_Service.txt"
     contactEmail="legal@olyxee.com"
