@@ -60,7 +60,7 @@ export const roles: Role[] = [
     title: "AI/ML Engineer",
     team: "Engineering & AI",
     location: REMOTE,
-    type: "paid",
+    type: "internship",
     description:
       "Build and ship the models that power Ordo, Addup, and Olyxee Cortex across production workflows.",
     responsibilities: [
@@ -76,7 +76,7 @@ export const roles: Role[] = [
     questions: STANDARD_QUESTIONS,
   },
   {
-    title: "AI Research Engineer",
+    title: "AI Researcher",
     team: "Engineering & AI",
     location: HYBRID,
     type: "paid",
@@ -95,7 +95,7 @@ export const roles: Role[] = [
     questions: STANDARD_QUESTIONS,
   },
   {
-    title: "Software Engineer",
+    title: "Senior Software Engineer",
     team: "Engineering & AI",
     location: REMOTE,
     type: "paid",
@@ -117,7 +117,7 @@ export const roles: Role[] = [
     title: "Platform Engineer",
     team: "Engineering & AI",
     location: REMOTE,
-    type: "paid",
+    type: "internship",
     description:
       "Own the internal platform engineers build on: deployment, observability, and developer experience across all Olyxee products.",
     responsibilities: [
@@ -136,7 +136,7 @@ export const roles: Role[] = [
     title: "Cloud Infrastructure Engineer",
     team: "Engineering & AI",
     location: REMOTE,
-    type: "paid",
+    type: "internship",
     description:
       "Run the cloud foundation Olyxee operates on: compute, networking, storage, and cost across multiple environments.",
     responsibilities: [
@@ -157,7 +157,7 @@ export const roles: Role[] = [
     title: "Data Engineer",
     team: "Data & Intelligence",
     location: REMOTE,
-    type: "paid",
+    type: "internship",
     description:
       "Build the data pipelines that feed Addup, Cortex, and our evaluation systems with clean, trustworthy data.",
     responsibilities: [
@@ -176,7 +176,7 @@ export const roles: Role[] = [
     title: "AI Systems Engineer",
     team: "Data & Intelligence",
     location: REMOTE,
-    type: "paid",
+    type: "internship",
     description:
       "Build the systems that connect models, tools, and data into reliable, end-to-end AI workflows across Ordo and Cortex.",
     responsibilities: [
@@ -195,7 +195,7 @@ export const roles: Role[] = [
     title: "Operational Intelligence Analyst",
     team: "Data & Intelligence",
     location: REMOTE,
-    type: "paid",
+    type: "internship",
     description:
       "Turn product, customer, and operational data into the insights that guide Olyxee's product and go-to-market decisions.",
     responsibilities: [
@@ -216,7 +216,7 @@ export const roles: Role[] = [
     title: "QA/Test Engineer",
     team: "Quality & Reliability",
     location: REMOTE,
-    type: "paid",
+    type: "internship",
     description:
       "Own the quality bar across Olyxee's products. Design the testing strategy that keeps customer-facing systems dependable.",
     responsibilities: [
@@ -235,7 +235,7 @@ export const roles: Role[] = [
     title: "AI Evaluation & Reliability Engineer",
     team: "Quality & Reliability",
     location: REMOTE,
-    type: "paid",
+    type: "internship",
     description:
       "Build the evaluation harnesses, benchmarks, and monitors that prove our AI systems behave correctly in production.",
     responsibilities: [
@@ -256,7 +256,7 @@ export const roles: Role[] = [
     title: "Product Manager",
     team: "Product & Design",
     location: REMOTE,
-    type: "paid",
+    type: "internship",
     description:
       "Own a product surface across Ordo, Addup, Document Integrity, or Courier Loop. Set the direction, ship the work, measure the outcome.",
     responsibilities: [
@@ -275,7 +275,7 @@ export const roles: Role[] = [
     title: "Product Designer",
     team: "Product & Design",
     location: REMOTE,
-    type: "paid",
+    type: "internship",
     description:
       "Design the interfaces operators trust to run AI on real work, calm, clear, and accountable.",
     responsibilities: [
@@ -296,7 +296,7 @@ export const roles: Role[] = [
     title: "Project Operations",
     team: "Operations & Delivery",
     location: REMOTE,
-    type: "paid",
+    type: "internship",
     description:
       "Keep our internal and customer-facing projects on track. Bring structure to a fast-moving team building real systems.",
     responsibilities: [
@@ -315,7 +315,7 @@ export const roles: Role[] = [
     title: "Operations & Strategy",
     team: "Operations & Delivery",
     location: HYBRID,
-    type: "paid",
+    type: "internship",
     description:
       "Work alongside leadership on the highest-leverage problems: planning, hiring, finance, and how the company runs.",
     responsibilities: [
@@ -334,7 +334,7 @@ export const roles: Role[] = [
     title: "Enterprise Solutions Associate",
     team: "Operations & Delivery",
     location: REMOTE,
-    type: "paid",
+    type: "internship",
     description:
       "Work directly with enterprise customers to deploy Ordo, Addup, and Cortex into their operations.",
     responsibilities: [
@@ -352,7 +352,7 @@ export const roles: Role[] = [
 
   // ─── 6. Growth & Business ────────────────────────────────────────────
   {
-    title: "Marketing & Growth Associate",
+    title: "Marketing",
     team: "Growth & Business",
     location: REMOTE,
     type: "paid",
@@ -374,7 +374,7 @@ export const roles: Role[] = [
     title: "Partnerships & Business Development",
     team: "Growth & Business",
     location: HYBRID,
-    type: "paid",
+    type: "internship",
     description:
       "Build the partnerships that expand Olyxee's reach: integrators, platforms, and the ecosystems our products plug into.",
     responsibilities: [
@@ -393,7 +393,7 @@ export const roles: Role[] = [
     title: "Sales & Client Solutions",
     team: "Growth & Business",
     location: HYBRID,
-    type: "paid",
+    type: "internship",
     description:
       "Own the customer relationship from first conversation through contract. Sell Olyxee the way it deserves to be sold: honestly and technically.",
     responsibilities: [
@@ -414,7 +414,7 @@ export const roles: Role[] = [
     title: "HR & Talent Operations",
     team: "People & Administration",
     location: HYBRID,
-    type: "paid",
+    type: "internship",
     description:
       "Build the people function: hiring, onboarding, and the operating rhythm that lets a small team punch far above its weight.",
     responsibilities: [
@@ -433,7 +433,7 @@ export const roles: Role[] = [
     title: "Administrative Operations",
     team: "People & Administration",
     location: HYBRID,
-    type: "paid",
+    type: "internship",
     description:
       "Keep the company running day to day: scheduling, vendors, office, finance support, and the operational glue leadership relies on.",
     responsibilities: [
