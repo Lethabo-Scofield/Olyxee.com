@@ -1,28 +1,28 @@
 import { FC, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Brain, Network, Workflow, Clock, Layers, GitMerge, Database, Check } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import SEO from "../../components/SEO";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 24 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, delay: i * 0.08, ease: [0.25, 0.46, 0.45, 0.94] },
+    transition: { duration: 0.7, delay: i * 0.06, ease: [0.25, 0.46, 0.45, 0.94] },
   }),
 };
 
 const RESEARCH_AREAS = [
-  { icon: Database, label: "Organizational memory systems" },
-  { icon: Brain, label: "Persistent contextual reasoning" },
-  { icon: Network, label: "Multi-agent coordination" },
-  { icon: Workflow, label: "Workflow intelligence" },
-  { icon: Layers, label: "Operational state understanding" },
-  { icon: Clock, label: "Long-horizon AI reasoning" },
-  { icon: GitMerge, label: "Enterprise cognition infrastructure" },
+  "Organizational memory systems",
+  "Persistent contextual reasoning",
+  "Multi-agent coordination",
+  "Workflow intelligence",
+  "Operational state understanding",
+  "Long-horizon AI reasoning",
+  "Enterprise cognition infrastructure",
 ];
 
 const CAPABILITIES = [
@@ -85,290 +85,175 @@ const CortexPage: FC = () => {
         ]}
         jsonLd={{
           "@context": "https://schema.org",
-          "@type": "SoftwareApplication",
-          name: "Olyxee Cortex",
-          applicationCategory: "BusinessApplication",
-          operatingSystem: "Web",
+          "@type": "Article",
+          headline: "Olyxee Cortex: Persistent Organizational Cognition Infrastructure",
           description:
-            "Persistent organizational cognition infrastructure for enterprise AI systems, focused on memory, coordination, workflow intelligence, and long-horizon reasoning.",
-          offers: { "@type": "Offer", price: "0", priceCurrency: "USD", availability: "https://schema.org/PreOrder" },
+            "Olyxee Cortex is a next-generation enterprise cognition system for memory, coordination, and reasoning across long-running workflows.",
+          author: { "@type": "Organization", name: "Olyxee" },
+          publisher: { "@type": "Organization", name: "Olyxee", url: "https://olyxee.com" },
           url: "https://olyxee.com/research/cortex",
         }}
       />
       <div className="grain" />
       <Header />
 
-      {/* === HERO === */}
-      <section className="relative pt-36 sm:pt-48 pb-24 sm:pb-32 px-4 sm:px-6 overflow-hidden">
-        <div aria-hidden className="absolute -top-32 -left-32 w-[40rem] h-[40rem] rounded-full bg-gradient-to-br from-sky-200/40 via-indigo-200/30 to-transparent blur-3xl" />
-        <div aria-hidden className="absolute -bottom-40 right-0 w-[36rem] h-[36rem] rounded-full bg-gradient-to-tl from-violet-200/35 via-blue-100/30 to-transparent blur-3xl" />
-
-        <div className="relative max-w-5xl mx-auto">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="text-[11px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-6"
-          >
-            Olyxee Research · Cortex
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.05 }}
-            className="text-4xl sm:text-6xl lg:text-7xl text-neutral-900 tracking-[-0.025em] leading-[1.05] font-medium max-w-4xl"
-          >
-            Olyxee Cortex.{" "}
-            <em className="font-serif italic font-normal text-neutral-500">
-              Persistent organizational cognition infrastructure.
-            </em>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.15 }}
-            className="mt-8 max-w-2xl text-base sm:text-lg text-neutral-500 font-light leading-relaxed"
-          >
-            Olyxee Cortex is a next-generation enterprise cognition system designed to help AI maintain operational understanding, memory, coordination, and reasoning across long-running workflows.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.25 }}
-            className="mt-10 flex flex-col sm:flex-row gap-3"
-          >
-            <a
-              href="#waitlist"
-              className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide shadow-lg shadow-neutral-900/10"
-            >
-              Join the waiting list
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-            </a>
-            <Link
-              href="/enterprise"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 text-neutral-900 bg-white border border-neutral-300 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide"
-            >
-              Enterprise inquiry
-            </Link>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="mt-10 inline-flex items-center gap-2.5 rounded-full bg-neutral-100 border border-neutral-200 px-3.5 py-1.5 text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-600"
-          >
-            <span className="inline-block w-1.5 h-1.5 rounded-full bg-amber-500" />
-            Active research and infrastructure development
-          </motion.div>
-        </div>
-      </section>
-
-      {/* === BEYOND RETRIEVAL === */}
-      <section className="px-4 sm:px-6 py-20 sm:py-28 lg:py-32 border-t border-neutral-200/70">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+      <article className="relative pt-32 sm:pt-44 pb-20 sm:pb-28 px-4 sm:px-6">
+        <div className="max-w-3xl mx-auto">
+          {/* Article meta */}
           <motion.div
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            animate="visible"
             custom={0}
             variants={fadeUp}
-            className="lg:col-span-5"
+            className="mb-8 flex flex-wrap items-center gap-x-3 gap-y-2 text-[11px] font-mono uppercase tracking-[0.28em] text-neutral-500"
           >
-            <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
-              Beyond retrieval
-            </p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-[-0.025em] leading-[1.05] font-medium">
-              Not retrieval.{" "}
-              <em className="font-serif italic font-normal text-neutral-500">Cognition.</em>
-            </h2>
+            <Link href="/research" className="hover:text-neutral-900 transition-colors">
+              Olyxee Research
+            </Link>
+            <span aria-hidden className="text-neutral-300">/</span>
+            <span className="text-neutral-700">Cortex</span>
+            <span aria-hidden className="text-neutral-300">·</span>
+            <span className="inline-flex items-center gap-1.5">
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-amber-500" />
+              Active research
+            </span>
           </motion.div>
-          <motion.div
+
+          {/* Title */}
+          <motion.h1
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            animate="visible"
             custom={1}
             variants={fadeUp}
-            className="lg:col-span-7 space-y-5"
+            className="text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-[-0.025em] leading-[1.05] font-medium"
           >
-            <p className="text-base sm:text-lg text-neutral-700 font-light leading-relaxed">
-              Unlike traditional AI systems that primarily retrieve information from documents or databases, Cortex is focused on <em className="font-serif italic font-normal text-neutral-900">persistent organizational intelligence</em>, enabling AI systems to continuously evolve their understanding of an organization over time.
-            </p>
-            <p className="text-base sm:text-lg text-neutral-500 font-light leading-relaxed">
-              The system explores how AI can move beyond isolated prompts and temporary sessions into continuously evolving enterprise intelligence systems, capable of understanding operational history, organizational context, and long-horizon workflows.
-            </p>
-            <div className="pt-6 mt-6 border-t border-neutral-200">
-              <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-400 mb-4">
-                Designed as infrastructure for systems that require
-              </p>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
-                {REQUIREMENTS.map((r) => (
-                  <li key={r} className="flex items-start gap-2.5 text-sm text-neutral-700 font-light">
-                    <Check className="w-3.5 h-3.5 mt-1 text-neutral-400 shrink-0" strokeWidth={2} />
-                    {r}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+            Olyxee Cortex.
+          </motion.h1>
+          <motion.p
+            initial="hidden"
+            animate="visible"
+            custom={2}
+            variants={fadeUp}
+            className="mt-4 text-2xl sm:text-3xl lg:text-4xl font-serif italic text-neutral-500 leading-[1.15]"
+          >
+            Persistent organizational cognition infrastructure.
+          </motion.p>
 
-      {/* === RESEARCH AREAS === */}
-      <section className="px-4 sm:px-6 py-20 sm:py-28 lg:py-32 bg-neutral-50/70 border-t border-neutral-200/70">
-        <div className="max-w-6xl mx-auto">
+          {/* Lead */}
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            custom={3}
+            variants={fadeUp}
+            className="mt-10 sm:mt-12 prose-cortex"
+          >
+            <p className="text-lg sm:text-xl text-neutral-700 font-light leading-relaxed">
+              Olyxee Cortex is a next-generation enterprise cognition system designed to help AI systems maintain operational understanding, memory, coordination, and reasoning across long-running workflows.
+            </p>
+          </motion.div>
+
+          {/* Body */}
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.1 }}
             custom={0}
             variants={fadeUp}
-            className="max-w-3xl mb-12 sm:mb-16"
+            className="mt-10 space-y-6 text-[17px] sm:text-lg text-neutral-700 font-light leading-[1.8]"
           >
-            <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
+            <p>
+              Unlike traditional AI systems that primarily retrieve information from documents or databases, Cortex is focused on{" "}
+              <em className="font-serif italic font-normal text-neutral-900">persistent organizational intelligence</em>, enabling AI systems to continuously evolve their understanding of an organization over time.
+            </p>
+
+            <p>
+              Cortex is being designed as infrastructure for enterprise AI systems that require:
+            </p>
+            <ul className="space-y-2 pl-1">
+              {REQUIREMENTS.map((r) => (
+                <li key={r} className="flex items-start gap-3">
+                  <span aria-hidden className="mt-3 inline-block w-1 h-1 rounded-full bg-neutral-400 shrink-0" />
+                  <span>{r}</span>
+                </li>
+              ))}
+            </ul>
+
+            <p>
+              The system explores how AI can move beyond isolated prompts and temporary sessions into continuously evolving enterprise intelligence systems capable of understanding operational history, organizational context, and long-horizon workflows.
+            </p>
+
+            <h2 className="!mt-14 text-2xl sm:text-3xl text-neutral-900 tracking-[-0.015em] font-medium">
               Core research areas
-            </p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-[-0.025em] leading-[1.05] font-medium">
-              The questions{" "}
-              <em className="font-serif italic font-normal text-neutral-500">we are studying.</em>
             </h2>
-          </motion.div>
+            <ul className="space-y-2 pl-1">
+              {RESEARCH_AREAS.map((r) => (
+                <li key={r} className="flex items-start gap-3">
+                  <span aria-hidden className="mt-3 inline-block w-1 h-1 rounded-full bg-neutral-400 shrink-0" />
+                  <span>{r}</span>
+                </li>
+              ))}
+            </ul>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-            {RESEARCH_AREAS.map((area, idx) => {
-              const Icon = area.icon;
-              return (
-                <motion.div
-                  key={area.label}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.25 }}
-                  custom={idx}
-                  variants={fadeUp}
-                  className="group flex items-center gap-4 rounded-2xl bg-white ring-1 ring-neutral-200 hover:ring-neutral-300 transition-all p-5"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-neutral-100 flex items-center justify-center shrink-0">
-                    <Icon className="w-4.5 h-4.5 text-neutral-700" strokeWidth={1.5} />
-                  </div>
-                  <p className="text-[14px] sm:text-[15px] text-neutral-800 font-medium tracking-[-0.005em]">
-                    {area.label}
-                  </p>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* === POTENTIAL CAPABILITIES === */}
-      <section className="px-4 sm:px-6 py-20 sm:py-28 lg:py-32 border-t border-neutral-200/70">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            custom={0}
-            variants={fadeUp}
-            className="max-w-3xl mb-12 sm:mb-16"
-          >
-            <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
+            <h2 className="!mt-14 text-2xl sm:text-3xl text-neutral-900 tracking-[-0.015em] font-medium">
               Potential capabilities
-            </p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-[-0.025em] leading-[1.05] font-medium">
-              What Cortex could{" "}
-              <em className="font-serif italic font-normal text-neutral-500">enable.</em>
             </h2>
-            <p className="mt-5 text-base sm:text-lg text-neutral-500 font-light leading-relaxed">
-              Cortex is not a chatbot platform. It is a research and infrastructure initiative focused on building foundational cognition systems for enterprise AI operations.
-            </p>
-          </motion.div>
+            <ul className="space-y-2 pl-1">
+              {CAPABILITIES.map((c) => (
+                <li key={c} className="flex items-start gap-3">
+                  <span aria-hidden className="mt-3 inline-block w-1 h-1 rounded-full bg-neutral-400 shrink-0" />
+                  <span>{c}</span>
+                </li>
+              ))}
+            </ul>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-            {CAPABILITIES.map((cap, idx) => (
-              <motion.div
-                key={cap}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
-                custom={idx}
-                variants={fadeUp}
-                className="rounded-2xl bg-white ring-1 ring-neutral-200 p-5 sm:p-6 h-full flex flex-col"
-              >
-                <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-400 mb-3">
-                  0{idx + 1}
-                </span>
-                <p className="text-[15px] text-neutral-800 font-medium tracking-[-0.005em] leading-snug">
-                  {cap}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+            <blockquote className="!mt-12 border-l-2 border-neutral-300 pl-5 sm:pl-6 py-1">
+              <p className="font-serif italic text-xl sm:text-2xl text-neutral-800 leading-snug">
+                Cortex is not a chatbot platform.
+              </p>
+              <p className="mt-3 text-neutral-600">
+                It is a research and infrastructure initiative focused on building foundational cognition systems for enterprise AI operations.
+              </p>
+            </blockquote>
 
-      {/* === LONG TERM VISION === */}
-      <section className="px-4 sm:px-6 py-20 sm:py-28 lg:py-32 bg-neutral-950 text-white relative overflow-hidden border-t border-neutral-900">
-        <div aria-hidden className="absolute -top-32 left-1/3 w-[36rem] h-[36rem] rounded-full" style={{ background: "radial-gradient(circle, rgba(99,102,241,0.18) 0%, transparent 70%)", filter: "blur(80px) saturate(1.5)" }} />
-        <div aria-hidden className="absolute -bottom-40 -right-20 w-[32rem] h-[32rem] rounded-full" style={{ background: "radial-gradient(circle, rgba(56,189,248,0.15) 0%, transparent 70%)", filter: "blur(80px) saturate(1.5)" }} />
-
-        <div className="relative max-w-5xl mx-auto">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            custom={0}
-            variants={fadeUp}
-          >
-            <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-white/50 mb-5">
+            <h2 className="!mt-14 text-2xl sm:text-3xl text-neutral-900 tracking-[-0.015em] font-medium">
               Long-term vision
-            </p>
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl text-white tracking-[-0.025em] leading-[1.05] font-medium max-w-4xl">
-              Reliable enterprise AI{" "}
-              <em className="font-serif italic font-normal text-white/55">
-                that understands the organization it works in.
-              </em>
             </h2>
-            <p className="mt-8 max-w-2xl text-base sm:text-lg text-white/65 font-light leading-relaxed">
+            <p>
               The long-term goal of Cortex is to support reliable enterprise AI systems capable of maintaining persistent organizational understanding across operations, workflows, teams, and enterprise infrastructure.
             </p>
+
+            <h2 className="!mt-14 text-2xl sm:text-3xl text-neutral-900 tracking-[-0.015em] font-medium">
+              Current status
+            </h2>
+            <p>
+              Olyxee Cortex is currently under active research and infrastructure development. Early access, research partnerships, and enterprise interest registrations will open soon.
+            </p>
           </motion.div>
         </div>
-      </section>
+      </article>
 
-      {/* === WAITLIST === */}
-      <section id="waitlist" className="scroll-mt-24 px-4 sm:px-6 py-20 sm:py-28 lg:py-32 bg-white border-t border-neutral-200/70">
+      {/* === WAITING LIST === */}
+      <section id="waitlist" className="scroll-mt-24 px-4 sm:px-6 pb-24 sm:pb-32">
         <div className="max-w-3xl mx-auto">
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            custom={0}
-            variants={fadeUp}
-            className="text-center mb-10"
-          >
-            <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
-              Current status · Active research
-            </p>
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-[-0.025em] leading-[1.05] font-medium">
-              Join the{" "}
-              <em className="font-serif italic font-normal text-neutral-500">waiting list.</em>
-            </h2>
-            <p className="mt-5 text-base sm:text-lg text-neutral-500 font-light leading-relaxed">
-              Olyxee Cortex is currently under active research and infrastructure development. Early access, research partnerships, and enterprise interest registrations will open soon.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
-            custom={1}
+            custom={0}
             variants={fadeUp}
             className="rounded-3xl bg-neutral-50/70 ring-1 ring-neutral-200 p-7 sm:p-10"
           >
-            <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-500 mb-4">
-              Register interest to receive updates on
+            <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
+              Join the waiting list
             </p>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5 mb-8">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl text-neutral-900 tracking-[-0.02em] leading-[1.1] font-medium">
+              Register interest{" "}
+              <em className="font-serif italic font-normal text-neutral-500">for Cortex.</em>
+            </h2>
+            <p className="mt-4 text-base text-neutral-600 font-light leading-relaxed">
+              Register interest to receive updates on:
+            </p>
+            <ul className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5 mb-8">
               {WAITLIST_TOPICS.map((t) => (
                 <li key={t} className="flex items-start gap-2.5 text-sm text-neutral-700 font-light">
                   <Check className="w-3.5 h-3.5 mt-1 text-neutral-400 shrink-0" strokeWidth={2} />
