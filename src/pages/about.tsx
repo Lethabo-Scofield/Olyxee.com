@@ -478,7 +478,7 @@ const About: FC = () => {
                 <div className="flex items-center gap-4">
                   <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden ring-1 ring-neutral-200">
                     <Image
-                      src="/images/lethabo-scofield.png"
+                      src="/images/lethabo-scofield.jpg"
                       alt="Lethabo Scofield, Founder and CEO of Olyxee"
                       fill
                       sizes="56px"
