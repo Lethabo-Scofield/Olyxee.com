@@ -10,21 +10,23 @@ const footerData = {
       title: "Products",
       links: [
         { name: "Ordo", href: "/products/ordo" },
-        { name: "Addup", href: "/products#addup" },
-        { name: "Olyxee Document Integrity", href: "/document-integrity" },
+        { name: "Addup", href: "/products/addup" },
       ],
     },
     {
       title: "Solutions",
       links: [
-        { name: "Ordor Loop", href: "/solutions/logistics" },
-        { name: "Enterprise Automation", href: "/enterprise" },
+        { name: "Courier Loop", href: "/solutions/courier-loop" },
+        { name: "Olyxee Document Integrity", href: "/solutions/document-integrity" },
+        { name: "Enterprise Automation", href: "/solutions/enterprise-automation" },
+        { name: "Operational Intelligence", href: "/solutions/operational-intelligence" },
+        { name: "Custom AI Systems", href: "/solutions/custom-ai-systems" },
       ],
     },
     {
-      title: "Research",
+      title: "Research & Infrastructure",
       links: [
-        { name: "Olyxee Research", href: "/research" },
+        { name: "Olyxee Cortex", href: "/research/cortex" },
         { name: "Papers", href: "/research#papers" },
         { name: "Technical Reports", href: "/research#technical-reports" },
       ],
@@ -34,6 +36,7 @@ const footerData = {
       links: [
         { name: "Documentation", href: "/docs" },
         { name: "API Reference", href: "/docs#api-reference" },
+        { name: "System Status", href: "/status" },
       ],
     },
     {
