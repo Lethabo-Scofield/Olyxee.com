@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, MapPin, X as CloseIcon, Briefcase, Search, Plus, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { roles, teams, type RoleType } from "../lib/careers-roles";
+import { roles, teams, searchRoles, type RoleType } from "../lib/careers-roles";
 
 const roleHref = (role: { type: RoleType; slug: string }) =>
   role.type === "paid" ? `/careers/${role.slug}` : `/careers/internships?role=${role.slug}`;
@@ -65,15 +65,8 @@ function RolesSection() {
   const typeFilteredRoles = filterType === "all" ? roles : roles.filter(r => r.type === filterType);
   const visibleTeams = Array.from(new Set(typeFilteredRoles.map(r => r.team)));
   const teamFilteredRoles = filterTeam === "All" ? typeFilteredRoles : typeFilteredRoles.filter(r => r.team === filterTeam);
-  const q = searchQuery.trim().toLowerCase();
-  const matchedRoles = q
-    ? teamFilteredRoles.filter(r =>
-        r.title.toLowerCase().includes(q) ||
-        r.team.toLowerCase().includes(q) ||
-        r.description.toLowerCase().includes(q) ||
-        r.location.toLowerCase().includes(q)
-      )
-    : teamFilteredRoles;
+  const q = searchQuery.trim();
+  const matchedRoles = q ? searchRoles(q, teamFilteredRoles) : teamFilteredRoles;
 
   const isDefaultView = filterType === "all" && filterTeam === "All" && !q;
   const shouldCollapse = isDefaultView && !showAll && matchedRoles.length > INITIAL_VISIBLE;

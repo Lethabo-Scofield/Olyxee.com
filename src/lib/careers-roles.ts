@@ -594,3 +594,94 @@ export function findRoleBySlug(slug: string): Role | undefined {
 
 export const paidRoles = roles.filter((r) => r.type === "paid");
 export const internshipRoles = roles.filter((r) => r.type === "internship");
+
+const SYNONYMS: Record<string, string[]> = {
+  frontend: ["frontend", "front-end", "ui", "ux", "interface", "react", "next", "nextjs", "typescript", "javascript", "css", "tailwind", "design", "interaction", "figma", "product design", "web"],
+  backend: ["backend", "back-end", "server", "api", "service", "services", "node", "python", "go", "golang", "rust", "java", "distributed", "systems", "microservices", "database", "postgres", "sql"],
+  fullstack: ["fullstack", "full-stack", "frontend", "backend", "engineer", "software", "typescript", "node", "react", "api"],
+  mobile: ["mobile", "ios", "android", "swift", "kotlin", "react native", "flutter", "app"],
+  design: ["design", "designer", "ui", "ux", "figma", "prototype", "interaction", "visual", "product design", "design system", "brand"],
+  product: ["product", "pm", "product manager", "specs", "roadmap", "discovery", "customer", "feature"],
+  ml: ["ml", "machine learning", "ai", "model", "models", "pytorch", "jax", "tensorflow", "training", "fine-tune", "fine tune", "deep learning", "neural", "llm", "transformer"],
+  ai: ["ai", "ml", "machine learning", "llm", "agent", "agentic", "rag", "model", "models", "research", "evaluation", "cortex"],
+  research: ["research", "scientist", "phd", "publication", "paper", "experiment", "neurips", "icml", "iclr"],
+  data: ["data", "analytics", "analyst", "sql", "etl", "elt", "pipeline", "dbt", "airflow", "snowflake", "bigquery", "warehouse", "dashboard", "metrics"],
+  devops: ["devops", "platform", "infrastructure", "infra", "cloud", "docker", "kubernetes", "k8s", "terraform", "ci", "cd", "ci/cd", "aws", "gcp", "azure", "sre", "reliability", "observability"],
+  cloud: ["cloud", "aws", "gcp", "azure", "infrastructure", "infra", "terraform", "kubernetes", "devops"],
+  security: ["security", "infosec", "appsec", "vulnerability", "penetration", "compliance", "auth", "encryption"],
+  qa: ["qa", "quality", "test", "testing", "automation", "regression", "integration", "reliability"],
+  marketing: ["marketing", "brand", "growth", "content", "social", "launch", "positioning", "messaging", "campaign", "seo"],
+  sales: ["sales", "account", "revenue", "pipeline", "enterprise", "customer", "discovery", "b2b"],
+  bd: ["bd", "business development", "partnerships", "alliances", "partner", "go-to-market", "gtm"],
+  operations: ["operations", "ops", "delivery", "project", "program", "coordination", "logistics", "vendor", "scheduling", "admin"],
+  hr: ["hr", "people", "recruiting", "talent", "hiring", "onboarding", "culture"],
+  finance: ["finance", "accounting", "reconciliation", "addup", "financial", "audit", "ledger"],
+  solutions: ["solutions", "se", "sales engineer", "implementation", "deploy", "integration", "onboarding", "enterprise"],
+  support: ["support", "customer success", "cs", "help", "service"],
+  intern: ["intern", "internship", "student", "graduate"],
+  senior: ["senior", "staff", "lead", "principal"],
+  remote: ["remote", "anywhere"],
+};
+
+function expandTokens(tokens: string[]): Set<string> {
+  const out = new Set<string>();
+  for (const t of tokens) {
+    if (!t) continue;
+    out.add(t);
+    if (SYNONYMS[t]) for (const s of SYNONYMS[t]) out.add(s);
+    for (const [key, list] of Object.entries(SYNONYMS)) {
+      if (list.includes(t)) {
+        out.add(key);
+        for (const s of list) out.add(s);
+      }
+    }
+  }
+  return out;
+}
+
+function roleHaystack(r: Role) {
+  return {
+    title: r.title.toLowerCase(),
+    team: r.team.toLowerCase(),
+    body: [
+      r.description,
+      r.location,
+      r.level ?? "",
+      ...(r.responsibilities ?? []),
+      ...(r.requirements ?? []),
+    ].join(" ").toLowerCase(),
+  };
+}
+
+export function searchRoles(query: string, source: Role[] = roles): Role[] {
+  const q = query.trim().toLowerCase();
+  if (!q) return source;
+  const rawTokens = q.split(/[^a-z0-9+#]+/).filter(Boolean);
+  if (rawTokens.length === 0) return source;
+  const expanded = expandTokens(rawTokens);
+
+  const scored = source.map((r) => {
+    const h = roleHaystack(r);
+    let score = 0;
+    if (h.title.includes(q)) score += 50;
+    if (h.team.includes(q)) score += 30;
+    if (h.body.includes(q)) score += 20;
+    for (const tok of rawTokens) {
+      if (h.title.includes(tok)) score += 12;
+      if (h.team.includes(tok)) score += 8;
+      if (h.body.includes(tok)) score += 5;
+    }
+    for (const tok of expanded) {
+      if (rawTokens.includes(tok)) continue;
+      if (h.title.includes(tok)) score += 6;
+      if (h.team.includes(tok)) score += 4;
+      if (h.body.includes(tok)) score += 2;
+    }
+    return { r, score };
+  });
+
+  return scored
+    .filter((x) => x.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .map((x) => x.r);
+}
