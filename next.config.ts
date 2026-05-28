@@ -26,6 +26,11 @@ const nextConfig: NextConfig = {
       destination: "https://addup.olyxee.com",
       permanent: false,
     },
+    {
+      source: "/solutions/enterprise-automation",
+      destination: "/enterprise",
+      permanent: false,
+    },
   ],
   headers: async () => [
     {
