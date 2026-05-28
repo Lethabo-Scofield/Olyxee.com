@@ -53,19 +53,48 @@ const WAITLIST_TOPICS = [
 ];
 
 const CortexPage: FC = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [org, setOrg] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) return;
-    const subject = encodeURIComponent("Cortex waiting list registration");
-    const body = encodeURIComponent(
-      `Please add me to the Olyxee Cortex waiting list.\n\nEmail: ${email}\nOrganization: ${org || "(not provided)"}\n\nI am interested in updates on early access programs, research previews, enterprise pilots, infrastructure partnerships, and future API availability.`,
-    );
-    window.location.href = `mailto:scofield@olyxee.com?subject=${subject}&body=${body}`;
-    setSubmitted(true);
+    if (submitting) return;
+    setError(null);
+
+    if (!name.trim()) return setError("Please share your name.");
+    if (!email.trim()) return setError("Please enter your email.");
+
+    setSubmitting(true);
+    try {
+      const res = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          tool: "general",
+          name: name.trim(),
+          email: email.trim(),
+          company: org.trim() || undefined,
+          message:
+            "Registering interest in Olyxee Cortex. Topics of interest: early access programs, research previews, enterprise pilots, infrastructure partnerships, future API availability.",
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setError(data.error || "Something went wrong. Please try again.");
+        setSubmitting(false);
+        return;
+      }
+      setSubmitted(true);
+      setSubmitting(false);
+    } catch (err) {
+      console.error("cortex waitlist error", err);
+      setError("Network error. Please check your connection and try again.");
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -263,15 +292,31 @@ const CortexPage: FC = () => {
             </ul>
 
             {submitted ? (
-              <div className="rounded-2xl bg-emerald-50 border border-emerald-200 px-5 py-4 text-sm text-emerald-800 leading-relaxed">
-                Your email client has been opened. Send the message to complete your registration. We will reach out as Cortex programs open.
+              <div className="rounded-2xl bg-white border border-neutral-200 px-5 py-5 text-sm text-neutral-700 leading-relaxed">
+                <p className="font-medium text-neutral-900 mb-1">
+                  You&apos;re on the list.
+                </p>
+                We&apos;ve sent a confirmation to{" "}
+                <span className="text-neutral-900">{email}</span>. We&apos;ll
+                reach out as Cortex programs open.
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-3">
+              <form onSubmit={handleSubmit} className="space-y-3" noValidate>
+                <input
+                  type="text"
+                  required
+                  autoComplete="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Full name"
+                  className="w-full px-4 py-3 rounded-xl bg-white border border-neutral-200 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-900/15 focus:border-neutral-300"
+                />
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <input
                     type="email"
                     required
+                    autoComplete="email"
+                    inputMode="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Work email"
@@ -279,22 +324,29 @@ const CortexPage: FC = () => {
                   />
                   <input
                     type="text"
+                    autoComplete="organization"
                     value={org}
                     onChange={(e) => setOrg(e.target.value)}
                     placeholder="Organization (optional)"
                     className="w-full px-4 py-3 rounded-xl bg-white border border-neutral-200 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-900/15 focus:border-neutral-300"
                   />
                 </div>
+                {error && (
+                  <p className="text-sm text-red-600 leading-relaxed" role="alert">
+                    {error}
+                  </p>
+                )}
                 <button
                   type="submit"
-                  className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3 bg-neutral-900 text-white rounded-full text-sm font-medium tracking-wide hover:bg-neutral-800 transition-colors"
+                  disabled={submitting}
+                  className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3 bg-neutral-900 text-white rounded-full text-sm font-medium tracking-wide hover:bg-neutral-800 transition-colors disabled:opacity-60"
                 >
-                  Register interest
+                  {submitting ? "Registering…" : "Register interest"}
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                 </button>
                 <p className="text-xs text-neutral-500 pt-1">
-                  Submitting opens your email client with a pre-filled message to{" "}
-                  <span className="text-neutral-700">scofield@olyxee.com</span>.
+                  We&apos;ll email a confirmation and reach out as Cortex
+                  programs open.
                 </p>
               </form>
             )}
