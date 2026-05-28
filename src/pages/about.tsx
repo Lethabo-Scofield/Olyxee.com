@@ -117,7 +117,7 @@ const About: FC = () => {
               fill
               priority
               sizes="(min-width: 1280px) 1152px, 100vw"
-              className="object-cover object-center"
+              className="object-cover object-center opacity-70"
             />
             {/* Single soft scrim on the left — clean, no extra layers */}
             <div
@@ -125,7 +125,7 @@ const About: FC = () => {
               className="absolute inset-0"
               style={{
                 background:
-                  "linear-gradient(90deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.45) 35%, rgba(0,0,0,0.05) 65%, rgba(0,0,0,0) 100%)",
+                  "linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.6) 35%, rgba(0,0,0,0.3) 65%, rgba(0,0,0,0.2) 100%)",
               }}
             />
 
