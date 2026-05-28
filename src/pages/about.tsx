@@ -135,10 +135,10 @@ const About: FC = () => {
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.85, delay: 0.2 }}
-                className="font-serif text-white text-[2.25rem] sm:text-5xl lg:text-[4rem] tracking-tight leading-[1.05]"
+                className="text-white text-[2.25rem] sm:text-5xl lg:text-[4rem] tracking-[-0.025em] leading-[1.05] font-medium"
               >
                 Building the infrastructure for AI that{" "}
-                <em className="text-white/55 not-italic">operates</em>.
+                <em className="font-serif italic font-normal text-white/70">operates</em>.
               </motion.h1>
             </div>
           </motion.div>
@@ -202,9 +202,9 @@ const About: FC = () => {
               </span>
             </div>
             <div className="col-span-12 sm:col-span-8 lg:col-span-7 lg:pt-6">
-              <p className="font-serif text-3xl sm:text-4xl lg:text-[3rem] leading-[1.08] tracking-tight mb-8">
-                Most AI today <em className="italic text-white/40 not-italic">advises.</em>{" "}
-                We&apos;re building one that <em className="italic text-amber-400">executes.</em>
+              <p className="text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.1] tracking-[-0.02em] font-medium mb-8">
+                Most AI today <span className="text-white/40">advises.</span>{" "}
+                We&apos;re building one that <em className="font-serif italic font-normal text-amber-400">executes.</em>
               </p>
               <p className="text-base sm:text-lg text-white/55 leading-relaxed font-light max-w-xl">
                 Close the gap between what AI understands and what it actually does inside a company. Stop teams from translating AI recommendations into manual work.
@@ -221,11 +221,11 @@ const About: FC = () => {
             className="relative grid grid-cols-12 gap-y-6 gap-x-6 sm:gap-x-10 items-start py-20 sm:py-28 border-b border-white/10"
           >
             <div className="col-span-12 sm:col-span-8 lg:col-span-7 lg:pt-6 order-2 sm:order-1">
-              <p className="font-serif text-3xl sm:text-4xl lg:text-[3rem] leading-[1.08] tracking-tight mb-8">
-                A world where AI <em className="italic text-sky-400">quietly runs</em> the operations that move organizations forward.
+              <p className="text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.1] tracking-[-0.02em] font-medium mb-8">
+                A world where AI <em className="font-serif italic font-normal text-sky-400">quietly runs</em> the operations that move organizations forward.
               </p>
               <p className="text-base sm:text-lg text-white/55 leading-relaxed font-light max-w-xl">
-                Reconciling, coordinating, deciding, executing — happening on infrastructure any team can trust, audit, and direct in their own words.
+                Reconciling, coordinating, deciding, executing, all happening on infrastructure any team can trust, audit, and direct in their own words.
               </p>
             </div>
             <div className="col-span-12 sm:col-span-4 lg:col-span-5 order-1 sm:order-2 sm:text-right">
@@ -263,8 +263,8 @@ const About: FC = () => {
               </span>
             </div>
             <div className="col-span-12 sm:col-span-8 lg:col-span-7 lg:pt-6">
-              <p className="font-serif text-3xl sm:text-4xl lg:text-[3rem] leading-[1.08] tracking-tight mb-10">
-                What we&apos;re <em className="italic text-emerald-400">working toward.</em>
+              <p className="text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.1] tracking-[-0.02em] font-medium mb-10">
+                What we&apos;re <em className="font-serif italic font-normal text-emerald-400">working toward.</em>
               </p>
               <ol className="space-y-0">
                 {OBJECTIVES.map((obj, i) => (
@@ -304,9 +304,9 @@ const About: FC = () => {
             <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
               In the field
             </p>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-tight leading-[1.1]">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-[-0.025em] leading-[1.05] font-medium">
               Bringing our work to the rooms where{" "}
-              <em className="italic text-blue-500">decisions get made.</em>
+              <em className="font-serif italic font-normal text-blue-500">decisions get made.</em>
             </h2>
           </motion.div>
 
@@ -384,8 +384,9 @@ const About: FC = () => {
             <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
               Principles
             </p>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-tight leading-[1.1]">
-              The principles behind how we build, ship, and operate.
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-[-0.025em] leading-[1.05] font-medium">
+              The principles behind how we{" "}
+              <em className="font-serif italic font-normal text-neutral-500">build, ship, and operate.</em>
             </h2>
           </motion.div>
 
@@ -439,7 +440,7 @@ const About: FC = () => {
 
                   {/* Editorial text block — print-style, no card outline */}
                   <div className="mt-6 sm:mt-7">
-                    <h3 className="font-serif text-2xl sm:text-[1.7rem] text-neutral-900 leading-[1.15] tracking-tight mb-3">
+                    <h3 className="text-xl sm:text-[1.4rem] text-neutral-900 leading-[1.2] tracking-[-0.015em] font-medium mb-3">
                       {item.title}
                     </h3>
                     <p className="text-[15px] text-neutral-500 leading-relaxed font-light max-w-[34ch]">
@@ -502,10 +503,10 @@ const About: FC = () => {
             >
               &ldquo;
             </span>
-            <blockquote className="font-serif text-[1.85rem] sm:text-4xl lg:text-[3.25rem] text-white leading-[1.12] tracking-tight">
+            <blockquote className="text-[1.75rem] sm:text-4xl lg:text-[3rem] text-white leading-[1.15] tracking-[-0.02em] font-medium">
               We started Olyxee because the hardest part of AI isn&apos;t
               intelligence. It&apos;s getting that intelligence to actually{" "}
-              <em className="not-italic text-white/55">do something useful</em>.
+              <em className="font-serif italic font-normal text-white/60">do something useful</em>.
             </blockquote>
             <p className="mt-10 text-base sm:text-lg text-white/55 leading-relaxed font-light max-w-2xl">
               The models are smart enough. What&apos;s missing is the
@@ -526,7 +527,7 @@ const About: FC = () => {
                   />
                 </div>
                 <div>
-                  <p className="font-serif italic text-lg sm:text-xl text-white tracking-tight leading-tight">
+                  <p className="text-base sm:text-lg text-white tracking-tight leading-tight font-medium">
                     Lethabo Scofield
                   </p>
                   <p className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.22em] text-white/45 mt-1">
@@ -571,7 +572,7 @@ const About: FC = () => {
                     aria-hidden
                     className="absolute left-0 top-1.5 sm:top-0 sm:left-0 sm:-translate-y-1/2 w-1.5 h-1.5 rounded-full bg-white/60"
                   />
-                  <p className="font-serif text-2xl sm:text-3xl text-white tracking-tight leading-none mb-2">
+                  <p className="text-2xl sm:text-3xl text-white tracking-[-0.02em] leading-none mb-2 font-medium">
                     {item.year}
                   </p>
                   <p className="text-sm text-white/50 font-light leading-snug max-w-xs">
@@ -600,8 +601,8 @@ const About: FC = () => {
             <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-6">
               Join us
             </p>
-            <h3 className="font-serif text-3xl sm:text-5xl tracking-tight mb-5 text-neutral-900 leading-[1.05]">
-              Build AI that actually works.
+            <h3 className="text-3xl sm:text-5xl tracking-[-0.025em] mb-5 text-neutral-900 leading-[1.05] font-medium">
+              Build AI that <em className="font-serif italic font-normal text-neutral-500">actually works.</em>
             </h3>
             <p className="text-base sm:text-lg text-neutral-500 mb-10 max-w-xl mx-auto leading-relaxed font-light">
               We&apos;re building a team of people who want to make AI work in the real world - not just in demos.
