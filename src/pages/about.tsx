@@ -675,14 +675,15 @@ const About: FC = () => {
         </section>
 
         {/* === JOIN US === */}
-        <section className="py-24 sm:py-36 bg-white border-t border-neutral-200/70">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+        <section className="py-20 sm:py-28 bg-white border-t border-neutral-200/70">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               custom={0}
               variants={fadeUp}
+              className="relative rounded-3xl bg-neutral-100 ring-1 ring-neutral-200 px-6 py-16 sm:px-12 sm:py-24 lg:py-28 text-center overflow-hidden"
             >
               <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-6">
                 Join us
@@ -703,7 +704,7 @@ const About: FC = () => {
                 </Link>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 text-neutral-900 border border-neutral-200 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 text-neutral-900 bg-white border border-neutral-200 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide"
                 >
                   Get in touch
                 </Link>
