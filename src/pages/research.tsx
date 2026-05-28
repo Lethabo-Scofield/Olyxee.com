@@ -24,32 +24,6 @@ const papers = [
     year: "2026",
     url: "https://arxiv.org/abs/2603.15031",
   },
-  {
-    title:
-      "Reducing Hallucinations in Production AI Applications Through Real-Time Verification Pipelines",
-    authors: "J. Chen, M. Patel, S. Liu",
-    venue: "NeurIPS",
-    month: "Dec",
-    year: "2025",
-    url: "https://arxiv.org/abs/2510.22751",
-  },
-  {
-    title:
-      "Continuous Evaluation Frameworks for AI-Powered Applications in Production",
-    authors: "R. Kumar, A. Zhang, T. Nakamura",
-    venue: "ICML",
-    month: "Jul",
-    year: "2025",
-    url: "https://arxiv.org/abs/2603.26718",
-  },
-  {
-    title: "Observability Infrastructure for Agentic AI Workflows",
-    authors: "L. Wang, D. Fischer, P. Okonkwo",
-    venue: "AAAI",
-    month: "Feb",
-    year: "2026",
-    url: "https://arxiv.org/abs/2512.08769",
-  },
 ];
 
 const Research: FC = () => {
