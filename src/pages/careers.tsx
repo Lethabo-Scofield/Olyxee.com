@@ -20,7 +20,7 @@ function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="relative w-full aspect-[4/3] sm:aspect-[16/9] lg:aspect-[21/9] overflow-hidden rounded-2xl sm:rounded-3xl bg-neutral-100"
+          className="relative w-full aspect-[4/3] sm:aspect-[16/9] overflow-hidden rounded-2xl sm:rounded-3xl bg-neutral-100"
         >
           <Image
             src="/images/olyxee-whiteboard.png"
@@ -28,7 +28,7 @@ function HeroSection() {
             fill
             priority
             sizes="100vw"
-            className="object-cover object-center"
+            className="object-contain object-center"
           />
         </motion.div>
 
