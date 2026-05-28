@@ -17,10 +17,8 @@ const footerData = {
       title: "Solutions",
       links: [
         { name: "Courier Loop", href: "/solutions/courier-loop" },
-        { name: "Olyxee Document Integrity", href: "/solutions/document-integrity" },
+        { name: "Document Integrity", href: "/solutions/document-integrity" },
         { name: "Enterprise Automation", href: "/solutions/enterprise-automation" },
-        { name: "Operational Intelligence", href: "/solutions/operational-intelligence" },
-        { name: "Custom AI Systems", href: "/solutions/custom-ai-systems" },
       ],
     },
     {
