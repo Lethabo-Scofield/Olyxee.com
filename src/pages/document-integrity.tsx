@@ -1,5 +1,4 @@
 import { FC, useEffect, useState } from "react";
-import Image from "next/image";
 import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
@@ -48,26 +47,6 @@ const DocumentIntegrity: FC = () => {
 
       <section className="flex-1 flex items-center justify-center px-6 pt-28 pb-20">
         <div className="max-w-3xl w-full text-center">
-          {/* Animation, blends into the white page */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            className="mx-auto w-full max-w-md aspect-square"
-          >
-            <div className="relative w-full h-full">
-              <Image
-                src="/images/under-construction.gif"
-                alt="Olyxee Document Integrity under construction"
-                fill
-                unoptimized
-                priority
-                sizes="(max-width: 768px) 100vw, 400px"
-                className="object-contain"
-              />
-            </div>
-          </motion.div>
-
           <motion.h1
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
