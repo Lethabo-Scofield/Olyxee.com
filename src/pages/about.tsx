@@ -29,18 +29,21 @@ const APPROACH = [
     label: "How we ship",
     title: "Narrow first, then expand",
     text: "Every engagement starts with a single workflow. We earn the right to do more by proving the first one works.",
+    gradient: "/images/gradient-orange-pink.png",
   },
   {
     icon: ShieldCheck,
     label: "How we build",
     title: "Verify before you trust",
     text: "Every action an Olyxee agent takes is logged, traceable, and reviewable. Production AI without an audit trail is not production AI.",
+    gradient: "/images/gradient-blue.png",
   },
   {
     icon: EyeOff,
     label: "How we operate",
     title: "Quiet by default",
     text: "We measure success by what runs in the background, not by how loud we are. The work speaks for itself.",
+    gradient: "/images/gradient-purple.png",
   },
 ];
 
@@ -100,41 +103,12 @@ const About: FC = () => {
         {/* === HERO === */}
         <section className="relative pt-36 sm:pt-44 lg:pt-48 pb-16 sm:pb-20 px-4 sm:px-6 bg-white">
           <div className="relative max-w-6xl mx-auto">
-            <motion.p
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-[11px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-6"
-            >
-              About Olyxee
-            </motion.p>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.85, delay: 0.05 }}
-              className="text-neutral-900 text-[2.25rem] sm:text-5xl lg:text-[4.25rem] tracking-[-0.025em] leading-[1.05] font-medium max-w-4xl"
-            >
-              Building the infrastructure for AI that{" "}
-              <em className="font-serif italic font-normal text-neutral-500">operates</em>.
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="mt-8 sm:mt-10 text-lg sm:text-xl text-neutral-500 leading-relaxed font-light max-w-2xl"
-            >
-              Olyxee is an AI infrastructure company. We build systems that let
-              organizations put AI to work across their operations, reliably,
-              transparently, and at scale.
-            </motion.p>
-
+            {/* Hero card: team image with headline overlaid */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="relative mt-14 sm:mt-16 overflow-hidden rounded-3xl ring-1 ring-neutral-200 bg-neutral-100 aspect-[4/5] sm:aspect-[16/10] lg:aspect-[21/9]"
+              transition={{ duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="relative overflow-hidden rounded-3xl ring-1 ring-neutral-900/10 shadow-2xl shadow-neutral-900/10 bg-neutral-950 aspect-[4/5] sm:aspect-[16/10] lg:aspect-[21/9]"
             >
               <Image
                 src="/images/olyxee-team-banner.png"
@@ -142,9 +116,43 @@ const About: FC = () => {
                 fill
                 priority
                 sizes="(min-width: 1280px) 1152px, 100vw"
-                className="object-cover object-center"
+                className="object-cover object-center opacity-70"
               />
+              {/* Single soft scrim on the left for readability */}
+              <div
+                aria-hidden
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.6) 35%, rgba(0,0,0,0.3) 65%, rgba(0,0,0,0.2) 100%)",
+                }}
+              />
+
+              {/* Headline overlay, lower-left */}
+              <div className="absolute inset-y-0 left-0 flex flex-col justify-end p-6 sm:p-12 lg:p-16 max-w-xl lg:max-w-2xl">
+                <motion.h1
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.85, delay: 0.2 }}
+                  className="text-white text-[2.25rem] sm:text-5xl lg:text-[4rem] tracking-[-0.025em] leading-[1.05] font-medium"
+                >
+                  Building the infrastructure for AI that{" "}
+                  <em className="font-serif italic font-normal text-white/70">operates</em>.
+                </motion.h1>
+              </div>
             </motion.div>
+
+            {/* Quiet sub-copy below the card */}
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.45 }}
+              className="mt-10 sm:mt-12 text-lg sm:text-xl text-neutral-500 leading-relaxed font-light max-w-2xl"
+            >
+              Olyxee is an AI infrastructure company. We build systems that let
+              organizations put AI to work across their operations, reliably,
+              transparently, and at scale.
+            </motion.p>
           </div>
         </section>
 
@@ -381,16 +389,33 @@ const About: FC = () => {
                     variants={fadeUp}
                     className="group flex flex-col"
                   >
-                    <div className="relative aspect-[4/5] overflow-hidden rounded-3xl ring-1 ring-neutral-200 bg-neutral-50">
-                      <div className="absolute top-0 inset-x-0 px-5 pt-4 flex items-center justify-between text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-400">
+                    <div className="relative aspect-[4/5] overflow-hidden rounded-3xl">
+                      <Image
+                        src={item.gradient}
+                        alt=""
+                        fill
+                        sizes="(min-width: 768px) 33vw, 100vw"
+                        className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
+                        aria-hidden
+                      />
+                      {/* Soft vignette so the numeral always reads */}
+                      <div
+                        aria-hidden
+                        className="absolute inset-0"
+                        style={{
+                          background:
+                            "linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,0.18) 100%)",
+                        }}
+                      />
+                      <div className="absolute top-0 inset-x-0 px-5 pt-4 flex items-center justify-between text-[10px] font-mono uppercase tracking-[0.28em] text-white/85">
                         <span>Principle</span>
                         <span>{String(idx + 1).padStart(2, "0")} / 03</span>
                       </div>
                       <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6 flex items-end justify-between">
-                        <span className="font-serif italic text-neutral-300 leading-none tracking-tight text-[6rem] sm:text-[7rem] lg:text-[8rem]">
+                        <span className="font-serif italic text-white leading-none tracking-tight text-[6rem] sm:text-[7rem] lg:text-[8rem] [text-shadow:0_2px_24px_rgba(0,0,0,0.18)]">
                           {numeral}
                         </span>
-                        <span className="font-mono uppercase tracking-[0.26em] text-[10px] text-neutral-400 pb-2 sm:pb-3 [writing-mode:vertical-rl] rotate-180">
+                        <span className="font-mono uppercase tracking-[0.26em] text-[10px] text-white/85 pb-2 sm:pb-3 [writing-mode:vertical-rl] rotate-180">
                           {item.label}
                         </span>
                       </div>
