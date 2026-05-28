@@ -12,54 +12,74 @@ import ApplicationForm from "../components/careers/ApplicationForm";
 
 function HeroSection() {
   return (
-    <section className="relative pt-20 sm:pt-24">
-      <div className="px-4 sm:px-6 lg:px-8">
-        <div className="relative max-w-6xl mx-auto rounded-2xl sm:rounded-3xl overflow-hidden min-h-[480px] sm:min-h-[540px] lg:min-h-[600px]">
-          <video
-            src="/videos/careers-hero.mp4"
-            poster="/images/careers-hero.webp"
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-            aria-hidden="true"
-            tabIndex={-1}
-            className="absolute inset-0 w-full h-full object-cover object-center"
-          />
-          <div className="absolute inset-0 bg-black/55" />
-          <div className="absolute inset-0 flex flex-col justify-end p-8 sm:p-12 lg:p-16">
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.3 }}
-              className="font-serif text-3xl sm:text-5xl lg:text-6xl text-white leading-[1.08] tracking-tight mb-6 sm:mb-8"
-            >
-              Work with people who set the bar.
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="text-base sm:text-lg text-white/70 max-w-xl leading-relaxed font-light mb-8 sm:mb-10"
-            >
-              We hire a small number of exceptional people and trust them with serious problems.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.65 }}
-              className="flex flex-wrap gap-3"
-            >
-              <a
-                href="#roles"
-                className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm"
-              >
-                View open roles <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-              </a>
-            </motion.div>
+    <section className="relative pt-32 sm:pt-40 lg:pt-48 pb-16 sm:pb-20 bg-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-6"
+        >
+          <span className="inline-block w-6 h-px bg-neutral-300 align-middle mr-3" />
+          Careers at Olyxee
+        </motion.p>
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="font-serif text-[2.5rem] sm:text-6xl lg:text-[5rem] text-neutral-900 leading-[1.02] tracking-tight max-w-4xl"
+        >
+          Work with people who{" "}
+          <em className="italic text-blue-500">set the bar.</em>
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="mt-8 sm:mt-10 text-lg sm:text-xl text-neutral-500 max-w-2xl leading-relaxed font-light"
+        >
+          We hire a small number of exceptional people and trust them with serious problems.
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.45 }}
+          className="mt-10 flex flex-wrap gap-3"
+        >
+          <a
+            href="#roles"
+            className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-black transition-all text-sm"
+          >
+            View open roles <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+          </a>
+        </motion.div>
+
+        {/* Editorial feature image: the team working through transformer architecture */}
+        <motion.figure
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="mt-16 sm:mt-20 lg:mt-24"
+        >
+          <div className="relative aspect-[4/3] sm:aspect-[16/10] lg:aspect-[21/9] overflow-hidden rounded-3xl ring-1 ring-neutral-900/10 shadow-2xl shadow-neutral-900/10 bg-neutral-100">
+            <Image
+              src="/images/olyxee-whiteboard.png"
+              alt="Olyxee team reasoning through a multi-modal transformer architecture on a whiteboard"
+              fill
+              priority
+              sizes="(min-width: 1280px) 1152px, 100vw"
+              className="object-cover object-center"
+            />
           </div>
-        </div>
+          <figcaption className="mt-5 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+            <p className="text-[15px] sm:text-base text-neutral-900 font-light leading-snug max-w-xl">
+              Most days look like this: pen, whiteboard, real problems, real code on the other side of the room.
+            </p>
+            <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-400 shrink-0">
+              Research session · Olyxee HQ
+            </span>
+          </figcaption>
+        </motion.figure>
       </div>
     </section>
   );
