@@ -256,6 +256,44 @@ export const roles: Role[] = [
 
   // ─── INTERNSHIPS (all unpaid) ─────────────────────────────────────────
   {
+    slug: "software-engineering-intern",
+    title: "Software Engineering Intern",
+    team: "Engineering & AI",
+    location: REMOTE,
+    type: "internship",
+    description:
+      "Build product surfaces and backend services across Ordo, Addup, and Document Integrity alongside senior engineers.",
+    responsibilities: [
+      "Ship features end to end across frontend, backend, and APIs",
+      "Write tests, review code, and help raise the engineering bar",
+      "Pair with senior engineers on real production systems",
+    ],
+    requirements: [
+      "Comfortable in a modern stack (TypeScript, React, Node, Python, or Go)",
+      "Some prior project experience (coursework, open source, or personal)",
+      "Currently studying or recently graduated",
+    ],
+  },
+  {
+    slug: "marketing-intern",
+    title: "Marketing Intern",
+    team: "Marketing",
+    location: REMOTE,
+    type: "internship",
+    description:
+      "Help shape how the world hears about Olyxee: content, launches, social, and growth experiments.",
+    responsibilities: [
+      "Help plan and ship launches, content, and campaigns",
+      "Run social, email, and community experiments end to end",
+      "Help with positioning, messaging, and competitive research",
+    ],
+    requirements: [
+      "Strong writer with a portfolio of work, school projects, or shipped content",
+      "Curious about technical and B2B products",
+      "Currently studying or recently graduated",
+    ],
+  },
+  {
     slug: "machine-learning-engineer-intern",
     title: "Machine Learning Engineer Intern",
     team: "Engineering & AI",
