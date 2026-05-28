@@ -429,10 +429,16 @@ const ProductsPage: FC = () => {
               variants={fadeUp}
               className="lg:col-span-5 order-1 lg:order-2"
             >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="relative w-10 h-10 rounded-lg bg-white ring-1 ring-neutral-200 shadow-sm flex items-center justify-center overflow-hidden">
-                  <Image src="/images/addup-logo.png" alt="Addup" width={32} height={32} className="w-[80%] h-[80%] object-contain" />
-                </div>
+              <div className="flex items-center gap-4 mb-6">
+                <Image
+                  src="/Logo/Addup_Logo.png"
+                  alt="Addup"
+                  width={1024}
+                  height={416}
+                  priority
+                  className="h-9 sm:h-10 w-auto object-contain"
+                  style={{ height: "auto", width: "auto", maxHeight: "2.5rem" }}
+                />
                 <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.25em]">Reconciliation</span>
               </div>
 
