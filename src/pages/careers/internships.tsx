@@ -13,8 +13,10 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const URL_RE = /^https?:\/\/.+\..+/i;
 
 const inputClass =
-  "w-full px-4 py-3.5 bg-white border border-neutral-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900/10 focus:border-neutral-300 text-base sm:text-sm text-neutral-900 placeholder:text-neutral-400 transition-colors";
-const labelClass = "block text-xs font-medium text-neutral-600 mb-2";
+  "w-full px-4 py-3.5 bg-white border border-neutral-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900/15 focus:border-neutral-400 text-[15px] text-neutral-900 placeholder:text-neutral-400 leading-relaxed transition-colors";
+const labelClass = "block text-sm font-medium text-neutral-900 mb-2";
+const optionalClass = "text-neutral-500 font-normal normal-case text-[13px]";
+const hintClass = "text-[13px] text-neutral-500 mt-2 leading-relaxed";
 
 const InternshipsPage: FC = () => {
   const router = useRouter();
@@ -245,7 +247,7 @@ const InternshipsPage: FC = () => {
                 </Link>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className={labelClass}>First name</label>
@@ -303,18 +305,14 @@ const InternshipsPage: FC = () => {
                     ))}
                   </select>
                   {selectedRole && (
-                    <p className="text-[11px] text-neutral-400 mt-1.5 font-light leading-relaxed">
-                      {selectedRole.description}
-                    </p>
+                    <p className={hintClass}>{selectedRole.description}</p>
                   )}
                 </div>
 
                 <div className="relative">
                   <label className={labelClass}>
                     School you attend or attended{" "}
-                    <span className="text-neutral-400 font-normal normal-case">
-                      (optional)
-                    </span>
+                    <span className={optionalClass}>(optional)</span>
                   </label>
                   <input
                     type="text"
@@ -374,9 +372,7 @@ const InternshipsPage: FC = () => {
                 <div>
                   <label className={labelClass}>
                     A few sentences about why you&apos;re interested{" "}
-                    <span className="text-neutral-400 font-normal normal-case">
-                      (optional)
-                    </span>
+                    <span className={optionalClass}>(optional)</span>
                   </label>
                   <textarea
                     value={why}
@@ -402,7 +398,7 @@ const InternshipsPage: FC = () => {
                     {submitting ? "Submitting…" : "Submit application"}
                     <ArrowRight className="w-4 h-4" />
                   </button>
-                  <p className="text-[11px] text-neutral-400 mt-4 font-light">
+                  <p className="text-[13px] text-neutral-500 mt-4 leading-relaxed">
                     Your application is sent directly to our hiring team. No
                     third parties.
                   </p>

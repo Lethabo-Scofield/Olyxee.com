@@ -21,9 +21,9 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const URL_RE = /^https?:\/\/.+\..+/i;
 
 const inputClass =
-  "w-full px-4 py-3.5 bg-white border border-neutral-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900/10 focus:border-neutral-300 text-base sm:text-sm text-neutral-900 placeholder:text-neutral-400 transition-colors";
-const labelClass = "block text-xs font-medium text-neutral-600 mb-2";
-const hintClass = "text-[11px] text-neutral-400 mt-1.5 font-light";
+  "w-full px-4 py-3.5 bg-white border border-neutral-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900/15 focus:border-neutral-400 text-[15px] text-neutral-900 placeholder:text-neutral-400 leading-relaxed transition-colors";
+const labelClass = "block text-sm font-medium text-neutral-900 mb-2";
+const hintClass = "text-[13px] text-neutral-500 mt-2 leading-relaxed";
 
 const PaidRolePage: FC<Props> = ({ role }) => {
   const [firstName, setFirstName] = useState("");
@@ -420,7 +420,7 @@ const PaidRolePage: FC<Props> = ({ role }) => {
                     {submitting ? "Submitting…" : "Submit application"}
                     <ArrowRight className="w-4 h-4" />
                   </button>
-                  <p className="text-[11px] text-neutral-400 mt-4 font-light">
+                  <p className="text-[13px] text-neutral-500 mt-4 leading-relaxed">
                     Your application is sent directly to our hiring team. No
                     third parties.
                   </p>
