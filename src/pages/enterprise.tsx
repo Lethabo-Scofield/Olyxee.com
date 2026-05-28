@@ -22,6 +22,7 @@ type SolutionCategory = {
   tagline: string;
   capabilities: string[];
   poweredBy: string[];
+  bgImage: string;
 };
 
 const SOLUTION_CATEGORIES: SolutionCategory[] = [
@@ -31,6 +32,7 @@ const SOLUTION_CATEGORIES: SolutionCategory[] = [
     tagline: "Reconciliation, integrity, and audit intelligence.",
     capabilities: ["Reconciliation", "Integrity systems", "Validation", "Audit intelligence"],
     poweredBy: ["Addup", "ODI"],
+    bgImage: "/images/gradient-blue-pink.png",
   },
   {
     icon: Workflow,
@@ -38,6 +40,7 @@ const SOLUTION_CATEGORIES: SolutionCategory[] = [
     tagline: "Execution, approvals, and system coordination.",
     capabilities: ["Workflow execution", "Approvals", "Operational coordination", "System integrations"],
     poweredBy: ["Ordo"],
+    bgImage: "/images/gradient-orange-pink.png",
   },
   {
     icon: Truck,
@@ -45,6 +48,7 @@ const SOLUTION_CATEGORIES: SolutionCategory[] = [
     tagline: "Dispatch, routing, and delivery intelligence.",
     capabilities: ["Dispatch systems", "Operational coordination", "Delivery intelligence", "Workflow automation"],
     poweredBy: ["Courier Loop"],
+    bgImage: "/images/gradient-yellow-green.png",
   },
   {
     icon: Brain,
@@ -52,6 +56,7 @@ const SOLUTION_CATEGORIES: SolutionCategory[] = [
     tagline: "Memory, context, and persistent cognition.",
     capabilities: ["Memory systems", "Contextual reasoning", "Operational cognition", "Long-running workflows"],
     poweredBy: ["Cortex"],
+    bgImage: "/images/gradient-purple.png",
   },
 ];
 
@@ -340,27 +345,36 @@ const Enterprise: FC = () => {
                   viewport={{ once: true, amount: 0.25 }}
                   custom={idx}
                   variants={fadeUp}
-                  className="group relative rounded-3xl bg-white ring-1 ring-neutral-200 hover:ring-neutral-300 hover:shadow-sm transition-all p-7 sm:p-9 flex flex-col"
+                  className="group relative overflow-hidden rounded-3xl ring-1 ring-neutral-200 hover:ring-neutral-300 hover:shadow-sm transition-all p-7 sm:p-9 flex flex-col isolate"
                 >
-                  <div className="w-11 h-11 rounded-xl bg-neutral-100 flex items-center justify-center mb-6">
-                    <Icon className="w-5 h-5 text-neutral-700" strokeWidth={1.5} />
+                  <Image
+                    src={cat.bgImage}
+                    alt=""
+                    fill
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                    aria-hidden
+                    className="absolute inset-0 -z-10 object-cover opacity-60 group-hover:opacity-70 transition-opacity"
+                  />
+                  <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-br from-white/85 via-white/70 to-white/85" />
+                  <div className="w-11 h-11 rounded-xl bg-white/70 backdrop-blur-sm ring-1 ring-white/60 flex items-center justify-center mb-6">
+                    <Icon className="w-5 h-5 text-neutral-800" strokeWidth={1.5} />
                   </div>
                   <h3 className="text-xl sm:text-2xl text-neutral-900 tracking-[-0.015em] font-medium mb-2 leading-snug">
                     {cat.name}
                   </h3>
-                  <p className="text-[13px] sm:text-sm text-neutral-500 font-light leading-relaxed mb-5">
+                  <p className="text-[13px] sm:text-sm text-neutral-700 font-light leading-relaxed mb-5">
                     {cat.tagline}
                   </p>
                   <ul className="space-y-1.5 mb-6">
                     {cat.capabilities.map((c) => (
-                      <li key={c} className="flex items-baseline gap-2.5 text-[13px] text-neutral-600 font-light">
-                        <span aria-hidden className="inline-block w-1 h-1 rounded-full bg-neutral-400 translate-y-[-2px]" />
+                      <li key={c} className="flex items-baseline gap-2.5 text-[13px] text-neutral-700 font-light">
+                        <span aria-hidden className="inline-block w-1 h-1 rounded-full bg-neutral-500 translate-y-[-2px]" />
                         {c}
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-auto pt-5 border-t border-neutral-100 flex items-center gap-3">
-                    <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-400">
+                  <div className="mt-auto pt-5 border-t border-white/40 flex items-center gap-3">
+                    <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-600">
                       Powered by
                     </span>
                     <div className="flex flex-wrap gap-1.5">
