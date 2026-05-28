@@ -9,11 +9,13 @@ export interface Question {
   type: QuestionType;
   required?: boolean;
   options?: string[];
-  inputMode?: "text" | "email" | "url" | "numeric";
+  inputMode?: "text" | "email" | "url" | "numeric" | "tel";
   autoComplete?: string;
+  hint?: string;
 }
 
 export interface Role {
+  slug: string;
   title: string;
   team: string;
   location: string;
@@ -22,12 +24,32 @@ export interface Role {
   responsibilities: string[];
   requirements: string[];
   questions?: Question[];
+  compensation?: string;
+  level?: string;
+  process?: { title: string; detail: string }[];
 }
 
 const REMOTE = "Remote";
 const HYBRID = "Hybrid · Johannesburg";
 
-const STANDARD_QUESTIONS: Question[] = [
+const PAID_QUESTIONS: Question[] = [
+  {
+    id: "phone",
+    label: "Phone number",
+    placeholder: "+27 ...",
+    type: "text",
+    required: true,
+    inputMode: "tel",
+    autoComplete: "tel",
+  },
+  {
+    id: "location",
+    label: "Where are you based?",
+    placeholder: "City, country",
+    type: "text",
+    required: true,
+    autoComplete: "address-level2",
+  },
   {
     id: "linkedin_link",
     label: "LinkedIn profile",
@@ -35,418 +57,526 @@ const STANDARD_QUESTIONS: Question[] = [
     type: "url",
     required: true,
     inputMode: "url",
-    autoComplete: "url",
   },
   {
     id: "portfolio_link",
-    label: "Portfolio, GitHub, or relevant work (optional)",
+    label: "GitHub, portfolio, or other relevant work",
     placeholder: "https://...",
     type: "url",
-    required: false,
+    required: true,
     inputMode: "url",
   },
   {
-    id: "why_olyxee",
-    label: "Why Olyxee, and what would you want to work on?",
-    placeholder: "A few sentences is enough.",
+    id: "cv_link",
+    label: "Link to your CV",
+    placeholder: "Google Drive, Dropbox, or personal site (shared, view access)",
+    type: "url",
+    required: true,
+    inputMode: "url",
+    hint: "Make sure the link is publicly viewable.",
+  },
+  {
+    id: "current_role",
+    label: "Current role and company",
+    placeholder: "e.g. Senior Engineer, Acme Corp",
+    type: "text",
+    required: true,
+  },
+  {
+    id: "years_experience",
+    label: "Years of relevant experience",
+    placeholder: "e.g. 6",
+    type: "text",
+    required: true,
+    inputMode: "numeric",
+  },
+  {
+    id: "essay_impact",
+    label: "Describe a project you led end to end that you are most proud of",
+    placeholder: "What was the problem, what did you do, what was the measurable outcome, and what would you do differently? Aim for 300 to 500 words.",
     type: "textarea",
     required: true,
+    hint: "Be specific. Vague answers are the most common reason we say no.",
+  },
+  {
+    id: "essay_why",
+    label: "Why this role and why Olyxee?",
+    placeholder: "What draws you to this exact role, and what would you want to own here in your first 6 months? 200 to 400 words.",
+    type: "textarea",
+    required: true,
+  },
+  {
+    id: "essay_hard",
+    label: "Describe the hardest technical or strategic problem you have solved in the last 12 months",
+    placeholder: "Walk us through the trade-offs, what you tried, and how you decided. 200 to 400 words.",
+    type: "textarea",
+    required: true,
+  },
+  {
+    id: "references",
+    label: "Two professional references (name, relationship, email)",
+    placeholder: "We will not contact them without your permission.",
+    type: "textarea",
+    required: true,
+  },
+  {
+    id: "salary",
+    label: "Salary expectation (annual, in your local currency)",
+    placeholder: "e.g. ZAR 850,000 / USD 95,000",
+    type: "text",
+    required: true,
+  },
+  {
+    id: "start_date",
+    label: "Earliest start date",
+    placeholder: "e.g. 1 August 2026, or 4 weeks notice",
+    type: "text",
+    required: true,
+  },
+  {
+    id: "work_auth",
+    label: "Work authorization",
+    type: "select",
+    required: true,
+    options: [
+      "I have the right to work in South Africa",
+      "I will need visa sponsorship",
+      "I will work remotely from another country",
+    ],
+  },
+];
+
+const PAID_PROCESS: { title: string; detail: string }[] = [
+  {
+    title: "Written application",
+    detail: "Submit the full application below. We read every word. Expect a response within 14 days, even if it is a no.",
+  },
+  {
+    title: "Founder screen",
+    detail: "A 30 minute conversation with the founder. We talk about your trajectory, your work, and how you think.",
+  },
+  {
+    title: "Take-home exercise",
+    detail: "A paid, role-specific exercise that takes 6 to 10 hours over a week. We pay market rate for your time on this.",
+  },
+  {
+    title: "Technical deep dive",
+    detail: "Two hours with two people from the team. We go deep on your exercise, your past work, and a live problem in your domain.",
+  },
+  {
+    title: "Final interviews",
+    detail: "Three to four conversations with people you would work with most closely. We make sure both sides have everything they need.",
+  },
+  {
+    title: "References and offer",
+    detail: "We contact your references, then move quickly to a written offer with compensation, equity, and start details spelled out.",
   },
 ];
 
 export const roles: Role[] = [
-  // ─── 1. Engineering & AI ─────────────────────────────────────────────
+  // ─── PAID ROLES ──────────────────────────────────────────────────────
   {
-    title: "AI/ML Engineer",
-    team: "Engineering & AI",
-    location: REMOTE,
-    type: "internship",
-    description:
-      "Build and ship the models that power Ordo, Addup, and Olyxee Cortex across production workflows.",
-    responsibilities: [
-      "Train, fine-tune, and evaluate models for execution, reconciliation, and reasoning tasks",
-      "Move research prototypes into reliable, monitored production services",
-      "Partner with research and platform teams to close the loop between models and real workflows",
-    ],
-    requirements: [
-      "Strong Python and modern ML frameworks (PyTorch, JAX, or similar)",
-      "Experience shipping ML systems to production, not just notebooks",
-      "Share your CV, GitHub, and any models or papers you've worked on",
-    ],
-    questions: STANDARD_QUESTIONS,
-  },
-  {
-    title: "AI Researcher",
-    team: "Engineering & AI",
+    slug: "research-scientist-ai",
+    title: "Research Scientist, AI",
+    team: "Research",
     location: HYBRID,
     type: "paid",
     description:
-      "Push the research agenda behind Olyxee Cortex: verification, evaluation, and reliability for AI that acts.",
+      "Lead the research agenda behind Olyxee Cortex: verification, evaluation, and reliability for AI systems that take action in production.",
+    level: "Senior · 5+ years of applied research",
+    compensation: "Competitive salary, meaningful equity, performance bonus, learning budget.",
     responsibilities: [
-      "Design and run experiments on model reasoning, verification, and reliability",
-      "Translate findings into product capabilities the engineering team can ship",
-      "Publish technical reports and represent Olyxee in the research community",
+      "Define and run the research roadmap on model reasoning, verification, and reliability",
+      "Design experiments, build evaluation harnesses, and publish technical findings",
+      "Translate research into product capabilities the engineering team can ship",
+      "Represent Olyxee in the research community through papers, talks, and collaborations",
     ],
     requirements: [
-      "MSc or PhD in CS, ML, or related field, or equivalent research track record",
-      "First-author publications or strong applied research portfolio",
-      "Share your CV, Google Scholar or publications page, and GitHub",
+      "PhD in CS, ML, or a related field, or an equivalent applied research track record",
+      "First-author publications at top venues (NeurIPS, ICML, ICLR, ACL, or equivalent)",
+      "Strong Python and modern ML frameworks (PyTorch, JAX, or similar)",
+      "Track record of moving research from prototype into a real product",
+      "Excellent written communication; you can make complex ideas land",
     ],
-    questions: STANDARD_QUESTIONS,
+    questions: PAID_QUESTIONS,
+    process: PAID_PROCESS,
   },
   {
+    slug: "senior-software-engineer",
     title: "Senior Software Engineer",
-    team: "Engineering & AI",
+    team: "Engineering",
     location: REMOTE,
     type: "paid",
     description:
-      "Build the product surfaces and backend services across Ordo, Addup, and Document Integrity.",
+      "Design, build, and own the product surfaces and backend services across Ordo, Addup, and Document Integrity. Set the engineering bar.",
+    level: "Senior · 5+ years of production engineering",
+    compensation: "Competitive salary, meaningful equity, performance bonus, learning budget.",
     responsibilities: [
-      "Ship APIs, services, and UI features that customers use every day",
-      "Own quality, performance, and observability of the systems you build",
-      "Work across the stack to move features from spec to production",
+      "Own end to end design and delivery of major product surfaces or services",
+      "Set the engineering standard for quality, performance, and observability",
+      "Mentor other engineers and raise the bar through code review and architecture",
+      "Collaborate closely with research, product, and design to ship work that matters",
     ],
     requirements: [
-      "Strong engineering fundamentals in a modern stack (TypeScript, Python, Go, or similar)",
-      "Track record of shipping reliable software in a team",
-      "Share your CV and GitHub or portfolio",
+      "5+ years shipping production software in a modern stack (TypeScript, Python, Go, or similar)",
+      "Strong systems fundamentals: APIs, data, distributed systems, performance",
+      "Track record of owning a significant system or product surface from zero to one",
+      "High writing standard; you can ship a design doc that ends a meeting",
+      "Comfortable in early-stage ambiguity and small, senior teams",
     ],
-    questions: STANDARD_QUESTIONS,
+    questions: PAID_QUESTIONS,
+    process: PAID_PROCESS,
   },
   {
-    title: "Platform Engineer",
-    team: "Engineering & AI",
+    slug: "marketing-manager",
+    title: "Marketing Manager",
+    team: "Marketing",
     location: REMOTE,
-    type: "internship",
+    type: "paid",
     description:
-      "Own the internal platform engineers build on: deployment, observability, and developer experience across all Olyxee products.",
+      "Own how the world understands Olyxee. Set positioning, run launches, and build the channels that grow our audience and pipeline.",
+    level: "Mid to Senior · 4+ years in B2B or technical marketing",
+    compensation: "Competitive salary, meaningful equity, performance bonus, learning budget.",
     responsibilities: [
-      "Design and operate CI/CD, service templates, and shared infrastructure",
-      "Improve developer velocity, reliability, and security across teams",
-      "Set standards for how services are built, deployed, and monitored",
+      "Own positioning, messaging, and narrative across product and brand surfaces",
+      "Plan and ship launches for new products, features, and research releases",
+      "Run content, social, email, and paid programs that grow the right audience",
+      "Build the marketing function from first principles, hire and lead over time",
     ],
     requirements: [
-      "Experience with Kubernetes, Terraform, and modern cloud-native tooling",
-      "Strong sense for reliability, security, and developer experience",
-      "Share your CV and examples of platform work you've owned",
+      "4+ years marketing technical or B2B products, ideally at an early-stage company",
+      "Strong writer with a portfolio of campaigns, launches, or narrative work you owned",
+      "Comfortable being measured on pipeline and brand outcomes, not vanity metrics",
+      "Calm operator who can run multiple workstreams without dropping balls",
+      "Bias toward shipping; you would rather get it out than perfect it in a doc",
     ],
-    questions: STANDARD_QUESTIONS,
-  },
-  {
-    title: "Cloud Infrastructure Engineer",
-    team: "Engineering & AI",
-    location: REMOTE,
-    type: "internship",
-    description:
-      "Run the cloud foundation Olyxee operates on: compute, networking, storage, and cost across multiple environments.",
-    responsibilities: [
-      "Provision and manage cloud infrastructure with infrastructure-as-code",
-      "Optimize cost, performance, and reliability of production services",
-      "Harden security and compliance posture across environments",
-    ],
-    requirements: [
-      "Deep experience with AWS, GCP, or Azure in production",
-      "Strong Terraform or equivalent IaC fluency",
-      "Share your CV and infrastructure work you've owned",
-    ],
-    questions: STANDARD_QUESTIONS,
+    questions: PAID_QUESTIONS,
+    process: PAID_PROCESS,
   },
 
-  // ─── 2. Data & Intelligence ──────────────────────────────────────────
+  // ─── INTERNSHIPS (all unpaid) ─────────────────────────────────────────
   {
-    title: "Data Engineer",
-    team: "Data & Intelligence",
+    slug: "machine-learning-engineer-intern",
+    title: "Machine Learning Engineer Intern",
+    team: "Engineering & AI",
     location: REMOTE,
     type: "internship",
     description:
-      "Build the data pipelines that feed Addup, Cortex, and our evaluation systems with clean, trustworthy data.",
+      "Work alongside our team on the models that power Ordo, Addup, and Olyxee Cortex.",
     responsibilities: [
-      "Design and operate ETL/ELT pipelines across product and customer data sources",
-      "Model data for analytics, ML training, and downstream product features",
-      "Own data quality, lineage, and observability end to end",
+      "Help train, fine-tune, and evaluate models on real product tasks",
+      "Move research prototypes into reliable services with the team",
+      "Contribute to internal tooling for evaluation and monitoring",
     ],
     requirements: [
-      "Strong SQL and Python; experience with modern data stacks (dbt, Airflow, Snowflake/BigQuery, or similar)",
-      "Track record of shipping production data pipelines",
-      "Share your CV and GitHub or portfolio",
+      "Strong Python and at least one modern ML framework (PyTorch, JAX, or similar)",
+      "Some prior ML project experience (coursework, research, or personal)",
+      "Currently studying or recently graduated",
     ],
-    questions: STANDARD_QUESTIONS,
   },
   {
-    title: "AI Systems Engineer",
-    team: "Data & Intelligence",
+    slug: "platform-engineer-intern",
+    title: "Platform Engineer Intern",
+    team: "Engineering & AI",
     location: REMOTE,
     type: "internship",
     description:
-      "Build the systems that connect models, tools, and data into reliable, end-to-end AI workflows across Ordo and Cortex.",
+      "Help build the internal platform engineers ship on: CI/CD, observability, and developer experience.",
     responsibilities: [
-      "Design orchestration, retrieval, and tool-use pipelines for production AI",
-      "Integrate models with external systems, APIs, and enterprise data",
-      "Instrument workflows so behavior is observable, testable, and debuggable",
+      "Improve CI/CD pipelines, service templates, and shared tooling",
+      "Help raise reliability, security, and developer velocity across teams",
+      "Pair with senior engineers on real platform work",
     ],
     requirements: [
-      "Experience building agentic, RAG, or workflow-based AI systems in production",
-      "Strong software engineering background alongside applied ML familiarity",
-      "Share your CV, GitHub, and systems you've built",
+      "Comfortable in a modern cloud-native stack (Docker, Kubernetes, Terraform, or similar)",
+      "Strong scripting in a language like Python, Go, or TypeScript",
+      "Currently studying or recently graduated",
     ],
-    questions: STANDARD_QUESTIONS,
   },
   {
-    title: "Operational Intelligence Analyst",
+    slug: "cloud-infrastructure-intern",
+    title: "Cloud Infrastructure Intern",
+    team: "Engineering & AI",
+    location: REMOTE,
+    type: "internship",
+    description:
+      "Help run the cloud foundation Olyxee operates on: compute, networking, storage, and cost.",
+    responsibilities: [
+      "Help provision and manage cloud infrastructure with infrastructure-as-code",
+      "Work on cost, performance, and reliability of production services",
+      "Help harden the security posture across environments",
+    ],
+    requirements: [
+      "Familiarity with AWS, GCP, or Azure",
+      "Some Terraform or equivalent IaC experience",
+      "Currently studying or recently graduated",
+    ],
+  },
+  {
+    slug: "data-engineer-intern",
+    title: "Data Engineer Intern",
     team: "Data & Intelligence",
     location: REMOTE,
     type: "internship",
     description:
-      "Turn product, customer, and operational data into the insights that guide Olyxee's product and go-to-market decisions.",
+      "Help build the data pipelines that feed Addup, Cortex, and our evaluation systems.",
+    responsibilities: [
+      "Help design and operate ETL/ELT pipelines on real product data",
+      "Model data for analytics, ML training, and product features",
+      "Contribute to data quality, lineage, and observability work",
+    ],
+    requirements: [
+      "Strong SQL and Python",
+      "Some exposure to modern data tooling (dbt, Airflow, Snowflake, BigQuery, or similar)",
+      "Currently studying or recently graduated",
+    ],
+  },
+  {
+    slug: "ai-systems-engineer-intern",
+    title: "AI Systems Engineer Intern",
+    team: "Data & Intelligence",
+    location: REMOTE,
+    type: "internship",
+    description:
+      "Help build the systems that connect models, tools, and data into reliable AI workflows.",
+    responsibilities: [
+      "Work on orchestration, retrieval, and tool-use pipelines for production AI",
+      "Help integrate models with external systems, APIs, and enterprise data",
+      "Contribute to instrumentation that makes AI workflows observable and debuggable",
+    ],
+    requirements: [
+      "Strong software fundamentals and some applied ML familiarity",
+      "Experience or curiosity in agentic, RAG, or workflow-based AI systems",
+      "Currently studying or recently graduated",
+    ],
+  },
+  {
+    slug: "data-analyst-intern",
+    title: "Data Analyst Intern",
+    team: "Data & Intelligence",
+    location: REMOTE,
+    type: "internship",
+    description:
+      "Turn product, customer, and operational data into the insights that guide our decisions.",
     responsibilities: [
       "Build dashboards, models, and analyses across product, finance, and operations",
-      "Partner with leadership to size opportunities and measure outcomes",
-      "Define metrics that teams actually run the business on",
+      "Help size opportunities and measure outcomes with leadership",
+      "Help define the metrics teams actually run the business on",
     ],
     requirements: [
-      "Strong SQL and analytical thinking; comfortable with BI and modeling tools",
-      "Experience translating ambiguous questions into clear analysis",
-      "Share your CV and example analyses or dashboards",
+      "Strong SQL and analytical thinking",
+      "Comfortable turning ambiguous questions into clear analysis",
+      "Currently studying or recently graduated",
     ],
-    questions: STANDARD_QUESTIONS,
   },
-
-  // ─── 3. Quality & Reliability ────────────────────────────────────────
   {
-    title: "QA/Test Engineer",
+    slug: "qa-engineer-intern",
+    title: "QA Engineer Intern",
     team: "Quality & Reliability",
     location: REMOTE,
     type: "internship",
     description:
-      "Own the quality bar across Olyxee's products. Design the testing strategy that keeps customer-facing systems dependable.",
+      "Help own the quality bar across Olyxee's products with automated testing.",
     responsibilities: [
-      "Design and maintain automated test suites across services and UI",
-      "Drive regression, integration, and release testing as a discipline",
-      "Partner with engineering to prevent issues, not just catch them",
+      "Help build and maintain automated test suites across services and UI",
+      "Contribute to regression, integration, and release testing",
+      "Pair with engineers to prevent issues, not just catch them",
     ],
     requirements: [
-      "Experience with modern test automation frameworks and CI integration",
+      "Familiarity with modern test automation frameworks",
       "Strong analytical mindset and attention to detail",
-      "Share your CV and test or automation work you've owned",
+      "Currently studying or recently graduated",
     ],
-    questions: STANDARD_QUESTIONS,
   },
   {
-    title: "AI Evaluation & Reliability Engineer",
+    slug: "ai-evaluation-engineer-intern",
+    title: "AI Evaluation Engineer Intern",
     team: "Quality & Reliability",
     location: REMOTE,
     type: "internship",
     description:
-      "Build the evaluation harnesses, benchmarks, and monitors that prove our AI systems behave correctly in production.",
+      "Help build the evaluation harnesses and monitors that prove our AI behaves correctly.",
     responsibilities: [
-      "Design evaluation suites and golden datasets across Ordo, Addup, and Cortex",
-      "Build monitoring and alerting for model behavior, drift, and regressions",
-      "Run failure analysis and partner with research to close gaps",
+      "Help build evaluation suites and golden datasets across Ordo, Addup, and Cortex",
+      "Contribute to monitoring and alerting for model behavior and drift",
+      "Help with failure analysis and partner with research to close gaps",
     ],
     requirements: [
-      "Strong Python and experience evaluating ML or LLM systems",
-      "Comfort building tooling, not just running scripts",
-      "Share your CV, GitHub, and any evaluation work you've shipped",
+      "Strong Python and curiosity about evaluating ML or LLM systems",
+      "Comfortable building small tools, not just running scripts",
+      "Currently studying or recently graduated",
     ],
-    questions: STANDARD_QUESTIONS,
   },
-
-  // ─── 4. Product & Design ─────────────────────────────────────────────
   {
-    title: "Product Manager",
+    slug: "product-management-intern",
+    title: "Product Management Intern",
     team: "Product & Design",
     location: REMOTE,
     type: "internship",
     description:
-      "Own a product surface across Ordo, Addup, Document Integrity, or Courier Loop. Set the direction, ship the work, measure the outcome.",
+      "Support a product surface across Ordo, Addup, Document Integrity, or Courier Loop.",
     responsibilities: [
-      "Translate customer problems into clear roadmaps and shipped product",
-      "Coordinate engineering, research, and design to deliver outcomes",
-      "Talk to customers, run discovery, and shape go-to-market alongside leadership",
+      "Help translate customer problems into clear specs and shipped product",
+      "Coordinate with engineering, research, and design on delivery",
+      "Help with customer discovery and competitive research",
     ],
     requirements: [
-      "Experience owning a technical or enterprise product end to end",
-      "Strong writing, prioritisation, and customer judgment",
-      "Share your CV, LinkedIn, and examples of products you've shipped",
+      "Strong writing and structured thinking",
+      "Some exposure to technical or enterprise products",
+      "Currently studying or recently graduated",
     ],
-    questions: STANDARD_QUESTIONS,
   },
   {
-    title: "Product Designer",
+    slug: "product-design-intern",
+    title: "Product Design Intern",
     team: "Product & Design",
     location: REMOTE,
     type: "internship",
     description:
-      "Design the interfaces operators trust to run AI on real work, calm, clear, and accountable.",
+      "Help design the interfaces operators trust to run AI on real work.",
     responsibilities: [
-      "Own end-to-end design for product surfaces across multiple Olyxee products",
-      "Run research, prototype quickly, and ship with engineering",
-      "Raise the design bar and contribute to our shared design system",
+      "Contribute to end to end design for product surfaces",
+      "Prototype quickly and pair with engineers to ship",
+      "Contribute to our shared design system",
     ],
     requirements: [
-      "Strong portfolio of shipped product design work, ideally B2B or technical",
-      "Fluency in modern design tooling (Figma) and interaction patterns",
-      "Share your CV and portfolio",
+      "Portfolio of design work, school projects, or shipped product",
+      "Fluency in Figma and modern interaction patterns",
+      "Currently studying or recently graduated",
     ],
-    questions: STANDARD_QUESTIONS,
   },
-
-  // ─── 5. Operations & Delivery ────────────────────────────────────────
   {
-    title: "Project Operations",
+    slug: "project-management-intern",
+    title: "Project Management Intern",
     team: "Operations & Delivery",
     location: REMOTE,
     type: "internship",
     description:
-      "Keep our internal and customer-facing projects on track. Bring structure to a fast-moving team building real systems.",
+      "Help keep our internal and customer-facing projects on track.",
     responsibilities: [
-      "Plan, coordinate, and track delivery across teams and customer engagements",
+      "Help plan, coordinate, and track delivery across teams and engagements",
       "Run rituals, dependencies, and status with clear written communication",
-      "Identify risks early and unblock work before it slows down",
+      "Help identify risks early and unblock work before it slows down",
     ],
     requirements: [
-      "Experience running technical projects or programs end to end",
       "Strong written communication and operational instincts",
-      "Share your CV and examples of projects you've owned",
+      "Comfortable in a fast-moving environment",
+      "Currently studying or recently graduated",
     ],
-    questions: STANDARD_QUESTIONS,
   },
   {
-    title: "Operations & Strategy",
+    slug: "business-operations-intern",
+    title: "Business Operations Intern",
     team: "Operations & Delivery",
     location: HYBRID,
     type: "internship",
     description:
-      "Work alongside leadership on the highest-leverage problems: planning, hiring, finance, and how the company runs.",
+      "Work alongside leadership on planning, hiring, finance, and how the company runs.",
     responsibilities: [
-      "Run cross-functional initiatives across operations, finance, and people",
-      "Build the planning, reporting, and decision-making rhythms of the company",
-      "Lead special projects from market analysis to internal infrastructure",
+      "Support cross-functional initiatives across operations, finance, and people",
+      "Help build the planning and reporting rhythms of the company",
+      "Run analysis and prep for leadership decisions",
     ],
     requirements: [
-      "Experience in operations, strategy, consulting, or chief-of-staff roles",
       "Strong analytical skills and excellent written communication",
-      "Share your CV and examples of work you've owned",
+      "Interest in how early-stage companies are built",
+      "Currently studying or recently graduated",
     ],
-    questions: STANDARD_QUESTIONS,
   },
   {
-    title: "Enterprise Solutions Associate",
+    slug: "solutions-engineering-intern",
+    title: "Solutions Engineering Intern",
     team: "Operations & Delivery",
     location: REMOTE,
     type: "internship",
     description:
-      "Work directly with enterprise customers to deploy Ordo, Addup, and Cortex into their operations.",
+      "Work with enterprise customers to help deploy Ordo, Addup, and Cortex into their operations.",
     responsibilities: [
-      "Lead onboarding, integration, and adoption for enterprise accounts",
-      "Translate customer requirements into clear product feedback and configuration",
-      "Be the trusted operator who makes sure customers actually realize value",
+      "Support onboarding, integration, and adoption for enterprise accounts",
+      "Help translate customer requirements into product feedback and configuration",
+      "Pair with senior operators to make sure customers realize value",
     ],
     requirements: [
-      "Experience in solutions engineering, implementation, or customer success at a B2B company",
       "Comfort with technical conversations and enterprise stakeholders",
-      "Share your CV and LinkedIn",
+      "Strong written communication",
+      "Currently studying or recently graduated",
     ],
-    questions: STANDARD_QUESTIONS,
-  },
-
-  // ─── 6. Growth & Business ────────────────────────────────────────────
-  {
-    title: "Marketing",
-    team: "Growth & Business",
-    location: REMOTE,
-    type: "paid",
-    description:
-      "Help the world understand what Olyxee is building. Own content, campaigns, and the channels that grow our audience.",
-    responsibilities: [
-      "Plan and execute content, social, email, and launch campaigns",
-      "Run experiments and report on what is moving the right metrics",
-      "Sharpen positioning and messaging across product and brand surfaces",
-    ],
-    requirements: [
-      "Experience marketing technical or B2B products",
-      "Strong writing and a portfolio of campaigns or launches you've owned",
-      "Share your CV, LinkedIn, and links to past work",
-    ],
-    questions: STANDARD_QUESTIONS,
   },
   {
-    title: "Partnerships & Business Development",
+    slug: "business-development-intern",
+    title: "Business Development Intern",
     team: "Growth & Business",
     location: HYBRID,
     type: "internship",
     description:
-      "Build the partnerships that expand Olyxee's reach: integrators, platforms, and the ecosystems our products plug into.",
+      "Help build the partnerships that expand Olyxee's reach.",
     responsibilities: [
-      "Identify, develop, and close strategic partnerships",
-      "Own joint go-to-market with partners across regions and verticals",
-      "Work with product on integrations and shared roadmaps",
+      "Help identify and develop strategic partnerships",
+      "Support joint go-to-market work with partners across regions and verticals",
+      "Pair with product on integrations and shared roadmaps",
     ],
     requirements: [
-      "Experience in BD, partnerships, or alliances at a technical company",
       "Strong commercial judgment and written communication",
-      "Share your CV and LinkedIn",
+      "Interest in BD, partnerships, or alliances",
+      "Currently studying or recently graduated",
     ],
-    questions: STANDARD_QUESTIONS,
   },
   {
-    title: "Sales & Client Solutions",
+    slug: "sales-intern",
+    title: "Sales Intern",
     team: "Growth & Business",
     location: HYBRID,
     type: "internship",
     description:
-      "Own the customer relationship from first conversation through contract. Sell Olyxee the way it deserves to be sold: honestly and technically.",
+      "Help own the customer relationship from first conversation through contract.",
     responsibilities: [
-      "Run the full sales cycle for enterprise and mid-market accounts",
-      "Build trusted relationships with technical and executive buyers",
-      "Partner with product and solutions to deliver on what you promise",
+      "Support the full sales cycle for enterprise and mid-market accounts",
+      "Help build relationships with technical and executive buyers",
+      "Pair with product and solutions to deliver on what we promise",
     ],
     requirements: [
-      "Track record selling technical, B2B, or enterprise software",
       "Strong discovery, written, and presentation skills",
-      "Share your CV and LinkedIn",
+      "Interest in B2B or enterprise software",
+      "Currently studying or recently graduated",
     ],
-    questions: STANDARD_QUESTIONS,
   },
-
-  // ─── 7. People & Administration ──────────────────────────────────────
   {
-    title: "HR & Talent Operations",
+    slug: "people-operations-intern",
+    title: "People Operations Intern",
     team: "People & Administration",
     location: HYBRID,
     type: "internship",
     description:
-      "Build the people function: hiring, onboarding, and the operating rhythm that lets a small team punch far above its weight.",
+      "Help build the people function: hiring, onboarding, and operating rhythm.",
     responsibilities: [
-      "Run recruiting end to end across engineering, research, and business roles",
-      "Own onboarding, performance, and people operations",
+      "Support recruiting end to end across engineering, research, and business roles",
+      "Help with onboarding, performance, and people operations",
       "Help shape Olyxee's culture as we grow",
     ],
     requirements: [
-      "Experience in talent or people operations at a high-growth company",
       "Strong written communication and operational instincts",
-      "Share your CV and LinkedIn",
+      "Interest in people, talent, or operations",
+      "Currently studying or recently graduated",
     ],
-    questions: STANDARD_QUESTIONS,
   },
   {
-    title: "Administrative Operations",
+    slug: "operations-intern",
+    title: "Operations Intern",
     team: "People & Administration",
     location: HYBRID,
     type: "internship",
     description:
-      "Keep the company running day to day: scheduling, vendors, office, finance support, and the operational glue leadership relies on.",
+      "Help keep the company running day to day: scheduling, vendors, office, and finance support.",
     responsibilities: [
-      "Own scheduling, travel, and executive support across leadership",
+      "Help with scheduling, travel, and executive support",
       "Coordinate vendors, contracts, and office operations",
-      "Support finance and people teams on day-to-day administration",
+      "Support finance and people teams on day to day administration",
     ],
     requirements: [
-      "Experience in executive assistance, office management, or operations support",
       "Highly organised, calm under pressure, and an excellent written communicator",
-      "Share your CV and LinkedIn",
+      "Comfortable with shifting priorities",
+      "Currently studying or recently graduated",
     ],
-    questions: STANDARD_QUESTIONS,
   },
 ];
 
@@ -456,3 +586,11 @@ export function findRoleByTitle(title: string): Role | undefined {
   const t = title.trim();
   return roles.find((r) => r.title === t);
 }
+
+export function findRoleBySlug(slug: string): Role | undefined {
+  const s = slug.trim().toLowerCase();
+  return roles.find((r) => r.slug === s);
+}
+
+export const paidRoles = roles.filter((r) => r.type === "paid");
+export const internshipRoles = roles.filter((r) => r.type === "internship");

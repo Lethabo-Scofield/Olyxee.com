@@ -4,10 +4,12 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, MapPin, X, Briefcase, Search, Plus, ChevronDown } from "lucide-react";
+import { ArrowRight, MapPin, X as CloseIcon, Briefcase, Search, Plus, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { roles, teams, type Role, type RoleType } from "../lib/careers-roles";
-import ApplicationForm from "../components/careers/ApplicationForm";
+import { roles, teams, type RoleType } from "../lib/careers-roles";
+
+const roleHref = (role: { type: RoleType; slug: string }) =>
+  role.type === "paid" ? `/careers/${role.slug}` : `/careers/internships?role=${role.slug}`;
 
 
 function HeroSection() {
@@ -57,7 +59,6 @@ function RolesSection() {
   const [filterTeam, setFilterTeam] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [showAll, setShowAll] = useState<boolean>(false);
-  const [selectedRole, setSelectedRole] = useState<Role | null>(null);
 
   const INITIAL_VISIBLE = 6;
 
@@ -81,8 +82,6 @@ function RolesSection() {
 
   const paidCount = roles.filter(r => r.type === "paid").length;
   const internshipCount = roles.filter(r => r.type === "internship").length;
-
-  const closeModal = () => setSelectedRole(null);
 
   return (
     <>
@@ -148,7 +147,7 @@ function RolesSection() {
                   aria-label="Clear search"
                   className="absolute right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-neutral-200 hover:bg-neutral-300 flex items-center justify-center transition-colors"
                 >
-                  <X className="w-3 h-3 text-neutral-600" />
+                  <CloseIcon className="w-3 h-3 text-neutral-600" />
                 </button>
               )}
             </div>
@@ -208,37 +207,40 @@ function RolesSection() {
               <div className="space-y-0 divide-y divide-neutral-100 border-t border-neutral-100">
                 <AnimatePresence mode="popLayout">
                   {filteredRoles.map((role, idx) => (
-                    <motion.button
+                    <motion.div
                       key={role.title}
                       layout
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.4, delay: idx * 0.04 }}
-                      onClick={() => setSelectedRole(role)}
-                      className="w-full text-left py-7 sm:py-8 group flex items-center justify-between gap-6 transition-all"
                     >
-                      <div className="flex-1 min-w-0">
-                        <div className="flex flex-wrap items-center gap-3 mb-2">
-                          <h3 className="font-serif text-xl sm:text-2xl tracking-tight text-neutral-900 group-hover:text-neutral-600 transition-colors">{role.title}</h3>
-                          <span className={`text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full ${
-                            role.type === "paid"
-                              ? "bg-emerald-50 text-emerald-700"
-                              : "bg-blue-50 text-blue-700"
-                          }`}>
-                            {role.type === "paid" ? "Paid" : "Internship"}
-                          </span>
+                      <Link
+                        href={roleHref(role)}
+                        className="w-full text-left py-7 sm:py-8 group flex items-center justify-between gap-6 transition-all"
+                      >
+                        <div className="flex-1 min-w-0">
+                          <div className="flex flex-wrap items-center gap-3 mb-2">
+                            <h3 className="text-xl sm:text-2xl tracking-[-0.015em] font-medium text-neutral-900 group-hover:text-neutral-600 transition-colors">{role.title}</h3>
+                            <span className={`text-[10px] font-medium uppercase tracking-[0.18em] px-2.5 py-1 rounded-full border ${
+                              role.type === "paid"
+                                ? "border-neutral-900 text-neutral-900"
+                                : "border-neutral-200 text-neutral-500"
+                            }`}>
+                              {role.type === "paid" ? "Paid" : "Internship"}
+                            </span>
+                          </div>
+                          <p className="text-sm text-neutral-500 leading-relaxed max-w-xl font-light">{role.description}</p>
+                          <div className="flex flex-wrap items-center gap-4 mt-3 text-xs text-neutral-400">
+                            <span className="flex items-center gap-1.5"><Briefcase className="w-3.5 h-3.5" />{role.team}</span>
+                            <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5" />{role.location}</span>
+                          </div>
                         </div>
-                        <p className="text-sm text-neutral-400 leading-relaxed max-w-xl">{role.description}</p>
-                        <div className="flex flex-wrap items-center gap-4 mt-3 text-xs text-neutral-400">
-                          <span className="flex items-center gap-1.5"><Briefcase className="w-3.5 h-3.5" />{role.team}</span>
-                          <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5" />{role.location}</span>
+                        <div className="flex-shrink-0 w-10 h-10 rounded-full bg-neutral-100 flex items-center justify-center group-hover:bg-neutral-900 group-hover:text-white transition-all duration-300">
+                          <ArrowRight className="w-4 h-4 text-neutral-500 group-hover:text-white transition-colors" />
                         </div>
-                      </div>
-                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-neutral-100 flex items-center justify-center group-hover:bg-neutral-900 group-hover:text-white transition-all duration-300">
-                        <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-white transition-colors" />
-                      </div>
-                    </motion.button>
+                      </Link>
+                    </motion.div>
                   ))}
                 </AnimatePresence>
               </div>
@@ -287,86 +289,6 @@ function RolesSection() {
           </div>
         </div>
       </section>
-
-      <AnimatePresence>
-        {selectedRole && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-[2000] flex items-end sm:items-center justify-center"
-          >
-            <div className="absolute inset-0 bg-black/50 backdrop-blur-md" onClick={closeModal} />
-            <motion.div
-              initial={{ opacity: 0, y: 40, scale: 0.97 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 40, scale: 0.97 }}
-              transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-              className="relative w-full sm:max-w-lg bg-white rounded-t-3xl sm:rounded-3xl shadow-2xl overflow-hidden max-h-[92vh] sm:max-h-[90vh] overflow-y-auto"
-            >
-              <div className="sticky top-0 z-10 bg-white/95 backdrop-blur-xl border-b border-neutral-100 px-5 sm:px-8 py-4 sm:py-5 flex items-center justify-between gap-3">
-                <div className="min-w-0 flex-1">
-                  <h3 className="font-serif text-xl sm:text-2xl tracking-tight text-neutral-900 truncate">{selectedRole.title}</h3>
-                  <p className="text-xs text-neutral-400 mt-0.5 truncate">{selectedRole.team} · {selectedRole.location}</p>
-                </div>
-                <button
-                  onClick={closeModal}
-                  aria-label="Close"
-                  className="flex-shrink-0 w-10 h-10 rounded-full bg-neutral-100 hover:bg-neutral-200 flex items-center justify-center transition-colors"
-                >
-                  <X className="w-4 h-4 text-neutral-500" />
-                </button>
-              </div>
-
-              <div className="px-5 sm:px-8 py-6">
-                <p className="text-[15px] text-neutral-600 leading-relaxed mb-8">{selectedRole.description}</p>
-
-                <div className="mb-8">
-                  <h4 className="text-xs font-semibold text-neutral-400 uppercase tracking-widest mb-4">What you'll do</h4>
-                  <div className="space-y-3">
-                    {selectedRole.responsibilities.map((r, i) => (
-                      <div key={i} className="flex items-start gap-3">
-                        <div className="w-5 h-5 rounded-full bg-neutral-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                          <span className="text-[10px] font-semibold text-neutral-500">{i + 1}</span>
-                        </div>
-                        <p className="text-sm text-neutral-600 leading-relaxed">{r}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="mb-8">
-                  <h4 className="text-xs font-semibold text-neutral-400 uppercase tracking-widest mb-4">To apply</h4>
-                  <div className="space-y-3">
-                    {selectedRole.requirements.map((r, i) => (
-                      <div key={i} className="flex items-start gap-3">
-                        <span className="w-1.5 h-1.5 rounded-full bg-neutral-300 mt-2 flex-shrink-0" />
-                        <p className="text-sm text-neutral-600 leading-relaxed">{r}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {selectedRole.type === "internship" && (
-                  <div className="mb-6 rounded-2xl border-2 border-red-500 bg-red-50 p-5 shadow-[0_0_0_4px_rgba(239,68,68,0.08)]">
-                    <p className="text-xs font-bold text-red-700 uppercase tracking-widest mb-2">
-                      ⚠ Heads up - this is an unpaid internship
-                    </p>
-                    <p className="text-sm text-red-900/80 leading-relaxed">
-                      This role is designed for people who want hands-on experience working on real AI problems alongside our team. You'll get mentorship, a written reference, and meaningful work you can point to - but no salary or stipend. Apply only if that trade-off works for you right now.
-                    </p>
-                  </div>
-                )}
-
-                <div className="border-t border-neutral-100 pt-6">
-                  <ApplicationForm key={selectedRole.title} role={selectedRole} onClose={closeModal} />
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </>
   );
 }
