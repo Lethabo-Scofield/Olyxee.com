@@ -536,14 +536,15 @@ const ProductsPage: FC = () => {
               variants={fadeUp}
               className="lg:col-span-5"
             >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="relative w-10 h-10 rounded-lg bg-white ring-1 ring-neutral-200 shadow-sm flex items-center justify-center">
-                  <Truck className="w-5 h-5 text-neutral-700" strokeWidth={1.75} />
-                </div>
-                <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.25em]">Order updates</span>
-                <span className="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[10px] font-mono uppercase tracking-[0.18em]">
-                  Live
-                </span>
+              <div className="mb-6">
+                <Image
+                  src="/images/courier-loop-logo.png"
+                  alt="Courier Loop, delivery service"
+                  width={220}
+                  height={72}
+                  className="h-12 sm:h-14 w-auto object-contain"
+                  style={{ width: "auto", height: "auto" }}
+                />
               </div>
 
               <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-6">
