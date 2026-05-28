@@ -9,8 +9,8 @@ const footerData = {
     {
       title: "Products",
       links: [
-        { name: "Ordo", href: "/products/ordo" },
-        { name: "Addup", href: "/products/addup" },
+        { name: "Ordo", href: "https://ordo.olyxee.com", external: true },
+        { name: "Addup", href: "https://addup.olyxee.com", external: true },
       ],
     },
     {
