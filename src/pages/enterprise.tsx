@@ -259,18 +259,10 @@ const Enterprise: FC = () => {
         </div>
 
         <div className="relative max-w-4xl mx-auto text-center">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-[11px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-6"
-          >
-            Enterprise Systems
-          </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.05 }}
+            transition={{ duration: 0.8 }}
             className="text-4xl sm:text-6xl lg:text-7xl text-neutral-900 tracking-[-0.025em] leading-[1.05] font-medium"
           >
             Operational intelligence systems{" "}
@@ -278,18 +270,10 @@ const Enterprise: FC = () => {
               designed for modern organizations.
             </em>
           </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.15 }}
-            className="mt-8 max-w-2xl mx-auto text-base sm:text-lg text-neutral-500 font-light leading-relaxed"
-          >
-            Olyxee designs enterprise AI systems for workflow execution, operational intelligence, financial integrity, logistics coordination, and persistent organizational cognition.
-          </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.25 }}
+            transition={{ duration: 0.8, delay: 0.15 }}
             className="mt-10 flex flex-col sm:flex-row gap-3 justify-center"
           >
             <a
