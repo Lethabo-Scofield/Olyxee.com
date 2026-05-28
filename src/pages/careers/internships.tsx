@@ -2,7 +2,7 @@ import { FC, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowLeft, ArrowRight, Briefcase, MapPin, CheckCircle } from "lucide-react";
 import SEO from "../../components/SEO";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
@@ -187,36 +187,112 @@ const InternshipsPage: FC = () => {
             </ul>
           </section>
 
-          {/* AVAILABLE INTERNSHIPS */}
-          <section className="mt-12">
-            <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
-              Available internships
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              {internshipRoles.map((r) => (
-                <p
-                  key={r.slug}
-                  className="text-[14px] text-neutral-700 font-light"
-                >
-                  {r.title}
-                  <span className="text-neutral-400"> · {r.team}</span>
+          {/* ROLE DETAIL (when a specific internship is chosen) */}
+          {selectedRole ? (
+            <>
+              <motion.section
+                key={selectedRole.slug}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="pt-10 border-b border-neutral-200 pb-10"
+              >
+                <p className="text-[11px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
+                  {selectedRole.team} · Internship
                 </p>
-              ))}
-            </div>
-          </section>
+                <h2 className="text-2xl sm:text-3xl lg:text-[2.25rem] tracking-[-0.02em] leading-[1.1] font-medium text-neutral-900 mb-5">
+                  {selectedRole.title}
+                </h2>
+                <p className="text-base sm:text-lg text-neutral-500 font-light leading-relaxed max-w-2xl">
+                  {selectedRole.description}
+                </p>
+                <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-neutral-500">
+                  <span className="flex items-center gap-1.5">
+                    <Briefcase className="w-3.5 h-3.5" />
+                    {selectedRole.team}
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <MapPin className="w-3.5 h-3.5" />
+                    {selectedRole.location}
+                  </span>
+                  {selectedRole.level && (
+                    <span>{selectedRole.level}</span>
+                  )}
+                </div>
+              </motion.section>
+
+              {selectedRole.responsibilities?.length > 0 && (
+                <section className="py-10 border-b border-neutral-200">
+                  <h3 className="text-xl sm:text-2xl tracking-[-0.015em] font-medium text-neutral-900 mb-6">
+                    What you&apos;ll do
+                  </h3>
+                  <ul className="space-y-4">
+                    {selectedRole.responsibilities.map((r) => (
+                      <li key={r} className="flex items-start gap-3">
+                        <span className="w-1.5 h-1.5 rounded-full bg-neutral-400 mt-2.5 flex-shrink-0" />
+                        <p className="text-[15px] sm:text-base text-neutral-700 leading-relaxed font-light">
+                          {r}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              )}
+
+              {selectedRole.requirements?.length > 0 && (
+                <section className="py-10 border-b border-neutral-200">
+                  <h3 className="text-xl sm:text-2xl tracking-[-0.015em] font-medium text-neutral-900 mb-6">
+                    Who we&apos;re looking for
+                  </h3>
+                  <ul className="space-y-4">
+                    {selectedRole.requirements.map((r) => (
+                      <li key={r} className="flex items-start gap-3">
+                        <span className="w-1.5 h-1.5 rounded-full bg-neutral-400 mt-2.5 flex-shrink-0" />
+                        <p className="text-[15px] sm:text-base text-neutral-700 leading-relaxed font-light">
+                          {r}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              )}
+            </>
+          ) : (
+            <section className="mt-12">
+              <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
+                Available internships
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                {internshipRoles.map((r) => (
+                  <button
+                    key={r.slug}
+                    type="button"
+                    onClick={() => setRoleSlug(r.slug)}
+                    className="text-left text-[14px] text-neutral-700 font-light hover:text-neutral-900 transition-colors"
+                  >
+                    {r.title}
+                    <span className="text-neutral-400"> · {r.team}</span>
+                  </button>
+                ))}
+              </div>
+            </section>
+          )}
 
           {/* APPLICATION */}
-          <section id="apply" className="mt-16">
+          <section id="apply" className={selectedRole ? "pt-12" : "mt-16"}>
             <div className="mb-8">
               <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-3">
                 Apply
               </p>
               <h2 className="text-2xl sm:text-3xl tracking-[-0.02em] font-medium text-neutral-900 mb-3">
-                One short form. Around two minutes.
+                {selectedRole
+                  ? `Apply for the ${selectedRole.title} internship.`
+                  : "One short form. Around two minutes."}
               </h2>
               <p className="text-[15px] sm:text-base text-neutral-500 font-light leading-relaxed">
-                Tell us who you are, pick the internship that fits, and share
-                something you have built or are proud of.
+                {selectedRole
+                  ? "Tell us who you are and share something you have built or are proud of. Around two minutes."
+                  : "Tell us who you are, pick the internship that fits, and share something you have built or are proud of."}
               </p>
             </div>
 
