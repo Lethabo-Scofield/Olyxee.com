@@ -331,7 +331,7 @@ const ProductsPage: FC = () => {
             className="relative rounded-3xl overflow-hidden border border-neutral-200/80 shadow-2xl shadow-neutral-300/40 aspect-[16/9]"
           >
             <Image
-              src="/images/products/hero-presentation.png"
+              src="/images/products-hero.png"
               alt="Olyxee presentation: Making business operations effortless with AI automation"
               fill
               priority
