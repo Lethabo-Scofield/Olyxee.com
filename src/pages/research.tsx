@@ -105,25 +105,27 @@ const Research: FC = () => {
       </section>
 
       {/* === BOTTOM CTA === */}
-      <section className="py-20 sm:py-28 border-t border-neutral-200/70">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900 mb-5 sm:mb-6">
-            Want to collaborate on research?
-          </h2>
-          <p className="text-neutral-500 text-base sm:text-lg max-w-lg mx-auto mb-8 sm:mb-10 font-light leading-relaxed">
-            We work with teams building AI applications who want to improve reliability, accuracy, and observability.
-          </p>
-          <Link
-            href="/contact"
-            className="group inline-flex items-center gap-2 px-8 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide"
-          >
-            Get in touch
-            <ArrowRight
-              className="w-4 h-4 group-hover:translate-x-0.5 transition-transform"
-              aria-hidden="true"
-              focusable="false"
-            />
-          </Link>
+      <section className="px-4 sm:px-6 pb-20 sm:pb-28">
+        <div className="max-w-5xl mx-auto">
+          <div className="rounded-3xl bg-neutral-100 ring-1 ring-neutral-200/70 p-10 sm:p-16 lg:p-20 text-center">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-[-0.025em] leading-[1.05] font-medium mb-5 sm:mb-6">
+              Want to <em className="font-serif italic font-normal text-neutral-500">collaborate on research?</em>
+            </h2>
+            <p className="text-neutral-500 text-base sm:text-lg max-w-lg mx-auto mb-8 sm:mb-10 font-light leading-relaxed">
+              We work with teams building AI applications who want to improve reliability, accuracy, and observability.
+            </p>
+            <Link
+              href="/contact"
+              className="group inline-flex items-center gap-2 px-8 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide"
+            >
+              Get in touch
+              <ArrowRight
+                className="w-4 h-4 group-hover:translate-x-0.5 transition-transform"
+                aria-hidden="true"
+                focusable="false"
+              />
+            </Link>
+          </div>
         </div>
       </section>
 
