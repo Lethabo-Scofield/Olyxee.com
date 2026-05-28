@@ -131,12 +131,12 @@ const About: FC = () => {
             className="relative overflow-hidden rounded-3xl ring-1 ring-neutral-900/10 shadow-2xl shadow-neutral-900/10 bg-neutral-950 aspect-[4/5] sm:aspect-[16/10] lg:aspect-[21/9]"
           >
             <Image
-              src="/images/olyxee-team.png"
+              src="/images/olyxee-team-2026.png"
               alt="The Olyxee team in their Johannesburg office"
               fill
               priority
               sizes="(min-width: 1280px) 1152px, 100vw"
-              className="object-cover object-right"
+              className="object-cover object-center"
             />
             {/* Single soft scrim on the left — clean, no extra layers */}
             <div
@@ -306,6 +306,86 @@ const About: FC = () => {
               </ol>
             </div>
           </motion.article>
+        </div>
+      </section>
+
+      {/* === IN THE FIELD === */}
+      <section className="relative py-20 sm:py-28 lg:py-36 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            custom={0}
+            variants={fadeUp}
+            className="max-w-3xl mb-12 sm:mb-16"
+          >
+            <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
+              In the field
+            </p>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-tight leading-[1.1]">
+              Bringing our work to the rooms where{" "}
+              <em className="italic text-blue-500">decisions get made.</em>
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
+            {/* Large landscape — Tech talk */}
+            <motion.figure
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              custom={0}
+              variants={fadeUp}
+              className="lg:col-span-8 group"
+            >
+              <div className="relative aspect-[4/3] sm:aspect-[16/10] overflow-hidden rounded-3xl ring-1 ring-neutral-900/10 bg-neutral-100">
+                <Image
+                  src="/images/olyxee-tech-talk.png"
+                  alt="Olyxee speaker presenting at TechWeek"
+                  fill
+                  sizes="(min-width: 1024px) 66vw, 100vw"
+                  className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]"
+                />
+              </div>
+              <figcaption className="mt-5 flex items-baseline justify-between gap-6">
+                <p className="text-[15px] sm:text-base text-neutral-900 font-light leading-snug max-w-md">
+                  Sharing how we think about reliable AI infrastructure at TechWeek.
+                </p>
+                <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-400 shrink-0">
+                  TechWeek · 2026
+                </span>
+              </figcaption>
+            </motion.figure>
+
+            {/* Portrait companion — Boardroom briefing */}
+            <motion.figure
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              custom={1}
+              variants={fadeUp}
+              className="lg:col-span-4 group"
+            >
+              <div className="relative aspect-[4/3] lg:aspect-[3/4] overflow-hidden rounded-3xl ring-1 ring-neutral-900/10 bg-neutral-100">
+                <Image
+                  src="/images/olyxee-presentation.png"
+                  alt="Olyxee team briefing a client on the product suite"
+                  fill
+                  sizes="(min-width: 1024px) 33vw, 100vw"
+                  className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]"
+                />
+              </div>
+              <figcaption className="mt-5 flex items-baseline justify-between gap-6">
+                <p className="text-[15px] sm:text-base text-neutral-900 font-light leading-snug max-w-xs">
+                  Walking partners through the product suite, in the room.
+                </p>
+                <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-400 shrink-0">
+                  Briefing
+                </span>
+              </figcaption>
+            </motion.figure>
+          </div>
         </div>
       </section>
 
