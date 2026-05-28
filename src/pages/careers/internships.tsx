@@ -16,7 +16,7 @@ const inputClass =
   "w-full px-4 py-3.5 bg-white border border-neutral-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900/15 focus:border-neutral-400 text-[15px] text-neutral-900 placeholder:text-neutral-400 leading-relaxed transition-colors";
 const labelClass = "block text-sm font-medium text-neutral-900 mb-2";
 const optionalClass = "text-neutral-500 font-normal normal-case text-[13px]";
-const hintClass = "text-[13px] text-neutral-500 mt-2 leading-relaxed";
+const hintClass = "text-[14px] text-neutral-600 mt-2 leading-relaxed";
 
 const InternshipsPage: FC = () => {
   const router = useRouter();
@@ -151,7 +151,7 @@ const InternshipsPage: FC = () => {
                 real work.
               </em>
             </h1>
-            <p className="text-lg text-neutral-500 font-light leading-relaxed max-w-2xl">
+            <p className="text-lg text-neutral-700 leading-relaxed max-w-2xl">
               Our internships are open to people early in their career,
               curious, technical or otherwise, who want hands-on experience
               shipping with a real team.
@@ -163,13 +163,13 @@ const InternshipsPage: FC = () => {
             <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-900 mb-3">
               Heads up · these internships are unpaid
             </p>
-            <p className="text-[15px] sm:text-base text-neutral-700 font-light leading-relaxed">
+            <p className="text-[15px] sm:text-base text-neutral-800 leading-relaxed">
               You will get meaningful work alongside our team, mentorship from
               senior operators, and a written reference at the end. You will
               not receive a salary or stipend. Apply only if that trade-off
               works for you right now.
             </p>
-            <ul className="mt-5 space-y-2 text-sm text-neutral-600 font-light">
+            <ul className="mt-5 space-y-2 text-[15px] text-neutral-700 leading-relaxed">
               <li className="flex items-start gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-neutral-400 mt-2 flex-shrink-0" />
                 Remote-first. Most roles are flexible on hours.
@@ -203,7 +203,7 @@ const InternshipsPage: FC = () => {
                 <h2 className="text-2xl sm:text-3xl lg:text-[2.25rem] tracking-[-0.02em] leading-[1.1] font-medium text-neutral-900 mb-5">
                   {selectedRole.title}
                 </h2>
-                <p className="text-base sm:text-lg text-neutral-500 font-light leading-relaxed max-w-2xl">
+                <p className="text-base sm:text-lg text-neutral-700 leading-relaxed max-w-2xl">
                   {selectedRole.description}
                 </p>
                 <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-neutral-500">
@@ -230,7 +230,7 @@ const InternshipsPage: FC = () => {
                     {selectedRole.responsibilities.map((r) => (
                       <li key={r} className="flex items-start gap-3">
                         <span className="w-1.5 h-1.5 rounded-full bg-neutral-400 mt-2.5 flex-shrink-0" />
-                        <p className="text-[15px] sm:text-base text-neutral-700 leading-relaxed font-light">
+                        <p className="text-[15px] sm:text-base text-neutral-800 leading-relaxed">
                           {r}
                         </p>
                       </li>
@@ -248,7 +248,7 @@ const InternshipsPage: FC = () => {
                     {selectedRole.requirements.map((r) => (
                       <li key={r} className="flex items-start gap-3">
                         <span className="w-1.5 h-1.5 rounded-full bg-neutral-400 mt-2.5 flex-shrink-0" />
-                        <p className="text-[15px] sm:text-base text-neutral-700 leading-relaxed font-light">
+                        <p className="text-[15px] sm:text-base text-neutral-800 leading-relaxed">
                           {r}
                         </p>
                       </li>
@@ -268,7 +268,7 @@ const InternshipsPage: FC = () => {
                     key={r.slug}
                     type="button"
                     onClick={() => setRoleSlug(r.slug)}
-                    className="text-left text-[14px] text-neutral-700 font-light hover:text-neutral-900 transition-colors"
+                    className="text-left text-[15px] text-neutral-800 hover:text-neutral-900 transition-colors"
                   >
                     {r.title}
                     <span className="text-neutral-400"> · {r.team}</span>
@@ -289,7 +289,7 @@ const InternshipsPage: FC = () => {
                   ? `Apply for the ${selectedRole.title} internship.`
                   : "One short form. Around two minutes."}
               </h2>
-              <p className="text-[15px] sm:text-base text-neutral-500 font-light leading-relaxed">
+              <p className="text-[15px] sm:text-base text-neutral-700 leading-relaxed">
                 {selectedRole
                   ? "Tell us who you are and share something you have built or are proud of. Around two minutes."
                   : "Tell us who you are, pick the internship that fits, and share something you have built or are proud of."}
@@ -311,7 +311,7 @@ const InternshipsPage: FC = () => {
                 <h3 className="text-2xl tracking-[-0.02em] font-medium text-neutral-900 mb-2">
                   Application received
                 </h3>
-                <p className="text-sm text-neutral-500 max-w-md mx-auto font-light leading-relaxed">
+                <p className="text-[15px] text-neutral-700 max-w-md mx-auto leading-relaxed">
                   Thanks, we have it. If we would like to move forward, you
                   will hear from us at the email you provided within 14 days.
                 </p>
