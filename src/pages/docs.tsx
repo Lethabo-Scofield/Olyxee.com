@@ -1,5 +1,6 @@
 import { useState, FC, useCallback } from "react";
 import { useRouter } from "next/router";
+import Image from "next/image";
 import Link from "next/link";
 import SEO from "../components/SEO";
 import DocsLayout from "../layouts/DocsLayout";
@@ -132,6 +133,7 @@ type ProductRow = {
   name: string;
   description: string;
   status: "available" | "private" | "early-access";
+  bg: string;
   action:
     | { kind: "external"; href: string; label: string }
     | { kind: "internal"; href: string; label: string }
@@ -154,30 +156,35 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       name: "Ordo",
       description: "Autonomous workflow execution, job handling, integrations, and operational automation across your stack.",
       status: "early-access",
+      bg: "/images/gradient-blue-pink.webp",
       action: { kind: "internal-tab", tab: "ordo", page: "ordo-overview", label: "Open Ordo docs" },
     },
     {
       name: "Addup",
       description: "Reconciliation workflows, financial data validation, matching logic, exception handling, and reporting.",
       status: "available",
+      bg: "/images/gradient-pastel.webp",
       action: { kind: "external", href: "https://addup.olyxee.com", label: "Visit Addup" },
     },
     {
       name: "Olyxee Document Integrity",
       description: "Document verification, integrity checks, extraction validation, and API-based verification workflows.",
       status: "private",
+      bg: "/images/gradient-orange-purple.webp",
       action: { kind: "internal", href: "/document-integrity", label: "View ODI status" },
     },
     {
       name: "Olyxee Cortex",
       description: "Organizational cognition, memory infrastructure, workflow context, coordination, and long-running enterprise intelligence.",
       status: "private",
+      bg: "/images/gradient-abstract-blue.webp",
       action: { kind: "internal", href: "/research/cortex", label: "Learn about Cortex" },
     },
     {
       name: "Courier Loop",
       description: "Logistics operations, delivery workflows, dispatch coordination, and forthcoming logistics APIs.",
       status: "available",
+      bg: "/images/gradient-yellow-green.webp",
       action: { kind: "external", href: "https://logistics.olyxee.com/", label: "Visit Courier Loop" },
     },
   ];
@@ -200,7 +207,17 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
   const renderRow = (product: ProductRow) => {
     const isExternal = product.action.kind === "external";
     const inner = (
-      <div className="flex items-start justify-between gap-6 py-6 group">
+      <div className="flex items-start gap-5 py-6 group">
+        <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl overflow-hidden ring-1 ring-neutral-200 shrink-0">
+          <Image
+            src={product.bg}
+            alt=""
+            fill
+            sizes="64px"
+            className="object-cover"
+            aria-hidden
+          />
+        </div>
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-3 mb-1.5">
             <h3 className="text-[15px] font-medium text-neutral-900 tracking-tight">
