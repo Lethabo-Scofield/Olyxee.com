@@ -342,7 +342,7 @@ function ResearchAreas() {
           >
             <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">What We Do</p>
             <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900">
-              From intelligence to reliable execution
+              From Intelligence to Reliable Execution
             </h2>
           </motion.div>
 
@@ -351,19 +351,19 @@ function ResearchAreas() {
               {
                 num: "01",
                 title: "AI Research",
-                desc: "New system-level approaches for how AI executes tasks, coordinates processes, and maintains reliability across multi-step operations.",
+                desc: "Researching how AI systems reason, coordinate, execute, and maintain operational reliability across complex enterprise workflows.",
                 gradient: "/images/gradient-blue.webp",
               },
               {
                 num: "02",
-                title: "Infrastructure Systems",
-                desc: "Runtime and integration layers that allow AI to operate across tools, APIs, and environments as a unified system.",
+                title: "Operational Infrastructure",
+                desc: "Infrastructure layers that enable AI systems to operate across tools, APIs, workflows, and enterprise environments with reliability and continuity.",
                 gradient: "/images/gradient-purple.webp",
               },
               {
                 num: "03",
-                title: "Composability Layer",
-                desc: "Connecting models, tools, and workflows into coherent, end-to-end AI systems that execute reliably.",
+                title: "Enterprise Intelligence Systems",
+                desc: "Building integrated AI systems that connect models, workflows, memory, and operational context into reliable enterprise execution systems.",
                 gradient: "/images/gradient-abstract-blue.webp",
               },
             ].map((step, idx) => (
