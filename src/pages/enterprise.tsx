@@ -325,25 +325,26 @@ const Enterprise: FC = () => {
                     aria-hidden
                     className="absolute inset-0 -z-10 object-cover"
                   />
-                  <div className="w-11 h-11 rounded-xl bg-white/80 backdrop-blur-sm ring-1 ring-white/70 flex items-center justify-center mb-6">
-                    <Icon className="w-5 h-5 text-neutral-800" strokeWidth={1.5} />
+                  <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-b from-white/10 via-white/55 to-white/90" />
+                  <div className="w-11 h-11 rounded-xl bg-white/90 backdrop-blur-sm ring-1 ring-white/80 flex items-center justify-center mb-6 shadow-sm">
+                    <Icon className="w-5 h-5 text-neutral-900" strokeWidth={1.75} />
                   </div>
-                  <h3 className="text-xl sm:text-2xl text-neutral-900 tracking-[-0.015em] font-medium mb-2 leading-snug">
+                  <h3 className="text-xl sm:text-2xl text-neutral-950 tracking-[-0.015em] font-semibold mb-2 leading-snug">
                     {cat.name}
                   </h3>
-                  <p className="text-[13px] sm:text-sm text-neutral-700 font-light leading-relaxed mb-5">
+                  <p className="text-[13px] sm:text-sm text-neutral-800 font-normal leading-relaxed mb-5">
                     {cat.tagline}
                   </p>
                   <ul className="space-y-1.5 mb-6">
                     {cat.capabilities.map((c) => (
-                      <li key={c} className="flex items-baseline gap-2.5 text-[13px] text-neutral-700 font-light">
-                        <span aria-hidden className="inline-block w-1 h-1 rounded-full bg-neutral-500 translate-y-[-2px]" />
+                      <li key={c} className="flex items-baseline gap-2.5 text-[13px] text-neutral-800 font-normal">
+                        <span aria-hidden className="inline-block w-1 h-1 rounded-full bg-neutral-700 translate-y-[-2px]" />
                         {c}
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-auto pt-5 border-t border-white/40 flex items-center gap-3">
-                    <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-600">
+                  <div className="mt-auto pt-5 border-t border-neutral-900/10 flex items-center gap-3">
+                    <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-700 font-semibold">
                       Powered by
                     </span>
                     <div className="flex flex-wrap gap-1.5">
