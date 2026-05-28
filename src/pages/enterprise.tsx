@@ -244,20 +244,6 @@ const Enterprise: FC = () => {
 
       {/* === HERO === */}
       <section className="relative pt-36 sm:pt-48 pb-28 sm:pb-40 px-4 sm:px-6 bg-white overflow-hidden">
-        <div className="absolute inset-0 -z-0">
-          <Image
-            src="/images/enterprise/team.png"
-            alt=""
-            aria-hidden="true"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center grayscale contrast-[1.04] opacity-[0.28] sm:opacity-[0.34]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-white via-white/70 to-white" />
-          <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-transparent to-white/80" />
-        </div>
-
         <div className="relative max-w-4xl mx-auto text-center">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -265,9 +251,9 @@ const Enterprise: FC = () => {
             transition={{ duration: 0.8 }}
             className="text-4xl sm:text-6xl lg:text-7xl text-neutral-900 tracking-[-0.025em] leading-[1.05] font-medium"
           >
-            Operational intelligence systems{" "}
+            Built for{" "}
             <em className="font-serif italic font-normal text-neutral-500">
-              designed for modern organizations.
+              the enterprise.
             </em>
           </motion.h1>
           <motion.div
@@ -337,10 +323,9 @@ const Enterprise: FC = () => {
                     fill
                     sizes="(max-width: 640px) 100vw, 50vw"
                     aria-hidden
-                    className="absolute inset-0 -z-10 object-cover opacity-60 group-hover:opacity-70 transition-opacity"
+                    className="absolute inset-0 -z-10 object-cover"
                   />
-                  <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-br from-white/85 via-white/70 to-white/85" />
-                  <div className="w-11 h-11 rounded-xl bg-white/70 backdrop-blur-sm ring-1 ring-white/60 flex items-center justify-center mb-6">
+                  <div className="w-11 h-11 rounded-xl bg-white/80 backdrop-blur-sm ring-1 ring-white/70 flex items-center justify-center mb-6">
                     <Icon className="w-5 h-5 text-neutral-800" strokeWidth={1.5} />
                   </div>
                   <h3 className="text-xl sm:text-2xl text-neutral-900 tracking-[-0.015em] font-medium mb-2 leading-snug">
