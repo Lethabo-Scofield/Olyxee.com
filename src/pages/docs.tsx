@@ -1,5 +1,6 @@
 import { useState, FC, useCallback } from "react";
 import { useRouter } from "next/router";
+import Image from "next/image";
 import SEO from "../components/SEO";
 import DocsLayout from "../layouts/DocsLayout";
 import Header from '../components/header';
@@ -130,6 +131,7 @@ export default Docs;
 type ProductCard = {
   icon: typeof Workflow;
   name: string;
+  wordmark?: { src: string; alt: string; width: number; height: number };
   tagline: string;
   description: string;
   status: "available" | "private" | "early-access";
@@ -165,6 +167,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
     {
       icon: Wallet,
       name: "Addup",
+      wordmark: { src: "/Logo/Addup_Logo.png", alt: "Addup", width: 1024, height: 416 },
       tagline: "Reconciliation and financial validation",
       description:
         "Documentation for reconciliation workflows, financial data validation, matching logic, exception handling, and reporting.",
@@ -283,16 +286,31 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
                 <div className="absolute inset-0 bg-white/85 backdrop-blur-[2px]" aria-hidden />
                 <div className="relative flex flex-col h-full">
                   <div className="flex items-start justify-between gap-3 mb-5">
-                    <div className="w-10 h-10 rounded-xl bg-white border border-neutral-200 flex items-center justify-center flex-shrink-0">
-                      <Icon className="w-4.5 h-4.5 text-neutral-700" strokeWidth={1.5} />
-                    </div>
+                    {product.wordmark ? (
+                      <div className="h-9 sm:h-10 flex items-center">
+                        <Image
+                          src={product.wordmark.src}
+                          alt={product.wordmark.alt}
+                          width={product.wordmark.width}
+                          height={product.wordmark.height}
+                          className="h-full w-auto object-contain"
+                          style={{ height: "100%", width: "auto" }}
+                        />
+                      </div>
+                    ) : (
+                      <div className="w-10 h-10 rounded-xl bg-white border border-neutral-200 flex items-center justify-center flex-shrink-0">
+                        <Icon className="w-4.5 h-4.5 text-neutral-700" strokeWidth={1.5} />
+                      </div>
+                    )}
                     <span className={`text-[10px] font-mono uppercase tracking-[0.18em] px-2 py-1 rounded-full border ${status.cls}`}>
                       {status.label}
                     </span>
                   </div>
-                  <h3 className="text-[17px] font-semibold text-neutral-900 mb-1 tracking-tight">
-                    {product.name}
-                  </h3>
+                  {!product.wordmark && (
+                    <h3 className="text-[17px] font-semibold text-neutral-900 mb-1 tracking-tight">
+                      {product.name}
+                    </h3>
+                  )}
                   <p className="text-[12px] font-mono uppercase tracking-[0.18em] text-neutral-500 mb-3">
                     {product.tagline}
                   </p>
