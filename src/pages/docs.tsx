@@ -1,6 +1,7 @@
 import { useState, FC, useCallback } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import Link from "next/link";
 import SEO from "../components/SEO";
 import DocsLayout from "../layouts/DocsLayout";
 import Header from '../components/header';
@@ -137,6 +138,7 @@ type ProductCard = {
   status: "available" | "private" | "early-access";
   action:
     | { kind: "external"; href: string; label: string }
+    | { kind: "internal"; href: string; label: string }
     | { kind: "internal-tab"; tab: string; page: string; label: string }
     | { kind: "request"; label: string };
   bg: string;
@@ -192,7 +194,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       description:
         "Documentation for organizational cognition, memory infrastructure, workflow context, coordination, and long-running enterprise intelligence.",
       status: "private",
-      action: { kind: "request", label: "Request access" },
+      action: { kind: "internal", href: "/research/cortex", label: "Learn about Cortex" },
       bg: "/images/gradient-abstract-blue.webp",
     },
     {
@@ -343,6 +345,18 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
                 >
                   {commonContent}
                 </a>
+              );
+            }
+
+            if (product.action.kind === "internal") {
+              return (
+                <Link
+                  key={product.name}
+                  href={product.action.href}
+                  className={className}
+                >
+                  {commonContent}
+                </Link>
               );
             }
 
