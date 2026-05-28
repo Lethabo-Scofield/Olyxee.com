@@ -23,25 +23,6 @@ const OBJECTIVES = [
   "Reach a thousand operating teams running on Olyxee by 2027.",
 ];
 
-const VALUES = [
-  {
-    name: "Verified by default",
-    text: "Every output, action, and decision is logged and reviewable. Trust is earned by being checkable.",
-  },
-  {
-    name: "Outcomes over noise",
-    text: "We measure ourselves by what runs in the background, not by how loudly we announce it.",
-  },
-  {
-    name: "Narrow, then deep",
-    text: "We earn the right to do more by making the first thing work end-to-end.",
-  },
-  {
-    name: "Build for operators",
-    text: "Real users, real workflows, real consequences. We design for the people on the hook.",
-  },
-];
-
 const APPROACH = [
   {
     icon: Compass,
@@ -131,7 +112,7 @@ const About: FC = () => {
             className="relative overflow-hidden rounded-3xl ring-1 ring-neutral-900/10 shadow-2xl shadow-neutral-900/10 bg-neutral-950 aspect-[4/5] sm:aspect-[16/10] lg:aspect-[21/9]"
           >
             <Image
-              src="/images/olyxee-team-2026.png"
+              src="/images/olyxee-team-banner.png"
               alt="The Olyxee team in their Johannesburg office"
               fill
               priority
@@ -385,48 +366,6 @@ const About: FC = () => {
                 </span>
               </figcaption>
             </motion.figure>
-          </div>
-        </div>
-      </section>
-
-      {/* === VALUES === */}
-      <section className="py-20 sm:py-28 border-t border-neutral-200/70">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            custom={0}
-            variants={fadeUp}
-            className="mb-12 sm:mb-16 max-w-3xl"
-          >
-            <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
-              Values
-            </p>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[2.75rem] text-neutral-900 tracking-tight leading-[1.1]">
-              How we behave when no one&apos;s watching.
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-10 sm:gap-y-14">
-            {VALUES.map((item, idx) => (
-              <motion.div
-                key={item.name}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-                custom={idx}
-                variants={fadeUp}
-                className="border-t border-neutral-200 pt-6"
-              >
-                <h3 className="font-serif text-xl sm:text-[1.4rem] text-neutral-900 mb-3 leading-snug tracking-tight">
-                  {item.name}
-                </h3>
-                <p className="text-sm sm:text-[15px] text-neutral-500 leading-relaxed font-light">
-                  {item.text}
-                </p>
-              </motion.div>
-            ))}
           </div>
         </div>
       </section>
