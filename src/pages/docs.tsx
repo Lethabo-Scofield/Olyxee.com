@@ -154,38 +154,45 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
   const products: ProductRow[] = [
     {
       name: "Ordo",
-      description: "Autonomous workflow execution, job handling, integrations, and operational automation across your stack.",
+      description: "Business workflow execution system. Connects AI reasoning with business systems, APIs, databases, and approvals to execute operational processes end-to-end.",
       status: "early-access",
       bg: "/images/gradient-blue-pink.webp",
       action: { kind: "internal-tab", tab: "ordo", page: "ordo-overview", label: "Open Ordo docs" },
     },
     {
       name: "Addup",
-      description: "Reconciliation workflows, financial data validation, matching logic, exception handling, and reporting.",
+      description: "Financial reconciliation and data integrity engine. Compares, validates, and reconciles records such as bank statements, ledgers, and accounting data.",
       status: "available",
       bg: "/images/gradient-pastel.webp",
       action: { kind: "external", href: "https://addup.olyxee.com", label: "Visit Addup" },
     },
     {
+      name: "Courier Loop",
+      description: "Logistics communication and tracking infrastructure. Provides delivery status updates, tracking links, and shipment communication across SMS, web, and system integrations.",
+      status: "available",
+      bg: "/images/gradient-yellow-green.webp",
+      action: { kind: "external", href: "https://logistics.olyxee.com/", label: "Visit Courier Loop" },
+    },
+    {
       name: "Olyxee Document Integrity",
-      description: "Document verification, integrity checks, extraction validation, and API-based verification workflows.",
+      description: "Document integrity and validation solution. Validates documents, extracts structured information, detects inconsistencies, and supports trusted decision-making.",
       status: "private",
       bg: "/images/gradient-orange-purple.webp",
       action: { kind: "internal", href: "/document-integrity", label: "View ODI status" },
     },
     {
-      name: "Olyxee Cortex",
-      description: "Organizational cognition, memory infrastructure, workflow context, coordination, and long-running enterprise intelligence.",
+      name: "Togent",
+      description: "AI integration and agent tooling layer. Connects AI systems, business tools, workflows, and enterprise environments through reliable connectors.",
       status: "private",
       bg: "/images/gradient-abstract-blue.webp",
-      action: { kind: "internal", href: "/research/cortex", label: "Learn about Cortex" },
+      action: { kind: "internal", href: "/products", label: "Learn about Togent" },
     },
     {
-      name: "Courier Loop",
-      description: "Logistics operations, delivery workflows, dispatch coordination, and forthcoming logistics APIs.",
+      name: "Olyxee Research",
+      description: "The research division behind Olyxee's reliable AI systems. Focused on AI accuracy, document corruption, financial integrity, data validation, and trustworthy enterprise AI.",
       status: "available",
-      bg: "/images/gradient-yellow-green.webp",
-      action: { kind: "external", href: "https://logistics.olyxee.com/", label: "Visit Courier Loop" },
+      bg: "/images/gradient-purple.webp",
+      action: { kind: "internal", href: "/research", label: "View research" },
     },
   ];
 
@@ -283,7 +290,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
           Olyxee documentation
         </h1>
         <p className="text-neutral-600 text-[17px] leading-[1.55]">
-          Technical resources for every Olyxee product. Guides, API references, and integration notes to help your team build, integrate, and operate on top of Olyxee.
+          Olyxee provides AI research and infrastructure for enterprises that need reliable execution across data, documents, workflows, and business systems. Our products are designed to help organizations integrate AI into real operational environments where accuracy, auditability, and business value matter.
         </p>
       </div>
 

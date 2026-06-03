@@ -1,0 +1,1 @@
+- [Docs layout missing from import](docs-layout-missing-import.md) — replit.md references files (e.g. src/layouts/DocsLayout) absent on disk; verify before trusting.

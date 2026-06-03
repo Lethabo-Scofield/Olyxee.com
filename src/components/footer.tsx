@@ -26,53 +26,36 @@ const HuggingFaceIcon = (props: SVGProps<SVGSVGElement>) => (
 );
 
 const footerData = {
+  tagline: "AI research and infrastructure for reliable enterprise execution.",
   columns: [
+    {
+      title: "Company",
+      links: [
+        { name: "About Olyxee", href: "/about" },
+        { name: "Olyxee Research", href: "/research" },
+        { name: "Mission", href: "/about#mission" },
+        { name: "Contact", href: "/contact" },
+      ],
+    },
     {
       title: "Products",
       links: [
         { name: "Ordo", href: "https://ordo.olyxee.com", external: true },
         { name: "Addup", href: "https://addup.olyxee.com", external: true },
-      ],
-    },
-    {
-      title: "Solutions",
-      links: [
         { name: "Courier Loop", href: "https://logistics.olyxee.com/", external: true },
-        { name: "Document Integrity", href: "/document-integrity" },
+        { name: "Olyxee Doc Integrity", href: "/document-integrity" },
+        { name: "Togent", href: "/products" },
       ],
     },
     {
-      title: "Research & Infrastructure",
+      title: "Focus Areas",
       links: [
-        { name: "Olyxee Cortex", href: "/research/cortex" },
-        { name: "Papers", href: "/research#papers" },
-        { name: "Technical Reports", href: "/research#technical-reports" },
-      ],
-    },
-    {
-      title: "Resources",
-      links: [
-        { name: "Documentation", href: "/docs" },
-        { name: "API Reference", href: "/docs#api-reference" },
-      ],
-    },
-    {
-      title: "Company",
-      links: [
-        { name: "About", href: "/about" },
-        { name: "Careers", href: "/careers" },
-        { name: "Stories", href: "/stories" },
-        { name: "Contact", href: "/contact" },
-      ],
-    },
-    {
-      title: "Terms & Policies",
-      links: [
-        { name: "Privacy Policy", href: "/privacy" },
-        { name: "Terms of Service", href: "/terms" },
-        { name: "Security", href: "/security" },
-        { name: "Compliance", href: "/compliance" },
-        { name: "Cookie Policy", href: "/cookie-policy" },
+        { name: "Enterprise AI Infrastructure", href: "/about" },
+        { name: "Workflow Execution", href: "https://ordo.olyxee.com", external: true },
+        { name: "Financial Integrity", href: "https://addup.olyxee.com", external: true },
+        { name: "Document Intelligence", href: "/document-integrity" },
+        { name: "Logistics Intelligence", href: "https://logistics.olyxee.com/", external: true },
+        { name: "AI Integration", href: "/docs" },
       ],
     },
   ],
@@ -118,7 +101,17 @@ export default function Footer({ variant = "light" }: FooterProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
         {/* === Link columns === */}
         <div className="pt-16 sm:pt-20 pb-12 sm:pb-16">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-6 sm:gap-x-8 gap-y-12">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-x-6 sm:gap-x-8 gap-y-12 mb-12">
+            <div className="lg:col-span-1">
+              <Link href="/" className="inline-flex items-center gap-2 mb-5">
+                <Image src="/Logo/Olyxee_Logo.png" alt="Olyxee" width={24} height={24} className="w-6 h-6" />
+                <span className={`text-base font-medium ${styles.link}`}>Olyxee</span>
+              </Link>
+              <p className={`text-sm ${styles.copyright} max-w-xs leading-relaxed`}>
+                {footerData.tagline}
+              </p>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 sm:gap-x-8 gap-y-12 lg:col-span-3">
             {footerData.columns.map((column) => (
               <div key={column.title}>
                 <h3 className={`text-sm font-medium ${styles.columnTitle} mb-5`}>
@@ -159,6 +152,7 @@ export default function Footer({ variant = "light" }: FooterProps) {
                 </ul>
               </div>
             ))}
+            </div>
           </div>
         </div>
 

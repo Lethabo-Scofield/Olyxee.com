@@ -157,7 +157,7 @@ const About: FC = () => {
         </section>
 
         {/* === MANIFESTO: Mission / Vision / Objectives === */}
-        <section className="relative bg-white overflow-hidden border-t border-neutral-200/70">
+        <section id="mission" className="relative bg-white overflow-hidden border-t border-neutral-200/70 scroll-mt-24">
           <div className="relative max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-24 sm:py-36">
             <motion.p
               initial={{ opacity: 0, y: 12 }}

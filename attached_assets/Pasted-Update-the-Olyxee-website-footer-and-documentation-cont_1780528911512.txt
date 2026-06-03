@@ -1,0 +1,143 @@
+Update the Olyxee website footer and documentation content to reflect the correct company positioning and product structure.
+
+Company positioning:
+Olyxee is an AI research and infrastructure company building reliable AI systems for enterprise operations.
+
+Do not describe Olyxee as a chatbot company, model-building company, or generic automation company. Olyxee is not trying to compete with foundation model companies like OpenAI, Anthropic, or Google DeepMind. Instead, Olyxee builds the infrastructure layer that helps enterprises connect AI models to real business data, documents, workflows, decisions, and execution.
+
+Core description:
+Olyxee builds AI infrastructure that helps enterprises turn data, documents, and workflows into reliable business execution.
+
+Key themes to reflect:
+- Enterprise AI infrastructure
+- Reliable business execution
+- Data and document intelligence
+- Workflow automation
+- AI integration across business systems
+- Accuracy, auditability, and operational trust
+- Research-backed AI systems
+
+Products and solutions:
+
+1. Ordo
+Description:
+Ordo is Olyxee’s business workflow execution system. It helps enterprises execute processes end-to-end by connecting AI reasoning with business systems, APIs, databases, approvals, and operational workflows.
+
+Use cases:
+- Workflow automation
+- Business process execution
+- Human-in-the-loop approvals
+- API and system orchestration
+- Operational decision execution
+
+2. Addup
+Description:
+Addup is Olyxee’s financial reconciliation and data integrity engine. It helps finance teams compare, validate, and reconcile financial records such as bank statements, ledgers, and accounting data.
+
+Use cases:
+- Bank and ledger reconciliation
+- Financial data validation
+- Duplicate, mismatch, and anomaly detection
+- Accounting integrity checks
+- Audit support
+
+3. Courier Loop
+Description:
+Courier Loop is Olyxee’s logistics communication and tracking infrastructure. It helps logistics companies provide delivery status updates, tracking links, and shipment communication through SMS, web pages, and system integrations.
+
+Use cases:
+- Delivery status updates
+- Customer shipment communication
+- Tracking pages
+- Logistics notifications
+- Order visibility
+
+4. Olyxee Doc Integrity, also called ODI
+Description:
+ODI is Olyxee’s document integrity and validation solution. It helps organizations validate documents, extract structured information, detect inconsistencies, and support trusted decision-making from documents.
+
+Use cases:
+- Document validation
+- Certificate checks
+- Structured data extraction
+- Inconsistency detection
+- Compliance support
+
+5. Togent
+Description:
+Togent is Olyxee’s AI integration and agent tooling layer. It supports the connection between AI systems, business tools, workflows, and enterprise environments.
+
+Use cases:
+- AI system integration
+- Agent tooling
+- Enterprise AI connectors
+- Workflow intelligence
+- Internal AI infrastructure
+
+6. Olyxee Research
+Description:
+Olyxee Research is the research division behind Olyxee’s approach to reliable AI systems. It focuses on AI accuracy, document corruption, financial integrity, data validation, and trustworthy enterprise AI.
+
+Use cases:
+- AI reliability research
+- Financial AI integrity
+- Document corruption detection
+- Benchmarking AI systems
+- Research-backed product development
+
+Footer update instructions:
+Update the footer so it clearly shows Olyxee’s main product and research structure.
+
+Footer sections should include:
+
+Company:
+- About Olyxee
+- Olyxee Research
+- Mission
+- Contact
+
+Products:
+- Ordo
+- Addup
+- Courier Loop
+- Olyxee Doc Integrity
+- Togent
+
+Focus Areas:
+- Enterprise AI Infrastructure
+- Workflow Execution
+- Financial Integrity
+- Document Intelligence
+- Logistics Intelligence
+- AI Integration
+
+Footer tagline:
+AI research and infrastructure for reliable enterprise execution.
+
+Documentation update instructions:
+Update the documentation introduction to explain that Olyxee provides the infrastructure layer between AI models and real enterprise operations.
+
+Documentation intro:
+Olyxee provides AI research and infrastructure for enterprises that need reliable execution across data, documents, workflows, and business systems. Our products are designed to help organizations integrate AI into real operational environments where accuracy, auditability, and business value matter.
+
+Documentation structure:
+- Overview
+- Products
+- Architecture
+- Integration Layer
+- Data and Document Integrity
+- Workflow Execution
+- Research
+- Contact / Support
+
+Tone:
+- Professional
+- Clear
+- Enterprise-focused
+- No hype
+- No emojis
+- No exaggerated claims
+- Avoid saying “revolutionary”, “game-changing”, or similar marketing language
+
+Make sure all footer and documentation copy stays consistent with this positioning:
+Olyxee builds AI infrastructure for enterprises, focused on reliable execution, integration, validation, and research-backed systems.
