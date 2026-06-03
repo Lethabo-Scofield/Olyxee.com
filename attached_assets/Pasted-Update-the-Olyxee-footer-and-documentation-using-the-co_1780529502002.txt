@@ -1,0 +1,106 @@
+Update the Olyxee footer and documentation using the correct difference between products and solutions.
+
+Do not redesign the footer. Keep the existing footer layout and only update the names, grouping, descriptions, and documentation wording.
+
+Important rule:
+Products are named Olyxee systems or platforms.
+Solutions are packaged use cases or business outcomes delivered using Olyxee products.
+
+Use this structure:
+
+Products
+
+* Ordo
+* Addup
+* Togent
+
+Solutions
+
+* Courier Loop
+* Document Integrity
+* Enterprise Automation
+
+Research & Infrastructure
+
+* Olyxee Research
+* Olyxee Cortex
+* Papers
+* Technical Reports
+
+Resources
+
+* Documentation
+* API Reference
+
+Company
+
+* About
+* Careers
+* Stories
+* Contact
+
+Terms & Policies
+
+* Privacy Policy
+* Terms of Service
+* Security
+* Compliance
+* Cookie Policy
+
+Product descriptions:
+
+Ordo:
+Ordo is Olyxee’s workflow execution system for enterprise operations. It connects AI reasoning with business systems, APIs, databases, approvals, business rules, and operational workflows.
+
+Addup:
+Addup is Olyxee’s financial reconciliation and data integrity engine. It helps finance teams compare, validate, and reconcile bank statements, ledgers, and accounting records.
+
+Togent:
+Togent is Olyxee’s AI integration and agent tooling layer. It helps connect AI systems with business tools, APIs, workflows, documents, and enterprise environments.
+
+Solution descriptions:
+
+Courier Loop:
+Courier Loop is a logistics communication and tracking solution. It helps logistics teams send delivery updates, tracking links, and shipment status messages through SMS, web pages, and system integrations.
+
+Document Integrity:
+Document Integrity is a document validation solution. It helps organizations extract structured information, validate documents, detect inconsistencies, and support trusted decisions from business documents.
+
+Enterprise Automation:
+Enterprise Automation is a business process automation solution. It helps organizations automate workflows, approvals, business rules, data movement, and process execution across systems.
+
+Research & Infrastructure descriptions:
+
+Olyxee Research:
+Olyxee Research focuses on reliable AI systems, financial integrity, document corruption, enterprise AI reliability, benchmarks, and applied AI infrastructure.
+
+Olyxee Cortex:
+Olyxee Cortex is Olyxee’s internal intelligence and infrastructure layer. It supports reasoning, retrieval, document intelligence, workflow intelligence, and trusted AI execution across Olyxee products and solutions.
+
+Papers:
+Research papers from Olyxee Research.
+
+Technical Reports:
+Engineering reports, architecture notes, benchmarks, applied research, and system design documents.
+
+Company positioning:
+Olyxee is an AI research and infrastructure company building reliable AI systems for enterprise operations.
+
+Core description:
+Olyxee builds AI infrastructure that helps enterprises turn data, documents, and workflows into reliable business execution.
+
+Footer tagline:
+AI research and infrastructure for reliable enterprise execution.
+
+Documentation intro:
+Olyxee provides AI research and infrastructure for enterprises that need reliable execution across data, documents, workflows, and business systems. Our products provide the core systems, while our solutions package those systems around specific enterprise problems such as logistics, document integrity, and automation.
+
+Rules:
+
+* Do not remove existing footer sections.
+* Do not create a new footer layout.
+* Keep Products limited to named Olyxee systems.
+* Keep Solutions focused on business use cases and packaged outcomes.
+* Keep the tone professional, clear, and enterprise-focused.
+* Avoid hype words like “revolutionary”, “game-changing”, or “world-class”.
+* Do not use emojis.
