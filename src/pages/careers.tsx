@@ -28,7 +28,7 @@ function HeroSection() {
             fill
             priority
             sizes="100vw"
-            className="object-contain object-center"
+            className="object-cover object-top"
           />
         </motion.div>
 
