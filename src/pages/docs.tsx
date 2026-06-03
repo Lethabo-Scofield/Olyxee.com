@@ -154,45 +154,79 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
   const products: ProductRow[] = [
     {
       name: "Ordo",
-      description: "Business workflow execution system. Connects AI reasoning with business systems, APIs, databases, and approvals to execute operational processes end-to-end.",
+      description: "Ordo is Olyxee's workflow execution system for enterprise operations. It connects AI reasoning with business systems, APIs, databases, approvals, business rules, and operational workflows.",
       status: "early-access",
       bg: "/images/gradient-blue-pink.webp",
       action: { kind: "internal-tab", tab: "ordo", page: "ordo-overview", label: "Open Ordo docs" },
     },
     {
       name: "Addup",
-      description: "Financial reconciliation and data integrity engine. Compares, validates, and reconciles records such as bank statements, ledgers, and accounting data.",
+      description: "Addup is Olyxee's financial reconciliation and data integrity engine. It helps finance teams compare, validate, and reconcile bank statements, ledgers, and accounting records.",
       status: "available",
       bg: "/images/gradient-pastel.webp",
       action: { kind: "external", href: "https://addup.olyxee.com", label: "Visit Addup" },
     },
     {
+      name: "Togent",
+      description: "Togent is Olyxee's AI integration and agent tooling layer. It helps connect AI systems with business tools, APIs, workflows, documents, and enterprise environments.",
+      status: "private",
+      bg: "/images/gradient-abstract-blue.webp",
+      action: { kind: "internal", href: "/products", label: "Learn about Togent" },
+    },
+  ];
+
+  const solutions: ProductRow[] = [
+    {
       name: "Courier Loop",
-      description: "Logistics communication and tracking infrastructure. Provides delivery status updates, tracking links, and shipment communication across SMS, web, and system integrations.",
+      description: "Courier Loop is a logistics communication and tracking solution. It helps logistics teams send delivery updates, tracking links, and shipment status messages through SMS, web pages, and system integrations.",
       status: "available",
       bg: "/images/gradient-yellow-green.webp",
       action: { kind: "external", href: "https://logistics.olyxee.com/", label: "Visit Courier Loop" },
     },
     {
-      name: "Olyxee Document Integrity",
-      description: "Document integrity and validation solution. Validates documents, extracts structured information, detects inconsistencies, and supports trusted decision-making.",
+      name: "Document Integrity",
+      description: "Document Integrity is a document validation solution. It helps organizations extract structured information, validate documents, detect inconsistencies, and support trusted decisions from business documents.",
       status: "private",
       bg: "/images/gradient-orange-purple.webp",
-      action: { kind: "internal", href: "/document-integrity", label: "View ODI status" },
+      action: { kind: "internal", href: "/document-integrity", label: "View status" },
     },
     {
-      name: "Togent",
-      description: "AI integration and agent tooling layer. Connects AI systems, business tools, workflows, and enterprise environments through reliable connectors.",
+      name: "Enterprise Automation",
+      description: "Enterprise Automation is a business process automation solution. It helps organizations automate workflows, approvals, business rules, data movement, and process execution across systems.",
       status: "private",
-      bg: "/images/gradient-abstract-blue.webp",
-      action: { kind: "internal", href: "/products", label: "Learn about Togent" },
+      bg: "/images/gradient-blue.webp",
+      action: { kind: "internal", href: "/enterprise", label: "Learn more" },
     },
+  ];
+
+  const researchInfra: ProductRow[] = [
     {
       name: "Olyxee Research",
-      description: "The research division behind Olyxee's reliable AI systems. Focused on AI accuracy, document corruption, financial integrity, data validation, and trustworthy enterprise AI.",
+      description: "Olyxee Research focuses on reliable AI systems, financial integrity, document corruption, enterprise AI reliability, benchmarks, and applied AI infrastructure.",
       status: "available",
       bg: "/images/gradient-purple.webp",
       action: { kind: "internal", href: "/research", label: "View research" },
+    },
+    {
+      name: "Olyxee Cortex",
+      description: "Olyxee Cortex is Olyxee's internal intelligence and infrastructure layer. It supports reasoning, retrieval, document intelligence, workflow intelligence, and trusted AI execution across Olyxee products and solutions.",
+      status: "private",
+      bg: "/images/gradient-pink-cyan.webp",
+      action: { kind: "internal", href: "/research/cortex", label: "View Cortex" },
+    },
+    {
+      name: "Papers",
+      description: "Research papers from Olyxee Research.",
+      status: "available",
+      bg: "/images/gradient-yellow-blue.webp",
+      action: { kind: "internal", href: "/research#papers", label: "Read papers" },
+    },
+    {
+      name: "Technical Reports",
+      description: "Engineering reports, architecture notes, benchmarks, applied research, and system design documents.",
+      status: "available",
+      bg: "/images/gradient-orange-pink.webp",
+      action: { kind: "internal", href: "/research", label: "Read reports" },
     },
   ];
 
@@ -290,7 +324,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
           Olyxee documentation
         </h1>
         <p className="text-neutral-600 text-[17px] leading-[1.55]">
-          Olyxee provides AI research and infrastructure for enterprises that need reliable execution across data, documents, workflows, and business systems. Our products are designed to help organizations integrate AI into real operational environments where accuracy, auditability, and business value matter.
+          Olyxee provides AI research and infrastructure for enterprises that need reliable execution across data, documents, workflows, and business systems. Our products provide the core systems, while our solutions package those systems around specific enterprise problems such as logistics, document integrity, and automation.
         </p>
       </div>
 
@@ -310,6 +344,26 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
         </h2>
         <div className="border-t border-neutral-100">
           {products.map(renderRow)}
+        </div>
+      </section>
+
+      {/* Solutions */}
+      <section className="mb-16">
+        <h2 className="text-[13px] font-semibold text-neutral-900 uppercase tracking-wider mb-3">
+          Solutions
+        </h2>
+        <div className="border-t border-neutral-100">
+          {solutions.map(renderRow)}
+        </div>
+      </section>
+
+      {/* Research & Infrastructure */}
+      <section className="mb-16">
+        <h2 className="text-[13px] font-semibold text-neutral-900 uppercase tracking-wider mb-3">
+          Research & Infrastructure
+        </h2>
+        <div className="border-t border-neutral-100">
+          {researchInfra.map(renderRow)}
         </div>
       </section>
 

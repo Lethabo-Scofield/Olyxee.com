@@ -66,7 +66,7 @@ const Research: FC = () => {
       </section>
 
       {/* === PAPERS LIST === */}
-      <section className="px-4 sm:px-6 pt-10 sm:pt-14 pb-20 sm:pb-28">
+      <section id="papers" className="scroll-mt-24 px-4 sm:px-6 pt-10 sm:pt-14 pb-20 sm:pb-28">
         <div className="max-w-5xl mx-auto">
           <ul className="group/list divide-y divide-neutral-200/80">
             {papers.map((paper) => (
