@@ -683,16 +683,16 @@ const ProductsPage: FC = () => {
             >
               <div className="flex items-center gap-3 mb-6">
                 <span className="font-serif text-3xl sm:text-4xl text-neutral-900 tracking-tight">Togent</span>
-                <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.25em]">Tokens</span>
+                <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.25em]">Cost control</span>
                 <span className="px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 text-[10px] font-mono uppercase tracking-[0.18em]">Coming soon</span>
               </div>
 
               <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-6">
-                Make every token <em className="text-neutral-500 not-italic">count.</em>
+                Stop paying for the same <em className="text-neutral-500 not-italic">context twice.</em>
               </h2>
 
               <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-8 max-w-md">
-                Togent helps you understand, optimize, and control how AI models spend tokens, from prompt to response, so you can ship reliable products without runaway costs.
+                Togent is cost control and context optimization for AI agents. It tracks, stores, compresses, and reuses context across tools like Cursor, Claude, Codex, and your own copilots, so they stop repeating expensive work and your token bills stay under control.
               </p>
 
               <div className="flex flex-wrap items-center gap-4">

@@ -168,7 +168,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
     },
     {
       name: "Togent",
-      description: "Togent is Olyxee's AI integration and agent tooling layer. It helps connect AI systems with business tools, APIs, workflows, documents, and enterprise environments.",
+      description: "Togent is Olyxee's cost control and context optimization product for AI agents. It tracks, stores, compresses, and reuses context across tools like Cursor, Claude, Codex, and internal copilots so they stop repeating expensive work and reduce unnecessary token usage.",
       status: "private",
       bg: "/images/gradient-abstract-blue.webp",
       action: { kind: "internal", href: "/products", label: "Learn about Togent" },
