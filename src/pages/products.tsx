@@ -305,24 +305,7 @@ const ProductsPage: FC = () => {
       {/* === HERO - heading + image card === */}
       <section className="relative pt-40 sm:pt-48 pb-20 sm:pb-28 px-4 sm:px-6 bg-white">
         <div className="relative z-10 max-w-6xl mx-auto">
-          <div className="text-center mb-12 sm:mb-16">
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-[11px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-8"
-            >
-              Products
-            </motion.p>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.05 }}
-              className="font-serif text-[2.25rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] text-neutral-900 tracking-tight leading-[1.05]"
-            >
-              AI infrastructure, <em className="text-neutral-400 not-italic">built for the enterprise.</em>
-            </motion.h1>
-          </div>
+          <h1 className="sr-only">AI infrastructure, built for the enterprise.</h1>
 
           <motion.div
             initial={{ opacity: 0, y: 30, scale: 0.98 }}
@@ -331,8 +314,8 @@ const ProductsPage: FC = () => {
             className="relative rounded-3xl overflow-hidden border border-neutral-200/80 shadow-2xl shadow-neutral-300/40 aspect-[16/9]"
           >
             <Image
-              src="/images/products-hero-accelerator.png"
-              alt="Enterprise AI Accelerator by Olyxee"
+              src="/images/products-hero-enterprise.png"
+              alt="AI infrastructure, built for the enterprise. by Olyxee"
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 1152px"
