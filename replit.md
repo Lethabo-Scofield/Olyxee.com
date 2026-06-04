@@ -73,8 +73,9 @@ Desktop CTA: "Get in Touch"
 - No fake stats, testimonials, or partner logos — Olyxee is a new company
 
 ## Routing
-- **App Router** (`src/app/`): `/`, `/products/ordo`, `/products/nrn`
-- **Pages Router** (`src/pages/`): `/products`, `/about`, `/lab`, `/research`, `/technology`, `/developers`, `/safety`, `/use-cases`, `/careers`, `/blog`, `/contact`, `/docs`, `/community`, `/support`
+- **App Router** (`src/app/`): `/`, `/products/ordo`, `/admin`, `/verify`, `/stories/accounting`, `/stories/automation`, `/stories/freightshift`. (Note: there is NO `/products/nrn` route.)
+- **Pages Router** (`src/pages/`): `/products`, `/about`, `/lab`, `/research`, `/research/cortex`, `/technology`, `/developers`, `/safety`, `/use-cases`, `/careers`, `/careers/internships`, `/careers/[slug]`, `/blog`, `/contact`, `/docs`, `/community`, `/support`, `/enterprise`, `/enterprise/robotics`, `/solutions/logistics`, `/document-integrity`, `/case-studies`, `/stories`, `/signup`, `/brand`, `/status`, `/security`, `/compliance`, `/privacy`, `/terms`, `/cookie-policy`
+- `/verify` has a `src/app/verify/layout.tsx` exporting `metadata` with `robots: { index: false }` (also disallowed in robots.txt)
 - Global CSS is imported via `src/pages/_app.tsx` for Pages Router routes
 - KaTeX CSS is imported in `src/app/layout.tsx` for App Router routes
 
@@ -85,11 +86,11 @@ Desktop CTA: "Get in Touch"
 - Community hero image: `public/images/Community presentation.png`
 
 ## Key Pages
-- **Homepage** (`src/app/page.tsx`): Company-focused landing page. Cinematic full-viewport hero with parallax scrolling. Sections: LogoStrip (focus areas), MissionSection (who we are + values), ResearchAreas (dark section: verification, safety, monitoring), ApproachSection (bento grid: AI safety infrastructure, hallucination research, behavioral evaluation, enterprise/regulated), CTASection (light gradient). No fake stats, testimonials, or partner logos.
-- **Products** (`src/pages/products.tsx`): Dedicated products page with hero and Ordo "Coming Soon" section with terminal mockup and verification score chart.
+- **Homepage** (`src/app/page.tsx`): Company-focused landing page ("use client"). Cinematic full-viewport hero with parallax scrolling and a "Try Courier Loop" button (links to `https://logistics.olyxee.com/`) overlaid on the demo video. Section order: HeroSection, LogoStrip, ResearchAreas, ImageShowcase, CourierLoopSection (Olyxee Logistics / Courier Loop, order-status updates), TogentSection (cost control / context optimization, "Coming Soon"), StoriesSection, CTASection. `OrdoSection` and `IntegrationSection` components are retained in the file but NOT rendered in the main flow (kept for reuse). No fake stats, testimonials, or partner logos.
+- **Products** (`src/pages/products.tsx`): Dedicated products page with hero, Courier Loop / logistics section, Togent section, and Ordo "Coming Soon" section with terminal mockup and verification score chart.
 - **About** (`src/pages/about.tsx`): Mission, problem statement, approach, philosophy
 - **Olyxee Lab** (`src/pages/lab.tsx`): Research division — 6 research areas, recent publications, approach section, LinkedIn CTA
-- **Products**: Ordo (verification engine with animated canvas network), NRN (interpretable AI), WAVE (core platform)
+- **Product lineup**: Addup (addup.olyxee.com), Courier Loop / Olyxee Logistics (logistics.olyxee.com, order-status updates), Togent (cost control & context optimization for AI agents — Cursor/Claude/Codex/copilots, "Coming Soon"), Ordo (verification engine, "Coming Soon"), Cortex (research, `/research/cortex`)
 - **Docs** (`src/pages/docs.tsx`): OpenAI-style documentation with centered tab navbar. Tabs: Home, API (Overview, Quickstart, API Keys, Supported Platforms, REST API, Python SDK, CLI, Error Handling, Changelog, Rate Limits), Ordo (What is Ordo, Chatbots, RAG Pipelines, Agents, Testing & Verification, Monitoring, Early Access), Guides (Supported Platforms, Testing Strategies, Configuration)
 - **Careers** (`src/pages/careers.tsx`): Internship listings with clickable apply modal that fires mailto:scofieldx911@gmail.com
 - **Community** (`src/pages/community.tsx`): Hero banner image, channel cards with animated stats
@@ -101,11 +102,11 @@ Desktop CTA: "Get in Touch"
 - **Layout metadata** (`src/app/layout.tsx`): Full Next.js Metadata export with title template ("Olyxee | Research and Infrastructure for AI"), description, 18 keywords, OG, Twitter cards, robots directives, and icons
 - **Pages Router SEO** (`src/components/SEO.tsx`): Reusable component with `<Head>` — title, description, canonical, OG (with locale and image alt), Twitter. Supports optional `jsonLd` prop for page-specific structured data. Used on all Pages Router pages.
 - **Pages Router defaults** (`src/pages/_app.tsx`): Auto-canonical URLs, robots meta, og:site_name, twitter:card/creator fallbacks
-- **Product metadata**: `src/app/products/ordo/layout.tsx` and `nrn/layout.tsx` export page-specific Metadata
+- **Product metadata**: `src/app/products/ordo/layout.tsx` exports page-specific Metadata (Ordo). There is no NRN layout/route.
 - **JSON-LD**: Organization + WebSite structured data in layout.tsx; Organization on homepage; SoftwareApplication (Ordo) on products page
 - **OG Image**: Dynamic edge-rendered OG image at `/api/og` (1200×630)
-- **robots.txt**: `public/robots.txt` — allows all crawlers, disallows /api/ and /_next/, references sitemap
-- **sitemap.xml**: `public/sitemap.xml` — only real pages (/, /about, /products, /products/ordo, /research, /careers, /signup, /contact, /privacy, /terms). No ghost pages.
+- **robots.txt**: `public/robots.txt` — allows all crawlers (including AI/LLM crawlers), disallows /api/, /_next/, /admin, /verify; references sitemap
+- **Sitemap**: Generated dynamically by `src/app/sitemap.ts` (served at `/sitemap.xml`). It is the single source of truth — the old static `public/sitemap.xml` was removed to avoid conflicts and ghost pages. Lists only real, indexable routes (no /admin, /verify, no /products/nrn).
 - **Heading hierarchy**: Every page has exactly one `<h1>` in its hero section
 - **_document.tsx**: `src/pages/_document.tsx` — favicon, apple-touch-icon, theme-color, format-detection for Pages Router
 - **Global CSS**: `overflow-x: hidden` on html/body, `-webkit-text-size-adjust: 100%`, tap-highlight transparent

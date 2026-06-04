@@ -132,7 +132,7 @@ const Blog: FC = () => {
 
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO title="Blog" description="Technical articles, insights, and updates from the Olyxee team on AI infrastructure, verification, and deployment." path="/blog" />
+      <SEO title="Blog" description="Technical articles, insights, and updates from the Olyxee team on AI infrastructure, verification, and deployment." path="/blog" keywords={["Olyxee blog", "AI infrastructure", "AI verification", "AI reliability", "model deployment", "edge AI"]} />
       <div className="grain" />
       <Header />
 

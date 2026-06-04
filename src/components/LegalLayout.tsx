@@ -300,7 +300,7 @@ const LegalLayout: FC<LegalLayoutProps> = ({
               </div>
 
               <div className="lg:col-span-4">
-                <div className="grid grid-cols-3 gap-6 text-left lg:text-right">
+                <div className="grid grid-cols-3 gap-4 sm:gap-6 text-left lg:text-right">
                   <div>
                     <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-neutral-400 mb-1.5">Doc</p>
                     <p className="text-sm font-mono text-neutral-700">{documentNumber}</p>

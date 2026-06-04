@@ -110,7 +110,7 @@ const Docs: FC = () => {
 
   return (
     <div>
-      <SEO title="Documentation" description="Complete documentation for the Olyxee platform." path="/docs" />
+      <SEO title="Documentation" description="Developer documentation for the Olyxee platform: API reference, SDKs, quickstarts, and guides for Ordo verification, deployment, and monitoring." path="/docs" keywords={["Olyxee documentation", "Olyxee API", "Ordo docs", "AI verification API", "SDK", "developer guides"]} />
       <Header />
       <DocsLayout
         tabs={TABS}
