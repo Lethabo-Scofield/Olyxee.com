@@ -1323,16 +1323,61 @@ function RateLimits() {
 }
 
 
+const EARLY_ACCESS_ROLE_LABELS: Record<string, string> = {
+  engineer: "ML / AI Engineer",
+  devops: "DevOps / MLOps",
+  manager: "Engineering Manager",
+  founder: "Founder / CTO",
+  researcher: "Researcher",
+  other: "Other",
+};
+
 function EarlyAccessDoc() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [company, setCompany] = useState("");
   const [role, setRole] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    if (submitting) return;
+    setError(null);
+
+    if (!name.trim()) return setError("Please enter your name.");
+    if (!email.trim()) return setError("Please enter your work email.");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()))
+      return setError("Please enter a valid email address.");
+    if (!company.trim()) return setError("Please enter your company name.");
+
+    setSubmitting(true);
+    try {
+      const res = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          tool: "api",
+          name: name.trim(),
+          email: email.trim(),
+          company: company.trim(),
+          message: role ? `Role: ${EARLY_ACCESS_ROLE_LABELS[role] || role}` : undefined,
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setError(data.error || "Something went wrong. Please try again.");
+        setSubmitting(false);
+        return;
+      }
+      setSubmitted(true);
+      setSubmitting(false);
+    } catch (err) {
+      console.error("early access submit error", err);
+      setError("Network error. Please check your connection and try again.");
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -1379,8 +1424,9 @@ function EarlyAccessDoc() {
                 <option value="other">Other</option>
               </select>
             </div>
-            <button type="submit" className="w-full px-6 py-2.5 bg-gray-900 text-white rounded-lg font-medium hover:bg-black transition-colors text-sm mt-2">
-              Request Access
+            {error && <p className="text-sm text-red-600 leading-relaxed">{error}</p>}
+            <button type="submit" disabled={submitting} className="w-full px-6 py-2.5 bg-gray-900 text-white rounded-lg font-medium hover:bg-black transition-colors text-sm mt-2 disabled:opacity-60 disabled:cursor-not-allowed">
+              {submitting ? "Submitting..." : "Request Access"}
             </button>
             <p className="text-xs text-gray-400 text-center">No credit card required.</p>
           </form>
