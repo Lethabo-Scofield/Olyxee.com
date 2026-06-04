@@ -6,7 +6,7 @@ import Footer from '../components/footer';
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, Download, ArrowUpRight, Truck, Check, PackageCheck, MapPin, Bell } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Truck, Check, PackageCheck, MapPin, Bell } from "lucide-react";
 
 
 export default function HomePage() {
@@ -1067,27 +1067,25 @@ function CTASection() {
 
           <div className="relative text-center max-w-2xl mx-auto">
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-5 leading-[1.05]">
-              Get started with Ordo
+              Get started with Togent
             </h2>
             <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-9 max-w-lg mx-auto">
-              Bring Ordo into your stack and turn scattered work into one accountable workflow.
+              Bring Togent into your stack to track, compress, and reuse context across your AI agents, and stop paying for the same work twice.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <a
-                href="https://ordo.olyxee.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide shadow-lg shadow-neutral-900/10"
-              >
-                <Download className="w-4 h-4" />
-                Download
-              </a>
               <Link
                 href="/contact"
+                className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide shadow-lg shadow-neutral-900/10"
+              >
+                Get early access
+                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </Link>
+              <Link
+                href="/products#togent"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 text-neutral-900 bg-white border border-neutral-300 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide"
               >
-                Talk to us
+                Learn more
               </Link>
             </div>
           </div>
