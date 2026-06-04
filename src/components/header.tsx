@@ -54,6 +54,13 @@ const SIGNIN_OPTIONS: SignInOption[] = [
         external: true,
     },
     {
+        name: "Courier Loop",
+        description: "Logistics tracking and updates",
+        href: "https://logistics.olyxee.com/",
+        logo: "/images/courier-loop-logo.png",
+        external: true,
+    },
+    {
         name: "Addup",
         description: "Accounting and reconciliation",
         href: "https://addup.olyxee.com/",
