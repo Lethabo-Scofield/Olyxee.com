@@ -26,26 +26,43 @@ function useCountdown(target: Date) {
 
 const pad = (n: number) => n.toString().padStart(2, "0");
 
-const GUIDE_STEPS = [
+const CODE_SAMPLES = [
   {
-    title: "Connect your sources",
-    body: "Send documents to Document Integrity from your app, storage, or data pipeline through a single API, in batches or in real time.",
+    label: "1. Send a document for verification",
+    lang: "bash",
+    code: `curl https://api.olyxee.com/v1/documents/verify \\
+  -H "Authorization: Bearer $OLYXEE_API_KEY" \\
+  -F "file=@invoice.pdf" \\
+  -F 'schema={"invoice_number":"string","total":"number","vendor":"string"}'`,
   },
   {
-    title: "Define what valid means",
-    body: "Set the fields you need extracted and the rules and reference sources each document should be checked against.",
+    label: "2. Get back structured data and an integrity score",
+    lang: "json",
+    code: `{
+  "id": "doc_8f2c1a",
+  "status": "verified",
+  "integrity_score": 0.98,
+  "fields": {
+    "invoice_number": "INV-4471",
+    "total": 1840.00,
+    "vendor": "Acme Logistics"
+  },
+  "flags": []
+}`,
   },
   {
-    title: "Extract and validate",
-    body: "Document Integrity returns clean structured data, a per-document integrity score, and a clear list of any inconsistencies it finds.",
-  },
-  {
-    title: "Gate your workflow",
-    body: "Pass verified documents straight through to your AI or automation, and route anything flagged to a person for review.",
-  },
-  {
-    title: "Audit and monitor",
-    body: "Every check is written to an exportable ledger, so you can trace, filter, and prove the history of every document you have verified.",
+    label: "3. Gate your pipeline on the result",
+    lang: "javascript",
+    code: `const result = await olyxee.documents.verify({
+  file,
+  schema: { invoice_number: "string", total: "number" },
+});
+
+if (result.integrity_score < 0.9 || result.flags.length) {
+  await routeToHumanReview(result);
+} else {
+  await pipeline.ingest(result.fields);
+}`,
   },
 ];
 
@@ -100,7 +117,7 @@ const DocumentIntegrity: FC = () => {
                   suppressHydrationWarning
                   className="font-serif text-2xl sm:text-4xl tracking-tight tabular-nums text-neutral-900"
                 >
-                  {ready ? s.value : "—"}
+                  {ready ? s.value : "--"}
                 </p>
                 <p className="mt-1 text-[10px] font-medium uppercase tracking-[0.2em] text-neutral-400">
                   {s.label}
@@ -188,43 +205,39 @@ const DocumentIntegrity: FC = () => {
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, delay: 0.05 }}
-            className="mt-14"
-          >
-            <h3 className="font-serif text-2xl sm:text-3xl text-neutral-900 mb-4">
-              For any team building AI products
-            </h3>
-            <p className="text-base sm:text-lg text-neutral-600 font-light leading-relaxed max-w-3xl">
-              Any AI product that reads documents inherits whatever errors or fraud those documents contain, and a model is only as trustworthy as its inputs. Document Integrity sits in front of your pipelines as a gate, so your retrieval systems, agents, and automations act on validated, structured, trustworthy data instead of raw, unverified files.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="mt-14"
           >
-            <h3 className="font-serif text-2xl sm:text-3xl text-neutral-900 mb-8">
-              How you&apos;ll use it
+            <h3 className="font-serif text-2xl sm:text-3xl text-neutral-900 mb-3">
+              How you integrate it
             </h3>
-            <ol className="space-y-6">
-              {GUIDE_STEPS.map((s, i) => (
-                <li key={s.title} className="flex gap-5">
-                  <span className="shrink-0 w-9 h-9 rounded-full bg-neutral-900 text-white text-sm font-medium flex items-center justify-center">
-                    {i + 1}
-                  </span>
-                  <div>
-                    <h4 className="text-lg font-medium text-neutral-900">{s.title}</h4>
-                    <p className="mt-1 text-sm sm:text-base text-neutral-500 font-light leading-relaxed">
-                      {s.body}
-                    </p>
+            <p className="text-base text-neutral-600 font-light leading-relaxed max-w-3xl mb-8">
+              One REST endpoint sits in front of your pipeline. Send a file, get back structured fields plus an integrity score, and gate your workflow on the result. SDKs for Python and JavaScript wrap the same API.
+            </p>
+            <div className="space-y-5">
+              {CODE_SAMPLES.map((c) => (
+                <div
+                  key={c.label}
+                  className="rounded-2xl bg-neutral-950 ring-1 ring-black/5 overflow-hidden"
+                >
+                  <div className="flex items-center justify-between px-4 sm:px-5 py-3 border-b border-white/10">
+                    <span className="text-[13px] font-medium text-neutral-200">{c.label}</span>
+                    <span className="text-[10px] font-mono uppercase tracking-[0.15em] text-neutral-500">
+                      {c.lang}
+                    </span>
                   </div>
-                </li>
+                  <pre className="overflow-x-auto px-4 sm:px-5 py-4">
+                    <code className="font-mono text-[12.5px] leading-relaxed text-neutral-100 whitespace-pre">
+                      {c.code}
+                    </code>
+                  </pre>
+                </div>
               ))}
-            </ol>
+            </div>
+            <p className="mt-8 text-base text-neutral-600 font-light leading-relaxed max-w-3xl">
+              Full schema validation, batch processing, tamper detection, and the auditable verification ledger are available to early access partners. Join the list above to get an API key and the complete reference.
+            </p>
           </motion.div>
         </div>
       </section>

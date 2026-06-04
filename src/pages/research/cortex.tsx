@@ -52,26 +52,40 @@ const WAITLIST_TOPICS = [
   "Future API availability",
 ];
 
-const GUIDE_STEPS = [
+const CODE_SAMPLES = [
   {
-    title: "Connect your systems",
-    body: "Point Cortex at the tools, data, and workflows your teams already run on, so it can begin building a persistent picture of how your organization operates.",
+    label: "1. Install and connect",
+    lang: "bash",
+    code: `npm install @olyxee/cortex
+
+export OLYXEE_API_KEY="sk_..."`,
   },
   {
-    title: "Cortex builds memory",
-    body: "Instead of starting cold each session, Cortex retains operational context, history, and relationships across your workflows over time.",
+    label: "2. Write organizational context to memory",
+    lang: "typescript",
+    code: `import { Cortex } from "@olyxee/cortex";
+
+const cortex = new Cortex({ apiKey: process.env.OLYXEE_API_KEY });
+
+await cortex.remember({
+  scope: "org",
+  content: "Acme moved to net-30 billing terms in Q2.",
+  source: "billing-system",
+});`,
   },
   {
-    title: "Give your agents context",
-    body: "Your AI agents and applications query Cortex for organizational memory and context, so they reason with continuity instead of isolated prompts.",
-  },
-  {
-    title: "Coordinate long-horizon work",
-    body: "Cortex coordinates multi-step, multi-agent workflows that run over days or weeks, keeping every actor working from the same shared understanding.",
-  },
-  {
-    title: "Monitor and evolve",
-    body: "As your organization changes, Cortex keeps its understanding current, so your AI stays accurate, reliable, and aligned with how you actually work.",
+    label: "3. Recall context inside your agent",
+    lang: "typescript",
+    code: `const context = await cortex.recall({
+  query: "What are Acme's current billing terms?",
+  limit: 5,
+});
+
+const answer = await llm.chat({
+  system: "Use the organizational context provided.",
+  context,
+  messages,
+});`,
   },
 ];
 
@@ -314,24 +328,35 @@ const CortexPage: FC = () => {
             variants={fadeUp}
             className="mt-12"
           >
-            <h3 className="text-xl sm:text-2xl text-neutral-900 tracking-[-0.015em] font-medium mb-8">
-              How you&apos;ll use Cortex
+            <h3 className="text-xl sm:text-2xl text-neutral-900 tracking-[-0.015em] font-medium mb-3">
+              How you integrate Cortex
             </h3>
-            <ol className="space-y-6">
-              {GUIDE_STEPS.map((s, i) => (
-                <li key={s.title} className="flex gap-5">
-                  <span className="shrink-0 w-9 h-9 rounded-full bg-neutral-900 text-white text-sm font-medium flex items-center justify-center">
-                    {i + 1}
-                  </span>
-                  <div>
-                    <h4 className="text-lg font-medium text-neutral-900">{s.title}</h4>
-                    <p className="mt-1 text-sm sm:text-base text-neutral-500 font-light leading-relaxed">
-                      {s.body}
-                    </p>
+            <p className="text-base text-neutral-600 font-light leading-relaxed mb-8">
+              Cortex is a memory API your agents write to and read from. Install the SDK, store context as your systems change, then recall it at inference time so your AI reasons with continuity instead of a cold prompt.
+            </p>
+            <div className="space-y-5">
+              {CODE_SAMPLES.map((c) => (
+                <div
+                  key={c.label}
+                  className="rounded-2xl bg-neutral-950 ring-1 ring-black/5 overflow-hidden"
+                >
+                  <div className="flex items-center justify-between px-4 sm:px-5 py-3 border-b border-white/10">
+                    <span className="text-[13px] font-medium text-neutral-200">{c.label}</span>
+                    <span className="text-[10px] font-mono uppercase tracking-[0.15em] text-neutral-500">
+                      {c.lang}
+                    </span>
                   </div>
-                </li>
+                  <pre className="overflow-x-auto px-4 sm:px-5 py-4">
+                    <code className="font-mono text-[12.5px] leading-relaxed text-neutral-100 whitespace-pre">
+                      {c.code}
+                    </code>
+                  </pre>
+                </div>
               ))}
-            </ol>
+            </div>
+            <p className="mt-8 text-base text-neutral-600 font-light leading-relaxed">
+              Scoped memory, multi-agent coordination threads, and long-horizon workflow state are part of the early access program. Register below to get an API key and the full reference.
+            </p>
           </motion.div>
         </div>
       </section>
