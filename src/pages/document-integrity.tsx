@@ -5,6 +5,7 @@ import Footer from "../components/footer";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
+import CodeBlock from "../components/CodeBlock";
 
 const MAINTENANCE_END = new Date("2026-07-15T18:00:00Z");
 
@@ -217,22 +218,7 @@ const DocumentIntegrity: FC = () => {
             </p>
             <div className="space-y-5">
               {CODE_SAMPLES.map((c) => (
-                <div
-                  key={c.label}
-                  className="rounded-2xl bg-neutral-950 ring-1 ring-black/5 overflow-hidden"
-                >
-                  <div className="flex items-center justify-between px-4 sm:px-5 py-3 border-b border-white/10">
-                    <span className="text-[13px] font-medium text-neutral-200">{c.label}</span>
-                    <span className="text-[10px] font-mono uppercase tracking-[0.15em] text-neutral-500">
-                      {c.lang}
-                    </span>
-                  </div>
-                  <pre className="overflow-x-auto px-4 sm:px-5 py-4">
-                    <code className="font-mono text-[12.5px] leading-relaxed text-neutral-100 whitespace-pre">
-                      {c.code}
-                    </code>
-                  </pre>
-                </div>
+                <CodeBlock key={c.label} {...c} />
               ))}
             </div>
             <p className="mt-8 text-base text-neutral-600 font-light leading-relaxed max-w-3xl">
