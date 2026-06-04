@@ -52,6 +52,29 @@ const WAITLIST_TOPICS = [
   "Future API availability",
 ];
 
+const GUIDE_STEPS = [
+  {
+    title: "Connect your systems",
+    body: "Point Cortex at the tools, data, and workflows your teams already run on, so it can begin building a persistent picture of how your organization operates.",
+  },
+  {
+    title: "Cortex builds memory",
+    body: "Instead of starting cold each session, Cortex retains operational context, history, and relationships across your workflows over time.",
+  },
+  {
+    title: "Give your agents context",
+    body: "Your AI agents and applications query Cortex for organizational memory and context, so they reason with continuity instead of isolated prompts.",
+  },
+  {
+    title: "Coordinate long-horizon work",
+    body: "Cortex coordinates multi-step, multi-agent workflows that run over days or weeks, keeping every actor working from the same shared understanding.",
+  },
+  {
+    title: "Monitor and evolve",
+    body: "As your organization changes, Cortex keeps its understanding current, so your AI stays accurate, reliable, and aligned with how you actually work.",
+  },
+];
+
 const CortexPage: FC = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -260,6 +283,58 @@ const CortexPage: FC = () => {
           </motion.div>
         </div>
       </article>
+
+      {/* === USAGE GUIDE === */}
+      <section className="px-4 sm:px-6 pb-20 sm:pb-28">
+        <div className="max-w-3xl mx-auto border-t border-neutral-200 pt-16 sm:pt-20">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            custom={0}
+            variants={fadeUp}
+          >
+            <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
+              A quick guide
+            </p>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl text-neutral-900 tracking-[-0.02em] leading-[1.1] font-medium">
+              For any team{" "}
+              <em className="font-serif italic font-normal text-neutral-500">building AI products.</em>
+            </h2>
+            <p className="mt-6 text-lg text-neutral-700 font-light leading-relaxed">
+              Most AI products forget everything the moment a session ends. For teams building agents, copilots, and automations, that means re-explaining the same context on every call and stitching memory together by hand. Cortex provides the shared, persistent memory layer your AI products read from and write to, so they understand your organization instead of starting over each time.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+            custom={1}
+            variants={fadeUp}
+            className="mt-12"
+          >
+            <h3 className="text-xl sm:text-2xl text-neutral-900 tracking-[-0.015em] font-medium mb-8">
+              How you&apos;ll use Cortex
+            </h3>
+            <ol className="space-y-6">
+              {GUIDE_STEPS.map((s, i) => (
+                <li key={s.title} className="flex gap-5">
+                  <span className="shrink-0 w-9 h-9 rounded-full bg-neutral-900 text-white text-sm font-medium flex items-center justify-center">
+                    {i + 1}
+                  </span>
+                  <div>
+                    <h4 className="text-lg font-medium text-neutral-900">{s.title}</h4>
+                    <p className="mt-1 text-sm sm:text-base text-neutral-500 font-light leading-relaxed">
+                      {s.body}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </motion.div>
+        </div>
+      </section>
 
       {/* === WAITING LIST === */}
       <section id="waitlist" className="scroll-mt-24 px-4 sm:px-6 pb-24 sm:pb-32">
