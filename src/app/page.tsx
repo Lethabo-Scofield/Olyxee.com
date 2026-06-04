@@ -340,12 +340,18 @@ function ResearchAreas() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-12 sm:mb-16 lg:mb-20"
+            className="max-w-3xl mx-auto text-center mb-12 sm:mb-16 lg:mb-20"
           >
             <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">What We Do</p>
-            <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900">
-              From Intelligence to Reliable Execution
+            <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-6">
+              AI Infrastructure for Enterprise Execution
             </h2>
+            <p className="text-base sm:text-lg text-neutral-600 font-light leading-relaxed mb-4">
+              Olyxee builds the infrastructure that helps enterprises move from AI experiments to reliable business execution.
+            </p>
+            <p className="text-base sm:text-lg text-neutral-600 font-light leading-relaxed">
+              We connect AI systems to documents, data, APIs, workflows, memory, approvals, and operational tools so businesses can use AI in real processes, not just isolated conversations.
+            </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
@@ -353,19 +359,19 @@ function ResearchAreas() {
               {
                 num: "01",
                 title: "AI Research",
-                desc: "Researching how AI systems reason, coordinate, execute, and maintain operational reliability across complex enterprise workflows.",
+                desc: "We research how AI systems reason, preserve context, coordinate across workflows, and remain reliable in enterprise environments.",
                 gradient: "/images/gradient-blue.webp",
               },
               {
                 num: "02",
-                title: "Operational Infrastructure",
-                desc: "Infrastructure layers that enable AI systems to operate across tools, APIs, workflows, and enterprise environments with reliability and continuity.",
+                title: "Infrastructure Layers",
+                desc: "We build core AI infrastructure for document integrity, organizational memory, workflow execution, agent optimization, and operational intelligence.",
                 gradient: "/images/gradient-purple.webp",
               },
               {
                 num: "03",
-                title: "Enterprise Intelligence Systems",
-                desc: "Building integrated AI systems that connect models, workflows, memory, and operational context into reliable enterprise execution systems.",
+                title: "Enterprise AI Systems",
+                desc: "We turn that infrastructure into practical systems such as Addup, Ordo, Courier Loop, ODI, Cortex, and Togent.",
                 gradient: "/images/gradient-abstract-blue.webp",
               },
             ].map((step, idx) => (
