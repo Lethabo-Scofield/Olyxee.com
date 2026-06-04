@@ -199,37 +199,6 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
     },
   ];
 
-  const researchInfra: ProductRow[] = [
-    {
-      name: "Olyxee Research",
-      description: "Olyxee Research focuses on reliable AI systems, financial integrity, document corruption, enterprise AI reliability, benchmarks, and applied AI infrastructure.",
-      status: "available",
-      bg: "/images/gradient-purple.webp",
-      action: { kind: "internal", href: "/research", label: "View research" },
-    },
-    {
-      name: "Olyxee Cortex",
-      description: "Olyxee Cortex is Olyxee's internal intelligence and infrastructure layer. It supports reasoning, retrieval, document intelligence, workflow intelligence, and trusted AI execution across Olyxee products and solutions.",
-      status: "private",
-      bg: "/images/gradient-pink-cyan.webp",
-      action: { kind: "internal", href: "/research/cortex", label: "View Cortex" },
-    },
-    {
-      name: "Papers",
-      description: "Research papers from Olyxee Research.",
-      status: "available",
-      bg: "/images/gradient-yellow-blue.webp",
-      action: { kind: "internal", href: "/research#papers", label: "Read papers" },
-    },
-    {
-      name: "Technical Reports",
-      description: "Engineering reports, architecture notes, benchmarks, applied research, and system design documents.",
-      status: "available",
-      bg: "/images/gradient-orange-pink.webp",
-      action: { kind: "internal", href: "/research", label: "Read reports" },
-    },
-  ];
-
   const resources = [
     { label: "API Reference", tab: "api", page: "api-reference" },
     { label: "Python SDK", tab: "api", page: "python-sdk" },
@@ -354,16 +323,6 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
         </h2>
         <div className="border-t border-neutral-100">
           {solutions.map(renderRow)}
-        </div>
-      </section>
-
-      {/* Research & Infrastructure */}
-      <section className="mb-16">
-        <h2 className="text-[13px] font-semibold text-neutral-900 uppercase tracking-wider mb-3">
-          Research & Infrastructure
-        </h2>
-        <div className="border-t border-neutral-100">
-          {researchInfra.map(renderRow)}
         </div>
       </section>
 
