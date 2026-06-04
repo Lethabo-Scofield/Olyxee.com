@@ -1,0 +1,72 @@
+Olyxee builds AI infrastructure for business systems.
+
+We help organizations build, connect, and operate intelligent systems that support real business work across data, documents, workflows, decisions, and internal operations.
+
+Our engagements scale based on system complexity, integration depth, and the level of intelligence required.
+
+## Tier 01
+
+### Starter Infrastructure
+
+For teams that need one focused system or workflow.
+
+A simple infrastructure setup to help an organization start using Olyxee for a specific operational need.
+
+**Includes**
+
+* One focused system deployment
+* Basic workflow automation
+* Standard integrations
+* Data and document handling
+* Reporting
+* Light support
+* Access to selected Olyxee tools where needed
+
+**Discuss this tier**
+
+## Tier 02
+
+### Operational Infrastructure
+
+For teams that need connected systems across their operations.
+
+A deeper infrastructure deployment that connects workflows, data, documents, approvals, business rules, and internal tools into one operating layer.
+
+**Includes**
+
+* Operational system design
+* Workflow execution
+* API and database integrations
+* Business rules
+* Human approval flows
+* Document Integrity capabilities
+* Cortex intelligence layer
+* Togent access for team and system integration
+* Support
+
+**Most common**
+
+**Discuss this tier**
+
+## Tier 03
+
+### Enterprise AI Infrastructure
+
+For organizations that need custom AI infrastructure across multiple systems, teams, and workflows.
+
+A bespoke deployment where Olyxee becomes part of the organization’s internal operating infrastructure.
+
+**Includes**
+
+* Custom AI infrastructure deployment
+* Cortex-based intelligence systems
+* Document Integrity systems
+* Multi-agent workflows
+* Advanced workflow execution
+* Custom APIs and integrations
+* System monitoring and audit trails
+* Dedicated architecture support
+* Dedicated infrastructure support
+* Access to Olyxee tools based on deployment scope
+
+**Discuss this tier**
