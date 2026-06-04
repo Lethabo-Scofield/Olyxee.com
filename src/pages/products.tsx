@@ -639,31 +639,37 @@ const ProductsPage: FC = () => {
               className="lg:col-span-7 order-2 lg:order-1 relative"
             >
               <div aria-hidden className="absolute -inset-8 -z-10 bg-gradient-to-br from-indigo-50/60 via-white to-blue-50/40 blur-2xl rounded-[2rem]" />
-              <div className="relative rounded-3xl bg-white ring-1 ring-neutral-200 shadow-sm p-4 sm:p-6 space-y-4">
-                <Image
-                  src="/images/togent-tokens-guide.png"
-                  alt="AI Tokens Guide: understanding, optimization, and cost management"
-                  width={1600}
-                  height={401}
-                  className="w-full h-auto rounded-2xl"
-                  sizes="(max-width: 1024px) 100vw, 720px"
-                />
-                <Image
-                  src="/images/togent-token-stream.png"
-                  alt="Token Stream Timeline showing past, active, and future tokens within the current context window"
-                  width={1600}
-                  height={739}
-                  className="w-full h-auto rounded-2xl"
-                  sizes="(max-width: 1024px) 100vw, 720px"
-                />
-                <Image
-                  src="/images/togent-token-budget.png"
-                  alt="Token Budget Allocation across user prompt, context, processing, and response"
-                  width={1600}
-                  height={1004}
-                  className="w-full h-auto rounded-2xl"
-                  sizes="(max-width: 1024px) 100vw, 720px"
-                />
+              <div className="relative space-y-4">
+                <div className="overflow-hidden rounded-2xl ring-1 ring-neutral-200 bg-neutral-50 shadow-sm">
+                  <Image
+                    src="/images/togent-tokens-guide.png"
+                    alt="AI Tokens Guide: understanding, optimization, and cost management"
+                    width={1600}
+                    height={401}
+                    className="block w-full h-auto"
+                    sizes="(max-width: 1024px) 100vw, 720px"
+                  />
+                </div>
+                <div className="overflow-hidden rounded-2xl ring-1 ring-neutral-200 bg-neutral-50 shadow-sm">
+                  <Image
+                    src="/images/togent-token-stream.png"
+                    alt="Token Stream Timeline showing past, active, and future tokens within the current context window"
+                    width={1600}
+                    height={739}
+                    className="block w-full h-auto"
+                    sizes="(max-width: 1024px) 100vw, 720px"
+                  />
+                </div>
+                <div className="overflow-hidden rounded-2xl ring-1 ring-neutral-200 bg-neutral-50 shadow-sm">
+                  <Image
+                    src="/images/togent-token-budget.png"
+                    alt="Token Budget Allocation across user prompt, context, processing, and response"
+                    width={1600}
+                    height={1004}
+                    className="block w-full h-auto"
+                    sizes="(max-width: 1024px) 100vw, 720px"
+                  />
+                </div>
               </div>
             </motion.div>
 
