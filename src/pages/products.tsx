@@ -627,6 +627,88 @@ const ProductsPage: FC = () => {
         </div>
       </section>
 
+      {/* === TOGENT === */}
+      <section id="togent" className="py-20 sm:py-28 px-4 sm:px-6 border-t border-neutral-200/70 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.8 }}
+              className="lg:col-span-7 order-2 lg:order-1 relative"
+            >
+              <div aria-hidden className="absolute -inset-8 -z-10 bg-gradient-to-br from-indigo-50/60 via-white to-blue-50/40 blur-2xl rounded-[2rem]" />
+              <div className="relative rounded-3xl bg-white ring-1 ring-neutral-200 shadow-sm p-4 sm:p-6 space-y-4">
+                <Image
+                  src="/images/togent-tokens-guide.png"
+                  alt="AI Tokens Guide: understanding, optimization, and cost management"
+                  width={1600}
+                  height={401}
+                  className="w-full h-auto rounded-2xl"
+                  sizes="(max-width: 1024px) 100vw, 720px"
+                />
+                <Image
+                  src="/images/togent-token-stream.png"
+                  alt="Token Stream Timeline showing past, active, and future tokens within the current context window"
+                  width={1600}
+                  height={739}
+                  className="w-full h-auto rounded-2xl"
+                  sizes="(max-width: 1024px) 100vw, 720px"
+                />
+                <Image
+                  src="/images/togent-token-budget.png"
+                  alt="Token Budget Allocation across user prompt, context, processing, and response"
+                  width={1600}
+                  height={1004}
+                  className="w-full h-auto rounded-2xl"
+                  sizes="(max-width: 1024px) 100vw, 720px"
+                />
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              custom={0}
+              variants={fadeUp}
+              className="lg:col-span-5 order-1 lg:order-2"
+            >
+              <div className="flex items-center gap-3 mb-6">
+                <span className="font-serif text-3xl sm:text-4xl text-neutral-900 tracking-tight">Togent</span>
+                <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.25em]">Tokens</span>
+                <span className="px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 text-[10px] font-mono uppercase tracking-[0.18em]">Coming soon</span>
+              </div>
+
+              <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-6">
+                Make every token <em className="text-neutral-500 not-italic">count.</em>
+              </h2>
+
+              <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-8 max-w-md">
+                Togent helps you understand, optimize, and control how AI models spend tokens, from prompt to response, so you can ship reliable products without runaway costs.
+              </p>
+
+              <div className="flex flex-wrap items-center gap-4">
+                <Link
+                  href="/contact"
+                  className="group inline-flex items-center gap-2 text-sm font-medium text-white bg-neutral-900 hover:bg-black px-6 py-3 rounded-full transition-colors"
+                >
+                  Get early access
+                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </Link>
+                <a
+                  href="mailto:scofield@olyxee.com?subject=Togent%20Inquiry"
+                  className="text-sm font-medium text-neutral-700 hover:text-neutral-900 transition-colors"
+                >
+                  Talk to us →
+                </a>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* === INTEGRATIONS === */}
       <section id="integrations" className="py-20 sm:py-28 px-4 sm:px-6 border-t border-neutral-200/70 bg-neutral-50/50 relative overflow-hidden">
         <div
