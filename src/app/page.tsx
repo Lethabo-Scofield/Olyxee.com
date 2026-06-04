@@ -6,7 +6,7 @@ import Footer from '../components/footer';
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, Download, ArrowUpRight } from "lucide-react";
+import { ArrowRight, Download, ArrowUpRight, Truck, Check, PackageCheck, MapPin, Bell } from "lucide-react";
 
 
 export default function HomePage() {
@@ -128,7 +128,8 @@ export default function HomePage() {
         <LogoStrip />
         <ResearchAreas />
         <ImageShowcase />
-        <OrdoSection />
+        {/* <OrdoSection /> hidden for now */}
+        <CourierLoopSection />
         <TogentSection />
         <StoriesSection />
         <CTASection />
@@ -618,6 +619,122 @@ function OrdoSection() {
         {PRODUCT_BLOCKS.map((p) => (
           <ProductBlockRow key={p.key} p={p} />
         ))}
+      </div>
+    </section>
+  );
+}
+
+function CourierLoopSection() {
+  const steps = [
+    { Icon: Check, label: "Order confirmed", time: "Mon, 10:24", state: "done" },
+    { Icon: PackageCheck, label: "Packed and ready", time: "Mon, 14:02", state: "done" },
+    { Icon: Truck, label: "Out for delivery", time: "Tue, 09:11", state: "active" },
+    { Icon: MapPin, label: "Delivered to customer", time: "Pending", state: "pending" },
+  ];
+  return (
+    <section id="logistics" className="py-20 sm:py-32 lg:py-40 bg-neutral-50/60 border-y border-neutral-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+            className="lg:col-span-5"
+          >
+            <div className="mb-6">
+              <Image
+                src="/images/courier-loop-logo.png"
+                alt="Courier Loop, delivery service"
+                width={220}
+                height={72}
+                className="h-12 sm:h-14 w-auto object-contain"
+                style={{ width: "auto", height: "auto" }}
+              />
+            </div>
+
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-6">
+              Keep every customer <em className="text-neutral-500 not-italic">in the loop.</em>
+            </h2>
+
+            <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-8 max-w-md">
+              Olyxee Logistics lets anyone who sells, from a one-person shop to a full operations team, send clean order-status updates to their customers, from confirmed to delivered.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-4">
+              <a
+                href="https://logistics.olyxee.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 text-sm font-medium text-white bg-neutral-900 hover:bg-black px-6 py-3 rounded-full transition-colors"
+              >
+                Open Logistics
+                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </a>
+              <a
+                href="mailto:scofield@olyxee.com?subject=Olyxee%20Logistics%20Inquiry"
+                className="text-sm font-medium text-neutral-700 hover:text-neutral-900 transition-colors"
+              >
+                Talk to us →
+              </a>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+            className="lg:col-span-7 relative"
+          >
+            <div aria-hidden className="absolute -inset-8 -z-10 bg-gradient-to-br from-emerald-50/60 via-white to-blue-50/40 blur-2xl rounded-[2rem]" />
+            <div className="relative rounded-3xl bg-white ring-1 ring-neutral-200 shadow-sm p-6 sm:p-8">
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                  <span className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Order #OLX-4827</span>
+                </div>
+                <span className="text-[11px] text-neutral-400">Updated just now</span>
+              </div>
+
+              <ol className="relative space-y-5">
+                {steps.map(({ Icon, label, time, state }) => (
+                  <li key={label} className="flex items-start gap-4">
+                    <div
+                      className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 ring-1 ${
+                        state === "done"
+                          ? "bg-neutral-900 text-white ring-neutral-900"
+                          : state === "active"
+                          ? "bg-emerald-50 text-emerald-700 ring-emerald-200"
+                          : "bg-white text-neutral-400 ring-neutral-200"
+                      }`}
+                    >
+                      <Icon className="w-4 h-4" strokeWidth={2} />
+                    </div>
+                    <div className="flex-1 pt-1.5">
+                      <div className="flex items-baseline justify-between gap-3">
+                        <span
+                          className={`text-sm font-medium ${
+                            state === "pending" ? "text-neutral-400" : "text-neutral-900"
+                          }`}
+                        >
+                          {label}
+                        </span>
+                        <span className="text-[11px] font-mono text-neutral-400">{time}</span>
+                      </div>
+                      {state === "active" && (
+                        <p className="mt-1 text-[12px] text-neutral-500 font-light inline-flex items-center gap-1.5">
+                          <Bell className="w-3 h-3 text-emerald-600" />
+                          Customer notified by SMS and email
+                        </p>
+                      )}
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
