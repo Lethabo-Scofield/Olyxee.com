@@ -542,8 +542,8 @@ const About: FC = () => {
               <p className="text-base sm:text-lg text-neutral-700 leading-relaxed max-w-2xl mb-14 sm:mb-16">
                 Olyxee was founded in Johannesburg in 2025 and turned on its
                 first production deployments inside a year. We are still small
-                by design, building the infrastructure underneath every customer
-                workflow before we add more on top.
+                by design, building Orgni, the core platform underneath every
+                customer workflow, before we add more on top.
               </p>
 
               {/* Snapshot grid — facts about where we are now */}
@@ -644,17 +644,17 @@ const About: FC = () => {
                     {
                       n: "01",
                       title: "Earn the next ten teams.",
-                      body: "Get the first cohort of operating teams running real workflows on Olyxee, end-to-end, with no babysitting.",
+                      body: "Get the first cohort of operating teams running real workflows on Orgni, end-to-end, with no babysitting.",
                     },
                     {
                       n: "02",
                       title: "Trace every action.",
-                      body: "Make every step an Olyxee agent takes inspectable, reviewable, and reproducible by default.",
+                      body: "Make every step Orgni takes inspectable, reviewable, and reproducible by default.",
                     },
                     {
                       n: "03",
                       title: "Quietly compound.",
-                      body: "Tighten the platform underneath, ship fewer features louder, and keep our footprint small while the work grows.",
+                      body: "Tighten Orgni underneath, ship fewer features louder, and keep our footprint small while the work grows.",
                     },
                   ].map((f) => (
                     <li
