@@ -1142,10 +1142,10 @@ function CTASection() {
 
           <div className="relative text-center max-w-2xl mx-auto">
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-5 leading-[1.05]">
-              Get started with Togent
+              Get started with Orgni
             </h2>
             <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-9 max-w-lg mx-auto">
-              Bring Togent into your stack to track, compress, and reuse context across your AI agents, and stop paying for the same work twice.
+              Bring Orgni into your organization to connect your context, workflows, documents, and decisions, so AI can support real operations with control and traceability.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -1153,11 +1153,11 @@ function CTASection() {
                 href="/contact"
                 className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide shadow-lg shadow-neutral-900/10"
               >
-                Get early access
+                Get in touch
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </Link>
               <Link
-                href="/products#togent"
+                href="/products"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 text-neutral-900 bg-white border border-neutral-300 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide"
               >
                 Learn more
