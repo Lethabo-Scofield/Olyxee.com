@@ -4,6 +4,7 @@ import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import EnterpriseTierModal from "../components/EnterpriseTierModal";
+import TalkToEnterprise from "../components/EnterpriseContactModal";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, Wallet, Workflow, Truck, Brain, Check } from "lucide-react";
@@ -299,12 +300,10 @@ const Enterprise: FC = () => {
               Explore Solutions
               <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </a>
-            <a
-              href="mailto:scofield@olyxee.com?subject=Enterprise%3A%20Build%20With%20Olyxee"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 text-neutral-900 bg-white border border-neutral-300 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide"
-            >
-              Contact Enterprise Team
-            </a>
+            <TalkToEnterprise
+              label="Contact Enterprise Team"
+              className="group inline-flex items-center justify-center gap-2 px-8 py-4 text-neutral-900 bg-white border border-neutral-300 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide"
+            />
           </motion.div>
         </div>
       </section>
@@ -549,13 +548,7 @@ const Enterprise: FC = () => {
                 Work with Olyxee to design operational intelligence systems tailored to your organization. Tell us about your workflows, integrations, and operating environment, and we will scope the engagement with you.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <a
-                  href="mailto:scofield@olyxee.com?subject=Enterprise%3A%20Build%20With%20Olyxee"
-                  className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide shadow-lg shadow-neutral-900/10"
-                >
-                  Request a consultation
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                </a>
+                <TalkToEnterprise label="Request a consultation" />
                 <Link
                   href="/contact"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 text-neutral-900 bg-white border border-neutral-300 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide"

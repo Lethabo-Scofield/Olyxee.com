@@ -10,7 +10,18 @@ const labelClass = "block text-sm font-medium text-neutral-900 mb-2";
 
 type Preference = "email" | "call";
 
-const TalkToEnterprise: FC = () => {
+interface TalkToEnterpriseProps {
+  label?: string;
+  className?: string;
+}
+
+const DEFAULT_TRIGGER_CLASS =
+  "group inline-flex items-center justify-center gap-2 px-8 py-4 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide shadow-lg shadow-neutral-900/10";
+
+const TalkToEnterprise: FC<TalkToEnterpriseProps> = ({
+  label = "Talk to enterprise",
+  className,
+}) => {
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   const [company, setCompany] = useState("");
@@ -95,9 +106,9 @@ const TalkToEnterprise: FC = () => {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide shadow-lg shadow-neutral-900/10"
+        className={className ?? DEFAULT_TRIGGER_CLASS}
       >
-        Talk to enterprise <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+        {label} <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
       </button>
 
       <AnimatePresence>
