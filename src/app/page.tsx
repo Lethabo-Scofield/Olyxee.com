@@ -346,14 +346,8 @@ function ResearchAreas() {
             <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-6">
               Research and Infrastructure for Artificial Intelligence
             </h2>
-            <p className="text-base sm:text-lg text-neutral-600 font-light leading-relaxed mb-4">
-              Olyxee studies the practical problems created by AI adoption, from document integrity and financial accuracy to workflow reliability, operational memory, and AI-agent cost control.
-            </p>
-            <p className="text-base sm:text-lg text-neutral-600 font-light leading-relaxed mb-4">
-              That research powers infrastructure and product surfaces across finance, documents, logistics, workflows, and business context.
-            </p>
             <p className="text-base sm:text-lg text-neutral-600 font-light leading-relaxed">
-              At the center is <span className="font-medium text-neutral-900">Orgni</span>, Olyxee&apos;s core infrastructure layer for business AI operations.
+              We turn AI research into reliable business systems, all built on <span className="font-medium text-neutral-900">Orgni</span>, our core infrastructure for AI operations.
             </p>
           </motion.div>
 
