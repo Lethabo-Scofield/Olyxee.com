@@ -211,9 +211,8 @@ const ProductsPage: FC = () => {
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover scale-105 group-hover:scale-110 transition-transform duration-700 ease-out"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-white via-white/85 to-white/40" />
 
-                  <div className="relative z-10 flex flex-col h-full">
+                  <div className="relative z-10 flex flex-col h-full [text-shadow:0_1px_2px_rgba(255,255,255,0.5)]">
                     <div className="flex items-center justify-between mb-7">
                       <div className="w-12 h-12 rounded-2xl bg-white/70 backdrop-blur-md ring-1 ring-white/60 flex items-center justify-center shadow-sm">
                         <p.Icon className="w-5 h-5 text-neutral-700" strokeWidth={1.75} />
