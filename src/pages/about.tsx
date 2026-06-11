@@ -17,10 +17,10 @@ const fadeUp = {
 };
 
 const OBJECTIVES = [
-  "Make AI execute, not just advise, across real systems and real workflows.",
-  "Give every action an audit trail so teams can trust what runs in production.",
-  "Hide infrastructure complexity behind clear outcomes and simple controls.",
-  "Reach a thousand operating teams running on Olyxee by 2027.",
+  "Make AI execute real work across documents, workflows, finance, and logistics, not just advise.",
+  "Give AI lasting business context and memory so it never loses track of what happened.",
+  "Put every action behind an audit trail teams can review, trust, and direct in their own words.",
+  "Make Orgni the platform organizations run their AI operations on.",
 ];
 
 const APPROACH = [
@@ -195,7 +195,7 @@ const About: FC = () => {
                   We&apos;re building one that <em className="font-serif italic font-normal text-neutral-500">executes.</em>
                 </p>
                 <p className="text-base sm:text-lg text-neutral-700 leading-relaxed max-w-xl">
-                  Close the gap between what AI understands and what it actually does inside a company. Stop teams from translating AI recommendations into manual work.
+                  Give AI the business context, memory, and controls it needs to work inside a company, so teams stop translating recommendations into manual work and start trusting what runs.
                 </p>
               </div>
             </motion.article>
@@ -213,7 +213,7 @@ const About: FC = () => {
                   A world where AI <em className="font-serif italic font-normal text-neutral-500">quietly runs</em> the operations that move organizations forward.
                 </p>
                 <p className="text-base sm:text-lg text-neutral-700 leading-relaxed max-w-xl">
-                  Reconciling, coordinating, deciding, executing, all happening on infrastructure any team can trust, audit, and direct in their own words.
+                  Documents, workflows, finance, logistics, and decisions, all coordinated on one platform any team can trust, audit, and direct in their own words.
                 </p>
               </div>
               <div className="col-span-12 sm:col-span-4 lg:col-span-5 order-1 sm:order-2 sm:text-right">
