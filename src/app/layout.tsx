@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     template: "%s | Olyxee",
   },
   description:
-    "Olyxee builds research and infrastructure for artificial intelligence through Orgni, Togent, and Order Loop.",
+    "Olyxee builds the infrastructure for business AI. Orgni, our core platform, gives AI the business context, memory, and controls to run real operations across finance, documents, workflows, and logistics.",
   keywords: [
     "Olyxee",
     "AI infrastructure",
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     siteName: "Olyxee",
     title: "Olyxee | Research and Infrastructure for Artificial Intelligence",
     description:
-      "Olyxee builds research and infrastructure for artificial intelligence through Orgni, Togent, and Order Loop.",
+      "Olyxee builds the infrastructure for business AI. Orgni, our core platform, gives AI the business context, memory, and controls to run real operations across finance, documents, workflows, and logistics.",
     images: [
       {
         url: "/og-image.jpg",
@@ -89,7 +89,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Olyxee | Research and Infrastructure for Artificial Intelligence",
     description:
-      "Olyxee builds research and infrastructure for artificial intelligence through Orgni, Togent, and Order Loop.",
+      "Olyxee builds the infrastructure for business AI. Orgni, our core platform, gives AI the business context, memory, and controls to run real operations across finance, documents, workflows, and logistics.",
     images: ["/og-image.jpg"],
     creator: "@Olyxee",
   },
@@ -139,7 +139,7 @@ export default function RootLayout({
               name: "Olyxee",
               url: "https://olyxee.com",
               logo: "https://olyxee.com/Logo/Olyxee_Logo.png",
-              description: "Olyxee builds research and infrastructure for artificial intelligence through Orgni, Togent, and Order Loop.",
+              description: "Olyxee builds the infrastructure for business AI. Orgni, our core platform, gives AI the business context, memory, and controls to run real operations across finance, documents, workflows, and logistics.",
               foundingDate: "2025",
               sameAs: [
                 "https://twitter.com/olyxee",
