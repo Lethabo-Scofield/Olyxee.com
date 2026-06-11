@@ -34,13 +34,13 @@ const footerData = {
         { name: "Orgni", href: "/products" },
         { name: "Orgni Finance", href: "https://addup.olyxee.com", external: true },
         { name: "Orgni Workflows", href: "https://ordo.olyxee.com", external: true },
-        { name: "Orgni Docs", href: "/document-integrity" },
         { name: "Order Loop", href: "https://logistics.olyxee.com/", external: true },
       ],
     },
     {
       title: "Solutions",
       links: [
+        { name: "Orgni Docs", href: "/document-integrity" },
         { name: "Enterprise Automation", href: "/enterprise" },
         { name: "Togent", href: "https://togent.olyxee.com", external: true },
       ],
