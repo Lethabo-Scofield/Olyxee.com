@@ -56,7 +56,7 @@ const SOLUTION_CATEGORIES: SolutionCategory[] = [
     name: "Organizational Intelligence",
     tagline: "Memory, context, and persistent cognition.",
     capabilities: ["Memory systems", "Contextual reasoning", "Operational cognition", "Long-running workflows"],
-    poweredBy: ["Cortex"],
+    poweredBy: ["Orgni Platform"],
     bgImage: "/images/gradient-purple.png",
   },
 ];
@@ -97,7 +97,7 @@ const PRICING_TIERS: PricingTier[] = [
       "Business rules",
       "Human approval flows",
       "Orgni Docs capabilities",
-      "Cortex intelligence layer",
+      "Orgni Platform intelligence layer",
       "Togent access for team and system integration",
       "Support",
     ],
@@ -111,7 +111,7 @@ const PRICING_TIERS: PricingTier[] = [
       "A bespoke deployment where Olyxee becomes part of the organization's internal operating infrastructure.",
     includes: [
       "Custom AI infrastructure deployment",
-      "Cortex-based intelligence systems",
+      "Orgni Platform intelligence systems",
       "Orgni Docs systems",
       "Multi-agent workflows",
       "Advanced workflow execution",
@@ -274,14 +274,22 @@ const Enterprise: FC = () => {
             className="text-4xl sm:text-6xl lg:text-7xl text-neutral-900 tracking-[-0.025em] leading-[1.05] font-medium"
           >
             Built for{" "}
-            <em className="font-serif italic font-normal text-neutral-500">
+            <em className="font-serif italic font-normal text-orange-500">
               the enterprise.
             </em>
           </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="mt-7 text-base sm:text-lg text-neutral-500 font-light leading-relaxed max-w-xl mx-auto"
+          >
+            Every enterprise deployment runs on Orgni, our core platform. We connect your context, systems, and decisions into one operating layer, then bring in the right Orgni products for the job.
+          </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.15 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
             className="mt-10 flex flex-col sm:flex-row gap-3 justify-center"
           >
             <a
@@ -322,7 +330,7 @@ const Enterprise: FC = () => {
               </em>
             </h2>
             <p className="mt-5 text-base sm:text-lg text-neutral-500 font-light leading-relaxed">
-              Four core problem spaces where Olyxee deploys systems, each one powered by a product in our stack.
+              Four core problem spaces where we deploy on the Orgni platform, each one powered by products from the Orgni family.
             </p>
           </motion.div>
 
