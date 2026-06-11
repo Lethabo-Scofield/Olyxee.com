@@ -512,13 +512,17 @@ const About: FC = () => {
                 </a>
               </div>
             </motion.div>
+          </div>
+        </section>
 
+        {/* === WHERE WE ARE === */}
+        <section className="relative py-24 sm:py-36 bg-white border-t border-neutral-200/70">
+          <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
               transition={{ duration: 0.8, delay: 0.15 }}
-              className="mt-20 sm:mt-28 pt-12 border-t border-neutral-200"
             >
               {/* Section label + framing line */}
               <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-3 mb-10 sm:mb-14">
