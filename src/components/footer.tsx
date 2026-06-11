@@ -48,7 +48,6 @@ const footerData = {
     {
       title: "Research & Infrastructure",
       links: [
-        { name: "Olyxee Research", href: "/research" },
         { name: "Papers", href: "/research#papers" },
         { name: "Technical Reports", href: "/research" },
       ],
