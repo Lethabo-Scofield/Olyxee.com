@@ -344,13 +344,16 @@ function ResearchAreas() {
           >
             <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">What We Do</p>
             <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-6">
-              AI Infrastructure for Enterprise Execution
+              Research and Infrastructure for Artificial Intelligence
             </h2>
             <p className="text-base sm:text-lg text-neutral-600 font-light leading-relaxed mb-4">
-              Olyxee builds the infrastructure that helps enterprises move from AI experiments to reliable business execution.
+              Olyxee studies the practical problems created by AI adoption, from document integrity and financial accuracy to workflow reliability, operational memory, and AI-agent cost control.
+            </p>
+            <p className="text-base sm:text-lg text-neutral-600 font-light leading-relaxed mb-4">
+              That research powers infrastructure and product surfaces across finance, documents, logistics, workflows, and business context.
             </p>
             <p className="text-base sm:text-lg text-neutral-600 font-light leading-relaxed">
-              We connect AI systems to documents, data, APIs, workflows, memory, approvals, and operational tools so businesses can use AI in real processes, not just isolated conversations.
+              At the center is <span className="font-medium text-neutral-900">Orgni</span>, Olyxee&apos;s core infrastructure layer for business AI operations.
             </p>
           </motion.div>
 
@@ -358,20 +361,20 @@ function ResearchAreas() {
             {[
               {
                 num: "01",
-                title: "AI Research",
-                desc: "We research how AI systems reason, preserve context, coordinate across workflows, and remain reliable in enterprise environments.",
+                title: "Olyxee Research",
+                desc: "We study the real operational problems organizations face when adopting AI.",
                 gradient: "/images/gradient-blue.webp",
               },
               {
                 num: "02",
-                title: "Infrastructure Layers",
-                desc: "We build core AI infrastructure for document integrity, organizational memory, workflow execution, agent optimization, and operational intelligence.",
+                title: "Infrastructure",
+                desc: "We build the infrastructure that turns AI research into reliable business systems.",
                 gradient: "/images/gradient-purple.webp",
               },
               {
                 num: "03",
-                title: "Enterprise AI Systems",
-                desc: "We turn that infrastructure into practical systems such as Orgni, Orgni Finance, Orgni Workflows, Orgni Docs, Togent, and Order Loop.",
+                title: "Product Surfaces",
+                desc: "We create focused product surfaces across finance, documents, logistics, workflows, and AI-agent operations.",
                 gradient: "/images/gradient-abstract-blue.webp",
               },
             ].map((step, idx) => (
