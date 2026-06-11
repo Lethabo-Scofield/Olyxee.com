@@ -203,7 +203,7 @@ const ProductsPage: FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {PRODUCTS.map((p, i) => {
               const inner = (
-                <div className="group relative flex flex-col h-full p-7 sm:p-8 rounded-3xl overflow-hidden ring-1 ring-neutral-200/80 hover:ring-neutral-300 hover:shadow-xl hover:shadow-neutral-200/60 transition-all duration-300">
+                <div className="group relative flex flex-col h-full p-3 rounded-3xl overflow-hidden ring-1 ring-neutral-200/80 hover:ring-neutral-300 hover:shadow-xl hover:shadow-neutral-200/60 transition-all duration-300">
                   <Image
                     src={p.gradient}
                     alt=""
@@ -212,8 +212,8 @@ const ProductsPage: FC = () => {
                     className="object-cover scale-105 group-hover:scale-110 transition-transform duration-700 ease-out"
                   />
 
-                  <div className="relative z-10 flex flex-col h-full [text-shadow:0_1px_2px_rgba(255,255,255,0.5)]">
-                    <div className="flex items-center justify-between mb-7">
+                  <div className="relative z-10 flex flex-col h-full">
+                    <div className="flex items-center justify-between p-4">
                       <div className="w-12 h-12 rounded-2xl bg-white/70 backdrop-blur-md ring-1 ring-white/60 flex items-center justify-center shadow-sm">
                         <p.Icon className="w-5 h-5 text-neutral-700" strokeWidth={1.75} />
                       </div>
@@ -224,19 +224,21 @@ const ProductsPage: FC = () => {
                       )}
                     </div>
 
-                    <h3 className="text-lg font-semibold text-neutral-900 mb-2.5">{p.name}</h3>
-                    <p className="text-sm text-neutral-600 font-light leading-relaxed flex-1">
-                      {p.tagline}
-                    </p>
+                    <div className="mt-auto rounded-2xl bg-white/80 backdrop-blur-xl ring-1 ring-white/60 shadow-sm p-5 sm:p-6">
+                      <h3 className="text-lg font-semibold text-neutral-900 mb-2.5">{p.name}</h3>
+                      <p className="text-sm text-neutral-600 font-light leading-relaxed">
+                        {p.tagline}
+                      </p>
 
-                    <span className="mt-7 inline-flex items-center gap-1.5 text-sm font-medium text-neutral-900">
-                      {p.cta}
-                      {p.external ? (
-                        <ArrowUpRight className="w-4 h-4 text-neutral-500 group-hover:text-neutral-900 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-                      ) : (
-                        <ArrowRight className="w-4 h-4 text-neutral-500 group-hover:text-neutral-900 group-hover:translate-x-0.5 transition-all" />
-                      )}
-                    </span>
+                      <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-neutral-900">
+                        {p.cta}
+                        {p.external ? (
+                          <ArrowUpRight className="w-4 h-4 text-neutral-500 group-hover:text-neutral-900 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                        ) : (
+                          <ArrowRight className="w-4 h-4 text-neutral-500 group-hover:text-neutral-900 group-hover:translate-x-0.5 transition-all" />
+                        )}
+                      </span>
+                    </div>
                   </div>
                 </div>
               );
