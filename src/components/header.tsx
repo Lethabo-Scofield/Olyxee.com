@@ -41,7 +41,6 @@ type SignInOption = {
     name: string;
     description: string;
     href: string;
-    logo?: string;
     external: boolean;
 };
 
@@ -50,21 +49,18 @@ const SIGNIN_OPTIONS: SignInOption[] = [
         name: "Orgni Workflows",
         description: "Workflow execution and approvals",
         href: "https://ordo.olyxee.com/",
-        logo: "/images/ordo-logo.png",
         external: true,
     },
     {
         name: "Order Loop",
         description: "Logistics tracking and updates",
         href: "https://logistics.olyxee.com/",
-        logo: "/images/courier-loop-logo.png",
         external: true,
     },
     {
         name: "Orgni Finance",
         description: "Financial reconciliation and integrity",
         href: "https://addup.olyxee.com/",
-        logo: "/images/addup-logo.png",
         external: true,
     },
     {
@@ -418,7 +414,7 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                             animate={{ x: 0, opacity: 1 }}
                             exit={{ x: '100%', opacity: 0 }}
                             transition={{ type: 'spring', damping: 28, stiffness: 220 }}
-                            className="fixed right-3 top-3 bottom-3 w-[calc(100%-24px)] max-w-sm z-[1002] md:hidden overflow-hidden"
+                            className="fixed right-3 top-3 bottom-3 w-[calc(100%-24px)] max-w-sm z-[1002] md:hidden overflow-hidden flex flex-col"
                             style={{
                                 background: 'rgba(255,255,255,0.75)',
                                 backdropFilter: 'blur(40px) saturate(200%)',
@@ -447,7 +443,7 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
 
                             <div className="mx-5 h-px bg-neutral-200/50" />
 
-                            <nav className="p-5 overflow-y-auto h-[calc(100%-140px)]">
+                            <nav className="flex-1 min-h-0 p-5 overflow-y-auto">
                                 <ul className="space-y-0.5">
                                     {menuItems.map((item, i) => {
                                         const hasChildren = !!item.children?.length;
@@ -514,7 +510,7 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                             </nav>
 
                             <motion.div
-                                className="absolute bottom-0 left-0 right-0 p-5 flex flex-col gap-2"
+                                className="shrink-0 p-5 pt-4 border-t border-neutral-200/50 flex flex-col gap-1.5"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.4, type: 'spring', stiffness: 300, damping: 25 }}
@@ -529,23 +525,8 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                                         target={opt.external ? "_blank" : undefined}
                                         rel={opt.external ? "noopener noreferrer" : undefined}
                                         onClick={() => setMobileMenuOpen(false)}
-                                        className="w-full flex items-center gap-3 px-3.5 py-2.5 bg-white/70 hover:bg-white border border-neutral-200/70 rounded-2xl active:scale-[0.98] transition-all focus:outline-none"
+                                        className="w-full flex items-center gap-3 px-4 py-2.5 bg-white/70 hover:bg-white border border-neutral-200/70 rounded-2xl active:scale-[0.98] transition-all focus:outline-none"
                                     >
-                                        <div className="relative w-8 h-8 rounded-lg bg-white ring-1 ring-neutral-200/70 shadow-sm flex items-center justify-center overflow-hidden flex-shrink-0">
-                                            {opt.logo ? (
-                                                <Image
-                                                    src={opt.logo}
-                                                    alt=""
-                                                    width={24}
-                                                    height={24}
-                                                    className="w-[78%] h-[78%] object-contain"
-                                                />
-                                            ) : (
-                                                <span className="text-[10px] font-mono font-semibold text-neutral-500">
-                                                    API
-                                                </span>
-                                            )}
-                                        </div>
                                         <div className="min-w-0 flex-1 text-left">
                                             <p className="text-[14px] font-semibold text-neutral-900 leading-tight">
                                                 {opt.name}
