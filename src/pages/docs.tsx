@@ -1,4 +1,4 @@
-import { useState, FC, useCallback } from "react";
+import { useState, useEffect, FC, useCallback } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
@@ -88,6 +88,17 @@ const SIDE_NAVS: Record<string, typeof API_SIDE_NAV> = {
 const Docs: FC = () => {
   const [activeTab, setActiveTab] = useState("home");
   const [activePage, setActivePage] = useState("api-overview");
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!router.isReady) return;
+    const { tab, page } = router.query;
+    if (typeof tab === "string") {
+      setActiveTab(tab);
+      if (typeof page === "string") setActivePage(page);
+      else if (TAB_DEFAULTS[tab]) setActivePage(TAB_DEFAULTS[tab]);
+    }
+  }, [router.isReady, router.query]);
 
   const handleTabChange = (id: string) => {
     setActiveTab(id);

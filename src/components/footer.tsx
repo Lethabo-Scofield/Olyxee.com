@@ -56,7 +56,7 @@ const footerData = {
       title: "Resources",
       links: [
         { name: "Documentation", href: "/docs" },
-        { name: "API Reference", href: "/docs" },
+        { name: "API Reference", href: "/docs?tab=api&page=api-reference" },
       ],
     },
     {
