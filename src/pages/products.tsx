@@ -2,6 +2,7 @@ import { FC } from "react";
 import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
+import TalkToEnterprise from "../components/EnterpriseContactModal";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
@@ -300,12 +301,7 @@ const ProductsPage: FC = () => {
               </p>
 
               <div className="flex justify-center">
-                <Link
-                  href="/enterprise"
-                  className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide shadow-lg shadow-neutral-900/10"
-                >
-                  Talk to enterprise <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                </Link>
+                <TalkToEnterprise />
               </div>
             </div>
           </motion.div>
