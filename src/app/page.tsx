@@ -129,7 +129,7 @@ export default function HomePage() {
         <ResearchAreas />
         <ImageShowcase />
         {/* <OrdoSection /> hidden for now */}
-        <CourierLoopSection />
+        <OrgniSection />
         <TogentSection />
         <StoriesSection />
         <CTASection />
@@ -738,6 +738,81 @@ function CourierLoopSection() {
                   </li>
                 ))}
               </ol>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function OrgniSection() {
+  return (
+    <section id="orgni" className="py-20 sm:py-32 lg:py-40 bg-neutral-50/60 border-y border-neutral-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+            className="lg:col-span-5"
+          >
+            <div className="mb-6 flex items-center gap-3">
+              <Image
+                src="/images/orgni-logo.png"
+                alt="Orgni"
+                width={48}
+                height={48}
+                className="h-10 w-10 sm:h-11 sm:w-11 object-contain"
+                style={{ width: "auto", height: "auto" }}
+              />
+              <span className="font-serif text-3xl sm:text-4xl text-neutral-900 tracking-tight">Orgni</span>
+              <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.25em]">Core platform</span>
+            </div>
+
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-6">
+              AI your business can <em className="text-neutral-500 not-italic">actually run on.</em>
+            </h2>
+
+            <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-8 max-w-md">
+              Orgni is Olyxee&apos;s core infrastructure for organizations adopting AI. It connects your business context, workflows, documents, systems, and decisions so AI can support real operations with context, control, and traceability.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-4">
+              <Link
+                href="/products"
+                className="group inline-flex items-center gap-2 text-sm font-medium text-white bg-neutral-900 hover:bg-black px-6 py-3 rounded-full transition-colors"
+              >
+                Explore Orgni
+                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </Link>
+              <Link
+                href="/contact"
+                className="text-sm font-medium text-neutral-700 hover:text-neutral-900 transition-colors"
+              >
+                Talk to us →
+              </Link>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+            className="lg:col-span-7 relative flex justify-center"
+          >
+            <div aria-hidden className="absolute -inset-8 -z-10 bg-gradient-to-br from-orange-50/60 via-white to-amber-50/40 blur-2xl rounded-[2rem]" />
+            <div className="relative w-full max-w-sm sm:max-w-md overflow-hidden rounded-3xl ring-1 ring-neutral-200 shadow-sm">
+              <Image
+                src="/images/orgni-logo-name.png"
+                alt="Orgni brand mark"
+                width={1024}
+                height={1024}
+                className="block w-full h-auto"
+                sizes="(max-width: 1024px) 100vw, 448px"
+              />
             </div>
           </motion.div>
         </div>
