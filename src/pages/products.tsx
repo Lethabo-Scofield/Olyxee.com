@@ -155,7 +155,7 @@ const ProductsPage: FC = () => {
               One core. <em className="text-orange-500 not-italic">Every operation.</em>
             </h1>
             <p className="text-base sm:text-lg text-neutral-500 font-light leading-relaxed max-w-xl mx-auto">
-              Orgni is the platform at the center of everything we build. Each product plugs into the same core, so AI can run real work across your business, with context, control, and a clear trail.
+              Orgni is the platform that helps businesses connect AI to real operations. It gives AI the business context, memory, and controls needed to work across documents, workflows, finance, logistics, and decisions without losing track of what happened.
             </p>
           </motion.div>
 
