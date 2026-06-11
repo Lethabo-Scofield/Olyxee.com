@@ -35,6 +35,7 @@ type Product = {
   Icon: BrandIcon;
   cta: string;
   status?: string;
+  gradient: string;
 };
 
 const PRODUCTS: Product[] = [
@@ -46,6 +47,7 @@ const PRODUCTS: Product[] = [
     external: false,
     Icon: Layers,
     cta: "How it works",
+    gradient: "/images/gradient-blue.webp",
   },
   {
     name: "Orgni Workflows",
@@ -55,6 +57,7 @@ const PRODUCTS: Product[] = [
     external: true,
     Icon: Workflow,
     cta: "Visit Orgni Workflows",
+    gradient: "/images/gradient-purple.webp",
   },
   {
     name: "Orgni Finance",
@@ -64,6 +67,7 @@ const PRODUCTS: Product[] = [
     external: true,
     Icon: CircleDollarSign,
     cta: "Try Orgni Finance",
+    gradient: "/images/gradient-yellow-green.webp",
   },
   {
     name: "Orgni Docs",
@@ -73,6 +77,7 @@ const PRODUCTS: Product[] = [
     external: false,
     Icon: FileText,
     cta: "Explore Orgni Docs",
+    gradient: "/images/gradient-abstract-blue.webp",
   },
   {
     name: "Order Loop",
@@ -82,6 +87,7 @@ const PRODUCTS: Product[] = [
     external: true,
     Icon: PackageCheck,
     cta: "Open Order Loop",
+    gradient: "/images/gradient-orange-pink.webp",
   },
   {
     name: "Togent",
@@ -92,6 +98,7 @@ const PRODUCTS: Product[] = [
     Icon: BrainCircuit,
     cta: "Get early access",
     status: "Coming soon",
+    gradient: "/images/gradient-pink-cyan.webp",
   },
 ];
 
@@ -195,31 +202,42 @@ const ProductsPage: FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {PRODUCTS.map((p, i) => {
               const inner = (
-                <div className="group relative flex flex-col h-full p-7 sm:p-8 rounded-3xl bg-white ring-1 ring-neutral-200 hover:ring-neutral-300 hover:shadow-xl hover:shadow-neutral-200/60 transition-all duration-300">
-                  <div className="flex items-center justify-between mb-7">
-                    <div className="w-12 h-12 rounded-2xl bg-neutral-100 flex items-center justify-center">
-                      <p.Icon className="w-5 h-5 text-neutral-700" strokeWidth={1.75} />
+                <div className="group relative flex flex-col h-full p-7 sm:p-8 rounded-3xl overflow-hidden ring-1 ring-neutral-200/80 hover:ring-neutral-300 hover:shadow-xl hover:shadow-neutral-200/60 transition-all duration-300">
+                  <Image
+                    src={p.gradient}
+                    alt=""
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover scale-105 group-hover:scale-110 transition-transform duration-700 ease-out"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-white via-white/85 to-white/40" />
+
+                  <div className="relative z-10 flex flex-col h-full">
+                    <div className="flex items-center justify-between mb-7">
+                      <div className="w-12 h-12 rounded-2xl bg-white/70 backdrop-blur-md ring-1 ring-white/60 flex items-center justify-center shadow-sm">
+                        <p.Icon className="w-5 h-5 text-neutral-700" strokeWidth={1.75} />
+                      </div>
+                      {p.status && (
+                        <span className="px-2.5 py-1 rounded-full bg-white/70 backdrop-blur-md text-orange-600 text-[10px] font-mono uppercase tracking-[0.18em]">
+                          {p.status}
+                        </span>
+                      )}
                     </div>
-                    {p.status && (
-                      <span className="px-2.5 py-1 rounded-full bg-orange-50 text-orange-600 text-[10px] font-mono uppercase tracking-[0.18em]">
-                        {p.status}
-                      </span>
-                    )}
+
+                    <h3 className="text-lg font-semibold text-neutral-900 mb-2.5">{p.name}</h3>
+                    <p className="text-sm text-neutral-600 font-light leading-relaxed flex-1">
+                      {p.tagline}
+                    </p>
+
+                    <span className="mt-7 inline-flex items-center gap-1.5 text-sm font-medium text-neutral-900">
+                      {p.cta}
+                      {p.external ? (
+                        <ArrowUpRight className="w-4 h-4 text-neutral-500 group-hover:text-neutral-900 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                      ) : (
+                        <ArrowRight className="w-4 h-4 text-neutral-500 group-hover:text-neutral-900 group-hover:translate-x-0.5 transition-all" />
+                      )}
+                    </span>
                   </div>
-
-                  <h3 className="text-lg font-semibold text-neutral-900 mb-2.5">{p.name}</h3>
-                  <p className="text-sm text-neutral-500 font-light leading-relaxed flex-1">
-                    {p.tagline}
-                  </p>
-
-                  <span className="mt-7 inline-flex items-center gap-1.5 text-sm font-medium text-neutral-900">
-                    {p.cta}
-                    {p.external ? (
-                      <ArrowUpRight className="w-4 h-4 text-neutral-400 group-hover:text-neutral-900 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-                    ) : (
-                      <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-neutral-900 group-hover:translate-x-0.5 transition-all" />
-                    )}
-                  </span>
                 </div>
               );
 
