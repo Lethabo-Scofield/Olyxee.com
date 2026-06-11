@@ -32,7 +32,7 @@ const SOLUTION_CATEGORIES: SolutionCategory[] = [
     name: "Financial Operations",
     tagline: "Reconciliation, integrity, and audit intelligence.",
     capabilities: ["Reconciliation", "Integrity systems", "Validation", "Audit intelligence"],
-    poweredBy: ["Addup", "ODI"],
+    poweredBy: ["Orgni Finance", "Orgni Docs"],
     bgImage: "/images/gradient-blue-pink.png",
   },
   {
@@ -40,7 +40,7 @@ const SOLUTION_CATEGORIES: SolutionCategory[] = [
     name: "Enterprise Workflow Automation",
     tagline: "Execution, approvals, and system coordination.",
     capabilities: ["Workflow execution", "Approvals", "Operational coordination", "System integrations"],
-    poweredBy: ["Ordo"],
+    poweredBy: ["Orgni Workflows"],
     bgImage: "/images/gradient-orange-pink.png",
   },
   {
@@ -48,7 +48,7 @@ const SOLUTION_CATEGORIES: SolutionCategory[] = [
     name: "Logistics & Delivery Operations",
     tagline: "Dispatch, routing, and delivery intelligence.",
     capabilities: ["Dispatch systems", "Operational coordination", "Delivery intelligence", "Workflow automation"],
-    poweredBy: ["Courier Loop"],
+    poweredBy: ["Order Loop"],
     bgImage: "/images/gradient-yellow-green.png",
   },
   {
@@ -96,7 +96,7 @@ const PRICING_TIERS: PricingTier[] = [
       "API and database integrations",
       "Business rules",
       "Human approval flows",
-      "Document Integrity capabilities",
+      "Orgni Docs capabilities",
       "Cortex intelligence layer",
       "Togent access for team and system integration",
       "Support",
@@ -112,7 +112,7 @@ const PRICING_TIERS: PricingTier[] = [
     includes: [
       "Custom AI infrastructure deployment",
       "Cortex-based intelligence systems",
-      "Document Integrity systems",
+      "Orgni Docs systems",
       "Multi-agent workflows",
       "Advanced workflow execution",
       "Custom APIs and integrations",

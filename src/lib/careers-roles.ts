@@ -228,7 +228,7 @@ export const roles: Role[] = [
     location: REMOTE,
     type: "paid",
     description:
-      "Design, build, and own the product surfaces and backend services across Ordo, Addup, and Document Integrity. Set the engineering bar.",
+      "Design, build, and own the product surfaces and backend services across Orgni Workflows, Orgni Finance, and Orgni Docs. Set the engineering bar.",
     level: "Staff · 8+ years of production engineering",
     compensation: "Top-of-band salary, significant equity, performance bonus, learning budget.",
     responsibilities: [
@@ -283,7 +283,7 @@ export const roles: Role[] = [
     location: REMOTE,
     type: "paid",
     description:
-      "Own the models behind Ordo, Addup, and Olyxee Cortex end to end: training, evaluation, and reliable serving at production scale.",
+      "Own the models behind Orgni Workflows, Orgni Finance, and Olyxee Cortex end to end: training, evaluation, and reliable serving at production scale.",
     level: "Staff · 8+ years building ML systems in production",
     compensation: "Top-of-band salary, significant equity, performance bonus, compute and learning budget.",
     responsibilities: [
@@ -314,7 +314,7 @@ export const roles: Role[] = [
     location: REMOTE,
     type: "internship",
     description:
-      "Build product surfaces and backend services across Ordo, Addup, and Document Integrity alongside senior engineers.",
+      "Build product surfaces and backend services across Orgni Workflows, Orgni Finance, and Orgni Docs alongside senior engineers.",
     responsibilities: [
       "Ship features end to end across frontend, backend, and APIs",
       "Write tests, review code, and help raise the engineering bar",
@@ -333,7 +333,7 @@ export const roles: Role[] = [
     location: REMOTE,
     type: "internship",
     description:
-      "Build AI features end to end across Ordo, Addup, and Olyxee Cortex, from prompt and model integration through reliable product surfaces.",
+      "Build AI features end to end across Orgni Workflows, Orgni Finance, and Olyxee Cortex, from prompt and model integration through reliable product surfaces.",
     responsibilities: [
       "Help build AI-powered features that reach real users",
       "Integrate models, tools, and data into reliable workflows",
@@ -409,7 +409,7 @@ export const roles: Role[] = [
     location: REMOTE,
     type: "internship",
     description:
-      "Work alongside our team on the models that power Ordo, Addup, and Olyxee Cortex.",
+      "Work alongside our team on the models that power Orgni Workflows, Orgni Finance, and Olyxee Cortex.",
     responsibilities: [
       "Help train, fine-tune, and evaluate models on real product tasks",
       "Move research prototypes into reliable services with the team",
@@ -466,7 +466,7 @@ export const roles: Role[] = [
     location: REMOTE,
     type: "internship",
     description:
-      "Help build the data pipelines that feed Addup, Cortex, and our evaluation systems.",
+      "Help build the data pipelines that feed Orgni Finance, Cortex, and our evaluation systems.",
     responsibilities: [
       "Help design and operate ETL/ELT pipelines on real product data",
       "Model data for analytics, ML training, and product features",
@@ -601,7 +601,7 @@ export const roles: Role[] = [
     description:
       "Help build the evaluation harnesses and monitors that prove our AI behaves correctly.",
     responsibilities: [
-      "Help build evaluation suites and golden datasets across Ordo, Addup, and Cortex",
+      "Help build evaluation suites and golden datasets across Orgni Workflows, Orgni Finance, and Cortex",
       "Contribute to monitoring and alerting for model behavior and drift",
       "Help with failure analysis and partner with research to close gaps",
     ],
@@ -618,7 +618,7 @@ export const roles: Role[] = [
     location: REMOTE,
     type: "internship",
     description:
-      "Support a product surface across Ordo, Addup, Document Integrity, or Courier Loop.",
+      "Support a product surface across Orgni Workflows, Orgni Finance, Orgni Docs, or Order Loop.",
     responsibilities: [
       "Help translate customer problems into clear specs and shipped product",
       "Coordinate with engineering, research, and design on delivery",
@@ -694,7 +694,7 @@ export const roles: Role[] = [
     location: REMOTE,
     type: "internship",
     description:
-      "Work with enterprise customers to help deploy Ordo, Addup, and Cortex into their operations.",
+      "Work with enterprise customers to help deploy Orgni Workflows, Orgni Finance, and Cortex into their operations.",
     responsibilities: [
       "Support onboarding, integration, and adoption for enterprise accounts",
       "Help translate customer requirements into product feedback and configuration",

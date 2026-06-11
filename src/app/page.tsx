@@ -83,18 +83,18 @@ export default function HomePage() {
       },
       {
         "@type": "Question",
-        name: "What is Ordo?",
+        name: "What is Orgni?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Ordo is Olyxee's AI execution system. You describe a business goal in plain English and Ordo plans the steps, runs the work across your tools (Gmail, Stripe, QuickBooks, Salesforce, Notion, Slack and more), and shows you a full audit trail.",
+          text: "Orgni is Olyxee's core infrastructure product for organizations adopting AI. It connects business context, workflows, documents, systems, and decisions so AI can support real operations with context, control, and traceability.",
         },
       },
       {
         "@type": "Question",
-        name: "What is Addup?",
+        name: "What is Orgni Finance?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Addup is Olyxee's reconciliation product for finance teams. It connects to your banks, payment processors, and ERP, then matches transactions and produces close-ready reports automatically.",
+          text: "Orgni Finance handles financial reconciliation, transaction matching, anomaly review, and financial integrity for finance teams.",
         },
       },
       {
@@ -197,7 +197,7 @@ function HeroSection() {
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-7 sm:py-3.5 bg-white/90 backdrop-blur-md text-neutral-900 rounded-full font-medium hover:bg-white transition-all text-xs sm:text-sm tracking-wide shadow-lg shadow-black/10 border border-white/60"
             >
-              Try Courier Loop <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+              Try Order Loop <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </a>
           </div>
         </div>
@@ -371,7 +371,7 @@ function ResearchAreas() {
               {
                 num: "03",
                 title: "Enterprise AI Systems",
-                desc: "We turn that infrastructure into practical systems such as Addup, Ordo, Courier Loop, ODI, Cortex, and Togent.",
+                desc: "We turn that infrastructure into practical systems such as Orgni, Orgni Finance, Orgni Workflows, Orgni Docs, Togent, and Order Loop.",
                 gradient: "/images/gradient-abstract-blue.webp",
               },
             ].map((step, idx) => (
@@ -505,15 +505,15 @@ type ProductBlock = {
 const PRODUCT_BLOCKS: readonly ProductBlock[] = [
   {
     key: "ordo",
-    name: "Ordo",
+    name: "Orgni Workflows",
     tagline:
-      "Ask in plain English. Ordo gets it done across the tools you already use - and keeps the receipts.",
+      "Ask in plain English. Orgni Workflows gets it done across the tools you already use - and keeps the receipts.",
     points: [
       "Plugs into Drive, Teams, SharePoint & more",
       "Turns requests into completed work",
       "Every step assigned, timestamped, reviewable",
     ],
-    ctaLabel: "Try Ordo",
+    ctaLabel: "Try Orgni Workflows",
     ctaHref: "https://ordo.olyxee.com",
     imageSide: "right",
     images: {
@@ -523,15 +523,15 @@ const PRODUCT_BLOCKS: readonly ProductBlock[] = [
   },
   {
     key: "addup",
-    name: "Addup",
+    name: "Orgni Finance",
     tagline:
-      "The financial close, on autopilot. Addup reconciles, drafts, and reviews the books while your team approves.",
+      "The financial close, on autopilot. Orgni Finance reconciles, drafts, and reviews the books while your team approves.",
     points: [
       "Connects to Xero, QuickBooks & your bank feeds",
       "Turns transactions into a clean monthly close",
       "Every entry sourced, explained, audit-ready",
     ],
-    ctaLabel: "Try Addup",
+    ctaLabel: "Try Orgni Finance",
     ctaHref: "https://addup.olyxee.com",
     imageSide: "left",
     images: {
@@ -651,7 +651,7 @@ function CourierLoopSection() {
             <div className="mb-6">
               <Image
                 src="/images/courier-loop-logo.png"
-                alt="Courier Loop, delivery service"
+                alt="Order Loop, delivery service"
                 width={220}
                 height={72}
                 className="h-12 sm:h-14 w-auto object-contain"
@@ -909,14 +909,14 @@ function IntegrationSection() {
               />
               <div className="relative px-8 sm:px-14 lg:px-20 py-14 sm:py-20 text-center">
                 <div className="flex items-center justify-center gap-3 mb-6">
-                  <Image src="/images/ordo-logo.png" alt="Ordo" width={32} height={32} className="rounded-lg" style={{ width: 32, height: 32 }} />
-                  <span className="text-sm font-semibold text-neutral-400 uppercase tracking-widest">Ordo</span>
+                  <Image src="/images/ordo-logo.png" alt="Orgni Workflows" width={32} height={32} className="rounded-lg" style={{ width: 32, height: 32 }} />
+                  <span className="text-sm font-semibold text-neutral-400 uppercase tracking-widest">Orgni Workflows</span>
                 </div>
                 <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] tracking-tight text-neutral-900 leading-tight mb-6">
                   AI execution for your workflows.
                 </h2>
                 <p className="text-neutral-500 text-base sm:text-lg font-light leading-relaxed mb-10 max-w-lg mx-auto">
-                  Turn business goals into completed operations. Ordo plans, coordinates, and executes across your tools and systems end-to-end.
+                  Turn business goals into completed operations. Orgni Workflows plans, coordinates, and executes across your tools and systems end-to-end.
                 </p>
                 <Link
                   href="/products"

@@ -80,8 +80,8 @@ const DocumentIntegrity: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 flex flex-col">
       <SEO
-        title="Olyxee Document Integrity, Scheduled Maintenance"
-        description="Olyxee Document Integrity is currently undergoing scheduled maintenance."
+        title="Orgni Docs, Scheduled Maintenance"
+        description="Orgni Docs is currently undergoing scheduled maintenance."
         path="/document-integrity"
       />
       <Header />
@@ -103,7 +103,7 @@ const DocumentIntegrity: FC = () => {
             transition={{ duration: 0.6, delay: 0.25 }}
             className="text-base sm:text-lg text-neutral-500 font-light mt-5 max-w-lg mx-auto"
           >
-            Olyxee Document Integrity is undergoing scheduled maintenance.
+            Orgni Docs is undergoing scheduled maintenance.
           </motion.p>
 
           <motion.div
@@ -196,10 +196,10 @@ const DocumentIntegrity: FC = () => {
               A quick guide
             </p>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl tracking-tight text-neutral-900 leading-[1.05]">
-              What is <em className="text-orange-500">Document Integrity?</em>
+              What is <em className="text-orange-500">Orgni Docs?</em>
             </h2>
             <p className="mt-6 text-lg text-neutral-600 font-light leading-relaxed max-w-3xl">
-              Document Integrity is a verification layer for the documents your business runs on. It extracts structured information from files like invoices, contracts, claims, statements, and identity documents, validates them against your rules and trusted sources, flags inconsistencies and tampering, and records every check in an auditable ledger.
+              Orgni Docs is a verification layer for the documents your business runs on. It extracts structured information from files like invoices, contracts, claims, statements, and identity documents, validates them against your rules and trusted sources, flags inconsistencies and tampering, and records every check in an auditable ledger.
             </p>
           </motion.div>
 

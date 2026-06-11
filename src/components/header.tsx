@@ -47,22 +47,22 @@ type SignInOption = {
 
 const SIGNIN_OPTIONS: SignInOption[] = [
     {
-        name: "Ordo",
-        description: "Compliance workflows",
+        name: "Orgni Workflows",
+        description: "Workflow execution and approvals",
         href: "https://ordo.olyxee.com/",
         logo: "/images/ordo-logo.png",
         external: true,
     },
     {
-        name: "Courier Loop",
+        name: "Order Loop",
         description: "Logistics tracking and updates",
         href: "https://logistics.olyxee.com/",
         logo: "/images/courier-loop-logo.png",
         external: true,
     },
     {
-        name: "Addup",
-        description: "Accounting and reconciliation",
+        name: "Orgni Finance",
+        description: "Financial reconciliation and integrity",
         href: "https://addup.olyxee.com/",
         logo: "/images/addup-logo.png",
         external: true,

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 const description =
-  "How a mid-market financial services firm cut month-end close from five days to overnight using Olyxee's Addup reconciliation and Ordo execution systems.";
+  "How a mid-market financial services firm cut month-end close from five days to overnight using Olyxee's Orgni Finance reconciliation and Orgni Workflows execution systems.";
 
 export const metadata: Metadata = {
   title: "Accounting close in hours, not days | Customer story",

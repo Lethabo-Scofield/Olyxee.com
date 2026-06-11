@@ -28,13 +28,13 @@ const COLORS = [
   { name: "Mist",        hex: "#F5F5F5", text: "text-neutral-900",   role: "Subtle surfaces", border: true },
   { name: "Slate",       hex: "#737373", text: "text-white",         role: "Secondary text" },
   { name: "Ember",       hex: "#F97316", text: "text-white",         role: "Editorial accent" },
-  { name: "Ordo Blue",   hex: "#3B82F6", text: "text-white",         role: "Ordo product accent" },
-  { name: "Addup Green", hex: "#10B981", text: "text-white",         role: "Addup product accent" },
+  { name: "Orgni Workflows Blue",   hex: "#3B82F6", text: "text-white",         role: "Orgni Workflows product accent" },
+  { name: "Orgni Finance Green", hex: "#10B981", text: "text-white",         role: "Orgni Finance product accent" },
 ];
 
 const VOICE = [
   { word: "Calm.",   rule: "Lower the volume. We don't shout to be heard.",      sample: "Reconciles in seconds, not days." },
-  { word: "Direct.", rule: "Short sentences. Specific verbs. No filler.",        sample: "Ordo executes. Addup reconciles." },
+  { word: "Direct.", rule: "Short sentences. Specific verbs. No filler.",        sample: "Orgni Workflows executes. Orgni Finance reconciles." },
   { word: "Useful.", rule: "Every line carries information. Cut adjectives.",     sample: "Pulls your ledgers. Matches the entries. Files the report." },
 ];
 
@@ -54,8 +54,8 @@ const DOWNLOADS = [
   { label: "Olyxee mark · Light",     path: "/Logo/Olyxee_Logo.png",        format: "PNG" },
   { label: "Olyxee mark · Dark",      path: "/Logo/Olyxee_trans.png",       format: "PNG" },
   { label: "Olyxee Robotics · Wave",  path: "/brand/robotics-logo.png",     format: "PNG" },
-  { label: "Ordo mark",               path: "/images/ordo-logo.png",        format: "PNG" },
-  { label: "Addup wordmark",          path: "/images/addup-logo.png",       format: "PNG" },
+  { label: "Orgni Workflows mark",               path: "/images/ordo-logo.png",        format: "PNG" },
+  { label: "Orgni Finance wordmark",          path: "/images/addup-logo.png",       format: "PNG" },
 ];
 
 function BrandAurora() {
@@ -165,9 +165,9 @@ const Brand: FC = () => {
     <div className="min-h-screen bg-white text-neutral-900 relative">
       <SEO
         title="Brand Guidelines"
-        description="Olyxee brand guidelines: logos for Olyxee, Ordo, and Addup, plus color, typography, and usage rules. Download official assets."
+        description="Olyxee brand guidelines: logos for Olyxee, Orgni Workflows, and Orgni Finance, plus color, typography, and usage rules. Download official assets."
         path="/brand"
-        keywords={["Olyxee brand", "Olyxee logo", "Ordo logo", "Addup logo", "Olyxee press kit"]}
+        keywords={["Olyxee brand", "Olyxee logo", "Orgni Workflows logo", "Orgni Finance logo", "Olyxee press kit"]}
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "WebPage",
@@ -298,23 +298,23 @@ const Brand: FC = () => {
           className="border-t border-neutral-200 scroll-mt-24"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <SectionHead num="03" label="Product marks · Ordo & Addup" />
+            <SectionHead num="03" label="Product marks · Orgni Workflows & Orgni Finance" />
             <div className="grid grid-cols-1 md:grid-cols-2 rounded-2xl overflow-hidden ring-1 ring-neutral-200/80 bg-neutral-50">
               <div className="relative min-h-[320px] sm:min-h-[400px] flex flex-col items-center justify-center px-6 py-14 md:border-r border-b md:border-b-0 border-neutral-200/80">
-                <Image src="/images/ordo-logo.png" alt="Ordo product mark" width={320} height={320} className="w-32 sm:w-40 lg:w-48 h-auto object-contain mb-8" />
+                <Image src="/images/ordo-logo.png" alt="Orgni Workflows product mark" width={320} height={320} className="w-32 sm:w-40 lg:w-48 h-auto object-contain mb-8" />
                 <div className="text-center">
-                  <p className="text-sm text-neutral-700 font-medium">Ordo</p>
-                  <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 mt-1">#3B82F6 · Ordo Blue</p>
+                  <p className="text-sm text-neutral-700 font-medium">Orgni Workflows</p>
+                  <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 mt-1">#3B82F6 · Orgni Workflows Blue</p>
                 </div>
                 <a href="/images/ordo-logo.png" download className="absolute bottom-3 right-4 inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-600 hover:text-neutral-900 transition-colors">
                   PNG <ArrowUpRight className="w-3 h-3" />
                 </a>
               </div>
               <div className="relative min-h-[320px] sm:min-h-[400px] flex flex-col items-center justify-center px-6 py-14">
-                <Image src="/images/addup-logo.png" alt="Addup wordmark" width={400} height={120} className="w-48 sm:w-60 lg:w-72 h-auto object-contain mb-8" />
+                <Image src="/images/addup-logo.png" alt="Orgni Finance wordmark" width={400} height={120} className="w-48 sm:w-60 lg:w-72 h-auto object-contain mb-8" />
                 <div className="text-center">
-                  <p className="text-sm text-neutral-700 font-medium">Addup</p>
-                  <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 mt-1">#10B981 · Addup Green</p>
+                  <p className="text-sm text-neutral-700 font-medium">Orgni Finance</p>
+                  <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 mt-1">#10B981 · Orgni Finance Green</p>
                 </div>
                 <a href="/images/addup-logo.png" download className="absolute bottom-3 right-4 inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-600 hover:text-neutral-900 transition-colors">
                   PNG <ArrowUpRight className="w-3 h-3" />

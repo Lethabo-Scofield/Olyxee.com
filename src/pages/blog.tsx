@@ -11,11 +11,11 @@ const categories = ["All", "Product", "Engineering", "Research", "Company"];
 const posts = [
   {
     slug: "introducing-ordo",
-    title: "Introducing Ordo: AI Execution for Business Operations",
+    title: "Introducing Orgni Workflows: AI Execution for Business Operations",
     category: "Product",
     date: "Mar 28, 2026",
     readTime: "6 min",
-    excerpt: "Today we're publicly unveiling Ordo, an AI execution engine that turns business goals into completed work across your tools and systems.",
+    excerpt: "Today we're publicly unveiling Orgni Workflows, an AI execution engine that turns business goals into completed work across your tools and systems.",
     featured: true,
     gradient: "from-indigo-500 via-purple-500 to-pink-500",
     content: [
@@ -24,8 +24,8 @@ const posts = [
         body: `Every operations team hits the same wall. Finance, compliance, and HR teams lose days every month on tasks that follow the same pattern every time: pulling data from multiple systems, reconciling records, generating reports, and chasing approvals.\n\nWe spent months talking to teams across industries. The stories were remarkably consistent: 40+ hours a month spent on manual reconciliation, 5 different systems touched per report, and 3-5 days just to close the books each month.\n\nThe tooling gap was obvious. There were great tools for individual tasks, but nothing that could take a business goal and execute it end-to-end across tools and data sources.`,
       },
       {
-        heading: "What Ordo does",
-        body: `Ordo is an AI execution engine. You describe what needs to be done, and Ordo handles the rest: planning, coordinating, and executing across your tools and systems.\n\nIt works through three layers:\n\n**Goal interpretation**: Describe the business outcome you need. Ordo breaks it down into structured, executable steps automatically.\n\n**Cross-system execution**: Ordo connects to your ERP, databases, spreadsheets, and communication tools to execute each step without manual intervention.\n\n**Transparent delivery**: Every action is logged with timestamps, inputs, and outputs. Results are delivered as reports, notifications, or audit trails, fully traceable.`,
+        heading: "What Orgni Workflows does",
+        body: `Orgni Workflows is an AI execution engine. You describe what needs to be done, and Orgni Workflows handles the rest: planning, coordinating, and executing across your tools and systems.\n\nIt works through three layers:\n\n**Goal interpretation**: Describe the business outcome you need. Orgni Workflows breaks it down into structured, executable steps automatically.\n\n**Cross-system execution**: Orgni Workflows connects to your ERP, databases, spreadsheets, and communication tools to execute each step without manual intervention.\n\n**Transparent delivery**: Every action is logged with timestamps, inputs, and outputs. Results are delivered as reports, notifications, or audit trails, fully traceable.`,
       },
       {
         heading: "Why execution-first matters",
@@ -33,7 +33,7 @@ const posts = [
       },
       {
         heading: "What's next",
-        body: `Ordo is available today for early access. We're starting with finance, compliance, and operations workflows, the areas where teams spend the most time on repetitive, pattern-based work.\n\nOver the coming months, we'll be expanding system integrations, adding team collaboration features, and deepening our approval workflow capabilities. If your team is stuck on operational busywork and you want to start describing goals instead of building processes, we built Ordo for you.`,
+        body: `Orgni Workflows is available today for early access. We're starting with finance, compliance, and operations workflows, the areas where teams spend the most time on repetitive, pattern-based work.\n\nOver the coming months, we'll be expanding system integrations, adding team collaboration features, and deepening our approval workflow capabilities. If your team is stuck on operational busywork and you want to start describing goals instead of building processes, we built Orgni Workflows for you.`,
       },
     ],
   },
@@ -83,7 +83,7 @@ const posts = [
     category: "Product",
     date: "Feb 18, 2026",
     readTime: "7 min",
-    excerpt: "How Ordo continuously monitors execution workflows and ensures consistent, reliable outputs across systems.",
+    excerpt: "How Orgni Workflows continuously monitors execution workflows and ensures consistent, reliable outputs across systems.",
     featured: false,
     gradient: "from-violet-500 via-purple-500 to-indigo-500",
   },
@@ -260,7 +260,7 @@ const Blog: FC = () => {
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-2 px-5 py-2.5 bg-neutral-900 text-white text-sm font-medium rounded-full hover:bg-black transition-colors"
                         >
-                          Try Ordo
+                          Try Orgni Workflows
                           <ArrowRight className="w-3.5 h-3.5" />
                         </a>
                         <span className="text-xs text-neutral-400">Free during beta</span>

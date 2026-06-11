@@ -192,7 +192,7 @@ const EdgeAI: FC = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-neutral-600 border border-neutral-200 rounded-full font-medium hover:bg-neutral-50 hover:text-neutral-900 transition-all text-sm"
             >
-              Try Ordo
+              Try Orgni Workflows
             </a>
           </motion.div>
         </div>
@@ -253,7 +253,7 @@ const EdgeAI: FC = () => {
                 highlight: true,
               },
               {
-                label: "Ordo",
+                label: "Orgni Workflows",
                 role: "Execution Engine",
                 description: "Turns business goals into completed operations. Plans, coordinates, and executes across tools and systems end-to-end.",
                 bg: "/images/gradient-yellow-green.webp",

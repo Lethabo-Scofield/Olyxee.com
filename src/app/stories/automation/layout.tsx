@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 const description =
-  "How a logistics operations team replaced manual coordination with Olyxee's Ordo, automating dispatch, invoicing, and exception handling end-to-end.";
+  "How a logistics operations team replaced manual coordination with Olyxee's Orgni Workflows, automating dispatch, invoicing, and exception handling end-to-end.";
 
 export const metadata: Metadata = {
   title: "Automating operations end-to-end | Customer story",
@@ -30,7 +30,7 @@ const breadcrumbJsonLd = {
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Automating operations end-to-end with Ordo",
+  headline: "Automating operations end-to-end with Orgni Workflows",
   description,
   image: ["https://olyxee.com/og-image.jpg"],
   datePublished: "2025-10-01T00:00:00.000Z",

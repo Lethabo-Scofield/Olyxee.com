@@ -31,24 +31,25 @@ const footerData = {
     {
       title: "Products",
       links: [
-        { name: "Ordo", href: "https://ordo.olyxee.com", external: true },
-        { name: "Addup", href: "https://addup.olyxee.com", external: true },
+        { name: "Orgni", href: "/products" },
+        { name: "Orgni Finance", href: "https://addup.olyxee.com", external: true },
+        { name: "Orgni Workflows", href: "https://ordo.olyxee.com", external: true },
+        { name: "Orgni Docs", href: "/document-integrity" },
         { name: "Togent", href: "https://togent.olyxee.com", external: true },
+        { name: "Order Loop", href: "https://logistics.olyxee.com/", external: true },
       ],
     },
     {
       title: "Solutions",
       links: [
-        { name: "Courier Loop", href: "https://logistics.olyxee.com/", external: true },
-        { name: "Document Integrity", href: "/document-integrity" },
         { name: "Enterprise Automation", href: "/enterprise" },
+        { name: "Enterprise Hardware", href: "/enterprise/robotics" },
       ],
     },
     {
       title: "Research & Infrastructure",
       links: [
         { name: "Olyxee Research", href: "/research" },
-        { name: "Olyxee Cortex", href: "/research/cortex" },
         { name: "Papers", href: "/research#papers" },
         { name: "Technical Reports", href: "/research" },
       ],

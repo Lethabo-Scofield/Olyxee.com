@@ -79,9 +79,9 @@ const About: FC = () => {
     <div className="min-h-screen bg-white text-neutral-900 relative">
       <SEO
         title="About"
-        description="Olyxee is an AI infrastructure company. We build systems that let organizations put AI to work across their operations: reliably, transparently, and at scale."
+        description="Olyxee builds research and infrastructure for artificial intelligence. Through Olyxee Research, we turn insights into infrastructure products that help organizations adopt AI across real operations."
         path="/about"
-        keywords={["About Olyxee", "AI infrastructure company", "Olyxee team", "AI reliability mission", "Lethabo Scofield"]}
+        keywords={["About Olyxee", "AI infrastructure company", "Olyxee Research", "Orgni", "Lethabo Scofield"]}
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "AboutPage",
@@ -93,7 +93,7 @@ const About: FC = () => {
             url: "https://olyxee.com",
             logo: "https://olyxee.com/Logo/Olyxee_Logo.png",
             description:
-              "Olyxee is an AI infrastructure company building verification, evaluation, and monitoring systems for production AI.",
+              "Olyxee builds research and infrastructure for artificial intelligence, with Orgni at the center of how organizations adopt AI across real operations.",
           },
         }}
       />
@@ -149,9 +149,9 @@ const About: FC = () => {
               transition={{ duration: 0.7, delay: 0.45 }}
               className="mt-10 sm:mt-12 text-lg sm:text-xl text-neutral-700 leading-relaxed max-w-2xl"
             >
-              Olyxee is an AI infrastructure company. We build systems that let
-              organizations put AI to work across their operations, reliably,
-              transparently, and at scale.
+              Olyxee builds research and infrastructure for artificial
+              intelligence. At the center is Orgni, the infrastructure layer that
+              helps organizations adopt AI across real business operations.
             </motion.p>
           </div>
         </section>

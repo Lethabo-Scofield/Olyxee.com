@@ -141,10 +141,10 @@ function OrdoArchitecture() {
           role="img"
           aria-labelledby={`${titleId} ${descId}`}
         >
-          <title id={titleId}>How Ordo executes a SOC 2 access review goal</title>
+          <title id={titleId}>How Orgni Workflows executes a SOC 2 access review goal</title>
           <desc id={descId}>
             From the user prompt &ldquo;Run a SOC 2 access review and email findings
-            to the audit team,&rdquo; Ordo plans and executes five sequential steps:
+            to the audit team,&rdquo; Orgni Workflows plans and executes five sequential steps:
             pull access logs from Okta, check controls in Vanta, build an evidence
             pack in Drive, email the audit team in Gmail, and complete with an
             audit trail saved.
@@ -259,12 +259,12 @@ const ProductsPage: FC = () => {
     <div className="min-h-screen bg-white text-neutral-900 relative">
       <SEO
         title="Products"
-        description="Olyxee builds AI execution systems for real business operations. Ordo is the core AI execution system. Addup is our first focused application, starting with accounting reconciliation."
+        description="Olyxee builds AI execution systems for real business operations. Orgni Workflows is the core AI execution system. Orgni Finance is our first focused application, starting with accounting reconciliation."
         path="/products"
         keywords={[
           "Olyxee products",
-          "Ordo AI execution",
-          "Addup reconciliation",
+          "Orgni Workflows AI execution",
+          "Orgni Finance reconciliation",
           "AI workflow automation",
           "AI for accounting",
         ]}
@@ -272,22 +272,22 @@ const ProductsPage: FC = () => {
           {
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
-            name: "Ordo",
+            name: "Orgni Workflows",
             applicationCategory: "BusinessApplication",
             operatingSystem: "Cloud",
             description:
-              "Ordo is the core Olyxee AI execution system. It turns goals into completed multi-step workflows across the tools your team already uses, with full audit trails.",
+              "Orgni Workflows is the core Olyxee AI execution system. It turns goals into completed multi-step workflows across the tools your team already uses, with full audit trails.",
             url: "https://ordo.olyxee.com/",
             creator: { "@type": "Organization", name: "Olyxee", url: "https://olyxee.com" },
           },
           {
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
-            name: "Addup",
+            name: "Orgni Finance",
             applicationCategory: "FinanceApplication",
             operatingSystem: "Cloud",
             description:
-              "Addup is the first focused Olyxee application. It applies AI execution to accounting, starting with reconciliation and mismatch explanation. Free to use, with paid upgrades.",
+              "Orgni Finance is the first focused Olyxee application. It applies AI execution to accounting, starting with reconciliation and mismatch explanation. Free to use, with paid upgrades.",
             url: "https://addup.olyxee.com/",
             offers: {
               "@type": "Offer",
@@ -341,7 +341,7 @@ const ProductsPage: FC = () => {
               <div className="mb-6">
                 <Image
                   src="/images/ordo-logo.png"
-                  alt="Ordo"
+                  alt="Orgni Workflows"
                   width={220}
                   height={72}
                   className="h-10 sm:h-12 w-auto object-contain"
@@ -354,7 +354,7 @@ const ProductsPage: FC = () => {
               </h2>
 
               <p className="text-base sm:text-lg text-neutral-500 font-light leading-relaxed max-w-md mb-10">
-                Describe what you need. Ordo plans the steps, runs the work across your tools, and shows you the trail.
+                Describe what you need. Orgni Workflows plans the steps, runs the work across your tools, and shows you the trail.
               </p>
 
               <div className="flex flex-wrap items-center gap-4">
@@ -364,7 +364,7 @@ const ProductsPage: FC = () => {
                   rel="noopener noreferrer"
                   className="group inline-flex items-center gap-2 text-sm font-medium text-white bg-neutral-900 hover:bg-black px-6 py-3 rounded-full transition-colors"
                 >
-                  Visit Ordo
+                  Visit Orgni Workflows
                   <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </a>
                 <Link href="/enterprise" className="text-sm font-medium text-neutral-700 hover:text-neutral-900 transition-colors">
@@ -422,7 +422,7 @@ const ProductsPage: FC = () => {
               <div className="flex items-center gap-4 mb-6">
                 <Image
                   src="/Logo/Addup_Logo.png"
-                  alt="Addup"
+                  alt="Orgni Finance"
                   width={1024}
                   height={416}
                   priority
@@ -498,11 +498,11 @@ const ProductsPage: FC = () => {
                   rel="noopener noreferrer"
                   className="group inline-flex items-center gap-2 text-sm font-medium text-white bg-neutral-900 hover:bg-black px-6 py-3 rounded-full transition-colors"
                 >
-                  Try Addup free
+                  Try Orgni Finance free
                   <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </a>
                 <a
-                  href="mailto:scofield@olyxee.com?subject=Addup%20%E2%80%94%20Upgrade%20inquiry"
+                  href="mailto:scofield@olyxee.com?subject=Orgni%20Finance%20%E2%80%94%20Upgrade%20inquiry"
                   className="text-sm font-medium text-neutral-700 hover:text-neutral-900 transition-colors"
                 >
                   Talk to us about upgrading →
@@ -529,7 +529,7 @@ const ProductsPage: FC = () => {
               <div className="mb-6">
                 <Image
                   src="/images/courier-loop-logo.png"
-                  alt="Courier Loop, delivery service"
+                  alt="Order Loop, delivery service"
                   width={220}
                   height={72}
                   className="h-12 sm:h-14 w-auto object-contain"
@@ -792,7 +792,7 @@ const ProductsPage: FC = () => {
                 Built for your team
               </h2>
               <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-9 max-w-lg mx-auto">
-                Talk to us about a custom Ordo deployment shaped around your workflows, data, and security requirements.
+                Talk to us about a custom Orgni Workflows deployment shaped around your workflows, data, and security requirements.
               </p>
 
               <div className="flex justify-center">

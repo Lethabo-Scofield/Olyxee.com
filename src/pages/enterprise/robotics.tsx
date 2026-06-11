@@ -27,7 +27,7 @@ const HIGHLIGHTS = [
   {
     eyebrow: "Fleet operations",
     title: "Deploy, monitor, and update at scale.",
-    body: "Roll out new policies across thousands of endpoints with rollback-safe delivery, live observability, and OTA updates verified by Ordo before they reach a production system.",
+    body: "Roll out new policies across thousands of endpoints with rollback-safe delivery, live observability, and OTA updates verified by Orgni Workflows before they reach a production system.",
     image: "/images/robotics/field-deployment.png",
     alt: "Field deployment of connected enterprise systems",
     meta: "03 · Operations",
@@ -204,7 +204,7 @@ const Robotics: FC = () => {
           "enterprise orchestration",
           "on-device AI",
           "OTA updates",
-          "Ordo verification",
+          "Orgni Workflows verification",
         ]}
         ogImage="https://olyxee.com/images/robotics/humanoid-manipulation.png"
         jsonLd={[

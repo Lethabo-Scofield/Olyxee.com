@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 
 const description =
-  "Ordo is an AI execution system by Olyxee. Tell it a business goal in plain English and it plans, calls the right tools, and ships the completed work - combining GPT/Claude reasoning with n8n-style workflow orchestration across Gmail, Stripe, QuickBooks, Salesforce, Notion, Slack and more.";
+  "Orgni Workflows is an AI execution system by Olyxee. Tell it a business goal in plain English and it plans, calls the right tools, and ships the completed work - combining GPT/Claude reasoning with n8n-style workflow orchestration across Gmail, Stripe, QuickBooks, Salesforce, Notion, Slack and more.";
 
 export const metadata: Metadata = {
-  title: "Ordo | AI Execution System for Business Operations",
+  title: "Orgni Workflows | AI Execution System for Business Operations",
   description,
   keywords: [
-    "Ordo",
-    "Olyxee Ordo",
+    "Orgni Workflows",
+    "Olyxee Orgni Workflows",
     "AI execution system",
     "AI agent for business",
     "AI workflow automation",
@@ -26,22 +26,22 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    title: "Ordo | AI Execution System for Business Operations",
+    title: "Orgni Workflows | AI Execution System for Business Operations",
     description,
     url: "https://olyxee.com/products/ordo",
     siteName: "Olyxee",
     images: [
       {
-        url: "/api/og?title=Ordo&subtitle=AI%20execution%20system%20for%20business%20operations",
+        url: "/api/og?title=Orgni%20Workflows&subtitle=AI%20execution%20system%20for%20business%20operations",
         width: 1200,
         height: 630,
-        alt: "Ordo by Olyxee",
+        alt: "Orgni Workflows by Olyxee",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ordo | AI Execution System",
+    title: "Orgni Workflows | AI Execution System",
     description,
   },
 };
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
 const ordoJsonLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  name: "Ordo",
+  name: "Orgni Workflows",
   applicationCategory: "BusinessApplication",
   operatingSystem: "Web",
   url: "https://ordo.olyxee.com",
@@ -84,7 +84,7 @@ const breadcrumbJsonLd = {
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://olyxee.com" },
     { "@type": "ListItem", position: 2, name: "Products", item: "https://olyxee.com/products" },
-    { "@type": "ListItem", position: 3, name: "Ordo", item: "https://olyxee.com/products/ordo" },
+    { "@type": "ListItem", position: 3, name: "Orgni Workflows", item: "https://olyxee.com/products/ordo" },
   ],
 };
 

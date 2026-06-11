@@ -10,7 +10,7 @@ const studies = [
   {
     href: "/stories/freightshift",
     title: "FreightShift",
-    summary: "How a regional carrier rebuilt its dispatch loop on Ordo-verified routing agents.",
+    summary: "How a regional carrier rebuilt its dispatch loop on Orgni Workflows-verified routing agents.",
     tag: "Logistics",
   },
   {

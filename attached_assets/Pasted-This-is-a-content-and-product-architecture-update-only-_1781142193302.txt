@@ -1,0 +1,155 @@
+This is a content and product architecture update only.
+
+Do NOT redesign the website.
+Do NOT change layouts.
+Do NOT change styling.
+Do NOT change colors.
+Do NOT change animations.
+Do NOT change spacing.
+Do NOT change component structure.
+
+Only update text, product naming, navigation labels, footer content, page copy, metadata, and product hierarchy.
+
+## Updated Company Positioning
+
+Olyxee (Pty) Ltd builds research and infrastructure for artificial intelligence.
+
+Olyxee Research studies the practical problems created by AI adoption and turns those insights into infrastructure for organizations moving from AI experimentation to execution.
+
+## Product Architecture Update
+
+The new architecture is:
+
+Olyxee (company)
+
+Main Product:
+
+* Orgni
+
+Additional Products:
+
+* Togent
+* Order Loop
+
+Orgni is now the primary infrastructure product.
+
+Orgni helps organizations connect AI to business context, workflows, documents, systems, and decisions.
+
+## Product Renames
+
+Replace:
+
+Addup
+→ Orgni Finance
+
+Ordo
+→ Orgni Workflows
+
+ODI / Olyxee Document Integrity
+→ Orgni Docs
+
+Courier Loop
+→ Order Loop
+
+Keep:
+
+Togent
+
+Do not publicly position Cortex as a standalone product.
+If Cortex appears anywhere, describe it only as the internal memory and cognition layer inside Orgni.
+
+## Updated Product Descriptions
+
+Orgni
+
+The core infrastructure product for organizations adopting AI.
+
+Orgni connects business context, workflows, documents, systems, and decisions so AI can support real operations with context, control, and traceability.
+
+Orgni Finance
+
+Financial reconciliation, transaction matching, anomaly review, and financial integrity.
+
+Orgni Workflows
+
+Business workflow execution, approvals, task routing, operational coordination, and status management.
+
+Orgni Docs
+
+Document extraction, validation, verification, and workflow readiness.
+
+Togent
+
+AI-agent context, token usage, session memory, repeated-work detection, and cost visibility.
+
+Order Loop
+
+Logistics, delivery, collection, order status, customer updates, operational visibility, and exception handling.
+
+## Homepage Copy Update
+
+Keep the existing hero design.
+
+Only update supporting copy to align with:
+
+Olyxee builds research and infrastructure for artificial intelligence.
+
+At the center is Orgni, the infrastructure layer that helps organizations adopt AI across real business operations.
+
+## Navigation Update
+
+Update navigation labels only.
+
+Products:
+
+* Orgni
+* Orgni Finance
+* Orgni Workflows
+* Orgni Docs
+* Togent
+* Order Loop
+
+Keep:
+
+* Research
+* Docs
+* Company
+
+## Footer Update
+
+Update footer product references to:
+
+Orgni
+Orgni Finance
+Orgni Workflows
+Orgni Docs
+Togent
+Order Loop
+
+Remove public references to:
+Addup
+Ordo
+ODI
+Courier Loop
+
+## About Page Update
+
+Update messaging to:
+
+Olyxee builds research and infrastructure for artificial intelligence.
+
+Through Olyxee Research, we study workflow reliability, document integrity, financial accuracy, operational memory, AI-agent context, and business execution.
+
+Those insights become infrastructure products that help organizations adopt AI across real operations.
+
+## SEO Update
+
+Title:
+Olyxee | Research and Infrastructure for Artificial Intelligence
+
+Description:
+Olyxee builds research and infrastructure for artificial intelligence through Orgni, Togent, and Order Loop.
+
+Important:
+This is a copy and naming update only.
+Preserve the current visual identity and site design.

@@ -199,7 +199,7 @@ function EarlyAccessForm() {
         </div>
         <div>
           <p className="text-sm font-semibold text-green-900">You're on the list!</p>
-          <p className="text-xs text-green-600">We'll notify you when Ordo launches.</p>
+          <p className="text-xs text-green-600">We'll notify you when Orgni Workflows launches.</p>
         </div>
       </motion.div>
     );
@@ -239,7 +239,7 @@ export default function OrdoPage() {
       <section className="pt-24 sm:pt-40 pb-8 sm:pb-12 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto text-center">
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="flex flex-col items-center gap-4 mb-6">
-            <Image src="/images/ordo-logo.png" alt="Ordo" width={48} height={48} className="rounded-xl" style={{ width: 48, height: 48 }} priority />
+            <Image src="/images/ordo-logo.png" alt="Orgni Workflows" width={48} height={48} className="rounded-xl" style={{ width: 48, height: 48 }} priority />
             <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-neutral-100 text-neutral-500 rounded-full text-xs font-medium border border-neutral-200/60">
               <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
               Now in limited beta
@@ -263,7 +263,7 @@ export default function OrdoPage() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="text-base sm:text-xl text-neutral-500 leading-relaxed font-light mb-10 max-w-2xl mx-auto px-2"
           >
-            Describe what needs to be done. Ordo plans, coordinates, and executes across your tools and systems end-to-end.
+            Describe what needs to be done. Orgni Workflows plans, coordinates, and executes across your tools and systems end-to-end.
           </motion.p>
 
           <motion.div
@@ -321,7 +321,7 @@ export default function OrdoPage() {
               Any goal. Any system.
             </h2>
             <p className="text-neutral-500 mt-4 text-lg font-light max-w-2xl mx-auto">
-              Finance, compliance, HR, operations. Ordo executes it all across your connected systems.
+              Finance, compliance, HR, operations. Orgni Workflows executes it all across your connected systems.
             </p>
           </motion.div>
 
@@ -361,7 +361,7 @@ export default function OrdoPage() {
                 Three lines to execute
               </h2>
               <p className="text-neutral-500 text-base sm:text-lg font-light leading-relaxed mb-8">
-                Import, describe, execute. Ordo fits into your existing stack with a Python SDK, CLI, and API integrations.
+                Import, describe, execute. Orgni Workflows fits into your existing stack with a Python SDK, CLI, and API integrations.
               </p>
               <div className="flex flex-wrap gap-3">
                 {['pip install ordo', 'REST API', 'Python SDK'].map((item) => (
@@ -429,7 +429,7 @@ export default function OrdoPage() {
                 <p className="text-xs font-medium text-neutral-500 mb-3">{item.label}</p>
                 <div className="space-y-2">
                   <div className="flex items-center gap-3">
-                    <span className="text-[10px] font-mono text-neutral-500 w-12">Ordo</span>
+                    <span className="text-[10px] font-mono text-neutral-500 w-12">Orgni Workflows</span>
                     <div className="flex-1 h-6 bg-neutral-100 rounded-md overflow-hidden">
                       <motion.div
                         className="h-full bg-neutral-900 rounded-md flex items-center justify-end pr-2"
@@ -476,12 +476,12 @@ export default function OrdoPage() {
               {
                 step: "01",
                 title: "Describe",
-                description: "Define your business goal in plain language. Ordo interprets it and identifies the systems, data, and steps required.",
+                description: "Define your business goal in plain language. Orgni Workflows interprets it and identifies the systems, data, and steps required.",
               },
               {
                 step: "02",
                 title: "Execute",
-                description: "Ordo plans and executes across your connected systems including ERP, databases, spreadsheets, and communication tools.",
+                description: "Orgni Workflows plans and executes across your connected systems including ERP, databases, spreadsheets, and communication tools.",
               },
               {
                 step: "03",
@@ -511,7 +511,7 @@ export default function OrdoPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="text-center mb-16">
             <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900">
-              Why teams choose Ordo
+              Why teams choose Orgni Workflows
             </h2>
             <p className="text-neutral-500 mt-4 text-base sm:text-lg font-light max-w-2xl mx-auto">
               Six reasons teams move from manual workflows to AI-driven execution.
@@ -520,7 +520,7 @@ export default function OrdoPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { title: "No Manual Workflows", description: "Stop building complex automations. Just describe the goal and Ordo handles the rest.", severity: "Critical" },
+              { title: "No Manual Workflows", description: "Stop building complex automations. Just describe the goal and Orgni Workflows handles the rest.", severity: "Critical" },
               { title: "Works With Your Systems", description: "Connects to ERP, Excel, databases, payment platforms, and more without custom integrations.", severity: "High" },
               { title: "Reduces Workload", description: "Free your team from repetitive operational tasks that follow the same pattern every time.", severity: "Critical" },
               { title: "Accurate Outputs", description: "Consistent results every time. No human error from manual data entry or copy-paste mistakes.", severity: "High" },

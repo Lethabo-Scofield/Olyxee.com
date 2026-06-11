@@ -36,7 +36,7 @@ const sections: LegalSection[] = [
   },
   {
     title: "9. AI Lifecycle Security",
-    content: "Models, prompts, and verification artifacts are treated as sensitive assets. We protect against model exfiltration, prompt injection, and unauthorized model modification through input validation, output verification (Ordo), provenance tracking, and access controls scoped to model artifacts."
+    content: "Models, prompts, and verification artifacts are treated as sensitive assets. We protect against model exfiltration, prompt injection, and unauthorized model modification through input validation, output verification (Orgni Workflows), provenance tracking, and access controls scoped to model artifacts."
   },
   {
     title: "10. Responsible Disclosure",

@@ -1,1 +1,2 @@
 - [Docs layout missing from import](docs-layout-missing-import.md) — replit.md references files (e.g. src/layouts/DocsLayout) absent on disk; verify before trusting.
+- [Olyxee product naming](olyxee-product-naming.md) — display labels (Orgni Finance/Workflows/Docs, Order Loop) diverge from legacy URLs/ids (ordo/addup/courier); Orgni is new flagship, Cortex is internal not standalone.
