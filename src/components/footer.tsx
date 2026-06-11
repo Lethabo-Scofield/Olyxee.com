@@ -43,7 +43,6 @@ const footerData = {
       title: "Solutions",
       links: [
         { name: "Enterprise Automation", href: "/enterprise" },
-        { name: "Enterprise Hardware", href: "/enterprise/robotics" },
       ],
     },
     {
