@@ -190,6 +190,15 @@ function HeroSection() {
             autoPlay loop muted playsInline preload="metadata"
           />
           <div className="absolute inset-0 rounded-2xl sm:rounded-3xl pointer-events-none ring-1 ring-inset ring-black/5" />
+          <motion.img
+            src="/images/hero-menu-card.png"
+            alt="Orgni product menu"
+            initial={{ opacity: 0, y: -16, scale: 0.94 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.9, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            className="pointer-events-none absolute z-20 top-3 left-3 sm:top-5 sm:left-5 w-40 sm:w-56 lg:w-64 rounded-xl sm:rounded-2xl"
+            style={{ filter: "drop-shadow(0 18px 40px rgba(15,23,42,0.28))" }}
+          />
           <div className="absolute bottom-3 right-3 sm:bottom-6 sm:right-6 z-20">
             <a
               href="https://orgni.olyxee.com"
@@ -201,15 +210,6 @@ function HeroSection() {
             </a>
           </div>
         </div>
-        <motion.img
-          src="/images/hero-menu.png"
-          alt="Orgni product menu"
-          initial={{ opacity: 0, y: 24, scale: 0.92 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 1, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="pointer-events-none absolute z-20 w-36 sm:w-52 lg:w-60 -bottom-5 -left-5 sm:-bottom-8 sm:-left-8"
-          style={{ filter: "drop-shadow(0 24px 48px rgba(15,23,42,0.22))" }}
-        />
       </motion.div>
 
     </section>
