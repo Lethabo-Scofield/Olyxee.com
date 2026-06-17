@@ -39,25 +39,19 @@ type SignInOption = {
 
 const SIGNIN_OPTIONS: SignInOption[] = [
     {
-        name: "Orgni Workflows",
-        description: "Workflow execution and approvals",
-        href: "https://ordo.olyxee.com/",
-        external: true,
-    },
-    {
         name: "Order Loop",
         description: "Logistics tracking and updates",
         href: "https://logistics.olyxee.com/",
         external: true,
     },
     {
-        name: "Orgni Finance",
-        description: "Financial reconciliation and integrity",
-        href: "https://addup.olyxee.com/",
+        name: "Orgni",
+        description: "Workflow execution and approvals",
+        href: "https://orgni.olyxee.com/",
         external: true,
     },
     {
-        name: "API integrations",
+        name: "API platform",
         description: "Join the waitlist · read the docs",
         href: "/signup?tool=api",
         external: false,
