@@ -206,7 +206,7 @@ function HeroSection() {
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-7 sm:py-3.5 bg-white/90 backdrop-blur-md text-neutral-900 rounded-full font-medium hover:bg-white transition-all text-xs sm:text-sm tracking-wide shadow-lg shadow-black/10 border border-white/60"
             >
-              Explore Orgni <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+              Try Orgni <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </a>
           </div>
         </div>
@@ -792,7 +792,7 @@ function OrgniSection() {
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2 text-sm font-medium text-white bg-neutral-900 hover:bg-black px-6 py-3 rounded-full transition-colors"
               >
-                Explore Orgni
+                Try Orgni
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </a>
               <Link
