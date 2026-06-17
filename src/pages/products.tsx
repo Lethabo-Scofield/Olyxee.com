@@ -54,7 +54,7 @@ const PRODUCTS: Product[] = [
     name: "Orgni Workflows",
     tagline:
       "Turn goals into finished work. Plans the steps and runs them across the tools your team already uses.",
-    href: "https://ordo.olyxee.com/",
+    href: "https://orgni.olyxee.com/",
     external: true,
     Icon: Workflow,
     cta: "Visit Orgni Workflows",
@@ -127,7 +127,7 @@ const ProductsPage: FC = () => {
             operatingSystem: "Cloud",
             description:
               "Orgni Workflows turns goals into completed multi-step workflows across the tools your team already uses, with full audit trails.",
-            url: "https://ordo.olyxee.com/",
+            url: "https://orgni.olyxee.com/",
             creator: { "@type": "Organization", name: "Olyxee", url: "https://olyxee.com" },
           },
           {

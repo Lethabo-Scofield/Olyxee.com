@@ -18,7 +18,7 @@ const nextConfig: NextConfig = {
   redirects: async () => [
     {
       source: "/products/ordo",
-      destination: "https://ordo.olyxee.com",
+      destination: "https://orgni.olyxee.com",
       permanent: false,
     },
     {

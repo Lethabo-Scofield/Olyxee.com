@@ -52,7 +52,7 @@ const ordoJsonLd = {
   name: "Orgni Workflows",
   applicationCategory: "BusinessApplication",
   operatingSystem: "Web",
-  url: "https://ordo.olyxee.com",
+  url: "https://orgni.olyxee.com",
   description,
   brand: { "@type": "Brand", name: "Olyxee" },
   publisher: {
@@ -74,7 +74,7 @@ const ordoJsonLd = {
     price: "0",
     priceCurrency: "USD",
     availability: "https://schema.org/InStock",
-    url: "https://ordo.olyxee.com",
+    url: "https://orgni.olyxee.com",
   },
 };
 

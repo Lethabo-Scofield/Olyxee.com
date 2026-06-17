@@ -192,7 +192,9 @@ function HeroSection() {
           <div className="absolute inset-0 rounded-2xl sm:rounded-3xl pointer-events-none ring-1 ring-inset ring-black/5" />
           <div className="absolute bottom-3 right-3 sm:bottom-6 sm:right-6 z-20">
             <a
-              href="/products"
+              href="https://orgni.olyxee.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-7 sm:py-3.5 bg-white/90 backdrop-blur-md text-neutral-900 rounded-full font-medium hover:bg-white transition-all text-xs sm:text-sm tracking-wide shadow-lg shadow-black/10 border border-white/60"
             >
               Explore Orgni <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
@@ -509,7 +511,7 @@ const PRODUCT_BLOCKS: readonly ProductBlock[] = [
       "Every step assigned, timestamped, reviewable",
     ],
     ctaLabel: "Try Orgni Workflows",
-    ctaHref: "https://ordo.olyxee.com",
+    ctaHref: "https://orgni.olyxee.com",
     imageSide: "right",
     images: {
       a: { src: "/images/ordo/integrations.jpeg", alt: "Connects natural-language requests to your existing tools", w: 1200, h: 675 },
@@ -775,13 +777,15 @@ function OrgniSection() {
             </p>
 
             <div className="flex flex-wrap items-center gap-4">
-              <Link
-                href="/products"
+              <a
+                href="https://orgni.olyxee.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2 text-sm font-medium text-white bg-neutral-900 hover:bg-black px-6 py-3 rounded-full transition-colors"
               >
                 Explore Orgni
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </Link>
+              </a>
               <Link
                 href="/contact"
                 className="text-sm font-medium text-neutral-700 hover:text-neutral-900 transition-colors"
