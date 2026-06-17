@@ -168,14 +168,14 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       description: "Orgni Workflows is Olyxee's workflow execution system for enterprise operations. It connects AI reasoning with business systems, APIs, databases, approvals, business rules, and operational workflows.",
       status: "early-access",
       bg: "/images/gradient-blue-pink.webp",
-      action: { kind: "internal-tab", tab: "ordo", page: "ordo-overview", label: "Open Orgni Workflows docs" },
+      action: { kind: "external", href: "https://workflow.olyxee.com", label: "Visit Orgni Workflows" },
     },
     {
       name: "Orgni Finance",
       description: "Orgni Finance is Olyxee's financial reconciliation and data integrity engine. It helps finance teams compare, validate, and reconcile bank statements, ledgers, and accounting records.",
       status: "available",
       bg: "/images/gradient-pastel.webp",
-      action: { kind: "external", href: "https://addup.olyxee.com", label: "Visit Orgni Finance" },
+      action: { kind: "external", href: "https://finance.olyxee.com", label: "Visit Orgni Finance" },
     },
     {
       name: "Togent",

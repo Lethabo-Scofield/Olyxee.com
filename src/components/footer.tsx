@@ -31,9 +31,9 @@ const footerData = {
     {
       title: "Products",
       links: [
-        { name: "Orgni", href: "/products" },
-        { name: "Orgni Finance", href: "https://addup.olyxee.com", external: true },
-        { name: "Orgni Workflows", href: "https://orgni.olyxee.com", external: true },
+        { name: "Orgni", href: "https://orgni.olyxee.com", external: true },
+        { name: "Orgni Finance", href: "https://finance.olyxee.com", external: true },
+        { name: "Orgni Workflows", href: "https://workflow.olyxee.com", external: true },
         { name: "Order Loop", href: "https://logistics.olyxee.com/", external: true },
       ],
     },
