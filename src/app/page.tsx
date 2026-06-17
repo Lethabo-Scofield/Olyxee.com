@@ -201,6 +201,15 @@ function HeroSection() {
             </a>
           </div>
         </div>
+        <motion.img
+          src="/images/hero-menu.png"
+          alt="Orgni product menu"
+          initial={{ opacity: 0, y: 24, scale: 0.92 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          className="pointer-events-none absolute z-20 w-36 sm:w-52 lg:w-60 -bottom-5 -left-5 sm:-bottom-8 sm:-left-8"
+          style={{ filter: "drop-shadow(0 24px 48px rgba(15,23,42,0.22))" }}
+        />
       </motion.div>
 
     </section>
