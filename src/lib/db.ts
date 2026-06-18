@@ -8,14 +8,7 @@ declare global {
 export const pool =
   global.__pgPool ??
   new Pool({
-    connectionString:
-      process.env.SUPABASE_DATABASE_URL || process.env.DATABASE_URL,
-    ssl:
-      (process.env.SUPABASE_DATABASE_URL || process.env.DATABASE_URL)?.includes(
-        "supabase"
-      )
-        ? { rejectUnauthorized: false }
-        : undefined,
+    connectionString: process.env.DATABASE_URL,
   });
 
 if (process.env.NODE_ENV !== "production") {

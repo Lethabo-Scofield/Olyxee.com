@@ -2,10 +2,15 @@ import { NextResponse } from "next/server";
 
 export const runtime = "nodejs";
 
-const ADMIN_SECRET = "admin@olyxee--hard";
 export const ADMIN_COOKIE = "olyxee_admin";
 
 export async function POST(req: Request) {
+  const ADMIN_SECRET = process.env.ADMIN_SECRET;
+  if (!ADMIN_SECRET) {
+    console.error("ADMIN_SECRET not configured");
+    return NextResponse.json({ ok: false }, { status: 500 });
+  }
+
   let secret = "";
   try {
     const body = await req.json();
