@@ -89,6 +89,9 @@ export default function FreightShiftStory() {
             <p>
               The goal was not to replace existing workflows overnight. Instead, the focus was on building operational infrastructure capable of supporting growth without increasing operational friction.
             </p>
+            <p>
+              That infrastructure centers on <strong>Order Loop</strong>, Olyxee&apos;s logistics coordination system. Built on Orgni, Order Loop gives the operation a single place where shipments, documents, customs updates, and customer communication stay connected as cargo moves from origin to delivery.
+            </p>
             <p>Together, the companies are exploring systems for:</p>
             <ul>
               <li>centralized shipment visibility,</li>
@@ -103,7 +106,7 @@ export default function FreightShiftStory() {
               In logistics, delays are not always caused by transportation. Many delays happen because teams are waiting for approvals, missing documents, shipment confirmations, customer updates, or internal coordination.
             </p>
             <p>
-              FreightShift already had strong logistics expertise. What Olyxee introduced was infrastructure thinking. The partnership focused on reducing the amount of manual coordination required for day-to-day operations.
+              FreightShift already had strong logistics expertise. What Olyxee introduced was infrastructure thinking. With Order Loop coordinating the moving parts, the partnership focused on reducing the amount of manual coordination required for day-to-day operations.
             </p>
             <p>This included exploring systems capable of:</p>
             <ul>
@@ -193,7 +196,7 @@ export default function FreightShiftStory() {
           >
             <div>
               <p className="text-sm font-semibold text-neutral-900 mb-1">Want this for your logistics operations?</p>
-              <p className="text-sm text-neutral-500 font-light">Talk to us about a pilot scoped to your freight corridors.</p>
+              <p className="text-sm text-neutral-500 font-light">Talk to us about bringing Order Loop to your freight corridors.</p>
             </div>
             <Link
               href="/contact"

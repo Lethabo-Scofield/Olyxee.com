@@ -66,7 +66,7 @@ export default function AccountingStory() {
             className="prose prose-neutral prose-lg max-w-none prose-headings:font-serif prose-headings:tracking-tight prose-h2:text-2xl sm:prose-h2:text-[1.75rem] prose-h2:mt-16 prose-h2:mb-6 prose-p:leading-[1.75] prose-p:text-neutral-700 prose-li:text-neutral-700 prose-li:leading-relaxed prose-strong:text-neutral-900 prose-blockquote:border-l-neutral-900 prose-blockquote:not-italic prose-blockquote:font-serif prose-blockquote:text-xl prose-blockquote:text-neutral-800 prose-blockquote:leading-snug"
           >
             <p className="not-prose text-xl sm:text-[1.375rem] font-light leading-relaxed text-neutral-900 border-l-2 border-neutral-900 pl-5 sm:pl-6 mb-14">
-              Closing the books is mechanical work that demands precision. The team had the precision; what they lacked was time. We built an agent that does the mechanics overnight.
+              Closing the books is mechanical work that demands precision. The team had the precision; what they lacked was time. We built Orgni Finance to do the mechanics overnight.
             </p>
 
             <h2>The challenge</h2>
@@ -79,7 +79,7 @@ export default function AccountingStory() {
 
             <h2>What we built</h2>
             <p>
-              We deployed an AI accounting agent that plugs directly into the firm's ERP and banking data feeds. Each month it runs reconciliation automatically and prepares a close-ready report.
+              We deployed <strong>Orgni Finance</strong>, our AI accounting system, built on <strong>Orgni</strong> - our core infrastructure for AI operations. It plugs directly into the firm&apos;s ERP and banking data feeds, and because it runs on Orgni it holds the full context of the business: the ledgers, the history, and the rules that govern the close. Each month it runs reconciliation automatically and prepares a close-ready report.
             </p>
             <ul>
               <li><strong>Auto-reconciliation.</strong> Transactions are matched across ledgers and bank feeds without manual intervention.</li>
@@ -129,7 +129,7 @@ export default function AccountingStory() {
           >
             <div>
               <p className="text-sm font-semibold text-neutral-900 mb-1">Ready to transform your close process?</p>
-              <p className="text-sm text-neutral-500 font-light">Let's scope an AI accounting pilot for your team.</p>
+              <p className="text-sm text-neutral-500 font-light">Let&apos;s scope an Orgni Finance pilot for your team.</p>
             </div>
             <Link
               href="/contact"
