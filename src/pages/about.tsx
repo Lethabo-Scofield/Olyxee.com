@@ -16,13 +16,6 @@ const fadeUp = {
   }),
 };
 
-const OBJECTIVES = [
-  "Make AI execute real work across documents, workflows, finance, and logistics, not just advise.",
-  "Give AI lasting business context and memory so it never loses track of what happened.",
-  "Put every action behind an audit trail teams can review, trust, and direct in their own words.",
-  "Make Orgni the platform organizations run their AI operations on.",
-];
-
 const APPROACH = [
   {
     icon: Compass,
@@ -156,7 +149,7 @@ const About: FC = () => {
           </div>
         </section>
 
-        {/* === MANIFESTO: Mission / Vision / Objectives === */}
+        {/* === OUR VISION === */}
         <section id="mission" className="relative bg-white overflow-hidden border-t border-neutral-200/70 scroll-mt-24">
           <div className="relative max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-24 sm:py-36">
             <motion.p
@@ -166,47 +159,16 @@ const About: FC = () => {
               transition={{ duration: 0.6 }}
               className="font-mono text-[11px] uppercase tracking-[0.3em] text-neutral-500 mb-16 sm:mb-24"
             >
-              The Manifesto
+              Our vision
             </motion.p>
 
-            {/* 01 — MISSION */}
+            {/* VISION */}
             <motion.article
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
-              className="relative grid grid-cols-12 gap-y-6 gap-x-6 sm:gap-x-10 items-start pb-20 sm:pb-28 border-b border-neutral-200"
-            >
-              <div className="col-span-12 sm:col-span-4 lg:col-span-5">
-                <p className="font-mono text-[11px] tracking-[0.3em] text-amber-600 mb-3">
-                  01 · MISSION
-                </p>
-                <span
-                  aria-hidden="true"
-                  className="block font-serif italic text-[6rem] sm:text-[14rem] lg:text-[18rem] leading-[0.78] tracking-[-0.05em] text-transparent"
-                  style={{ WebkitTextStroke: "1px rgba(217,119,6,0.55)" }}
-                >
-                  M.
-                </span>
-              </div>
-              <div className="col-span-12 sm:col-span-8 lg:col-span-7 lg:pt-6">
-                <p className="text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.1] tracking-[-0.02em] font-medium mb-8 text-neutral-900">
-                  Most AI today <span className="text-neutral-400">advises.</span>{" "}
-                  We&apos;re building one that <em className="font-serif italic font-normal text-neutral-500">executes.</em>
-                </p>
-                <p className="text-base sm:text-lg text-neutral-700 leading-relaxed max-w-xl">
-                  Give AI the business context, memory, and controls it needs to work inside a company, so teams stop translating recommendations into manual work and start trusting what runs.
-                </p>
-              </div>
-            </motion.article>
-
-            {/* 02 — VISION */}
-            <motion.article
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
-              className="relative grid grid-cols-12 gap-y-6 gap-x-6 sm:gap-x-10 items-start py-20 sm:py-28 border-b border-neutral-200"
+              className="relative grid grid-cols-12 gap-y-6 gap-x-6 sm:gap-x-10 items-start"
             >
               <div className="col-span-12 sm:col-span-8 lg:col-span-7 lg:pt-6 order-2 sm:order-1">
                 <p className="text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.1] tracking-[-0.02em] font-medium mb-8 text-neutral-900">
@@ -217,9 +179,6 @@ const About: FC = () => {
                 </p>
               </div>
               <div className="col-span-12 sm:col-span-4 lg:col-span-5 order-1 sm:order-2 sm:text-right">
-                <p className="font-mono text-[11px] tracking-[0.3em] text-blue-600 mb-3">
-                  02 · VISION
-                </p>
                 <span
                   aria-hidden="true"
                   className="block font-serif italic text-[6rem] sm:text-[14rem] lg:text-[18rem] leading-[0.78] tracking-[-0.05em] text-transparent"
@@ -227,52 +186,6 @@ const About: FC = () => {
                 >
                   V.
                 </span>
-              </div>
-            </motion.article>
-
-            {/* 03 — OBJECTIVES */}
-            <motion.article
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
-              className="relative grid grid-cols-12 gap-y-6 gap-x-6 sm:gap-x-10 items-start pt-20 sm:pt-28"
-            >
-              <div className="col-span-12 sm:col-span-4 lg:col-span-5">
-                <p className="font-mono text-[11px] tracking-[0.3em] text-emerald-600 mb-3">
-                  03 · OBJECTIVES
-                </p>
-                <span
-                  aria-hidden="true"
-                  className="block font-serif italic text-[6rem] sm:text-[14rem] lg:text-[18rem] leading-[0.78] tracking-[-0.05em] text-transparent"
-                  style={{ WebkitTextStroke: "1px rgba(5,150,105,0.55)" }}
-                >
-                  O.
-                </span>
-              </div>
-              <div className="col-span-12 sm:col-span-8 lg:col-span-7 lg:pt-6">
-                <p className="text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.1] tracking-[-0.02em] font-medium mb-10 text-neutral-900">
-                  What we&apos;re <em className="font-serif italic font-normal text-neutral-500">working toward.</em>
-                </p>
-                <ol className="space-y-0">
-                  {OBJECTIVES.map((obj, i) => (
-                    <motion.li
-                      key={obj}
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: i * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
-                      className="group grid grid-cols-[3.25rem_1fr] gap-4 sm:gap-6 py-5 border-t border-neutral-200 last:border-b items-baseline"
-                    >
-                      <span className="font-mono text-[11px] tracking-[0.2em] text-neutral-500">
-                        / {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <p className="text-base sm:text-lg text-neutral-700 leading-relaxed group-hover:text-neutral-900 transition-colors">
-                        {obj}
-                      </p>
-                    </motion.li>
-                  ))}
-                </ol>
               </div>
             </motion.article>
           </div>
