@@ -198,19 +198,18 @@ const About: FC = () => {
                     ))}
                   </div>
 
-                  <div className="mt-12 sm:mt-16">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-neutral-200 rounded-2xl overflow-hidden ring-1 ring-neutral-200">
-                      {JOURNEY_LAYERS.map((layer, i) => (
-                        <div key={i} className="bg-white p-6 sm:p-7">
-                          <p className="text-[15px] sm:text-base text-neutral-700 leading-relaxed">
-                            {layer}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
+                  <div className="mt-5 space-y-5 max-w-3xl">
+                    {JOURNEY_LAYERS.map((layer, i) => (
+                      <p
+                        key={i}
+                        className="text-base sm:text-lg text-neutral-700 leading-relaxed"
+                      >
+                        {layer}
+                      </p>
+                    ))}
                   </div>
 
-                  <div className="mt-12 sm:mt-16 space-y-5 max-w-3xl">
+                  <div className="mt-5 space-y-5 max-w-3xl">
                     {JOURNEY_CLOSE.map((para, i) => (
                       <p
                         key={i}
