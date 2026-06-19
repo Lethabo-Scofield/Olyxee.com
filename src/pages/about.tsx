@@ -115,18 +115,6 @@ const About: FC = () => {
               />
               <h1 className="sr-only">Building the infrastructure for Enterprise AI</h1>
             </motion.div>
-
-            {/* Quiet sub-copy below the card */}
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.45 }}
-              className="mt-10 sm:mt-12 text-lg sm:text-xl text-neutral-700 leading-relaxed max-w-2xl"
-            >
-              Olyxee builds research and infrastructure for artificial
-              intelligence. At the center is Orgni, the infrastructure layer that
-              helps organizations adopt AI across real business operations.
-            </motion.p>
           </div>
         </section>
 
