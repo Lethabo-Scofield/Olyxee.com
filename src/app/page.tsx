@@ -352,12 +352,9 @@ function ResearchAreas() {
             className="max-w-3xl mx-auto text-center mb-12 sm:mb-16 lg:mb-20"
           >
             <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">What We Do</p>
-            <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-6">
+            <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900">
               From research to systems businesses can run
             </h2>
-            <p className="text-base sm:text-lg text-neutral-600 font-light leading-relaxed">
-              We turn AI research into reliable business systems, all built on <span className="font-medium text-neutral-900">Orgni</span>, our core infrastructure for AI operations.
-            </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
