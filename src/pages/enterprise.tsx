@@ -306,6 +306,24 @@ const Enterprise: FC = () => {
             />
           </motion.div>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className="relative mt-14 sm:mt-20 max-w-5xl mx-auto rounded-3xl overflow-hidden border border-neutral-200/80 shadow-2xl shadow-neutral-300/40"
+        >
+          <Image
+            src="/images/orgni-ecosystem.png"
+            alt="The Orgni ecosystem: the Orgni platform at the center, surrounded by Orgni Docs, Orgni Workflows, Orgni Finance, Togent, Order Loop, and Orgni Platform."
+            width={1024}
+            height={768}
+            priority
+            sizes="(max-width: 1024px) 100vw, 1024px"
+            className="w-full h-auto block"
+          />
+          <div aria-hidden className="absolute inset-0 rounded-3xl pointer-events-none ring-1 ring-inset ring-black/5" />
+        </motion.div>
       </section>
 
       {/* === SOLUTION CATEGORIES === */}
