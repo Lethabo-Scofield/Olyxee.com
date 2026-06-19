@@ -27,7 +27,6 @@ const COLORS = [
   { name: "Paper",       hex: "#FFFFFF", text: "text-neutral-900",   role: "Default background", border: true },
   { name: "Mist",        hex: "#F5F5F5", text: "text-neutral-900",   role: "Subtle surfaces", border: true },
   { name: "Slate",       hex: "#737373", text: "text-white",         role: "Secondary text" },
-  { name: "Ember",       hex: "#F97316", text: "text-white",         role: "Editorial accent" },
   { name: "Orgni Workflows Blue",   hex: "#3B82F6", text: "text-white",         role: "Orgni Workflows product accent" },
   { name: "Orgni Finance Green", hex: "#10B981", text: "text-white",         role: "Orgni Finance product accent" },
 ];
@@ -69,8 +68,8 @@ function BrandAurora() {
       <svg className="absolute inset-0 h-full w-full" viewBox="0 0 800 900" preserveAspectRatio="xMidYMid slice" fill="none">
         <defs>
           <linearGradient id="brand-aurora-warm" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%"   stopColor="#fbbf24" />
-            <stop offset="50%"  stopColor="#f97316" />
+            <stop offset="0%"   stopColor="#818cf8" />
+            <stop offset="50%"  stopColor="#a855f7" />
             <stop offset="100%" stopColor="#ec4899" />
           </linearGradient>
           <linearGradient id="brand-aurora-cool" x1="100%" y1="0%" x2="0%" y2="100%">
@@ -141,7 +140,7 @@ const ColorSwatch: FC<{ name: string; hex: string; text: string; border?: boolea
       type="button"
       onClick={onCopy}
       aria-label={`Copy ${name} hex value ${hex}`}
-      className={`group relative flex flex-col justify-end aspect-[3/4] sm:aspect-[2/3] p-4 sm:p-5 text-left ${text} ${border ? "ring-1 ring-inset ring-neutral-200" : ""} focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/70`}
+      className={`group relative flex flex-col justify-end aspect-[3/4] sm:aspect-[2/3] p-4 sm:p-5 text-left ${text} ${border ? "ring-1 ring-inset ring-neutral-200" : ""} focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900/70`}
       style={{ backgroundColor: hex }}
     >
       <span className="absolute top-3 right-3 inline-flex items-center justify-center w-7 h-7 rounded-full bg-white/15 ring-1 ring-white/25 backdrop-blur-sm opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity">
@@ -191,7 +190,7 @@ const Brand: FC = () => {
             transition={{ duration: 0.8 }}
             className="font-serif text-5xl sm:text-7xl lg:text-[6.5rem] text-neutral-900 tracking-tight leading-[1.02]"
           >
-            Brand <em className="not-italic text-orange-500">Guidelines</em>.
+            Brand <em className="not-italic text-neutral-900">Guidelines</em>.
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 12 }}
@@ -270,7 +269,7 @@ const Brand: FC = () => {
               </div>
               <div className="lg:col-span-2 p-6 sm:p-10 flex flex-col justify-center">
                 <p className="font-serif text-2xl sm:text-3xl text-neutral-900 leading-snug tracking-tight mb-4">
-                  Leave at least <em className="not-italic text-orange-500">0.25x</em> of clear space on every side.
+                  Leave at least <em className="not-italic text-neutral-900 font-medium">0.25x</em> of clear space on every side.
                 </p>
                 <p className="text-sm text-neutral-600 font-light leading-relaxed">
                   Where x is the width of one construction circle. Nothing else enters this zone.
