@@ -195,15 +195,6 @@ const About: FC = () => {
                       Documents, workflows, finance, logistics, and decisions, all coordinated on one platform any team can trust, audit, and direct in their own words.
                     </p>
                   </div>
-                  <div className="col-span-12 sm:col-span-4 lg:col-span-5 order-1 sm:order-2 sm:text-right">
-                    <span
-                      aria-hidden="true"
-                      className="block font-serif italic text-[6rem] sm:text-[14rem] lg:text-[18rem] leading-[0.78] tracking-[-0.05em] text-transparent"
-                      style={{ WebkitTextStroke: "1px rgba(37,99,235,0.55)" }}
-                    >
-                      V.
-                    </span>
-                  </div>
                 </motion.article>
               ) : (
                 <motion.div
