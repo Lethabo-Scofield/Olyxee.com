@@ -176,7 +176,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${geist.variable} ${inter.variable} ${caveat.variable} antialiased`}>
+      <body className={`${geist.variable} ${inter.variable} ${caveat.variable} antialiased overflow-x-hidden`}>
         <ErrorReporter />
         <PageTransitionLoader />
         <Script
