@@ -1,10 +1,10 @@
-import { FC, ReactNode } from "react";
+import { FC, ReactNode, useState } from "react";
 import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ArrowUpRight, Compass, ShieldCheck, EyeOff, MapPin, Calendar, Workflow, Users } from "lucide-react";
 
 const fadeUp = {
@@ -68,6 +68,8 @@ const TIMELINE: { year: string; label: ReactNode }[] = [
 ];
 
 const About: FC = () => {
+  const [aboutView, setAboutView] = useState<"vision" | "journey">("vision");
+
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
       <SEO
@@ -149,45 +151,108 @@ const About: FC = () => {
           </div>
         </section>
 
-        {/* === OUR VISION === */}
+        {/* === OUR VISION / OUR JOURNEY === */}
         <section id="mission" className="relative bg-white overflow-hidden border-t border-neutral-200/70 scroll-mt-24">
           <div className="relative max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-24 sm:py-36">
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="font-mono text-[11px] uppercase tracking-[0.3em] text-neutral-500 mb-16 sm:mb-24"
-            >
-              Our vision
-            </motion.p>
-
-            {/* VISION */}
-            <motion.article
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
-              className="relative grid grid-cols-12 gap-y-6 gap-x-6 sm:gap-x-10 items-start"
-            >
-              <div className="col-span-12 sm:col-span-8 lg:col-span-7 lg:pt-6 order-2 sm:order-1">
-                <p className="text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.1] tracking-[-0.02em] font-medium mb-8 text-neutral-900">
-                  A world where AI <em className="font-serif italic font-normal text-neutral-500">quietly runs</em> the operations that move organizations forward.
-                </p>
-                <p className="text-base sm:text-lg text-neutral-700 leading-relaxed max-w-xl">
-                  Documents, workflows, finance, logistics, and decisions, all coordinated on one platform any team can trust, audit, and direct in their own words.
-                </p>
-              </div>
-              <div className="col-span-12 sm:col-span-4 lg:col-span-5 order-1 sm:order-2 sm:text-right">
-                <span
-                  aria-hidden="true"
-                  className="block font-serif italic text-[6rem] sm:text-[14rem] lg:text-[18rem] leading-[0.78] tracking-[-0.05em] text-transparent"
-                  style={{ WebkitTextStroke: "1px rgba(37,99,235,0.55)" }}
+            {/* Toggle */}
+            <div className="inline-flex items-center gap-1 p-1 rounded-full border border-neutral-200 bg-neutral-50 mb-16 sm:mb-24">
+              {([
+                { key: "vision", label: "Our Vision" },
+                { key: "journey", label: "Our Journey" },
+              ] as const).map((tab) => (
+                <button
+                  key={tab.key}
+                  type="button"
+                  onClick={() => setAboutView(tab.key)}
+                  aria-pressed={aboutView === tab.key}
+                  className={`relative px-5 py-2 rounded-full text-[11px] font-mono uppercase tracking-[0.22em] transition-colors ${
+                    aboutView === tab.key
+                      ? "text-white"
+                      : "text-neutral-500 hover:text-neutral-800"
+                  }`}
                 >
-                  V.
-                </span>
-              </div>
-            </motion.article>
+                  {aboutView === tab.key && (
+                    <motion.span
+                      layoutId="about-toggle-pill"
+                      className="absolute inset-0 rounded-full bg-neutral-900"
+                      transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                    />
+                  )}
+                  <span className="relative z-10">{tab.label}</span>
+                </button>
+              ))}
+            </div>
+
+            <AnimatePresence mode="wait">
+              {aboutView === "vision" ? (
+                <motion.article
+                  key="vision"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+                  className="relative grid grid-cols-12 gap-y-6 gap-x-6 sm:gap-x-10 items-start"
+                >
+                  <div className="col-span-12 sm:col-span-8 lg:col-span-7 lg:pt-6 order-2 sm:order-1">
+                    <p className="text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.1] tracking-[-0.02em] font-medium mb-8 text-neutral-900">
+                      A world where AI <em className="font-serif italic font-normal text-neutral-500">quietly runs</em> the operations that move organizations forward.
+                    </p>
+                    <p className="text-base sm:text-lg text-neutral-700 leading-relaxed max-w-xl">
+                      Documents, workflows, finance, logistics, and decisions, all coordinated on one platform any team can trust, audit, and direct in their own words.
+                    </p>
+                  </div>
+                  <div className="col-span-12 sm:col-span-4 lg:col-span-5 order-1 sm:order-2 sm:text-right">
+                    <span
+                      aria-hidden="true"
+                      className="block font-serif italic text-[6rem] sm:text-[14rem] lg:text-[18rem] leading-[0.78] tracking-[-0.05em] text-transparent"
+                      style={{ WebkitTextStroke: "1px rgba(37,99,235,0.55)" }}
+                    >
+                      V.
+                    </span>
+                  </div>
+                </motion.article>
+              ) : (
+                <motion.div
+                  key="journey"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+                  className="relative grid grid-cols-12 gap-y-6 gap-x-6 sm:gap-x-10 items-start"
+                >
+                  <div className="col-span-12 sm:col-span-8 lg:col-span-7 lg:pt-6 order-2 sm:order-1">
+                    <p className="text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.1] tracking-[-0.02em] font-medium mb-10 text-neutral-900">
+                      From a Johannesburg start to{" "}
+                      <em className="font-serif italic font-normal text-neutral-500">live in production.</em>
+                    </p>
+                    <ol className="relative">
+                      {TIMELINE.map((item) => (
+                        <li
+                          key={item.year}
+                          className="grid grid-cols-[5rem_1fr] sm:grid-cols-[7rem_1fr] gap-x-6 sm:gap-x-10 py-6 border-t border-neutral-200 last:border-b items-baseline"
+                        >
+                          <p className="font-mono text-[11px] tracking-[0.2em] text-neutral-500">
+                            {item.year}
+                          </p>
+                          <p className="text-[15px] sm:text-base text-neutral-700 leading-relaxed">
+                            {item.label}
+                          </p>
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                  <div className="col-span-12 sm:col-span-4 lg:col-span-5 order-1 sm:order-2 sm:text-right">
+                    <span
+                      aria-hidden="true"
+                      className="block font-serif italic text-[6rem] sm:text-[14rem] lg:text-[18rem] leading-[0.78] tracking-[-0.05em] text-transparent"
+                      style={{ WebkitTextStroke: "1px rgba(5,150,105,0.55)" }}
+                    >
+                      J.
+                    </span>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </section>
 
