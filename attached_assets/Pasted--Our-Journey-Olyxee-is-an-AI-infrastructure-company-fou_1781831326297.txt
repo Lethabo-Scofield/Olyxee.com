@@ -1,0 +1,39 @@
+## Our Journey
+
+Olyxee is an AI infrastructure company founded in Johannesburg, South Africa. The company was created to build practical infrastructure for organizations adopting artificial intelligence.
+
+Olyxee began with a clear problem: AI models are becoming more capable, but many organizations are not operationally ready to use them. Businesses may have access to advanced AI tools, but their internal knowledge is often scattered across documents, spreadsheets, emails, legacy systems, approval chains, finance records, and employee memory.
+
+This creates a gap between AI potential and real business execution.
+
+Olyxee was founded to close that gap.
+
+From the beginning, Olyxee focused on infrastructure rather than surface-level AI demos. The company’s work has been centered on understanding how organizations actually operate: their processes, documents, roles, policies, approvals, exceptions, decisions, finance workflows, and customer communication flows.
+
+The early journey included research and product development across multiple operational areas, including logistics, finance operations, document validation, workflow systems, reconciliation, and AI integration. Through this work, Olyxee identified a common challenge across industries: organizations do not only need AI models. They need systems that prepare their operations for AI.
+
+This led to the development of Orgni, Olyxee’s core organizational intelligence platform.
+
+Orgni is designed to help organizations preserve and structure the knowledge that explains how the business works. It helps capture processes, rules, roles, departments, documents, approval paths, exceptions, case history, and operational context. The purpose of Orgni is to give AI systems the context they need to support real work with control and a clear trail.
+
+Olyxee later expanded this work into specific infrastructure layers.
+
+Orgni Workflows focuses on business processes, approvals, tasks, case handling, operational coordination, and exception management.
+
+Orgni Finance focuses on finance operations, reconciliation, transaction review, finance exceptions, and financial workflow support.
+
+Olyxee Document Integrity focuses on document understanding, classification, extraction, validation, verification, and auditability. It is built around the idea that organizations need to know whether a document is complete, consistent, relevant, and reliable before using it in a workflow or decision.
+
+Order Loop was created to support businesses that need to notify customers about orders, deliveries, collections, and service status updates. It helps businesses communicate clearly with customers without needing to build a full logistics platform.
+
+Togent is Olyxee’s ongoing research into AI integration and agent tooling. It explores how AI systems can connect with APIs, tools, workflows, and operational environments in a more reliable and efficient way.
+
+Across all of this work, the direction has remained consistent: Olyxee builds infrastructure that helps organizations move from AI experiments to reliable AI execution.
+
+The company believes that the next phase of AI adoption will not be solved by chatbots alone. Real AI adoption requires operational memory, workflow understanding, document integrity, finance control, integration layers, and systems that understand how organizations function over time.
+
+Olyxee’s journey is about building that missing layer.
+
+Founded in Johannesburg, South Africa, Olyxee is building for global infrastructure. Its work is focused on helping organizations adopt AI with context, control, reliability, and a clear operational trail.
+
+Olyxee exists to make organizations AI-ready.
