@@ -182,7 +182,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       description: "Togent is Olyxee's cost control and context optimization product for AI agents. It tracks, stores, compresses, and reuses context across tools like Cursor, Claude, Codex, and internal copilots so they stop repeating expensive work and reduce unnecessary token usage.",
       status: "private",
       bg: "/images/gradient-abstract-blue.webp",
-      action: { kind: "internal", href: "/products", label: "Learn about Togent" },
+      action: { kind: "internal", href: "/enterprise", label: "Learn about Togent" },
     },
   ];
 
@@ -380,13 +380,13 @@ function EarlyAccessGate() {
       </p>
       <div className="flex flex-col sm:flex-row gap-3 mb-14">
         <a
-          href="/products"
+          href="/signup"
           className="inline-flex items-center justify-center px-5 py-2.5 bg-neutral-900 text-white rounded-full text-[14px] font-medium hover:bg-black transition-colors"
         >
           Request early access
         </a>
         <a
-          href="/products"
+          href="/signup"
           className="inline-flex items-center justify-center px-5 py-2.5 text-neutral-900 border border-neutral-200 rounded-full text-[14px] font-medium hover:bg-neutral-50 transition-colors"
         >
           Sign in

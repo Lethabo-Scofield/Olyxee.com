@@ -8,7 +8,6 @@ type Entry = { path: string; priority: number; changeFrequency: ChangeFreq }
 
 const pages: Entry[] = [
   { path: '', priority: 1.0, changeFrequency: 'weekly' },
-  { path: '/products', priority: 0.9, changeFrequency: 'monthly' },
   { path: '/products/ordo', priority: 0.9, changeFrequency: 'monthly' },
   { path: '/solutions/logistics', priority: 0.9, changeFrequency: 'weekly' },
   { path: '/document-integrity', priority: 0.7, changeFrequency: 'monthly' },

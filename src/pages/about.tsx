@@ -64,7 +64,7 @@ const TIMELINE: { year: string; label: ReactNode }[] = [
         </a>{" "}
         and{" "}
         <Link
-          href="/products/addup"
+          href="/enterprise"
           className="text-neutral-900 underline decoration-neutral-300 underline-offset-4 hover:decoration-neutral-600 transition-colors"
         >
           finance

@@ -83,7 +83,7 @@ const breadcrumbJsonLd = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://olyxee.com" },
-    { "@type": "ListItem", position: 2, name: "Products", item: "https://olyxee.com/products" },
+    { "@type": "ListItem", position: 2, name: "Enterprise", item: "https://olyxee.com/enterprise" },
     { "@type": "ListItem", position: 3, name: "Orgni Workflows", item: "https://olyxee.com/products/ordo" },
   ],
 };

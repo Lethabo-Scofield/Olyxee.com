@@ -906,7 +906,7 @@ function TogentSection() {
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </Link>
               <Link
-                href="/products#togent"
+                href="/enterprise"
                 className="text-sm font-medium text-neutral-700 hover:text-neutral-900 transition-colors"
               >
                 Learn more →
@@ -1002,7 +1002,7 @@ function IntegrationSection() {
                   Turn business goals into completed operations. Orgni Workflows plans, coordinates, and executes across your tools and systems end-to-end.
                 </p>
                 <Link
-                  href="/products"
+                  href="/products/ordo"
                   className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-sm font-medium bg-neutral-900 text-white hover:bg-neutral-800 transition-colors group"
                 >
                   Discover more
@@ -1165,7 +1165,7 @@ function CTASection() {
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </Link>
               <Link
-                href="/products"
+                href="/enterprise"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 text-neutral-900 bg-white border border-neutral-300 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide"
               >
                 Learn more
