@@ -51,8 +51,8 @@ const DONTS = [
 ];
 
 const DOWNLOADS = [
-  { label: "Olyxee mark · Light",     path: "/Logo/Olyxee_Logo.png",        format: "PNG" },
-  { label: "Olyxee mark · Dark",      path: "/Logo/Olyxee_trans.png",       format: "PNG" },
+  { label: "Olyxee mark · Light",     path: "/Logo/Olyxee-White-Logo.png",  format: "PNG" },
+  { label: "Olyxee mark · Dark",      path: "/Logo/Olyxee-Black-Logo.png",  format: "PNG" },
   { label: "Olyxee Robotics · Wave",  path: "/brand/robotics-logo.png",     format: "PNG" },
   { label: "Orgni mark",              path: "/images/orgni-logo.png",          format: "PNG" },
   { label: "Orgni Finance mark",      path: "/images/orgni-finance-logo.png",  format: "PNG" },
@@ -96,7 +96,7 @@ const ClearSpace: FC = () => (
   <div className="relative w-full max-w-sm mx-auto">
     <div className="relative aspect-square border border-dashed border-neutral-300 p-[18%] bg-neutral-50">
       <div className="relative w-full h-full bg-white ring-1 ring-neutral-200 flex items-center justify-center">
-        <Image src="/Logo/Olyxee_Logo.png" alt="Olyxee mark with minimum clear space" width={200} height={200} className="w-2/3 h-auto object-contain" />
+        <Image src="/Logo/Olyxee-White-Logo.png" alt="Olyxee mark with minimum clear space" width={200} height={200} className="w-2/3 h-auto object-contain" />
       </div>
       <span className="absolute top-1 left-1/2 -translate-x-1/2 text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-600">0.25x</span>
       <span className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-600">0.25x</span>
@@ -234,19 +234,19 @@ const Brand: FC = () => {
             <SectionHead num="01" label="Logo · Light & dark" />
             <div className="grid grid-cols-1 md:grid-cols-2 rounded-2xl overflow-hidden ring-1 ring-neutral-200/80">
               <div className="relative bg-neutral-50 min-h-[320px] sm:min-h-[420px] flex items-center justify-center px-6 py-16 sm:py-20">
-                <Image src="/Logo/Olyxee_Logo.png" alt="Olyxee mark on light" width={320} height={320} className="w-32 sm:w-44 lg:w-52 h-auto object-contain" priority />
+                <Image src="/Logo/Olyxee-White-Logo.png" alt="Olyxee mark on light" width={320} height={320} className="w-32 sm:w-44 lg:w-52 h-auto object-contain" priority />
                 <span className="absolute bottom-3 left-4 text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500">Light</span>
               </div>
               <div className="relative bg-neutral-950 min-h-[320px] sm:min-h-[420px] flex items-center justify-center px-6 py-16 sm:py-20">
-                <Image src="/Logo/Olyxee_trans.png" alt="Olyxee mark on dark" width={320} height={320} className="w-32 sm:w-44 lg:w-52 h-auto object-contain" />
+                <Image src="/Logo/Olyxee-Black-Logo.png" alt="Olyxee mark on dark" width={320} height={320} className="w-32 sm:w-44 lg:w-52 h-auto object-contain" />
                 <span className="absolute bottom-3 left-4 text-[10px] font-mono uppercase tracking-[0.25em] text-white/60">Dark</span>
               </div>
             </div>
             <div className="flex flex-wrap items-center justify-end gap-x-6 gap-y-2 py-4 text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500">
-              <a href="/Logo/Olyxee_Logo.png" download className="inline-flex items-center gap-1.5 text-neutral-700 hover:text-neutral-900 transition-colors">
+              <a href="/Logo/Olyxee-White-Logo.png" download className="inline-flex items-center gap-1.5 text-neutral-700 hover:text-neutral-900 transition-colors">
                 Light PNG <ArrowUpRight className="w-3 h-3" />
               </a>
-              <a href="/Logo/Olyxee_trans.png" download className="inline-flex items-center gap-1.5 text-neutral-700 hover:text-neutral-900 transition-colors">
+              <a href="/Logo/Olyxee-Black-Logo.png" download className="inline-flex items-center gap-1.5 text-neutral-700 hover:text-neutral-900 transition-colors">
                 Dark PNG <ArrowUpRight className="w-3 h-3" />
               </a>
             </div>
