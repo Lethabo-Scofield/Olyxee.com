@@ -18,12 +18,12 @@ type MenuItem = {
 const menuItems: MenuItem[] = [
     { name: "Research", href: "/research" },
     { name: "Products", href: "/enterprise" },
+    { name: "Careers", href: "/careers" },
     {
         name: "Company",
         childrenLabel: "Explore Company",
         children: [
             { name: "About Us", href: "/about", description: "Our mission, beliefs, and team" },
-            { name: "Careers", href: "/careers", description: "Open roles and how we hire" },
             { name: "Brand Guidelines", href: "/brand", description: "Logo, colors, and usage" },
         ],
     },
