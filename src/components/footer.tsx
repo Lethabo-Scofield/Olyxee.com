@@ -64,6 +64,7 @@ const footerData = {
       links: [
         { name: "About", href: "/about" },
         { name: "Careers", href: "/careers" },
+        { name: "Brand Guidelines", href: "/brand" },
         { name: "Stories", href: "/stories" },
         { name: "Contact", href: "/contact" },
       ],

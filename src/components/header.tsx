@@ -19,14 +19,7 @@ const menuItems: MenuItem[] = [
     { name: "Research", href: "/research" },
     { name: "Products", href: "/enterprise" },
     { name: "Careers", href: "/careers" },
-    {
-        name: "Company",
-        childrenLabel: "Explore Company",
-        children: [
-            { name: "About Us", href: "/about", description: "Our mission, beliefs, and team" },
-            { name: "Brand Guidelines", href: "/brand", description: "Logo, colors, and usage" },
-        ],
-    },
+    { name: "About Us", href: "/about" },
 ];
 
 type SignInOption = {
