@@ -1,2 +1,3 @@
 - [Docs layout missing from import](docs-layout-missing-import.md) — replit.md references files (e.g. src/layouts/DocsLayout) absent on disk; verify before trusting.
 - [Olyxee product naming](olyxee-product-naming.md) — display labels (Orgni Finance/Workflows/Docs, Order Loop) diverge from legacy URLs/ids (ordo/addup/courier); Orgni is new flagship, Cortex is internal not standalone.
+- [Hydration "crash" is a dev artifact](hydration-crash-dev-artifact.md) — recurring "Hydration failed" crash overlay only fires during Fast Refresh; clean loads hydrate fine. Restart + reload to confirm before chasing.
