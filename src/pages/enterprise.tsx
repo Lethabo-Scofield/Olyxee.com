@@ -285,7 +285,7 @@ const Enterprise: FC = () => {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="mt-7 text-base sm:text-lg text-neutral-500 font-light leading-relaxed max-w-xl mx-auto"
           >
-            Every enterprise deployment runs on Orgni, our core platform. We connect your context, systems, and decisions into one operating layer, then bring in the right Orgni products for the job.
+Every deployment runs on Orgni, connecting your context, systems, and decisions into one operating layer.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
