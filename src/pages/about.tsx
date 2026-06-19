@@ -67,6 +67,39 @@ const TIMELINE: { year: string; label: ReactNode }[] = [
   },
 ];
 
+const JOURNEY_LEAD: string[] = [
+  "Olyxee is an AI infrastructure company founded in Johannesburg, South Africa, created to build practical infrastructure for organizations adopting artificial intelligence.",
+  "We began with a clear problem: AI models keep getting more capable, but most organizations aren't operationally ready to use them. Their knowledge is scattered across documents, spreadsheets, emails, legacy systems, approval chains, finance records, and employee memory, leaving a gap between AI potential and real execution. Olyxee was founded to close that gap.",
+  "From the start we focused on infrastructure, not surface-level demos, studying how organizations actually operate. That research across logistics, finance operations, document validation, workflow systems, and reconciliation revealed a common need: organizations don't only need AI models, they need systems that prepare their operations for AI. This led to Orgni, our core organizational intelligence platform.",
+];
+
+const JOURNEY_LAYERS: { name: string; text: string }[] = [
+  {
+    name: "Orgni",
+    text: "Our core organizational intelligence platform. It captures the processes, rules, roles, departments, documents, approval paths, exceptions, and case history that explain how a business works, giving AI the context to support real work with control and a clear trail.",
+  },
+  {
+    name: "Orgni Workflows",
+    text: "Business processes, approvals, tasks, case handling, operational coordination, and exception management.",
+  },
+  {
+    name: "Orgni Finance",
+    text: "Finance operations, reconciliation, transaction review, finance exceptions, and financial workflow support.",
+  },
+  {
+    name: "Olyxee Document Integrity",
+    text: "Document understanding, classification, extraction, validation, and verification, so teams know a document is complete, consistent, and reliable before acting on it.",
+  },
+  {
+    name: "Order Loop",
+    text: "Customer notifications for orders, deliveries, collections, and service status, without building a full logistics platform.",
+  },
+  {
+    name: "Togent",
+    text: "Ongoing research into AI integration and agent tooling, exploring how AI connects with APIs, tools, workflows, and operational environments.",
+  },
+];
+
 const About: FC = () => {
   const [aboutView, setAboutView] = useState<"vision" | "journey">("vision");
 
@@ -218,38 +251,58 @@ const About: FC = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -12 }}
                   transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-                  className="relative grid grid-cols-12 gap-y-6 gap-x-6 sm:gap-x-10 items-start"
+                  className="relative"
                 >
-                  <div className="col-span-12 sm:col-span-8 lg:col-span-7 lg:pt-6 order-2 sm:order-1">
-                    <p className="text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.1] tracking-[-0.02em] font-medium mb-10 text-neutral-900">
-                      From a Johannesburg start to{" "}
-                      <em className="font-serif italic font-normal text-neutral-500">live in production.</em>
+                  <div className="grid grid-cols-12 gap-y-8 gap-x-6 sm:gap-x-10 items-start">
+                    <div className="col-span-12 lg:col-span-7 order-2 lg:order-1">
+                      <p className="text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.1] tracking-[-0.02em] font-medium mb-8 text-neutral-900">
+                        Closing the gap between AI potential and{" "}
+                        <em className="font-serif italic font-normal text-neutral-500">real execution.</em>
+                      </p>
+                      <div className="space-y-5 max-w-2xl">
+                        {JOURNEY_LEAD.map((para, i) => (
+                          <p
+                            key={i}
+                            className="text-base sm:text-lg text-neutral-700 leading-relaxed"
+                          >
+                            {para}
+                          </p>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="col-span-12 lg:col-span-5 order-1 lg:order-2 lg:text-right">
+                      <span
+                        aria-hidden="true"
+                        className="block font-serif italic text-[6rem] sm:text-[14rem] lg:text-[18rem] leading-[0.78] tracking-[-0.05em] text-transparent"
+                        style={{ WebkitTextStroke: "1px rgba(5,150,105,0.55)" }}
+                      >
+                        J.
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="mt-16 sm:mt-20">
+                    <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-8">
+                      The layers we build
                     </p>
-                    <ol className="relative">
-                      {TIMELINE.map((item) => (
-                        <li
-                          key={item.year}
-                          className="grid grid-cols-[5rem_1fr] sm:grid-cols-[7rem_1fr] gap-x-6 sm:gap-x-10 py-6 border-t border-neutral-200 last:border-b items-baseline"
-                        >
-                          <p className="font-mono text-[11px] tracking-[0.2em] text-neutral-500">
-                            {item.year}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-neutral-200 rounded-2xl overflow-hidden ring-1 ring-neutral-200">
+                      {JOURNEY_LAYERS.map((layer) => (
+                        <div key={layer.name} className="bg-white p-6 sm:p-7">
+                          <p className="text-base sm:text-lg text-neutral-900 font-medium tracking-[-0.01em] mb-2">
+                            {layer.name}
                           </p>
-                          <p className="text-[15px] sm:text-base text-neutral-700 leading-relaxed">
-                            {item.label}
+                          <p className="text-[14px] sm:text-[15px] text-neutral-700 leading-relaxed">
+                            {layer.text}
                           </p>
-                        </li>
+                        </div>
                       ))}
-                    </ol>
+                    </div>
                   </div>
-                  <div className="col-span-12 sm:col-span-4 lg:col-span-5 order-1 sm:order-2 sm:text-right">
-                    <span
-                      aria-hidden="true"
-                      className="block font-serif italic text-[6rem] sm:text-[14rem] lg:text-[18rem] leading-[0.78] tracking-[-0.05em] text-transparent"
-                      style={{ WebkitTextStroke: "1px rgba(5,150,105,0.55)" }}
-                    >
-                      J.
-                    </span>
-                  </div>
+
+                  <p className="mt-12 sm:mt-14 max-w-3xl text-base sm:text-lg text-neutral-700 leading-relaxed">
+                    The next phase of AI adoption won&apos;t be solved by chatbots alone. It takes operational memory, workflow understanding, document integrity, finance control, and integration layers that understand how organizations work over time.{" "}
+                    <span className="text-neutral-900">Olyxee exists to make organizations AI-ready.</span>
+                  </p>
                 </motion.div>
               )}
             </AnimatePresence>
