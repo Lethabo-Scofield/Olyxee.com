@@ -131,43 +131,22 @@ const About: FC = () => {
         {/* === HERO === */}
         <section className="relative pt-36 sm:pt-44 lg:pt-48 pb-16 sm:pb-20 px-4 sm:px-6 bg-white">
           <div className="relative max-w-6xl mx-auto">
-            {/* Hero card: team image with headline overlaid */}
+            {/* Hero card: Enterprise AI banner (heading baked into image) */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="relative overflow-hidden rounded-3xl ring-1 ring-neutral-900/10 shadow-2xl shadow-neutral-900/10 bg-neutral-950 aspect-[4/5] sm:aspect-[16/10] lg:aspect-[21/9]"
+              className="relative overflow-hidden rounded-3xl ring-1 ring-neutral-900/10 shadow-2xl shadow-neutral-900/10 bg-white aspect-[4/5] sm:aspect-[16/10] lg:aspect-[21/9]"
             >
               <Image
-                src="/images/olyxee-team-banner.png"
-                alt="The Olyxee team in their Johannesburg office"
+                src="/images/hero-enterprise-ai.png"
+                alt=""
                 fill
                 priority
                 sizes="(min-width: 1280px) 1152px, 100vw"
-                className="object-cover object-center opacity-70"
+                className="object-cover object-center"
               />
-              {/* Single soft scrim on the left for readability */}
-              <div
-                aria-hidden
-                className="absolute inset-0"
-                style={{
-                  background:
-                    "linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.6) 35%, rgba(0,0,0,0.3) 65%, rgba(0,0,0,0.2) 100%)",
-                }}
-              />
-
-              {/* Headline overlay, lower-left */}
-              <div className="absolute inset-y-0 left-0 flex flex-col justify-end p-6 sm:p-12 lg:p-16 max-w-xl lg:max-w-2xl">
-                <motion.h1
-                  initial={{ opacity: 0, y: 18 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.85, delay: 0.2 }}
-                  className="text-white text-[2.25rem] sm:text-5xl lg:text-[4rem] tracking-[-0.025em] leading-[1.05] font-medium"
-                >
-                  Building the infrastructure for AI that{" "}
-                  <em className="font-serif italic font-normal text-white/70">operates</em>.
-                </motion.h1>
-              </div>
+              <h1 className="sr-only">Building the infrastructure for Enterprise AI</h1>
             </motion.div>
 
             {/* Quiet sub-copy below the card */}

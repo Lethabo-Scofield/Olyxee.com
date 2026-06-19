@@ -5,7 +5,7 @@ import Header from '../components/header';
 import Footer from '../components/footer';
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ArrowUpRight, Truck, Check, PackageCheck, MapPin, Bell } from "lucide-react";
 
 
@@ -145,14 +145,37 @@ export default function HomePage() {
 
 function HeroSection() {
   const ref = useRef<HTMLElement | null>(null);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const y = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
     <section ref={ref} aria-label="Hero" className="relative w-full min-h-[100svh] flex flex-col items-center justify-center px-4 md:px-8 lg:px-16 overflow-hidden">
       <div className="absolute inset-0 w-full h-full">
-        <Image src="/images/hero-enterprise-ai.png" alt="" fill className="object-cover" priority sizes="100vw" />
+        <Image src="/hero-bg.webp" alt="Olyxee hero background with mountain landscape" fill className="object-cover" priority sizes="100vw" />
       </div>
 
-      <h1 className="sr-only">Building the infrastructure for Enterprise AI</h1>
+      <motion.div style={mounted ? { y, opacity } : undefined} className="relative z-10 text-center max-w-5xl mx-auto pt-16">
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.1 }}
+          className="font-serif text-neutral-900 leading-[1.02] tracking-tight px-2 sm:px-0 text-[clamp(1.4rem,6.6vw,5.5rem)] sm:text-6xl md:text-7xl lg:text-[5.5rem]"
+        >
+          <span className="block sm:whitespace-nowrap">Research and Infrastructure</span>
+          <span className="block sm:whitespace-nowrap">
+            for{" "}
+            <span
+              className="font-handwritten text-blue-600 font-semibold tracking-tight"
+              style={{ fontFamily: "var(--font-handwritten), cursive" }}
+            >
+              artificial intelligence
+            </span>
+          </span>
+        </motion.h1>
+      </motion.div>
 
       <motion.div
         className="relative z-10 w-full max-w-5xl mt-8 mb-8 px-2 sm:px-0"
@@ -209,6 +232,7 @@ function LogoStrip() {
 
   return (
     <div className="w-full max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 py-10 sm:py-14">
+      <p className="text-center text-[11px] font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-8 sm:mb-10">Built alongside the AI ecosystem</p>
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
