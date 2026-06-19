@@ -22,7 +22,7 @@ const APPROACH = [
     label: "How we ship",
     title: "Narrow first, then expand",
     text: "Every deployment starts with a single workflow on Orgni. We earn the right to do more by proving the first one works in production.",
-    gradient: "/images/gradient-orange-pink.png",
+    gradient: "/images/gradient-pink-cyan.png",
   },
   {
     icon: ShieldCheck,
