@@ -67,6 +67,51 @@ function getClientIp(req: Request): string {
   return "unknown";
 }
 
+let cachedResend: Resend | null = null;
+function getResend(): Resend | null {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) return null;
+  if (cachedResend) return cachedResend;
+  cachedResend = new Resend(apiKey);
+  return cachedResend;
+}
+
+function buildConfirmationHtml(name: string, tier: string, dateTimeLabel: string): string {
+  const firstName = name.split(" ")[0] || name;
+  return `<!doctype html><html><body style="margin:0;padding:24px;background:#f3f4f6;font-family:-apple-system,BlinkMacSystemFont,Inter,sans-serif">
+    <div style="max-width:560px;margin:0 auto;background:#ffffff;border-radius:16px;overflow:hidden;border:1px solid #e5e7eb">
+      <div style="padding:32px 32px 24px">
+        <div style="font-size:12px;color:#6b7280;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Olyxee Enterprise</div>
+        <h1 style="font-size:22px;color:#111827;font-weight:600;margin:0 0 16px">We've received your inquiry</h1>
+        <p style="font-size:15px;color:#374151;line-height:1.6;margin:0 0 16px">Hi ${escapeHtml(firstName)},</p>
+        <p style="font-size:15px;color:#374151;line-height:1.6;margin:0 0 16px">
+          Thanks for your interest in our <strong style="color:#111827">${escapeHtml(tier)}</strong> tier. We've noted your preferred time of <strong style="color:#111827">${escapeHtml(dateTimeLabel)}</strong> and a member of our enterprise team will be in touch to confirm the details.
+        </p>
+        <p style="font-size:15px;color:#374151;line-height:1.6;margin:0 0 16px">
+          If anything changes in the meantime, just reply to this email.
+        </p>
+        <p style="font-size:15px;color:#374151;line-height:1.6;margin:24px 0 4px">- The Olyxee Enterprise team</p>
+      </div>
+      <div style="padding:16px 32px;background:#f9fafb;border-top:1px solid #f3f4f6;font-size:12px;color:#9ca3af">
+        This is an automated confirmation. Replies go straight to our team.
+      </div>
+    </div>
+  </body></html>`;
+}
+
+function buildConfirmationText(name: string, tier: string, dateTimeLabel: string): string {
+  const firstName = name.split(" ")[0] || name;
+  return [
+    `Hi ${firstName},`,
+    ``,
+    `Thanks for your interest in our ${tier} tier. We've noted your preferred time of ${dateTimeLabel} and a member of our enterprise team will be in touch to confirm the details.`,
+    ``,
+    `If anything changes in the meantime, just reply to this email.`,
+    ``,
+    `- The Olyxee Enterprise team`,
+  ].join("\n");
+}
+
 export async function POST(req: Request) {
   const ip = getClientIp(req);
   if (!rateLimit(ip)) {
@@ -103,8 +148,8 @@ export async function POST(req: Request) {
   if (time && !TIME_RE.test(time))
     return NextResponse.json({ ok: false, error: "Invalid time" }, { status: 400 });
 
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) {
+  const resend = getResend();
+  if (!resend) {
     console.error("[enterprise/inquiry] RESEND_API_KEY is not set");
     return NextResponse.json(
       { ok: false, error: "Email service is not configured" },
@@ -150,7 +195,6 @@ export async function POST(req: Request) {
     .join("\n");
 
   try {
-    const resend = new Resend(apiKey);
     const { error } = await resend.emails.send({
       from: FROM_ADDRESS,
       to: TO_EMAIL,
@@ -163,9 +207,24 @@ export async function POST(req: Request) {
       console.error("[enterprise/inquiry] Resend error:", error);
       return NextResponse.json({ ok: false, error: "Failed to send" }, { status: 502 });
     }
-    return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("[enterprise/inquiry] Exception:", err);
     return NextResponse.json({ ok: false, error: "Unexpected error" }, { status: 500 });
   }
+
+  resend.emails
+    .send({
+      from: FROM_ADDRESS,
+      to: email,
+      replyTo: TO_EMAIL,
+      subject: "We've received your enterprise inquiry",
+      text: buildConfirmationText(name, tier, dateTimeLabel),
+      html: buildConfirmationHtml(name, tier, dateTimeLabel),
+    })
+    .then(({ error }) => {
+      if (error) console.error("[enterprise/inquiry] Confirmation send error:", error);
+    })
+    .catch((err) => console.error("[enterprise/inquiry] Confirmation send exception:", err));
+
+  return NextResponse.json({ ok: true });
 }
