@@ -46,13 +46,6 @@ const footerData = {
       ],
     },
     {
-      title: "Research & Infrastructure",
-      links: [
-        { name: "Papers", href: "/research#papers" },
-        { name: "Technical Reports", href: "/research" },
-      ],
-    },
-    {
       title: "Resources",
       links: [
         { name: "Documentation", href: "/docs" },
