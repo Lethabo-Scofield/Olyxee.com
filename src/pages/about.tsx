@@ -338,11 +338,6 @@ const About: FC = () => {
                 intelligence. It&apos;s getting that intelligence to actually{" "}
                 <em className="font-serif italic font-normal text-neutral-500">do something useful</em>.
               </blockquote>
-              <p className="mt-10 text-base sm:text-lg text-neutral-700 leading-relaxed max-w-2xl">
-                The models are smart enough. What&apos;s missing is the
-                infrastructure that lets them operate, connecting to real systems,
-                executing real workflows, and doing it in a way teams can trust.
-              </p>
 
               <div className="mt-12 sm:mt-14 pt-6 border-t border-neutral-200 flex flex-wrap items-center justify-between gap-y-5 gap-x-6">
                 <div className="flex items-center gap-4">
