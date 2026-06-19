@@ -137,9 +137,25 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "Olyxee",
+              alternateName: ["Olyxee AI", "Olyxee Inc"],
+              slogan: "Research and infrastructure for artificial intelligence",
               url: "https://olyxee.com",
               logo: "https://olyxee.com/Logo/Olyxee_Logo.png",
-              description: "Olyxee builds the infrastructure for business AI. Orgni, our core platform, gives AI the business context, memory, and controls to run real operations across finance, documents, workflows, and logistics.",
+              description: "Olyxee is an AI infrastructure company building the reliability, context, and control layer for enterprise artificial intelligence. Orgni, our core platform, gives AI the business context, memory, and controls to run real operations across finance, documents, workflows, and logistics.",
+              knowsAbout: [
+                "AI infrastructure",
+                "Artificial intelligence infrastructure",
+                "Enterprise AI",
+                "AI reliability",
+                "AI agent infrastructure",
+                "Business context for AI",
+                "AI memory and context",
+                "Workflow automation",
+                "Financial reconciliation",
+                "Document verification",
+                "Logistics coordination",
+                "AI evaluation and monitoring"
+              ],
               foundingDate: "2025",
               sameAs: [
                 "https://twitter.com/olyxee",
@@ -166,7 +182,15 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebSite",
               name: "Olyxee",
+              alternateName: "Olyxee AI",
               url: "https://olyxee.com",
+              description: "Olyxee is an AI infrastructure company building reliable, context-aware infrastructure for enterprise artificial intelligence.",
+              inLanguage: "en",
+              publisher: {
+                "@type": "Organization",
+                name: "Olyxee",
+                url: "https://olyxee.com"
+              },
               potentialAction: {
                 "@type": "SearchAction",
                 target: "https://olyxee.com/docs?q={search_term_string}",
