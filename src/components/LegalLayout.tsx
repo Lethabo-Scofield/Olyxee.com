@@ -403,7 +403,7 @@ const LegalLayout: FC<LegalLayoutProps> = ({
                     <div>
                       <p className="text-sm font-semibold text-neutral-900">Olyxee (Pty) Ltd</p>
                       <p className="text-xs text-neutral-500">Research and Infrastructure for Artificial Intelligence</p>
-                      <p className="text-xs text-neutral-400 mt-0.5">Reg. No. 2026/326516/07 · © {new Date().getFullYear()} All rights reserved.</p>
+                      <p className="text-xs text-neutral-400 mt-0.5" suppressHydrationWarning>Reg. No. 2026/326516/07 · © {new Date().getFullYear()} All rights reserved.</p>
                     </div>
                   </div>
                   <div className="text-xs text-neutral-500">

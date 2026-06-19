@@ -526,7 +526,7 @@ const About: FC = () => {
             >
               {/* Section label + framing line */}
               <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-3 mb-10 sm:mb-14">
-                <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500">
+                <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500" suppressHydrationWarning>
                   <span className="inline-block w-6 h-px bg-neutral-300 align-middle mr-3" />
                   Where we are · {new Date().getFullYear()}
                 </p>

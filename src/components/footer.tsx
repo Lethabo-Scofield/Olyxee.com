@@ -173,7 +173,7 @@ export default function Footer({ variant = "light" }: FooterProps) {
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 justify-center sm:justify-start">
             <Link href="/" className="flex items-center gap-2">
               <Image src="/Logo/Olyxee_Logo.png" alt="Olyxee" width={20} height={20} className="w-5 h-5" />
-              <span className={`text-sm ${styles.copyright}`}>
+              <span className={`text-sm ${styles.copyright}`} suppressHydrationWarning>
                 &copy; {new Date().getFullYear()} Olyxee
               </span>
             </Link>
