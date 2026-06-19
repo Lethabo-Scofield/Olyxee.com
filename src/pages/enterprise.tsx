@@ -563,7 +563,7 @@ Every deployment runs on Orgni, connecting your context, systems, and decisions 
                 Build With <em className="text-neutral-500 not-italic">Olyxee.</em>
               </h2>
               <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-9 max-w-lg mx-auto">
-                Work with Olyxee to design operational intelligence systems tailored to your organization. Tell us about your workflows, integrations, and operating environment, and we will scope the engagement with you.
+Tell us about your workflows and operating environment, and we will scope the engagement with you.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <TalkToEnterprise label="Request a consultation" />
