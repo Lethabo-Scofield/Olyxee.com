@@ -1,0 +1,37 @@
+## Our Journey
+
+Olyxee was founded by Lethabo Innocent ScoField in Johannesburg, South Africa.
+
+Before founding Olyxee, Lethabo worked as an AI Engineer. During the rise of modern AI, he experienced a problem that many organizations were beginning to face: companies wanted to adopt AI, but their internal systems were not ready for it.
+
+The problem was not only the AI models. The models were becoming more powerful, more accessible, and more capable. The real challenge was inside the organizations trying to use them.
+
+Business knowledge was scattered across documents, spreadsheets, emails, legacy systems, finance records, approval processes, and people’s memory. AI systems could generate answers, but they often lacked the operational context needed to support real work.
+
+They did not fully understand how a specific business operated, which rules applied, who approved what, which documents were trusted, how finance exceptions were handled, or how decisions should be traced.
+
+That experience became the foundation of Olyxee.
+
+Olyxee was created to build the infrastructure layer organizations need before AI can operate reliably inside real business environments. The company focuses on context, structure, memory, document integrity, workflow control, finance operations, integration, and operational visibility.
+
+This work led to Orgni, Olyxee’s core organizational intelligence platform.
+
+Orgni helps organizations capture and preserve how they operate. It structures business knowledge such as processes, roles, departments, rules, documents, approvals, exceptions, decisions, and case history. The goal is to give AI systems the context they need to support business execution with control and a clear trail.
+
+As Olyxee developed, the company expanded into focused infrastructure systems.
+
+Orgni Workflows supports processes, approvals, tasks, case handling, coordination, and operational exceptions.
+
+Orgni Finance supports reconciliation, transaction review, finance exceptions, and financial workflow support.
+
+Olyxee Document Integrity supports document understanding, classification, extraction, validation, verification, and auditability. It helps organizations know whether a document is complete, consistent, relevant, and reliable before it is used in a workflow or decision.
+
+Order Loop supports customer communication around orders, deliveries, collections, and service status updates.
+
+Togent is Olyxee’s ongoing research into AI integration and agent tooling, focused on how AI systems connect with APIs, tools, workflows, and operational environments.
+
+Olyxee’s journey is rooted in a practical lesson from AI engineering: organizations do not only need access to powerful AI models. They need infrastructure that makes their operations understandable to AI.
+
+Founded in Johannesburg, South Africa, Olyxee is building for global infrastructure.
+
+The company exists to help organizations move from AI experiments to reliable AI execution.

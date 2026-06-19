@@ -41,36 +41,30 @@ const APPROACH = [
 ];
 
 const JOURNEY_LEAD: string[] = [
-  "Olyxee is an AI infrastructure company founded in Johannesburg, South Africa, created to build practical infrastructure for organizations adopting artificial intelligence.",
-  "We began with a clear problem: AI models keep getting more capable, but most organizations aren't operationally ready to use them. Their knowledge is scattered across documents, spreadsheets, emails, legacy systems, approval chains, finance records, and employee memory, leaving a gap between AI potential and real execution. Olyxee was founded to close that gap.",
-  "From the start we focused on infrastructure, not surface-level demos, studying how organizations actually operate. That research across logistics, finance operations, document validation, workflow systems, and reconciliation revealed a common need: organizations don't only need AI models, they need systems that prepare their operations for AI. This led to Orgni, our core organizational intelligence platform.",
+  "Olyxee was founded by Lethabo Innocent ScoField in Johannesburg, South Africa.",
+  "Before founding Olyxee, Lethabo worked as an AI Engineer. During the rise of modern AI, he experienced a problem that many organizations were beginning to face: companies wanted to adopt AI, but their internal systems were not ready for it.",
+  "The problem was not only the AI models. The models were becoming more powerful, more accessible, and more capable. The real challenge was inside the organizations trying to use them.",
+  "Business knowledge was scattered across documents, spreadsheets, emails, legacy systems, finance records, approval processes, and people\u2019s memory. AI systems could generate answers, but they often lacked the operational context needed to support real work.",
+  "They did not fully understand how a specific business operated, which rules applied, who approved what, which documents were trusted, how finance exceptions were handled, or how decisions should be traced.",
+  "That experience became the foundation of Olyxee.",
+  "Olyxee was created to build the infrastructure layer organizations need before AI can operate reliably inside real business environments. The company focuses on context, structure, memory, document integrity, workflow control, finance operations, integration, and operational visibility.",
+  "This work led to Orgni, Olyxee\u2019s core organizational intelligence platform.",
+  "Orgni helps organizations capture and preserve how they operate. It structures business knowledge such as processes, roles, departments, rules, documents, approvals, exceptions, decisions, and case history. The goal is to give AI systems the context they need to support business execution with control and a clear trail.",
+  "As Olyxee developed, the company expanded into focused infrastructure systems.",
 ];
 
-const JOURNEY_LAYERS: { name: string; text: string }[] = [
-  {
-    name: "Orgni",
-    text: "Our core organizational intelligence platform. It captures the processes, rules, roles, departments, documents, approval paths, exceptions, and case history that explain how a business works, giving AI the context to support real work with control and a clear trail.",
-  },
-  {
-    name: "Orgni Workflows",
-    text: "Business processes, approvals, tasks, case handling, operational coordination, and exception management.",
-  },
-  {
-    name: "Orgni Finance",
-    text: "Finance operations, reconciliation, transaction review, finance exceptions, and financial workflow support.",
-  },
-  {
-    name: "Olyxee Document Integrity",
-    text: "Document understanding, classification, extraction, validation, and verification, so teams know a document is complete, consistent, and reliable before acting on it.",
-  },
-  {
-    name: "Order Loop",
-    text: "Customer notifications for orders, deliveries, collections, and service status, without building a full logistics platform.",
-  },
-  {
-    name: "Togent",
-    text: "Ongoing research into AI integration and agent tooling, exploring how AI connects with APIs, tools, workflows, and operational environments.",
-  },
+const JOURNEY_LAYERS: string[] = [
+  "Orgni Workflows supports processes, approvals, tasks, case handling, coordination, and operational exceptions.",
+  "Orgni Finance supports reconciliation, transaction review, finance exceptions, and financial workflow support.",
+  "Olyxee Document Integrity supports document understanding, classification, extraction, validation, verification, and auditability. It helps organizations know whether a document is complete, consistent, relevant, and reliable before it is used in a workflow or decision.",
+  "Order Loop supports customer communication around orders, deliveries, collections, and service status updates.",
+  "Togent is Olyxee\u2019s ongoing research into AI integration and agent tooling, focused on how AI systems connect with APIs, tools, workflows, and operational environments.",
+];
+
+const JOURNEY_CLOSE: string[] = [
+  "Olyxee\u2019s journey is rooted in a practical lesson from AI engineering: organizations do not only need access to powerful AI models. They need infrastructure that makes their operations understandable to AI.",
+  "Founded in Johannesburg, South Africa, Olyxee is building for global infrastructure.",
+  "The company exists to help organizations move from AI experiments to reliable AI execution.",
 ];
 
 const About: FC = () => {
@@ -205,45 +199,39 @@ const About: FC = () => {
                   transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
                   className="relative"
                 >
-                  <div>
-                    <p className="text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.1] tracking-[-0.02em] font-medium mb-8 text-neutral-900 max-w-3xl">
-                      Closing the gap between AI potential and{" "}
-                      <em className="font-serif italic font-normal text-neutral-500">real execution.</em>
-                    </p>
-                    <div className="space-y-5 max-w-2xl">
-                      {JOURNEY_LEAD.map((para, i) => (
-                        <p
-                          key={i}
-                          className="text-base sm:text-lg text-neutral-700 leading-relaxed"
-                        >
-                          {para}
-                        </p>
-                      ))}
-                    </div>
+                  <div className="space-y-5 max-w-3xl">
+                    {JOURNEY_LEAD.map((para, i) => (
+                      <p
+                        key={i}
+                        className="text-base sm:text-lg text-neutral-700 leading-relaxed"
+                      >
+                        {para}
+                      </p>
+                    ))}
                   </div>
 
-                  <div className="mt-16 sm:mt-20">
-                    <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-8">
-                      The layers we build
-                    </p>
+                  <div className="mt-12 sm:mt-16">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-neutral-200 rounded-2xl overflow-hidden ring-1 ring-neutral-200">
-                      {JOURNEY_LAYERS.map((layer) => (
-                        <div key={layer.name} className="bg-white p-6 sm:p-7">
-                          <p className="text-base sm:text-lg text-neutral-900 font-medium tracking-[-0.01em] mb-2">
-                            {layer.name}
-                          </p>
-                          <p className="text-[14px] sm:text-[15px] text-neutral-700 leading-relaxed">
-                            {layer.text}
+                      {JOURNEY_LAYERS.map((layer, i) => (
+                        <div key={i} className="bg-white p-6 sm:p-7">
+                          <p className="text-[15px] sm:text-base text-neutral-700 leading-relaxed">
+                            {layer}
                           </p>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  <p className="mt-12 sm:mt-14 max-w-3xl text-base sm:text-lg text-neutral-700 leading-relaxed">
-                    The next phase of AI adoption won&apos;t be solved by chatbots alone. It takes operational memory, workflow understanding, document integrity, finance control, and integration layers that understand how organizations work over time.{" "}
-                    <span className="text-neutral-900">Olyxee exists to make organizations AI-ready.</span>
-                  </p>
+                  <div className="mt-12 sm:mt-16 space-y-5 max-w-3xl">
+                    {JOURNEY_CLOSE.map((para, i) => (
+                      <p
+                        key={i}
+                        className="text-base sm:text-lg text-neutral-700 leading-relaxed"
+                      >
+                        {para}
+                      </p>
+                    ))}
+                  </div>
                 </motion.div>
               )}
             </AnimatePresence>
