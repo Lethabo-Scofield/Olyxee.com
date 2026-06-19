@@ -54,8 +54,10 @@ const DOWNLOADS = [
   { label: "Olyxee mark · Light",     path: "/Logo/Olyxee_Logo.png",        format: "PNG" },
   { label: "Olyxee mark · Dark",      path: "/Logo/Olyxee_trans.png",       format: "PNG" },
   { label: "Olyxee Robotics · Wave",  path: "/brand/robotics-logo.png",     format: "PNG" },
-  { label: "Orgni Workflows mark",               path: "/images/ordo-logo.png",        format: "PNG" },
-  { label: "Orgni Finance wordmark",          path: "/images/addup-logo.png",       format: "PNG" },
+  { label: "Orgni mark",              path: "/images/orgni-logo.png",          format: "PNG" },
+  { label: "Orgni Finance mark",      path: "/images/orgni-finance-logo.png",  format: "PNG" },
+  { label: "Orgni Workflows mark",    path: "/images/orgni-workflow-logo.png", format: "PNG" },
+  { label: "Order Loop mark",         path: "/images/order-loop-logo.png",     format: "PNG" },
 ];
 
 function BrandAurora() {
@@ -298,25 +300,45 @@ const Brand: FC = () => {
           className="border-t border-neutral-200 scroll-mt-24"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <SectionHead num="03" label="Product marks · Orgni Workflows & Orgni Finance" />
-            <div className="grid grid-cols-1 md:grid-cols-2 rounded-2xl overflow-hidden ring-1 ring-neutral-200/80 bg-neutral-50">
-              <div className="relative min-h-[320px] sm:min-h-[400px] flex flex-col items-center justify-center px-6 py-14 md:border-r border-b md:border-b-0 border-neutral-200/80">
-                <Image src="/images/ordo-logo.png" alt="Orgni Workflows product mark" width={320} height={320} className="w-32 sm:w-40 lg:w-48 h-auto object-contain mb-8" />
+            <SectionHead num="03" label="Product marks · Orgni, Orgni Finance, Orgni Workflows & Order Loop" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 rounded-2xl overflow-hidden ring-1 ring-neutral-200/80 bg-neutral-50">
+              <div className="relative min-h-[300px] sm:min-h-[360px] flex flex-col items-center justify-center px-6 py-14 border-b sm:border-r border-neutral-200/80">
+                <Image src="/images/orgni-logo.png" alt="Orgni product mark" width={400} height={400} className="w-44 sm:w-52 lg:w-60 h-auto object-contain mb-8 rounded-xl" />
                 <div className="text-center">
-                  <p className="text-sm text-neutral-700 font-medium">Orgni Workflows</p>
-                  <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 mt-1">#3B82F6 · Orgni Workflows Blue</p>
+                  <p className="text-sm text-neutral-700 font-medium">Orgni</p>
+                  <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 mt-1">Core platform</p>
                 </div>
-                <a href="/images/ordo-logo.png" download className="absolute bottom-3 right-4 inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-600 hover:text-neutral-900 transition-colors">
+                <a href="/images/orgni-logo.png" download className="absolute bottom-3 right-4 inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-600 hover:text-neutral-900 transition-colors">
                   PNG <ArrowUpRight className="w-3 h-3" />
                 </a>
               </div>
-              <div className="relative min-h-[320px] sm:min-h-[400px] flex flex-col items-center justify-center px-6 py-14">
-                <Image src="/images/addup-logo.png" alt="Orgni Finance wordmark" width={400} height={120} className="w-48 sm:w-60 lg:w-72 h-auto object-contain mb-8" />
+              <div className="relative min-h-[300px] sm:min-h-[360px] flex flex-col items-center justify-center px-6 py-14 border-b border-neutral-200/80">
+                <Image src="/images/order-loop-logo.png" alt="Order Loop product mark" width={400} height={400} className="w-44 sm:w-52 lg:w-60 h-auto object-contain mb-8 rounded-xl" />
+                <div className="text-center">
+                  <p className="text-sm text-neutral-700 font-medium">Order Loop</p>
+                  <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 mt-1">Logistics</p>
+                </div>
+                <a href="/images/order-loop-logo.png" download className="absolute bottom-3 right-4 inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-600 hover:text-neutral-900 transition-colors">
+                  PNG <ArrowUpRight className="w-3 h-3" />
+                </a>
+              </div>
+              <div className="relative min-h-[300px] sm:min-h-[360px] flex flex-col items-center justify-center px-6 py-14 border-b sm:border-b-0 sm:border-r border-neutral-200/80">
+                <Image src="/images/orgni-finance-logo.png" alt="Orgni Finance product mark" width={320} height={320} className="w-28 sm:w-32 lg:w-36 h-auto object-contain mb-8" />
                 <div className="text-center">
                   <p className="text-sm text-neutral-700 font-medium">Orgni Finance</p>
-                  <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 mt-1">#10B981 · Orgni Finance Green</p>
+                  <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 mt-1">#10B981 · Finance Green</p>
                 </div>
-                <a href="/images/addup-logo.png" download className="absolute bottom-3 right-4 inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-600 hover:text-neutral-900 transition-colors">
+                <a href="/images/orgni-finance-logo.png" download className="absolute bottom-3 right-4 inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-600 hover:text-neutral-900 transition-colors">
+                  PNG <ArrowUpRight className="w-3 h-3" />
+                </a>
+              </div>
+              <div className="relative min-h-[300px] sm:min-h-[360px] flex flex-col items-center justify-center px-6 py-14">
+                <Image src="/images/orgni-workflow-logo.png" alt="Orgni Workflows product mark" width={320} height={320} className="w-28 sm:w-32 lg:w-36 h-auto object-contain mb-8" />
+                <div className="text-center">
+                  <p className="text-sm text-neutral-700 font-medium">Orgni Workflows</p>
+                  <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 mt-1">Automation</p>
+                </div>
+                <a href="/images/orgni-workflow-logo.png" download className="absolute bottom-3 right-4 inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-600 hover:text-neutral-900 transition-colors">
                   PNG <ArrowUpRight className="w-3 h-3" />
                 </a>
               </div>
