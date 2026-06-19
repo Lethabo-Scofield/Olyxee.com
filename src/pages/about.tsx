@@ -103,7 +103,7 @@ const About: FC = () => {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="relative overflow-hidden rounded-3xl ring-1 ring-neutral-900/10 shadow-2xl shadow-neutral-900/10 bg-white aspect-[4/5] sm:aspect-[16/10] lg:aspect-[21/9]"
+              className="relative overflow-hidden rounded-3xl ring-1 ring-neutral-900/10 shadow-2xl shadow-neutral-900/10 bg-white aspect-[16/9] sm:aspect-[16/10] lg:aspect-[21/9]"
             >
               <Image
                 src="/images/hero-enterprise-ai.png"
