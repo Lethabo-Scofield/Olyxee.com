@@ -314,10 +314,10 @@ Every deployment runs on Orgni, connecting your context, systems, and decisions 
           className="relative mt-14 sm:mt-20 max-w-5xl mx-auto rounded-3xl overflow-hidden border border-neutral-200/80 shadow-2xl shadow-neutral-300/40"
         >
           <Image
-            src="/images/orgni-ecosystem.png"
-            alt="The Orgni ecosystem: the Orgni platform at the center, surrounded by Orgni Docs, Orgni Workflows, Orgni Finance, Togent, Order Loop, and Orgni Platform."
+            src="/images/products-hero.jpeg"
+            alt="The Orgni ecosystem: the Orgni platform at the center, surrounded by Orgni Finance, Orgni Workflows, and Order Loop."
             width={1024}
-            height={768}
+            height={1024}
             priority
             sizes="(max-width: 1024px) 100vw, 1024px"
             className="w-full h-auto block"
