@@ -205,31 +205,20 @@ const About: FC = () => {
                   transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
                   className="relative"
                 >
-                  <div className="grid grid-cols-12 gap-y-8 gap-x-6 sm:gap-x-10 items-start">
-                    <div className="col-span-12 lg:col-span-7 order-2 lg:order-1">
-                      <p className="text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.1] tracking-[-0.02em] font-medium mb-8 text-neutral-900">
-                        Closing the gap between AI potential and{" "}
-                        <em className="font-serif italic font-normal text-neutral-500">real execution.</em>
-                      </p>
-                      <div className="space-y-5 max-w-2xl">
-                        {JOURNEY_LEAD.map((para, i) => (
-                          <p
-                            key={i}
-                            className="text-base sm:text-lg text-neutral-700 leading-relaxed"
-                          >
-                            {para}
-                          </p>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="col-span-12 lg:col-span-5 order-1 lg:order-2 lg:text-right">
-                      <span
-                        aria-hidden="true"
-                        className="block font-serif italic text-[6rem] sm:text-[14rem] lg:text-[18rem] leading-[0.78] tracking-[-0.05em] text-transparent"
-                        style={{ WebkitTextStroke: "1px rgba(5,150,105,0.55)" }}
-                      >
-                        J.
-                      </span>
+                  <div>
+                    <p className="text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.1] tracking-[-0.02em] font-medium mb-8 text-neutral-900 max-w-3xl">
+                      Closing the gap between AI potential and{" "}
+                      <em className="font-serif italic font-normal text-neutral-500">real execution.</em>
+                    </p>
+                    <div className="space-y-5 max-w-2xl">
+                      {JOURNEY_LEAD.map((para, i) => (
+                        <p
+                          key={i}
+                          className="text-base sm:text-lg text-neutral-700 leading-relaxed"
+                        >
+                          {para}
+                        </p>
+                      ))}
                     </div>
                   </div>
 
