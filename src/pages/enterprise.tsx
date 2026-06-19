@@ -272,10 +272,10 @@ const Enterprise: FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl sm:text-6xl lg:text-7xl text-neutral-900 tracking-[-0.025em] leading-[1.05] font-medium"
+            className="font-serif text-4xl sm:text-6xl lg:text-7xl text-neutral-900 tracking-tight leading-[1.05]"
           >
             Built for{" "}
-            <em className="font-serif italic font-normal text-orange-500">
+            <em className="text-neutral-500 not-italic">
               the enterprise.
             </em>
           </motion.h1>
@@ -340,9 +340,9 @@ const Enterprise: FC = () => {
             <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
               What we build
             </p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-[-0.025em] leading-[1.05] font-medium">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-tight leading-[1.05]">
               Solutions for{" "}
-              <em className="font-serif italic font-normal text-neutral-500">
+              <em className="text-neutral-500 not-italic">
                 operational teams.
               </em>
             </h2>
@@ -426,9 +426,9 @@ const Enterprise: FC = () => {
             <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
               Engagement model
             </p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-[-0.025em] leading-[1.05] font-medium">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-tight leading-[1.05]">
               Three ways to{" "}
-              <em className="font-serif italic font-normal text-neutral-500">
+              <em className="text-neutral-500 not-italic">
                 build with us.
               </em>
             </h2>
@@ -559,8 +559,8 @@ const Enterprise: FC = () => {
               <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-500 mb-5">
                 Enterprise inquiry
               </p>
-              <h2 className="text-3xl sm:text-5xl lg:text-6xl tracking-[-0.025em] text-neutral-900 mb-5 leading-[1.05] font-medium">
-                Build With <em className="font-serif italic font-normal text-neutral-500">Olyxee.</em>
+              <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-5 leading-[1.05]">
+                Build With <em className="text-neutral-500 not-italic">Olyxee.</em>
               </h2>
               <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-9 max-w-lg mx-auto">
                 Work with Olyxee to design operational intelligence systems tailored to your organization. Tell us about your workflows, integrations, and operating environment, and we will scope the engagement with you.
