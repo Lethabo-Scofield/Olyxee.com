@@ -432,8 +432,8 @@ Every deployment runs on Orgni, connecting your context, systems, and decisions 
                 build with us.
               </em>
             </h2>
-            <p className="mt-5 text-base sm:text-lg text-neutral-500 font-light leading-relaxed">
-              Olyxee delivers systems and infrastructure, not packaged SaaS. Engagements scale with operational complexity and the depth of the systems you need.
+            <p className="mt-5 text-base sm:text-lg text-neutral-600 leading-relaxed">
+              We deliver systems and infrastructure, not packaged SaaS. Every engagement scales with how complex your operations are and how deep the systems need to go.
             </p>
           </motion.div>
 
@@ -472,32 +472,32 @@ Every deployment runs on Orgni, connecting your context, systems, and decisions 
                   {tier.name}
                 </h3>
                 <p
-                  className={`text-[13px] font-light leading-relaxed mb-3 ${
-                    tier.emphasis ? "text-white/65" : "text-neutral-500"
+                  className={`text-sm leading-relaxed mb-4 ${
+                    tier.emphasis ? "text-white/75" : "text-neutral-600"
                   }`}
                 >
                   {tier.audience}.
                 </p>
                 <p
-                  className={`text-sm font-light leading-relaxed mb-6 ${
-                    tier.emphasis ? "text-white/80" : "text-neutral-600"
+                  className={`text-[15px] leading-relaxed mb-7 ${
+                    tier.emphasis ? "text-white/90" : "text-neutral-700"
                   }`}
                 >
                   {tier.description}
                 </p>
                 <p
-                  className={`text-[10px] font-mono uppercase tracking-[0.22em] mb-3 ${
-                    tier.emphasis ? "text-white/45" : "text-neutral-400"
+                  className={`text-[10px] font-mono uppercase tracking-[0.22em] mb-4 ${
+                    tier.emphasis ? "text-white/55" : "text-neutral-400"
                   }`}
                 >
-                  Includes
+                  What&apos;s included
                 </p>
-                <ul className="space-y-2.5 mb-8">
+                <ul className="space-y-3 mb-8">
                   {tier.includes.map((item) => (
                     <li
                       key={item}
-                      className={`flex items-start gap-2.5 text-sm font-light ${
-                        tier.emphasis ? "text-white/85" : "text-neutral-700"
+                      className={`flex items-start gap-3 text-[15px] leading-snug ${
+                        tier.emphasis ? "text-white/90" : "text-neutral-700"
                       }`}
                     >
                       <Check
@@ -532,9 +532,9 @@ Every deployment runs on Orgni, connecting your context, systems, and decisions 
             viewport={{ once: true, amount: 0.3 }}
             custom={3}
             variants={fadeUp}
-            className="mt-10 sm:mt-12 max-w-3xl text-sm text-neutral-500 font-light leading-relaxed"
+            className="mt-10 sm:mt-12 max-w-3xl text-[15px] text-neutral-600 leading-relaxed"
           >
-            Solutions vary depending on industry requirements, operational complexity, integrations, and infrastructure needs. Most engagements combine packaged products with custom architecture, integration work, and a defined operating model.
+            Every solution is shaped by your industry, operational complexity, integrations, and infrastructure needs. Most engagements combine packaged products with custom architecture, integration work, and a clear operating model.
           </motion.p>
         </div>
       </section>
