@@ -140,32 +140,41 @@ const About: FC = () => {
         <section id="mission" className="relative bg-white overflow-hidden border-t border-neutral-200/70 scroll-mt-24">
           <div className="relative max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-24 sm:py-36">
             {/* Toggle */}
-            <div className="inline-flex items-center gap-1 p-1 rounded-full border border-neutral-200 bg-neutral-50 mb-16 sm:mb-24">
-              {([
-                { key: "vision", label: "Our Vision" },
-                { key: "journey", label: "Our Journey" },
-              ] as const).map((tab) => (
-                <button
-                  key={tab.key}
-                  type="button"
-                  onClick={() => setAboutView(tab.key)}
-                  aria-pressed={aboutView === tab.key}
-                  className={`relative px-5 py-2 rounded-full text-[11px] font-mono uppercase tracking-[0.22em] transition-colors ${
-                    aboutView === tab.key
-                      ? "text-white"
-                      : "text-neutral-500 hover:text-neutral-800"
-                  }`}
-                >
-                  {aboutView === tab.key && (
-                    <motion.span
-                      layoutId="about-toggle-pill"
-                      className="absolute inset-0 rounded-full bg-neutral-900"
-                      transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                    />
-                  )}
-                  <span className="relative z-10">{tab.label}</span>
-                </button>
-              ))}
+            <div className="flex justify-center mb-16 sm:mb-24">
+              <motion.div
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                className="inline-flex items-center gap-1 p-1 rounded-full bg-neutral-100 ring-1 ring-inset ring-neutral-200/80 shadow-inner"
+              >
+                {([
+                  { key: "vision", label: "Our Vision" },
+                  { key: "journey", label: "Our Journey" },
+                ] as const).map((tab) => (
+                  <motion.button
+                    key={tab.key}
+                    type="button"
+                    onClick={() => setAboutView(tab.key)}
+                    aria-pressed={aboutView === tab.key}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                    className={`relative px-6 py-2.5 rounded-full text-[11px] font-mono uppercase tracking-[0.22em] transition-colors duration-200 ${
+                      aboutView === tab.key
+                        ? "text-neutral-900"
+                        : "text-neutral-500 hover:text-neutral-700"
+                    }`}
+                  >
+                    {aboutView === tab.key && (
+                      <motion.span
+                        layoutId="about-toggle-pill"
+                        className="absolute inset-0 rounded-full bg-white shadow-sm shadow-neutral-900/10 ring-1 ring-neutral-900/5"
+                        transition={{ type: "spring", stiffness: 420, damping: 34 }}
+                      />
+                    )}
+                    <span className="relative z-10">{tab.label}</span>
+                  </motion.button>
+                ))}
+              </motion.div>
             </div>
 
             <AnimatePresence mode="wait">
