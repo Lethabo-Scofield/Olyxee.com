@@ -115,15 +115,6 @@ export default function Footer({ variant = "light" }: FooterProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
         {/* === Link columns === */}
         <div className="pt-16 sm:pt-20 pb-12 sm:pb-16">
-          <div className="mb-12">
-            <Link href="/" className="inline-flex items-center gap-2 mb-5">
-              <Image src="/Logo/Olyxee_Logo.png" alt="Olyxee" width={24} height={24} className="w-6 h-6" />
-              <span className={`text-base font-medium ${styles.link}`}>Olyxee</span>
-            </Link>
-            <p className={`text-sm ${styles.copyright} max-w-md leading-relaxed`}>
-              {footerData.tagline}
-            </p>
-          </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-6 sm:gap-x-8 gap-y-12">
             {footerData.columns.map((column) => (
               <div key={column.title}>
