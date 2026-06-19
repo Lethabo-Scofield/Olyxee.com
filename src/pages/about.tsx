@@ -142,14 +142,14 @@ const About: FC = () => {
                     transition={{ type: "spring", stiffness: 500, damping: 30 }}
                     className={`relative px-6 py-2.5 rounded-full text-[11px] font-mono uppercase tracking-[0.22em] transition-colors duration-200 ${
                       aboutView === tab.key
-                        ? "text-neutral-900"
+                        ? "text-white"
                         : "text-neutral-500 hover:text-neutral-700"
                     }`}
                   >
                     {aboutView === tab.key && (
                       <motion.span
                         layoutId="about-toggle-pill"
-                        className="absolute inset-0 rounded-full bg-white shadow-sm shadow-neutral-900/10 ring-1 ring-neutral-900/5"
+                        className="absolute inset-0 rounded-full bg-neutral-900 shadow-sm shadow-neutral-900/20"
                         transition={{ type: "spring", stiffness: 420, damping: 34 }}
                       />
                     )}
