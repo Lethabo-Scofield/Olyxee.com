@@ -17,7 +17,7 @@ type MenuItem = {
 
 const menuItems: MenuItem[] = [
     { name: "Research", href: "/research" },
-    { name: "Enterprise", href: "/enterprise" },
+    { name: "Products", href: "/enterprise" },
     {
         name: "Company",
         childrenLabel: "Explore Company",
