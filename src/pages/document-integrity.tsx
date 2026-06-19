@@ -92,9 +92,9 @@ const DocumentIntegrity: FC = () => {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.05] text-neutral-900 mt-4"
+            className="text-4xl sm:text-5xl lg:text-6xl tracking-[-0.02em] leading-[1.05] text-neutral-900 mt-4 font-semibold"
           >
-            We&apos;ll be back <em className="text-orange-500">shortly</em>
+            We&apos;ll be back <em className="not-italic text-neutral-400">shortly</em>
           </motion.h1>
 
           <motion.p
@@ -116,7 +116,7 @@ const DocumentIntegrity: FC = () => {
               <div key={s.label} className="text-center">
                 <p
                   suppressHydrationWarning
-                  className="font-serif text-2xl sm:text-4xl tracking-tight tabular-nums text-neutral-900"
+                  className="text-2xl sm:text-4xl tracking-tight tabular-nums text-neutral-900 font-semibold"
                 >
                   {ready ? s.value : "--"}
                 </p>
@@ -133,13 +133,21 @@ const DocumentIntegrity: FC = () => {
             transition={{ duration: 0.6, delay: 0.45 }}
             className="mt-10"
           >
-            <Link
-              href="/"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-neutral-900 text-white text-sm font-medium hover:bg-neutral-800 transition-colors"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Back to home
-            </Link>
+            <div className="flex items-center justify-center gap-3 flex-wrap">
+              <Link
+                href="/"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-neutral-900 text-white text-sm font-medium hover:bg-neutral-800 transition-colors"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Back to home
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-neutral-300 text-neutral-900 text-sm font-medium hover:bg-neutral-100 transition-colors"
+              >
+                Contact us
+              </Link>
+            </div>
           </motion.div>
 
           {/* What to expect */}
@@ -154,29 +162,29 @@ const DocumentIntegrity: FC = () => {
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6">
               <div>
-                <h3 className="font-serif text-xl text-neutral-900 mb-2">A faster pipeline</h3>
+                <h3 className="text-xl text-neutral-900 mb-2 font-semibold tracking-tight">A faster pipeline</h3>
                 <p className="text-sm text-neutral-500 font-light leading-relaxed">
                   Verification runs and document checks return results noticeably quicker once we&apos;re back online.
                 </p>
               </div>
               <div>
-                <h3 className="font-serif text-xl text-neutral-900 mb-2">A cleaner audit ledger</h3>
+                <h3 className="text-xl text-neutral-900 mb-2 font-semibold tracking-tight">A cleaner audit ledger</h3>
                 <p className="text-sm text-neutral-500 font-light leading-relaxed">
                   Improved indexing makes it easier to trace, filter, and export the history of every document you&apos;ve verified.
                 </p>
               </div>
               <div>
-                <h3 className="font-serif text-xl text-neutral-900 mb-2">Your data is safe</h3>
+                <h3 className="text-xl text-neutral-900 mb-2 font-semibold tracking-tight">Your data is safe</h3>
                 <p className="text-sm text-neutral-500 font-light leading-relaxed">
                   All historic records remain untouched. No action is required from you, just sign back in when we&apos;re live.
                 </p>
               </div>
             </div>
-            <p className="text-xs text-neutral-400 text-center mt-10 font-light">
-              Need help in the meantime? Reach us at{" "}
-              <a href="mailto:support@olyxee.com" className="text-neutral-700 hover:text-neutral-900 underline underline-offset-4">
-                support@olyxee.com
-              </a>
+            <p className="text-xs text-neutral-500 text-center mt-10">
+              Need help in the meantime?{" "}
+              <Link href="/contact" className="text-neutral-900 hover:text-neutral-600 underline underline-offset-4">
+                Get in touch
+              </Link>
               .
             </p>
           </motion.div>
@@ -195,11 +203,11 @@ const DocumentIntegrity: FC = () => {
             <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-neutral-400 mb-4">
               A quick guide
             </p>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl tracking-tight text-neutral-900 leading-[1.05]">
-              What is <em className="text-orange-500">Orgni Docs?</em>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl tracking-[-0.02em] text-neutral-900 leading-[1.05] font-semibold">
+              What is <em className="not-italic text-neutral-400">Olyxee Document Integrity?</em>
             </h2>
-            <p className="mt-6 text-lg text-neutral-600 font-light leading-relaxed max-w-3xl">
-              Orgni Docs is a verification layer for the documents your business runs on. It extracts structured information from files like invoices, contracts, claims, statements, and identity documents, validates them against your rules and trusted sources, flags inconsistencies and tampering, and records every check in an auditable ledger.
+            <p className="mt-6 text-lg text-neutral-600 leading-relaxed max-w-3xl">
+              Olyxee Document Integrity (Orgni Docs) is a verification layer for the documents your business runs on. It extracts structured information from files like invoices, contracts, claims, statements, and identity documents, validates them against your rules and trusted sources, flags inconsistencies and tampering, and records every check in an auditable ledger.
             </p>
           </motion.div>
 
@@ -210,10 +218,10 @@ const DocumentIntegrity: FC = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="mt-14"
           >
-            <h3 className="font-serif text-2xl sm:text-3xl text-neutral-900 mb-3">
+            <h3 className="text-2xl sm:text-3xl text-neutral-900 mb-3 font-semibold tracking-tight">
               How you integrate it
             </h3>
-            <p className="text-base text-neutral-600 font-light leading-relaxed max-w-3xl mb-8">
+            <p className="text-base text-neutral-600 leading-relaxed max-w-3xl mb-8">
               One REST endpoint sits in front of your pipeline. Send a file, get back structured fields plus an integrity score, and gate your workflow on the result. SDKs for Python and JavaScript wrap the same API.
             </p>
             <div className="space-y-5">
@@ -222,7 +230,11 @@ const DocumentIntegrity: FC = () => {
               ))}
             </div>
             <p className="mt-8 text-base text-neutral-600 font-light leading-relaxed max-w-3xl">
-              Full schema validation, batch processing, tamper detection, and the auditable verification ledger are available to early access partners. Join the list above to get an API key and the complete reference.
+              Full schema validation, batch processing, tamper detection, and the auditable verification ledger are available to early access partners.{" "}
+              <Link href="/contact" className="text-neutral-900 hover:text-neutral-600 underline underline-offset-4">
+                Contact us
+              </Link>{" "}
+              to get an API key and the complete reference.
             </p>
           </motion.div>
         </div>
