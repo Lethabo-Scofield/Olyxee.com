@@ -775,12 +775,29 @@ function OrgniSection() {
             </div>
 
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-6">
-              AI your business can <em className="text-neutral-500 not-italic">actually run on.</em>
+              The command center for <em className="text-orange-500 not-italic">AI-run operations.</em>
             </h2>
 
             <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-8 max-w-md">
-              Orgni is Olyxee&apos;s core infrastructure for organizations adopting AI. It connects your business context, workflows, documents, systems, and decisions so AI can support real operations with context, control, and traceability.
+              Orgni turns scattered documents, rules, workflows, approvals, and finance records into a structured, AI-ready system. It understands how your organization works, preserves that knowledge, and lets AI agents run real work with context, control, and a clear trail.
             </p>
+
+            <div className="flex flex-wrap gap-2 mb-8 max-w-md">
+              {[
+                { name: "Core", desc: "Organizational memory" },
+                { name: "Workflows", desc: "Approvals & execution" },
+                { name: "Docs", desc: "Understanding & extraction" },
+                { name: "Finance", desc: "Reconciliation & control" },
+              ].map((m) => (
+                <span
+                  key={m.name}
+                  className="inline-flex items-baseline gap-1.5 px-3 py-1.5 rounded-full bg-white ring-1 ring-neutral-200 text-xs"
+                >
+                  <span className="font-medium text-neutral-900">{m.name}</span>
+                  <span className="text-neutral-400">{m.desc}</span>
+                </span>
+              ))}
+            </div>
 
             <div className="flex flex-wrap items-center gap-4">
               <a
@@ -806,17 +823,18 @@ function OrgniSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            className="lg:col-span-7 relative flex justify-center"
+            className="lg:col-span-7 relative"
           >
-            <div aria-hidden className="absolute -inset-8 -z-10 bg-gradient-to-br from-orange-50/60 via-white to-amber-50/40 blur-2xl rounded-[2rem]" />
-            <div className="relative w-full max-w-sm sm:max-w-md overflow-hidden rounded-3xl ring-1 ring-neutral-200 shadow-sm">
+            <div aria-hidden className="absolute -inset-8 -z-10 bg-gradient-to-br from-orange-100/70 via-white to-amber-50/40 blur-2xl rounded-[2rem]" />
+            <div className="relative overflow-hidden rounded-3xl ring-1 ring-neutral-200 shadow-xl shadow-orange-900/5">
               <Image
-                src="/images/orgni-logo-name.png"
-                alt="Orgni brand mark"
+                src="/images/orgni-product.png"
+                alt="Orgni interface: an organizational role transfer being processed with a live user graph, entitlements, and approval trail"
                 width={1024}
-                height={1024}
+                height={576}
                 className="block w-full h-auto"
-                sizes="(max-width: 1024px) 100vw, 448px"
+                sizes="(max-width: 1024px) 100vw, 720px"
+                priority={false}
               />
             </div>
           </motion.div>

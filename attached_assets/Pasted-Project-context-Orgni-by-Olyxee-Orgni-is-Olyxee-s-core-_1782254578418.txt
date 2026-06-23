@@ -1,0 +1,74 @@
+Project context: Orgni by Olyxee
+
+Orgni is Olyxee’s core organizational intelligence platform. It helps businesses turn scattered documents, rules, workflows, approvals, finance records, and operational knowledge into a structured AI-ready system.
+
+Orgni is not just a chatbot. It is infrastructure for business execution. The goal is to understand how an organization works, preserve that knowledge over time, and allow AI agents or workflows to operate with context, control, and traceability.
+
+Core positioning:
+“Orgni is the platform at the center of everything we build. Each product plugs into the same core, so AI can run real work with context, control, and a clear trail.”
+
+Main modules:
+1. Orgni Core
+- Organizational memory
+- Roles and departments
+- Workflow state
+- Approval context
+- Business rules
+- Case history
+- Decisions and exceptions
+- Next actions
+
+2. Orgni Workflows
+- Process handling
+- Approvals
+- Operational tasks
+- Case management
+- Team coordination
+- Workflow execution
+
+3. Orgni Docs
+- Document understanding
+- Classification
+- Extraction
+- Validation
+- Integrity checks
+- Document-to-JSON conversion
+
+4. Orgni Finance
+- Bank and ledger reconciliation
+- Finance exceptions
+- Matching logic
+- Review workflows
+- Financial control trails
+
+Design direction:
+- Clean enterprise UI
+- White background
+- Orange as primary brand color
+- Left sidebar layout
+- Minimal scrolling
+- Dashboard-style panels
+- Clear operational status
+- Avoid chatbot-only interface
+- Avoid demo-looking UI
+- Make it feel like a real command center
+
+Suggested dashboard panels:
+- Orgni confidence
+- Workflows detected
+- Documents needing review
+- Finance exceptions
+- Approval rules mapped
+- Recent decisions
+- Open cases
+- Suggested next actions
+
+Main user flow:
+1. Business uploads documents, spreadsheets, images, or notes.
+2. Orgni extracts and classifies information.
+3. Orgni asks clarifying questions where confidence is low.
+4. Orgni builds a knowledge map of the organization.
+5. Orgni detects workflows, rules, departments, roles, and exceptions.
+6. Orgni gives teams a controlled interface to review, approve, and execute work.
+
+Use this context when generating code, UI, copy, or architecture for Orgni.
