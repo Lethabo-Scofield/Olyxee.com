@@ -440,7 +440,7 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                                                             type="button"
                                                             onClick={() => setMobileExpanded((s) => ({ ...s, [item.name]: !s[item.name] }))}
                                                             aria-expanded={expanded}
-                                                            className="w-full flex items-center justify-between py-3 px-4 hover:bg-blue-50/50 active:bg-blue-50/80 rounded-2xl transition-all text-neutral-900 font-medium text-[15px] focus:outline-none hover:text-blue-600"
+                                                            className="w-full flex items-center justify-between py-3 px-4 hover:bg-orange-50 active:bg-orange-100/70 rounded-2xl transition-all text-neutral-900 font-medium text-[15px] focus:outline-none hover:text-orange-600"
                                                         >
                                                             {item.name}
                                                             <ChevronDown className={`w-4 h-4 text-neutral-400 transition-transform ${expanded ? 'rotate-180' : ''}`} />
@@ -460,7 +460,7 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                                                                                 href={child.href}
                                                                                 prefetch
                                                                                 onClick={() => setMobileMenuOpen(false)}
-                                                                                className="flex items-center justify-between py-2.5 px-4 hover:bg-blue-50/50 active:bg-blue-50/80 rounded-2xl transition-all text-neutral-700 hover:text-blue-600 text-[14px] focus:outline-none"
+                                                                                className="flex items-center justify-between py-2.5 px-4 hover:bg-orange-50 active:bg-orange-100/70 rounded-2xl transition-all text-neutral-700 hover:text-orange-600 text-[14px] focus:outline-none"
                                                                             >
                                                                                 {child.name}
                                                                                 <span className="text-neutral-400 text-xs">→</span>
@@ -475,7 +475,7 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                                                     <Link
                                                         href={item.href!}
                                                         prefetch={!item.href!.startsWith('/#')}
-                                                        className="flex items-center justify-between py-3 px-4 hover:bg-blue-50/50 active:bg-blue-50/80 rounded-2xl transition-all text-neutral-900 font-medium text-[15px] focus:outline-none hover:text-blue-600"
+                                                        className="flex items-center justify-between py-3 px-4 hover:bg-orange-50 active:bg-orange-100/70 rounded-2xl transition-all text-neutral-900 font-medium text-[15px] focus:outline-none hover:text-orange-600"
                                                         onClick={(e) => { handleNavClick(e, item.href!); setMobileMenuOpen(false); }}
                                                     >
                                                         {item.name}
