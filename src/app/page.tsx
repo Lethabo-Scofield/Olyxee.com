@@ -713,11 +713,11 @@ function OrgniSection() {
             <span className="text-[11px] font-mono text-orange-500 uppercase tracking-[0.25em]">Orgni · Core platform</span>
 
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mt-4 mb-5">
-              The command center for <em className="text-orange-500 not-italic">AI-run operations.</em>
+              Business context for <em className="text-orange-500 not-italic">AI execution.</em>
             </h2>
 
             <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-8 max-w-sm">
-              Turn your documents, workflows, and approvals into a system AI can actually run.
+              Orgni learns your processes, rules, roles, documents, and exceptions so AI can support real business work.
             </p>
 
             <div className="flex flex-wrap gap-2 mb-8 max-w-sm">
