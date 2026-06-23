@@ -6,7 +6,7 @@ import Footer from '../components/footer';
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Truck, Check, PackageCheck, MapPin, Bell } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Truck, Check, PackageCheck, MapPin, Bell, Layers, Workflow, FileText, Wallet, type LucideIcon } from "lucide-react";
 
 
 export default function HomePage() {
@@ -656,7 +656,7 @@ function ProductFeature({
   heading: string;
   emphasis: string;
   description: string;
-  pills?: string[];
+  pills?: { label: string; icon: LucideIcon }[];
   image: { src: string; alt: string; width: number; height: number };
   glow: string;
   primary: ProductCta;
@@ -729,12 +729,13 @@ function ProductFeature({
           <div className="sm:col-span-6 lg:col-span-5 flex flex-col sm:items-end gap-5">
             {pills && pills.length > 0 && (
               <div className="flex flex-wrap sm:justify-end gap-2">
-                {pills.map((name) => (
+                {pills.map(({ label, icon: Icon }) => (
                   <span
-                    key={name}
-                    className="inline-flex px-3 py-1.5 rounded-full bg-white ring-1 ring-neutral-200 text-xs font-medium text-neutral-700"
+                    key={label}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white ring-1 ring-neutral-200 text-xs font-medium text-neutral-700"
                   >
-                    {name}
+                    <Icon className="w-3.5 h-3.5 text-orange-500" />
+                    {label}
                   </span>
                 ))}
               </div>
@@ -847,7 +848,12 @@ function OrgniSection() {
       heading="Business context for"
       emphasis="AI execution."
       description="Orgni learns your processes, rules, roles, documents, and exceptions so AI can support real business work."
-      pills={["Core", "Workflows", "Docs", "Finance"]}
+      pills={[
+        { label: "Core", icon: Layers },
+        { label: "Workflows", icon: Workflow },
+        { label: "Docs", icon: FileText },
+        { label: "Finance", icon: Wallet },
+      ]}
       image={{
         src: "/images/orgni-product.png",
         alt: "Orgni interface: an organizational role transfer being processed with a live user graph, entitlements, and approval trail",
