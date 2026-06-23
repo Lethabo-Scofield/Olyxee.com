@@ -130,7 +130,7 @@ export default function HomePage() {
         <ImageShowcase />
         {/* <OrdoSection /> hidden for now */}
         <OrgniSection />
-        <TogentSection />
+        <CourierLoopSection />
         <StoriesSection />
         <CTASection />
       </main>
