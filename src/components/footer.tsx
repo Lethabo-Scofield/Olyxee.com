@@ -42,7 +42,6 @@ const footerData = {
       links: [
         { name: "Olyxee Document Integrity", href: "/document-integrity" },
         { name: "Enterprise Automation", href: "/enterprise" },
-        { name: "Togent", href: "https://togent.olyxee.com", external: true },
       ],
     },
     {
