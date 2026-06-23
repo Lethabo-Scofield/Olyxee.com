@@ -637,12 +637,13 @@ function CourierLoopSection() {
   return (
     <section id="logistics" className="py-20 sm:py-32 lg:py-40 bg-neutral-50/60 border-y border-neutral-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+            className="lg:col-span-4"
           >
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-5">
               Keep every customer <em className="text-orange-500 not-italic">in the loop.</em>
@@ -676,7 +677,7 @@ function CourierLoopSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            className="relative"
+            className="lg:col-span-8 relative"
           >
             <div aria-hidden className="absolute -inset-8 -z-10 bg-gradient-to-br from-orange-50/60 via-white to-amber-50/40 blur-2xl rounded-[2rem]" />
             <div className="relative overflow-hidden rounded-3xl bg-white ring-1 ring-neutral-200 shadow-sm">
@@ -686,7 +687,8 @@ function CourierLoopSection() {
                 width={1024}
                 height={533}
                 className="block w-full h-auto"
-                sizes="(max-width: 1024px) 100vw, 720px"
+                sizes="(max-width: 1024px) 100vw, 860px"
+                quality={95}
               />
             </div>
           </motion.div>
@@ -706,7 +708,7 @@ function OrgniSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            className="lg:col-span-5"
+            className="lg:col-span-4"
           >
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-5">
               Business context for <em className="text-orange-500 not-italic">AI execution.</em>
@@ -751,7 +753,7 @@ function OrgniSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            className="lg:col-span-7 relative"
+            className="lg:col-span-8 relative"
           >
             <div aria-hidden className="absolute -inset-8 -z-10 bg-gradient-to-br from-orange-100/70 via-white to-amber-50/40 blur-2xl rounded-[2rem]" />
             <div className="relative overflow-hidden rounded-3xl ring-1 ring-neutral-200 shadow-xl shadow-orange-900/5">
@@ -761,7 +763,8 @@ function OrgniSection() {
                 width={1024}
                 height={576}
                 className="block w-full h-auto"
-                sizes="(max-width: 1024px) 100vw, 720px"
+                sizes="(max-width: 1024px) 100vw, 860px"
+                quality={95}
                 priority={false}
               />
             </div>

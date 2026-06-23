@@ -4,6 +4,7 @@ const nextConfig: NextConfig = {
   allowedDevOrigins: ["*.replit.dev", "*.spock.replit.dev", "*.janeway.replit.dev", "*.worf.replit.dev", "*.riker.replit.dev", "*.picard.replit.dev", "*.kirk.replit.dev", "*.repl.co"],
   images: {
     formats: ['image/webp', 'image/avif'],
+    qualities: [75, 95],
     remotePatterns: [
       { protocol: 'https', hostname: '**' },
       { protocol: 'http', hostname: '**' }
