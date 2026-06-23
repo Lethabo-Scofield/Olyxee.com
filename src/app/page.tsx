@@ -125,13 +125,13 @@ export default function HomePage() {
       <Header />
       <main>
         <HeroSection />
-        <LogoStrip />
         <ResearchAreas />
         <ImageShowcase />
         {/* <OrdoSection /> hidden for now */}
         <OrgniSection />
         <CourierLoopSection />
         <StoriesSection />
+        <LogoStrip />
         <CTASection />
       </main>
       <Footer />
