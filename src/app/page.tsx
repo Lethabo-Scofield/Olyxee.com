@@ -637,31 +637,21 @@ function CourierLoopSection() {
   return (
     <section id="logistics" className="py-20 sm:py-32 lg:py-40 bg-neutral-50/60 border-y border-neutral-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            className="lg:col-span-5"
           >
-            <div className="mb-6">
-              <Image
-                src="/images/courier-loop-logo.png"
-                alt="Order Loop, delivery service"
-                width={220}
-                height={72}
-                className="h-12 sm:h-14 w-auto object-contain"
-                style={{ width: "auto", height: "auto" }}
-              />
-            </div>
+            <span className="text-[11px] font-mono text-orange-500 uppercase tracking-[0.25em]">Order Loop</span>
 
-            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-6">
-              Keep every customer <em className="text-neutral-500 not-italic">in the loop.</em>
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mt-4 mb-5">
+              Keep every customer <em className="text-orange-500 not-italic">in the loop.</em>
             </h2>
 
-            <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-8 max-w-md">
-              Olyxee Logistics lets anyone who sells, from a one-person shop to a full operations team, send clean order-status updates to their customers, from confirmed to delivered.
+            <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-8 max-w-sm">
+              Send clean order-status updates, from confirmed to delivered.
             </p>
 
             <div className="flex flex-wrap items-center gap-4">
@@ -688,7 +678,7 @@ function CourierLoopSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            className="lg:col-span-7 relative"
+            className="relative"
           >
             <div aria-hidden className="absolute -inset-8 -z-10 bg-gradient-to-br from-orange-50/60 via-white to-amber-50/40 blur-2xl rounded-[2rem]" />
             <div className="relative overflow-hidden rounded-3xl bg-white ring-1 ring-neutral-200 shadow-sm">
@@ -720,40 +710,23 @@ function OrgniSection() {
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             className="lg:col-span-5"
           >
-            <div className="mb-6 flex items-center gap-3">
-              <Image
-                src="/images/orgni-logo.png"
-                alt="Orgni"
-                width={48}
-                height={48}
-                className="h-10 w-10 sm:h-11 sm:w-11 object-contain"
-                style={{ width: "auto", height: "auto" }}
-              />
-              <span className="font-serif text-3xl sm:text-4xl text-neutral-900 tracking-tight">Orgni</span>
-              <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.25em]">Core platform</span>
-            </div>
+            <span className="text-[11px] font-mono text-orange-500 uppercase tracking-[0.25em]">Orgni · Core platform</span>
 
-            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-6">
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mt-4 mb-5">
               The command center for <em className="text-orange-500 not-italic">AI-run operations.</em>
             </h2>
 
-            <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-8 max-w-md">
-              Orgni turns scattered documents, rules, workflows, approvals, and finance records into a structured, AI-ready system. It understands how your organization works, preserves that knowledge, and lets AI agents run real work with context, control, and a clear trail.
+            <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-8 max-w-sm">
+              Turn your documents, workflows, and approvals into a system AI can actually run.
             </p>
 
-            <div className="flex flex-wrap gap-2 mb-8 max-w-md">
-              {[
-                { name: "Core", desc: "Organizational memory" },
-                { name: "Workflows", desc: "Approvals & execution" },
-                { name: "Docs", desc: "Understanding & extraction" },
-                { name: "Finance", desc: "Reconciliation & control" },
-              ].map((m) => (
+            <div className="flex flex-wrap gap-2 mb-8 max-w-sm">
+              {["Core", "Workflows", "Docs", "Finance"].map((name) => (
                 <span
-                  key={m.name}
-                  className="inline-flex items-baseline gap-1.5 px-3 py-1.5 rounded-full bg-white ring-1 ring-neutral-200 text-xs"
+                  key={name}
+                  className="inline-flex px-3 py-1.5 rounded-full bg-white ring-1 ring-neutral-200 text-xs font-medium text-neutral-700"
                 >
-                  <span className="font-medium text-neutral-900">{m.name}</span>
-                  <span className="text-neutral-400">{m.desc}</span>
+                  {name}
                 </span>
               ))}
             </div>
