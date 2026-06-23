@@ -822,7 +822,7 @@ function CourierLoopSection() {
             className="lg:col-span-8 relative"
           >
             <div aria-hidden className="absolute -inset-8 -z-10 bg-gradient-to-br from-orange-50/60 via-white to-amber-50/40 blur-2xl rounded-[2rem]" />
-            <div className="relative overflow-hidden rounded-3xl bg-white ring-1 ring-neutral-200 shadow-sm">
+            <div className="relative overflow-hidden rounded-3xl">
               <Image
                 src="/images/order-loop-illustration.png"
                 alt="A shopper places an order on their phone while a courier delivers the package, with live order-status steps showing the order is on the way"
