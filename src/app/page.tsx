@@ -204,7 +204,7 @@ function HeroSection() {
               href="https://orgni.olyxee.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-7 sm:py-3.5 bg-white/90 backdrop-blur-md text-neutral-900 rounded-full font-medium hover:bg-white transition-all text-xs sm:text-sm tracking-wide shadow-lg shadow-black/10 border border-white/60"
+              className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-7 sm:py-3.5 bg-orange-500 text-white rounded-full font-medium hover:bg-orange-600 transition-all text-xs sm:text-sm tracking-wide shadow-lg shadow-orange-500/30 border border-orange-400/40"
             >
               Try Orgni <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </a>
