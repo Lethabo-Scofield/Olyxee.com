@@ -704,7 +704,7 @@ function ProductFeature({
           className="relative mt-10 sm:mt-14"
         >
           <div aria-hidden className={`absolute -inset-6 sm:-inset-10 -z-10 ${glow} blur-3xl rounded-[2.5rem]`} />
-          <div className="relative overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] shadow-xl shadow-neutral-900/5">
+          <div className="relative overflow-hidden rounded-[1.75rem] sm:rounded-[2rem]">
             <Image
               src={image.src}
               alt={image.alt}
