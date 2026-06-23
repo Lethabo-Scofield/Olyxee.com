@@ -773,24 +773,67 @@ function ProductFeature({
 
 function CourierLoopSection() {
   return (
-    <ProductFeature
-      id="logistics"
-      surface="plain"
-      index="02"
-      eyebrow="Order Loop"
-      heading="Keep every customer"
-      emphasis="in the loop."
-      description="Send clean order-status updates, from confirmed to delivered."
-      image={{
-        src: "/images/order-loop-illustration.png",
-        alt: "A shopper places an order on their phone while a courier delivers the package, with live order-status steps showing the order is on the way",
-        width: 1024,
-        height: 533,
-      }}
-      glow="bg-gradient-to-br from-orange-50/60 via-white to-amber-50/40"
-      primary={{ label: "Open Logistics", href: "https://logistics.olyxee.com/", external: true }}
-      secondary={{ label: "Talk to us", href: "mailto:scofield@olyxee.com?subject=Olyxee%20Logistics%20Inquiry", external: true }}
-    />
+    <section id="logistics" className="py-20 sm:py-32 lg:py-40 bg-white border-y border-neutral-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+            className="lg:col-span-4"
+          >
+            <p className="text-xs font-semibold text-orange-500 uppercase tracking-[0.2em] mb-4">Order Loop</p>
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-5">
+              Keep every customer <em className="text-orange-500 not-italic">in the loop.</em>
+            </h2>
+
+            <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-8 max-w-sm">
+              Send clean order-status updates, from confirmed to delivered.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-4">
+              <a
+                href="https://logistics.olyxee.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 text-sm font-medium text-white bg-neutral-900 hover:bg-black px-6 py-3 rounded-full transition-colors"
+              >
+                Open Logistics
+                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </a>
+              <a
+                href="mailto:scofield@olyxee.com?subject=Olyxee%20Logistics%20Inquiry"
+                className="text-sm font-medium text-neutral-700 hover:text-neutral-900 transition-colors"
+              >
+                Talk to us →
+              </a>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+            className="lg:col-span-8 relative"
+          >
+            <div aria-hidden className="absolute -inset-8 -z-10 bg-gradient-to-br from-orange-50/60 via-white to-amber-50/40 blur-2xl rounded-[2rem]" />
+            <div className="relative overflow-hidden rounded-3xl bg-white ring-1 ring-neutral-200 shadow-sm">
+              <Image
+                src="/images/order-loop-illustration.png"
+                alt="A shopper places an order on their phone while a courier delivers the package, with live order-status steps showing the order is on the way"
+                width={1024}
+                height={533}
+                className="block w-full h-auto"
+                sizes="(max-width: 1024px) 100vw, 860px"
+                quality={95}
+              />
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
   );
 }
 
