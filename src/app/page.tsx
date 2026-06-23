@@ -644,9 +644,7 @@ function CourierLoopSection() {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
           >
-            <span className="text-[11px] font-mono text-orange-500 uppercase tracking-[0.25em]">Order Loop</span>
-
-            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mt-4 mb-5">
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-5">
               Keep every customer <em className="text-orange-500 not-italic">in the loop.</em>
             </h2>
 
@@ -710,9 +708,7 @@ function OrgniSection() {
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             className="lg:col-span-5"
           >
-            <span className="text-[11px] font-mono text-orange-500 uppercase tracking-[0.25em]">Orgni · Core platform</span>
-
-            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mt-4 mb-5">
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-5">
               Business context for <em className="text-orange-500 not-italic">AI execution.</em>
             </h2>
 
