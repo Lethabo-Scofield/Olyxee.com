@@ -33,7 +33,7 @@ const SOLUTION_CATEGORIES: SolutionCategory[] = [
     name: "Financial Operations",
     tagline: "Reconciliation, integrity, and audit intelligence.",
     capabilities: ["Reconciliation", "Integrity systems", "Validation", "Audit intelligence"],
-    poweredBy: ["Orgni Finance", "Orgni Docs"],
+    poweredBy: ["Orgni Finance", "Olyxee Document Integrity"],
     bgImage: "/images/gradient-blue-pink.png",
   },
   {
@@ -97,7 +97,7 @@ const PRICING_TIERS: PricingTier[] = [
       "API and database integrations",
       "Business rules",
       "Human approval flows",
-      "Orgni Docs capabilities",
+      "Olyxee Document Integrity capabilities",
       "Orgni Platform intelligence layer",
       "Togent access for team and system integration",
       "Support",
@@ -113,7 +113,7 @@ const PRICING_TIERS: PricingTier[] = [
     includes: [
       "Custom AI infrastructure deployment",
       "Orgni Platform intelligence systems",
-      "Orgni Docs systems",
+      "Olyxee Document Integrity systems",
       "Multi-agent workflows",
       "Advanced workflow execution",
       "Custom APIs and integrations",

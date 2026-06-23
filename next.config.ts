@@ -32,6 +32,11 @@ const nextConfig: NextConfig = {
       destination: "/enterprise",
       permanent: false,
     },
+    {
+      source: "/research/cortex",
+      destination: "/research",
+      permanent: false,
+    },
   ],
   // Replit dev-watcher mitigation: on the overlay filesystem, watching churny
   // platform dirs (.cache/.local/.next/...) causes phantom file-change events,

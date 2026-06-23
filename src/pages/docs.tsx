@@ -195,8 +195,8 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       action: { kind: "external", href: "https://logistics.olyxee.com/", label: "Visit Order Loop" },
     },
     {
-      name: "Orgni Docs",
-      description: "Orgni Docs is a document validation solution. It helps organizations extract structured information, validate documents, detect inconsistencies, and support trusted decisions from business documents.",
+      name: "Olyxee Document Integrity",
+      description: "Olyxee Document Integrity is a document validation solution. It helps organizations extract structured information, validate documents, detect inconsistencies, and support trusted decisions from business documents.",
       status: "private",
       bg: "/images/gradient-orange-purple.webp",
       action: { kind: "internal", href: "/document-integrity", label: "View status" },

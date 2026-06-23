@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     "Orgni",
     "Orgni Finance",
     "Orgni Workflows",
-    "Orgni Docs",
+    "Olyxee Document Integrity",
     "Togent",
     "Order Loop",
     "AI reliability",

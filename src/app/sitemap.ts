@@ -12,7 +12,6 @@ const pages: Entry[] = [
   { path: '/solutions/logistics', priority: 0.9, changeFrequency: 'weekly' },
   { path: '/document-integrity', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/research', priority: 0.9, changeFrequency: 'monthly' },
-  { path: '/research/cortex', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/about', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/careers', priority: 0.8, changeFrequency: 'weekly' },
   { path: '/enterprise', priority: 0.8, changeFrequency: 'monthly' },

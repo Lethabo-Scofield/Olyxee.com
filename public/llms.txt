@@ -6,8 +6,7 @@ Olyxee is structured around four product surfaces and one research engine:
 
 - **Orgni Workflows** — Autonomous workflow execution: job handling, integrations, and operational automation. (Early access)
 - **Orgni Finance** — Financial reconciliation: workflows, data validation, matching, exception handling, and reporting. (Available)
-- **Orgni Docs** — Document verification, integrity checks, extraction validation, and API-based verification workflows. (Private)
-- **Olyxee Cortex** — Organisational cognition, memory infrastructure, workflow context, and long-running enterprise intelligence. (Private)
+- **Olyxee Document Integrity** — Document verification, integrity checks, extraction validation, and API-based verification workflows. (Private)
 - **Order Loop** — Logistics operations, delivery workflows, dispatch coordination, and logistics APIs. (Available)
 - **Olyxee Lab** — Internal research on AI reliability, verification, interpretability, and evaluation.
 
@@ -17,9 +16,8 @@ Olyxee is structured around four product surfaces and one research engine:
 - [About](https://olyxee.com/about): Who Olyxee is, the problem we work on, and how we operate.
 - [Products & Enterprise](https://olyxee.com/enterprise): All Olyxee products and enterprise systems with status.
 - [Orgni Workflows](https://olyxee.com/products/ordo): Autonomous workflow execution platform.
-- [Orgni Docs](https://olyxee.com/document-integrity): Document verification and extraction validation.
+- [Olyxee Document Integrity](https://olyxee.com/document-integrity): Document verification and extraction validation.
 - [Research](https://olyxee.com/research): Research agenda, papers, and ongoing work.
-- [Cortex](https://olyxee.com/research/cortex): Organisational cognition research.
 - [Olyxee Lab](https://olyxee.com/lab): Research division and publications.
 - [Technology](https://olyxee.com/technology): Architecture and deployment pipeline.
 - [Safety](https://olyxee.com/safety): Reliability, evaluation, and safety approach.

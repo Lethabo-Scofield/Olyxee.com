@@ -40,7 +40,7 @@ const footerData = {
     {
       title: "Solutions",
       links: [
-        { name: "Document Integrity", href: "/document-integrity" },
+        { name: "Olyxee Document Integrity", href: "/document-integrity" },
         { name: "Enterprise Automation", href: "/enterprise" },
         { name: "Togent", href: "https://togent.olyxee.com", external: true },
       ],
