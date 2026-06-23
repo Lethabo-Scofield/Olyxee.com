@@ -363,19 +363,19 @@ function ResearchAreas() {
                 num: "01",
                 title: "Olyxee Research",
                 desc: "We study the real operational problems organizations face when adopting AI.",
-                gradient: "/images/gradient-blue.webp",
+                gradient: "/images/gradient-orange-pink.webp",
               },
               {
                 num: "02",
                 title: "Infrastructure",
                 desc: "We build the infrastructure that turns AI research into reliable business systems.",
-                gradient: "/images/gradient-purple.webp",
+                gradient: "/images/gradient-orange-purple.webp",
               },
               {
                 num: "03",
                 title: "Product Surfaces",
                 desc: "We create focused product surfaces across finance, documents, logistics, workflows, and AI-agent operations.",
-                gradient: "/images/gradient-abstract-blue.webp",
+                gradient: "/images/gradient-yellow-green.webp",
               },
             ].map((step, idx) => (
               <motion.div
@@ -388,12 +388,12 @@ function ResearchAreas() {
               >
                 <div className="absolute inset-0">
                   <Image src={step.gradient} alt="" fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" />
-                  <div className="absolute inset-0 bg-white/80 group-hover:bg-white/70 transition-colors duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/95 via-white/80 to-white/55 group-hover:from-white/92 group-hover:via-white/74 group-hover:to-white/45 transition-colors duration-300" />
                 </div>
-                <div className="relative p-7 sm:p-8 min-h-[200px] flex flex-col">
-                  <span className="text-xs font-mono text-neutral-300 mb-4">{step.num}</span>
+                <div className="relative p-7 sm:p-8 min-h-[200px] flex flex-col ring-1 ring-inset ring-neutral-900/5 rounded-2xl">
+                  <span className="text-xs font-mono text-neutral-400 mb-4">{step.num}</span>
                   <h3 className="text-lg sm:text-xl font-semibold text-neutral-900 tracking-tight leading-snug mb-3">{step.title}</h3>
-                  <p className="text-sm text-neutral-500 leading-relaxed">{step.desc}</p>
+                  <p className="text-sm text-neutral-600 leading-relaxed">{step.desc}</p>
                 </div>
               </motion.div>
             ))}
