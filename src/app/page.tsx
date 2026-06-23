@@ -1104,9 +1104,9 @@ function StoriesSection() {
         >
           <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Stories</p>
           <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900 max-w-2xl">
-            Our AI{" "}
+            Olyxee{" "}
             <span className="relative inline-block">
-              at work
+              in practice
               <svg
                 aria-hidden="true"
                 className="pointer-events-none absolute left-0 right-0 -bottom-2 sm:-bottom-3 w-full h-3 sm:h-[18px] overflow-visible text-orange-500"
@@ -1126,7 +1126,7 @@ function StoriesSection() {
             .
           </h2>
           <p className="mt-5 text-neutral-600 text-base sm:text-lg font-light max-w-md">
-            Real results from teams running on Olyxee.
+            A closer look at how teams put Olyxee to work.
           </p>
         </motion.div>
 
