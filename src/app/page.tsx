@@ -652,7 +652,7 @@ function ProductFeature({
   id: string;
   surface: "muted" | "plain";
   index: string;
-  eyebrow: string;
+  eyebrow?: string;
   heading: string;
   emphasis: string;
   description: string;
@@ -680,7 +680,9 @@ function ProductFeature({
           className="flex items-start justify-between gap-6"
         >
           <div>
-            <p className="text-xs font-semibold text-orange-500 uppercase tracking-[0.2em] mb-4">{eyebrow}</p>
+            {eyebrow && (
+              <p className="text-xs font-semibold text-orange-500 uppercase tracking-[0.2em] mb-4">{eyebrow}</p>
+            )}
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] max-w-2xl">
               {heading} <em className="text-orange-500 not-italic">{emphasis}</em>
             </h2>
@@ -844,7 +846,6 @@ function OrgniSection() {
       id="orgni"
       surface="muted"
       index="01"
-      eyebrow="Orgni · Core platform"
       heading="Business context for"
       emphasis="AI execution."
       description="Orgni learns your processes, rules, roles, documents, and exceptions so AI can support real business work."
