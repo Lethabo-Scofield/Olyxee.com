@@ -633,147 +633,188 @@ function OrdoSection() {
   );
 }
 
-function CourierLoopSection() {
+type ProductCta = { label: string; href: string; external?: boolean };
+
+function ProductFeature({
+  id,
+  surface,
+  index,
+  eyebrow,
+  heading,
+  emphasis,
+  description,
+  pills,
+  image,
+  glow,
+  primary,
+  secondary,
+}: {
+  id: string;
+  surface: "muted" | "plain";
+  index: string;
+  eyebrow: string;
+  heading: string;
+  emphasis: string;
+  description: string;
+  pills?: string[];
+  image: { src: string; alt: string; width: number; height: number };
+  glow: string;
+  primary: ProductCta;
+  secondary: ProductCta;
+}) {
+  const ease = [0.25, 0.1, 0.25, 1] as const;
+  const surfaceClass =
+    surface === "muted"
+      ? "bg-neutral-50/60 border-y border-neutral-100"
+      : "bg-white border-y border-neutral-100";
+
   return (
-    <section id="logistics" className="py-20 sm:py-32 lg:py-40 bg-neutral-50/60 border-y border-neutral-100">
+    <section id={id} className={`py-20 sm:py-32 lg:py-40 ${surfaceClass}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            className="lg:col-span-4"
-          >
-            <p className="text-xs font-semibold text-orange-500 uppercase tracking-[0.2em] mb-4">Order Loop</p>
-            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-5">
-              Keep every customer <em className="text-orange-500 not-italic">in the loop.</em>
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.7, ease }}
+          className="flex items-start justify-between gap-6"
+        >
+          <div>
+            <p className="text-xs font-semibold text-orange-500 uppercase tracking-[0.2em] mb-4">{eyebrow}</p>
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] max-w-2xl">
+              {heading} <em className="text-orange-500 not-italic">{emphasis}</em>
             </h2>
+          </div>
+          <span
+            aria-hidden
+            className="hidden sm:block font-serif text-3xl lg:text-4xl text-neutral-300 leading-none pt-2"
+          >
+            {index}
+          </span>
+        </motion.div>
 
-            <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-8 max-w-sm">
-              Send clean order-status updates, from confirmed to delivered.
-            </p>
+        {/* Full-width showcase */}
+        <motion.div
+          initial={{ opacity: 0, y: 36, scale: 0.985 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.9, ease }}
+          className="relative mt-10 sm:mt-14"
+        >
+          <div aria-hidden className={`absolute -inset-6 sm:-inset-10 -z-10 ${glow} blur-3xl rounded-[2.5rem]`} />
+          <div className="relative overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] bg-white ring-1 ring-neutral-200 shadow-xl shadow-neutral-900/5">
+            <Image
+              src={image.src}
+              alt={image.alt}
+              width={image.width}
+              height={image.height}
+              className="block w-full h-auto"
+              sizes="(max-width: 1280px) 100vw, 1216px"
+              quality={95}
+            />
+          </div>
+        </motion.div>
 
+        {/* Caption / meta */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.7, ease }}
+          className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-12 gap-6 sm:gap-10 items-end border-t border-neutral-200 pt-8 sm:pt-10"
+        >
+          <p className="sm:col-span-6 lg:col-span-7 text-neutral-600 text-base sm:text-lg font-light leading-relaxed max-w-xl">
+            {description}
+          </p>
+          <div className="sm:col-span-6 lg:col-span-5 flex flex-col sm:items-end gap-5">
+            {pills && pills.length > 0 && (
+              <div className="flex flex-wrap sm:justify-end gap-2">
+                {pills.map((name) => (
+                  <span
+                    key={name}
+                    className="inline-flex px-3 py-1.5 rounded-full bg-white ring-1 ring-neutral-200 text-xs font-medium text-neutral-700"
+                  >
+                    {name}
+                  </span>
+                ))}
+              </div>
+            )}
             <div className="flex flex-wrap items-center gap-4">
               <a
-                href="https://logistics.olyxee.com/"
-                target="_blank"
-                rel="noopener noreferrer"
+                href={primary.href}
+                {...(primary.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 className="group inline-flex items-center gap-2 text-sm font-medium text-white bg-neutral-900 hover:bg-black px-6 py-3 rounded-full transition-colors"
               >
-                Open Logistics
+                {primary.label}
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </a>
-              <a
-                href="mailto:scofield@olyxee.com?subject=Olyxee%20Logistics%20Inquiry"
-                className="text-sm font-medium text-neutral-700 hover:text-neutral-900 transition-colors"
-              >
-                Talk to us →
-              </a>
+              {secondary.external ? (
+                <a
+                  href={secondary.href}
+                  className="text-sm font-medium text-neutral-700 hover:text-neutral-900 transition-colors"
+                >
+                  {secondary.label} →
+                </a>
+              ) : (
+                <Link
+                  href={secondary.href}
+                  className="text-sm font-medium text-neutral-700 hover:text-neutral-900 transition-colors"
+                >
+                  {secondary.label} →
+                </Link>
+              )}
             </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            className="lg:col-span-8 relative"
-          >
-            <div aria-hidden className="absolute -inset-8 -z-10 bg-gradient-to-br from-orange-50/60 via-white to-amber-50/40 blur-2xl rounded-[2rem]" />
-            <div className="relative overflow-hidden rounded-3xl bg-white ring-1 ring-neutral-200 shadow-sm">
-              <Image
-                src="/images/order-loop-illustration.png"
-                alt="A shopper places an order on their phone while a courier delivers the package, with live order-status steps showing the order is on the way"
-                width={1024}
-                height={533}
-                className="block w-full h-auto"
-                sizes="(max-width: 1024px) 100vw, 860px"
-                quality={95}
-              />
-            </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
 }
 
+function CourierLoopSection() {
+  return (
+    <ProductFeature
+      id="logistics"
+      surface="plain"
+      index="02"
+      eyebrow="Order Loop"
+      heading="Keep every customer"
+      emphasis="in the loop."
+      description="Send clean order-status updates, from confirmed to delivered."
+      image={{
+        src: "/images/order-loop-illustration.png",
+        alt: "A shopper places an order on their phone while a courier delivers the package, with live order-status steps showing the order is on the way",
+        width: 1024,
+        height: 533,
+      }}
+      glow="bg-gradient-to-br from-orange-50/60 via-white to-amber-50/40"
+      primary={{ label: "Open Logistics", href: "https://logistics.olyxee.com/", external: true }}
+      secondary={{ label: "Talk to us", href: "mailto:scofield@olyxee.com?subject=Olyxee%20Logistics%20Inquiry", external: true }}
+    />
+  );
+}
+
 function OrgniSection() {
   return (
-    <section id="orgni" className="py-20 sm:py-32 lg:py-40 bg-neutral-50/60 border-y border-neutral-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            className="lg:col-span-4"
-          >
-            <p className="text-xs font-semibold text-orange-500 uppercase tracking-[0.2em] mb-4">Orgni · Core platform</p>
-            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-5">
-              Business context for <em className="text-orange-500 not-italic">AI execution.</em>
-            </h2>
-
-            <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-8 max-w-sm">
-              Orgni learns your processes, rules, roles, documents, and exceptions so AI can support real business work.
-            </p>
-
-            <div className="flex flex-wrap gap-2 mb-8 max-w-sm">
-              {["Core", "Workflows", "Docs", "Finance"].map((name) => (
-                <span
-                  key={name}
-                  className="inline-flex px-3 py-1.5 rounded-full bg-white ring-1 ring-neutral-200 text-xs font-medium text-neutral-700"
-                >
-                  {name}
-                </span>
-              ))}
-            </div>
-
-            <div className="flex flex-wrap items-center gap-4">
-              <a
-                href="https://orgni.olyxee.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 text-sm font-medium text-white bg-neutral-900 hover:bg-black px-6 py-3 rounded-full transition-colors"
-              >
-                Try Orgni
-                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </a>
-              <Link
-                href="/contact"
-                className="text-sm font-medium text-neutral-700 hover:text-neutral-900 transition-colors"
-              >
-                Talk to us →
-              </Link>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            className="lg:col-span-8 relative"
-          >
-            <div aria-hidden className="absolute -inset-8 -z-10 bg-gradient-to-br from-orange-100/70 via-white to-amber-50/40 blur-2xl rounded-[2rem]" />
-            <div className="relative overflow-hidden rounded-3xl ring-1 ring-neutral-200 shadow-xl shadow-orange-900/5">
-              <Image
-                src="/images/orgni-product.png"
-                alt="Orgni interface: an organizational role transfer being processed with a live user graph, entitlements, and approval trail"
-                width={1024}
-                height={576}
-                className="block w-full h-auto"
-                sizes="(max-width: 1024px) 100vw, 860px"
-                quality={95}
-                priority={false}
-              />
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </section>
+    <ProductFeature
+      id="orgni"
+      surface="muted"
+      index="01"
+      eyebrow="Orgni · Core platform"
+      heading="Business context for"
+      emphasis="AI execution."
+      description="Orgni learns your processes, rules, roles, documents, and exceptions so AI can support real business work."
+      pills={["Core", "Workflows", "Docs", "Finance"]}
+      image={{
+        src: "/images/orgni-product.png",
+        alt: "Orgni interface: an organizational role transfer being processed with a live user graph, entitlements, and approval trail",
+        width: 1024,
+        height: 576,
+      }}
+      glow="bg-gradient-to-br from-orange-100/70 via-white to-amber-50/40"
+      primary={{ label: "Try Orgni", href: "https://orgni.olyxee.com", external: true }}
+      secondary={{ label: "Talk to us", href: "/contact" }}
+    />
   );
 }
 
