@@ -131,8 +131,8 @@ export default function HomePage() {
         <OrgniSection />
         <CourierLoopSection />
         <StoriesSection />
-        <LogoStrip />
         <CTASection />
+        <LogoStrip />
       </main>
       <Footer />
       <AnimatePresence>
