@@ -28,7 +28,7 @@ const APPROACH = [
     icon: ShieldCheck,
     label: "How we build",
     title: "Context before action",
-    text: "Orgni gives AI the business context and memory to act with judgment, and logs every action so teams can review, trust, and direct what runs.",
+    text: "Orgni gives AI models the business context, memory, permissions, and evidence they need before they act. Every action is logged so teams can review, trust, and direct what runs.",
     gradient: "/images/gradient-blue.png",
   },
   {
@@ -74,7 +74,7 @@ const About: FC = () => {
     <div className="min-h-screen bg-white text-neutral-900 relative">
       <SEO
         title="About"
-        description="Olyxee builds research and infrastructure for artificial intelligence. Through Olyxee Research, we turn insights into infrastructure products that help organizations adopt AI across real operations."
+        description="Olyxee builds the business infrastructure layer for AI execution: the model-agnostic context, control, memory, workflow, and trust layer that lets any advanced AI operate safely inside real businesses, so teams move from AI demos to reliable, traceable operations."
         path="/about"
         keywords={["About Olyxee", "AI infrastructure company", "Olyxee Research", "Orgni", "Lethabo Scofield"]}
         jsonLd={{
@@ -88,7 +88,7 @@ const About: FC = () => {
             url: "https://olyxee.com",
             logo: "https://olyxee.com/Logo/Olyxee_Logo.png",
             description:
-              "Olyxee builds research and infrastructure for artificial intelligence, with Orgni at the center of how organizations adopt AI across real operations.",
+              "Olyxee builds the business infrastructure layer for AI execution: the model-agnostic context, control, memory, workflow, and trust layer that lets any advanced AI operate safely inside real businesses, with Orgni as the trusted operating layer at the center.",
           },
         }}
       />
@@ -171,10 +171,10 @@ const About: FC = () => {
                 >
                   <div className="col-span-12 sm:col-span-8 lg:col-span-7 lg:pt-6 order-2 sm:order-1">
                     <p className="text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.1] tracking-[-0.02em] font-medium mb-8 text-neutral-900">
-                      A world where AI <em className="font-serif italic font-normal text-neutral-500">quietly runs</em> the operations that move organizations forward.
+                      A world where AI models do not just answer questions, but <em className="font-serif italic font-normal text-neutral-500">operate</em> with the business context, memory, rules, and controls needed to move organizations forward.
                     </p>
                     <p className="text-base sm:text-lg text-neutral-700 leading-relaxed max-w-xl">
-                      Documents, workflows, finance, logistics, and decisions, all coordinated on one platform any team can trust, audit, and direct in their own words.
+                      Documents, workflows, finance, logistics, approvals, and decisions, coordinated through one operating layer that teams can trust, audit, and direct.
                     </p>
                   </div>
                 </motion.article>

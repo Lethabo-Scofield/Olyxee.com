@@ -165,21 +165,21 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
   const products: ProductRow[] = [
     {
       name: "Orgni Workflows",
-      description: "Orgni Workflows is Olyxee's workflow execution system for enterprise operations. It connects AI reasoning with business systems, APIs, databases, approvals, business rules, and operational workflows.",
+      description: "Orgni Workflows is Olyxee's workflow execution system for business operations. It connects AI reasoning with business systems, APIs, databases, approvals, rules, and process state.",
       status: "early-access",
       bg: "/images/gradient-blue-pink.webp",
       action: { kind: "external", href: "https://workflow.olyxee.com", label: "Visit Orgni Workflows" },
     },
     {
       name: "Orgni Finance",
-      description: "Orgni Finance is Olyxee's financial reconciliation and data integrity engine. It helps finance teams compare, validate, and reconcile bank statements, ledgers, and accounting records.",
+      description: "Orgni Finance is Olyxee's financial reconciliation and data integrity engine. It helps finance teams compare, validate, and reconcile bank statements, ledgers, and accounting records with traceable evidence.",
       status: "available",
       bg: "/images/gradient-pastel.webp",
       action: { kind: "external", href: "https://finance.olyxee.com", label: "Visit Orgni Finance" },
     },
     {
       name: "Togent",
-      description: "Togent is Olyxee's cost control and context optimization product for AI agents. It tracks, stores, compresses, and reuses context across tools like Cursor, Claude, Codex, and internal copilots so they stop repeating expensive work and reduce unnecessary token usage.",
+      description: "Togent is Olyxee's context optimization and control layer for AI agents. It helps teams track, store, compress, and reuse context across tools such as Cursor, Claude, Codex, and internal copilots.",
       status: "private",
       bg: "/images/gradient-abstract-blue.webp",
       action: { kind: "internal", href: "/enterprise", label: "Learn about Togent" },
@@ -189,21 +189,21 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
   const solutions: ProductRow[] = [
     {
       name: "Order Loop",
-      description: "Order Loop is a logistics communication and tracking solution. It helps logistics teams send delivery updates, tracking links, and shipment status messages through SMS, web pages, and system integrations.",
+      description: "Order Loop is a customer communication and tracking solution. It helps teams send order, delivery, collection, and shipment updates through SMS, web pages, and system integrations.",
       status: "available",
       bg: "/images/gradient-yellow-green.webp",
       action: { kind: "external", href: "https://logistics.olyxee.com/", label: "Visit Order Loop" },
     },
     {
       name: "Olyxee Document Integrity",
-      description: "Olyxee Document Integrity is a document validation solution. It helps organizations extract structured information, validate documents, detect inconsistencies, and support trusted decisions from business documents.",
+      description: "Olyxee Document Integrity helps organizations extract structured information, validate documents, detect inconsistencies, and support trusted decisions from business documents.",
       status: "private",
       bg: "/images/gradient-orange-purple.webp",
       action: { kind: "internal", href: "/document-integrity", label: "View status" },
     },
     {
       name: "Enterprise Automation",
-      description: "Enterprise Automation is a business process automation solution. It helps organizations automate workflows, approvals, business rules, data movement, and process execution across systems.",
+      description: "Enterprise Automation helps organizations automate workflows, approvals, business rules, data movement, and process execution across systems.",
       status: "private",
       bg: "/images/gradient-blue.webp",
       action: { kind: "internal", href: "/enterprise", label: "Learn more" },
@@ -304,7 +304,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
           Olyxee documentation
         </h1>
         <p className="text-neutral-600 text-[17px] leading-[1.55]">
-          Olyxee provides AI research and infrastructure for enterprises that need reliable execution across data, documents, workflows, and business systems. Our products provide the core systems, while our solutions package those systems around specific enterprise problems such as logistics, document integrity, and automation.
+          Olyxee provides AI research and infrastructure for organizations that need reliable execution across documents, workflows, finance, logistics, and business systems. Our products create the context, control, and execution layer around AI models, while our solutions package that infrastructure around specific operational problems.
         </p>
       </div>
 

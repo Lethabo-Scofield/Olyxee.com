@@ -41,9 +41,14 @@ export const metadata: Metadata = {
     template: "%s | Olyxee",
   },
   description:
-    "Olyxee builds the infrastructure for business AI. Orgni, our core platform, gives AI the business context, memory, and controls to run real operations across finance, documents, workflows, and logistics.",
+    "Olyxee builds the business infrastructure layer for AI execution: the model-agnostic context, control, memory, workflow, and trust layer that lets any advanced AI operate safely inside real businesses. Orgni, our core platform, turns documents, workflows, approvals, and decisions into a trusted operating layer for AI.",
   keywords: [
     "Olyxee",
+    "business infrastructure layer for AI",
+    "AI execution infrastructure",
+    "business context layer",
+    "trusted operating layer",
+    "model-agnostic AI",
     "AI infrastructure",
     "Orgni",
     "Orgni Finance",
@@ -58,6 +63,7 @@ export const metadata: Metadata = {
     "financial reconciliation",
     "AI agent context",
     "AI for operations",
+    "AI models inside real businesses",
     "responsible AI",
     "AI research",
   ],
@@ -75,7 +81,7 @@ export const metadata: Metadata = {
     siteName: "Olyxee",
     title: "Olyxee | Research and Infrastructure for Artificial Intelligence",
     description:
-      "Olyxee builds the infrastructure for business AI. Orgni, our core platform, gives AI the business context, memory, and controls to run real operations across finance, documents, workflows, and logistics.",
+      "Olyxee builds the business infrastructure layer for AI execution: model-agnostic context, control, memory, workflow, and trust infrastructure that lets any advanced AI operate safely inside real businesses.",
     images: [
       {
         url: "/og-image.jpg",
@@ -89,7 +95,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Olyxee | Research and Infrastructure for Artificial Intelligence",
     description:
-      "Olyxee builds the infrastructure for business AI. Orgni, our core platform, gives AI the business context, memory, and controls to run real operations across finance, documents, workflows, and logistics.",
+      "Olyxee builds the business infrastructure layer for AI execution: model-agnostic context, control, memory, workflow, and trust infrastructure that lets any advanced AI operate safely inside real businesses.",
     images: ["/og-image.jpg"],
     creator: "@Olyxee",
   },
@@ -141,7 +147,7 @@ export default function RootLayout({
               slogan: "Research and infrastructure for artificial intelligence",
               url: "https://olyxee.com",
               logo: "https://olyxee.com/Logo/Olyxee_Logo.png",
-              description: "Olyxee is an AI infrastructure company building the reliability, context, and control layer for enterprise artificial intelligence. Orgni, our core platform, gives AI the business context, memory, and controls to run real operations across finance, documents, workflows, and logistics.",
+              description: "Olyxee builds the business infrastructure layer for AI execution: the model-agnostic context, control, memory, workflow, and trust layer that lets any advanced AI operate safely inside real businesses. Orgni, our core platform, turns documents, workflows, approvals, and decisions into a trusted operating layer for AI.",
               knowsAbout: [
                 "AI infrastructure",
                 "Artificial intelligence infrastructure",
@@ -184,7 +190,7 @@ export default function RootLayout({
               name: "Olyxee",
               alternateName: "Olyxee AI",
               url: "https://olyxee.com",
-              description: "Olyxee is an AI infrastructure company building reliable, context-aware infrastructure for enterprise artificial intelligence.",
+              description: "Olyxee builds the business infrastructure layer for AI execution: model-agnostic context, control, memory, workflow, and trust infrastructure that lets any advanced AI operate safely inside real businesses.",
               inLanguage: "en",
               publisher: {
                 "@type": "Organization",

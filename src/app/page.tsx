@@ -28,7 +28,7 @@ export default function HomePage() {
     url: "https://olyxee.com",
     logo: "https://olyxee.com/Logo/Olyxee_Logo.png",
     image: "https://olyxee.com/og-image.jpg",
-    description: "Olyxee builds the research and infrastructure that enables AI to operate reliably across any domain, tool, or environment.",
+    description: "Olyxee builds the business infrastructure layer that helps AI models understand company context, follow workflows, respect approvals, and execute with evidence. Model-agnostic context, control, memory, workflow, and trust infrastructure for AI execution inside real businesses.",
     sameAs: [
       "https://www.linkedin.com/company/olyxee/",
       "https://twitter.com/olyxee",
@@ -78,7 +78,7 @@ export default function HomePage() {
         name: "What is Olyxee?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Olyxee is an AI infrastructure company. We build the research and systems that let organizations put AI to work across their operations: reliably, transparently, and at scale.",
+          text: "Olyxee builds the business infrastructure layer for AI execution. It is the context, control, memory, workflow, and trust layer that lets any advanced, model-agnostic AI operate safely inside real businesses, so organizations can move from AI demos to reliable, traceable operations.",
         },
       },
       {
@@ -362,19 +362,19 @@ function ResearchAreas() {
               {
                 num: "01",
                 title: "Olyxee Research",
-                desc: "We study the real operational problems organizations face when adopting AI.",
+                desc: "We study the real adoption, integration, and execution problems organizations face when bringing AI into daily operations.",
                 gradient: "/images/gradient-orange-pink.webp",
               },
               {
                 num: "02",
                 title: "Infrastructure",
-                desc: "We build the infrastructure that turns AI research into reliable business systems.",
+                desc: "We build the context, memory, workflow, and control infrastructure that lets AI operate safely across business systems.",
                 gradient: "/images/gradient-orange-purple.webp",
               },
               {
                 num: "03",
                 title: "Product Surfaces",
-                desc: "We create focused product surfaces across finance, documents, logistics, workflows, and AI-agent operations.",
+                desc: "We create focused surfaces for documents, finance, workflows, logistics, and agent operations, all connected by reusable business context.",
                 gradient: "/images/gradient-yellow-green.webp",
               },
             ].map((step, idx) => (
@@ -848,7 +848,7 @@ function OrgniSection() {
       index="01"
       heading="Business context for"
       emphasis="AI execution."
-      description="Orgni learns your processes, rules, roles, documents, and exceptions so AI can support real business work."
+      description="Orgni learns how a business works: its documents, roles, rules, workflows, approvals, decisions, and exceptions. It turns that knowledge into a trusted operating layer that any AI model can use to support real work with context, control, and traceability."
       pills={[
         { label: "Core", icon: Layers },
         { label: "Workflows", icon: Workflow },
@@ -933,7 +933,7 @@ function TogentSection() {
             </h2>
 
             <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-8 max-w-md">
-              Togent is cost control and context optimization for AI agents. It tracks, stores, compresses, and reuses context across tools like Cursor, Claude, Codex, and your own copilots, so they stop repeating expensive work and your token bills stay under control.
+              Togent is Olyxee&apos;s context optimization and control layer for AI agents. It helps teams track, store, compress, and reuse context across tools such as Cursor, Claude, Codex, and internal copilots.
             </p>
 
             <div className="flex flex-wrap items-center gap-4">
@@ -1196,7 +1196,7 @@ function CTASection() {
               Get started with Orgni
             </h2>
             <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-9 max-w-lg mx-auto">
-              Bring Orgni into your organization to connect your context, workflows, documents, and decisions, so AI can support real operations with control and traceability.
+              Bring Orgni into your organization to turn documents, workflows, decisions, and business rules into a reusable context layer for AI execution. Orgni helps teams move from AI demos to controlled, traceable operations.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
