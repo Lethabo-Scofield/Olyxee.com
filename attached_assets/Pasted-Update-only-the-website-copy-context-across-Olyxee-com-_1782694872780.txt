@@ -1,0 +1,120 @@
+Update only the website copy/context across Olyxee.com. Do not change layout, styling, colors, animations, spacing, navigation, components, or visual design.
+
+Goal:
+Make the website clearly position Olyxee as the business infrastructure layer for AI execution, not another AI chatbot or model company.
+
+Core positioning:
+Olyxee builds the context, control, memory, workflow, and trust layer that lets any advanced AI model operate safely inside real businesses.
+
+Keep the main identity:
+“Research and Infrastructure for artificial intelligence.”
+
+But refine the supporting copy across the site to make this clearer:
+
+1. Homepage hero/supporting context
+   Keep the hero headline as:
+   “Research and Infrastructure for artificial intelligence”
+
+Add or update nearby supporting copy to say:
+“Olyxee builds the business infrastructure layer that helps AI models understand company context, follow workflows, respect approvals, and execute with evidence.”
+
+2. What We Do section
+   Current direction is good, but sharpen it.
+
+01 Olyxee Research
+Change context to:
+“We study the real adoption, integration, and execution problems organizations face when bringing AI into daily operations.”
+
+02 Infrastructure
+Change context to:
+“We build the context, memory, workflow, and control infrastructure that lets AI operate safely across business systems.”
+
+03 Product Surfaces
+Change context to:
+“We create focused surfaces for documents, finance, workflows, logistics, and agent operations, all connected by reusable business context.”
+
+3. Orgni section
+   Current line:
+   “Business context for AI execution.”
+
+Keep that.
+
+Strengthen the body copy to:
+“Orgni learns how a business works: its documents, roles, rules, workflows, approvals, decisions, and exceptions. It turns that knowledge into a trusted operating layer that any AI model can use to support real work with context, control, and traceability.”
+
+Keep the product labels:
+Core, Workflows, Docs, Finance.
+
+4. Get Started with Orgni section
+   Replace the body with:
+   “Bring Orgni into your organization to turn documents, workflows, decisions, and business rules into a reusable context layer for AI execution. Orgni helps teams move from AI demos to controlled, traceable operations.”
+
+5. About page
+   Keep:
+   “Building the infrastructure for Enterprise AI”
+
+Refine the vision copy to:
+“A world where AI models do not just answer questions, but operate with the business context, memory, rules, and controls needed to move organizations forward.”
+
+Update the second paragraph to:
+“Documents, workflows, finance, logistics, approvals, and decisions, coordinated through one operating layer that teams can trust, audit, and direct.”
+
+6. About page principles
+   Keep the principle titles:
+
+* Narrow first, then expand
+* Context before action
+* Quiet by default
+
+Update “Context before action” body to:
+“Orgni gives AI models the business context, memory, permissions, and evidence they need before they act. Every action is logged so teams can review, trust, and direct what runs.”
+
+7. Founder quote
+   Current quote is good:
+   “We started Olyxee because the hardest part of AI isn't intelligence. It's getting that intelligence to actually do something useful.”
+
+Keep it.
+
+8. Documentation page
+   Update opening paragraph to:
+   “Olyxee provides AI research and infrastructure for organizations that need reliable execution across documents, workflows, finance, logistics, and business systems. Our products create the context, control, and execution layer around AI models, while our solutions package that infrastructure around specific operational problems.”
+
+9. Product descriptions
+   Orgni Workflows:
+   “Orgni Workflows is Olyxee’s workflow execution system for business operations. It connects AI reasoning with business systems, APIs, databases, approvals, rules, and process state.”
+
+Orgni Finance:
+“Orgni Finance is Olyxee’s financial reconciliation and data integrity engine. It helps finance teams compare, validate, and reconcile bank statements, ledgers, and accounting records with traceable evidence.”
+
+Togent:
+“Togent is Olyxee’s context optimization and control layer for AI agents. It helps teams track, store, compress, and reuse context across tools such as Cursor, Claude, Codex, and internal copilots.”
+
+Order Loop:
+“Order Loop is a customer communication and tracking solution. It helps teams send order, delivery, collection, and shipment updates through SMS, web pages, and system integrations.”
+
+Olyxee Document Integrity:
+“Olyxee Document Integrity helps organizations extract structured information, validate documents, detect inconsistencies, and support trusted decisions from business documents.”
+
+Enterprise Automation:
+“Enterprise Automation helps organizations automate workflows, approvals, business rules, data movement, and process execution across systems.”
+
+10. Remove or avoid weak positioning
+    Avoid phrases that make Olyxee sound like:
+
+* a chatbot company
+* a model company
+* a wrapper around OpenAI
+* a generic automation agency
+* a demo-focused AI startup
+
+Preferred language:
+
+* business context layer
+* execution infrastructure
+* model-agnostic
+* trusted operating layer
+* context, control, memory, workflows, evidence
+* AI models operating inside real businesses
+* from demos to reliable operations
+
+Do not change design. Copy/context only.

@@ -13,8 +13,6 @@ interface InternshipResult {
   status: string;
 }
 
-const ADMIN_SECRET = "admin@olyxee--hard";
-
 function formatDate(d: string) {
   try {
     return new Date(d).toLocaleDateString(undefined, {
@@ -39,29 +37,24 @@ export default function VerifyPage() {
     const trimmed = code.trim();
     if (!trimmed) return;
 
-    if (trimmed === ADMIN_SECRET) {
-      setLoading(true);
-      try {
-        const res = await fetch("/api/admin/auth", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ secret: trimmed }),
-        });
-        if (res.ok) {
-          router.push("/admin");
-          return;
-        }
-      } catch {
-        // fall through
-      }
-      setLoading(false);
-      setError("Admin access denied");
-      return;
-    }
-
     setLoading(true);
     setError(null);
     setResult(null);
+
+    try {
+      const adminRes = await fetch("/api/admin/auth", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ secret: trimmed }),
+      });
+      if (adminRes.ok) {
+        router.push("/admin");
+        return;
+      }
+    } catch {
+      // not an admin secret, fall through to code verification
+    }
+
     try {
       const res = await fetch(
         `/api/verify?code=${encodeURIComponent(trimmed)}`
