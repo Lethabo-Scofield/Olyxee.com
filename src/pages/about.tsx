@@ -41,7 +41,7 @@ const APPROACH = [
 ];
 
 const JOURNEY_LEAD: string[] = [
-  "Olyxee was founded by Lethabo Innocent ScoField in Johannesburg, South Africa.",
+  "Olyxee was founded by Lethabo Innocent Makonto, widely known as Lethabo Scofield, in Johannesburg, South Africa.",
   "Before founding Olyxee, Lethabo worked as an AI Engineer. During the rise of modern AI, he experienced a problem that many organizations were beginning to face: companies wanted to adopt AI, but their internal systems were not ready for it.",
   "The problem was not only the AI models. The models were becoming more powerful, more accessible, and more capable. The real challenge was inside the organizations trying to use them.",
   "Business knowledge was scattered across documents, spreadsheets, emails, legacy systems, finance records, approval processes, and people\u2019s memory. AI systems could generate answers, but they often lacked the operational context needed to support real work.",
