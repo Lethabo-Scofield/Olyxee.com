@@ -20,22 +20,22 @@ const APPROACH = [
   {
     icon: Compass,
     label: "How we ship",
-    title: "Narrow first, then expand",
-    text: "Every deployment starts with a single workflow on Orgni. We earn the right to do more by proving the first one works in production.",
+    title: "Earn scope in production",
+    text: "We start with one real workflow on Orgni and prove it under live conditions. Every expansion is earned by results, never promised on a roadmap.",
     gradient: "/images/gradient-pink-cyan.png",
   },
   {
     icon: ShieldCheck,
     label: "How we build",
     title: "Context before action",
-    text: "Orgni gives intelligent systems the live business context, operational memory, permissions, and evidence they need before they act. Every action is logged so teams can review, trust, and direct what runs.",
+    text: "Nothing acts without understanding the business first. Orgni grounds every system in live context, operational memory, and permissions, and records each action so teams stay in control.",
     gradient: "/images/gradient-blue.png",
   },
   {
     icon: EyeOff,
     label: "How we operate",
-    title: "Quiet by default",
-    text: "We measure success by the work that runs reliably in the background, not by how loud we are. The operations speak for themselves.",
+    title: "Judged by what runs",
+    text: "Our work is meant to disappear into reliable operations, not demos. We measure ourselves by what holds up in the background, day after day.",
     gradient: "/images/gradient-purple.png",
   },
 ];
