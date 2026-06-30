@@ -1091,7 +1091,7 @@ const STORIES = [
 
 function StoriesSection() {
   return (
-    <section id="stories" className="py-20 sm:py-32 lg:py-40 bg-white border-t border-neutral-100 scroll-mt-24">
+    <section id="stories" className="py-20 sm:py-32 lg:py-40 bg-gradient-to-b from-blue-50 via-blue-50/50 to-white border-t border-blue-100/60 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
