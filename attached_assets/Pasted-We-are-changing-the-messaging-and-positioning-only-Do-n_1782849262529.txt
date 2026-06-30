@@ -1,0 +1,189 @@
+We are changing the **messaging and positioning only**. Do **not** redesign the UI, change branding, alter layouts, animations, colors, navigation, or overall visual style. This is a **content and information architecture update only**.
+
+## Objective
+
+Reposition Olyxee from an AI product company into a **research and infrastructure company**, with a single primary product: **Orgni**.
+
+Our messaging should feel more foundational and long-term. We are no longer positioning ourselves as a collection of AI tools or modules.
+
+---
+
+## Company positioning
+
+Update all website content so that Olyxee is consistently described as:
+
+**Research and Infrastructure for Operational Intelligence**
+
+The core thesis is:
+
+> Olyxee builds the infrastructure that enables intelligent systems to understand and operate inside real businesses.
+
+Avoid messaging that makes Olyxee sound like:
+
+* an AI agency
+* a chatbot company
+* a workflow automation company
+* a document AI company
+* a collection of AI tools
+* a generic enterprise AI platform
+
+Instead, emphasize:
+
+* operational intelligence
+* live business context
+* operational memory
+* decision history
+* infrastructure
+* research
+* model-neutral architecture
+* intelligent operations
+
+The tone should be serious, technical, and infrastructure-focused.
+
+---
+
+## Product strategy
+
+We are simplifying the product strategy.
+
+### Keep
+
+* Orgni
+* Order Loop
+
+### Remove as separate products
+
+Remove all references that position these as independent products:
+
+* Orgni Finance
+* Orgni Workflows
+* Any other Orgni sub-products
+
+These are no longer products.
+
+If functionality still exists, present it as **capabilities inside Orgni**, not separate offerings.
+
+For example:
+
+Instead of:
+
+* Orgni Finance
+* Orgni Workflows
+
+Use wording like:
+
+* Financial operations
+* Operational workflows
+* Controls
+* Business memory
+* Context
+
+These are capabilities of Orgni.
+
+---
+
+## Orgni positioning
+
+Orgni is our flagship product.
+
+It should never be described as:
+
+* a chatbot
+* a document assistant
+* a document search tool
+* a workflow builder
+* an AI copilot
+
+Instead, describe Orgni as a platform that builds **live business context** for modern operations.
+
+Key idea:
+
+Orgni continuously learns how a business operates by connecting knowledge, documents, decisions, processes, responsibilities, systems, permissions, and outcomes into a living operational context.
+
+The emphasis is not on answering questions.
+
+The emphasis is on making businesses understandable to intelligent systems.
+
+---
+
+## Website messaging
+
+Across every page, replace feature-first messaging with infrastructure-first messaging.
+
+Move away from:
+
+* AI automation
+* Chat with your documents
+* AI workflows
+* AI assistant
+
+Move toward:
+
+* Operational intelligence
+* Live business context
+* Operational memory
+* Context that improves over time
+* Infrastructure for intelligent operations
+* Making organizations understandable to intelligent systems
+
+---
+
+## Olyxee website
+
+The website should communicate:
+
+Who we are.
+
+Why operational intelligence matters.
+
+Why live business context becomes more important as AI becomes more capable.
+
+Why we are building infrastructure rather than another AI application.
+
+The focus should be on our long-term vision, not feature lists.
+
+---
+
+## Orgni website
+
+The Orgni website should explain:
+
+* what live business context is
+* why businesses lose operational knowledge
+* how Orgni builds and maintains operational context
+* why intelligent systems require this context
+
+Do not overemphasize documents.
+
+Documents are one source of operational context, not the product itself.
+
+---
+
+## Order Loop
+
+Keep Order Loop on the website as a standalone product.
+
+Do not change its visual presentation.
+
+Do not describe it as part of Orgni.
+
+Keep its positioning focused on helping businesses manage customer order communication and operational updates.
+
+---
+
+## Important
+
+This is **not** a redesign.
+
+Do **not**:
+
+* redesign pages
+* change layouts
+* change navigation
+* replace branding
+* modify animations
+* change styling
+
+Only update the **content, messaging, headings, descriptions, product positioning, and overall narrative** so every page reflects the new strategic direction.
+
+The result should make Olyxee feel like an infrastructure company building a new category—**Operational Intelligence**—with **Orgni** as its flagship product and **Order Loop** as a separate product.

@@ -1,8 +1,7 @@
 import { NextResponse } from "next/server";
+import { ADMIN_COOKIE, issueAdminToken } from "@/lib/admin-auth";
 
 export const runtime = "nodejs";
-
-export const ADMIN_COOKIE = "olyxee_admin";
 
 export async function POST(req: Request) {
   const ADMIN_SECRET = process.env.ADMIN_SECRET;
@@ -24,7 +23,7 @@ export async function POST(req: Request) {
   }
 
   const res = NextResponse.json({ ok: true });
-  res.cookies.set(ADMIN_COOKIE, "1", {
+  res.cookies.set(ADMIN_COOKIE, issueAdminToken(ADMIN_SECRET), {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite: "lax",

@@ -40,10 +40,9 @@ externalPort = 80
 
 [deployment]
 deploymentTarget = "autoscale"
-run = ["node", "./dist/index.cjs"]
+run = ["npm", "run", "start"]
 build = ["npm", "run", "build"]
 
 [userenv]
 
 [userenv.shared]
-ADMIN_SECRET = "admin@olyxee--hard"
