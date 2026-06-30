@@ -86,7 +86,7 @@ export default function HomePage() {
         name: "What is Orgni?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Orgni is Olyxee's flagship platform for building live business context. It connects a company's knowledge, documents, decisions, processes, responsibilities, systems, permissions, and outcomes into a living operational context that intelligent systems can understand and operate within, with financial operations, operational workflows, and business memory built in.",
+          text: "Orgni builds live business context for modern operations. It connects your company's knowledge, decisions, processes, responsibilities, systems, and controls into a living operational context layer. As intelligent systems become more capable, Orgni gives them the business context they need to understand how work actually happens.",
         },
       },
       {
@@ -846,9 +846,9 @@ function OrgniSection() {
       id="orgni"
       surface="muted"
       index="01"
-      heading="Live business context for"
-      emphasis="intelligent operations."
-      description="Orgni connects a company's knowledge, documents, decisions, processes, responsibilities, systems, permissions, and outcomes into living operational context. It becomes the trusted operating layer that any intelligent system can understand and operate within, with context, control, and traceability."
+      heading="Orgni builds live business context for"
+      emphasis="modern operations."
+      description="It connects your company's knowledge, decisions, processes, responsibilities, systems, and controls into a living operational context layer. As intelligent systems become more capable, Orgni gives them the business context they need to understand how work actually happens."
       pills={[
         { label: "Context", icon: Layers },
         { label: "Operational workflows", icon: Workflow },
