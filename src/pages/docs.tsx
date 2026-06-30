@@ -195,13 +195,6 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       action: { kind: "external", href: "https://logistics.olyxee.com/", label: "Visit Order Loop" },
     },
     {
-      name: "Olyxee Document Integrity",
-      description: "Document integrity is part of Orgni's business memory. It helps organizations extract structured information, validate documents, detect inconsistencies, and support trusted decisions from business documents.",
-      status: "private",
-      bg: "/images/gradient-orange-purple.webp",
-      action: { kind: "internal", href: "/document-integrity", label: "View status" },
-    },
-    {
       name: "Enterprise Automation",
       description: "Enterprise Automation helps organizations automate workflows, approvals, business rules, data movement, and process execution across systems.",
       status: "private",
