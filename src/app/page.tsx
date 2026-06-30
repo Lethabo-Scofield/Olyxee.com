@@ -190,21 +190,12 @@ function HeroSection() {
             autoPlay loop muted playsInline preload="metadata"
           />
           <div className="absolute inset-0 rounded-2xl sm:rounded-3xl pointer-events-none ring-1 ring-inset ring-black/5" />
-          <motion.img
-            src="/images/hero-menu-card.png"
-            alt="Orgni product menu"
-            initial={{ opacity: 0, y: -16, scale: 0.94 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.9, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="pointer-events-none absolute z-20 top-3 left-3 sm:top-5 sm:left-5 w-40 sm:w-56 lg:w-64 rounded-xl sm:rounded-2xl"
-            style={{ filter: "drop-shadow(0 18px 40px rgba(15,23,42,0.28))" }}
-          />
           <div className="absolute bottom-3 right-3 sm:bottom-6 sm:right-6 z-20">
             <a
               href="https://orgni.olyxee.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-7 sm:py-3.5 bg-orange-500 text-white rounded-full font-medium hover:bg-orange-600 transition-all text-xs sm:text-sm tracking-wide shadow-lg shadow-orange-500/30 border border-orange-400/40"
+              className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-7 sm:py-3.5 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-all text-xs sm:text-sm tracking-wide shadow-lg shadow-blue-600/30 border border-blue-500/40"
             >
               Try Orgni <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </a>
