@@ -327,8 +327,8 @@ export const roles: Role[] = [
     ],
   },
   {
-    slug: "ai-engineer-intern",
-    title: "AI Engineer Intern",
+    slug: "ai-engineering-intern",
+    title: "AI Engineering Intern",
     team: "Engineering & AI",
     location: REMOTE,
     type: "internship",
@@ -346,46 +346,8 @@ export const roles: Role[] = [
     ],
   },
   {
-    slug: "marketing-intern",
-    title: "Marketing Intern",
-    team: "Marketing",
-    location: REMOTE,
-    type: "internship",
-    description:
-      "Help shape how the world hears about Olyxee: content, launches, social, and growth experiments.",
-    responsibilities: [
-      "Help plan and ship launches, content, and campaigns",
-      "Run social, email, and community experiments end to end",
-      "Help with positioning, messaging, and competitive research",
-    ],
-    requirements: [
-      "Strong writer with a portfolio of work, school projects, or shipped content",
-      "Curious about technical and B2B products",
-      "Currently studying or recently graduated",
-    ],
-  },
-  {
-    slug: "social-media-intern",
-    title: "Social Media Intern",
-    team: "Marketing",
-    location: REMOTE,
-    type: "internship",
-    description:
-      "Own Olyxee's voice across social channels: create content, grow the audience, and turn launches into moments people notice.",
-    responsibilities: [
-      "Plan, write, and ship social content across platforms",
-      "Grow and engage our audience with a consistent voice",
-      "Help turn launches and research into social moments",
-    ],
-    requirements: [
-      "Strong writer with a feel for social, plus sample posts or a portfolio",
-      "Curious about technical and B2B products",
-      "Currently studying or recently graduated",
-    ],
-  },
-  {
-    slug: "research-intern",
-    title: "Research Intern",
+    slug: "research-analyst-intern",
+    title: "Research Analyst Intern",
     team: "Research",
     location: REMOTE,
     type: "internship",
@@ -403,65 +365,8 @@ export const roles: Role[] = [
     ],
   },
   {
-    slug: "machine-learning-engineer-intern",
-    title: "Machine Learning Engineer Intern",
-    team: "Engineering & AI",
-    location: REMOTE,
-    type: "internship",
-    description:
-      "Work alongside our team on the models that power Orgni and its operational workflows, financial operations, and document integrity capabilities.",
-    responsibilities: [
-      "Help train, fine-tune, and evaluate models on real product tasks",
-      "Move research prototypes into reliable services with the team",
-      "Contribute to internal tooling for evaluation and monitoring",
-    ],
-    requirements: [
-      "Strong Python and at least one modern ML framework (PyTorch, JAX, or similar)",
-      "Some prior ML project experience (coursework, research, or personal)",
-      "Currently studying or recently graduated",
-    ],
-  },
-  {
-    slug: "platform-engineer-intern",
-    title: "Platform Engineer Intern",
-    team: "Engineering & AI",
-    location: REMOTE,
-    type: "internship",
-    description:
-      "Help build the internal platform engineers ship on: CI/CD, observability, and developer experience.",
-    responsibilities: [
-      "Improve CI/CD pipelines, service templates, and shared tooling",
-      "Help raise reliability, security, and developer velocity across teams",
-      "Pair with senior engineers on real platform work",
-    ],
-    requirements: [
-      "Comfortable in a modern cloud-native stack (Docker, Kubernetes, Terraform, or similar)",
-      "Strong scripting in a language like Python, Go, or TypeScript",
-      "Currently studying or recently graduated",
-    ],
-  },
-  {
-    slug: "cloud-infrastructure-intern",
-    title: "Cloud Infrastructure Intern",
-    team: "Engineering & AI",
-    location: REMOTE,
-    type: "internship",
-    description:
-      "Help run the cloud foundation Olyxee operates on: compute, networking, storage, and cost.",
-    responsibilities: [
-      "Help provision and manage cloud infrastructure with infrastructure-as-code",
-      "Work on cost, performance, and reliability of production services",
-      "Help harden the security posture across environments",
-    ],
-    requirements: [
-      "Familiarity with AWS, GCP, or Azure",
-      "Some Terraform or equivalent IaC experience",
-      "Currently studying or recently graduated",
-    ],
-  },
-  {
-    slug: "data-engineer-intern",
-    title: "Data Engineer Intern",
+    slug: "data-engineering-intern",
+    title: "Data Engineering Intern",
     team: "Data & Intelligence",
     location: REMOTE,
     type: "internship",
@@ -479,103 +384,8 @@ export const roles: Role[] = [
     ],
   },
   {
-    slug: "ai-systems-engineer-intern",
-    title: "AI Systems Engineer Intern",
-    team: "Data & Intelligence",
-    location: REMOTE,
-    type: "internship",
-    description:
-      "Help build the systems that connect models, tools, and data into reliable AI workflows.",
-    responsibilities: [
-      "Work on orchestration, retrieval, and tool-use pipelines for production AI",
-      "Help integrate models with external systems, APIs, and enterprise data",
-      "Contribute to instrumentation that makes AI workflows observable and debuggable",
-    ],
-    requirements: [
-      "Strong software fundamentals and some applied ML familiarity",
-      "Experience or curiosity in agentic, RAG, or workflow-based AI systems",
-      "Currently studying or recently graduated",
-    ],
-  },
-  {
-    slug: "data-analyst-intern",
-    title: "Data Analyst Intern",
-    team: "Data & Intelligence",
-    location: REMOTE,
-    type: "internship",
-    description:
-      "Turn product, customer, and operational data into the insights that guide our decisions.",
-    responsibilities: [
-      "Build dashboards, models, and analyses across product, finance, and operations",
-      "Help size opportunities and measure outcomes with leadership",
-      "Help define the metrics teams actually run the business on",
-    ],
-    requirements: [
-      "Strong SQL and analytical thinking",
-      "Comfortable turning ambiguous questions into clear analysis",
-      "Currently studying or recently graduated",
-    ],
-  },
-  {
-    slug: "business-analyst-intern",
-    title: "Business Analyst Intern",
-    team: "Data & Intelligence",
-    location: REMOTE,
-    type: "internship",
-    description:
-      "Turn business questions into clear analysis: requirements, processes, and the data that guides how Olyxee operates and grows.",
-    responsibilities: [
-      "Gather requirements and map processes across teams",
-      "Build analyses and dashboards that inform real decisions",
-      "Help define the metrics teams run the business on",
-    ],
-    requirements: [
-      "Strong analytical thinking and clear written communication",
-      "Comfortable with SQL or spreadsheets and turning ambiguity into structure",
-      "Currently studying or recently graduated",
-    ],
-  },
-  {
-    slug: "data-scientist-intern",
-    title: "Data Scientist Intern",
-    team: "Data & Intelligence",
-    location: REMOTE,
-    type: "internship",
-    description:
-      "Help turn product, model, and operational data into the experiments and analysis that guide our decisions.",
-    responsibilities: [
-      "Help design experiments and run statistical analysis on real product data",
-      "Build models and metrics that measure reliability and impact",
-      "Help turn ambiguous questions into clear, decision-grade analysis",
-    ],
-    requirements: [
-      "Strong Python and SQL, with curiosity about statistics and experimentation",
-      "Some prior data or ML project experience (coursework, research, or personal)",
-      "Currently studying or recently graduated",
-    ],
-  },
-  {
-    slug: "security-engineer-intern",
-    title: "Security Engineer Intern",
-    team: "Quality & Reliability",
-    location: REMOTE,
-    type: "internship",
-    description:
-      "Help keep Olyxee's products and infrastructure secure: threat modeling, application security, and tooling.",
-    responsibilities: [
-      "Help with security reviews, threat modeling, and basic incident response",
-      "Build small tools that make security checks easier and more automatic",
-      "Pair with engineers to fix issues, not just find them",
-    ],
-    requirements: [
-      "Curiosity about application or cloud security and how systems break",
-      "Some scripting in Python, Go, or similar, plus prior project experience",
-      "Currently studying or recently graduated",
-    ],
-  },
-  {
-    slug: "qa-engineer-intern",
-    title: "QA Engineer Intern",
+    slug: "qa-engineering-intern",
+    title: "QA Engineering Intern",
     team: "Quality & Reliability",
     location: REMOTE,
     type: "internship",
@@ -589,25 +399,6 @@ export const roles: Role[] = [
     requirements: [
       "Familiarity with modern test automation frameworks",
       "Strong analytical mindset and attention to detail",
-      "Currently studying or recently graduated",
-    ],
-  },
-  {
-    slug: "ai-evaluation-engineer-intern",
-    title: "AI Evaluation Engineer Intern",
-    team: "Quality & Reliability",
-    location: REMOTE,
-    type: "internship",
-    description:
-      "Help build the evaluation harnesses and monitors that prove our AI behaves correctly.",
-    responsibilities: [
-      "Help build evaluation suites and golden datasets across Orgni's operational workflows, financial operations, and document integrity capabilities",
-      "Contribute to monitoring and alerting for model behavior and drift",
-      "Help with failure analysis and partner with research to close gaps",
-    ],
-    requirements: [
-      "Strong Python and curiosity about evaluating ML or LLM systems",
-      "Comfortable building small tools, not just running scripts",
       "Currently studying or recently graduated",
     ],
   },
@@ -627,158 +418,6 @@ export const roles: Role[] = [
     requirements: [
       "Strong writing and structured thinking",
       "Some exposure to technical or enterprise products",
-      "Currently studying or recently graduated",
-    ],
-  },
-  {
-    slug: "product-design-intern",
-    title: "Product Design Intern",
-    team: "Product & Design",
-    location: REMOTE,
-    type: "internship",
-    description:
-      "Help design the interfaces operators trust to run AI on real work.",
-    responsibilities: [
-      "Contribute to end to end design for product surfaces",
-      "Prototype quickly and pair with engineers to ship",
-      "Contribute to our shared design system",
-    ],
-    requirements: [
-      "Portfolio of design work, school projects, or shipped product",
-      "Fluency in Figma and modern interaction patterns",
-      "Currently studying or recently graduated",
-    ],
-  },
-  {
-    slug: "project-management-intern",
-    title: "Project Management Intern",
-    team: "Operations & Delivery",
-    location: REMOTE,
-    type: "internship",
-    description:
-      "Help keep our internal and customer-facing projects on track.",
-    responsibilities: [
-      "Help plan, coordinate, and track delivery across teams and engagements",
-      "Run rituals, dependencies, and status with clear written communication",
-      "Help identify risks early and unblock work before it slows down",
-    ],
-    requirements: [
-      "Strong written communication and operational instincts",
-      "Comfortable in a fast-moving environment",
-      "Currently studying or recently graduated",
-    ],
-  },
-  {
-    slug: "business-operations-intern",
-    title: "Business Operations Intern",
-    team: "Operations & Delivery",
-    location: HYBRID,
-    type: "internship",
-    description:
-      "Work alongside leadership on planning, hiring, finance, and how the company runs.",
-    responsibilities: [
-      "Support cross-functional initiatives across operations, finance, and people",
-      "Help build the planning and reporting rhythms of the company",
-      "Run analysis and prep for leadership decisions",
-    ],
-    requirements: [
-      "Strong analytical skills and excellent written communication",
-      "Interest in how early-stage companies are built",
-      "Currently studying or recently graduated",
-    ],
-  },
-  {
-    slug: "solutions-engineering-intern",
-    title: "Solutions Engineering Intern",
-    team: "Operations & Delivery",
-    location: REMOTE,
-    type: "internship",
-    description:
-      "Work with enterprise customers to help deploy Orgni and its operational workflows, financial operations, and document integrity capabilities into their operations.",
-    responsibilities: [
-      "Support onboarding, integration, and adoption for enterprise accounts",
-      "Help translate customer requirements into product feedback and configuration",
-      "Pair with senior operators to make sure customers realize value",
-    ],
-    requirements: [
-      "Comfort with technical conversations and enterprise stakeholders",
-      "Strong written communication",
-      "Currently studying or recently graduated",
-    ],
-  },
-  {
-    slug: "business-development-intern",
-    title: "Business Development Intern",
-    team: "Growth & Business",
-    location: HYBRID,
-    type: "internship",
-    description:
-      "Help build the partnerships that expand Olyxee's reach.",
-    responsibilities: [
-      "Help identify and develop strategic partnerships",
-      "Support joint go-to-market work with partners across regions and verticals",
-      "Pair with product on integrations and shared roadmaps",
-    ],
-    requirements: [
-      "Strong commercial judgment and written communication",
-      "Interest in BD, partnerships, or alliances",
-      "Currently studying or recently graduated",
-    ],
-  },
-  {
-    slug: "sales-intern",
-    title: "Sales Intern",
-    team: "Growth & Business",
-    location: HYBRID,
-    type: "internship",
-    description:
-      "Help own the customer relationship from first conversation through contract.",
-    responsibilities: [
-      "Support the full sales cycle for enterprise and mid-market accounts",
-      "Help build relationships with technical and executive buyers",
-      "Pair with product and solutions to deliver on what we promise",
-    ],
-    requirements: [
-      "Strong discovery, written, and presentation skills",
-      "Interest in B2B or enterprise software",
-      "Currently studying or recently graduated",
-    ],
-  },
-  {
-    slug: "people-operations-intern",
-    title: "People Operations Intern",
-    team: "People & Administration",
-    location: HYBRID,
-    type: "internship",
-    description:
-      "Help build the people function: hiring, onboarding, and operating rhythm.",
-    responsibilities: [
-      "Support recruiting end to end across engineering, research, and business roles",
-      "Help with onboarding, performance, and people operations",
-      "Help shape Olyxee's culture as we grow",
-    ],
-    requirements: [
-      "Strong written communication and operational instincts",
-      "Interest in people, talent, or operations",
-      "Currently studying or recently graduated",
-    ],
-  },
-  {
-    slug: "operations-intern",
-    title: "Operations Intern",
-    team: "People & Administration",
-    location: HYBRID,
-    type: "internship",
-    description:
-      "Help keep the company running day to day: scheduling, vendors, office, and finance support.",
-    responsibilities: [
-      "Help with scheduling, travel, and executive support",
-      "Coordinate vendors, contracts, and office operations",
-      "Support finance and people teams on day to day administration",
-    ],
-    requirements: [
-      "Highly organised, calm under pressure, and an excellent written communicator",
-      "Comfortable with shifting priorities",
       "Currently studying or recently graduated",
     ],
   },
