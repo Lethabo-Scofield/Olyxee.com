@@ -5,9 +5,9 @@ import Footer from "../components/footer";
 import { motion } from "framer-motion";
 
 const services = [
-  { name: "Orgni Workflows API", status: "Operational" },
+  { name: "Orgni API", status: "Operational" },
   { name: "Olyxee Document Integrity", status: "Operational" },
-  { name: "Orgni Finance", status: "Operational" },
+  { name: "Orgni · Financial operations", status: "Operational" },
   { name: "Dashboard", status: "Operational" },
   { name: "Documentation", status: "Operational" },
   { name: "Auth & Identity", status: "Operational" },

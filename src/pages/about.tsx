@@ -28,7 +28,7 @@ const APPROACH = [
     icon: ShieldCheck,
     label: "How we build",
     title: "Context before action",
-    text: "Orgni gives AI models the business context, memory, permissions, and evidence they need before they act. Every action is logged so teams can review, trust, and direct what runs.",
+    text: "Orgni gives intelligent systems the live business context, operational memory, permissions, and evidence they need before they act. Every action is logged so teams can review, trust, and direct what runs.",
     gradient: "/images/gradient-blue.png",
   },
   {
@@ -47,24 +47,24 @@ const JOURNEY_LEAD: string[] = [
   "Business knowledge was scattered across documents, spreadsheets, emails, legacy systems, finance records, approval processes, and people\u2019s memory. AI systems could generate answers, but they often lacked the operational context needed to support real work.",
   "They did not fully understand how a specific business operated, which rules applied, who approved what, which documents were trusted, how finance exceptions were handled, or how decisions should be traced.",
   "That experience became the foundation of Olyxee.",
-  "Olyxee was created to build the infrastructure layer organizations need before AI can operate reliably inside real business environments. The company focuses on context, structure, memory, document integrity, workflow control, finance operations, integration, and operational visibility.",
-  "This work led to Orgni, Olyxee\u2019s core organizational intelligence platform.",
-  "Orgni helps organizations capture and preserve how they operate. It structures business knowledge such as processes, roles, departments, rules, documents, approvals, exceptions, decisions, and case history. The goal is to give AI systems the context they need to support business execution with control and a clear trail.",
-  "As Olyxee developed, the company expanded into focused infrastructure systems.",
+  "Olyxee was created to build the infrastructure layer organizations need before intelligent systems can operate reliably inside real business environments. The company focuses on operational intelligence: live business context, operational memory, decision history, document integrity, and operational visibility.",
+  "This work led to Orgni, Olyxee\u2019s flagship platform for building live business context.",
+  "Orgni connects how an organization actually works into one living operational context. It structures business knowledge such as processes, roles, departments, rules, documents, approvals, exceptions, decisions, permissions, and outcomes. The goal is to give intelligent systems the context they need to support real operations with control and a clear trail.",
+  "As one platform, Orgni brings these capabilities together.",
 ];
 
 const JOURNEY_LAYERS: string[] = [
-  "Orgni Workflows supports processes, approvals, tasks, case handling, coordination, and operational exceptions.",
-  "Orgni Finance supports reconciliation, transaction review, finance exceptions, and financial workflow support.",
-  "Olyxee Document Integrity supports document understanding, classification, extraction, validation, verification, and auditability. It helps organizations know whether a document is complete, consistent, relevant, and reliable before it is used in a workflow or decision.",
-  "Order Loop supports customer communication around orders, deliveries, collections, and service status updates.",
-  "Togent is Olyxee\u2019s ongoing research into AI integration and agent tooling, focused on how AI systems connect with APIs, tools, workflows, and operational environments.",
+  "Operational workflows: processes, approvals, tasks, case handling, coordination, and operational exceptions.",
+  "Financial operations: reconciliation, transaction review, finance exceptions, and financial workflow support.",
+  "Business memory and document integrity: document understanding, classification, extraction, validation, verification, and auditability, so organizations know whether a document is complete, consistent, relevant, and reliable before it is used in a decision.",
+  "Alongside Orgni, Order Loop supports customer communication around orders, deliveries, collections, and service status updates.",
+  "Togent is Olyxee\u2019s ongoing research into AI integration and agent tooling, focused on how intelligent systems connect with APIs, tools, workflows, and operational environments.",
 ];
 
 const JOURNEY_CLOSE: string[] = [
-  "Olyxee\u2019s journey is rooted in a practical lesson from AI engineering: organizations do not only need access to powerful AI models. They need infrastructure that makes their operations understandable to AI.",
+  "Olyxee\u2019s journey is rooted in a practical lesson from AI engineering: organizations do not only need access to powerful AI models. They need the infrastructure and live business context that makes their operations understandable to intelligent systems.",
   "Founded in Johannesburg, South Africa, Olyxee is building for global infrastructure.",
-  "The company exists to help organizations move from AI experiments to reliable AI execution.",
+  "The company exists to help organizations move from AI experiments to reliable, intelligent operations.",
 ];
 
 const About: FC = () => {
@@ -74,9 +74,9 @@ const About: FC = () => {
     <div className="min-h-screen bg-white text-neutral-900 relative">
       <SEO
         title="About"
-        description="Olyxee builds the business infrastructure layer for AI execution: the model-agnostic context, control, memory, workflow, and trust layer that lets any advanced AI operate safely inside real businesses, so teams move from AI demos to reliable, traceable operations."
+        description="Olyxee builds the research and infrastructure behind operational intelligence: the live business context that lets intelligent systems understand and operate inside real businesses, so teams move from AI demos to reliable, intelligent operations."
         path="/about"
-        keywords={["About Olyxee", "AI infrastructure company", "Olyxee Research", "Orgni", "Lethabo Scofield"]}
+        keywords={["About Olyxee", "operational intelligence", "AI infrastructure company", "Olyxee Research", "Orgni", "Lethabo Scofield"]}
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "AboutPage",
@@ -88,7 +88,7 @@ const About: FC = () => {
             url: "https://olyxee.com",
             logo: "https://olyxee.com/Logo/Olyxee_Logo.png",
             description:
-              "Olyxee builds the business infrastructure layer for AI execution: the model-agnostic context, control, memory, workflow, and trust layer that lets any advanced AI operate safely inside real businesses, with Orgni as the trusted operating layer at the center.",
+              "Olyxee builds the research and infrastructure behind operational intelligence: the live business context that lets intelligent systems understand and operate inside real businesses, with Orgni as the flagship platform at the center.",
           },
         }}
       />
@@ -171,10 +171,10 @@ const About: FC = () => {
                 >
                   <div className="col-span-12 sm:col-span-8 lg:col-span-7 lg:pt-6 order-2 sm:order-1">
                     <p className="text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.1] tracking-[-0.02em] font-medium mb-8 text-neutral-900">
-                      A world where AI models do not just answer questions, but <em className="font-serif italic font-normal text-neutral-500">operate</em> with the business context, memory, rules, and controls needed to move organizations forward.
+                      A world where intelligent systems do not just answer questions, but <em className="font-serif italic font-normal text-neutral-500">operate</em> with the live business context, memory, rules, and controls needed to move organizations forward.
                     </p>
                     <p className="text-base sm:text-lg text-neutral-700 leading-relaxed max-w-xl">
-                      Documents, workflows, finance, logistics, approvals, and decisions, coordinated through one operating layer that teams can trust, audit, and direct.
+                      Knowledge, documents, decisions, processes, and systems, connected into one living operational context that teams can trust, audit, and direct.
                     </p>
                   </div>
                 </motion.article>

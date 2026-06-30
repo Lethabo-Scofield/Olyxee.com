@@ -33,15 +33,15 @@ const SOLUTION_CATEGORIES: SolutionCategory[] = [
     name: "Financial Operations",
     tagline: "Reconciliation, integrity, and audit intelligence.",
     capabilities: ["Reconciliation", "Integrity systems", "Validation", "Audit intelligence"],
-    poweredBy: ["Orgni Finance", "Olyxee Document Integrity"],
+    poweredBy: ["Orgni · Financial operations"],
     bgImage: "/images/gradient-blue-pink.png",
   },
   {
     icon: Workflow,
-    name: "Enterprise Workflow Automation",
+    name: "Operational Workflows",
     tagline: "Execution, approvals, and system coordination.",
     capabilities: ["Workflow execution", "Approvals", "Operational coordination", "System integrations"],
-    poweredBy: ["Orgni Workflows"],
+    poweredBy: ["Orgni · Operational workflows"],
     bgImage: "/images/gradient-orange-pink.png",
   },
   {
@@ -57,7 +57,7 @@ const SOLUTION_CATEGORIES: SolutionCategory[] = [
     name: "Organizational Intelligence",
     tagline: "Memory, context, and persistent cognition.",
     capabilities: ["Memory systems", "Contextual reasoning", "Operational cognition", "Long-running workflows"],
-    poweredBy: ["Orgni Platform"],
+    poweredBy: ["Orgni · Business memory"],
     bgImage: "/images/gradient-purple.png",
   },
 ];
@@ -78,7 +78,7 @@ const PRICING_TIERS: PricingTier[] = [
       "A simple infrastructure setup to help an organization start using Olyxee for a specific operational need.",
     includes: [
       "One focused system deployment",
-      "Basic workflow automation",
+      "Operational workflow execution",
       "Standard integrations",
       "Data and document handling",
       "Reporting",
@@ -97,8 +97,8 @@ const PRICING_TIERS: PricingTier[] = [
       "API and database integrations",
       "Business rules",
       "Human approval flows",
-      "Olyxee Document Integrity capabilities",
-      "Orgni Platform intelligence layer",
+      "Business memory and document integrity capabilities",
+      "Orgni live business context layer",
       "Togent access for team and system integration",
       "Support",
     ],
@@ -112,8 +112,8 @@ const PRICING_TIERS: PricingTier[] = [
       "A bespoke deployment where Olyxee becomes part of the organization's internal operating infrastructure.",
     includes: [
       "Custom AI infrastructure deployment",
-      "Orgni Platform intelligence systems",
-      "Olyxee Document Integrity systems",
+      "Orgni live business context systems",
+      "Business memory and document integrity systems",
       "Multi-agent workflows",
       "Advanced workflow execution",
       "Custom APIs and integrations",
@@ -315,7 +315,7 @@ Every deployment runs on Orgni, connecting your context, systems, and decisions 
         >
           <Image
             src="/images/products-hero.jpeg"
-            alt="The Orgni ecosystem: the Orgni platform at the center, surrounded by Orgni Finance, Orgni Workflows, and Order Loop."
+            alt="The Orgni platform at the center, connecting financial operations, operational workflows, and business memory into one operating layer, alongside Order Loop."
             width={1024}
             height={1024}
             priority
@@ -347,7 +347,7 @@ Every deployment runs on Orgni, connecting your context, systems, and decisions 
               </em>
             </h2>
             <p className="mt-5 text-base sm:text-lg text-neutral-500 font-light leading-relaxed">
-              Four core problem spaces where we deploy on the Orgni platform, each one powered by products from the Orgni family.
+              Four core problem spaces where we deploy on the Orgni platform, each one powered by Orgni capabilities, with Order Loop for customer communication.
             </p>
           </motion.div>
 

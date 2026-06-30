@@ -11,11 +11,11 @@ const categories = ["All", "Product", "Engineering", "Research", "Company"];
 const posts = [
   {
     slug: "introducing-ordo",
-    title: "Introducing Orgni Workflows: AI Execution for Business Operations",
+    title: "Introducing Orgni: Live Business Context for Operational Intelligence",
     category: "Product",
     date: "Mar 28, 2026",
     readTime: "6 min",
-    excerpt: "Today we're publicly unveiling Orgni Workflows, an AI execution engine that turns business goals into completed work across your tools and systems.",
+    excerpt: "Today we're publicly unveiling Orgni, the platform that builds live business context so intelligent systems can understand and operate inside your business.",
     featured: true,
     gradient: "from-indigo-500 via-purple-500 to-pink-500",
     content: [
@@ -24,16 +24,16 @@ const posts = [
         body: `Every operations team hits the same wall. Finance, compliance, and HR teams lose days every month on tasks that follow the same pattern every time: pulling data from multiple systems, reconciling records, generating reports, and chasing approvals.\n\nWe spent months talking to teams across industries. The stories were remarkably consistent: 40+ hours a month spent on manual reconciliation, 5 different systems touched per report, and 3-5 days just to close the books each month.\n\nThe tooling gap was obvious. There were great tools for individual tasks, but nothing that could take a business goal and execute it end-to-end across tools and data sources.`,
       },
       {
-        heading: "What Orgni Workflows does",
-        body: `Orgni Workflows is an AI execution engine. You describe what needs to be done, and Orgni Workflows handles the rest: planning, coordinating, and executing across your tools and systems.\n\nIt works through three layers:\n\n**Goal interpretation**: Describe the business outcome you need. Orgni Workflows breaks it down into structured, executable steps automatically.\n\n**Cross-system execution**: Orgni Workflows connects to your ERP, databases, spreadsheets, and communication tools to execute each step without manual intervention.\n\n**Transparent delivery**: Every action is logged with timestamps, inputs, and outputs. Results are delivered as reports, notifications, or audit trails, fully traceable.`,
+        heading: "What Orgni does",
+        body: `Orgni builds live business context. It connects your knowledge, documents, decisions, processes, and systems into one living operational context, then puts that context to work.\n\nIt works through three layers:\n\n**Context**: Orgni connects knowledge, documents, decisions, and responsibilities into one living operational context.\n\n**Operational workflows**: Orgni runs work across your ERP, databases, spreadsheets, and communication tools without manual integration.\n\n**Transparent delivery**: Every action is logged with timestamps, inputs, and outputs. Results are delivered as reports, notifications, or audit trails, fully traceable.`,
       },
       {
-        heading: "Why execution-first matters",
-        body: `Most businesses have treated operational automation as a patchwork of scripts, integrations, and manual steps. Build a workflow here, connect an API there, and hope nothing breaks when the process changes.\n\nWe think this is backwards. AI should handle the entire execution, not just individual steps, but the full goal-to-delivery pipeline.\n\nThis is the same shift that happened when businesses moved from spreadsheets to ERP systems. The next shift is from manual workflows to AI-driven execution. We believe teams should describe outcomes, not build processes.`,
+        heading: "Why context-first matters",
+        body: `Most businesses have treated operational software as a patchwork of scripts, integrations, and manual steps. Build a workflow here, connect an API there, and hope nothing breaks when the process changes.\n\nWe think this is backwards. Intelligent systems need live business context, not just individual integrations, to understand and operate inside a real business.\n\nThis is the same shift that happened when businesses moved from spreadsheets to ERP systems. The next shift is from disconnected tools to a living operational context. We believe teams should work from shared context, not rebuild processes by hand.`,
       },
       {
         heading: "What's next",
-        body: `Orgni Workflows is available today for early access. We're starting with finance, compliance, and operations workflows, the areas where teams spend the most time on repetitive, pattern-based work.\n\nOver the coming months, we'll be expanding system integrations, adding team collaboration features, and deepening our approval workflow capabilities. If your team is stuck on operational busywork and you want to start describing goals instead of building processes, we built Orgni Workflows for you.`,
+        body: `Orgni is available today for early access. We're starting with finance and operations, the areas where teams spend the most time on repetitive, pattern-based work.\n\nOver the coming months, we'll be expanding system integrations, deepening operational memory, and broadening the capabilities built on Orgni's live business context. If your team is stuck on operational busywork and you want to work from shared context instead of rebuilding processes, we built Orgni for you.`,
       },
     ],
   },
@@ -83,7 +83,7 @@ const posts = [
     category: "Product",
     date: "Feb 18, 2026",
     readTime: "7 min",
-    excerpt: "How Orgni Workflows continuously monitors execution workflows and ensures consistent, reliable outputs across systems.",
+    excerpt: "How Orgni continuously monitors operational workflows and ensures consistent, reliable outputs across systems.",
     featured: false,
     gradient: "from-violet-500 via-purple-500 to-indigo-500",
   },
@@ -260,7 +260,7 @@ const Blog: FC = () => {
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-2 px-5 py-2.5 bg-neutral-900 text-white text-sm font-medium rounded-full hover:bg-black transition-colors"
                         >
-                          Try Orgni Workflows
+                          Try Orgni
                           <ArrowRight className="w-3.5 h-3.5" />
                         </a>
                         <span className="text-xs text-neutral-400">Free during beta</span>

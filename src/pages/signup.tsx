@@ -28,7 +28,7 @@ const TOOL_CONFIG: Record<Tool, ToolConfig> = {
     subhead:
       "API access is rolling out in waves. Join the waitlist for early keys, sandbox quotas, and integration support.",
     features: [
-      "REST and Python SDK for Orgni Workflows and Orgni Finance",
+      "REST and Python SDK for Orgni, including operational workflows and financial operations",
       "Webhooks for run completions and reconciliations",
       "Sandbox keys with generous test quotas",
       "Direct channel with the integrations team",
@@ -39,7 +39,7 @@ const TOOL_CONFIG: Record<Tool, ToolConfig> = {
     redirect: { href: "/docs", label: "Go to documentation", delayMs: 1500 },
     seoTitle: "API access waitlist",
     seoDescription:
-      "Join the Olyxee API integrations waitlist. Get early API keys for Orgni Workflows and Orgni Finance, plus integration support. Read the docs while you wait.",
+      "Join the Olyxee API integrations waitlist. Get early API keys for Orgni, including operational workflows and financial operations, plus integration support. Read the docs while you wait.",
   },
   general: {
     kicker: "Get started",

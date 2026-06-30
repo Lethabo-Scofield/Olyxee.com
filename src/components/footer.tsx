@@ -26,14 +26,12 @@ const HuggingFaceIcon = (props: SVGProps<SVGSVGElement>) => (
 );
 
 const footerData = {
-  tagline: "AI research and infrastructure for reliable enterprise execution.",
+  tagline: "Research and infrastructure for operational intelligence.",
   columns: [
     {
       title: "Products",
       links: [
         { name: "Orgni", href: "https://orgni.olyxee.com", external: true },
-        { name: "Orgni Finance", href: "https://finance.olyxee.com", external: true },
-        { name: "Orgni Workflows", href: "https://workflow.olyxee.com", external: true },
         { name: "Order Loop", href: "https://logistics.olyxee.com/", external: true },
       ],
     },

@@ -1,47 +1,47 @@
 import type { Metadata } from "next";
 
 const description =
-  "Orgni Workflows is an AI execution system by Olyxee. Tell it a business goal in plain English and it plans, calls the right tools, and ships the completed work - combining GPT/Claude reasoning with n8n-style workflow orchestration across Gmail, Stripe, QuickBooks, Salesforce, Notion, Slack and more.";
+  "Orgni is the operational intelligence platform by Olyxee. Describe a business goal in plain English and Orgni plans, calls the right tools, and ships the completed work, combining live business context with workflow orchestration across Gmail, Stripe, QuickBooks, Salesforce, Notion, Slack and more.";
 
 export const metadata: Metadata = {
-  title: "Orgni Workflows | AI Execution System for Business Operations",
+  title: "Orgni | Operational Intelligence for Business Operations",
   description,
   keywords: [
-    "Orgni Workflows",
-    "Olyxee Orgni Workflows",
-    "AI execution system",
-    "AI agent for business",
-    "AI workflow automation",
-    "goal to workflow AI",
-    "AI orchestration",
+    "Orgni",
+    "Olyxee Orgni",
+    "operational intelligence platform",
+    "AI for business operations",
+    "operational workflows",
+    "live business context",
+    "operational memory",
     "GPT-4 agent",
     "Claude agent",
-    "n8n alternative AI",
-    "AI for finance operations",
-    "stateful AI agent",
-    "auditable AI agent",
+    "model-neutral architecture",
+    "financial operations",
+    "stateful AI platform",
+    "auditable AI platform",
   ],
   alternates: {
     canonical: "https://olyxee.com/products/ordo",
   },
   openGraph: {
     type: "website",
-    title: "Orgni Workflows | AI Execution System for Business Operations",
+    title: "Orgni | Operational Intelligence for Business Operations",
     description,
     url: "https://olyxee.com/products/ordo",
     siteName: "Olyxee",
     images: [
       {
-        url: "/api/og?title=Orgni%20Workflows&subtitle=AI%20execution%20system%20for%20business%20operations",
+        url: "/api/og?title=Orgni&subtitle=Operational%20intelligence%20for%20business%20operations",
         width: 1200,
         height: 630,
-        alt: "Orgni Workflows by Olyxee",
+        alt: "Orgni by Olyxee",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Orgni Workflows | AI Execution System",
+    title: "Orgni | Operational Intelligence Platform",
     description,
   },
 };
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
 const ordoJsonLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  name: "Orgni Workflows",
+  name: "Orgni",
   applicationCategory: "BusinessApplication",
   operatingSystem: "Web",
   url: "https://orgni.olyxee.com",
@@ -84,7 +84,7 @@ const breadcrumbJsonLd = {
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://olyxee.com" },
     { "@type": "ListItem", position: 2, name: "Enterprise", item: "https://olyxee.com/enterprise" },
-    { "@type": "ListItem", position: 3, name: "Orgni Workflows", item: "https://olyxee.com/products/ordo" },
+    { "@type": "ListItem", position: 3, name: "Orgni", item: "https://olyxee.com/products/ordo" },
   ],
 };
 

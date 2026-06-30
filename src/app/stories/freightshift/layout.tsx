@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 const description =
-  "How FreightShift used Olyxee's Orgni Workflows to plan, dispatch, and reconcile cross-border freight without expanding headcount.";
+  "How FreightShift used Orgni, Olyxee's infrastructure for operational intelligence, to plan, dispatch, and reconcile cross-border freight without expanding headcount.";
 
 export const metadata: Metadata = {
   title: "FreightShift scales without scaling headcount | Customer story",

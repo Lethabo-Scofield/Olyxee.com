@@ -121,7 +121,7 @@ const Docs: FC = () => {
 
   return (
     <div>
-      <SEO title="Documentation" description="Developer documentation for the Olyxee platform: API reference, SDKs, quickstarts, and guides for Orgni Workflows verification, deployment, and monitoring." path="/docs" keywords={["Olyxee documentation", "Olyxee API", "Orgni Workflows docs", "AI verification API", "SDK", "developer guides"]} />
+      <SEO title="Documentation" description="Developer documentation for the Olyxee platform: API reference, SDKs, quickstarts, and guides for Orgni and Olyxee's operational intelligence infrastructure." path="/docs" keywords={["Olyxee documentation", "Olyxee API", "Orgni docs", "operational intelligence", "SDK", "developer guides"]} />
       <Header />
       <DocsLayout
         tabs={TABS}
@@ -164,18 +164,18 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
 
   const products: ProductRow[] = [
     {
-      name: "Orgni Workflows",
-      description: "Orgni Workflows is Olyxee's workflow execution system for business operations. It connects AI reasoning with business systems, APIs, databases, approvals, rules, and process state.",
+      name: "Orgni · Operational workflows",
+      description: "Operational workflows is a capability of Orgni, Olyxee's platform for live business context. Orgni connects AI reasoning with your business systems, APIs, databases, approvals, rules, and process state so operations run with full context and a complete decision history.",
       status: "early-access",
       bg: "/images/gradient-blue-pink.webp",
-      action: { kind: "external", href: "https://workflow.olyxee.com", label: "Visit Orgni Workflows" },
+      action: { kind: "external", href: "https://workflow.olyxee.com", label: "Open operational workflows" },
     },
     {
-      name: "Orgni Finance",
-      description: "Orgni Finance is Olyxee's financial reconciliation and data integrity engine. It helps finance teams compare, validate, and reconcile bank statements, ledgers, and accounting records with traceable evidence.",
+      name: "Orgni · Financial operations",
+      description: "Financial operations is a capability of Orgni. It helps finance teams compare, validate, and reconcile bank statements, ledgers, and accounting records with traceable evidence, all inside the same live operational context.",
       status: "available",
       bg: "/images/gradient-pastel.webp",
-      action: { kind: "external", href: "https://finance.olyxee.com", label: "Visit Orgni Finance" },
+      action: { kind: "external", href: "https://finance.olyxee.com", label: "Open financial operations" },
     },
     {
       name: "Togent",
@@ -196,7 +196,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
     },
     {
       name: "Olyxee Document Integrity",
-      description: "Olyxee Document Integrity helps organizations extract structured information, validate documents, detect inconsistencies, and support trusted decisions from business documents.",
+      description: "Document integrity is part of Orgni's business memory. It helps organizations extract structured information, validate documents, detect inconsistencies, and support trusted decisions from business documents.",
       status: "private",
       bg: "/images/gradient-orange-purple.webp",
       action: { kind: "internal", href: "/document-integrity", label: "View status" },
@@ -304,7 +304,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
           Olyxee documentation
         </h1>
         <p className="text-neutral-600 text-[17px] leading-[1.55]">
-          Olyxee provides AI research and infrastructure for organizations that need reliable execution across documents, workflows, finance, logistics, and business systems. Our products create the context, control, and execution layer around AI models, while our solutions package that infrastructure around specific operational problems.
+          Olyxee builds research and infrastructure for operational intelligence: the systems that help intelligent software understand and operate inside real businesses. Orgni turns your live business context into reliable execution across finance, operations, logistics, and the systems your teams already use, while our solutions package that infrastructure around specific operational problems.
         </p>
       </div>
 
@@ -361,7 +361,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       {/* Footer note */}
       <div className="border-t border-neutral-100 pt-8">
         <p className="text-[12px] text-neutral-400 leading-relaxed">
-          Olyxee, Research and Infrastructure for Artificial Intelligence. Documentation, schemas, and APIs are continuously evolving; some surfaces are intentionally gated while they stabilize for production use.
+          Olyxee, Research and Infrastructure for Operational Intelligence. Documentation, schemas, and APIs are continuously evolving; some surfaces are intentionally gated while they stabilize for production use.
         </p>
       </div>
     </div>
@@ -376,7 +376,7 @@ function EarlyAccessGate() {
         Sign in for early access
       </h2>
       <p className="text-[16px] text-neutral-600 leading-relaxed mb-8 max-w-lg">
-        Full documentation is available to early access members. Sign in or request access to explore the API, the Orgni Workflows execution engine, and guides.
+        Full documentation is available to early access members. Sign in or request access to explore the API, Orgni's operational intelligence infrastructure, and guides.
       </p>
       <div className="flex flex-col sm:flex-row gap-3 mb-14">
         <a
@@ -399,7 +399,7 @@ function EarlyAccessGate() {
         <ul className="space-y-5">
           {[
             { title: "API Reference", desc: "REST API, Python SDK, and CLI documentation." },
-            { title: "Orgni Workflows Engine", desc: "AI execution engine for finance, compliance, and operations." },
+            { title: "Orgni", desc: "Operational intelligence infrastructure for finance, operations, and business memory." },
             { title: "Guides & Tutorials", desc: "Testing strategies, configuration, and best practices." },
           ].map(item => (
             <li key={item.title}>

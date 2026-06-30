@@ -28,7 +28,7 @@ export default function HomePage() {
     url: "https://olyxee.com",
     logo: "https://olyxee.com/Logo/Olyxee_Logo.png",
     image: "https://olyxee.com/og-image.jpg",
-    description: "Olyxee builds the business infrastructure layer that helps AI models understand company context, follow workflows, respect approvals, and execute with evidence. Model-agnostic context, control, memory, workflow, and trust infrastructure for AI execution inside real businesses.",
+    description: "Olyxee builds the research and infrastructure behind operational intelligence: the live business context that lets intelligent systems understand and operate inside real businesses. Model-neutral context, operational memory, and decision history infrastructure for intelligent operations.",
     sameAs: [
       "https://www.linkedin.com/company/olyxee/",
       "https://twitter.com/olyxee",
@@ -56,17 +56,17 @@ export default function HomePage() {
       },
     ],
     knowsAbout: [
-      "Artificial Intelligence",
-      "AI Execution Systems",
+      "Operational Intelligence",
+      "Business Infrastructure",
       "AI Infrastructure",
-      "AI Reliability",
-      "AI Composability",
-      "Machine Learning",
-      "LLM Evaluation",
-      "Hallucination Detection",
-      "AI Observability",
+      "Live Business Context",
+      "Operational Memory",
+      "Decision History",
+      "Model-Neutral Architecture",
+      "Intelligent Operations",
+      "AI Research",
     ],
-    slogan: "Research and Infrastructure for artificial intelligence",
+    slogan: "Research and Infrastructure for Operational Intelligence",
   };
 
   const faqJsonLd = {
@@ -78,7 +78,7 @@ export default function HomePage() {
         name: "What is Olyxee?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Olyxee builds the business infrastructure layer for AI execution. It is the context, control, memory, workflow, and trust layer that lets any advanced, model-agnostic AI operate safely inside real businesses, so organizations can move from AI demos to reliable, traceable operations.",
+          text: "Olyxee builds the research and infrastructure behind operational intelligence: the live business context that lets intelligent systems understand and operate inside real businesses. Olyxee gives organizations the operational memory, decision history, and model-neutral infrastructure to move from AI demos to intelligent operations.",
         },
       },
       {
@@ -86,15 +86,15 @@ export default function HomePage() {
         name: "What is Orgni?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Orgni is Olyxee's core infrastructure product for organizations adopting AI. It connects business context, workflows, documents, systems, and decisions so AI can support real operations with context, control, and traceability.",
+          text: "Orgni is Olyxee's flagship platform for building live business context. It connects a company's knowledge, documents, decisions, processes, responsibilities, systems, permissions, and outcomes into a living operational context that intelligent systems can understand and operate within, with financial operations, operational workflows, and business memory built in.",
         },
       },
       {
         "@type": "Question",
-        name: "What is Orgni Finance?",
+        name: "What is Order Loop?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Orgni Finance handles financial reconciliation, transaction matching, anomaly review, and financial integrity for finance teams.",
+          text: "Order Loop is Olyxee's product for customer order communication. It keeps customers informed with clean, automated order-status updates and operational notifications, from confirmed to delivered.",
         },
       },
       {
@@ -171,7 +171,7 @@ function HeroSection() {
               className="font-handwritten text-blue-600 font-semibold tracking-tight"
               style={{ fontFamily: "var(--font-handwritten), cursive" }}
             >
-              artificial intelligence
+              operational intelligence
             </span>
           </span>
         </motion.h1>
@@ -362,19 +362,19 @@ function ResearchAreas() {
               {
                 num: "01",
                 title: "Olyxee Research",
-                desc: "We study the real adoption, integration, and execution problems organizations face when bringing AI into daily operations.",
+                desc: "We study how intelligent systems can understand and operate inside real businesses, and the operational context they need to do it reliably.",
                 gradient: "/images/gradient-orange-pink.webp",
               },
               {
                 num: "02",
                 title: "Infrastructure",
-                desc: "We build the context, memory, workflow, and control infrastructure that lets AI operate safely across business systems.",
+                desc: "We build the live business context, operational memory, and decision history infrastructure that lets intelligent systems operate across business systems.",
                 gradient: "/images/gradient-orange-purple.webp",
               },
               {
                 num: "03",
-                title: "Product Surfaces",
-                desc: "We create focused surfaces for documents, finance, workflows, logistics, and agent operations, all connected by reusable business context.",
+                title: "Intelligent operations",
+                desc: "Orgni turns this infrastructure into live business context for financial operations, operational workflows, and business memory, while Order Loop keeps customers in the loop.",
                 gradient: "/images/gradient-yellow-green.webp",
               },
             ].map((step, idx) => (
@@ -846,14 +846,14 @@ function OrgniSection() {
       id="orgni"
       surface="muted"
       index="01"
-      heading="Business context for"
-      emphasis="AI execution."
-      description="Orgni learns how a business works: its documents, roles, rules, workflows, approvals, decisions, and exceptions. It turns that knowledge into a trusted operating layer that any AI model can use to support real work with context, control, and traceability."
+      heading="Live business context for"
+      emphasis="intelligent operations."
+      description="Orgni connects a company's knowledge, documents, decisions, processes, responsibilities, systems, permissions, and outcomes into living operational context. It becomes the trusted operating layer that any intelligent system can understand and operate within, with context, control, and traceability."
       pills={[
-        { label: "Core", icon: Layers },
-        { label: "Workflows", icon: Workflow },
-        { label: "Docs", icon: FileText },
-        { label: "Finance", icon: Wallet },
+        { label: "Context", icon: Layers },
+        { label: "Operational workflows", icon: Workflow },
+        { label: "Business memory", icon: FileText },
+        { label: "Financial operations", icon: Wallet },
       ]}
       image={{
         src: "/images/orgni-product.png",
@@ -1196,7 +1196,7 @@ function CTASection() {
               Get started with Orgni
             </h2>
             <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-9 max-w-lg mx-auto">
-              Bring Orgni into your organization to turn documents, workflows, decisions, and business rules into a reusable context layer for AI execution. Orgni helps teams move from AI demos to controlled, traceable operations.
+              Bring Orgni into your organization to turn your knowledge, documents, decisions, processes, and systems into live business context. Orgni gives intelligent systems the operational memory and control to move from AI demos to traceable operations.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center">

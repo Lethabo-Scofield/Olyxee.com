@@ -66,7 +66,7 @@ export default function AutomationStory() {
             className="prose prose-neutral prose-lg max-w-none prose-headings:font-serif prose-headings:tracking-tight prose-h2:text-2xl sm:prose-h2:text-[1.75rem] prose-h2:mt-16 prose-h2:mb-6 prose-p:leading-[1.75] prose-p:text-neutral-700 prose-li:text-neutral-700 prose-li:leading-relaxed prose-strong:text-neutral-900 prose-blockquote:border-l-neutral-900 prose-blockquote:not-italic prose-blockquote:font-serif prose-blockquote:text-xl prose-blockquote:text-neutral-800 prose-blockquote:leading-snug"
           >
             <p className="not-prose text-xl sm:text-[1.375rem] font-light leading-relaxed text-neutral-900 border-l-2 border-neutral-900 pl-5 sm:pl-6 mb-14">
-              Onboarding a supplier is mostly waiting - for documents, for signatures, for IT access. We built it on Orgni Workflows to do the chasing, so people only show up to make decisions.
+              Onboarding a supplier is mostly waiting - for documents, for signatures, for IT access. We built it on Orgni to do the chasing, so people only show up to make decisions.
             </p>
 
             <h2>The challenge</h2>
@@ -79,7 +79,7 @@ export default function AutomationStory() {
 
             <h2>What we built</h2>
             <p>
-              We built the onboarding process on <strong>Orgni Workflows</strong>, our system for orchestrating multi-step operations end to end. Because it runs on <strong>Orgni</strong>, our core infrastructure for AI operations, the workflow carries full context - who the supplier is, what has already been collected, and what each team needs next - so nothing falls through the gaps between handoffs. When a new supplier enters the pipeline, Orgni Workflows runs the playbook from intake to activation.
+              We built the onboarding process on <strong>Orgni</strong>, our infrastructure for operational intelligence, using its operational workflows capability to orchestrate multi-step operations end to end. Because it runs on Orgni, the workflow carries full context - who the supplier is, what has already been collected, and what each team needs next - so nothing falls through the gaps between handoffs. When a new supplier enters the pipeline, Orgni runs the playbook from intake to activation.
             </p>
             <ul>
               <li><strong>Intake automation.</strong> The questionnaire goes out automatically and collects required compliance documents.</li>
@@ -112,7 +112,7 @@ export default function AutomationStory() {
               Onboardings finish in days, not weeks. Compliance sign-off rates improved too, because documents are collected and reviewed systematically rather than chased over email.
             </p>
             <p>
-              The same Orgni Workflows playbook has since been adapted for contractor onboarding - a parallel process with similar friction and similar results.
+              The same Orgni playbook has since been adapted for contractor onboarding - a parallel process with similar friction and similar results.
             </p>
 
             <blockquote>
