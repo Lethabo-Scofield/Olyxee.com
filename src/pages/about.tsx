@@ -21,14 +21,14 @@ const APPROACH = [
     icon: Compass,
     label: "How we ship",
     title: "Earn scope in production",
-    text: "We start with one real workflow on Orgni and prove it under live conditions. Every expansion is earned by results, never promised on a roadmap.",
+    text: "We start with one real problem inside a live operation and prove our work under real conditions. Every expansion is earned by results, never promised on a roadmap.",
     gradient: "/images/gradient-pink-cyan.png",
   },
   {
     icon: ShieldCheck,
     label: "How we build",
-    title: "Context before action",
-    text: "Nothing acts without understanding the business first. Orgni grounds every system in live context, operational memory, and permissions, and records each action so teams stay in control.",
+    title: "Infrastructure before intelligence",
+    text: "We believe systems should understand a business before they act inside it. We build the infrastructure layer first: live context, operational memory, and a clear trail, so teams stay in control.",
     gradient: "/images/gradient-blue.png",
   },
   {
