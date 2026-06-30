@@ -1196,7 +1196,7 @@ function CTASection() {
               Get started with Orgni
             </h2>
             <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-9 max-w-lg mx-auto">
-              Bring Orgni into your organization to turn your knowledge, documents, decisions, processes, and systems into live business context. Orgni gives intelligent systems the operational memory and control to move from AI demos to traceable operations.
+              Turn your knowledge, decisions, and systems into live business context that intelligent systems can understand and operate within.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
