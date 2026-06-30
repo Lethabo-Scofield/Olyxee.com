@@ -41,7 +41,7 @@ function TerminalDemo() {
   const [visibleLines, setVisibleLines] = useState(0);
 
   const lines = [
-    { type: 'cmd', text: '$ ordo execute --goal "Reconcile Q1 financial transactions"' },
+    { type: 'cmd', text: '$ orgni run --context "Reconcile Q1 financial transactions"' },
     { type: 'info', text: '◼ Connecting to systems... ERP + Bank' },
     { type: 'info', text: '◼ Planning execution steps...' },
     { type: 'blank', text: '' },
@@ -80,7 +80,7 @@ function TerminalDemo() {
             <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500/70" />
           </div>
           <div className="flex-1 flex items-center justify-center">
-            <span className="text-[10px] sm:text-[11px] text-neutral-500 font-mono">ordo / execution</span>
+            <span className="text-[10px] sm:text-[11px] text-neutral-500 font-mono">orgni / context</span>
           </div>
         </div>
         <div className="p-3 sm:p-6 font-mono text-[10px] sm:text-[13px] leading-5 sm:leading-6 min-h-[260px] sm:min-h-[340px] overflow-x-auto no-scrollbar">
@@ -117,10 +117,10 @@ function TerminalDemo() {
 function CodePreview() {
   const [copied, setCopied] = useState(false);
 
-  const code = `import ordo
+  const code = `import orgni
 
-result = ordo.execute(
-    goal="Reconcile Q1 financial transactions",
+result = orgni.run(
+    context="Reconcile Q1 financial transactions",
     systems=["erp", "bank"],
     options={
         "auto_resolve": True,
@@ -130,14 +130,14 @@ result = ordo.execute(
 )
 
 if result.complete:
-    ordo.deliver(result)`;
+    orgni.deliver(result)`;
 
   return (
     <div className="relative bg-[#0d1117] rounded-xl sm:rounded-2xl border border-neutral-200 overflow-hidden shadow-lg shadow-neutral-200/30">
       <div className="flex items-center justify-between px-3 sm:px-4 py-2 sm:py-2.5 border-b border-neutral-800 bg-neutral-900">
         <div className="flex items-center gap-2">
           <div className="w-2.5 h-2.5 rounded bg-yellow-500/60" />
-          <span className="text-[10px] sm:text-[11px] text-neutral-500 font-mono">execute.py</span>
+          <span className="text-[10px] sm:text-[11px] text-neutral-500 font-mono">context.py</span>
         </div>
         <button
           onClick={() => { setCopied(true); setTimeout(() => setCopied(false), 2000); }}
@@ -152,7 +152,7 @@ if result.complete:
           highlighted = highlighted.replace(/(import|from|if)/g, '<kw>$1</kw>');
           highlighted = highlighted.replace(/(".*?")/g, '<str>$1</str>');
           highlighted = highlighted.replace(/(\d+\.?\d*)/g, '<num>$1</num>');
-          highlighted = highlighted.replace(/(ordo)/g, '<fn>$1</fn>');
+          highlighted = highlighted.replace(/(orgni)/g, '<fn>$1</fn>');
 
           return (
             <div key={i} className="flex">
@@ -252,9 +252,9 @@ export default function OrdoPage() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="font-serif text-3xl sm:text-5xl lg:text-7xl text-neutral-900 tracking-tight leading-[1.05] mb-6"
           >
-            Turn business goals
+            Live business context
             <br />
-            <span className="text-neutral-400">into completed work</span>
+            <span className="text-neutral-400">for modern operations</span>
           </motion.h1>
 
           <motion.p
@@ -263,7 +263,7 @@ export default function OrdoPage() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="text-base sm:text-xl text-neutral-500 leading-relaxed font-light mb-10 max-w-2xl mx-auto px-2"
           >
-            Describe what needs to be done. Orgni plans, coordinates, and executes across your tools and systems end-to-end.
+            Orgni connects your company's knowledge, decisions, processes, systems, and controls into a living operational context that intelligent systems can understand and operate within.
           </motion.p>
 
           <motion.div
@@ -282,8 +282,8 @@ export default function OrdoPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-3">
             {[
-              "Goal-to-delivery execution",
-              "2 min average completion",
+              "Live business context",
+              "Operational memory",
               "Cross-system integration",
               "ERP · Databases · Excel",
               "Full audit trail",
@@ -318,10 +318,10 @@ export default function OrdoPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="text-center mb-16">
             <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900">
-              Any goal. Any system.
+              Context across every domain.
             </h2>
             <p className="text-neutral-500 mt-4 text-lg font-light max-w-2xl mx-auto">
-              Finance, compliance, HR, operations. Orgni executes it all across your connected systems.
+              Finance, compliance, HR, operations. Orgni gives every part of your business the live context it runs on.
             </p>
           </motion.div>
 
@@ -358,13 +358,13 @@ export default function OrdoPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp}>
               <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900 mb-6">
-                Three lines to execute
+                Three lines to connect
               </h2>
               <p className="text-neutral-500 text-base sm:text-lg font-light leading-relaxed mb-8">
-                Import, describe, execute. Orgni fits into your existing stack with a Python SDK, CLI, and API integrations.
+                Import, connect, query. Orgni fits into your existing stack with a Python SDK, CLI, and API integrations.
               </p>
               <div className="flex flex-wrap gap-3">
-                {['pip install ordo', 'REST API', 'Python SDK'].map((item) => (
+                {['pip install orgni', 'REST API', 'Python SDK'].map((item) => (
                   <span key={item} className="inline-flex items-center px-3 py-1.5 bg-neutral-100 text-neutral-600 rounded-lg text-xs font-mono border border-neutral-200/60">
                     {item}
                   </span>
@@ -467,7 +467,7 @@ export default function OrdoPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="text-center mb-20">
             <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900">
-              Goal to delivery in minutes
+              Grounded in your business context
             </h2>
           </motion.div>
 
@@ -514,13 +514,13 @@ export default function OrdoPage() {
               Why teams choose Orgni
             </h2>
             <p className="text-neutral-500 mt-4 text-base sm:text-lg font-light max-w-2xl mx-auto">
-              Six reasons teams move from manual workflows to AI-driven execution.
+              Six reasons teams build their operations on Orgni.
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { title: "No Manual Workflows", description: "Stop building complex automations. Just describe the goal and Orgni handles the rest.", severity: "Critical" },
+              { title: "Live Business Context", description: "Orgni keeps a living model of how your business actually works, so systems act with real understanding.", severity: "Critical" },
               { title: "Works With Your Systems", description: "Connects to ERP, Excel, databases, payment platforms, and more without custom integrations.", severity: "High" },
               { title: "Reduces Workload", description: "Free your team from repetitive operational tasks that follow the same pattern every time.", severity: "Critical" },
               { title: "Accurate Outputs", description: "Consistent results every time. No human error from manual data entry or copy-paste mistakes.", severity: "High" },
@@ -557,15 +557,15 @@ export default function OrdoPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp}>
             <h2 className="font-serif text-2xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-6">
-              Give it a goal. Get it done.
+              Give your systems the context they need.
             </h2>
             <p className="text-neutral-500 text-sm sm:text-lg max-w-xl mx-auto mb-10 font-light leading-relaxed px-2 sm:px-0">
-              Join the waitlist. Be the first to experience AI-driven execution for your business operations.
+              Join the waitlist. Be the first to build live business context for your operations.
             </p>
             <div className="flex justify-center mb-4">
               <EarlyAccessForm />
             </div>
-            <p className="text-xs text-neutral-400">Join 500+ teams already on the waitlist</p>
+            <p className="text-xs text-neutral-400">Be the first to know when Orgni opens up</p>
           </motion.div>
         </div>
       </section>

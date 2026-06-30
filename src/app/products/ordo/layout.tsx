@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 const description =
-  "Orgni is the operational intelligence platform by Olyxee. Describe a business goal in plain English and Orgni plans, calls the right tools, and ships the completed work, combining live business context with workflow orchestration across Gmail, Stripe, QuickBooks, Salesforce, Notion, Slack and more.";
+  "Orgni is the operational intelligence platform by Olyxee. It connects your company's knowledge, decisions, processes, responsibilities, systems, and controls into a living operational context layer, giving intelligent systems the live business context they need to understand how work actually happens.";
 
 export const metadata: Metadata = {
   title: "Orgni | Operational Intelligence for Business Operations",
@@ -62,12 +62,12 @@ const ordoJsonLd = {
     logo: "https://olyxee.com/Logo/Olyxee_Logo.png",
   },
   featureList: [
-    "Plain-English goal input",
-    "Multi-step planning across tools",
-    "Stateful memory across runs",
-    "Tool integrations: Gmail, Stripe, QuickBooks, Salesforce, Notion, Slack",
-    "Auditable execution traces",
-    "Reasoning powered by GPT-4, Claude and DeepSeek",
+    "Live business context layer",
+    "Operational memory across systems",
+    "Connects knowledge, decisions, processes, and controls",
+    "Cross-system integration: ERP, databases, spreadsheets, business tools",
+    "Auditable, traceable operations",
+    "Model-neutral architecture",
   ],
   offers: {
     "@type": "Offer",
