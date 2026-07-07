@@ -329,7 +329,7 @@ Every deployment runs on Orgni, connecting your context, systems, and decisions 
               One operating layer
             </p>
             <h3 className="font-serif text-2xl sm:text-4xl text-white tracking-tight leading-[1.1] max-w-2xl">
-              Your context, systems, and decisions — running as one.
+              Your context, systems, and decisions, running as one.
             </h3>
             <p className="mt-3 text-sm sm:text-base text-white/80 font-light leading-relaxed max-w-xl">
               Orgni connects financial operations, operational workflows, and business memory so intelligent systems can act with full context.
