@@ -313,15 +313,24 @@ Every deployment runs on Orgni, connecting your context, systems, and decisions 
           transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           className="relative mt-14 sm:mt-20 max-w-5xl mx-auto rounded-3xl overflow-hidden border border-neutral-200/80 shadow-2xl shadow-neutral-300/40"
         >
-          <Image
-            src="/images/products-hero.jpeg"
-            alt="The Orgni platform at the center, connecting financial operations, operational workflows, and business memory into one operating layer, alongside Order Loop."
-            width={1024}
-            height={1024}
-            priority
-            sizes="(max-width: 1024px) 100vw, 1024px"
-            className="w-full h-auto block"
+          <video
+            src="/videos/research-areas.mp4"
+            className="w-full aspect-video object-cover block"
+            autoPlay loop muted playsInline preload="metadata"
+            aria-label="The Orgni platform connecting financial operations, operational workflows, and business memory into one operating layer."
           />
+          <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
+          <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-10 text-left">
+            <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-white/70 mb-3">
+              One operating layer
+            </p>
+            <h3 className="font-serif text-2xl sm:text-4xl text-white tracking-tight leading-[1.1] max-w-2xl">
+              Your context, systems, and decisions — running as one.
+            </h3>
+            <p className="mt-3 text-sm sm:text-base text-white/80 font-light leading-relaxed max-w-xl">
+              Orgni connects financial operations, operational workflows, and business memory so intelligent systems can act with full context.
+            </p>
+          </div>
           <div aria-hidden className="absolute inset-0 rounded-3xl pointer-events-none ring-1 ring-inset ring-black/5" />
         </motion.div>
       </section>
