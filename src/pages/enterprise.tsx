@@ -319,8 +319,12 @@ Every deployment runs on Orgni, connecting your context, systems, and decisions 
             autoPlay loop muted playsInline preload="metadata"
             aria-label="The Orgni platform connecting financial operations, operational workflows, and business memory into one operating layer."
           />
-          <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
-          <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-10 text-left">
+          <div
+            aria-hidden
+            className="absolute bottom-0 left-0 w-[85%] sm:w-[65%] h-[70%] sm:h-[60%] pointer-events-none"
+            style={{ background: "radial-gradient(120% 120% at 0% 100%, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.45) 45%, rgba(0,0,0,0) 75%)" }}
+          />
+          <div className="absolute bottom-0 left-0 max-w-2xl p-6 sm:p-10 text-left">
             <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-white/70 mb-3">
               One operating layer
             </p>
