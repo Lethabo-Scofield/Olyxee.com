@@ -354,19 +354,19 @@ function ResearchAreas() {
                 num: "01",
                 title: "Olyxee Research",
                 desc: "We study how intelligent systems can understand and operate inside real businesses, and the operational context they need to do it reliably.",
-                gradient: "/images/gradient-orange-pink.webp",
+                gradient: "/images/gradient-blue.webp",
               },
               {
                 num: "02",
                 title: "Infrastructure",
                 desc: "We build the live business context, operational memory, and decision history infrastructure that lets intelligent systems operate across business systems.",
-                gradient: "/images/gradient-orange-purple.webp",
+                gradient: "/images/gradient-blue-pink.webp",
               },
               {
                 num: "03",
                 title: "Intelligent operations",
                 desc: "Orgni turns this infrastructure into live business context for financial operations, operational workflows, and business memory, while Order Loop keeps customers in the loop.",
-                gradient: "/images/gradient-yellow-green.webp",
+                gradient: "/images/gradient-abstract-blue.webp",
               },
             ].map((step, idx) => (
               <motion.div
