@@ -296,7 +296,7 @@ Every deployment runs on Orgni, connecting your context, systems, and decisions 
       </section>
 
       {/* === ENGAGEMENT MODEL / PRICING === */}
-      <section id="engagement" className="px-4 sm:px-6 py-20 sm:py-28 lg:py-32 bg-neutral-50/70 border-t border-neutral-200/70">
+      <section id="engagement" className="px-4 sm:px-6 py-20 sm:py-28 lg:py-32 bg-[#f5f5f7] border-t border-neutral-200/70">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial="hidden"
@@ -304,7 +304,7 @@ Every deployment runs on Orgni, connecting your context, systems, and decisions 
             viewport={{ once: true, amount: 0.3 }}
             custom={0}
             variants={fadeUp}
-            className="max-w-3xl mb-12 sm:mb-16"
+            className="max-w-2xl mx-auto text-center mb-12 sm:mb-16"
           >
             <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
               Engagement model
@@ -315,96 +315,86 @@ Every deployment runs on Orgni, connecting your context, systems, and decisions 
                 build with us.
               </em>
             </h2>
-            <p className="mt-5 text-base sm:text-lg text-neutral-600 leading-relaxed">
-              We deliver systems and infrastructure, not packaged SaaS. Every engagement scales with how complex your operations are and how deep the systems need to go.
+            <p className="mt-5 text-base sm:text-lg text-neutral-500 font-light leading-relaxed">
+              We deliver systems and infrastructure, not packaged SaaS. Pick the depth that matches your operations.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
             {PRICING_TIERS.map((tier, idx) => (
               <motion.article
                 key={tier.name}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.25 }}
+                viewport={{ once: true, amount: 0.2 }}
                 custom={idx}
                 variants={fadeUp}
-                className={`relative rounded-3xl p-7 sm:p-9 flex flex-col h-full ${
+                className={`relative rounded-[1.75rem] bg-white flex flex-col h-full overflow-hidden transition-shadow ${
                   tier.emphasis
-                    ? "bg-neutral-900 text-white ring-1 ring-neutral-900 shadow-xl shadow-neutral-900/15"
-                    : "bg-white ring-1 ring-neutral-200"
+                    ? "shadow-xl shadow-neutral-900/10 ring-2 ring-neutral-900 md:-translate-y-3"
+                    : "shadow-sm shadow-neutral-900/5 ring-1 ring-black/5"
                 }`}
               >
                 {tier.emphasis && (
-                  <span className="absolute -top-3 left-7 sm:left-9 inline-flex px-2.5 py-1 rounded-full bg-white text-neutral-900 text-[10px] font-mono uppercase tracking-[0.22em] ring-1 ring-neutral-200">
+                  <div className="bg-neutral-900 text-white text-center text-[11px] font-medium tracking-[0.14em] uppercase py-2">
                     Most common
-                  </span>
+                  </div>
                 )}
-                <p
-                  className={`text-[10px] font-mono uppercase tracking-[0.22em] mb-4 ${
-                    tier.emphasis ? "text-white/55" : "text-neutral-400"
-                  }`}
-                >
-                  Tier 0{idx + 1}
-                </p>
-                <h3
-                  className={`text-xl sm:text-2xl tracking-[-0.015em] font-medium mb-2 leading-snug ${
-                    tier.emphasis ? "text-white" : "text-neutral-900"
-                  }`}
-                >
-                  {tier.name}
-                </h3>
-                <p
-                  className={`text-sm leading-relaxed mb-4 ${
-                    tier.emphasis ? "text-white/75" : "text-neutral-600"
-                  }`}
-                >
-                  {tier.audience}.
-                </p>
-                <p
-                  className={`text-[15px] leading-relaxed mb-7 ${
-                    tier.emphasis ? "text-white/90" : "text-neutral-700"
-                  }`}
-                >
-                  {tier.description}
-                </p>
-                <p
-                  className={`text-[10px] font-mono uppercase tracking-[0.22em] mb-4 ${
-                    tier.emphasis ? "text-white/55" : "text-neutral-400"
-                  }`}
-                >
-                  What&apos;s included
-                </p>
-                <ul className="space-y-3 mb-8">
-                  {tier.includes.map((item) => (
-                    <li
-                      key={item}
-                      className={`flex items-start gap-3 text-[15px] leading-snug ${
-                        tier.emphasis ? "text-white/90" : "text-neutral-700"
-                      }`}
-                    >
-                      <Check
-                        className={`w-3.5 h-3.5 mt-1 shrink-0 ${
-                          tier.emphasis ? "text-white/60" : "text-neutral-400"
-                        }`}
-                        strokeWidth={2}
-                      />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <button
-                  type="button"
-                  onClick={() => setOpenTier(tier.name)}
-                  className={`mt-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full text-sm font-medium tracking-wide transition-colors ${
-                    tier.emphasis
-                      ? "bg-white text-neutral-900 hover:bg-neutral-100"
-                      : "bg-neutral-900 text-white hover:bg-neutral-800"
-                  }`}
-                >
-                  Discuss this tier
-                  <ArrowRight className="w-4 h-4" />
-                </button>
+
+                <div className="p-6 sm:p-7 pb-5">
+                  <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-neutral-400 mb-2.5">
+                    Tier {idx + 1} of 3
+                  </p>
+                  <h3 className="text-[22px] sm:text-2xl tracking-[-0.02em] font-semibold text-neutral-900 leading-snug mb-2">
+                    {tier.name}
+                  </h3>
+                  <p className="text-[15px] text-neutral-500 leading-relaxed">
+                    {tier.description}
+                  </p>
+                </div>
+
+                <div className="px-6 sm:px-7">
+                  <div className="rounded-2xl bg-[#f5f5f7] px-4 py-3.5 flex items-start gap-3">
+                    <span className="mt-0.5 inline-flex w-6 h-6 shrink-0 items-center justify-center rounded-full bg-neutral-900 text-white text-[11px] font-semibold">
+                      {idx + 1}
+                    </span>
+                    <p className="text-[13px] text-neutral-600 leading-snug">
+                      <span className="font-semibold text-neutral-900">Best for:</span>{" "}
+                      {tier.audience.replace(/^For /, "")}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-6 sm:p-7 pt-5 flex flex-col flex-1">
+                  <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-neutral-400 mb-3">
+                    What&apos;s included
+                  </p>
+                  <ul className="rounded-2xl ring-1 ring-black/5 divide-y divide-neutral-200/70 overflow-hidden mb-7">
+                    {tier.includes.map((item) => (
+                      <li
+                        key={item}
+                        className="flex items-center gap-3 px-4 py-3 text-[14px] text-neutral-800 leading-snug bg-white"
+                      >
+                        <span className="inline-flex w-5 h-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/10">
+                          <Check className="w-3 h-3 text-emerald-600" strokeWidth={2.5} />
+                        </span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <button
+                    type="button"
+                    onClick={() => setOpenTier(tier.name)}
+                    className={`mt-auto inline-flex w-full items-center justify-center gap-2 px-5 py-3.5 rounded-2xl text-[15px] font-semibold tracking-tight transition-all active:scale-[0.98] ${
+                      tier.emphasis
+                        ? "bg-neutral-900 text-white hover:bg-neutral-800"
+                        : "bg-[#f5f5f7] text-neutral-900 hover:bg-neutral-200/70"
+                    }`}
+                  >
+                    Discuss this tier
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
               </motion.article>
             ))}
           </div>
