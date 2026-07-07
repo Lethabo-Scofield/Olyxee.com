@@ -38,3 +38,7 @@ build = ["npm", "run", "build"]
 [userenv]
 
 [userenv.shared]
+
+[[ports]]
+localPort = 5000
+externalPort = 80
