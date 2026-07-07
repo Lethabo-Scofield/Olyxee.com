@@ -7,7 +7,7 @@ import EnterpriseTierModal from "../components/EnterpriseTierModal";
 import TalkToEnterprise from "../components/EnterpriseContactModal";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, Wallet, Workflow, Truck, Brain, Check } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -17,50 +17,6 @@ const fadeUp = {
     transition: { duration: 0.7, delay: i * 0.08, ease: [0.25, 0.46, 0.45, 0.94] },
   }),
 };
-
-type SolutionCategory = {
-  icon: typeof Workflow;
-  name: string;
-  tagline: string;
-  capabilities: string[];
-  poweredBy: string[];
-  bgImage: string;
-};
-
-const SOLUTION_CATEGORIES: SolutionCategory[] = [
-  {
-    icon: Wallet,
-    name: "Financial Operations",
-    tagline: "Reconciliation, integrity, and audit intelligence.",
-    capabilities: ["Reconciliation", "Integrity systems", "Validation", "Audit intelligence"],
-    poweredBy: ["Orgni · Financial operations"],
-    bgImage: "/images/gradient-blue-pink.png",
-  },
-  {
-    icon: Workflow,
-    name: "Operational Workflows",
-    tagline: "Execution, approvals, and system coordination.",
-    capabilities: ["Workflow execution", "Approvals", "Operational coordination", "System integrations"],
-    poweredBy: ["Orgni · Operational workflows"],
-    bgImage: "/images/gradient-orange-pink.png",
-  },
-  {
-    icon: Truck,
-    name: "Logistics & Delivery Operations",
-    tagline: "Dispatch, routing, and delivery intelligence.",
-    capabilities: ["Dispatch systems", "Operational coordination", "Delivery intelligence", "Workflow automation"],
-    poweredBy: ["Order Loop"],
-    bgImage: "/images/gradient-yellow-green.png",
-  },
-  {
-    icon: Brain,
-    name: "Organizational Intelligence",
-    tagline: "Memory, context, and persistent cognition.",
-    capabilities: ["Memory systems", "Contextual reasoning", "Operational cognition", "Long-running workflows"],
-    poweredBy: ["Orgni · Business memory"],
-    bgImage: "/images/gradient-purple.png",
-  },
-];
 
 type PricingTier = {
   name: string;
@@ -294,7 +250,7 @@ Every deployment runs on Orgni, connecting your context, systems, and decisions 
             className="mt-10 flex flex-col sm:flex-row gap-3 justify-center"
           >
             <a
-              href="#solutions"
+              href="#engagement"
               className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide shadow-lg shadow-neutral-900/10"
             >
               Explore Solutions
@@ -337,92 +293,6 @@ Every deployment runs on Orgni, connecting your context, systems, and decisions 
           </div>
           <div aria-hidden className="absolute inset-0 rounded-3xl pointer-events-none ring-1 ring-inset ring-black/5" />
         </motion.div>
-      </section>
-
-      {/* === SOLUTION CATEGORIES === */}
-      <section id="solutions" className="px-4 sm:px-6 py-20 sm:py-28 lg:py-32 border-t border-neutral-200/70 scroll-mt-24">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            custom={0}
-            variants={fadeUp}
-            className="max-w-3xl mb-12 sm:mb-16"
-          >
-            <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
-              What we build
-            </p>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-tight leading-[1.05]">
-              Solutions for{" "}
-              <em className="text-neutral-500 not-italic">
-                operational teams.
-              </em>
-            </h2>
-            <p className="mt-5 text-base sm:text-lg text-neutral-500 font-light leading-relaxed">
-              Four core problem spaces where we deploy on the Orgni platform, each one powered by Orgni capabilities, with Order Loop for customer communication.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
-            {SOLUTION_CATEGORIES.map((cat, idx) => {
-              const Icon = cat.icon;
-              return (
-                <motion.article
-                  key={cat.name}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.25 }}
-                  custom={idx}
-                  variants={fadeUp}
-                  className="group relative overflow-hidden rounded-3xl ring-1 ring-neutral-200 hover:ring-neutral-300 hover:shadow-sm transition-all p-7 sm:p-9 flex flex-col isolate"
-                >
-                  <Image
-                    src={cat.bgImage}
-                    alt=""
-                    fill
-                    sizes="(max-width: 640px) 100vw, 50vw"
-                    aria-hidden
-                    className="absolute inset-0 -z-10 object-cover"
-                  />
-                  <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-b from-white/10 via-white/55 to-white/90" />
-                  <div className="w-11 h-11 rounded-xl bg-white/90 backdrop-blur-sm ring-1 ring-white/80 flex items-center justify-center mb-6 shadow-sm">
-                    <Icon className="w-5 h-5 text-neutral-900" strokeWidth={1.75} />
-                  </div>
-                  <h3 className="text-xl sm:text-2xl text-neutral-950 tracking-[-0.015em] font-semibold mb-2 leading-snug">
-                    {cat.name}
-                  </h3>
-                  <p className="text-[13px] sm:text-sm text-neutral-800 font-normal leading-relaxed mb-5">
-                    {cat.tagline}
-                  </p>
-                  <ul className="space-y-1.5 mb-6">
-                    {cat.capabilities.map((c) => (
-                      <li key={c} className="flex items-baseline gap-2.5 text-[13px] text-neutral-800 font-normal">
-                        <span aria-hidden className="inline-block w-1 h-1 rounded-full bg-neutral-700 translate-y-[-2px]" />
-                        {c}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="mt-auto pt-5 border-t border-neutral-900/10 flex items-center gap-3">
-                    <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-700 font-semibold">
-                      Powered by
-                    </span>
-                    <div className="flex flex-wrap gap-1.5">
-                      {cat.poweredBy.map((p) => (
-                        <span
-                          key={p}
-                          className="inline-flex items-center px-2.5 py-1 rounded-full bg-neutral-900 text-white text-[11px] font-medium tracking-tight"
-                        >
-                          {p}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </motion.article>
-              );
-            })}
-          </div>
-        </div>
       </section>
 
       {/* === ENGAGEMENT MODEL / PRICING === */}
