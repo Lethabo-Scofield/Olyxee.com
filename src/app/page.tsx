@@ -185,7 +185,7 @@ function HeroSection() {
       >
         <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-neutral-200/80 shadow-2xl shadow-neutral-300/40">
           <video
-            src="/videos/demo.mp4"
+            src="/videos/hero.mp4"
             className="w-full aspect-video object-cover"
             autoPlay loop muted playsInline preload="metadata"
           />
