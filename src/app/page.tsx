@@ -354,19 +354,19 @@ function ResearchAreas() {
                 num: "01",
                 title: "Olyxee Research",
                 desc: "We study how intelligent systems can understand and operate inside real businesses, and the operational context they need to do it reliably.",
-                gradient: "/images/gradient-blue.webp",
+                gradient: "/images/what-we-do-research.png",
               },
               {
                 num: "02",
                 title: "Infrastructure",
                 desc: "We build the live business context, operational memory, and decision history infrastructure that lets intelligent systems operate across business systems.",
-                gradient: "/images/gradient-blue-pink.webp",
+                gradient: "/images/what-we-do-infrastructure.png",
               },
               {
                 num: "03",
                 title: "Intelligent operations",
                 desc: "Orgni turns this infrastructure into live business context for financial operations, operational workflows, and business memory, while Order Loop keeps customers in the loop.",
-                gradient: "/images/gradient-abstract-blue.webp",
+                gradient: "/images/what-we-do-operations.png",
               },
             ].map((step, idx) => (
               <motion.div
@@ -378,13 +378,13 @@ function ResearchAreas() {
                 className="group relative rounded-2xl overflow-hidden cursor-default"
               >
                 <div className="absolute inset-0">
-                  <Image src={step.gradient} alt="" fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" />
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/95 via-white/80 to-white/55 group-hover:from-white/92 group-hover:via-white/74 group-hover:to-white/45 transition-colors duration-300" />
+                  <Image src={step.gradient} alt="" fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/35 to-black/15 group-hover:from-black/65 group-hover:via-black/30 group-hover:to-black/10 transition-colors duration-300" />
                 </div>
-                <div className="relative p-7 sm:p-8 min-h-[200px] flex flex-col ring-1 ring-inset ring-neutral-900/5 rounded-2xl">
-                  <span className="text-xs font-mono text-neutral-400 mb-4">{step.num}</span>
-                  <h3 className="text-lg sm:text-xl font-semibold text-neutral-900 tracking-tight leading-snug mb-3">{step.title}</h3>
-                  <p className="text-sm text-neutral-600 leading-relaxed">{step.desc}</p>
+                <div className="relative p-7 sm:p-8 min-h-[200px] flex flex-col ring-1 ring-inset ring-white/10 rounded-2xl">
+                  <span className="text-xs font-mono text-white/60 mb-4">{step.num}</span>
+                  <h3 className="text-lg sm:text-xl font-semibold text-white tracking-tight leading-snug mb-3">{step.title}</h3>
+                  <p className="text-sm text-white/80 leading-relaxed">{step.desc}</p>
                 </div>
               </motion.div>
             ))}
