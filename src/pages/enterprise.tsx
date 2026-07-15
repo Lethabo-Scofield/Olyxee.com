@@ -7,7 +7,27 @@ import EnterpriseTierModal from "../components/EnterpriseTierModal";
 import TalkToEnterprise from "../components/EnterpriseContactModal";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import {
+  ArrowRight,
+  Rocket,
+  Settings,
+  Plug,
+  FileText,
+  BarChart3,
+  MessageCircle,
+  Network,
+  Link2,
+  ClipboardCheck,
+  Brain,
+  Globe,
+  Users,
+  Cpu,
+  Bot,
+  Wrench,
+  ShieldCheck,
+  Headset,
+  type LucideIcon,
+} from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -19,7 +39,7 @@ const fadeUp = {
 };
 
 type TierFeature = {
-  emoji: string;
+  icon: LucideIcon;
   text: string;
 };
 
@@ -39,12 +59,12 @@ const PRICING_TIERS: PricingTier[] = [
     description:
       "A simple infrastructure setup to help an organization start using Olyxee for a specific operational need.",
     includes: [
-      { emoji: "🚀", text: "One focused system deployment" },
-      { emoji: "⚙️", text: "Operational workflow execution" },
-      { emoji: "🔌", text: "Standard integrations" },
-      { emoji: "📄", text: "Data and document handling" },
-      { emoji: "📊", text: "Reporting" },
-      { emoji: "💬", text: "Light support" },
+      { icon: Rocket, text: "One focused system deployment" },
+      { icon: Settings, text: "Operational workflow execution" },
+      { icon: Plug, text: "Standard integrations" },
+      { icon: FileText, text: "Data and document handling" },
+      { icon: BarChart3, text: "Reporting" },
+      { icon: MessageCircle, text: "Light support" },
     ],
   },
   {
@@ -54,12 +74,12 @@ const PRICING_TIERS: PricingTier[] = [
       "A deeper deployment that connects workflows, data, documents, approvals, and internal tools into one operating layer.",
     inheritsFrom: "Starter",
     includes: [
-      { emoji: "🏗️", text: "Operational system design" },
-      { emoji: "🔗", text: "API and database integrations" },
-      { emoji: "✅", text: "Business rules and human approval flows" },
-      { emoji: "🧠", text: "Business memory and document integrity" },
-      { emoji: "🌐", text: "Orgni live business context layer" },
-      { emoji: "🤝", text: "Togent access for team and system integration" },
+      { icon: Network, text: "Operational system design" },
+      { icon: Link2, text: "API and database integrations" },
+      { icon: ClipboardCheck, text: "Business rules and human approval flows" },
+      { icon: Brain, text: "Business memory and document integrity" },
+      { icon: Globe, text: "Orgni live business context layer" },
+      { icon: Users, text: "Togent access for team and system integration" },
     ],
     emphasis: true,
   },
@@ -71,11 +91,11 @@ const PRICING_TIERS: PricingTier[] = [
       "A bespoke deployment where Olyxee becomes part of the organization's internal operating infrastructure.",
     inheritsFrom: "Operational",
     includes: [
-      { emoji: "🧬", text: "Custom AI infrastructure deployment" },
-      { emoji: "🤖", text: "Multi-agent and advanced workflows" },
-      { emoji: "🛠️", text: "Custom APIs and integrations" },
-      { emoji: "🛡️", text: "System monitoring and audit trails" },
-      { emoji: "🧑‍💻", text: "Dedicated architecture and infrastructure support" },
+      { icon: Cpu, text: "Custom AI infrastructure deployment" },
+      { icon: Bot, text: "Multi-agent and advanced workflows" },
+      { icon: Wrench, text: "Custom APIs and integrations" },
+      { icon: ShieldCheck, text: "System monitoring and audit trails" },
+      { icon: Headset, text: "Dedicated architecture and infrastructure support" },
     ],
   },
 ];
@@ -376,9 +396,11 @@ Every deployment runs on Orgni, connecting your context, systems, and decisions 
                       key={item.text}
                       className="flex items-start gap-3 text-[14px] text-neutral-800 leading-snug"
                     >
-                      <span aria-hidden className="text-[16px] leading-[1.3] shrink-0">
-                        {item.emoji}
-                      </span>
+                      <item.icon
+                        aria-hidden
+                        className="w-[18px] h-[18px] mt-px shrink-0 text-neutral-500"
+                        strokeWidth={1.75}
+                      />
                       <span>{item.text}</span>
                     </li>
                   ))}
