@@ -7,7 +7,7 @@ import EnterpriseTierModal from "../components/EnterpriseTierModal";
 import TalkToEnterprise from "../components/EnterpriseContactModal";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, Check, Plus } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -18,63 +18,64 @@ const fadeUp = {
   }),
 };
 
+type TierFeature = {
+  emoji: string;
+  text: string;
+};
+
 type PricingTier = {
   name: string;
-  scope: string;
   audience: string;
   description: string;
   inheritsFrom?: string;
-  includes: string[];
+  includes: TierFeature[];
   emphasis?: boolean;
 };
 
 const PRICING_TIERS: PricingTier[] = [
   {
     name: "Starter Infrastructure",
-    scope: "One system",
     audience: "For teams that need one focused system or workflow",
     description:
       "A simple infrastructure setup to help an organization start using Olyxee for a specific operational need.",
     includes: [
-      "One focused system deployment",
-      "Operational workflow execution",
-      "Standard integrations",
-      "Data and document handling",
-      "Reporting",
-      "Light support",
+      { emoji: "🚀", text: "One focused system deployment" },
+      { emoji: "⚙️", text: "Operational workflow execution" },
+      { emoji: "🔌", text: "Standard integrations" },
+      { emoji: "📄", text: "Data and document handling" },
+      { emoji: "📊", text: "Reporting" },
+      { emoji: "💬", text: "Light support" },
     ],
   },
   {
     name: "Operational Infrastructure",
-    scope: "Connected operations",
     audience: "For teams that need connected systems across their operations",
     description:
       "A deeper deployment that connects workflows, data, documents, approvals, and internal tools into one operating layer.",
     inheritsFrom: "Starter",
     includes: [
-      "Operational system design",
-      "API and database integrations",
-      "Business rules and human approval flows",
-      "Business memory and document integrity",
-      "Orgni live business context layer",
-      "Togent access for team and system integration",
+      { emoji: "🏗️", text: "Operational system design" },
+      { emoji: "🔗", text: "API and database integrations" },
+      { emoji: "✅", text: "Business rules and human approval flows" },
+      { emoji: "🧠", text: "Business memory and document integrity" },
+      { emoji: "🌐", text: "Orgni live business context layer" },
+      { emoji: "🤝", text: "Togent access for team and system integration" },
     ],
     emphasis: true,
   },
   {
     name: "Enterprise AI Infrastructure",
-    scope: "Organization-wide",
     audience:
       "For organizations that need custom AI infrastructure across multiple systems, teams, and workflows",
     description:
       "A bespoke deployment where Olyxee becomes part of the organization's internal operating infrastructure.",
     inheritsFrom: "Operational",
     includes: [
-      "Custom AI infrastructure deployment",
-      "Multi-agent and advanced workflows",
-      "Custom APIs and integrations",
-      "System monitoring and audit trails",
-      "Dedicated architecture and infrastructure support",
+      { emoji: "🧬", text: "Custom AI infrastructure deployment" },
+      { emoji: "🤖", text: "Multi-agent and advanced workflows" },
+      { emoji: "🛠️", text: "Custom APIs and integrations" },
+      { emoji: "🛡️", text: "System monitoring and audit trails" },
+      { emoji: "🧑‍💻", text: "Dedicated architecture and infrastructure support" },
     ],
   },
 ];
@@ -327,80 +328,61 @@ Every deployment runs on Orgni, connecting your context, systems, and decisions 
                 viewport={{ once: true, amount: 0.2 }}
                 custom={idx}
                 variants={fadeUp}
-                className={`relative rounded-[1.75rem] bg-white flex flex-col h-full overflow-hidden transition-shadow ${
+                className={`relative rounded-2xl bg-white flex flex-col h-full p-6 sm:p-7 transition-shadow ${
                   tier.emphasis
-                    ? "shadow-xl shadow-neutral-900/10 ring-2 ring-neutral-900 md:-translate-y-3"
-                    : "shadow-sm shadow-neutral-900/5 ring-1 ring-black/5"
+                    ? "ring-2 ring-neutral-900"
+                    : "ring-1 ring-neutral-200"
                 }`}
               >
-                {tier.emphasis && (
-                  <div className="bg-neutral-900 text-white text-center text-[11px] font-medium tracking-[0.14em] uppercase py-2">
-                    Most common
-                  </div>
-                )}
-
-                <div className="p-6 sm:p-7 pb-5">
-                  <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-neutral-400 mb-2.5">
-                    {tier.scope}
-                  </p>
-                  <h3 className="text-[22px] sm:text-2xl tracking-[-0.02em] font-semibold text-neutral-900 leading-snug mb-2">
-                    {tier.name}
+                <div className="flex items-center gap-2.5 mb-2">
+                  <h3 className="text-[26px] sm:text-[28px] tracking-[-0.02em] font-semibold text-neutral-900 leading-snug">
+                    {tier.name.replace(" Infrastructure", "")}
                   </h3>
-                  <p className="text-[15px] text-neutral-500 leading-relaxed">
-                    {tier.description}
-                  </p>
-                </div>
-
-                <div className="px-6 sm:px-7">
-                  <div className="rounded-2xl bg-[#f5f5f7] px-4 py-3.5 flex items-start gap-3">
-                    <span className="mt-0.5 inline-flex w-6 h-6 shrink-0 items-center justify-center rounded-full bg-neutral-900 text-white text-[11px] font-semibold">
-                      {idx + 1}
+                  {tier.emphasis && (
+                    <span className="inline-flex items-center rounded-full bg-neutral-900 text-white text-[11px] font-medium px-2.5 py-1">
+                      Most common
                     </span>
-                    <p className="text-[13px] text-neutral-600 leading-snug">
-                      <span className="font-semibold text-neutral-900">Best for:</span>{" "}
-                      {tier.audience.replace(/^For /, "")}
+                  )}
+                </div>
+                <p className="text-[15px] text-neutral-600 leading-relaxed mb-6">
+                  {tier.audience.replace(/^For teams/, "Best for teams").replace(/^For organizations/, "Best for organizations")}
+                </p>
+
+                <button
+                  type="button"
+                  onClick={() => setOpenTier(tier.name)}
+                  className="inline-flex w-full items-center justify-center gap-2 px-5 py-3 rounded-full text-[15px] font-medium tracking-tight transition-all active:scale-[0.98] bg-neutral-900 text-white hover:bg-neutral-800"
+                >
+                  Discuss this tier
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+
+                <div className="mt-6 pb-4 border-b border-neutral-200">
+                  {tier.inheritsFrom ? (
+                    <p className="flex items-center gap-2.5 text-[14px] font-semibold text-neutral-900">
+                      <span aria-hidden className="text-[15px] leading-none">✦</span>
+                      Everything in {tier.inheritsFrom} and:
                     </p>
-                  </div>
+                  ) : (
+                    <p className="text-[14px] font-semibold text-neutral-900">
+                      {tier.description}
+                    </p>
+                  )}
                 </div>
 
-                <div className="p-6 sm:p-7 pt-5 flex flex-col flex-1">
-                  <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-neutral-400 mb-3">
-                    What&apos;s included
-                  </p>
-                  {tier.inheritsFrom && (
-                    <div className="flex items-center gap-2 mb-3 text-[13px] text-neutral-700">
-                      <span className="inline-flex items-center gap-1.5 rounded-full bg-neutral-900/[0.04] ring-1 ring-black/5 px-3 py-1.5 font-medium">
-                        <Plus className="w-3.5 h-3.5 text-neutral-500" strokeWidth={2.5} />
-                        Everything in {tier.inheritsFrom}, plus
+                <ul className="mt-4 flex flex-col gap-3.5">
+                  {tier.includes.map((item) => (
+                    <li
+                      key={item.text}
+                      className="flex items-start gap-3 text-[14px] text-neutral-800 leading-snug"
+                    >
+                      <span aria-hidden className="text-[16px] leading-[1.3] shrink-0">
+                        {item.emoji}
                       </span>
-                    </div>
-                  )}
-                  <ul className="rounded-2xl ring-1 ring-black/5 divide-y divide-neutral-200/70 overflow-hidden mb-7">
-                    {tier.includes.map((item) => (
-                      <li
-                        key={item}
-                        className="flex items-center gap-3 px-4 py-3 text-[14px] text-neutral-800 leading-snug bg-white"
-                      >
-                        <span className="inline-flex w-5 h-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/10">
-                          <Check className="w-3 h-3 text-emerald-600" strokeWidth={2.5} />
-                        </span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <button
-                    type="button"
-                    onClick={() => setOpenTier(tier.name)}
-                    className={`mt-auto inline-flex w-full items-center justify-center gap-2 px-5 py-3.5 rounded-2xl text-[15px] font-semibold tracking-tight transition-all active:scale-[0.98] ${
-                      tier.emphasis
-                        ? "bg-neutral-900 text-white hover:bg-neutral-800"
-                        : "bg-[#f5f5f7] text-neutral-900 hover:bg-neutral-200/70"
-                    }`}
-                  >
-                    Discuss this tier
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
-                </div>
+                      <span>{item.text}</span>
+                    </li>
+                  ))}
+                </ul>
               </motion.article>
             ))}
           </div>
