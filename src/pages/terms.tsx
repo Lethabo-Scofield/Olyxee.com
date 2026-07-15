@@ -52,7 +52,7 @@ const sections: LegalSection[] = [
   },
   {
     title: "13. Contact",
-    content: "For questions about these Terms of Service, contact us at legal@olyxee.com."
+    content: "For questions about these Terms of Service, contact us at scofield@olyxee.com."
   },
 ];
 
@@ -67,7 +67,7 @@ const Terms: FC = () => (
     intro="These Terms of Service govern your access to and use of websites, products, APIs, and services provided by Olyxee (Pty) Ltd (Registration No. 2026/326516/07), a company incorporated in South Africa and trading as Olyxee, Research and Infrastructure for Artificial Intelligence. Please read them carefully."
     sections={sections}
     downloadFilename="Olyxee_Terms_of_Service.txt"
-    contactEmail="legal@olyxee.com"
+    contactEmail="scofield@olyxee.com"
   />
 );
 

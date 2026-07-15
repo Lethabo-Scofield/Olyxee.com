@@ -16,7 +16,7 @@ const sections: LegalSection[] = [
   },
   {
     title: "4. Data Processing Agreements",
-    content: "A Data Processing Agreement (DPA) is available for customers acting as data controllers. Our DPA incorporates the EU SCCs and addresses obligations under GDPR, UK GDPR, and other applicable laws. Contact compliance@olyxee.com to request the current DPA."
+    content: "A Data Processing Agreement (DPA) is available for customers acting as data controllers. Our DPA incorporates the EU SCCs and addresses obligations under GDPR, UK GDPR, and other applicable laws. Contact scofield@olyxee.com to request the current DPA."
   },
   {
     title: "5. Subprocessors",
@@ -36,7 +36,7 @@ const sections: LegalSection[] = [
   },
   {
     title: "9. Contact",
-    content: "For compliance inquiries, including DPAs, security reviews, and audit support, contact compliance@olyxee.com."
+    content: "For compliance inquiries, including DPAs, security reviews, and audit support, contact scofield@olyxee.com."
   },
 ];
 
@@ -51,7 +51,7 @@ const Compliance: FC = () => (
     intro="An overview of Olyxee's compliance program, the frameworks we align with, and how we support customer obligations under applicable law."
     sections={sections}
     downloadFilename="Olyxee_Compliance.txt"
-    contactEmail="compliance@olyxee.com"
+    contactEmail="scofield@olyxee.com"
   />
 );
 

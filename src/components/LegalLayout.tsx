@@ -45,7 +45,7 @@ const LegalLayout: FC<LegalLayoutProps> = ({
   intro,
   sections,
   downloadFilename,
-  contactEmail = "legal@olyxee.com",
+  contactEmail = "scofield@olyxee.com",
 }) => {
   const [activeSection, setActiveSection] = useState<string>(sections[0] ? slugify(sections[0].title) : "");
 

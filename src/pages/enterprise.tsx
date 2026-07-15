@@ -459,8 +459,8 @@ Tell us about your workflows and operating environment, and we will scope the en
               </div>
               <p className="mt-6 text-xs text-neutral-500">
                 Or email us directly at{" "}
-                <a href="mailto:enterprise@olyxee.com" className="text-neutral-900 underline underline-offset-4 hover:no-underline">
-                  enterprise@olyxee.com
+                <a href="mailto:scofield@olyxee.com" className="text-neutral-900 underline underline-offset-4 hover:no-underline">
+                  scofield@olyxee.com
                 </a>
                 .
               </p>
