@@ -7,7 +7,7 @@ import EnterpriseTierModal from "../components/EnterpriseTierModal";
 import TalkToEnterprise from "../components/EnterpriseContactModal";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, Plus } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -20,8 +20,10 @@ const fadeUp = {
 
 type PricingTier = {
   name: string;
+  scope: string;
   audience: string;
   description: string;
+  inheritsFrom?: string;
   includes: string[];
   emphasis?: boolean;
 };
@@ -29,6 +31,7 @@ type PricingTier = {
 const PRICING_TIERS: PricingTier[] = [
   {
     name: "Starter Infrastructure",
+    scope: "One system",
     audience: "For teams that need one focused system or workflow",
     description:
       "A simple infrastructure setup to help an organization start using Olyxee for a specific operational need.",
@@ -39,44 +42,39 @@ const PRICING_TIERS: PricingTier[] = [
       "Data and document handling",
       "Reporting",
       "Light support",
-      "Access to selected Olyxee tools where needed",
     ],
   },
   {
     name: "Operational Infrastructure",
+    scope: "Connected operations",
     audience: "For teams that need connected systems across their operations",
     description:
-      "A deeper infrastructure deployment that connects workflows, data, documents, approvals, business rules, and internal tools into one operating layer.",
+      "A deeper deployment that connects workflows, data, documents, approvals, and internal tools into one operating layer.",
+    inheritsFrom: "Starter",
     includes: [
       "Operational system design",
-      "Workflow execution",
       "API and database integrations",
-      "Business rules",
-      "Human approval flows",
-      "Business memory and document integrity capabilities",
+      "Business rules and human approval flows",
+      "Business memory and document integrity",
       "Orgni live business context layer",
       "Togent access for team and system integration",
-      "Support",
     ],
     emphasis: true,
   },
   {
     name: "Enterprise AI Infrastructure",
+    scope: "Organization-wide",
     audience:
       "For organizations that need custom AI infrastructure across multiple systems, teams, and workflows",
     description:
       "A bespoke deployment where Olyxee becomes part of the organization's internal operating infrastructure.",
+    inheritsFrom: "Operational",
     includes: [
       "Custom AI infrastructure deployment",
-      "Orgni live business context systems",
-      "Business memory and document integrity systems",
-      "Multi-agent workflows",
-      "Advanced workflow execution",
+      "Multi-agent and advanced workflows",
       "Custom APIs and integrations",
       "System monitoring and audit trails",
-      "Dedicated architecture support",
-      "Dedicated infrastructure support",
-      "Access to Olyxee tools based on deployment scope",
+      "Dedicated architecture and infrastructure support",
     ],
   },
 ];
@@ -343,7 +341,7 @@ Every deployment runs on Orgni, connecting your context, systems, and decisions 
 
                 <div className="p-6 sm:p-7 pb-5">
                   <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-neutral-400 mb-2.5">
-                    Tier {idx + 1} of 3
+                    {tier.scope}
                   </p>
                   <h3 className="text-[22px] sm:text-2xl tracking-[-0.02em] font-semibold text-neutral-900 leading-snug mb-2">
                     {tier.name}
@@ -369,6 +367,14 @@ Every deployment runs on Orgni, connecting your context, systems, and decisions 
                   <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-neutral-400 mb-3">
                     What&apos;s included
                   </p>
+                  {tier.inheritsFrom && (
+                    <div className="flex items-center gap-2 mb-3 text-[13px] text-neutral-700">
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-neutral-900/[0.04] ring-1 ring-black/5 px-3 py-1.5 font-medium">
+                        <Plus className="w-3.5 h-3.5 text-neutral-500" strokeWidth={2.5} />
+                        Everything in {tier.inheritsFrom}, plus
+                      </span>
+                    </div>
+                  )}
                   <ul className="rounded-2xl ring-1 ring-black/5 divide-y divide-neutral-200/70 overflow-hidden mb-7">
                     {tier.includes.map((item) => (
                       <li
