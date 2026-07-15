@@ -403,6 +403,48 @@ export const roles: Role[] = [
     ],
   },
   {
+    slug: "cybersecurity-intern",
+    title: "Cybersecurity Intern",
+    team: "Security",
+    location: REMOTE,
+    type: "internship",
+    description:
+      "Help protect Olyxee's products, infrastructure, and customer data. Work alongside the engineering team on application security, security reviews, and hardening across Orgni and Order Loop.",
+    responsibilities: [
+      "Help review code and features for security issues before they ship",
+      "Contribute to vulnerability scanning, dependency audits, and remediation",
+      "Help harden authentication, access control, and secrets handling across services",
+      "Assist with security documentation, threat models, and incident runbooks",
+    ],
+    requirements: [
+      "Solid fundamentals in web security (OWASP Top 10, authentication, encryption)",
+      "Some hands-on experience (CTFs, labs, coursework, bug bounties, or personal projects)",
+      "Familiarity with at least one language such as Python, TypeScript, or Go",
+      "Currently studying or recently graduated",
+    ],
+  },
+  {
+    slug: "marketing-intern",
+    title: "Marketing Intern",
+    team: "Marketing",
+    location: REMOTE,
+    type: "internship",
+    description:
+      "Help tell the Olyxee story. Support content, social, and launch work that grows the audience for our research and products.",
+    responsibilities: [
+      "Help create content across blog, social, and email",
+      "Support product and research launches with copy, assets, and coordination",
+      "Track performance of campaigns and channels and report what is working",
+      "Help with competitive and audience research",
+    ],
+    requirements: [
+      "Strong writing and communication skills",
+      "Some experience creating content or running social channels (personal or professional)",
+      "Interest in AI, technology, and B2B products",
+      "Currently studying or recently graduated",
+    ],
+  },
+  {
     slug: "product-management-intern",
     title: "Product Management Intern",
     team: "Product & Design",
