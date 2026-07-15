@@ -28,7 +28,7 @@ export default function HomePage() {
     url: "https://olyxee.com",
     logo: "https://olyxee.com/Logo/Olyxee_Logo.png",
     image: "https://olyxee.com/og-image.jpg",
-    description: "Olyxee builds the research and infrastructure behind operational intelligence: the live business context that lets intelligent systems understand and operate inside real businesses. Model-neutral context, operational memory, and decision history infrastructure for intelligent operations.",
+    description: "Olyxee is a research and infrastructure company helping businesses adapt to AI. We study the challenges organisations face when adopting AI, then build the infrastructure required to turn advanced intelligence into reliable organisational capability.",
     sameAs: [
       "https://www.linkedin.com/company/olyxee/",
       "https://twitter.com/olyxee",
@@ -78,7 +78,7 @@ export default function HomePage() {
         name: "What is Olyxee?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Olyxee builds the research and infrastructure behind operational intelligence: the live business context that lets intelligent systems understand and operate inside real businesses. Olyxee gives organizations the operational memory, decision history, and model-neutral infrastructure to move from AI demos to intelligent operations.",
+          text: "Olyxee is a research and infrastructure company helping businesses adapt to AI. We study the challenges organisations face when adopting AI, then build the infrastructure required to turn advanced intelligence into reliable organisational capability. Our work connects organisational knowledge, people, processes, rules, decisions, and systems so AI can operate with meaningful business context.",
         },
       },
       {
@@ -86,7 +86,7 @@ export default function HomePage() {
         name: "What is Orgni?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Orgni builds live business context for modern operations. It connects your company's knowledge, decisions, processes, responsibilities, systems, and controls into a living operational context layer. As intelligent systems become more capable, Orgni gives them the business context they need to understand how work actually happens.",
+          text: "Orgni is Olyxee's core platform, designed to create a living operational model of an organisation. It connects scattered documents, workflows, decisions, roles, rules, and operational signals into structured business context that people and intelligent systems can use.",
         },
       },
       {
@@ -353,19 +353,19 @@ function ResearchAreas() {
               {
                 num: "01",
                 title: "Olyxee Research",
-                desc: "We study how intelligent systems can understand and operate inside real businesses, and the operational context they need to do it reliably.",
+                desc: "We study the challenges businesses face when adopting AI: how knowledge is preserved, how decisions are made, and how humans and intelligent systems operate together.",
                 gradient: "/images/what-we-do-research.png",
               },
               {
                 num: "02",
                 title: "Infrastructure",
-                desc: "We build the live business context, operational memory, and decision history infrastructure that lets intelligent systems operate across business systems.",
+                desc: "We build the infrastructure required to turn advanced intelligence into reliable organisational capability, connecting knowledge, people, processes, rules, decisions, and systems.",
                 gradient: "/images/what-we-do-infrastructure.png",
               },
               {
                 num: "03",
                 title: "Intelligent operations",
-                desc: "Orgni turns this infrastructure into live business context for financial operations, operational workflows, and business memory, while Order Loop keeps customers in the loop.",
+                desc: "Orgni creates a living operational model of your organisation, helping preserve knowledge, coordinate people, systems, and AI agents, and adapt as conditions change, while Order Loop keeps customers in the loop.",
                 gradient: "/images/what-we-do-operations.png",
               },
             ].map((step, idx) => (
@@ -839,7 +839,7 @@ function OrgniSection() {
       index="01"
       heading="Orgni builds live business context for"
       emphasis="modern operations."
-      description="It connects your company's knowledge, decisions, processes, responsibilities, systems, and controls into a living operational context layer. As intelligent systems become more capable, Orgni gives them the business context they need to understand how work actually happens."
+      description="Orgni creates a living operational model of your organisation. It connects scattered documents, workflows, decisions, roles, rules, and operational signals into structured business context that people and intelligent systems can use."
       pills={[
         { label: "Context", icon: Layers },
         { label: "Operational workflows", icon: Workflow },
@@ -1187,7 +1187,7 @@ function CTASection() {
               Get started with Orgni
             </h2>
             <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-9 max-w-lg mx-auto">
-              Turn your knowledge, decisions, and systems into live business context that intelligent systems can understand and operate within.
+              Preserve institutional knowledge, understand how work actually happens, and coordinate people, systems, and AI agents through one living operational model.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center">

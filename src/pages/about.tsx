@@ -64,7 +64,7 @@ const JOURNEY_LAYERS: string[] = [
 const JOURNEY_CLOSE: string[] = [
   "Olyxee\u2019s journey is rooted in a practical lesson from AI engineering: organizations do not only need access to powerful AI models. They need the infrastructure and live business context that makes their operations understandable to intelligent systems.",
   "Founded in Johannesburg, South Africa, Olyxee is building for global infrastructure.",
-  "The company exists to help organizations move from AI experiments to reliable, intelligent operations.",
+  "The company exists to help organizations survive Digital Darwinism: the reality that organisations unable to adapt to technological and societal change risk becoming irrelevant, regardless of their history, size, or previous success. Olyxee is building toward a world where businesses can understand themselves, adapt faster, preserve human agency, and evolve alongside increasingly capable AI.",
 ];
 
 const About: FC = () => {
@@ -74,7 +74,7 @@ const About: FC = () => {
     <div className="min-h-screen bg-white text-neutral-900 relative">
       <SEO
         title="About"
-        description="Olyxee builds the research and infrastructure behind operational intelligence: the live business context that lets intelligent systems understand and operate inside real businesses, so teams move from AI demos to reliable, intelligent operations."
+        description="Olyxee is a research and infrastructure company helping businesses adapt to AI. We study the challenges organisations face when adopting AI, then build the infrastructure required to turn advanced intelligence into reliable organisational capability."
         path="/about"
         keywords={["About Olyxee", "operational intelligence", "AI infrastructure company", "Olyxee Research", "Orgni", "Lethabo Scofield"]}
         jsonLd={{
@@ -88,7 +88,7 @@ const About: FC = () => {
             url: "https://olyxee.com",
             logo: "https://olyxee.com/Logo/Olyxee_Logo.png",
             description:
-              "Olyxee builds the research and infrastructure behind operational intelligence: the live business context that lets intelligent systems understand and operate inside real businesses, with Orgni as the flagship platform at the center.",
+              "Olyxee is a research and infrastructure company helping businesses adapt to AI, with Orgni, its core platform, creating a living operational model of an organisation.",
           },
         }}
       />
@@ -171,10 +171,10 @@ const About: FC = () => {
                 >
                   <div className="col-span-12 sm:col-span-8 lg:col-span-7 lg:pt-6 order-2 sm:order-1">
                     <p className="text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.1] tracking-[-0.02em] font-medium mb-8 text-neutral-900">
-                      A world where intelligent systems do not just answer questions, but <em className="font-serif italic font-normal text-neutral-500">operate</em> with the live business context, memory, rules, and controls needed to move organizations forward.
+                      A future where organisations do not merely use intelligent tools, but <em className="font-serif italic font-normal text-neutral-500">become more intelligent</em> themselves.
                     </p>
                     <p className="text-base sm:text-lg text-neutral-700 leading-relaxed max-w-xl">
-                      Knowledge, documents, decisions, processes, and systems, connected into one living operational context that teams can trust, audit, and direct.
+                      In this future, knowledge is not fragmented across documents and disconnected systems. Processes are not invisible. Decisions are not separated from their context. People and intelligent systems work through a shared operational model that can be understood, governed, audited, and continuously improved.
                     </p>
                   </div>
                 </motion.article>

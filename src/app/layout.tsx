@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     template: "%s | Olyxee",
   },
   description:
-    "Olyxee builds the research and infrastructure behind operational intelligence: the live business context that lets intelligent systems understand and operate inside real businesses. Orgni, our flagship platform, connects knowledge, documents, decisions, processes, and systems into living operational context.",
+    "Olyxee is a research and infrastructure company helping businesses adapt to AI. We study the challenges organisations face when adopting AI, then build the infrastructure required to turn advanced intelligence into reliable organisational capability. Orgni, our core platform, connects scattered documents, workflows, decisions, roles, rules, and operational signals into structured business context.",
   keywords: [
     "Olyxee",
     "operational intelligence",
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
     siteName: "Olyxee",
     title: "Olyxee | Research and Infrastructure for Operational Intelligence",
     description:
-      "Olyxee builds the research and infrastructure behind operational intelligence: the live business context that lets intelligent systems understand and operate inside real businesses.",
+      "Olyxee is a research and infrastructure company helping businesses adapt to AI, turning advanced intelligence into reliable organisational capability.",
     images: [
       {
         url: "/og-image.jpg",
@@ -94,7 +94,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Olyxee | Research and Infrastructure for Operational Intelligence",
     description:
-      "Olyxee builds the research and infrastructure behind operational intelligence: the live business context that lets intelligent systems understand and operate inside real businesses.",
+      "Olyxee is a research and infrastructure company helping businesses adapt to AI, turning advanced intelligence into reliable organisational capability.",
     images: ["/og-image.jpg"],
     creator: "@Olyxee",
   },
@@ -146,7 +146,7 @@ export default function RootLayout({
               slogan: "Research and infrastructure for operational intelligence",
               url: "https://olyxee.com",
               logo: "https://olyxee.com/Logo/Olyxee_Logo.png",
-              description: "Olyxee builds the research and infrastructure behind operational intelligence: the live business context that lets intelligent systems understand and operate inside real businesses. Orgni, our flagship platform, connects knowledge, documents, decisions, processes, and systems into living operational context.",
+              description: "Olyxee is a research and infrastructure company helping businesses adapt to AI. We study the challenges organisations face when adopting AI, then build the infrastructure required to turn advanced intelligence into reliable organisational capability. Orgni, our core platform, creates a living operational model of an organisation.",
               knowsAbout: [
                 "Operational intelligence",
                 "Live business context",
@@ -189,7 +189,7 @@ export default function RootLayout({
               name: "Olyxee",
               alternateName: "Olyxee AI",
               url: "https://olyxee.com",
-              description: "Olyxee builds the research and infrastructure behind operational intelligence: the live business context that lets intelligent systems understand and operate inside real businesses.",
+              description: "Olyxee is a research and infrastructure company helping businesses adapt to AI, turning advanced intelligence into reliable organisational capability.",
               inLanguage: "en",
               publisher: {
                 "@type": "Organization",

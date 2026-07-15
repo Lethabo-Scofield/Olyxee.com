@@ -1,0 +1,52 @@
+# Helping Businesses Adapt to AI
+
+Technology is evolving faster than many organisations can understand, adopt, and integrate it.
+
+This is Digital Darwinism: the reality that organisations unable to adapt to technological and societal change risk becoming irrelevant, regardless of their history, size, or previous success.
+
+Olyxee exists to help businesses adapt.
+
+## Who We Are
+
+Olyxee is a research and infrastructure company focused on helping organisations operate in an increasingly intelligent world.
+
+We study the challenges businesses face when adopting AI, then build the infrastructure required to turn advanced intelligence into reliable organisational capability.
+
+Our work connects organisational knowledge, people, processes, rules, decisions, and systems so that AI can operate with meaningful business context instead of working as an isolated tool.
+
+## What We Believe
+
+AI adoption is not simply about adding a chatbot, automating individual tasks, or purchasing new software.
+
+It requires organisations to rethink how knowledge is preserved, how decisions are made, how work is coordinated, and how humans and intelligent systems operate together.
+
+As AI becomes more capable, organisations will need systems that understand how the business works, remember what has happened, recognise what is changing, and support action without removing human direction and accountability.
+
+## What We Are Building
+
+Olyxee builds research, systems, and infrastructure for operational intelligence.
+
+Our core platform, Orgni, is designed to create a living operational model of an organisation. It connects scattered documents, workflows, decisions, roles, rules, and operational signals into structured business context that people and intelligent systems can use.
+
+This foundation enables organisations to:
+
+* Preserve institutional knowledge
+* Understand how work actually happens
+* Identify operational risks and exceptions
+* Coordinate people, systems, and AI agents
+* Make more informed decisions
+* Adapt continuously as conditions change
+
+## Our Vision
+
+We envision a future where organisations do not merely use intelligent tools, but become more intelligent themselves.
+
+In this future, organisational knowledge is not fragmented across documents and disconnected systems. Processes are not invisible. Decisions are not separated from their context. AI systems do not operate without understanding the organisation they serve.
+
+People and intelligent systems work through a shared operational model that can be understood, governed, audited, and continuously improved.
+
+## Our Mission
+
+Our mission is to help organisations survive Digital Darwinism and build the operational foundations required for the age of advanced intelligence.
+
+We are building toward a world where businesses can understand themselves, adapt faster, preserve human agency, and evolve alongside increasingly capable AI.
