@@ -6,7 +6,7 @@ import Footer from "../components/footer";
 import TalkToEnterprise from "../components/EnterpriseContactModal";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Check, Package, Code2 } from "lucide-react";
+import { ArrowRight, Check, Package, Code2, Copy } from "lucide-react";
 
 const SCREENS = [
   { 
@@ -67,22 +67,99 @@ const PLATFORM_TABS = [
   },
 ] as const;
 
-const API_SNIPPET = [
-  { code: "import olyxee", accent: false },
-  { code: "", accent: false },
-  { code: 'client = olyxee.Client(api_key="OLX_...")', accent: false },
-  { code: "", accent: false },
-  { code: "run = client.workflows.execute(", accent: false },
-  { code: '    workflow="reconcile-invoices",', accent: true },
-  { code: '    context={"period": "2026-Q3"},', accent: true },
-  { code: ")", accent: false },
-  { code: "", accent: false },
-  { code: "print(run.status)  # 'completed'", accent: false },
-];
+const API_PRODUCTS = ["Orgni", "Order Loop"] as const;
+const API_STACKS = ["Terminal", "Python", "JavaScript"] as const;
+
+const API_SNIPPETS: Record<
+  (typeof API_PRODUCTS)[number],
+  Record<(typeof API_STACKS)[number], { file: string; code: string }>
+> = {
+  Orgni: {
+    Terminal: {
+      file: "terminal",
+      code: `curl https://api.olyxee.com/v1/orgni/workflows/execute \\
+  -H "Authorization: Bearer $OLYXEE_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "workflow": "reconcile-invoices",
+    "context": { "period": "2026-Q3" }
+  }'`,
+    },
+    Python: {
+      file: "orgni_workflow.py",
+      code: `import olyxee
+
+client = olyxee.Client(api_key="OLYXEE_API_KEY")
+
+run = client.orgni.workflows.execute(
+    workflow="reconcile-invoices",
+    context={"period": "2026-Q3"},
+)
+
+print(run.status)  # 'completed'`,
+    },
+    JavaScript: {
+      file: "orgniWorkflow.js",
+      code: `import Olyxee from "olyxee";
+
+const client = new Olyxee({ apiKey: process.env.OLYXEE_API_KEY });
+
+const run = await client.orgni.workflows.execute({
+  workflow: "reconcile-invoices",
+  context: { period: "2026-Q3" },
+});
+
+console.log(run.status); // 'completed'`,
+    },
+  },
+  "Order Loop": {
+    Terminal: {
+      file: "terminal",
+      code: `curl https://api.olyxee.com/v1/order-loop/orders/XX38169715GB/track \\
+  -H "Authorization: Bearer $OLYXEE_API_KEY"`,
+    },
+    Python: {
+      file: "track_order.py",
+      code: `import olyxee
+
+client = olyxee.Client(api_key="OLYXEE_API_KEY")
+
+order = client.order_loop.orders.track("XX38169715GB")
+
+print(order.status)     # 'in_transit'
+print(order.eta)        # '2026-07-20'`,
+    },
+    JavaScript: {
+      file: "trackOrder.js",
+      code: `import Olyxee from "olyxee";
+
+const client = new Olyxee({ apiKey: process.env.OLYXEE_API_KEY });
+
+const order = await client.orderLoop.orders.track("XX38169715GB");
+
+console.log(order.status); // 'in_transit'
+console.log(order.eta);    // '2026-07-20'`,
+    },
+  },
+};
 
 const Enterprise: FC = () => {
   const [activeTab, setActiveTab] = useState<(typeof PLATFORM_TABS)[number]["id"]>("orgni");
   const currentTab = PLATFORM_TABS.find((t) => t.id === activeTab)!;
+  const [apiProduct, setApiProduct] = useState<(typeof API_PRODUCTS)[number]>("Orgni");
+  const [apiStack, setApiStack] = useState<(typeof API_STACKS)[number]>("Terminal");
+  const [copied, setCopied] = useState(false);
+  const apiSnippet = API_SNIPPETS[apiProduct][apiStack];
+
+  const copySnippet = async () => {
+    try {
+      await navigator.clipboard.writeText(apiSnippet.code);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Clipboard unavailable; do nothing
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#fafafa] text-[#111] font-sans selection:bg-neutral-200 selection:text-neutral-900 relative">
@@ -330,7 +407,7 @@ const Enterprise: FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className={`relative w-full max-w-5xl mx-auto rounded-[1.5rem] sm:rounded-[2.5rem] overflow-hidden shadow-[0_24px_48px_rgba(0,0,0,0.1)] ${
-            currentTab.image ? "" : "aspect-[16/9] ring-[6px] sm:ring-[10px] ring-white bg-[#0d1117]"
+            currentTab.image ? "" : "ring-[6px] sm:ring-[10px] ring-white bg-[#0d1117]"
           }`}
         >
           {currentTab.image ? (
@@ -343,19 +420,50 @@ const Enterprise: FC = () => {
               className="w-full h-auto"
             />
           ) : (
-            <div className="absolute inset-0 flex flex-col text-left">
-              <div className="flex items-center gap-2 px-6 py-4 border-b border-white/10">
-                <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
-                <span className="w-3 h-3 rounded-full bg-[#febc2e]" />
-                <span className="w-3 h-3 rounded-full bg-[#28c840]" />
-                <span className="ml-4 text-[13px] text-white/40 font-mono">reconcile.py</span>
+            <div className="flex flex-col text-left min-h-[420px]">
+              <div className="flex flex-wrap items-center gap-3 px-4 sm:px-6 py-4 border-b border-white/10">
+                <div className="flex items-center gap-1 bg-white/5 rounded-full p-1">
+                  {API_PRODUCTS.map((p) => (
+                    <button
+                      key={p}
+                      onClick={() => setApiProduct(p)}
+                      className={`px-4 py-1.5 rounded-full text-[13px] font-medium transition-colors ${
+                        apiProduct === p ? "bg-white text-[#111]" : "text-white/60 hover:text-white"
+                      }`}
+                    >
+                      {p}
+                    </button>
+                  ))}
+                </div>
+                <div className="flex items-center gap-1 bg-white/5 rounded-full p-1">
+                  {API_STACKS.map((s) => (
+                    <button
+                      key={s}
+                      onClick={() => setApiStack(s)}
+                      className={`px-4 py-1.5 rounded-full text-[13px] font-medium transition-colors ${
+                        apiStack === s ? "bg-white text-[#111]" : "text-white/60 hover:text-white"
+                      }`}
+                    >
+                      {s}
+                    </button>
+                  ))}
+                </div>
+                <button
+                  onClick={copySnippet}
+                  className="ml-auto inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[13px] font-medium bg-white/10 text-white hover:bg-white/20 transition-colors"
+                >
+                  {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                  {copied ? "Copied" : "Copy"}
+                </button>
               </div>
-              <pre className="flex-1 overflow-hidden px-6 sm:px-10 py-6 sm:py-8 font-mono text-[13px] sm:text-[15px] lg:text-[17px] leading-relaxed">
-                {API_SNIPPET.map((line, i) => (
-                  <div key={i} className={line.accent ? "text-[#a3a3a3]" : "text-[#e6edf3]"}>
-                    {line.code || "\u00A0"}
-                  </div>
-                ))}
+              <div className="flex items-center gap-2 px-6 py-3 border-b border-white/10">
+                <span className="w-3 h-3 rounded-full bg-white/20" />
+                <span className="w-3 h-3 rounded-full bg-white/20" />
+                <span className="w-3 h-3 rounded-full bg-white/20" />
+                <span className="ml-4 text-[13px] text-white/40 font-mono">{apiSnippet.file}</span>
+              </div>
+              <pre className="flex-1 overflow-x-auto px-6 sm:px-10 py-6 sm:py-8 font-mono text-[13px] sm:text-[14px] lg:text-[15px] leading-relaxed text-[#e6edf3] whitespace-pre">
+                {apiSnippet.code}
               </pre>
             </div>
           )}
