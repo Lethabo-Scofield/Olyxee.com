@@ -52,8 +52,8 @@ const PLATFORM_TABS = [
     id: "orgni",
     label: "Orgni",
     desc: "Your organization's operating layer — context, systems, and decisions connected in one place.",
-    image: "/images/enterprise/desktops/dashboard.png",
-    alt: "Orgni dashboard",
+    image: "/images/enterprise/orgni-ontology.png",
+    alt: "Orgni ontology map for Olyxee",
   },
   {
     id: "order-loop",
