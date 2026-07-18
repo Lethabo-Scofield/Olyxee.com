@@ -85,7 +85,7 @@ const Enterprise: FC = () => {
   const currentTab = PLATFORM_TABS.find((t) => t.id === activeTab)!;
 
   return (
-    <div className="min-h-screen bg-[#f7f9fc] text-[#111] font-sans selection:bg-blue-200 selection:text-blue-900 relative">
+    <div className="min-h-screen bg-[#fafafa] text-[#111] font-sans selection:bg-neutral-200 selection:text-neutral-900 relative">
       <SEO
         title="Enterprise Systems"
         description="Olyxee designs enterprise AI systems for workflow execution, operational intelligence, financial integrity, logistics coordination, and persistent organizational cognition."
@@ -118,7 +118,7 @@ const Enterprise: FC = () => {
 
       {/* === HERO === */}
       <section className="relative pt-40 sm:pt-48 pb-12 sm:pb-16 px-4 sm:px-6 overflow-hidden flex flex-col items-center text-center bg-white">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-[#dbeafe]/40 blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-[#e5e5e5]/40 blur-[120px] rounded-full pointer-events-none" />
 
         <div className="relative z-10 max-w-5xl mx-auto flex flex-col items-center">
           <motion.div
@@ -127,7 +127,7 @@ const Enterprise: FC = () => {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
             <h1 className="flex flex-col items-center justify-center text-[2.75rem] sm:text-[4rem] lg:text-[5.5rem] font-medium tracking-tighter leading-[1.05]">
-              <span className="inline-block px-5 py-2 sm:px-8 sm:py-3 mb-4 rounded-[2rem] border-[3px] border-[#bfdbfe] text-[#1e40af] bg-[#eff6ff] lg:whitespace-nowrap">
+              <span className="inline-block px-5 py-2 sm:px-8 sm:py-3 mb-4 rounded-[2rem] border-[3px] border-[#e5e5e5] text-[#111111] bg-[#f5f5f5] lg:whitespace-nowrap">
                 Operational intelligence
               </span>
               <span className="text-[#111]">
@@ -149,7 +149,7 @@ const Enterprise: FC = () => {
             </Link>
             <TalkToEnterprise
               label="Contact sales"
-              className="inline-flex items-center justify-center gap-1.5 whitespace-nowrap text-[#111] font-medium hover:text-[#1e40af] transition-colors text-[15px] w-full sm:w-auto"
+              className="inline-flex items-center justify-center gap-1.5 whitespace-nowrap text-[#111] font-medium hover:text-[#111111] transition-colors text-[15px] w-full sm:w-auto"
             />
           </motion.div>
         </div>
@@ -197,7 +197,7 @@ const Enterprise: FC = () => {
       </section>
 
       {/* === TRUST LOGOS === */}
-      <section className="py-12 border-y border-black/5 bg-[#f7f9fc]">
+      <section className="py-12 border-y border-black/5 bg-[#fafafa]">
         <div className="max-w-6xl mx-auto px-4 flex flex-wrap justify-center items-center gap-12 sm:gap-24 opacity-50 grayscale mix-blend-multiply">
           {LOGOS.map((logo) => (
             <Image
@@ -216,7 +216,7 @@ const Enterprise: FC = () => {
       <section className="py-24 sm:py-36 px-4 sm:px-6 max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <div>
-            <p className="text-[#1e40af] font-medium text-[15px] mb-4">Introducing Orgni</p>
+            <p className="text-[#111111] font-medium text-[15px] mb-4">Introducing Orgni</p>
             <h2 className="text-[2.5rem] sm:text-[3.5rem] font-medium tracking-tighter text-[#111] mb-6 leading-[1.1]">
               Your context, systems, and decisions, running as one.
             </h2>
@@ -230,14 +230,14 @@ const Enterprise: FC = () => {
                 "Persistent organizational cognition and audit trails",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-4 text-[1.05rem] text-[#111]">
-                  <Check className="w-5 h-5 mt-0.5 text-[#1e40af] shrink-0" strokeWidth={2.5} />
+                  <Check className="w-5 h-5 mt-0.5 text-[#111111] shrink-0" strokeWidth={2.5} />
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
             <Link
               href="/solutions"
-              className="inline-flex items-center text-[#1e40af] font-medium hover:underline underline-offset-4 text-[15px]"
+              className="inline-flex items-center text-[#111111] font-medium hover:underline underline-offset-4 text-[15px]"
             >
               Learn more about Orgni <ArrowRight className="ml-1.5 w-4 h-4" />
             </Link>
@@ -270,13 +270,13 @@ const Enterprise: FC = () => {
             ].map((team) => (
               <div
                 key={team.title}
-                className="bg-[#f7f9fc] rounded-[1.5rem] p-8 transition-transform hover:-translate-y-1"
+                className="bg-[#fafafa] rounded-[1.5rem] p-8 transition-transform hover:-translate-y-1"
               >
                 <h3 className="text-[1.25rem] font-medium text-[#111] mb-3">{team.title}</h3>
                 <p className="text-[1rem] text-[#4a5568] leading-relaxed mb-8">{team.desc}</p>
                 <Link
                   href="/solutions"
-                  className="inline-flex items-center text-[#1e40af] font-medium hover:underline underline-offset-4 text-[15px]"
+                  className="inline-flex items-center text-[#111111] font-medium hover:underline underline-offset-4 text-[15px]"
                 >
                   Learn more <ArrowRight className="ml-1 w-4 h-4" />
                 </Link>
@@ -296,7 +296,7 @@ const Enterprise: FC = () => {
         </p>
         <Link
           href="/contact"
-          className="inline-flex items-center text-[#1e40af] font-medium hover:underline underline-offset-4 text-[1.125rem] mb-12"
+          className="inline-flex items-center text-[#111111] font-medium hover:underline underline-offset-4 text-[1.125rem] mb-12"
         >
           Explore detailed pricing <ArrowRight className="ml-1.5 w-4 h-4" />
         </Link>
@@ -347,7 +347,7 @@ const Enterprise: FC = () => {
               </div>
               <pre className="flex-1 overflow-hidden px-6 sm:px-10 py-6 sm:py-8 font-mono text-[13px] sm:text-[15px] lg:text-[17px] leading-relaxed">
                 {API_SNIPPET.map((line, i) => (
-                  <div key={i} className={line.accent ? "text-[#79c0ff]" : "text-[#e6edf3]"}>
+                  <div key={i} className={line.accent ? "text-[#a3a3a3]" : "text-[#e6edf3]"}>
                     {line.code || "\u00A0"}
                   </div>
                 ))}
@@ -375,7 +375,7 @@ const Enterprise: FC = () => {
             >
               <h3 className="text-[1.5rem] font-medium text-[#111] mb-3">{card.title}</h3>
               <p className="text-[1.05rem] text-[#4a5568] leading-relaxed mb-12">{card.desc}</p>
-              <span className="inline-flex items-center text-[#111] font-medium group-hover:text-[#1e40af] transition-colors">
+              <span className="inline-flex items-center text-[#111] font-medium group-hover:text-[#111111] transition-colors">
                 Explore {card.title.toLowerCase()} <ArrowRight className="ml-1 w-4 h-4 transition-transform group-hover:translate-x-0.5" />
               </span>
             </Link>
@@ -397,7 +397,7 @@ const Enterprise: FC = () => {
           </Link>
           <TalkToEnterprise
             label="Contact sales"
-            className="text-[#111] font-medium hover:text-[#1e40af] transition-colors text-[15px] w-full sm:w-auto"
+            className="text-[#111] font-medium hover:text-[#111111] transition-colors text-[15px] w-full sm:w-auto"
           />
         </div>
       </section>
