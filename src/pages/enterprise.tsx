@@ -6,7 +6,7 @@ import Footer from "../components/footer";
 import TalkToEnterprise from "../components/EnterpriseContactModal";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Check, Package, Code2, Copy } from "lucide-react";
+import { ArrowRight, Check, Code2, Copy } from "lucide-react";
 
 const SCREENS = [
   { 
@@ -389,7 +389,13 @@ const Enterprise: FC = () => {
                   className={`w-[18px] h-[18px] object-contain ${activeTab === tab.id ? "" : "grayscale"}`}
                 />
               ) : tab.id === "order-loop" ? (
-                <Package className="w-[18px] h-[18px]" />
+                <Image
+                  src="/Logo/order-loop-mark.png"
+                  alt=""
+                  width={18}
+                  height={18}
+                  className={`w-[18px] h-[18px] object-contain ${activeTab === tab.id ? "" : "grayscale"}`}
+                />
               ) : (
                 <Code2 className="w-[18px] h-[18px]" />
               )}
