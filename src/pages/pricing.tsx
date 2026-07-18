@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState, createContext, useContext } from "react";
 import Image from "next/image";
 import SEO from "../components/SEO";
 import Header from "../components/header";
@@ -10,8 +10,7 @@ import { ArrowRight, Check } from "lucide-react";
 
 type Plan = {
   name: string;
-  price: string;
-  period?: string;
+  price: number | null; // ZAR amount, null = custom pricing
   popular?: boolean;
   desc: string;
   features: string[];
@@ -19,11 +18,39 @@ type Plan = {
   cta: "get-started" | "contact-sales";
 };
 
+const CURRENCIES = {
+  ZAR: { symbol: "R", rate: 1, label: "ZAR" },
+  USD: { symbol: "$", rate: 0.056, label: "USD" },
+  EUR: { symbol: "\u20AC", rate: 0.048, label: "EUR" },
+  GBP: { symbol: "\u00A3", rate: 0.042, label: "GBP" },
+} as const;
+
+type CurrencyCode = keyof typeof CURRENCIES;
+
+const REGION_TO_CURRENCY: Record<string, CurrencyCode> = {
+  US: "USD", CA: "USD", MX: "USD", PH: "USD", SG: "USD", AE: "USD",
+  GB: "GBP", IE: "EUR", DE: "EUR", FR: "EUR", ES: "EUR", IT: "EUR",
+  NL: "EUR", BE: "EUR", AT: "EUR", PT: "EUR", FI: "EUR", GR: "EUR",
+  ZA: "ZAR", NA: "ZAR", BW: "ZAR", LS: "ZAR", SZ: "ZAR", ZW: "ZAR",
+};
+
+const CurrencyContext = createContext<{
+  currency: CurrencyCode;
+  rates: Record<CurrencyCode, number>;
+}>({ currency: "ZAR", rates: { ZAR: 1, USD: 0.056, EUR: 0.048, GBP: 0.042 } });
+
+const formatPrice = (zar: number, currency: CurrencyCode, rates: Record<CurrencyCode, number>) => {
+  const { symbol } = CURRENCIES[currency];
+  if (zar === 0) return `${symbol}0`;
+  const converted = zar * rates[currency];
+  const rounded = currency === "ZAR" ? zar : converted < 20 ? Math.round(converted) : Math.round(converted / 5) * 5;
+  return `${symbol}${rounded}`;
+};
+
 const ORGNI_PLANS: Plan[] = [
   {
     name: "Free",
-    price: "R0",
-    period: "/month",
+    price: 0,
     desc: "For small teams exploring Orgni with one focused operational use case.",
     features: [
       "One workspace",
@@ -37,8 +64,7 @@ const ORGNI_PLANS: Plan[] = [
   },
   {
     name: "Starter",
-    price: "R99",
-    period: "/month",
+    price: 99,
     desc: "For teams beginning to organise business knowledge and workflows.",
     features: [
       "Up to 5 users",
@@ -52,8 +78,7 @@ const ORGNI_PLANS: Plan[] = [
   },
   {
     name: "Business",
-    price: "R999",
-    period: "/month",
+    price: 999,
     popular: true,
     desc: "For businesses connecting Orgni across teams, workflows and systems.",
     features: [
@@ -70,7 +95,7 @@ const ORGNI_PLANS: Plan[] = [
   },
   {
     name: "Enterprise",
-    price: "Custom",
+    price: null,
     desc: "For organisations deploying Orgni across complex or regulated operations.",
     features: [
       "Organisation-wide deployment",
@@ -88,8 +113,7 @@ const ORGNI_PLANS: Plan[] = [
 const ORDER_LOOP_PLANS: Plan[] = [
   {
     name: "Free",
-    price: "R0",
-    period: "/month",
+    price: 0,
     desc: "Get started and keep your first customers in the loop.",
     features: [
       "Up to 50 orders per month",
@@ -102,8 +126,7 @@ const ORDER_LOOP_PLANS: Plan[] = [
   },
   {
     name: "Growth",
-    price: "R99",
-    period: "/month",
+    price: 99,
     popular: true,
     desc: "For growing businesses that need SMS, branding and operational evidence.",
     features: [
@@ -118,8 +141,7 @@ const ORDER_LOOP_PLANS: Plan[] = [
   },
   {
     name: "Scale",
-    price: "R499",
-    period: "/month",
+    price: 499,
     desc: "For businesses managing higher order volumes and connected operations.",
     features: [
       "Up to 1,000 orders per month",
@@ -133,7 +155,7 @@ const ORDER_LOOP_PLANS: Plan[] = [
   },
   {
     name: "Enterprise",
-    price: "Custom",
+    price: null,
     desc: "For businesses with high order volumes, multiple locations or complex communication requirements.",
     features: [
       "Custom order limits",
@@ -147,7 +169,9 @@ const ORDER_LOOP_PLANS: Plan[] = [
   },
 ];
 
-const PlanCard: FC<{ plan: Plan }> = ({ plan }) => (
+const PlanCard: FC<{ plan: Plan }> = ({ plan }) => {
+  const { currency, rates } = useContext(CurrencyContext);
+  return (
   <div
     className={`relative flex flex-col bg-white rounded-[1.5rem] p-8 ring-1 transition-all hover:-translate-y-1 hover:shadow-[0_15px_30px_rgba(0,0,0,0.06)] ${
       plan.popular ? "ring-2 ring-[#111] shadow-[0_10px_30px_rgba(0,0,0,0.08)]" : "ring-black/10"
@@ -160,8 +184,10 @@ const PlanCard: FC<{ plan: Plan }> = ({ plan }) => (
     )}
     <h3 className="text-[1.25rem] font-medium text-[#111] mb-2">{plan.name}</h3>
     <div className="flex items-baseline gap-1 mb-4">
-      <span className="text-[2.25rem] font-medium tracking-tight text-[#111]">{plan.price}</span>
-      {plan.period && <span className="text-[15px] text-[#4a5568]">{plan.period}</span>}
+      <span className="text-[2.25rem] font-medium tracking-tight text-[#111]">
+        {plan.price === null ? "Custom" : formatPrice(plan.price, currency, rates)}
+      </span>
+      {plan.price !== null && <span className="text-[15px] text-[#4a5568]">/month</span>}
     </div>
     <p className="text-[15px] text-[#4a5568] leading-relaxed mb-6">{plan.desc}</p>
     <ul className="space-y-3 mb-8">
@@ -195,7 +221,8 @@ const PlanCard: FC<{ plan: Plan }> = ({ plan }) => (
       )}
     </div>
   </div>
-);
+  );
+};
 
 const ProductSection: FC<{
   logo: string;
@@ -220,6 +247,47 @@ const ProductSection: FC<{
 );
 
 const Pricing: FC = () => {
+  const [currency, setCurrency] = useState<CurrencyCode>("ZAR");
+  const [rates, setRates] = useState<Record<CurrencyCode, number>>({
+    ZAR: 1,
+    USD: CURRENCIES.USD.rate,
+    EUR: CURRENCIES.EUR.rate,
+    GBP: CURRENCIES.GBP.rate,
+  });
+
+  useEffect(() => {
+    // Detect visitor region from browser locale, fall back to timezone
+    let region: string | undefined;
+    const locale = navigator.languages?.[0] || navigator.language;
+    const match = locale?.match(/-([A-Z]{2})\b/);
+    if (match) region = match[1];
+    if (!region) {
+      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+      if (tz.startsWith("America/")) region = "US";
+      else if (tz === "Europe/London") region = "GB";
+      else if (tz.startsWith("Europe/")) region = "DE";
+      else if (tz.startsWith("Africa/Johannesburg")) region = "ZA";
+    }
+    const detected = region ? REGION_TO_CURRENCY[region] : undefined;
+    if (detected) setCurrency(detected);
+    else if (region && !REGION_TO_CURRENCY[region]) setCurrency("USD");
+
+    // Refresh live exchange rates; keep built-in fallbacks if unavailable
+    fetch("https://open.er-api.com/v6/latest/ZAR")
+      .then((r) => r.json())
+      .then((data) => {
+        if (data?.result === "success" && data.rates) {
+          setRates({
+            ZAR: 1,
+            USD: data.rates.USD ?? CURRENCIES.USD.rate,
+            EUR: data.rates.EUR ?? CURRENCIES.EUR.rate,
+            GBP: data.rates.GBP ?? CURRENCIES.GBP.rate,
+          });
+        }
+      })
+      .catch(() => {});
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#fafafa] text-[#111] font-sans selection:bg-neutral-200 selection:text-neutral-900 relative">
       <SEO
@@ -241,12 +309,31 @@ const Pricing: FC = () => {
           <h1 className="text-[2.5rem] sm:text-[4rem] font-medium tracking-tighter leading-[1.05] mb-6">
             Pricing
           </h1>
-          <p className="text-[1.125rem] sm:text-[1.25rem] text-[#4a5568] leading-relaxed">
+          <p className="text-[1.125rem] sm:text-[1.25rem] text-[#4a5568] leading-relaxed mb-8">
             Start free, then scale as your business grows.
           </p>
+          <div className="inline-flex items-center gap-1 bg-[#f5f5f5] rounded-full p-1 ring-1 ring-black/10">
+            {(Object.keys(CURRENCIES) as CurrencyCode[]).map((c) => (
+              <button
+                key={c}
+                onClick={() => setCurrency(c)}
+                className={`px-4 py-1.5 rounded-full text-[13px] font-medium transition-colors ${
+                  currency === c ? "bg-[#111] text-white" : "text-[#4a5568] hover:text-[#111]"
+                }`}
+              >
+                {CURRENCIES[c].symbol} {c}
+              </button>
+            ))}
+          </div>
+          {currency !== "ZAR" && (
+            <p className="mt-4 text-[13px] text-[#4a5568]">
+              Prices are converted from South African Rand (ZAR) at current exchange rates and are approximate. Billing is in ZAR.
+            </p>
+          )}
         </motion.div>
       </section>
 
+      <CurrencyContext.Provider value={{ currency, rates }}>
       <div className="bg-white pb-8">
         <ProductSection
           logo="/Logo/orgni-mark.png"
@@ -266,6 +353,7 @@ const Pricing: FC = () => {
           plans={ORDER_LOOP_PLANS}
         />
       </div>
+      </CurrencyContext.Provider>
 
       {/* === TOGETHER CTA === */}
       <section className="py-24 sm:py-32 px-4 sm:px-6 text-center max-w-4xl mx-auto border-t border-black/5">
