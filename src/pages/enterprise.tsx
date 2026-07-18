@@ -186,7 +186,7 @@ const Enterprise: FC = () => {
 
       {/* === TRUST LOGOS === */}
       <section className="py-12 border-y border-black/5 bg-[#fafafa]">
-        <div className="max-w-6xl mx-auto px-4 flex flex-wrap justify-center items-center gap-12 sm:gap-24 opacity-50 grayscale mix-blend-multiply">
+        <div className="max-w-6xl mx-auto px-4 flex flex-wrap justify-center items-center gap-12 sm:gap-20 opacity-80 grayscale mix-blend-multiply">
           {LOGOS.map((logo) => (
             <Image
               key={logo.alt}
@@ -194,7 +194,7 @@ const Enterprise: FC = () => {
               alt={logo.alt}
               width={logo.w}
               height={logo.h}
-              className="h-6 sm:h-8 w-auto object-contain"
+              className="h-10 sm:h-14 w-auto max-w-[200px] object-contain"
             />
           ))}
         </div>
