@@ -203,8 +203,8 @@ const Enterprise: FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h1 className="flex flex-col items-center justify-center text-[2.75rem] sm:text-[4rem] lg:text-[5.5rem] font-medium tracking-tighter leading-[1.05]">
-              <span className="inline-block px-5 py-2 sm:px-8 sm:py-3 mb-4 rounded-[2rem] border-[3px] border-[#e5e5e5] text-[#111111] bg-[#f5f5f5] lg:whitespace-nowrap">
+            <h1 className="flex flex-col items-center justify-center text-[2rem] min-[420px]:text-[2.5rem] sm:text-[4rem] lg:text-[5.5rem] font-medium tracking-tighter leading-[1.05]">
+              <span className="inline-block px-4 py-2 sm:px-8 sm:py-3 mb-4 rounded-[1.25rem] sm:rounded-[2rem] border-[3px] border-[#e5e5e5] text-[#111111] bg-[#f5f5f5] lg:whitespace-nowrap">
                 Operational intelligence
               </span>
               <span className="text-[#111]">
@@ -263,7 +263,7 @@ const Enterprise: FC = () => {
 
       {/* === TRUST LOGOS === */}
       <section className="py-12 border-y border-black/5 bg-[#fafafa]">
-        <div className="max-w-6xl mx-auto px-4 flex flex-wrap justify-center items-center gap-12 sm:gap-20 opacity-80 grayscale mix-blend-multiply">
+        <div className="max-w-6xl mx-auto px-4 flex flex-wrap justify-center items-center gap-8 sm:gap-20 opacity-80 grayscale mix-blend-multiply">
           {LOGOS.map((logo) => (
             <Image
               key={logo.alt}
@@ -367,14 +367,14 @@ const Enterprise: FC = () => {
         </Link>
 
         {/* Tabs */}
-        <div className="flex items-center justify-center gap-2 mb-6" role="tablist" aria-label="Platform products">
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-6" role="tablist" aria-label="Platform products">
           {PLATFORM_TABS.map((tab) => (
             <button
               key={tab.id}
               role="tab"
               aria-selected={activeTab === tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`inline-flex items-center gap-2 px-5 sm:px-7 py-2.5 rounded-full text-[15px] font-medium transition-colors ${
+              className={`inline-flex items-center gap-2 px-4 sm:px-7 py-2 sm:py-2.5 rounded-full text-[14px] sm:text-[15px] font-medium transition-colors ${
                 activeTab === tab.id
                   ? "bg-[#111] text-white"
                   : "bg-white text-[#4a5568] ring-1 ring-black/10 hover:text-[#111]"
@@ -432,9 +432,10 @@ const Enterprise: FC = () => {
                 <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
                 <span className="w-3 h-3 rounded-full bg-[#febc2e]" />
                 <span className="w-3 h-3 rounded-full bg-[#28c840]" />
-                <span className="flex-1 text-center text-[13px] text-white/40">
+                <span className="flex-1 text-center text-[13px] text-white/40 truncate hidden min-[480px]:block">
                   olyxee@enterprise — {apiSnippet.file}
                 </span>
+                <span className="flex-1 min-[480px]:hidden" />
                 <button
                   onClick={copySnippet}
                   aria-label="Copy code"
@@ -447,7 +448,7 @@ const Enterprise: FC = () => {
 
               {/* Product + stack pickers, terminal-styled */}
               <div className="flex flex-wrap items-center gap-x-6 gap-y-3 px-5 sm:px-8 py-4 border-b border-white/10 text-[13px]">
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   <span className="text-white/40">product:</span>
                   {API_PRODUCTS.map((p) => (
                     <button
@@ -470,7 +471,7 @@ const Enterprise: FC = () => {
                     </button>
                   ))}
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   <span className="text-white/40">run with:</span>
                   {API_STACKS.map((s) => (
                     <button
@@ -522,7 +523,7 @@ const Enterprise: FC = () => {
         <h2 className="text-[2rem] font-medium tracking-tighter text-[#111] mb-10">
           Explore more
         </h2>
-        <div className="grid sm:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
             { title: "Solutions", desc: "Custom deployments for complex organizations.", link: "/solutions", image: "/images/enterprise/explore-solutions.png" },
             { title: "Research", desc: "Discover our frontier models and AI capabilities.", link: "/research", image: "/images/enterprise/explore-research.png" },
