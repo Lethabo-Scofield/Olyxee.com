@@ -333,14 +333,18 @@ const Enterprise: FC = () => {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="relative aspect-[16/9] w-full max-w-5xl mx-auto rounded-[1.5rem] sm:rounded-[2.5rem] overflow-hidden shadow-[0_24px_48px_rgba(0,0,0,0.1)] ring-[6px] sm:ring-[10px] ring-white bg-[#0d1117]"
+          className={`relative w-full max-w-5xl mx-auto rounded-[1.5rem] sm:rounded-[2.5rem] overflow-hidden shadow-[0_24px_48px_rgba(0,0,0,0.1)] ${
+            currentTab.image ? "" : "aspect-[16/9] ring-[6px] sm:ring-[10px] ring-white bg-[#0d1117]"
+          }`}
         >
           {currentTab.image ? (
             <Image
               src={currentTab.image}
               alt={currentTab.alt}
-              fill
-              className="object-cover"
+              width={1600}
+              height={900}
+              sizes="(max-width: 1024px) 100vw, 1024px"
+              className="w-full h-auto"
             />
           ) : (
             <div className="absolute inset-0 flex flex-col text-left">
