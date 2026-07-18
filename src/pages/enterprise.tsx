@@ -47,7 +47,7 @@ const PLATFORM_TABS = [
   {
     id: "orgni",
     label: "Orgni",
-    desc: "Your organization's operating layer — context, systems, and decisions connected in one place.",
+    desc: "Your organization's operating layer: context, systems, and decisions connected in one place.",
     image: "/images/enterprise/orgni-ontology.png",
     alt: "Orgni ontology map for Olyxee",
   },
@@ -433,7 +433,7 @@ const Enterprise: FC = () => {
                 <span className="w-3 h-3 rounded-full bg-[#febc2e]" />
                 <span className="w-3 h-3 rounded-full bg-[#28c840]" />
                 <span className="flex-1 text-center text-[13px] text-white/40 truncate hidden min-[480px]:block">
-                  olyxee@enterprise — {apiSnippet.file}
+                  olyxee@enterprise: {apiSnippet.file}
                 </span>
                 <span className="flex-1 min-[480px]:hidden" />
                 <button
