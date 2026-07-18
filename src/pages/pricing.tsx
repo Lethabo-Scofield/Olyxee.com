@@ -291,9 +291,85 @@ const Pricing: FC = () => {
   return (
     <div className="min-h-screen bg-[#fafafa] text-[#111] font-sans selection:bg-neutral-200 selection:text-neutral-900 relative">
       <SEO
-        title="Pricing"
-        description="Start free, then scale as your business grows. Simple pricing for Orgni and Order Loop."
+        title="Pricing: Orgni & Order Loop Plans"
+        description="Simple, transparent pricing for Orgni operational intelligence and Order Loop delivery communication. Start free, upgrade from R99/month, or talk to sales about enterprise plans."
         path="/pricing"
+        keywords={[
+          "Olyxee pricing",
+          "Orgni pricing",
+          "Order Loop pricing",
+          "operational intelligence software pricing",
+          "business workflow software cost",
+          "order tracking software pricing",
+          "delivery communication platform price",
+          "AI business platform pricing South Africa",
+        ]}
+        jsonLd={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Product",
+            name: "Orgni",
+            description:
+              "Orgni builds a living understanding of your organisation by connecting its workflows, documents, systems and decisions.",
+            brand: { "@type": "Brand", name: "Olyxee" },
+            url: "https://olyxee.com/pricing",
+            offers: ORGNI_PLANS.filter((p) => p.price !== null).map((p) => ({
+              "@type": "Offer",
+              name: `Orgni ${p.name}`,
+              price: p.price,
+              priceCurrency: "ZAR",
+              description: p.desc,
+              url: "https://olyxee.com/pricing",
+            })),
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "Product",
+            name: "Order Loop",
+            description:
+              "Order Loop manages customer communication, tracking and operational evidence for deliveries and collections.",
+            brand: { "@type": "Brand", name: "Olyxee" },
+            url: "https://olyxee.com/pricing",
+            offers: ORDER_LOOP_PLANS.filter((p) => p.price !== null).map((p) => ({
+              "@type": "Offer",
+              name: `Order Loop ${p.name}`,
+              price: p.price,
+              priceCurrency: "ZAR",
+              description: p.desc,
+              url: "https://olyxee.com/pricing",
+            })),
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "Is there a free plan?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes. Both Orgni and Order Loop have free plans: Orgni Free supports one workspace and up to 3 users, and Order Loop Free covers up to 50 orders per month with no-app customer tracking.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "What currency is billing in?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Billing is in South African Rand (ZAR). The pricing page shows approximate conversions to USD, EUR and GBP based on current exchange rates.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Can I use Orgni and Order Loop together?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes. Orgni and Order Loop integrate so order activity, customer communication and delivery evidence connect to the broader operational context of your business.",
+                },
+              },
+            ],
+          },
+        ]}
       />
       <Header />
 
