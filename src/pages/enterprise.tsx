@@ -483,20 +483,31 @@ const Enterprise: FC = () => {
         </h2>
         <div className="grid sm:grid-cols-3 gap-6">
           {[
-            { title: "Solutions", desc: "Custom deployments for complex organizations.", link: "/solutions" },
-            { title: "Research", desc: "Discover our frontier models and AI capabilities.", link: "/research" },
-            { title: "Developers", desc: "Build on top of Olyxee infrastructure.", link: "/developers" },
+            { title: "Solutions", desc: "Custom deployments for complex organizations.", link: "/solutions", image: "/images/enterprise/explore-solutions.png" },
+            { title: "Research", desc: "Discover our frontier models and AI capabilities.", link: "/research", image: "/images/enterprise/explore-research.png" },
+            { title: "Developers", desc: "Build on top of Olyxee infrastructure.", link: "/developers", image: "/images/enterprise/explore-developers.png" },
           ].map((card) => (
             <Link
               key={card.title}
               href={card.link}
-              className="block bg-white shadow-[0_4px_20px_rgba(0,0,0,0.03)] ring-1 ring-black/5 rounded-[1.5rem] p-8 sm:p-10 hover:shadow-[0_15px_30px_rgba(0,0,0,0.06)] hover:-translate-y-1 transition-all group"
+              className="block bg-white shadow-[0_4px_20px_rgba(0,0,0,0.03)] ring-1 ring-black/5 rounded-[1.5rem] overflow-hidden hover:shadow-[0_15px_30px_rgba(0,0,0,0.06)] hover:-translate-y-1 transition-all group"
             >
+              <div className="relative aspect-[4/3] w-full overflow-hidden">
+                <Image
+                  src={card.image}
+                  alt={`${card.title} illustration`}
+                  fill
+                  sizes="(max-width: 640px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                />
+              </div>
+              <div className="p-8 sm:p-10 pt-6 sm:pt-8">
               <h3 className="text-[1.5rem] font-medium text-[#111] mb-3">{card.title}</h3>
               <p className="text-[1.05rem] text-[#4a5568] leading-relaxed mb-12">{card.desc}</p>
               <span className="inline-flex items-center text-[#111] font-medium group-hover:text-[#111111] transition-colors">
                 Explore {card.title.toLowerCase()} <ArrowRight className="ml-1 w-4 h-4 transition-transform group-hover:translate-x-0.5" />
               </span>
+              </div>
             </Link>
           ))}
         </div>
