@@ -179,18 +179,6 @@ const Enterprise: FC = () => {
                 sizes="(max-width: 768px) 50vw, 30vw"
                 className="object-cover"
               />
-              {screen.logo && (
-                <div className="absolute inset-0 bg-white/60 backdrop-blur-[2px] flex items-center justify-center">
-                  <div className="relative w-[60%] h-[30%]">
-                    <Image
-                      src={screen.logo}
-                      alt={`${screen.alt} Logo`}
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-                </div>
-              )}
             </div>
           ))}
         </motion.div>
