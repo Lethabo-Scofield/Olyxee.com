@@ -360,7 +360,7 @@ const Enterprise: FC = () => {
           Deploy Olyxee infrastructure securely across your organization with advanced monitoring, custom integrations, and dedicated operational tools.
         </p>
         <Link
-          href="/contact"
+          href="/pricing"
           className="inline-flex items-center text-[#111111] font-medium hover:underline underline-offset-4 text-[1.125rem] mb-12"
         >
           Explore detailed pricing <ArrowRight className="ml-1.5 w-4 h-4" />

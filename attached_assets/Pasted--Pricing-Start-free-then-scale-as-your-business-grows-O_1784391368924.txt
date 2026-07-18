@@ -1,0 +1,164 @@
+# Pricing
+
+Start free, then scale as your business grows.
+
+## Orgni
+
+### Operational intelligence for your business
+
+Orgni builds a living understanding of your organisation by connecting its workflows, documents, systems and decisions.
+
+#### Free
+
+**R0/month**
+
+For small teams exploring Orgni with one focused operational use case.
+
+* One workspace
+* Up to 3 users
+* Basic document uploads
+* Basic workflow mapping
+* Limited organisational context
+* Standard support
+
+**Get started**
+
+---
+
+#### Starter
+
+**R99/month**
+
+For teams beginning to organise business knowledge and workflows.
+
+* Up to 5 users
+* One business function
+* Document and workflow mapping
+* Organisational memory
+* Basic reporting
+* Standard support
+
+**Get started**
+
+---
+
+#### Business
+
+**R999/month**
+
+**Most popular**
+
+For businesses connecting Orgni across teams, workflows and systems.
+
+* Multiple business functions
+* Up to 20 users
+* Business rules and approval flows
+* Shared organisational context
+* Risk, exception and bottleneck visibility
+* API and database integrations
+* Priority support
+
+Implementation and custom integrations may be quoted separately.
+
+**Get started**
+
+---
+
+#### Enterprise
+
+**Custom pricing**
+
+For organisations deploying Orgni across complex or regulated operations.
+
+* Organisation-wide deployment
+* Custom user and usage limits
+* Advanced governance and permissions
+* Custom APIs and integrations
+* Monitoring and audit trails
+* Dedicated infrastructure support
+* Enterprise service agreements
+
+**Contact sales**
+
+---
+
+## Order Loop
+
+### Keep every customer informed from order to completion
+
+Order Loop manages customer communication, tracking and operational evidence for deliveries and collections.
+
+#### Free
+
+**R0/month**
+
+Get started and keep your first customers in the loop.
+
+* Up to 50 orders per month
+* No-app customer tracking
+* Email updates
+* Basic branding
+* Basic customer self-service
+
+**Get started**
+
+---
+
+#### Growth
+
+**R99/month**
+
+**Most popular**
+
+For growing businesses that need SMS, branding and operational evidence.
+
+* Up to 300 orders per month
+* SMS and email communication
+* Fully branded tracking experience
+* Customer self-service
+* Order and delivery evidence
+* SMS usage billed separately or capped
+
+**Get started**
+
+---
+
+#### Scale
+
+**R499/month**
+
+For businesses managing higher order volumes and connected operations.
+
+* Up to 1,000 orders per month
+* Order Communication API
+* Custom integrations
+* Orgni-powered AI Call Agent
+* Limited AI call minutes included
+* Additional calls and usage billed separately
+
+**Get started**
+
+---
+
+#### Enterprise
+
+**Custom pricing**
+
+For businesses with high order volumes, multiple locations or complex communication requirements.
+
+* Custom order limits
+* Multiple teams and locations
+* Advanced integrations
+* Custom communication workflows
+* Dedicated infrastructure and support
+* Custom AI call usage
+
+**Contact sales**
+
+---
+
+## Use Orgni and Order Loop together
+
+Connect order activity, customer communication and delivery evidence to the broader operational context of your business.
+
+**Contact sales**
