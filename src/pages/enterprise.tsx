@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import Image from "next/image";
 import SEO from "../components/SEO";
 import Header from "../components/header";
@@ -43,7 +43,47 @@ const LOGOS = [
   { src: "/partner-logos/openai.svg", alt: "OpenAI", w: 110, h: 30 },
 ];
 
+const PLATFORM_TABS = [
+  {
+    id: "orgni",
+    label: "Orgni",
+    desc: "Your organization's operating layer — context, systems, and decisions connected in one place.",
+    image: "/images/enterprise/desktops/dashboard.png",
+    alt: "Orgni dashboard",
+  },
+  {
+    id: "order-loop",
+    label: "Order Loop",
+    desc: "Logistics and order coordination that keeps planning, execution, and fulfillment in sync.",
+    image: "/images/enterprise/desktops/teamsync.png",
+    alt: "Order Loop coordination view",
+  },
+  {
+    id: "api",
+    label: "API",
+    desc: "Build on Olyxee infrastructure with a reliability-first API for your own products and workflows.",
+    image: null,
+    alt: "Olyxee API",
+  },
+] as const;
+
+const API_SNIPPET = [
+  { code: "import olyxee", accent: false },
+  { code: "", accent: false },
+  { code: 'client = olyxee.Client(api_key="OLX_...")', accent: false },
+  { code: "", accent: false },
+  { code: "run = client.workflows.execute(", accent: false },
+  { code: '    workflow="reconcile-invoices",', accent: true },
+  { code: '    context={"period": "2026-Q3"},', accent: true },
+  { code: ")", accent: false },
+  { code: "", accent: false },
+  { code: "print(run.status)  # 'completed'", accent: false },
+];
+
 const Enterprise: FC = () => {
+  const [activeTab, setActiveTab] = useState<(typeof PLATFORM_TABS)[number]["id"]>("orgni");
+  const currentTab = PLATFORM_TABS.find((t) => t.id === activeTab)!;
+
   return (
     <div className="min-h-screen bg-[#f7f9fc] text-[#111] font-sans selection:bg-blue-200 selection:text-blue-900 relative">
       <SEO
@@ -256,19 +296,65 @@ const Enterprise: FC = () => {
         </p>
         <Link
           href="/contact"
-          className="inline-flex items-center text-[#1e40af] font-medium hover:underline underline-offset-4 text-[1.125rem] mb-16"
+          className="inline-flex items-center text-[#1e40af] font-medium hover:underline underline-offset-4 text-[1.125rem] mb-12"
         >
           Explore detailed pricing <ArrowRight className="ml-1.5 w-4 h-4" />
         </Link>
 
-        <div className="relative aspect-[16/9] w-full max-w-5xl mx-auto rounded-[1.5rem] sm:rounded-[2.5rem] overflow-hidden shadow-[0_24px_48px_rgba(0,0,0,0.1)] ring-[6px] sm:ring-[10px] ring-white">
-          <Image
-            src="/images/enterprise/desktops/dashboard.png"
-            alt="Platform Dashboard"
-            fill
-            className="object-cover"
-          />
+        {/* Tabs */}
+        <div className="flex items-center justify-center gap-2 mb-6" role="tablist" aria-label="Platform products">
+          {PLATFORM_TABS.map((tab) => (
+            <button
+              key={tab.id}
+              role="tab"
+              aria-selected={activeTab === tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`px-5 sm:px-7 py-2.5 rounded-full text-[15px] font-medium transition-colors ${
+                activeTab === tab.id
+                  ? "bg-[#111] text-white"
+                  : "bg-white text-[#4a5568] ring-1 ring-black/10 hover:text-[#111]"
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
         </div>
+        <p className="text-[1.05rem] text-[#4a5568] max-w-2xl mx-auto leading-relaxed mb-12">
+          {currentTab.desc}
+        </p>
+
+        <motion.div
+          key={activeTab}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="relative aspect-[16/9] w-full max-w-5xl mx-auto rounded-[1.5rem] sm:rounded-[2.5rem] overflow-hidden shadow-[0_24px_48px_rgba(0,0,0,0.1)] ring-[6px] sm:ring-[10px] ring-white bg-[#0d1117]"
+        >
+          {currentTab.image ? (
+            <Image
+              src={currentTab.image}
+              alt={currentTab.alt}
+              fill
+              className="object-cover"
+            />
+          ) : (
+            <div className="absolute inset-0 flex flex-col text-left">
+              <div className="flex items-center gap-2 px-6 py-4 border-b border-white/10">
+                <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
+                <span className="w-3 h-3 rounded-full bg-[#febc2e]" />
+                <span className="w-3 h-3 rounded-full bg-[#28c840]" />
+                <span className="ml-4 text-[13px] text-white/40 font-mono">reconcile.py</span>
+              </div>
+              <pre className="flex-1 overflow-hidden px-6 sm:px-10 py-6 sm:py-8 font-mono text-[13px] sm:text-[15px] lg:text-[17px] leading-relaxed">
+                {API_SNIPPET.map((line, i) => (
+                  <div key={i} className={line.accent ? "text-[#79c0ff]" : "text-[#e6edf3]"}>
+                    {line.code || "\u00A0"}
+                  </div>
+                ))}
+              </pre>
+            </div>
+          )}
+        </motion.div>
       </section>
 
       {/* === EXPLORE MORE === */}
