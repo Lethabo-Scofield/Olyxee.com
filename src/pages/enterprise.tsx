@@ -59,8 +59,8 @@ const PLATFORM_TABS = [
     id: "order-loop",
     label: "Order Loop",
     desc: "Logistics and order coordination that keeps planning, execution, and fulfillment in sync.",
-    image: "/images/enterprise/desktops/teamsync.png",
-    alt: "Order Loop coordination view",
+    image: "/images/enterprise/order-loop-tracking.png",
+    alt: "Order Loop delivery tracking",
   },
   {
     id: "api",
