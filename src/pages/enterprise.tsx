@@ -6,7 +6,7 @@ import Footer from "../components/footer";
 import TalkToEnterprise from "../components/EnterpriseContactModal";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, Package, Code2 } from "lucide-react";
 
 const SCREENS = [
   { 
@@ -301,12 +301,25 @@ const Enterprise: FC = () => {
               role="tab"
               aria-selected={activeTab === tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-5 sm:px-7 py-2.5 rounded-full text-[15px] font-medium transition-colors ${
+              className={`inline-flex items-center gap-2 px-5 sm:px-7 py-2.5 rounded-full text-[15px] font-medium transition-colors ${
                 activeTab === tab.id
                   ? "bg-[#111] text-white"
                   : "bg-white text-[#4a5568] ring-1 ring-black/10 hover:text-[#111]"
               }`}
             >
+              {tab.id === "orgni" ? (
+                <Image
+                  src="/Logo/orgni-mark.png"
+                  alt=""
+                  width={18}
+                  height={18}
+                  className={`w-[18px] h-[18px] object-contain ${activeTab === tab.id ? "" : "grayscale"}`}
+                />
+              ) : tab.id === "order-loop" ? (
+                <Package className="w-[18px] h-[18px]" />
+              ) : (
+                <Code2 className="w-[18px] h-[18px]" />
+              )}
               {tab.label}
             </button>
           ))}
