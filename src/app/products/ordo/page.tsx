@@ -8,10 +8,10 @@ import Header from '../../../components/header';
 import Footer from '../../../components/footer';
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 40 },
   visible: (i: number) => ({
     opacity: 1, y: 0,
-    transition: { duration: 0.6, delay: i * 0.08, ease: [0.25, 0.46, 0.45, 0.94] },
+    transition: { duration: 0.8, delay: i * 0.1, ease: [0.21, 0.47, 0.32, 0.98] },
   }),
 };
 
@@ -72,31 +72,28 @@ function TerminalDemo() {
 
   return (
     <div ref={ref} className="relative">
-      <div className="relative bg-[#0d1117] rounded-xl sm:rounded-2xl border border-neutral-200 shadow-2xl shadow-neutral-200/40 overflow-hidden">
-        <div className="flex items-center gap-2 px-3 sm:px-4 py-2.5 sm:py-3 border-b border-neutral-800 bg-neutral-900">
-          <div className="flex items-center gap-1.5">
-            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500/70" />
-            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500/70" />
-            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500/70" />
-          </div>
-          <div className="flex-1 flex items-center justify-center">
-            <span className="text-[10px] sm:text-[11px] text-neutral-500 font-mono">orgni / context</span>
+      <div className="relative bg-[#0A0A0A] rounded-2xl sm:rounded-[32px] shadow-2xl shadow-black/10 overflow-hidden ring-1 ring-black/5">
+        <div className="flex items-center px-6 py-5 border-b border-white/10 bg-[#0A0A0A]">
+          <div className="flex items-center gap-2.5">
+            <div className="w-3 h-3 rounded-full bg-white/20" />
+            <div className="w-3 h-3 rounded-full bg-white/20" />
+            <div className="w-3 h-3 rounded-full bg-white/20" />
           </div>
         </div>
-        <div className="p-3 sm:p-6 font-mono text-[10px] sm:text-[13px] leading-5 sm:leading-6 min-h-[260px] sm:min-h-[340px] overflow-x-auto no-scrollbar">
+        <div className="p-6 sm:p-10 font-mono text-[13px] sm:text-[14px] leading-relaxed min-h-[380px] sm:min-h-[440px] overflow-x-auto no-scrollbar bg-[#0A0A0A]">
           {lines.slice(0, visibleLines).map((line, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, x: -5 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 2 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.15 }}
               className={
-                line.type === 'cmd' ? 'text-white font-semibold' :
-                line.type === 'pass' ? 'text-green-400' :
-                line.type === 'warn' ? 'text-amber-400' :
-                line.type === 'fail' ? 'text-red-400' :
-                line.type === 'header' ? 'text-neutral-300 font-bold tracking-wider text-[11px]' :
-                line.type === 'success' ? 'text-green-400 font-bold' :
+                line.type === 'cmd' ? 'text-white font-medium mb-5' :
+                line.type === 'pass' ? 'text-neutral-300' :
+                line.type === 'warn' ? 'text-neutral-400' :
+                line.type === 'fail' ? 'text-neutral-400' :
+                line.type === 'header' ? 'text-white font-medium tracking-wide text-xs mb-3 mt-5' :
+                line.type === 'success' ? 'text-white font-medium mt-3' :
                 line.type === 'result' ? 'text-neutral-500' :
                 line.type === 'info' ? 'text-neutral-400' :
                 'text-transparent select-none'
@@ -106,7 +103,7 @@ function TerminalDemo() {
             </motion.div>
           ))}
           {visibleLines < lines.length && isInView && (
-            <span className="inline-block w-2 h-4 bg-white/60 animate-pulse ml-0.5" />
+            <span className="inline-block w-2.5 h-4.5 bg-white/40 animate-pulse ml-1 align-middle" />
           )}
         </div>
       </div>
@@ -133,36 +130,35 @@ if result.complete:
     orgni.deliver(result)`;
 
   return (
-    <div className="relative bg-[#0d1117] rounded-xl sm:rounded-2xl border border-neutral-200 overflow-hidden shadow-lg shadow-neutral-200/30">
-      <div className="flex items-center justify-between px-3 sm:px-4 py-2 sm:py-2.5 border-b border-neutral-800 bg-neutral-900">
-        <div className="flex items-center gap-2">
-          <div className="w-2.5 h-2.5 rounded bg-yellow-500/60" />
-          <span className="text-[10px] sm:text-[11px] text-neutral-500 font-mono">context.py</span>
+    <div className="relative bg-[#0A0A0A] rounded-2xl sm:rounded-[32px] overflow-hidden shadow-2xl shadow-black/10 ring-1 ring-black/5">
+      <div className="flex items-center justify-between px-6 py-5 border-b border-white/10 bg-[#0A0A0A]">
+        <div className="flex items-center">
+          <span className="text-[13px] text-neutral-400 font-mono tracking-tight">context.py</span>
         </div>
         <button
           onClick={() => { setCopied(true); setTimeout(() => setCopied(false), 2000); }}
-          className="text-[10px] sm:text-[11px] text-neutral-500 hover:text-neutral-300 transition-colors"
+          className="text-[13px] text-neutral-400 hover:text-white transition-colors"
         >
           {copied ? 'Copied' : 'Copy'}
         </button>
       </div>
-      <pre className="p-3 sm:p-6 font-mono text-[10px] sm:text-[13px] leading-5 sm:leading-6 text-neutral-300 overflow-x-auto no-scrollbar">
+      <pre className="p-6 sm:p-10 font-mono text-[13px] sm:text-[14px] leading-relaxed text-neutral-300 overflow-x-auto no-scrollbar bg-[#0A0A0A]">
         <code>{code.split('\n').map((line, i) => {
           let highlighted = line;
           highlighted = highlighted.replace(/(import|from|if)/g, '<kw>$1</kw>');
           highlighted = highlighted.replace(/(".*?")/g, '<str>$1</str>');
           highlighted = highlighted.replace(/(\d+\.?\d*)/g, '<num>$1</num>');
-          highlighted = highlighted.replace(/(orgni)/g, '<fn>$1</fn>');
+          highlighted = highlighted.replace(/(orgni|result|context|systems|options|True)/g, '<fn>$1</fn>');
 
           return (
             <div key={i} className="flex">
-              <span className="w-8 text-right pr-4 text-neutral-700 select-none flex-shrink-0">{i + 1}</span>
+              <span className="w-8 text-right pr-5 text-neutral-600 select-none flex-shrink-0">{i + 1}</span>
               <span dangerouslySetInnerHTML={{
                 __html: highlighted
-                  .replace(/<kw>(.*?)<\/kw>/g, '<span class="text-purple-400">$1</span>')
-                  .replace(/<str>(.*?)<\/str>/g, '<span class="text-green-400">$1</span>')
-                  .replace(/<num>(.*?)<\/num>/g, '<span class="text-amber-400">$1</span>')
-                  .replace(/<fn>(.*?)<\/fn>/g, '<span class="text-cyan-400">$1</span>')
+                  .replace(/<kw>(.*?)<\/kw>/g, '<span class="text-neutral-500">$1</span>')
+                  .replace(/<str>(.*?)<\/str>/g, '<span class="text-white">$1</span>')
+                  .replace(/<num>(.*?)<\/num>/g, '<span class="text-white">$1</span>')
+                  .replace(/<fn>(.*?)<\/fn>/g, '<span class="text-neutral-200">$1</span>')
               }} />
             </div>
           );
@@ -192,38 +188,35 @@ function EarlyAccessForm() {
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="flex items-center gap-3 px-6 py-4 rounded-2xl bg-green-50 border border-green-200"
+        className="flex items-center gap-3 px-6 py-4 rounded-full bg-neutral-100 border border-neutral-200/60"
       >
-        <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 bg-green-100">
-          <Check className="w-4 h-4 text-green-600" />
+        <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 bg-[#0A0A0A]">
+          <Check className="w-3.5 h-3.5 text-white" />
         </div>
-        <div>
-          <p className="text-sm font-semibold text-green-900">You're on the list!</p>
-          <p className="text-xs text-green-600">We'll notify you when Orgni launches.</p>
-        </div>
+        <p className="text-[15px] font-medium text-neutral-900">You're on the list. We'll be in touch.</p>
       </motion.div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 w-full max-w-md px-2 sm:px-0">
+    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2 w-full max-w-md">
       <input
         type="email"
-        placeholder="you@company.com"
+        placeholder="Enter your email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
-        className="flex-1 min-w-0 px-5 py-3 sm:py-3.5 rounded-full text-sm focus:outline-none transition-all placeholder:text-neutral-400 border border-neutral-200 bg-white text-neutral-900 focus:ring-2 focus:ring-neutral-900/10 focus:border-neutral-400"
+        className="flex-1 min-w-0 px-6 py-4 rounded-full text-[15px] focus:outline-none transition-all placeholder:text-neutral-400 border border-neutral-200/80 bg-neutral-50/50 text-neutral-900 focus:ring-2 focus:ring-neutral-900/5 focus:bg-white"
       />
       <button
         type="submit"
         disabled={loading}
-        className="px-7 py-3 sm:py-3.5 rounded-full font-medium text-sm transition-all disabled:opacity-60 flex items-center justify-center gap-2 flex-shrink-0 bg-neutral-900 text-white hover:bg-black"
+        className="px-8 py-4 rounded-full font-medium text-[15px] transition-all disabled:opacity-60 flex items-center justify-center gap-2 flex-shrink-0 bg-[#0A0A0A] text-white hover:bg-black hover:shadow-lg hover:shadow-black/10"
       >
         {loading ? (
-          <div className="w-4 h-4 border-2 rounded-full animate-spin border-white/30 border-t-white" />
+          <div className="w-5 h-5 border-2 rounded-full animate-spin border-neutral-500 border-t-white" />
         ) : (
-          <>Get Early Access <ArrowRight className="w-4 h-4" /></>
+          <>Join Waitlist <ArrowRight className="w-4 h-4 ml-0.5" /></>
         )}
       </button>
     </form>
@@ -232,16 +225,18 @@ function EarlyAccessForm() {
 
 export default function OrdoPage() {
   return (
-    <div className="min-h-screen bg-white text-neutral-900 relative">
-      <div className="grain" />
+    <div className="min-h-screen bg-white text-[#0A0A0A] relative selection:bg-neutral-200">
       <Header />
 
-      <section className="pt-24 sm:pt-40 pb-8 sm:pb-12 px-4 sm:px-6">
-        <div className="max-w-5xl mx-auto text-center">
-          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="flex flex-col items-center gap-4 mb-6">
-            <Image src="/images/ordo-logo.png" alt="Orgni" width={48} height={48} className="rounded-xl" style={{ width: 48, height: 48 }} priority />
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-neutral-100 text-neutral-500 rounded-full text-xs font-medium border border-neutral-200/60">
-              <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+      {/* Hero */}
+      <section className="pt-32 sm:pt-48 pb-16 px-4 sm:px-6">
+        <div className="max-w-6xl mx-auto text-center">
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="flex flex-col items-center gap-6 mb-12">
+            <div className="w-14 h-14 rounded-[14px] bg-neutral-50 flex items-center justify-center p-2 border border-neutral-200/60 shadow-sm">
+              <Image src="/images/ordo-logo.png" alt="Orgni" width={48} height={48} className="rounded-xl" priority />
+            </div>
+            <span className="inline-flex items-center gap-2 px-3 py-1 bg-neutral-100 text-neutral-600 rounded-full text-[13px] font-medium">
+              <div className="w-1.5 h-1.5 rounded-full bg-neutral-400" />
               Now in limited beta
             </span>
           </motion.div>
@@ -250,20 +245,19 @@ export default function OrdoPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="font-serif text-3xl sm:text-5xl lg:text-7xl text-neutral-900 tracking-tight leading-[1.05] mb-6"
+            className="text-5xl sm:text-7xl lg:text-[104px] font-medium text-[#0A0A0A] tracking-tighter leading-[1.02] mb-8"
           >
-            Live business context
-            <br />
-            <span className="text-neutral-400">for modern operations</span>
+            Live business context<br className="hidden sm:block" />
+            <span className="text-neutral-400"> for modern operations.</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-base sm:text-xl text-neutral-500 leading-relaxed font-light mb-10 max-w-2xl mx-auto px-2"
+            className="text-lg sm:text-[22px] text-neutral-500 leading-relaxed font-normal mb-12 max-w-2xl mx-auto px-2"
           >
-            Orgni connects your company's knowledge, decisions, processes, systems, and controls into a living operational context that intelligent systems can understand and operate within.
+            Orgni connects your company's knowledge, decisions, processes, systems, and controls into a living operational context.
           </motion.p>
 
           <motion.div
@@ -273,14 +267,15 @@ export default function OrdoPage() {
             className="flex flex-col items-center"
           >
             <EarlyAccessForm />
-            <p className="text-xs text-neutral-400 mt-3">Free during beta · No credit card required</p>
+            <p className="text-[13px] text-neutral-500 mt-5 font-medium">Free during beta · No credit card required</p>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-8 sm:py-12">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-3">
+      {/* Feature Bar */}
+      <section className="py-12 border-t border-neutral-100 mt-8 sm:mt-16 bg-[#F9FAFB]/50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-4">
             {[
               "Live business context",
               "Operational memory",
@@ -292,8 +287,8 @@ export default function OrdoPage() {
                 key={text}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.7 + i * 0.05 }}
-                className="text-[13px] text-neutral-400"
+                transition={{ delay: 0.5 + i * 0.05 }}
+                className="text-[15px] font-medium text-neutral-400"
               >
                 {text}
               </motion.span>
@@ -302,8 +297,9 @@ export default function OrdoPage() {
         </div>
       </section>
 
-      <section className="py-10 sm:py-16">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6">
+      {/* Terminal Demo */}
+      <section className="py-24 sm:py-32 bg-[#F9FAFB] border-y border-neutral-100">
+        <div className="max-w-[1000px] mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -314,18 +310,19 @@ export default function OrdoPage() {
         </div>
       </section>
 
-      <section className="py-24 sm:py-32 border-t border-neutral-100">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="text-center mb-16">
-            <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900">
+      {/* Domains */}
+      <section className="py-24 sm:py-32 lg:py-48">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} custom={0} variants={fadeUp} className="text-center mb-16 sm:mb-24">
+            <h2 className="text-4xl sm:text-6xl lg:text-[64px] font-medium tracking-tighter text-[#0A0A0A] mb-6">
               Context across every domain.
             </h2>
-            <p className="text-neutral-500 mt-4 text-lg font-light max-w-2xl mx-auto">
+            <p className="text-neutral-500 text-lg sm:text-[22px] font-normal max-w-2xl mx-auto leading-relaxed">
               Finance, compliance, HR, operations. Orgni gives every part of your business the live context it runs on.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {[
               { name: "Finance", examples: "Reconciliation, reporting, expense management" },
               { name: "Compliance", examples: "Audit-ready reports, regulatory reporting" },
@@ -340,58 +337,60 @@ export default function OrdoPage() {
                 key={app.name}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-50px" }}
                 custom={idx}
                 variants={fadeUp}
-                className="rounded-2xl border border-neutral-100 hover:border-neutral-200 bg-white hover:shadow-lg hover:shadow-neutral-100/60 transition-all duration-300 p-5 sm:p-6"
+                className="group rounded-2xl bg-white border border-neutral-200/60 p-8 shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-all duration-300 hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] hover:border-neutral-200"
               >
-                <h3 className="text-sm font-semibold text-neutral-900 mb-1.5">{app.name}</h3>
-                <p className="text-[11px] sm:text-xs text-neutral-400 leading-relaxed font-light">{app.examples}</p>
+                <h3 className="text-[19px] font-medium text-[#0A0A0A] mb-3">{app.name}</h3>
+                <p className="text-[15px] text-neutral-500 leading-relaxed font-normal">{app.examples}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-24 sm:py-32 border-t border-neutral-100">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp}>
-              <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900 mb-6">
-                Three lines to connect
+      {/* Code / SDK Integration */}
+      <section className="py-24 sm:py-32 lg:py-48 bg-[#F9FAFB] border-y border-neutral-100">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} custom={0} variants={fadeUp}>
+              <h2 className="text-4xl sm:text-6xl lg:text-[64px] font-medium tracking-tighter text-[#0A0A0A] mb-8 leading-[1.05]">
+                Three lines to connect.
               </h2>
-              <p className="text-neutral-500 text-base sm:text-lg font-light leading-relaxed mb-8">
-                Import, connect, query. Orgni fits into your existing stack with a Python SDK, CLI, and API integrations.
+              <p className="text-neutral-500 text-lg sm:text-[22px] font-normal leading-relaxed mb-10">
+                Import, connect, query. Orgni fits into your existing stack with a Python SDK, CLI, and REST API integrations.
               </p>
               <div className="flex flex-wrap gap-3">
                 {['pip install orgni', 'REST API', 'Python SDK'].map((item) => (
-                  <span key={item} className="inline-flex items-center px-3 py-1.5 bg-neutral-100 text-neutral-600 rounded-lg text-xs font-mono border border-neutral-200/60">
+                  <span key={item} className="inline-flex items-center px-5 py-2.5 bg-white text-[#0A0A0A] rounded-full text-[14px] font-medium border border-neutral-200/80 shadow-sm">
                     {item}
                   </span>
                 ))}
               </div>
             </motion.div>
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={2} variants={fadeUp}>
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} custom={2} variants={fadeUp}>
               <CodePreview />
             </motion.div>
           </div>
         </div>
       </section>
 
-      <section className="py-24 sm:py-32 bg-neutral-50/80 border-y border-neutral-100">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="text-center mb-16">
-            <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900">
-              Built for speed
+      {/* Metrics / Speed */}
+      <section className="py-24 sm:py-32 lg:py-48">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} custom={0} variants={fadeUp} className="text-center mb-20 sm:mb-32">
+            <h2 className="text-4xl sm:text-6xl lg:text-[64px] font-medium tracking-tighter text-[#0A0A0A]">
+              Built for speed.
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-16">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 mb-20 sm:mb-32">
             {[
               { value: 10, suffix: 'x', label: 'Faster than manual' },
               { value: 50, suffix: '+', label: 'System integrations' },
               { value: 99, suffix: '.9%', label: 'Execution reliability' },
-              { value: 2, suffix: 'min', label: 'Avg. completion time' },
+              { value: 2, suffix: 'm', label: 'Avg. completion time' },
             ].map((stat, idx) => (
               <motion.div
                 key={stat.label}
@@ -400,19 +399,19 @@ export default function OrdoPage() {
                 viewport={{ once: true }}
                 custom={idx}
                 variants={fadeUp}
-                className="bg-white rounded-2xl p-6 sm:p-8 border border-neutral-100 text-center"
+                className="text-center"
               >
-                <div className="font-serif text-3xl sm:text-4xl italic text-neutral-900 mb-2">
+                <div className="text-[56px] sm:text-[80px] font-medium tracking-tighter text-[#0A0A0A] mb-4 leading-none">
                   <AnimatedCounter target={stat.value} suffix={stat.suffix} />
                 </div>
-                <p className="text-xs text-neutral-400">{stat.label}</p>
+                <p className="text-[17px] text-neutral-500 font-medium">{stat.label}</p>
               </motion.div>
             ))}
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {[
-              { label: "Execution Speed", ordo: "2 min", others: "4+ hrs", ordoWidth: "7%", othersWidth: "100%" },
+              { label: "Execution Speed", ordo: "2 min", others: "4+ hrs", ordoWidth: "12%", othersWidth: "100%" },
               { label: "Accuracy", ordo: "99.2%", others: "92%", ordoWidth: "99%", othersWidth: "92%" },
               { label: "Systems Connected", ordo: "50+", others: "3-5", ordoWidth: "100%", othersWidth: "10%" },
               { label: "Success Rate", ordo: "99.9%", others: "87%", ordoWidth: "99%", othersWidth: "87%" },
@@ -424,36 +423,40 @@ export default function OrdoPage() {
                 viewport={{ once: true }}
                 custom={idx}
                 variants={fadeUp}
-                className="bg-white rounded-xl p-5 border border-neutral-100"
+                className="rounded-2xl bg-white border border-neutral-200/60 p-8 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
               >
-                <p className="text-xs font-medium text-neutral-500 mb-3">{item.label}</p>
-                <div className="space-y-2">
-                  <div className="flex items-center gap-3">
-                    <span className="text-[10px] font-mono text-neutral-500 w-12">Orgni</span>
-                    <div className="flex-1 h-6 bg-neutral-100 rounded-md overflow-hidden">
+                <div className="flex items-center justify-between mb-8">
+                  <p className="text-[17px] font-medium text-[#0A0A0A]">{item.label}</p>
+                </div>
+                <div className="space-y-5">
+                  <div className="space-y-2">
+                    <div className="flex justify-between text-[15px] font-medium">
+                      <span className="text-[#0A0A0A]">Orgni</span>
+                      <span className="text-[#0A0A0A]">{item.ordo}</span>
+                    </div>
+                    <div className="w-full h-1.5 bg-neutral-100 rounded-full overflow-hidden">
                       <motion.div
-                        className="h-full bg-neutral-900 rounded-md flex items-center justify-end pr-2"
+                        className="h-full bg-[#0A0A0A] rounded-full"
                         initial={{ width: 0 }}
                         whileInView={{ width: item.ordoWidth }}
                         viewport={{ once: true }}
-                        transition={{ duration: 1, delay: idx * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-                      >
-                        <span className="text-[10px] font-bold text-white">{item.ordo}</span>
-                      </motion.div>
+                        transition={{ duration: 1, delay: idx * 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
+                      />
                     </div>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <span className="text-[10px] font-mono text-neutral-400 w-12">Others</span>
-                    <div className="flex-1 h-6 bg-neutral-100 rounded-md overflow-hidden">
+                  <div className="space-y-2">
+                    <div className="flex justify-between text-[15px] font-medium">
+                      <span className="text-neutral-400">Others</span>
+                      <span className="text-neutral-400">{item.others}</span>
+                    </div>
+                    <div className="w-full h-1.5 bg-neutral-100 rounded-full overflow-hidden">
                       <motion.div
-                        className="h-full bg-neutral-300 rounded-md flex items-center justify-end pr-2"
+                        className="h-full bg-neutral-300 rounded-full"
                         initial={{ width: 0 }}
                         whileInView={{ width: item.othersWidth }}
                         viewport={{ once: true }}
-                        transition={{ duration: 1, delay: idx * 0.1 + 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-                      >
-                        <span className="text-[10px] font-bold text-neutral-600">{item.others}</span>
-                      </motion.div>
+                        transition={{ duration: 1, delay: idx * 0.1 + 0.2, ease: [0.21, 0.47, 0.32, 0.98] }}
+                      />
                     </div>
                   </div>
                 </div>
@@ -463,15 +466,16 @@ export default function OrdoPage() {
         </div>
       </section>
 
-      <section className="py-24 sm:py-32 border-b border-neutral-100">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="text-center mb-20">
-            <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900">
-              Grounded in your business context
+      {/* Steps */}
+      <section className="py-24 sm:py-32 lg:py-48 border-y border-neutral-100 bg-[#F9FAFB]/50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} custom={0} variants={fadeUp} className="text-center mb-20 sm:mb-32">
+            <h2 className="text-4xl sm:text-6xl lg:text-[64px] font-medium tracking-tighter text-[#0A0A0A]">
+              Grounded in your business context.
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-0">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 sm:gap-12">
             {[
               {
                 step: "01",
@@ -493,32 +497,35 @@ export default function OrdoPage() {
                 key={item.step}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-50px" }}
                 custom={idx}
                 variants={fadeUp}
-                className="relative px-6 sm:px-8 py-8 sm:py-10 border-t sm:border-t-0 sm:border-l first:border-t-0 first:border-l-0 border-neutral-200"
+                className="relative flex flex-col pt-10 border-t border-neutral-200"
               >
-                <span className="text-5xl sm:text-6xl font-serif italic text-neutral-100 block mb-4">{item.step}</span>
-                <h3 className="text-xl font-semibold text-neutral-900 mb-3">{item.title}</h3>
-                <p className="text-neutral-500 text-sm leading-relaxed font-light">{item.description}</p>
+                <div className="flex items-center justify-between mb-6">
+                  <h3 className="text-[26px] font-medium text-[#0A0A0A]">{item.title}</h3>
+                  <span className="text-[15px] font-mono text-neutral-400">{item.step}</span>
+                </div>
+                <p className="text-neutral-500 text-[17px] leading-relaxed font-normal">{item.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-24 sm:py-32 bg-neutral-50/80 border-b border-neutral-100">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="text-center mb-16">
-            <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900">
-              Why teams choose Orgni
+      {/* Why teams choose Orgni */}
+      <section className="py-24 sm:py-32 lg:py-48">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} custom={0} variants={fadeUp} className="text-center mb-16 sm:mb-24">
+            <h2 className="text-4xl sm:text-6xl lg:text-[64px] font-medium tracking-tighter text-[#0A0A0A] mb-6">
+              Why teams choose Orgni.
             </h2>
-            <p className="text-neutral-500 mt-4 text-base sm:text-lg font-light max-w-2xl mx-auto">
+            <p className="text-neutral-500 text-lg sm:text-[22px] font-normal max-w-2xl mx-auto">
               Six reasons teams build their operations on Orgni.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {[
               { title: "Live Business Context", description: "Orgni keeps a living model of how your business actually works, so systems act with real understanding.", severity: "Critical" },
               { title: "Works With Your Systems", description: "Connects to ERP, Excel, databases, payment platforms, and more without custom integrations.", severity: "High" },
@@ -531,41 +538,43 @@ export default function OrdoPage() {
                 key={item.title}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-50px" }}
                 custom={idx}
                 variants={fadeUp}
-                className="group bg-white rounded-2xl p-7 border border-neutral-100 hover:border-neutral-200 hover:shadow-lg hover:shadow-neutral-100/60 transition-all duration-300"
+                className="group bg-white rounded-[24px] p-8 border border-neutral-200/60 shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-all duration-300 hover:shadow-[0_12px_32px_rgba(0,0,0,0.06)] hover:border-neutral-200/80"
               >
-                <div className="flex items-start justify-between mb-4">
-                  <h3 className="text-sm font-semibold text-neutral-900">{item.title}</h3>
-                  <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full flex-shrink-0 ml-3 ${
-                    item.severity === 'Critical' ? 'bg-red-50 text-red-600' :
-                    item.severity === 'High' ? 'bg-amber-50 text-amber-600' :
-                    'bg-blue-50 text-blue-600'
+                <div className="mb-6">
+                  <span className={`inline-flex items-center text-[13px] font-medium px-3.5 py-1.5 rounded-full ${
+                    item.severity === 'Critical' ? 'bg-neutral-100 text-[#0A0A0A]' :
+                    item.severity === 'High' ? 'bg-neutral-50 text-neutral-600' :
+                    'bg-neutral-50 text-neutral-400'
                   }`}>
-                    {item.severity}
+                    {item.severity} Priority
                   </span>
                 </div>
-                <p className="text-xs text-neutral-500 leading-relaxed">{item.description}</p>
+                <h3 className="text-[20px] font-medium text-[#0A0A0A] mb-3">{item.title}</h3>
+                <p className="text-[15px] text-neutral-500 leading-relaxed font-normal">{item.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-16 sm:py-36">
+      {/* CTA */}
+      <section className="py-32 sm:py-48 bg-[#F9FAFB] border-t border-neutral-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp}>
-            <h2 className="font-serif text-2xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-6">
-              Give your systems the context they need.
+            <h2 className="text-5xl sm:text-7xl lg:text-[88px] font-medium tracking-tighter text-[#0A0A0A] mb-8 leading-[1.02]">
+              Give your systems<br className="hidden sm:block" />
+              the context they need.
             </h2>
-            <p className="text-neutral-500 text-sm sm:text-lg max-w-xl mx-auto mb-10 font-light leading-relaxed px-2 sm:px-0">
+            <p className="text-neutral-500 text-lg sm:text-[22px] font-normal max-w-2xl mx-auto mb-12 leading-relaxed">
               Join the waitlist. Be the first to build live business context for your operations.
             </p>
-            <div className="flex justify-center mb-4">
+            <div className="flex justify-center mb-8">
               <EarlyAccessForm />
             </div>
-            <p className="text-xs text-neutral-400">Be the first to know when Orgni opens up</p>
+            <p className="text-[14px] text-neutral-400 font-medium">Free during beta · No credit card required</p>
           </motion.div>
         </div>
       </section>
