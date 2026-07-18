@@ -36,11 +36,7 @@ const SCREENS = [
 ];
 
 const LOGOS = [
-  { src: "/partner-logos/anthropic.svg", alt: "Anthropic", w: 110, h: 30 },
-  { src: "/partner-logos/google.svg", alt: "Google", w: 90, h: 30 },
-  { src: "/partner-logos/meta.svg", alt: "Meta", w: 100, h: 30 },
-  { src: "/partner-logos/nvidia.svg", alt: "Nvidia", w: 120, h: 30 },
-  { src: "/partner-logos/openai.svg", alt: "OpenAI", w: 110, h: 30 },
+  { src: "/partner-logos/anthropic-word.png", alt: "Anthropic", w: 110, h: 30 },
   { src: "/partner-logos/freightshift.png", alt: "FreightShift International Logistics", w: 160, h: 30 },
   { src: "/partner-logos/techxm.png", alt: "TechXM", w: 90, h: 45 },
   { src: "/partner-logos/monster-energy.png", alt: "Monster Energy", w: 60, h: 60 },
