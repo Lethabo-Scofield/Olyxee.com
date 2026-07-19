@@ -5,7 +5,7 @@ import { ArrowRight, X, Phone, Mail, CheckCircle } from "lucide-react";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const inputClass =
-  "w-full px-4 py-3 bg-white border border-neutral-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900/15 focus:border-neutral-400 text-[15px] text-neutral-900 placeholder:text-neutral-400 transition-colors";
+  "w-full px-4 py-3 bg-white border border-neutral-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900/15 focus:border-neutral-400 text-base sm:text-[15px] text-neutral-900 placeholder:text-neutral-400 transition-colors";
 const labelClass = "block text-sm font-medium text-neutral-900 mb-2";
 
 type Preference = "email" | "call";
@@ -118,7 +118,7 @@ const TalkToEnterprise: FC<TalkToEnterpriseProps> = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6"
+            className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center sm:p-6"
             aria-modal="true"
             role="dialog"
           >
@@ -132,7 +132,7 @@ const TalkToEnterprise: FC<TalkToEnterpriseProps> = ({
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 16, scale: 0.98 }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto bg-white rounded-3xl shadow-2xl shadow-neutral-900/20 border border-neutral-200/70"
+              className="relative w-full sm:max-w-lg max-h-[92dvh] sm:max-h-[88dvh] overflow-y-auto overscroll-contain bg-white rounded-t-3xl sm:rounded-3xl shadow-2xl shadow-neutral-900/20 border border-neutral-200/70"
             >
               <button
                 type="button"
@@ -144,7 +144,7 @@ const TalkToEnterprise: FC<TalkToEnterpriseProps> = ({
               </button>
 
               {submitted ? (
-                <div className="px-7 sm:px-10 py-12 text-center">
+                <div className="px-5 sm:px-10 py-12 text-center pb-[max(3rem,env(safe-area-inset-bottom))]">
                   <div className="w-12 h-12 rounded-full bg-neutral-50 border border-neutral-200 flex items-center justify-center mx-auto mb-5">
                     <CheckCircle className="w-6 h-6 text-neutral-700" strokeWidth={1.75} />
                   </div>
@@ -164,7 +164,7 @@ const TalkToEnterprise: FC<TalkToEnterpriseProps> = ({
                   </button>
                 </div>
               ) : (
-                <div className="px-7 sm:px-10 py-9 sm:py-10">
+                <div className="px-5 sm:px-10 py-8 sm:py-10 pb-[max(2rem,env(safe-area-inset-bottom))]">
                   <h3 className="font-serif text-2xl sm:text-3xl tracking-tight text-neutral-900 mb-2">
                     Talk to enterprise
                   </h3>
