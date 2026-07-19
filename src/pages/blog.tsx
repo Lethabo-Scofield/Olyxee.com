@@ -132,7 +132,40 @@ const Blog: FC = () => {
 
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO title="Blog" description="Technical articles, insights, and updates from the Olyxee team on AI infrastructure, verification, and deployment." path="/blog" keywords={["Olyxee blog", "AI infrastructure", "AI verification", "AI reliability", "model deployment", "edge AI"]} />
+      <SEO
+        title="Blog"
+        description="Technical articles, insights, and updates from the Olyxee team on AI infrastructure, verification, and deployment."
+        path="/blog"
+        keywords={["Olyxee blog", "AI infrastructure", "AI verification", "AI reliability", "model deployment", "edge AI"]}
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Blog",
+          name: "Olyxee Blog",
+          url: "https://olyxee.com/blog",
+          description: "Technical articles, insights, and updates from the Olyxee team on AI infrastructure, verification, and deployment.",
+          inLanguage: "en",
+          publisher: {
+            "@type": "Organization",
+            name: "Olyxee",
+            url: "https://olyxee.com",
+            logo: { "@type": "ImageObject", url: "https://olyxee.com/Logo/Olyxee_Logo.png" },
+          },
+          blogPost: posts.map((post) => ({
+            "@type": "BlogPosting",
+            headline: post.title,
+            description: post.excerpt,
+            url: `https://olyxee.com/blog/${post.slug}`,
+            datePublished: post.date,
+            articleSection: post.category,
+            author: { "@type": "Organization", name: "Olyxee", url: "https://olyxee.com" },
+            publisher: {
+              "@type": "Organization",
+              name: "Olyxee",
+              logo: { "@type": "ImageObject", url: "https://olyxee.com/Logo/Olyxee_Logo.png" },
+            },
+          })),
+        }}
+      />
       <div className="grain" />
       <Header />
 

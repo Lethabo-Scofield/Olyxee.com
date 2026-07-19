@@ -33,6 +33,43 @@ const Research: FC = () => {
         title="Research We Follow"
         description="Key papers and publications shaping AI verification, evaluation, and observability. Research that informs how Olyxee builds infrastructure for reliable AI applications."
         path="/research"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "Research We Follow",
+          url: "https://olyxee.com/research",
+          description: "Key papers and publications shaping AI verification, evaluation, and observability. Research that informs how Olyxee builds infrastructure for reliable AI applications.",
+          inLanguage: "en",
+          isPartOf: {
+            "@type": "WebSite",
+            name: "Olyxee",
+            url: "https://olyxee.com",
+          },
+          publisher: {
+            "@type": "Organization",
+            name: "Olyxee",
+            url: "https://olyxee.com",
+            logo: { "@type": "ImageObject", url: "https://olyxee.com/Logo/Olyxee_Logo.png" },
+          },
+          mainEntity: {
+            "@type": "ItemList",
+            itemListElement: papers.map((paper, i) => ({
+              "@type": "ListItem",
+              position: i + 1,
+              item: {
+                "@type": "ScholarlyArticle",
+                headline: paper.title,
+                name: paper.title,
+                author: paper.authors
+                  .split(",")
+                  .map((name) => ({ "@type": "Person", name: name.trim() })),
+                url: paper.url,
+                datePublished: `${paper.year}-${paper.month}`,
+                publisher: { "@type": "Organization", name: paper.venue },
+              },
+            })),
+          },
+        }}
       />
       <div className="grain" />
       <Header />

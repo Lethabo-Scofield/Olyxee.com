@@ -68,8 +68,12 @@ export const metadata: Metadata = {
   creator: "Olyxee",
   publisher: "Olyxee",
   metadataBase: new URL(siteUrl),
+  // Canonical here applies to the homepage ("/"), which renders directly in the
+  // root layout. Child App Router routes (e.g. /stories/*) override this with
+  // their own alternates.canonical, so this no longer forces every page to the
+  // homepage. Relative value resolves against metadataBase.
   alternates: {
-    canonical: "https://olyxee.com",
+    canonical: "/",
   },
   openGraph: {
     type: "website",

@@ -1,10 +1,17 @@
 import { FC } from "react";
 import Lottie from "lottie-react";
 import constructionAnimation from "@/assets/animations/site under construction.json";
+import SEO from "@/components/SEO";
 
 const NotFound: FC = () => {
   return (
     <div className="w-full h-screen flex items-center justify-center bg-white text-gray-900 px-4 sm:px-6 lg:px-8">
+      <SEO
+        title="Page not found"
+        description="The page you're looking for isn't here yet. This section is still under construction, explore Olyxee's research, products, and operational intelligence infrastructure instead."
+        path="/404"
+        noindex
+      />
       <div className="max-w-3xl text-center space-y-8">
         <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold">
           Resources Coming Soon

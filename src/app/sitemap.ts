@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next'
+import { paidRoles } from '../lib/careers-roles'
 
 const baseUrl = 'https://olyxee.com'
 
@@ -12,6 +13,7 @@ const pages: Entry[] = [
   { path: '/research', priority: 0.9, changeFrequency: 'monthly' },
   { path: '/about', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/careers', priority: 0.8, changeFrequency: 'weekly' },
+  { path: '/careers/internships', priority: 0.6, changeFrequency: 'weekly' },
   { path: '/enterprise', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/enterprise/robotics', priority: 0.85, changeFrequency: 'monthly' },
   { path: '/pricing', priority: 0.9, changeFrequency: 'monthly' },
@@ -41,12 +43,22 @@ const pages: Entry[] = [
   { path: '/cookie-policy', priority: 0.3, changeFrequency: 'yearly' },
 ]
 
+// Dynamic careers detail pages ( /careers/[slug] ) are generated from the same
+// data source the [slug] route uses, so the sitemap stays in sync automatically.
+const careerRolePages: Entry[] = paidRoles.map((role) => ({
+  path: `/careers/${role.slug}`,
+  priority: 0.6,
+  changeFrequency: 'weekly',
+}))
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date()
-  return pages.map(({ path, priority, changeFrequency }) => ({
-    url: `${baseUrl}${path}`,
-    lastModified,
-    changeFrequency,
-    priority,
-  }))
+  return [...pages, ...careerRolePages].map(
+    ({ path, priority, changeFrequency }) => ({
+      url: `${baseUrl}${path}`,
+      lastModified,
+      changeFrequency,
+      priority,
+    })
+  )
 }
