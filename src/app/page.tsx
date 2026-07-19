@@ -537,12 +537,12 @@ function ProductFeature({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.7, ease }}
-          className="mt-8 sm:mt-12 border-t border-neutral-200 pt-8 sm:pt-10"
+          className="mt-8 sm:mt-12 border-t border-neutral-200 pt-8 sm:pt-10 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6 sm:gap-10"
         >
-          <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed max-w-2xl">
+          <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed max-w-xl">
             {description}
           </p>
-          <div className="mt-7">
+          <div className="shrink-0">
             <div className="flex flex-wrap items-center gap-4">
               <a
                 href={primary.href}
