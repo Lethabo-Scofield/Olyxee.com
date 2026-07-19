@@ -5,7 +5,7 @@ import Footer from "../components/footer";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Compass, ShieldCheck, EyeOff, MapPin, Calendar, Workflow, Users, Landmark, FileCheck2 } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Compass, ShieldCheck, EyeOff, MapPin, Calendar, Workflow, Users } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -15,6 +15,9 @@ const fadeUp = {
     transition: { duration: 0.7, delay: i * 0.08, ease: [0.25, 0.46, 0.45, 0.94] },
   }),
 };
+
+// Matches the three triangle marks in the pillars animation
+const PILLAR_COLORS = ["#B49B7E", "#17311F", "#92A9BD"];
 
 const APPROACH = [
   {
@@ -228,63 +231,46 @@ const About: FC = () => {
         {/* === PRINCIPLES === */}
         <section className="py-20 sm:py-32 bg-white border-t border-neutral-200/70">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-12 sm:mb-16">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              custom={0}
+              variants={fadeUp}
+              className="max-w-3xl mb-12 sm:mb-16"
+            >
+              <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
+                Principles
+              </p>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-[-0.025em] leading-[1.05] font-medium">
+                Three pillars.{" "}
+                <em className="font-serif italic font-normal text-neutral-500">One unfair advantage.</em>
+              </h2>
+            </motion.div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
               <motion.div
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }}
                 custom={0}
                 variants={fadeUp}
-              >
-                <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
-                  Principles
-                </p>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-[-0.025em] leading-[1.05] font-medium">
-                  The principles behind how we{" "}
-                  <em className="font-serif italic font-normal text-neutral-500">build, ship, and operate.</em>
-                </h2>
-              </motion.div>
-
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-                custom={1}
-                variants={fadeUp}
-                className="flex flex-col items-center"
+                className="flex justify-center"
               >
                 <video
                   src="/videos/pillars.mp4"
-                  className="w-56 sm:w-72 lg:w-80 aspect-square object-cover"
+                  className="w-72 sm:w-96 lg:w-full max-w-lg aspect-square object-cover"
                   autoPlay
                   loop
                   muted
                   playsInline
                   preload="metadata"
-                  aria-label="Animated illustration of three stacked organisational layers coming together"
+                  aria-label="Animated illustration of three connected pillars forming one whole"
                 />
-                <p className="font-serif text-xl sm:text-2xl text-neutral-900 tracking-tight text-center -mt-3 sm:-mt-6 mb-7">
-                  Three pillars. <em className="text-neutral-400 not-italic">One unfair advantage.</em>
-                </p>
-                <div className="grid grid-cols-3 gap-4 sm:gap-6 w-full max-w-md">
-                  {[
-                    { icon: Workflow, label: "Operational workflows" },
-                    { icon: Landmark, label: "Financial operations" },
-                    { icon: FileCheck2, label: "Document integrity" },
-                  ].map(({ icon: Icon, label }) => (
-                    <div key={label} className="flex flex-col items-center text-center gap-2.5">
-                      <Icon className="w-5 h-5 text-neutral-900" strokeWidth={1.5} aria-hidden />
-                      <p className="text-xs text-neutral-500 font-light leading-snug">{label}</p>
-                    </div>
-                  ))}
-                </div>
               </motion.div>
-            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-14 sm:gap-y-16">
-              {APPROACH.map((item, idx) => {
-                const numeral = ["I", "II", "III"][idx] ?? String(idx + 1);
-                return (
+              <div className="space-y-10 sm:space-y-12">
+                {APPROACH.map((item, idx) => (
                   <motion.article
                     key={item.title}
                     initial="hidden"
@@ -292,51 +278,34 @@ const About: FC = () => {
                     viewport={{ once: true, amount: 0.3 }}
                     custom={idx}
                     variants={fadeUp}
-                    className="group flex flex-col"
+                    className="flex items-start gap-5"
                   >
-                    <div className="relative aspect-[4/5] overflow-hidden rounded-3xl">
-                      <Image
-                        src={item.gradient}
-                        alt=""
-                        fill
-                        sizes="(min-width: 768px) 33vw, 100vw"
-                        className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
-                        aria-hidden
-                      />
-                      {/* Soft vignette so the numeral always reads */}
-                      <div
-                        aria-hidden
-                        className="absolute inset-0"
+                    <span
+                      aria-hidden
+                      className="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-neutral-900/80"
+                    >
+                      <span
+                        className="block h-3.5 w-3.5"
                         style={{
-                          background:
-                            "linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,0.18) 100%)",
+                          backgroundColor: PILLAR_COLORS[idx],
+                          clipPath: "polygon(0 0, 100% 0, 0 100%)",
                         }}
                       />
-                      <div className="absolute top-0 inset-x-0 px-5 pt-4 flex items-center justify-between text-[10px] font-mono uppercase tracking-[0.28em] text-white/85">
-                        <span>Principle</span>
-                        <span>{String(idx + 1).padStart(2, "0")} / 03</span>
-                      </div>
-                      <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6 flex items-end justify-between">
-                        <span className="font-serif italic text-white leading-none tracking-tight text-[6rem] sm:text-[7rem] lg:text-[8rem] [text-shadow:0_2px_24px_rgba(0,0,0,0.18)]">
-                          {numeral}
-                        </span>
-                        <span className="font-mono uppercase tracking-[0.26em] text-[10px] text-white/85 pb-2 sm:pb-3 [writing-mode:vertical-rl] rotate-180">
-                          {item.label}
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="mt-6 sm:mt-7">
-                      <h3 className="text-xl sm:text-[1.4rem] text-neutral-900 leading-[1.2] tracking-[-0.015em] font-medium mb-3">
+                    </span>
+                    <div>
+                      <p className="text-[10px] font-mono uppercase tracking-[0.26em] text-neutral-500 mb-2">
+                        {item.label}
+                      </p>
+                      <h3 className="text-xl sm:text-[1.4rem] text-neutral-900 leading-[1.2] tracking-[-0.015em] font-medium mb-2.5">
                         {item.title}
                       </h3>
-                      <p className="text-[15px] text-neutral-700 leading-relaxed max-w-[34ch]">
+                      <p className="text-[15px] text-neutral-700 leading-relaxed max-w-[48ch]">
                         {item.text}
                       </p>
                     </div>
                   </motion.article>
-                );
-              })}
+                ))}
+              </div>
             </div>
           </div>
         </section>
