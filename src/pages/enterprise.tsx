@@ -532,26 +532,22 @@ const Enterprise: FC = () => {
             { title: "Research", desc: "Discover our frontier models and AI capabilities.", link: "/research", image: "/images/enterprise/explore-research.png" },
             { title: "Developers", desc: "Build on top of Olyxee infrastructure.", link: "/developers", image: "/images/enterprise/explore-developers.png" },
           ].map((card) => (
-            <Link
-              key={card.title}
-              href={card.link}
-              className="block bg-white shadow-[0_4px_20px_rgba(0,0,0,0.03)] ring-1 ring-black/5 rounded-[1.5rem] overflow-hidden hover:shadow-[0_15px_30px_rgba(0,0,0,0.06)] hover:-translate-y-1 transition-all group"
-            >
-              <div className="relative aspect-[4/3] w-full overflow-hidden">
+            <Link key={card.title} href={card.link} className="block group">
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.25rem]">
                 <Image
                   src={card.image}
                   alt={`${card.title} illustration`}
                   fill
                   sizes="(max-width: 640px) 100vw, 33vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                 />
               </div>
-              <div className="p-8 sm:p-10 pt-6 sm:pt-8">
-              <h3 className="text-[1.5rem] font-medium text-[#111] mb-3">{card.title}</h3>
-              <p className="text-[1.05rem] text-[#4a5568] leading-relaxed mb-12">{card.desc}</p>
-              <span className="inline-flex items-center text-[#111] font-medium group-hover:text-[#111111] transition-colors">
-                Explore {card.title.toLowerCase()} <ArrowRight className="ml-1 w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-              </span>
+              <div className="pt-5 flex items-start justify-between gap-4">
+                <div>
+                  <h3 className="text-[1.1rem] font-medium text-[#111] mb-1">{card.title}</h3>
+                  <p className="text-[0.95rem] text-[#4a5568] leading-relaxed">{card.desc}</p>
+                </div>
+                <ArrowRight className="mt-1.5 w-4 h-4 shrink-0 text-neutral-400 transition-all group-hover:text-[#111] group-hover:translate-x-0.5" />
               </div>
             </Link>
           ))}
