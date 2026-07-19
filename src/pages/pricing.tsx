@@ -450,7 +450,7 @@ const Pricing: FC = () => {
             className="inline-flex items-center justify-center px-8 py-3.5 bg-[#111] text-white rounded-full font-medium hover:bg-black transition-colors text-[15px] tracking-wide w-full sm:w-auto"
           />
           <Link
-            href="/enterprise"
+            href="/contact"
             className="inline-flex items-center justify-center gap-1.5 text-[#111] font-medium hover:underline underline-offset-4 text-[15px]"
           >
             Explore the platform <ArrowRight className="w-4 h-4" />

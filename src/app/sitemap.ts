@@ -8,15 +8,11 @@ type Entry = { path: string; priority: number; changeFrequency: ChangeFreq }
 
 const pages: Entry[] = [
   { path: '', priority: 1.0, changeFrequency: 'weekly' },
-  { path: '/products/ordo', priority: 0.9, changeFrequency: 'monthly' },
   { path: '/solutions/logistics', priority: 0.9, changeFrequency: 'weekly' },
-  { path: '/document-integrity', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/research', priority: 0.9, changeFrequency: 'monthly' },
   { path: '/about', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/careers', priority: 0.8, changeFrequency: 'weekly' },
-  { path: '/enterprise', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/pricing', priority: 0.9, changeFrequency: 'monthly' },
-  { path: '/enterprise/robotics', priority: 0.85, changeFrequency: 'monthly' },
   { path: '/blog', priority: 0.8, changeFrequency: 'weekly' },
   { path: '/docs', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/lab', priority: 0.7, changeFrequency: 'monthly' },

@@ -176,7 +176,7 @@ export async function POST(req: Request) {
           ? `<div style="margin-top:18px;"><div style="font-size:12px;color:#737373;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">Notes</div><div style="white-space:pre-wrap;font-size:14px;">${escapeHtml(message)}</div></div>`
           : ""
       }
-      <p style="margin-top:24px;font-size:12px;color:#a3a3a3;">Sent from olyxee.com /enterprise</p>
+      <p style="margin-top:24px;font-size:12px;color:#a3a3a3;">Sent from olyxee.com</p>
     </div>
   `;
 

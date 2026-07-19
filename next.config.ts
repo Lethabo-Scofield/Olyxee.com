@@ -28,8 +28,23 @@ const nextConfig: NextConfig = {
       permanent: false,
     },
     {
+      source: "/document-integrity",
+      destination: "/",
+      permanent: false,
+    },
+    {
+      source: "/enterprise",
+      destination: "/",
+      permanent: false,
+    },
+    {
+      source: "/enterprise/robotics",
+      destination: "/",
+      permanent: false,
+    },
+    {
       source: "/solutions/enterprise-automation",
-      destination: "/enterprise",
+      destination: "/",
       permanent: false,
     },
     {

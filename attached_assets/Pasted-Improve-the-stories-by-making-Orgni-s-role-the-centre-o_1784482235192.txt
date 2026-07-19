@@ -1,0 +1,165 @@
+Improve the stories by making Orgni’s role the centre of each case.
+
+The story should not be:
+
+> Orgni automated accounting.
+
+It should be:
+
+> Orgni understood the people, systems, rules, dependencies and decisions behind the accounting process, then gave intelligent systems the context required to improve it.
+
+## Use this structure for every story
+
+### 1. Fragmented operation
+
+Show what the organisation could not understand clearly:
+
+* Information spread across systems
+* Responsibilities unclear
+* Decisions trapped in people’s heads
+* Exceptions handled manually
+* AI tools working without shared context
+
+### 2. Organisational model
+
+Show what Orgni connected:
+
+* People
+* Roles
+* Systems
+* Processes
+* Rules
+* Decisions
+* Events
+* Dependencies
+* Outcomes
+
+### 3. Intelligence enabled
+
+Show what became possible because the operation was understandable:
+
+* Faster decisions
+* Reliable automation
+* Context-aware agents
+* Exception detection
+* Better coordination
+* Preserved operational memory
+
+### 4. Compounding value
+
+End by showing that Orgni continued learning instead of solving the process once.
+
+---
+
+# Reposition the current stories
+
+## Cross-continent freight
+
+### Current problem
+
+This can sound like logistics software.
+
+### Better title
+
+**One operational view across a fragmented freight network**
+
+### Better story
+
+> A freight operation depended on carriers, warehouses, customer teams and systems operating across different regions. Each participant held only part of the context.
+
+> Orgni connected shipment events, responsibilities, service rules, customer commitments, exceptions and previous resolutions into a shared operational model.
+
+> Intelligent systems could then understand why a shipment was delayed, who owned the next action and which customer commitment was at risk.
+
+### Mission connection
+
+Orgni made a complex organisation understandable across systems and teams.
+
+---
+
+## Five-day accounting close, now overnight
+
+### Current problem
+
+This sounds like financial automation software.
+
+### Better title
+
+**Making the financial close understandable before automating it**
+
+### Better story
+
+> The close process depended on spreadsheets, financial systems, approvals, recurring exceptions and knowledge held by experienced employees.
+
+> Orgni represented the process as a live model of responsibilities, dependencies, controls, deadlines and historical decisions.
+
+> Once the operation was understandable, teams and intelligent systems could identify missing inputs, anticipate bottlenecks and coordinate the close with less manual reconstruction.
+
+### Mission connection
+
+Orgni did not merely automate accounting. It created the organisational context required for reliable execution.
+
+---
+
+## Supplier onboarding, fully automated
+
+### Current problem
+
+This sounds like a workflow tool or document parser.
+
+### Better title
+
+**A supplier process that understands its own rules**
+
+### Better story
+
+> Supplier onboarding required coordination across procurement, finance, compliance, legal and operational systems. Rules changed according to supplier type, risk and contract conditions.
+
+> Orgni connected the relevant roles, policies, approvals, evidence, system states and exceptions into one operational model.
+
+> Intelligent systems could then determine what was required, explain why it was required and route unusual cases to the correct people.
+
+### Mission connection
+
+The automation became reliable because Orgni understood the organisation behind the workflow.
+
+---
+
+# Rename the section
+
+Avoid:
+
+> Orgni in practice
+
+Better options:
+
+* **When organisations become understandable**
+* **Operational intelligence in practice**
+* **What organisational understanding enables**
+* **From fragmented operations to shared intelligence**
+
+Best recommendation:
+
+## **What organisational understanding enables**
+
+This keeps the stories tied to the mission rather than to individual software features.
+
+# Add the same closing line to each story
+
+> The outcome was not another isolated automation. It was reusable organisational understanding that could support future teams, systems and agents.
+
+# Important rule
+
+Every story must demonstrate this transformation:
+
+```text
+Fragmented operational knowledge
+            ↓
+Orgni builds a living organisational model
+            ↓
+People and intelligent systems act with shared context
+            ↓
+Outcomes update the organisational understanding
+```
+
+That makes the stories evidence for Olyxee’s mission rather than examples of unrelated automation projects.

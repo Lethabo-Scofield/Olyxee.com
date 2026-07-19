@@ -199,7 +199,7 @@ export const roles: Role[] = [
     location: HYBRID,
     type: "paid",
     description:
-      "Lead the research agenda behind Olyxee Document Integrity: verification, evaluation, and reliability for AI systems that take action in production.",
+      "Lead the research agenda behind Orgni's document integrity capabilities: verification, evaluation, and reliability for AI systems that take action in production.",
     level: "Staff · 8+ years of applied research",
     compensation: "Top-of-band salary, significant equity, performance bonus, conference and learning budget.",
     responsibilities: [
@@ -352,7 +352,7 @@ export const roles: Role[] = [
     location: REMOTE,
     type: "internship",
     description:
-      "Work alongside our researchers on verification, evaluation, and reliability for AI systems behind Olyxee Document Integrity.",
+      "Work alongside our researchers on verification, evaluation, and reliability for AI systems behind Orgni's document integrity capabilities.",
     responsibilities: [
       "Help design experiments and build evaluation harnesses on real research questions",
       "Read, reproduce, and extend recent work with the team",

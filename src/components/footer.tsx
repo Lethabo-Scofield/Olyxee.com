@@ -36,12 +36,6 @@ const footerData = {
       ],
     },
     {
-      title: "Solutions",
-      links: [
-        { name: "Enterprise Automation", href: "/enterprise" },
-      ],
-    },
-    {
       title: "Resources",
       links: [
         { name: "Documentation", href: "/docs" },

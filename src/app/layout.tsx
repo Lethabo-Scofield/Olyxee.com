@@ -53,8 +53,6 @@ export const metadata: Metadata = {
     "intelligent operations",
     "AI infrastructure",
     "Orgni",
-    "Olyxee Document Integrity",
-    "Togent",
     "Order Loop",
     "AI reliability",
     "business context for AI",
@@ -156,7 +154,6 @@ export default function RootLayout({
                 "Decision history",
                 "Model-neutral architecture",
                 "Intelligent operations",
-                "Document integrity",
                 "Operational workflows",
                 "Financial operations",
                 "AI research"

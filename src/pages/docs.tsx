@@ -178,11 +178,11 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       action: { kind: "external", href: "https://finance.olyxee.com", label: "Open financial operations" },
     },
     {
-      name: "Togent",
-      description: "Togent is Olyxee's context optimization and control layer for AI agents. It helps teams track, store, compress, and reuse context across tools such as Cursor, Claude, Codex, and internal copilots.",
+      name: "Orgni · Context optimization",
+      description: "Context optimization is a capability of Orgni. It helps teams track, store, compress, and reuse context across AI tools and internal copilots, so intelligent systems work from the same organisational understanding.",
       status: "private",
       bg: "/images/gradient-abstract-blue.webp",
-      action: { kind: "internal", href: "/enterprise", label: "Learn about Togent" },
+      action: { kind: "internal", href: "/contact", label: "Talk to us" },
     },
   ];
 
@@ -195,11 +195,11 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       action: { kind: "external", href: "https://logistics.olyxee.com/", label: "Visit Order Loop" },
     },
     {
-      name: "Enterprise Automation",
-      description: "Enterprise Automation helps organizations automate workflows, approvals, business rules, data movement, and process execution across systems.",
+      name: "Orgni · Enterprise automation",
+      description: "Enterprise automation is a capability of Orgni. It helps organizations automate workflows, approvals, business rules, data movement, and process execution across systems, driven by live organisational context.",
       status: "private",
       bg: "/images/gradient-blue.webp",
-      action: { kind: "internal", href: "/enterprise", label: "Learn more" },
+      action: { kind: "internal", href: "/contact", label: "Talk to us" },
     },
   ];
 

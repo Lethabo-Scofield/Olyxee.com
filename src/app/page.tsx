@@ -119,7 +119,7 @@ export default function HomePage() {
         <HeroSection />
         <ResearchAreas />
         <ImageShowcase />
-        {/* <OrdoSection /> hidden for now */}
+        
         <OrgniSection />
         <VideoShowcaseSection />
         <StoriesSection />
@@ -464,148 +464,6 @@ function ImageShowcase() {
   );
 }
 
-type ProductBlock = {
-  key: string;
-  name: string;
-  tagline: string;
-  points: readonly string[];
-  ctaLabel: string;
-  ctaHref: string;
-  imageSide: "left" | "right";
-  images: {
-    a: { src: string; alt: string; w: number; h: number };
-    b: { src: string; alt: string; w: number; h: number };
-  };
-};
-
-const PRODUCT_BLOCKS: readonly ProductBlock[] = [
-  {
-    key: "ordo",
-    name: "Orgni Workflows",
-    tagline:
-      "Ask in plain English. Orgni Workflows gets it done across the tools you already use - and keeps the receipts.",
-    points: [
-      "Plugs into Drive, Teams, SharePoint & more",
-      "Turns requests into completed work",
-      "Every step assigned, timestamped, reviewable",
-    ],
-    ctaLabel: "Try Orgni Workflows",
-    ctaHref: "https://orgni.olyxee.com",
-    imageSide: "right",
-    images: {
-      a: { src: "/images/ordo/integrations.jpeg", alt: "Connects natural-language requests to your existing tools", w: 1200, h: 675 },
-      b: { src: "/images/ordo/tasks.png", alt: "Tracks every task with clear ownership and timestamps", w: 1200, h: 1200 },
-    },
-  },
-  {
-    key: "addup",
-    name: "Orgni Finance",
-    tagline:
-      "The financial close, on autopilot. Orgni Finance reconciles, drafts, and reviews the books while your team approves.",
-    points: [
-      "Connects to Xero, QuickBooks & your bank feeds",
-      "Turns transactions into a clean monthly close",
-      "Every entry sourced, explained, audit-ready",
-    ],
-    ctaLabel: "Try Orgni Finance",
-    ctaHref: "https://addup.olyxee.com",
-    imageSide: "left",
-    images: {
-      a: { src: "/images/addup/reconciliation.png", alt: "Reconciliation statement with AI suggestions and variance analysis", w: 1440, h: 900 },
-      b: { src: "/images/addup/integrations.png", alt: "Drag-and-drop connectors for PayPal, Chase, SAP and more", w: 1200, h: 1000 },
-    },
-  },
-];
-
-function ProductBlockRow({ p }: { p: ProductBlock }) {
-  const imageRight = p.imageSide === "right";
-  return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.7 }}
-        className={`lg:col-span-5 ${imageRight ? "" : "lg:order-2"}`}
-      >
-        <h2 className="font-serif text-5xl sm:text-6xl lg:text-7xl tracking-tight text-neutral-900 mb-6 leading-[1]">
-          {p.name}
-        </h2>
-        <p className="text-lg sm:text-xl text-neutral-700 leading-snug mb-8 max-w-md font-light">
-          {p.tagline}
-        </p>
-        <ul className="space-y-3">
-          {p.points.map((t) => (
-            <li key={t} className="flex items-start gap-3 text-[15px] text-neutral-600">
-              <span className="flex-shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-neutral-400" />
-              <span>{t}</span>
-            </li>
-          ))}
-        </ul>
-      </motion.div>
-
-      <div className={`lg:col-span-7 relative ${imageRight ? "" : "lg:order-1"}`}>
-        <div className="relative aspect-[5/4] sm:aspect-[6/5] w-full">
-          <motion.div
-            initial={{ opacity: 0, x: imageRight ? "-65%" : "65%", y: -30, rotate: imageRight ? -14 : 14, scale: 0.92 }}
-            whileInView={{ opacity: 1, x: 0, y: 0, rotate: imageRight ? -2 : 2, scale: 1 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 1.05, ease: [0.16, 1, 0.3, 1] }}
-            className={`absolute top-0 ${imageRight ? "left-0 sm:left-2" : "right-0 sm:right-2"} w-[78%] sm:w-[70%] rounded-2xl overflow-hidden shadow-2xl shadow-neutral-300/50 border border-neutral-200/60 bg-white`}
-          >
-            <Image src={p.images.a.src} alt={p.images.a.alt} width={p.images.a.w} height={p.images.a.h} className="w-full h-auto" />
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: imageRight ? "65%" : "-65%", y: 40, rotate: imageRight ? 16 : -16, scale: 0.92 }}
-            whileInView={{ opacity: 1, x: 0, y: 0, rotate: imageRight ? 3 : -3, scale: 1 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 1.05, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-            className={`absolute bottom-0 ${imageRight ? "right-0 sm:right-2" : "left-0 sm:left-2"} w-[72%] sm:w-[62%] rounded-2xl overflow-hidden shadow-2xl shadow-neutral-300/50 border border-neutral-200/60 bg-white`}
-          >
-            <Image src={p.images.b.src} alt={p.images.b.alt} width={p.images.b.w} height={p.images.b.h} className="w-full h-auto" />
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.9 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.55, delay: 0.95, ease: [0.16, 1, 0.3, 1] }}
-            className={`absolute -bottom-5 sm:-bottom-7 ${imageRight ? "right-4 sm:right-8" : "left-4 sm:left-8"} z-20`}
-          >
-            <a
-              href={p.ctaHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide shadow-2xl shadow-neutral-900/30 hover:shadow-neutral-900/50 hover:scale-105"
-            >
-              {p.ctaLabel}
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-            </a>
-          </motion.div>
-
-          <div
-            aria-hidden="true"
-            className="absolute -inset-x-8 -inset-y-12 -z-10 bg-gradient-to-tr from-blue-100/40 via-transparent to-emerald-100/30 blur-3xl"
-          />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function OrdoSection() {
-  return (
-    <section className="py-20 sm:py-32 lg:py-40 bg-neutral-50/60 border-y border-neutral-100 overflow-x-clip">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 space-y-28 sm:space-y-40">
-        {PRODUCT_BLOCKS.map((p) => (
-          <ProductBlockRow key={p.key} p={p} />
-        ))}
-      </div>
-    </section>
-  );
-}
-
 type ProductCta = { label: string; href: string; external?: boolean };
 
 function ProductFeature({
@@ -841,96 +699,6 @@ function OrgniSection() {
   );
 }
 
-function TogentSection() {
-  return (
-    <section id="togent" className="py-20 sm:py-32 lg:py-40 bg-white border-t border-neutral-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            className="lg:col-span-7 order-2 lg:order-1 relative"
-          >
-            <div aria-hidden className="absolute -inset-8 -z-10 bg-gradient-to-br from-indigo-50/60 via-white to-blue-50/40 blur-2xl rounded-[2rem]" />
-            <div className="relative space-y-4">
-              <div className="overflow-hidden rounded-2xl ring-1 ring-neutral-200 bg-neutral-50 shadow-sm">
-                <Image
-                  src="/images/togent-tokens-guide.png"
-                  alt="AI Tokens Guide: understanding, optimization, and cost management"
-                  width={1600}
-                  height={401}
-                  className="block w-full h-auto"
-                  sizes="(max-width: 1024px) 100vw, 720px"
-                />
-              </div>
-              <div className="overflow-hidden rounded-2xl ring-1 ring-neutral-200 bg-neutral-50 shadow-sm">
-                <Image
-                  src="/images/togent-token-stream.png"
-                  alt="Token Stream Timeline showing past, active, and future tokens within the current context window"
-                  width={1600}
-                  height={739}
-                  className="block w-full h-auto"
-                  sizes="(max-width: 1024px) 100vw, 720px"
-                />
-              </div>
-              <div className="overflow-hidden rounded-2xl ring-1 ring-neutral-200 bg-neutral-50 shadow-sm">
-                <Image
-                  src="/images/togent-token-budget.png"
-                  alt="Token Budget Allocation across user prompt, context, processing, and response"
-                  width={1600}
-                  height={1004}
-                  className="block w-full h-auto"
-                  sizes="(max-width: 1024px) 100vw, 720px"
-                />
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            className="lg:col-span-5 order-1 lg:order-2 lg:sticky lg:top-28"
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <span className="font-serif text-3xl sm:text-4xl text-neutral-900 tracking-tight">Togent</span>
-              <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.25em]">Cost control</span>
-              <span className="px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 text-[10px] font-mono uppercase tracking-[0.18em]">Coming soon</span>
-            </div>
-
-            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-6">
-              Stop paying for the same <em className="text-neutral-500 not-italic">context twice.</em>
-            </h2>
-
-            <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-8 max-w-md">
-              Togent is Olyxee&apos;s context optimization and control layer for AI agents. It helps teams track, store, compress, and reuse context across tools such as Cursor, Claude, Codex, and internal copilots.
-            </p>
-
-            <div className="flex flex-wrap items-center gap-4">
-              <Link
-                href="/contact"
-                className="group inline-flex items-center gap-2 text-sm font-medium text-white bg-neutral-900 hover:bg-black px-6 py-3 rounded-full transition-colors"
-              >
-                Get early access
-                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </Link>
-              <Link
-                href="/enterprise"
-                className="text-sm font-medium text-neutral-700 hover:text-neutral-900 transition-colors"
-              >
-                Learn more →
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function IntegrationSection() {
   const scatteredCards = useMemo(() => [
     { name: "OpenAI", subtitle: "GPT Models", src: "/images/logos/openai.png", top: "4%", left: "3%", rotate: -3 },
@@ -1014,7 +782,7 @@ function IntegrationSection() {
                   Turn business goals into completed operations. Orgni Workflows plans, coordinates, and executes across your tools and systems end-to-end.
                 </p>
                 <Link
-                  href="/products/ordo"
+                  href="/contact"
                   className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-sm font-medium bg-neutral-900 text-white hover:bg-neutral-800 transition-colors group"
                 >
                   Discover more
@@ -1235,7 +1003,7 @@ function CTASection() {
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </Link>
               <Link
-                href="/enterprise"
+                href="/about"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 text-neutral-900 bg-white border border-neutral-300 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide"
               >
                 Learn more

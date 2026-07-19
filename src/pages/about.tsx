@@ -58,7 +58,7 @@ const JOURNEY_LAYERS: string[] = [
   "Financial operations: reconciliation, transaction review, finance exceptions, and financial workflow support.",
   "Business memory and document integrity: document understanding, classification, extraction, validation, verification, and auditability, so organizations know whether a document is complete, consistent, relevant, and reliable before it is used in a decision.",
   "Alongside Orgni, Order Loop supports customer communication around orders, deliveries, collections, and service status updates.",
-  "Togent is Olyxee\u2019s ongoing research into AI integration and agent tooling, focused on how intelligent systems connect with APIs, tools, workflows, and operational environments.",
+  "Orgni also carries Olyxee\u2019s ongoing research into AI integration and agent tooling, focused on how intelligent systems connect with APIs, tools, workflows, and operational environments.",
 ];
 
 const JOURNEY_CLOSE: string[] = [

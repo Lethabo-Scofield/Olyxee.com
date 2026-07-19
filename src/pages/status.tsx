@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 const services = [
   { name: "Orgni API", status: "Operational" },
-  { name: "Olyxee Document Integrity", status: "Operational" },
+  { name: "Orgni · Document integrity", status: "Operational" },
   { name: "Orgni · Financial operations", status: "Operational" },
   { name: "Dashboard", status: "Operational" },
   { name: "Documentation", status: "Operational" },
