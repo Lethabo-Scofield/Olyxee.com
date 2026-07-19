@@ -393,14 +393,17 @@ function ResearchAreas() {
 
 function ImageShowcase() {
   const rowA = [
-    { src: "/images/showcase/agents.png", alt: "AI Agents", caption: "Agent Builders" },
-    { src: "/images/showcase/insights.png", alt: "AI Insights", caption: "Operational Insights" },
-    { src: "/images/showcase/search.png", alt: "AI Search", caption: "Search & Discovery" },
+    { src: "/images/showcase/enterprise-ai-framework.png", alt: "The framework for enterprise AI", caption: "Enterprise AI Framework" },
+    { src: "/images/showcase/knowledge-routing.png", alt: "A query routed to structured organisational knowledge", caption: "Knowledge Routing" },
+    { src: "/images/showcase/connected-systems.png", alt: "Systems, clouds and people connected around a shared hub", caption: "Connected Systems" },
+    { src: "/images/showcase/company-insights.png", alt: "Company insights and predictions surfaced from live data", caption: "Company Insights" },
+    { src: "/images/showcase/business-model.png", alt: "A hand sketching a business model map", caption: "Business Model Mapping" },
   ];
   const rowB = [
-    { src: "/images/showcase/insights.png", alt: "AI Insights", caption: "Operational Insights" },
-    { src: "/images/showcase/search.png", alt: "AI Search", caption: "Search & Discovery" },
-    { src: "/images/showcase/agents.png", alt: "AI Agents", caption: "Agent Builders" },
+    { src: "/images/showcase/ai-assistant.png", alt: "A person working with an AI assistant across dashboards", caption: "AI at Work" },
+    { src: "/images/showcase/custom-ai-solutions.png", alt: "Custom AI solutions folder with code and content", caption: "Custom AI Solutions" },
+    { src: "/images/showcase/sales-funnel.png", alt: "A sales funnel chart with operational records", caption: "Sales Operations" },
+    { src: "/images/showcase/roi-reporting.png", alt: "ROI reporting with revenue charts", caption: "ROI Reporting" },
   ];
 
   const doubledA = [...rowA, ...rowA];
