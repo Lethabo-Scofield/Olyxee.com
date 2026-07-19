@@ -1103,7 +1103,7 @@ function VideoShowcaseSection() {
         >
           <p className="text-xs font-semibold text-white/40 uppercase tracking-[0.2em] mb-4">See It in Motion</p>
           <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-white max-w-3xl mx-auto">
-            One living view of <em className="text-orange-400 not-italic">your organisation.</em>
+            One living view of <em className="text-white/50 not-italic">your organisation.</em>
           </h2>
           <p className="mt-5 text-white/60 text-base sm:text-lg font-light leading-relaxed max-w-xl mx-auto">
             Watch how Orgni brings people, workflows, decisions and operational signals together in a single place.
@@ -1117,22 +1117,15 @@ function VideoShowcaseSection() {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="relative"
         >
-          <div
-            aria-hidden
-            className="absolute -inset-8 sm:-inset-14 -z-0 bg-gradient-to-br from-orange-500/15 via-transparent to-blue-500/15 blur-3xl rounded-[3rem]"
+          <video
+            src="/videos/landing-showcase.mp4"
+            className="w-full aspect-video object-cover"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
           />
-          <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden ring-1 ring-white/15 shadow-2xl shadow-black/60">
-            <video
-              src="/videos/landing-showcase.mp4"
-              className="w-full aspect-video object-cover"
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="metadata"
-            />
-            <div className="absolute inset-0 rounded-2xl sm:rounded-3xl pointer-events-none ring-1 ring-inset ring-white/10" />
-          </div>
         </motion.div>
       </div>
     </section>
