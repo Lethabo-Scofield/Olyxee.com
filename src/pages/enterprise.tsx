@@ -342,12 +342,10 @@ const Enterprise: FC = () => {
                 </span>
                 <h3 className="text-[1.25rem] font-medium text-[#111] mb-3">{team.title}</h3>
                 <p className="text-[1rem] text-[#4a5568] leading-relaxed mb-8">{team.desc}</p>
-                <Link
-                  href="/solutions/logistics"
-                  className="inline-flex items-center text-[#111111] font-medium hover:underline underline-offset-4 text-[15px]"
-                >
-                  Learn more <ArrowRight className="ml-1 w-4 h-4" />
-                </Link>
+                <TalkToEnterprise
+                  label="Consult"
+                  className="group inline-flex items-center gap-1.5 text-[#111111] font-medium hover:underline underline-offset-4 text-[15px]"
+                />
               </div>
             ))}
           </div>
