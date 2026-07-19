@@ -469,7 +469,6 @@ function ProductFeature({
   heading,
   emphasis,
   description,
-  pills,
   image,
   primary,
   secondary,
@@ -480,7 +479,6 @@ function ProductFeature({
   heading: string;
   emphasis: string;
   description: string;
-  pills?: { label: string }[];
   image: { src: string; alt: string; width: number; height: number };
   primary: ProductCta;
   secondary: ProductCta;
@@ -545,18 +543,6 @@ function ProductFeature({
             {description}
           </p>
           <div className="sm:col-span-6 lg:col-span-5 flex flex-col sm:items-end gap-5">
-            {pills && pills.length > 0 && (
-              <div className="flex flex-wrap sm:justify-end gap-2">
-                {pills.map(({ label }, i) => (
-                  <span key={label} className="inline-flex items-center text-xs text-neutral-500">
-                    {label}
-                    {i < pills.length - 1 && (
-                      <span aria-hidden className="ml-2 text-neutral-300">·</span>
-                    )}
-                  </span>
-                ))}
-              </div>
-            )}
             <div className="flex flex-wrap items-center gap-4">
               <a
                 href={primary.href}
@@ -663,12 +649,6 @@ function OrgniSection() {
       heading="Orgni builds live business context for"
       emphasis="modern operations."
       description="Orgni creates a living operational model of your organisation. It connects scattered documents, workflows, decisions, roles, rules, and operational signals into structured business context that people and intelligent systems can use."
-      pills={[
-        { label: "Context" },
-        { label: "Operational workflows" },
-        { label: "Business memory" },
-        { label: "Financial operations" },
-      ]}
       image={{
         src: "/images/orgni-product.png",
         alt: "Orgni interface: an organizational role transfer being processed with a live user graph, entitlements, and approval trail",
