@@ -390,11 +390,18 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                             aria-hidden="true"
                         />
                         <motion.div
-                            initial={{ x: '100%', opacity: 0.5 }}
-                            animate={{ x: 0, opacity: 1 }}
-                            exit={{ x: '100%', opacity: 0 }}
-                            transition={{ type: 'spring', damping: 28, stiffness: 220 }}
-                            className="fixed right-3 top-3 bottom-3 w-[calc(100%-24px)] max-w-sm z-[1002] md:hidden overflow-hidden flex flex-col"
+                            initial={{ x: '108%' }}
+                            animate={{ x: 0 }}
+                            exit={{ x: '108%' }}
+                            transition={{ type: 'spring', damping: 30, stiffness: 300, mass: 0.8 }}
+                            drag="x"
+                            dragConstraints={{ left: 0, right: 320 }}
+                            dragElastic={{ left: 0, right: 0.6 }}
+                            dragSnapToOrigin
+                            onDragEnd={(_, info) => {
+                                if (info.offset.x > 90 || info.velocity.x > 500) setMobileMenuOpen(false);
+                            }}
+                            className="fixed right-3 top-3 bottom-3 w-[calc(100%-24px)] max-w-sm z-[1002] md:hidden overflow-hidden flex flex-col touch-pan-y"
                             style={{
                                 background: 'rgba(255,255,255,0.75)',
                                 backdropFilter: 'blur(40px) saturate(200%)',
@@ -406,6 +413,7 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                             role="dialog"
                             aria-modal="true"
                         >
+                            <div aria-hidden className="absolute left-1.5 top-1/2 -translate-y-1/2 h-10 w-1 rounded-full bg-neutral-300/70" />
                             <div className="flex items-center justify-between p-5 pb-4">
                                 <div className="flex items-center gap-2.5">
                                     <Image src="/Logo/Olyxee_Logo_Knockout.png" alt="Olyxee Logo" width={26} height={26} unoptimized />
@@ -431,9 +439,10 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                                         return (
                                             <motion.li
                                                 key={item.name}
-                                                initial={{ opacity: 0, x: 30 }}
+                                                initial={{ opacity: 0, x: 40 }}
                                                 animate={{ opacity: 1, x: 0 }}
-                                                transition={{ delay: 0.08 + i * 0.05, type: 'spring', stiffness: 400, damping: 30 }}
+                                                transition={{ delay: 0.1 + i * 0.045, type: 'spring', stiffness: 380, damping: 28 }}
+                                                whileTap={{ scale: 0.97 }}
                                             >
                                                 {hasChildren ? (
                                                     <>
@@ -498,9 +507,13 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                                 <p className="text-[10px] font-semibold text-neutral-400 uppercase tracking-[0.22em] px-1 mb-1">
                                     Sign in to
                                 </p>
-                                {SIGNIN_OPTIONS.map((opt) => (
-                                    <a
+                                {SIGNIN_OPTIONS.map((opt, i) => (
+                                    <motion.a
                                         key={opt.name}
+                                        initial={{ opacity: 0, y: 14 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.42 + i * 0.06, type: 'spring', stiffness: 340, damping: 26 }}
+                                        whileTap={{ scale: 0.97 }}
                                         href={opt.href}
                                         target={opt.external ? "_blank" : undefined}
                                         rel={opt.external ? "noopener noreferrer" : undefined}
@@ -521,7 +534,7 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                                                 aria-hidden
                                             />
                                         )}
-                                    </a>
+                                    </motion.a>
                                 ))}
                             </motion.div>
                         </motion.div>
