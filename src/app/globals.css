@@ -302,8 +302,9 @@ img, svg, video, canvas, iframe, table {
   h1, h2, h3, h4, h5, h6 {
     color: inherit;
     line-height: 1.1;
-    letter-spacing: -0.022em;
-    font-weight: 500;
+    letter-spacing: -0.03em;
+    font-weight: 600;
+    font-family: -apple-system, BlinkMacSystemFont, var(--font-display), "Inter", "Söhne", "Segoe UI", system-ui, sans-serif;
   }
 
   p {
@@ -337,9 +338,9 @@ img, svg, video, canvas, iframe, table {
 }
 
 .font-serif {
-  font-family: var(--font-display), "Inter", "Söhne", system-ui, -apple-system, sans-serif;
-  letter-spacing: -0.022em;
-  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, var(--font-display), "Inter", "Söhne", "Segoe UI", system-ui, sans-serif;
+  letter-spacing: -0.03em;
+  font-weight: 600;
 }
 
 
