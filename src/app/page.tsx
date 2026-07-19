@@ -438,7 +438,6 @@ function ImageShowcase() {
           transition={{ duration: 0.7 }}
           className="text-center"
         >
-          <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">In Practice</p>
           <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900">
             How Orgni puts Olyxee&apos;s research to work
           </h2>
