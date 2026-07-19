@@ -481,7 +481,7 @@ function ProductFeature({
   description: string;
   image: { src: string; alt: string; width: number; height: number };
   primary: ProductCta;
-  secondary: ProductCta;
+  secondary?: ProductCta;
 }) {
   const ease = [0.25, 0.1, 0.25, 1] as const;
   const surfaceClass =
@@ -552,21 +552,22 @@ function ProductFeature({
                 {primary.label}
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </a>
-              {secondary.external ? (
-                <a
-                  href={secondary.href}
-                  className="text-sm font-medium text-neutral-700 hover:text-neutral-900 transition-colors"
-                >
-                  {secondary.label} →
-                </a>
-              ) : (
-                <Link
-                  href={secondary.href}
-                  className="text-sm font-medium text-neutral-700 hover:text-neutral-900 transition-colors"
-                >
-                  {secondary.label} →
-                </Link>
-              )}
+              {secondary &&
+                (secondary.external ? (
+                  <a
+                    href={secondary.href}
+                    className="text-sm font-medium text-neutral-700 hover:text-neutral-900 transition-colors"
+                  >
+                    {secondary.label} →
+                  </a>
+                ) : (
+                  <Link
+                    href={secondary.href}
+                    className="text-sm font-medium text-neutral-700 hover:text-neutral-900 transition-colors"
+                  >
+                    {secondary.label} →
+                  </Link>
+                ))}
             </div>
           </div>
         </motion.div>
@@ -655,8 +656,7 @@ function OrgniSection() {
         width: 1024,
         height: 576,
       }}
-      primary={{ label: "Try Orgni", href: "https://orgni.olyxee.com", external: true }}
-      secondary={{ label: "Talk to us", href: "/contact" }}
+      primary={{ label: "Talk to us", href: "/contact" }}
     />
   );
 }
