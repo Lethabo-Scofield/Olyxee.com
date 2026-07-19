@@ -177,35 +177,6 @@ const About: FC = () => {
                       In this future, knowledge is not fragmented across documents and disconnected systems. Processes are not invisible. Decisions are not separated from their context. People and intelligent systems work through a shared operational model that can be understood, governed, audited, and continuously improved.
                     </p>
                   </div>
-                  <div className="col-span-12 sm:col-span-4 lg:col-span-5 order-1 sm:order-2">
-                    <div className="flex flex-col items-center">
-                      <video
-                        src="/videos/pillars.mp4"
-                        className="w-56 sm:w-full max-w-sm lg:max-w-md aspect-square object-cover"
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        preload="metadata"
-                        aria-label="Animated illustration of three stacked organisational layers coming together"
-                      />
-                      <p className="font-serif text-xl sm:text-2xl text-neutral-900 tracking-tight text-center -mt-4 sm:-mt-8 mb-8">
-                        Three pillars. <em className="text-neutral-400 not-italic">One unfair advantage.</em>
-                      </p>
-                      <div className="grid grid-cols-3 gap-4 sm:gap-6 w-full max-w-sm lg:max-w-md">
-                        {[
-                          { icon: Workflow, label: "Operational workflows" },
-                          { icon: Landmark, label: "Financial operations" },
-                          { icon: FileCheck2, label: "Document integrity" },
-                        ].map(({ icon: Icon, label }) => (
-                          <div key={label} className="flex flex-col items-center text-center gap-2.5">
-                            <Icon className="w-5 h-5 text-neutral-900" strokeWidth={1.5} aria-hidden />
-                            <p className="text-xs text-neutral-500 font-light leading-snug">{label}</p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
                 </motion.article>
               ) : (
                 <motion.div
@@ -257,22 +228,58 @@ const About: FC = () => {
         {/* === PRINCIPLES === */}
         <section className="py-20 sm:py-32 bg-white border-t border-neutral-200/70">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              custom={0}
-              variants={fadeUp}
-              className="max-w-3xl mb-12 sm:mb-16"
-            >
-              <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
-                Principles
-              </p>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-[-0.025em] leading-[1.05] font-medium">
-                The principles behind how we{" "}
-                <em className="font-serif italic font-normal text-neutral-500">build, ship, and operate.</em>
-              </h2>
-            </motion.div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-12 sm:mb-16">
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                custom={0}
+                variants={fadeUp}
+              >
+                <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
+                  Principles
+                </p>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-[-0.025em] leading-[1.05] font-medium">
+                  The principles behind how we{" "}
+                  <em className="font-serif italic font-normal text-neutral-500">build, ship, and operate.</em>
+                </h2>
+              </motion.div>
+
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                custom={1}
+                variants={fadeUp}
+                className="flex flex-col items-center"
+              >
+                <video
+                  src="/videos/pillars.mp4"
+                  className="w-56 sm:w-72 lg:w-80 aspect-square object-cover"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
+                  aria-label="Animated illustration of three stacked organisational layers coming together"
+                />
+                <p className="font-serif text-xl sm:text-2xl text-neutral-900 tracking-tight text-center -mt-3 sm:-mt-6 mb-7">
+                  Three pillars. <em className="text-neutral-400 not-italic">One unfair advantage.</em>
+                </p>
+                <div className="grid grid-cols-3 gap-4 sm:gap-6 w-full max-w-md">
+                  {[
+                    { icon: Workflow, label: "Operational workflows" },
+                    { icon: Landmark, label: "Financial operations" },
+                    { icon: FileCheck2, label: "Document integrity" },
+                  ].map(({ icon: Icon, label }) => (
+                    <div key={label} className="flex flex-col items-center text-center gap-2.5">
+                      <Icon className="w-5 h-5 text-neutral-900" strokeWidth={1.5} aria-hidden />
+                      <p className="text-xs text-neutral-500 font-light leading-snug">{label}</p>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-14 sm:gap-y-16">
               {APPROACH.map((item, idx) => {
