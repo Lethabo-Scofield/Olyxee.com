@@ -91,14 +91,6 @@ export default function HomePage() {
       },
       {
         "@type": "Question",
-        name: "What is Order Loop?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Order Loop is Olyxee's product for customer order communication. It keeps customers informed with clean, automated order-status updates and operational notifications, from confirmed to delivered.",
-        },
-      },
-      {
-        "@type": "Question",
         name: "Where is Olyxee based?",
         acceptedAnswer: {
           "@type": "Answer",
@@ -129,7 +121,6 @@ export default function HomePage() {
         <ImageShowcase />
         {/* <OrdoSection /> hidden for now */}
         <OrgniSection />
-        <CourierLoopSection />
         <StoriesSection />
         <CTASection />
         <LogoStrip />
