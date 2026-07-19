@@ -886,14 +886,14 @@ function VideoShowcaseSection() {
 
 function StoriesSection() {
   return (
-    <section id="stories" className="py-20 sm:py-32 lg:py-40 bg-gradient-to-b from-blue-50 via-blue-50/50 to-white border-t border-blue-100/60 scroll-mt-24">
+    <section id="stories" className="py-20 sm:py-28 bg-white border-t border-neutral-200/70 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="mb-14 sm:mb-20"
+          className="mb-10 sm:mb-14"
         >
           <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Stories</p>
           <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900 max-w-2xl">
@@ -932,7 +932,7 @@ function StoriesSection() {
           </div>
         </motion.div>
 
-        <div id="stories-grid" className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-10 scroll-mt-24">
+        <div id="stories-grid" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12 scroll-mt-24">
           {STORIES.map((story, i) => (
             <motion.article
               key={story.tag}
@@ -942,7 +942,7 @@ function StoriesSection() {
               transition={{ duration: 0.6, delay: i * 0.1 }}
             >
               <Link href={story.href} className="group block cursor-pointer">
-                <div className="relative aspect-[5/4] overflow-hidden bg-neutral-100 mb-6">
+                <div className="relative aspect-[3/2] overflow-hidden bg-neutral-100 mb-5">
                   <Image
                     src={story.image}
                     alt={story.alt}
@@ -954,7 +954,7 @@ function StoriesSection() {
                 <p className="text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.18em] mb-2">
                   {story.tag}
                 </p>
-                <h3 className="font-serif text-xl sm:text-2xl text-neutral-900 tracking-tight leading-snug group-hover:text-neutral-600 transition-colors">
+                <h3 className="font-serif text-lg sm:text-xl text-neutral-900 tracking-tight leading-snug group-hover:text-neutral-600 transition-colors max-w-[26rem]">
                   {story.headline}
                 </h3>
               </Link>
