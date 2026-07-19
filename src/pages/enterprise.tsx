@@ -300,12 +300,6 @@ const Enterprise: FC = () => {
                 </li>
               ))}
             </ul>
-            <Link
-              href="/solutions/logistics"
-              className="inline-flex items-center text-[#111111] font-medium hover:underline underline-offset-4 text-[15px]"
-            >
-              Learn more about Orgni <ArrowRight className="ml-1.5 w-4 h-4" />
-            </Link>
           </div>
           <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.08)] ring-1 ring-black/5 bg-white">
             <video
