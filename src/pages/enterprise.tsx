@@ -528,12 +528,12 @@ const Enterprise: FC = () => {
         </h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
-            { title: "Solutions", desc: "Custom deployments for complex organizations.", link: "/solutions", image: "/images/enterprise/explore-solutions.png" },
-            { title: "Research", desc: "Discover our frontier models and AI capabilities.", link: "/research", image: "/images/enterprise/explore-research.png" },
-            { title: "Developers", desc: "Build on top of Olyxee infrastructure.", link: "/developers", image: "/images/enterprise/explore-developers.png" },
+            { title: "Solutions", desc: "Custom deployments for complex organizations.", link: "/solutions", image: "/images/enterprise/explore-solutions.png", date: "Jun 2026" },
+            { title: "Research", desc: "Discover our frontier models and AI capabilities.", link: "/research", image: "/images/enterprise/explore-research.png", date: "May 2026" },
+            { title: "Developers", desc: "Build on top of Olyxee infrastructure.", link: "/developers", image: "/images/enterprise/explore-developers.png", date: "Jul 2026" },
           ].map((card) => (
             <Link key={card.title} href={card.link} className="block group">
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.25rem]">
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-md">
                 <Image
                   src={card.image}
                   alt={`${card.title} illustration`}
@@ -542,12 +542,12 @@ const Enterprise: FC = () => {
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                 />
               </div>
-              <div className="pt-5 flex items-start justify-between gap-4">
-                <div>
-                  <h3 className="text-[1.1rem] font-medium text-[#111] mb-1">{card.title}</h3>
-                  <p className="text-[0.95rem] text-[#4a5568] leading-relaxed">{card.desc}</p>
-                </div>
-                <ArrowRight className="mt-1.5 w-4 h-4 shrink-0 text-neutral-400 transition-all group-hover:text-[#111] group-hover:translate-x-0.5" />
+              <div className="pt-5">
+                <h3 className="text-[1.35rem] font-medium tracking-tight text-[#111] mb-2 group-hover:underline underline-offset-4 decoration-1">
+                  {card.title}
+                </h3>
+                <p className="text-[1.05rem] text-[#4a5568] leading-relaxed mb-3">{card.desc}</p>
+                <p className="text-[0.85rem] text-neutral-500">{card.date}</p>
               </div>
             </Link>
           ))}
