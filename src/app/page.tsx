@@ -6,7 +6,7 @@ import Footer from '../components/footer';
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Truck, Check, PackageCheck, MapPin, Bell, Layers, Workflow, FileText, Wallet, type LucideIcon } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Truck, Check, PackageCheck, MapPin, Bell } from "lucide-react";
 
 
 export default function HomePage() {
@@ -393,19 +393,13 @@ function ResearchAreas() {
 
 function ImageShowcase() {
   const rowA = [
-    { src: "/images/visualising-ai.png", alt: "Visualising AI", caption: "Visualising AI" },
-    { src: "/images/showcase/research.png", alt: "AI Research", caption: "Mathematical Reasoning" },
     { src: "/images/showcase/agents.png", alt: "AI Agents", caption: "Agent Builders" },
-    { src: "/images/ai-analysis.png", alt: "AI Analysis", caption: "Language Understanding" },
     { src: "/images/showcase/insights.png", alt: "AI Insights", caption: "Operational Insights" },
     { src: "/images/showcase/search.png", alt: "AI Search", caption: "Search & Discovery" },
   ];
   const rowB = [
     { src: "/images/showcase/insights.png", alt: "AI Insights", caption: "Operational Insights" },
-    { src: "/images/ai-analysis.png", alt: "AI Analysis", caption: "Language Understanding" },
-    { src: "/images/visualising-ai.png", alt: "Visualising AI", caption: "Visualising AI" },
     { src: "/images/showcase/search.png", alt: "AI Search", caption: "Search & Discovery" },
-    { src: "/images/showcase/research.png", alt: "AI Research", caption: "Mathematical Reasoning" },
     { src: "/images/showcase/agents.png", alt: "AI Agents", caption: "Agent Builders" },
   ];
 
@@ -484,7 +478,7 @@ function ProductFeature({
   heading: string;
   emphasis: string;
   description: string;
-  pills?: { label: string; icon: LucideIcon }[];
+  pills?: { label: string }[];
   image: { src: string; alt: string; width: number; height: number };
   primary: ProductCta;
   secondary: ProductCta;
@@ -668,10 +662,10 @@ function OrgniSection() {
       emphasis="modern operations."
       description="Orgni creates a living operational model of your organisation. It connects scattered documents, workflows, decisions, roles, rules, and operational signals into structured business context that people and intelligent systems can use."
       pills={[
-        { label: "Context", icon: Layers },
-        { label: "Operational workflows", icon: Workflow },
-        { label: "Business memory", icon: FileText },
-        { label: "Financial operations", icon: Wallet },
+        { label: "Context" },
+        { label: "Operational workflows" },
+        { label: "Business memory" },
+        { label: "Financial operations" },
       ]}
       image={{
         src: "/images/orgni-product.png",
