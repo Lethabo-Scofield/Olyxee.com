@@ -351,9 +351,6 @@ const Enterprise: FC = () => {
         <h2 className="text-[2.5rem] sm:text-[4rem] font-medium tracking-tighter text-[#111] mb-6 leading-[1.1]">
           A complete AI platform for your business.
         </h2>
-        <p className="text-[1.125rem] sm:text-[1.25rem] text-[#4a5568] mb-8 max-w-3xl mx-auto leading-relaxed">
-          Deploy Olyxee infrastructure securely across your organization with advanced monitoring, custom integrations, and dedicated operational tools.
-        </p>
         <Link
           href="/pricing"
           className="inline-flex items-center text-[#111111] font-medium hover:underline underline-offset-4 text-[1.125rem] mb-12"
