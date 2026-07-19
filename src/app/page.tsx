@@ -1189,8 +1189,8 @@ function StoriesSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
             >
-              <Link href={story.href} className="group flex h-full flex-col cursor-pointer">
-                <div className="relative aspect-[5/4] overflow-hidden rounded-2xl bg-neutral-100 mb-6 ring-1 ring-neutral-900/5">
+              <Link href={story.href} className="group block cursor-pointer">
+                <div className="relative aspect-[5/4] overflow-hidden bg-neutral-100 mb-6">
                   <Image
                     src={story.image}
                     alt={story.alt}
@@ -1198,35 +1198,13 @@ function StoriesSection() {
                     sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 540px"
                     className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                   />
-                  <div
-                    aria-hidden
-                    className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  />
-                  <span
-                    className="absolute top-3 left-3 px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-800"
-                    style={{
-                      background: 'rgba(255,255,255,0.78)',
-                      backdropFilter: 'blur(12px) saturate(160%)',
-                      WebkitBackdropFilter: 'blur(12px) saturate(160%)',
-                      border: '1px solid rgba(255,255,255,0.5)',
-                    }}
-                  >
-                    {story.tag}
-                  </span>
                 </div>
+                <p className="text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.18em] mb-2">
+                  {story.tag}
+                </p>
                 <h3 className="font-serif text-xl sm:text-2xl text-neutral-900 tracking-tight leading-snug group-hover:text-neutral-600 transition-colors">
                   {story.headline}
                 </h3>
-                <p className="mt-3 text-sm text-neutral-500 font-light leading-relaxed">
-                  {story.excerpt}
-                </p>
-                <div className="mt-auto pt-4 border-t border-neutral-200/70 flex items-center justify-between">
-                  <span className="inline-flex items-center gap-1.5 text-sm font-medium text-neutral-900">
-                    Read story
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden />
-                  </span>
-                  <span className="text-xs text-neutral-400 font-light">{story.readTime}</span>
-                </div>
               </Link>
             </motion.article>
           ))}
