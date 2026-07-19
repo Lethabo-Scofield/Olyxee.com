@@ -1060,6 +1060,9 @@ const STORIES = [
   {
     tag: "Logistics",
     headline: "Operational infrastructure for cross-continent freight.",
+    excerpt:
+      "How a freight operator turned scattered shipment updates, handoffs and exceptions into one operational picture.",
+    readTime: "5 min read",
     image: "/images/stories/logistics.png",
     alt: "Warehouse worker in safety vest packaging shipments on the line",
     href: "/stories/freightshift",
@@ -1067,6 +1070,9 @@ const STORIES = [
   {
     tag: "Accounting",
     headline: "Five-day close, now overnight.",
+    excerpt:
+      "A finance team replaced end-of-month archaeology with a close process that runs on live operational context.",
+    readTime: "4 min read",
     image: "/images/stories/accounting.png",
     alt: "Finance team reviewing an operations dashboard together",
     href: "/stories/accounting",
@@ -1074,6 +1080,9 @@ const STORIES = [
   {
     tag: "Automation",
     headline: "Supplier onboarding, fully automated.",
+    excerpt:
+      "From forms and follow-up emails to a workflow that checks documents, applies rules and requests approvals on its own.",
+    readTime: "4 min read",
     image: "/images/stories/automation.png",
     alt: "Distributed team celebrating a launch together at the desk",
     href: "/stories/automation",
@@ -1114,9 +1123,18 @@ function StoriesSection() {
             </span>
             .
           </h2>
-          <p className="mt-5 text-neutral-600 text-base sm:text-lg font-light max-w-md">
-            A closer look at how teams put Olyxee to work.
-          </p>
+          <div className="mt-5 flex flex-wrap items-end justify-between gap-4">
+            <p className="text-neutral-600 text-base sm:text-lg font-light max-w-md">
+              A closer look at how teams put Olyxee to work.
+            </p>
+            <Link
+              href="/stories"
+              className="group inline-flex items-center gap-1.5 text-sm font-medium text-neutral-700 hover:text-neutral-900 transition-colors"
+            >
+              View all stories
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden />
+            </Link>
+          </div>
         </motion.div>
 
         <div id="stories-grid" className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-10 scroll-mt-24">
@@ -1128,7 +1146,7 @@ function StoriesSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
             >
-              <Link href={story.href} className="group block cursor-pointer">
+              <Link href={story.href} className="group flex h-full flex-col cursor-pointer">
                 <div className="relative aspect-[5/4] overflow-hidden rounded-2xl bg-neutral-100 mb-6 ring-1 ring-neutral-900/5">
                   <Image
                     src={story.image}
@@ -1137,13 +1155,35 @@ function StoriesSection() {
                     sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 540px"
                     className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                   />
+                  <div
+                    aria-hidden
+                    className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  />
+                  <span
+                    className="absolute top-3 left-3 px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-800"
+                    style={{
+                      background: 'rgba(255,255,255,0.78)',
+                      backdropFilter: 'blur(12px) saturate(160%)',
+                      WebkitBackdropFilter: 'blur(12px) saturate(160%)',
+                      border: '1px solid rgba(255,255,255,0.5)',
+                    }}
+                  >
+                    {story.tag}
+                  </span>
                 </div>
-                <p className="text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.18em] mb-2">
-                  {story.tag}
-                </p>
                 <h3 className="font-serif text-xl sm:text-2xl text-neutral-900 tracking-tight leading-snug group-hover:text-neutral-600 transition-colors">
                   {story.headline}
                 </h3>
+                <p className="mt-3 text-sm text-neutral-500 font-light leading-relaxed">
+                  {story.excerpt}
+                </p>
+                <div className="mt-auto pt-4 border-t border-neutral-200/70 flex items-center justify-between">
+                  <span className="inline-flex items-center gap-1.5 text-sm font-medium text-neutral-900">
+                    Read story
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden />
+                  </span>
+                  <span className="text-xs text-neutral-400 font-light">{story.readTime}</span>
+                </div>
               </Link>
             </motion.article>
           ))}
