@@ -5,7 +5,7 @@ import Footer from "../components/footer";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Compass, ShieldCheck, EyeOff, MapPin, Calendar, Workflow, Users } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Compass, ShieldCheck, EyeOff, MapPin, Calendar, Workflow, Users, Landmark, FileCheck2 } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -177,17 +177,34 @@ const About: FC = () => {
                       In this future, knowledge is not fragmented across documents and disconnected systems. Processes are not invisible. Decisions are not separated from their context. People and intelligent systems work through a shared operational model that can be understood, governed, audited, and continuously improved.
                     </p>
                   </div>
-                  <div className="col-span-12 sm:col-span-4 lg:col-span-5 order-1 sm:order-2 flex justify-center sm:justify-end">
-                    <video
-                      src="/videos/pillars.mp4"
-                      className="w-56 sm:w-full max-w-sm lg:max-w-md aspect-square object-cover"
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      preload="metadata"
-                      aria-label="Animated illustration of stacked organisational layers coming together"
-                    />
+                  <div className="col-span-12 sm:col-span-4 lg:col-span-5 order-1 sm:order-2">
+                    <div className="flex flex-col items-center">
+                      <video
+                        src="/videos/pillars.mp4"
+                        className="w-56 sm:w-full max-w-sm lg:max-w-md aspect-square object-cover"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        preload="metadata"
+                        aria-label="Animated illustration of three stacked organisational layers coming together"
+                      />
+                      <p className="font-serif text-xl sm:text-2xl text-neutral-900 tracking-tight text-center -mt-4 sm:-mt-8 mb-8">
+                        Three pillars. <em className="text-neutral-400 not-italic">One unfair advantage.</em>
+                      </p>
+                      <div className="grid grid-cols-3 gap-4 sm:gap-6 w-full max-w-sm lg:max-w-md">
+                        {[
+                          { icon: Workflow, label: "Operational workflows" },
+                          { icon: Landmark, label: "Financial operations" },
+                          { icon: FileCheck2, label: "Document integrity" },
+                        ].map(({ icon: Icon, label }) => (
+                          <div key={label} className="flex flex-col items-center text-center gap-2.5">
+                            <Icon className="w-5 h-5 text-neutral-900" strokeWidth={1.5} aria-hidden />
+                            <p className="text-xs text-neutral-500 font-light leading-snug">{label}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </motion.article>
               ) : (
