@@ -1084,41 +1084,33 @@ function VideoShowcaseSection() {
   return (
     <section id="in-motion" aria-label="Orgni in motion" className="py-20 sm:py-28 lg:py-32 bg-white scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
-        <div className="rounded-3xl bg-black px-6 sm:px-12 lg:px-16 py-14 sm:py-20 overflow-hidden">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="mb-12 sm:mb-16 text-center"
-        >
-          <p className="text-xs font-semibold text-white/40 uppercase tracking-[0.2em] mb-4">See It in Motion</p>
-          <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-white max-w-3xl mx-auto">
-            One living view of <em className="text-white/50 not-italic">your organisation.</em>
-          </h2>
-          <p className="mt-5 text-white/60 text-base sm:text-lg font-light leading-relaxed max-w-xl mx-auto">
-            Watch how Orgni brings people, workflows, decisions and operational signals together in a single place.
-          </p>
-        </motion.div>
-
         <motion.div
           initial={{ opacity: 0, y: 50, scale: 0.97 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="relative max-w-5xl mx-auto"
+          className="relative rounded-3xl bg-black overflow-hidden"
         >
           <video
             src="/videos/landing-showcase.mp4"
-            className="w-full aspect-video object-cover rounded-2xl sm:rounded-3xl"
+            className="block w-full aspect-video object-cover"
             autoPlay
             loop
             muted
             playsInline
-            preload="metadata"
+            preload="auto"
           />
+          <div
+            aria-hidden
+            className="absolute inset-x-0 top-0 h-40 sm:h-56 bg-gradient-to-b from-black/70 via-black/30 to-transparent pointer-events-none"
+          />
+          <div className="absolute inset-x-0 top-0 pt-8 sm:pt-12 px-6 text-center">
+            <p className="text-xs font-semibold text-white/50 uppercase tracking-[0.2em] mb-3">See It in Motion</p>
+            <h2 className="font-serif text-2xl sm:text-4xl lg:text-5xl tracking-tight text-white max-w-3xl mx-auto">
+              One living view of your organisation
+            </h2>
+          </div>
         </motion.div>
-        </div>
       </div>
     </section>
   );
