@@ -177,6 +177,18 @@ const About: FC = () => {
                       In this future, knowledge is not fragmented across documents and disconnected systems. Processes are not invisible. Decisions are not separated from their context. People and intelligent systems work through a shared operational model that can be understood, governed, audited, and continuously improved.
                     </p>
                   </div>
+                  <div className="col-span-12 sm:col-span-4 lg:col-span-5 order-1 sm:order-2 flex justify-center sm:justify-end">
+                    <video
+                      src="/videos/pillars.mp4"
+                      className="w-56 sm:w-full max-w-sm lg:max-w-md aspect-square object-cover"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      preload="metadata"
+                      aria-label="Animated illustration of stacked organisational layers coming together"
+                    />
+                  </div>
                 </motion.article>
               ) : (
                 <motion.div
