@@ -1,0 +1,451 @@
+Redesign and rewrite Olyxee.com around one clear strategic position.
+
+## Core objective
+
+Olyxee must be presented as the company building Orgni.
+
+Olyxee is not a general AI agency, document-intelligence company, automation consultancy, or collection of unrelated AI products.
+
+Its long-term position is:
+
+**Olyxee is an organisational intelligence company building the infrastructure through which intelligent systems understand and operate inside businesses.**
+
+Orgni is Olyxee’s main product and company mission.
+
+Order Loop must not appear on the Olyxee homepage. It will remain a separate commercial product on its own website.
+
+## Main positioning
+
+Use this hierarchy:
+
+* Olyxee: the company
+* Orgni: the core platform and mission
+* Olyxee Research: foundational research supporting Orgni
+* Careers: people helping build the mission
+
+The homepage should make it clear that better AI models increase the need for Orgni rather than replacing it.
+
+Models can provide general intelligence, but they do not automatically know:
+
+* How a specific organisation operates
+* What is currently happening inside it
+* Which rules apply
+* Who owns each responsibility
+* What previous decisions were made
+* What actions are permitted
+* What outcomes followed earlier actions
+
+Orgni provides this organisation-specific understanding.
+
+## Navigation
+
+Replace the current navigation with:
+
+* Orgni
+* Research
+* Company
+* Careers
+
+Right-side CTA:
+
+* Talk to us
+
+Remove:
+
+* Business
+* Pricing
+* Sign in
+* Solutions
+* Order Loop
+* Document Integrity
+* Enterprise Automation
+* Ordo
+* Togent
+* Financial Operations as a separate product
+* Operational Workflows as a separate product
+
+Do not show unfinished or inactive products publicly.
+
+## Homepage structure
+
+### 1. Hero
+
+Headline:
+
+**Make your organisation understandable to intelligence.**
+
+Supporting copy:
+
+Olyxee is building Orgni, a living operational model and runtime that continuously understands how an organisation operates across its people, systems, processes, rules, decisions, events and outcomes.
+
+Primary CTA:
+
+**Explore Orgni**
+
+Secondary CTA:
+
+**Talk to Olyxee**
+
+Do not use “Try Orgni” because the platform is still being developed.
+
+### 2. The problem
+
+Headline:
+
+**Intelligence is becoming abundant. Organisational understanding is not.**
+
+Explain that AI models can reason and act, but they do not automatically understand the unique operational reality of a company.
+
+Business context is fragmented across:
+
+* People
+* Applications
+* Databases
+* Workflow events
+* Decisions
+* Approvals
+* Communications
+* Policies
+* Documents
+* Customer interactions
+* Operational outcomes
+
+Documents must appear as only one source, not the centre of Orgni.
+
+Add a simple visual:
+
+Models and agents
+↓
+Orgni
+Organisational model
+Operational memory
+Permissions and rules
+Execution context
+↓
+Business systems and operations
+
+### 3. Introduce Orgni
+
+Headline:
+
+**Orgni is the living model of your organisation.**
+
+Supporting copy:
+
+Orgni continuously connects people, systems, processes, rules, decisions, events and outcomes into shared organisational understanding.
+
+Present Orgni through three foundational layers.
+
+#### Organisational Model
+
+Represents:
+
+* People
+* Roles
+* Teams
+* Systems
+* Processes
+* Customers
+* Suppliers
+* Resources
+* Rules
+* Relationships
+
+#### Operational Memory
+
+Preserves:
+
+* Events
+* Decisions
+* Changes
+* Exceptions
+* Outcomes
+* Reasons
+* Corrections
+* Historical state
+
+#### Intelligence Runtime
+
+Provides people, software and intelligent systems with:
+
+* Current context
+* Permissions
+* Applicable rules
+* Available actions
+* Required approvals
+* Execution history
+* Outcome feedback
+
+Avoid making Orgni look like a chatbot, dashboard, workflow tool, RAG system, or document-processing product.
+
+### 4. How Orgni learns
+
+Headline:
+
+**Business context is created through operations.**
+
+Show the following sources:
+
+* System events
+* Database changes
+* Workflow transitions
+* Human decisions
+* Employee actions
+* Approvals
+* Customer interactions
+* Communications
+* Policies
+* Documents
+* Exceptions
+* Operational outcomes
+
+Add this process:
+
+**Observe → Represent → Understand → Support action → Measure outcome → Learn**
+
+Supporting copy:
+
+Orgni does not simply retrieve information. It maintains a changing model of what the organisation is, what is happening inside it and why.
+
+### 5. Why better AI increases demand for Orgni
+
+Headline:
+
+**Built for a world of increasingly capable intelligence.**
+
+Supporting copy:
+
+As models become more capable, more organisations will allow intelligent systems to perform important work. Those systems will need accurate organisational context, permissions, operational state, memory and governance.
+
+Orgni provides the organisation-specific infrastructure that models cannot bring with them.
+
+Add a simple visual:
+
+Better models
+↓
+More intelligent systems inside businesses
+↓
+Greater need for organisational context and control
+↓
+Greater value for Orgni
+
+Use this supporting statement prominently:
+
+**Models provide intelligence. Orgni provides organisational understanding.**
+
+### 6. What Orgni enables
+
+Headline:
+
+**One organisational understanding. Many intelligent systems.**
+
+Show capabilities such as:
+
+* Persistent organisational memory
+* Context-aware agents
+* Workflow understanding
+* Decision traceability
+* Exception detection
+* Impact analysis
+* Permission-aware execution
+* Cross-system coordination
+* Continuous organisational learning
+
+Clearly label capabilities that are still in development. Do not present future concepts as live production features.
+
+### 7. Current development
+
+Headline:
+
+**Building Orgni from the foundations up.**
+
+Show real current work:
+
+* Organisational ontology
+* Organisational tokenizer
+* Normalised event and context contracts
+* Temporal organisational memory
+* Provenance and confidence systems
+* Continuous learning architecture
+* Integration foundations
+
+Use status labels such as:
+
+* In development
+* Internal prototype
+* Design-partner testing
+* Live
+
+Do not use fake customer statistics, unverified performance claims, or fictional case studies.
+
+### 8. Research
+
+Headline:
+
+**Research serving one mission.**
+
+Only include research connected directly to Orgni:
+
+* Organisational representation
+* Temporal business context
+* Operational memory
+* Workflow and decision modelling
+* Context verification and provenance
+* Agent permissions and governance
+* Continuous learning from outcomes
+
+CTA:
+
+**Explore Olyxee Research**
+
+Remove unrelated research topics such as general biological structures, warehouse automation, embodied intelligence, workplace safety vision, personalised commerce and other broad experiments from the homepage.
+
+### 9. Closing section
+
+Headline:
+
+**Olyxee is building the organisational layer every intelligent system will need.**
+
+Supporting copy:
+
+Orgni gives intelligent systems the context, memory, rules and operational understanding required to perform reliable work inside organisations.
+
+Buttons:
+
+* Explore Orgni
+* Talk to Olyxee
+
+## Pages to create or rebuild
+
+### Homepage
+
+Focus entirely on Olyxee’s mission and Orgni.
+
+### Orgni page
+
+Explain:
+
+* The organisational intelligence problem
+* Orgni’s three foundational layers
+* How Orgni observes operations
+* How organisational context changes over time
+* Continuous learning
+* Permissions and governance
+* Current development stage
+* Future developer and enterprise use
+
+### Research page
+
+Only include work that strengthens Orgni.
+
+### Company page
+
+Include:
+
+* Olyxee’s mission
+* Long-term thesis
+* Company principles
+* Why Olyxee exists
+* Honest company stage
+* Contact information
+
+### Careers page
+
+Explain:
+
+* The mission
+* Current team
+* Open roles
+* Founding-engineer expectations
+* How contributors work
+* The problems they will help solve
+
+## Content to remove
+
+Remove from the homepage and public navigation:
+
+* Order Loop
+* Olyxee Document Integrity
+* Enterprise Automation
+* Ordo
+* Togent
+* Generic AI consulting language
+* Broad visual-research gallery
+* Generic pricing
+* Empty API references
+* Premature developer claims
+* Unverified customer stories
+* Fake testimonials
+* Unverified metrics
+* Large ecosystem-logo strips
+* Logos that could imply partnerships or endorsements
+
+Only show infrastructure providers or programmes where Olyxee has a real and current relationship.
+
+## Design direction
+
+Use a distinctive, minimal and premium design.
+
+The website should feel:
+
+* Foundational
+* Technical
+* Clear
+* Serious
+* Future-facing
+* Research-driven
+* Enterprise-ready
+
+Avoid:
+
+* Generic AI gradients
+* Excessive glowing effects
+* Floating chatbot visuals
+* Dense dashboards
+* Stock illustrations
+* Icon clutter
+* Overloaded cards
+* Long paragraphs
+* Vague AI claims
+* Generic SaaS landing-page layouts
+
+Use:
+
+* Strong typography
+* Large amounts of whitespace
+* Minimal navigation
+* Structured diagrams
+* Clear information hierarchy
+* Subtle motion
+* Short sections
+* Precise language
+* Technical visuals showing relationships and flows
+* White or neutral background with restrained contrast
+
+The site should resemble a serious infrastructure company rather than an early-stage AI tool.
+
+## Technical requirements
+
+* Build with Next.js and TypeScript.
+* Ensure clean deployment to Vercel.
+* Use responsive layouts for desktop, tablet and mobile.
+* Use reusable components.
+* Use accessible semantic HTML.
+* Optimise performance and image loading.
+* Add proper metadata and Open Graph tags.
+* Use clean URLs.
+* Avoid unnecessary dependencies.
+* Keep animations lightweight.
+* Ensure the site has no broken links or placeholder pages.
+* Remove old product routes or redirect them to the relevant Orgni or company pages.
+* Add redirects for archived Ordo, Document Integrity and Enterprise Automation pages.
+
+## Final standard
+
+A first-time visitor should understand within ten seconds:
+
+1. Olyxee is the company.
+2. Orgni is its main product and mission.
+3. Orgni helps intelligent systems understand how organisations operate.
+4. Orgni becomes more valuable as models become more capable.
+5. Olyxee is building foundational infrastructure, not another AI application.
