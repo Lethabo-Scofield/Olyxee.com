@@ -132,7 +132,7 @@ const SignUp: FC = () => {
             {config.headline}
           </h1>
 
-          <p className="text-[15px] sm:text-base text-neutral-500 leading-relaxed font-light mb-10">
+          <p className="text-[15px] sm:text-base text-neutral-500 leading-relaxed font-normal mb-10">
             {config.subhead}
           </p>
 
@@ -271,7 +271,7 @@ const SignUp: FC = () => {
                 {config.features.map((feature) => (
                   <li
                     key={feature}
-                    className="py-3 border-b border-neutral-200 text-sm text-neutral-700 font-light leading-relaxed"
+                    className="py-3 border-b border-neutral-200 text-sm text-neutral-700 font-normal leading-relaxed"
                   >
                     {feature}
                   </li>

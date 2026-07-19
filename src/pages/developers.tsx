@@ -42,7 +42,7 @@ const Developers: FC = () => {
             <br />
             <em className="text-neutral-400">with Olyxee</em>
           </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-xl text-neutral-500 leading-relaxed max-w-3xl font-light mb-10">
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-xl text-neutral-500 leading-relaxed max-w-3xl font-normal mb-10">
             Everything you need to verify, optimize, and deploy AI models to edge hardware.
           </motion.p>
 
@@ -122,7 +122,7 @@ const Developers: FC = () => {
             <h2 className="font-serif text-4xl sm:text-5xl tracking-tight mb-6">
               Need <em className="text-neutral-500">help?</em>
             </h2>
-            <p className="text-neutral-400 text-lg max-w-lg mx-auto mb-10 font-light leading-relaxed">
+            <p className="text-neutral-400 text-lg max-w-lg mx-auto mb-10 font-normal leading-relaxed">
               Check out our documentation or join the community for support.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

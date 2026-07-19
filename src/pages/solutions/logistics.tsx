@@ -159,7 +159,7 @@ const Logistics: FC = () => {
             <h2 className="font-serif text-5xl sm:text-7xl tracking-tight leading-[0.95] mb-6">
               Create.
             </h2>
-            <p className="text-base text-neutral-500 font-light leading-relaxed max-w-sm">
+            <p className="text-base text-neutral-500 font-normal leading-relaxed max-w-sm">
               One order, one form. Customer, items, address, done.
             </p>
           </motion.div>
@@ -214,7 +214,7 @@ const Logistics: FC = () => {
             <h2 className="font-serif text-5xl sm:text-7xl tracking-tight leading-[0.95] mb-6">
               Track.
             </h2>
-            <p className="text-base text-white/60 font-light leading-relaxed max-w-sm">
+            <p className="text-base text-white/60 font-normal leading-relaxed max-w-sm">
               A clean tracking link your customer can open any time. No app, no account.
             </p>
           </motion.div>
@@ -238,7 +238,7 @@ const Logistics: FC = () => {
               <h2 className="font-serif text-5xl sm:text-7xl tracking-tight leading-[0.95] mb-6">
                 Notify.
               </h2>
-              <p className="text-base text-neutral-500 font-light leading-relaxed max-w-sm">
+              <p className="text-base text-neutral-500 font-normal leading-relaxed max-w-sm">
                 Every status change sends a branded SMS and email automatically. Silence the "where is my order?" inbox.
               </p>
             </div>

@@ -293,7 +293,7 @@ const LegalLayout: FC<LegalLayoutProps> = ({
                   {documentTitle}
                 </h1>
                 {intro && (
-                  <p className="mt-6 text-[15px] sm:text-base text-neutral-500 leading-relaxed font-light max-w-2xl">
+                  <p className="mt-6 text-[15px] sm:text-base text-neutral-500 leading-relaxed font-normal max-w-2xl">
                     {intro}
                   </p>
                 )}
@@ -381,7 +381,7 @@ const LegalLayout: FC<LegalLayoutProps> = ({
                         </h2>
                       </div>
                       <div className="pl-0 sm:pl-10">
-                        <p className="text-[15px] text-neutral-600 leading-[1.75] font-light whitespace-pre-line">
+                        <p className="text-[15px] text-neutral-600 leading-[1.75] font-normal whitespace-pre-line">
                           {section.content}
                         </p>
                       </div>

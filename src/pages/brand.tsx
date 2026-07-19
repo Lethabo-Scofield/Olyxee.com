@@ -196,7 +196,7 @@ const Brand: FC = () => {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="mt-8 max-w-2xl text-lg sm:text-xl text-neutral-600 font-light leading-relaxed"
+            className="mt-8 max-w-2xl text-lg sm:text-xl text-neutral-600 font-normal leading-relaxed"
           >
             How Olyxee looks, sounds, and behaves. The marks, the colors, the type, and the tone of voice that hold the system together.
           </motion.p>
@@ -271,7 +271,7 @@ const Brand: FC = () => {
                 <p className="font-serif text-2xl sm:text-3xl text-neutral-900 leading-snug tracking-tight mb-4">
                   Leave at least <em className="not-italic text-neutral-900 font-medium">0.25x</em> of clear space on every side.
                 </p>
-                <p className="text-sm text-neutral-600 font-light leading-relaxed">
+                <p className="text-sm text-neutral-600 font-normal leading-relaxed">
                   Where x is the width of one construction circle. Nothing else enters this zone.
                 </p>
                 <div className="mt-6 grid grid-cols-2 gap-3">
@@ -349,7 +349,7 @@ const Brand: FC = () => {
                 <Image src="/brand/robotics-logo.png" alt="Olyxee Robotics wave mark" width={200} height={200} className="w-16 sm:w-20 h-auto object-contain shrink-0" />
                 <div className="min-w-0">
                   <p className="text-sm text-neutral-900 font-medium">Olyxee Robotics</p>
-                  <p className="text-xs text-neutral-500 font-light mt-1 leading-relaxed">
+                  <p className="text-xs text-neutral-500 font-normal mt-1 leading-relaxed">
                     Divisional wave mark for hardware and embodied AI surfaces. Use on robotics-product surfaces only.
                   </p>
                 </div>
@@ -378,19 +378,19 @@ const Brand: FC = () => {
                   <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 mb-4">Display</p>
                   <p className="font-serif text-6xl sm:text-7xl text-neutral-900 leading-none tracking-tight mb-6">Aa</p>
                   <p className="font-serif text-xl text-neutral-900 mb-1">Editorial serif</p>
-                  <p className="text-sm text-neutral-500 font-light">Headlines and editorial moments.</p>
+                  <p className="text-sm text-neutral-500 font-normal">Headlines and editorial moments.</p>
                 </div>
                 <div className="p-8 sm:p-10 flex flex-col">
                   <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 mb-4">Body</p>
-                  <p className="text-6xl sm:text-7xl font-light text-neutral-900 leading-none tracking-tight mb-6">Aa</p>
-                  <p className="text-xl font-light text-neutral-900 mb-1">Neutral sans</p>
-                  <p className="text-sm text-neutral-500 font-light">UI text, body copy, product surfaces.</p>
+                  <p className="text-6xl sm:text-7xl font-normal text-neutral-900 leading-none tracking-tight mb-6">Aa</p>
+                  <p className="text-xl font-normal text-neutral-900 mb-1">Neutral sans</p>
+                  <p className="text-sm text-neutral-500 font-normal">UI text, body copy, product surfaces.</p>
                 </div>
                 <div className="p-8 sm:p-10 flex flex-col">
                   <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 mb-4">Detail</p>
                   <p className="font-mono text-5xl sm:text-6xl text-neutral-900 leading-none tracking-tight mb-6">Aa</p>
                   <p className="font-mono text-lg text-neutral-900 mb-1">Monospace</p>
-                  <p className="text-sm text-neutral-500 font-light">Labels, metadata, and code.</p>
+                  <p className="text-sm text-neutral-500 font-normal">Labels, metadata, and code.</p>
                 </div>
               </div>
             </div>
@@ -415,7 +415,7 @@ const Brand: FC = () => {
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-x-4 gap-y-2 py-4">
               {COLORS.map((c) => (
-                <p key={c.name} className="text-xs text-neutral-500 font-light leading-snug">
+                <p key={c.name} className="text-xs text-neutral-500 font-normal leading-snug">
                   <span className="text-neutral-800">{c.name}</span> · {c.role}
                 </p>
               ))}
@@ -438,7 +438,7 @@ const Brand: FC = () => {
               {VOICE.map((v) => (
                 <div key={v.word} className="bg-white p-8 sm:p-10 flex flex-col">
                   <p className="font-serif text-5xl sm:text-6xl tracking-tight text-neutral-900 leading-none mb-5">{v.word}</p>
-                  <p className="text-sm text-neutral-600 font-light leading-relaxed mb-6">{v.rule}</p>
+                  <p className="text-sm text-neutral-600 font-normal leading-relaxed mb-6">{v.rule}</p>
                   <p className="mt-auto pt-5 border-t border-neutral-200 font-serif text-base sm:text-lg text-neutral-900 leading-snug italic">
                     &ldquo;{v.sample}&rdquo;
                   </p>
@@ -466,7 +466,7 @@ const Brand: FC = () => {
                 </div>
                 <ul className="space-y-4">
                   {DOS.map((d) => (
-                    <li key={d} className="flex items-baseline gap-3 text-sm sm:text-base text-neutral-700 font-light leading-relaxed">
+                    <li key={d} className="flex items-baseline gap-3 text-sm sm:text-base text-neutral-700 font-normal leading-relaxed">
                       <span aria-hidden className="text-emerald-500 text-[11px] leading-none translate-y-[1px]">●</span>
                       <span>{d}</span>
                     </li>
@@ -479,7 +479,7 @@ const Brand: FC = () => {
                 </div>
                 <ul className="space-y-4">
                   {DONTS.map((d) => (
-                    <li key={d} className="flex items-baseline gap-3 text-sm sm:text-base text-neutral-700 font-light leading-relaxed">
+                    <li key={d} className="flex items-baseline gap-3 text-sm sm:text-base text-neutral-700 font-normal leading-relaxed">
                       <span aria-hidden className="text-rose-500 text-[11px] leading-none translate-y-[1px]">●</span>
                       <span>{d}</span>
                     </li>

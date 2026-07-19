@@ -43,7 +43,7 @@ const CaseStudies: FC = () => {
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }} className="font-serif text-4xl sm:text-6xl tracking-tight leading-[1.05] mb-6">
             Olyxee in <em className="text-blue-500">production</em>
           </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-xl text-neutral-500 leading-relaxed max-w-3xl font-light">
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-xl text-neutral-500 leading-relaxed max-w-3xl font-normal">
             Real deployments, measured outcomes. A look at how teams are building reliable AI on Olyxee.
           </motion.p>
         </div>
@@ -56,7 +56,7 @@ const CaseStudies: FC = () => {
               <Link href={s.href} className="group block h-full p-7 sm:p-10 rounded-3xl border border-neutral-200 hover:border-neutral-300 transition-all bg-white hover:bg-neutral-50">
                 <span className="text-xs uppercase tracking-widest text-neutral-400 font-medium">{s.tag}</span>
                 <h3 className="font-serif text-2xl mt-4 mb-3 text-neutral-900">{s.title}</h3>
-                <p className="text-sm text-neutral-500 leading-relaxed font-light mb-8">{s.summary}</p>
+                <p className="text-sm text-neutral-500 leading-relaxed font-normal mb-8">{s.summary}</p>
                 <div className="w-10 h-10 rounded-full bg-neutral-100 group-hover:bg-neutral-900 flex items-center justify-center transition-colors">
                   <ArrowUpRight className="w-4 h-4 text-neutral-600 group-hover:text-white transition-colors" />
                 </div>

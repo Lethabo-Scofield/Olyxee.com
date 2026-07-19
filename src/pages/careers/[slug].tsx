@@ -170,7 +170,7 @@ const PaidRolePage: FC<Props> = ({ role }) => {
             <h1 className="text-3xl sm:text-4xl lg:text-[3rem] tracking-[-0.025em] leading-[1.05] font-medium text-neutral-900 mb-6">
               {role.title}
             </h1>
-            <p className="text-lg text-neutral-500 font-light leading-relaxed max-w-2xl">
+            <p className="text-lg text-neutral-500 font-normal leading-relaxed max-w-2xl">
               {role.description}
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-neutral-500">
@@ -194,7 +194,7 @@ const PaidRolePage: FC<Props> = ({ role }) => {
               <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-3">
                 Compensation
               </p>
-              <p className="text-base sm:text-lg text-neutral-700 font-light leading-relaxed">
+              <p className="text-base sm:text-lg text-neutral-700 font-normal leading-relaxed">
                 {role.compensation}
               </p>
             </section>
@@ -209,7 +209,7 @@ const PaidRolePage: FC<Props> = ({ role }) => {
               {role.responsibilities.map((r) => (
                 <li key={r} className="flex items-start gap-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-neutral-400 mt-2.5 flex-shrink-0" />
-                  <p className="text-[15px] sm:text-base text-neutral-700 leading-relaxed font-light">
+                  <p className="text-[15px] sm:text-base text-neutral-700 leading-relaxed font-normal">
                     {r}
                   </p>
                 </li>
@@ -226,7 +226,7 @@ const PaidRolePage: FC<Props> = ({ role }) => {
               {role.requirements.map((r) => (
                 <li key={r} className="flex items-start gap-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-neutral-400 mt-2.5 flex-shrink-0" />
-                  <p className="text-[15px] sm:text-base text-neutral-700 leading-relaxed font-light">
+                  <p className="text-[15px] sm:text-base text-neutral-700 leading-relaxed font-normal">
                     {r}
                   </p>
                 </li>
@@ -250,7 +250,7 @@ const PaidRolePage: FC<Props> = ({ role }) => {
                       <p className="text-[15px] sm:text-base font-medium text-neutral-900 mb-1.5">
                         {step.title}
                       </p>
-                      <p className="text-[14px] sm:text-[15px] text-neutral-500 font-light leading-relaxed">
+                      <p className="text-[14px] sm:text-[15px] text-neutral-500 font-normal leading-relaxed">
                         {step.detail}
                       </p>
                     </div>
@@ -269,7 +269,7 @@ const PaidRolePage: FC<Props> = ({ role }) => {
               <h2 className="text-2xl sm:text-3xl tracking-[-0.02em] font-medium text-neutral-900 mb-3">
                 The bar is high. Take your time.
               </h2>
-              <p className="text-[15px] sm:text-base text-neutral-500 font-light leading-relaxed max-w-2xl">
+              <p className="text-[15px] sm:text-base text-neutral-500 font-normal leading-relaxed max-w-2xl">
                 Plan for 30 to 45 minutes. Strong applications are specific,
                 written in your own voice, and show real proof of work. Vague
                 answers are the most common reason we say no.
@@ -291,7 +291,7 @@ const PaidRolePage: FC<Props> = ({ role }) => {
                 <h3 className="text-2xl tracking-[-0.02em] font-medium text-neutral-900 mb-2">
                   Application received
                 </h3>
-                <p className="text-sm text-neutral-500 max-w-md mx-auto font-light leading-relaxed">
+                <p className="text-sm text-neutral-500 max-w-md mx-auto font-normal leading-relaxed">
                   Thanks for the care you put in. We read every word. If
                   we&apos;d like to move forward, you&apos;ll hear from us at
                   the email you provided within 14 days.
@@ -398,7 +398,7 @@ const PaidRolePage: FC<Props> = ({ role }) => {
                     onChange={(e) => setAgree(e.target.checked)}
                     className="mt-1 w-4 h-4 rounded border-neutral-300 text-neutral-900 focus:ring-neutral-900/10"
                   />
-                  <span className="text-[13px] text-neutral-600 font-light leading-relaxed">
+                  <span className="text-[13px] text-neutral-600 font-normal leading-relaxed">
                     I confirm that everything in this application is accurate
                     and written by me. I understand Olyxee will verify
                     references and may conduct background checks.

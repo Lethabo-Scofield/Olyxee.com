@@ -162,7 +162,7 @@ const Contact: FC = () => {
           <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-neutral-900 tracking-tight leading-[1.05] max-w-4xl break-words">
             Contact us
           </h1>
-          <p className="mt-6 text-lg sm:text-xl text-neutral-500 font-light leading-relaxed max-w-2xl">
+          <p className="mt-6 text-lg sm:text-xl text-neutral-500 font-normal leading-relaxed max-w-2xl">
             Pick the topic that fits and we'll route your message to the right person on the team.
           </p>
         </div>

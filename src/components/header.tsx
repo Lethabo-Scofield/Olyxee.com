@@ -511,7 +511,7 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                                             <p className="text-[14px] font-semibold text-neutral-900 leading-tight">
                                                 {opt.name}
                                             </p>
-                                            <p className="text-[11px] text-neutral-500 font-light leading-tight mt-0.5">
+                                            <p className="text-[11px] text-neutral-500 font-normal leading-tight mt-0.5">
                                                 {opt.description}
                                             </p>
                                         </div>

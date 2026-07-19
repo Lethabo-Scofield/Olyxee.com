@@ -173,9 +173,9 @@ const About: FC = () => {
                   className="relative max-w-3xl mx-auto text-center"
                 >
                   <p className="font-serif text-3xl sm:text-4xl lg:text-[3rem] leading-[1.12] tracking-tight mb-8 text-neutral-900">
-                    A future where organisations do not merely use intelligent tools, but <em className="italic text-neutral-500">become more intelligent</em> themselves.
+                    A future where organisations do not merely use intelligent tools, but <strong className="font-semibold text-neutral-900">become more intelligent</strong> themselves.
                   </p>
-                  <p className="text-base sm:text-lg text-neutral-600 font-light leading-relaxed max-w-2xl mx-auto">
+                  <p className="text-base sm:text-lg text-neutral-600 font-normal leading-relaxed max-w-2xl mx-auto">
                     In this future, knowledge is not fragmented across documents and disconnected systems. Processes are not invisible. Decisions are not separated from their context. People and intelligent systems work through a shared operational model that can be understood, governed, audited, and continuously improved.
                   </p>
                 </motion.article>
@@ -242,7 +242,7 @@ const About: FC = () => {
               </p>
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-tight leading-[1.08]">
                 Three pillars.{" "}
-                <em className="italic text-neutral-500">One unfair advantage.</em>
+                <span className="text-neutral-500">One unfair advantage.</span>
               </h2>
             </motion.div>
 
@@ -331,14 +331,14 @@ const About: FC = () => {
             >
               <span
                 aria-hidden
-                className="font-serif italic text-neutral-200 text-[7rem] sm:text-[10rem] leading-none block -mb-10 sm:-mb-16 -ml-1"
+                className="font-serif text-neutral-200 text-[7rem] sm:text-[10rem] leading-none block -mb-10 sm:-mb-16 -ml-1"
               >
                 &ldquo;
               </span>
               <blockquote className="font-serif text-[1.75rem] sm:text-4xl lg:text-[3rem] text-neutral-900 leading-[1.18] tracking-tight">
                 We started Olyxee because the hardest part of AI isn&apos;t
                 intelligence. It&apos;s getting that intelligence to actually{" "}
-                <em className="italic text-neutral-500">do something useful</em>.
+                <strong className="font-semibold text-neutral-900">do something useful</strong>.
               </blockquote>
 
               <div className="mt-12 sm:mt-14 pt-6 border-t border-neutral-200 flex flex-wrap items-center justify-between gap-y-5 gap-x-6">
@@ -397,9 +397,9 @@ const About: FC = () => {
                 Join us
               </p>
               <h3 className="font-serif text-3xl sm:text-5xl tracking-tight mb-5 text-neutral-900 leading-[1.08]">
-                Build AI that <em className="italic text-neutral-500">actually works.</em>
+                Build AI that <span className="text-neutral-500">actually works.</span>
               </h3>
-              <p className="text-base sm:text-lg text-neutral-600 font-light mb-10 max-w-xl mx-auto leading-relaxed">
+              <p className="text-base sm:text-lg text-neutral-600 font-normal mb-10 max-w-xl mx-auto leading-relaxed">
                 We&apos;re building a team of people who want to make AI work in the real world, not just in demos.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">

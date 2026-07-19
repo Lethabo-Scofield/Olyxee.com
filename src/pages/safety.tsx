@@ -33,7 +33,7 @@ const Safety: FC = () => {
             <br />
             <em className="text-neutral-400">useful</em>
           </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-xl text-neutral-500 leading-relaxed max-w-3xl font-light">
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-xl text-neutral-500 leading-relaxed max-w-3xl font-normal">
             Our approach to safety is grounded in engineering rigor, not aspirational principles.
             We build systems that detect, prevent, and recover from AI failures.
           </motion.p>
@@ -80,7 +80,7 @@ const Safety: FC = () => {
             <h2 className="font-serif text-3xl sm:text-4xl tracking-tight text-neutral-900 mb-10">
               Why this <em className="text-neutral-400">matters</em>
             </h2>
-            <div className="space-y-6 text-lg text-neutral-500 leading-relaxed font-light">
+            <div className="space-y-6 text-lg text-neutral-500 leading-relaxed font-normal">
               <p>
                 AI systems are being deployed in safety-critical applications, from medical devices
                 to autonomous vehicles to industrial control systems. A model that works 99% of the time

@@ -539,7 +539,7 @@ function ProductFeature({
           transition={{ duration: 0.7, ease }}
           className="mt-8 sm:mt-12 border-t border-neutral-200 pt-8 sm:pt-10 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6 sm:gap-10"
         >
-          <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed max-w-xl">
+          <p className="text-neutral-600 text-base sm:text-lg font-normal leading-relaxed max-w-xl">
             {description}
           </p>
           <div className="shrink-0">
@@ -593,7 +593,7 @@ function CourierLoopSection() {
               Keep every customer <em className="text-orange-500 not-italic">in the loop.</em>
             </h2>
 
-            <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-8 max-w-sm">
+            <p className="text-neutral-600 text-base sm:text-lg font-normal leading-relaxed mb-8 max-w-sm">
               Send clean order-status updates, from confirmed to delivered.
             </p>
 
@@ -740,7 +740,7 @@ function IntegrationSection() {
                 <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] tracking-tight text-neutral-900 leading-tight mb-6">
                   AI execution for your workflows.
                 </h2>
-                <p className="text-neutral-500 text-base sm:text-lg font-light leading-relaxed mb-10 max-w-lg mx-auto">
+                <p className="text-neutral-500 text-base sm:text-lg font-normal leading-relaxed mb-10 max-w-lg mx-auto">
                   Turn business goals into completed operations. Orgni Workflows plans, coordinates, and executes across your tools and systems end-to-end.
                 </p>
                 <Link
@@ -881,7 +881,7 @@ function StoriesSection() {
             .
           </h2>
           <div className="mt-5 flex flex-wrap items-end justify-between gap-4">
-            <p className="text-neutral-600 text-base sm:text-lg font-light max-w-md">
+            <p className="text-neutral-600 text-base sm:text-lg font-normal max-w-md">
               How Orgni turns fragmented operations into shared, living context.
             </p>
             <Link
@@ -952,7 +952,7 @@ function CTASection() {
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-5 leading-[1.05]">
               Get started with Orgni
             </h2>
-            <p className="text-neutral-600 text-base sm:text-lg font-light leading-relaxed mb-9 max-w-lg mx-auto">
+            <p className="text-neutral-600 text-base sm:text-lg font-normal leading-relaxed mb-9 max-w-lg mx-auto">
               Preserve institutional knowledge, understand how work actually happens, and coordinate people, systems, and AI agents through one living operational model.
             </p>
 
@@ -1001,7 +1001,7 @@ function CookieBanner({ onDismiss }: { onDismiss: () => void }) {
           boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
         }}
       >
-        <p className="text-sm text-neutral-600 flex-1 font-light">
+        <p className="text-sm text-neutral-600 flex-1 font-normal">
           We use cookies to improve your experience. By continuing, you agree to our{" "}
           <Link href="/privacy" className="underline hover:text-neutral-900">privacy policy</Link>.
         </p>

@@ -115,7 +115,7 @@ function ArticleCard({ post, index }: { post: typeof posts[0]; index: number }) 
       <h3 className="text-lg font-semibold text-neutral-900 tracking-tight leading-snug mb-2 group-hover:text-neutral-600 transition-colors duration-300">
         {post.title}
       </h3>
-      <p className="text-sm text-neutral-500 leading-relaxed font-light line-clamp-2">
+      <p className="text-sm text-neutral-500 leading-relaxed font-normal line-clamp-2">
         {post.excerpt}
       </p>
     </motion.div>
@@ -161,7 +161,7 @@ const Blog: FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-lg text-neutral-500 leading-relaxed max-w-2xl font-light"
+            className="text-lg text-neutral-500 leading-relaxed max-w-2xl font-normal"
           >
             Technical writing on AI deployment, reliability engineering, and the future of edge AI.
           </motion.p>
@@ -204,7 +204,7 @@ const Blog: FC = () => {
             </div>
 
             <div className="max-w-3xl">
-              <p className="text-lg text-neutral-600 leading-relaxed font-light mb-8">
+              <p className="text-lg text-neutral-600 leading-relaxed font-normal mb-8">
                 {featuredPost.excerpt}
               </p>
 
@@ -213,7 +213,7 @@ const Blog: FC = () => {
                   <div key={section.heading} className="mb-10">
                     <h3 className="text-xl font-semibold text-neutral-900 mb-4 tracking-tight">{section.heading}</h3>
                     {section.body.split("\n\n").map((para, i) => (
-                      <p key={i} className="text-neutral-500 leading-[1.85] mb-4 text-[15px] font-light" dangerouslySetInnerHTML={{ __html: para.replace(/\*\*(.*?)\*\*/g, '<strong class="text-neutral-700 font-medium">$1</strong>') }} />
+                      <p key={i} className="text-neutral-500 leading-[1.85] mb-4 text-[15px] font-normal" dangerouslySetInnerHTML={{ __html: para.replace(/\*\*(.*?)\*\*/g, '<strong class="text-neutral-700 font-medium">$1</strong>') }} />
                     ))}
                   </div>
                 ))}
@@ -248,7 +248,7 @@ const Blog: FC = () => {
                         <div key={section.heading} className="mb-10">
                           <h3 className="text-xl font-semibold text-neutral-900 mb-4 tracking-tight">{section.heading}</h3>
                           {section.body.split("\n\n").map((para, i) => (
-                            <p key={i} className="text-neutral-500 leading-[1.85] mb-4 text-[15px] font-light" dangerouslySetInnerHTML={{ __html: para.replace(/\*\*(.*?)\*\*/g, '<strong class="text-neutral-700 font-medium">$1</strong>') }} />
+                            <p key={i} className="text-neutral-500 leading-[1.85] mb-4 text-[15px] font-normal" dangerouslySetInnerHTML={{ __html: para.replace(/\*\*(.*?)\*\*/g, '<strong class="text-neutral-700 font-medium">$1</strong>') }} />
                           ))}
                         </div>
                       ))}
@@ -324,7 +324,7 @@ const Blog: FC = () => {
           >
             <div>
               <h3 className="text-xl font-semibold text-neutral-900 tracking-tight mb-1">Stay in the loop</h3>
-              <p className="text-sm text-neutral-400 font-light">We publish new articles every other week. No spam.</p>
+              <p className="text-sm text-neutral-400 font-normal">We publish new articles every other week. No spam.</p>
             </div>
             <Link
               href="/developers"

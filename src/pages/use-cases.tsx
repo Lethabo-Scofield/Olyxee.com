@@ -43,7 +43,7 @@ const UseCases: FC = () => {
             <br />
             <em className="text-neutral-400">every industry</em>
           </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-xl text-neutral-500 leading-relaxed max-w-3xl font-light">
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-xl text-neutral-500 leading-relaxed max-w-3xl font-normal">
             From factory floors to hospital rooms, Olyxee powers AI systems where failure is not an option.
           </motion.p>
         </div>
@@ -84,7 +84,7 @@ const UseCases: FC = () => {
               <br />
               <em className="text-neutral-500">use case?</em>
             </h2>
-            <p className="text-neutral-400 text-lg max-w-lg mx-auto mb-10 font-light leading-relaxed">
+            <p className="text-neutral-400 text-lg max-w-lg mx-auto mb-10 font-normal leading-relaxed">
               We work with teams across industries. Let's discuss how Olyxee can help.
             </p>
             <Link href="/contact" className="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide">

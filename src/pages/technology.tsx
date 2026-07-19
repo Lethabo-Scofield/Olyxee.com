@@ -60,7 +60,7 @@ const Technology: FC = () => {
               </motion.h1>
             </div>
           </motion.div>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.5 }} className="text-lg text-neutral-500 leading-relaxed max-w-3xl font-light">
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.5 }} className="text-lg text-neutral-500 leading-relaxed max-w-3xl font-normal">
             Built on Orgni, the platform that turns live business context into intelligent operations. It connects
             knowledge, decisions, and systems, then runs operational workflows across your tools.
           </motion.p>
@@ -75,7 +75,7 @@ const Technology: FC = () => {
             <h2 className="font-serif text-4xl sm:text-5xl tracking-tight mb-4">
               Orgni <em className="text-neutral-500">Architecture</em>
             </h2>
-            <p className="text-neutral-400 text-lg max-w-3xl font-light leading-relaxed">
+            <p className="text-neutral-400 text-lg max-w-3xl font-normal leading-relaxed">
               The infrastructure layer that builds live business context and powers intelligent operations across Olyxee's platform.
             </p>
           </motion.div>

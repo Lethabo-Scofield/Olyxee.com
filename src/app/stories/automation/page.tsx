@@ -36,7 +36,7 @@ export default function AutomationStory() {
               A supplier process that understands its own rules.
             </h1>
 
-            <div className="flex items-center gap-4 text-sm text-neutral-400 font-light mb-12 pb-10 border-b border-neutral-100">
+            <div className="flex items-center gap-4 text-sm text-neutral-400 font-normal mb-12 pb-10 border-b border-neutral-100">
               <span>Multi-entity operations company</span>
               <span className="w-1 h-1 rounded-full bg-neutral-300" />
               <span>March 2026</span>
@@ -65,7 +65,7 @@ export default function AutomationStory() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="prose prose-neutral prose-lg max-w-none prose-headings:font-serif prose-headings:tracking-tight prose-h2:text-2xl sm:prose-h2:text-[1.75rem] prose-h2:mt-16 prose-h2:mb-6 prose-p:leading-[1.75] prose-p:text-neutral-700 prose-li:text-neutral-700 prose-li:leading-relaxed prose-strong:text-neutral-900 prose-blockquote:border-l-neutral-900 prose-blockquote:not-italic prose-blockquote:font-serif prose-blockquote:text-xl prose-blockquote:text-neutral-800 prose-blockquote:leading-snug"
           >
-            <p className="not-prose text-xl sm:text-[1.375rem] font-light leading-relaxed text-neutral-900 border-l-2 border-neutral-900 pl-5 sm:pl-6 mb-14">
+            <p className="not-prose text-xl sm:text-[1.375rem] font-normal leading-relaxed text-neutral-900 border-l-2 border-neutral-900 pl-5 sm:pl-6 mb-14">
               Supplier onboarding required coordination across procurement, finance, compliance, legal and operational systems, with rules that changed by supplier type, risk and contract conditions. Orgni made the organisation behind the workflow understandable, and that is what made the automation reliable.
             </p>
 
@@ -134,7 +134,7 @@ export default function AutomationStory() {
           >
             <div>
               <p className="text-sm font-semibold text-neutral-900 mb-1">Have a workflow that needs automating?</p>
-              <p className="text-sm text-neutral-500 font-light">Let's map it out and scope a pilot together.</p>
+              <p className="text-sm text-neutral-500 font-normal">Let's map it out and scope a pilot together.</p>
             </div>
             <Link
               href="/contact"

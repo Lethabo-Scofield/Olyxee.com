@@ -36,7 +36,7 @@ export default function FreightShiftStory() {
               One operational view across a fragmented freight network.
             </h1>
 
-            <div className="flex items-center gap-4 text-sm text-neutral-400 font-light mb-12 pb-10 border-b border-neutral-100">
+            <div className="flex items-center gap-4 text-sm text-neutral-400 font-normal mb-12 pb-10 border-b border-neutral-100">
               <span>FreightShift International Logistics</span>
               <span className="w-1 h-1 rounded-full bg-neutral-300" />
               <span>May 2026</span>
@@ -65,7 +65,7 @@ export default function FreightShiftStory() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="prose prose-neutral prose-lg max-w-none prose-headings:font-serif prose-headings:tracking-tight prose-h2:text-2xl sm:prose-h2:text-[1.75rem] prose-h2:mt-16 prose-h2:mb-6 prose-p:leading-[1.75] prose-p:text-neutral-700 prose-li:text-neutral-700 prose-li:leading-relaxed prose-strong:text-neutral-900 prose-blockquote:border-l-neutral-900 prose-blockquote:not-italic prose-blockquote:font-serif prose-blockquote:text-xl prose-blockquote:text-neutral-800 prose-blockquote:leading-snug"
           >
-            <p className="not-prose text-xl sm:text-[1.375rem] font-light leading-relaxed text-neutral-900 border-l-2 border-neutral-900 pl-5 sm:pl-6 mb-14">
+            <p className="not-prose text-xl sm:text-[1.375rem] font-normal leading-relaxed text-neutral-900 border-l-2 border-neutral-900 pl-5 sm:pl-6 mb-14">
               FreightShift International Logistics depends on carriers, warehouses, customs agents and customer teams operating across regions, each holding only part of the context. Olyxee is partnering with FreightShift to make that whole operation understandable through Orgni.
             </p>
 
@@ -154,7 +154,7 @@ export default function FreightShiftStory() {
                   <p className="font-serif text-xl sm:text-2xl text-neutral-900 tracking-tight leading-snug mb-1">
                     FreightShift International Logistics
                   </p>
-                  <p className="text-sm text-neutral-500 font-light leading-relaxed mb-3">
+                  <p className="text-sm text-neutral-500 font-normal leading-relaxed mb-3">
                     Door-to-door freight from China to South Africa, with live tracking and a no-surprises promise.
                   </p>
                   <span className="inline-flex items-center gap-1.5 text-sm font-medium text-neutral-900">
@@ -174,7 +174,7 @@ export default function FreightShiftStory() {
           >
             <div>
               <p className="text-sm font-semibold text-neutral-900 mb-1">Want this for your logistics operations?</p>
-              <p className="text-sm text-neutral-500 font-light">Talk to us about bringing Order Loop to your freight corridors.</p>
+              <p className="text-sm text-neutral-500 font-normal">Talk to us about bringing Order Loop to your freight corridors.</p>
             </div>
             <Link
               href="/contact"

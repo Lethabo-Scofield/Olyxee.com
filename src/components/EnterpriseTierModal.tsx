@@ -143,7 +143,7 @@ export default function EnterpriseTierModal({ open, onClose, tierName }: Props) 
                 >
                   Discuss <em className="text-neutral-500">{tierName}</em>
                 </h3>
-                <p className="text-sm text-neutral-500 font-light leading-relaxed mb-6">
+                <p className="text-sm text-neutral-500 font-normal leading-relaxed mb-6">
                   Pick a time that works and tell us a little about what you're trying to solve. We'll confirm within one business day.
                 </p>
 

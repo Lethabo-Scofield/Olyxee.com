@@ -85,7 +85,7 @@ export default function VerifyPage() {
           <h1 className="mt-8 text-5xl md:text-6xl font-semibold tracking-tight text-neutral-900">
             Verify a role.
           </h1>
-          <p className="mt-4 text-lg text-neutral-500 font-light">
+          <p className="mt-4 text-lg text-neutral-500 font-normal">
             Enter an Olyxee code to confirm authenticity.
           </p>
         </div>

@@ -168,7 +168,7 @@ const EdgeAI: FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-            className="text-lg text-neutral-500 max-w-xl leading-relaxed font-light mb-10"
+            className="text-lg text-neutral-500 max-w-xl leading-relaxed font-normal mb-10"
           >
             Olyxee Edge Box (OEB) is our execution division. The hands of Olyxee.
             We take AI from the lab and deploy it into the real world.
@@ -215,7 +215,7 @@ const EdgeAI: FC = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-10">
               <p className="text-white/90 text-base sm:text-lg font-medium">Computer vision at the edge</p>
-              <p className="text-white/50 text-sm mt-1.5 max-w-xl font-light">Object detection, pose estimation, anomaly detection, and scene analysis, deployed across industrial, automotive, and public safety environments.</p>
+              <p className="text-white/50 text-sm mt-1.5 max-w-xl font-normal">Object detection, pose estimation, anomaly detection, and scene analysis, deployed across industrial, automotive, and public safety environments.</p>
             </div>
           </motion.div>
         </div>
@@ -233,7 +233,7 @@ const EdgeAI: FC = () => {
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-5">
               How OEB fits into <em className="text-neutral-400">Olyxee</em>
             </h2>
-            <p className="text-lg text-neutral-400 font-light max-w-xl mx-auto">
+            <p className="text-lg text-neutral-400 font-normal max-w-xl mx-auto">
               Three layers working together to deliver trustworthy AI.
             </p>
           </motion.div>
@@ -281,7 +281,7 @@ const EdgeAI: FC = () => {
                   <h3 className={`text-2xl tracking-tight mt-3 mb-3 ${item.highlight ? "text-white" : "text-neutral-900"}`}>
                     {item.role}
                   </h3>
-                  <p className={`text-[15px] leading-relaxed font-light ${item.highlight ? "text-neutral-400" : "text-neutral-500"}`}>
+                  <p className={`text-[15px] leading-relaxed font-normal ${item.highlight ? "text-neutral-400" : "text-neutral-500"}`}>
                     {item.description}
                   </p>
                 </div>
@@ -303,7 +303,7 @@ const EdgeAI: FC = () => {
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight mb-5">
               Edge <em className="text-neutral-400">capabilities</em>
             </h2>
-            <p className="text-lg text-neutral-500 font-light max-w-xl mx-auto">
+            <p className="text-lg text-neutral-500 font-normal max-w-xl mx-auto">
               Everything you need to run AI at the edge, built in.
             </p>
           </motion.div>
@@ -323,7 +323,7 @@ const EdgeAI: FC = () => {
                 >
                   <Icon className="w-6 h-6 text-neutral-400 mb-6" />
                   <h3 className="text-lg tracking-tight text-neutral-900 mb-3">{cap.title}</h3>
-                  <p className="text-sm text-neutral-500 leading-relaxed font-light">{cap.description}</p>
+                  <p className="text-sm text-neutral-500 leading-relaxed font-normal">{cap.description}</p>
                 </motion.div>
               );
             })}
@@ -343,7 +343,7 @@ const EdgeAI: FC = () => {
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-5">
               Supported <em className="text-neutral-400">hardware</em>
             </h2>
-            <p className="text-neutral-400 text-lg font-light max-w-2xl mx-auto">
+            <p className="text-neutral-400 text-lg font-normal max-w-2xl mx-auto">
               One pipeline, any device. OEB abstracts hardware differences so you write your model once and deploy everywhere.
             </p>
           </motion.div>
@@ -388,7 +388,7 @@ const EdgeAI: FC = () => {
                 <br />
                 <em className="text-neutral-400">at the edge</em>
               </h2>
-              <p className="text-neutral-500 text-lg mb-12 font-light leading-relaxed">
+              <p className="text-neutral-500 text-lg mb-12 font-normal leading-relaxed">
                 Get your models running on real hardware in minutes. OEB handles the infrastructure. You focus on the intelligence.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">

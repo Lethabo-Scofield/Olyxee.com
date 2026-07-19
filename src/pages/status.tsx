@@ -29,7 +29,7 @@ const Status: FC = () => {
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="font-serif text-4xl sm:text-5xl tracking-tight leading-[1.08] mb-4">
             System Status
           </motion.h1>
-          <p className="text-neutral-500 font-light">Live status of Olyxee services. Updated continuously.</p>
+          <p className="text-neutral-500 font-normal">Live status of Olyxee services. Updated continuously.</p>
         </div>
       </section>
 

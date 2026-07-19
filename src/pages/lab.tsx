@@ -100,7 +100,7 @@ const Lab: FC = () => {
             <br />
             <em className="text-neutral-400">of intelligence</em>
           </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-xl text-neutral-500 leading-relaxed max-w-3xl font-light">
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-xl text-neutral-500 leading-relaxed max-w-3xl font-normal">
             Olyxee Lab is our research division, dedicated to advancing the science of
             artificial intelligence. We work on fundamental problems in AI safety,
             interpretability, and capability, and publish our findings openly.
@@ -207,7 +207,7 @@ const Lab: FC = () => {
               <br />
               <em className="text-neutral-500">the frontier</em>
             </h2>
-            <p className="text-neutral-400 text-lg max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+            <p className="text-neutral-400 text-lg max-w-2xl mx-auto mb-10 font-normal leading-relaxed">
               We're looking for researchers and engineers who want to work on problems that matter.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

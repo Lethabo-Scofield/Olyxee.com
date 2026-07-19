@@ -129,7 +129,7 @@ const HighlightsSlider: FC = () => {
                     <h3 className="font-serif text-[1.65rem] sm:text-4xl lg:text-[3rem] leading-[1.08] sm:leading-[1.05] tracking-tight">
                       {h.title}
                     </h3>
-                    <p className="mt-3 sm:mt-5 text-white/80 text-[13px] sm:text-base lg:text-lg font-light leading-relaxed max-w-2xl line-clamp-4 sm:line-clamp-none">
+                    <p className="mt-3 sm:mt-5 text-white/80 text-[13px] sm:text-base lg:text-lg font-normal leading-relaxed max-w-2xl line-clamp-4 sm:line-clamp-none">
                       {h.body}
                     </p>
                   </motion.div>
@@ -401,7 +401,7 @@ const Robotics: FC = () => {
               <h2 className="font-serif text-[1.75rem] sm:text-5xl lg:text-[3.5rem] tracking-tight text-neutral-900 leading-[1.1] sm:leading-[1.05]">
                 Backing the next wave of operational intelligence.
               </h2>
-              <p className="mt-4 sm:mt-6 text-neutral-600 text-sm sm:text-lg font-light leading-relaxed">
+              <p className="mt-4 sm:mt-6 text-neutral-600 text-sm sm:text-lg font-normal leading-relaxed">
                 Mentorship, compute, and connected hardware for early-stage teams shipping AI execution infrastructure into real enterprise environments.
               </p>
               <div className="mt-6 sm:mt-8">
@@ -464,7 +464,7 @@ const Robotics: FC = () => {
             <h3 className="font-serif text-[1.75rem] sm:text-4xl lg:text-5xl tracking-tight text-neutral-900 leading-[1.1]">
               Built with leading enterprise and infrastructure teams.
             </h3>
-            <p className="mt-4 sm:mt-5 text-neutral-600 text-sm sm:text-lg font-light leading-relaxed">
+            <p className="mt-4 sm:mt-5 text-neutral-600 text-sm sm:text-lg font-normal leading-relaxed">
               We partner with hardware OEMs, foundation model labs, and operations teams to bring reliable AI execution from research into real enterprise environments.
             </p>
             <Link
@@ -497,7 +497,7 @@ const Robotics: FC = () => {
               <h2 className="font-serif text-[1.85rem] sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-4 sm:mb-5 leading-[1.1] sm:leading-[1.05]">
                 Building real-world operational systems?
               </h2>
-              <p className="text-neutral-600 text-sm sm:text-lg font-light leading-relaxed mb-7 sm:mb-9 max-w-lg mx-auto">
+              <p className="text-neutral-600 text-sm sm:text-lg font-normal leading-relaxed mb-7 sm:mb-9 max-w-lg mx-auto">
                 We partner on edge AI, execution infrastructure, and hardware-integrated deployments, from pilot to fleet.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">

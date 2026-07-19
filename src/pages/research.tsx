@@ -82,11 +82,11 @@ const Research: FC = () => {
                       <h3 className="font-serif text-xl sm:text-[1.6rem] leading-snug text-neutral-900 tracking-tight">
                         {paper.title}
                       </h3>
-                      <p className="mt-2 text-sm text-neutral-500 font-light">
+                      <p className="mt-2 text-sm text-neutral-500 font-normal">
                         {paper.authors}
                       </p>
                     </div>
-                    <div className="flex items-center gap-3 text-xs sm:text-sm text-neutral-500 font-light shrink-0">
+                    <div className="flex items-center gap-3 text-xs sm:text-sm text-neutral-500 font-normal shrink-0">
                       <span>
                         {paper.venue} · {paper.month} {paper.year}
                       </span>
@@ -111,7 +111,7 @@ const Research: FC = () => {
             <h2 className="text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-[-0.025em] leading-[1.05] font-medium mb-5 sm:mb-6">
               Want to <em className="font-serif italic font-normal text-neutral-500">collaborate on research?</em>
             </h2>
-            <p className="text-neutral-500 text-base sm:text-lg max-w-lg mx-auto mb-8 sm:mb-10 font-light leading-relaxed">
+            <p className="text-neutral-500 text-base sm:text-lg max-w-lg mx-auto mb-8 sm:mb-10 font-normal leading-relaxed">
               We work with teams building AI applications who want to improve reliability, accuracy, and observability.
             </p>
             <Link

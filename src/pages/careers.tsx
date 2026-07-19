@@ -90,7 +90,7 @@ function RolesSection() {
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-4">
               Open roles
             </h2>
-            <p className="text-neutral-500 text-lg font-light">
+            <p className="text-neutral-500 text-lg font-normal">
               {paidCount} paid {paidCount === 1 ? "role" : "roles"} and {internshipCount} internships across {teams.length} teams. All remote.
             </p>
           </motion.div>
@@ -223,7 +223,7 @@ function RolesSection() {
                               {role.type === "paid" ? "Paid" : "Internship"}
                             </span>
                           </div>
-                          <p className="text-sm text-neutral-500 leading-relaxed max-w-xl font-light">{role.description}</p>
+                          <p className="text-sm text-neutral-500 leading-relaxed max-w-xl font-normal">{role.description}</p>
                           <div className="flex flex-wrap items-center gap-4 mt-3 text-xs text-neutral-400">
                             <span className="flex items-center gap-1.5"><Briefcase className="w-3.5 h-3.5" />{role.team}</span>
                             <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5" />{role.location}</span>
@@ -317,7 +317,7 @@ function EmergingTalentSection() {
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl tracking-tight text-neutral-900 mb-6">
               Emerging talent
             </h2>
-            <p className="text-base sm:text-lg text-neutral-500 leading-relaxed font-light mb-8">
+            <p className="text-base sm:text-lg text-neutral-500 leading-relaxed font-normal mb-8">
               Join us in building safe, beneficial AI for everyone. We welcome curious, driven people early in their professional journey through internships, residencies, and full-time roles.
             </p>
             <Link
@@ -378,7 +378,7 @@ function ProcessSection() {
           <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900 mb-5">
             How we hire
           </h2>
-          <p className="text-base sm:text-lg text-neutral-500 leading-relaxed font-light max-w-2xl">
+          <p className="text-base sm:text-lg text-neutral-500 leading-relaxed font-normal max-w-2xl">
             Our interview process is designed to find thoughtful people with diverse expertise. Here's what to expect at each stage.
           </p>
         </motion.div>
@@ -430,7 +430,7 @@ function ProcessSection() {
                       className="overflow-hidden"
                     >
                       <div className="pb-6 sm:pb-8 pl-10 sm:pl-14 pr-12 sm:pr-16">
-                        <p className="text-sm sm:text-base text-neutral-500 leading-relaxed font-light max-w-2xl">
+                        <p className="text-sm sm:text-base text-neutral-500 leading-relaxed font-normal max-w-2xl">
                           {step.desc}
                         </p>
                       </div>
@@ -460,7 +460,7 @@ function CTASection() {
           <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-5 sm:mb-6">
             Don't see your role?
           </h2>
-          <p className="text-neutral-600 text-lg max-w-lg mx-auto mb-10 font-light leading-relaxed">
+          <p className="text-neutral-600 text-lg max-w-lg mx-auto mb-10 font-normal leading-relaxed">
             We hire for talent, not just titles. If you're exceptional at what you do and excited about making AI more reliable, reach out. We'll find a place for you.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
