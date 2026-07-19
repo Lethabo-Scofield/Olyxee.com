@@ -1092,8 +1092,9 @@ const STORIES = [
 
 function VideoShowcaseSection() {
   return (
-    <section id="in-motion" aria-label="Orgni in motion" className="py-20 sm:py-32 lg:py-40 bg-black overflow-hidden scroll-mt-24">
+    <section id="in-motion" aria-label="Orgni in motion" className="py-20 sm:py-28 lg:py-32 bg-white scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
+        <div className="rounded-3xl bg-black px-6 sm:px-12 lg:px-16 py-14 sm:py-20 overflow-hidden">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -1127,6 +1128,7 @@ function VideoShowcaseSection() {
             preload="metadata"
           />
         </motion.div>
+        </div>
       </div>
     </section>
   );
