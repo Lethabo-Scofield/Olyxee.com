@@ -301,7 +301,7 @@ const Enterprise: FC = () => {
               ))}
             </ul>
             <Link
-              href="/solutions"
+              href="/solutions/logistics"
               className="inline-flex items-center text-[#111111] font-medium hover:underline underline-offset-4 text-[15px]"
             >
               Learn more about Orgni <ArrowRight className="ml-1.5 w-4 h-4" />
@@ -343,7 +343,7 @@ const Enterprise: FC = () => {
                 <h3 className="text-[1.25rem] font-medium text-[#111] mb-3">{team.title}</h3>
                 <p className="text-[1rem] text-[#4a5568] leading-relaxed mb-8">{team.desc}</p>
                 <Link
-                  href="/solutions"
+                  href="/solutions/logistics"
                   className="inline-flex items-center text-[#111111] font-medium hover:underline underline-offset-4 text-[15px]"
                 >
                   Learn more <ArrowRight className="ml-1 w-4 h-4" />
@@ -528,8 +528,8 @@ const Enterprise: FC = () => {
         </h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
-            { title: "Solutions", desc: "Custom deployments for complex organizations.", link: "/solutions", image: "/images/enterprise/explore-solutions.png", date: "Jun 2026" },
-            { title: "Research", desc: "Discover our frontier models and AI capabilities.", link: "/research", image: "/images/enterprise/explore-research.png", date: "May 2026" },
+            { title: "Solutions", desc: "Custom deployments for complex organizations.", link: "/solutions/logistics", image: "/images/enterprise/explore-solutions.png", date: "Jun 2026" },
+            { title: "Research", desc: "The Orgni thesis: why organisational understanding comes first.", link: "https://orgni.olyxee.com/thesis", image: "/images/enterprise/explore-research.png", date: "May 2026" },
             { title: "Developers", desc: "Build on top of Olyxee infrastructure.", link: "/developers", image: "/images/enterprise/explore-developers.png", date: "Jul 2026" },
           ].map((card) => (
             <Link key={card.title} href={card.link} className="block group">
