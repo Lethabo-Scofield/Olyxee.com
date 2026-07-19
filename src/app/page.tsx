@@ -1115,11 +1115,11 @@ function VideoShowcaseSection() {
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="relative"
+          className="relative max-w-5xl mx-auto"
         >
           <video
             src="/videos/landing-showcase.mp4"
-            className="w-full aspect-video object-cover"
+            className="w-full aspect-video object-cover rounded-2xl sm:rounded-3xl"
             autoPlay
             loop
             muted
