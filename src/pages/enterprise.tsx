@@ -528,9 +528,9 @@ const Enterprise: FC = () => {
         </h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
-            { title: "Solutions", desc: "Custom deployments for complex organizations.", link: "/solutions/logistics", image: "/images/enterprise/explore-solutions.png", date: "Jun 2026" },
+            { title: "Solutions", desc: "Custom deployments for complex organizations.", link: "/signup", image: "/images/enterprise/explore-solutions.png", date: "Jun 2026" },
             { title: "Research", desc: "The Orgni thesis: why organisational understanding comes first.", link: "https://orgni.olyxee.com/thesis", image: "/images/enterprise/explore-research.png", date: "May 2026" },
-            { title: "Developers", desc: "Build on top of Olyxee infrastructure.", link: "/developers", image: "/images/enterprise/explore-developers.png", date: "Jul 2026" },
+            { title: "Developers", desc: "Build on top of Olyxee infrastructure.", link: "/docs", image: "/images/enterprise/explore-developers.png", date: "Jul 2026" },
           ].map((card) => (
             <Link key={card.title} href={card.link} className="block group">
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-md">
