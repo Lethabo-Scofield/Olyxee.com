@@ -170,16 +170,14 @@ const About: FC = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -12 }}
                   transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-                  className="relative grid grid-cols-12 gap-y-6 gap-x-6 sm:gap-x-10 items-start"
+                  className="relative max-w-3xl mx-auto text-center"
                 >
-                  <div className="col-span-12 sm:col-span-8 lg:col-span-7 lg:pt-6 order-2 sm:order-1">
-                    <p className="text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.1] tracking-[-0.02em] font-medium mb-8 text-neutral-900">
-                      A future where organisations do not merely use intelligent tools, but <em className="font-serif italic font-normal text-neutral-500">become more intelligent</em> themselves.
-                    </p>
-                    <p className="text-base sm:text-lg text-neutral-700 leading-relaxed max-w-xl">
-                      In this future, knowledge is not fragmented across documents and disconnected systems. Processes are not invisible. Decisions are not separated from their context. People and intelligent systems work through a shared operational model that can be understood, governed, audited, and continuously improved.
-                    </p>
-                  </div>
+                  <p className="font-serif text-3xl sm:text-4xl lg:text-[3rem] leading-[1.12] tracking-tight mb-8 text-neutral-900">
+                    A future where organisations do not merely use intelligent tools, but <em className="italic text-neutral-500">become more intelligent</em> themselves.
+                  </p>
+                  <p className="text-base sm:text-lg text-neutral-600 font-light leading-relaxed max-w-2xl mx-auto">
+                    In this future, knowledge is not fragmented across documents and disconnected systems. Processes are not invisible. Decisions are not separated from their context. People and intelligent systems work through a shared operational model that can be understood, governed, audited, and continuously improved.
+                  </p>
                 </motion.article>
               ) : (
                 <motion.div
@@ -242,9 +240,9 @@ const About: FC = () => {
               <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
                 Principles
               </p>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-[-0.025em] leading-[1.05] font-medium">
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-tight leading-[1.08]">
                 Three pillars.{" "}
-                <em className="font-serif italic font-normal text-neutral-500">One unfair advantage.</em>
+                <em className="italic text-neutral-500">One unfair advantage.</em>
               </h2>
             </motion.div>
 
@@ -296,7 +294,7 @@ const About: FC = () => {
                       <p className="text-[10px] font-mono uppercase tracking-[0.26em] text-neutral-500 mb-2">
                         {item.label}
                       </p>
-                      <h3 className="text-xl sm:text-[1.4rem] text-neutral-900 leading-[1.2] tracking-[-0.015em] font-medium mb-2.5">
+                      <h3 className="font-serif text-xl sm:text-[1.5rem] text-neutral-900 leading-[1.2] tracking-tight mb-2.5">
                         {item.title}
                       </h3>
                       <p className="text-[15px] text-neutral-700 leading-relaxed max-w-[48ch]">
@@ -337,10 +335,10 @@ const About: FC = () => {
               >
                 &ldquo;
               </span>
-              <blockquote className="text-[1.75rem] sm:text-4xl lg:text-[3rem] text-neutral-900 leading-[1.15] tracking-[-0.02em] font-medium">
+              <blockquote className="font-serif text-[1.75rem] sm:text-4xl lg:text-[3rem] text-neutral-900 leading-[1.18] tracking-tight">
                 We started Olyxee because the hardest part of AI isn&apos;t
                 intelligence. It&apos;s getting that intelligence to actually{" "}
-                <em className="font-serif italic font-normal text-neutral-500">do something useful</em>.
+                <em className="italic text-neutral-500">do something useful</em>.
               </blockquote>
 
               <div className="mt-12 sm:mt-14 pt-6 border-t border-neutral-200 flex flex-wrap items-center justify-between gap-y-5 gap-x-6">
@@ -398,10 +396,10 @@ const About: FC = () => {
               <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-6">
                 Join us
               </p>
-              <h3 className="text-3xl sm:text-5xl tracking-[-0.025em] mb-5 text-neutral-900 leading-[1.05] font-medium">
-                Build AI that <em className="font-serif italic font-normal text-neutral-500">actually works.</em>
+              <h3 className="font-serif text-3xl sm:text-5xl tracking-tight mb-5 text-neutral-900 leading-[1.08]">
+                Build AI that <em className="italic text-neutral-500">actually works.</em>
               </h3>
-              <p className="text-base sm:text-lg text-neutral-700 mb-10 max-w-xl mx-auto leading-relaxed">
+              <p className="text-base sm:text-lg text-neutral-600 font-light mb-10 max-w-xl mx-auto leading-relaxed">
                 We&apos;re building a team of people who want to make AI work in the real world, not just in demos.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
