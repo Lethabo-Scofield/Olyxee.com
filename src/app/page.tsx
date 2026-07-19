@@ -440,7 +440,7 @@ function ImageShowcase() {
         >
           <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">In Practice</p>
           <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900">
-            AI at work across the business
+            How Orgni puts Olyxee&apos;s research to work
           </h2>
         </motion.div>
       </div>
