@@ -469,27 +469,23 @@ type ProductCta = { label: string; href: string; external?: boolean };
 function ProductFeature({
   id,
   surface,
-  index,
   eyebrow,
   heading,
   emphasis,
   description,
   pills,
   image,
-  glow,
   primary,
   secondary,
 }: {
   id: string;
   surface: "muted" | "plain";
-  index: string;
   eyebrow?: string;
   heading: string;
   emphasis: string;
   description: string;
   pills?: { label: string; icon: LucideIcon }[];
   image: { src: string; alt: string; width: number; height: number };
-  glow: string;
   primary: ProductCta;
   secondary: ProductCta;
 }) {
@@ -518,12 +514,6 @@ function ProductFeature({
               {heading} <em className="text-orange-500 not-italic">{emphasis}</em>
             </h2>
           </div>
-          <span
-            aria-hidden
-            className="hidden sm:block font-serif text-3xl lg:text-4xl text-neutral-300 leading-none pt-2"
-          >
-            {index}
-          </span>
         </motion.div>
 
         {/* Full-width showcase */}
@@ -534,8 +524,7 @@ function ProductFeature({
           transition={{ duration: 0.9, ease }}
           className="relative mt-10 sm:mt-14"
         >
-          <div aria-hidden className={`absolute -inset-6 sm:-inset-10 -z-10 ${glow} blur-3xl rounded-[2.5rem]`} />
-          <div className="relative overflow-hidden rounded-[1.75rem] sm:rounded-[2rem]">
+          <div className="relative overflow-hidden rounded-lg ring-1 ring-neutral-200/80">
             <Image
               src={image.src}
               alt={image.alt}
@@ -562,13 +551,12 @@ function ProductFeature({
           <div className="sm:col-span-6 lg:col-span-5 flex flex-col sm:items-end gap-5">
             {pills && pills.length > 0 && (
               <div className="flex flex-wrap sm:justify-end gap-2">
-                {pills.map(({ label, icon: Icon }) => (
-                  <span
-                    key={label}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white ring-1 ring-neutral-200 text-xs font-medium text-neutral-700"
-                  >
-                    <Icon className="w-3.5 h-3.5 text-orange-500" />
+                {pills.map(({ label }, i) => (
+                  <span key={label} className="inline-flex items-center text-xs text-neutral-500">
                     {label}
+                    {i < pills.length - 1 && (
+                      <span aria-hidden className="ml-2 text-neutral-300">·</span>
+                    )}
                   </span>
                 ))}
               </div>
@@ -676,7 +664,6 @@ function OrgniSection() {
     <ProductFeature
       id="orgni"
       surface="muted"
-      index="01"
       heading="Orgni builds live business context for"
       emphasis="modern operations."
       description="Orgni creates a living operational model of your organisation. It connects scattered documents, workflows, decisions, roles, rules, and operational signals into structured business context that people and intelligent systems can use."
@@ -692,7 +679,6 @@ function OrgniSection() {
         width: 1024,
         height: 576,
       }}
-      glow="bg-gradient-to-br from-orange-100/70 via-white to-amber-50/40"
       primary={{ label: "Try Orgni", href: "https://orgni.olyxee.com", external: true }}
       secondary={{ label: "Talk to us", href: "/contact" }}
     />
