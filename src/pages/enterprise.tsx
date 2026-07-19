@@ -545,9 +545,6 @@ const Enterprise: FC = () => {
 
       {/* === FINAL CTA === */}
       <section className="py-24 sm:py-36 px-4 sm:px-6 text-center max-w-4xl mx-auto border-t border-black/5">
-        <h2 className="text-[2.5rem] sm:text-[4rem] font-medium tracking-tighter text-[#111] mb-10 leading-[1.05]">
-          Interested in seeing how Olyxee works for your business?
-        </h2>
         <div className="flex flex-col sm:flex-row gap-6 items-center justify-center">
           <Link
             href="/contact"

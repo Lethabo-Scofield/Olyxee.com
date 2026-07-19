@@ -291,9 +291,6 @@ const About: FC = () => {
                       />
                     </span>
                     <div>
-                      <p className="text-[10px] font-mono uppercase tracking-[0.26em] text-neutral-500 mb-2">
-                        {item.label}
-                      </p>
                       <h3 className="font-serif text-xl sm:text-[1.5rem] text-neutral-900 leading-[1.2] tracking-tight mb-2.5">
                         {item.title}
                       </h3>
