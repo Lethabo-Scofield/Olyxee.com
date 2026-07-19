@@ -38,6 +38,7 @@ const footerData = {
     {
       title: "Resources",
       links: [
+        { name: "Pricing", href: "/pricing" },
         { name: "Documentation", href: "/docs" },
         { name: "API Reference", href: "/docs?tab=api&page=api-reference" },
       ],
