@@ -33,7 +33,7 @@ export default function FreightShiftStory() {
             </p>
 
             <h1 className="font-serif text-3xl sm:text-5xl text-neutral-900 tracking-tight leading-[1.08] mb-8">
-              Moving freight across continents requires more than transportation.
+              One operational view across a fragmented freight network.
             </h1>
 
             <div className="flex items-center gap-4 text-sm text-neutral-400 font-light mb-12 pb-10 border-b border-neutral-100">
@@ -66,7 +66,7 @@ export default function FreightShiftStory() {
             className="prose prose-neutral prose-lg max-w-none prose-headings:font-serif prose-headings:tracking-tight prose-h2:text-2xl sm:prose-h2:text-[1.75rem] prose-h2:mt-16 prose-h2:mb-6 prose-p:leading-[1.75] prose-p:text-neutral-700 prose-li:text-neutral-700 prose-li:leading-relaxed prose-strong:text-neutral-900 prose-blockquote:border-l-neutral-900 prose-blockquote:not-italic prose-blockquote:font-serif prose-blockquote:text-xl prose-blockquote:text-neutral-800 prose-blockquote:leading-snug"
           >
             <p className="not-prose text-xl sm:text-[1.375rem] font-light leading-relaxed text-neutral-900 border-l-2 border-neutral-900 pl-5 sm:pl-6 mb-14">
-              For FreightShift International Logistics, moving cargo between China and South Africa is the visible part of the business. The harder part is the coordination behind it. Olyxee is partnering with FreightShift to build the operational infrastructure that makes that coordination scale.
+              FreightShift International Logistics depends on carriers, warehouses, customs agents and customer teams operating across regions, each holding only part of the context. Olyxee is partnering with FreightShift to make that whole operation understandable through Orgni.
             </p>
 
             <p>
@@ -79,71 +79,49 @@ export default function FreightShiftStory() {
               Information lived across emails, spreadsheets, WhatsApp conversations, supplier documents, and tracking portals. Teams often spent more time coordinating operations than executing them.
             </p>
             <p>
-              FreightShift did not have a transportation problem. It had an operational visibility problem. That is where Olyxee entered the conversation.
+              FreightShift did not have a transportation problem. It had a fragmented operation: no one participant could see the whole picture, and the knowledge of how exceptions were resolved lived in people&apos;s heads and inboxes. That is where Olyxee entered the conversation.
             </p>
 
-            <h2>Building operational infrastructure</h2>
+            <h2>A fragmented operation</h2>
             <p>
-              Olyxee began working with FreightShift around a simple question: what would logistics operations look like if information moved as efficiently as cargo?
+              Each participant in the freight network held only part of the context. Carriers knew where cargo was. Warehouses knew what had arrived. Customer teams knew what had been promised. Nobody held the connected view of shipment events, responsibilities, service rules and customer commitments at the same time.
             </p>
             <p>
-              The goal was not to replace existing workflows overnight. Instead, the focus was on building operational infrastructure capable of supporting growth without increasing operational friction.
+              Responsibilities were unclear at handoffs, exceptions were handled manually, and any tool introduced to help worked without shared context. The operation was hard to improve because it was hard to understand.
             </p>
-            <p>
-              That infrastructure centers on <strong>Order Loop</strong>, Olyxee&apos;s logistics coordination system. Built on Orgni, Order Loop gives the operation a single place where shipments, documents, customs updates, and customer communication stay connected as cargo moves from origin to delivery.
-            </p>
-            <p>Together, the companies are exploring systems for:</p>
-            <ul>
-              <li>centralized shipment visibility,</li>
-              <li>workflow coordination,</li>
-              <li>operational tracking,</li>
-              <li>internal execution flows,</li>
-              <li>and customer communication.</li>
-            </ul>
 
-            <h2>Reducing coordination overhead</h2>
+            <h2>Building the organisational model</h2>
             <p>
-              In logistics, delays are not always caused by transportation. Many delays happen because teams are waiting for approvals, missing documents, shipment confirmations, customer updates, or internal coordination.
+              Olyxee began working with FreightShift around a simple question: what would logistics operations look like if the organisation behind the cargo were as visible as the cargo itself?
             </p>
             <p>
-              FreightShift already had strong logistics expertise. What Olyxee introduced was infrastructure thinking. With Order Loop coordinating the moving parts, the partnership focused on reducing the amount of manual coordination required for day-to-day operations.
+              With <strong>Orgni</strong>, the partnership is connecting the pieces into one living operational model:
             </p>
-            <p>This included exploring systems capable of:</p>
             <ul>
-              <li>organizing operational data,</li>
-              <li>tracking shipment states,</li>
-              <li>routing tasks internally,</li>
-              <li>and improving communication visibility across workflows.</li>
+              <li>shipment events and system states,</li>
+              <li>the people and roles responsible at each stage,</li>
+              <li>service rules and customer commitments,</li>
+              <li>exceptions and how previous ones were resolved,</li>
+              <li>and the dependencies between all of them.</li>
             </ul>
             <p>
-              The result was not fewer people. It was fewer operational bottlenecks.
+              <strong>Order Loop</strong>, Olyxee&apos;s logistics coordination system built on Orgni, is where that model meets daily work: shipments, documents, customs updates and customer communication stay connected as cargo moves from origin to delivery.
             </p>
 
-            <h2>Visibility as a competitive advantage</h2>
+            <h2>What became possible</h2>
             <p>
-              FreightShift places strong emphasis on transparency and reliability. For customers, that means knowing where shipments are, understanding delays early, and receiving accurate communication throughout the logistics process.
+              Once the operation was understandable, people and intelligent systems could act with shared context. A delayed shipment is no longer just a status. The system can see why it is delayed, who owns the next action, and which customer commitment is at risk.
             </p>
             <p>
-              Olyxee approached this as a systems problem. The companies explored ways to create more structured operational records, clearer shipment tracking, faster communication cycles, and better coordination between logistics activities.
-            </p>
-            <p>
-              In practice, this meant building toward operations that become easier to manage as the company grows, not harder.
+              That shared understanding shows up as fewer operational bottlenecks: less waiting on approvals, missing documents and internal coordination, and earlier, more accurate communication to customers. The result was not fewer people. It was an operation that explains itself.
             </p>
 
-            <h2>Logistics infrastructure for a growing trade corridor</h2>
+            <h2>Understanding that compounds</h2>
             <p>
-              Trade between China and South Africa continues to grow in complexity and scale. FreightShift operates directly inside that environment, helping businesses move goods across international and domestic supply chains efficiently and reliably.
+              Every resolved exception, routing decision and customer interaction updates the model, so the organisation gets easier to operate as it grows, not harder. As trade between China and South Africa grows in complexity, that compounding understanding is FreightShift&apos;s infrastructure for scale.
             </p>
             <p>
-              Olyxee saw an opportunity to support that growth through operational intelligence and automation infrastructure. Not as a replacement for logistics expertise, but as a layer that strengthens it.
-            </p>
-
-            <h2>Looking ahead</h2>
-            <p>
-              Modern logistics companies are increasingly defined by how well they manage information, coordination, and operational execution. FreightShift International Logistics represents a new generation of logistics businesses focused not only on transportation, but on operational excellence.
-            </p>
-            <p>
-              At Olyxee, we are proud to support companies building the future of logistics infrastructure across Africa and international markets.
+              The outcome was not another isolated automation. It was reusable organisational understanding that could support future teams, systems and agents.
             </p>
           </motion.div>
 

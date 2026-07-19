@@ -33,7 +33,7 @@ export default function AutomationStory() {
             </p>
 
             <h1 className="font-serif text-3xl sm:text-5xl text-neutral-900 tracking-tight leading-[1.08] mb-8">
-              Supplier onboarding fully automated, end to end.
+              A supplier process that understands its own rules.
             </h1>
 
             <div className="flex items-center gap-4 text-sm text-neutral-400 font-light mb-12 pb-10 border-b border-neutral-100">
@@ -66,29 +66,34 @@ export default function AutomationStory() {
             className="prose prose-neutral prose-lg max-w-none prose-headings:font-serif prose-headings:tracking-tight prose-h2:text-2xl sm:prose-h2:text-[1.75rem] prose-h2:mt-16 prose-h2:mb-6 prose-p:leading-[1.75] prose-p:text-neutral-700 prose-li:text-neutral-700 prose-li:leading-relaxed prose-strong:text-neutral-900 prose-blockquote:border-l-neutral-900 prose-blockquote:not-italic prose-blockquote:font-serif prose-blockquote:text-xl prose-blockquote:text-neutral-800 prose-blockquote:leading-snug"
           >
             <p className="not-prose text-xl sm:text-[1.375rem] font-light leading-relaxed text-neutral-900 border-l-2 border-neutral-900 pl-5 sm:pl-6 mb-14">
-              Onboarding a supplier is mostly waiting - for documents, for signatures, for IT access. We built it on Orgni to do the chasing, so people only show up to make decisions.
+              Supplier onboarding required coordination across procurement, finance, compliance, legal and operational systems, with rules that changed by supplier type, risk and contract conditions. Orgni made the organisation behind the workflow understandable, and that is what made the automation reliable.
             </p>
 
-            <h2>The challenge</h2>
+            <h2>A fragmented operation</h2>
             <p>
-              Every new supplier started the same way: a procurement manager chasing forms, a compliance team waiting on documents, an IT team waiting on both before provisioning access.
+              Every new supplier started the same way: a procurement manager chasing forms, a compliance team waiting on documents, an IT team waiting on both before provisioning access. The rules were real but scattered - some in policy documents, some in legal&apos;s inbox, many in the heads of whoever had onboarded a similar supplier before.
             </p>
             <p>
-              Average onboarding took three to four weeks - not because anything was complicated, but because every handoff was manual and every team had its own queue. With dozens of onboardings running in parallel, the procurement team was spending more time <strong>coordinating</strong> than buying.
+              Average onboarding took three to four weeks - not because anything was complicated, but because every handoff was manual, every team had its own queue, and no system understood why a given step was required for a given supplier.
             </p>
 
-            <h2>What we built</h2>
+            <h2>Building the organisational model</h2>
             <p>
-              We built the onboarding process on <strong>Orgni</strong>, our infrastructure for operational intelligence, using its operational workflows capability to orchestrate multi-step operations end to end. Because it runs on Orgni, the workflow carries full context - who the supplier is, what has already been collected, and what each team needs next - so nothing falls through the gaps between handoffs. When a new supplier enters the pipeline, Orgni runs the playbook from intake to activation.
+              We built the onboarding process on <strong>Orgni</strong>, but the starting point was not a workflow diagram. It was connecting the organisation behind the workflow into one operational model:
             </p>
             <ul>
-              <li><strong>Intake automation.</strong> The questionnaire goes out automatically and collects required compliance documents.</li>
-              <li><strong>Verification checks.</strong> Documents are run through the verification checklist and flagged where review is needed.</li>
-              <li><strong>Approval routing.</strong> The right stakeholder is pulled in at the right step through a simple review interface.</li>
-              <li><strong>IT provisioning.</strong> Once approved, the agent triggers access provisioning and sends credentials and onboarding guide to the supplier.</li>
+              <li><strong>Roles.</strong> Who in procurement, finance, compliance, legal and IT is responsible at each step.</li>
+              <li><strong>Policies and rules.</strong> Which requirements apply by supplier type, risk level and contract conditions.</li>
+              <li><strong>Evidence and approvals.</strong> Which documents count, who signs off, and what has already been collected.</li>
+              <li><strong>System states and exceptions.</strong> Where each supplier stands, and how unusual cases were handled before.</li>
             </ul>
+
+            <h2>What became possible</h2>
             <p>
-              Every step is logged, every handoff is timestamped, and the procurement manager has a live view of where each supplier stands.
+              Because the process understands its own rules, intelligent systems can determine what is required for each supplier, explain why it is required, and route unusual cases to the correct people. Intake, verification checks, approval routing and IT provisioning run end to end, with every step logged and every handoff timestamped.
+            </p>
+            <p>
+              People only show up to make decisions - and when they do, the context for the decision is already assembled.
             </p>
 
             <h2>The numbers</h2>
@@ -107,12 +112,12 @@ export default function AutomationStory() {
               </div>
             </div>
 
-            <h2>What changed</h2>
+            <h2>Understanding that compounds</h2>
             <p>
-              Onboardings finish in days, not weeks. Compliance sign-off rates improved too, because documents are collected and reviewed systematically rather than chased over email.
+              Onboardings finish in days, not weeks. Compliance sign-off rates improved too, because documents are collected and reviewed systematically rather than chased over email. And every unusual case that gets routed and resolved teaches the model something new about how the organisation actually works.
             </p>
             <p>
-              The same Orgni playbook has since been adapted for contractor onboarding - a parallel process with similar friction and similar results.
+              The same organisational understanding has since been reused for contractor onboarding - a parallel process with similar friction and similar results. The outcome was not another isolated automation. It was reusable organisational understanding that could support future teams, systems and agents.
             </p>
 
             <blockquote>

@@ -9,21 +9,21 @@ import { motion } from "framer-motion";
 const STORIES = [
   {
     tag: "Logistics",
-    headline: "Operational infrastructure for cross-continent freight.",
+    headline: "One operational view across a fragmented freight network.",
     image: "/images/stories/logistics.png",
     alt: "Warehouse worker in safety vest packaging shipments on the line",
     href: "/stories/freightshift",
   },
   {
     tag: "Accounting",
-    headline: "Five-day close, now overnight.",
+    headline: "Making the financial close understandable before automating it.",
     image: "/images/stories/accounting.png",
     alt: "Finance team reviewing an operations dashboard together",
     href: "/stories/accounting",
   },
   {
     tag: "Automation",
-    headline: "Supplier onboarding, fully automated.",
+    headline: "A supplier process that understands its own rules.",
     image: "/images/stories/automation.png",
     alt: "Distributed team celebrating a launch together at the desk",
     href: "/stories/automation",

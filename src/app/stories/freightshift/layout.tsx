@@ -4,18 +4,18 @@ const description =
   "How FreightShift used Orgni, Olyxee's infrastructure for operational intelligence, to plan, dispatch, and reconcile cross-border freight without expanding headcount.";
 
 export const metadata: Metadata = {
-  title: "FreightShift scales without scaling headcount | Customer story",
+  title: "One operational view across a fragmented freight network | Customer story",
   description,
   alternates: { canonical: "https://olyxee.com/stories/freightshift" },
   openGraph: {
     type: "article",
-    title: "FreightShift scales without scaling headcount",
+    title: "One operational view across a fragmented freight network",
     description,
     url: "https://olyxee.com/stories/freightshift",
     siteName: "Olyxee",
     images: [{ url: "/api/og?title=FreightShift&subtitle=Customer%20story", width: 1200, height: 630, alt: "FreightShift Olyxee customer story" }],
   },
-  twitter: { card: "summary_large_image", title: "FreightShift scales without scaling headcount", description },
+  twitter: { card: "summary_large_image", title: "One operational view across a fragmented freight network", description },
 };
 
 const breadcrumbJsonLd = {
@@ -30,7 +30,7 @@ const breadcrumbJsonLd = {
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "FreightShift scales without scaling headcount",
+  headline: "One operational view across a fragmented freight network",
   description,
   image: ["https://olyxee.com/og-image.jpg"],
   datePublished: "2025-11-01T00:00:00.000Z",

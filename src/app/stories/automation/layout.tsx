@@ -4,18 +4,18 @@ const description =
   "How a logistics operations team replaced manual coordination with Orgni, Olyxee's infrastructure for operational intelligence, automating dispatch, invoicing, and exception handling end-to-end.";
 
 export const metadata: Metadata = {
-  title: "Automating operations end-to-end | Customer story",
+  title: "A supplier process that understands its own rules | Customer story",
   description,
   alternates: { canonical: "https://olyxee.com/stories/automation" },
   openGraph: {
     type: "article",
-    title: "Automating operations end-to-end",
+    title: "A supplier process that understands its own rules",
     description,
     url: "https://olyxee.com/stories/automation",
     siteName: "Olyxee",
     images: [{ url: "/api/og?title=Operations%20automation&subtitle=Customer%20story", width: 1200, height: 630, alt: "Olyxee automation customer story" }],
   },
-  twitter: { card: "summary_large_image", title: "Automating operations end-to-end", description },
+  twitter: { card: "summary_large_image", title: "A supplier process that understands its own rules", description },
 };
 
 const breadcrumbJsonLd = {

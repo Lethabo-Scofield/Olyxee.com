@@ -1,21 +1,21 @@
 import type { Metadata } from "next";
 
 const description =
-  "How a mid-market financial services firm cut month-end close from five days to overnight using Orgni, Olyxee's infrastructure for operational intelligence, with its financial operations and operational workflows capabilities.";
+  "How Orgni made a mid-market firm's financial close understandable - modelling responsibilities, dependencies, controls and decision history - so teams and intelligent systems could run it overnight.";
 
 export const metadata: Metadata = {
-  title: "Accounting close in hours, not days | Customer story",
+  title: "Making the financial close understandable | Customer story",
   description,
   alternates: { canonical: "https://olyxee.com/stories/accounting" },
   openGraph: {
     type: "article",
-    title: "Accounting close in hours, not days",
+    title: "Making the financial close understandable before automating it",
     description,
     url: "https://olyxee.com/stories/accounting",
     siteName: "Olyxee",
     images: [{ url: "/api/og?title=Accounting%20close&subtitle=Customer%20story", width: 1200, height: 630, alt: "Olyxee accounting customer story" }],
   },
-  twitter: { card: "summary_large_image", title: "Accounting close in hours, not days", description },
+  twitter: { card: "summary_large_image", title: "Making the financial close understandable before automating it", description },
 };
 
 const breadcrumbJsonLd = {
@@ -30,7 +30,7 @@ const breadcrumbJsonLd = {
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Month-end close dropped from five days to overnight",
+  headline: "Making the financial close understandable before automating it",
   description,
   image: ["https://olyxee.com/og-image.jpg"],
   datePublished: "2025-09-01T00:00:00.000Z",

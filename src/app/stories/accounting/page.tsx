@@ -33,7 +33,7 @@ export default function AccountingStory() {
             </p>
 
             <h1 className="font-serif text-3xl sm:text-5xl text-neutral-900 tracking-tight leading-[1.08] mb-8">
-              Month-end close dropped from five days to overnight.
+              Making the financial close understandable before automating it.
             </h1>
 
             <div className="flex items-center gap-4 text-sm text-neutral-400 font-light mb-12 pb-10 border-b border-neutral-100">
@@ -66,29 +66,34 @@ export default function AccountingStory() {
             className="prose prose-neutral prose-lg max-w-none prose-headings:font-serif prose-headings:tracking-tight prose-h2:text-2xl sm:prose-h2:text-[1.75rem] prose-h2:mt-16 prose-h2:mb-6 prose-p:leading-[1.75] prose-p:text-neutral-700 prose-li:text-neutral-700 prose-li:leading-relaxed prose-strong:text-neutral-900 prose-blockquote:border-l-neutral-900 prose-blockquote:not-italic prose-blockquote:font-serif prose-blockquote:text-xl prose-blockquote:text-neutral-800 prose-blockquote:leading-snug"
           >
             <p className="not-prose text-xl sm:text-[1.375rem] font-light leading-relaxed text-neutral-900 border-l-2 border-neutral-900 pl-5 sm:pl-6 mb-14">
-              Closing the books is mechanical work that demands precision. The team had the precision; what they lacked was time. We built it on Orgni to do the mechanics overnight.
+              The close process depended on spreadsheets, financial systems, approvals, recurring exceptions and knowledge held by experienced employees. Before automating anything, Orgni made that whole operation understandable.
             </p>
 
-            <h2>The challenge</h2>
+            <h2>A fragmented operation</h2>
             <p>
-              Every month, this mid-market finance team spent five gruelling days on close. Reconciling accounts across multiple ledgers, chasing down anomalies, and assembling the reports leadership needed - all manual, all deadline-driven.
+              Every month, this mid-market finance team spent five gruelling days on close. The mechanics lived in spreadsheets and ledgers; the understanding lived in people. Which exceptions recur, who approves what, which corrections are routine and which are warnings - all of it was trapped in experienced employees&apos; heads and reconstructed from scratch each month.
             </p>
             <p>
-              The team was capable. The bottleneck was the <strong>work itself</strong>: repetitive, data-heavy tasks that required precision but not judgement. Every month, the same patterns, the same corrections, the same late nights.
+              The team was capable. The problem was that the close, as an operation, was not understandable to anyone or anything outside the people who ran it. Automation attempted on top of that fragmentation would have been brittle.
             </p>
 
-            <h2>What we built</h2>
+            <h2>Building the organisational model</h2>
             <p>
-              We turned on <strong>financial operations</strong> in <strong>Orgni</strong>, our infrastructure for operational intelligence. It plugs directly into the firm&apos;s ERP and banking data feeds, and because it runs on Orgni it holds the full context of the business: the ledgers, the history, and the rules that govern the close. Each month it runs reconciliation automatically and prepares a close-ready report.
+              We turned on <strong>financial operations</strong> in <strong>Orgni</strong>, plugged into the firm&apos;s ERP and banking data feeds. But the first step was not automation. It was representation: Orgni modelled the close as a live picture of responsibilities, dependencies, controls, deadlines and historical decisions.
             </p>
             <ul>
-              <li><strong>Auto-reconciliation.</strong> Transactions are matched across ledgers and bank feeds without manual intervention.</li>
-              <li><strong>Threshold-based flagging.</strong> Discrepancies above a configurable threshold are surfaced for review.</li>
-              <li><strong>Explained anomalies.</strong> Each exception comes with context - what changed, why it likely changed, and the probable resolution.</li>
-              <li><strong>Close-ready reports.</strong> Output is structured for leadership review, not raw data the team has to repackage.</li>
+              <li><strong>Responsibilities.</strong> Who owns each reconciliation, review and sign-off.</li>
+              <li><strong>Dependencies.</strong> Which inputs each step waits on, across ledgers, feeds and teams.</li>
+              <li><strong>Controls and rules.</strong> The thresholds, approvals and policies that govern the close.</li>
+              <li><strong>Decision history.</strong> How previous exceptions were investigated and resolved.</li>
             </ul>
+
+            <h2>What became possible</h2>
             <p>
-              The team reviews, approves, and signs off - instead of rebuilding the close from scratch.
+              Once the operation was understandable, reliable automation followed. Transactions are matched across ledgers and bank feeds automatically. Discrepancies are flagged with context: what changed, why it likely changed, and how similar cases were resolved before. Missing inputs and bottlenecks are identified before they stall the close.
+            </p>
+            <p>
+              The team reviews, approves and signs off - instead of rebuilding the close from scratch each month.
             </p>
 
             <h2>The numbers</h2>
@@ -107,12 +112,12 @@ export default function AccountingStory() {
               </div>
             </div>
 
-            <h2>What changed</h2>
+            <h2>Understanding that compounds</h2>
             <p>
-              Month-end close now completes overnight. The finance team arrives on day one to a report that's ready for review, not ready to be built.
+              Month-end close now completes overnight, and accuracy has improved, because exceptions are caught systematically rather than by whoever happens to notice. But the close was not solved once: every resolved exception and decision feeds back into the model, so each close makes the next one more understandable.
             </p>
             <p>
-              What took five days now takes hours - and accuracy has improved, because exceptions are caught systematically rather than by whoever happens to notice.
+              The outcome was not another isolated automation. It was reusable organisational understanding that could support future teams, systems and agents.
             </p>
 
             <blockquote>

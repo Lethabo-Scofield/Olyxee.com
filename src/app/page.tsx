@@ -818,9 +818,9 @@ function IntegrationSection() {
 const STORIES = [
   {
     tag: "Logistics",
-    headline: "Operational infrastructure for cross-continent freight.",
+    headline: "One operational view across a fragmented freight network.",
     excerpt:
-      "How a freight operator turned scattered shipment updates, handoffs and exceptions into one operational picture.",
+      "How Orgni connected shipment events, responsibilities and commitments into a shared operational model.",
     readTime: "5 min read",
     image: "/images/stories/logistics.png",
     alt: "Warehouse worker in safety vest packaging shipments on the line",
@@ -828,9 +828,9 @@ const STORIES = [
   },
   {
     tag: "Accounting",
-    headline: "Five-day close, now overnight.",
+    headline: "Making the financial close understandable before automating it.",
     excerpt:
-      "A finance team replaced end-of-month archaeology with a close process that runs on live operational context.",
+      "Orgni modelled the responsibilities, dependencies and decisions behind the close, so intelligent systems could run it reliably.",
     readTime: "4 min read",
     image: "/images/stories/accounting.png",
     alt: "Finance team reviewing an operations dashboard together",
@@ -838,9 +838,9 @@ const STORIES = [
   },
   {
     tag: "Automation",
-    headline: "Supplier onboarding, fully automated.",
+    headline: "A supplier process that understands its own rules.",
     excerpt:
-      "From forms and follow-up emails to a workflow that checks documents, applies rules and requests approvals on its own.",
+      "Orgni connected the roles, policies and evidence behind onboarding, making the automation reliable.",
     readTime: "4 min read",
     image: "/images/stories/automation.png",
     alt: "Distributed team celebrating a launch together at the desk",
@@ -897,9 +897,9 @@ function StoriesSection() {
         >
           <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Stories</p>
           <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900 max-w-2xl">
-            Orgni{" "}
+            What organisational{" "}
             <span className="relative inline-block">
-              in practice
+              understanding enables
               <svg
                 aria-hidden="true"
                 className="pointer-events-none absolute left-0 right-0 -bottom-2 sm:-bottom-3 w-full h-3 sm:h-[18px] overflow-visible text-orange-500"
@@ -920,7 +920,7 @@ function StoriesSection() {
           </h2>
           <div className="mt-5 flex flex-wrap items-end justify-between gap-4">
             <p className="text-neutral-600 text-base sm:text-lg font-light max-w-md">
-              A closer look at how teams put Olyxee to work.
+              How Orgni turns fragmented operations into shared, living context.
             </p>
             <Link
               href="/stories"
