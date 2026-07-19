@@ -299,11 +299,21 @@ img, svg, video, canvas, iframe, table {
     -moz-osx-font-smoothing: grayscale;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  /* Type scale: hierarchy comes from size + color contrast, weight stays restrained.
+     Large display text reads best slightly under semibold; small headings need a touch more. */
+  h1, h2 {
     color: inherit;
-    line-height: 1.1;
-    letter-spacing: -0.03em;
-    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.028em;
+    font-weight: 560;
+    font-family: -apple-system, BlinkMacSystemFont, var(--font-display), "Inter", "Söhne", "Segoe UI", system-ui, sans-serif;
+  }
+
+  h3, h4, h5, h6 {
+    color: inherit;
+    line-height: 1.25;
+    letter-spacing: -0.014em;
+    font-weight: 550;
     font-family: -apple-system, BlinkMacSystemFont, var(--font-display), "Inter", "Söhne", "Segoe UI", system-ui, sans-serif;
   }
 
@@ -339,8 +349,8 @@ img, svg, video, canvas, iframe, table {
 
 .font-serif {
   font-family: -apple-system, BlinkMacSystemFont, var(--font-display), "Inter", "Söhne", "Segoe UI", system-ui, sans-serif;
-  letter-spacing: -0.03em;
-  font-weight: 600;
+  letter-spacing: -0.028em;
+  font-weight: 560;
 }
 
 
