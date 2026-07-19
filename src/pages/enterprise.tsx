@@ -6,7 +6,7 @@ import Footer from "../components/footer";
 import TalkToEnterprise from "../components/EnterpriseContactModal";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Check, Code2, Copy, TerminalSquare } from "lucide-react";
+import { ArrowRight, Check, Code2, Copy, TerminalSquare, Landmark, Workflow, Headphones } from "lucide-react";
 
 const SCREENS = [
   { 
@@ -328,15 +328,18 @@ const Enterprise: FC = () => {
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { title: "Finance", desc: "Reconcile transactions, audit trails, and ensure financial integrity across platforms." },
-              { title: "Operations", desc: "Automate approvals, logistics, and supply chain tracking securely." },
-              { title: "Engineering", desc: "Custom AI infrastructure and internal tool integration." },
-              { title: "Support", desc: "Resolve issues faster with full organizational memory and customer context." },
+              { icon: Landmark, title: "Finance", desc: "Reconcile transactions, audit trails, and ensure financial integrity across platforms." },
+              { icon: Workflow, title: "Operations", desc: "Automate approvals, logistics, and supply chain tracking securely." },
+              { icon: Code2, title: "Engineering", desc: "Custom AI infrastructure and internal tool integration." },
+              { icon: Headphones, title: "Support", desc: "Resolve issues faster with full organizational memory and customer context." },
             ].map((team) => (
               <div
                 key={team.title}
                 className="bg-[#fafafa] rounded-[1.5rem] p-8 transition-transform hover:-translate-y-1"
               >
+                <span className="mb-6 flex h-11 w-11 items-center justify-center rounded-xl bg-white ring-1 ring-neutral-200">
+                  <team.icon className="w-5 h-5 text-[#111]" strokeWidth={1.5} aria-hidden />
+                </span>
                 <h3 className="text-[1.25rem] font-medium text-[#111] mb-3">{team.title}</h3>
                 <p className="text-[1rem] text-[#4a5568] leading-relaxed mb-8">{team.desc}</p>
                 <Link
