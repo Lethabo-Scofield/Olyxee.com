@@ -445,6 +445,63 @@ export const roles: Role[] = [
     ],
   },
   {
+    slug: "applied-data-science-intern",
+    title: "Applied Data Science Intern",
+    team: "Data & Intelligence",
+    location: REMOTE,
+    type: "internship",
+    description:
+      "Build classification, anomaly detection, confidence scoring, entity resolution, extraction-quality measurement, and evaluation models for Orgni.",
+    responsibilities: [
+      "Help build and evaluate classification, anomaly detection, and confidence scoring models",
+      "Contribute to entity resolution and extraction-quality measurement work",
+      "Help design evaluation datasets and metrics for production model behavior",
+    ],
+    requirements: [
+      "Strong Python and solid grounding in statistics and machine learning",
+      "Some prior modeling project experience (coursework, research, or personal)",
+      "Currently studying or recently graduated",
+    ],
+  },
+  {
+    slug: "product-design-intern",
+    title: "Product Design Intern",
+    team: "Product & Design",
+    location: REMOTE,
+    type: "internship",
+    description:
+      "Design simple product experiences for Orgni's knowledge maps, workflows, reviews, exceptions, and document verification. This is a design role, not a product management role.",
+    responsibilities: [
+      "Design clear, simple experiences for knowledge maps, workflows, reviews, exceptions, and document verification",
+      "Turn complex operational concepts into understandable interfaces",
+      "Pair with engineers and product to ship designs into real product surfaces",
+    ],
+    requirements: [
+      "A portfolio showing strong interaction and visual design fundamentals",
+      "Comfort with modern design tools (Figma or similar)",
+      "Currently studying or recently graduated",
+    ],
+  },
+  {
+    slug: "cloud-platform-engineering-intern",
+    title: "Cloud and Platform Engineering Intern",
+    team: "Platform & Infrastructure",
+    location: REMOTE,
+    type: "internship",
+    description:
+      "Support Azure infrastructure, deployment pipelines, observability, containers, security, reliability, and the separation of Orgni's frontend, APIs, and workers.",
+    responsibilities: [
+      "Help operate Azure infrastructure and deployment pipelines",
+      "Contribute to observability, containerization, and reliability work",
+      "Support the separation and hardening of Orgni's frontend, APIs, and workers",
+    ],
+    requirements: [
+      "Familiarity with a major cloud platform (Azure preferred) and CI/CD concepts",
+      "Some exposure to containers, infrastructure as code, or observability tooling",
+      "Currently studying or recently graduated",
+    ],
+  },
+  {
     slug: "product-management-intern",
     title: "Product Management Intern",
     team: "Product & Design",
