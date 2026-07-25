@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { Resend } from "resend";
 
-const WAITLIST_EMAIL = process.env.WAITLIST_TO_EMAIL || "scofield@olyxee.com";
+const WAITLIST_EMAIL = process.env.WAITLIST_TO_EMAIL || "info@olyxee.com";
 const FROM_ADDRESS =
   process.env.WAITLIST_FROM_EMAIL || "Olyxee Waitlist <onboarding@resend.dev>";
 

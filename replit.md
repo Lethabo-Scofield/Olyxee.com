@@ -92,7 +92,7 @@ Desktop CTA: "Get in Touch"
 - **Olyxee Lab** (`src/pages/lab.tsx`): Research division — 6 research areas, recent publications, approach section, LinkedIn CTA
 - **Product lineup**: Addup (addup.olyxee.com), Courier Loop / Olyxee Logistics (logistics.olyxee.com, order-status updates), Togent (cost control & context optimization for AI agents — Cursor/Claude/Codex/copilots, "Coming Soon"), Ordo (verification engine, "Coming Soon"), Cortex (research, `/research/cortex`)
 - **Docs** (`src/pages/docs.tsx`): OpenAI-style documentation with centered tab navbar. Tabs: Home, API (Overview, Quickstart, API Keys, Supported Platforms, REST API, Python SDK, CLI, Error Handling, Changelog, Rate Limits), Ordo (What is Ordo, Chatbots, RAG Pipelines, Agents, Testing & Verification, Monitoring, Early Access), Guides (Supported Platforms, Testing Strategies, Configuration)
-- **Careers** (`src/pages/careers.tsx`): Internship listings with clickable apply modal that fires mailto:scofieldx911@gmail.com
+- **Careers** (`src/pages/careers.tsx`): Internship listings with clickable apply modal that fires mailto:info@olyxee.com
 - **Community** (`src/pages/community.tsx`): Hero banner image, channel cards with animated stats
 - **Research** (`src/pages/research.tsx`): Papers on AI reliability, interpretability, optimization
 - **Technology** (`src/pages/technology.tsx`): WAVE architecture, deployment pipeline, supported hardware

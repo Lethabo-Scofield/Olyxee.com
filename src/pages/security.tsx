@@ -40,11 +40,11 @@ const sections: LegalSection[] = [
   },
   {
     title: "10. Responsible Disclosure",
-    content: "We welcome reports from security researchers. If you believe you have found a vulnerability, please report it to scofield@olyxee.com. We commit to acknowledging reports promptly, working in good faith on remediation, and recognizing valid disclosures. Please act in good faith, avoid privacy violations, and do not disrupt our services."
+    content: "We welcome reports from security researchers. If you believe you have found a vulnerability, please report it to info@olyxee.com. We commit to acknowledging reports promptly, working in good faith on remediation, and recognizing valid disclosures. Please act in good faith, avoid privacy violations, and do not disrupt our services."
   },
   {
     title: "11. Contact",
-    content: "Security inquiries: scofield@olyxee.com\nVulnerability reports: scofield@olyxee.com (PGP key on request)"
+    content: "Security inquiries: info@olyxee.com\nVulnerability reports: info@olyxee.com (PGP key on request)"
   },
 ];
 
@@ -59,7 +59,7 @@ const Security: FC = () => (
     intro="An overview of Olyxee's technical and organizational security controls. This document is intended for security teams evaluating or operating Olyxee in production environments."
     sections={sections}
     downloadFilename="Olyxee_Security.txt"
-    contactEmail="scofield@olyxee.com"
+    contactEmail="info@olyxee.com"
   />
 );
 

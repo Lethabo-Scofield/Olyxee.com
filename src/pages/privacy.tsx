@@ -24,7 +24,7 @@ const sections: LegalSection[] = [
   },
   {
     title: "6. Your Rights",
-    content: "Depending on your jurisdiction, you may have the right to:\n\n• Access the personal data we hold about you\n• Request correction of inaccurate or incomplete data\n• Request deletion of your personal data\n• Object to or restrict certain processing activities\n• Request data portability\n• Withdraw consent at any time where processing is based on consent\n• Opt out of marketing communications\n\nTo exercise any of these rights, contact us at scofield@olyxee.com."
+    content: "Depending on your jurisdiction, you may have the right to:\n\n• Access the personal data we hold about you\n• Request correction of inaccurate or incomplete data\n• Request deletion of your personal data\n• Object to or restrict certain processing activities\n• Request data portability\n• Withdraw consent at any time where processing is based on consent\n• Opt out of marketing communications\n\nTo exercise any of these rights, contact us at info@olyxee.com."
   },
   {
     title: "7. Cookies and Tracking",
@@ -40,7 +40,7 @@ const sections: LegalSection[] = [
   },
   {
     title: "10. Contact",
-    content: "For questions, concerns, or requests related to this Privacy Policy, contact us at scofield@olyxee.com."
+    content: "For questions, concerns, or requests related to this Privacy Policy, contact us at info@olyxee.com."
   },
 ];
 
@@ -55,7 +55,7 @@ const Privacy: FC = () => (
     intro="This policy describes how Olyxee (Pty) Ltd (Registration No. 2026/326516/07), trading as Olyxee, collects, uses, and safeguards information when you use our websites, products, and services."
     sections={sections}
     downloadFilename="Olyxee_Privacy_Policy.txt"
-    contactEmail="scofield@olyxee.com"
+    contactEmail="info@olyxee.com"
   />
 );
 

@@ -5,7 +5,7 @@ import { findRoleByTitle } from "@/lib/careers-roles";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const HIRING_EMAIL = process.env.CAREERS_TO_EMAIL || "scofield@olyxee.com";
+const HIRING_EMAIL = process.env.CAREERS_TO_EMAIL || "info@olyxee.com";
 const FROM_ADDRESS =
   process.env.CAREERS_FROM_EMAIL || "Olyxee Careers <onboarding@resend.dev>";
 

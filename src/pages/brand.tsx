@@ -534,9 +534,9 @@ const Brand: FC = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="rounded-2xl ring-1 ring-neutral-200 bg-neutral-50/60 px-6 sm:px-10 py-12 sm:py-16 text-center mt-4">
               <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 mb-3">Press, brand, partnerships</p>
-              <p className="font-serif text-3xl sm:text-5xl text-neutral-900 tracking-tight mb-6">scofield@olyxee.com</p>
+              <p className="font-serif text-3xl sm:text-5xl text-neutral-900 tracking-tight mb-6">info@olyxee.com</p>
               <a
-                href="mailto:scofield@olyxee.com?subject=Olyxee%20Brand%3A%20Press%20inquiry"
+                href="mailto:info@olyxee.com?subject=Olyxee%20Brand%3A%20Press%20inquiry"
                 className="inline-flex items-center gap-1.5 rounded-full bg-neutral-900 hover:bg-black text-white text-sm font-medium px-5 py-2.5 transition-colors"
               >
                 Open email <ArrowUpRight className="w-3.5 h-3.5" />

@@ -28,7 +28,7 @@ const sections: LegalSection[] = [
   },
   {
     title: "7. Contact",
-    content: "For questions about this policy, contact scofield@olyxee.com."
+    content: "For questions about this policy, contact info@olyxee.com."
   },
 ];
 
@@ -43,7 +43,7 @@ const CookiePolicy: FC = () => (
     intro="This policy explains how Olyxee uses cookies and similar technologies on our websites and in our products."
     sections={sections}
     downloadFilename="Olyxee_Cookie_Policy.txt"
-    contactEmail="scofield@olyxee.com"
+    contactEmail="info@olyxee.com"
   />
 );
 

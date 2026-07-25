@@ -50,7 +50,7 @@ export default function HomePage() {
       {
         "@type": "ContactPoint",
         contactType: "customer support",
-        email: "scofield@olyxee.com",
+        email: "info@olyxee.com",
         url: "https://olyxee.com/contact",
         availableLanguage: ["English"],
       },
@@ -102,7 +102,7 @@ export default function HomePage() {
         name: "How can I get in touch with Olyxee?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "You can reach the team at scofield@olyxee.com, or use the contact page at https://olyxee.com/contact for sales, partnerships, press, careers, or general inquiries.",
+          text: "You can reach the team at info@olyxee.com, or use the contact page at https://olyxee.com/contact for sales, partnerships, press, careers, or general inquiries.",
         },
       },
     ],
@@ -608,7 +608,7 @@ function CourierLoopSection() {
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </a>
               <a
-                href="mailto:scofield@olyxee.com?subject=Olyxee%20Logistics%20Inquiry"
+                href="mailto:info@olyxee.com?subject=Olyxee%20Logistics%20Inquiry"
                 className="text-sm font-medium text-neutral-700 hover:text-neutral-900 transition-colors"
               >
                 Talk to us →

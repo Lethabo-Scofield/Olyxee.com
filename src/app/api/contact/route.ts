@@ -4,7 +4,7 @@ import { Resend } from "resend";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const CONTACT_EMAIL = process.env.CONTACT_TO_EMAIL || "scofield@olyxee.com";
+const CONTACT_EMAIL = process.env.CONTACT_TO_EMAIL || "info@olyxee.com";
 const FROM_ADDRESS =
   process.env.CONTACT_FROM_EMAIL || "Olyxee <onboarding@resend.dev>";
 

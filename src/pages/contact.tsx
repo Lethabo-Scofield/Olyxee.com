@@ -145,11 +145,11 @@ const Contact: FC = () => {
             "@type": "Organization",
             name: "Olyxee",
             url: "https://olyxee.com",
-            email: "scofield@olyxee.com",
+            email: "info@olyxee.com",
             contactPoint: [
-              { "@type": "ContactPoint", contactType: "Sales", email: "scofield@olyxee.com" },
-              { "@type": "ContactPoint", contactType: "Support", email: "scofield@olyxee.com" },
-              { "@type": "ContactPoint", contactType: "Press", email: "scofield@olyxee.com" }
+              { "@type": "ContactPoint", contactType: "Sales", email: "info@olyxee.com" },
+              { "@type": "ContactPoint", contactType: "Support", email: "info@olyxee.com" },
+              { "@type": "ContactPoint", contactType: "Press", email: "info@olyxee.com" }
             ]
           }
         }}
@@ -213,7 +213,7 @@ const Contact: FC = () => {
         <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 text-sm">
           <div>
             <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-2">Email</p>
-            <a href="mailto:scofield@olyxee.com" className="text-neutral-900 hover:text-blue-500 transition-colors">scofield@olyxee.com</a>
+            <a href="mailto:info@olyxee.com" className="text-neutral-900 hover:text-blue-500 transition-colors">info@olyxee.com</a>
           </div>
           <div>
             <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-2">Based in</p>
