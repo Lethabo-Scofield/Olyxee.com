@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { cache } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Header from "../../../components/header";
 import ShareButton from "./share-button";
 
 export const dynamic = "force-dynamic";
@@ -226,8 +225,7 @@ export default async function VerifyCredentialPage({
 
   return (
     <div className="min-h-screen bg-neutral-100 text-neutral-900">
-      <Header />
-      <main className="mx-auto w-full max-w-[900px] px-5 pb-16 pt-28 sm:pt-32">
+      <main className="mx-auto w-full max-w-[900px] px-5 pb-16 pt-10 sm:pt-14">
         {result.state === "verified" && <VerifiedView data={result.data} />}
         {result.state === "revoked" && (
           <StatusCard
