@@ -27,12 +27,14 @@ interface VerifiedCredential {
   issuer: { name: string; website: string };
   /** Optional recruiter-facing fields — rendered only when the admin API provides them */
   linkedinUrl?: string;
+  photoUrl?: string;
   references?: Array<{
     name: string;
     role?: string;
     relationship?: string;
     linkedinUrl?: string;
     email?: string;
+    photoUrl?: string;
   }>;
 }
 
@@ -88,6 +90,49 @@ function safeIssuerWebsite(url: string | undefined): string {
 
 function isSafeHttpUrl(url: string | undefined): url is string {
   return !!url && /^https?:\/\//i.test(url);
+}
+
+function initials(name: string): string {
+  return name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((p) => p[0]?.toUpperCase() || "")
+    .join("");
+}
+
+function Avatar({
+  name,
+  photoUrl,
+  size = "md",
+}: {
+  name: string;
+  photoUrl?: string;
+  size?: "md" | "lg";
+}) {
+  const classes =
+    size === "lg"
+      ? "h-16 w-16 text-lg"
+      : "h-11 w-11 text-sm";
+  if (isSafeHttpUrl(photoUrl)) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={photoUrl}
+        alt={name}
+        referrerPolicy="no-referrer"
+        className={`${classes} shrink-0 rounded-full object-cover border border-neutral-200 bg-neutral-100`}
+      />
+    );
+  }
+  return (
+    <span
+      aria-hidden="true"
+      className={`${classes} shrink-0 rounded-full bg-neutral-200 text-neutral-600 font-medium flex items-center justify-center`}
+    >
+      {initials(name)}
+    </span>
+  );
 }
 
 export async function generateMetadata({
@@ -257,24 +302,32 @@ function VerifiedView({ data }: { data: VerifiedCredential }) {
           <p className="text-sm font-medium text-neutral-500">
             Credential holder
           </p>
-          <h2 className="mt-1 text-2xl sm:text-3xl font-semibold tracking-tight text-neutral-900">
-            {data.fullName}
-          </h2>
-          <p className="mt-1 text-base text-neutral-700">
-            {data.programmeTitle}
-          </p>
-          <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1">
-            <p className="text-sm text-neutral-500">{data.position}</p>
-            {isSafeHttpUrl(data.linkedinUrl) && (
-              <a
-                href={data.linkedinUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm font-medium text-sky-700 underline underline-offset-4 hover:text-sky-900 transition-colors"
-              >
-                LinkedIn profile
-              </a>
-            )}
+          <div className="mt-3 flex items-start gap-4">
+            <Avatar name={data.fullName} photoUrl={data.photoUrl} size="lg" />
+            <div className="min-w-0">
+              <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-neutral-900">
+                {data.fullName}
+              </h2>
+              <p className="mt-1 text-base text-neutral-700">
+                {data.programmeTitle}
+              </p>
+              <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1">
+                <p className="text-sm text-neutral-500">{data.position}</p>
+                {isSafeHttpUrl(data.linkedinUrl) && (
+                  <a
+                    href={data.linkedinUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm font-medium text-sky-700 underline underline-offset-4 hover:text-sky-900 transition-colors"
+                  >
+                    <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 11-.001-4.124 2.062 2.062 0 010 4.124zM7.119 20.452H3.555V9h3.564v11.452z" />
+                    </svg>
+                    LinkedIn profile
+                  </a>
+                )}
+              </div>
+            </div>
           </div>
         </section>
 
@@ -339,37 +392,45 @@ function VerifiedView({ data }: { data: VerifiedCredential }) {
                 {data.references.map((ref, i) => (
                   <li
                     key={i}
-                    className="rounded-xl border border-neutral-100 bg-neutral-50 px-5 py-4"
+                    className="rounded-xl border border-neutral-100 bg-neutral-50 px-4 py-4 sm:px-5"
                   >
-                    <p className="text-sm font-medium text-neutral-900">
-                      {ref.name}
-                    </p>
-                    {(ref.role || ref.relationship) && (
-                      <p className="mt-0.5 text-sm text-neutral-500">
-                        {[ref.role, ref.relationship]
-                          .filter(Boolean)
-                          .join(" · ")}
-                      </p>
-                    )}
-                    <div className="mt-2 flex flex-wrap gap-3">
-                      {isSafeHttpUrl(ref.linkedinUrl) && (
-                        <a
-                          href={ref.linkedinUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-sm font-medium text-sky-700 underline underline-offset-4 hover:text-sky-900 transition-colors"
-                        >
-                          LinkedIn
-                        </a>
-                      )}
-                      {ref.email && (
-                        <a
-                          href={`mailto:${ref.email}`}
-                          className="text-sm font-medium text-neutral-600 underline underline-offset-4 hover:text-neutral-900 transition-colors"
-                        >
-                          {ref.email}
-                        </a>
-                      )}
+                    <div className="flex items-start gap-3">
+                      <Avatar name={ref.name} photoUrl={ref.photoUrl} />
+                      <div className="min-w-0">
+                        <p className="text-sm font-medium text-neutral-900">
+                          {ref.name}
+                        </p>
+                        {(ref.role || ref.relationship) && (
+                          <p className="mt-0.5 text-sm text-neutral-500">
+                            {[ref.role, ref.relationship]
+                              .filter(Boolean)
+                              .join(" · ")}
+                          </p>
+                        )}
+                        <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1">
+                          {isSafeHttpUrl(ref.linkedinUrl) && (
+                            <a
+                              href={ref.linkedinUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1.5 text-sm font-medium text-sky-700 underline underline-offset-4 hover:text-sky-900 transition-colors"
+                            >
+                              <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 11-.001-4.124 2.062 2.062 0 010 4.124zM7.119 20.452H3.555V9h3.564v11.452z" />
+                              </svg>
+                              LinkedIn
+                            </a>
+                          )}
+                          {ref.email && (
+                            <a
+                              href={`mailto:${ref.email}`}
+                              className="break-all text-sm font-medium text-neutral-600 underline underline-offset-4 hover:text-neutral-900 transition-colors"
+                            >
+                              {ref.email}
+                            </a>
+                          )}
+                        </div>
+                      </div>
                     </div>
                   </li>
                 ))}
