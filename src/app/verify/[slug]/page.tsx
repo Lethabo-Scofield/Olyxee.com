@@ -24,6 +24,15 @@ interface VerifiedCredential {
   supervisorName: string;
   issueDate: string;
   issuer: { name: string; website: string };
+  /** Optional recruiter-facing fields — rendered only when the admin API provides them */
+  linkedinUrl?: string;
+  references?: Array<{
+    name: string;
+    role?: string;
+    relationship?: string;
+    linkedinUrl?: string;
+    email?: string;
+  }>;
 }
 
 type CredentialResult =
@@ -74,6 +83,10 @@ const fetchCredential = cache(async (slug: string): Promise<CredentialResult> =>
 function safeIssuerWebsite(url: string | undefined): string {
   if (url && /^https?:\/\//i.test(url)) return url;
   return "https://olyxee.com";
+}
+
+function isSafeHttpUrl(url: string | undefined): url is string {
+  return !!url && /^https?:\/\//i.test(url);
 }
 
 export async function generateMetadata({
@@ -256,6 +269,19 @@ function VerifiedView({ data }: { data: VerifiedCredential }) {
             <span className="inline-flex items-center rounded-full border border-neutral-200 bg-white px-3 py-1 text-xs font-medium text-neutral-600">
               {data.position}
             </span>
+            {isSafeHttpUrl(data.linkedinUrl) && (
+              <a
+                href={data.linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-full border border-sky-100 bg-sky-50 px-3 py-1 text-xs font-medium text-sky-700 hover:bg-sky-100 transition-colors"
+              >
+                <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 11-.001-4.124 2.062 2.062 0 010 4.124zM7.119 20.452H3.555V9h3.564v11.452z" />
+                </svg>
+                LinkedIn Profile
+              </a>
+            )}
           </div>
 
           <div className="mx-auto mt-8 grid max-w-md grid-cols-1 sm:grid-cols-2 gap-4 border-t border-neutral-200/70 pt-6">
@@ -310,6 +336,51 @@ function VerifiedView({ data }: { data: VerifiedCredential }) {
                   </footer>
                 )}
               </blockquote>
+            </section>
+          )}
+
+          {data.references && data.references.length > 0 && (
+            <section>
+              <h2 className="text-xs font-medium uppercase tracking-widest text-neutral-400 mb-3">
+                References
+              </h2>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {data.references.map((ref, i) => (
+                  <li
+                    key={i}
+                    className="rounded-2xl border border-neutral-100 bg-neutral-50 px-5 py-4"
+                  >
+                    <p className="text-sm font-medium text-neutral-900">
+                      {ref.name}
+                    </p>
+                    {(ref.role || ref.relationship) && (
+                      <p className="mt-0.5 text-xs text-neutral-500">
+                        {[ref.role, ref.relationship].filter(Boolean).join(" · ")}
+                      </p>
+                    )}
+                    <div className="mt-2 flex flex-wrap gap-3">
+                      {isSafeHttpUrl(ref.linkedinUrl) && (
+                        <a
+                          href={ref.linkedinUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-xs font-medium text-sky-700 underline underline-offset-4 hover:text-sky-900 transition-colors"
+                        >
+                          LinkedIn
+                        </a>
+                      )}
+                      {ref.email && (
+                        <a
+                          href={`mailto:${ref.email}`}
+                          className="text-xs font-medium text-neutral-600 underline underline-offset-4 hover:text-neutral-900 transition-colors"
+                        >
+                          {ref.email}
+                        </a>
+                      )}
+                    </div>
+                  </li>
+                ))}
+              </ul>
             </section>
           )}
         </div>
