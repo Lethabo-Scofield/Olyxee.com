@@ -224,7 +224,7 @@ export default async function VerifyCredentialPage({
   const result = await fetchCredential(slug);
 
   return (
-    <div className="min-h-screen bg-neutral-100 text-neutral-900">
+    <div className="min-h-screen bg-white text-neutral-900">
       <main className="mx-auto w-full max-w-[900px] px-5 pb-16 pt-10 sm:pt-14">
         {result.state === "verified" && <VerifiedView data={result.data} />}
         {result.state === "revoked" && (
@@ -261,9 +261,9 @@ export default async function VerifyCredentialPage({
 
 function VerifiedView({ data }: { data: VerifiedCredential }) {
   return (
-    <div className="rounded-2xl border border-neutral-200 bg-white shadow-sm">
+    <div>
       {/* Status header */}
-      <div className="flex flex-col gap-4 border-b border-neutral-100 px-5 py-6 sm:flex-row sm:items-start sm:justify-between sm:px-10">
+      <div className="flex flex-col gap-4 border-b border-neutral-100 pb-6 sm:flex-row sm:items-start sm:justify-between">
         <div className="flex items-start gap-3">
           <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-100">
             <svg
@@ -294,7 +294,7 @@ function VerifiedView({ data }: { data: VerifiedCredential }) {
         <ShareButton />
       </div>
 
-      <div className="px-5 py-8 sm:px-10">
+      <div className="py-8">
         {/* Identity */}
         <section>
           <p className="text-sm font-medium text-neutral-500">
@@ -439,7 +439,7 @@ function VerifiedView({ data }: { data: VerifiedCredential }) {
       </div>
 
       {/* Record footer */}
-      <div className="flex flex-col gap-4 border-t border-neutral-100 px-5 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-10">
+      <div className="flex flex-col gap-4 border-t border-neutral-100 pt-6 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-4">
           <Image
             src="/images/olyxee-corporate-seal-transparent.png"
@@ -497,7 +497,7 @@ function StatusCard({
 
   return (
     <div
-      className={`rounded-2xl border bg-white px-5 py-10 text-center shadow-sm sm:px-10 ${styles.card}`}
+      className={`border-t-2 bg-white px-5 py-10 text-center sm:px-10 ${styles.card}`}
     >
       <h1 className={`text-lg font-semibold ${styles.title}`}>{title}</h1>
       <p className={`mx-auto mt-2 max-w-md text-sm leading-relaxed ${styles.body}`}>
