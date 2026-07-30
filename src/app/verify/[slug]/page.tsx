@@ -233,7 +233,7 @@ function VerifiedView({
   const programme = asText(data.programmeTitle);
   const startDate = asText(data.startDate);
   const completionDate = asText(data.completionDate);
-  const supervisor = asText(data.supervisorName);
+  const credentialNumber = asText(data.credentialNumber);
   const issueDate = asText(data.issueDate);
 
   const details: { label: string; value: string }[] = [];
@@ -242,7 +242,7 @@ function VerifiedView({
   if (programme) details.push({ label: "Programme", value: programme });
   if (startDate) details.push({ label: "Start date", value: formatCredentialDate(startDate) });
   if (completionDate) details.push({ label: "Completion date", value: formatCredentialDate(completionDate) });
-  if (supervisor) details.push({ label: "Supervisor", value: supervisor });
+  if (credentialNumber) details.push({ label: "Certificate number", value: credentialNumber });
   if (issueDate) details.push({ label: "Issue date", value: formatCredentialDate(issueDate) });
 
   let sectionNum = 0;
