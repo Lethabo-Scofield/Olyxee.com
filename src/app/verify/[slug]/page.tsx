@@ -177,6 +177,15 @@ export default async function VerifyCredentialPage({
   );
 }
 
+const SKILL_CHIP_COLORS = [
+  { border: "border-[#d4ad71]/45", bg: "bg-[#d4ad71]/10", text: "text-[#e5c48f]" },
+  { border: "border-[#7fb5a3]/45", bg: "bg-[#7fb5a3]/10", text: "text-[#a3d4c3]" },
+  { border: "border-[#c98f8f]/45", bg: "bg-[#c98f8f]/10", text: "text-[#e0b0b0]" },
+  { border: "border-[#8fa8c9]/45", bg: "bg-[#8fa8c9]/10", text: "text-[#b0c5e0]" },
+  { border: "border-[#b39fc9]/45", bg: "bg-[#b39fc9]/10", text: "text-[#cdbde0]" },
+  { border: "border-[#c9b98f]/45", bg: "bg-[#c9b98f]/10", text: "text-[#e0d3b0]" },
+];
+
 function VerifiedView({
   data,
   token,
@@ -298,14 +307,17 @@ function VerifiedView({
               </h2>
             </div>
             <ul className="flex flex-wrap gap-2">
-              {skills.map((skill, i) => (
-                <li
-                  key={i}
-                  className="border border-[#e8dfd2]/25 px-3 py-2 text-sm text-[#e8dfd2]"
-                >
-                  {skill}
-                </li>
-              ))}
+              {skills.map((skill, i) => {
+                const c = SKILL_CHIP_COLORS[i % SKILL_CHIP_COLORS.length];
+                return (
+                  <li
+                    key={i}
+                    className={`border px-3 py-2 text-sm ${c.border} ${c.bg} ${c.text}`}
+                  >
+                    {skill}
+                  </li>
+                );
+              })}
             </ul>
           </section>
         )}
