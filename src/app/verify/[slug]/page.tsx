@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { cache } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import ShareButton from "./share-button";
 
 export const dynamic = "force-dynamic";
@@ -15,30 +14,15 @@ interface VerifiedCredential {
   credentialNumber: string;
   fullName: string;
   programmeTitle: string;
-  position: string;
-  startDate: string;
-  completionDate: string;
-  projectsCompleted: string;
   skillsDemonstrated: string;
-  publicRecommendation: string;
-  supervisorName: string;
-  issueDate: string;
-  issuer: { name: string; website: string };
-  /** Optional recruiter-facing fields — rendered only when the admin API provides them */
-  linkedinUrl?: string;
-  photoUrl?: string;
-  references?: Array<{
-    name: string;
-    role?: string;
-    relationship?: string;
-    linkedinUrl?: string;
-    email?: string;
-    photoUrl?: string;
-  }>;
+  /** Document availability flags provided by the admin API */
+  hasCertificatePreview?: boolean;
+  hasCertificatePdf?: boolean;
+  hasLetterPdf?: boolean;
 }
 
 type CredentialResult =
-  | { state: "verified"; data: VerifiedCredential }
+  | { state: "verified"; data: VerifiedCredential; token: string }
   | { state: "revoked"; credentialNumber: string }
   | { state: "not_found" }
   | { state: "unavailable" };
@@ -70,7 +54,7 @@ const fetchCredential = cache(async (slug: string): Promise<CredentialResult> =>
 
     const data = await res.json();
     if (data.verified === true && data.status === "PUBLISHED") {
-      return { state: "verified", data };
+      return { state: "verified", data, token };
     }
     if (data.status === "REVOKED") {
       return { state: "revoked", credentialNumber: data.credentialNumber || "" };
@@ -81,58 +65,6 @@ const fetchCredential = cache(async (slug: string): Promise<CredentialResult> =>
     return { state: "unavailable" };
   }
 });
-
-function safeIssuerWebsite(url: string | undefined): string {
-  if (url && /^https?:\/\//i.test(url)) return url;
-  return "https://olyxee.com";
-}
-
-function isSafeHttpUrl(url: string | undefined): url is string {
-  return !!url && /^https?:\/\//i.test(url);
-}
-
-function initials(name: string): string {
-  return name
-    .split(/\s+/)
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((p) => p[0]?.toUpperCase() || "")
-    .join("");
-}
-
-function Avatar({
-  name,
-  photoUrl,
-  size = "md",
-}: {
-  name: string;
-  photoUrl?: string;
-  size?: "md" | "lg";
-}) {
-  const classes =
-    size === "lg"
-      ? "h-16 w-16 text-lg"
-      : "h-11 w-11 text-sm";
-  if (isSafeHttpUrl(photoUrl)) {
-    return (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img
-        src={photoUrl}
-        alt={name}
-        referrerPolicy="no-referrer"
-        className={`${classes} shrink-0 rounded-full object-cover border border-neutral-200 bg-neutral-100`}
-      />
-    );
-  }
-  return (
-    <span
-      aria-hidden="true"
-      className={`${classes} shrink-0 rounded-full bg-neutral-200 text-neutral-600 font-medium flex items-center justify-center`}
-    >
-      {initials(name)}
-    </span>
-  );
-}
 
 export async function generateMetadata({
   params,
@@ -146,7 +78,7 @@ export async function generateMetadata({
     return {
       title: `Verified: ${result.data.fullName} — ${result.data.programmeTitle} | Olyxee`,
       description: `Authoritative verification record for ${result.data.fullName}'s ${result.data.programmeTitle} credential, issued by Olyxee.`,
-      robots: { index: true, follow: true },
+      robots: { index: false, follow: false },
     };
   }
   if (result.state === "revoked") {
@@ -167,52 +99,11 @@ export async function generateMetadata({
   };
 }
 
-function formatDate(d: string) {
-  try {
-    const date = new Date(d + (d.length === 10 ? "T00:00:00" : ""));
-    if (isNaN(date.getTime())) return d;
-    return date.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  } catch {
-    return d;
-  }
-}
-
 function splitList(value: string): string[] {
   return value
     .split(/\r?\n|,(?![^(]*\))/)
     .map((s) => s.trim().replace(/^[-•*]\s*/, ""))
     .filter(Boolean);
-}
-
-function ListSection({ title, value }: { title: string; value: string }) {
-  if (!value || !value.trim()) return null;
-  const items = splitList(value);
-  return (
-    <section className="border-t border-neutral-100 pt-6">
-      <h2 className="text-sm font-medium text-neutral-500 mb-3">{title}</h2>
-      {items.length > 1 ? (
-        <ul className="space-y-2">
-          {items.map((item, i) => (
-            <li
-              key={i}
-              className="flex gap-3 text-sm text-neutral-800 leading-relaxed"
-            >
-              <span className="mt-[8px] h-1 w-1 shrink-0 rounded-full bg-neutral-400" />
-              {item}
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p className="text-sm text-neutral-800 leading-relaxed">
-          {value.trim()}
-        </p>
-      )}
-    </section>
-  );
 }
 
 export default async function VerifyCredentialPage({
@@ -226,7 +117,9 @@ export default async function VerifyCredentialPage({
   return (
     <div className="min-h-screen bg-white text-neutral-900">
       <main className="mx-auto w-full max-w-[900px] px-5 pb-16 pt-10 sm:pt-14">
-        {result.state === "verified" && <VerifiedView data={result.data} />}
+        {result.state === "verified" && (
+          <VerifiedView data={result.data} token={result.token} />
+        )}
         {result.state === "revoked" && (
           <StatusCard
             tone="revoked"
@@ -259,10 +152,25 @@ export default async function VerifyCredentialPage({
   );
 }
 
-function VerifiedView({ data }: { data: VerifiedCredential }) {
+function VerifiedView({
+  data,
+  token,
+}: {
+  data: VerifiedCredential;
+  token: string;
+}) {
+  const encodedToken = encodeURIComponent(token);
+  const certificateDownloadUrl = `${ADMIN_API_BASE_URL}/api/public/credentials/${encodedToken}/certificate?download=1`;
+  const letterDownloadUrl = `${ADMIN_API_BASE_URL}/api/public/credentials/${encodedToken}/letter?download=1`;
+  const certificatePreviewUrl = `${ADMIN_API_BASE_URL}/api/public/credentials/${encodedToken}/certificate`;
+  const skills = data.skillsDemonstrated?.trim()
+    ? splitList(data.skillsDemonstrated)
+    : [];
+  const hasDownloads = !!data.hasCertificatePdf || !!data.hasLetterPdf;
+
   return (
     <div>
-      {/* Status header */}
+      {/* Verification status */}
       <div className="flex flex-col gap-4 border-b border-neutral-100 pb-6 sm:flex-row sm:items-start sm:justify-between">
         <div className="flex items-start gap-3">
           <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-100">
@@ -283,188 +191,100 @@ function VerifiedView({ data }: { data: VerifiedCredential }) {
             <h1 className="text-lg font-semibold text-neutral-900">
               Credential verified
             </h1>
-            <p className="mt-1 text-sm text-neutral-500">
-              This credential was issued by Olyxee (Pty) Ltd.
-            </p>
+            <h2 className="mt-1 text-2xl font-semibold tracking-tight text-neutral-900 sm:text-3xl">
+              {data.fullName}
+            </h2>
             <p className="mt-1 font-mono text-sm text-neutral-400">
               {data.credentialNumber}
+            </p>
+            <p className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-emerald-700">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+              Verified
             </p>
           </div>
         </div>
         <ShareButton />
       </div>
 
-      <div className="py-8">
-        {/* Identity */}
-        <section>
-          <p className="text-sm font-medium text-neutral-500">
-            Credential holder
-          </p>
-          <div className="mt-3 flex items-start gap-4">
-            <Avatar name={data.fullName} photoUrl={data.photoUrl} size="lg" />
-            <div className="min-w-0">
-              <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-neutral-900">
-                {data.fullName}
-              </h2>
-              <p className="mt-1 text-base text-neutral-700">
-                {data.programmeTitle}
-              </p>
-              <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1">
-                <p className="text-sm text-neutral-500">{data.position}</p>
-                {isSafeHttpUrl(data.linkedinUrl) && (
-                  <a
-                    href={data.linkedinUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm font-medium text-sky-700 underline underline-offset-4 hover:text-sky-900 transition-colors"
-                  >
-                    <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 11-.001-4.124 2.062 2.062 0 010 4.124zM7.119 20.452H3.555V9h3.564v11.452z" />
-                    </svg>
-                    LinkedIn profile
-                  </a>
-                )}
-              </div>
+      <div className="space-y-8 py-8">
+        {/* Certificate preview */}
+        {data.hasCertificatePreview && (
+          <section>
+            <h2 className="mb-3 text-sm font-medium text-neutral-500">
+              Certificate
+            </h2>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={certificatePreviewUrl}
+              alt={`Certificate for ${data.fullName}`}
+              className="h-auto w-full rounded-xl border border-neutral-200 bg-neutral-50"
+            />
+          </section>
+        )}
+
+        {/* Document downloads */}
+        {hasDownloads && (
+          <section>
+            <h2 className="mb-3 text-sm font-medium text-neutral-500">
+              Documents
+            </h2>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              {data.hasCertificatePdf && (
+                <a
+                  href={certificateDownloadUrl}
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-neutral-900 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-neutral-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900"
+                >
+                  <DownloadIcon />
+                  Download Certificate (PDF)
+                </a>
+              )}
+              {data.hasLetterPdf && (
+                <a
+                  href={letterDownloadUrl}
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-neutral-300 bg-white px-5 py-3 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900"
+                >
+                  <DownloadIcon />
+                  Download Recommendation Letter (PDF)
+                </a>
+              )}
             </div>
-          </div>
-        </section>
+          </section>
+        )}
 
-        {/* Dates row */}
-        <dl className="mt-8 grid grid-cols-1 gap-4 rounded-xl border border-neutral-100 bg-neutral-50 px-5 py-4 sm:grid-cols-3">
-          <div>
-            <dt className="text-sm text-neutral-500">Internship period</dt>
-            <dd className="mt-0.5 text-sm font-medium text-neutral-900">
-              {formatDate(data.startDate)} – {formatDate(data.completionDate)}
-            </dd>
-          </div>
-          <div>
-            <dt className="text-sm text-neutral-500">Issue date</dt>
-            <dd className="mt-0.5 text-sm font-medium text-neutral-900">
-              {formatDate(data.issueDate)}
-            </dd>
-          </div>
-          <div>
-            <dt className="text-sm text-neutral-500">Status</dt>
-            <dd className="mt-0.5 inline-flex items-center gap-1.5 text-sm font-medium text-emerald-700">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-              Verified
-            </dd>
-          </div>
-        </dl>
-
-        {/* Content sections */}
-        <div className="mt-8 space-y-6">
-          <ListSection
-            title="Areas of contribution"
-            value={data.projectsCompleted}
-          />
-          <ListSection
-            title="Skills demonstrated"
-            value={data.skillsDemonstrated}
-          />
-
-          {data.publicRecommendation?.trim() && (
-            <section className="border-t border-neutral-100 pt-6">
-              <h2 className="text-sm font-medium text-neutral-500 mb-3">
-                Recommendation
-              </h2>
-              <div className="border-l-2 border-neutral-300 bg-neutral-50 px-5 py-4">
-                <p className="text-sm text-neutral-800 leading-relaxed">
-                  {data.publicRecommendation.trim()}
-                </p>
-                {data.supervisorName?.trim() && (
-                  <p className="mt-3 text-sm text-neutral-500">
-                    {data.supervisorName}, Supervisor
-                  </p>
-                )}
-              </div>
-            </section>
-          )}
-
-          {data.references && data.references.length > 0 && (
-            <section className="border-t border-neutral-100 pt-6">
-              <h2 className="text-sm font-medium text-neutral-500 mb-3">
-                References
-              </h2>
-              <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                {data.references.map((ref, i) => (
-                  <li
-                    key={i}
-                    className="rounded-xl border border-neutral-100 bg-neutral-50 px-4 py-4 sm:px-5"
-                  >
-                    <div className="flex items-start gap-3">
-                      <Avatar name={ref.name} photoUrl={ref.photoUrl} />
-                      <div className="min-w-0">
-                        <p className="text-sm font-medium text-neutral-900">
-                          {ref.name}
-                        </p>
-                        {(ref.role || ref.relationship) && (
-                          <p className="mt-0.5 text-sm text-neutral-500">
-                            {[ref.role, ref.relationship]
-                              .filter(Boolean)
-                              .join(" · ")}
-                          </p>
-                        )}
-                        <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1">
-                          {isSafeHttpUrl(ref.linkedinUrl) && (
-                            <a
-                              href={ref.linkedinUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1.5 text-sm font-medium text-sky-700 underline underline-offset-4 hover:text-sky-900 transition-colors"
-                            >
-                              <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 11-.001-4.124 2.062 2.062 0 010 4.124zM7.119 20.452H3.555V9h3.564v11.452z" />
-                              </svg>
-                              LinkedIn
-                            </a>
-                          )}
-                          {ref.email && (
-                            <a
-                              href={`mailto:${ref.email}`}
-                              className="break-all text-sm font-medium text-neutral-600 underline underline-offset-4 hover:text-neutral-900 transition-colors"
-                            >
-                              {ref.email}
-                            </a>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
-        </div>
-      </div>
-
-      {/* Record footer */}
-      <div className="flex flex-col gap-4 border-t border-neutral-100 pt-6 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex items-center gap-4">
-          <Image
-            src="/images/olyxee-corporate-seal-transparent.png"
-            alt="Olyxee (Pty) Ltd corporate seal"
-            width={48}
-            height={48}
-            className="h-12 w-12 select-none"
-          />
-          <div>
-            <p className="text-sm font-medium text-neutral-900">
-              Issued by Olyxee (Pty) Ltd.
-            </p>
-            <p className="mt-0.5 text-sm text-neutral-500">
-              This is the authoritative online record for this credential.
-            </p>
-          </div>
-        </div>
-        <a
-          href={safeIssuerWebsite(data.issuer?.website)}
-          className="text-sm font-medium text-neutral-700 underline underline-offset-4 hover:text-neutral-900 transition-colors"
-        >
-          olyxee.com
-        </a>
+        {/* Skills demonstrated */}
+        {skills.length > 0 && (
+          <section className="border-t border-neutral-100 pt-6">
+            <h2 className="mb-3 text-sm font-medium text-neutral-500">
+              Skills demonstrated
+            </h2>
+            <ul className="flex flex-wrap gap-2">
+              {skills.map((skill, i) => (
+                <li
+                  key={i}
+                  className="rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-sm text-neutral-800"
+                >
+                  {skill}
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
       </div>
     </div>
+  );
+}
+
+function DownloadIcon() {
+  return (
+    <svg
+      className="h-4 w-4"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.235a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03l-2.955 3.129V2.75z" />
+      <path d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z" />
+    </svg>
   );
 }
 
