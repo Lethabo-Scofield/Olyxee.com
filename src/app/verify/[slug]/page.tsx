@@ -16,6 +16,14 @@ interface VerifiedCredential {
   fullName: string;
   programmeTitle: string;
   skillsDemonstrated: string;
+  /** Job role / position held, e.g. "AI Engineering Intern" */
+  position?: string;
+  /** Department or team, when provided by the admin API */
+  department?: string;
+  startDate?: string;
+  completionDate?: string;
+  supervisorName?: string;
+  issueDate?: string;
   /** Document availability flags provided by the admin API */
   hasCertificatePreview?: boolean;
   hasCertificatePdf?: boolean;
@@ -100,6 +108,25 @@ export async function generateMetadata({
   };
 }
 
+/** Returns a trimmed non-empty string, or null for any other value. */
+function asText(value: unknown): string | null {
+  if (typeof value !== "string") return null;
+  const trimmed = value.trim();
+  return trimmed || null;
+}
+
+/** Formats a date-only string (YYYY-MM-DD) deterministically in UTC. */
+function formatCredentialDate(d: string): string {
+  const parsed = new Date(/^\d{4}-\d{2}-\d{2}$/.test(d) ? `${d}T00:00:00Z` : d);
+  if (isNaN(parsed.getTime())) return d;
+  return parsed.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    timeZone: "UTC",
+  });
+}
+
 function splitList(value: string): string[] {
   return value
     .split(/\r?\n|,(?![^(]*\))/)
@@ -116,17 +143,17 @@ export default async function VerifyCredentialPage({
   const result = await fetchCredential(slug);
 
   return (
-    <div className="verify-page min-h-[100dvh] overflow-hidden bg-[#11191b] text-[#f5f0e8]">
-      <div className="pointer-events-none fixed inset-0 opacity-30 [background-image:radial-gradient(#c9a875_0.7px,transparent_0.7px)] [background-size:18px_18px]" />
+    <div className="verify-page min-h-[100dvh] overflow-hidden bg-[#f5f0e8] text-[#172123]">
+      <div className="pointer-events-none fixed inset-0 opacity-40 [background-image:radial-gradient(#c9a875_0.7px,transparent_0.7px)] [background-size:18px_18px]" />
       <main className="relative mx-auto w-full max-w-[1060px] px-5 pb-12 pt-5 sm:px-8 sm:pt-8">
-        <header className="mb-14 flex items-center justify-between border-b border-[#e8dfd2]/15 pb-5 sm:mb-20">
+        <header className="mb-14 flex items-center justify-between border-b border-[#172123]/10 pb-5 sm:mb-20">
           <Link
             href="/"
-            className="flex items-center gap-3 rounded-sm text-[#f5f0e8] outline-none transition-opacity hover:opacity-75 focus-visible:ring-2 focus-visible:ring-[#d4ad71]"
+            className="flex items-center gap-3 rounded-sm text-[#172123] outline-none transition-opacity hover:opacity-75 focus-visible:ring-2 focus-visible:ring-[#b68b50]"
             aria-label="Olyxee home"
           >
             <Image
-              src="/Logo/Olyxee_Logo_Knockout.png"
+              src="/Logo/Olyxee_Logo_ClearBack.png"
               alt="Olyxee logo"
               width={32}
               height={32}
@@ -137,7 +164,7 @@ export default async function VerifyCredentialPage({
               Olyxee
             </span>
           </Link>
-          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#b8b5ac]">
+          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#6b716c]">
             Credential registry
           </span>
         </header>
@@ -169,7 +196,7 @@ export default async function VerifyCredentialPage({
           />
         )}
 
-        <p className="mt-16 text-center text-xs tracking-wide text-[#b8b5ac]">
+        <p className="mt-16 text-center text-xs tracking-wide text-[#6b716c]">
           For verification inquiries, contact the Olyxee team.
         </p>
       </main>
@@ -178,12 +205,12 @@ export default async function VerifyCredentialPage({
 }
 
 const SKILL_CHIP_COLORS = [
-  { border: "border-[#d4ad71]/45", bg: "bg-[#d4ad71]/10", text: "text-[#e5c48f]" },
-  { border: "border-[#7fb5a3]/45", bg: "bg-[#7fb5a3]/10", text: "text-[#a3d4c3]" },
-  { border: "border-[#c98f8f]/45", bg: "bg-[#c98f8f]/10", text: "text-[#e0b0b0]" },
-  { border: "border-[#8fa8c9]/45", bg: "bg-[#8fa8c9]/10", text: "text-[#b0c5e0]" },
-  { border: "border-[#b39fc9]/45", bg: "bg-[#b39fc9]/10", text: "text-[#cdbde0]" },
-  { border: "border-[#c9b98f]/45", bg: "bg-[#c9b98f]/10", text: "text-[#e0d3b0]" },
+  { border: "border-[#b68b50]/45", bg: "bg-[#d4ad71]/15", text: "text-[#81623a]" },
+  { border: "border-[#4f8371]/45", bg: "bg-[#7fb5a3]/15", text: "text-[#315b4e]" },
+  { border: "border-[#a35c5c]/45", bg: "bg-[#c98f8f]/15", text: "text-[#7d4040]" },
+  { border: "border-[#5c7aa3]/45", bg: "bg-[#8fa8c9]/15", text: "text-[#3f5674]" },
+  { border: "border-[#7f68a3]/45", bg: "bg-[#b39fc9]/15", text: "text-[#59477a]" },
+  { border: "border-[#a3905c]/45", bg: "bg-[#c9b98f]/15", text: "text-[#6e5f37]" },
 ];
 
 function VerifiedView({
@@ -197,15 +224,38 @@ function VerifiedView({
   const certificateDownloadUrl = `${ADMIN_API_BASE_URL}/api/public/credentials/${encodedToken}/certificate?download=1`;
   const letterDownloadUrl = `${ADMIN_API_BASE_URL}/api/public/credentials/${encodedToken}/letter?download=1`;
   const certificatePreviewUrl = `${ADMIN_API_BASE_URL}/api/public/credentials/${encodedToken}/certificate`;
-  const skills = data.skillsDemonstrated?.trim()
-    ? splitList(data.skillsDemonstrated)
-    : [];
+  const skillsText = asText(data.skillsDemonstrated);
+  const skills = skillsText ? splitList(skillsText) : [];
   const hasDownloads = !!data.hasCertificatePdf || !!data.hasLetterPdf;
+
+  const position = asText(data.position);
+  const department = asText(data.department);
+  const programme = asText(data.programmeTitle);
+  const startDate = asText(data.startDate);
+  const completionDate = asText(data.completionDate);
+  const supervisor = asText(data.supervisorName);
+  const issueDate = asText(data.issueDate);
+
+  const details: { label: string; value: string }[] = [];
+  if (position) details.push({ label: "Job role", value: position });
+  if (department) details.push({ label: "Department", value: department });
+  if (programme) details.push({ label: "Programme", value: programme });
+  if (startDate) details.push({ label: "Start date", value: formatCredentialDate(startDate) });
+  if (completionDate) details.push({ label: "Completion date", value: formatCredentialDate(completionDate) });
+  if (supervisor) details.push({ label: "Supervisor", value: supervisor });
+  if (issueDate) details.push({ label: "Issue date", value: formatCredentialDate(issueDate) });
+
+  let sectionNum = 0;
+  const nextNum = () => String(++sectionNum).padStart(2, "0");
+  const detailsNum = details.length > 0 ? nextNum() : "";
+  const previewNum = data.hasCertificatePreview ? nextNum() : "";
+  const downloadsNum = hasDownloads ? nextNum() : "";
+  const skillsNum = skills.length > 0 ? nextNum() : "";
 
   return (
     <div className="animate-[verify-reveal_700ms_ease-out_both]">
       {/* Verification status */}
-      <section className="relative overflow-hidden border border-[#d4ad71]/45 bg-[#f5f0e8] px-6 py-8 text-[#172123] shadow-[0_24px_80px_rgba(0,0,0,0.22)] sm:px-12 sm:py-11">
+      <section className="relative overflow-hidden border border-[#d4ad71]/45 bg-white px-6 py-8 text-[#172123] shadow-[0_24px_80px_rgba(23,33,35,0.1)] sm:px-12 sm:py-11">
         <div className="absolute right-0 top-0 h-40 w-40 translate-x-1/3 -translate-y-1/3 rounded-full border border-[#b68b50]/30" />
         <div className="absolute bottom-0 left-0 h-px w-2/3 bg-[#b68b50]" />
         <div className="relative flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
@@ -245,16 +295,40 @@ function VerifiedView({
       </section>
 
       <div className="space-y-12 py-10 sm:py-14">
+        {/* Credential details */}
+        {details.length > 0 && (
+          <section>
+            <div className="mb-4 flex items-center gap-3">
+              <span className="font-mono text-[10px] text-[#b68b50]">{detailsNum}</span>
+              <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-[#172123]">
+                Credential details
+              </h2>
+            </div>
+            <dl className="grid gap-px border border-[#172123]/15 bg-[#172123]/15 sm:grid-cols-2">
+              {details.map(({ label, value }) => (
+                <div key={label} className="bg-white px-5 py-4">
+                  <dt className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#6b716c]">
+                    {label}
+                  </dt>
+                  <dd className="mt-1.5 text-sm font-medium text-[#172123]">
+                    {value}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+        )}
+
         {/* Certificate preview */}
         {data.hasCertificatePreview && (
           <section>
             <div className="mb-4 flex items-center gap-3">
-              <span className="font-mono text-[10px] text-[#d4ad71]">01</span>
-              <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-[#e8dfd2]">
+              <span className="font-mono text-[10px] text-[#b68b50]">{previewNum}</span>
+              <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-[#172123]">
                 Certificate preview
               </h2>
             </div>
-            <div className="border border-[#e8dfd2]/20 bg-[#f5f0e8] p-2 shadow-[0_18px_60px_rgba(0,0,0,0.2)] sm:p-3">
+            <div className="border border-[#172123]/15 bg-white p-2 shadow-[0_18px_60px_rgba(23,33,35,0.1)] sm:p-3">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={certificatePreviewUrl}
@@ -269,8 +343,8 @@ function VerifiedView({
         {hasDownloads && (
           <section>
             <div className="mb-4 flex items-center gap-3">
-              <span className="font-mono text-[10px] text-[#d4ad71]">02</span>
-              <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-[#e8dfd2]">
+              <span className="font-mono text-[10px] text-[#b68b50]">{downloadsNum}</span>
+              <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-[#172123]">
                 Official documents
               </h2>
             </div>
@@ -278,7 +352,7 @@ function VerifiedView({
               {data.hasCertificatePdf && (
                 <a
                   href={certificateDownloadUrl}
-                  className="group inline-flex items-center justify-between border border-[#d4ad71] bg-[#d4ad71] px-5 py-4 text-sm font-semibold text-[#172123] transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f0e8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#11191b]"
+                  className="group inline-flex items-center justify-between border border-[#d4ad71] bg-[#d4ad71] px-5 py-4 text-sm font-semibold text-[#172123] transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#172123] focus-visible:ring-offset-2 focus-visible:ring-offset-[#f5f0e8]"
                 >
                   <span>Certificate PDF</span>
                   <DownloadIcon />
@@ -287,7 +361,7 @@ function VerifiedView({
               {data.hasLetterPdf && (
                 <a
                   href={letterDownloadUrl}
-                  className="group inline-flex items-center justify-between border border-[#e8dfd2]/35 bg-transparent px-5 py-4 text-sm font-semibold text-[#f5f0e8] transition-colors hover:border-[#d4ad71] hover:text-[#d4ad71] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f0e8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#11191b]"
+                  className="group inline-flex items-center justify-between border border-[#172123]/30 bg-transparent px-5 py-4 text-sm font-semibold text-[#172123] transition-colors hover:border-[#b68b50] hover:text-[#81623a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#172123] focus-visible:ring-offset-2 focus-visible:ring-offset-[#f5f0e8]"
                 >
                   <span>Recommendation letter PDF</span>
                   <DownloadIcon />
@@ -301,8 +375,8 @@ function VerifiedView({
         {skills.length > 0 && (
           <section>
             <div className="mb-4 flex items-center gap-3">
-              <span className="font-mono text-[10px] text-[#d4ad71]">03</span>
-              <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-[#e8dfd2]">
+              <span className="font-mono text-[10px] text-[#b68b50]">{skillsNum}</span>
+              <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-[#172123]">
                 Skills demonstrated
               </h2>
             </div>
@@ -359,7 +433,7 @@ function StatusCard({
   }[tone];
 
   return (
-    <section className="animate-[verify-reveal_700ms_ease-out_both] border border-[#e8dfd2]/20 bg-[#192426] px-6 py-12 shadow-[0_24px_80px_rgba(0,0,0,0.18)] sm:px-16 sm:py-16">
+    <section className="animate-[verify-reveal_700ms_ease-out_both] border border-[#172123]/15 bg-white px-6 py-12 shadow-[0_24px_80px_rgba(23,33,35,0.08)] sm:px-16 sm:py-16">
       <div className="max-w-xl">
         <div className="mb-10 flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.22em]" style={{ color: styles.accent }}>
           <span className="grid h-8 w-8 place-items-center border" style={{ borderColor: styles.accent }}>
@@ -367,13 +441,13 @@ function StatusCard({
           </span>
           {styles.label}
         </div>
-        <h1 className="text-3xl font-medium tracking-[-0.04em] text-[#f5f0e8] sm:text-5xl">
+        <h1 className="text-3xl font-medium tracking-[-0.04em] text-[#172123] sm:text-5xl">
           {title}
         </h1>
-        <p className="mt-5 max-w-md text-base leading-7 text-[#b8b5ac]">{body}</p>
+        <p className="mt-5 max-w-md text-base leading-7 text-[#6b716c]">{body}</p>
         <Link
           href="/"
-          className="mt-10 inline-flex border-b border-[#d4ad71] pb-1 text-sm font-semibold text-[#f5f0e8] transition-colors hover:text-[#d4ad71] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d4ad71] focus-visible:ring-offset-4 focus-visible:ring-offset-[#192426]"
+          className="mt-10 inline-flex border-b border-[#b68b50] pb-1 text-sm font-semibold text-[#172123] transition-colors hover:text-[#81623a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b68b50] focus-visible:ring-offset-4 focus-visible:ring-offset-white"
         >
           Back to Olyxee
         </Link>
