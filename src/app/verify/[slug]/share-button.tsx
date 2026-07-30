@@ -28,7 +28,8 @@ export default function ShareButton() {
     <button
       type="button"
       onClick={onShare}
-      className="inline-flex items-center gap-2 self-start rounded-full border border-neutral-200 bg-white px-4 py-2 text-sm font-medium text-neutral-700 hover:bg-neutral-50 transition-colors"
+      aria-label={copied ? "Verification link copied" : "Share verification link"}
+      className="inline-flex items-center gap-2 self-start border border-[#172123]/20 bg-transparent px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.12em] text-[#315b4e] transition-colors hover:border-[#315b4e] hover:bg-[#315b4e]/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#315b4e] focus-visible:ring-offset-2"
     >
       <svg
         className="h-4 w-4"

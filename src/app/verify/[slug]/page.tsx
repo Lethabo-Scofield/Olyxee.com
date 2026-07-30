@@ -115,8 +115,27 @@ export default async function VerifyCredentialPage({
   const result = await fetchCredential(slug);
 
   return (
-    <div className="min-h-screen bg-white text-neutral-900">
-      <main className="mx-auto w-full max-w-[900px] px-5 pb-16 pt-10 sm:pt-14">
+    <div className="verify-page min-h-[100dvh] overflow-hidden bg-[#11191b] text-[#f5f0e8]">
+      <div className="pointer-events-none fixed inset-0 opacity-30 [background-image:radial-gradient(#c9a875_0.7px,transparent_0.7px)] [background-size:18px_18px]" />
+      <main className="relative mx-auto w-full max-w-[1060px] px-5 pb-12 pt-5 sm:px-8 sm:pt-8">
+        <header className="mb-14 flex items-center justify-between border-b border-[#e8dfd2]/15 pb-5 sm:mb-20">
+          <Link
+            href="/"
+            className="flex items-center gap-3 rounded-sm text-[#f5f0e8] outline-none transition-opacity hover:opacity-75 focus-visible:ring-2 focus-visible:ring-[#d4ad71]"
+            aria-label="Olyxee home"
+          >
+            <span className="grid h-8 w-8 place-items-center border border-[#d4ad71]/70 text-[10px] font-semibold tracking-[0.2em] text-[#d4ad71]">
+              O
+            </span>
+            <span className="text-xs font-semibold uppercase tracking-[0.28em]">
+              Olyxee
+            </span>
+          </Link>
+          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#b8b5ac]">
+            Credential registry
+          </span>
+        </header>
+
         {result.state === "verified" && (
           <VerifiedView data={result.data} token={result.token} />
         )}
@@ -144,7 +163,7 @@ export default async function VerifyCredentialPage({
           />
         )}
 
-        <p className="mt-8 text-center text-sm text-neutral-400">
+        <p className="mt-16 text-center text-xs tracking-wide text-[#b8b5ac]">
           For verification inquiries, contact the Olyxee team.
         </p>
       </main>
@@ -169,82 +188,94 @@ function VerifiedView({
   const hasDownloads = !!data.hasCertificatePdf || !!data.hasLetterPdf;
 
   return (
-    <div>
+    <div className="animate-[verify-reveal_700ms_ease-out_both]">
       {/* Verification status */}
-      <div className="flex flex-col gap-4 border-b border-neutral-100 pb-6 sm:flex-row sm:items-start sm:justify-between">
-        <div className="flex items-start gap-3">
-          <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-100">
-            <svg
-              className="h-3.5 w-3.5 text-emerald-700"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                fillRule="evenodd"
-                d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
-                clipRule="evenodd"
+      <section className="relative overflow-hidden border border-[#d4ad71]/45 bg-[#f5f0e8] px-6 py-8 text-[#172123] shadow-[0_24px_80px_rgba(0,0,0,0.22)] sm:px-12 sm:py-11">
+        <div className="absolute right-0 top-0 h-40 w-40 translate-x-1/3 -translate-y-1/3 rounded-full border border-[#b68b50]/30" />
+        <div className="absolute bottom-0 left-0 h-px w-2/3 bg-[#b68b50]" />
+        <div className="relative flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
+          <div className="flex items-start gap-5">
+            <div className="hidden shrink-0 sm:block">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/olyxee-corporate-seal-transparent.png"
+                alt="Olyxee corporate seal"
+                className="h-20 w-20 object-contain"
               />
-            </svg>
-          </span>
-          <div>
-            <h1 className="text-lg font-semibold text-neutral-900">
-              Credential verified
-            </h1>
-            <h2 className="mt-1 text-2xl font-semibold tracking-tight text-neutral-900 sm:text-3xl">
-              {data.fullName}
-            </h2>
-            <p className="mt-1 font-mono text-sm text-neutral-400">
-              {data.credentialNumber}
-            </p>
-            <p className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-emerald-700">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-              Verified
-            </p>
+            </div>
+            <div>
+              <div className="mb-5 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#81623a]">
+                <span className="grid h-5 w-5 place-items-center rounded-full bg-[#315b4e] text-[#f5f0e8]">
+                  <CheckIcon />
+                </span>
+                Authentic record
+              </div>
+              <h1 className="max-w-xl text-3xl font-medium tracking-[-0.04em] sm:text-5xl">
+                Credential verified
+              </h1>
+              <h2 className="mt-5 text-xl font-medium tracking-[-0.025em] sm:text-2xl">
+                {data.fullName}
+              </h2>
+              <p className="mt-3 font-mono text-xs tracking-[0.14em] text-[#6b716c]">
+                {data.credentialNumber}
+              </p>
+              <p className="mt-6 inline-flex items-center gap-2 border-l-2 border-[#315b4e] pl-3 text-sm font-semibold text-[#315b4e]">
+                <span className="h-2 w-2 rounded-full bg-[#315b4e]" />
+                Verified status
+              </p>
+            </div>
           </div>
+          <ShareButton />
         </div>
-        <ShareButton />
-      </div>
+      </section>
 
-      <div className="space-y-8 py-8">
+      <div className="space-y-12 py-10 sm:py-14">
         {/* Certificate preview */}
         {data.hasCertificatePreview && (
           <section>
-            <h2 className="mb-3 text-sm font-medium text-neutral-500">
-              Certificate
-            </h2>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={certificatePreviewUrl}
-              alt={`Certificate for ${data.fullName}`}
-              className="h-auto w-full rounded-xl border border-neutral-200 bg-neutral-50"
-            />
+            <div className="mb-4 flex items-center gap-3">
+              <span className="font-mono text-[10px] text-[#d4ad71]">01</span>
+              <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-[#e8dfd2]">
+                Certificate preview
+              </h2>
+            </div>
+            <div className="border border-[#e8dfd2]/20 bg-[#f5f0e8] p-2 shadow-[0_18px_60px_rgba(0,0,0,0.2)] sm:p-3">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={certificatePreviewUrl}
+                alt={`Certificate for ${data.fullName}`}
+                className="h-auto w-full object-contain"
+              />
+            </div>
           </section>
         )}
 
         {/* Document downloads */}
         {hasDownloads && (
           <section>
-            <h2 className="mb-3 text-sm font-medium text-neutral-500">
-              Documents
-            </h2>
-            <div className="flex flex-col gap-3 sm:flex-row">
+            <div className="mb-4 flex items-center gap-3">
+              <span className="font-mono text-[10px] text-[#d4ad71]">02</span>
+              <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-[#e8dfd2]">
+                Official documents
+              </h2>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
               {data.hasCertificatePdf && (
                 <a
                   href={certificateDownloadUrl}
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-neutral-900 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-neutral-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900"
+                  className="group inline-flex items-center justify-between border border-[#d4ad71] bg-[#d4ad71] px-5 py-4 text-sm font-semibold text-[#172123] transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f0e8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#11191b]"
                 >
+                  <span>Certificate PDF</span>
                   <DownloadIcon />
-                  Download Certificate (PDF)
                 </a>
               )}
               {data.hasLetterPdf && (
                 <a
                   href={letterDownloadUrl}
-                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-neutral-300 bg-white px-5 py-3 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900"
+                  className="group inline-flex items-center justify-between border border-[#e8dfd2]/35 bg-transparent px-5 py-4 text-sm font-semibold text-[#f5f0e8] transition-colors hover:border-[#d4ad71] hover:text-[#d4ad71] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f0e8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#11191b]"
                 >
+                  <span>Recommendation letter PDF</span>
                   <DownloadIcon />
-                  Download Recommendation Letter (PDF)
                 </a>
               )}
             </div>
@@ -253,15 +284,18 @@ function VerifiedView({
 
         {/* Skills demonstrated */}
         {skills.length > 0 && (
-          <section className="border-t border-neutral-100 pt-6">
-            <h2 className="mb-3 text-sm font-medium text-neutral-500">
-              Skills demonstrated
-            </h2>
+          <section>
+            <div className="mb-4 flex items-center gap-3">
+              <span className="font-mono text-[10px] text-[#d4ad71]">03</span>
+              <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-[#e8dfd2]">
+                Skills demonstrated
+              </h2>
+            </div>
             <ul className="flex flex-wrap gap-2">
               {skills.map((skill, i) => (
                 <li
                   key={i}
-                  className="rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-sm text-neutral-800"
+                  className="border border-[#e8dfd2]/25 px-3 py-2 text-sm text-[#e8dfd2]"
                 >
                   {skill}
                 </li>
@@ -274,14 +308,17 @@ function VerifiedView({
   );
 }
 
+function CheckIcon() {
+  return (
+    <svg className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+      <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
+    </svg>
+  );
+}
+
 function DownloadIcon() {
   return (
-    <svg
-      className="h-4 w-4"
-      viewBox="0 0 20 20"
-      fill="currentColor"
-      aria-hidden="true"
-    >
+    <svg className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
       <path d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.235a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03l-2.955 3.129V2.75z" />
       <path d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z" />
     </svg>
@@ -298,37 +335,31 @@ function StatusCard({
   body: string;
 }) {
   const styles = {
-    revoked: {
-      card: "border-red-200",
-      title: "text-red-700",
-      body: "text-red-600",
-    },
-    neutral: {
-      card: "border-neutral-200",
-      title: "text-neutral-900",
-      body: "text-neutral-500",
-    },
-    warning: {
-      card: "border-amber-200",
-      title: "text-amber-800",
-      body: "text-amber-700",
-    },
+    revoked: { mark: "×", accent: "#b85c50", label: "Record invalidated" },
+    neutral: { mark: "—", accent: "#d4ad71", label: "Registry lookup" },
+    warning: { mark: "!", accent: "#d4ad71", label: "Service notice" },
   }[tone];
 
   return (
-    <div
-      className={`border-t-2 bg-white px-5 py-10 text-center sm:px-10 ${styles.card}`}
-    >
-      <h1 className={`text-lg font-semibold ${styles.title}`}>{title}</h1>
-      <p className={`mx-auto mt-2 max-w-md text-sm leading-relaxed ${styles.body}`}>
-        {body}
-      </p>
-      <Link
-        href="/"
-        className="mt-6 inline-block text-sm font-medium text-neutral-700 underline underline-offset-4 hover:text-neutral-900 transition-colors"
-      >
-        Back to Olyxee
-      </Link>
-    </div>
+    <section className="animate-[verify-reveal_700ms_ease-out_both] border border-[#e8dfd2]/20 bg-[#192426] px-6 py-12 shadow-[0_24px_80px_rgba(0,0,0,0.18)] sm:px-16 sm:py-16">
+      <div className="max-w-xl">
+        <div className="mb-10 flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.22em]" style={{ color: styles.accent }}>
+          <span className="grid h-8 w-8 place-items-center border" style={{ borderColor: styles.accent }}>
+            {styles.mark}
+          </span>
+          {styles.label}
+        </div>
+        <h1 className="text-3xl font-medium tracking-[-0.04em] text-[#f5f0e8] sm:text-5xl">
+          {title}
+        </h1>
+        <p className="mt-5 max-w-md text-base leading-7 text-[#b8b5ac]">{body}</p>
+        <Link
+          href="/"
+          className="mt-10 inline-flex border-b border-[#d4ad71] pb-1 text-sm font-semibold text-[#f5f0e8] transition-colors hover:text-[#d4ad71] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d4ad71] focus-visible:ring-offset-4 focus-visible:ring-offset-[#192426]"
+        >
+          Back to Olyxee
+        </Link>
+      </div>
+    </section>
   );
 }
