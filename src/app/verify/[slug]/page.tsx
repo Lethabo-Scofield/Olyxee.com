@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { cache } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import ShareButton from "./share-button";
 
 export const dynamic = "force-dynamic";
@@ -124,9 +125,14 @@ export default async function VerifyCredentialPage({
             className="flex items-center gap-3 rounded-sm text-[#f5f0e8] outline-none transition-opacity hover:opacity-75 focus-visible:ring-2 focus-visible:ring-[#d4ad71]"
             aria-label="Olyxee home"
           >
-            <span className="grid h-8 w-8 place-items-center border border-[#d4ad71]/70 text-[10px] font-semibold tracking-[0.2em] text-[#d4ad71]">
-              O
-            </span>
+            <Image
+              src="/Logo/Olyxee_Logo_Knockout.png"
+              alt="Olyxee logo"
+              width={32}
+              height={32}
+              unoptimized
+              className="h-8 w-8 select-none"
+            />
             <span className="text-xs font-semibold uppercase tracking-[0.28em]">
               Olyxee
             </span>
