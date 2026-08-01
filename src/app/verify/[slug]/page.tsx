@@ -11,11 +11,11 @@ const ADMIN_API_BASE_URL =
 
 interface VerifiedCredential {
   verified: true;
-  status: "PUBLISHED";
+  status?: string;
   credentialNumber: string;
   fullName: string;
   programmeTitle: string;
-  skillsDemonstrated: string;
+  skillsDemonstrated?: string;
   /** Job role / position held, e.g. "AI Engineering Intern" */
   position?: string;
   /** Department or team, when provided by the admin API */
@@ -24,7 +24,20 @@ interface VerifiedCredential {
   completionDate?: string;
   supervisorName?: string;
   issueDate?: string;
-  /** Document availability flags provided by the admin API */
+  /** Newline-separated list of projects completed */
+  projectsCompleted?: string;
+  /** Newline-separated list of responsibilities */
+  responsibilities?: string;
+  publicRecommendation?: string;
+  founderName?: string;
+  founderTitle?: string;
+  founderRecommendation?: string;
+  managerName?: string;
+  managerTitle?: string;
+  managerRecommendation?: string;
+  /** Which document types exist for this credential */
+  documents?: unknown;
+  /** Legacy document availability flags */
   hasCertificatePreview?: boolean;
   hasCertificatePdf?: boolean;
   hasLetterPdf?: boolean;
@@ -32,14 +45,36 @@ interface VerifiedCredential {
 
 type CredentialResult =
   | { state: "verified"; data: VerifiedCredential; token: string }
-  | { state: "revoked"; credentialNumber: string }
+  | { state: "invalid"; status: string; credentialNumber: string }
   | { state: "not_found" }
   | { state: "unavailable" };
 
+/**
+ * Extract the secure token from a credential code.
+ * The token is everything after "OLX-CERT-YYYY-NNNN-" and may itself
+ * contain dashes and underscores, so never split on "-".
+ */
 function extractToken(slug: string): string | null {
-  const idx = slug.lastIndexOf("-");
-  if (idx === -1 || idx === slug.length - 1) return null;
-  return slug.slice(idx + 1);
+  return slug.match(/^OLX-CERT-\d{4}-\d{4}-(.+)$/)?.[1] ?? null;
+}
+
+/** True when the credential's documents include the given type (supports array or object shapes). */
+function hasDocument(data: VerifiedCredential, type: string, legacyFlag?: boolean): boolean {
+  if (legacyFlag) return true;
+  const docs = data.documents;
+  if (Array.isArray(docs)) {
+    return docs.some((d) =>
+      typeof d === "string"
+        ? d.toLowerCase().includes(type)
+        : typeof d === "object" && d !== null && String((d as { type?: unknown }).type ?? "").toLowerCase().includes(type)
+    );
+  }
+  if (typeof docs === "object" && docs !== null) {
+    for (const [key, val] of Object.entries(docs as Record<string, unknown>)) {
+      if (key.toLowerCase().includes(type) && val) return true;
+    }
+  }
+  return false;
 }
 
 const fetchCredential = cache(async (slug: string): Promise<CredentialResult> => {
@@ -62,11 +97,15 @@ const fetchCredential = cache(async (slug: string): Promise<CredentialResult> =>
     if (!res.ok) return { state: "unavailable" };
 
     const data = await res.json();
-    if (data.verified === true && data.status === "PUBLISHED") {
+    if (data.verified === true) {
       return { state: "verified", data, token };
     }
-    if (data.status === "REVOKED") {
-      return { state: "revoked", credentialNumber: data.credentialNumber || "" };
+    if (data.verified === false) {
+      return {
+        state: "invalid",
+        status: typeof data.status === "string" ? data.status : "",
+        credentialNumber: data.credentialNumber || "",
+      };
     }
     return { state: "not_found" };
   } catch (err) {
@@ -90,9 +129,12 @@ export async function generateMetadata({
       robots: { index: false, follow: false },
     };
   }
-  if (result.state === "revoked") {
+  if (result.state === "invalid") {
     return {
-      title: "Credential Revoked | Olyxee",
+      title:
+        result.status === "EXPIRED"
+          ? "Credential Expired | Olyxee"
+          : "Credential Revoked | Olyxee",
       robots: { index: false, follow: false },
     };
   }
@@ -125,6 +167,14 @@ function formatCredentialDate(d: string): string {
     day: "numeric",
     timeZone: "UTC",
   });
+}
+
+/** Splits a newline-separated field into bullet items. */
+function splitLines(value: string): string[] {
+  return value
+    .split(/\r?\n/)
+    .map((s) => s.trim().replace(/^[-•*]\s*/, ""))
+    .filter(Boolean);
 }
 
 function splitList(value: string): string[] {
@@ -172,13 +222,19 @@ export default async function VerifyCredentialPage({
         {result.state === "verified" && (
           <VerifiedView data={result.data} token={result.token} />
         )}
-        {result.state === "revoked" && (
+        {result.state === "invalid" && (
           <StatusCard
             tone="revoked"
-            title="Credential revoked"
+            title={
+              result.status === "EXPIRED"
+                ? "Credential expired"
+                : "Credential revoked"
+            }
             body={`This credential${
               result.credentialNumber ? ` (${result.credentialNumber})` : ""
-            } has been revoked and is no longer valid.`}
+            } has been ${
+              result.status === "EXPIRED" ? "expired" : "revoked"
+            } and is no longer valid.`}
           />
         )}
         {result.state === "not_found" && (
@@ -226,7 +282,20 @@ function VerifiedView({
   const certificatePreviewUrl = `${ADMIN_API_BASE_URL}/api/public/credentials/${encodedToken}/certificate`;
   const skillsText = asText(data.skillsDemonstrated);
   const skills = skillsText ? splitList(skillsText) : [];
-  const hasDownloads = !!data.hasCertificatePdf || !!data.hasLetterPdf;
+  const hasCertificatePdf = hasDocument(data, "certificate", data.hasCertificatePdf);
+  const hasLetterPdf = hasDocument(data, "letter", data.hasLetterPdf);
+  const hasDownloads = hasCertificatePdf || hasLetterPdf;
+
+  const projects = asText(data.projectsCompleted)
+    ? splitLines(data.projectsCompleted!)
+    : [];
+  const responsibilities = asText(data.responsibilities)
+    ? splitLines(data.responsibilities!)
+    : [];
+  const publicRecommendation = asText(data.publicRecommendation);
+  const founderRecommendation = asText(data.founderRecommendation);
+  const managerRecommendation = asText(data.managerRecommendation);
+  const supervisorName = asText(data.supervisorName);
 
   const position = asText(data.position);
   const department = asText(data.department);
@@ -242,6 +311,7 @@ function VerifiedView({
   if (programme) details.push({ label: "Programme", value: programme });
   if (startDate) details.push({ label: "Start date", value: formatCredentialDate(startDate) });
   if (completionDate) details.push({ label: "Completion date", value: formatCredentialDate(completionDate) });
+  if (supervisorName) details.push({ label: "Supervisor", value: supervisorName });
   if (credentialNumber) details.push({ label: "Certificate number", value: credentialNumber });
   if (issueDate) details.push({ label: "Issue date", value: formatCredentialDate(issueDate) });
 
@@ -250,7 +320,13 @@ function VerifiedView({
   const detailsNum = details.length > 0 ? nextNum() : "";
   const previewNum = data.hasCertificatePreview ? nextNum() : "";
   const downloadsNum = hasDownloads ? nextNum() : "";
+  const projectsNum = projects.length > 0 ? nextNum() : "";
+  const responsibilitiesNum = responsibilities.length > 0 ? nextNum() : "";
   const skillsNum = skills.length > 0 ? nextNum() : "";
+  const recommendationsNum =
+    publicRecommendation || founderRecommendation || managerRecommendation
+      ? nextNum()
+      : "";
 
   return (
     <div className="animate-[verify-reveal_700ms_ease-out_both]">
@@ -286,7 +362,7 @@ function VerifiedView({
               </p>
               <p className="mt-6 inline-flex items-center gap-2 border-l-2 border-[#315b4e] pl-3 text-sm font-semibold text-[#315b4e]">
                 <span className="h-2 w-2 rounded-full bg-[#315b4e]" />
-                Verified status
+                Verified — this credential was issued by Olyxee (Pty) Ltd
               </p>
             </div>
           </div>
@@ -349,7 +425,7 @@ function VerifiedView({
               </h2>
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
-              {data.hasCertificatePdf && (
+              {hasCertificatePdf && (
                 <a
                   href={certificateDownloadUrl}
                   className="group inline-flex items-center justify-between border border-[#d4ad71] bg-[#d4ad71] px-5 py-4 text-sm font-semibold text-[#172123] transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#172123] focus-visible:ring-offset-2 focus-visible:ring-offset-[#f5f0e8]"
@@ -358,7 +434,7 @@ function VerifiedView({
                   <DownloadIcon />
                 </a>
               )}
-              {data.hasLetterPdf && (
+              {hasLetterPdf && (
                 <a
                   href={letterDownloadUrl}
                   className="group inline-flex items-center justify-between border border-[#172123]/30 bg-transparent px-5 py-4 text-sm font-semibold text-[#172123] transition-colors hover:border-[#b68b50] hover:text-[#81623a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#172123] focus-visible:ring-offset-2 focus-visible:ring-offset-[#f5f0e8]"
@@ -369,6 +445,16 @@ function VerifiedView({
               )}
             </div>
           </section>
+        )}
+
+        {/* Projects completed */}
+        {projects.length > 0 && (
+          <BulletSection num={projectsNum} title="Projects completed" items={projects} />
+        )}
+
+        {/* Responsibilities */}
+        {responsibilities.length > 0 && (
+          <BulletSection num={responsibilitiesNum} title="Responsibilities" items={responsibilities} />
         )}
 
         {/* Skills demonstrated */}
@@ -395,8 +481,93 @@ function VerifiedView({
             </ul>
           </section>
         )}
+
+        {/* Recommendations */}
+        {(publicRecommendation || founderRecommendation || managerRecommendation) && (
+          <section>
+            <div className="mb-4 flex items-center gap-3">
+              <span className="font-mono text-[10px] text-[#b68b50]">{recommendationsNum}</span>
+              <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-[#172123]">
+                Recommendations
+              </h2>
+            </div>
+            <div className="space-y-3">
+              {publicRecommendation && (
+                <RecommendationCard
+                  text={publicRecommendation}
+                  name={asText(data.supervisorName) ?? undefined}
+                  title="Olyxee"
+                />
+              )}
+              {founderRecommendation && (
+                <RecommendationCard
+                  text={founderRecommendation}
+                  name={asText(data.founderName) ?? undefined}
+                  title={asText(data.founderTitle) ?? "Founder"}
+                />
+              )}
+              {managerRecommendation && (
+                <RecommendationCard
+                  text={managerRecommendation}
+                  name={asText(data.managerName) ?? undefined}
+                  title={asText(data.managerTitle) ?? "Manager"}
+                />
+              )}
+            </div>
+          </section>
+        )}
       </div>
     </div>
+  );
+}
+
+function BulletSection({
+  num,
+  title,
+  items,
+}: {
+  num: string;
+  title: string;
+  items: string[];
+}) {
+  return (
+    <section>
+      <div className="mb-4 flex items-center gap-3">
+        <span className="font-mono text-[10px] text-[#b68b50]">{num}</span>
+        <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-[#172123]">
+          {title}
+        </h2>
+      </div>
+      <ul className="space-y-2 border border-[#172123]/15 bg-white px-6 py-5">
+        {items.map((item, i) => (
+          <li key={i} className="flex items-start gap-3 text-sm leading-6 text-[#172123]">
+            <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#b68b50]" />
+            {item}
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+function RecommendationCard({
+  text,
+  name,
+  title,
+}: {
+  text: string;
+  name?: string;
+  title?: string;
+}) {
+  return (
+    <blockquote className="border border-[#172123]/15 bg-white px-6 py-5">
+      <p className="text-sm leading-7 text-[#172123]">{text}</p>
+      {(name || title) && (
+        <footer className="mt-4 text-xs font-semibold uppercase tracking-[0.16em] text-[#6b716c]">
+          {[name, title].filter(Boolean).join(", ")}
+        </footer>
+      )}
+    </blockquote>
   );
 }
 
