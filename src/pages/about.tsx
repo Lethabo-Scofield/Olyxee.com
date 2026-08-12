@@ -22,23 +22,23 @@ const PILLAR_COLORS = ["#B49B7E", "#17311F", "#92A9BD"];
 const APPROACH = [
   {
     icon: Compass,
-    label: "How we ship",
-    title: "Earn scope in production",
-    text: "We start with one real problem inside a live operation and prove our work under real conditions. Every expansion is earned by results, never promised on a roadmap.",
+    label: "What we explore",
+    title: "Research",
+    text: "We explore hard problems in AI: operational intelligence, reasoning, simulation, context, and autonomous systems. The questions we chase here decide what we build next.",
     gradient: "/images/gradient-pink-cyan.png",
   },
   {
     icon: ShieldCheck,
-    label: "How we build",
-    title: "Infrastructure before intelligence",
-    text: "We believe systems should understand a business before they act inside it. We build the infrastructure layer first: live context, operational memory, and a clear trail, so teams stay in control.",
+    label: "What we build",
+    title: "Intelligence Infrastructure",
+    text: "We build the underlying technology that allows organisations to understand their data and operations. Orgni belongs here — live context, operational memory, and a clear trail.",
     gradient: "/images/gradient-blue.png",
   },
   {
     icon: EyeOff,
-    label: "How we operate",
-    title: "Judged by what runs",
-    text: "Our work is meant to disappear into reliable operations, not demos. We measure ourselves by what holds up in the background, day after day.",
+    label: "What we ship",
+    title: "Applied Systems",
+    text: "We turn that infrastructure into real operational products for specific industries. Olyxee Logistics is the current example, built for cross-border logistics businesses.",
     gradient: "/images/gradient-purple.png",
   },
 ];
