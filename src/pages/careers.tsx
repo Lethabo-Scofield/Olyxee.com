@@ -91,7 +91,7 @@ function RolesSection() {
               Open roles
             </h2>
             <p className="text-neutral-500 text-lg font-normal">
-              {paidCount} paid {paidCount === 1 ? "role" : "roles"} and {internshipCount} internships across {teams.length} teams. All remote.
+              {paidCount} full-time {paidCount === 1 ? "role" : "roles"} and {internshipCount} internships across {teams.length} teams. All remote.
             </p>
           </motion.div>
 
@@ -106,7 +106,7 @@ function RolesSection() {
               <div className="inline-flex items-center gap-1 p-1 rounded-full bg-neutral-100 whitespace-nowrap">
                 {([
                   { key: "all", label: `All (${roles.length})` },
-                  { key: "paid", label: `Paid roles (${paidCount})` },
+                  { key: "paid", label: `Full-time roles (${paidCount})` },
                   { key: "internship", label: `Internships (${internshipCount})` },
                 ] as { key: "all" | RoleType; label: string }[]).map(opt => (
                   <button
@@ -220,7 +220,7 @@ function RolesSection() {
                                 ? "border-neutral-900 text-neutral-900"
                                 : "border-neutral-200 text-neutral-500"
                             }`}>
-                              {role.type === "paid" ? "Paid" : "Internship"}
+                              {role.type === "paid" ? "Full-time" : "Internship"}
                             </span>
                           </div>
                           <p className="text-sm text-neutral-500 leading-relaxed max-w-xl font-normal">{role.description}</p>
@@ -348,7 +348,7 @@ function ProcessSection() {
     {
       num: "03",
       title: "Skills assessment",
-      desc: "A short, role-relevant exercise you can do in your own time - usually 2 to 4 hours of work. We want to see how you approach real problems, not trick questions or whiteboard puzzles. Paid for paid roles.",
+      desc: "A short, role-relevant exercise you can do in your own time - usually 2 to 4 hours of work. We want to see how you approach real problems, not trick questions or whiteboard puzzles. Compensated for full-time roles.",
     },
     {
       num: "04",
@@ -488,7 +488,7 @@ const Careers: FC = () => {
     <div className="min-h-screen bg-white text-neutral-900 relative">
       <SEO
         title="Careers"
-        description="Join Olyxee and build the infrastructure that makes AI trustworthy. Open internships and paid roles across AI research, engineering, design, and operations. Ship real work from day one."
+        description="Join Olyxee and build the infrastructure that makes AI trustworthy. Open internships and full-time roles across AI research, engineering, design, and operations. Ship real work from day one."
         path="/careers"
         keywords={["Olyxee careers", "AI internships", "AI research internship", "AI engineering jobs", "remote AI internship", "Olyxee jobs", "machine learning internship", "AI jobs Johannesburg", "AI jobs South Africa"]}
         jsonLd={[

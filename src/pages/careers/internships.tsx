@@ -193,7 +193,7 @@ const InternshipsPage: FC = () => {
               <li className="flex items-start gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-amber-600 mt-2 flex-shrink-0" />
                 Typically 3 to 6 months, with the option to extend or convert
-                to a paid role for exceptional work.
+                to a full-time role for exceptional work.
               </li>
               <li className="flex items-start gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-amber-600 mt-2 flex-shrink-0" />

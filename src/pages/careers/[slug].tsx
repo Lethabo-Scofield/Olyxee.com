@@ -165,7 +165,7 @@ const PaidRolePage: FC<Props> = ({ role }) => {
             className="border-b border-neutral-200 pb-10"
           >
             <p className="text-[11px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
-              {role.team} · Paid role
+              {role.team} · Full-time
             </p>
             <h1 className="text-3xl sm:text-4xl lg:text-[3rem] tracking-[-0.025em] leading-[1.05] font-medium text-neutral-900 mb-6">
               {role.title}
