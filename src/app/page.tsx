@@ -357,7 +357,7 @@ function ResearchAreas() {
               {
                 num: "03",
                 title: "Intelligent operations",
-                desc: "Orgni creates a living operational model of your organisation, helping preserve knowledge, coordinate people, systems, and AI agents, and adapt as conditions change, while Order Loop keeps customers in the loop.",
+                desc: "Orgni creates a living operational model of your organisation, helping preserve knowledge, coordinate people, systems, and AI agents, and adapt as conditions change, while Olyxee Logistics runs cross-border logistics operations end to end.",
                 gradient: "/images/what-we-do-operations.png",
               },
             ].map((step, idx) => (
@@ -588,13 +588,13 @@ function CourierLoopSection() {
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             className="lg:col-span-4"
           >
-            <p className="text-xs font-semibold text-orange-500 uppercase tracking-[0.2em] mb-4">Order Loop</p>
+            <p className="text-xs font-semibold text-orange-500 uppercase tracking-[0.2em] mb-4">Olyxee Logistics</p>
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-5">
-              Keep every customer <em className="text-orange-500 not-italic">in the loop.</em>
+              Run cross-border logistics <em className="text-orange-500 not-italic">end to end.</em>
             </h2>
 
             <p className="text-neutral-600 text-base sm:text-lg font-normal leading-relaxed mb-8 max-w-sm">
-              Send clean order-status updates, from confirmed to delivered.
+              Manage customers, invoices, cross-border orders, warehouse cargo matching, shipment statuses and customer tracking in one platform.
             </p>
 
             <div className="flex flex-wrap items-center gap-4">

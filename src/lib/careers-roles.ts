@@ -409,7 +409,7 @@ export const roles: Role[] = [
     location: REMOTE,
     type: "internship",
     description:
-      "Help protect Olyxee's products, infrastructure, and customer data. Work alongside the engineering team on application security, security reviews, and hardening across Orgni and Order Loop.",
+      "Help protect Olyxee's products, infrastructure, and customer data. Work alongside the engineering team on application security, security reviews, and hardening across Orgni and Olyxee Logistics.",
     responsibilities: [
       "Help review code and features for security issues before they ship",
       "Contribute to vulnerability scanning, dependency audits, and remediation",
@@ -508,7 +508,7 @@ export const roles: Role[] = [
     location: REMOTE,
     type: "internship",
     description:
-      "Support a product surface across Orgni's operational workflows, financial operations, and document integrity capabilities, or Order Loop.",
+      "Support a product surface across Orgni's operational workflows, financial operations, and document integrity capabilities, or Olyxee Logistics.",
     responsibilities: [
       "Help translate customer problems into clear specs and shipped product",
       "Coordinate with engineering, research, and design on delivery",

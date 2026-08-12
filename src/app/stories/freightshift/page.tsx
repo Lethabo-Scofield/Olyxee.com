@@ -105,7 +105,7 @@ export default function FreightShiftStory() {
               <li>and the dependencies between all of them.</li>
             </ul>
             <p>
-              <strong>Order Loop</strong>, Olyxee&apos;s logistics coordination system built on Orgni, is where that model meets daily work: shipments, documents, customs updates and customer communication stay connected as cargo moves from origin to delivery.
+              <strong>Olyxee Logistics</strong>, Olyxee&apos;s logistics coordination system built on Orgni, is where that model meets daily work: shipments, documents, customs updates and customer communication stay connected as cargo moves from origin to delivery.
             </p>
 
             <h2>What became possible</h2>
@@ -174,7 +174,7 @@ export default function FreightShiftStory() {
           >
             <div>
               <p className="text-sm font-semibold text-neutral-900 mb-1">Want this for your logistics operations?</p>
-              <p className="text-sm text-neutral-500 font-normal">Talk to us about bringing Order Loop to your freight corridors.</p>
+              <p className="text-sm text-neutral-500 font-normal">Talk to us about bringing Olyxee Logistics to your freight corridors.</p>
             </div>
             <Link
               href="/contact"

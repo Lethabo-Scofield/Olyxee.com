@@ -32,7 +32,7 @@ type SignInOption = {
 
 const SIGNIN_OPTIONS: SignInOption[] = [
     {
-        name: "Order Loop",
+        name: "Olyxee Logistics",
         description: "Logistics tracking and updates",
         href: "https://logistics.olyxee.com/",
         external: true,

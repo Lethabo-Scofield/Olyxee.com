@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     "intelligent operations",
     "AI infrastructure",
     "Orgni",
-    "Order Loop",
+    "Olyxee Logistics",
     "AI reliability",
     "business context for AI",
     "operational workflows",

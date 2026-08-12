@@ -53,10 +53,10 @@ const PLATFORM_TABS = [
   },
   {
     id: "order-loop",
-    label: "Order Loop",
+    label: "Olyxee Logistics",
     desc: "Logistics and order coordination that keeps planning, execution, and fulfillment in sync.",
     image: "/images/enterprise/order-loop-tracking.png",
-    alt: "Order Loop delivery tracking",
+    alt: "Olyxee Logistics delivery tracking",
   },
   {
     id: "api",
@@ -67,7 +67,7 @@ const PLATFORM_TABS = [
   },
 ] as const;
 
-const API_PRODUCTS = ["Orgni", "Order Loop"] as const;
+const API_PRODUCTS = ["Orgni", "Olyxee Logistics"] as const;
 const API_STACKS = ["Terminal", "Python", "JavaScript"] as const;
 
 const API_SNIPPETS: Record<
@@ -112,7 +112,7 @@ const run = await client.orgni.workflows.execute({
 console.log(run.status); // 'completed'`,
     },
   },
-  "Order Loop": {
+  "Olyxee Logistics": {
     Terminal: {
       file: "terminal",
       code: `curl https://api.olyxee.com/v1/order-loop/orders/XX38169715GB/track \\

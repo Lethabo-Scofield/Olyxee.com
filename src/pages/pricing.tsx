@@ -114,7 +114,7 @@ const ORDER_LOOP_PLANS: Plan[] = [
   {
     name: "Free",
     price: 0,
-    desc: "Get started and keep your first customers in the loop.",
+    desc: "Get started running your first orders, shipments and customer tracking.",
     features: [
       "Up to 50 orders per month",
       "No-app customer tracking",
@@ -128,7 +128,7 @@ const ORDER_LOOP_PLANS: Plan[] = [
     name: "Growth",
     price: 99,
     popular: true,
-    desc: "For growing businesses that need SMS, branding and operational evidence.",
+    desc: "For growing logistics businesses managing more orders, invoicing and customer communication.",
     features: [
       "Up to 300 orders per month",
       "SMS and email communication",
@@ -142,7 +142,7 @@ const ORDER_LOOP_PLANS: Plan[] = [
   {
     name: "Scale",
     price: 499,
-    desc: "For businesses managing higher order volumes and connected operations.",
+    desc: "For businesses running cross-border operations at higher volumes with connected systems.",
     features: [
       "Up to 1,000 orders per month",
       "Order Communication API",
@@ -156,7 +156,7 @@ const ORDER_LOOP_PLANS: Plan[] = [
   {
     name: "Enterprise",
     price: null,
-    desc: "For businesses with high order volumes, multiple locations or complex communication requirements.",
+    desc: "For businesses with high volumes, multiple locations, warehouses or complex operational requirements.",
     features: [
       "Custom order limits",
       "Multiple teams and locations",
@@ -291,13 +291,13 @@ const Pricing: FC = () => {
   return (
     <div className="min-h-screen bg-[#fafafa] text-[#111] font-sans selection:bg-neutral-200 selection:text-neutral-900 relative">
       <SEO
-        title="Pricing: Orgni & Order Loop Plans"
-        description="Simple, transparent pricing for Orgni operational intelligence and Order Loop delivery communication. Start free, upgrade from R99/month, or talk to sales about enterprise plans."
+        title="Pricing: Orgni & Olyxee Logistics Plans"
+        description="Simple, transparent pricing for Orgni operational intelligence and Olyxee Logistics logistics operations. Start free, upgrade from R99/month, or talk to sales about enterprise plans."
         path="/pricing"
         keywords={[
           "Olyxee pricing",
           "Orgni pricing",
-          "Order Loop pricing",
+          "Olyxee Logistics pricing",
           "operational intelligence software pricing",
           "business workflow software cost",
           "order tracking software pricing",
@@ -325,18 +325,18 @@ const Pricing: FC = () => {
           {
             "@context": "https://schema.org",
             "@type": "Product",
-            name: "Order Loop",
+            name: "Olyxee Logistics",
             description:
-              "Order Loop manages customer communication, tracking and operational evidence for deliveries and collections.",
+              "Olyxee Logistics is a logistics operations platform for managing customers, invoices, cross-border orders, warehouse cargo matching, shipment statuses and customer tracking.",
             brand: { "@type": "Brand", name: "Olyxee" },
-            url: "https://olyxee.com/pricing",
+            url: "https://logistics.olyxee.com",
             offers: ORDER_LOOP_PLANS.filter((p) => p.price !== null).map((p) => ({
               "@type": "Offer",
-              name: `Order Loop ${p.name}`,
+              name: `Olyxee Logistics ${p.name}`,
               price: p.price,
               priceCurrency: "ZAR",
               description: p.desc,
-              url: "https://olyxee.com/pricing",
+              url: "https://logistics.olyxee.com",
             })),
           },
           {
@@ -348,7 +348,7 @@ const Pricing: FC = () => {
                 name: "Is there a free plan?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Yes. Both Orgni and Order Loop have free plans: Orgni Free supports one workspace and up to 3 users, and Order Loop Free covers up to 50 orders per month with no-app customer tracking.",
+                  text: "Yes. Both Orgni and Olyxee Logistics have free plans: Orgni Free supports one workspace and up to 3 users, and Olyxee Logistics Free covers up to 50 orders per month with no-app customer tracking.",
                 },
               },
               {
@@ -361,10 +361,10 @@ const Pricing: FC = () => {
               },
               {
                 "@type": "Question",
-                name: "Can I use Orgni and Order Loop together?",
+                name: "Can I use Orgni and Olyxee Logistics together?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Yes. Orgni and Order Loop integrate so order activity, customer communication and delivery evidence connect to the broader operational context of your business.",
+                  text: "Yes. Orgni and Olyxee Logistics integrate so order activity, customer communication and delivery evidence connect to the broader operational context of your business.",
                 },
               },
             ],
@@ -423,9 +423,9 @@ const Pricing: FC = () => {
       <div className="bg-[#fafafa] border-t border-black/5">
         <ProductSection
           logo="/Logo/order-loop-mark.png"
-          name="Order Loop"
+          name="Olyxee Logistics"
           tagline="Keep every customer informed from order to completion"
-          desc="Order Loop manages customer communication, tracking and operational evidence for deliveries and collections."
+          desc="Olyxee Logistics is a logistics operations platform for managing customers, invoices, cross-border orders, warehouse cargo matching, shipment statuses and customer tracking."
           plans={ORDER_LOOP_PLANS}
         />
       </div>
@@ -436,10 +436,10 @@ const Pricing: FC = () => {
         <div className="flex items-center justify-center gap-4 mb-8">
           <Image src="/Logo/orgni-mark.png" alt="Orgni" width={40} height={40} className="w-10 h-10 object-contain" />
           <span className="text-[1.5rem] text-[#4a5568]">+</span>
-          <Image src="/Logo/order-loop-mark.png" alt="Order Loop" width={40} height={40} className="w-10 h-10 object-contain" />
+          <Image src="/Logo/order-loop-mark.png" alt="Olyxee Logistics" width={40} height={40} className="w-10 h-10 object-contain" />
         </div>
         <h2 className="text-[2rem] sm:text-[3rem] font-medium tracking-tighter text-[#111] mb-6 leading-[1.1]">
-          Use Orgni and Order Loop together
+          Use Orgni and Olyxee Logistics together
         </h2>
         <p className="text-[1.125rem] text-[#4a5568] max-w-2xl mx-auto leading-relaxed mb-10">
           Connect order activity, customer communication and delivery evidence to the broader operational context of your business.

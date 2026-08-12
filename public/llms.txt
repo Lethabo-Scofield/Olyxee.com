@@ -7,7 +7,7 @@ Olyxee is structured around four product surfaces and one research engine:
 - **Orgni Workflows** — Autonomous workflow execution: job handling, integrations, and operational automation. (Early access)
 - **Orgni Finance** — Financial reconciliation: workflows, data validation, matching, exception handling, and reporting. (Available)
 - **Olyxee Document Integrity** — Document verification, integrity checks, extraction validation, and API-based verification workflows. (Private)
-- **Order Loop** — Logistics operations, delivery workflows, dispatch coordination, and logistics APIs. (Available)
+- **Olyxee Logistics** — Logistics operations, delivery workflows, dispatch coordination, and logistics APIs. (Available)
 - **Olyxee Lab** — Internal research on AI reliability, verification, interpretability, and evaluation.
 
 ## Core pages
@@ -15,7 +15,7 @@ Olyxee is structured around four product surfaces and one research engine:
 - [Home](https://olyxee.com/): Company overview, mission, focus areas.
 - [About](https://olyxee.com/about): Who Olyxee is, the problem we work on, and how we operate.
 - [Products & Enterprise](https://olyxee.com/enterprise): All Olyxee products and enterprise systems with status.
-- [Pricing](https://olyxee.com/pricing): Plans for Orgni (Free, Starter R99/mo, Business R999/mo, Enterprise) and Order Loop (Free, Growth R99/mo, Scale R499/mo, Enterprise). Billed in ZAR.
+- [Pricing](https://olyxee.com/pricing): Plans for Orgni (Free, Starter R99/mo, Business R999/mo, Enterprise) and Olyxee Logistics (Free, Growth R99/mo, Scale R499/mo, Enterprise). Billed in ZAR.
 - [Orgni Workflows](https://olyxee.com/products/ordo): Autonomous workflow execution platform.
 - [Olyxee Document Integrity](https://olyxee.com/document-integrity): Document verification and extraction validation.
 - [Research](https://olyxee.com/research): Research agenda, papers, and ongoing work.

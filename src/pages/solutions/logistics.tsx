@@ -22,15 +22,16 @@ const Logistics: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 overflow-x-hidden">
       <SEO
-        title="Olyxee Logistics, Keep every customer in the loop"
-        description="Olyxee Logistics, the live system that lets anyone who sells send clean order status updates from confirmed to delivered."
+        title="Olyxee Logistics, Run cross-border logistics end to end"
+        description="Olyxee Logistics is a logistics operations platform for managing customers, invoices, cross-border orders, warehouse cargo matching, shipment statuses and customer tracking."
         path="/solutions/logistics"
         keywords={[
           "Olyxee Logistics",
-          "order status updates",
-          "customer notifications",
-          "order tracking",
-          "ecommerce logistics",
+          "logistics operations platform",
+          "cross-border logistics",
+          "cargo shipping",
+          "shipment tracking",
+          "warehouse cargo matching",
         ]}
       />
       <div className="grain" />
@@ -58,7 +59,7 @@ const Logistics: FC = () => {
               className="col-span-12 lg:col-span-3 lg:pb-6"
             >
               <p className="text-lg sm:text-xl text-neutral-700 leading-relaxed max-w-sm">
-                Order status updates that keep every customer in the loop, from confirmed to delivered.
+                A logistics operations platform for managing customers, invoices, cross-border orders, warehouse cargo matching, shipment statuses and customer tracking.
               </p>
             </motion.div>
           </div>
@@ -160,7 +161,7 @@ const Logistics: FC = () => {
               Create.
             </h2>
             <p className="text-base text-neutral-500 font-normal leading-relaxed max-w-sm">
-              One order, one form. Customer, items, address, done.
+              Manage customers, invoices and cross-border orders in one place — from China-to-South Africa air and sea shipments to local deliveries.
             </p>
           </motion.div>
 
@@ -215,7 +216,7 @@ const Logistics: FC = () => {
               Track.
             </h2>
             <p className="text-base text-white/60 font-normal leading-relaxed max-w-sm">
-              A clean tracking link your customer can open any time. No app, no account.
+              Shipment statuses and warehouse cargo matching stay connected as cargo moves — with a clean tracking link your customer can open any time. No app, no account.
             </p>
           </motion.div>
         </div>

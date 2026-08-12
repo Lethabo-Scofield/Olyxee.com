@@ -60,7 +60,7 @@ const JOURNEY_LAYERS: string[] = [
   "Operational workflows: processes, approvals, tasks, case handling, coordination, and operational exceptions.",
   "Financial operations: reconciliation, transaction review, finance exceptions, and financial workflow support.",
   "Business memory and document integrity: document understanding, classification, extraction, validation, verification, and auditability, so organizations know whether a document is complete, consistent, relevant, and reliable before it is used in a decision.",
-  "Alongside Orgni, Order Loop supports customer communication around orders, deliveries, collections, and service status updates.",
+  "Alongside Orgni, Olyxee Logistics is a logistics operations platform for managing customers, invoices, cross-border orders, warehouse cargo matching, shipment statuses and customer tracking.",
   "Orgni also carries Olyxee\u2019s ongoing research into AI integration and agent tooling, focused on how intelligent systems connect with APIs, tools, workflows, and operational environments.",
 ];
 

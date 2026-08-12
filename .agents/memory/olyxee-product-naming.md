@@ -9,7 +9,7 @@ Display labels were renamed sitewide, but **URLs, domains, routes, image paths, 
 
 Company line (current): "Research and Infrastructure for Operational Intelligence" (was "...for Artificial Intelligence"). Emphasize operational intelligence, live business context, operational memory, decision history, model-neutral architecture; avoid framing the company/Orgni as chatbot/copilot/workflow-automation/generic enterprise AI.
 
-Current public product lineup (display names): Orgni (single flagship platform that builds LIVE BUSINESS CONTEXT), Order Loop (SEPARATE product, customer order communication), Togent (Coming Soon), Ordo (Coming Soon verification engine). **"Orgni Finance", "Orgni Workflows", "Orgni Docs" are NO LONGER separate products** — they were folded into Orgni CAPABILITIES: financial operations, operational workflows, business memory. When a capability needs a tag/badge, use "Orgni · Financial operations" / "Orgni · Operational workflows" / "Orgni · Business memory".
+Current public product lineup (display names): Orgni (single flagship platform that builds LIVE BUSINESS CONTEXT), Olyxee Logistics (formerly Order Loop; logistics operations platform, domain logistics.olyxee.com), Togent (Coming Soon), Ordo (Coming Soon verification engine). **"Orgni Finance", "Orgni Workflows", "Orgni Docs" are NO LONGER separate products** — they were folded into Orgni CAPABILITIES: financial operations, operational workflows, business memory. When a capability needs a tag/badge, use "Orgni · Financial operations" / "Orgni · Operational workflows" / "Orgni · Business memory".
 
 Display label → kept legacy technical name:
 - `Orgni Finance` ← display; URLs/paths still `addup` (addup.olyxee.com, /Logo/Addup_Logo.png, /images/addup/*)

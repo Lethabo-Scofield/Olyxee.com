@@ -188,11 +188,11 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
 
   const solutions: ProductRow[] = [
     {
-      name: "Order Loop",
-      description: "Order Loop is a customer communication and tracking solution. It helps teams send order, delivery, collection, and shipment updates through SMS, web pages, and system integrations.",
+      name: "Olyxee Logistics",
+      description: "Olyxee Logistics is a logistics operations platform for managing customers, invoices, cross-border orders, warehouse cargo matching, shipment statuses and customer tracking — built for cross-border logistics businesses moving cargo between countries.",
       status: "available",
       bg: "/images/gradient-yellow-green.webp",
-      action: { kind: "external", href: "https://logistics.olyxee.com/", label: "Visit Order Loop" },
+      action: { kind: "external", href: "https://logistics.olyxee.com/", label: "Visit Olyxee Logistics" },
     },
     {
       name: "Orgni · Enterprise automation",

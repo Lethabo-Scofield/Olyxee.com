@@ -1,0 +1,110 @@
+Review the entire `olyxee.com` codebase and replace all public references to **Order Loop** with **Olyxee Logistics**.
+
+## Required changes
+
+Search all user-facing content, including:
+
+* Homepage
+* Product pages
+* Navigation
+* Footer
+* SEO metadata
+* Page titles and descriptions
+* Open Graph and social-sharing metadata
+* Structured data
+* Sitemap
+* FAQs
+* Pricing sections
+* Calls to action
+* Product cards
+* Contact forms
+* Legal pages
+* Blog posts and product updates
+* Image alt text
+* Accessibility labels
+* Email templates
+* Documentation visible to customers
+* Static content and translation files
+
+Replace:
+
+* `Order Loop` → `Olyxee Logistics`
+* `OrderLoop` → `Olyxee Logistics`
+* `Order-Loop` → `Olyxee Logistics`
+* `Olyxee Order Loop` → `Olyxee Logistics`
+
+Use **Olyxee Logistics** consistently as the official product name.
+
+## Product positioning
+
+Where content requires more than a direct name replacement, describe Olyxee Logistics as:
+
+> A logistics operations platform for managing customers, invoices, cross-border orders, warehouse cargo matching, shipment statuses and customer tracking.
+
+The current product focuses on cross-border logistics businesses moving cargo between countries, including China-to-South Africa air and sea shipments.
+
+Do not describe it as only an order-status notification tool.
+
+## Links and routes
+
+* Update product links to `https://logistics.olyxee.com`.
+* Preserve working internal routes unless renaming them is clearly safe.
+* Do not change backend identifiers, database values, API paths, environment-variable names or package names merely because they contain `order-loop`.
+* Do not introduce broken redirects.
+* If an existing public URL contains `order-loop`, preserve it or add a permanent redirect to the new Olyxee Logistics URL.
+* Update canonical URLs where appropriate.
+* Check that navigation and CTA buttons lead to the correct destination.
+
+## Brand consistency
+
+Use these exact terms:
+
+* Company: `Olyxee`
+* Product: `Olyxee Logistics`
+* Product domain: `logistics.olyxee.com`
+
+Remove outdated language suggesting that Order Loop and Olyxee Logistics are separate products.
+
+Do not rename unrelated products such as Orgni.
+
+## Verification
+
+After making the changes:
+
+1. Search the entire repository case-insensitively for:
+
+   * `Order Loop`
+   * `OrderLoop`
+   * `Order-Loop`
+   * `order loop`
+2. Classify any remaining matches as:
+
+   * Internal technical identifiers that must remain
+   * Historical migration compatibility
+   * Outdated user-facing content that still needs changing
+3. Run the available:
+
+   * Typecheck
+   * Tests
+   * Production build
+   * Lint
+4. Check the rendered website for:
+
+   * Navigation naming
+   * Mobile layout
+   * Product page naming
+   * Metadata and browser titles
+   * Working links to `logistics.olyxee.com`
+   * No visible references to Order Loop
+
+## Final report
+
+Provide:
+
+* Files changed
+* Public copy updated
+* Links or redirects changed
+* Remaining internal `order-loop` references and why they were preserved
+* Test, typecheck, lint and build results
+
+Do not claim completion while any public-facing **Order Loop** reference remains.

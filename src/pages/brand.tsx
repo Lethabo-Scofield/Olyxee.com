@@ -56,7 +56,7 @@ const DOWNLOADS = [
   { label: "Orgni mark",              path: "/images/orgni-logo.png",          format: "PNG" },
   { label: "Orgni · Financial operations mark",      path: "/images/orgni-finance-logo.png",  format: "PNG" },
   { label: "Orgni · Operational workflows mark",    path: "/images/orgni-workflow-logo.png", format: "PNG" },
-  { label: "Order Loop mark",         path: "/images/order-loop-logo.png",     format: "PNG" },
+  { label: "Olyxee Logistics mark",         path: "/images/order-loop-logo.png",     format: "PNG" },
 ];
 
 function BrandAurora() {
@@ -166,9 +166,9 @@ const Brand: FC = () => {
     <div className="min-h-screen bg-white text-neutral-900 relative">
       <SEO
         title="Brand Guidelines"
-        description="Olyxee brand guidelines: logos for Olyxee, Orgni, and Order Loop, plus color, typography, and usage rules. Download official assets."
+        description="Olyxee brand guidelines: logos for Olyxee, Orgni, and Olyxee Logistics, plus color, typography, and usage rules. Download official assets."
         path="/brand"
-        keywords={["Olyxee brand", "Olyxee logo", "Orgni logo", "Order Loop logo", "Olyxee press kit"]}
+        keywords={["Olyxee brand", "Olyxee logo", "Orgni logo", "Olyxee Logistics logo", "Olyxee press kit"]}
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "WebPage",
@@ -299,7 +299,7 @@ const Brand: FC = () => {
           className="border-t border-neutral-200 scroll-mt-24"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <SectionHead num="03" label="Product marks · Orgni, Order Loop & Olyxee Robotics" />
+            <SectionHead num="03" label="Product marks · Orgni, Olyxee Logistics & Olyxee Robotics" />
             <div className="grid grid-cols-1 sm:grid-cols-2 rounded-2xl overflow-hidden ring-1 ring-neutral-200/80 bg-neutral-50">
               <div className="relative min-h-[300px] sm:min-h-[360px] flex flex-col items-center justify-center px-6 py-14 border-b sm:border-r border-neutral-200/80">
                 <Image src="/images/orgni-logo.png" alt="Orgni product mark" width={400} height={400} className="w-44 sm:w-52 lg:w-60 h-auto object-contain mb-8 rounded-xl" />
@@ -312,9 +312,9 @@ const Brand: FC = () => {
                 </a>
               </div>
               <div className="relative min-h-[300px] sm:min-h-[360px] flex flex-col items-center justify-center px-6 py-14 border-b border-neutral-200/80">
-                <Image src="/images/order-loop-logo.png" alt="Order Loop product mark" width={400} height={400} className="w-44 sm:w-52 lg:w-60 h-auto object-contain mb-8 rounded-xl" />
+                <Image src="/images/order-loop-logo.png" alt="Olyxee Logistics product mark" width={400} height={400} className="w-44 sm:w-52 lg:w-60 h-auto object-contain mb-8 rounded-xl" />
                 <div className="text-center">
-                  <p className="text-sm text-neutral-700 font-medium">Order Loop</p>
+                  <p className="text-sm text-neutral-700 font-medium">Olyxee Logistics</p>
                   <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 mt-1">Logistics</p>
                 </div>
                 <a href="/images/order-loop-logo.png" download className="absolute bottom-3 right-4 inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-600 hover:text-neutral-900 transition-colors">
