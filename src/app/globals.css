@@ -508,130 +508,12 @@ nextjs-portal {
 .finir-page .finir-section { padding-top: 4rem; padding-bottom: 4rem; }
 @media (min-width: 640px) { .finir-page .finir-section { padding-top: 6rem; padding-bottom: 6rem; } }
 
-/* FinIR's IR section is treated as a figure in the paper: an editorial system
-   diagram rather than a product card. Scoped tightly to preserve the article. */
+/* FinIR IR section intro. */
 .finir-ir-intro {
   max-width: 40rem;
   font-size: 1.12rem !important;
   line-height: 1.7 !important;
   color: #334750 !important;
-}
-.finir-ir-figure {
-  margin-top: 3.25rem;
-  overflow: hidden;
-  background: #f7faf9;
-}
-.finir-ir-stages {
-  display: grid;
-  grid-template-columns: 1fr;
-}
-.finir-ir-stage {
-  position: relative;
-  padding: 1.5rem 1.25rem 1.65rem;
-}
-.finir-ir-stage + .finir-ir-stage {
-  border-top: 1px solid #d9e2e2;
-}
-.finir-ir-stage-index {
-  display: block;
-  color: #6c8995;
-  font-family: var(--font-mono);
-  font-size: .75rem;
-  letter-spacing: .08em;
-}
-.finir-ir-stage h3 {
-  margin-top: .85rem;
-  color: #1f343d;
-  font-size: 1.05rem;
-  font-weight: 650;
-  letter-spacing: -.02em;
-}
-.finir-ir-stage p {
-  margin-top: .55rem;
-  color: #607078;
-  font-size: .9rem;
-  line-height: 1.55;
-}
-.finir-ir-stage:last-child { background: #eaf2f2; }
-.finir-ir-model {
-  margin-top: 0;
-  border-top: 1px solid #d9e2e2;
-  background: #fbfcfb;
-}
-.finir-ir-model-grid { display: grid; }
-.finir-ir-code {
-  max-width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  padding: 1.35rem 1.25rem;
-  color: #294452;
-  font-family: var(--font-mono);
-  font-size: .7rem;
-  line-height: 1.75;
-  white-space: pre;
-}
-.finir-ir-graph {
-  position: relative;
-  padding: 1.5rem 1.25rem 1.75rem;
-  background: #f2f6f5;
-}
-.finir-ir-graph-label {
-  margin-bottom: 1.35rem;
-  color: #55717d;
-  font-size: .62rem;
-  font-weight: 750;
-  letter-spacing: .13em;
-  text-transform: uppercase;
-}
-.finir-ir-graph-row {
-  display: grid;
-  grid-template-columns: minmax(0,1fr) 1.15rem minmax(0,1fr) 1.15rem minmax(0,1fr);
-  align-items: center;
-  gap: .3rem;
-}
-.finir-ir-graph-row + .finir-ir-graph-row { margin-top: .85rem; }
-.finir-ir-token {
-  min-width: 0;
-  padding: .55rem .35rem;
-  color: #304952;
-  font-size: .61rem;
-  font-weight: 650;
-  line-height: 1.15;
-  text-align: center;
-  overflow-wrap: anywhere;
-}
-.finir-ir-token--input { background: #e1ecea; }
-.finir-ir-token--result { background: #d7e7e7; color: #173f4b; }
-.finir-ir-operator {
-  color: #547887;
-  font-family: var(--font-mono);
-  font-size: .8rem;
-  text-align: center;
-}
-.finir-ir-caption {
-  padding: 1rem 1.25rem 1.25rem;
-  border-top: 1px solid #d9e2e2;
-  color: #64757c;
-  font-size: .75rem;
-  line-height: 1.55;
-}
-@media (min-width: 640px) {
-  .finir-ir-stages { grid-template-columns: repeat(3, 1fr); }
-  .finir-ir-stage { min-height: 11.75rem; padding: 1.75rem 1.5rem; }
-  .finir-ir-stage + .finir-ir-stage { border-top: 0; border-left: 1px solid #d9e2e2; }
-  .finir-ir-stage:not(:last-child)::after {
-    position: absolute;
-    right: -.4rem;
-    bottom: 1.6rem;
-    z-index: 1;
-    color: #527487;
-    content: "→";
-    font-size: 1rem;
-  }
-  .finir-ir-model-grid { grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); }
-  .finir-ir-graph { border-left: 1px solid #d9e2e2; }
-  .finir-ir-code { padding: 1.7rem 1.5rem; font-size: .74rem; }
-  .finir-ir-graph { padding: 1.7rem 1.5rem; }
 }
 
 /* FinIR responsive reading rules. The article remains a white editorial page;
@@ -781,26 +663,6 @@ nextjs-portal {
     font-size: .7rem;
     line-height: 1.65;
     overflow-wrap: anywhere;
-  }
-  .finir-ir-figure {
-    margin-top: 2.25rem;
-    margin-left: -1.25rem;
-    margin-right: -1.25rem;
-  }
-  .finir-ir-code {
-    padding: 1.15rem 1.25rem;
-    font-size: .66rem;
-  }
-  .finir-ir-graph {
-    padding: 1.25rem;
-  }
-  .finir-ir-graph-row {
-    grid-template-columns: minmax(0, 1fr) .8rem minmax(0, 1fr) .8rem minmax(0, 1fr);
-    gap: .18rem;
-  }
-  .finir-ir-token {
-    padding: .5rem .18rem;
-    font-size: .55rem;
   }
   .finir-resource-directory {
     margin-top: 2.5rem;

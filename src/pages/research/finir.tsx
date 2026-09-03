@@ -122,28 +122,9 @@ function Resource({ href, title, detail, icon, meta }: { href: string; title: st
 }
 
 function CompanyGraph() {
-  const rows = [["Revenue", "−", "COGS", "Gross Profit"], ["Gross Profit", "÷", "Revenue", "Gross Margin"], ["Gross Profit", "−", "Opex", "EBITDA"]];
-  return <figure className="finir-ir-figure">
-    <div className="finir-ir-stages">
-      <div className="finir-ir-stage"><span className="finir-ir-stage-index">01</span><h3>Write the model</h3><p>Inputs and formulas, in plain text.</p></div>
-      <div className="finir-ir-stage"><span className="finir-ir-stage-index">02</span><h3>Build the graph</h3><p>Every formula becomes a typed, linked node.</p></div>
-      <div className="finir-ir-stage"><span className="finir-ir-stage-index">03</span><h3>Run it</h3><p>Only what changed is recomputed.</p></div>
-    </div>
-    <div className="finir-ir-model">
-      <div className="finir-ir-model-grid">
-        <pre className="finir-ir-code">{`model company {
-  input revenue: money[ZAR]
-  input cogs: money[ZAR]
-  input opex: money[ZAR]
-
-  gross_profit = revenue - cogs
-  gross_margin = gross_profit / revenue
-  ebitda = gross_profit - opex
-}`}</pre>
-        <div className="finir-ir-graph"><p className="finir-ir-graph-label">Becomes this graph</p>{rows.map(([a, operator, b, result]) => <div className="finir-ir-graph-row" key={result}><span className="finir-ir-token finir-ir-token--input">{a}</span><span className="finir-ir-operator">{operator}</span><span className="finir-ir-token finir-ir-token--input">{b}</span><span className="finir-ir-operator">→</span><span className="finir-ir-token finir-ir-token--result">{result}</span></div>)}</div>
-      </div>
-      <figcaption className="finir-ir-caption">Change COGS and only Gross Profit, Gross Margin, and EBITDA are recalculated.</figcaption>
-    </div>
+  return <figure className="mt-10">
+    <Image src="/research/finir-how-it-works.png" alt="Three-step diagram: define the model as inputs and formulas, build a typed financial graph, then recompute only the nodes affected by a change" width={1615} height={745} className="h-auto w-full" />
+    <figcaption className="px-1 pt-4 text-xs leading-5 text-[#718087]">Define the model, build the graph, recompute only what changed. When COGS changes, only Gross Profit, Gross Margin, and EBITDA run again.</figcaption>
   </figure>;
 }
 
