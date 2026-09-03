@@ -406,27 +406,29 @@ nextjs-portal {
   }
 }
 
-/* FinIR release: quiet technical editorial typography, a paper ground, and
-   restrained teal signal. Kept local so the wider Olyxee system remains intact. */
-.finir-page { background: #f7f8f6; color: #172126; }
-.finir-page::before { content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .3; z-index: 0; background-image: radial-gradient(rgba(23,33,38,.11) .55px, transparent .65px); background-size: 7px 7px; }
+/* FinIR release: compact monochrome technical editorial typography. Kept local
+   so the wider Olyxee system remains intact. */
+.finir-page { background: #fff; color: #080808; }
+.finir-page::before { display: none; }
 .finir-page main, .finir-page header, .finir-page footer { position: relative; z-index: 1; }
-.finir-display { font-family: Georgia, "Times New Roman", serif; font-weight: 400; letter-spacing: -.055em; }
-.finir-sans { font-family: "Avenir Next", "Segoe UI", sans-serif; }
-.finir-prose p { font-size: 1.08rem; line-height: 1.78; color: #4d5b5f; }
-.finir-prose h2 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; letter-spacing: -.04em; }
-.finir-anchor { border-left: 1px solid #cfd5d4; }
-.finir-anchor a { display:block; padding: .45rem 0 .45rem 1rem; color:#697578; font-size:.75rem; letter-spacing:.08em; text-transform:uppercase; transition: color 180ms ease, border-color 180ms ease; }
+.finir-display, .finir-page h1, .finir-page h2 { font-family: "Avenir Next", "Segoe UI", system-ui, sans-serif; font-weight: 600; letter-spacing: -.045em; }
+.finir-sans { font-family: "Avenir Next", "Segoe UI", system-ui, sans-serif; }
+.finir-prose p { font-size: .94rem; line-height: 1.55; color: #272727; }
+.finir-prose h2 { font-family: "Avenir Next", "Segoe UI", system-ui, sans-serif; font-weight: 600; letter-spacing: -.045em; }
+.finir-anchor { border-left: 1px solid #d4d4d4; }
+.finir-anchor a { display:block; padding: .42rem 0 .42rem .8rem; color:#595959; font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; transition: color 180ms ease; }
 .finir-anchor a:hover, .finir-anchor a:focus-visible { color:#171717; outline:none; }
-.finir-flow-arrow { color:#171717; font-size:1.25rem; line-height:1; }
-.finir-node { border: 1px solid #cdd4d3; background: rgba(253,253,252,.72); padding: .7rem .8rem; text-align:center; font-size:.76rem; font-weight:600; color:#253438; }
-.finir-node--active { background:#172126; border-color:#172126; color:#f8faf8; }
-.finir-diagram { background: #eef1ef; border: 1px solid #d5dcda; }
+.finir-flow-arrow { color:#000; font-size:1.1rem; line-height:1; }
+.finir-node { border: 1px solid #cfcfcf; background: #fff; padding: .45rem .6rem; text-align:center; font-size:.65rem; font-weight:600; color:#111; }
+.finir-node--active { background:#050505; border-color:#050505; color:#fff; }
+.finir-diagram { background: #fff; border: 1px solid #d6d6d6; }
 .finir-resource { transition: background-color 180ms ease, transform 180ms ease; }
-.finir-resource:hover { background:#e7f2f0; transform: translateX(3px); }
+.finir-resource:hover { background:#f3f3f3; transform: translateX(3px); }
 .finir-resource:focus-within { outline: 2px solid #171717; outline-offset: -2px; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .finir-resource { transition:none; }
   .finir-resource:hover { transform:none; }
 }
+.finir-page .finir-section { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+@media (min-width: 640px) { .finir-page .finir-section { padding-top: 3rem; padding-bottom: 3rem; } }

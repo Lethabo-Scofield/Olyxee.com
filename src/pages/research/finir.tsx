@@ -22,7 +22,7 @@ const DESCRIPTION =
 const sections = [
   ["problem", "The problem"],
   ["boundary", "The boundary"],
-  ["ir", "Financial IR"],
+  ["ir", "How FinIR works"],
   ["types", "Type semantics"],
   ["compiler", "Compiler flow"],
   ["runtime", "Incremental runtime"],
@@ -209,22 +209,22 @@ const FinIR: FC = () => {
       <Header />
       <main>
         <article>
-          <header className="mx-auto max-w-7xl px-5 pb-16 pt-32 sm:px-8 sm:pb-24 sm:pt-40">
-            <Link href="/research" className="mb-12 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[.14em] text-[#526064] transition-colors hover:text-[#171717] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#171717]">
+          <header className="mx-auto max-w-[1180px] px-5 pb-10 pt-24 sm:px-8 sm:pb-12 sm:pt-28">
+            <Link href="/research" className="mb-7 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[.12em] text-[#526064] transition-colors hover:text-[#171717] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#171717]">
               <ArrowLeft className="h-3.5 w-3.5" aria-hidden />Research &amp; releases
             </Link>
             <div className="border-y border-[#ccd3d1] py-4 text-[11px] font-semibold uppercase tracking-[.16em] text-[#526064]">
               <span>September 3, 2026</span><span className="mx-3 text-[#a4adac]">/</span><span className="text-[#171717]">Research · Release</span>
             </div>
-            <div className="mt-10 max-w-5xl">
-              <h1 className="finir-display text-[3.5rem] leading-[.91] text-[#172126] sm:text-7xl lg:text-[6.4rem]">{TITLE}</h1>
-              <p className="mt-9 max-w-3xl text-xl leading-8 text-[#526064] sm:text-2xl sm:leading-9">{DESCRIPTION}</p>
-              <p className="mt-8 text-sm font-semibold text-[#263438]">By Lethabo Innocent ScoField and Alisha Fatima</p>
+            <div className="mt-7 max-w-[700px]">
+              <h1 className="finir-display text-[2.4rem] leading-[.98] text-[#172126] sm:text-[3.2rem]">{TITLE}</h1>
+              <p className="mt-4 max-w-3xl text-[15px] leading-6 text-[#526064]">{DESCRIPTION}</p>
+              <p className="mt-4 text-xs font-semibold text-[#263438]">By Lethabo Innocent ScoField and Alisha Fatima</p>
             </div>
           </header>
 
-          <div className="border-y border-[#ccd3d1] bg-[#f5f5f5] px-5 py-5 sm:px-8">
-            <div className="mx-auto flex max-w-7xl flex-wrap gap-x-8 gap-y-3 text-xs font-semibold text-[#526064]">
+          <div className="border-y border-[#ccd3d1] bg-white px-5 py-4 sm:px-8">
+            <div className="mx-auto flex max-w-[1180px] flex-wrap gap-x-8 gap-y-3 text-[11px] font-semibold text-[#526064]">
               <a href="https://github.com/Olyxee/finir" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-[#171717]"><Github className="h-4 w-4" />GitHub</a>
               <a href="https://pypi.org/project/finir/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-[#171717]"><Package className="h-4 w-4" />PyPI</a>
               <a href="https://github.com/Olyxee/finir/releases/tag/v0.1.0" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-[#171717]"><ShieldCheck className="h-4 w-4" />v0.1.0</a>
@@ -232,24 +232,28 @@ const FinIR: FC = () => {
             </div>
           </div>
 
-          <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[180px_minmax(0,1fr)] lg:py-24">
+          <div className="mx-auto grid max-w-[1180px] grid-cols-1 gap-12 px-5 py-10 sm:px-8 lg:grid-cols-[150px_minmax(0,1fr)] lg:py-14">
             <aside className="lg:sticky lg:top-28 lg:self-start">
               <nav className="finir-anchor" aria-label="On this page">{sections.map(([id, label]) => <a key={id} href={`#${id}`}>{label}</a>)}</nav>
             </aside>
             <div className="min-w-0">
-              <Section id="problem" number="01" title="The problem">
-                <p className="mt-7">AI systems can interpret financial instructions. Reliable financial execution needs to be deterministic, typed, incremental, auditable, and independent from probabilistic code generation.</p>
-                <p className="mt-5">Generated execution logic can be inconsistent. Full recomputation is unnecessary. Weak financial type guarantees make errors harder to catch; caching, provenance, and auditing become difficult when AI-generated code is the execution environment.</p>
-                <p className="finir-display mt-12 max-w-xl border-l-2 border-[#171717] pl-6 text-3xl leading-snug text-[#172126] sm:text-4xl">AI interprets. FinIR validates, compiles, and computes.</p>
-              </Section>
+              <section id="problem" className="scroll-mt-28 border-b border-[#d2d8d7] pb-8">
+                <h2 className="mb-7 text-2xl font-semibold tracking-[-.04em]">The problem</h2>
+                <div className="grid gap-8 md:grid-cols-[1fr_1fr_1fr]">
+                  <div className="text-xs leading-5 text-[#272727]"><p>AI systems can interpret financial instructions, but reliable financial execution needs to be deterministic, typed, incremental, auditable, and independent from probabilistic code generation.</p><p className="mt-4 font-semibold">The common approach today:</p><div className="mt-3 grid max-w-[220px] gap-1 text-center"><div className="finir-node">LLM</div><span>↓</span><div className="finir-node">Generated Python / SQL / spreadsheets</div><span>↓</span><div className="finir-node">Financial computation</div></div></div>
+                  <div className="text-xs leading-5 text-[#272727]"><p className="font-semibold">This leads to:</p><ul className="mt-3 space-y-1.5">{["Inconsistent generated execution logic", "Unnecessary full recomputation", "Weak financial type guarantees", "Difficult caching", "Difficult provenance", "Difficult auditing", "AI-generated code becoming the execution environment"].map((item) => <li className="flex gap-2" key={item}><span>—</span>{item}</li>)}</ul></div>
+                  <div className="border-l border-[#d5d5d5] pl-7"><p className="text-2xl font-semibold leading-[1.35] tracking-[-.04em]">AI interprets.<br /><br />FinIR validates, compiles, and computes.</p></div>
+                </div>
+              </section>
 
-              <Section id="boundary" number="02" title="A computational boundary">
-                <p className="mt-7">FinIR separates probabilistic interpretation from deterministic financial execution. Financial intent is made canonical before it reaches the compiler and runtime.</p>
-                <FlowDiagram />
-              </Section>
+              <section id="boundary" className="scroll-mt-28 border-b border-[#d2d8d7] py-8">
+                <h2 className="text-2xl font-semibold tracking-[-.04em]">A computational boundary for AI</h2>
+                <div className="mt-6 grid gap-8 lg:grid-cols-[180px_1fr]"><p className="text-xs leading-5 text-[#272727]">FinIR separates probabilistic interpretation from deterministic financial execution.</p><FlowDiagram /></div>
+              </section>
 
-              <Section id="ir" number="03" title="The Financial IR">
+              <Section id="ir" number="03" title="How FinIR works">
                 <p className="mt-7">The repository describes a typed computation graph with an expression AST, a textual <code>.finir</code> format, JSON interchange, parsing, and validation. The graph is the stable representation between intent and evaluation.</p>
+                <p className="mt-5">The Financial IR makes the model’s financial dependencies explicit before the compiler and runtime evaluate it.</p>
                 <CompanyGraph />
               </Section>
 
@@ -266,9 +270,8 @@ const FinIR: FC = () => {
               </Section>
 
               <Section id="runtime" number="06" title="Incremental runtime">
-                <p className="mt-7">The runtime maintains a value store and validity set. Changing an input invalidates its downstream cone using precomputed dependents. Evaluation walks needed nodes in dependency order: valid nodes are reused by lookup; invalid nodes are recomputed and marked valid.</p>
-                <p className="mt-5">For the company model, if COGS changes by 4%, gross profit, gross margin, and EBITDA are downstream defined nodes and are recomputed. Unrelated nodes are reused from the cache. The repository also exposes transient what-if evaluation, state snapshots, and cache-hit metrics.</p>
-                <div className="mt-10 grid gap-2 sm:grid-cols-2"><div className="finir-node finir-node--active">COGS changes → downstream cone is dirty</div><div className="finir-node">Unrelated nodes → reused</div></div>
+                <div className="mt-7 grid gap-8 lg:grid-cols-2"><div><p>The runtime maintains a value store and validity set. Changing an input invalidates its downstream cone using precomputed dependents. Evaluation walks needed nodes in dependency order: valid nodes are reused by lookup; invalid nodes are recomputed and marked valid.</p><p className="mt-5">For the company model, if COGS changes by 4%, gross profit, gross margin, and EBITDA are downstream defined nodes and are recomputed.</p></div><div className="border border-[#d5d5d5] p-4 text-xs"><p className="font-semibold">When an assumption changes</p><p className="mt-3">Example: COGS +4%</p>{["Gross Profit", "Gross Margin", "EBITDA"].map((item) => <div className="mt-2 flex justify-between border-b border-[#e0e0e0] pb-2" key={item}><span>{item}</span><span className="bg-black px-2 py-0.5 text-[10px] uppercase tracking-wide text-white">recomputed</span></div>)}<div className="mt-2 flex justify-between"><span>Unrelated nodes</span><span className="border border-black px-2 py-0.5 text-[10px] uppercase tracking-wide">reused</span></div></div></div>
+                <p className="mt-5">The repository also exposes transient what-if evaluation, state snapshots, and cache-hit metrics.</p>
               </Section>
 
               <Section id="evidence" number="07" title="Evidence and reproducibility">
