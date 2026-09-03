@@ -81,7 +81,7 @@ const ORGNI_PLANS: Plan[] = [
   },
   {
     name: "Business",
-    price: 999,
+    price: 1599.99,
     popular: true,
     desc: "For businesses connecting Orgni across teams, workflows and systems.",
     features: [
