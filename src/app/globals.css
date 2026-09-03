@@ -467,19 +467,30 @@ nextjs-portal {
 .finir-flow-arrow { color:#24475a; font-size:1.1rem; line-height:1; }
 .finir-node { border: 1px solid #d4dddf; background: #fdfdfc; padding: .52rem .65rem; text-align:center; font-size:.65rem; font-weight:600; color:#314148; }
 .finir-node--active { background:#24475a; border-color:#24475a; color:#fff; }
-/* Type semantics ledger: a spreadsheet-style grid so the typing reads like Excel or an accounting system. */
-.finir-sheet table { width: 100%; min-width: 40rem; border-collapse: collapse; font-size: .8rem; line-height: 1.45; color: #2b3b42; background: #fff; }
-.finir-sheet th, .finir-sheet td { border: 1px solid #dfe5e6; padding: .6rem .8rem; text-align: left; vertical-align: top; }
-.finir-sheet thead th { background: #f3f6f6; color: #5b6b73; font-size: .68rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; }
-.finir-sheet-corner, .finir-sheet-rownum { width: 2.25rem; background: #f3f6f6; color: #8a979d; font-family: var(--font-mono); font-size: .68rem; text-align: center !important; }
-.finir-sheet-item { font-weight: 600; color: #1f2f36; white-space: nowrap; }
-.finir-sheet-formula { font-family: var(--font-mono); font-size: .74rem; color: #34474f; white-space: nowrap; }
-.finir-sheet-type { display: inline-block; padding: .1rem .45rem; border: 1px solid #cfdbdf; border-radius: 4px; background: #f6f9f9; font-family: var(--font-mono); font-size: .68rem; color: #2f5566; white-space: nowrap; }
-.finir-sheet-type--error { border-color: #ecc9c4; background: #fdf3f1; color: #9a3d30; }
-.finir-sheet-result { min-width: 11rem; font-family: var(--font-mono); font-size: .76rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
-.finir-sheet-row--error td { background: #fffaf9; }
+/* Type semantics ledger: reads like a spreadsheet on wide screens and stacks into
+   labelled rows on narrow ones. No horizontal scrolling. */
+.finir-sheet { border-top: 1px solid #c9d4d7; container-type: inline-size; }
+.finir-sheet-head { display: none; }
+.finir-sheet-rows { list-style: none; margin: 0; padding: 0; }
+.finir-sheet-row { display: grid; grid-template-columns: 1fr 1fr; gap: .35rem .75rem; padding: .95rem 0; border-bottom: 1px solid #dfe5e6; font-size: .84rem; line-height: 1.45; color: #2b3b42; }
+.finir-sheet-item { grid-column: 1 / -1; font-weight: 650; color: #1f2f36; }
+.finir-sheet-label { display: block; margin-bottom: .1rem; font-size: .62rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #8a979d; }
+.finir-sheet-formula { grid-column: 1 / -1; font-family: var(--font-mono); font-size: .76rem; color: #34474f; overflow-wrap: anywhere; }
+.finir-sheet-type { display: inline-block; padding: .1rem .45rem; border: 1px solid #cfdbdf; border-radius: 4px; background: #f6f9f9; font-family: var(--font-mono); font-size: .68rem; color: #2f5566; }
+.finir-sheet-result { font-family: var(--font-mono); font-size: .8rem; font-variant-numeric: tabular-nums; color: #1f2f36; }
+.finir-sheet-note { grid-column: 1 / -1; font-size: .76rem; color: #8a5a52; }
+.finir-sheet-row--error { background: #fffaf9; padding-left: .75rem; padding-right: .75rem; margin: 0 -.75rem; }
+.finir-sheet-row--error .finir-sheet-type { border-color: #ecc9c4; background: #fdf3f1; color: #9a3d30; }
 .finir-sheet-row--error .finir-sheet-result { color: #b3402f; font-weight: 600; }
-.finir-sheet-note { display: block; margin-top: .15rem; font-family: var(--font-sans, inherit); font-size: .7rem; font-weight: 400; color: #8a5a52; white-space: normal; }
+@container (min-width: 600px) {
+  .finir-sheet-head, .finir-sheet-row { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1fr); gap: 0 1.25rem; align-items: baseline; }
+  .finir-sheet-head { padding: .6rem 0; border-bottom: 1px solid #c9d4d7; font-size: .64rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #6b7a81; }
+  .finir-sheet-row { padding: .8rem 0; }
+  .finir-sheet-item, .finir-sheet-formula { grid-column: auto; }
+  .finir-sheet-label { display: none; }
+  .finir-sheet-note { grid-column: 2 / -1; margin-top: .3rem; }
+  .finir-sheet-row--error { padding-left: .75rem; padding-right: .75rem; margin: 0 -.75rem; }
+}
 /* References directory: an annotated reading list, not a grid of product cards. */
 .finir-resources-intro { max-width: 38rem; }
 .finir-resources-intro p:first-child { font-size: 1.06rem; line-height: 1.7; color: #34464e; }

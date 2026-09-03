@@ -101,33 +101,26 @@ function InstallBlock() {
 const ledgerRows = [
   { item: "Revenue", formula: "input", type: "money[ZAR]", result: "R 1,200,000" },
   { item: "COGS", formula: "input", type: "money[ZAR]", result: "R 720,000" },
-  { item: "Gross Profit", formula: "= Revenue − COGS", type: "money[ZAR]", result: "R 480,000" },
-  { item: "Gross Margin", formula: "= Gross Profit ÷ Revenue", type: "ratio", result: "40.0%" },
-  { item: "Opex growth", formula: "= Opex × 5%", type: "money[ZAR]", result: "R 15,000" },
+  { item: "Gross Profit", formula: "Revenue − COGS", type: "money[ZAR]", result: "R 480,000" },
+  { item: "Gross Margin", formula: "Gross Profit ÷ Revenue", type: "ratio", result: "40.0%" },
   { item: "Receivable days", formula: "input", type: "days", result: "45 days" },
-  { item: "Revenue + days", formula: "= Revenue + Receivable days", type: "money + days", result: "#TYPE_ERROR", error: "Cannot add money[ZAR] to days" },
-  { item: "USD + ZAR", formula: "= US Revenue + Revenue", type: "money[USD] + money[ZAR]", result: "#CURRENCY", error: "Currencies must match" },
+  { item: "Revenue + days", formula: "Revenue + Receivable days", type: "money + days", result: "#TYPE_ERROR", error: "You cannot add money to days." },
+  { item: "USD + ZAR", formula: "US Revenue + Revenue", type: "USD + ZAR", result: "#CURRENCY", error: "Currencies must match." },
 ];
 
 function TypeLedger() {
   return <figure className="finir-sheet mt-10" aria-label="Spreadsheet-style view of typed financial values">
-    <div className="finir-scroll">
-      <table>
-        <thead>
-          <tr><th className="finir-sheet-corner" aria-hidden="true" /><th>A · Line item</th><th>B · Formula</th><th>C · Type</th><th>D · Result</th></tr>
-        </thead>
-        <tbody>
-          {ledgerRows.map((row, i) => <tr key={row.item} className={row.error ? "finir-sheet-row--error" : undefined}>
-            <td className="finir-sheet-rownum" aria-hidden="true">{i + 1}</td>
-            <td className="finir-sheet-item">{row.item}</td>
-            <td className="finir-sheet-formula">{row.formula}</td>
-            <td><span className={row.error ? "finir-sheet-type finir-sheet-type--error" : "finir-sheet-type"}>{row.type}</span></td>
-            <td className="finir-sheet-result">{row.result}{row.error ? <span className="finir-sheet-note">{row.error}</span> : null}</td>
-          </tr>)}
-        </tbody>
-      </table>
-    </div>
-    <figcaption className="px-1 pt-4 text-xs leading-5 text-[#718087]">Rows 1–6 compute normally and keep their financial type. Rows 7–8 would silently produce a number in a spreadsheet; FinIR rejects them before evaluation.</figcaption>
+    <div className="finir-sheet-head" aria-hidden="true"><span>Line item</span><span>Formula</span><span>Type</span><span>Result</span></div>
+    <ol className="finir-sheet-rows">
+      {ledgerRows.map((row) => <li key={row.item} className={row.error ? "finir-sheet-row finir-sheet-row--error" : "finir-sheet-row"}>
+        <span className="finir-sheet-item">{row.item}</span>
+        <span className="finir-sheet-formula"><span className="finir-sheet-label">Formula</span>{row.formula}</span>
+        <span className="finir-sheet-typecell"><span className="finir-sheet-label">Type</span><span className="finir-sheet-type">{row.type}</span></span>
+        <span className="finir-sheet-result"><span className="finir-sheet-label">Result</span>{row.result}</span>
+        {row.error ? <span className="finir-sheet-note">{row.error}</span> : null}
+      </li>)}
+    </ol>
+    <figcaption className="px-1 pt-4 text-xs leading-5 text-[#718087]">The first five rows compute normally and keep their financial type. The last two would quietly produce a number in a spreadsheet; FinIR stops them before evaluation.</figcaption>
   </figure>;
 }
 
