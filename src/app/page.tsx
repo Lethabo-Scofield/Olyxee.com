@@ -5,7 +5,7 @@ import Header from '../components/header';
 import Footer from '../components/footer';
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { ArrowRight, ArrowUpRight, Truck, Check, PackageCheck, MapPin, Bell } from "lucide-react";
 
 
@@ -846,7 +846,41 @@ function VideoShowcaseSection() {
   );
 }
 
+const STORY_DURATION_MS = 7000;
+
 function StoriesSection() {
+  const [active, setActive] = useState(0);
+  const [hovered, setHovered] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const [cycle, setCycle] = useState(0);
+  const reduceMotion = useReducedMotion() ?? false;
+  const paused = hovered || focused;
+  const autoplay = !reduceMotion;
+
+  // Auto-advance. Pausing (hover/focus) cancels the timer; resuming restarts a
+  // full cycle and bumps `cycle` so the progress line restarts in sync.
+  useEffect(() => {
+    if (!autoplay || paused) return;
+    const timer = setTimeout(() => {
+      setActive((i) => (i + 1) % STORIES.length);
+      setCycle((c) => c + 1);
+    }, STORY_DURATION_MS);
+    return () => clearTimeout(timer);
+  }, [active, paused, cycle, autoplay]);
+
+  useEffect(() => {
+    if (!paused) setCycle((c) => c + 1);
+  }, [paused]);
+
+  const select = (i: number) => {
+    setActive(i);
+    setCycle((c) => c + 1);
+  };
+
+  const fade = reduceMotion ? { duration: 0 } : undefined;
+
+  const story = STORIES[active];
+
   return (
     <section id="stories" className="py-20 sm:py-28 bg-white border-t border-neutral-200/70 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
@@ -894,35 +928,126 @@ function StoriesSection() {
           </div>
         </motion.div>
 
-        <div id="stories-grid" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12 scroll-mt-24">
-          {STORIES.map((story, i) => (
-            <motion.article
-              key={story.tag}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-            >
-              <Link href={story.href} className="group block cursor-pointer">
-                <div className="relative aspect-[3/2] overflow-hidden bg-neutral-100 mb-5">
+        <motion.div
+          id="stories-grid"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="grid lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-10 lg:gap-16 items-stretch scroll-mt-24"
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+          onFocusCapture={() => setFocused(true)}
+          onBlurCapture={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setFocused(false); }}
+        >
+          {/* Index: numbered entries with a reading-progress line */}
+          <ol className="order-2 lg:order-1 flex flex-col divide-y divide-neutral-200 border-t border-b border-neutral-200" aria-label="Featured stories">
+            {STORIES.map((item, i) => {
+              const isActive = i === active;
+              return (
+                <li key={item.href} className="relative">
+                  <button
+                    type="button"
+                    onClick={() => select(i)}
+                    aria-current={isActive ? "true" : undefined}
+                    className="group flex w-full items-start gap-5 py-6 pr-2 text-left transition-colors"
+                  >
+                    <span className={`mt-1 font-mono text-[11px] tabular-nums tracking-wide ${isActive ? "text-neutral-900" : "text-neutral-400"}`}>
+                      0{i + 1}
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className={`block text-[11px] font-semibold uppercase tracking-[0.18em] mb-2 ${isActive ? "text-orange-600" : "text-neutral-400"}`}>
+                        {item.tag}
+                      </span>
+                      <span className={`block font-serif text-lg sm:text-xl leading-snug tracking-tight transition-colors ${isActive ? "text-neutral-900" : "text-neutral-500 group-hover:text-neutral-800"}`}>
+                        {item.headline}
+                      </span>
+                      <AnimatePresence initial={false}>
+                        {isActive && (
+                          <motion.span
+                            key="excerpt"
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={fade ?? { duration: 0.35 }}
+                            className="block overflow-hidden"
+                          >
+                            <span className="block pt-3 text-[15px] leading-relaxed text-neutral-600 max-w-[30rem]">{item.excerpt}</span>
+                            <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-neutral-900">
+                              {item.readTime}
+                            </span>
+                          </motion.span>
+                        )}
+                      </AnimatePresence>
+                    </span>
+                  </button>
+                  {/* progress line */}
+                  <span aria-hidden className="absolute left-0 right-0 bottom-0 h-px bg-transparent overflow-hidden">
+                    {isActive && autoplay && !paused && (
+                      <motion.span
+                        key={`${i}-${cycle}`}
+                        initial={{ scaleX: 0 }}
+                        animate={{ scaleX: 1 }}
+                        transition={{ duration: STORY_DURATION_MS / 1000, ease: "linear" }}
+                        style={{ transformOrigin: "left" }}
+                        className="block h-px w-full bg-neutral-900"
+                      />
+                    )}
+                  </span>
+                </li>
+              );
+            })}
+          </ol>
+
+          {/* Stage: the active story */}
+          <div className="order-1 lg:order-2 relative">
+            <Link href={story.href} className="group block relative aspect-[4/3] sm:aspect-[16/11] overflow-hidden bg-neutral-100 rounded-2xl">
+              <AnimatePresence mode="popLayout" initial={false}>
+                <motion.div
+                  key={story.href}
+                  initial={reduceMotion ? false : { opacity: 0, scale: 1.02 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={fade ?? { duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                  className="absolute inset-0"
+                >
                   <Image
                     src={story.image}
                     alt={story.alt}
                     fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 540px"
-                    className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                    priority={active === 0}
+                    sizes="(max-width: 1024px) 100vw, 60vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                   />
+                </motion.div>
+              </AnimatePresence>
+              <div aria-hidden className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 via-black/20 to-transparent pointer-events-none" />
+              <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8 flex items-end justify-between gap-6">
+                <div className="min-w-0">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/70 mb-2">{story.tag}</p>
+                  <p className="font-serif text-xl sm:text-2xl lg:text-3xl leading-snug tracking-tight text-white max-w-xl">{story.headline}</p>
                 </div>
-                <p className="text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.18em] mb-2">
-                  {story.tag}
-                </p>
-                <h3 className="font-serif text-lg sm:text-xl text-neutral-900 tracking-tight leading-snug group-hover:text-neutral-600 transition-colors max-w-[26rem]">
-                  {story.headline}
-                </h3>
-              </Link>
-            </motion.article>
-          ))}
-        </div>
+                <span className="hidden sm:inline-flex shrink-0 items-center gap-1.5 rounded-full bg-white px-4 py-2 text-sm font-medium text-neutral-900 transition-transform group-hover:translate-x-0.5">
+                  Read story <ArrowUpRight className="w-4 h-4" aria-hidden />
+                </span>
+              </div>
+            </Link>
+            <div className="mt-4 flex items-center justify-between text-xs text-neutral-400 lg:hidden">
+              <span className="font-mono tabular-nums">0{active + 1} / 0{STORIES.length}</span>
+              <div className="flex gap-2">
+                {STORIES.map((item, i) => (
+                  <button
+                    key={item.href}
+                    type="button"
+                    aria-label={`Show story ${i + 1}: ${item.tag}`}
+                    onClick={() => select(i)}
+                    className={`h-1.5 rounded-full transition-all ${i === active ? "w-6 bg-neutral-900" : "w-1.5 bg-neutral-300"}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
