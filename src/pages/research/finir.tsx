@@ -39,7 +39,7 @@ const people = [
 
 function Label({ children }: { children: ReactNode }) {
   return (
-    <p className="text-[11px] font-bold uppercase tracking-[.18em] text-[#0c6a72]">
+    <p className="text-[11px] font-bold uppercase tracking-[.18em] text-[#171717]">
       {children}
     </p>
   );
@@ -89,13 +89,13 @@ function Resource({
       className="finir-resource flex items-center justify-between gap-5 border-b border-[#d5dcda] px-4 py-5"
     >
       <span className="flex items-center gap-4">
-        <Icon className="h-4 w-4 text-[#0c6a72]" aria-hidden />
+        <Icon className="h-4 w-4 text-[#171717]" aria-hidden />
         <span>
           <strong className="block text-sm font-semibold text-[#172126]">{title}</strong>
           <span className="mt-1 block text-xs text-[#697578]">{detail}</span>
         </span>
       </span>
-      <ArrowUpRight className="h-4 w-4 shrink-0 text-[#0c6a72]" aria-hidden />
+      <ArrowUpRight className="h-4 w-4 shrink-0 text-[#171717]" aria-hidden />
     </a>
   );
 }
@@ -118,7 +118,7 @@ function FlowDiagram() {
               <div className={`finir-node w-full max-w-[270px] ${item === "FinIR" ? "finir-node--active" : ""}`}>
                 {item}
               </div>
-              {index < flow.length - 1 && <span className="text-[#0c6a72]">↓</span>}
+              {index < flow.length - 1 && <span className="text-[#171717]">↓</span>}
             </div>
           ))}
         </div>
@@ -130,7 +130,7 @@ function FlowDiagram() {
           {["Typed Financial Graph", "Dependency Analysis", "Compiler Passes", "Incremental Runtime"].map((item) => (
             <div className="finir-node mb-2 last:mb-0" key={item}>{item}</div>
           ))}
-          <div className="my-3 text-center text-[#0c6a72]">↓</div>
+          <div className="my-3 text-center text-[#171717]">↓</div>
           <div className="finir-node">CPU · SIMD · GPU</div>
         </div>
       </div>
@@ -210,11 +210,11 @@ const FinIR: FC = () => {
       <main>
         <article>
           <header className="mx-auto max-w-7xl px-5 pb-16 pt-32 sm:px-8 sm:pb-24 sm:pt-40">
-            <Link href="/research" className="mb-12 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[.14em] text-[#526064] transition-colors hover:text-[#0c6a72] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0c6a72]">
+            <Link href="/research" className="mb-12 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[.14em] text-[#526064] transition-colors hover:text-[#171717] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#171717]">
               <ArrowLeft className="h-3.5 w-3.5" aria-hidden />Research &amp; releases
             </Link>
             <div className="border-y border-[#ccd3d1] py-4 text-[11px] font-semibold uppercase tracking-[.16em] text-[#526064]">
-              <span>September 3, 2026</span><span className="mx-3 text-[#a4adac]">/</span><span className="text-[#0c6a72]">Research · Release</span>
+              <span>September 3, 2026</span><span className="mx-3 text-[#a4adac]">/</span><span className="text-[#171717]">Research · Release</span>
             </div>
             <div className="mt-10 max-w-5xl">
               <h1 className="finir-display text-[3.5rem] leading-[.91] text-[#172126] sm:text-7xl lg:text-[6.4rem]">{TITLE}</h1>
@@ -223,12 +223,12 @@ const FinIR: FC = () => {
             </div>
           </header>
 
-          <div className="border-y border-[#ccd3d1] bg-[#eef2f0] px-5 py-5 sm:px-8">
+          <div className="border-y border-[#ccd3d1] bg-[#f5f5f5] px-5 py-5 sm:px-8">
             <div className="mx-auto flex max-w-7xl flex-wrap gap-x-8 gap-y-3 text-xs font-semibold text-[#526064]">
-              <a href="https://github.com/Olyxee/finir" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-[#0c6a72]"><Github className="h-4 w-4" />GitHub</a>
-              <a href="https://pypi.org/project/finir/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-[#0c6a72]"><Package className="h-4 w-4" />PyPI</a>
-              <a href="https://github.com/Olyxee/finir/releases/tag/v0.1.0" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-[#0c6a72]"><ShieldCheck className="h-4 w-4" />v0.1.0</a>
-              <a href="https://huggingface.co/Olyxee/FinIR-Intent" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-[#0c6a72]"><BookOpen className="h-4 w-4" />FinIR-Intent</a>
+              <a href="https://github.com/Olyxee/finir" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-[#171717]"><Github className="h-4 w-4" />GitHub</a>
+              <a href="https://pypi.org/project/finir/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-[#171717]"><Package className="h-4 w-4" />PyPI</a>
+              <a href="https://github.com/Olyxee/finir/releases/tag/v0.1.0" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-[#171717]"><ShieldCheck className="h-4 w-4" />v0.1.0</a>
+              <a href="https://huggingface.co/Olyxee/FinIR-Intent" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-[#171717]"><BookOpen className="h-4 w-4" />FinIR-Intent</a>
             </div>
           </div>
 
@@ -240,7 +240,7 @@ const FinIR: FC = () => {
               <Section id="problem" number="01" title="The problem">
                 <p className="mt-7">AI systems can interpret financial instructions. Reliable financial execution needs to be deterministic, typed, incremental, auditable, and independent from probabilistic code generation.</p>
                 <p className="mt-5">Generated execution logic can be inconsistent. Full recomputation is unnecessary. Weak financial type guarantees make errors harder to catch; caching, provenance, and auditing become difficult when AI-generated code is the execution environment.</p>
-                <p className="finir-display mt-12 max-w-xl border-l-2 border-[#0c6a72] pl-6 text-3xl leading-snug text-[#172126] sm:text-4xl">AI interprets. FinIR validates, compiles, and computes.</p>
+                <p className="finir-display mt-12 max-w-xl border-l-2 border-[#171717] pl-6 text-3xl leading-snug text-[#172126] sm:text-4xl">AI interprets. FinIR validates, compiles, and computes.</p>
               </Section>
 
               <Section id="boundary" number="02" title="A computational boundary">
@@ -273,7 +273,7 @@ const FinIR: FC = () => {
 
               <Section id="evidence" number="07" title="Evidence and reproducibility">
                 <p className="mt-7">Experiment 001 asks whether dependency-aware caching reduces the cost of iterative financial reasoning. Its 1,000-turn synthetic workload uses a 6-node model and compares a warm FinIR cache with a same-engine baseline whose cache is cleared each turn.</p>
-                <div className="mt-10 overflow-x-auto border border-[#d2d8d7]"><table className="w-full min-w-[520px] text-left text-sm"><thead className="bg-[#eef2f0] text-xs uppercase tracking-wider text-[#526064]"><tr><th className="p-4">Condition</th><th className="p-4">Time</th><th className="p-4">Recomputes</th><th className="p-4">Cache hit</th></tr></thead><tbody><tr className="border-t border-[#d2d8d7]"><td className="p-4">Baseline, full recompute</td><td className="p-4 font-mono">0.0355s</td><td className="p-4 font-mono">6,000</td><td className="p-4">0%</td></tr><tr className="border-t border-[#d2d8d7]"><td className="p-4">FinIR incremental</td><td className="p-4 font-mono">0.0223s</td><td className="p-4 font-mono">3,600</td><td className="p-4">40.0%</td></tr></tbody></table></div>
+                <div className="mt-10 overflow-x-auto border border-[#d2d8d7]"><table className="w-full min-w-[520px] text-left text-sm"><thead className="bg-[#f5f5f5] text-xs uppercase tracking-wider text-[#526064]"><tr><th className="p-4">Condition</th><th className="p-4">Time</th><th className="p-4">Recomputes</th><th className="p-4">Cache hit</th></tr></thead><tbody><tr className="border-t border-[#d2d8d7]"><td className="p-4">Baseline, full recompute</td><td className="p-4 font-mono">0.0355s</td><td className="p-4 font-mono">6,000</td><td className="p-4">0%</td></tr><tr className="border-t border-[#d2d8d7]"><td className="p-4">FinIR incremental</td><td className="p-4 font-mono">0.0223s</td><td className="p-4 font-mono">3,600</td><td className="p-4">40.0%</td></tr></tbody></table></div>
                 <p className="mt-5 text-sm leading-7 text-[#526064]"><strong className="text-[#172126]">Observed in this run: 1.59×.</strong> This is a synthetic workload, with cheap arithmetic and Python traversal overhead, run in a single CPU process using the same engine and no-cache baseline. It is not a general production speedup claim. Reproduce with <code>python research/reproduce_experiment_001.py</code> in the public repository.</p>
               </Section>
 

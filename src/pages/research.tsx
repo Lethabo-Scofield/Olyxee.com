@@ -115,7 +115,7 @@ const Research: FC = () => {
                   type="button"
                   onClick={() => setActiveFilter(filter)}
                   aria-pressed={activeFilter === filter}
-                  className={`whitespace-nowrap transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0c6a72] ${
+                  className={`whitespace-nowrap transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#171717] ${
                     activeFilter === filter
                       ? "font-semibold text-[#172126]"
                       : "text-[#687579] hover:text-[#172126]"
@@ -137,7 +137,7 @@ const Research: FC = () => {
                     {paper.url.startsWith("/") ? (
                     <Link href={paper.url} className="group block py-9 sm:px-4 sm:py-12">
                       <div className="grid lg:grid-cols-[155px_1fr_auto] gap-4 lg:gap-8">
-                        <div className="flex lg:flex-col gap-2 lg:gap-1 text-[11px] uppercase tracking-[0.14em] font-bold text-[#0c6a72]">
+                        <div className="flex lg:flex-col gap-2 lg:gap-1 text-[11px] uppercase tracking-[0.14em] font-bold text-[#171717]">
                           <span>{paper.category}</span><span className="text-[#7a8587]">{paper.month} {paper.year}</span>
                         </div>
                         <div className="max-w-2xl">
@@ -147,16 +147,16 @@ const Research: FC = () => {
                         </div>
                         <div className="flex items-center gap-3 text-xs font-semibold text-[#526064] shrink-0 lg:pt-1">
                           <span>{paper.source}</span>
-                          <ArrowUpRight className="w-4 h-4 text-[#0c6a72] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" aria-hidden />
+                          <ArrowUpRight className="w-4 h-4 text-[#171717] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" aria-hidden />
                         </div>
                       </div>
                     </Link>
                     ) : (
                     <a href={paper.url} target="_blank" rel="noopener noreferrer" className="group block py-9 sm:px-4 sm:py-12">
                       <div className="grid lg:grid-cols-[155px_1fr_auto] gap-4 lg:gap-8">
-                        <div className="flex lg:flex-col gap-2 lg:gap-1 text-[11px] uppercase tracking-[0.14em] font-bold text-[#0c6a72]"><span>{paper.category}</span><span className="text-[#7a8587]">{paper.month} {paper.year}</span></div>
+                        <div className="flex lg:flex-col gap-2 lg:gap-1 text-[11px] uppercase tracking-[0.14em] font-bold text-[#171717]"><span>{paper.category}</span><span className="text-[#7a8587]">{paper.month} {paper.year}</span></div>
                         <div className="max-w-2xl"><h3 className="font-serif !font-normal text-2xl sm:text-[2rem] leading-[1.06] text-[#172126] tracking-[-0.035em]">{paper.title}</h3><p className="mt-4 text-[15px] leading-7 text-[#526064]">{paper.description}</p><p className="mt-4 text-xs text-[#7a8587]">{paper.authors}</p></div>
-                        <div className="flex items-center gap-3 text-xs font-semibold text-[#526064] shrink-0 lg:pt-1"><span>{paper.source}</span><ArrowUpRight className="w-4 h-4 text-[#0c6a72] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" aria-hidden /></div>
+                        <div className="flex items-center gap-3 text-xs font-semibold text-[#526064] shrink-0 lg:pt-1"><span>{paper.source}</span><ArrowUpRight className="w-4 h-4 text-[#171717] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" aria-hidden /></div>
                       </div>
                     </a>
                     )}

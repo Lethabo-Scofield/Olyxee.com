@@ -391,12 +391,12 @@ nextjs-portal {
 }
 
 .research-entry:hover {
-  background-color: #f3f6f5;
+  background-color: #f5f5f5;
 }
 
 .research-entry:focus-within {
-  background-color: #eef7f6;
-  outline: 2px solid #0c6a72;
+  background-color: #f5f5f5;
+  outline: 2px solid #171717;
   outline-offset: -2px;
 }
 
@@ -417,14 +417,14 @@ nextjs-portal {
 .finir-prose h2 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; letter-spacing: -.04em; }
 .finir-anchor { border-left: 1px solid #cfd5d4; }
 .finir-anchor a { display:block; padding: .45rem 0 .45rem 1rem; color:#697578; font-size:.75rem; letter-spacing:.08em; text-transform:uppercase; transition: color 180ms ease, border-color 180ms ease; }
-.finir-anchor a:hover, .finir-anchor a:focus-visible { color:#0c6a72; outline:none; }
-.finir-flow-arrow { color:#0c6a72; font-size:1.25rem; line-height:1; }
+.finir-anchor a:hover, .finir-anchor a:focus-visible { color:#171717; outline:none; }
+.finir-flow-arrow { color:#171717; font-size:1.25rem; line-height:1; }
 .finir-node { border: 1px solid #cdd4d3; background: rgba(253,253,252,.72); padding: .7rem .8rem; text-align:center; font-size:.76rem; font-weight:600; color:#253438; }
 .finir-node--active { background:#172126; border-color:#172126; color:#f8faf8; }
 .finir-diagram { background: #eef1ef; border: 1px solid #d5dcda; }
 .finir-resource { transition: background-color 180ms ease, transform 180ms ease; }
 .finir-resource:hover { background:#e7f2f0; transform: translateX(3px); }
-.finir-resource:focus-within { outline: 2px solid #0c6a72; outline-offset: -2px; }
+.finir-resource:focus-within { outline: 2px solid #171717; outline-offset: -2px; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .finir-resource { transition:none; }
