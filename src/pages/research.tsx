@@ -15,15 +15,6 @@ const papers = [
     year: "2026",
     url: "https://arxiv.org/abs/2604.15597",
   },
-  {
-    title:
-      "Attention Residuals: Scalable Sparse Attention with Residual Connections for Efficient Long-Context Transformers",
-    authors: "S. Rao, K. Müller, A. Desai, N. Ivanov",
-    venue: "ICLR",
-    month: "Mar",
-    year: "2026",
-    url: "https://arxiv.org/abs/2603.15031",
-  },
 ];
 
 const Research: FC = () => {
