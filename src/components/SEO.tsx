@@ -9,6 +9,10 @@ interface SEOProps {
   keywords?: string[];
   noindex?: boolean;
   ogImage?: string;
+  ogImageAlt?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
+  authors?: string[];
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
@@ -22,6 +26,10 @@ const SEO: FC<SEOProps> = ({
   keywords,
   noindex = false,
   ogImage,
+  ogImageAlt,
+  publishedTime,
+  modifiedTime,
+  authors = [],
   jsonLd,
 }) => {
   const fullTitle = `${title} | Olyxee`;
@@ -73,14 +81,25 @@ const SEO: FC<SEOProps> = ({
       <meta property="og:description" content={description} />
       <meta property="og:site_name" content="Olyxee" />
       <meta property="og:locale" content="en_US" />
+      {ogType === "article" && publishedTime && (
+        <meta property="article:published_time" content={publishedTime} />
+      )}
+      {ogType === "article" && modifiedTime && (
+        <meta property="article:modified_time" content={modifiedTime} />
+      )}
+      {ogType === "article" &&
+        authors.map((author) => (
+          <meta key={author} property="article:author" content={author} />
+        ))}
       <meta property="og:image" content={image} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:image:alt" content={`${title} - Olyxee`} />
+      <meta property="og:image:alt" content={ogImageAlt ?? `${title} - Olyxee`} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
+      <meta name="twitter:image:alt" content={ogImageAlt ?? `${title} - Olyxee`} />
       <meta name="twitter:creator" content="@Olyxee" />
       <meta name="twitter:site" content="@Olyxee" />
       <meta name="format-detection" content="telephone=no" />

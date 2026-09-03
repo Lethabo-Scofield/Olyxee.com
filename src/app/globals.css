@@ -468,15 +468,348 @@ nextjs-portal {
 .finir-node { border: 1px solid #d4dddf; background: #fdfdfc; padding: .52rem .65rem; text-align:center; font-size:.65rem; font-weight:600; color:#314148; }
 .finir-node--active { background:#24475a; border-color:#24475a; color:#fff; }
 .finir-diagram { background: #f4f7f7; border: 1px solid #d7e0e1; }
-.finir-resource { transition: background-color 180ms ease, transform 180ms ease; }
-.finir-resource:hover { background:#f0f4f4; transform: translateX(3px); }
-.finir-resource:focus-within { outline: 2px solid #557b90; outline-offset: -2px; }
+/* References directory: an annotated reading list, not a grid of product cards. */
+.finir-resources-intro { max-width: 38rem; }
+.finir-resources-intro p:first-child { font-size: 1.06rem; line-height: 1.7; color: #34464e; }
+.finir-resources-intro p + p { margin-top: .8rem; color: #718087; font-size: .8rem; line-height: 1.55; }
+.finir-resource-directory { border-top: 1px solid #bfcdd0; }
+.finir-resource-group { padding: 2.25rem 0 2.5rem; border-bottom: 1px solid #d9e0e1; }
+.finir-resource-group__heading { display: grid; grid-template-columns: 2.5rem minmax(0, 1fr); gap: .75rem; margin-bottom: 1.3rem; }
+.finir-resource-group__heading > span { padding-top: .2rem; color: #63818d; font-family: var(--font-mono); font-size: .65rem; letter-spacing: .08em; }
+.finir-resource-group__heading h3 { color: #24343b; font-size: 1rem; font-weight: 700; letter-spacing: -.02em; }
+.finir-resource-group__heading p { margin-top: .3rem; color: #718087; font-size: .78rem; line-height: 1.55; }
+.finir-resource-list { border-top: 1px solid #d9e0e1; }
+.finir-resource { display: grid; grid-template-columns: 2.5rem minmax(0, 1fr) auto; align-items: center; gap: .75rem; min-height: 5.65rem; padding: 1rem 0; border-bottom: 1px solid #d9e0e1; color: inherit; text-decoration: none; transition: background-color 160ms ease, padding 160ms ease; }
+.finir-resource__mark { display: flex; align-items: center; justify-content: center; width: 1.9rem; height: 1.9rem; color: #527487; }
+.finir-resource__copy { min-width: 0; }
+.finir-resource__copy strong { display: block; color: #24343b; font-size: .9rem; font-weight: 700; line-height: 1.25; }
+.finir-resource__copy > span { display: block; margin-top: .3rem; color: #64747b; font-size: .76rem; line-height: 1.5; }
+.finir-resource__meta { display: none; color: #718087; font-size: .62rem; letter-spacing: .07em; text-transform: uppercase; white-space: nowrap; }
+.finir-resource__open { color: #527487; transition: transform 160ms ease, color 160ms ease; }
+.finir-resource:hover { background: #f5f8f8; padding-right: .55rem; padding-left: .55rem; }
+.finir-resource:hover .finir-resource__open { color: #24475a; transform: translate(2px, -2px); }
+.finir-resource:focus-visible { outline: 2px solid #557b90; outline-offset: 3px; background: #f5f8f8; }
+.finir-resource--unavailable { color: inherit; cursor: default; }
+.finir-resource--unavailable .finir-resource__mark { color: #80939a; }
+.finir-resource--unavailable .finir-resource__meta { color: #80939a; }
+@media (min-width: 640px) {
+  .finir-resource-group { padding: 3rem 0; }
+  .finir-resource-group__heading { grid-template-columns: 3.3rem minmax(0, 1fr); margin-bottom: 1.6rem; }
+  .finir-resource { grid-template-columns: 3.3rem minmax(0, 1fr) 6rem 1rem; gap: 1rem; padding-top: 1.1rem; padding-bottom: 1.1rem; }
+  .finir-resource__meta { display: block; }
+}
 .finir-kicker { color:#527487; }
 .finir-rule { border-color:#d6dfe0; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .finir-resource { transition:none; }
-  .finir-resource:hover { transform:none; }
+  .finir-resource, .finir-resource__open { transition:none; }
+  .finir-resource:hover .finir-resource__open { transform:none; }
 }
 .finir-page .finir-section { padding-top: 4rem; padding-bottom: 4rem; }
 @media (min-width: 640px) { .finir-page .finir-section { padding-top: 6rem; padding-bottom: 6rem; } }
+
+/* FinIR's IR section is treated as a figure in the paper: an editorial system
+   diagram rather than a product card. Scoped tightly to preserve the article. */
+.finir-ir-intro {
+  max-width: 40rem;
+  font-size: 1.12rem !important;
+  line-height: 1.7 !important;
+  color: #334750 !important;
+}
+.finir-ir-figure {
+  margin-top: 3.25rem;
+  overflow: hidden;
+  background: #f7faf9;
+}
+.finir-ir-legend {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 1.25rem;
+  border-bottom: 1px solid #d9e2e2;
+}
+.finir-ir-eyebrow {
+  color: #476d7e;
+  font-size: .63rem;
+  font-weight: 750;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.finir-ir-legend span:last-child {
+  color: #718087;
+  font-family: var(--font-mono);
+  font-size: .66rem;
+}
+.finir-ir-stages {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.finir-ir-stage {
+  position: relative;
+  padding: 1.5rem 1.25rem 1.65rem;
+}
+.finir-ir-stage + .finir-ir-stage {
+  border-top: 1px solid #d9e2e2;
+}
+.finir-ir-stage-index {
+  display: block;
+  color: #6c8995;
+  font-family: var(--font-mono);
+  font-size: .65rem;
+  letter-spacing: .08em;
+}
+.finir-ir-stage h3 {
+  margin-top: .85rem;
+  color: #1f343d;
+  font-size: 1rem;
+  font-weight: 650;
+  letter-spacing: -.02em;
+}
+.finir-ir-stage p {
+  margin-top: .55rem;
+  color: #607078;
+  font-size: .8rem;
+  line-height: 1.55;
+}
+.finir-ir-stage:last-child { background: #eaf2f2; }
+.finir-ir-model {
+  margin-top: 0;
+  background: #fbfcfb;
+}
+.finir-ir-model-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 1.25rem;
+  border-bottom: 1px solid #d9e2e2;
+}
+.finir-ir-model-header h3 {
+  color: #243d47;
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+.finir-ir-model-header p {
+  color: #718087;
+  font-size: .68rem;
+}
+.finir-ir-model-grid { display: grid; }
+.finir-ir-code {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 1.35rem 1.25rem;
+  color: #294452;
+  font-family: var(--font-mono);
+  font-size: .7rem;
+  line-height: 1.75;
+  white-space: pre;
+}
+.finir-ir-graph {
+  position: relative;
+  padding: 1.5rem 1.25rem 1.75rem;
+  background: #f2f6f5;
+}
+.finir-ir-graph-label {
+  margin-bottom: 1.35rem;
+  color: #55717d;
+  font-size: .62rem;
+  font-weight: 750;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+.finir-ir-graph-row {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) 1.15rem minmax(0,1fr) 1.15rem minmax(0,1fr);
+  align-items: center;
+  gap: .3rem;
+}
+.finir-ir-graph-row + .finir-ir-graph-row { margin-top: .85rem; }
+.finir-ir-token {
+  min-width: 0;
+  padding: .55rem .35rem;
+  color: #304952;
+  font-size: .61rem;
+  font-weight: 650;
+  line-height: 1.15;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+.finir-ir-token--input { background: #e1ecea; }
+.finir-ir-token--result { background: #d7e7e7; color: #173f4b; }
+.finir-ir-operator {
+  color: #547887;
+  font-family: var(--font-mono);
+  font-size: .8rem;
+  text-align: center;
+}
+.finir-ir-caption {
+  padding: 1rem 1.25rem 1.25rem;
+  border-top: 1px solid #d9e2e2;
+  color: #64757c;
+  font-size: .75rem;
+  line-height: 1.55;
+}
+@media (min-width: 640px) {
+  .finir-ir-stages { grid-template-columns: repeat(3, 1fr); }
+  .finir-ir-stage { min-height: 11.75rem; padding: 1.75rem 1.5rem; }
+  .finir-ir-stage + .finir-ir-stage { border-top: 0; border-left: 1px solid #d9e2e2; }
+  .finir-ir-stage:not(:last-child)::after {
+    position: absolute;
+    right: -.4rem;
+    bottom: 1.6rem;
+    z-index: 1;
+    color: #527487;
+    content: "→";
+    font-size: 1rem;
+  }
+  .finir-ir-model-grid { grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr); }
+  .finir-ir-graph { border-left: 1px solid #d9e2e2; }
+  .finir-ir-code { padding: 1.7rem 1.5rem; font-size: .74rem; }
+  .finir-ir-graph { padding: 1.7rem 1.5rem; }
+}
+
+/* FinIR responsive reading rules. The article remains a white editorial page;
+   these only alter density, wrapping, and touch ergonomics at constrained widths. */
+.finir-page {
+  overflow: clip;
+}
+.finir-page article {
+  min-width: 0;
+}
+.finir-page figure,
+.finir-page pre,
+.finir-page table {
+  min-width: 0;
+}
+.finir-page img {
+  display: block;
+  max-width: 100%;
+}
+.finir-page :is(a, button) {
+  -webkit-tap-highlight-color: transparent;
+}
+.finir-page a:focus-visible {
+  outline: 2px solid #557b90;
+  outline-offset: 3px;
+}
+.finir-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-color: #aebfc6 transparent;
+}
+.finir-scroll > pre {
+  min-width: max-content;
+}
+@media (max-width: 639px) {
+  .finir-page .finir-section {
+    padding-top: 3.25rem;
+    padding-bottom: 3.25rem;
+  }
+  .finir-page h1 {
+    letter-spacing: -.042em;
+  }
+  .finir-page h2 {
+    font-size: clamp(2rem, 10vw, 2.55rem) !important;
+    line-height: 1.04 !important;
+    letter-spacing: -.04em;
+  }
+  .finir-prose p {
+    font-size: .98rem;
+    line-height: 1.68;
+  }
+  .finir-ir-intro {
+    font-size: 1.02rem !important;
+  }
+  .finir-node {
+    min-height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .65rem .8rem;
+    font-size: .68rem;
+  }
+  .finir-diagram {
+    padding: 1rem !important;
+    font-size: .7rem;
+    line-height: 1.65;
+    overflow-wrap: anywhere;
+  }
+  .finir-ir-figure {
+    margin-top: 2.25rem;
+    margin-left: -1.25rem;
+    margin-right: -1.25rem;
+  }
+  .finir-ir-legend,
+  .finir-ir-model-header {
+    align-items: flex-start;
+    padding: 1rem 1.25rem;
+  }
+  .finir-ir-legend span:last-child,
+  .finir-ir-model-header p {
+    flex: 0 0 auto;
+  }
+  .finir-ir-eyebrow {
+    line-height: 1.45;
+  }
+  .finir-ir-model-header {
+    flex-direction: column;
+    gap: .35rem;
+  }
+  .finir-ir-code {
+    padding: 1.15rem 1.25rem;
+    font-size: .66rem;
+  }
+  .finir-ir-graph {
+    padding: 1.25rem;
+  }
+  .finir-ir-graph-row {
+    grid-template-columns: minmax(0, 1fr) .8rem minmax(0, 1fr) .8rem minmax(0, 1fr);
+    gap: .18rem;
+  }
+  .finir-ir-token {
+    padding: .5rem .18rem;
+    font-size: .55rem;
+  }
+  .finir-resource-directory {
+    margin-top: 2.5rem;
+  }
+  .finir-resource-group {
+    padding: 2rem 0;
+  }
+  .finir-resource-group__heading {
+    grid-template-columns: 1.8rem minmax(0, 1fr);
+    gap: .55rem;
+  }
+  .finir-resource {
+    grid-template-columns: 2rem minmax(0, 1fr) 1.25rem;
+    gap: .55rem;
+    min-height: 5.35rem;
+    padding: 1rem 0;
+  }
+  .finir-resource__mark {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+  .finir-resource__copy strong {
+    font-size: .84rem;
+  }
+  .finir-resource__copy > span {
+    font-size: .73rem;
+    line-height: 1.45;
+  }
+  .finir-resource:hover {
+    padding-right: 0;
+    padding-left: 0;
+    background: transparent;
+  }
+}
+@media (min-width: 640px) and (max-width: 1023px) {
+  .finir-page .finir-section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
