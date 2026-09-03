@@ -6,7 +6,7 @@ import Footer from "../components/footer";
 import TalkToEnterprise from "../components/EnterpriseContactModal";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Check, Code2, Copy, TerminalSquare, Landmark, Workflow, Headphones } from "lucide-react";
+import { ArrowRight, Check, Code2, Copy, TerminalSquare, Landmark, Truck } from "lucide-react";
 
 const SCREENS = [
   { 
@@ -320,12 +320,11 @@ const Enterprise: FC = () => {
           <h2 className="text-[2.5rem] sm:text-[3.5rem] font-medium tracking-tighter text-[#111] mb-16 text-center leading-[1.1]">
             Intelligence for every team.
           </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { icon: Landmark, title: "Finance", desc: "Reconcile transactions, audit trails, and ensure financial integrity across platforms." },
-              { icon: Workflow, title: "Operations", desc: "Automate approvals, logistics, and supply chain tracking securely." },
+              { icon: Truck, title: "Logistics", desc: "Keep orders, dispatch, and fulfilment in sync with live tracking from planning to delivery." },
               { icon: Code2, title: "Engineering", desc: "Custom AI infrastructure and internal tool integration." },
-              { icon: Headphones, title: "Support", desc: "Resolve issues faster with full organizational memory and customer context." },
             ].map((team) => (
               <div
                 key={team.title}
