@@ -521,26 +521,6 @@ nextjs-portal {
   overflow: hidden;
   background: #f7faf9;
 }
-.finir-ir-legend {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 1.1rem 1.25rem;
-  border-bottom: 1px solid #d9e2e2;
-}
-.finir-ir-eyebrow {
-  color: #476d7e;
-  font-size: .63rem;
-  font-weight: 750;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-}
-.finir-ir-legend span:last-child {
-  color: #718087;
-  font-family: var(--font-mono);
-  font-size: .66rem;
-}
 .finir-ir-stages {
   display: grid;
   grid-template-columns: 1fr;
@@ -556,44 +536,27 @@ nextjs-portal {
   display: block;
   color: #6c8995;
   font-family: var(--font-mono);
-  font-size: .65rem;
+  font-size: .75rem;
   letter-spacing: .08em;
 }
 .finir-ir-stage h3 {
   margin-top: .85rem;
   color: #1f343d;
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 650;
   letter-spacing: -.02em;
 }
 .finir-ir-stage p {
   margin-top: .55rem;
   color: #607078;
-  font-size: .8rem;
+  font-size: .9rem;
   line-height: 1.55;
 }
 .finir-ir-stage:last-child { background: #eaf2f2; }
 .finir-ir-model {
   margin-top: 0;
+  border-top: 1px solid #d9e2e2;
   background: #fbfcfb;
-}
-.finir-ir-model-header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 1.1rem 1.25rem;
-  border-bottom: 1px solid #d9e2e2;
-}
-.finir-ir-model-header h3 {
-  color: #243d47;
-  font-size: .82rem;
-  font-weight: 700;
-  letter-spacing: -.01em;
-}
-.finir-ir-model-header p {
-  color: #718087;
-  font-size: .68rem;
 }
 .finir-ir-model-grid { display: grid; }
 .finir-ir-code {
@@ -665,7 +628,7 @@ nextjs-portal {
     content: "→";
     font-size: 1rem;
   }
-  .finir-ir-model-grid { grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr); }
+  .finir-ir-model-grid { grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); }
   .finir-ir-graph { border-left: 1px solid #d9e2e2; }
   .finir-ir-code { padding: 1.7rem 1.5rem; font-size: .74rem; }
   .finir-ir-graph { padding: 1.7rem 1.5rem; }
@@ -704,6 +667,87 @@ nextjs-portal {
 .finir-scroll > pre {
   min-width: max-content;
 }
+.finir-code {
+  border: 1px solid #dfe5e6;
+  border-radius: 10px;
+  background: #fbfcfc;
+  overflow: hidden;
+}
+.finir-code-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  padding: .55rem .75rem .55rem 1rem;
+  border-bottom: 1px solid #e6ebec;
+  background: #f5f7f8;
+}
+.finir-code-label {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .75rem;
+  font-weight: 500;
+  color: #5b6b73;
+  white-space: nowrap;
+}
+.finir-code-label img {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+.finir-code-sep {
+  color: #aab7bd;
+}
+.finir-code-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .3rem .6rem;
+  border: 1px solid #d5dde0;
+  border-radius: 6px;
+  background: #ffffff;
+  font-size: .75rem;
+  font-weight: 500;
+  color: #34474f;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+}
+.finir-code-copy:hover {
+  background: #eef3f4;
+  border-color: #b9c7cc;
+}
+.finir-code-copy:focus-visible {
+  outline: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.finir-code-pre {
+  margin: 0;
+  padding: 1.1rem 1.25rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: .875rem;
+  line-height: 1.85;
+  color: #34474f;
+  tab-size: 2;
+}
+.finir-code-pre code {
+  font: inherit;
+  background: none;
+  padding: 0;
+  border: 0;
+  color: inherit;
+}
+.finir-code-prompt {
+  color: #a5b3b9;
+  user-select: none;
+}
+.finir-code-cmd { color: #2f6fb0; font-weight: 600; }
+.finir-code-sub { color: #6f42c1; }
+.finir-code-flag { color: #b35c1e; }
+.finir-code-str { color: #2e7d4f; }
+.finir-code-arg { color: #34474f; }
 @media (max-width: 639px) {
   .finir-page .finir-section {
     padding-top: 3.25rem;
@@ -742,22 +786,6 @@ nextjs-portal {
     margin-top: 2.25rem;
     margin-left: -1.25rem;
     margin-right: -1.25rem;
-  }
-  .finir-ir-legend,
-  .finir-ir-model-header {
-    align-items: flex-start;
-    padding: 1rem 1.25rem;
-  }
-  .finir-ir-legend span:last-child,
-  .finir-ir-model-header p {
-    flex: 0 0 auto;
-  }
-  .finir-ir-eyebrow {
-    line-height: 1.45;
-  }
-  .finir-ir-model-header {
-    flex-direction: column;
-    gap: .35rem;
   }
   .finir-ir-code {
     padding: 1.15rem 1.25rem;
