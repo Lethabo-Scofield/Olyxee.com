@@ -1,6 +1,7 @@
 "use client";
 
 import type { FC, ReactNode } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowLeft,
@@ -231,6 +232,17 @@ const FinIR: FC = () => {
               <a href="https://huggingface.co/Olyxee/FinIR-Intent" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-[#171717]"><BookOpen className="h-4 w-4" />FinIR-Intent</a>
             </div>
           </div>
+
+          <figure className="mx-auto max-w-[1180px] border-b border-[#d2d8d7] px-5 py-8 sm:px-8 sm:py-12">
+            <Image
+              src="/research/finir-workflow.png"
+              alt="FinIR workflow from natural-language financial intent through a typed intermediate representation, dependency graph, incremental execution, and financial result"
+              width={1448}
+              height={1086}
+              className="h-auto w-full"
+              priority
+            />
+          </figure>
 
           <div className="mx-auto grid max-w-[1180px] grid-cols-1 gap-12 px-5 py-10 sm:px-8 lg:grid-cols-[150px_minmax(0,1fr)] lg:py-14">
             <aside className="lg:sticky lg:top-28 lg:self-start">
