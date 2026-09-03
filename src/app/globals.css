@@ -467,7 +467,19 @@ nextjs-portal {
 .finir-flow-arrow { color:#24475a; font-size:1.1rem; line-height:1; }
 .finir-node { border: 1px solid #d4dddf; background: #fdfdfc; padding: .52rem .65rem; text-align:center; font-size:.65rem; font-weight:600; color:#314148; }
 .finir-node--active { background:#24475a; border-color:#24475a; color:#fff; }
-.finir-diagram { background: #f4f7f7; border: 1px solid #d7e0e1; }
+/* Type semantics ledger: a spreadsheet-style grid so the typing reads like Excel or an accounting system. */
+.finir-sheet table { width: 100%; min-width: 40rem; border-collapse: collapse; font-size: .8rem; line-height: 1.45; color: #2b3b42; background: #fff; }
+.finir-sheet th, .finir-sheet td { border: 1px solid #dfe5e6; padding: .6rem .8rem; text-align: left; vertical-align: top; }
+.finir-sheet thead th { background: #f3f6f6; color: #5b6b73; font-size: .68rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; }
+.finir-sheet-corner, .finir-sheet-rownum { width: 2.25rem; background: #f3f6f6; color: #8a979d; font-family: var(--font-mono); font-size: .68rem; text-align: center !important; }
+.finir-sheet-item { font-weight: 600; color: #1f2f36; white-space: nowrap; }
+.finir-sheet-formula { font-family: var(--font-mono); font-size: .74rem; color: #34474f; white-space: nowrap; }
+.finir-sheet-type { display: inline-block; padding: .1rem .45rem; border: 1px solid #cfdbdf; border-radius: 4px; background: #f6f9f9; font-family: var(--font-mono); font-size: .68rem; color: #2f5566; white-space: nowrap; }
+.finir-sheet-type--error { border-color: #ecc9c4; background: #fdf3f1; color: #9a3d30; }
+.finir-sheet-result { min-width: 11rem; font-family: var(--font-mono); font-size: .76rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.finir-sheet-row--error td { background: #fffaf9; }
+.finir-sheet-row--error .finir-sheet-result { color: #b3402f; font-weight: 600; }
+.finir-sheet-note { display: block; margin-top: .15rem; font-family: var(--font-sans, inherit); font-size: .7rem; font-weight: 400; color: #8a5a52; white-space: normal; }
 /* References directory: an annotated reading list, not a grid of product cards. */
 .finir-resources-intro { max-width: 38rem; }
 .finir-resources-intro p:first-child { font-size: 1.06rem; line-height: 1.7; color: #34464e; }
@@ -657,12 +669,6 @@ nextjs-portal {
     justify-content: center;
     padding: .65rem .8rem;
     font-size: .68rem;
-  }
-  .finir-diagram {
-    padding: 1rem !important;
-    font-size: .7rem;
-    line-height: 1.65;
-    overflow-wrap: anywhere;
   }
   .finir-resource-directory {
     margin-top: 2.5rem;
