@@ -402,29 +402,37 @@ nextjs-portal {
   }
 }
 
-/* FinIR release: compact monochrome technical editorial typography. Kept local
-   so the wider Olyxee system remains intact. */
-.finir-page { background: #fff; color: #080808; }
-.finir-page::before { display: none; }
+/* FinIR release: a quiet technical journal with a cool archival-blue annotation
+   system. Scoped so the wider Olyxee language remains untouched. */
+.finir-page { background: #fbfbfa; color: #182126; font-family: "Avenir Next", "Segoe UI", system-ui, sans-serif; }
 .finir-page main, .finir-page header, .finir-page footer { position: relative; z-index: 1; }
-.finir-display, .finir-page h1, .finir-page h2 { font-family: "Avenir Next", "Segoe UI", system-ui, sans-serif; font-weight: 600; letter-spacing: -.045em; }
+.finir-page::before { content: ""; pointer-events: none; position: fixed; inset: 0; opacity: .26; z-index: 0; background-image: radial-gradient(rgba(24,33,38,.12) .45px, transparent .55px); background-size: 7px 7px; }
+.finir-display, .finir-page h1, .finir-page h2 { font-family: "Avenir Next", "Segoe UI", system-ui, sans-serif; font-weight: 560; letter-spacing: -.052em; }
 .finir-sans { font-family: "Avenir Next", "Segoe UI", system-ui, sans-serif; }
-.finir-prose p { font-size: .94rem; line-height: 1.55; color: #272727; }
-.finir-prose h2 { font-family: "Avenir Next", "Segoe UI", system-ui, sans-serif; font-weight: 600; letter-spacing: -.045em; }
-.finir-anchor { border-left: 1px solid #d4d4d4; }
-.finir-anchor a { display:block; padding: .42rem 0 .42rem .8rem; color:#595959; font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; transition: color 180ms ease; }
-.finir-anchor a:hover, .finir-anchor a:focus-visible { color:#171717; outline:none; }
-.finir-flow-arrow { color:#000; font-size:1.1rem; line-height:1; }
-.finir-node { border: 1px solid #cfcfcf; background: #fff; padding: .45rem .6rem; text-align:center; font-size:.65rem; font-weight:600; color:#111; }
-.finir-node--active { background:#050505; border-color:#050505; color:#fff; }
-.finir-diagram { background: #fff; border: 1px solid #d6d6d6; }
+.finir-prose p { font-size: 1rem; line-height: 1.72; color: #445158; }
+.finir-prose code, .finir-page code { color: #24475a; font-family: var(--font-mono); font-size: .9em; }
+.finir-anchor { border-left: 1px solid #d9e0e1; }
+.finir-anchor a { display:block; padding: .42rem 0 .42rem .85rem; color:#718087; font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; transition: color 180ms ease; }
+.finir-anchor a:hover { color:#24475a; }
+.finir-anchor a:focus-visible {
+  color:#24475a;
+  outline:2px solid #557b90;
+  outline-offset:3px;
+}
+.finir-flow-arrow { color:#24475a; font-size:1.1rem; line-height:1; }
+.finir-node { border: 1px solid #d4dddf; background: #fdfdfc; padding: .52rem .65rem; text-align:center; font-size:.65rem; font-weight:600; color:#314148; }
+.finir-node--active { background:#24475a; border-color:#24475a; color:#fff; }
+.finir-diagram { background: #f4f7f7; border: 1px solid #d7e0e1; }
 .finir-resource { transition: background-color 180ms ease, transform 180ms ease; }
-.finir-resource:hover { background:#f3f3f3; transform: translateX(3px); }
-.finir-resource:focus-within { outline: 2px solid #171717; outline-offset: -2px; }
+.finir-resource:hover { background:#f0f4f4; transform: translateX(3px); }
+.finir-resource:focus-within { outline: 2px solid #557b90; outline-offset: -2px; }
+.finir-kicker { color:#527487; }
+.finir-media { box-shadow: 0 18px 50px rgba(35, 55, 65, .08); }
+.finir-rule { border-color:#d6dfe0; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .finir-resource { transition:none; }
   .finir-resource:hover { transform:none; }
 }
-.finir-page .finir-section { padding-top: 2.5rem; padding-bottom: 2.5rem; }
-@media (min-width: 640px) { .finir-page .finir-section { padding-top: 3rem; padding-bottom: 3rem; } }
+.finir-page .finir-section { padding-top: 4rem; padding-bottom: 4rem; }
+@media (min-width: 640px) { .finir-page .finir-section { padding-top: 6rem; padding-bottom: 6rem; } }
