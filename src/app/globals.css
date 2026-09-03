@@ -404,11 +404,22 @@ nextjs-portal {
 
 /* FinIR release: a quiet technical journal with a cool archival-blue annotation
    system. Scoped so the wider Olyxee language remains untouched. */
-.finir-page { background: #fbfbfa; color: #182126; font-family: "Avenir Next", "Segoe UI", system-ui, sans-serif; }
+.finir-page {
+  background: #fbfbfa;
+  color: #182126;
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+  font-feature-settings: "kern" 1, "liga" 1;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
 .finir-page main, .finir-page header, .finir-page footer { position: relative; z-index: 1; }
 .finir-page::before { content: ""; pointer-events: none; position: fixed; inset: 0; opacity: .26; z-index: 0; background-image: radial-gradient(rgba(24,33,38,.12) .45px, transparent .55px); background-size: 7px 7px; }
-.finir-display, .finir-page h1, .finir-page h2 { font-family: "Avenir Next", "Segoe UI", system-ui, sans-serif; font-weight: 560; letter-spacing: -.052em; }
-.finir-sans { font-family: "Avenir Next", "Segoe UI", system-ui, sans-serif; }
+.finir-display, .finir-page h1, .finir-page h2 {
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+  font-weight: 600;
+  letter-spacing: -.045em;
+}
+.finir-sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif; }
 .finir-prose p { font-size: 1rem; line-height: 1.72; color: #445158; }
 .finir-prose code, .finir-page code { color: #24475a; font-family: var(--font-mono); font-size: .9em; }
 .finir-anchor { border-left: 1px solid #d9e0e1; }
