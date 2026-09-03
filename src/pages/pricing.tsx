@@ -42,8 +42,11 @@ const CurrencyContext = createContext<{
 const formatPrice = (zar: number, currency: CurrencyCode, rates: Record<CurrencyCode, number>) => {
   const { symbol } = CURRENCIES[currency];
   if (zar === 0) return `${symbol}0`;
+  if (currency === "ZAR") {
+    return Number.isInteger(zar) ? `${symbol}${zar}` : `${symbol}${zar.toFixed(2).replace(".", ",")}`;
+  }
   const converted = zar * rates[currency];
-  const rounded = currency === "ZAR" ? zar : converted < 20 ? Math.round(converted) : Math.round(converted / 5) * 5;
+  const rounded = converted < 20 ? Math.round(converted) : Math.round(converted / 5) * 5;
   return `${symbol}${rounded}`;
 };
 
@@ -112,25 +115,13 @@ const ORGNI_PLANS: Plan[] = [
 
 const ORDER_LOOP_PLANS: Plan[] = [
   {
-    name: "Free",
-    price: 0,
-    desc: "Get started running your first orders, shipments and customer tracking.",
-    features: [
-      "Up to 50 orders per month",
-      "No-app customer tracking",
-      "Email updates",
-      "Basic branding",
-      "Basic customer self-service",
-    ],
-    cta: "get-started",
-  },
-  {
     name: "Growth",
-    price: 99,
+    price: 89.99,
     popular: true,
-    desc: "For growing logistics businesses managing more orders, invoicing and customer communication.",
+    desc: "For growing logistics businesses managing orders, invoicing and customer communication.",
     features: [
       "Up to 300 orders per month",
+      "No-app customer tracking",
       "SMS and email communication",
       "Fully branded tracking experience",
       "Customer self-service",
@@ -141,7 +132,7 @@ const ORDER_LOOP_PLANS: Plan[] = [
   },
   {
     name: "Scale",
-    price: 499,
+    price: 999.99,
     desc: "For businesses running cross-border operations at higher volumes with connected systems.",
     features: [
       "Up to 1,000 orders per month",
@@ -154,7 +145,7 @@ const ORDER_LOOP_PLANS: Plan[] = [
     cta: "get-started",
   },
   {
-    name: "Enterprise",
+    name: "Custom",
     price: null,
     desc: "For businesses with high volumes, multiple locations, warehouses or complex operational requirements.",
     features: [
@@ -238,7 +229,7 @@ const ProductSection: FC<{
     </div>
     <p className="text-[1.25rem] sm:text-[1.5rem] font-medium tracking-tight text-[#111] mb-3">{tagline}</p>
     <p className="text-[1.05rem] text-[#4a5568] max-w-2xl leading-relaxed mb-12">{desc}</p>
-    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-4">
+    <div className={`grid sm:grid-cols-2 gap-6 pt-4 ${plans.length === 3 ? "lg:grid-cols-3" : "lg:grid-cols-4"}`}>
       {plans.map((plan) => (
         <PlanCard key={plan.name} plan={plan} />
       ))}
@@ -292,7 +283,7 @@ const Pricing: FC = () => {
     <div className="min-h-screen bg-[#fafafa] text-[#111] font-sans selection:bg-neutral-200 selection:text-neutral-900 relative">
       <SEO
         title="Pricing: Orgni & Olyxee Logistics Plans"
-        description="Simple, transparent pricing for Orgni operational intelligence and Olyxee Logistics logistics operations. Start free, upgrade from R99/month, or talk to sales about enterprise plans."
+        description="Simple, transparent pricing for Orgni operational intelligence and Olyxee Logistics logistics operations. Orgni starts free, Olyxee Logistics from R89,99/month, or talk to sales about enterprise plans."
         path="/pricing"
         keywords={[
           "Olyxee pricing",
@@ -348,7 +339,7 @@ const Pricing: FC = () => {
                 name: "Is there a free plan?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Yes. Both Orgni and Olyxee Logistics have free plans: Orgni Free supports one workspace and up to 3 users, and Olyxee Logistics Free covers up to 50 orders per month with no-app customer tracking.",
+                  text: "Orgni has a free plan that supports one workspace and up to 3 users. Olyxee Logistics starts on Growth at R89,99 per month, with Scale at R999,99 per month and custom pricing for larger operations.",
                 },
               },
               {
