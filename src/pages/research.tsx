@@ -98,9 +98,6 @@ const Research: FC = () => {
       <main>
         <section className="px-4 pb-14 pt-32 sm:px-6 sm:pb-20 sm:pt-40">
           <div className="mx-auto max-w-6xl">
-            <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#0c6a72]">
-              Olyxee
-            </p>
             <h1 className="text-5xl font-medium tracking-[-0.045em] text-[#172126] sm:text-7xl">
               Research
             </h1>
