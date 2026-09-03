@@ -439,7 +439,7 @@ nextjs-portal {
 /* FinIR release: a quiet technical journal with a cool archival-blue annotation
    system. Scoped so the wider Olyxee language remains untouched. */
 .finir-page {
-  background: #fbfbfa;
+  background: #ffffff;
   color: #182126;
   font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
   font-feature-settings: "kern" 1, "liga" 1;
@@ -447,7 +447,7 @@ nextjs-portal {
   text-rendering: optimizeLegibility;
 }
 .finir-page main, .finir-page header, .finir-page footer { position: relative; z-index: 1; }
-.finir-page::before { content: ""; pointer-events: none; position: fixed; inset: 0; opacity: .26; z-index: 0; background-image: radial-gradient(rgba(24,33,38,.12) .45px, transparent .55px); background-size: 7px 7px; }
+.finir-page::before { content: none; }
 .finir-display, .finir-page h1, .finir-page h2 {
   font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
   font-weight: 600;
