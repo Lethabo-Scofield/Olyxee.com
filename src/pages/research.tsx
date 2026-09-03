@@ -10,7 +10,7 @@ const papers = [
     category: "Release" as const,
     source: "Olyxee",
     title: "FinIR: A financial intermediate representation for AI-native computation",
-    authors: "Lethabo Innocent ScoField and Alisha Fatima",
+    authors: "Lethabo Scofield and Alisha Fatima",
     venue: "Research · Release",
     month: "Sep",
     year: "2026",
@@ -32,11 +32,11 @@ const papers = [
   },
 ];
 
-type ResearchFilter = "All" | "Publication" | "Milestone" | "Release";
+type ResearchFilter = "All" | "Publication" | "Release";
 
 const Research: FC = () => {
   const [activeFilter, setActiveFilter] = useState<ResearchFilter>("All");
-  const filters: ResearchFilter[] = ["All", "Publication", "Milestone", "Release"];
+  const filters: ResearchFilter[] = ["All", "Publication", "Release"];
   const visiblePapers = useMemo(
     () =>
       activeFilter === "All"
@@ -78,7 +78,7 @@ const Research: FC = () => {
                    ? [
                         {
                           "@type": "Person",
-                          name: "Lethabo Innocent ScoField",
+                          name: "Lethabo Scofield",
                           url: "https://www.linkedin.com/in/lethabo-scofield-17b37a257/",
                         },
                         {

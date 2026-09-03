@@ -36,7 +36,7 @@ const sections = [
 const people = [
   {
     "@type": "Person",
-    name: "Lethabo Innocent ScoField",
+    name: "Lethabo Scofield",
     url: "https://www.linkedin.com/in/lethabo-scofield-17b37a257/",
   },
   {
@@ -236,7 +236,7 @@ const FinIR: FC = () => {
                   rel="noopener noreferrer"
                   className="underline decoration-[#a4adac] underline-offset-4 transition-colors hover:text-[#526064]"
                 >
-                  Lethabo Innocent ScoField
+                  Lethabo Scofield
                 </a>{" "}
                 and{" "}
                 <a
