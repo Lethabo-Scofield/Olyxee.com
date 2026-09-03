@@ -114,7 +114,7 @@ const Research: FC = () => {
               we build dependable systems for real operations.
             </p>
             <nav
-              className="mt-10 flex gap-7 overflow-x-auto border-b border-[#d8dcdd] pb-4 text-sm no-scrollbar"
+              className="mt-10 flex gap-8 overflow-x-auto text-sm no-scrollbar"
               aria-label="Filter research"
             >
               {filters.map((filter) => (
@@ -123,7 +123,7 @@ const Research: FC = () => {
                   type="button"
                   onClick={() => setActiveFilter(filter)}
                   aria-pressed={activeFilter === filter}
-                  className={`whitespace-nowrap transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#171717] ${
+                  className={`whitespace-nowrap transition-colors focus-visible:underline focus-visible:decoration-[#526064] focus-visible:underline-offset-4 ${
                     activeFilter === filter
                       ? "font-semibold text-[#172126]"
                       : "text-[#687579] hover:text-[#172126]"

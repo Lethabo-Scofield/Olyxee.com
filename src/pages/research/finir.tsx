@@ -2,8 +2,7 @@
 
 import { useEffect, useRef, useState, type FC, type ReactNode } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowLeft, ArrowUpRight, BookOpen } from "lucide-react";
+import { ArrowUpRight, BookOpen } from "lucide-react";
 import SEO from "../../components/SEO";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
@@ -118,8 +117,7 @@ const FinIR: FC = () => {
     <Header />
     <main><article>
       <header className="mx-auto max-w-[950px] px-5 pb-16 pt-28 text-center sm:px-8 sm:pb-24 sm:pt-36">
-        <Link href="/research" className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.15em] text-[#718087] transition-colors hover:text-[#24475a] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#527487]"><ArrowLeft className="h-3.5 w-3.5" aria-hidden />Research &amp; releases</Link>
-        <p className="mt-12 text-[10px] font-bold uppercase tracking-[.2em] text-[#527487]">Research release · September 3, 2026</p>
+        <p className="text-[10px] font-bold uppercase tracking-[.2em] text-[#527487]">Research release · September 3, 2026</p>
         <h1 className="finir-display mx-auto mt-5 max-w-[880px] text-[2.7rem] leading-[.98] text-[#182126] sm:text-6xl lg:text-7xl">{TITLE}</h1>
         <p className="mx-auto mt-7 max-w-[720px] text-[17px] leading-7 text-[#5d6c73] sm:text-[19px] sm:leading-8">{DESCRIPTION}</p>
         <p className="mt-8 text-xs font-semibold text-[#43545b]">By <a href={people[0].url} target="_blank" rel="noopener noreferrer" className="underline decoration-[#aebfc6] underline-offset-4 transition-colors hover:text-[#24475a]">Lethabo Scofield</a> and <a href={people[1].url} target="_blank" rel="noopener noreferrer" className="underline decoration-[#aebfc6] underline-offset-4 transition-colors hover:text-[#24475a]">Alisha Fatima</a></p>
