@@ -76,8 +76,16 @@ const Research: FC = () => {
                 name: paper.title,
                  author: paper.category === "Release"
                    ? [
-                       { "@type": "Person", name: "Lethabo Innocent ScoField" },
-                       { "@type": "Person", name: "Alisha Fatima" },
+                        {
+                          "@type": "Person",
+                          name: "Lethabo Innocent ScoField",
+                          url: "https://www.linkedin.com/in/lethabo-scofield-17b37a257/",
+                        },
+                        {
+                          "@type": "Person",
+                          name: "Alisha Fatima",
+                          url: "https://www.linkedin.com/in/thealisha-fatima/",
+                        },
                      ]
                    : [
                        { "@type": "Person", name: "P. Laban" },

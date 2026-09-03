@@ -34,8 +34,16 @@ const sections = [
 ] as const;
 
 const people = [
-  { "@type": "Person", name: "Lethabo Innocent ScoField" },
-  { "@type": "Person", name: "Alisha Fatima" },
+  {
+    "@type": "Person",
+    name: "Lethabo Innocent ScoField",
+    url: "https://www.linkedin.com/in/lethabo-scofield-17b37a257/",
+  },
+  {
+    "@type": "Person",
+    name: "Alisha Fatima",
+    url: "https://www.linkedin.com/in/thealisha-fatima/",
+  },
 ];
 
 function Label({ children }: { children: ReactNode }) {
@@ -220,7 +228,26 @@ const FinIR: FC = () => {
             <div className="mt-7 max-w-[700px]">
               <h1 className="finir-display text-[2.4rem] leading-[.98] text-[#172126] sm:text-[3.2rem]">{TITLE}</h1>
               <p className="mt-4 max-w-3xl text-[15px] leading-6 text-[#526064]">{DESCRIPTION}</p>
-              <p className="mt-4 text-xs font-semibold text-[#263438]">By Lethabo Innocent ScoField and Alisha Fatima</p>
+              <p className="mt-4 text-xs font-semibold text-[#263438]">
+                By{" "}
+                <a
+                  href="https://www.linkedin.com/in/lethabo-scofield-17b37a257/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline decoration-[#a4adac] underline-offset-4 transition-colors hover:text-[#526064]"
+                >
+                  Lethabo Innocent ScoField
+                </a>{" "}
+                and{" "}
+                <a
+                  href="https://www.linkedin.com/in/thealisha-fatima/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline decoration-[#a4adac] underline-offset-4 transition-colors hover:text-[#526064]"
+                >
+                  Alisha Fatima
+                </a>
+              </p>
             </div>
           </header>
 
