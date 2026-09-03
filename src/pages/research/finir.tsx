@@ -316,6 +316,18 @@ const FinIR: FC = () => {
               <Section id="evidence" number="07" title="Evidence and reproducibility">
                 <p className="mt-7">Experiment 001 asks whether dependency-aware caching reduces the cost of iterative financial reasoning. Its 1,000-turn synthetic workload uses a 6-node model and compares a warm FinIR cache with a same-engine baseline whose cache is cleared each turn.</p>
                 <div className="mt-10 overflow-x-auto border border-[#d2d8d7]"><table className="w-full min-w-[520px] text-left text-sm"><thead className="bg-[#f5f5f5] text-xs uppercase tracking-wider text-[#526064]"><tr><th className="p-4">Condition</th><th className="p-4">Time</th><th className="p-4">Recomputes</th><th className="p-4">Cache hit</th></tr></thead><tbody><tr className="border-t border-[#d2d8d7]"><td className="p-4">Baseline, full recompute</td><td className="p-4 font-mono">0.0355s</td><td className="p-4 font-mono">6,000</td><td className="p-4">0%</td></tr><tr className="border-t border-[#d2d8d7]"><td className="p-4">FinIR incremental</td><td className="p-4 font-mono">0.0223s</td><td className="p-4 font-mono">3,600</td><td className="p-4">40.0%</td></tr></tbody></table></div>
+                <figure className="mt-10 border border-[#d2d8d7] bg-white p-3 sm:p-5">
+                  <Image
+                    src="/research/finir-execution-time-vs-graph-size.png"
+                    alt="Log-scale line chart comparing median execution time for full recomputation and FinIR incremental execution across synthetic graphs from 98 to 100,000 nodes"
+                    width={1306}
+                    height={794}
+                    className="h-auto w-full"
+                  />
+                  <figcaption className="border-t border-[#e2e6e5] px-1 pb-1 pt-4 text-xs leading-5 text-[#697578]">
+                    Synthetic dependency-graph benchmark for FinIR v0.1.0. Incremental execution remains below full recomputation across the measured graph sizes; results are benchmark-specific and should not be read as a general production speedup claim.
+                  </figcaption>
+                </figure>
                 <p className="mt-5 text-sm leading-7 text-[#526064]"><strong className="text-[#172126]">Observed in this run: 1.59×.</strong> This is a synthetic workload, with cheap arithmetic and Python traversal overhead, run in a single CPU process using the same engine and no-cache baseline. It is not a general production speedup claim. Reproduce with <code>python research/reproduce_experiment_001.py</code> in the public repository.</p>
               </Section>
 
