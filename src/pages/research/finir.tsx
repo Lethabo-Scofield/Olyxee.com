@@ -13,7 +13,7 @@ const SEO_TITLE = "Introducing FinIR: Typed Financial Computation";
 const SEO_DESCRIPTION = "FinIR turns AI-interpreted financial instructions into deterministic, typed, auditable computation with dependency-aware incremental execution.";
 const ARTICLE_URL = "https://olyxee.com/research/finir";
 const ARTICLE_IMAGE = "https://olyxee.com/research/finir-og.png";
-const ARTICLE_DATE = "2026-09-03";
+const ARTICLE_DATE = "2026-09-04";
 const sections = [["problem", "The problem"], ["boundary", "The boundary"], ["ir", "How FinIR works"], ["types", "Type semantics"], ["compiler", "Compiler flow"], ["runtime", "Incremental runtime"], ["evidence", "Evidence"], ["limits", "Limitations"], ["start", "Get started"], ["resources", "References"]] as const;
 const people = [
   { "@type": "Person", name: "Lethabo Scofield", url: "https://www.linkedin.com/in/lethabo-scofield-17b37a257/" },
@@ -246,7 +246,7 @@ const FinIR: FC = () => {
     <Header />
     <main><article>
       <header className="mx-auto max-w-[950px] px-5 pb-14 pt-24 text-center sm:px-8 sm:pb-24 sm:pt-36">
-        <p className="text-[10px] font-bold uppercase tracking-[.2em] text-[#527487]">Research release · September 3, 2026</p>
+        <p className="text-[10px] font-bold uppercase tracking-[.2em] text-[#527487]">Research release · September 4, 2026</p>
         <h1 className="finir-display mx-auto mt-5 max-w-[880px] text-[clamp(2.5rem,12vw,4.5rem)] leading-[.98] text-[#182126] lg:text-7xl">{TITLE}</h1>
         <p className="mx-auto mt-7 max-w-[720px] text-[16px] leading-7 text-[#5d6c73] sm:text-[19px] sm:leading-8">{DESCRIPTION}</p>
         <p className="mt-8 text-xs font-semibold text-[#43545b]">By <a href={people[0].url} target="_blank" rel="noopener noreferrer" className="underline decoration-[#aebfc6] underline-offset-4 transition-colors hover:text-[#24475a]">Lethabo Scofield</a> and <a href={people[1].url} target="_blank" rel="noopener noreferrer" className="underline decoration-[#aebfc6] underline-offset-4 transition-colors hover:text-[#24475a]">Alisha Fatima</a></p>

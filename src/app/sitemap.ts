@@ -17,8 +17,8 @@ const LEGAL_DATE = '2026-05-01'
 const pages: Entry[] = [
   { path: '', priority: 1.0, changeFrequency: 'weekly', lastModified: REBRAND_DATE },
   { path: '/solutions/logistics', priority: 0.9, changeFrequency: 'weekly', lastModified: REBRAND_DATE },
-  { path: '/research', priority: 0.9, changeFrequency: 'monthly', lastModified: '2026-09-03' },
-  { path: '/research/finir', priority: 0.9, changeFrequency: 'monthly', lastModified: '2026-09-03' },
+  { path: '/research', priority: 0.9, changeFrequency: 'monthly', lastModified: '2026-09-04' },
+  { path: '/research/finir', priority: 0.9, changeFrequency: 'monthly', lastModified: '2026-09-04' },
   { path: '/about', priority: 0.8, changeFrequency: 'monthly', lastModified: REBRAND_DATE },
   { path: '/careers', priority: 0.8, changeFrequency: 'weekly', lastModified: CONTENT_DATE },
   { path: '/careers/internships', priority: 0.6, changeFrequency: 'weekly', lastModified: CONTENT_DATE },

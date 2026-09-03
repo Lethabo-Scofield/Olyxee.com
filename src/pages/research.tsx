@@ -93,7 +93,7 @@ const Research: FC = () => {
                        { "@type": "Person", name: "J. Neville" },
                      ],
                  url: paper.url.startsWith("/") ? `https://olyxee.com${paper.url}` : paper.url,
-                 datePublished: paper.category === "Release" ? "2026-09-03" : "2026-04-01",
+                 datePublished: paper.category === "Release" ? "2026-09-04" : "2026-04-01",
                 publisher: { "@type": "Organization", name: paper.venue },
               },
             })),
