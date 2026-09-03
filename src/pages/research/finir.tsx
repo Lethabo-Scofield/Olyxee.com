@@ -1,6 +1,6 @@
 "use client";
 
-import type { FC, ReactNode } from "react";
+import { useEffect, useRef, useState, type FC, type ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight, BookOpen, Github, Package } from "lucide-react";
@@ -54,6 +54,31 @@ function CompanyGraph() {
 }
 
 const FinIR: FC = () => {
+  const [showContents, setShowContents] = useState(false);
+  const previousScrollY = useRef(0);
+
+  useEffect(() => {
+    previousScrollY.current = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const movement = currentScrollY - previousScrollY.current;
+
+      if (currentScrollY < 160) {
+        setShowContents(false);
+      } else if (movement < -8) {
+        setShowContents(true);
+      } else if (movement > 8) {
+        setShowContents(false);
+      }
+
+      previousScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const jsonLd = { "@context": "https://schema.org", "@type": ["TechArticle", "ScholarlyArticle"], headline: TITLE, description: DESCRIPTION, datePublished: "2026-09-03", dateModified: "2026-09-03", mainEntityOfPage: "https://olyxee.com/research/finir", author: people, publisher: { "@type": "Organization", name: "Olyxee", url: "https://olyxee.com", logo: { "@type": "ImageObject", url: "https://olyxee.com/Logo/Olyxee_Logo.png" } }, inLanguage: "en" };
   return <div className="finir-page min-h-[100dvh]">
     <SEO title={TITLE} description={DESCRIPTION} path="/research/finir" ogType="article" keywords={["FinIR", "financial computation", "financial intermediate representation", "incremental execution", "AI infrastructure"]} jsonLd={jsonLd} />
@@ -67,7 +92,7 @@ const FinIR: FC = () => {
         <p className="mt-8 text-xs font-semibold text-[#43545b]">By <a href={people[0].url} target="_blank" rel="noopener noreferrer" className="underline decoration-[#aebfc6] underline-offset-4 transition-colors hover:text-[#24475a]">Lethabo Scofield</a> and <a href={people[1].url} target="_blank" rel="noopener noreferrer" className="underline decoration-[#aebfc6] underline-offset-4 transition-colors hover:text-[#24475a]">Alisha Fatima</a></p>
       </header>
       <figure className="mx-auto max-w-[1280px] px-4 py-8 sm:px-8 sm:py-14"><div className="finir-media overflow-hidden border border-[#e0e6e5] bg-white p-2 sm:p-4"><Image src="/research/finir-workflow.png" alt="FinIR workflow from natural-language financial intent through a typed intermediate representation, dependency graph, incremental execution, and financial result" width={1448} height={1086} className="h-auto w-full" priority /></div><figcaption className="mx-auto mt-4 max-w-[900px] text-center text-xs leading-5 text-[#718087]">FinIR turns interpreted financial intent into an explicit, typed, and executable computation graph.</figcaption></figure>
-      <div className="mx-auto grid max-w-[1060px] gap-12 px-5 pb-16 pt-8 sm:px-8 lg:grid-cols-[160px_minmax(0,680px)] lg:gap-20 lg:pb-28"><aside className="hidden lg:sticky lg:top-28 lg:block lg:self-start"><nav className="finir-anchor" aria-label="On this page">{sections.map(([id, label]) => <a key={id} href={`#${id}`}>{label}</a>)}</nav></aside><div className="min-w-0">
+      <div className="mx-auto grid max-w-[1060px] gap-12 px-5 pb-16 pt-8 sm:px-8 lg:grid-cols-[160px_minmax(0,680px)] lg:gap-20 lg:pb-28"><aside aria-hidden={!showContents} className={`hidden transition-[opacity,transform] duration-200 lg:sticky lg:top-28 lg:block lg:self-start ${showContents ? "translate-y-0 opacity-100" : "-translate-y-2 pointer-events-none opacity-0"}`}><nav className="finir-anchor" aria-label="On this page">{sections.map(([id, label]) => <a key={id} href={`#${id}`} tabIndex={showContents ? 0 : -1}>{label}</a>)}</nav></aside><div className="min-w-0">
         <section id="problem" className="finir-rule scroll-mt-28 border-b pb-16"><p className="finir-kicker text-[10px] font-bold uppercase tracking-[.18em]">01 / The problem</p><h2 className="mt-6 text-[2.1rem] leading-[1.05] sm:text-5xl">A reliable place for financial computation</h2><div className="finir-prose mt-8 max-w-[680px]"><p>AI systems are good at interpreting financial instructions, but interpretation is not the same as reliable execution. When an AI generates Python, SQL, or spreadsheet formulas for every task, the execution logic can change between runs, financial types are difficult to enforce, and the origin of each result becomes harder to audit.</p><p className="mt-5">FinIR addresses this problem by placing a deterministic computational layer between the AI and the final result. The AI expresses financial intent, while FinIR validates the types, records the dependencies, compiles the computation, and recalculates only the values affected by a change.</p></div></section>
         <section id="boundary" className="finir-rule scroll-mt-28 border-b py-16 sm:py-24"><p className="finir-kicker text-[10px] font-bold uppercase tracking-[.18em]">02 / The boundary</p><h2 className="mt-6 text-[2.1rem] leading-[1.05] sm:text-5xl">A computational boundary for AI</h2><p className="mt-7 max-w-[580px] text-base leading-7 text-[#445158]">FinIR separates probabilistic interpretation from deterministic financial execution.</p><FlowDiagram /></section>
         <Section id="ir" number="03" title="How FinIR works"><p className="mt-8">The repository describes a typed computation graph with an expression AST, a textual <code>.finir</code> format, JSON interchange, parsing, and validation. The graph is the stable representation between intent and evaluation.</p><p className="mt-5">The Financial IR makes the model’s financial dependencies explicit before the compiler and runtime evaluate it.</p><CompanyGraph /></Section>
