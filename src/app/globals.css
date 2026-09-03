@@ -385,3 +385,37 @@ nextjs-portal {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Research desk: a deliberately restrained editorial system with a single
+   signal color used for taxonomy, focus, and the archive's active state. */
+.research-grid {
+  background-image:
+    linear-gradient(to right, rgba(20, 37, 46, 0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(20, 37, 46, 0.055) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+
+.research-rule {
+  background: linear-gradient(90deg, #0c6a72 0 72px, #d8dcdd 72px 100%);
+  height: 1px;
+}
+
+.research-entry {
+  transition: background-color 220ms ease, transform 220ms ease;
+}
+
+.research-entry:hover {
+  background-color: #f3f6f5;
+}
+
+.research-entry:focus-within {
+  background-color: #eef7f6;
+  outline: 2px solid #0c6a72;
+  outline-offset: -2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .research-entry {
+    transition: none;
+  }
+}
