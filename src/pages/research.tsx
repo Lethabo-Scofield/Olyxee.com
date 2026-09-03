@@ -12,6 +12,17 @@ type Filter = "All" | "Olyxee updates" | "Research we follow";
 
 const papers = [
   {
+    kind: "Olyxee updates" as const,
+    title: "FinIR: A financial intermediate representation for AI-native computation",
+    authors: "Lethabo Innocent ScoField and Alisha Fatima",
+    venue: "Research · Release",
+    month: "Sep",
+    year: "2026",
+    url: "/research/finir",
+    description:
+      "A finance-typed compiler and incremental execution runtime that turns structured financial intent into deterministic, auditable financial computation.",
+  },
+  {
     kind: "Research we follow" as const,
     title: "LLMs Corrupt Your Documents When You Delegate",
     authors: "P. Laban, T. Schnabel, J. Neville",
@@ -28,7 +39,7 @@ const Research: FC = () => {
   const [activeFilter, setActiveFilter] = useState<Filter>("All");
   const filters: Filter[] = ["All", "Olyxee updates", "Research we follow"];
   const visiblePapers = useMemo(
-    () => (activeFilter === "All" || activeFilter === "Research we follow" ? papers : []),
+    () => (activeFilter === "All" ? papers : papers.filter((paper) => paper.kind === activeFilter)),
     [activeFilter]
   );
 
@@ -52,18 +63,27 @@ const Research: FC = () => {
             url: "https://olyxee.com",
             logo: { "@type": "ImageObject", url: "https://olyxee.com/Logo/Olyxee_Logo.png" },
           },
-          mainEntity: {
+           mainEntity: {
             "@type": "ItemList",
-            itemListElement: papers.map((paper, i) => ({
+             itemListElement: papers.map((paper, i) => ({
               "@type": "ListItem",
               position: i + 1,
               item: {
                 "@type": "ScholarlyArticle",
                 headline: paper.title,
                 name: paper.title,
-                author: paper.authors.split(",").map((name) => ({ "@type": "Person", name: name.trim() })),
-                url: paper.url,
-                datePublished: `${paper.year}-${paper.month}`,
+                 author: paper.kind === "Olyxee updates"
+                   ? [
+                       { "@type": "Person", name: "Lethabo Innocent ScoField" },
+                       { "@type": "Person", name: "Alisha Fatima" },
+                     ]
+                   : [
+                       { "@type": "Person", name: "P. Laban" },
+                       { "@type": "Person", name: "T. Schnabel" },
+                       { "@type": "Person", name: "J. Neville" },
+                     ],
+                 url: paper.url.startsWith("/") ? `https://olyxee.com${paper.url}` : paper.url,
+                 datePublished: paper.kind === "Olyxee updates" ? "2026-09-03" : "2026-04-01",
                 publisher: { "@type": "Organization", name: paper.venue },
               },
             })),
@@ -134,7 +154,8 @@ const Research: FC = () => {
               <ul className="divide-y divide-[#d8dcdd]">
                 {visiblePapers.map((paper) => (
                   <li key={paper.title} className="research-entry">
-                    <a href={paper.url} target="_blank" rel="noopener noreferrer" className="group block py-9 sm:py-11 px-1 sm:px-5 -mx-1 sm:-mx-5">
+                    {paper.url.startsWith("/") ? (
+                    <Link href={paper.url} className="group block py-9 sm:py-11 px-1 sm:px-5 -mx-1 sm:-mx-5">
                       <div className="grid lg:grid-cols-[155px_1fr_auto] gap-4 lg:gap-8">
                         <div className="flex lg:flex-col gap-2 lg:gap-1 text-[11px] uppercase tracking-[0.14em] font-bold text-[#0c6a72]">
                           <span>{paper.kind}</span><span className="text-[#7a8587]">{paper.month} {paper.year}</span>
@@ -149,7 +170,16 @@ const Research: FC = () => {
                           <ArrowUpRight className="w-4 h-4 text-[#0c6a72] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" aria-hidden />
                         </div>
                       </div>
+                    </Link>
+                    ) : (
+                    <a href={paper.url} target="_blank" rel="noopener noreferrer" className="group block py-9 sm:py-11 px-1 sm:px-5 -mx-1 sm:-mx-5">
+                      <div className="grid lg:grid-cols-[155px_1fr_auto] gap-4 lg:gap-8">
+                        <div className="flex lg:flex-col gap-2 lg:gap-1 text-[11px] uppercase tracking-[0.14em] font-bold text-[#0c6a72]"><span>{paper.kind}</span><span className="text-[#7a8587]">{paper.month} {paper.year}</span></div>
+                        <div className="max-w-2xl"><h3 className="font-serif !font-normal text-2xl sm:text-[2rem] leading-[1.06] text-[#172126] tracking-[-0.035em]">{paper.title}</h3><p className="mt-4 text-[15px] leading-7 text-[#526064]">{paper.description}</p><p className="mt-4 text-xs text-[#7a8587]">{paper.authors}</p></div>
+                        <div className="flex items-center gap-3 text-xs font-semibold text-[#526064] shrink-0 lg:pt-1"><span>{paper.venue}</span><ArrowUpRight className="w-4 h-4 text-[#0c6a72] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" aria-hidden /></div>
+                      </div>
                     </a>
+                    )}
                   </li>
                 ))}
               </ul>
