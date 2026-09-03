@@ -2,3 +2,4 @@
 - [Olyxee product naming](olyxee-product-naming.md) — display labels (Orgni Finance/Workflows/Docs, Olyxee Logistics (formerly Order Loop)) diverge from legacy URLs/ids (ordo/addup/courier); Orgni is new flagship, Cortex is internal not standalone.
 - [Hydration "crash" is a dev artifact](hydration-crash-dev-artifact.md) — recurring "Hydration failed" crash overlay only fires during Fast Refresh; clean loads hydrate fine. Restart + reload to confirm before chasing.
 - [Dual-router overflow-x-hidden](responsive-dual-router-overflow.md) — hybrid app: global body classes must be set in BOTH src/app/layout.tsx and src/pages/_document.tsx or they only cover half the site.
+- [Portable npm lockfile installs](portable-npm-lockfile-installs.md) — external builders must replace Replit package-firewall hosts with their active npm registry.
