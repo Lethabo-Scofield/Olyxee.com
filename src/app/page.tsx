@@ -847,11 +847,15 @@ function VideoShowcaseSection() {
             <p className="mt-3 text-sm sm:text-lg text-white/75 max-w-xl mx-auto">
               Orgni removes the blockers between your people, systems and work.
             </p>
-            <span className="mt-5 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm ring-1 ring-white/20 transition-colors group-hover:bg-white group-hover:text-neutral-900">
-              Explore Orgni
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-            </span>
           </div>
+          <div
+            aria-hidden
+            className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"
+          />
+          <span className="absolute bottom-5 right-5 sm:bottom-8 sm:right-8 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm ring-1 ring-white/20 transition-colors group-hover:bg-white group-hover:text-neutral-900">
+            Explore Orgni
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+          </span>
           </a>
         </motion.div>
       </div>
