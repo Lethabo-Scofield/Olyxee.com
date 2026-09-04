@@ -512,9 +512,6 @@ nextjs-portal {
 .finir-resource:hover { background: #f5f8f8; padding-right: .55rem; padding-left: .55rem; }
 .finir-resource:hover .finir-resource__open { color: #24475a; transform: translate(2px, -2px); }
 .finir-resource:focus-visible { outline: 2px solid #557b90; outline-offset: 3px; background: #f5f8f8; }
-.finir-resource--unavailable { color: inherit; cursor: default; }
-.finir-resource--unavailable .finir-resource__mark { color: #80939a; }
-.finir-resource--unavailable .finir-resource__meta { color: #80939a; }
 @media (min-width: 640px) {
   .finir-resource-group { padding: 3rem 0; }
   .finir-resource-group__heading { grid-template-columns: 3.3rem minmax(0, 1fr); margin-bottom: 1.6rem; }
