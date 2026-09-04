@@ -818,8 +818,15 @@ function VideoShowcaseSection() {
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="relative rounded-3xl bg-black overflow-hidden"
+          className="relative"
         >
+          <a
+            href="https://orgni.olyxee.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Explore Orgni"
+            className="group block relative rounded-3xl bg-black overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-4"
+          >
           <video
             src="/videos/landing-showcase.mp4"
             className="block w-full aspect-video object-cover"
@@ -834,11 +841,16 @@ function VideoShowcaseSection() {
             className="absolute inset-x-0 top-0 h-40 sm:h-56 bg-gradient-to-b from-black/70 via-black/30 to-transparent pointer-events-none"
           />
           <div className="absolute inset-x-0 top-0 pt-8 sm:pt-12 px-6 text-center">
-            <p className="text-xs font-semibold text-white/50 uppercase tracking-[0.2em] mb-3">See It in Motion</p>
+            <p className="text-xs font-semibold text-white/50 uppercase tracking-[0.2em] mb-3">Orgni</p>
             <h2 className="font-serif text-2xl sm:text-4xl lg:text-5xl tracking-tight text-white max-w-3xl mx-auto">
-              One living view of your organisation
+              Assistants know the conversation. Orgni understands the organisation.
             </h2>
+            <span className="mt-5 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm ring-1 ring-white/20 transition-colors group-hover:bg-white group-hover:text-neutral-900">
+              Explore Orgni
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+            </span>
           </div>
+          </a>
         </motion.div>
       </div>
     </section>
