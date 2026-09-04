@@ -2,7 +2,7 @@
 
 > Olyxee is a reliability-first AI infrastructure company. We build verification, evaluation, and monitoring systems so teams can ship AI with confidence. Our products turn frontier models into dependable enterprise software across operations, finance, logistics, and organisational cognition.
 
-Olyxee is structured around four product surfaces and one research engine:
+Olyxee is structured around four product surfaces and one research engine. Orgni is the operational intelligence layer that helps businesses keep work moving: it understands the organisation, works across the tools teams already use, and handles the questions and routine work that create unnecessary delays.
 
 - **Orgni Workflows** — Autonomous workflow execution: job handling, integrations, and operational automation. (Early access)
 - **Orgni Finance** — Financial reconciliation: workflows, data validation, matching, exception handling, and reporting. (Available)

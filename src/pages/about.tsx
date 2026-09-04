@@ -31,7 +31,7 @@ const APPROACH = [
     icon: ShieldCheck,
     label: "What we build",
     title: "Intelligence Infrastructure",
-    text: "We build the underlying technology that allows organisations to understand their data and operations. Orgni belongs here — live context, operational memory, and a clear trail.",
+    text: "We build the underlying technology that allows organisations to understand their data and operations. Orgni belongs here: the operational intelligence layer that helps businesses keep work moving.",
     gradient: "/images/gradient-blue.png",
   },
   {
@@ -51,8 +51,8 @@ const JOURNEY_LEAD: string[] = [
   "They did not fully understand how a specific business operated, which rules applied, who approved what, which documents were trusted, how finance exceptions were handled, or how decisions should be traced.",
   "That experience became the foundation of Olyxee.",
   "Olyxee was created to build the infrastructure layer organizations need before intelligent systems can operate reliably inside real business environments. The company focuses on operational intelligence: live business context, operational memory, decision history, document integrity, and operational visibility.",
-  "This work led to Orgni, Olyxee\u2019s flagship platform for building live business context.",
-  "Orgni connects how an organization actually works into one living operational context. It structures business knowledge such as processes, roles, departments, rules, documents, approvals, exceptions, decisions, permissions, and outcomes. The goal is to give intelligent systems the context they need to support real operations with control and a clear trail.",
+  "This work led to Orgni, Olyxee\u2019s operational intelligence infrastructure for keeping work moving across a business.",
+  "Work inside companies constantly stops because people are waiting for answers, documents, approvals, updates, or another team. Orgni understands how an organization actually works, its processes, roles, rules, documents, approvals, and decisions, and uses that understanding to answer questions and handle routine work across the tools teams already use, with control and a clear trail.",
   "As one platform, Orgni brings these capabilities together.",
 ];
 
@@ -91,7 +91,7 @@ const About: FC = () => {
             url: "https://olyxee.com",
             logo: "https://olyxee.com/Logo/Olyxee_Logo.png",
             description:
-              "Olyxee is a research and infrastructure company helping businesses adapt to AI, with Orgni, its core platform, creating a living operational model of an organisation.",
+              "Olyxee is a research and infrastructure company helping businesses adapt to AI, with Orgni, its core platform, providing the operational intelligence layer that helps businesses keep work moving.",
           },
         }}
       />

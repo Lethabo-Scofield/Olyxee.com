@@ -18,7 +18,7 @@ const fadeUp = {
 const Technology: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO title="Technology" description="The architecture powering Olyxee's Orgni platform. Learn how live business context, operational memory, and a model-neutral infrastructure layer power intelligent operations." path="/technology" />
+      <SEO title="Technology" description="The architecture powering Orgni, Olyxee's operational intelligence infrastructure. Learn how organisational understanding, operational memory, and a model-neutral infrastructure layer keep work moving." path="/technology" />
       <div className="grain" />
       <Header />
 
@@ -61,8 +61,8 @@ const Technology: FC = () => {
             </div>
           </motion.div>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.5 }} className="text-lg text-neutral-500 leading-relaxed max-w-3xl font-normal">
-            Built on Orgni, the platform that turns live business context into intelligent operations. It connects
-            knowledge, decisions, and systems, then runs operational workflows across your tools.
+            Built on Orgni, the operational intelligence layer that keeps work moving. It understands your
+            organisation, works across the tools your teams already use, and handles the questions and routine work that create delays.
           </motion.p>
         </div>
       </section>
@@ -76,12 +76,12 @@ const Technology: FC = () => {
               Orgni <em className="text-neutral-500">Architecture</em>
             </h2>
             <p className="text-neutral-400 text-lg max-w-3xl font-normal leading-relaxed">
-              The infrastructure layer that builds live business context and powers intelligent operations across Olyxee's platform.
+              The infrastructure layer that understands the organisation and coordinates work across people, systems, and business tools.
             </p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5 rounded-2xl overflow-hidden">
             {[
-              { icon: Shield, title: "Goal Interpretation", description: "Describe what needs to be done. Orgni reads your live business context and breaks goals into structured, executable plans automatically." },
+              { icon: Shield, title: "Goal Interpretation", description: "Describe what needs to be done. Orgni reads your organisation's systems, rules, and ownership, and breaks goals into structured, executable plans." },
               { icon: Layers, title: "System Integration", description: "Connects to ERP, Excel, databases, and more. Orgni works with your existing systems without manual workflow building." },
               { icon: BarChart3, title: "Transparent Execution", description: "Every action is logged with timestamps, inputs, and outputs. Full operational memory and audit trail for compliance and traceability." },
             ].map((item, idx) => {
@@ -108,7 +108,7 @@ const Technology: FC = () => {
           </motion.div>
           <div className="divide-y divide-neutral-200 max-w-3xl">
             {[
-              { step: "01", title: "Goal Input", description: "Describe the business outcome you need. Orgni interprets the goal against your live business context and identifies the systems, data, and steps required.", icon: GitBranch },
+              { step: "01", title: "Goal Input", description: "Describe the business outcome you need. Orgni interprets the goal against how your organisation works and identifies the systems, data, and steps required.", icon: GitBranch },
               { step: "02", title: "Planning", description: "Orgni creates a structured execution plan, mapping each step to the right tools and data sources.", icon: Shield },
               { step: "03", title: "Execution", description: "Automated execution across connected systems including ERP, databases, spreadsheets, and communication tools.", icon: Cpu },
               { step: "04", title: "Delivery", description: "Results are delivered as reports, notifications, or audit trails. Every output is traceable.", icon: Zap },

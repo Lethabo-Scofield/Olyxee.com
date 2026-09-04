@@ -283,7 +283,7 @@ const Pricing: FC = () => {
     <div className="min-h-screen bg-[#fafafa] text-[#111] font-sans selection:bg-neutral-200 selection:text-neutral-900 relative">
       <SEO
         title="Pricing: Orgni & Olyxee Logistics Plans"
-        description="Simple, transparent pricing for Orgni operational intelligence and Olyxee Logistics logistics operations. Orgni starts free, Olyxee Logistics from R89,99/month, or talk to sales about enterprise plans."
+        description="Simple, transparent pricing for Orgni, the operational intelligence layer that keeps work moving, and Olyxee Logistics. Orgni starts free, Olyxee Logistics from R89,99/month, or talk to sales about enterprise plans."
         path="/pricing"
         keywords={[
           "Olyxee pricing",
@@ -301,7 +301,7 @@ const Pricing: FC = () => {
             "@type": "Product",
             name: "Orgni",
             description:
-              "Orgni builds a living understanding of your organisation by connecting its workflows, documents, systems and decisions.",
+              "Orgni understands your organisation and handles the questions and routine work that create delays, so work keeps moving.",
             brand: { "@type": "Brand", name: "Olyxee" },
             url: "https://olyxee.com/pricing",
             offers: ORGNI_PLANS.filter((p) => p.price !== null).map((p) => ({
@@ -406,7 +406,7 @@ const Pricing: FC = () => {
           logo="/Logo/orgni-mark.png"
           name="Orgni"
           tagline="Operational intelligence for your business"
-          desc="Orgni builds a living understanding of your organisation by connecting its workflows, documents, systems and decisions."
+          desc="Orgni understands your organisation and handles the questions and routine work that create delays, so work keeps moving."
           plans={ORGNI_PLANS}
         />
       </div>

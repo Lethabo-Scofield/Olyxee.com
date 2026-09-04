@@ -1,0 +1,223 @@
+Update the Olyxee main website copy so that Orgni is positioned according to our new direction.
+
+Important:
+- This is NOT an Orgni standalone website redesign.
+- Do NOT rebuild the site.
+- Do NOT change the overall Olyxee brand, layout, structure, styling, or navigation unless required for copy consistency.
+- Change only the written context, descriptions, positioning, metadata, and relevant Orgni-related messaging across the existing Olyxee website.
+- Preserve all current functionality.
+
+New Orgni positioning:
+
+Orgni is operational intelligence infrastructure that helps work move across a business.
+
+Do not describe Orgni primarily as:
+- a knowledge base
+- enterprise search
+- RAG
+- a document assistant
+- a chatbot
+- a generic AI assistant
+- a knowledge-management product
+
+The business problem Orgni addresses:
+
+Work inside companies constantly stops because people are waiting for:
+- answers
+- context
+- documents
+- approvals
+- updates
+- another employee
+- information from another department
+- routine work to be completed
+
+Orgni reduces these blockers by understanding the organisation and helping people and systems get work done.
+
+Core positioning:
+
+“Keep your business moving.”
+
+Supporting idea:
+
+“Orgni understands your organisation, works across the tools your teams already use, and handles the questions and routine work that create unnecessary delays.”
+
+Primary business outcomes:
+- fewer blockers
+- less repetitive work
+- faster operations
+- faster access to organisational context
+- fewer unnecessary interruptions
+- reduced dependency on specific people
+- faster customer responses
+- smoother coordination between teams
+- routine work handled automatically where appropriate
+
+Orgni must be presented as useful across the whole business, not just for interns, employees asking questions, or technical teams.
+
+Examples can span:
+
+Logistics:
+- shipment status
+- delays
+- customer updates
+- operational documents
+- delivery coordination
+- exception handling
+
+Finance:
+- invoices
+- payment follow-ups
+- reporting questions
+- approvals
+- financial context
+- anomaly explanations
+
+Operations:
+- blockers
+- ownership
+- dependencies
+- deadlines
+- handoffs
+- internal requests
+
+Sales:
+- client context
+- meeting preparation
+- CRM information
+- follow-ups
+- opportunity status
+
+Customer service:
+- answering routine customer emails
+- retrieving customer context
+- performing permitted actions
+- escalating unusual cases
+
+HR:
+- onboarding
+- policies
+- requests
+- internal information
+- scheduling
+
+The experience should be understandable through examples such as:
+
+“@Orgni where is shipment OLX-4821?”
+→ Orgni checks the relevant business systems and returns the answer.
+
+“@Orgni prepare everything for tomorrow’s customer meeting.”
+→ Orgni gathers the relevant account, documents, conversations, open issues, and context.
+
+“@Orgni what is blocking Project Atlas?”
+→ Orgni identifies dependencies, owners, and unresolved work.
+
+A customer emails asking for an invoice.
+→ Orgni understands the request, retrieves the correct information, responds where authorised, and records what happened.
+
+Do not position Teams as the product.
+
+Teams is only one possible interface.
+
+Orgni should remain broader than any specific interface or AI model.
+
+Possible interfaces include:
+- Microsoft Teams
+- voice
+- email
+- chat
+- APIs
+- internal applications
+- other AI agents
+
+Orgni can also use different intelligence systems underneath it:
+- OpenAI models
+- Claude
+- Gemini
+- local models
+- deterministic rules
+- SQL
+- optimisation
+- APIs
+- other software
+
+Do not make model choice a central marketing message.
+
+The durable idea is that Orgni understands the organisation and coordinates work across people, systems, intelligence, and business tools.
+
+Strategic message:
+
+“Assistants know the conversation. Orgni understands the organisation.”
+
+Another useful message:
+
+“Work shouldn’t stop because someone is waiting for an answer, a document, an approval, or another person.”
+
+Product progression:
+
+Today:
+Ask Orgni.
+
+Next:
+Give Orgni work.
+
+Later:
+Orgni notices routine work that needs to happen and handles it within its authority.
+
+Long-term vision:
+Operational intelligence infrastructure for increasingly autonomous organisations.
+
+Do not overstate future capabilities as if they already exist.
+
+Keep a clear separation between:
+- what Orgni provides now
+- where the platform is going
+
+Olyxee positioning must remain broader than Orgni.
+
+Olyxee is the company building research and infrastructure for operational intelligence.
+
+Orgni should appear as one of the main manifestations of that mission.
+
+Do not rewrite unrelated Olyxee products to sound like Orgni.
+
+Instead, make sure the overall Olyxee narrative is coherent:
+
+Olyxee:
+Research and infrastructure for operational intelligence.
+
+Orgni:
+The operational intelligence layer that helps businesses keep work moving.
+
+FinIR and other research/infrastructure:
+Should retain their existing specific roles, but their wording should align naturally with Olyxee’s broader operational-intelligence mission.
+
+Tasks:
+
+1. Audit the entire existing Olyxee website for Orgni references.
+2. Find text using the old Orgni positioning.
+3. Rewrite those references using the new positioning above.
+4. Check:
+   - homepage
+   - product sections
+   - Orgni cards
+   - research/about sections where Orgni is mentioned
+   - metadata
+   - SEO descriptions
+   - Open Graph descriptions
+   - footer descriptions
+   - shared constants/content files
+   - structured data if applicable
+5. Do not unnecessarily alter unrelated copy.
+6. Preserve the current visual design and component structure.
+7. Keep wording concise and enterprise-focused.
+8. Avoid hype and excessive AI terminology.
+9. Ensure mobile and desktop show the same updated messaging.
+
+After changing it, report:
+- every file changed
+- each significant old Orgni message that was removed
+- what replaced it
+- any old positioning that still remains
+- the final Orgni description now used across the Olyxee website
+- whether metadata and SEO copy were also updated

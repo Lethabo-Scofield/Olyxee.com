@@ -165,14 +165,14 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
   const products: ProductRow[] = [
     {
       name: "Orgni · Operational workflows",
-      description: "Operational workflows is a capability of Orgni, Olyxee's platform for live business context. Orgni connects AI reasoning with your business systems, APIs, databases, approvals, rules, and process state so operations run with full context and a complete decision history.",
+      description: "Operational workflows is a capability of Orgni, Olyxee's operational intelligence infrastructure. Orgni connects to your business systems, APIs, databases, approvals, rules, and process state so routine work can be handled with full context and a complete decision history.",
       status: "early-access",
       bg: "/images/gradient-blue-pink.webp",
       action: { kind: "external", href: "https://workflow.olyxee.com", label: "Open operational workflows" },
     },
     {
       name: "Orgni · Financial operations",
-      description: "Financial operations is a capability of Orgni. It helps finance teams compare, validate, and reconcile bank statements, ledgers, and accounting records with traceable evidence, all inside the same live operational context.",
+      description: "Financial operations is a capability of Orgni. It helps finance teams compare, validate, and reconcile bank statements, ledgers, and accounting records with traceable evidence, inside the same organisational understanding Orgni uses across the business.",
       status: "available",
       bg: "/images/gradient-pastel.webp",
       action: { kind: "external", href: "https://finance.olyxee.com", label: "Open financial operations" },
@@ -297,7 +297,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
           Olyxee documentation
         </h1>
         <p className="text-neutral-600 text-[17px] leading-[1.55]">
-          Olyxee builds research and infrastructure for operational intelligence: the systems that help intelligent software understand and operate inside real businesses. Orgni turns your live business context into reliable execution across finance, operations, logistics, and the systems your teams already use, while our solutions package that infrastructure around specific operational problems.
+          Olyxee builds research and infrastructure for operational intelligence: the systems that help intelligent software understand and operate inside real businesses. Orgni is the operational intelligence layer that keeps work moving across finance, operations, logistics, and the systems your teams already use, while our solutions package that infrastructure around specific operational problems.
         </p>
       </div>
 

@@ -59,7 +59,7 @@ export default function HomePage() {
       "Operational Intelligence",
       "Business Infrastructure",
       "AI Infrastructure",
-      "Live Business Context",
+      "Keep Your Business Moving",
       "Operational Memory",
       "Decision History",
       "Model-Neutral Architecture",
@@ -86,7 +86,7 @@ export default function HomePage() {
         name: "What is Orgni?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Orgni is Olyxee's core platform, designed to create a living operational model of an organisation. It connects scattered documents, workflows, decisions, roles, rules, and operational signals into structured business context that people and intelligent systems can use.",
+          text: "Orgni is Olyxee's operational intelligence infrastructure. It understands your organisation, works across the tools your teams already use, and handles the questions and routine work that create unnecessary delays, so work keeps moving across the business.",
         },
       },
       {
@@ -117,12 +117,11 @@ export default function HomePage() {
       <Header />
       <main>
         <HeroSection />
-        <ResearchAreas />
+        <LatestReleaseSection />
         <ImageShowcase />
         
         <OrgniSection />
         <VideoShowcaseSection />
-        <LatestReleaseSection />
         <CTASection />
         <LogoStrip />
       </main>
@@ -357,7 +356,7 @@ function ResearchAreas() {
               {
                 num: "03",
                 title: "Intelligent operations",
-                desc: "Orgni creates a living operational model of your organisation, helping preserve knowledge, coordinate people, systems, and AI agents, and adapt as conditions change, while Olyxee Logistics runs cross-border logistics operations end to end.",
+                desc: "Orgni keeps work moving across the business by understanding the organisation and handling the questions and routine work that create delays, while Olyxee Logistics runs cross-border logistics operations end to end.",
                 gradient: "/images/what-we-do-operations.png",
               },
             ].map((step, idx) => (
@@ -647,9 +646,9 @@ function OrgniSection() {
     <ProductFeature
       id="orgni"
       surface="muted"
-      heading="Orgni builds live business context for"
-      emphasis="modern operations."
-      description="Orgni creates a living operational model of your organisation. It connects scattered documents, workflows, decisions, roles, rules, and operational signals into structured business context that people and intelligent systems can use."
+      heading="Orgni keeps your"
+      emphasis="business moving."
+      description="Work stops when people wait for answers, documents, approvals, or another team. Orgni understands your organisation, works across the tools your teams already use, and handles the questions and routine work that create unnecessary delays."
       image={{
         src: "/images/orgni-product.png",
         alt: "Orgni interface: an organizational role transfer being processed with a live user graph, entitlements, and approval trail",
@@ -1021,7 +1020,7 @@ function StoriesSection() {
           </h2>
           <div className="mt-5 flex flex-wrap items-end justify-between gap-4">
             <p className="text-neutral-600 text-base sm:text-lg font-normal max-w-md">
-              How Orgni turns fragmented operations into shared, living context.
+              How Orgni helps teams keep work moving across the business.
             </p>
             <Link
               href="/stories"
@@ -1183,7 +1182,7 @@ function CTASection() {
               Get started with Orgni
             </h2>
             <p className="text-neutral-600 text-base sm:text-lg font-normal leading-relaxed mb-9 max-w-lg mx-auto">
-              Preserve institutional knowledge, understand how work actually happens, and coordinate people, systems, and AI agents through one living operational model.
+              Work shouldn't stop because someone is waiting for an answer, a document, an approval, or another person. Ask Orgni today, give it work next, and reduce the blockers that slow your operations.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center">

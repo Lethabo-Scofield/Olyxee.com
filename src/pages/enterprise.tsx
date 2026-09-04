@@ -283,16 +283,16 @@ const Enterprise: FC = () => {
           <div>
             <p className="text-[#111111] font-medium text-[15px] mb-4">Introducing Orgni</p>
             <h2 className="text-[2.5rem] sm:text-[3.5rem] font-medium tracking-tighter text-[#111] mb-6 leading-[1.1]">
-              Your context, systems, and decisions, running as one.
+              Keep your business moving.
             </h2>
             <p className="text-[1.125rem] text-[#4a5568] mb-8 leading-relaxed">
-              Orgni connects financial operations, operational workflows, and business memory so intelligent systems can act with full context across your enterprise.
+              Orgni understands your organisation, works across the tools your teams already use, and handles the questions and routine work that create unnecessary delays across the enterprise.
             </p>
             <ul className="space-y-5 mb-10">
               {[
-                "Connects financial operations and workflows",
-                "Live business context layer for multi-agent systems",
-                "Persistent organizational cognition and audit trails",
+                "Answers questions from live business systems, not just documents",
+                "Works through Teams, email, chat, APIs, and internal applications",
+                "Handles routine work within its authority, with a clear trail",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-4 text-[1.05rem] text-[#111]">
                   <Check className="w-5 h-5 mt-0.5 text-[#111111] shrink-0" strokeWidth={2.5} />
