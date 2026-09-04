@@ -646,9 +646,9 @@ function OrgniSection() {
     <ProductFeature
       id="orgni"
       surface="muted"
-      heading="Orgni keeps your"
-      emphasis="business moving."
-      description="Work stops when people wait for answers, documents, approvals, or another team. Orgni understands your organisation, works across the tools your teams already use, and handles the questions and routine work that create unnecessary delays."
+      heading="Growth shouldn't"
+      emphasis="wait."
+      description="Orgni removes the blockers between your people, systems and work."
       image={{
         src: "/images/orgni-product.png",
         alt: "Orgni interface: an organizational role transfer being processed with a live user graph, entitlements, and approval trail",
