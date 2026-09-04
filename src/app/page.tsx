@@ -122,7 +122,7 @@ export default function HomePage() {
         
         <OrgniSection />
         <VideoShowcaseSection />
-        <StoriesSection />
+        <LatestReleaseSection />
         <CTASection />
         <LogoStrip />
       </main>
@@ -847,6 +847,111 @@ function VideoShowcaseSection() {
 }
 
 const STORY_DURATION_MS = 7000;
+
+const LATEST_RELEASE = {
+  title: "FinIR: A financial intermediate representation for AI-native computation",
+  description:
+    "A finance-typed compiler and incremental execution runtime that turns structured financial intent into deterministic, auditable financial computation.",
+  authors: "Lethabo Scofield and Alisha Fatima",
+  date: "2026-09-04",
+  dateLabel: "Sep 2026",
+  href: "/research/finir",
+  background: "/research/finir-card-bg.webp",
+  links: [
+    { label: "GitHub", href: "https://github.com/Olyxee/finir", logo: "/logos/collaborators/github.svg" },
+    { label: "PyPI", href: "https://pypi.org/project/finir/", logo: "/research/logos/pypi.svg" },
+    { label: "FinIR-Intent model", href: "https://huggingface.co/Olyxee/FinIR-Intent", logo: "/partner-logos/huggingface.svg" },
+    { label: "IntentBench dataset", href: "https://huggingface.co/datasets/Olyxee/FinIR-IntentBench", logo: "/partner-logos/huggingface.svg" },
+  ],
+};
+
+function LatestReleaseSection() {
+  const release = LATEST_RELEASE;
+  return (
+    <section id="latest-release" className="py-20 sm:py-28 bg-white border-t border-neutral-200/70 scroll-mt-24" aria-labelledby="latest-release-heading">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="mb-10 sm:mb-14 flex flex-wrap items-end justify-between gap-4"
+        >
+          <div>
+            <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Research</p>
+            <h2 id="latest-release-heading" className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900 max-w-2xl">
+              Latest release
+            </h2>
+          </div>
+          <Link
+            href="/research"
+            className="group inline-flex items-center gap-1.5 text-sm font-medium text-neutral-700 hover:text-neutral-900 transition-colors"
+          >
+            View all research
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden />
+          </Link>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className="relative overflow-hidden rounded-3xl border border-neutral-200 bg-white bg-cover bg-center p-7 sm:p-10 lg:p-12"
+          style={{ backgroundImage: `url(${release.background})` }}
+        >
+          <div
+            className="pointer-events-none absolute inset-0"
+            style={{ background: "linear-gradient(90deg, rgba(255,255,255,0.42) 0%, rgba(255,255,255,0.22) 55%, rgba(255,255,255,0) 100%)" }}
+            aria-hidden
+          />
+          <div className="relative grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-16">
+            <div>
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[12px] font-medium uppercase tracking-[0.14em] text-neutral-500">
+                <span className="text-neutral-900">Release</span>
+                <span aria-hidden>·</span>
+                <time dateTime={release.date}>{release.dateLabel}</time>
+              </div>
+              <h3 className="mt-5 max-w-[720px] text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.03em] text-neutral-900 sm:text-[2.25rem]">
+                {release.title}
+              </h3>
+              <p className="mt-5 max-w-[640px] text-[16px] leading-[1.65] text-neutral-600 sm:text-[17px]">{release.description}</p>
+              <p className="mt-4 text-[14px] text-neutral-500">{release.authors}</p>
+              <Link
+                href={release.href}
+                className="group mt-8 inline-flex items-center gap-2 rounded-full bg-neutral-900 px-5 py-2.5 text-[14px] font-medium text-white transition-colors hover:bg-black"
+              >
+                Read the release
+                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden />
+              </Link>
+            </div>
+            <div className="rounded-2xl border border-white/70 bg-white/75 p-5 shadow-sm backdrop-blur-md sm:p-6">
+              <p className="mb-3 text-[12px] font-medium uppercase tracking-[0.14em] text-neutral-500">Public resources</p>
+              <ul className="divide-y divide-neutral-200">
+                {release.links.map((link) => (
+                  <li key={link.href}>
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex items-center gap-3 py-3 text-[14px] font-medium text-neutral-900"
+                    >
+                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-neutral-200 bg-white">
+                        <Image src={link.logo} alt="" width={16} height={16} className="h-4 w-4" aria-hidden />
+                      </span>
+                      <span className="flex-1">{link.label}</span>
+                      <ArrowUpRight className="h-4 w-4 shrink-0 text-neutral-400 transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-neutral-900" aria-hidden />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
 
 function StoriesSection() {
   const [active, setActive] = useState(0);

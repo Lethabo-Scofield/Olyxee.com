@@ -1,5 +1,6 @@
 import { FC, ReactNode, useMemo, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import SEO from "../components/SEO";
 import Header from "../components/header";
@@ -19,7 +20,7 @@ type Paper = {
   url: string;
   description: string;
   featured?: boolean;
-  links?: { label: string; href: string }[];
+  links?: { label: string; href: string; logo: string }[];
 };
 
 const papers: Paper[] = [
@@ -37,10 +38,10 @@ const papers: Paper[] = [
       "A finance-typed compiler and incremental execution runtime that turns structured financial intent into deterministic, auditable financial computation.",
     featured: true,
     links: [
-      { label: "GitHub", href: "https://github.com/Olyxee/finir" },
-      { label: "PyPI", href: "https://pypi.org/project/finir/" },
-      { label: "FinIR-Intent model", href: "https://huggingface.co/Olyxee/FinIR-Intent" },
-      { label: "IntentBench dataset", href: "https://huggingface.co/datasets/Olyxee/FinIR-IntentBench" },
+      { label: "GitHub", href: "https://github.com/Olyxee/finir", logo: "/logos/collaborators/github.svg" },
+      { label: "PyPI", href: "https://pypi.org/project/finir/", logo: "/research/logos/pypi.svg" },
+      { label: "FinIR-Intent model", href: "https://huggingface.co/Olyxee/FinIR-Intent", logo: "/partner-logos/huggingface.svg" },
+      { label: "IntentBench dataset", href: "https://huggingface.co/datasets/Olyxee/FinIR-IntentBench", logo: "/partner-logos/huggingface.svg" },
     ],
   },
   {
@@ -58,10 +59,6 @@ const papers: Paper[] = [
   },
 ];
 
-const channels = [
-  { label: "GitHub", href: "https://github.com/Olyxee", detail: "Source code and releases" },
-  { label: "Hugging Face", href: "https://huggingface.co/Olyxee", detail: "Models and datasets" },
-];
 
 type ResearchFilter = "All" | Category;
 const filters: ResearchFilter[] = ["All", "Release", "Publication"];
@@ -137,7 +134,7 @@ const Research: FC = () => {
       <main>
         {/* Intro */}
         <section className="px-5 pb-14 pt-28 sm:px-8 sm:pb-20 sm:pt-36">
-          <div className="mx-auto grid max-w-[1120px] gap-10 lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-16">
+          <div className="mx-auto max-w-[1120px]">
             <div>
               <p className="mb-4 text-[12px] font-medium uppercase tracking-[0.14em] text-[#86868b]">Olyxee Research</p>
               <h1 className="text-[2.75rem] font-semibold leading-[1.02] tracking-[-0.04em] text-[#1d1d1f] sm:text-[3.75rem]">
@@ -147,22 +144,6 @@ const Research: FC = () => {
                 Product releases, technical work, and selected research shaping how we build dependable systems for real operations.
               </p>
             </div>
-            <aside className="lg:pt-3">
-              <p className="mb-3 text-[12px] font-medium uppercase tracking-[0.14em] text-[#86868b]">Follow our work</p>
-              <ul className="divide-y divide-[#e5e5ea] border-y border-[#e5e5ea]">
-                {channels.map((channel) => (
-                  <li key={channel.href}>
-                    <a href={channel.href} target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between gap-4 py-3.5">
-                      <span>
-                        <span className="block text-[14px] font-medium text-[#1d1d1f]">{channel.label}</span>
-                        <span className="block text-[13px] text-[#86868b]">{channel.detail}</span>
-                      </span>
-                      <ArrowUpRight className="h-4 w-4 shrink-0 text-[#86868b] transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#1d1d1f]" aria-hidden />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </aside>
           </div>
         </section>
 
@@ -176,7 +157,7 @@ const Research: FC = () => {
               >
                 <div
                   className="pointer-events-none absolute inset-0"
-                  style={{ background: "linear-gradient(90deg, rgba(255,255,255,0.86) 0%, rgba(255,255,255,0.72) 55%, rgba(255,255,255,0.4) 100%)" }}
+                  style={{ background: "linear-gradient(90deg, rgba(255,255,255,0.42) 0%, rgba(255,255,255,0.22) 55%, rgba(255,255,255,0) 100%)" }}
                   aria-hidden
                 />
                 <div className="relative grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-16">
@@ -202,8 +183,11 @@ const Research: FC = () => {
                       <ul className="divide-y divide-[#e5e5ea]">
                         {featured.links.map((link) => (
                           <li key={link.href}>
-                            <a href={link.href} target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between gap-4 py-3 text-[14px] font-medium text-[#1d1d1f]">
-                              {link.label}
+                            <a href={link.href} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 py-3 text-[14px] font-medium text-[#1d1d1f]">
+                              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-[#e5e5ea] bg-white">
+                                <Image src={link.logo} alt="" width={16} height={16} className="h-4 w-4" aria-hidden />
+                              </span>
+                              <span className="flex-1">{link.label}</span>
                               <ArrowUpRight className="h-4 w-4 shrink-0 text-[#86868b] transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#1d1d1f]" aria-hidden />
                             </a>
                           </li>
