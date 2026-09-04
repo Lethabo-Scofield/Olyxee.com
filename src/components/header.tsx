@@ -61,6 +61,11 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
     const firstFocusableRef = useRef<HTMLButtonElement | null>(null);
     const dropdownTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
     const pathname = usePathname();
+    const brandName = pathname?.startsWith('/research')
+        ? 'Olyxee Research'
+        : pathname?.startsWith('/enterprise')
+            ? 'Olyxee Business'
+            : 'Olyxee';
 
     const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
         if (href.startsWith('/#')) {
@@ -182,7 +187,7 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                         <span className={`text-[15px] font-bold hidden sm:inline transition-colors ${
                             theme === "dark" && !scrolled ? "text-white" : "text-neutral-900"
                         }`}>
-                            Olyxee
+                            {brandName}
                         </span>
                     </Link>
 
@@ -287,10 +292,10 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                                 href="https://huggingface.co/Olyxee"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white border border-neutral-200 hover:bg-neutral-100 transition-all"
+                                className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-neutral-900 hover:bg-black transition-all"
                                 aria-label="Olyxee on Hugging Face"
                             >
-                                <Image src="/partner-logos/huggingface.svg" alt="" width={20} height={20} className="w-5 h-5" aria-hidden />
+                                <Image src="/partner-logos/huggingface.svg" alt="" width={18} height={18} className="w-[18px] h-[18px]" aria-hidden />
                             </a>
                         </motion.div>
                         <motion.div
@@ -400,7 +405,7 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                             <div className="flex items-center justify-between h-16 px-5 border-b border-neutral-200">
                                 <div className="flex items-center gap-2.5">
                                     <Image src="/Logo/Olyxee_Logo_Knockout.png" alt="Olyxee Logo" width={24} height={24} unoptimized />
-                                    <span className="font-semibold text-neutral-900 text-[15px]">Olyxee</span>
+                                    <span className="font-semibold text-neutral-900 text-[15px]">{brandName}</span>
                                 </div>
                                 <button
                                     ref={firstFocusableRef}
