@@ -170,8 +170,16 @@ const Research: FC = () => {
         {featured && (
           <section className="px-5 pb-16 sm:px-8 sm:pb-24" aria-labelledby="featured-heading">
             <div className="mx-auto max-w-[1120px]">
-              <div className="rounded-3xl border border-[#e5e5ea] bg-white p-7 sm:p-10 lg:p-12">
-                <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-16">
+              <div
+                className="relative overflow-hidden rounded-3xl border border-[#e5e5ea] bg-white bg-cover bg-center p-7 sm:p-10 lg:p-12"
+                style={{ backgroundImage: "url(/research/finir-card-bg.webp)" }}
+              >
+                <div
+                  className="pointer-events-none absolute inset-0"
+                  style={{ background: "linear-gradient(90deg, rgba(255,255,255,0.86) 0%, rgba(255,255,255,0.72) 55%, rgba(255,255,255,0.4) 100%)" }}
+                  aria-hidden
+                />
+                <div className="relative grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-16">
                   <div>
                     <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[12px] font-medium uppercase tracking-[0.14em] text-[#86868b]">
                       <span id="featured-heading" className="text-[#1d1d1f]">Latest release</span>
@@ -189,9 +197,9 @@ const Research: FC = () => {
                     </Link>
                   </div>
                   {featured.links && (
-                    <div className="lg:border-l lg:border-[#e5e5ea] lg:pl-10">
-                      <p className="mb-3 text-[12px] font-medium uppercase tracking-[0.14em] text-[#86868b]">Public resources</p>
-                      <ul className="divide-y divide-[#e5e5ea] border-y border-[#e5e5ea]">
+                    <div className="rounded-2xl border border-white/70 bg-white/75 p-5 shadow-sm backdrop-blur-md sm:p-6">
+                      <p className="mb-3 text-[12px] font-medium uppercase tracking-[0.14em] text-[#6e6e73]">Public resources</p>
+                      <ul className="divide-y divide-[#e5e5ea]">
                         {featured.links.map((link) => (
                           <li key={link.href}>
                             <a href={link.href} target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between gap-4 py-3 text-[14px] font-medium text-[#1d1d1f]">
