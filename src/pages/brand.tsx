@@ -26,7 +26,7 @@ const COLORS = [
   { name: "Paper", hex: "#FFFFFF", text: "text-neutral-900", role: "Default background", border: true },
   { name: "Mist", hex: "#F5F5F7", text: "text-neutral-900", role: "Page canvas and subtle surfaces", border: true },
   { name: "Slate", hex: "#737373", text: "text-white", role: "Secondary text" },
-  { name: "Orgni Blue", hex: "#3B82F6", text: "text-white", role: "Orgni accent, used sparingly" },
+  { name: "Orgni Orange", hex: "#FF5A08", text: "text-white", role: "Orgni accent, used sparingly" },
 ];
 
 const DOS = [
