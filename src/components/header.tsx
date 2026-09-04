@@ -384,159 +384,106 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 0.25 }}
-                            className="fixed inset-0 bg-black/25 backdrop-blur-md z-[1001] md:hidden"
+                            transition={{ duration: 0.2 }}
+                            className="fixed inset-0 bg-black/30 z-[1001] md:hidden"
                             onClick={handleBackdropClick}
                             aria-hidden="true"
                         />
                         <motion.div
-                            initial={{ x: '108%' }}
+                            initial={{ x: '100%' }}
                             animate={{ x: 0 }}
-                            exit={{ x: '108%' }}
-                            transition={{ type: 'spring', damping: 30, stiffness: 300, mass: 0.8 }}
-                            drag="x"
-                            dragConstraints={{ left: 0, right: 320 }}
-                            dragElastic={{ left: 0, right: 0.6 }}
-                            dragSnapToOrigin
-                            onDragEnd={(_, info) => {
-                                if (info.offset.x > 90 || info.velocity.x > 500) setMobileMenuOpen(false);
-                            }}
-                            className="fixed right-3 top-3 bottom-3 w-[calc(100%-24px)] max-w-sm z-[1002] md:hidden overflow-hidden flex flex-col touch-pan-y"
-                            style={{
-                                background: 'rgba(255,255,255,0.75)',
-                                backdropFilter: 'blur(40px) saturate(200%)',
-                                WebkitBackdropFilter: 'blur(40px) saturate(200%)',
-                                borderRadius: 28,
-                                border: 'none',
-                                boxShadow: '0 24px 80px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.06)',
-                            }}
+                            exit={{ x: '100%' }}
+                            transition={{ duration: 0.25, ease: [0.32, 0.72, 0, 1] }}
+                            className="fixed inset-y-0 right-0 w-[86%] max-w-sm z-[1002] md:hidden bg-white flex flex-col shadow-[-8px_0_32px_rgba(0,0,0,0.08)]"
                             role="dialog"
                             aria-modal="true"
+                            aria-label="Menu"
                         >
-                            <div aria-hidden className="absolute left-1.5 top-1/2 -translate-y-1/2 h-10 w-1 rounded-full bg-neutral-300/70" />
-                            <div className="flex items-center justify-between p-5 pb-4">
+                            <div className="flex items-center justify-between h-16 px-5 border-b border-neutral-200">
                                 <div className="flex items-center gap-2.5">
-                                    <Image src="/Logo/Olyxee_Logo_Knockout.png" alt="Olyxee Logo" width={26} height={26} unoptimized />
-                                    <span className="font-bold text-neutral-900 text-[15px]">Olyxee</span>
+                                    <Image src="/Logo/Olyxee_Logo_Knockout.png" alt="Olyxee Logo" width={24} height={24} unoptimized />
+                                    <span className="font-semibold text-neutral-900 text-[15px]">Olyxee</span>
                                 </div>
                                 <button
                                     ref={firstFocusableRef}
                                     onClick={() => setMobileMenuOpen(false)}
-                                    className="p-2 hover:bg-white/60 rounded-full transition-all active:scale-90 focus:outline-none"
+                                    className="-mr-2 p-2 rounded-md text-neutral-700 hover:bg-neutral-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
                                     aria-label="Close menu"
                                 >
-                                    <X className="h-5 w-5 text-neutral-700" />
+                                    <X className="h-5 w-5" />
                                 </button>
                             </div>
 
-                            <div className="mx-5 h-px bg-neutral-200/50" />
-
-                            <nav className="flex-1 min-h-0 p-5 overflow-y-auto">
-                                <ul className="space-y-0.5">
-                                    {menuItems.map((item, i) => {
+                            <nav className="flex-1 min-h-0 overflow-y-auto">
+                                <ul className="divide-y divide-neutral-100">
+                                    {menuItems.map((item) => {
                                         const hasChildren = !!item.children?.length;
                                         const expanded = !!mobileExpanded[item.name];
                                         return (
-                                            <motion.li
-                                                key={item.name}
-                                                initial={{ opacity: 0, x: 40 }}
-                                                animate={{ opacity: 1, x: 0 }}
-                                                transition={{ delay: 0.1 + i * 0.045, type: 'spring', stiffness: 380, damping: 28 }}
-                                                whileTap={{ scale: 0.97 }}
-                                            >
+                                            <li key={item.name}>
                                                 {hasChildren ? (
                                                     <>
                                                         <button
                                                             type="button"
                                                             onClick={() => setMobileExpanded((s) => ({ ...s, [item.name]: !s[item.name] }))}
                                                             aria-expanded={expanded}
-                                                            className="w-full flex items-center justify-between py-3 px-4 hover:bg-orange-50 active:bg-orange-100/70 rounded-2xl transition-all text-neutral-900 font-medium text-[15px] focus:outline-none hover:text-orange-600"
+                                                            className="w-full flex items-center justify-between px-5 py-4 text-left text-neutral-900 font-medium text-[16px] hover:bg-neutral-50 focus:outline-none focus-visible:bg-neutral-50"
                                                         >
                                                             {item.name}
                                                             <ChevronDown className={`w-4 h-4 text-neutral-400 transition-transform ${expanded ? 'rotate-180' : ''}`} />
                                                         </button>
-                                                        <AnimatePresence initial={false}>
-                                                            {expanded && (
-                                                                <motion.ul
-                                                                    initial={{ opacity: 0, height: 0 }}
-                                                                    animate={{ opacity: 1, height: 'auto' }}
-                                                                    exit={{ opacity: 0, height: 0 }}
-                                                                    transition={{ duration: 0.2, ease: 'easeOut' }}
-                                                                    className="overflow-hidden pl-3 pt-1"
-                                                                >
-                                                                    {item.children!.map((child) => (
-                                                                        <li key={child.name}>
-                                                                            <Link
-                                                                                href={child.href}
-                                                                                prefetch
-                                                                                onClick={() => setMobileMenuOpen(false)}
-                                                                                className="flex items-center justify-between py-2.5 px-4 hover:bg-orange-50 active:bg-orange-100/70 rounded-2xl transition-all text-neutral-700 hover:text-orange-600 text-[14px] focus:outline-none"
-                                                                            >
-                                                                                {child.name}
-                                                                                <span className="text-neutral-400 text-xs">→</span>
-                                                                            </Link>
-                                                                        </li>
-                                                                    ))}
-                                                                </motion.ul>
-                                                            )}
-                                                        </AnimatePresence>
+                                                        {expanded && (
+                                                            <ul className="pb-2 bg-neutral-50/60">
+                                                                {item.children!.map((child) => (
+                                                                    <li key={child.name}>
+                                                                        <Link
+                                                                            href={child.href}
+                                                                            prefetch
+                                                                            onClick={() => setMobileMenuOpen(false)}
+                                                                            className="block px-5 py-2.5 pl-8 text-neutral-700 text-[15px] hover:text-neutral-900 focus:outline-none focus-visible:underline"
+                                                                        >
+                                                                            {child.name}
+                                                                        </Link>
+                                                                    </li>
+                                                                ))}
+                                                            </ul>
+                                                        )}
                                                     </>
                                                 ) : (
                                                     <Link
                                                         href={item.href!}
                                                         prefetch={!item.href!.startsWith('/#')}
-                                                        className="flex items-center justify-between py-3 px-4 hover:bg-orange-50 active:bg-orange-100/70 rounded-2xl transition-all text-neutral-900 font-medium text-[15px] focus:outline-none hover:text-orange-600"
+                                                        className="block px-5 py-4 text-neutral-900 font-medium text-[16px] hover:bg-neutral-50 focus:outline-none focus-visible:bg-neutral-50"
                                                         onClick={(e) => { handleNavClick(e, item.href!); setMobileMenuOpen(false); }}
                                                     >
                                                         {item.name}
-                                                        <span className="text-neutral-400 text-xs">→</span>
                                                     </Link>
                                                 )}
-                                            </motion.li>
+                                            </li>
                                         );
                                     })}
                                 </ul>
                             </nav>
 
-                            <motion.div
-                                className="shrink-0 p-5 pt-4 border-t border-neutral-200/50 flex flex-col gap-1.5"
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.4, type: 'spring', stiffness: 300, damping: 25 }}
-                            >
-                                <p className="text-[10px] font-semibold text-neutral-400 uppercase tracking-[0.22em] px-1 mb-1">
-                                    Sign in to
-                                </p>
-                                {SIGNIN_OPTIONS.map((opt, i) => (
-                                    <motion.a
-                                        key={opt.name}
-                                        initial={{ opacity: 0, y: 14 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: 0.42 + i * 0.06, type: 'spring', stiffness: 340, damping: 26 }}
-                                        whileTap={{ scale: 0.97 }}
-                                        href={opt.href}
-                                        target={opt.external ? "_blank" : undefined}
-                                        rel={opt.external ? "noopener noreferrer" : undefined}
-                                        onClick={() => setMobileMenuOpen(false)}
-                                        className="w-full flex items-center gap-3 px-4 py-2.5 bg-white/70 hover:bg-white border border-neutral-200/70 rounded-2xl active:scale-[0.98] transition-all focus:outline-none"
-                                    >
-                                        <div className="min-w-0 flex-1 text-left">
-                                            <p className="text-[14px] font-semibold text-neutral-900 leading-tight">
+                            <div className="shrink-0 px-5 py-4 border-t border-neutral-200">
+                                <p className="text-[11px] font-semibold text-neutral-400 uppercase tracking-[0.18em] mb-2">Sign in</p>
+                                <ul className="space-y-1">
+                                    {SIGNIN_OPTIONS.map((opt) => (
+                                        <li key={opt.name}>
+                                            <a
+                                                href={opt.href}
+                                                target={opt.external ? "_blank" : undefined}
+                                                rel={opt.external ? "noopener noreferrer" : undefined}
+                                                onClick={() => setMobileMenuOpen(false)}
+                                                className="flex items-center justify-between py-2 text-[15px] text-neutral-800 hover:text-neutral-900 focus:outline-none focus-visible:underline"
+                                            >
                                                 {opt.name}
-                                            </p>
-                                            <p className="text-[11px] text-neutral-500 font-normal leading-tight mt-0.5">
-                                                {opt.description}
-                                            </p>
-                                        </div>
-                                        {opt.external && (
-                                            <ArrowUpRight
-                                                className="w-3.5 h-3.5 text-neutral-400 flex-shrink-0"
-                                                aria-hidden
-                                            />
-                                        )}
-                                    </motion.a>
-                                ))}
-                            </motion.div>
+                                                {opt.external && <ArrowUpRight className="w-4 h-4 text-neutral-400" aria-hidden />}
+                                            </a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
                         </motion.div>
                     </>
                 )}
