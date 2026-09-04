@@ -841,7 +841,6 @@ function VideoShowcaseSection() {
             className="absolute inset-x-0 top-0 h-40 sm:h-56 bg-gradient-to-b from-black/70 via-black/30 to-transparent pointer-events-none"
           />
           <div className="absolute inset-x-0 top-0 pt-8 sm:pt-12 px-6 text-center">
-            <p className="text-xs font-semibold text-white/50 uppercase tracking-[0.2em] mb-3">Orgni</p>
             <h2 className="font-serif text-2xl sm:text-4xl lg:text-5xl tracking-tight text-white max-w-3xl mx-auto">
               Growth shouldn&apos;t wait.
             </h2>
