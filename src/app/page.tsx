@@ -646,9 +646,9 @@ function OrgniSection() {
     <ProductFeature
       id="orgni"
       surface="muted"
-      heading="Growth shouldn't"
-      emphasis="wait."
-      description="Orgni removes the blockers between your people, systems and work."
+      heading="Orgni keeps your"
+      emphasis="business moving."
+      description="Work stops when people wait for answers, documents, approvals, or another team. Orgni understands your organisation, works across the tools your teams already use, and handles the questions and routine work that create unnecessary delays."
       image={{
         src: "/images/orgni-product.png",
         alt: "Orgni interface: an organizational role transfer being processed with a live user graph, entitlements, and approval trail",
@@ -843,8 +843,11 @@ function VideoShowcaseSection() {
           <div className="absolute inset-x-0 top-0 pt-8 sm:pt-12 px-6 text-center">
             <p className="text-xs font-semibold text-white/50 uppercase tracking-[0.2em] mb-3">Orgni</p>
             <h2 className="font-serif text-2xl sm:text-4xl lg:text-5xl tracking-tight text-white max-w-3xl mx-auto">
-              Assistants know the conversation. Orgni understands the organisation.
+              Growth shouldn&apos;t wait.
             </h2>
+            <p className="mt-3 text-sm sm:text-lg text-white/75 max-w-xl mx-auto">
+              Orgni removes the blockers between your people, systems and work.
+            </p>
             <span className="mt-5 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm ring-1 ring-white/20 transition-colors group-hover:bg-white group-hover:text-neutral-900">
               Explore Orgni
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
