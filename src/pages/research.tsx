@@ -5,63 +5,7 @@ import { ArrowUpRight, ArrowRight } from "lucide-react";
 import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
-
-type Category = "Release" | "Publication";
-
-type Paper = {
-  category: Category;
-  source: string;
-  title: string;
-  authors: string;
-  venue: string;
-  month: string;
-  year: string;
-  date: string;
-  url: string;
-  description: string;
-  featured?: boolean;
-  links?: { label: string; href: string; logo: string }[];
-};
-
-const papers: Paper[] = [
-  {
-    category: "Release",
-    source: "Olyxee",
-    title: "FinIR: A financial intermediate representation for AI-native computation",
-    authors: "Lethabo Scofield and Alisha Fatima",
-    venue: "Olyxee Research",
-    month: "Sep",
-    year: "2026",
-    date: "2026-09-04",
-    url: "/research/finir",
-    description:
-      "A finance-typed compiler and incremental execution runtime that turns structured financial intent into deterministic, auditable financial computation.",
-    featured: true,
-    links: [
-      { label: "GitHub", href: "https://github.com/Olyxee/finir", logo: "/logos/collaborators/github.svg" },
-      { label: "PyPI", href: "https://pypi.org/project/finir/", logo: "/research/logos/pypi.svg" },
-      { label: "FinIR-Intent model", href: "https://huggingface.co/Olyxee/FinIR-Intent", logo: "/partner-logos/huggingface.svg" },
-      { label: "IntentBench dataset", href: "https://huggingface.co/datasets/Olyxee/FinIR-IntentBench", logo: "/partner-logos/huggingface.svg" },
-    ],
-  },
-  {
-    category: "Publication",
-    source: "Research we follow",
-    title: "LLMs Corrupt Your Documents When You Delegate",
-    authors: "P. Laban, T. Schnabel, J. Neville",
-    venue: "arXiv",
-    month: "Apr",
-    year: "2026",
-    date: "2026-04-01",
-    url: "https://arxiv.org/abs/2604.15597",
-    description:
-      "A paper we are following as we think about dependable document-handling workflows and the boundaries of delegated AI work.",
-  },
-];
-
-
-type ResearchFilter = "All" | Category;
-const filters: ResearchFilter[] = ["All", "Release", "Publication"];
+import { researchEntries, researchFilters, type ResearchFilter } from "../lib/research-content";
 
 const isInternal = (url: string) => url.startsWith("/");
 
@@ -72,14 +16,14 @@ function EntryLink({ href, className, children }: { href: string; className: str
 }
 
 const Research: FC = () => {
-  const [activeFilter, setActiveFilter] = useState<ResearchFilter>("All");
-  const featured = papers.find((paper) => paper.featured);
+  const [activeFilter, setActiveFilter] = useState<ResearchFilter>("All entries");
+  const featured = researchEntries.find((paper) => paper.featured);
   const visiblePapers = useMemo(
-    () => (activeFilter === "All" ? papers : papers.filter((paper) => paper.category === activeFilter)),
+    () => (activeFilter === "All entries" ? researchEntries : researchEntries.filter((paper) => paper.category === activeFilter)),
     [activeFilter]
   );
   const countFor = (filter: ResearchFilter) =>
-    filter === "All" ? papers.length : papers.filter((paper) => paper.category === filter).length;
+    filter === "All entries" ? researchEntries.length : researchEntries.filter((paper) => paper.category === filter).length;
 
   return (
     <div className="research-page min-h-screen relative">
@@ -101,13 +45,13 @@ const Research: FC = () => {
             url: "https://olyxee.com",
             logo: { "@type": "ImageObject", url: "https://olyxee.com/Logo/Olyxee_Logo.png" },
           },
-          mainEntity: {
+             mainEntity: {
             "@type": "ItemList",
-            itemListElement: papers.map((paper, i) => ({
+               itemListElement: researchEntries.map((paper, i) => ({
               "@type": "ListItem",
               position: i + 1,
               item: {
-                "@type": "ScholarlyArticle",
+                 "@type": paper.category === "News" ? "Article" : "ScholarlyArticle",
                 headline: paper.title,
                 name: paper.title,
                 author: paper.category === "Release"
@@ -206,8 +150,8 @@ const Research: FC = () => {
           <div className="mx-auto max-w-[1120px]">
             <div className="flex flex-col gap-5 border-b border-[#dedee3] sm:flex-row sm:items-end sm:justify-between">
               <h2 id="archive-heading" className="pb-4 text-[1.375rem] font-semibold tracking-[-0.02em] text-[#1d1d1f]">All entries</h2>
-              <nav className="flex gap-7 overflow-x-auto text-[13px] no-scrollbar" aria-label="Filter research">
-                {filters.map((filter) => (
+               <nav className="flex gap-7 overflow-x-auto text-[13px] no-scrollbar" aria-label="Filter research">
+                {researchFilters.map((filter) => (
                   <button
                     key={filter}
                     type="button"
@@ -250,7 +194,7 @@ const Research: FC = () => {
               </ul>
             ) : (
               <p className="border-b border-[#dedee3] py-12 text-sm text-[#6e6e73]">
-                No {activeFilter.toLowerCase()} entries yet.
+                 No {activeFilter.toLowerCase()} entries yet.
               </p>
             )}
           </div>

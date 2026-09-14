@@ -1,0 +1,89 @@
+Update the Olyxee website’s content section.
+
+Goal:
+Add a dedicated News section and publish a new company story announcing that Olyxee is now part of Anthropic’s Claude Partner Network.
+
+Changes required:
+
+1. Existing content navigation
+- Keep the existing “All entries” tab.
+- Add a new tab called “News”.
+- “All entries” should continue showing every published item.
+- “News” should only show entries categorised as news/company updates.
+- Keep the existing visual style, spacing, typography, cards, hover states, responsive behaviour, and routing patterns.
+- Do not redesign the whole section.
+
+2. Add new News article
+Title:
+Olyxee joins the Claude Partner Network
+
+Category:
+News
+
+Suggested slug:
+news/olyxee-joins-claude-partner-network
+
+Use the attached Olyxee x Claude Partner Network artwork as the article hero/cover image.
+
+3. Article copy
+
+Olyxee is now part of Anthropic’s Claude Partner Network.
+
+For us, this is not simply a partnership announcement. It strengthens the work we are already doing to build research and infrastructure for operational intelligence.
+
+At Olyxee, our focus is on helping organisations become more intelligent in how they operate, make decisions, access context and move work forward. That direction is taking shape through Orgni, our intelligence layer for teams and business operations.
+
+Working within the Claude Partner Network gives us access to Anthropic’s partner ecosystem, technical enablement, training and certification pathways, while creating a clearer route for us to build and deploy Claude-powered systems with customers.
+
+It has already helped us think more deliberately about how we design enterprise AI systems: not as isolated assistants, but as systems connected to business knowledge, workflows, people and operational context.
+
+That is especially important in the South African market, where businesses increasingly care less about AI as a novelty and more about whether it improves productivity, reduces operational friction and creates measurable value.
+
+The relationship is still developing, but it gives Olyxee a stronger foundation as we continue building Orgni and deploying operational AI systems for real organisations.
+
+Our mission remains unchanged:
+
+Build the research and infrastructure for operational intelligence.
+
+The Claude Partner Network is another step toward that mission.
+
+4. Article metadata
+- Author: Olyxee
+- Publish date: use the current publication date
+- Reading time: calculate automatically
+- Category badge: News
+- Add normal SEO metadata:
+  - title
+  - description
+  - Open Graph image
+  - canonical URL
+- Make sure the article is indexable.
+
+Suggested meta description:
+Olyxee joins Anthropic’s Claude Partner Network, strengthening its work on Orgni and its mission to build research and infrastructure for operational intelligence.
+
+5. Article page design
+Keep it clean and editorial:
+- Large title
+- Small “News” label
+- Publish date
+- Hero image
+- Comfortable reading width
+- Strong typography
+- Proper paragraph spacing
+- No unnecessary icons or decorative clutter
+- Add a subtle link back to News / All entries
+
+6. Content architecture
+Do this properly in the existing content/data structure rather than hardcoding a one-off page.
+The new News tab should automatically support future news posts.
+
+7. Validation
+Before finishing:
+- Confirm the News tab works on desktop and mobile.
+- Confirm “All entries” contains this article.
+- Confirm “News” contains this article.
+- Confirm direct article URL works.
+- Confirm hero image loads correctly.
+- Confirm production build passes.
+- Confirm there are no broken links or console errors.
