@@ -1,10 +1,11 @@
 import { FC, ReactNode, useMemo, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
-import { researchEntries, researchFilters, type ResearchFilter } from "../lib/research-content";
+import { getReadingTime, researchEntries, researchFilters, type ResearchFilter } from "../lib/research-content";
 
 const isInternal = (url: string) => url.startsWith("/");
 
@@ -52,12 +53,14 @@ const Research: FC = () => {
                  "@type": paper.category === "News" ? "Article" : "ScholarlyArticle",
                 headline: paper.title,
                 name: paper.title,
-                author: paper.category === "Release"
-                  ? [
+                author: paper.category === "News"
+                  ? [{ "@type": "Organization", name: paper.authors, url: "https://olyxee.com" }]
+                  : paper.category === "Release"
+                    ? [
                       { "@type": "Person", name: "Lethabo Scofield", url: "https://www.linkedin.com/in/lethabo-scofield-17b37a257/" },
                       { "@type": "Person", name: "Alisha Fatima", url: "https://www.linkedin.com/in/thealisha-fatima/" },
                     ]
-                  : [
+                    : [
                       { "@type": "Person", name: "P. Laban" },
                       { "@type": "Person", name: "T. Schnabel" },
                       { "@type": "Person", name: "J. Neville" },
@@ -122,10 +125,26 @@ const Research: FC = () => {
                           <span>{paper.category}</span>
                           <time dateTime={paper.date} className="normal-case tracking-normal text-[#86868b]">{paper.month} {paper.year}</time>
                         </div>
-                        <div className="max-w-[710px]">
-                          <h3 className="text-[1.25rem] font-semibold leading-[1.3] tracking-[-0.02em] text-[#1d1d1f] sm:text-[1.5rem]">{paper.title}</h3>
-                          <p className="mt-3 max-w-[640px] text-[15px] leading-[1.6] text-[#6e6e73]">{paper.description}</p>
-                          <p className="mt-3 text-[13px] text-[#86868b]">{paper.authors} · {paper.venue}</p>
+                        <div className={paper.category === "News" && paper.coverImage ? "grid max-w-[710px] gap-5 sm:grid-cols-[144px_minmax(0,1fr)] sm:items-start" : "max-w-[710px]"}>
+                          {paper.category === "News" && paper.coverImage && (
+                            <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-[#e5e5ea] bg-[#f4f4f2]">
+                              <Image
+                                src={paper.coverImage}
+                                alt=""
+                                fill
+                                sizes="144px"
+                                className={paper.url.includes("claude-partner-network") ? "object-contain p-5" : "object-cover"}
+                              />
+                            </div>
+                          )}
+                          <div>
+                            <h3 className="text-[1.25rem] font-semibold leading-[1.3] tracking-[-0.02em] text-[#1d1d1f] sm:text-[1.5rem]">{paper.title}</h3>
+                            <p className="mt-3 max-w-[640px] text-[15px] leading-[1.6] text-[#6e6e73]">{paper.description}</p>
+                            <p className="mt-3 text-[13px] text-[#86868b]">
+                              {paper.authors} · {paper.venue}
+                              {paper.articleSections ? ` · ${getReadingTime(paper)} min read` : ""}
+                            </p>
+                          </div>
                         </div>
                         <div className="flex items-center gap-2 text-[13px] font-medium text-[#6e6e73] lg:justify-end lg:self-start lg:pt-1">
                           <span>{paper.source}</span>

@@ -1,0 +1,430 @@
+Update the Olyxee website’s content section and publish a proper editorial story about Olyxee joining Anthropic’s Claude Partner Network.
+
+GOAL
+
+This should not feel like a LinkedIn post pasted onto the website.
+
+The website article should feel like a real company story / editorial announcement that people can click through to from LinkedIn.
+
+The story should explain:
+- what the Claude Partner Network means for Olyxee
+- why it matters strategically
+- how it strengthens what we are already building
+- how it connects to Orgni
+- how it connects to Olyxee Logistics
+- how it supports Olyxee’s broader mission around operational intelligence
+- what we plan to do next
+
+Do not overstate the relationship.
+Do not imply Anthropic invested directly in Olyxee.
+Do not imply Olyxee is a Preferred Services Partner unless that designation is explicitly confirmed.
+Use “part of Anthropic’s Claude Partner Network” or “Claude Partner Network member”.
+
+CONTENT NAVIGATION
+
+In the current content/publications section:
+
+- Keep the existing “All entries” tab
+- Add a new tab called “News”
+- “All entries” should contain all research, news, updates, etc.
+- “News” should only contain company news and announcements
+- Build this using the existing content architecture so future News posts can be added easily
+- Do not hardcode a one-off page
+- Preserve the current Olyxee design system
+
+NEW ARTICLE
+
+Title:
+Olyxee joins Anthropic’s Claude Partner Network
+
+Category:
+News
+
+Slug:
+news/olyxee-joins-claude-partner-network
+
+Author:
+Olyxee
+
+Suggested excerpt:
+Olyxee has joined Anthropic’s Claude Partner Network, strengthening our ability to build and deploy intelligent systems around real business operations.
+
+ARTICLE COPY
+
+Olyxee is now part of Anthropic’s Claude Partner Network.
+
+For us, this is not simply another partnership announcement.
+
+It strengthens the direction Olyxee has been building toward from the beginning: creating the research and infrastructure that helps organisations operate with more context, speed and intelligence.
+
+Our focus is operational intelligence.
+
+That means building systems that do more than answer questions. Systems that understand how an organisation works, connect to its knowledge and workflows, identify what needs attention and help people move work forward.
+
+The Claude Partner Network gives Olyxee a stronger foundation to continue building that layer.
+
+Through the network, we gain access to Anthropic’s partner ecosystem, technical enablement, training and certification pathways, and a structured path for building and registering Claude-powered customer deployments.
+
+For us, the value is practical.
+
+It strengthens the engineering capability behind the systems we are already building and gives us a clearer path to take those systems deeper into real organisations.
+
+## From AI tools to operational intelligence
+
+AI models are becoming more capable very quickly.
+
+But access to a capable model is only one part of building useful enterprise AI.
+
+The harder problems increasingly sit around the model.
+
+Business context.
+Data.
+Permissions.
+Workflows.
+Integrations.
+Security.
+Governance.
+Execution.
+
+An AI system can reason extremely well and still be of limited value if it does not understand the organisation it is operating inside.
+
+That is where Olyxee is focused.
+
+We believe the next generation of enterprise AI will be defined less by standalone assistants and more by intelligent infrastructure embedded into the way organisations already operate.
+
+Systems that understand what is happening, why it is happening and what should happen next.
+
+That is the infrastructure layer we are building.
+
+## Orgni: intelligence for the organisation itself
+
+A major part of that direction is taking shape through Orgni.
+
+Orgni is Olyxee’s intelligence layer for teams and business operations.
+
+Inside most organisations, important context is fragmented across documents, emails, messages, databases, business systems and the knowledge held by individual employees.
+
+That fragmentation creates operational friction.
+
+Someone waits for a manager to answer a question.
+
+A team searches across multiple systems for information.
+
+Important context gets lost between departments.
+
+Employees repeat work because they cannot easily see what has already happened.
+
+AI tools may be available, but without organisational context they still behave like generic assistants.
+
+Orgni is being built to close that gap.
+
+The goal is to give AI systems a deeper understanding of the organisation they are operating inside, while making that intelligence available directly in the environments where employees already work.
+
+That means connecting organisational knowledge, facts, relationships, workflows and operational context into a system that people and AI agents can use.
+
+The Claude Partner Network strengthens our ability to continue building that capability with Claude as one of the intelligence layers available within the broader system.
+
+## Olyxee Logistics: operational intelligence in practice
+
+The same thinking is already being applied through Olyxee Logistics.
+
+Logistics is an environment where operational friction becomes visible very quickly.
+
+A single shipment can involve customers, suppliers, warehouses, invoices, payments, tracking numbers, shipment updates, internal teams and multiple hand-offs.
+
+When those processes are fragmented, people spend significant time following up, checking statuses, reconciling information and moving data between systems.
+
+Olyxee Logistics brings those operational workflows into one platform.
+
+The platform handles areas such as order management, invoicing, shipment tracking, customer communication, payment workflows and operational updates.
+
+For Olyxee, this is more than a standalone logistics product.
+
+It gives us a real operational environment in which to apply the broader thesis behind operational intelligence.
+
+The next step is not simply recording what happened.
+
+It is building systems that increasingly understand what requires attention, identify operational risks, automate repetitive work and support better decisions.
+
+That is where models like Claude become especially useful when combined with business context, workflow infrastructure and operational data.
+
+## Why this matters now
+
+The conversation around AI is moving quickly from experimentation to execution.
+
+Businesses across markets are no longer asking only whether AI is useful.
+
+They are asking where it creates measurable operational value.
+
+Can it reduce the amount of time employees spend searching for information?
+
+Can it remove blockers between teams?
+
+Can it improve customer response times?
+
+Can it automate repetitive operational work?
+
+Can it help people make better decisions?
+
+Can it operate securely within the context of a specific organisation?
+
+Can it connect to the systems and workflows the business already depends on?
+
+These are the questions Olyxee is focused on.
+
+Our view is that the next phase of enterprise AI will not be defined simply by who has access to the most capable models.
+
+It will be defined by who can turn those models into reliable infrastructure for real organisations.
+
+That requires solving the harder problems around context, data, integrations, workflows, security, governance and execution.
+
+This is the layer Olyxee is building across Orgni, Olyxee Logistics and the infrastructure underneath them.
+
+## Building capability, not just consuming models
+
+Joining the Claude Partner Network also matters internally.
+
+As Olyxee grows, we want the company to develop deeper technical capability around deploying advanced AI systems in production environments.
+
+That means training.
+
+Certification.
+
+Better architecture.
+
+Better deployment practices.
+
+More experience with real customer environments.
+
+And stronger understanding of how advanced models behave when they are connected to real operational systems.
+
+Our goal is not simply to use Claude.
+
+Our goal is to build the capability required to turn models like Claude into dependable operational infrastructure.
+
+Models will continue to improve.
+
+The surrounding infrastructure will become increasingly important.
+
+That is where we intend to build.
+
+## What comes next
+
+Our work within the Claude Partner Network is still at an early stage.
+
+The next steps are practical.
+
+We will deepen our technical capability around Claude.
+
+We will pursue Anthropic certifications across the team.
+
+We will continue building Orgni.
+
+We will continue expanding Olyxee Logistics.
+
+We will use real customer deployments to improve the infrastructure underneath both products.
+
+And where appropriate, we will register those Claude-powered deployments through the partner network as we build a stronger track record of production systems.
+
+Over time, we want the evidence behind Olyxee to come from real organisations using our systems to operate better.
+
+Not demos.
+
+Not AI for the sake of AI.
+
+Infrastructure that becomes part of how work gets done.
+
+Our mission remains unchanged:
+
+Research and infrastructure for operational intelligence.
+
+Joining Anthropic’s Claude Partner Network gives us another foundation on which to build it.
+
+PAGE DESIGN
+
+Treat this as an editorial company story, not a blog template filled with widgets.
+
+The visual direction should feel:
+- premium
+- minimal
+- technical
+- editorial
+- confident
+- consistent with Olyxee’s existing brand
+
+Use:
+- large headline
+- short intro/deck under headline
+- small “News” category label
+- publish date
+- author
+- wide hero image
+- comfortable article reading width
+- generous white space
+- strong typography
+- clear section hierarchy
+- subtle dividers only where necessary
+
+Avoid:
+- icon-heavy layouts
+- excessive cards
+- gradients everywhere
+- generic AI stock imagery
+- fake dashboard mockups
+- excessive call-to-action blocks
+- loud promotional banners
+- unnecessary animations
+
+The article should feel closer to a company newsroom / research publication than a marketing landing page.
+
+IMAGES NEEDED
+
+1. HERO IMAGE
+
+Use the Olyxee x Claude Partner Network artwork already created.
+
+This should be the main article image.
+
+Recommended treatment:
+- wide landscape ratio
+- approximately 16:9 or 1.91:1
+- full-width within the article container
+- no cropping that cuts off logos or typography
+- use as the Open Graph / social share image as well if resolution is sufficient
+
+2. ORGNI IMAGE
+
+Add one image in the Orgni section.
+
+Prefer:
+- a real screenshot of Orgni
+- Teams integration
+- organisational intelligence interface
+- business knowledge/context interface
+- workflow or agent interaction
+
+Do not use a generic AI illustration.
+
+The image should visually show that Orgni is an actual system being built.
+
+If no approved screenshot is available, leave an image placeholder in the CMS/data structure rather than inventing a fake interface.
+
+Suggested caption:
+Orgni is being built as an intelligence layer for teams and business operations.
+
+3. OLYXEE LOGISTICS IMAGE
+
+Add one product screenshot in the Olyxee Logistics section.
+
+Prefer a real screenshot showing one of:
+- order management
+- shipment tracking
+- customer dashboard
+- invoicing
+- operations dashboard
+
+Again, do not fabricate product UI if an approved screenshot is not available.
+
+Suggested caption:
+Olyxee Logistics applies the same operational intelligence thesis to real logistics workflows.
+
+4. OPTIONAL ARCHITECTURE VISUAL
+
+If there is already an approved Olyxee architecture / operational intelligence diagram, optionally add it between:
+“From AI tools to operational intelligence”
+and
+“Orgni”
+
+It should communicate something like:
+
+Business systems + knowledge + workflows
+↓
+Olyxee infrastructure / operational context
+↓
+AI models / agents
+↓
+Decisions + actions + automation
+
+Do not create this automatically unless an existing approved visual is available.
+
+No more than 3–4 images total on the page.
+
+SEO
+
+Meta title:
+Olyxee joins Anthropic’s Claude Partner Network | Olyxee
+
+Meta description:
+Olyxee joins Anthropic’s Claude Partner Network, strengthening its work on Orgni, Olyxee Logistics and infrastructure for operational intelligence.
+
+Open Graph title:
+Olyxee joins Anthropic’s Claude Partner Network
+
+Open Graph description:
+How the Claude Partner Network strengthens Olyxee’s work on operational intelligence, Orgni and Olyxee Logistics.
+
+Use the partnership hero artwork as the Open Graph image.
+
+Add:
+- canonical URL
+- article schema where appropriate
+- author
+- publication date
+- updated date if supported
+- NewsArticle structured data if the website already supports schema
+
+LINKING
+
+Inside the article:
+- Link “Orgni” to the Orgni product page
+- Link “Olyxee Logistics” to the logistics product page
+- Link “Claude Partner Network” to the appropriate official Anthropic page if available
+- Do not overlink repeated mentions
+
+At the bottom add a minimal related section:
+“Explore more from Olyxee”
+
+Include up to 3 relevant entries:
+- Orgni
+- Olyxee Logistics
+- one relevant Olyxee research article
+
+Do not turn this into a sales CTA.
+
+NEWS INDEX CARD
+
+On both “All entries” and “News”, show:
+- Hero thumbnail
+- News label
+- Title
+- Short excerpt
+- Date
+- Reading time if available
+
+Clicking the card should open the article.
+
+MOBILE
+
+Ensure:
+- headline scales correctly
+- images do not overflow
+- article width remains readable
+- tabs remain usable
+- no horizontal scrolling
+- captions wrap correctly
+
+VALIDATION
+
+Before finishing:
+- News tab works
+- All entries still works
+- article appears in both
+- article route works directly
+- Orgni and Logistics links work
+- hero image renders correctly
+- social metadata exists
+- article is indexable
+- production build passes
+- no broken links
+- no console errors
+- no placeholder text appears publicly unless explicitly intended

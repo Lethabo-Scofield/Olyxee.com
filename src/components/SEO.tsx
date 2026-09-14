@@ -10,6 +10,8 @@ interface SEOProps {
   noindex?: boolean;
   ogImage?: string;
   ogImageAlt?: string;
+  ogTitle?: string;
+  ogDescription?: string;
   publishedTime?: string;
   modifiedTime?: string;
   authors?: string[];
@@ -27,6 +29,8 @@ const SEO: FC<SEOProps> = ({
   noindex = false,
   ogImage,
   ogImageAlt,
+  ogTitle,
+  ogDescription,
   publishedTime,
   modifiedTime,
   authors = [],
@@ -77,8 +81,8 @@ const SEO: FC<SEOProps> = ({
       )}
       <meta property="og:type" content={ogType} />
       <meta property="og:url" content={url} />
-      <meta property="og:title" content={fullTitle} />
-      <meta property="og:description" content={description} />
+      <meta property="og:title" content={ogTitle ?? fullTitle} />
+      <meta property="og:description" content={ogDescription ?? description} />
       <meta property="og:site_name" content="Olyxee" />
       <meta property="og:locale" content="en_US" />
       {ogType === "article" && publishedTime && (
