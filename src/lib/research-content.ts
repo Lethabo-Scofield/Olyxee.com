@@ -19,12 +19,6 @@ export type ArticleParagraph = string | {
 export type ArticleSection = {
   heading?: string;
   paragraphs: ArticleParagraph[];
-  list?: string[];
-  image?: {
-    src: string;
-    alt: string;
-    caption: string;
-  };
 };
 
 export type ResearchEntry = {
@@ -107,7 +101,7 @@ export const researchEntries = ([
       "Olyxee joins Anthropic’s Claude Partner Network, strengthening its work on Orgni, Olyxee Logistics and infrastructure for operational intelligence.",
     coverImage: "/images/logos/anthropic.png",
     deck:
-      "Olyxee has joined Anthropic’s Claude Partner Network, strengthening our ability to build and deploy intelligent systems around real business operations.",
+      "What the network means for the systems we are building, and for the organisations we are building them with.",
     articleSections: [
       {
         paragraphs: [
@@ -120,142 +114,44 @@ export const researchEntries = ([
               },
             ],
           },
-          "For us, this is not simply another partnership announcement.",
-          "It strengthens the direction Olyxee has been building toward from the beginning: creating the research and infrastructure that helps organisations operate with more context, speed and intelligence.",
-          "Our focus is operational intelligence.",
-          "That means building systems that do more than answer questions. Systems that understand how an organisation works, connect to its knowledge and workflows, identify what needs attention and help people move work forward.",
-          "The Claude Partner Network gives Olyxee a stronger foundation to continue building that layer.",
+          "The announcement matters to us because it supports work already underway. Olyxee is building research and infrastructure for operational intelligence: systems that understand how an organisation works, connect to its knowledge and workflows, and help people move work forward.",
           "Through the network, we gain access to Anthropic’s partner ecosystem, technical enablement, training and certification pathways, and a structured path for building and registering Claude-powered customer deployments.",
-          "For us, the value is practical.",
-          "It strengthens the engineering capability behind the systems we are already building and gives us a clearer path to take those systems deeper into real organisations.",
+          "The value is practical. It strengthens our engineering capability and gives us a clearer route for taking these systems into real organisations.",
         ],
       },
       {
-        heading: "From AI tools to operational intelligence",
+        heading: "Building around real operations",
         paragraphs: [
-          "AI models are becoming more capable very quickly.",
-          "But access to a capable model is only one part of building useful enterprise AI.",
-          "The harder problems increasingly sit around the model.",
-        ],
-        list: ["Business context", "Data", "Permissions", "Workflows", "Integrations", "Security", "Governance", "Execution"],
-      },
-      {
-        paragraphs: [
-          "An AI system can reason extremely well and still be of limited value if it does not understand the organisation it is operating inside.",
-          "That is where Olyxee is focused.",
-          "We believe the next generation of enterprise AI will be defined less by standalone assistants and more by intelligent infrastructure embedded into the way organisations already operate.",
-          "Systems that understand what is happening, why it is happening and what should happen next.",
-          "That is the infrastructure layer we are building.",
-        ],
-      },
-      {
-        heading: "Orgni: intelligence for the organisation itself",
-        paragraphs: [
+          "Access to a capable model is only one part of building useful enterprise AI. The difficult work sits around it: business context, data, permissions, integrations, security and the workflows in which decisions are actually made.",
+          "A model can reason well and still be of limited use if it does not understand the organisation in which it is operating. Our view is that enterprise AI will be defined less by standalone assistants and more by infrastructure embedded in the way organisations already work.",
           {
-            text: "A major part of that direction is taking shape through Orgni.",
+            text: "That direction is taking shape through Orgni, our intelligence layer for teams and business operations.",
             links: [{ text: "Orgni", href: "https://orgni.olyxee.com/" }],
           },
-          "Orgni is Olyxee’s intelligence layer for teams and business operations.",
-          "Inside most organisations, important context is fragmented across documents, emails, messages, databases, business systems and the knowledge held by individual employees.",
-          "That fragmentation creates operational friction.",
-          "Someone waits for a manager to answer a question. A team searches across multiple systems for information. Important context gets lost between departments. Employees repeat work because they cannot easily see what has already happened.",
-          "AI tools may be available, but without organisational context they still behave like generic assistants.",
-          "Orgni is being built to close that gap.",
-          "The goal is to give AI systems a deeper understanding of the organisation they are operating inside, while making that intelligence available directly in the environments where employees already work.",
-          "That means connecting organisational knowledge, facts, relationships, workflows and operational context into a system that people and AI agents can use.",
-          "The Claude Partner Network strengthens our ability to continue building that capability with Claude as one of the intelligence layers available within the broader system.",
-        ],
-        image: {
-          src: "/images/orgni-product.png",
-          alt: "Orgni showing organisational context for an employee role transfer",
-          caption: "Orgni is being built as an intelligence layer for teams and business operations.",
-        },
-      },
-      {
-        heading: "Olyxee Logistics: operational intelligence in practice",
-        paragraphs: [
+          "Important context inside a business is usually spread across documents, messages, databases, business systems and the knowledge held by individual employees. Orgni is being built to connect that context and make it useful in the environments where people already work.",
           {
-            text: "The same thinking is already being applied through Olyxee Logistics.",
+            text: "We are applying the same thinking through Olyxee Logistics.",
             links: [{ text: "Olyxee Logistics", href: "https://logistics.olyxee.com/" }],
           },
-          "Logistics is an environment where operational friction becomes visible very quickly.",
-          "A single shipment can involve customers, suppliers, warehouses, invoices, payments, tracking numbers, shipment updates, internal teams and multiple hand-offs.",
-          "When those processes are fragmented, people spend significant time following up, checking statuses, reconciling information and moving data between systems.",
-          "Olyxee Logistics brings those operational workflows into one platform.",
-          "The platform handles areas such as order management, invoicing, shipment tracking, customer communication, payment workflows and operational updates.",
-          "For Olyxee, this is more than a standalone logistics product.",
-          "It gives us a real operational environment in which to apply the broader thesis behind operational intelligence.",
-          "The next step is not simply recording what happened.",
-          "It is building systems that increasingly understand what requires attention, identify operational risks, automate repetitive work and support better decisions.",
-          "That is where models like Claude become especially useful when combined with business context, workflow infrastructure and operational data.",
-        ],
-        image: {
-          src: "/images/logistics/orders-dashboard.png",
-          alt: "Olyxee Logistics order management dashboard",
-          caption: "Olyxee Logistics applies the same operational intelligence thesis to real logistics workflows.",
-        },
-      },
-      {
-        heading: "Why this matters now",
-        paragraphs: [
-          "The conversation around AI is moving quickly from experimentation to execution.",
-          "Businesses across markets are no longer asking only whether AI is useful. They are asking where it creates measurable operational value.",
-        ],
-        list: [
-          "Can it reduce the amount of time employees spend searching for information?",
-          "Can it remove blockers between teams?",
-          "Can it improve customer response times?",
-          "Can it automate repetitive operational work?",
-          "Can it help people make better decisions?",
-          "Can it operate securely within the context of a specific organisation?",
-          "Can it connect to the systems and workflows the business already depends on?",
+          "Logistics makes operational friction easy to see. One shipment can involve customers, suppliers, warehouses, invoices, payments, tracking updates and several hand-offs. When that context is fragmented, people spend their time following up and reconciling information. Olyxee Logistics gives us a real operating environment in which to build and test a more connected approach.",
         ],
       },
       {
+        heading: "What membership changes",
         paragraphs: [
-          "These are the questions Olyxee is focused on.",
-          "Our view is that the next phase of enterprise AI will not be defined simply by who has access to the most capable models.",
-          "It will be defined by who can turn those models into reliable infrastructure for real organisations.",
-          "That requires solving the harder problems around context, data, integrations, workflows, security, governance and execution.",
-          "This is the layer Olyxee is building across Orgni, Olyxee Logistics and the infrastructure underneath them.",
-        ],
-      },
-      {
-        heading: "Building capability, not just consuming models",
-        paragraphs: [
-          "Joining the Claude Partner Network also matters internally.",
-          "As Olyxee grows, we want the company to develop deeper technical capability around deploying advanced AI systems in production environments.",
-          "That means training, certification, better architecture, better deployment practices, more experience with real customer environments and a stronger understanding of how advanced models behave when they are connected to real operational systems.",
-          "Our goal is not simply to use Claude.",
-          "Our goal is to build the capability required to turn models like Claude into dependable operational infrastructure.",
-          "Models will continue to improve.",
-          "The surrounding infrastructure will become increasingly important.",
-          "That is where we intend to build.",
+          "Joining the network does not change our product direction. It improves the foundation beneath it.",
+          "We want Olyxee to develop deeper technical capability around deploying advanced AI systems in production. That means better training, stronger architecture and more experience with the realities of customer environments.",
+          "Our goal is not simply to use Claude. It is to understand how models like Claude can become dependable parts of operational systems, with the right context, controls and infrastructure around them.",
+          "The relationship is still at an early stage, and we do not want to overstate it. Membership gives us access to resources and a partner ecosystem that can help us do this work more deliberately.",
         ],
       },
       {
         heading: "What comes next",
         paragraphs: [
-          "Our work within the Claude Partner Network is still at an early stage.",
-          "The next steps are practical.",
-        ],
-        list: [
-          "Deepen our technical capability around Claude",
-          "Pursue Anthropic certifications across the team",
-          "Continue building Orgni",
-          "Continue expanding Olyxee Logistics",
-          "Use real customer deployments to improve the infrastructure underneath both products",
-          "Where appropriate, register Claude-powered deployments through the partner network as we build a stronger track record of production systems",
-        ],
-      },
-      {
-        paragraphs: [
-          "Over time, we want the evidence behind Olyxee to come from real organisations using our systems to operate better.",
-          "Not demos. Not AI for the sake of AI.",
-          "Infrastructure that becomes part of how work gets done.",
-          "Our mission remains unchanged:",
-          "Research and infrastructure for operational intelligence.",
-          "Joining Anthropic’s Claude Partner Network gives us another foundation on which to build it.",
+          "The next steps are straightforward. We will deepen our technical capability around Claude, pursue Anthropic certifications across the team, continue building Orgni and expand Olyxee Logistics.",
+          "We will use what we learn from real customer deployments to improve the infrastructure underneath both products. Where it makes sense, we will register Claude-powered deployments through the network and build a track record based on systems working in production.",
+          "That evidence matters more to us than demos or AI for its own sake. We want to build infrastructure that becomes part of how work gets done.",
+          "Our mission remains research and infrastructure for operational intelligence. Joining Anthropic’s Claude Partner Network gives us another foundation on which to build it.",
         ],
       },
     ],
@@ -275,7 +171,6 @@ export function getReadingTime(entry: Pick<ResearchEntry, "deck" | "articleSecti
     ...(entry.articleSections ?? []).flatMap((section) => [
       section.heading ?? "",
       ...section.paragraphs.map(paragraphText),
-      ...(section.list ?? []),
     ]),
   ].join(" ");
   const wordCount = text.trim().split(/\s+/).filter(Boolean).length;

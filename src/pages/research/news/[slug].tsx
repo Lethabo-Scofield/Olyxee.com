@@ -1,6 +1,5 @@
 import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import type { ReactNode } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import SEO from "../../../components/SEO";
 import Header from "../../../components/header";
@@ -128,25 +127,14 @@ export default function NewsArticle({ entry }: InferGetStaticPropsType<typeof ge
               </div>
             </header>
 
-            <div className="relative mt-12 aspect-[16/8] overflow-hidden rounded-3xl border border-[#e5e5ea] bg-[#f4f4f2]">
-              <Image
-                src={entry.coverImage ?? "/og-image.jpg"}
-                alt="Olyxee and Anthropic Claude Partner Network"
-                fill
-                priority
-                className="object-contain p-12 sm:p-20"
-                sizes="(max-width: 920px) 100vw, 920px"
-              />
-            </div>
-
-            <div className="mx-auto mt-16 max-w-[680px]">
+            <div className="mx-auto mt-14 max-w-[680px] border-t border-[#dedee3] pt-12 sm:mt-16 sm:pt-14">
               {entry.articleSections?.map((section, sectionIndex) => (
                 <section
                   key={`${section.heading ?? "introduction"}-${sectionIndex}`}
-                  className={sectionIndex === 0 ? "" : "mt-16 border-t border-[#eeeeef] pt-14 sm:mt-20 sm:pt-16"}
+                  className={sectionIndex === 0 ? "" : "mt-14 sm:mt-16"}
                 >
                   {section.heading && (
-                    <h2 className="mb-8 text-[2rem] font-semibold leading-[1.12] tracking-[-0.035em] text-[#1d1d1f] sm:text-[2.5rem]">
+                    <h2 className="mb-7 text-[1.65rem] font-semibold leading-[1.2] tracking-[-0.025em] text-[#1d1d1f] sm:text-[1.9rem]">
                       {section.heading}
                     </h2>
                   )}
@@ -157,56 +145,9 @@ export default function NewsArticle({ entry }: InferGetStaticPropsType<typeof ge
                       </p>
                     ))}
                   </div>
-                  {section.list && (
-                    <ul className="mt-8 space-y-3 border-l border-[#c7c7cc] pl-6 text-[16px] leading-[1.65] text-[#3a3a3c] sm:text-[17px]">
-                      {section.list.map((item) => <li key={item}>{item}</li>)}
-                    </ul>
-                  )}
-                  {section.image && (
-                    <figure className="my-12 sm:my-16 lg:-ml-[120px] lg:w-[920px]">
-                      <div className="relative aspect-[16/9] overflow-hidden rounded-2xl border border-[#e5e5ea] bg-[#f4f4f2]">
-                        <Image
-                          src={section.image.src}
-                          alt={section.image.alt}
-                          fill
-                          sizes="(max-width: 920px) 100vw, 920px"
-                          className="object-cover"
-                        />
-                      </div>
-                      <figcaption className="mt-3 text-[12px] leading-5 text-[#86868b]">
-                        {section.image.caption}
-                      </figcaption>
-                    </figure>
-                  )}
                 </section>
               ))}
             </div>
-
-            <aside className="mx-auto mt-20 max-w-[680px] border-t border-[#dedee3] pt-10" aria-labelledby="explore-more">
-              <h2 id="explore-more" className="text-[1.25rem] font-semibold tracking-[-0.02em]">Explore more from Olyxee</h2>
-              <ul className="mt-5 divide-y divide-[#eeeeef]">
-                {[
-                  { label: "Orgni", href: "https://orgni.olyxee.com/", detail: "Operational intelligence for teams and business operations" },
-                  { label: "Olyxee Logistics", href: "https://logistics.olyxee.com/", detail: "Operational infrastructure for cross-border logistics" },
-                  { label: "Introducing FinIR", href: "/research/finir", detail: "Typed, auditable financial computation" },
-                ].map((item) => (
-                  <li key={item.href}>
-                    <a
-                      href={item.href}
-                      target={item.href.startsWith("http") ? "_blank" : undefined}
-                      rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                      className="group flex items-start justify-between gap-6 py-5"
-                    >
-                      <span>
-                        <strong className="block text-[15px] font-medium text-[#1d1d1f]">{item.label}</strong>
-                        <span className="mt-1 block text-[13px] leading-5 text-[#86868b]">{item.detail}</span>
-                      </span>
-                      <span className="text-[#86868b] transition-transform group-hover:translate-x-0.5" aria-hidden>→</span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </aside>
           </div>
         </article>
       </main>
