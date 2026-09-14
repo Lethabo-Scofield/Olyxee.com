@@ -97,7 +97,7 @@ export const researchEntries: ResearchEntry[] = [
       "The Claude Partner Network is another step toward that mission.",
     ],
   },
-];
+].sort((a, b) => b.date.localeCompare(a.date));
 
 export const researchFilters = ["All entries", "Release", "Publication", "News"] as const;
 export type ResearchFilter = (typeof researchFilters)[number];
