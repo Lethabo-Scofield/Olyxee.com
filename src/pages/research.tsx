@@ -1,7 +1,6 @@
 import { FC, ReactNode, useMemo, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { ArrowUpRight, ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
@@ -17,7 +16,6 @@ function EntryLink({ href, className, children }: { href: string; className: str
 
 const Research: FC = () => {
   const [activeFilter, setActiveFilter] = useState<ResearchFilter>("All entries");
-  const featured = researchEntries.find((paper) => paper.featured);
   const visiblePapers = useMemo(
     () => (activeFilter === "All entries" ? researchEntries : researchEntries.filter((paper) => paper.category === activeFilter)),
     [activeFilter]
@@ -90,60 +88,6 @@ const Research: FC = () => {
             </div>
           </div>
         </section>
-
-        {/* Featured release */}
-        {featured && (
-          <section className="px-5 pb-16 sm:px-8 sm:pb-24" aria-labelledby="featured-heading">
-            <div className="mx-auto max-w-[1120px]">
-              <div
-                className="relative overflow-hidden rounded-3xl border border-[#e5e5ea] bg-white bg-cover bg-center p-7 sm:p-10 lg:p-12"
-                style={{ backgroundImage: "url(/research/finir-card-bg.webp)" }}
-              >
-                <div
-                  className="pointer-events-none absolute inset-0"
-                  style={{ background: "linear-gradient(90deg, rgba(255,255,255,0.42) 0%, rgba(255,255,255,0.22) 55%, rgba(255,255,255,0) 100%)" }}
-                  aria-hidden
-                />
-                <div className="relative grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-16">
-                  <div>
-                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[12px] font-medium uppercase tracking-[0.14em] text-[#86868b]">
-                      <span id="featured-heading" className="text-[#1d1d1f]">Latest release</span>
-                      <span aria-hidden>·</span>
-                      <time dateTime={featured.date}>{featured.month} {featured.year}</time>
-                    </div>
-                    <h2 className="mt-5 max-w-[720px] text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.03em] text-[#1d1d1f] sm:text-[2.25rem]">
-                      {featured.title}
-                    </h2>
-                    <p className="mt-5 max-w-[640px] text-[16px] leading-[1.65] text-[#6e6e73] sm:text-[17px]">{featured.description}</p>
-                    <p className="mt-4 text-[14px] text-[#86868b]">{featured.authors}</p>
-                    <Link href={featured.url} className="group mt-8 inline-flex items-center gap-2 rounded-full bg-[#1d1d1f] px-5 py-2.5 text-[14px] font-medium text-white transition-colors hover:bg-[#3a3a3c]">
-                      Read the release
-                      <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden />
-                    </Link>
-                  </div>
-                  {featured.links && (
-                    <div className="rounded-2xl border border-white/70 bg-white/75 p-5 shadow-sm backdrop-blur-md sm:p-6">
-                      <p className="mb-3 text-[12px] font-medium uppercase tracking-[0.14em] text-[#6e6e73]">Public resources</p>
-                      <ul className="divide-y divide-[#e5e5ea]">
-                        {featured.links.map((link) => (
-                          <li key={link.href}>
-                            <a href={link.href} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 py-3 text-[14px] font-medium text-[#1d1d1f]">
-                              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-[#e5e5ea] bg-white">
-                                <Image src={link.logo} alt="" width={16} height={16} className="h-4 w-4" aria-hidden />
-                              </span>
-                              <span className="flex-1">{link.label}</span>
-                              <ArrowUpRight className="h-4 w-4 shrink-0 text-[#86868b] transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#1d1d1f]" aria-hidden />
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-          </section>
-        )}
 
         {/* Archive */}
         <section id="archive" className="scroll-mt-24 px-5 pb-24 sm:px-8 sm:pb-32" aria-labelledby="archive-heading">
