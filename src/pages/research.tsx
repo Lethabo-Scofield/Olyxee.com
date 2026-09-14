@@ -127,7 +127,7 @@ const Research: FC = () => {
                         </div>
                         <div className={paper.category === "News" && paper.coverImage ? "grid max-w-[710px] gap-5 sm:grid-cols-[144px_minmax(0,1fr)] sm:items-start" : "max-w-[710px]"}>
                           {paper.category === "News" && paper.coverImage && (
-                            <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-[#e5e5ea] bg-[#f4f4f2]">
+                            <div className="relative aspect-[16/10] overflow-hidden">
                               <Image
                                 src={paper.coverImage}
                                 alt=""

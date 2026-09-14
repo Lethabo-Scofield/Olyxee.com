@@ -46,10 +46,6 @@ export type ResearchEntry = {
   featured?: boolean;
   links?: ResearchLink[];
   coverImage?: string;
-  closingImage?: {
-    src: string;
-    alt: string;
-  };
   deck?: string;
   articleSections?: ArticleSection[];
 };
@@ -115,10 +111,6 @@ export const researchEntries = ([
     description:
       "Olyxee joins Anthropic’s Claude Partner Network, strengthening its work on Orgni, Olyxee Logistics and infrastructure for operational intelligence.",
     coverImage: "/images/research/claude-partner-network/olyxee-claude-partner-network.png",
-    closingImage: {
-      src: "/images/research/claude-partner-network/olyxee-abstract-mark.png",
-      alt: "Abstract Olyxee research mark",
-    },
     deck:
       "What the network means for the systems we are building, and for the organisations we are building them with.",
     articleSections: [
