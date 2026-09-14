@@ -19,6 +19,11 @@ export type ArticleParagraph = string | {
 export type ArticleSection = {
   heading?: string;
   paragraphs: ArticleParagraph[];
+  image?: {
+    src: string;
+    alt: string;
+    caption?: string;
+  };
   quote?: {
     text: string;
     person: string;
@@ -41,6 +46,10 @@ export type ResearchEntry = {
   featured?: boolean;
   links?: ResearchLink[];
   coverImage?: string;
+  closingImage?: {
+    src: string;
+    alt: string;
+  };
   deck?: string;
   articleSections?: ArticleSection[];
 };
@@ -105,7 +114,11 @@ export const researchEntries = ([
     url: "/research/news/olyxee-joins-claude-partner-network",
     description:
       "Olyxee joins Anthropic’s Claude Partner Network, strengthening its work on Orgni, Olyxee Logistics and infrastructure for operational intelligence.",
-    coverImage: "/images/logos/anthropic.png",
+    coverImage: "/images/research/claude-partner-network/olyxee-claude-partner-network.png",
+    closingImage: {
+      src: "/images/research/claude-partner-network/olyxee-abstract-mark.png",
+      alt: "Abstract Olyxee research mark",
+    },
     deck:
       "What the network means for the systems we are building, and for the organisations we are building them with.",
     articleSections: [
@@ -146,6 +159,20 @@ export const researchEntries = ([
           person: "Lethabo Scofield",
           role: "Founder & AI Research Engineer, Olyxee",
           href: "https://za.linkedin.com/in/lethabo-scofield-17b37a257",
+        },
+      },
+      {
+        heading: "What this means for clients",
+        paragraphs: [
+          "For Olyxee clients, the benefit is not access to another chatbot. It is a stronger path from a capable model to a system that understands the work around it.",
+          "That includes connecting intelligence to the tools teams already use, carrying the right business context across those interactions, and respecting the permissions and policies of the organisation.",
+          "In practice, this can mean less time spent searching across systems, faster handling of routine operational work, clearer hand-offs between teams and better support for decisions that depend on current business context.",
+          "The network also gives our engineers better access to technical guidance and training as we design these systems. Clients benefit from a team that can evaluate where Claude is useful, where it is not, and how it should be introduced responsibly into an existing operation.",
+        ],
+        image: {
+          src: "/images/research/claude-partner-network/orgni-operational-layer.png",
+          alt: "Orgni operational layer connecting workplace interfaces with business context, models and enterprise systems",
+          caption: "Orgni connects the interfaces teams already use with business context, permissions, models and operational systems.",
         },
       },
       {

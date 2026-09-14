@@ -1,5 +1,6 @@
 import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import type { ReactNode } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import SEO from "../../../components/SEO";
 import Header from "../../../components/header";
@@ -127,6 +128,19 @@ export default function NewsArticle({ entry }: InferGetStaticPropsType<typeof ge
               </div>
             </header>
 
+            {entry.coverImage && (
+              <figure className="mt-12 overflow-hidden rounded-2xl border border-[#e5e5e7] bg-[#f7f6f2] sm:mt-14">
+                <Image
+                  src={entry.coverImage}
+                  alt="Olyxee and Claude Partner Network"
+                  width={1672}
+                  height={941}
+                  priority
+                  className="h-auto w-full"
+                />
+              </figure>
+            )}
+
             <div className="mx-auto mt-14 max-w-[680px] border-t border-[#dedee3] pt-12 sm:mt-16 sm:pt-14">
               {entry.articleSections?.map((section, sectionIndex) => (
                 <section
@@ -165,8 +179,35 @@ export default function NewsArticle({ entry }: InferGetStaticPropsType<typeof ge
                       </footer>
                     </blockquote>
                   )}
+                  {section.image && (
+                    <figure className="my-12 sm:my-14 lg:-ml-[80px] lg:w-[840px]">
+                      <div className="overflow-hidden rounded-2xl border border-[#e5e5e7] bg-[#f7f7f7]">
+                        <Image
+                          src={section.image.src}
+                          alt={section.image.alt}
+                          width={997}
+                          height={997}
+                          className="h-auto w-full"
+                        />
+                      </div>
+                      {section.image.caption && (
+                        <figcaption className="mt-3 text-[12px] leading-5 text-[#86868b]">
+                          {section.image.caption}
+                        </figcaption>
+                      )}
+                    </figure>
+                  )}
                 </section>
               ))}
+              {entry.closingImage && (
+                <Image
+                  src={entry.closingImage.src}
+                  alt={entry.closingImage.alt}
+                  width={1000}
+                  height={1000}
+                  className="mx-auto mt-16 h-20 w-20 object-contain opacity-70"
+                />
+              )}
             </div>
           </div>
         </article>
