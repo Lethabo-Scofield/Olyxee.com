@@ -145,6 +145,26 @@ export default function NewsArticle({ entry }: InferGetStaticPropsType<typeof ge
                       </p>
                     ))}
                   </div>
+                  {section.quote && (
+                    <blockquote className="my-12 border-l-2 border-[#1d1d1f] pl-6 sm:my-14 sm:pl-8">
+                      <p className="text-[1.25rem] leading-[1.55] tracking-[-0.015em] text-[#1d1d1f] sm:text-[1.4rem]">
+                        “{section.quote.text}”
+                      </p>
+                      <footer className="mt-6">
+                        <a
+                          href={section.quote.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[14px] font-semibold text-[#1d1d1f] underline decoration-[#aeaeb2] underline-offset-4 transition-colors hover:decoration-[#1d1d1f]"
+                        >
+                          {section.quote.person}
+                        </a>
+                        <p className="mt-1 text-[13px] leading-5 text-[#86868b]">
+                          {section.quote.role}
+                        </p>
+                      </footer>
+                    </blockquote>
+                  )}
                 </section>
               ))}
             </div>

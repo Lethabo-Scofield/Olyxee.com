@@ -19,6 +19,12 @@ export type ArticleParagraph = string | {
 export type ArticleSection = {
   heading?: string;
   paragraphs: ArticleParagraph[];
+  quote?: {
+    text: string;
+    person: string;
+    role: string;
+    href: string;
+  };
 };
 
 export type ResearchEntry = {
@@ -135,6 +141,12 @@ export const researchEntries = ([
           },
           "Logistics makes operational friction easy to see. One shipment can involve customers, suppliers, warehouses, invoices, payments, tracking updates and several hand-offs. When that context is fragmented, people spend their time following up and reconciling information. Olyxee Logistics gives us a real operating environment in which to build and test a more connected approach.",
         ],
+        quote: {
+          text: "The models will keep getting better. The real opportunity is building the infrastructure around them: context, workflows, data and execution, so intelligence becomes part of how an organisation actually operates.",
+          person: "Lethabo Scofield",
+          role: "Founder & AI Research Engineer, Olyxee",
+          href: "https://za.linkedin.com/in/lethabo-scofield-17b37a257",
+        },
       },
       {
         heading: "What membership changes",
@@ -144,6 +156,12 @@ export const researchEntries = ([
           "Our goal is not simply to use Claude. It is to understand how models like Claude can become dependable parts of operational systems, with the right context, controls and infrastructure around them.",
           "The relationship is still at an early stage, and we do not want to overstate it. Membership gives us access to resources and a partner ecosystem that can help us do this work more deliberately.",
         ],
+        quote: {
+          text: "When you build AI for real organisations, the model is only one part of the system. Reliability, structure and context are what turn intelligence into something teams can actually depend on.",
+          person: "Alisha Fatima",
+          role: "AI Infrastructure Engineer, Olyxee",
+          href: "https://pk.linkedin.com/in/thealisha-fatima",
+        },
       },
       {
         heading: "What comes next",
@@ -171,6 +189,9 @@ export function getReadingTime(entry: Pick<ResearchEntry, "deck" | "articleSecti
     ...(entry.articleSections ?? []).flatMap((section) => [
       section.heading ?? "",
       ...section.paragraphs.map(paragraphText),
+      section.quote?.text ?? "",
+      section.quote?.person ?? "",
+      section.quote?.role ?? "",
     ]),
   ].join(" ");
   const wordCount = text.trim().split(/\s+/).filter(Boolean).length;
