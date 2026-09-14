@@ -650,10 +650,10 @@ function OrgniSection() {
       emphasis="business moving."
       description="Work stops when people wait for answers, documents, approvals, or another team. Orgni understands your organisation, works across the tools your teams already use, and handles the questions and routine work that create unnecessary delays."
       image={{
-        src: "/images/orgni-product.png",
-        alt: "Orgni interface: an organizational role transfer being processed with a live user graph, entitlements, and approval trail",
-        width: 1024,
-        height: 576,
+        src: "/images/orgni-finance-context-graph.png",
+        alt: "Orgni helping a finance team recover a missing variance file by connecting context from Outlook, SharePoint, SAP, and Calendar",
+        width: 1672,
+        height: 941,
       }}
       primary={{ label: "Talk to us", href: "/contact" }}
     />
