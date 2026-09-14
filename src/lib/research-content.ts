@@ -83,7 +83,7 @@ export const researchEntries: ResearchEntry[] = [
     url: "/research/news/olyxee-joins-claude-partner-network",
     description:
       "Olyxee joins Anthropic’s Claude Partner Network, strengthening its work on Orgni and its mission to build research and infrastructure for operational intelligence.",
-    coverImage: "/research/anthropic.png",
+    coverImage: "/images/logos/anthropic.png",
     body: [
       "Olyxee is now part of Anthropic’s Claude Partner Network.",
       "For us, this is not simply a partnership announcement. It strengthens the work we are already doing to build research and infrastructure for operational intelligence.",

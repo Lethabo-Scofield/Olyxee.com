@@ -93,7 +93,7 @@ export default function NewsArticle({ entry }: InferGetStaticPropsType<typeof ge
                 alt="Olyxee and Anthropic Claude Partner Network"
                 fill
                 priority
-                className="object-cover"
+                className="object-contain p-12 sm:p-20"
                 sizes="(max-width: 920px) 100vw, 920px"
               />
             </div>
