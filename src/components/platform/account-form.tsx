@@ -3,11 +3,9 @@
 import { FormEvent, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { ArrowRight, LoaderCircle } from "lucide-react";
 
 export default function AccountForm({ mode }: { mode: "login" | "signup" }) {
-  const router = useRouter();
   const [name, setName] = useState("");
   const [company, setCompany] = useState("");
   const [email, setEmail] = useState("");
@@ -20,19 +18,32 @@ export default function AccountForm({ mode }: { mode: "login" | "signup" }) {
     if (busy) return;
     setBusy(true);
     setError("");
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 20_000);
+    const unavailable = mode === "login"
+      ? "Sign in is unavailable right now. Please try again."
+      : "Account creation is unavailable right now. Please try again.";
     try {
       const response = await fetch(`/api/platform/${mode}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, company, email, password }),
+        signal: controller.signal,
       });
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.error || "Please try again.");
-      router.replace("/platform");
-      router.refresh();
+      const data = await response.json().catch(() => null);
+      if (!response.ok || data?.ok !== true) {
+        throw new Error(typeof data?.error === "string" ? data.error : unavailable);
+      }
+      // Load the workspace with the new session cookie, without racing an
+      // App Router refresh against the redirect or reusing anonymous RSC data.
+      window.location.replace("/platform");
     } catch (cause) {
-      setError(cause instanceof Error ? cause.message : "Please try again.");
+      setError(controller.signal.aborted
+        ? "The request took too long. Please check your connection and try again."
+        : cause instanceof Error ? cause.message : unavailable);
       setBusy(false);
+    } finally {
+      window.clearTimeout(timeout);
     }
   }
 

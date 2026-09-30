@@ -7,3 +7,4 @@
 - [Careers UX scope](careers-ux-scope.md) — make applications clearer without weakening advertised hiring criteria or removing material internship terms and benefits.
 - [Query-driven selections](query-selection-synchronization.md) — shallow URL updates can precede React query effects; optimistic duplicate selection state can survive rapid Back navigation.
 - [Image preview verification](image-preview-verification.md) — early desktop captures can show blank images despite successful loading; wait for hydrated, nonzero rendered image bounds.
+- [Sign-in verification](sign-in-verification.md) — successful auth and workspace HTTP responses do not prove the browser completed sign-in; verify arrival and session persistence.

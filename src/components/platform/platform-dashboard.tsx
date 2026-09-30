@@ -68,7 +68,7 @@ export default function PlatformDashboard({ user, initialView }: {
   return (
     <div className="min-h-screen bg-white text-neutral-900 flex font-sans">
       {mobileMenuOpen && <button aria-label="Close navigation" className="fixed inset-0 z-30 bg-neutral-900/25 md:hidden" onClick={() => setMobileMenuOpen(false)} />}
-      <aside className={`fixed inset-y-0 left-0 z-40 flex w-[220px] flex-col border-r border-neutral-200 bg-white px-3 py-4 transition-transform md:translate-x-0 ${mobileMenuOpen ? "translate-x-0" : "-translate-x-full"}`}>
+      <aside className={`fixed inset-y-0 left-0 z-40 flex w-[220px] flex-col bg-white px-3 py-4 transition-transform md:translate-x-0 ${mobileMenuOpen ? "translate-x-0" : "-translate-x-full"}`}>
         <div className="flex items-center justify-between px-2 pb-7">
           <Link href="/" className="flex items-center gap-2 text-sm font-semibold tracking-tight" aria-label="Olyxee home">
             <Image src="/brand/olyxee-workspace-logo.png" alt="" width={24} height={24} className="h-6 w-6 shrink-0 object-contain" />
@@ -99,7 +99,7 @@ export default function PlatformDashboard({ user, initialView }: {
         </div>
       </aside>
       <div className="min-w-0 flex-1 md:pl-[220px]">
-        <header className="flex h-14 items-center justify-between border-b border-neutral-100 px-5 md:px-8">
+        <header className="flex h-14 items-center justify-between px-5 md:px-8">
           <button className="md:hidden" aria-label="Open menu" onClick={() => setMobileMenuOpen(true)}><Menu size={19} /></button>
           <span className="hidden text-xs text-neutral-500 md:block">Workspace <span className="mx-2 text-neutral-300">/</span> {headings[view].title}</span>
           <Link href="/platform?view=profile" className="flex items-center gap-2 text-xs text-neutral-600 hover:text-neutral-900">
