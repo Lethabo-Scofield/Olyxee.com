@@ -172,7 +172,7 @@ const About: FC = () => {
                   className="relative max-w-3xl mx-auto text-center"
                 >
                   <p className="font-serif text-3xl sm:text-4xl lg:text-[3rem] leading-[1.12] tracking-tight mb-8 text-neutral-900">
-                    A future where organizations learn, adapt and <strong className="font-semibold text-neutral-900">evolve themselves.</strong>
+                    A future where organizations <span className="text-orange-600">learn</span>, <span className="text-blue-600">adapt</span> and <strong className="font-semibold text-emerald-700">evolve themselves.</strong>
                   </p>
                 </motion.article>
               ) : (
@@ -328,10 +328,13 @@ const About: FC = () => {
               >
                 &ldquo;
               </span>
-              <blockquote className="font-serif text-[1.75rem] sm:text-4xl lg:text-[3rem] text-neutral-900 leading-[1.18] tracking-tight">
-                We started Olyxee because the hardest part of AI isn&apos;t
-                intelligence. It&apos;s getting that intelligence to actually{" "}
-                <strong className="font-semibold text-neutral-900">do something useful</strong>.
+              <blockquote className="font-serif text-[1.75rem] sm:text-4xl lg:text-[3rem] text-neutral-900 leading-[1.18] tracking-tight space-y-6">
+                <p>The next frontier is not better software.</p>
+                <p>
+                  It is organizations that can{" "}
+                  <strong className="font-semibold text-neutral-900">think, adapt, and evolve.</strong>
+                </p>
+                <p>That is what we are building toward at Olyxee.</p>
               </blockquote>
 
               <div className="mt-12 sm:mt-14 pt-6 border-t border-neutral-200 flex flex-wrap items-center justify-between gap-y-5 gap-x-6">
