@@ -1,7 +1,7 @@
 {
   "name": "Olyxee",
   "short_name": "Olyxee",
-  "description": "Researching Organizational Intelligence",
+  "description": "Research and Infrastructure for Organizational Intelligence",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

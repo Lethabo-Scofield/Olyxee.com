@@ -64,7 +64,7 @@ export async function GET() {
               lineHeight: 1.4,
             }}
           >
-            Researching Organizational Intelligence
+            Research and Infrastructure for Organizational Intelligence
           </div>
           <div
             style={{

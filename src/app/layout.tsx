@@ -138,7 +138,7 @@ export default function RootLayout({
               "@type": "Organization",
               name: "Olyxee",
               alternateName: "Olyxee Inc",
-              slogan: "Building organizations that can evolve themselves.",
+              slogan: "Research and Infrastructure for Organizational Intelligence",
               url: "https://olyxee.com",
               logo: "https://olyxee.com/Logo/Olyxee_Logo.png",
               description: "Olyxee is a research and technology company focused on Organizational Intelligence. We are researching how organizations can learn from experience, coordinate humans and machines, adapt and improve over time. Our long-term goal is to build organizations that can evolve themselves.",

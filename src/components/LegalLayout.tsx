@@ -224,7 +224,7 @@ const LegalLayout: FC<LegalLayoutProps> = ({
     doc.setFont("helvetica", "normal");
     doc.setFontSize(9);
     doc.setTextColor(120);
-    doc.text("Researching Organizational Intelligence", marginX, y);
+    doc.text("Research and Infrastructure for Organizational Intelligence", marginX, y);
     y += 12;
     doc.text("Registration No. 2026/326516/07", marginX, y);
     y += 12;
@@ -402,7 +402,7 @@ const LegalLayout: FC<LegalLayoutProps> = ({
                     <Image src="/Logo/Olyxee_Logo_ClearBack.png" alt="Olyxee" width={26} height={26} />
                     <div>
                       <p className="text-sm font-semibold text-neutral-900">Olyxee (Pty) Ltd</p>
-                      <p className="text-xs text-neutral-500">Researching Organizational Intelligence</p>
+                      <p className="text-xs text-neutral-500">Research and Infrastructure for Organizational Intelligence</p>
                       <p className="text-xs text-neutral-400 mt-0.5" suppressHydrationWarning>Reg. No. 2026/326516/07 · © {new Date().getFullYear()} All rights reserved.</p>
                     </div>
                   </div>

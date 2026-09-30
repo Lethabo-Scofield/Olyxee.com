@@ -3,7 +3,11 @@
 ## Overview
 Company-level website for Olyxee, a research and technology company developing the foundations of Organizational Intelligence. Mission: develop those foundations. Vision: organizations capable of learning, adapting and evolving. Long-term goal: build organizations that can evolve themselves. Autonomous Adaptive Organizations are a research objective, not a solved capability.
 
+Company tagline: "Research and Infrastructure for Organizational Intelligence". Keep "build organizations that can evolve themselves" as the long-term goal, not the primary tagline.
+
 Content updates must preserve the existing visual design, styles, components, imagery, navigation structure and destinations. Keep product copy practical: Orgni is the intelligence layer for everyday organizational work and an applied research environment; Olyxee Logistics is an applied freight operations platform.
+
+Keep landing-page copy concise. Avoid long paragraphs; use short, direct descriptions while retaining essential meaning and research caveats.
 
 ## Architecture
 - **Framework**: Next.js 15 (App Router + Pages Router mixed)

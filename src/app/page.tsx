@@ -63,7 +63,7 @@ export default function HomePage() {
       "Autonomous Agents",
       "Self-Improving Systems",
     ],
-    slogan: "Building organizations that can evolve themselves.",
+    slogan: "Research and Infrastructure for Organizational Intelligence",
   };
 
   const faqJsonLd = {
@@ -152,14 +152,14 @@ function HeroSection() {
           transition={{ duration: 0.9, delay: 0.1 }}
           className="font-serif text-neutral-900 leading-[1.02] tracking-tight px-2 sm:px-0 text-[clamp(1.4rem,6.6vw,5.5rem)] sm:text-6xl md:text-7xl lg:text-[5.5rem]"
         >
-          <span className="block sm:whitespace-nowrap">Building organizations that</span>
+          <span className="block sm:whitespace-nowrap">Research and Infrastructure</span>
           <span className="block sm:whitespace-nowrap">
-            can{" "}
+            for{" "}
             <span
               className="font-handwritten text-blue-600 font-semibold tracking-tight"
               style={{ fontFamily: "var(--font-handwritten), cursive" }}
             >
-              evolve themselves.
+              Organizational Intelligence
             </span>
           </span>
         </motion.h1>
@@ -645,7 +645,7 @@ function OrgniSection() {
       surface="muted"
       heading="Orgni, the intelligence layer for"
       emphasis="everyday work."
-      description="Olyxee researches the foundations of Organizational Intelligence: how organizations might learn from experience, coordinate people and machines, and adapt as conditions change. Orgni applies parts of this research to everyday work by connecting organizational knowledge, systems and people, and serves as an applied research environment. Employees can interact through familiar workplace environments such as Microsoft Teams. Our long-term goal is Autonomous Adaptive Organizations; this remains an unsolved research direction."
+      description="Orgni connects knowledge, systems and people in Microsoft Teams, bringing Olyxee's Organizational Intelligence research into everyday work."
       image={{
         src: "/images/orgni-finance-context-graph.png",
         alt: "Orgni helping a finance team recover a missing variance file by connecting context from Outlook, SharePoint, SAP, and Calendar",
@@ -871,12 +871,6 @@ const LATEST_RELEASE = {
   dateLabel: "Sep 2026",
   href: "/research/finir",
   background: "/research/finir-card-bg.webp",
-  links: [
-    { label: "GitHub", href: "https://github.com/Olyxee/finir", logo: "/logos/collaborators/github.svg" },
-    { label: "PyPI", href: "https://pypi.org/project/finir/", logo: "/research/logos/pypi.svg" },
-    { label: "FinIR-Intent model", href: "https://huggingface.co/Olyxee/FinIR-Intent", logo: "/partner-logos/huggingface.svg" },
-    { label: "IntentBench dataset", href: "https://huggingface.co/datasets/Olyxee/FinIR-IntentBench", logo: "/partner-logos/huggingface.svg" },
-  ],
 };
 
 function LatestReleaseSection() {
@@ -919,7 +913,7 @@ function LatestReleaseSection() {
             style={{ background: "linear-gradient(90deg, rgba(255,255,255,0.42) 0%, rgba(255,255,255,0.22) 55%, rgba(255,255,255,0) 100%)" }}
             aria-hidden
           />
-          <div className="relative grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-16">
+          <div className="relative">
             <div>
               <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[12px] font-medium uppercase tracking-[0.14em] text-neutral-500">
                 <span className="text-neutral-900">Release</span>
@@ -938,27 +932,6 @@ function LatestReleaseSection() {
                 Read the release
                 <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden />
               </Link>
-            </div>
-            <div className="rounded-2xl border border-white/70 bg-white/75 p-5 shadow-sm backdrop-blur-md sm:p-6">
-              <p className="mb-3 text-[12px] font-medium uppercase tracking-[0.14em] text-neutral-500">Public resources</p>
-              <ul className="divide-y divide-neutral-200">
-                {release.links.map((link) => (
-                  <li key={link.href}>
-                    <a
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group flex items-center gap-3 py-3 text-[14px] font-medium text-neutral-900"
-                    >
-                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-neutral-200 bg-white">
-                        <Image src={link.logo} alt="" width={16} height={16} className="h-4 w-4" aria-hidden />
-                      </span>
-                      <span className="flex-1">{link.label}</span>
-                      <ArrowUpRight className="h-4 w-4 shrink-0 text-neutral-400 transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-neutral-900" aria-hidden />
-                    </a>
-                  </li>
-                ))}
-              </ul>
             </div>
           </div>
         </motion.div>
@@ -1197,7 +1170,7 @@ function CTASection() {
               Get started with Orgni
             </h2>
             <p className="text-neutral-600 text-base sm:text-lg font-normal leading-relaxed mb-9 max-w-lg mx-auto">
-              Olyxee is researching how organizations might learn, coordinate people and machines, and adapt—the foundations of Organizational Intelligence. Orgni applies parts of this research to everyday work. Our long-term goal is Autonomous Adaptive Organizations, a research direction we have not yet solved.
+              Explore Orgni for everyday work in Microsoft Teams. Olyxee&apos;s long-term goal of Autonomous Adaptive Organizations remains an unsolved research direction.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
