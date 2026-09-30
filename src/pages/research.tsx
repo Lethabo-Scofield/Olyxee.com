@@ -1,6 +1,6 @@
-import { FC, ReactNode, useMemo, useState } from "react";
+import { FC, ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Pause, Play } from "lucide-react";
 import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
@@ -16,12 +16,72 @@ function EntryLink({ href, className, children }: { href: string; className: str
 
 const Research: FC = () => {
   const [activeFilter, setActiveFilter] = useState<ResearchFilter>("All entries");
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [reducedMotion, setReducedMotion] = useState<boolean | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [mediaError, setMediaError] = useState(false);
+  const failedSources = useRef(new Set<string>());
   const visiblePapers = useMemo(
     () => (activeFilter === "All entries" ? researchEntries : researchEntries.filter((paper) => paper.category === activeFilter)),
     [activeFilter]
   );
   const countFor = (filter: ResearchFilter) =>
     filter === "All entries" ? researchEntries.length : researchEntries.filter((paper) => paper.category === filter).length;
+
+  useEffect(() => {
+    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updatePreference = () => setReducedMotion(preference.matches);
+    updatePreference();
+    preference.addEventListener("change", updatePreference);
+    return () => preference.removeEventListener("change", updatePreference);
+  }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || mediaError) return;
+    if (reducedMotion !== false) {
+      video.pause();
+      setIsPlaying(false);
+      return;
+    }
+    let active = true;
+    video.play().then(() => {
+      if (active) {
+        setIsPlaying(true);
+      }
+    }).catch(() => {
+      if (active) {
+        setIsPlaying(false);
+        if (video.error) setMediaError(true);
+      }
+    });
+    return () => { active = false; };
+  }, [reducedMotion, mediaError]);
+
+  const togglePlayback = async () => {
+    const video = videoRef.current;
+    if (!video || mediaError) return;
+    if (!video.paused) {
+      video.pause();
+      setIsPlaying(false);
+      return;
+    }
+    try {
+      await video.play();
+      setIsPlaying(true);
+    } catch {
+      setIsPlaying(false);
+      if (video.error) setMediaError(true);
+    }
+  };
+
+  const handleSourceError = (format: string) => {
+    failedSources.current.add(format);
+    if (failedSources.current.size === 2) {
+      setMediaError(true);
+      setIsPlaying(false);
+    }
+  };
 
   return (
     <div className="research-page min-h-screen relative">
@@ -75,27 +135,48 @@ const Research: FC = () => {
       <div className="grain" />
       <Header />
 
-      <main>
-        {/* Intro */}
-        <section className="px-5 pb-14 pt-28 sm:px-8 sm:pb-20 sm:pt-36">
-          <div className="mx-auto max-w-[1120px]">
-            <div>
-              <p className="mb-4 text-[12px] font-medium uppercase tracking-[0.14em] text-[#86868b]">Olyxee Research</p>
-              <h1 className="text-[2.75rem] font-semibold leading-[1.02] tracking-[-0.04em] text-[#1d1d1f] sm:text-[3.75rem]">
-                Research and releases
-              </h1>
-              <p className="mt-6 max-w-[600px] text-[17px] leading-[1.65] text-[#6e6e73] sm:text-[18px]">
-                Olyxee is researching Organizational Intelligence: how organizations might learn, adapt and coordinate people and machines. Our directions include adaptive organizations, human-AI coordination, organizational models and simulation, autonomous agents, and systems that learn from outcomes. This archive also preserves documented releases and research we follow; these directions are open questions, not claims of completed capability.
-              </p>
-            </div>
+      <main className="pt-20">
+        <section className="research-hero" aria-labelledby="research-heading">
+          <video
+            ref={videoRef}
+            className="research-motion-video"
+            style={{ visibility: mediaError ? "hidden" : undefined }}
+            poster="/images/research-motion-poster.jpg"
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            aria-label="Abstract network geometry and pale blue forms moving across a white field"
+            onPlay={() => { setIsPlaying(true); failedSources.current.clear(); }}
+            onPause={() => setIsPlaying(false)}
+            onError={() => { setMediaError(true); setIsPlaying(false); }}
+          >
+            <source src="/videos/research-motion.mp4" type="video/mp4" onError={() => handleSourceError("mp4")} />
+            <source src="/videos/research-motion.webm" type="video/webm" onError={() => handleSourceError("webm")} />
+          </video>
+          {mediaError && (
+            <img src="/images/research-motion-poster.jpg" className="research-motion-video" alt="" width={1080} height={1350} />
+          )}
+          <div className="research-hero-heading">
+            <h1 id="research-heading" className="research-display">Research</h1>
           </div>
+          <button
+            className="research-motion-control"
+            type="button"
+            onClick={togglePlayback}
+            disabled={mediaError}
+            aria-label={mediaError ? "Research video unavailable" : isPlaying ? "Pause research motion" : "Play research motion"}
+          >
+            {isPlaying ? <Pause className="h-4 w-4" aria-hidden="true" /> : <Play className="h-4 w-4" aria-hidden="true" />}
+            <span className={mediaError ? undefined : "sr-only"} aria-live="polite">{mediaError ? "Video unavailable" : isPlaying ? "Pause" : "Play"}</span>
+          </button>
         </section>
 
         {/* Archive */}
-        <section id="archive" className="scroll-mt-24 px-5 pb-24 sm:px-8 sm:pb-32" aria-labelledby="archive-heading">
+        <section id="archive" className="research-archive scroll-mt-24 px-5 pb-24 pt-16 sm:px-8 sm:pb-32 sm:pt-24" aria-labelledby="archive-heading">
           <div className="mx-auto max-w-[1120px]">
             <div className="flex flex-col gap-5 border-b border-[#dedee3] sm:flex-row sm:items-end sm:justify-between">
-              <h2 id="archive-heading" className="pb-4 text-[1.375rem] font-semibold tracking-[-0.02em] text-[#1d1d1f]">All entries</h2>
+              <h2 id="archive-heading" className="pb-4 text-xl font-semibold tracking-[-0.02em] text-[#1d1d1f]">Research and releases</h2>
                <nav className="flex gap-7 overflow-x-auto text-[13px] no-scrollbar" aria-label="Filter research">
                 {researchFilters.map((filter) => (
                   <button
@@ -108,7 +189,7 @@ const Research: FC = () => {
                     }`}
                   >
                     {filter}
-                    <span className="ml-1.5 tabular-nums text-[#aeaeb2]">{countFor(filter)}</span>
+                     <span className="ml-1.5 tabular-nums text-[#aeaeb2]">{countFor(filter)}</span>
                   </button>
                 ))}
               </nav>
@@ -128,8 +209,8 @@ const Research: FC = () => {
                           <h3 className="text-[1.25rem] font-semibold leading-[1.3] tracking-[-0.02em] text-[#1d1d1f] sm:text-[1.5rem]">{paper.title}</h3>
                           <p className="mt-3 max-w-[640px] text-[15px] leading-[1.6] text-[#6e6e73]">{paper.description}</p>
                           <p className="mt-3 text-[13px] text-[#86868b]">
-                            {paper.authors} · {paper.venue}
-                            {paper.articleSections ? ` · ${getReadingTime(paper)} min read` : ""}
+                            {paper.authors} <span aria-hidden="true">·</span> {paper.venue}
+                            {paper.articleSections ? <> <span aria-hidden="true">·</span> {getReadingTime(paper)} min read</> : ""}
                           </p>
                         </div>
                         <div className="flex items-center gap-2 text-[13px] font-medium text-[#6e6e73] lg:justify-end lg:self-start lg:pt-1">
