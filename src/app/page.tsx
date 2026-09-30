@@ -863,12 +863,8 @@ function VideoShowcaseSection() {
 const STORY_DURATION_MS = 7000;
 
 const LATEST_RELEASE = {
-  title: "FinIR: A financial intermediate representation for AI-native computation",
-  description:
-    "A finance-typed compiler and incremental execution runtime that turns structured financial intent into deterministic, auditable financial computation.",
-  authors: "Lethabo Scofield and Alisha Fatima",
-  date: "2026-09-04",
-  dateLabel: "Sep 2026",
+  title: "FinIR",
+  description: "A financial compiler for AI-native systems.",
   href: "/research/finir",
   background: "/research/finir-card-bg.webp",
 };
@@ -915,16 +911,10 @@ function LatestReleaseSection() {
           />
           <div className="relative">
             <div>
-              <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[12px] font-medium uppercase tracking-[0.14em] text-neutral-500">
-                <span className="text-neutral-900">Release</span>
-                <span aria-hidden>·</span>
-                <time dateTime={release.date}>{release.dateLabel}</time>
-              </div>
-              <h3 className="mt-5 max-w-[720px] text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.03em] text-neutral-900 sm:text-[2.25rem]">
+              <h3 className="max-w-[720px] text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.03em] text-neutral-900 sm:text-[2.25rem]">
                 {release.title}
               </h3>
               <p className="mt-5 max-w-[640px] text-[16px] leading-[1.65] text-neutral-600 sm:text-[17px]">{release.description}</p>
-              <p className="mt-4 text-[14px] text-neutral-500">{release.authors}</p>
               <Link
                 href={release.href}
                 className="group mt-8 inline-flex items-center gap-2 rounded-full bg-neutral-900 px-5 py-2.5 text-[14px] font-medium text-white transition-colors hover:bg-black"
