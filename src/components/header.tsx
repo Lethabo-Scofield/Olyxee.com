@@ -292,7 +292,7 @@ const Header = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
                                 href="https://huggingface.co/Olyxee"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-neutral-100 ring-1 ring-black/[0.06] hover:bg-neutral-200 transition-colors"
+                                className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-black ring-1 ring-black/[0.06] hover:bg-neutral-800 transition-colors"
                                 aria-label="Olyxee on Hugging Face"
                             >
                                 <img src="/partner-logos/huggingface.svg" alt="" className="w-6 h-6" aria-hidden="true" />
