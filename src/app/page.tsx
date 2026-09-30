@@ -152,14 +152,14 @@ function HeroSection() {
           transition={{ duration: 0.9, delay: 0.1 }}
           className="font-serif text-neutral-900 leading-[1.02] tracking-tight px-2 sm:px-0 text-[clamp(1.4rem,6.6vw,5.5rem)] sm:text-6xl md:text-7xl lg:text-[5.5rem]"
         >
-          <span className="block sm:whitespace-nowrap">Research and Infrastructure</span>
+          <span className="block sm:whitespace-nowrap">Less time searching.</span>
           <span className="block sm:whitespace-nowrap">
-            for{" "}
+            More time to{" "}
             <span
               className="font-handwritten text-blue-600 font-semibold tracking-tight"
               style={{ fontFamily: "var(--font-handwritten), cursive" }}
             >
-              Organizational Intelligence
+              grow.
             </span>
           </span>
         </motion.h1>
@@ -185,7 +185,7 @@ function HeroSection() {
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-7 sm:py-3.5 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-all text-xs sm:text-sm tracking-wide shadow-lg shadow-blue-600/30 border border-blue-500/40"
             >
-              Try Orgni <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+              Explore Orgni <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </a>
           </div>
         </div>
@@ -211,7 +211,7 @@ function LogoStrip() {
 
   return (
     <div className="w-full max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 py-10 sm:py-14">
-      <p className="text-center text-[11px] font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-8 sm:mb-10">Researching Organizational Intelligence</p>
+      <p className="text-center text-[11px] font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-8 sm:mb-10">Business work spans many tools</p>
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -389,17 +389,17 @@ function ResearchAreas() {
 
 function ImageShowcase() {
   const rowA = [
-    { src: "/images/showcase/enterprise-ai-framework.png", alt: "A conceptual framework for organizational intelligence", caption: "Organizational Intelligence" },
-    { src: "/images/showcase/knowledge-routing.png", alt: "A query routed to structured organisational knowledge", caption: "Knowledge Routing" },
-    { src: "/images/showcase/connected-systems.png", alt: "Systems, clouds and people connected around a shared hub", caption: "Connected Systems" },
-    { src: "/images/showcase/company-insights.png", alt: "Illustrative organizational insights from business information", caption: "Organizational Insights" },
-    { src: "/images/showcase/business-model.png", alt: "A hand sketching a business model map", caption: "Business Model Mapping" },
+    { src: "/images/showcase/enterprise-ai-framework.png", alt: "A conceptual framework for organizational intelligence", caption: "Find information across your business" },
+    { src: "/images/showcase/knowledge-routing.png", alt: "A query routed to structured organisational knowledge", caption: "Get the right context for work" },
+    { src: "/images/showcase/connected-systems.png", alt: "Systems, clouds and people connected around a shared hub", caption: "Bring work context together" },
+    { src: "/images/showcase/company-insights.png", alt: "Illustrative organizational insights from business information", caption: "See context behind decisions" },
+    { src: "/images/showcase/business-model.png", alt: "A hand sketching a business model map", caption: "Understand how work fits together" },
   ];
   const rowB = [
-    { src: "/images/showcase/ai-assistant.png", alt: "A person working with an AI assistant across dashboards", caption: "Human-AI Coordination" },
-    { src: "/images/showcase/custom-ai-solutions.png", alt: "Software and content representing research into adaptive systems", caption: "Adaptive Systems" },
-    { src: "/images/showcase/sales-funnel.png", alt: "A sales funnel chart with operational records", caption: "Sales Operations" },
-    { src: "/images/showcase/roi-reporting.png", alt: "ROI reporting with revenue charts", caption: "ROI Reporting" },
+    { src: "/images/showcase/ai-assistant.png", alt: "A person working with an AI assistant across dashboards", caption: "Help teams coordinate with context" },
+    { src: "/images/showcase/custom-ai-solutions.png", alt: "Software and content representing research into adaptive systems", caption: "Support changing business needs" },
+    { src: "/images/showcase/sales-funnel.png", alt: "A sales funnel chart with operational records", caption: "Keep sales work in context" },
+    { src: "/images/showcase/roi-reporting.png", alt: "ROI reporting with revenue charts", caption: "Understand business performance" },
   ];
 
   const doubledA = [...rowA, ...rowA];
@@ -435,7 +435,7 @@ function ImageShowcase() {
           className="text-center"
         >
           <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900">
-            Orgni: an applied environment for Olyxee&apos;s research
+            Spend less time searching. More time growing your business.
           </h2>
         </motion.div>
       </div>
@@ -643,9 +643,9 @@ function OrgniSection() {
     <ProductFeature
       id="orgni"
       surface="muted"
-      heading="Orgni, the intelligence layer for"
-      emphasis="everyday work."
-      description="Orgni connects knowledge, systems and people in Microsoft Teams, bringing Olyxee's Organizational Intelligence research into everyday work."
+      heading="Help your team"
+      emphasis="find what they need."
+      description="Orgni connects your business knowledge and systems in Microsoft Teams, so your team spends less time searching."
       image={{
         src: "/images/orgni-finance-context-graph.png",
         alt: "Orgni helping a finance team recover a missing variance file by connecting context from Outlook, SharePoint, SAP, and Calendar",
@@ -839,10 +839,10 @@ function VideoShowcaseSection() {
           />
           <div className="absolute inset-x-0 top-0 pt-8 sm:pt-12 px-6 text-center">
             <h2 className="font-serif text-2xl sm:text-4xl lg:text-5xl tracking-tight text-white max-w-3xl mx-auto">
-              Organizational work needs context.
+              Bring your business information together.
             </h2>
             <p className="mt-3 text-sm sm:text-lg text-white/75 max-w-xl mx-auto">
-              Orgni connects organizational knowledge, systems and people to give everyday work more context.
+              Find useful information across your business without leaving Microsoft Teams.
             </p>
           </div>
           <div
@@ -864,7 +864,7 @@ const STORY_DURATION_MS = 7000;
 
 const LATEST_RELEASE = {
   title: "FinIR",
-  description: "A financial compiler for AI-native systems.",
+  description: "Research into reliable financial calculations.",
   href: "/research/finir",
   background: "/research/finir-card-bg.webp",
 };
@@ -919,7 +919,7 @@ function LatestReleaseSection() {
                 href={release.href}
                 className="group mt-8 inline-flex items-center gap-2 rounded-full bg-neutral-900 px-5 py-2.5 text-[14px] font-medium text-white transition-colors hover:bg-black"
               >
-                Read the release
+                Read the research
                 <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden />
               </Link>
             </div>
@@ -1157,10 +1157,10 @@ function CTASection() {
 
           <div className="relative text-center max-w-2xl mx-auto">
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-5 leading-[1.05]">
-              Get started with Orgni
+              Could Orgni fit your business?
             </h2>
             <p className="text-neutral-600 text-base sm:text-lg font-normal leading-relaxed mb-9 max-w-lg mx-auto">
-              Explore Orgni for everyday work in Microsoft Teams. Olyxee&apos;s long-term goal of Autonomous Adaptive Organizations remains an unsolved research direction.
+              Tell us about your business and learn how Orgni could fit your work in Microsoft Teams.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -1168,14 +1168,14 @@ function CTASection() {
                 href="/contact"
                 className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide shadow-lg shadow-neutral-900/10"
               >
-                Get in touch
+                Discuss your business
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </Link>
               <Link
                 href="/about"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 text-neutral-900 bg-white border border-neutral-300 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide"
               >
-                Learn more
+                About Olyxee
               </Link>
             </div>
           </div>

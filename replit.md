@@ -9,6 +9,8 @@ Content updates must preserve the existing visual design, styles, components, im
 
 Keep landing-page copy concise. Avoid long paragraphs; use short, direct descriptions while retaining essential meaning and research caveats.
 
+Address business owners directly on the landing page: lead with less admin, easier access to information, clearer decisions and time for growth. Invite them to learn how Orgni fits their business; keep research positioning secondary and avoid unverified promises.
+
 ## Architecture
 - **Framework**: Next.js 15 (App Router + Pages Router mixed)
 - **Styling**: Tailwind CSS v4
