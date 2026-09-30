@@ -171,10 +171,7 @@ const About: FC = () => {
                   className="relative max-w-3xl mx-auto text-center"
                 >
                   <p className="font-serif text-3xl sm:text-4xl lg:text-[3rem] leading-[1.12] tracking-tight mb-8 text-neutral-900">
-                    Can an organization itself <strong className="font-semibold text-neutral-900">become intelligent?</strong>
-                  </p>
-                  <p className="text-base sm:text-lg text-neutral-600 font-normal leading-relaxed max-w-2xl mx-auto">
-                    AI is improving the capabilities of individual systems, while organizations remain collections of people, processes and technologies. We are researching how intelligence might exist across an organization: helping it learn from experience, coordinate people and machines, and adapt over time. Our long-term goal is to build organizations that can evolve themselves, while remaining aligned with human objectives and governance. We are still early; this is a research direction, not a solved problem.
+                    A future where organizations learn, adapt and <strong className="font-semibold text-neutral-900">evolve themselves.</strong>
                   </p>
                 </motion.article>
               ) : (
