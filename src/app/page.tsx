@@ -152,14 +152,14 @@ function HeroSection() {
           transition={{ duration: 0.9, delay: 0.1 }}
           className="font-serif text-neutral-900 leading-[1.02] tracking-tight px-2 sm:px-0 text-[clamp(1.4rem,6.6vw,5.5rem)] sm:text-6xl md:text-7xl lg:text-[5.5rem]"
         >
-          <span className="block sm:whitespace-nowrap">Less time searching.</span>
+          <span className="block sm:whitespace-nowrap">Research and Infrastructure</span>
           <span className="block sm:whitespace-nowrap">
-            More time to{" "}
+            for{" "}
             <span
               className="font-handwritten text-blue-600 font-semibold tracking-tight"
               style={{ fontFamily: "var(--font-handwritten), cursive" }}
             >
-              grow.
+              Organizational Intelligence
             </span>
           </span>
         </motion.h1>
