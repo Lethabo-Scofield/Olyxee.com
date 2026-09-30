@@ -8,7 +8,7 @@ Company website for **Olyxee**, a reliability-first AI infrastructure company. M
 - **Styling**: Tailwind CSS v4 (via `@theme` in `src/app/globals.css`)
 - **UI**: Radix UI + shadcn/ui primitives
 - **Animation**: Framer Motion, Three.js / React Three Fiber
-- **Database**: Replit-managed PostgreSQL (`pg`) for internship verification and API platform accounts
+- **Database**: Replit-managed PostgreSQL (`pg`) for internship verification and Olyxee Workspace accounts
 - **Email**: Resend (waitlist) + Nodemailer (contact)
 - **Payments**: Stripe
 - **Math rendering**: KaTeX
@@ -73,9 +73,9 @@ public/
   - `POST/DELETE /api/admin/auth` — set / clear admin cookie
 - DB pool reused across HMR via `src/lib/db.ts`
 
-## API platform accounts
+## Olyxee Workspace accounts
 
-- Use **Sign in → API platform** in the site header, or go to `/platform/login`. New users can register at `/platform/signup`.
+- Use **Sign in → Olyxee Workspace** in the site header, or go to `/platform/login`. New users can register at `/platform/signup`.
 - Profiles, password hashes, and revocable sessions are stored in PostgreSQL using `migrations/002_platform_accounts.sql`. The development schema is applied in the Replit database; publishing propagates it to the managed production database.
 - The account dashboard at `/platform` has Home, API access, Usage, Billing, and Profile & security sections. Names and companies can be edited; password changes end other sessions.
 - API execution, production keys, usage metering, and payments are **not connected** in this repository. The dashboard does not issue unusable keys or pretend that payment methods are active. The pre-existing `/signup?tool=api` waitlist remains available for API rollout updates.

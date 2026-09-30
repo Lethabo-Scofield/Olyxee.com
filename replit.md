@@ -8,7 +8,7 @@ Company-level website for Olyxee, a reliability-first AI infrastructure company.
 - **Styling**: Tailwind CSS v4
 - **UI Components**: Radix UI, shadcn/ui
 - **Animations**: Framer Motion, Three.js, React Three Fiber
-- **Database**: Replit-managed PostgreSQL via `pg` for internship verification and API platform accounts
+- **Database**: Replit-managed PostgreSQL via `pg` for internship verification and Olyxee Workspace accounts
 
 ## Internship Verification System
 - **Public verify page**: `/verify` — code input that returns intern details or "Invalid Code"
@@ -23,8 +23,8 @@ Company-level website for Olyxee, a reliability-first AI infrastructure company.
 - **Payments**: Stripe
 - **Math rendering**: KaTeX (CSS imported in root layout)
 
-## API Platform Accounts
-- **Entry point**: Header Sign in → API platform links to `/platform/login`; `/platform/signup` creates a profile and `/platform` is the authenticated workspace.
+## Olyxee Workspace Accounts
+- **Entry point**: Header Sign in → Olyxee Workspace links to `/platform/login`; `/platform/signup` creates a profile and `/platform` is the authenticated workspace.
 - **User data**: `platform_users` and `platform_sessions` in Replit PostgreSQL, defined by `migrations/002_platform_accounts.sql`. Passwords use salted scrypt hashes; sessions use HttpOnly cookies backed by token hashes in the database.
 - **Profile**: Name and company can be edited; password changes revoke other sessions. Email changes and reset-by-email are not implemented.
 - **Scope**: Workspace navigation, account settings, and sign-in work. API execution, production API keys, metering, and billing are not connected in this repository; do not imply otherwise in the UI.

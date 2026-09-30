@@ -41,15 +41,15 @@ export default function AccountForm({ mode }: { mode: "login" | "signup" }) {
       <div className="mx-auto w-full max-w-6xl">
         <Link href="/" className="inline-flex items-center gap-2 text-[15px] font-semibold tracking-tight">
           <span className="grid h-7 w-7 place-items-center rounded-md bg-neutral-900 text-white text-xs">O</span>
-          Olyxee <span className="text-neutral-400 font-normal">/ API platform</span>
+          Olyxee <span className="text-neutral-400 font-normal">Workspace</span>
         </Link>
       </div>
       <div className="flex-1 flex items-center justify-center py-16">
         <section className="w-full max-w-[430px] rounded-xl border border-neutral-200 bg-white px-7 py-9 sm:px-10 sm:py-10 shadow-[0_10px_40px_rgba(0,0,0,0.035)]">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-neutral-500">Olyxee API platform</p>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-neutral-500">Olyxee Workspace</p>
           <h1 className="mt-3 text-[28px] font-semibold tracking-tight">{signingUp ? "Create your account" : "Welcome back"}</h1>
           <p className="mt-2 text-sm text-neutral-500 leading-relaxed">
-            {signingUp ? "Set up a profile to access your platform workspace." : "Sign in to your platform workspace."}
+            {signingUp ? "Create your account to access Olyxee Workspace." : "Sign in to Olyxee Workspace."}
           </p>
           <form onSubmit={submit} className="mt-8 space-y-4">
             {signingUp && (

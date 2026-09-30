@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { currentPlatformUser } from "@/lib/platform-auth";
 import PlatformDashboard from "@/components/platform/platform-dashboard";
 
-export const metadata: Metadata = { title: "API platform", robots: { index: false, follow: false } };
+export const metadata: Metadata = { title: "Olyxee Workspace", robots: { index: false, follow: false } };
 
 export default async function PlatformPage({ searchParams }: { searchParams: Promise<{ view?: string }> }) {
   const user = await currentPlatformUser();

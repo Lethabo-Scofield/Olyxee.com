@@ -44,8 +44,8 @@ const SIGNIN_OPTIONS: SignInOption[] = [
         external: true,
     },
     {
-        name: "API platform",
-        description: "Your API workspace",
+        name: "Olyxee Workspace",
+        description: "Your account and workspace",
         href: "/platform/login",
         external: false,
     },

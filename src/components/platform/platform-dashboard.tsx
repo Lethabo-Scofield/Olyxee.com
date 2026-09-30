@@ -19,7 +19,7 @@ const views: { id: View; label: string; icon: typeof Home }[] = [
 ];
 const billingTabs: BillingTab[] = ["Balance", "Payment methods", "Billing history", "Credit grants", "Settings", "Pricing"];
 const headings: Record<View, { title: string; description: string }> = {
-  home: { title: "Overview", description: "Your Olyxee API workspace at a glance." },
+  home: { title: "Overview", description: "Your Olyxee Workspace at a glance." },
   access: { title: "API access", description: "Resources and updates for building with Olyxee." },
   usage: { title: "Usage", description: "Your API activity and reporting." },
   billing: { title: "Billing", description: "Manage billing for your workspace." },
@@ -71,11 +71,11 @@ export default function PlatformDashboard({ user, initialView }: {
         <div className="flex items-center justify-between px-2 pb-7">
           <Link href="/" className="flex items-center gap-2 text-sm font-semibold tracking-tight" aria-label="Olyxee home">
             <span className="grid h-6 w-6 place-items-center rounded-md bg-neutral-900 text-[11px] text-white">O</span>
-            Olyxee <span className="font-normal text-neutral-400">/ Platform</span>
+            Olyxee <span className="font-normal text-neutral-400">Workspace</span>
           </Link>
           <button className="md:hidden" aria-label="Close menu" onClick={() => setMobileMenuOpen(false)}><X size={18} /></button>
         </div>
-        <nav aria-label="Platform navigation" className="flex-1">
+        <nav aria-label="Olyxee Workspace navigation" className="flex-1">
           <p className="px-2.5 pb-2 text-[10px] font-semibold uppercase tracking-[0.13em] text-neutral-400">Workspace</p>
           <div className="space-y-0.5">{views.map(item => navLink(item.id, item.label, item.icon))}</div>
           <p className="px-2.5 pt-7 pb-2 text-[10px] font-semibold uppercase tracking-[0.13em] text-neutral-400">Resources</p>
