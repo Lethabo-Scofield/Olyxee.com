@@ -330,7 +330,7 @@ const About: FC = () => {
               </span>
               <blockquote className="font-sans text-neutral-900">
                 <p className="text-3xl font-bold leading-[1.16] tracking-[-0.04em] sm:text-5xl lg:text-[3.5rem]">
-                  We&apos;re building toward a future where organizations don&apos;t just use smarter tools—they{" "}
+                  We&apos;re building toward a future where organizations don&apos;t just use smarter tools, but{" "}
                   <span className="text-orange-600">learn from experience</span>,{" "}
                   <span className="text-blue-600">adapt to change</span>, and{" "}
                   <span className="text-emerald-700">evolve over time.</span>
