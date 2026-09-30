@@ -23,22 +23,22 @@ const APPROACH = [
   {
     icon: Compass,
     label: "What we study",
-    title: "Organizational Intelligence",
-    text: "We research how organizations might learn from experience, coordinate people and machines, and adapt their systems over time. Autonomous Adaptive Organizations remain a long-term research goal, not a capability we have delivered.",
+    title: "Frontier",
+    text: "Bet on problems that are genuinely hard and unsolved.",
     gradient: "/images/gradient-pink-cyan.png",
   },
   {
     icon: ShieldCheck,
     label: "Where research meets work",
-    title: "Orgni",
-    text: "Orgni is an intelligence layer for everyday organizational work, connecting knowledge, systems and people so teams can work with more context. It is also an applied environment for learning from real organizational settings.",
+    title: "Intelligence",
+    text: "Build intelligence into the organization itself.",
     gradient: "/images/gradient-blue.png",
   },
   {
     icon: EyeOff,
     label: "What we apply",
-    title: "Operational Software",
-    text: "Olyxee Logistics is a practical freight operations platform for quotes, orders, payments, cargo, warehouse activity, tracking and customer communication. It is a commercial product, not an AI research product.",
+    title: "Evolution",
+    text: "Everything we build should become more capable over time.",
     gradient: "/images/gradient-purple.png",
   },
 ];
@@ -104,15 +104,16 @@ const About: FC = () => {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="relative overflow-hidden rounded-3xl ring-1 ring-neutral-900/10 shadow-2xl shadow-neutral-900/10 bg-white aspect-[16/9] sm:aspect-[16/10] lg:aspect-[21/9]"
+              className="relative overflow-hidden rounded-3xl ring-1 ring-neutral-900/10 shadow-2xl shadow-neutral-900/10"
             >
               <Image
                 src="/images/about-self-driving-company.png"
                 alt="The Self-Driving Company — Orgni, Olyxee's operational intelligence infrastructure"
-                fill
+                width={1670}
+                height={942}
                 priority
                 sizes="(min-width: 1280px) 1152px, 100vw"
-                className="object-contain object-center"
+                className="block w-full h-auto"
               />
               <h1 className="sr-only">About Olyxee: Organizational Intelligence research</h1>
             </motion.div>
