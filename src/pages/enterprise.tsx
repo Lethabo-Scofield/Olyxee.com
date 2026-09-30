@@ -4,9 +4,10 @@ import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import TalkToEnterprise from "../components/EnterpriseContactModal";
+import OrgniVideoSection from "../components/OrgniVideoSection";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Check, Code2, Copy, TerminalSquare, Landmark, Truck } from "lucide-react";
+import { ArrowRight, Code2, Copy, TerminalSquare, Landmark, Truck, Check } from "lucide-react";
 
 const SCREENS = [
   { 
@@ -47,14 +48,14 @@ const PLATFORM_TABS = [
   {
     id: "orgni",
     label: "Orgni",
-    desc: "Orgni brings organizational knowledge, systems and people together for everyday work, and provides an applied environment for Olyxee's research.",
+    desc: "Bring business knowledge, people and systems into practical context for everyday work. Orgni is also an applied research environment for Olyxee.",
     image: "/images/enterprise/orgni-ontology.png",
     alt: "Orgni ontology map for Olyxee",
   },
   {
     id: "order-loop",
     label: "Olyxee Logistics",
-    desc: "A practical freight operations platform for managing orders, cargo, warehouse activity and customer tracking.",
+    desc: "Olyxee Logistics supports freight operations across orders, cargo, warehouse activity and customer tracking.",
     image: "/images/enterprise/order-loop-tracking.png",
     alt: "Olyxee Logistics delivery tracking",
   },
@@ -162,10 +163,10 @@ const Enterprise: FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#fafafa] text-[#111] font-sans selection:bg-neutral-200 selection:text-neutral-900 relative">
+    <div className="min-h-screen bg-[#f7f7f5] text-[#171817] font-sans selection:bg-neutral-200 selection:text-neutral-900 relative">
       <SEO
         title="Organizational Intelligence | Olyxee"
-        description="Olyxee is a research and technology company exploring the foundations of Organizational Intelligence. Orgni brings organizational knowledge, systems and people together for everyday work."
+        description="Orgni brings your business knowledge, people and systems into practical context, helping you spend less time searching and more time focused on the work ahead."
         path="/enterprise"
         keywords={[
           "Olyxee Enterprise",
@@ -185,7 +186,7 @@ const Enterprise: FC = () => {
             url: "https://olyxee.com",
           },
           description:
-            "Olyxee researches Organizational Intelligence. Orgni is an applied environment for this work and an intelligence layer for everyday organizational work.",
+            "Orgni brings business knowledge, people and systems into practical context for everyday work, and serves as an applied research environment for Olyxee.",
           areaServed: "Global",
           url: "https://olyxee.com/enterprise",
         }}
@@ -193,7 +194,7 @@ const Enterprise: FC = () => {
       <Header />
 
       {/* === HERO === */}
-      <section className="relative pt-40 sm:pt-48 pb-12 sm:pb-16 px-4 sm:px-6 overflow-hidden flex flex-col items-center text-center bg-white">
+      <section className="relative pt-40 sm:pt-48 pb-12 sm:pb-16 px-4 sm:px-6 overflow-hidden flex flex-col items-center text-center bg-[#f7f7f5]">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-[#e5e5e5]/40 blur-[120px] rounded-full pointer-events-none" />
 
         <div className="relative z-10 max-w-5xl mx-auto flex flex-col items-center">
@@ -204,10 +205,10 @@ const Enterprise: FC = () => {
           >
             <h1 className="flex flex-col items-center justify-center text-[2rem] min-[420px]:text-[2.5rem] sm:text-[4rem] lg:text-[5.5rem] font-medium tracking-tighter leading-[1.05]">
               <span className="inline-block px-4 py-2 sm:px-8 sm:py-3 mb-4 rounded-[1.25rem] sm:rounded-[2rem] border-[3px] border-[#e5e5e5] text-[#111111] bg-[#f5f5f5] lg:whitespace-nowrap">
-                Organizational Intelligence
+                Less admin.
               </span>
               <span className="text-[#111]">
-                for everyday work.
+                More time for your business.
               </span>
             </h1>
           </motion.div>
@@ -221,7 +222,7 @@ const Enterprise: FC = () => {
               href="/contact"
               className="inline-flex items-center justify-center px-8 py-3.5 bg-[#111] text-white rounded-full font-medium hover:bg-black transition-colors text-[15px] tracking-wide w-full sm:w-auto"
             >
-              Get started
+              See what fits your business
             </Link>
             <TalkToEnterprise
               label="Contact sales"
@@ -232,7 +233,7 @@ const Enterprise: FC = () => {
       </section>
 
       {/* === FANNED CARDS === */}
-      <section className="relative w-full overflow-hidden pb-16 sm:pb-32 pt-12 sm:pt-20 bg-white">
+      <section className="relative w-full overflow-hidden pb-16 sm:pb-32 pt-12 sm:pt-20 bg-[#f7f7f5]">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -261,7 +262,7 @@ const Enterprise: FC = () => {
       </section>
 
       {/* === TRUST LOGOS === */}
-      <section className="py-12 border-y border-black/5 bg-[#fafafa]">
+      <section className="py-12 border-y border-black/5 bg-[#f1f1ee]">
         <div className="max-w-6xl mx-auto px-4 flex flex-wrap justify-center items-center gap-8 sm:gap-20 opacity-80 grayscale mix-blend-multiply">
           {LOGOS.map((logo) => (
             <Image
@@ -276,58 +277,23 @@ const Enterprise: FC = () => {
         </div>
       </section>
 
-      {/* === SPOTLIGHT === */}
-      <section className="py-24 sm:py-36 px-4 sm:px-6 max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          <div>
-            <p className="text-[#111111] font-medium text-[15px] mb-4">Orgni by Olyxee</p>
-            <h2 className="text-[2.5rem] sm:text-[3.5rem] font-medium tracking-tighter text-[#111] mb-6 leading-[1.1]">
-              The intelligence layer for everyday organizational work.
-            </h2>
-            <p className="text-[1.125rem] text-[#4a5568] mb-8 leading-relaxed">
-              Orgni connects organizational knowledge, systems and people so employees can find information and work with greater context. It is also an applied environment for Olyxee's broader research into Organizational Intelligence.
-            </p>
-            <ul className="space-y-5 mb-10">
-              {[
-                "Bring organizational information and context together for everyday work",
-                "Employees can interact with Orgni through familiar workplace environments such as Microsoft Teams",
-                "Explore ways to coordinate work across organizational systems",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-4 text-[1.05rem] text-[#111]">
-                  <Check className="w-5 h-5 mt-0.5 text-[#111111] shrink-0" strokeWidth={2.5} />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.08)] ring-1 ring-black/5 bg-white">
-            <video
-              src="/videos/research-areas.mp4"
-              className="w-full h-full object-cover block"
-              autoPlay
-              loop
-              muted
-              playsInline
-            />
-          </div>
-        </div>
-      </section>
+      <OrgniVideoSection />
 
       {/* === TEAMS GRID === */}
-      <section className="py-24 sm:py-36 px-4 sm:px-6 bg-white">
+      <section className="py-24 sm:py-36 px-4 sm:px-6 bg-[#f7f7f5]">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-[2.5rem] sm:text-[3.5rem] font-medium tracking-tighter text-[#111] mb-16 text-center leading-[1.1]">
-            Software for complex organizational work.
+            Practical tools for the work that keeps business moving.
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { icon: Landmark, title: "Finance", desc: "Reconcile transactions, audit trails, and ensure financial integrity across platforms." },
-              { icon: Truck, title: "Logistics", desc: "Keep orders, dispatch, and fulfilment in sync with live tracking from planning to delivery." },
-              { icon: Code2, title: "Engineering", desc: "Internal tool integration and software for organizational workflows." },
+              { icon: Landmark, title: "Clearer business context", desc: "Bring scattered information into view, so you spend less time chasing details and make decisions with better context." },
+              { icon: Truck, title: "Freight operations", desc: "Olyxee Logistics supports freight teams with practical tools for orders, cargo, warehouse activity and customer updates." },
+              { icon: Code2, title: "Less admin, more focus", desc: "Make everyday information easier to find and give yourself more room to focus on customers and the work ahead." },
             ].map((team) => (
               <div
                 key={team.title}
-                className="bg-[#fafafa] rounded-[1.5rem] p-8 transition-transform hover:-translate-y-1"
+                className="bg-[#efefec] rounded-[1.5rem] p-8 transition-transform hover:-translate-y-1 motion-reduce:transition-none"
               >
                 <span className="mb-6 flex h-11 w-11 items-center justify-center rounded-xl bg-white ring-1 ring-neutral-200">
                   <team.icon className="w-5 h-5 text-[#111]" strokeWidth={1.5} aria-hidden />
@@ -347,13 +313,16 @@ const Enterprise: FC = () => {
       {/* === COMPLETE PLATFORM === */}
       <section className="py-24 sm:py-36 px-4 sm:px-6 max-w-6xl mx-auto text-center overflow-hidden">
         <h2 className="text-[2.5rem] sm:text-[4rem] font-medium tracking-tighter text-[#111] mb-6 leading-[1.1]">
-          Tools for real-world operational systems.
+          Start with the work taking too much of your time.
         </h2>
+        <p className="text-base sm:text-lg leading-relaxed text-[#4a5568] max-w-2xl mx-auto mb-5">
+          Explore how Orgni can bring your business knowledge into context, or see how Olyxee Logistics supports freight operations.
+        </p>
         <Link
           href="/pricing"
           className="inline-flex items-center text-[#111111] font-medium hover:underline underline-offset-4 text-[1.125rem] mb-12"
         >
-          Explore detailed pricing <ArrowRight className="ml-1.5 w-4 h-4" />
+          Compare plans <ArrowRight className="ml-1.5 w-4 h-4" />
         </Link>
 
         {/* Tabs */}
@@ -510,12 +479,15 @@ const Enterprise: FC = () => {
 
       {/* === FINAL CTA === */}
       <section className="py-24 sm:py-36 px-4 sm:px-6 text-center max-w-4xl mx-auto border-t border-black/5">
+        <p className="mx-auto mb-8 max-w-xl text-base leading-relaxed text-[#4a5568]">
+          Tell us where information gets stuck. We’ll help you explore whether Orgni or Olyxee Logistics is a fit.
+        </p>
         <div className="flex flex-col sm:flex-row gap-6 items-center justify-center">
           <Link
             href="/contact"
             className="inline-flex items-center justify-center px-8 py-3.5 bg-[#111] text-white rounded-full font-medium hover:bg-black transition-colors text-[15px] tracking-wide w-full sm:w-auto"
           >
-            Get started
+            Talk with our team
           </Link>
           <TalkToEnterprise
             label="Contact sales"

@@ -60,11 +60,12 @@ const PAID_QUESTIONS: Question[] = [
   },
   {
     id: "portfolio_link",
-    label: "GitHub, portfolio, or other relevant work",
+    label: "Link to relevant work",
     placeholder: "https://...",
     type: "url",
     required: true,
     inputMode: "url",
+    hint: "Share a GitHub profile, portfolio, campaign or project.",
   },
   {
     id: "research_link",
@@ -73,11 +74,11 @@ const PAID_QUESTIONS: Question[] = [
     type: "url",
     required: false,
     inputMode: "url",
-    hint: "Required for research, ML, and data science roles. Leave blank if it does not apply.",
+    hint: "Share publications if relevant to this role. This is optional.",
   },
   {
     id: "certifications",
-    label: "Relevant certifications or credentials",
+    label: "Relevant certifications",
     placeholder: "e.g. AWS Professional, CKA, OSCP, CISSP, CFA",
     type: "textarea",
     required: false,
@@ -109,43 +110,44 @@ const PAID_QUESTIONS: Question[] = [
   },
   {
     id: "essay_impact",
-    label: "Describe a project you led end to end that you are most proud of",
-    placeholder: "What was the problem, what did you do, what was the measurable outcome, and what would you do differently? Aim for 300 to 500 words.",
+    label: "A project you led",
+    placeholder: "What was the problem, what did you do, and what changed?",
     type: "textarea",
     required: true,
-    hint: "Be specific. Vague answers are the most common reason we say no.",
+    hint: "A short, specific example is enough.",
   },
   {
     id: "essay_why",
-    label: "Why this role and why Olyxee?",
-    placeholder: "What draws you to this exact role, and what would you want to own here in your first 6 months? 200 to 400 words.",
+    label: "Why this role at Olyxee?",
+    placeholder: "What interests you? What would you focus on in your first six months?",
     type: "textarea",
     required: true,
   },
   {
     id: "essay_hard",
-    label: "Describe the hardest technical or strategic problem you have solved in the last 12 months",
-    placeholder: "Walk us through the trade-offs, what you tried, and how you decided. 200 to 400 words.",
+    label: "A difficult problem you solved",
+    placeholder: "Share an example from the past year, the trade-offs and how you chose an approach.",
     type: "textarea",
     required: true,
   },
   {
     id: "references",
-    label: "Two professional references (name, relationship, email)",
-    placeholder: "We will not contact them without your permission.",
+    label: "Two professional references",
+    placeholder: "Names, how you worked together, and email addresses.",
     type: "textarea",
     required: true,
+    hint: "We will ask for your permission before contacting them.",
   },
   {
     id: "salary",
-    label: "Salary expectation (annual, in your local currency)",
+    label: "Expected annual salary",
     placeholder: "e.g. ZAR 850,000 / USD 95,000",
     type: "text",
     required: true,
   },
   {
     id: "start_date",
-    label: "Earliest start date",
+    label: "When can you start?",
     placeholder: "e.g. 1 August 2026, or 4 weeks notice",
     type: "text",
     required: true,
@@ -163,10 +165,20 @@ const PAID_QUESTIONS: Question[] = [
   },
 ];
 
+const RESEARCH_QUESTIONS: Question[] = PAID_QUESTIONS.map((question) =>
+  question.id === "research_link"
+    ? {
+        ...question,
+        required: true,
+        hint: "Include a public profile or publication showing your research work.",
+      }
+    : question
+);
+
 const PAID_PROCESS: { title: string; detail: string }[] = [
   {
     title: "Written application",
-    detail: "Submit the full application below. We read every word. Expect a response within 14 days, even if it is a no.",
+    detail: "Submit your application. We review it and contact you by email about next steps.",
   },
   {
     title: "Founder screen",
@@ -218,7 +230,7 @@ export const roles: Role[] = [
       "Patents, widely used open-source, or shipped research that reached real users",
       "Exceptional written communication; you can make complex ideas land for any audience",
     ],
-    questions: PAID_QUESTIONS,
+    questions: RESEARCH_QUESTIONS,
     process: PAID_PROCESS,
   },
   {
@@ -302,7 +314,7 @@ export const roles: Role[] = [
       "Strong systems fundamentals; you can own the path from notebook to production service",
       "Exceptional written communication and a body of public work (open-source, papers, or talks)",
     ],
-    questions: PAID_QUESTIONS,
+    questions: RESEARCH_QUESTIONS,
     process: PAID_PROCESS,
   },
 

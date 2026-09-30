@@ -4,3 +4,6 @@
 - [Dual-router overflow-x-hidden](responsive-dual-router-overflow.md) — hybrid app: global body classes must be set in BOTH src/app/layout.tsx and src/pages/_document.tsx or they only cover half the site.
 - [Next build vs dev cache](next-build-vs-dev-cache.md) — `next build` while dev runs corrupts .next ("Cannot find module './NNN.js'"); fix is rm -rf .next + restart.
 - [Portable npm lockfile installs](portable-npm-lockfile-installs.md) — external builders must replace Replit package-firewall hosts with their active npm registry.
+- [Careers UX scope](careers-ux-scope.md) — make applications clearer without weakening advertised hiring criteria or removing material internship terms and benefits.
+- [Query-driven selections](query-selection-synchronization.md) — shallow URL updates can precede React query effects; optimistic duplicate selection state can survive rapid Back navigation.
+- [Image preview verification](image-preview-verification.md) — early desktop captures can show blank images despite successful loading; wait for hydrated, nonzero rendered image bounds.

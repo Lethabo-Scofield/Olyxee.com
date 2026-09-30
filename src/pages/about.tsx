@@ -329,12 +329,12 @@ const About: FC = () => {
                 &ldquo;
               </span>
               <blockquote className="font-serif text-[1.75rem] sm:text-4xl lg:text-[3rem] text-neutral-900 leading-[1.18] tracking-tight space-y-6">
-                <p>The next frontier is not better software.</p>
+                <p>Smarter tools are only the beginning.</p>
                 <p>
-                  It is organizations that can{" "}
-                  <strong className="font-semibold text-neutral-900">think, adapt, and evolve.</strong>
+                  The real frontier is organizations that{" "}
+                  <strong className="font-semibold text-neutral-900">learn from experience, adapt to change, and evolve over time.</strong>
                 </p>
-                <p>That is what we are building toward at Olyxee.</p>
+                <p>That is the future we are working toward at Olyxee.</p>
               </blockquote>
 
               <div className="mt-12 sm:mt-14 pt-6 border-t border-neutral-200 flex flex-wrap items-center justify-between gap-y-5 gap-x-6">
