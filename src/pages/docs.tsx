@@ -379,7 +379,7 @@ function EarlyAccessGate() {
           Request early access
         </a>
         <a
-          href="/signup"
+          href="/platform/login"
           className="inline-flex items-center justify-center px-5 py-2.5 text-neutral-900 border border-neutral-200 rounded-full text-[14px] font-medium hover:bg-neutral-50 transition-colors"
         >
           Sign in
