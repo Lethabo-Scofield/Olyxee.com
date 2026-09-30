@@ -11,29 +11,29 @@ const categories = ["All", "Product", "Engineering", "Research", "Company"];
 const posts = [
   {
     slug: "introducing-ordo",
-    title: "Introducing Orgni: Live Business Context for Operational Intelligence",
+    title: "Introducing Orgni: An Intelligence Layer for Everyday Organizational Work",
     category: "Product",
     date: "Mar 28, 2026",
     readTime: "6 min",
-    excerpt: "Today we're publicly unveiling Orgni, the platform that builds live business context so intelligent systems can understand and operate inside your business.",
+    excerpt: "Orgni connects organizational knowledge, systems and people so employees and AI agents can access information with more context for everyday work.",
     featured: true,
     gradient: "from-indigo-500 via-purple-500 to-pink-500",
     content: [
       {
         heading: "The problem we set out to solve",
-        body: `Every operations team hits the same wall. Finance, compliance, and HR teams lose days every month on tasks that follow the same pattern every time: pulling data from multiple systems, reconciling records, generating reports, and chasing approvals.\n\nWe spent months talking to teams across industries. The stories were remarkably consistent: 40+ hours a month spent on manual reconciliation, 5 different systems touched per report, and 3-5 days just to close the books each month.\n\nThe tooling gap was obvious. There were great tools for individual tasks, but nothing that could take a business goal and execute it end-to-end across tools and data sources.`,
+        body: `Organizational work depends on information spread across systems, documents and people. Employees need context to understand how work gets done and where to find the information relevant to a task.\n\nAs organizations adopt more AI tools, that context matters for agents as well as people. A model may be capable of a task, but the surrounding organizational knowledge, systems and processes shape how that task fits into real work.\n\nThis is part of the larger question Olyxee is researching: how might intelligence become a more integrated part of the organization itself?`,
       },
       {
         heading: "What Orgni does",
-        body: `Orgni builds live business context. It connects your knowledge, documents, decisions, processes, and systems into one living operational context, then puts that context to work.\n\nIt works through three layers:\n\n**Context**: Orgni connects knowledge, documents, decisions, and responsibilities into one living operational context.\n\n**Operational workflows**: Orgni runs work across your ERP, databases, spreadsheets, and communication tools without manual integration.\n\n**Transparent delivery**: Every action is logged with timestamps, inputs, and outputs. Results are delivered as reports, notifications, or audit trails, fully traceable.`,
+        body: `Orgni is an intelligence layer for everyday organizational work. It connects organizational knowledge, systems and people so employees and AI agents can access information with more context.\n\nOrgni is also an applied environment for Olyxee's broader research into Organizational Intelligence: a place to learn from how information and work come together inside real organizations.\n\nEmployees can interact with Orgni through familiar workplace environments such as Microsoft Teams, rather than constantly switching between systems.`,
       },
       {
         heading: "Why context-first matters",
-        body: `Most businesses have treated operational software as a patchwork of scripts, integrations, and manual steps. Build a workflow here, connect an API there, and hope nothing breaks when the process changes.\n\nWe think this is backwards. Intelligent systems need live business context, not just individual integrations, to understand and operate inside a real business.\n\nThis is the same shift that happened when businesses moved from spreadsheets to ERP systems. The next shift is from disconnected tools to a living operational context. We believe teams should work from shared context, not rebuild processes by hand.`,
+        body: `People and AI agents need relevant organizational context to understand work. When information is fragmented across systems, finding that context can take effort and coordination.\n\nWe believe connecting knowledge, systems and people is an important step toward more intelligent organizational work. It is one practical part of a much longer research direction—not a claim that an organization can already run or redesign itself autonomously.`,
       },
       {
         heading: "What's next",
-        body: `Orgni is available today for early access. We're starting with finance and operations, the areas where teams spend the most time on repetitive, pattern-based work.\n\nOver the coming months, we'll be expanding system integrations, deepening operational memory, and broadening the capabilities built on Orgni's live business context. If your team is stuck on operational busywork and you want to work from shared context instead of rebuilding processes, we built Orgni for you.`,
+        body: `Orgni is one of Olyxee's primary products and an applied environment for our research. We are continuing to explore how organizational context can help people and AI agents understand work and coordinate across systems.\n\nThe long-term research goal is larger than any one product: to understand whether organizations themselves can learn, adapt and improve over time. That remains an open challenge.`,
       },
     ],
   },
@@ -73,7 +73,7 @@ const posts = [
     category: "Company",
     date: "Feb 28, 2026",
     readTime: "5 min",
-    excerpt: "The story behind Olyxee: what we saw missing in AI infrastructure and why we decided to build it ourselves.",
+    excerpt: "A look at the question that motivates Olyxee's research into Organizational Intelligence.",
     featured: false,
     gradient: "from-rose-500 via-pink-500 to-fuchsia-500",
   },
@@ -83,7 +83,7 @@ const posts = [
     category: "Product",
     date: "Feb 18, 2026",
     readTime: "7 min",
-    excerpt: "How Orgni continuously monitors operational workflows and ensures consistent, reliable outputs across systems.",
+    excerpt: "How shared organizational context can help people and AI agents understand changing work.",
     featured: false,
     gradient: "from-violet-500 via-purple-500 to-indigo-500",
   },
@@ -134,15 +134,15 @@ const Blog: FC = () => {
     <div className="min-h-screen bg-white text-neutral-900 relative">
       <SEO
         title="Blog"
-        description="Technical articles, insights, and updates from the Olyxee team on AI infrastructure, verification, and deployment."
+        description="Research and product writing from Olyxee on Organizational Intelligence, adaptive systems and the technology used in organizational work."
         path="/blog"
-        keywords={["Olyxee blog", "AI infrastructure", "AI verification", "AI reliability", "model deployment", "edge AI"]}
+        keywords={["Olyxee blog", "Organizational Intelligence", "adaptive organizations", "human-AI coordination", "Orgni"]}
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "Blog",
           name: "Olyxee Blog",
           url: "https://olyxee.com/blog",
-          description: "Technical articles, insights, and updates from the Olyxee team on AI infrastructure, verification, and deployment.",
+          description: "Research and product writing from Olyxee on Organizational Intelligence, adaptive systems and the technology used in organizational work.",
           inLanguage: "en",
           publisher: {
             "@type": "Organization",
@@ -196,7 +196,7 @@ const Blog: FC = () => {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="text-lg text-neutral-500 leading-relaxed max-w-2xl font-normal"
           >
-            Technical writing on AI deployment, reliability engineering, and the future of edge AI.
+            Research and product writing on Organizational Intelligence, adaptive systems and the future of organizational work.
           </motion.p>
         </div>
       </section>
@@ -296,7 +296,7 @@ const Blog: FC = () => {
                           Try Orgni
                           <ArrowRight className="w-3.5 h-3.5" />
                         </a>
-                        <span className="text-xs text-neutral-400">Free during beta</span>
+                        <span className="text-xs text-neutral-400">Applied research environment</span>
                       </div>
                     </motion.div>
                   )}

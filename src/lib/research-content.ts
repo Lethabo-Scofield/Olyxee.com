@@ -95,7 +95,7 @@ export const researchEntries = ([
     date: "2026-05-01",
     url: "/stories/freightshift",
     description:
-      "How Olyxee and FreightShift are connecting shipment events, responsibilities, service rules and customer commitments into one operational view through Orgni.",
+      "A practical look at freight operations and the work of bringing shipment events, responsibilities, service rules and customer commitments into one view with Orgni.",
     coverImage: "/images/stories/logistics.png",
   },
   {
@@ -109,10 +109,10 @@ export const researchEntries = ([
     date: "2026-09-14",
     url: "/research/news/olyxee-joins-claude-partner-network",
     description:
-      "Olyxee joins Anthropic’s Claude Partner Network, strengthening its work on Orgni, Olyxee Logistics and infrastructure for operational intelligence.",
+      "Olyxee joins Anthropic’s Claude Partner Network, supporting its research into Organizational Intelligence and its work on Orgni and Olyxee Logistics.",
     coverImage: "/images/research/claude-partner-network/olyxee-claude-partner-network.png",
     deck:
-      "What the network means for the systems we are building, and for the organisations we are building them with.",
+      "What the network means for our research direction and for the organizations we work with.",
     articleSections: [
       {
         paragraphs: [
@@ -125,7 +125,7 @@ export const researchEntries = ([
               },
             ],
           },
-          "The announcement matters to us because it supports work already underway. Olyxee is building research and infrastructure for operational intelligence: systems that understand how an organisation works, connect to its knowledge and workflows, and help people move work forward.",
+          "The announcement matters to us because it supports work already underway. Olyxee is researching Organizational Intelligence: how systems might understand organizational activity, coordinate people and machines, and adapt over time.",
           "Through the network, we gain access to Anthropic’s partner ecosystem, technical enablement, training and certification pathways, and a structured path for building and registering Claude-powered customer deployments.",
           "The value is practical. It strengthens our engineering capability and gives us a clearer route for taking these systems into real organisations.",
         ],
@@ -134,17 +134,17 @@ export const researchEntries = ([
         heading: "Building around real operations",
         paragraphs: [
           "Access to a capable model is only one part of building useful enterprise AI. The difficult work sits around it: business context, data, permissions, integrations, security and the workflows in which decisions are actually made.",
-          "A model can reason well and still be of limited use if it does not understand the organisation in which it is operating. Our view is that enterprise AI will be defined less by standalone assistants and more by infrastructure embedded in the way organisations already work.",
+          "A model can reason well and still be of limited use without context about the organization in which it is used. We are exploring how systems could take organizational context into account while remaining part of the environments where people already work.",
           {
-            text: "That direction is taking shape through Orgni, our intelligence layer for teams and business operations.",
+            text: "Orgni is an intelligence layer for everyday organizational work, and an applied environment for our broader research.",
             links: [{ text: "Orgni", href: "https://orgni.olyxee.com/" }],
           },
-          "Important context inside a business is usually spread across documents, messages, databases, business systems and the knowledge held by individual employees. Orgni is being built to connect that context and make it useful in the environments where people already work.",
+          "Organizational knowledge and activity can be spread across documents, messages, business systems and the knowledge held by employees. Orgni connects organizational knowledge, systems and people so employees and AI agents can access information with more context.",
           {
             text: "We are applying the same thinking through Olyxee Logistics.",
             links: [{ text: "Olyxee Logistics", href: "https://logistics.olyxee.com/" }],
           },
-          "Logistics makes operational friction easy to see. One shipment can involve customers, suppliers, warehouses, invoices, payments, tracking updates and several hand-offs. When that context is fragmented, people spend their time following up and reconciling information. Olyxee Logistics gives us a real operating environment in which to build and test a more connected approach.",
+          "Logistics makes coordination across complex operations easy to see. One shipment can involve customers, suppliers, warehouses, invoices, payments, tracking updates and several hand-offs. Olyxee Logistics is a practical freight operations platform and gives us experience building software for this real-world environment.",
         ],
         quote: {
           text: "The models will keep getting better. The real opportunity is building the infrastructure around them: context, workflows, data and execution, so intelligence becomes part of how an organisation actually operates.",
@@ -156,10 +156,10 @@ export const researchEntries = ([
       {
         heading: "What this means for clients",
         paragraphs: [
-          "For Olyxee clients, the benefit is not access to another chatbot. It is a stronger path from a capable model to a system that understands the work around it.",
-          "That includes connecting intelligence to the tools teams already use, carrying the right business context across those interactions, and respecting the permissions and policies of the organisation.",
-          "In practice, this can mean less time spent searching across systems, faster handling of routine operational work, clearer hand-offs between teams and better support for decisions that depend on current business context.",
-          "The network also gives our engineers better access to technical guidance and training as we design these systems. Clients benefit from a team that can evaluate where Claude is useful, where it is not, and how it should be introduced responsibly into an existing operation.",
+          "Orgni is intended to make organizational knowledge and systems more accessible in the context of everyday work; it is not a claim that Olyxee has solved organizational intelligence.",
+          "Our research asks how systems might coordinate with people and take organizational context into account while respecting human objectives and governance.",
+          "We are exploring how these ideas could support work across organizations. The benefits will depend on the needs, systems and practices of each environment.",
+          "The network also gives our engineers access to technical guidance and training as we continue this work. We will evaluate where Claude is useful and how it might be introduced responsibly in a particular setting.",
         ],
         image: {
           src: "/images/research/claude-partner-network/orgni-operational-layer.png",
@@ -188,7 +188,7 @@ export const researchEntries = ([
           "The next steps are straightforward. We will deepen our technical capability around Claude, pursue Anthropic certifications across the team, continue building Orgni and expand Olyxee Logistics.",
           "We will use what we learn from real customer deployments to improve the infrastructure underneath both products. Where it makes sense, we will register Claude-powered deployments through the network and build a track record based on systems working in production.",
           "That evidence matters more to us than demos or AI for its own sake. We want to build infrastructure that becomes part of how work gets done.",
-          "Our mission remains research and infrastructure for operational intelligence. Joining Anthropic’s Claude Partner Network gives us another foundation on which to build it.",
+          "Our mission is to develop the foundations of Organizational Intelligence. Joining Anthropic’s Claude Partner Network gives us another resource as we pursue that long-term research direction.",
         ],
       },
     ],

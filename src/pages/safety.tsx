@@ -17,7 +17,7 @@ const fadeUp = {
 const Safety: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO title="Safety & Reliability" description="How Olyxee ensures AI systems are safe and reliable. Our approach to verification, monitoring, and failure prevention." path="/safety" />
+      <SEO title="Safety & Reliability" description="Olyxee explores the safety, oversight and reliability considerations involved in adaptive organizational systems." path="/safety" />
       <div className="grain" />
       <Header />
 
@@ -29,13 +29,14 @@ const Safety: FC = () => {
             <span className="text-sm font-medium text-neutral-400 uppercase tracking-widest">Safety & Reliability</span>
           </motion.div>
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }} className="font-serif text-4xl sm:text-6xl lg:text-[5.5rem] text-neutral-900 tracking-tight leading-[1.05] mb-8">
-            Reliable before
+            Safety and reliability
             <br />
-            <em className="text-neutral-400">useful</em>
+            <em className="text-neutral-400">in adaptive systems</em>
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-xl text-neutral-500 leading-relaxed max-w-3xl font-normal">
-            Our approach to safety is grounded in engineering rigor, not aspirational principles.
-            We build systems that detect, prevent, and recover from AI failures.
+            As Olyxee researches Organizational Intelligence, safety, reliability and human
+            oversight are important questions. We are exploring how these principles apply
+            as people and intelligent systems coordinate work.
           </motion.p>
         </div>
       </section>
@@ -46,19 +47,19 @@ const Safety: FC = () => {
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="mb-20">
             <span className="block w-12 h-0.5 bg-white/30 mb-6" />
             <h2 className="font-serif text-4xl sm:text-5xl tracking-tight">
-              Reliability
+              Safety
               <br />
-              <em className="text-neutral-500">principles</em>
+              <em className="text-neutral-500">considerations</em>
             </h2>
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 rounded-2xl overflow-hidden">
             {[
-              { icon: Shield, title: "Pre-Deployment Verification", description: "Rigorous automated testing against target hardware. Models are proven correct before they reach any device." },
-              { icon: AlertTriangle, title: "Failure Detection", description: "Real-time monitoring that identifies drift, anomalous predictions, and degradation before they become critical." },
-              { icon: Eye, title: "Explainability", description: "Interpretable pathways into AI decision-making. Understand why a model made a specific prediction." },
-              { icon: RotateCcw, title: "Automated Recovery", description: "Automatic rollback to known-good states with operator notifications and diagnostic information." },
-              { icon: CheckCircle, title: "Deployment Guarantees", description: "Formal accuracy and latency guarantees for deployed models, continuously verified over time." },
-              { icon: Lock, title: "Secure by Default", description: "Model encryption, secure deployment channels, and access control built into every layer." },
+              { icon: Shield, title: "Verification", description: "How can organizational systems be assessed before people rely on their outputs or actions?" },
+              { icon: AlertTriangle, title: "Failure Awareness", description: "Researching how systems can surface uncertainty, unexpected outcomes and changing conditions for human review." },
+              { icon: Eye, title: "Transparency", description: "Exploring how the context behind recommendations and system actions might be made understandable to the people responsible for them." },
+              { icon: RotateCcw, title: "Human Oversight", description: "Exploring how people can review, guide and intervene in increasingly capable organizational systems." },
+              { icon: CheckCircle, title: "Evaluation", description: "Studying how to evaluate system behavior and reliability in complex, changing organizational environments." },
+              { icon: Lock, title: "Governance", description: "Considering access, accountability and governance as intelligence becomes more integrated into organizational work." },
             ].map((item, idx) => {
               const Icon = item.icon;
               return (
@@ -82,18 +83,19 @@ const Safety: FC = () => {
             </h2>
             <div className="space-y-6 text-lg text-neutral-500 leading-relaxed font-normal">
               <p>
-                AI systems are being deployed in safety-critical applications, from medical devices
-                to autonomous vehicles to industrial control systems. A model that works 99% of the time
-                will fail thousands of times at scale.
+                Organizations depend on decisions, processes and systems that interact in
+                complex ways. As AI becomes more involved in organizational work, its role,
+                limits and effects need to remain understandable to the people involved.
               </p>
               <p>
-                Traditional software engineering has decades of established practices for reliability.
-                AI systems need the same rigor, adapted for non-deterministic behavior,
-                data distribution shift, and hardware-dependent performance.
+                Organizational Intelligence is an unsolved research challenge. Systems that
+                learn, adapt and coordinate must be studied with attention to uncertainty,
+                changing conditions and human oversight.
               </p>
               <p>
-                Olyxee builds this missing infrastructure layer. We focus on the immediate, practical
-                challenge of making today's AI systems reliable enough to deploy with confidence.
+                Olyxee is exploring the foundations of adaptive organizational systems.
+                Safety and reliability are questions to investigate as this long-term work develops,
+                not capabilities we claim to have already solved.
               </p>
             </div>
           </motion.div>

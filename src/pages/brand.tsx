@@ -246,8 +246,8 @@ const Brand: FC = () => {
           <SectionHead id="products" title="Product marks" note="Orgni and Olyxee Logistics each carry their own mark. They always sit alongside, never replace, the Olyxee mark." />
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[
-              { src: "/images/orgni-logo.png", name: "Orgni", role: "Operational intelligence" },
-              { src: "/images/order-loop-logo.png", name: "Olyxee Logistics", role: "Logistics operations" },
+              { src: "/images/orgni-logo.png", name: "Orgni", role: "Organizational intelligence platform" },
+              { src: "/images/order-loop-logo.png", name: "Olyxee Logistics", role: "Freight operations platform" },
             ].map((p) => (
               <Card key={p.name} className="p-8 sm:p-10 flex flex-col items-center text-center">
                 <Image src={p.src} alt={`${p.name} product mark`} width={400} height={400} className="w-36 sm:w-44 h-auto object-contain rounded-2xl mb-6" />

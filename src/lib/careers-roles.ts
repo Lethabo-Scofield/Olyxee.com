@@ -199,7 +199,7 @@ export const roles: Role[] = [
     location: HYBRID,
     type: "paid",
     description:
-      "Lead the research agenda behind Orgni's document integrity capabilities: verification, evaluation, and reliability for AI systems that take action in production.",
+      "Help shape Olyxee's research into Organizational Intelligence, including computational approaches to organizational models, adaptive systems, and human-AI coordination.",
     level: "Staff · 8+ years of applied research",
     compensation: "Top-of-band salary, significant equity, performance bonus, conference and learning budget.",
     responsibilities: [
@@ -228,7 +228,7 @@ export const roles: Role[] = [
     location: REMOTE,
     type: "paid",
     description:
-      "Design, build, and own the product surfaces and backend services across Orgni, the operational intelligence platform that powers financial operations, operational workflows, and document integrity. Set the engineering bar.",
+      "Design and build software across Orgni and Olyxee's other products, while helping create practical environments for research into Organizational Intelligence.",
     level: "Staff · 8+ years of production engineering",
     compensation: "Top-of-band salary, significant equity, performance bonus, learning budget.",
     responsibilities: [
@@ -283,7 +283,7 @@ export const roles: Role[] = [
     location: REMOTE,
     type: "paid",
     description:
-      "Own the models behind Orgni and its operational workflows, financial operations, and document integrity capabilities end to end: training, evaluation, and reliable serving at production scale.",
+      "Build and evaluate machine-learning systems for Orgni and Olyxee's research into organizational systems, with a focus on careful evaluation and responsible deployment.",
     level: "Staff · 8+ years building ML systems in production",
     compensation: "Top-of-band salary, significant equity, performance bonus, compute and learning budget.",
     responsibilities: [
@@ -314,7 +314,7 @@ export const roles: Role[] = [
     location: REMOTE,
     type: "internship",
     description:
-      "Build product surfaces and backend services across Orgni and its operational workflows, financial operations, and document integrity capabilities alongside senior engineers.",
+      "Build product surfaces and backend services across Orgni and Olyxee's other products alongside senior engineers, contributing to software for complex organizational work.",
     responsibilities: [
       "Ship features end to end across frontend, backend, and APIs",
       "Write tests, review code, and help raise the engineering bar",
@@ -333,7 +333,7 @@ export const roles: Role[] = [
     location: REMOTE,
     type: "internship",
     description:
-      "Build AI features end to end across Orgni and its operational workflows, financial operations, and document integrity capabilities, from prompt and model integration through reliable product surfaces.",
+      "Explore and build applied AI features for Orgni and Olyxee's research into Organizational Intelligence, working across models, software and product experiences.",
     responsibilities: [
       "Help build AI-powered features that reach real users",
       "Integrate models, tools, and data into reliable workflows",
@@ -352,7 +352,7 @@ export const roles: Role[] = [
     location: REMOTE,
     type: "internship",
     description:
-      "Work alongside our researchers on verification, evaluation, and reliability for AI systems behind Orgni's document integrity capabilities.",
+      "Work alongside our researchers on computational approaches to Organizational Intelligence, including evaluation, organizational models and human-AI coordination.",
     responsibilities: [
       "Help design experiments and build evaluation harnesses on real research questions",
       "Read, reproduce, and extend recent work with the team",
@@ -371,7 +371,7 @@ export const roles: Role[] = [
     location: REMOTE,
     type: "internship",
     description:
-      "Help build the data pipelines that feed Orgni's financial operations, document integrity, and our evaluation systems.",
+      "Help build data systems that support Orgni and Olyxee's research and product work, including data quality and evaluation.",
     responsibilities: [
       "Help design and operate ETL/ELT pipelines on real product data",
       "Model data for analytics, ML training, and product features",
@@ -451,7 +451,7 @@ export const roles: Role[] = [
     location: REMOTE,
     type: "internship",
     description:
-      "Build classification, anomaly detection, confidence scoring, entity resolution, extraction-quality measurement, and evaluation models for Orgni.",
+      "Explore applied data science methods relevant to Orgni and Olyxee's research into Organizational Intelligence, including evaluation and modelling work.",
     responsibilities: [
       "Help build and evaluate classification, anomaly detection, and confidence scoring models",
       "Contribute to entity resolution and extraction-quality measurement work",
@@ -470,7 +470,7 @@ export const roles: Role[] = [
     location: REMOTE,
     type: "internship",
     description:
-      "Design simple product experiences for Orgni's knowledge maps, workflows, reviews, exceptions, and document verification. This is a design role, not a product management role.",
+      "Design simple product experiences for Orgni and other software supporting organizational knowledge and workflows. This is a design role, not a product management role.",
     responsibilities: [
       "Design clear, simple experiences for knowledge maps, workflows, reviews, exceptions, and document verification",
       "Turn complex operational concepts into understandable interfaces",
@@ -489,7 +489,7 @@ export const roles: Role[] = [
     location: REMOTE,
     type: "internship",
     description:
-      "Support Azure infrastructure, deployment pipelines, observability, containers, security, reliability, and the separation of Orgni's frontend, APIs, and workers.",
+      "Support cloud infrastructure, deployment pipelines, observability, containers, security, and reliability across Olyxee's software.",
     responsibilities: [
       "Help operate Azure infrastructure and deployment pipelines",
       "Contribute to observability, containerization, and reliability work",
@@ -508,7 +508,7 @@ export const roles: Role[] = [
     location: REMOTE,
     type: "internship",
     description:
-      "Support a product surface across Orgni's operational workflows, financial operations, and document integrity capabilities, or Olyxee Logistics.",
+      "Support a product surface across Orgni or Olyxee Logistics, learning how software can support complex organizational and operational work.",
     responsibilities: [
       "Help translate customer problems into clear specs and shipped product",
       "Coordinate with engineering, research, and design on delivery",

@@ -33,10 +33,10 @@ const Community: FC = () => {
   const statsRef = useRef<HTMLDivElement>(null);
 
   const channels: Channel[] = React.useMemo(() => [
-    { icon: MessageSquare, title: "Discord", description: "Join real-time conversations with developers deploying AI at the edge.", members: 5000, unit: "members", link: "https://discord.gg/DgBEMVCh", bg: "/images/gradient-blue-pink.webp" },
-    { icon: Github, title: "GitHub", description: "Contribute to our open-source tools and shape the future of edge AI.", members: 1200, unit: "stars", link: "https://github.com/Olyxee", bg: "/images/gradient-yellow-green.webp" },
-    { icon: Twitter, title: "X", description: "Stay updated with the latest features, tips, and community highlights.", members: 3000, unit: "followers", link: "https://x.com/Olyxee", bg: "/images/gradient-pastel.webp" },
-    { icon: Users, title: "Forums", description: "Deep-dive discussions on optimization strategies and deployment patterns.", members: 2000, unit: "posts", link: "#forums", bg: "/images/gradient-orange-purple.webp" },
+    { icon: MessageSquare, title: "Discord", description: "Join conversations about Organizational Intelligence, adaptive systems and the software we build.", members: 5000, unit: "members", link: "https://discord.gg/DgBEMVCh", bg: "/images/gradient-blue-pink.webp" },
+    { icon: Github, title: "GitHub", description: "Explore Olyxee's public repositories and follow our software work.", members: 1200, unit: "stars", link: "https://github.com/Olyxee", bg: "/images/gradient-yellow-green.webp" },
+    { icon: Twitter, title: "X", description: "Follow updates on Olyxee's research direction, products and community.", members: 3000, unit: "followers", link: "https://x.com/Olyxee", bg: "/images/gradient-pastel.webp" },
+    { icon: Users, title: "Forums", description: "Join discussions about organizational systems, research questions and practical software.", members: 2000, unit: "posts", link: "#forums", bg: "/images/gradient-orange-purple.webp" },
   ], []);
 
   const formatNumber = (num: number) => num >= 1000 ? `${(num / 1000).toFixed(1)}k` : num.toString();
@@ -77,7 +77,7 @@ const Community: FC = () => {
 
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO title="Community" description="Connect with developers, researchers, and engineers building reliable AI systems. Join our Discord, GitHub, and community forums." path="/community" />
+      <SEO title="Community | Olyxee" description="Connect with people interested in Organizational Intelligence, adaptive systems, Olyxee's research and products." path="/community" />
       <div className="grain" />
       <Header />
 
@@ -105,7 +105,7 @@ const Community: FC = () => {
                 transition={{ duration: 0.5, delay: 0.3 }}
                 className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/15 backdrop-blur-md text-white rounded-full text-xs font-medium mb-5 border border-white/20 uppercase tracking-widest"
               >
-                11.2k+ Active Members
+                11.2k+ Community connections
               </motion.div>
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
@@ -118,7 +118,7 @@ const Community: FC = () => {
             </div>
           </motion.div>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.5 }} className="text-xl text-neutral-500 leading-relaxed max-w-3xl font-normal">
-            Connect with developers, researchers, and engineers building reliable AI systems.
+            Connect with people interested in Organizational Intelligence, adaptive systems and practical technology for complex organizations.
           </motion.p>
         </div>
       </section>
@@ -175,7 +175,7 @@ const Community: FC = () => {
               <em className="text-neutral-500">contribute?</em>
             </h2>
             <p className="text-neutral-400 text-lg max-w-2xl mx-auto mb-10 font-normal leading-relaxed">
-              Share your deployment stories, report issues, or suggest new features.
+              Share ideas, report issues, or suggest improvements to our software and research.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="https://discord.gg/DgBEMVCh" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-8 py-3.5 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide">

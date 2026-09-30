@@ -33,7 +33,7 @@ const STORIES = [
 const Stories: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO title="Stories" description="Customer stories from teams building on Olyxee." path="/stories" />
+      <SEO title="Stories | Olyxee" description="Stories about organizational systems, real-world operations and software built for complex work." path="/stories" />
       <div className="grain" />
       <Header />
 
@@ -49,7 +49,7 @@ const Stories: FC = () => {
             className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 max-w-3xl leading-[1.05]"
           >
             <span className="relative inline-block">
-              Olyxee AI Infrastructure
+              Organizational systems
               <svg
                 aria-hidden="true"
                 className="pointer-events-none absolute left-0 right-0 -bottom-2 sm:-bottom-3 w-full h-3 sm:h-[18px] overflow-visible text-orange-500"
@@ -66,7 +66,7 @@ const Stories: FC = () => {
                 />
               </svg>
             </span>
-            {" "}at work, across the operations that matter
+            {" "}in practice, across the operations that matter
           </motion.h1>
         </div>
       </section>

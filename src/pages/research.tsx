@@ -26,15 +26,15 @@ const Research: FC = () => {
   return (
     <div className="research-page min-h-screen relative">
       <SEO
-        title="Research & releases"
-        description="Olyxee's public desk for product releases, research notes, engineering updates, company milestones, and research we follow."
+        title="Research | Organizational Intelligence | Olyxee"
+        description="Explore Olyxee's research directions in Organizational Intelligence, including adaptive organizations, human-AI coordination, organizational models, agents and organizational learning."
         path="/research"
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "CollectionPage",
-          name: "Olyxee Research & releases",
+          name: "Olyxee Research",
           url: "https://olyxee.com/research",
-          description: "Olyxee's public desk for product releases, research notes, engineering updates, company milestones, and research we follow.",
+          description: "Olyxee's research directions in Organizational Intelligence, alongside documented releases and selected research we follow.",
           inLanguage: "en",
           isPartOf: { "@type": "WebSite", name: "Olyxee", url: "https://olyxee.com" },
           publisher: {
@@ -85,7 +85,7 @@ const Research: FC = () => {
                 Research and releases
               </h1>
               <p className="mt-6 max-w-[600px] text-[17px] leading-[1.65] text-[#6e6e73] sm:text-[18px]">
-                Product releases, technical work, and selected research shaping how we build dependable systems for real operations.
+                Olyxee is researching Organizational Intelligence: how organizations might learn, adapt and coordinate people and machines. Our directions include adaptive organizations, human-AI coordination, organizational models and simulation, autonomous agents, and systems that learn from outcomes. This archive also preserves documented releases and research we follow; these directions are open questions, not claims of completed capability.
               </p>
             </div>
           </div>

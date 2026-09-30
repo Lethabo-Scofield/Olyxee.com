@@ -118,11 +118,11 @@ const InternshipsPage: FC = () => {
     <div className="min-h-screen bg-white text-neutral-900">
       <SEO
         title="Internships · Careers"
-        description="Apply for an unpaid internship at Olyxee. Hands-on experience on real AI infrastructure work, mentorship from the team, and a written reference."
+        description="Apply for an unpaid internship at Olyxee, a research and technology company exploring Organizational Intelligence."
         path="/careers/internships"
         keywords={[
           "Olyxee internships",
-          "AI internship",
+          "Organizational Intelligence internship",
           "unpaid internship",
           "AI internship South Africa",
           "machine learning internship",
@@ -172,9 +172,9 @@ const InternshipsPage: FC = () => {
             </h1>
             {!selectedRole && (
               <p className="text-lg text-neutral-700 leading-relaxed max-w-2xl">
-                Our internships are open to people early in their career,
+                  Our internships are open to people early in their career,
                 curious, technical or otherwise, who want hands-on experience
-                shipping with a real team.
+                contributing to research and technology for complex organizations.
               </p>
             )}
           </motion.header>

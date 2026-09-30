@@ -26,7 +26,7 @@ const HuggingFaceIcon = (props: SVGProps<SVGSVGElement>) => (
 );
 
 const footerData = {
-  tagline: "Research and infrastructure for operational intelligence.",
+  tagline: "Building organizations that can evolve themselves.",
   columns: [
     {
       title: "Products",

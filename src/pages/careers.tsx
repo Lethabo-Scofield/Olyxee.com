@@ -91,7 +91,7 @@ function RolesSection() {
               Open roles
             </h2>
             <p className="text-neutral-500 text-lg font-normal">
-              {paidCount} full-time {paidCount === 1 ? "role" : "roles"} and {internshipCount} internships across {teams.length} teams. All remote.
+              {paidCount} full-time {paidCount === 1 ? "role" : "roles"} and {internshipCount} internships across {teams.length} teams. Remote and hybrid options.
             </p>
           </motion.div>
 
@@ -318,7 +318,7 @@ function EmergingTalentSection() {
               Emerging talent
             </h2>
             <p className="text-base sm:text-lg text-neutral-500 leading-relaxed font-normal mb-8">
-              Join us in building safe, beneficial AI for everyone. We welcome curious, driven people early in their professional journey through internships, residencies, and full-time roles.
+              Join a research and technology company exploring the foundations of Organizational Intelligence. We welcome curious people who want to contribute to research and useful software for complex organizations.
             </p>
             <Link
               href="/about"
@@ -461,7 +461,7 @@ function CTASection() {
             Don't see your role?
           </h2>
           <p className="text-neutral-600 text-lg max-w-lg mx-auto mb-10 font-normal leading-relaxed">
-            We hire for talent, not just titles. If you're exceptional at what you do and excited about making AI more reliable, reach out. We'll find a place for you.
+            We hire for talent, not just titles. If you're excited about researching Organizational Intelligence or building practical technology for complex organizations, reach out.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -488,16 +488,16 @@ const Careers: FC = () => {
     <div className="min-h-screen bg-white text-neutral-900 relative">
       <SEO
         title="Careers"
-        description="Join Olyxee and build the infrastructure that makes AI trustworthy. Open internships and full-time roles across AI research, engineering, design, and operations. Ship real work from day one."
+        description="Join Olyxee, a research and technology company exploring Organizational Intelligence. Open internships and roles across research, engineering, design, and operations."
         path="/careers"
-        keywords={["Olyxee careers", "AI internships", "AI research internship", "AI engineering jobs", "remote AI internship", "Olyxee jobs", "machine learning internship", "AI jobs Johannesburg", "AI jobs South Africa"]}
+        keywords={["Olyxee careers", "Organizational Intelligence research", "research internships", "engineering jobs", "Olyxee jobs", "machine learning internship", "technology jobs Johannesburg", "research jobs South Africa"]}
         jsonLd={[
           {
             "@context": "https://schema.org",
             "@type": "CollectionPage",
             name: "Careers at Olyxee",
             url: "https://olyxee.com/careers",
-            about: "Open internships and roles at Olyxee, the AI infrastructure company.",
+            about: "Open internships and roles at Olyxee, a research and technology company focused on Organizational Intelligence.",
             publisher: {
               "@type": "Organization",
               name: "Olyxee",
@@ -531,7 +531,7 @@ const Careers: FC = () => {
             applicantLocationRequirements: role.location.toLowerCase().includes("remote")
               ? { "@type": "Country", name: "Worldwide" }
               : undefined,
-            industry: "Artificial Intelligence",
+            industry: "Research and Technology",
             occupationalCategory: role.team,
             url: `https://olyxee.com/careers#${role.title.toLowerCase().replace(/\s+/g, "-")}`,
             ...(role.type === "internship"

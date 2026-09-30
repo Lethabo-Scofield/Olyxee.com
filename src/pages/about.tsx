@@ -22,52 +22,50 @@ const PILLAR_COLORS = ["#B49B7E", "#17311F", "#92A9BD"];
 const APPROACH = [
   {
     icon: Compass,
-    label: "What we explore",
-    title: "Research",
-    text: "We explore hard problems in AI: operational intelligence, reasoning, simulation, context, and autonomous systems. The questions we chase here decide what we build next.",
+    label: "What we study",
+    title: "Organizational Intelligence",
+    text: "We research how organizations might learn from experience, coordinate people and machines, and adapt their systems over time. Autonomous Adaptive Organizations remain a long-term research goal, not a capability we have delivered.",
     gradient: "/images/gradient-pink-cyan.png",
   },
   {
     icon: ShieldCheck,
-    label: "What we build",
-    title: "Intelligence Infrastructure",
-    text: "We build the underlying technology that allows organisations to understand their data and operations. Orgni belongs here: the operational intelligence layer that helps businesses keep work moving.",
+    label: "Where research meets work",
+    title: "Orgni",
+    text: "Orgni is an intelligence layer for everyday organizational work, connecting knowledge, systems and people so teams can work with more context. It is also an applied environment for learning from real organizational settings.",
     gradient: "/images/gradient-blue.png",
   },
   {
     icon: EyeOff,
-    label: "What we ship",
-    title: "Applied Systems",
-    text: "We turn that infrastructure into real operational products for specific industries. Olyxee Logistics is the current example, built for cross-border logistics businesses.",
+    label: "What we apply",
+    title: "Operational Software",
+    text: "Olyxee Logistics is a practical freight operations platform for quotes, orders, payments, cargo, warehouse activity, tracking and customer communication. It is a commercial product, not an AI research product.",
     gradient: "/images/gradient-purple.png",
   },
 ];
 
 const JOURNEY_LEAD: string[] = [
   "Olyxee was founded by Lethabo Innocent Makonto, widely known as Lethabo Scofield, in Johannesburg, South Africa.",
-  "Before founding Olyxee, Lethabo worked as an AI Engineer. During the rise of modern AI, he experienced a problem that many organizations were beginning to face: companies wanted to adopt AI, but their internal systems were not ready for it.",
-  "The problem was not only the AI models. The models were becoming more powerful, more accessible, and more capable. The real challenge was inside the organizations trying to use them.",
-  "Business knowledge was scattered across documents, spreadsheets, emails, legacy systems, finance records, approval processes, and people\u2019s memory. AI systems could generate answers, but they often lacked the operational context needed to support real work.",
-  "They did not fully understand how a specific business operated, which rules applied, who approved what, which documents were trusted, how finance exceptions were handled, or how decisions should be traced.",
-  "That experience became the foundation of Olyxee.",
-  "Olyxee was created to build the infrastructure layer organizations need before intelligent systems can operate reliably inside real business environments. The company focuses on operational intelligence: live business context, operational memory, decision history, document integrity, and operational visibility.",
-  "This work led to Orgni, Olyxee\u2019s operational intelligence infrastructure for keeping work moving across a business.",
-  "Work inside companies constantly stops because people are waiting for answers, documents, approvals, updates, or another team. Orgni understands how an organization actually works, its processes, roles, rules, documents, approvals, and decisions, and uses that understanding to answer questions and handle routine work across the tools teams already use, with control and a clear trail.",
-  "As one platform, Orgni brings these capabilities together.",
+  "Olyxee is a research and technology company exploring one question: can an organization itself become intelligent?",
+  "AI systems are gaining the ability to reason, generate content, use tools and perform increasingly complex tasks. Organizations, meanwhile, still depend on people coordinating across many systems, processes and decisions.",
+  "We believe the next frontier is not only giving individuals AI assistants. It is understanding how intelligence might exist at the level of the organization: how it could observe activity, coordinate humans and machines, learn from outcomes and adapt as conditions change.",
+  "This is a difficult, open-ended research direction. We are still early, and have not solved organizational intelligence or built autonomous organizations.",
+  "Our mission is to develop the foundations of Organizational Intelligence. Our long-term goal is to build organizations that can evolve themselves while remaining aligned with human objectives and governance.",
+  "Orgni and Olyxee Logistics give us practical environments in which to build useful software and learn about the needs of real organizational work.",
 ];
 
 const JOURNEY_LAYERS: string[] = [
-  "Operational workflows: processes, approvals, tasks, case handling, coordination, and operational exceptions.",
-  "Financial operations: reconciliation, transaction review, finance exceptions, and financial workflow support.",
-  "Business memory and document integrity: document understanding, classification, extraction, validation, verification, and auditability, so organizations know whether a document is complete, consistent, relevant, and reliable before it is used in a decision.",
-  "Alongside Orgni, Olyxee Logistics is a logistics operations platform for managing customers, invoices, cross-border orders, warehouse cargo matching, shipment statuses and customer tracking.",
-  "Orgni also carries Olyxee\u2019s ongoing research into AI integration and agent tooling, focused on how intelligent systems connect with APIs, tools, workflows, and operational environments.",
+  "Organizational Intelligence is the broad question of how an organization could understand its activity, coordinate people and software, and learn from what happens.",
+  "Our research directions include adaptive organizations; human-AI coordination; computational organizational models and simulation; autonomous agents for long-running organizational tasks; and systems that learn from outcomes.",
+  "These are areas we are exploring, not a list of capabilities we claim to have completed.",
+  "Orgni is an intelligence layer for everyday organizational work. It connects organizational knowledge, systems and people, helping employees and AI agents access information with more context. Employees can interact with Orgni through familiar workplace environments such as Microsoft Teams.",
+  "Orgni is also an applied research environment: a place to learn how ideas about Organizational Intelligence meet the practical realities of organizational work.",
+  "Olyxee Logistics remains a commercial freight operations platform for managing quotes, orders, payments, cargo, warehouse activity, tracking and customer communication. Complex logistics operations offer practical experience building software around real people, information and processes.",
 ];
 
 const JOURNEY_CLOSE: string[] = [
-  "Olyxee\u2019s journey is rooted in a practical lesson from AI engineering: organizations do not only need access to powerful AI models. They need the infrastructure and live business context that makes their operations understandable to intelligent systems.",
-  "Founded in Johannesburg, South Africa, Olyxee is building for global infrastructure.",
-  "The company exists to help organizations survive Digital Darwinism: the reality that organisations unable to adapt to technological and societal change risk becoming irrelevant, regardless of their history, size, or previous success. Olyxee is building toward a world where businesses can understand themselves, adapt faster, preserve human agency, and evolve alongside increasingly capable AI.",
+  "The vision is a future where organizations can learn, adapt and evolve. The long-term goal is to build organizations that can evolve themselves.",
+  "This does not mean removing people from decisions. We are interested in how increasingly capable systems can remain accountable to human objectives, oversight and governance.",
+  "Olyxee is pursuing this as a long-term research mission while building and applying useful technology today.",
 ];
 
 const About: FC = () => {
@@ -76,10 +74,10 @@ const About: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
       <SEO
-        title="About"
-        description="Olyxee is a research and infrastructure company helping businesses adapt to AI. We study the challenges organisations face when adopting AI, then build the infrastructure required to turn advanced intelligence into reliable organisational capability."
+        title="About Olyxee | Organizational Intelligence Research"
+        description="Olyxee is a research and technology company exploring Organizational Intelligence and building toward organizations capable of learning, adapting and evolving."
         path="/about"
-        keywords={["About Olyxee", "operational intelligence", "AI infrastructure company", "Olyxee Research", "Orgni", "Lethabo Scofield"]}
+        keywords={["About Olyxee", "Organizational Intelligence", "adaptive organizations", "Olyxee Research", "Orgni", "Lethabo Scofield"]}
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "AboutPage",
@@ -91,7 +89,7 @@ const About: FC = () => {
             url: "https://olyxee.com",
             logo: "https://olyxee.com/Logo/Olyxee_Logo.png",
             description:
-              "Olyxee is a research and infrastructure company helping businesses adapt to AI, with Orgni, its core platform, providing the operational intelligence layer that helps businesses keep work moving.",
+              "Olyxee is a research and technology company exploring Organizational Intelligence and building toward organizations capable of learning, adapting and evolving.",
           },
         }}
       />
@@ -116,7 +114,7 @@ const About: FC = () => {
                 sizes="(min-width: 1280px) 1152px, 100vw"
                 className="object-cover object-center"
               />
-              <h1 className="sr-only">Building the infrastructure for Enterprise AI</h1>
+              <h1 className="sr-only">About Olyxee: Organizational Intelligence research</h1>
             </motion.div>
           </div>
         </section>
@@ -173,10 +171,10 @@ const About: FC = () => {
                   className="relative max-w-3xl mx-auto text-center"
                 >
                   <p className="font-serif text-3xl sm:text-4xl lg:text-[3rem] leading-[1.12] tracking-tight mb-8 text-neutral-900">
-                    A future where organisations do not merely use intelligent tools, but <strong className="font-semibold text-neutral-900">become more intelligent</strong> themselves.
+                    Can an organization itself <strong className="font-semibold text-neutral-900">become intelligent?</strong>
                   </p>
                   <p className="text-base sm:text-lg text-neutral-600 font-normal leading-relaxed max-w-2xl mx-auto">
-                    In this future, knowledge is not fragmented across documents and disconnected systems. Processes are not invisible. Decisions are not separated from their context. People and intelligent systems work through a shared operational model that can be understood, governed, audited, and continuously improved.
+                    AI is improving the capabilities of individual systems, while organizations remain collections of people, processes and technologies. We are researching how intelligence might exist across an organization: helping it learn from experience, coordinate people and machines, and adapt over time. Our long-term goal is to build organizations that can evolve themselves, while remaining aligned with human objectives and governance. We are still early; this is a research direction, not a solved problem.
                   </p>
                 </motion.article>
               ) : (
@@ -241,8 +239,8 @@ const About: FC = () => {
                 Principles
               </p>
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-tight leading-[1.08]">
-                Three pillars.{" "}
-                <span className="text-neutral-500">One unfair advantage.</span>
+                One research mission.{" "}
+                <span className="text-neutral-500">Useful technology today.</span>
               </h2>
             </motion.div>
 
@@ -394,10 +392,10 @@ const About: FC = () => {
                 Join us
               </p>
               <h3 className="font-serif text-3xl sm:text-5xl tracking-tight mb-5 text-neutral-900 leading-[1.08]">
-                Build AI that <span className="text-neutral-500">actually works.</span>
+                Help shape the future of <span className="text-neutral-500">Organizational Intelligence.</span>
               </h3>
               <p className="text-base sm:text-lg text-neutral-600 font-normal mb-10 max-w-xl mx-auto leading-relaxed">
-                We&apos;re building a team of people who want to make AI work in the real world, not just in demos.
+                Join a team exploring a long-term research mission while building useful technology for real organizational work.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Link

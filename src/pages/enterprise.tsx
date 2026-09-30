@@ -47,21 +47,21 @@ const PLATFORM_TABS = [
   {
     id: "orgni",
     label: "Orgni",
-    desc: "Your organization's operating layer: context, systems, and decisions connected in one place.",
+    desc: "Orgni brings organizational knowledge, systems and people together for everyday work, and provides an applied environment for Olyxee's research.",
     image: "/images/enterprise/orgni-ontology.png",
     alt: "Orgni ontology map for Olyxee",
   },
   {
     id: "order-loop",
     label: "Olyxee Logistics",
-    desc: "Logistics and order coordination that keeps planning, execution, and fulfillment in sync.",
+    desc: "A practical freight operations platform for managing orders, cargo, warehouse activity and customer tracking.",
     image: "/images/enterprise/order-loop-tracking.png",
     alt: "Olyxee Logistics delivery tracking",
   },
   {
     id: "api",
     label: "API",
-    desc: "Build on Olyxee infrastructure with a reliability-first API for your own products and workflows.",
+    desc: "Illustrative integration examples only: these example calls are not enabled in this workspace. This does not indicate whether external Orgni or Olyxee Logistics API access is available; contact Olyxee to confirm product-specific availability.",
     image: null,
     alt: "Olyxee API",
   },
@@ -164,29 +164,28 @@ const Enterprise: FC = () => {
   return (
     <div className="min-h-screen bg-[#fafafa] text-[#111] font-sans selection:bg-neutral-200 selection:text-neutral-900 relative">
       <SEO
-        title="Enterprise Systems"
-        description="Olyxee designs enterprise AI systems for workflow execution, operational intelligence, financial integrity, logistics coordination, and persistent organizational cognition."
+        title="Organizational Intelligence | Olyxee"
+        description="Olyxee is a research and technology company exploring the foundations of Organizational Intelligence. Orgni brings organizational knowledge, systems and people together for everyday work."
         path="/enterprise"
         keywords={[
           "Olyxee Enterprise",
-          "Enterprise AI systems",
-          "Operational intelligence",
+          "Organizational Intelligence",
+          "Orgni",
           "Workflow automation",
           "Reconciliation",
           "Logistics coordination",
-          "Organizational cognition",
         ]}
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "Service",
-          name: "Olyxee Enterprise Systems",
+          name: "Olyxee Organizational Intelligence",
           provider: {
             "@type": "Organization",
             name: "Olyxee",
             url: "https://olyxee.com",
           },
           description:
-            "Enterprise AI systems for workflow execution, financial integrity, logistics coordination, and organizational cognition.",
+            "Olyxee researches Organizational Intelligence. Orgni is an applied environment for this work and an intelligence layer for everyday organizational work.",
           areaServed: "Global",
           url: "https://olyxee.com/enterprise",
         }}
@@ -205,10 +204,10 @@ const Enterprise: FC = () => {
           >
             <h1 className="flex flex-col items-center justify-center text-[2rem] min-[420px]:text-[2.5rem] sm:text-[4rem] lg:text-[5.5rem] font-medium tracking-tighter leading-[1.05]">
               <span className="inline-block px-4 py-2 sm:px-8 sm:py-3 mb-4 rounded-[1.25rem] sm:rounded-[2rem] border-[3px] border-[#e5e5e5] text-[#111111] bg-[#f5f5f5] lg:whitespace-nowrap">
-                Operational intelligence
+                Organizational Intelligence
               </span>
               <span className="text-[#111]">
-                everywhere you work.
+                for everyday work.
               </span>
             </h1>
           </motion.div>
@@ -281,18 +280,18 @@ const Enterprise: FC = () => {
       <section className="py-24 sm:py-36 px-4 sm:px-6 max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <div>
-            <p className="text-[#111111] font-medium text-[15px] mb-4">Introducing Orgni</p>
+            <p className="text-[#111111] font-medium text-[15px] mb-4">Orgni by Olyxee</p>
             <h2 className="text-[2.5rem] sm:text-[3.5rem] font-medium tracking-tighter text-[#111] mb-6 leading-[1.1]">
-              Keep your business moving.
+              The intelligence layer for everyday organizational work.
             </h2>
             <p className="text-[1.125rem] text-[#4a5568] mb-8 leading-relaxed">
-              Orgni understands your organisation, works across the tools your teams already use, and handles the questions and routine work that create unnecessary delays across the enterprise.
+              Orgni connects organizational knowledge, systems and people so employees can find information and work with greater context. It is also an applied environment for Olyxee's broader research into Organizational Intelligence.
             </p>
             <ul className="space-y-5 mb-10">
               {[
-                "Answers questions from live business systems, not just documents",
-                "Works through Teams, email, chat, APIs, and internal applications",
-                "Handles routine work within its authority, with a clear trail",
+                "Bring organizational information and context together for everyday work",
+                "Employees can interact with Orgni through familiar workplace environments such as Microsoft Teams",
+                "Explore ways to coordinate work across organizational systems",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-4 text-[1.05rem] text-[#111]">
                   <Check className="w-5 h-5 mt-0.5 text-[#111111] shrink-0" strokeWidth={2.5} />
@@ -318,13 +317,13 @@ const Enterprise: FC = () => {
       <section className="py-24 sm:py-36 px-4 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-[2.5rem] sm:text-[3.5rem] font-medium tracking-tighter text-[#111] mb-16 text-center leading-[1.1]">
-            Intelligence for every team.
+            Software for complex organizational work.
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { icon: Landmark, title: "Finance", desc: "Reconcile transactions, audit trails, and ensure financial integrity across platforms." },
               { icon: Truck, title: "Logistics", desc: "Keep orders, dispatch, and fulfilment in sync with live tracking from planning to delivery." },
-              { icon: Code2, title: "Engineering", desc: "Custom AI infrastructure and internal tool integration." },
+              { icon: Code2, title: "Engineering", desc: "Internal tool integration and software for organizational workflows." },
             ].map((team) => (
               <div
                 key={team.title}
@@ -348,7 +347,7 @@ const Enterprise: FC = () => {
       {/* === COMPLETE PLATFORM === */}
       <section className="py-24 sm:py-36 px-4 sm:px-6 max-w-6xl mx-auto text-center overflow-hidden">
         <h2 className="text-[2.5rem] sm:text-[4rem] font-medium tracking-tighter text-[#111] mb-6 leading-[1.1]">
-          A complete AI platform for your business.
+          Tools for real-world operational systems.
         </h2>
         <Link
           href="/pricing"
@@ -516,9 +515,9 @@ const Enterprise: FC = () => {
         </h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
-            { title: "Solutions", desc: "Custom deployments for complex organizations.", link: "/signup", image: "/images/enterprise/explore-solutions.png", date: "Jun 2026" },
-            { title: "Research", desc: "The Orgni thesis: why organisational understanding comes first.", link: "https://orgni.olyxee.com/thesis", image: "/images/enterprise/explore-research.png", date: "May 2026" },
-            { title: "Developers", desc: "Build on top of Olyxee infrastructure.", link: "/docs", image: "/images/enterprise/explore-developers.png", date: "Jul 2026" },
+            { title: "Solutions", desc: "Orgni and operational software for complex organizations.", link: "/signup", image: "/images/enterprise/explore-solutions.png", date: "Jun 2026" },
+            { title: "Research", desc: "Orgni is an applied environment for Olyxee's research into Organizational Intelligence.", link: "https://orgni.olyxee.com/thesis", image: "/images/enterprise/explore-research.png", date: "May 2026" },
+            { title: "Developers", desc: "Explore developer resources for Orgni and Olyxee Logistics.", link: "/docs", image: "/images/enterprise/explore-developers.png", date: "Jul 2026" },
           ].map((card) => (
             <Link key={card.title} href={card.link} className="block group">
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-md">

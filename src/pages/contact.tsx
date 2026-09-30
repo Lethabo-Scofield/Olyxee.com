@@ -42,7 +42,7 @@ const CONTACT_OPTIONS: ContactOption[] = [
       key: "enterprise",
       label: "Enterprise",
       title: "Custom deployments, pilots, and dedicated support.",
-      placeholder: "Tell us about your environment, the workflows you want to automate, and how many seats or agents you need.",
+       placeholder: "Tell us about your organization, the operational context, and what kind of support or deployment you have in mind.",
     },
     title: "Custom deployments, pilots, and dedicated support.",
     cta: "Contact enterprise",
@@ -94,7 +94,7 @@ const CONTACT_OPTIONS: ContactOption[] = [
   {
     kind: "link",
     label: "Careers",
-    title: "Open paid roles and the paid internship program.",
+    title: "Open roles and internship opportunities.",
     href: "/careers",
     cta: "View open roles",
   },
@@ -133,9 +133,9 @@ const Contact: FC = () => {
     <div className="min-h-screen bg-white text-neutral-900">
       <SEO
         title="Contact"
-        description="Get in touch with Olyxee. Reach out for sales, enterprise pilots, partnerships, research collaboration, support, press, careers, or general inquiries."
+        description="Contact Olyxee about research into Organizational Intelligence, our products, partnerships, support, careers, press, or general inquiries."
         path="/contact"
-        keywords={["Contact Olyxee", "Olyxee sales", "Olyxee support", "Olyxee partnerships", "AI infrastructure contact"]}
+        keywords={["Contact Olyxee", "Olyxee sales", "Olyxee support", "Olyxee partnerships", "Organizational Intelligence research"]}
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "ContactPage",

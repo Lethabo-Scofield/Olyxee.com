@@ -9,41 +9,41 @@ import Footer from "../../components/footer";
 
 const HIGHLIGHTS = [
   {
-    eyebrow: "Edge intelligence",
-    title: "AI execution at the edge of the enterprise.",
-    body: "On-device intelligence tuned for deterministic latency, deployed across connected hardware, sensors, and operational endpoints. Systems that adapt to new environments and workflows without rebuilding from scratch.",
+    eyebrow: "AI at the edge",
+    title: "How might intelligence work in physical environments?",
+    body: "We are exploring how AI systems could interact with connected hardware, sensors and operational settings as part of Olyxee's broader research into Organizational Intelligence.",
     image: "/images/robotics/humanoid-manipulation.png",
-    alt: "Edge AI execution across connected enterprise hardware",
+    alt: "Connected hardware in an enterprise environment",
     meta: "01 · Edge AI",
   },
   {
-    eyebrow: "Hardware infrastructure",
-    title: "Connected hardware, built for production environments.",
-    body: "Compute, sensing, and integration platforms co-developed with our partners across industrial, logistics, and field deployments. Open SDKs from instrumentation to autonomous execution.",
+    eyebrow: "Physical systems",
+    title: "Studying the systems organizations depend on.",
+    body: "Industrial, logistics and field environments bring people, processes, software and machines together. We are interested in how these parts might coordinate more effectively.",
     image: "/images/robotics/hardware-design.png",
     alt: "Engineer reviewing infrastructure designs on a monitor",
     meta: "02 · Hardware",
   },
   {
-    eyebrow: "Fleet operations",
-    title: "Deploy, monitor, and update at scale.",
-    body: "Roll out new policies across thousands of endpoints with rollback-safe delivery, live observability, and OTA updates verified by Orgni's operational workflows before they reach a production system.",
+    eyebrow: "Organizational coordination",
+    title: "Understanding work across connected systems.",
+    body: "Complex environments depend on coordination across people, processes and equipment. Researching how systems can understand that context is part of the long-term challenge.",
     image: "/images/robotics/field-deployment.png",
     alt: "Field deployment of connected enterprise systems",
     meta: "03 · Operations",
   },
   {
-    eyebrow: "Multi-agent coordination",
-    title: "Many systems, one operational intent.",
-    body: "Coordinated control across fleets of agents and devices handles complex, contact-rich, and contingent workflows, packing, routing, assembling, that single-endpoint systems cannot solve reliably.",
+    eyebrow: "Human-AI coordination",
+    title: "People and machines working toward shared objectives.",
+    body: "Olyxee is researching architectures where people, AI agents, software and machines could coordinate toward shared organizational objectives.",
     image: "/images/robotics/gallery/dual-arm-bag.png",
     alt: "Coordinated multi-agent operation across connected hardware",
     meta: "04 · Coordination",
   },
   {
-    eyebrow: "Human-in-the-loop",
-    title: "Autonomy with operators in control.",
-    body: "Tooling, dashboards, and approval flows that keep human decision-making at the center of automated operations, so teams can trust, audit, and intervene in every execution.",
+    eyebrow: "Human oversight",
+    title: "Keeping people central as systems adapt.",
+    body: "As organizational systems become more capable, human objectives, oversight and governance remain important research questions.",
     image: "/images/robotics/gallery/students-lego.png",
     alt: "Operators collaborating around a connected hardware workstation",
     meta: "05 · Human-in-the-loop",
@@ -71,7 +71,7 @@ const HighlightsSlider: FC = () => {
     <section
       className="relative w-full bg-white py-10 sm:py-16"
       aria-roledescription="carousel"
-      aria-label="Olyxee Enterprise Hardware pillars"
+      aria-label="Olyxee research themes for connected systems"
     >
       <div className="relative w-full overflow-hidden">
         <motion.div
@@ -186,33 +186,25 @@ const Robotics: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
       <SEO
-        title="Olyxee Enterprise Hardware, Operational Intelligence in Motion"
-        description="Olyxee develops enterprise hardware and intelligent execution infrastructure for autonomous operations, connected systems, and real-world enterprise environments, with edge AI, fleet operations, and verified deployment at scale."
+        title="Olyxee | Organizational Intelligence Research in Physical Systems"
+        description="Olyxee explores how people, software, AI agents and connected machines might coordinate in complex organizational environments."
         path="/enterprise/robotics"
         keywords={[
-          "enterprise hardware",
-          "operational intelligence",
-          "edge AI",
-          "AI execution infrastructure",
-          "connected hardware",
-          "autonomous workflows",
-          "industrial automation",
-          "multi-agent coordination",
-          "robotics infrastructure",
-          "fleet operations",
-          "human-in-the-loop operations",
-          "enterprise orchestration",
-          "on-device AI",
-          "OTA updates",
-          "Orgni operational workflows",
+          "Organizational Intelligence",
+          "adaptive organizations",
+          "human-AI coordination",
+          "organizational systems",
+          "autonomous agents research",
+          "connected systems",
+          "organizational research",
         ]}
         ogImage="https://olyxee.com/images/robotics/humanoid-manipulation.png"
         jsonLd={[
           {
             "@context": "https://schema.org",
             "@type": "Service",
-            name: "Olyxee Enterprise Hardware",
-            serviceType: "Enterprise Hardware and AI Execution Infrastructure",
+            name: "Olyxee Organizational Intelligence Research",
+            serviceType: "Research and technology",
             provider: {
               "@type": "Organization",
               name: "Olyxee",
@@ -220,11 +212,10 @@ const Robotics: FC = () => {
             },
             areaServed: "Worldwide",
             description:
-              "Olyxee Enterprise Hardware builds intelligent execution infrastructure, edge AI systems, and connected hardware for autonomous operations and real-world enterprise environments.",
+              "Olyxee researches the foundations of Organizational Intelligence, including how people, software, AI agents and machines might coordinate in complex environments.",
             url: "https://olyxee.com/enterprise/robotics",
             offers: {
               "@type": "Offer",
-              availability: "https://schema.org/PreOrder",
               url: "https://olyxee.com/contact?subject=Olyxee%20Enterprise%20Hardware%20early%20access",
             },
           },
@@ -234,26 +225,26 @@ const Robotics: FC = () => {
             mainEntity: [
               {
                 "@type": "Question",
-                name: "What is Olyxee Enterprise Hardware?",
+                name: "What is Olyxee researching in physical systems?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Olyxee Enterprise Hardware is the operational infrastructure division of Olyxee, focused on intelligent execution systems, edge AI, connected hardware, and fleet operations for autonomous enterprise environments.",
+                  text: "Olyxee is a research and technology company focused on the foundations of Organizational Intelligence. Its research includes how people, software, AI agents and machines might coordinate in complex organizational environments.",
                 },
               },
               {
                 "@type": "Question",
-                name: "How do I get early access to Olyxee Enterprise Hardware?",
+                name: "How can I discuss this research with Olyxee?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Join the early access waitlist or contact the enterprise team through the Olyxee contact page to discuss pilots, partnerships, or program participation.",
+                  text: "Contact Olyxee to discuss its research into Organizational Intelligence.",
                 },
               },
               {
                 "@type": "Question",
-                name: "What is the Olyxee Enterprise Accelerator?",
+                name: "What is Olyxee's long-term research goal?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "The Olyxee Enterprise Accelerator backs early-stage teams shipping intelligent execution infrastructure with mentorship, compute, and access to connected hardware platforms.",
+                  text: "Olyxee is researching the foundations of Autonomous Adaptive Organizations: organizations capable of learning, adapting and evolving over time. This remains a long-term research direction, not a solved problem.",
                 },
               },
             ],
@@ -313,7 +304,7 @@ const Robotics: FC = () => {
                   transition={{ duration: 0.6, delay: 0.2 }}
                   className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.28em] text-white/65 mb-6 sm:mb-8"
                 >
-                  Enterprise Hardware
+                  Research in connected systems
                 </motion.p>
 
                 <motion.h1
@@ -322,7 +313,7 @@ const Robotics: FC = () => {
                   transition={{ duration: 0.9, delay: 0.3 }}
                   className="font-serif text-white leading-[1.02] tracking-tight text-[2rem] sm:text-6xl md:text-7xl lg:text-[5.5rem]"
                 >
-                  Operational Intelligence in Motion.
+                  Exploring intelligence in physical systems.
                 </motion.h1>
 
                 <motion.div
@@ -335,14 +326,14 @@ const Robotics: FC = () => {
                     href="/contact?subject=Olyxee%20Enterprise%20Hardware%20early%20access"
                     className="group inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide"
                   >
-                    Join waitlist for early access
+                    Discuss this research
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden />
                   </Link>
                   <Link
                     href="/contact?subject=Olyxee%20Enterprise%20Hardware%20partnership"
                     className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 text-white bg-white/10 backdrop-blur-md border border-white/20 rounded-full font-medium hover:bg-white/15 transition-all text-sm tracking-wide"
                   >
-                    Talk to the enterprise team
+                    Contact Olyxee
                   </Link>
                 </motion.div>
               </div>
@@ -373,10 +364,10 @@ const Robotics: FC = () => {
           className="max-w-5xl mx-auto"
         >
           <p className="text-[11px] sm:text-xs font-semibold text-neutral-400 uppercase tracking-[0.18em] sm:tracking-[0.2em] mb-3 sm:mb-4">
-            Execution infrastructure for the enterprise
+            Researching Organizational Intelligence
           </p>
           <h2 className="font-serif text-[1.75rem] sm:text-5xl lg:text-[4.25rem] leading-[1.1] sm:leading-[1.05] tracking-tight text-neutral-900">
-            Olyxee develops <em className="not-italic text-blue-500">intelligent execution systems</em> that connect <span className="text-neutral-500">AI, enterprise workflows, hardware, and human decision-making</span> into <em className="not-italic text-orange-400">reliable operational environments</em>.
+            Olyxee explores how <em className="not-italic text-blue-500">organizations might become intelligent systems</em> through <span className="text-neutral-500">coordination among people, software, AI agents and machines</span>, building toward <em className="not-italic text-orange-400">organizations that learn, adapt and evolve</em>.
           </h2>
         </motion.div>
       </section>
@@ -396,20 +387,20 @@ const Robotics: FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-12 items-center">
             <div className="lg:col-span-5 order-2 lg:order-1">
               <p className="text-[11px] sm:text-xs font-semibold text-neutral-500 uppercase tracking-[0.18em] sm:tracking-[0.2em] mb-3 sm:mb-4">
-                Olyxee Enterprise Accelerator
+                Olyxee Research Collaborations
               </p>
               <h2 className="font-serif text-[1.75rem] sm:text-5xl lg:text-[3.5rem] tracking-tight text-neutral-900 leading-[1.1] sm:leading-[1.05]">
-                Backing the next wave of operational intelligence.
+                Exploring intelligence in real-world environments.
               </h2>
               <p className="mt-4 sm:mt-6 text-neutral-600 text-sm sm:text-lg font-normal leading-relaxed">
-                Mentorship, compute, and connected hardware for early-stage teams shipping AI execution infrastructure into real enterprise environments.
+                Complex real-world environments raise important questions about how information, people, processes and machines coordinate. We are interested in learning from these settings as our research develops.
               </p>
               <div className="mt-6 sm:mt-8">
                 <Link
                   href="/contact?subject=Olyxee%20Enterprise%20Accelerator%20application"
                   className="group inline-flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-colors text-sm tracking-wide"
                 >
-                  Apply to the program
+                  Discuss a collaboration
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden />
                 </Link>
               </div>
@@ -426,9 +417,9 @@ const Robotics: FC = () => {
                 />
 
                 {[
-                  { label: "Mentorship", className: "top-[8%] left-[4%]" },
-                  { label: "Compute", className: "top-[40%] right-[2%]" },
-                  { label: "Hardware", className: "bottom-[10%] left-[18%]" },
+                  { label: "Organizations", className: "top-[8%] left-[4%]" },
+                  { label: "People", className: "top-[40%] right-[2%]" },
+                  { label: "Systems", className: "bottom-[10%] left-[18%]" },
                 ].map((tag, i) => (
                   <motion.span
                     key={tag.label}
@@ -462,16 +453,16 @@ const Robotics: FC = () => {
               04 · Ecosystem
             </p>
             <h3 className="font-serif text-[1.75rem] sm:text-4xl lg:text-5xl tracking-tight text-neutral-900 leading-[1.1]">
-              Built with leading enterprise and infrastructure teams.
+              Researching complex organizational environments.
             </h3>
             <p className="mt-4 sm:mt-5 text-neutral-600 text-sm sm:text-lg font-normal leading-relaxed">
-              We partner with hardware OEMs, foundation model labs, and operations teams to bring reliable AI execution from research into real enterprise environments.
+              Logistics, industrial and field settings offer concrete examples of organizations coordinating information, people, processes and decisions. Olyxee's research considers these environments without claiming to have solved their challenges.
             </p>
             <Link
               href="/contact?subject=Olyxee%20Enterprise%20Hardware%20partnership"
               className="mt-6 sm:mt-8 inline-flex items-center gap-2 text-sm font-medium text-neutral-900 group"
             >
-              Become a partner
+              Contact Olyxee
               <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
             </Link>
           </div>
@@ -495,10 +486,10 @@ const Robotics: FC = () => {
           <div className="relative rounded-2xl sm:rounded-3xl bg-neutral-50 border border-neutral-200/70 px-5 sm:px-12 lg:px-20 py-10 sm:py-20 lg:py-24 overflow-hidden">
             <div className="relative text-center max-w-2xl mx-auto">
               <h2 className="font-serif text-[1.85rem] sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-4 sm:mb-5 leading-[1.1] sm:leading-[1.05]">
-                Building real-world operational systems?
+                Exploring organizational systems in the real world?
               </h2>
               <p className="text-neutral-600 text-sm sm:text-lg font-normal leading-relaxed mb-7 sm:mb-9 max-w-lg mx-auto">
-                We partner on edge AI, execution infrastructure, and hardware-integrated deployments, from pilot to fleet.
+                Olyxee is researching how intelligence might help organizations learn, adapt and coordinate across complex environments.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Link

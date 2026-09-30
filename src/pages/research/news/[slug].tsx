@@ -79,7 +79,7 @@ export default function NewsArticle({ entry }: InferGetStaticPropsType<typeof ge
         ogImage={image}
         ogImageAlt={`${entry.title} - Olyxee`}
         ogTitle={entry.title}
-        ogDescription="How the Claude Partner Network strengthens Olyxee’s work on operational intelligence, Orgni and Olyxee Logistics."
+        ogDescription={description}
         publishedTime={entry.date}
         authors={[entry.authors]}
         jsonLd={{

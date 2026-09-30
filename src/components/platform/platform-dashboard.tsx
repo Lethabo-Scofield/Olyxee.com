@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import {
   Activity, ArrowRight, BookOpen, ChevronDown, CreditCard, Home, KeyRound,
@@ -70,7 +71,7 @@ export default function PlatformDashboard({ user, initialView }: {
       <aside className={`fixed inset-y-0 left-0 z-40 flex w-[220px] flex-col border-r border-neutral-200 bg-white px-3 py-4 transition-transform md:translate-x-0 ${mobileMenuOpen ? "translate-x-0" : "-translate-x-full"}`}>
         <div className="flex items-center justify-between px-2 pb-7">
           <Link href="/" className="flex items-center gap-2 text-sm font-semibold tracking-tight" aria-label="Olyxee home">
-            <span className="grid h-6 w-6 place-items-center rounded-md bg-neutral-900 text-[11px] text-white">O</span>
+            <Image src="/brand/olyxee-workspace-logo.png" alt="" width={24} height={24} className="h-6 w-6 shrink-0 object-contain" />
             Olyxee <span className="font-normal text-neutral-400">Workspace</span>
           </Link>
           <button className="md:hidden" aria-label="Close menu" onClick={() => setMobileMenuOpen(false)}><X size={18} /></button>

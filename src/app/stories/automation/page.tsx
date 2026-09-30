@@ -66,7 +66,7 @@ export default function AutomationStory() {
             className="prose prose-neutral prose-lg max-w-none prose-headings:font-serif prose-headings:tracking-tight prose-h2:text-2xl sm:prose-h2:text-[1.75rem] prose-h2:mt-16 prose-h2:mb-6 prose-p:leading-[1.75] prose-p:text-neutral-700 prose-li:text-neutral-700 prose-li:leading-relaxed prose-strong:text-neutral-900 prose-blockquote:border-l-neutral-900 prose-blockquote:not-italic prose-blockquote:font-serif prose-blockquote:text-xl prose-blockquote:text-neutral-800 prose-blockquote:leading-snug"
           >
             <p className="not-prose text-xl sm:text-[1.375rem] font-normal leading-relaxed text-neutral-900 border-l-2 border-neutral-900 pl-5 sm:pl-6 mb-14">
-              Supplier onboarding required coordination across procurement, finance, compliance, legal and operational systems, with rules that changed by supplier type, risk and contract conditions. Orgni made the organisation behind the workflow understandable, and that is what made the automation reliable.
+              Supplier onboarding required coordination across procurement, finance, compliance, legal and operational systems, with rules that changed by supplier type, risk and contract conditions. In this customer engagement, Orgni was used to map the organization and its workflow rules before automation work began.
             </p>
 
             <h2>A fragmented operation</h2>
@@ -90,7 +90,7 @@ export default function AutomationStory() {
 
             <h2>What became possible</h2>
             <p>
-              Because the process understands its own rules, intelligent systems can determine what is required for each supplier, explain why it is required, and route unusual cases to the correct people. Intake, verification checks, approval routing and IT provisioning run end to end, with every step logged and every handoff timestamped.
+              With the requirements mapped, the workflow supported intake, verification checks, approval routing and IT provisioning. Unusual cases could be routed to the appropriate people with their context; the work was logged so teams could follow the process.
             </p>
             <p>
               People only show up to make decisions - and when they do, the context for the decision is already assembled.
@@ -112,12 +112,12 @@ export default function AutomationStory() {
               </div>
             </div>
 
-            <h2>Understanding that compounds</h2>
+            <h2>Applying the mapped process</h2>
             <p>
-              Onboardings finish in days, not weeks. Compliance sign-off rates improved too, because documents are collected and reviewed systematically rather than chased over email. And every unusual case that gets routed and resolved teaches the model something new about how the organisation actually works.
+              In this case, onboarding time fell from three to four weeks to days. Compliance sign-off rates improved too, as documents were collected and reviewed systematically rather than chased over email. Unusual cases could be handled with the mapped requirements and the relevant people involved.
             </p>
             <p>
-              The same organisational understanding has since been reused for contractor onboarding - a parallel process with similar friction and similar results. The outcome was not another isolated automation. It was reusable organisational understanding that could support future teams, systems and agents.
+              The mapped process was also reused for contractor onboarding, a parallel process with similar friction. This customer work offers a practical example of how representing organizational rules can support process changes.
             </p>
 
             <blockquote>

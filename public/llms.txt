@@ -1,14 +1,14 @@
 # Olyxee
 
-> Olyxee is a reliability-first AI infrastructure company. We build verification, evaluation, and monitoring systems so teams can ship AI with confidence. Our products turn frontier models into dependable enterprise software across operations, finance, logistics, and organisational cognition.
+> Olyxee is a research and technology company developing the foundations of Organizational Intelligence and building toward organizations capable of learning, adapting and evolving.
 
-Olyxee is structured around four product surfaces and one research engine. Orgni is the operational intelligence layer that helps businesses keep work moving: it understands the organisation, works across the tools teams already use, and handles the questions and routine work that create unnecessary delays.
+Our long-term goal is to build organizations that can evolve themselves. We are researching Autonomous Adaptive Organizations: systems that can learn from experience, coordinate humans and machines and adapt their operations while remaining aligned with human objectives and governance. This remains a research direction, not a completed capability.
 
-- **Orgni Workflows** — Autonomous workflow execution: job handling, integrations, and operational automation. (Early access)
-- **Orgni Finance** — Financial reconciliation: workflows, data validation, matching, exception handling, and reporting. (Available)
-- **Olyxee Document Integrity** — Document verification, integrity checks, extraction validation, and API-based verification workflows. (Private)
-- **Olyxee Logistics** — Logistics operations, delivery workflows, dispatch coordination, and logistics APIs. (Available)
-- **Olyxee Lab** — Internal research on AI reliability, verification, interpretability, and evaluation.
+- **Research** — Organizational Intelligence, adaptive organizations, human-AI coordination, organizational models and simulation, autonomous agents and self-improving systems.
+- **Orgni** — The intelligence layer for everyday organizational work. It connects organizational knowledge, systems and people, and provides an applied environment for Olyxee's research. Operational workflows, financial operations and business memory are capabilities within Orgni, not separate companies or products.
+- **Olyxee Logistics** — Infrastructure for modern freight operations: quotes, orders, payments, cargo, warehouse activity, tracking and customer communication. An applied operational platform built by Olyxee.
+- **Olyxee Document Integrity** — Document verification and extraction validation.
+- **Olyxee Lab** — Experimental work contributing to the foundations of Organizational Intelligence.
 
 ## Core pages
 
@@ -16,17 +16,17 @@ Olyxee is structured around four product surfaces and one research engine. Orgni
 - [About](https://olyxee.com/about): Who Olyxee is, the problem we work on, and how we operate.
 - [Products & Enterprise](https://olyxee.com/enterprise): All Olyxee products and enterprise systems with status.
 - [Pricing](https://olyxee.com/pricing): Plans for Orgni (Free, Starter R99/mo, Business R999/mo, Enterprise) and Olyxee Logistics (Free, Growth R99/mo, Scale R499/mo, Enterprise). Billed in ZAR.
-- [Orgni Workflows](https://olyxee.com/products/ordo): Autonomous workflow execution platform.
+- [Orgni](https://olyxee.com/products/ordo): Organizational-intelligence platform and applied research environment.
 - [Olyxee Document Integrity](https://olyxee.com/document-integrity): Document verification and extraction validation.
 - [Research](https://olyxee.com/research): Research agenda, papers, and ongoing work.
 - [Olyxee Lab](https://olyxee.com/lab): Research division and publications.
 - [Technology](https://olyxee.com/technology): Architecture and deployment pipeline.
 - [Safety](https://olyxee.com/safety): Reliability, evaluation, and safety approach.
-- [Use cases](https://olyxee.com/use-cases): Real-world deployments across industries.
+- [Use cases](https://olyxee.com/use-cases): Organizational challenges and potential applications across industries.
 - [Enterprise](https://olyxee.com/enterprise): Working with Olyxee at enterprise scale.
-- [EdgeAI](https://olyxee.com/edgeai): Deployment to edge devices (IoT, robotics, wearables).
-- [Developers](https://olyxee.com/developers): SDKs, CLI, and APIs.
-- [Docs](https://olyxee.com/docs): Full product and API documentation.
+- [EdgeAI](https://olyxee.com/edgeai): Exploring intelligent systems in physical operational environments.
+- [Developers](https://olyxee.com/developers): Proposed integration resources; contact Olyxee to confirm product-specific availability. API keys and execution are not enabled in this website's workspace.
+- [Docs](https://olyxee.com/docs): Product resources and API access information. Creating an account does not currently unlock API references or execution.
 - [Blog](https://olyxee.com/blog): Engineering and research writing.
 - [Case studies](https://olyxee.com/case-studies): How teams deploy Olyxee in production.
 - [Community](https://olyxee.com/community): Channels for developers and researchers.

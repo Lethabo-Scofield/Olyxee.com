@@ -64,7 +64,7 @@ const Terms: FC = () => (
     effectiveDate="May 2026"
     description="Olyxee's Terms of Service governing access to our platform and services."
     path="/terms"
-    intro="These Terms of Service govern your access to and use of websites, products, APIs, and services provided by Olyxee (Pty) Ltd (Registration No. 2026/326516/07), a company incorporated in South Africa and trading as Olyxee, Research and Infrastructure for Artificial Intelligence. Please read them carefully."
+    intro="These Terms of Service govern your access to and use of websites, products, APIs, and services provided by Olyxee (Pty) Ltd (Registration No. 2026/326516/07), a company incorporated in South Africa and trading as Olyxee, a research and technology company focused on Organizational Intelligence. Please read them carefully."
     sections={sections}
     downloadFilename="Olyxee_Terms_of_Service.txt"
     contactEmail="info@olyxee.com"

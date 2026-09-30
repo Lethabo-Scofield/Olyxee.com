@@ -54,7 +54,7 @@ const ORGNI_PLANS: Plan[] = [
   {
     name: "Free",
     price: 0,
-    desc: "For small teams exploring Orgni with one focused operational use case.",
+    desc: "For small teams getting started with Orgni on a focused organizational use case.",
     features: [
       "One workspace",
       "Up to 3 users",
@@ -68,7 +68,7 @@ const ORGNI_PLANS: Plan[] = [
   {
     name: "Starter",
     price: 99,
-    desc: "For teams beginning to organise business knowledge and workflows.",
+    desc: "For teams beginning to organize business knowledge and workflows.",
     features: [
       "Up to 5 users",
       "One business function",
@@ -83,7 +83,7 @@ const ORGNI_PLANS: Plan[] = [
     name: "Business",
     price: 1599.99,
     popular: true,
-    desc: "For businesses connecting Orgni across teams, workflows and systems.",
+    desc: "For businesses using Orgni across teams, workflows and systems.",
     features: [
       "Multiple business functions",
       "Up to 20 users",
@@ -99,7 +99,7 @@ const ORGNI_PLANS: Plan[] = [
   {
     name: "Enterprise",
     price: null,
-    desc: "For organisations deploying Orgni across complex or regulated operations.",
+    desc: "For organizations considering Orgni across complex or regulated operations.",
     features: [
       "Organisation-wide deployment",
       "Custom user and usage limits",
@@ -133,7 +133,7 @@ const ORDER_LOOP_PLANS: Plan[] = [
   {
     name: "Scale",
     price: 999.99,
-    desc: "For businesses running cross-border operations at higher volumes with connected systems.",
+    desc: "For businesses managing higher volumes, cross-border operations and connected systems.",
     features: [
       "Up to 1,000 orders per month",
       "Order Communication API",
@@ -283,17 +283,17 @@ const Pricing: FC = () => {
     <div className="min-h-screen bg-[#fafafa] text-[#111] font-sans selection:bg-neutral-200 selection:text-neutral-900 relative">
       <SEO
         title="Pricing: Orgni & Olyxee Logistics Plans"
-        description="Simple, transparent pricing for Orgni, the operational intelligence layer that keeps work moving, and Olyxee Logistics. Orgni starts free, Olyxee Logistics from R89,99/month, or talk to sales about enterprise plans."
+        description="Simple, transparent pricing for Orgni, Olyxee's organizational intelligence platform, and Olyxee Logistics, a freight operations platform. Orgni starts free; Olyxee Logistics starts at R89,99/month."
         path="/pricing"
         keywords={[
           "Olyxee pricing",
           "Orgni pricing",
           "Olyxee Logistics pricing",
-          "operational intelligence software pricing",
+          "organizational intelligence software pricing",
           "business workflow software cost",
           "order tracking software pricing",
           "delivery communication platform price",
-          "AI business platform pricing South Africa",
+          "organizational work platform pricing South Africa",
         ]}
         jsonLd={[
           {
@@ -301,7 +301,7 @@ const Pricing: FC = () => {
             "@type": "Product",
             name: "Orgni",
             description:
-              "Orgni understands your organisation and handles the questions and routine work that create delays, so work keeps moving.",
+              "Orgni is an intelligence layer for everyday organizational work, connecting knowledge, workflows and people with greater context.",
             brand: { "@type": "Brand", name: "Olyxee" },
             url: "https://olyxee.com/pricing",
             offers: ORGNI_PLANS.filter((p) => p.price !== null).map((p) => ({
@@ -355,7 +355,7 @@ const Pricing: FC = () => {
                 name: "Can I use Orgni and Olyxee Logistics together?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Yes. Orgni and Olyxee Logistics integrate so order activity, customer communication and delivery evidence connect to the broader operational context of your business.",
+                  text: "Orgni and Olyxee Logistics are separate products for different needs. Contact our team to discuss which platform fits your organization.",
                 },
               },
             ],
@@ -405,8 +405,8 @@ const Pricing: FC = () => {
         <ProductSection
           logo="/Logo/orgni-mark.png"
           name="Orgni"
-          tagline="Operational intelligence for your business"
-          desc="Orgni understands your organisation and handles the questions and routine work that create delays, so work keeps moving."
+          tagline="The intelligence layer for everyday organizational work"
+          desc="Orgni connects organizational knowledge, systems and people so employees can access information with greater context. It is also an applied environment for Olyxee's broader research into Organizational Intelligence."
           plans={ORGNI_PLANS}
         />
       </div>
@@ -415,7 +415,7 @@ const Pricing: FC = () => {
         <ProductSection
           logo="/Logo/order-loop-mark.png"
           name="Olyxee Logistics"
-          tagline="Keep every customer informed from order to completion"
+          tagline="Infrastructure for modern freight operations"
           desc="Olyxee Logistics is a logistics operations platform for managing customers, invoices, cross-border orders, warehouse cargo matching, shipment statuses and customer tracking."
           plans={ORDER_LOOP_PLANS}
         />
@@ -430,10 +430,10 @@ const Pricing: FC = () => {
           <Image src="/Logo/order-loop-mark.png" alt="Olyxee Logistics" width={40} height={40} className="w-10 h-10 object-contain" />
         </div>
         <h2 className="text-[2rem] sm:text-[3rem] font-medium tracking-tighter text-[#111] mb-6 leading-[1.1]">
-          Use Orgni and Olyxee Logistics together
+          Orgni and Olyxee Logistics
         </h2>
         <p className="text-[1.125rem] text-[#4a5568] max-w-2xl mx-auto leading-relaxed mb-10">
-          Connect order activity, customer communication and delivery evidence to the broader operational context of your business.
+          Orgni and Olyxee Logistics serve different needs: organizational context and everyday work, and practical freight operations.
         </p>
         <div className="flex flex-col sm:flex-row gap-6 items-center justify-center">
           <TalkToEnterprise
@@ -444,7 +444,7 @@ const Pricing: FC = () => {
             href="/contact"
             className="inline-flex items-center justify-center gap-1.5 text-[#111] font-medium hover:underline underline-offset-4 text-[15px]"
           >
-            Explore the platform <ArrowRight className="w-4 h-4" />
+            Explore both products <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       </section>

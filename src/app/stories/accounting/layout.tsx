@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 const description =
-  "How Orgni made a mid-market firm's financial close understandable - modelling responsibilities, dependencies, controls and decision history - so teams and intelligent systems could run it overnight.";
+  "A customer story about modelling responsibilities, dependencies, controls and decision history in a mid-market firm's financial close, alongside a change from five days to one night.";
 
 export const metadata: Metadata = {
   title: "Making the financial close understandable | Customer story",

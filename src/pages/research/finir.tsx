@@ -9,8 +9,8 @@ import Footer from "../../components/footer";
 
 const TITLE = "Introducing FinIR";
 const DESCRIPTION = "FinIR is a finance-aware intermediate representation and execution runtime for turning AI-interpreted financial instructions into deterministic, typed, and auditable computation. It does this without relying on generated Python, SQL, or spreadsheets as the execution layer.";
-const SEO_TITLE = "Introducing FinIR: Typed Financial Computation";
-const SEO_DESCRIPTION = "FinIR turns AI-interpreted financial instructions into deterministic, typed, auditable computation with dependency-aware incremental execution.";
+const SEO_TITLE = "FinIR | Financial Intermediate Representation | Olyxee Research";
+const SEO_DESCRIPTION = "FinIR is a research release: a finance-aware intermediate representation and runtime for deterministic, typed and auditable computation from financial instructions.";
 const ARTICLE_URL = "https://olyxee.com/research/finir";
 const ARTICLE_IMAGE = "https://olyxee.com/research/finir-og.png";
 const ARTICLE_DATE = "2026-09-04";

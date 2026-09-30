@@ -90,7 +90,7 @@ export default function AccountingStory() {
 
             <h2>What became possible</h2>
             <p>
-              Once the operation was understandable, reliable automation followed. Transactions are matched across ledgers and bank feeds automatically. Discrepancies are flagged with context: what changed, why it likely changed, and how similar cases were resolved before. Missing inputs and bottlenecks are identified before they stall the close.
+              Once the operation was mapped, the team introduced automation into parts of the process. Transactions are matched across ledgers and bank feeds automatically. Discrepancies are flagged with context about what changed and how similar cases were resolved before. Missing inputs and bottlenecks are identified for review.
             </p>
             <p>
               The team reviews, approves and signs off - instead of rebuilding the close from scratch each month.
@@ -112,12 +112,12 @@ export default function AccountingStory() {
               </div>
             </div>
 
-            <h2>Understanding that compounds</h2>
+            <h2>A foundation for continued improvement</h2>
             <p>
-              Month-end close now completes overnight, and accuracy has improved, because exceptions are caught systematically rather than by whoever happens to notice. But the close was not solved once: every resolved exception and decision feeds back into the model, so each close makes the next one more understandable.
+              Month-end close now completes overnight, and accuracy has improved, because exceptions are reviewed systematically rather than by whoever happens to notice. The mapped responsibilities, dependencies and decision history give the team a structured basis for continued improvement.
             </p>
             <p>
-              The outcome was not another isolated automation. It was reusable organisational understanding that could support future teams, systems and agents.
+              The work went beyond an isolated automation: it documented how this close operates, creating a reference for the teams involved and future process changes.
             </p>
 
             <blockquote>

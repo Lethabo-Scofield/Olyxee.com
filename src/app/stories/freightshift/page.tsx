@@ -66,7 +66,7 @@ export default function FreightShiftStory() {
             className="prose prose-neutral prose-lg max-w-none prose-headings:font-serif prose-headings:tracking-tight prose-h2:text-2xl sm:prose-h2:text-[1.75rem] prose-h2:mt-16 prose-h2:mb-6 prose-p:leading-[1.75] prose-p:text-neutral-700 prose-li:text-neutral-700 prose-li:leading-relaxed prose-strong:text-neutral-900 prose-blockquote:border-l-neutral-900 prose-blockquote:not-italic prose-blockquote:font-serif prose-blockquote:text-xl prose-blockquote:text-neutral-800 prose-blockquote:leading-snug"
           >
             <p className="not-prose text-xl sm:text-[1.375rem] font-normal leading-relaxed text-neutral-900 border-l-2 border-neutral-900 pl-5 sm:pl-6 mb-14">
-              FreightShift International Logistics depends on carriers, warehouses, customs agents and customer teams operating across regions, each holding only part of the context. Olyxee is partnering with FreightShift to make that whole operation understandable through Orgni.
+              FreightShift International Logistics depends on carriers, warehouses, customs agents and customer teams operating across regions, each holding only part of the context. In this engagement, Olyxee worked with FreightShift to map and connect parts of that operational context using Orgni.
             </p>
 
             <p>
@@ -95,7 +95,7 @@ export default function FreightShiftStory() {
               Olyxee began working with FreightShift around a simple question: what would logistics operations look like if the organisation behind the cargo were as visible as the cargo itself?
             </p>
             <p>
-              With <strong>Orgni</strong>, the partnership is connecting the pieces into one living operational model:
+              With <strong>Orgni</strong>, the work brought together relevant operational context:
             </p>
             <ul>
               <li>shipment events and system states,</li>
@@ -105,23 +105,23 @@ export default function FreightShiftStory() {
               <li>and the dependencies between all of them.</li>
             </ul>
             <p>
-              <strong>Olyxee Logistics</strong>, Olyxee&apos;s logistics coordination system built on Orgni, is where that model meets daily work: shipments, documents, customs updates and customer communication stay connected as cargo moves from origin to delivery.
+              <strong>Olyxee Logistics</strong> is Olyxee&apos;s separate freight operations platform for managing freight workflows and customer communication in day-to-day operations.
             </p>
 
             <h2>What became possible</h2>
             <p>
-              Once the operation was understandable, people and intelligent systems could act with shared context. A delayed shipment is no longer just a status. The system can see why it is delayed, who owns the next action, and which customer commitment is at risk.
+              Connecting operational information gave teams more context for coordinating work. Shipment events, responsibilities, service rules and customer commitments could be considered together when handling delays and exceptions.
             </p>
             <p>
-              That shared understanding shows up as fewer operational bottlenecks: less waiting on approvals, missing documents and internal coordination, and earlier, more accurate communication to customers. The result was not fewer people. It was an operation that explains itself.
+              The work focused on reducing bottlenecks caused by approvals, missing documents and internal coordination, and supporting earlier communication with customers. People remained central to handling operational decisions.
             </p>
 
-            <h2>Understanding that compounds</h2>
+            <h2>Learning from complex operations</h2>
             <p>
-              Every resolved exception, routing decision and customer interaction updates the model, so the organisation gets easier to operate as it grows, not harder. As trade between China and South Africa grows in complexity, that compounding understanding is FreightShift&apos;s infrastructure for scale.
+              Complex freight environments offer practical experience in building software around information, people, processes and decisions. This work informs Olyxee&apos;s broader research into Organizational Intelligence without implying that the longer-term research goal has been achieved.
             </p>
             <p>
-              The outcome was not another isolated automation. It was reusable organisational understanding that could support future teams, systems and agents.
+              The engagement illustrates how a clearer view of operational context can support coordination across teams and systems.
             </p>
           </motion.div>
 

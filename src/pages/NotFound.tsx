@@ -8,7 +8,7 @@ const NotFound: FC = () => {
     <div className="w-full h-screen flex items-center justify-center bg-white text-gray-900 px-4 sm:px-6 lg:px-8">
       <SEO
         title="Page not found"
-        description="The page you're looking for isn't here yet. This section is still under construction, explore Olyxee's research, products, and operational intelligence infrastructure instead."
+        description="The page you're looking for isn't here yet. Explore Olyxee's research and technology for Organizational Intelligence instead."
         path="/404"
         noindex
       />

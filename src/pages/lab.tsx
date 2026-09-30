@@ -18,38 +18,38 @@ const fadeUp = {
 const researchAreas = [
   {
     icon: Brain,
-    title: "Frontier Model Research",
-    description: "Pushing the boundaries of what AI systems can understand, reason about, and generate. We explore novel architectures and training paradigms.",
+    title: "Organizational Intelligence",
+    description: "Understanding how organizations can behave as intelligent computational systems that learn from activity and outcomes.",
     status: "Active",
   },
   {
     icon: Atom,
-    title: "AI Safety & Alignment",
-    description: "Developing methods to ensure AI systems behave as intended. Mechanistic interpretability, reward modeling, and formal verification of AI behavior.",
-    status: "Active",
+    title: "Adaptive Organizations",
+    description: "Researching how organizational processes and coordination structures might adapt as conditions change.",
+    status: "Exploring",
   },
   {
     icon: Microscope,
-    title: "Interpretability",
-    description: "Understanding how neural networks represent and process information internally. Making the black box transparent without sacrificing capability.",
-    status: "Active",
+    title: "Human-AI Coordination",
+    description: "Exploring how people, AI agents, software and machines can coordinate toward shared organizational objectives.",
+    status: "Exploring",
   },
   {
     icon: Lightbulb,
-    title: "Efficient Intelligence",
-    description: "Building AI systems that achieve more with less: smaller models, fewer parameters, lower energy. Intelligence shouldn't require a data center.",
-    status: "Active",
+    title: "Organizational Models & Simulation",
+    description: "Investigating computational models for reasoning about organizational states, possible actions and their consequences.",
+    status: "Exploring",
   },
   {
     icon: Shapes,
-    title: "Multimodal Reasoning",
-    description: "Systems that can perceive, reason across, and generate content spanning text, vision, audio, and structured data simultaneously.",
+    title: "Autonomous Agents",
+    description: "Researching agents that can operate reliably across long-running organizational tasks and environments.",
     status: "Exploring",
   },
   {
     icon: Sparkles,
-    title: "Emergent Capabilities",
-    description: "Studying how complex behaviors arise from simple training objectives. Understanding and predicting capability jumps in scaled systems.",
+    title: "Self-Improving Systems",
+    description: "Investigating how organizational systems might learn from outcomes and progressively improve their operation.",
     status: "Exploring",
   },
 ];
@@ -84,7 +84,7 @@ const recentWork = [
 const Lab: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO title="Olyxee Lab | Research" description="Olyxee Lab is our research division exploring the frontiers of AI safety, interpretability, and efficient intelligence. Read our latest publications." path="/lab" />
+      <SEO title="Olyxee Lab | Organizational Intelligence Research" description="Olyxee Lab explores the foundations of Organizational Intelligence and the long-term possibility of organizations that can learn, adapt and evolve." path="/lab" />
       <div className="grain" />
       <Header />
 
@@ -96,14 +96,14 @@ const Lab: FC = () => {
             <span className="text-sm font-medium text-neutral-400 uppercase tracking-widest">Olyxee Lab</span>
           </motion.div>
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }} className="font-serif text-4xl sm:text-6xl lg:text-[5.5rem] text-neutral-900 tracking-tight leading-[1.05] mb-8">
-            Exploring the frontiers
+            Researching Organizational
             <br />
-            <em className="text-neutral-400">of intelligence</em>
+            <em className="text-neutral-400">Intelligence</em>
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-xl text-neutral-500 leading-relaxed max-w-3xl font-normal">
-            Olyxee Lab is our research division, dedicated to advancing the science of
-            artificial intelligence. We work on fundamental problems in AI safety,
-            interpretability, and capability, and publish our findings openly.
+            Olyxee Lab explores how intelligence might exist at the level of an organization.
+            Our long-term research direction is toward organizations that can learn from
+            experience, coordinate people and machines, adapt and improve over time.
           </motion.p>
         </div>
       </section>
@@ -144,7 +144,7 @@ const Lab: FC = () => {
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="mb-16">
             <span className="accent-line" />
             <h2 className="font-serif text-4xl sm:text-5xl tracking-tight text-neutral-900">
-              Recent <em className="text-neutral-400">work</em>
+              Earlier <em className="text-neutral-400">work</em>
             </h2>
           </motion.div>
           <div className="divide-y divide-neutral-200">
@@ -186,9 +186,9 @@ const Lab: FC = () => {
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-neutral-200 rounded-2xl overflow-hidden border border-neutral-200">
             {[
-              { title: "Open research", description: "We publish our findings, share our methods, and contribute to the broader scientific community. Knowledge compounds when shared." },
-              { title: "Safety by design", description: "Every research direction is evaluated through the lens of safety. We don't build capabilities without understanding their implications." },
-              { title: "From lab to product", description: "Our best research becomes Olyxee products. The path from paper to production is short and deliberate." },
+              { title: "Research in the open", description: "We share research and ideas as our work develops, contributing to broader discussion about organizational systems." },
+              { title: "Human objectives", description: "We explore how adaptive systems can remain aligned with human objectives, oversight and governance." },
+              { title: "Research in practice", description: "Orgni and Olyxee Logistics provide practical contexts for learning about information, people and processes in real organizations." },
             ].map((item, idx) => (
               <motion.div key={item.title} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={idx} variants={fadeUp} className="bg-white p-10 sm:p-12">
                 <h3 className="text-xl font-semibold text-neutral-900 mb-3">{item.title}</h3>
@@ -208,7 +208,7 @@ const Lab: FC = () => {
               <em className="text-neutral-500">the frontier</em>
             </h2>
             <p className="text-neutral-400 text-lg max-w-2xl mx-auto mb-10 font-normal leading-relaxed">
-              We're looking for researchers and engineers who want to work on problems that matter.
+              We're looking for researchers and engineers interested in the long-term challenge of Organizational Intelligence.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/careers" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide">

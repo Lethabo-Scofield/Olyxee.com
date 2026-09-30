@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ArrowRight, LoaderCircle } from "lucide-react";
 
@@ -40,7 +41,7 @@ export default function AccountForm({ mode }: { mode: "login" | "signup" }) {
     <main className="min-h-screen bg-[#fafafa] text-neutral-900 px-5 py-12 flex flex-col">
       <div className="mx-auto w-full max-w-6xl">
         <Link href="/" className="inline-flex items-center gap-2 text-[15px] font-semibold tracking-tight">
-          <span className="grid h-7 w-7 place-items-center rounded-md bg-neutral-900 text-white text-xs">O</span>
+          <Image src="/brand/olyxee-workspace-logo.png" alt="" width={28} height={28} className="h-7 w-7 shrink-0 object-contain" />
           Olyxee <span className="text-neutral-400 font-normal">Workspace</span>
         </Link>
       </div>

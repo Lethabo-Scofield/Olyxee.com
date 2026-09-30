@@ -28,7 +28,7 @@ export default function HomePage() {
     url: "https://olyxee.com",
     logo: "https://olyxee.com/Logo/Olyxee_Logo.png",
     image: "https://olyxee.com/og-image.jpg",
-    description: "Olyxee is a research and infrastructure company helping businesses adapt to AI. We study the challenges organisations face when adopting AI, then build the infrastructure required to turn advanced intelligence into reliable organisational capability.",
+    description: "Olyxee is a research and technology company developing the foundations of Organizational Intelligence and researching how organizations can learn, adapt and evolve over time.",
     sameAs: [
       "https://www.linkedin.com/company/olyxee/",
       "https://twitter.com/olyxee",
@@ -56,17 +56,14 @@ export default function HomePage() {
       },
     ],
     knowsAbout: [
-      "Operational Intelligence",
-      "Business Infrastructure",
-      "AI Infrastructure",
-      "Keep Your Business Moving",
-      "Operational Memory",
-      "Decision History",
-      "Model-Neutral Architecture",
-      "Intelligent Operations",
-      "AI Research",
+      "Organizational Intelligence",
+      "Adaptive Organizations",
+      "Human-AI Coordination",
+      "Organizational Models and Simulation",
+      "Autonomous Agents",
+      "Self-Improving Systems",
     ],
-    slogan: "Research and Infrastructure for Operational Intelligence",
+    slogan: "Building organizations that can evolve themselves.",
   };
 
   const faqJsonLd = {
@@ -78,7 +75,7 @@ export default function HomePage() {
         name: "What is Olyxee?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Olyxee is a research and infrastructure company helping businesses adapt to AI. We study the challenges organisations face when adopting AI, then build the infrastructure required to turn advanced intelligence into reliable organisational capability. Our work connects organisational knowledge, people, processes, rules, decisions, and systems so AI can operate with meaningful business context.",
+          text: "Olyxee is a research and technology company focused on Organizational Intelligence. We are exploring how organizations can learn from experience, coordinate humans and machines, adapt to changing environments and improve over time. Our long-term research goal is to understand how organizations themselves might become adaptive intelligent systems.",
         },
       },
       {
@@ -86,7 +83,7 @@ export default function HomePage() {
         name: "What is Orgni?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Orgni is Olyxee's operational intelligence infrastructure. It understands your organisation, works across the tools your teams already use, and handles the questions and routine work that create unnecessary delays, so work keeps moving across the business.",
+          text: "Orgni is Olyxee's intelligence layer for everyday organizational work. It connects organizational knowledge, systems and people to give employees and AI agents more context. Orgni is also an applied environment for Olyxee's broader research into Organizational Intelligence.",
         },
       },
       {
@@ -155,14 +152,14 @@ function HeroSection() {
           transition={{ duration: 0.9, delay: 0.1 }}
           className="font-serif text-neutral-900 leading-[1.02] tracking-tight px-2 sm:px-0 text-[clamp(1.4rem,6.6vw,5.5rem)] sm:text-6xl md:text-7xl lg:text-[5.5rem]"
         >
-          <span className="block sm:whitespace-nowrap">Research and Infrastructure</span>
+          <span className="block sm:whitespace-nowrap">Building organizations that</span>
           <span className="block sm:whitespace-nowrap">
-            for{" "}
+            can{" "}
             <span
               className="font-handwritten text-blue-600 font-semibold tracking-tight"
               style={{ fontFamily: "var(--font-handwritten), cursive" }}
             >
-              operational intelligence
+              evolve themselves.
             </span>
           </span>
         </motion.h1>
@@ -214,7 +211,7 @@ function LogoStrip() {
 
   return (
     <div className="w-full max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 py-10 sm:py-14">
-      <p className="text-center text-[11px] font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-8 sm:mb-10">Built alongside the AI ecosystem</p>
+      <p className="text-center text-[11px] font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-8 sm:mb-10">Researching Organizational Intelligence</p>
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -333,9 +330,9 @@ function ResearchAreas() {
             transition={{ duration: 0.8 }}
             className="max-w-3xl mx-auto text-center mb-12 sm:mb-16 lg:mb-20"
           >
-            <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">What We Do</p>
+            <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Our Research Direction</p>
             <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900">
-              From research to systems businesses can run
+              Building toward organizations that learn and adapt
             </h2>
           </motion.div>
 
@@ -343,20 +340,20 @@ function ResearchAreas() {
             {[
               {
                 num: "01",
-                title: "Olyxee Research",
-                desc: "We study the challenges businesses face when adopting AI: how knowledge is preserved, how decisions are made, and how humans and intelligent systems operate together.",
+                title: "Organizational Intelligence",
+                desc: "We study how organizations can behave as intelligent computational systems, including organizational models and simulations that help reason about states, actions and consequences.",
                 gradient: "/images/what-we-do-research.png",
               },
               {
                 num: "02",
-                title: "Infrastructure",
-                desc: "We build the infrastructure required to turn advanced intelligence into reliable organisational capability, connecting knowledge, people, processes, rules, decisions, and systems.",
+                title: "Adaptive Organizations",
+                desc: "We research how organizations might change their behavior, processes and coordination as conditions shift, and how humans, AI agents, software and machines can work toward shared objectives.",
                 gradient: "/images/what-we-do-infrastructure.png",
               },
               {
                 num: "03",
-                title: "Intelligent operations",
-                desc: "Orgni keeps work moving across the business by understanding the organisation and handling the questions and routine work that create delays, while Olyxee Logistics runs cross-border logistics operations end to end.",
+                title: "Agents and Self-Improving Systems",
+                desc: "We investigate reliable autonomous agents for long-running organizational tasks and systems that can learn from outcomes and progressively improve their operation.",
                 gradient: "/images/what-we-do-operations.png",
               },
             ].map((step, idx) => (
@@ -392,15 +389,15 @@ function ResearchAreas() {
 
 function ImageShowcase() {
   const rowA = [
-    { src: "/images/showcase/enterprise-ai-framework.png", alt: "The framework for enterprise AI", caption: "Enterprise AI Framework" },
+    { src: "/images/showcase/enterprise-ai-framework.png", alt: "A conceptual framework for organizational intelligence", caption: "Organizational Intelligence" },
     { src: "/images/showcase/knowledge-routing.png", alt: "A query routed to structured organisational knowledge", caption: "Knowledge Routing" },
     { src: "/images/showcase/connected-systems.png", alt: "Systems, clouds and people connected around a shared hub", caption: "Connected Systems" },
-    { src: "/images/showcase/company-insights.png", alt: "Company insights and predictions surfaced from live data", caption: "Company Insights" },
+    { src: "/images/showcase/company-insights.png", alt: "Illustrative organizational insights from business information", caption: "Organizational Insights" },
     { src: "/images/showcase/business-model.png", alt: "A hand sketching a business model map", caption: "Business Model Mapping" },
   ];
   const rowB = [
-    { src: "/images/showcase/ai-assistant.png", alt: "A person working with an AI assistant across dashboards", caption: "AI at Work" },
-    { src: "/images/showcase/custom-ai-solutions.png", alt: "Custom AI solutions folder with code and content", caption: "Custom AI Solutions" },
+    { src: "/images/showcase/ai-assistant.png", alt: "A person working with an AI assistant across dashboards", caption: "Human-AI Coordination" },
+    { src: "/images/showcase/custom-ai-solutions.png", alt: "Software and content representing research into adaptive systems", caption: "Adaptive Systems" },
     { src: "/images/showcase/sales-funnel.png", alt: "A sales funnel chart with operational records", caption: "Sales Operations" },
     { src: "/images/showcase/roi-reporting.png", alt: "ROI reporting with revenue charts", caption: "ROI Reporting" },
   ];
@@ -438,7 +435,7 @@ function ImageShowcase() {
           className="text-center"
         >
           <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900">
-            How Orgni puts Olyxee&apos;s research to work
+            Orgni: an applied environment for Olyxee&apos;s research
           </h2>
         </motion.div>
       </div>
@@ -589,11 +586,11 @@ function CourierLoopSection() {
           >
             <p className="text-xs font-semibold text-orange-500 uppercase tracking-[0.2em] mb-4">Olyxee Logistics</p>
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-5">
-              Run cross-border logistics <em className="text-orange-500 not-italic">end to end.</em>
+              Infrastructure for modern <em className="text-orange-500 not-italic">freight operations.</em>
             </h2>
 
             <p className="text-neutral-600 text-base sm:text-lg font-normal leading-relaxed mb-8 max-w-sm">
-              Manage customers, invoices, cross-border orders, warehouse cargo matching, shipment statuses and customer tracking in one platform.
+              A practical platform for freight and logistics businesses to manage quotes, orders, payments, cargo, warehouse activity, tracking and customer communication.
             </p>
 
             <div className="flex flex-wrap items-center gap-4">
@@ -646,9 +643,9 @@ function OrgniSection() {
     <ProductFeature
       id="orgni"
       surface="muted"
-      heading="Orgni keeps your"
-      emphasis="business moving."
-      description="Work stops when people wait for answers, documents, approvals, or another team. Orgni understands your organisation, works across the tools your teams already use, and handles the questions and routine work that create unnecessary delays."
+      heading="Orgni, the intelligence layer for"
+      emphasis="everyday work."
+      description="Olyxee researches the foundations of Organizational Intelligence: how organizations might learn from experience, coordinate people and machines, and adapt as conditions change. Orgni applies parts of this research to everyday work by connecting organizational knowledge, systems and people, and serves as an applied research environment. Employees can interact through familiar workplace environments such as Microsoft Teams. Our long-term goal is Autonomous Adaptive Organizations; this remains an unsolved research direction."
       image={{
         src: "/images/orgni-finance-context-graph.png",
         alt: "Orgni helping a finance team recover a missing variance file by connecting context from Outlook, SharePoint, SAP, and Calendar",
@@ -737,10 +734,10 @@ function IntegrationSection() {
                   <span className="text-sm font-semibold text-neutral-400 uppercase tracking-widest">Orgni Workflows</span>
                 </div>
                 <h2 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] tracking-tight text-neutral-900 leading-tight mb-6">
-                  AI execution for your workflows.
+                  Exploring more intelligent workflows.
                 </h2>
                 <p className="text-neutral-500 text-base sm:text-lg font-normal leading-relaxed mb-10 max-w-lg mx-auto">
-                  Turn business goals into completed operations. Orgni Workflows plans, coordinates, and executes across your tools and systems end-to-end.
+                  Olyxee is researching how agents and adaptive systems could support coordination across organizational tools and processes.
                 </p>
                 <Link
                   href="/contact"
@@ -779,9 +776,9 @@ function IntegrationSection() {
 const STORIES = [
   {
     tag: "Logistics",
-    headline: "One operational view across a fragmented freight network.",
+    headline: "Understanding a fragmented freight network.",
     excerpt:
-      "How Orgni connected shipment events, responsibilities and commitments into a shared operational model.",
+      "Exploring how shipment events, responsibilities and commitments can inform a shared operational view.",
     readTime: "5 min read",
     image: "/images/stories/logistics.png",
     alt: "Warehouse worker in safety vest packaging shipments on the line",
@@ -789,9 +786,9 @@ const STORIES = [
   },
   {
     tag: "Accounting",
-    headline: "Making the financial close understandable before automating it.",
+    headline: "Understanding the work behind a financial close.",
     excerpt:
-      "Orgni modelled the responsibilities, dependencies and decisions behind the close, so intelligent systems could run it reliably.",
+      "Examining the responsibilities, dependencies and decisions involved in a financial close before considering where intelligent support might help.",
     readTime: "4 min read",
     image: "/images/stories/accounting.png",
     alt: "Finance team reviewing an operations dashboard together",
@@ -799,9 +796,9 @@ const STORIES = [
   },
   {
     tag: "Automation",
-    headline: "A supplier process that understands its own rules.",
+    headline: "Understanding the rules behind supplier onboarding.",
     excerpt:
-      "Orgni connected the roles, policies and evidence behind onboarding, making the automation reliable.",
+      "Exploring the roles, policies and evidence that shape supplier onboarding in organizational systems.",
     readTime: "4 min read",
     image: "/images/stories/automation.png",
     alt: "Distributed team celebrating a launch together at the desk",
@@ -842,10 +839,10 @@ function VideoShowcaseSection() {
           />
           <div className="absolute inset-x-0 top-0 pt-8 sm:pt-12 px-6 text-center">
             <h2 className="font-serif text-2xl sm:text-4xl lg:text-5xl tracking-tight text-white max-w-3xl mx-auto">
-              Growth shouldn&apos;t wait.
+              Organizational work needs context.
             </h2>
             <p className="mt-3 text-sm sm:text-lg text-white/75 max-w-xl mx-auto">
-              Orgni removes the blockers between your people, systems and work.
+              Orgni connects organizational knowledge, systems and people to give everyday work more context.
             </p>
           </div>
           <div
@@ -1200,7 +1197,7 @@ function CTASection() {
               Get started with Orgni
             </h2>
             <p className="text-neutral-600 text-base sm:text-lg font-normal leading-relaxed mb-9 max-w-lg mx-auto">
-              Work shouldn't stop because someone is waiting for an answer, a document, an approval, or another person. Ask Orgni today, give it work next, and reduce the blockers that slow your operations.
+              Olyxee is researching how organizations might learn, coordinate people and machines, and adapt—the foundations of Organizational Intelligence. Orgni applies parts of this research to everyday work. Our long-term goal is Autonomous Adaptive Organizations, a research direction we have not yet solved.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center">

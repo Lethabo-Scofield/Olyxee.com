@@ -1,7 +1,9 @@
-# Olyxee - AI Infrastructure Company Website
+# Olyxee - Organizational Intelligence Website
 
 ## Overview
-Company-level website for Olyxee, a reliability-first AI infrastructure company. Positioned like OpenAI/DeepMind/Anthropic — presenting vision, research, products, and credibility as a foundational AI company.
+Company-level website for Olyxee, a research and technology company developing the foundations of Organizational Intelligence. Mission: develop those foundations. Vision: organizations capable of learning, adapting and evolving. Long-term goal: build organizations that can evolve themselves. Autonomous Adaptive Organizations are a research objective, not a solved capability.
+
+Content updates must preserve the existing visual design, styles, components, imagery, navigation structure and destinations. Keep product copy practical: Orgni is the intelligence layer for everyday organizational work and an applied research environment; Olyxee Logistics is an applied freight operations platform.
 
 ## Architecture
 - **Framework**: Next.js 15 (App Router + Pages Router mixed)
@@ -67,9 +69,10 @@ Company-level website for Olyxee, a reliability-first AI infrastructure company.
 - Mobile drawer: glass rounded panel (`borderRadius: 28`) pinned right with matching frosted glass
 
 ## Organizational Hierarchy
-- **Olyxee** = the company (brain/strategy) — defines vision, conducts research, builds core AI
-- **OEB / EdgeAI** = sub-division (hands/execution) — deploys AI to edge devices (IoT, drones, robots, wearables, cameras, medical devices). Handles model deployment, optimization (quantization/pruning), fleet orchestration, monitoring & updates
-- **Ordo** = verification engine for AI applications (chatbots, RAG, agents) — ensures reliability before and after deployment. Integrates with OEB for edge verification
+- **Olyxee** = research and technology company focused on Organizational Intelligence, with long-term research toward Autonomous Adaptive Organizations
+- **Orgni** = primary organizational-intelligence platform and applied research environment connecting knowledge, systems and people; it does not autonomously run or redesign companies
+- **Olyxee Logistics** = vertical operational software for freight and logistics businesses; keep its commercial positioning practical
+- **EdgeAI and experimental systems** = applied research environments; do not present them as completed autonomous organizations
 
 ## Site Structure & Navigation
 Navigation: Products | Research | Community | About | Contact
@@ -105,7 +108,7 @@ Desktop CTA: "Get in Touch"
 
 ## SEO & Viewport
 - **Viewport**: App Router uses `export const viewport` in `src/app/layout.tsx`; Pages Router uses `<meta name="viewport">` via `_app.tsx` `<Head>`
-- **Layout metadata** (`src/app/layout.tsx`): Full Next.js Metadata export with title template ("Olyxee | Research and Infrastructure for AI"), description, 18 keywords, OG, Twitter cards, robots directives, and icons
+- **Layout metadata** (`src/app/layout.tsx`): Full Next.js Metadata export with the default title "Olyxee | Organizational Intelligence", description, keywords, OG, Twitter cards, robots directives, and icons
 - **Pages Router SEO** (`src/components/SEO.tsx`): Reusable component with `<Head>` — title, description, canonical, OG (with locale and image alt), Twitter. Supports optional `jsonLd` prop for page-specific structured data. Used on all Pages Router pages.
 - **Pages Router defaults** (`src/pages/_app.tsx`): Auto-canonical URLs, robots meta, og:site_name, twitter:card/creator fallbacks
 - **Product metadata**: `src/app/products/ordo/layout.tsx` exports page-specific Metadata (Ordo). There is no NRN layout/route.

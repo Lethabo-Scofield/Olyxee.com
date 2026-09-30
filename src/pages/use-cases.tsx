@@ -17,17 +17,17 @@ const fadeUp = {
 
 const UseCases: FC = () => {
   const cases = [
-    { icon: Factory, title: "Smart Manufacturing", description: "Deploy quality control and predictive maintenance models on factory floor edge devices with verified reliability.", industries: ["Automotive", "Electronics", "Pharmaceuticals", "Food & Beverage"], image: "https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=600&h=400" },
-    { icon: Stethoscope, title: "Healthcare & Medical Devices", description: "Privacy-first AI for patient monitoring, diagnostic imaging, and wearable health devices with regulatory compliance.", industries: ["Wearables", "Diagnostic Imaging", "Remote Monitoring", "Emergency Care"], image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&h=400" },
-    { icon: Bot, title: "Robotics & Automation", description: "Deploy perception, planning, and control models on robotic systems with formal verification guarantees.", industries: ["Warehouse Automation", "Agricultural Robotics", "Service Robots", "Industrial Arms"], image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=600&h=400" },
-    { icon: Car, title: "Autonomous Systems", description: "Safety-critical AI deployment for autonomous vehicles, drones, and navigation with continuous monitoring.", industries: ["Self-Driving", "Drone Operations", "Maritime Navigation", "Rail Systems"], image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0abb?auto=format&fit=crop&w=600&h=400" },
-    { icon: Wifi, title: "IoT & Edge Networks", description: "Run optimized AI models across distributed sensor networks with automatic hardware abstraction.", industries: ["Smart Cities", "Environmental Monitoring", "Energy Management", "Retail Analytics"], image: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&w=600&h=400" },
-    { icon: Building2, title: "Enterprise AI", description: "Deploy and monitor AI across enterprise infrastructure with full observability, compliance, and governance.", industries: ["Financial Services", "Insurance", "Telecommunications", "Government"], image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&h=400" },
+    { icon: Factory, title: "Manufacturing systems", description: "A complex environment for exploring how people, machines and information might coordinate across operational processes.", industries: ["Automotive", "Electronics", "Pharmaceuticals", "Food & Beverage"], image: "https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=600&h=400" },
+    { icon: Stethoscope, title: "Healthcare systems", description: "An area where organizational modelling and human-AI coordination raise important questions about privacy, oversight and responsibility.", industries: ["Wearables", "Diagnostic Imaging", "Remote Monitoring", "Emergency Care"], image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&h=400" },
+    { icon: Bot, title: "Robotics & automation", description: "Exploring how people, software and machines could coordinate within complex operational environments.", industries: ["Warehouse Automation", "Agricultural Robotics", "Service Robots", "Industrial Arms"], image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=600&h=400" },
+    { icon: Car, title: "Autonomous systems", description: "Studying coordination, oversight and adaptation in environments where software and physical systems interact.", industries: ["Self-Driving", "Drone Operations", "Maritime Navigation", "Rail Systems"], image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0abb?auto=format&fit=crop&w=600&h=400" },
+    { icon: Wifi, title: "Connected environments", description: "Considering how distributed devices and systems could share context and coordinate as conditions change.", industries: ["Smart Cities", "Environmental Monitoring", "Energy Management", "Retail Analytics"], image: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&w=600&h=400" },
+    { icon: Building2, title: "Complex organizations", description: "Researching how computational models and human-AI coordination might support learning and adaptation across organizations.", industries: ["Financial Services", "Insurance", "Telecommunications", "Government"], image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&h=400" },
   ];
 
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO title="Use Cases" description="See how Olyxee is used across manufacturing, healthcare, robotics, autonomous systems, IoT, and enterprise AI deployments." path="/use-cases" />
+      <SEO title="Research Contexts | Olyxee" description="Explore complex environments and organizational systems relevant to Olyxee's research into Organizational Intelligence." path="/use-cases" />
       <div className="grain" />
       <Header />
 
@@ -36,15 +36,15 @@ const UseCases: FC = () => {
         <div className="max-w-5xl mx-auto relative">
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="flex items-center gap-2 mb-8">
             <span className="accent-dot" />
-            <span className="text-sm font-medium text-neutral-400 uppercase tracking-widest">Use Cases</span>
+            <span className="text-sm font-medium text-neutral-400 uppercase tracking-widest">Research contexts</span>
           </motion.div>
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }} className="font-serif text-4xl sm:text-6xl lg:text-[5.5rem] text-neutral-900 tracking-tight leading-[1.05] mb-8">
-            Reliable AI across
+            Organizational Intelligence
             <br />
-            <em className="text-neutral-400">every industry</em>
+            <em className="text-neutral-400">in complex environments</em>
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-xl text-neutral-500 leading-relaxed max-w-3xl font-normal">
-            From factory floors to hospital rooms, Olyxee powers AI systems where failure is not an option.
+            Olyxee is researching how intelligence can operate across organizations and complex real-world systems. These contexts illustrate questions we are exploring, not deployed products or completed capabilities.
           </motion.p>
         </div>
       </section>
@@ -85,7 +85,7 @@ const UseCases: FC = () => {
               <em className="text-neutral-500">use case?</em>
             </h2>
             <p className="text-neutral-400 text-lg max-w-lg mx-auto mb-10 font-normal leading-relaxed">
-              We work with teams across industries. Let's discuss how Olyxee can help.
+              We welcome conversations about research, organizational systems and practical software for complex operations.
             </p>
             <Link href="/contact" className="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide">
               Contact Us <ArrowRight className="w-4 h-4" />

@@ -10,19 +10,19 @@ const studies = [
   {
     href: "/stories/freightshift",
     title: "FreightShift",
-    summary: "How a regional carrier rebuilt its dispatch loop on Orgni-verified routing agents.",
+    summary: "A look at dispatch operations and routing in a regional freight environment.",
     tag: "Logistics",
   },
   {
     href: "/stories/automation",
     title: "Enterprise automation pilot",
-    summary: "An ops team replaced 14 brittle RPA flows with a verified agent stack in 6 weeks.",
+    summary: "An enterprise automation story about operational processes and workflow change.",
     tag: "Operations",
   },
   {
     href: "/stories/accounting",
-    title: "Accounting close, accelerated",
-    summary: "A finance org cut close time by 38% with document-integrity agents in the loop.",
+    title: "Accounting close operations",
+    summary: "A finance operations story focused on the monthly accounting close.",
     tag: "Finance",
   },
 ];
@@ -30,7 +30,7 @@ const studies = [
 const CaseStudies: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO title="Case Studies" description="How teams deploy Olyxee in production: logistics, operations, and finance." path="/case-studies" />
+      <SEO title="Case Studies" description="Stories from freight, enterprise operations and finance environments." path="/case-studies" />
       <div className="grain" />
       <Header />
 
@@ -41,10 +41,11 @@ const CaseStudies: FC = () => {
             <span className="text-sm font-medium text-neutral-400 uppercase tracking-widest">Case Studies</span>
           </motion.div>
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }} className="font-serif text-4xl sm:text-6xl tracking-tight leading-[1.05] mb-6">
-            Olyxee in <em className="text-blue-500">production</em>
+            Stories from <em className="text-blue-500">complex operations</em>
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-xl text-neutral-500 leading-relaxed max-w-3xl font-normal">
-            Real deployments, measured outcomes. A look at how teams are building reliable AI on Olyxee.
+            Examples from freight, enterprise operations and finance—settings where people,
+            processes and information come together.
           </motion.p>
         </div>
       </section>

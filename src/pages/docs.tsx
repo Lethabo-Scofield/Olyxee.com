@@ -121,7 +121,7 @@ const Docs: FC = () => {
 
   return (
     <div>
-      <SEO title="Documentation" description="Developer documentation for the Olyxee platform: API reference, SDKs, quickstarts, and guides for Orgni and Olyxee's operational intelligence infrastructure." path="/docs" keywords={["Olyxee documentation", "Olyxee API", "Orgni docs", "operational intelligence", "SDK", "developer guides"]} />
+      <SEO title="Olyxee Documentation | Product Resources" description="Product resources and API access information for Orgni and Olyxee Logistics." path="/docs" keywords={["Olyxee documentation", "Olyxee API access", "Orgni resources", "Organizational Intelligence", "developer resources"]} />
       <Header />
       <DocsLayout
         tabs={TABS}
@@ -164,22 +164,22 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
 
   const products: ProductRow[] = [
     {
-      name: "Orgni · Operational workflows",
-      description: "Operational workflows is a capability of Orgni, Olyxee's operational intelligence infrastructure. Orgni connects to your business systems, APIs, databases, approvals, rules, and process state so routine work can be handled with full context and a complete decision history.",
+      name: "Orgni · Workflows",
+      description: "Orgni brings organizational knowledge, systems and people together for everyday work. These workflow resources cover connected systems, APIs, databases, approvals, rules, and process state.",
       status: "early-access",
       bg: "/images/gradient-blue-pink.webp",
       action: { kind: "external", href: "https://workflow.olyxee.com", label: "Open operational workflows" },
     },
     {
       name: "Orgni · Financial operations",
-      description: "Financial operations is a capability of Orgni. It helps finance teams compare, validate, and reconcile bank statements, ledgers, and accounting records with traceable evidence, inside the same organisational understanding Orgni uses across the business.",
+      description: "Financial operations tools help finance teams compare, validate, and reconcile bank statements, ledgers, and accounting records with traceable evidence.",
       status: "available",
       bg: "/images/gradient-pastel.webp",
       action: { kind: "external", href: "https://finance.olyxee.com", label: "Open financial operations" },
     },
     {
       name: "Orgni · Context optimization",
-      description: "Context optimization is a capability of Orgni. It helps teams track, store, compress, and reuse context across AI tools and internal copilots, so intelligent systems work from the same organisational understanding.",
+      description: "Context optimization resources for teams working with context across AI tools and internal copilots.",
       status: "private",
       bg: "/images/gradient-abstract-blue.webp",
       action: { kind: "internal", href: "/contact", label: "Talk to us" },
@@ -195,8 +195,8 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       action: { kind: "external", href: "https://logistics.olyxee.com/", label: "Visit Olyxee Logistics" },
     },
     {
-      name: "Orgni · Enterprise automation",
-      description: "Enterprise automation is a capability of Orgni. It helps organizations automate workflows, approvals, business rules, data movement, and process execution across systems, driven by live organisational context.",
+      name: "Orgni · Work across systems",
+      description: "Resources for working with workflows, approvals, business rules, data movement, and process execution across organizational systems.",
       status: "private",
       bg: "/images/gradient-blue.webp",
       action: { kind: "internal", href: "/contact", label: "Talk to us" },
@@ -297,7 +297,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
           Olyxee documentation
         </h1>
         <p className="text-neutral-600 text-[17px] leading-[1.55]">
-          Olyxee builds research and infrastructure for operational intelligence: the systems that help intelligent software understand and operate inside real businesses. Orgni is the operational intelligence layer that keeps work moving across finance, operations, logistics, and the systems your teams already use, while our solutions package that infrastructure around specific operational problems.
+          Olyxee is a research and technology company exploring the foundations of Organizational Intelligence. Orgni is an intelligence layer for everyday organizational work and an applied environment for this research. These docs focus on using Orgni and Olyxee Logistics in practical workflows.
         </p>
       </div>
 
@@ -354,7 +354,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       {/* Footer note */}
       <div className="border-t border-neutral-100 pt-8">
         <p className="text-[12px] text-neutral-400 leading-relaxed">
-          Olyxee, Research and Infrastructure for Operational Intelligence. Documentation, schemas, and APIs are continuously evolving; some surfaces are intentionally gated while they stabilize for production use.
+          Olyxee is researching Organizational Intelligence. Documentation, schemas, and APIs are continuously evolving; some surfaces are intentionally gated while they stabilize for production use.
         </p>
       </div>
     </div>
@@ -366,10 +366,10 @@ function EarlyAccessGate() {
   return (
     <div className="max-w-2xl mx-auto px-6 sm:px-8 py-20 sm:py-28">
       <h2 className="text-[28px] sm:text-[32px] font-semibold text-neutral-900 tracking-[-0.02em] mb-4">
-        Sign in for early access
+        API documentation and access
       </h2>
       <p className="text-[16px] text-neutral-600 leading-relaxed mb-8 max-w-lg">
-        Full documentation is available to early access members. Sign in or request access to explore the API, Orgni's operational intelligence infrastructure, and guides.
+        API documentation and access are being prepared. An account does not currently unlock API references, keys, or execution. Contact us to confirm product-specific availability. The sign-in and request-access links remain available for account-related requests.
       </p>
       <div className="flex flex-col sm:flex-row gap-3 mb-14">
         <a
@@ -387,13 +387,13 @@ function EarlyAccessGate() {
       </div>
       <div className="border-t border-neutral-100 pt-8">
         <h3 className="text-[13px] font-semibold text-neutral-900 uppercase tracking-wider mb-4">
-          What you get
+          Product resources
         </h3>
         <ul className="space-y-5">
           {[
-            { title: "API Reference", desc: "REST API, Python SDK, and CLI documentation." },
-            { title: "Orgni", desc: "Operational intelligence infrastructure for finance, operations, and business memory." },
-            { title: "Guides & Tutorials", desc: "Testing strategies, configuration, and best practices." },
+            { title: "API documentation", desc: "API references and related access information are being prepared; contact us to confirm availability for a specific product." },
+            { title: "Orgni", desc: "An intelligence layer for everyday organizational work and an applied environment for Olyxee's research." },
+            { title: "Guides & Tutorials", desc: "Product guides and resources; availability may vary by product." },
           ].map(item => (
             <li key={item.title}>
               <h4 className="text-[14px] font-medium text-neutral-900 mb-0.5">{item.title}</h4>
@@ -635,10 +635,10 @@ function SupportedModels() {
 
 function OrdoOverview({ onNavigate }: { onNavigate?: (tab: string, page: string) => void }) {
   return (
-    <DocPage title="What is Orgni Workflows" subtitle="The AI execution engine for business operations.">
+    <DocPage title="What is Orgni Workflows" subtitle="Guides to workflows and connected organizational systems.">
       <DocSection title="Overview">
-        <p><strong>Orgni Workflows</strong> is an AI execution engine that turns business goals into completed work. Describe what needs to be done, and Orgni Workflows plans, coordinates, and executes across your tools and systems.</p>
-        <p>Instead of building complex automations or manual workflows, Orgni Workflows handles the full goal-to-delivery pipeline for finance, compliance, HR, and enterprise operations.</p>
+        <p><strong>Orgni Workflows</strong> is an area of Orgni product documentation covering workflows and connected systems. Orgni is an intelligence layer for everyday organizational work and an applied environment for Olyxee's research into Organizational Intelligence.</p>
+        <p>The guides below cover documented workflows, integrations, and resources for finance, compliance, HR, and enterprise operations.</p>
       </DocSection>
 
       <DocSection title="Choose your use case">
@@ -725,7 +725,7 @@ function OrdoOverview({ onNavigate }: { onNavigate?: (tab: string, page: string)
       </DocSection>
 
       <DocCallout type="info">
-        Orgni Workflows is not another chatbot or model. It is infrastructure for AI reliability: a verification engine that works with any AI application.
+        The Orgni Workflows guides describe workflow resources and product operations. For the API contract and availability of specific operations, refer to the relevant reference documentation.
       </DocCallout>
     </DocPage>
   );
@@ -872,7 +872,7 @@ function OrdoRAG() {
 
 function OrdoAgents() {
   return (
-    <DocPage title="Agents" subtitle="Verify tool-using agents, multi-step workflows, and autonomous systems.">
+    <DocPage title="Agents" subtitle="Guidance for testing tool-using agents and multi-step workflows.">
       <DocSection title="What Orgni Workflows checks for agents">
         <div className="space-y-3 mt-2">
           {[

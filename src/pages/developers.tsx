@@ -26,7 +26,7 @@ const Developers: FC = () => {
 
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO title="Developers" description="Get started with Olyxee's developer tools. SDK, CLI, and API documentation for integrating AI verification into your pipeline." path="/developers" />
+      <SEO title="Developers" description="Developer resources and product-specific availability information for Orgni and Olyxee Logistics." path="/developers" />
       <div className="grain" />
       <Header />
 
@@ -43,12 +43,12 @@ const Developers: FC = () => {
             <em className="text-neutral-400">with Olyxee</em>
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-xl text-neutral-500 leading-relaxed max-w-3xl font-normal mb-10">
-            Everything you need to verify, optimize, and deploy AI models to edge hardware.
+            Explore developer resources for the products Olyxee builds for complex organizational and operational work.
           </motion.p>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} className="bg-neutral-950 rounded-2xl p-6 sm:p-8 max-w-lg">
             <div className="flex items-center justify-between mb-4">
-              <span className="text-sm text-neutral-500 font-mono">Quick Start</span>
+              <span className="text-sm text-neutral-500 font-mono">Illustrative command</span>
               <button onClick={handleCopy} className="text-neutral-500 hover:text-white transition-colors p-1" aria-label="Copy install command">
                 {copied ? <Check className="w-4 h-4 text-green-400" /> : <Copy className="w-4 h-4" />}
               </button>
@@ -70,9 +70,9 @@ const Developers: FC = () => {
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-neutral-200 rounded-2xl overflow-hidden border border-neutral-200">
             {[
-              { icon: Code2, title: "SDK", description: "Python and C++ libraries for model verification, optimization, and deployment.", status: "Available" },
-              { icon: Terminal, title: "CLI", description: "Command-line tools for managing deployments, running tests, and monitoring.", status: "Available" },
-              { icon: Package, title: "API", description: "RESTful API for programmatic access to the Orgni platform.", status: "Beta" },
+              { icon: Code2, title: "SDK", description: "Planned Python SDK interface for Olyxee product APIs; availability is to be confirmed.", status: "Planned" },
+              { icon: Terminal, title: "CLI", description: "Planned command-line interface for Olyxee products and workflows; availability is to be confirmed.", status: "Planned" },
+              { icon: Package, title: "API", description: "API documentation and access information for Orgni and Olyxee Logistics; contact us to confirm product-specific availability.", status: "To confirm" },
               { icon: BookOpen, title: "Docs", description: "Comprehensive guides, tutorials, and API reference.", status: "Available" },
             ].map((tool, idx) => {
               const Icon = tool.icon;
@@ -99,10 +99,10 @@ const Developers: FC = () => {
           </motion.div>
           <div className="space-y-0 divide-y divide-neutral-200 max-w-3xl">
             {[
-              { step: "01", title: "Install the SDK", description: "Install the Olyxee Python SDK using pip. C++ support is also available." },
-              { step: "02", title: "Import your model", description: "Load your trained model from PyTorch, TensorFlow, ONNX, or any supported framework." },
-              { step: "03", title: "Run verification", description: "Use the verification pipeline to test your model against target hardware profiles." },
-              { step: "04", title: "Execute", description: "Run your workflow with a single command. Orgni handles the rest." },
+              { step: "01", title: "SDK availability", description: "The Python SDK interface is planned; availability is to be confirmed." },
+              { step: "02", title: "Choose a product", description: "Identify the Orgni or Olyxee Logistics resources relevant to your integration." },
+              { step: "03", title: "Confirm API access", description: "Contact us to confirm product-specific API documentation and availability." },
+              { step: "04", title: "Plan your integration", description: "Use product-specific resources once documentation and access are available." },
             ].map((item, idx) => (
               <motion.div key={item.step} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={idx} variants={fadeUp} className="py-8 grid grid-cols-[auto_1fr] gap-6 items-start">
                 <span className="text-xs font-mono text-neutral-400 mt-1">{item.step}</span>

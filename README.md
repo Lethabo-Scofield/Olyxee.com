@@ -1,6 +1,6 @@
 # Olyxee
 
-Company website for **Olyxee**, a reliability-first AI infrastructure company. Marketing site presenting vision, research, products (Ordo, Addup, ODI, Cortex, Courier Loop), and the careers / internship verification system.
+Company website for **Olyxee**, a research and technology company developing the foundations of Organizational Intelligence. It presents the long-term research direction toward organizations that can learn, adapt and evolve, practical products including Orgni and Olyxee Logistics, and the careers / internship verification system.
 
 ## Stack
 

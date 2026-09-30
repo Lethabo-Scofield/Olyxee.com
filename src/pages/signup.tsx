@@ -24,40 +24,40 @@ type ToolConfig = {
 const TOOL_CONFIG: Record<Tool, ToolConfig> = {
   api: {
     kicker: "API access",
-    headline: "Build with Olyxee.",
+    headline: "Explore API access.",
     subhead:
-      "API access is rolling out in waves. Join the waitlist for early keys, sandbox quotas, and integration support.",
+      "Tell us what you are hoping to build with Olyxee. Our team can follow up about available API access and integration options.",
     features: [
-      "REST and Python SDK for Orgni, including operational workflows and financial operations",
-      "Webhooks for run completions and reconciliations",
-      "Sandbox keys with generous test quotas",
-      "Direct channel with the integrations team",
+      "Share your intended use case",
+      "Discuss Orgni and organizational workflows",
+      "Ask about current integration options",
+      "Connect with the Olyxee team",
     ],
     ctaLabel: "Join the API waitlist",
-    successTitle: "You're on the API waitlist.",
+    successTitle: "Thanks for your interest.",
     successBody: "Taking you to the documentation now.",
     redirect: { href: "/docs", label: "Go to documentation", delayMs: 1500 },
-    seoTitle: "API access waitlist",
+    seoTitle: "API access | Olyxee",
     seoDescription:
-      "Join the Olyxee API integrations waitlist. Get early API keys for Orgni, including operational workflows and financial operations, plus integration support. Read the docs while you wait.",
+      "Contact Olyxee about API access and integration options for Orgni and organizational workflows.",
   },
   general: {
     kicker: "Get started",
-    headline: "Join the waitlist.",
+    headline: "Follow our research.",
     subhead:
-      "The Olyxee Platform is coming soon. Be among the first to get access.",
+      "Hear about Olyxee's research into Organizational Intelligence and the products we build along the way.",
     features: [
-      "Real-time verification for AI outputs",
-      "Continuous evaluation and quality scoring",
-      "Production monitoring and drift detection",
-      "Team dashboards and reporting",
+      "Updates on Organizational Intelligence research",
+      "News about Orgni and organizational work",
+      "Updates on Olyxee Logistics",
+      "Occasional product and company news",
     ],
     ctaLabel: "Join waitlist",
-    successTitle: "You're on the waitlist.",
-    successBody: "We'll notify you as soon as the platform is ready.",
-    seoTitle: "Join the Waitlist",
+    successTitle: "You're on the list.",
+    successBody: "We'll share updates about Olyxee's research and products.",
+    seoTitle: "Olyxee research and product updates",
     seoDescription:
-      "Join the Olyxee Platform waitlist. Be the first to get access to AI verification, evaluation, and monitoring tools.",
+      "Sign up for updates about Olyxee's research into Organizational Intelligence and its products.",
   },
 };
 

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 const description =
-  "How a logistics operations team replaced manual coordination with Orgni, Olyxee's infrastructure for operational intelligence, automating dispatch, invoicing, and exception handling end-to-end.";
+  "A customer story about mapping supplier onboarding rules and coordinating dispatch, invoicing and exception handling with Orgni in a complex operations environment.";
 
 export const metadata: Metadata = {
   title: "A supplier process that understands its own rules | Customer story",
@@ -30,7 +30,7 @@ const breadcrumbJsonLd = {
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Automating operations end-to-end with Orgni",
+  headline: "A supplier process that understands its own rules",
   description,
   image: ["https://olyxee.com/og-image.jpg"],
   datePublished: "2025-10-01T00:00:00.000Z",

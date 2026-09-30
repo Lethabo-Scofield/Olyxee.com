@@ -18,7 +18,7 @@ const fadeUp = {
 const Technology: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO title="Technology" description="The architecture powering Orgni, Olyxee's operational intelligence infrastructure. Learn how organisational understanding, operational memory, and a model-neutral infrastructure layer keep work moving." path="/technology" />
+      <SEO title="Technology | Organizational Intelligence | Olyxee" description="Olyxee researches the foundations of Organizational Intelligence, including adaptive systems, organizational models, autonomous agents and human-AI coordination. Orgni applies this work to everyday organizational settings." path="/technology" />
       <div className="grain" />
       <Header />
 
@@ -56,13 +56,12 @@ const Technology: FC = () => {
               >
                 How Olyxee
                 <br />
-                <em className="text-white/60">works</em>
+                <em className="text-white/60">researches</em>
               </motion.h1>
             </div>
           </motion.div>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.5 }} className="text-lg text-neutral-500 leading-relaxed max-w-3xl font-normal">
-            Built on Orgni, the operational intelligence layer that keeps work moving. It understands your
-            organisation, works across the tools your teams already use, and handles the questions and routine work that create delays.
+            Olyxee is researching the foundations of Organizational Intelligence: how systems might learn from organizational activity, coordinate people and machines, and adapt over time. Orgni is an intelligence layer for everyday organizational work and an applied environment for this ongoing research.
           </motion.p>
         </div>
       </section>
@@ -73,17 +72,17 @@ const Technology: FC = () => {
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="mb-20">
             <span className="block w-12 h-0.5 bg-white/30 mb-6" />
             <h2 className="font-serif text-4xl sm:text-5xl tracking-tight mb-4">
-              Orgni <em className="text-neutral-500">Architecture</em>
+              Organizational Intelligence <em className="text-neutral-500">Research</em>
             </h2>
             <p className="text-neutral-400 text-lg max-w-3xl font-normal leading-relaxed">
-              The infrastructure layer that understands the organisation and coordinates work across people, systems, and business tools.
+              We are exploring how organizations could become more capable of understanding activity, coordinating people and software, and learning from outcomes. Autonomous Adaptive Organizations remain a long-term research goal.
             </p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5 rounded-2xl overflow-hidden">
             {[
-              { icon: Shield, title: "Goal Interpretation", description: "Describe what needs to be done. Orgni reads your organisation's systems, rules, and ownership, and breaks goals into structured, executable plans." },
-              { icon: Layers, title: "System Integration", description: "Connects to ERP, Excel, databases, and more. Orgni works with your existing systems without manual workflow building." },
-              { icon: BarChart3, title: "Transparent Execution", description: "Every action is logged with timestamps, inputs, and outputs. Full operational memory and audit trail for compliance and traceability." },
+              { icon: Shield, title: "Adaptive Organizations", description: "Researching how organizational systems might change their behavior, processes and coordination as conditions change." },
+              { icon: Layers, title: "Human-AI Coordination", description: "Exploring how people, AI agents and software could coordinate toward shared organizational objectives." },
+              { icon: BarChart3, title: "Organizational Models", description: "Studying computational models and simulation as ways to reason about organizational state, possible actions and their consequences." },
             ].map((item, idx) => {
               const Icon = item.icon;
               return (
@@ -103,16 +102,16 @@ const Technology: FC = () => {
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="mb-16">
             <span className="accent-line" />
             <h2 className="font-serif text-4xl sm:text-5xl tracking-tight text-neutral-900">
-              The deployment <em className="text-neutral-400">pipeline</em>
+              Research <em className="text-neutral-400">directions</em>
             </h2>
           </motion.div>
           <div className="divide-y divide-neutral-200 max-w-3xl">
             {[
-              { step: "01", title: "Goal Input", description: "Describe the business outcome you need. Orgni interprets the goal against how your organisation works and identifies the systems, data, and steps required.", icon: GitBranch },
-              { step: "02", title: "Planning", description: "Orgni creates a structured execution plan, mapping each step to the right tools and data sources.", icon: Shield },
-              { step: "03", title: "Execution", description: "Automated execution across connected systems including ERP, databases, spreadsheets, and communication tools.", icon: Cpu },
-              { step: "04", title: "Delivery", description: "Results are delivered as reports, notifications, or audit trails. Every output is traceable.", icon: Zap },
-              { step: "05", title: "Monitoring", description: "Full visibility into every action taken. Approval workflows let you set human checkpoints at any stage.", icon: BarChart3 },
+              { step: "01", title: "Organizational Intelligence", description: "Study how an organization might be understood as a system: its activity, relationships, processes and decisions.", icon: GitBranch },
+              { step: "02", title: "Autonomous Agents", description: "Researching agents capable of operating reliably across long-running organizational tasks and environments.", icon: Shield },
+              { step: "03", title: "Self-Improving Systems", description: "Investigating how systems might learn from outcomes and progressively improve their operation over time.", icon: Cpu },
+              { step: "04", title: "Organizational Models and Simulation", description: "Exploring computational models that may help reason about organizational states, actions and possible consequences.", icon: Zap },
+              { step: "05", title: "Human Governance", description: "Considering how human objectives, oversight and accountability can guide increasingly capable systems. These remain research questions, not delivered autonomous capabilities.", icon: BarChart3 },
             ].map((item, idx) => {
               const Icon = item.icon;
               return (
@@ -139,7 +138,7 @@ const Technology: FC = () => {
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="mb-12">
             <span className="accent-line" />
             <h2 className="font-serif text-4xl sm:text-5xl tracking-tight text-neutral-900">
-              Supported <em className="text-neutral-400">hardware</em>
+              Hardware in our <em className="text-neutral-400">technology landscape</em>
             </h2>
           </motion.div>
           <div className="flex flex-wrap justify-start gap-10 sm:gap-14">

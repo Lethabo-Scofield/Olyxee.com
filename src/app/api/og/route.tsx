@@ -64,7 +64,7 @@ export async function GET() {
               lineHeight: 1.4,
             }}
           >
-            Research and safety for artificial intelligence
+            Researching Organizational Intelligence
           </div>
           <div
             style={{

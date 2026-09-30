@@ -7,8 +7,6 @@ description: How product display names map to legacy URLs/identifiers, and which
 
 Display labels were renamed sitewide, but **URLs, domains, routes, image paths, and code identifiers were deliberately kept on the old names**. When editing copy, change only human-visible text — never the technical identifiers.
 
-Company line (current): "Research and Infrastructure for Operational Intelligence" (was "...for Artificial Intelligence"). Emphasize operational intelligence, live business context, operational memory, decision history, model-neutral architecture; avoid framing the company/Orgni as chatbot/copilot/workflow-automation/generic enterprise AI.
-
 Current public product lineup (display names): Orgni (single flagship platform that builds LIVE BUSINESS CONTEXT), Olyxee Logistics (formerly Order Loop; logistics operations platform, domain logistics.olyxee.com), Togent (Coming Soon), Ordo (Coming Soon verification engine). **"Orgni Finance", "Orgni Workflows", "Orgni Docs" are NO LONGER separate products** — they were folded into Orgni CAPABILITIES: financial operations, operational workflows, business memory. When a capability needs a tag/badge, use "Orgni · Financial operations" / "Orgni · Operational workflows" / "Orgni · Business memory".
 
 Display label → kept legacy technical name:
@@ -19,7 +17,7 @@ Display label → kept legacy technical name:
 - `Togent` — unchanged
 
 Product hierarchy decisions:
-- **Orgni** is the NEW flagship core-infrastructure product (not a rename of anything). "What is Orgni?" copy describes it as the platform connecting knowledge, documents, decisions, processes, systems, permissions, outcomes into one living operational context.
+- **Orgni** was introduced as a flagship product, not as a rename of another product. Legacy route names should not be used to infer its identity.
 - Financial operations / operational workflows / business memory (formerly Orgni Finance/Workflows/Docs) are Orgni CAPABILITIES, not separate products.
 - `/products/ordo` (legacy URL) is the **Orgni Workflows execution surface** (content: "ordo execute --goal", goal-to-delivery), now folded to plain "Orgni" — it is NOT the verification-engine Ordo. The Coming-Soon verification Ordo is positioned separately (e.g. products.tsx Ordo section). A code-review/architect pass WILL wrongly flag the /products/ordo copy as "overwriting Ordo's identity" — it is correct; the route name diverges from its displayed product.
 - **Cortex** is retired from all public-facing copy. The `/research/cortex` page was deleted and now 307-redirects to `/research`; it is removed from sitemap and llms.txt. The `@olyxee/cortex` package name and lowercase `cortex` internal search-keyword tokens are kept (not user-visible). Olyxee Cortex / Grysics / Addup / Ordo must not appear as visible product names anywhere.

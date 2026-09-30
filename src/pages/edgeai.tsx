@@ -19,33 +19,33 @@ const fadeUp = {
 const capabilities = [
   {
     icon: CircuitBoard,
-    title: "Hardware Abstraction",
-    description: "Deploy to any edge device: NVIDIA Jetson, Raspberry Pi, Arduino, ESP32, with a single unified pipeline. No device-specific rewrites.",
+    title: "Hardware diversity",
+    description: "Exploring how intelligent systems might work across different edge devices and hardware constraints.",
   },
   {
     icon: Gauge,
-    title: "Runtime Optimization",
-    description: "Automatic quantization, pruning, and compilation tailored to each target device. Maximum performance from minimum resources.",
+    title: "Efficient computation",
+    description: "Researching how computational approaches can adapt to the resource limits of real-world systems.",
   },
   {
     icon: Radio,
-    title: "Fleet Orchestration",
-    description: "Manage thousands of edge devices from a single control plane. Over-the-air updates, version control, and rollback across your entire fleet.",
+    title: "Distributed coordination",
+    description: "Investigating how distributed systems and intelligent agents can coordinate across connected environments.",
   },
   {
     icon: Shield,
-    title: "Secure Execution",
-    description: "Encrypted model delivery, secure enclaves, and tamper detection. Your models stay protected from device to cloud.",
+    title: "Trust and governance",
+    description: "Considering security, oversight and governance as essential questions for intelligence operating in real environments.",
   },
   {
     icon: Layers,
-    title: "Multi-Model Pipelines",
-    description: "Chain multiple models on a single device: preprocessing, inference, and postprocessing, orchestrated as one coherent pipeline.",
+    title: "Systems of models",
+    description: "Exploring how machine intelligence components might work together within larger systems.",
   },
   {
     icon: Server,
-    title: "Edge-Cloud Sync",
-    description: "Seamless data flow between edge and cloud. Local inference with cloud fallback, telemetry aggregation, and continuous learning loops.",
+    title: "Connected environments",
+    description: "Studying how local and cloud-based systems can share context while operating across different environments.",
   },
 ];
 
@@ -61,14 +61,14 @@ const hardwareGradients = [
 ];
 
 const supportedHardware = [
-  { name: "NVIDIA Jetson", category: "GPU" },
-  { name: "Raspberry Pi", category: "SBC" },
-  { name: "Arduino", category: "MCU" },
-  { name: "ESP32", category: "MCU" },
-  { name: "Intel NUC", category: "x86" },
-  { name: "Google Coral", category: "TPU" },
-  { name: "Qualcomm RB5", category: "SoC" },
-  { name: "BeagleBone", category: "SBC" },
+  { name: "NVIDIA Jetson", category: "GPU platform" },
+  { name: "Raspberry Pi", category: "SBC platform" },
+  { name: "Arduino", category: "MCU platform" },
+  { name: "ESP32", category: "MCU platform" },
+  { name: "Intel NUC", category: "x86 platform" },
+  { name: "Google Coral", category: "TPU platform" },
+  { name: "Qualcomm RB5", category: "SoC platform" },
+  { name: "BeagleBone", category: "SBC platform" },
 ];
 
 const EdgeAI: FC = () => {
@@ -82,8 +82,8 @@ const EdgeAI: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
       <SEO
-        title="EdgeAI | Olyxee Edge Box"
-        description="Olyxee Edge Box (OEB) is our execution division, deploying AI into real-world systems across edge devices, factories, and autonomous platforms."
+        title="Edge Systems Research | Olyxee"
+        description="Olyxee explores edge systems as part of its broader research into Organizational Intelligence and coordination across complex environments."
         path="/edgeai"
       />
 
@@ -123,7 +123,7 @@ const EdgeAI: FC = () => {
               transition={{ delay: 0.3, duration: 0.5 }}
               className="mt-8 flex flex-col items-center gap-4"
             >
-              <span className="text-sm font-medium text-white/70 tracking-widest uppercase">Olyxee Edge Box</span>
+              <span className="text-sm font-medium text-white/70 tracking-widest uppercase">Olyxee · Edge Systems Research</span>
               <div className="w-32 h-[2px] bg-white/10 rounded-full overflow-hidden">
                 <motion.div
                   className="h-full bg-gradient-to-r from-indigo-500 via-cyan-400 to-orange-400 rounded-full"
@@ -149,7 +149,7 @@ const EdgeAI: FC = () => {
           >
             <div className="inline-flex items-center gap-2.5 px-4 py-2 bg-neutral-100 text-neutral-600 rounded-full text-xs font-medium mb-8 border border-neutral-200/60">
               <Box className="w-3.5 h-3.5" />
-              Olyxee Edge Box
+              Edge systems research
             </div>
           </motion.div>
 
@@ -159,9 +159,9 @@ const EdgeAI: FC = () => {
             transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
             className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 leading-[1.08] tracking-tight mb-5"
           >
-            AI that runs
+            Exploring intelligence
             <br />
-            <em className="text-neutral-400">in the real world</em>
+            <em className="text-neutral-400">in complex environments</em>
           </motion.h1>
 
           <motion.p
@@ -170,8 +170,7 @@ const EdgeAI: FC = () => {
             transition={{ duration: 0.8, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
             className="text-lg text-neutral-500 max-w-xl leading-relaxed font-normal mb-10"
           >
-            Olyxee Edge Box (OEB) is our execution division. The hands of Olyxee.
-            We take AI from the lab and deploy it into the real world.
+            Olyxee is exploring how machine intelligence can operate across real-world systems. This work is one research direction within our broader effort toward Organizational Intelligence—not a solved capability or a separate execution division.
           </motion.p>
 
           <motion.div
@@ -184,7 +183,7 @@ const EdgeAI: FC = () => {
               href="/docs"
               className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-black transition-all text-sm"
             >
-              Explore OEB <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+              Explore our research <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </Link>
             <a
               href="https://orgni.olyxee.com"
@@ -209,13 +208,13 @@ const EdgeAI: FC = () => {
           >
             <img
               src="/images/edge-ai-grid.png"
-              alt="AI-powered computer vision across real-world environments. Object detection, pose estimation, anomaly detection, and scene analysis running on edge devices"
+              alt="Illustration of edge computing systems in real-world environments"
               className="w-full h-auto"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-10">
-              <p className="text-white/90 text-base sm:text-lg font-medium">Computer vision at the edge</p>
-              <p className="text-white/50 text-sm mt-1.5 max-w-xl font-normal">Object detection, pose estimation, anomaly detection, and scene analysis, deployed across industrial, automotive, and public safety environments.</p>
+              <p className="text-white/90 text-base sm:text-lg font-medium">Intelligence in real-world systems</p>
+              <p className="text-white/50 text-sm mt-1.5 max-w-xl font-normal">We are exploring how machine intelligence can work within complex environments and operational systems.</p>
             </div>
           </motion.div>
         </div>
@@ -231,10 +230,10 @@ const EdgeAI: FC = () => {
             className="text-center mb-20 sm:mb-28"
           >
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-5">
-              How OEB fits into <em className="text-neutral-400">Olyxee</em>
+              How this research connects to <em className="text-neutral-400">Olyxee</em>
             </h2>
             <p className="text-lg text-neutral-400 font-normal max-w-xl mx-auto">
-              Three layers working together to deliver trustworthy AI.
+              Different parts of our work, from long-term research to software used in practice.
             </p>
           </motion.div>
 
@@ -242,20 +241,20 @@ const EdgeAI: FC = () => {
             {[
               {
                 label: "Olyxee",
-                role: "The Brain",
-                description: "Defines vision, conducts research, and builds core AI capabilities. Strategy and intelligence originate here.",
+                role: "Research & technology",
+                description: "Researching the foundations of Organizational Intelligence and how organizations might learn, adapt and improve.",
                 bg: "/images/gradient-blue.webp",
               },
               {
-                label: "OEB",
-                role: "The Hands",
-                description: "Deploys AI into real-world systems. Takes models from lab to production across edge hardware at scale.",
+                label: "Research",
+                role: "Edge systems",
+                description: "Exploring how machine intelligence may operate across devices and complex real-world environments.",
                 highlight: true,
               },
               {
                 label: "Orgni",
-                role: "Execution Engine",
-                description: "Turns business goals into completed operations through its operational workflows. Plans, coordinates, and executes across tools and systems end-to-end.",
+                role: "Organizational work",
+                description: "An intelligence layer for everyday organizational work and an applied environment for Olyxee's research.",
                 bg: "/images/gradient-yellow-green.webp",
               },
             ].map((item, idx) => (
@@ -301,10 +300,10 @@ const EdgeAI: FC = () => {
             className="text-center mb-20 sm:mb-28"
           >
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight mb-5">
-              Edge <em className="text-neutral-400">capabilities</em>
+              Edge systems <em className="text-neutral-400">research</em>
             </h2>
             <p className="text-lg text-neutral-500 font-normal max-w-xl mx-auto">
-              Everything you need to run AI at the edge, built in.
+              Areas we are exploring as part of research into machine intelligence in real-world systems.
             </p>
           </motion.div>
 
@@ -341,10 +340,10 @@ const EdgeAI: FC = () => {
             className="text-center mb-20 sm:mb-28"
           >
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-5">
-              Supported <em className="text-neutral-400">hardware</em>
+              Hardware <em className="text-neutral-400">examples</em>
             </h2>
             <p className="text-neutral-400 text-lg font-normal max-w-2xl mx-auto">
-              One pipeline, any device. OEB abstracts hardware differences so you write your model once and deploy everywhere.
+              These examples represent hardware platforms relevant to edge systems research; they are not a statement of product support.
             </p>
           </motion.div>
 
@@ -384,19 +383,19 @@ const EdgeAI: FC = () => {
               transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             >
               <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight mb-8">
-                Deploy AI
+                Explore intelligence
                 <br />
-                <em className="text-neutral-400">at the edge</em>
+                <em className="text-neutral-400">in real systems</em>
               </h2>
               <p className="text-neutral-500 text-lg mb-12 font-normal leading-relaxed">
-                Get your models running on real hardware in minutes. OEB handles the infrastructure. You focus on the intelligence.
+                We are investigating how machine intelligence can operate across real-world systems and contribute to the wider Organizational Intelligence research direction.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link
                   href="/developers"
                   className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-neutral-900 text-white rounded-full font-medium hover:bg-black transition-all text-sm"
                 >
-                  Get Started <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                  Explore Olyxee <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                 </Link>
                 <Link
                   href="/docs"

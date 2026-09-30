@@ -22,8 +22,8 @@ const Logistics: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 overflow-x-hidden">
       <SEO
-        title="Olyxee Logistics, Run cross-border logistics end to end"
-        description="Olyxee Logistics is a logistics operations platform for managing customers, invoices, cross-border orders, warehouse cargo matching, shipment statuses and customer tracking."
+        title="Olyxee Logistics | Freight Operations Platform"
+        description="Infrastructure for modern freight operations. Olyxee Logistics brings quotes, orders, payments, cargo, warehouse activity, tracking and customer communication into one platform."
         path="/solutions/logistics"
         keywords={[
           "Olyxee Logistics",
@@ -47,9 +47,9 @@ const Logistics: FC = () => {
               transition={{ duration: 0.9, delay: 0.1, ease }}
               className="col-span-12 lg:col-span-9 font-serif text-[2.75rem] sm:text-[5rem] md:text-[6.5rem] lg:text-[8rem] xl:text-[9rem] tracking-[-0.03em] leading-[0.9] break-words"
             >
-              The
+              Infrastructure
               <br />
-              <em className="text-amber-500 not-italic font-serif italic">Loop.</em>
+              <em className="text-amber-500 not-italic font-serif italic">for freight.</em>
             </motion.h1>
 
             <motion.div
@@ -59,7 +59,7 @@ const Logistics: FC = () => {
               className="col-span-12 lg:col-span-3 lg:pb-6"
             >
               <p className="text-lg sm:text-xl text-neutral-700 leading-relaxed max-w-sm">
-                A logistics operations platform for managing customers, invoices, cross-border orders, warehouse cargo matching, shipment statuses and customer tracking.
+                An applied operational platform built by Olyxee for modern freight operations: manage customers, invoices, cross-border orders, warehouse cargo matching, shipment statuses and customer tracking in one place.
               </p>
             </motion.div>
           </div>
@@ -74,7 +74,7 @@ const Logistics: FC = () => {
             >
               <Image
                 src="/images/logistics/hero-iso.png"
-                alt="Olyxee Logistics, a closed loop of trucks, packages, tracking, and delivery"
+                alt="Olyxee Logistics platform for freight operations, tracking, and delivery"
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 66vw"
@@ -240,7 +240,7 @@ const Logistics: FC = () => {
                 Notify.
               </h2>
               <p className="text-base text-neutral-500 font-normal leading-relaxed max-w-sm">
-                Every status change sends a branded SMS and email automatically. Silence the "where is my order?" inbox.
+                Send branded SMS and email updates when shipment statuses change, helping customers follow their orders.
               </p>
             </div>
 
@@ -256,7 +256,7 @@ const Logistics: FC = () => {
               <p className="absolute bottom-6 left-6 right-6 font-serif italic text-2xl text-white leading-tight">
                 "Where is my order?"
                 <span className="block not-italic font-mono text-[10px] tracking-[0.2em] text-white/60 mt-3">
-                  — A QUESTION YOU WON'T HEAR ANYMORE
+                  — KEEP CUSTOMERS INFORMED
                 </span>
               </p>
             </div>
@@ -282,7 +282,7 @@ const Logistics: FC = () => {
                 DELIVERED · 14:02
               </p>
               <p className="font-serif text-3xl sm:text-4xl tracking-tight leading-tight max-w-md">
-                The only surprise at the door is the package.
+                Keep deliveries and customer updates connected.
               </p>
             </div>
           </motion.div>
