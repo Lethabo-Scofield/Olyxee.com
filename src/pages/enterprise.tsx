@@ -508,39 +508,6 @@ const Enterprise: FC = () => {
         </motion.div>
       </section>
 
-      {/* === EXPLORE MORE === */}
-      <section className="py-24 sm:py-36 px-4 sm:px-6 max-w-7xl mx-auto border-t border-black/5">
-        <h2 className="text-[2rem] font-medium tracking-tighter text-[#111] mb-10">
-          Explore more
-        </h2>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[
-            { title: "Solutions", desc: "Orgni and operational software for complex organizations.", link: "/signup", image: "/images/enterprise/explore-solutions.png", date: "Jun 2026" },
-            { title: "Research", desc: "Orgni is an applied environment for Olyxee's research into Organizational Intelligence.", link: "https://orgni.olyxee.com/thesis", image: "/images/enterprise/explore-research.png", date: "May 2026" },
-            { title: "Developers", desc: "Explore developer resources for Orgni and Olyxee Logistics.", link: "/docs", image: "/images/enterprise/explore-developers.png", date: "Jul 2026" },
-          ].map((card) => (
-            <Link key={card.title} href={card.link} className="block group">
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-md">
-                <Image
-                  src={card.image}
-                  alt={`${card.title} illustration`}
-                  fill
-                  sizes="(max-width: 640px) 100vw, 33vw"
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-                />
-              </div>
-              <div className="pt-5">
-                <h3 className="text-[1.35rem] font-medium tracking-tight text-[#111] mb-2 group-hover:underline underline-offset-4 decoration-1">
-                  {card.title}
-                </h3>
-                <p className="text-[1.05rem] text-[#4a5568] leading-relaxed mb-3">{card.desc}</p>
-                <p className="text-[0.85rem] text-neutral-500">{card.date}</p>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
-
       {/* === FINAL CTA === */}
       <section className="py-24 sm:py-36 px-4 sm:px-6 text-center max-w-4xl mx-auto border-t border-black/5">
         <div className="flex flex-col sm:flex-row gap-6 items-center justify-center">
