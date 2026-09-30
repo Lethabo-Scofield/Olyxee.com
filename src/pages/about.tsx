@@ -302,7 +302,7 @@ const About: FC = () => {
         </section>
 
         {/* === FROM THE FOUNDER === */}
-        <section className="relative py-24 sm:py-36 bg-neutral-50/60 border-t border-neutral-200/70">
+        <section id="founder" className="relative scroll-mt-24 py-24 sm:py-36 bg-neutral-50/60 border-t border-neutral-200/70">
           <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
             <motion.p
               initial={{ opacity: 0, y: 12 }}
@@ -324,17 +324,17 @@ const About: FC = () => {
             >
               <span
                 aria-hidden
-                className="font-serif text-neutral-200 text-[7rem] sm:text-[10rem] leading-none block -mb-10 sm:-mb-16 -ml-1"
+                className="font-serif text-blue-200 text-[7rem] sm:text-[10rem] leading-none block -mb-10 sm:-mb-16 -ml-1"
               >
                 &ldquo;
               </span>
-              <blockquote className="font-serif text-[1.75rem] sm:text-4xl lg:text-[3rem] text-neutral-900 leading-[1.18] tracking-tight space-y-6">
-                <p>Smarter tools are only the beginning.</p>
-                <p>
-                  The real frontier is organizations that{" "}
-                  <strong className="font-semibold text-neutral-900">learn from experience, adapt to change, and evolve over time.</strong>
+              <blockquote className="font-sans text-neutral-900">
+                <p className="text-3xl font-bold leading-[1.16] tracking-[-0.04em] sm:text-5xl lg:text-[3.5rem]">
+                  We&apos;re building toward a future where organizations don&apos;t just use smarter tools—they{" "}
+                  <span className="text-orange-600">learn from experience</span>,{" "}
+                  <span className="text-blue-600">adapt to change</span>, and{" "}
+                  <span className="text-emerald-700">evolve over time.</span>
                 </p>
-                <p>That is the future we are working toward at Olyxee.</p>
               </blockquote>
 
               <div className="mt-12 sm:mt-14 pt-6 border-t border-neutral-200 flex flex-wrap items-center justify-between gap-y-5 gap-x-6">
