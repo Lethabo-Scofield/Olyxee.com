@@ -99,7 +99,7 @@ const About: FC = () => {
         {/* === HERO === */}
         <section className="relative pt-36 sm:pt-44 lg:pt-48 pb-16 sm:pb-20 px-4 sm:px-6 bg-white">
           <div className="relative max-w-6xl mx-auto">
-            {/* Hero card: Enterprise AI banner (heading baked into image) */}
+            {/* Hero card: uploaded Self-Driving Company banner */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
@@ -107,12 +107,12 @@ const About: FC = () => {
               className="relative overflow-hidden rounded-3xl ring-1 ring-neutral-900/10 shadow-2xl shadow-neutral-900/10 bg-white aspect-[16/9] sm:aspect-[16/10] lg:aspect-[21/9]"
             >
               <Image
-                src="/images/hero-enterprise-ai.png"
-                alt=""
+                src="/images/about-self-driving-company.png"
+                alt="The Self-Driving Company — Orgni, Olyxee's operational intelligence infrastructure"
                 fill
                 priority
                 sizes="(min-width: 1280px) 1152px, 100vw"
-                className="object-cover object-center"
+                className="object-contain object-center"
               />
               <h1 className="sr-only">About Olyxee: Organizational Intelligence research</h1>
             </motion.div>
