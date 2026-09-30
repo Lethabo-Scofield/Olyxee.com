@@ -1,0 +1,376 @@
+Update the content of the main Olyxee website to reflect Olyxee’s new company direction.
+
+IMPORTANT:
+- Do NOT redesign the website.
+- Do NOT change the visual style.
+- Do NOT change colors, typography, spacing, animations, components, layouts, cards, navigation structure, responsiveness, or imagery.
+- Do NOT introduce a new design system.
+- Do NOT rebuild existing sections.
+- Preserve the existing frontend architecture and styling exactly as much as possible.
+- This task is primarily copy/content replacement.
+- You may adjust text lengths where required so existing layouts remain clean.
+- Do not remove Orgni or Olyxee Logistics. Reposition them within the new company vision.
+- Inspect the existing website first and update the relevant copy in the existing components/pages.
+
+# New Olyxee Direction
+
+Olyxee is no longer positioned simply as an AI company or as a company building operational-intelligence software.
+
+Olyxee is a research and technology company focused on:
+
+**Organizational Intelligence**
+
+Our long-term research objective is to develop **Autonomous Adaptive Organizations**: organizations capable of learning from experience, coordinating humans and machines, adapting their operations, redesigning parts of themselves, and becoming progressively more capable over time.
+
+The larger vision:
+
+**Build organizations that can evolve themselves.**
+
+We believe AI will eventually change the nature of the organization itself.
+
+Today, companies use AI as a tool.
+
+The future we are pursuing is different: organizations where intelligence becomes part of the underlying system, continuously observing, reasoning, coordinating, learning, adapting, and eventually improving how the organization itself operates.
+
+This is a long-term research direction. Do not write as though Olyxee has already solved this problem.
+
+Avoid exaggerated claims such as:
+- “We have built autonomous organizations.”
+- “Our AI runs entire companies.”
+- “Orgni can predict the future of your business.”
+- “We have solved organizational intelligence.”
+
+Use language such as:
+- “We are researching…”
+- “We are building toward…”
+- “Our long-term goal…”
+- “We believe…”
+- “We are exploring…”
+
+# Primary Brand Positioning
+
+Use:
+
+**Olyxee**
+
+**Organizational Intelligence**
+
+Primary tagline:
+
+**Building organizations that can evolve themselves.**
+
+Supporting statement:
+
+Olyxee is a research and technology company exploring how artificial intelligence can transform organizations from systems operated with AI into intelligent systems capable of learning, adapting and improving over time.
+
+A more technical supporting statement can be used where appropriate:
+
+We research computational approaches to organizational intelligence, including autonomous agents, multi-agent systems, organizational modelling, adaptive systems, simulation, machine learning and human-AI coordination.
+
+Do not overload the homepage hero with technical terminology.
+
+The homepage should feel ambitious and understandable first.
+
+# Homepage Hero
+
+Replace the current positioning with approximately:
+
+Headline:
+
+**Building organizations that can evolve themselves.**
+
+Supporting copy:
+
+Olyxee is researching the foundations of Organizational Intelligence: systems that can learn how organizations operate, coordinate humans and machines, adapt to changing environments and progressively improve how work gets done.
+
+CTA buttons should continue pointing to the most relevant existing destinations.
+
+Do not alter button styling.
+
+If there is an existing small label above the hero heading, use:
+
+**Organizational Intelligence**
+
+# Vision Section
+
+Update the existing vision/company-introduction section around this idea:
+
+Humanity has built machines that calculate, communicate, generate and reason.
+
+But organizations themselves remain dependent on fragmented systems, processes and human coordination.
+
+Olyxee is exploring a different future.
+
+We envision organizations where intelligence exists throughout the system: observing what is happening, learning from outcomes, coordinating people and machines, adapting operations and helping the organization continuously improve.
+
+Our long-term goal is not simply to put AI inside organizations.
+
+It is to investigate whether the organization itself can become an adaptive intelligent system.
+
+End this section with something concise such as:
+
+**From organizations that use intelligence to organizations that embody it.**
+
+# Research Positioning
+
+Where the current website talks about Olyxee's technology, research or infrastructure, reposition it around the following research areas:
+
+### Organizational Intelligence
+
+Understanding how organizations can behave as intelligent computational systems.
+
+### Adaptive Organizations
+
+Researching systems capable of changing their behaviour, processes and coordination structures as conditions change.
+
+### Human-AI Coordination
+
+Developing architectures where humans, AI agents, software and machines can coordinate toward shared organizational objectives.
+
+### Organizational Models and Simulation
+
+Exploring computational models that allow intelligent systems to reason about organizational state, possible actions and their consequences.
+
+### Autonomous Agents
+
+Researching agents capable of operating reliably across long-running organizational tasks and environments.
+
+### Self-Improving Systems
+
+Investigating how organizational systems can learn from outcomes and progressively improve their own operation.
+
+Keep these as research directions, not claims of completed technology.
+
+# Position Orgni Correctly
+
+Orgni remains one of Olyxee's primary products, but it should now be positioned as an important step toward the Organizational Intelligence vision.
+
+Do NOT describe Orgni as the entirety of Olyxee.
+
+Suggested positioning:
+
+**Orgni**
+
+**The intelligence layer for everyday organizational work.**
+
+Orgni connects organizational knowledge, systems and people so employees and AI agents can access the information they need to understand work and act with greater context.
+
+Orgni is also an applied environment for Olyxee's broader research into Organizational Intelligence.
+
+Where appropriate explain that Orgni is moving toward helping organizations:
+
+- connect fragmented operational information;
+- provide organizational context to people and AI agents;
+- coordinate work across systems;
+- understand organizational activity;
+- support increasingly intelligent workflows and agents.
+
+Do NOT claim that Orgni currently autonomously runs or redesigns companies.
+
+If Teams integration is currently mentioned, preserve it as a practical interface:
+
+Employees can interact with Orgni through familiar workplace environments such as Microsoft Teams instead of constantly switching between systems.
+
+The message should be:
+
+**Orgni is where parts of Olyxee's research become usable inside real organizations.**
+
+# Position Olyxee Logistics Correctly
+
+Olyxee Logistics should remain clearly commercial and practical.
+
+Do not awkwardly turn it into an AI research product.
+
+Position it as an **applied operational platform built by Olyxee**.
+
+Suggested positioning:
+
+**Olyxee Logistics**
+
+**Infrastructure for modern freight operations.**
+
+Olyxee Logistics gives freight and logistics businesses a unified platform for managing quotes, orders, payments, cargo, warehouse activity, tracking and customer communication.
+
+It demonstrates Olyxee's ability to deploy software into complex real-world operational environments.
+
+Where appropriate connect it subtly to the larger company:
+
+Real operational environments such as logistics provide Olyxee with practical experience in building systems that must coordinate information, people, processes and decisions across complex organizations.
+
+Do not overstate this connection.
+
+The Logistics page should still primarily sell the logistics platform to logistics customers.
+
+# Relationship Between Olyxee, Orgni and Logistics
+
+The website should communicate this hierarchy clearly:
+
+**Olyxee**
+Research and technology company focused on Organizational Intelligence.
+
+↓
+
+**Research**
+Long-term work toward intelligent, adaptive organizations.
+
+↓
+
+**Orgni**
+Primary organizational-intelligence platform and applied research environment.
+
+↓
+
+**Olyxee Logistics**
+Vertical operational software built for freight and logistics businesses.
+
+Do not make visitors think Olyxee is merely a parent company containing unrelated SaaS products.
+
+The common thread is complex organizations and operational systems.
+
+# About Page
+
+Rewrite the About page substantially while preserving its existing design.
+
+Use the following narrative:
+
+## About Olyxee
+
+Olyxee is a research and technology company exploring one question:
+
+**Can an organization itself become intelligent?**
+
+Artificial intelligence has rapidly improved the capabilities of individual software systems. Models can reason, generate content, write software, use tools and increasingly perform complex tasks.
+
+Organizations, however, remain collections of fragmented systems, people, processes and decisions.
+
+We believe the next frontier is not simply giving every employee an AI assistant.
+
+It is understanding how intelligence can exist at the level of the organization itself.
+
+Olyxee researches systems that can observe organizational activity, coordinate humans and machines, learn from outcomes, adapt to changing environments and progressively improve how organizations operate.
+
+Our long-term research direction is toward **Autonomous Adaptive Organizations**: organizations capable of learning and evolving their own operation while remaining aligned with human objectives and governance.
+
+We are still early.
+
+Orgni, Olyxee Logistics and our experimental systems provide environments where we can build, test and learn from technologies that move us toward that future.
+
+### Mission
+
+**Develop the foundations of Organizational Intelligence.**
+
+### Vision
+
+**A future where organizations can learn, adapt and evolve.**
+
+### Long-Term Goal
+
+**Build organizations that can evolve themselves.**
+
+# Company Language
+
+Throughout the website replace generic phrases where possible.
+
+Avoid excessive use of:
+- AI-powered
+- cutting-edge AI
+- revolutionary AI
+- next-generation AI
+- intelligent solutions
+- digital transformation
+- unlock the power of AI
+- empower businesses with AI
+- AI solutions for every business
+
+These make Olyxee sound like a generic AI consultancy.
+
+Prefer specific terms:
+- Organizational Intelligence
+- adaptive systems
+- autonomous agents
+- organizational systems
+- human-AI coordination
+- machine intelligence
+- computational organizations
+- organizational learning
+- operational systems
+- research
+- infrastructure
+- real-world environments
+
+# Company Description
+
+Where a short company description is needed, use:
+
+**Olyxee is a research and technology company developing the foundations of Organizational Intelligence — machine intelligence for organizations capable of learning, adapting and improving over time.**
+
+For very short areas:
+
+**Researching Organizational Intelligence.**
+
+Or:
+
+**Building organizations that can evolve themselves.**
+
+# SEO / Metadata
+
+Update textual metadata where appropriate, but do not change technical SEO architecture.
+
+Suggested homepage title:
+
+**Olyxee | Organizational Intelligence**
+
+Suggested description:
+
+**Olyxee is a research and technology company developing the foundations of Organizational Intelligence and building toward organizations capable of learning, adapting and evolving.**
+
+Orgni:
+
+**Orgni by Olyxee | Organizational Intelligence Platform**
+
+Logistics:
+
+**Olyxee Logistics | Freight Operations Platform**
+
+About:
+
+**About Olyxee | Organizational Intelligence Research**
+
+# Tone
+
+The writing should be:
+- ambitious;
+- research-driven;
+- technically credible;
+- simple;
+- confident without pretending unsolved problems have been solved;
+- futuristic without sounding like science-fiction marketing;
+- understandable to engineers, researchers, enterprises, investors and potential hires.
+
+The website should feel like a company pursuing a difficult 10–20 year technical mission while simultaneously shipping useful technology today.
+
+Think:
+
+**Large long-term research mission + concrete products today.**
+
+Do not make the entire website philosophical. Product sections should remain practical and explain what the actual products currently do.
+
+# Final Requirement
+
+After making the content changes:
+
+1. Review every major page and component containing company positioning.
+2. Remove old messaging that conflicts with the Organizational Intelligence direction.
+3. Check that Olyxee, Orgni and Olyxee Logistics each have clearly different roles.
+4. Ensure no unsupported technical capability has been claimed.
+5. Ensure the site consistently communicates:
+
+**Olyxee → Organizational Intelligence**
+
+**Mission → Develop the foundations of Organizational Intelligence**
+
+**Vision → Organizations capable of learning, adapting and evolving**
+
+**Long-term goal → Build organizations that can evolve themselves**
+
+6. Do not modify the visual design or styling while doing this work.
