@@ -7,6 +7,7 @@ import SEO from "../../components/SEO";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 import { internshipRoles } from "../../lib/careers-roles";
+import { rememberCareerApplication } from "../../lib/career-confirmation";
 import { schools } from "../../lib/schools";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -99,7 +100,11 @@ const InternshipsPage: FC = () => {
       }
       setSubmitted(true);
       setSubmitting(false);
-      if (typeof window !== "undefined") {
+      if (rememberCareerApplication(roleSlug)) {
+        void router.push("/careers/application-received").catch(() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      } else {
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
     } catch (err) {
@@ -329,7 +334,7 @@ const InternshipsPage: FC = () => {
                 </h3>
                 <p className="text-[15px] text-neutral-700 max-w-md mx-auto leading-relaxed">
                   Thanks, we have it. If we would like to move forward, you
-                  will hear from us at the email you provided within 14 days.
+                   will hear from us at the email you provided within two to three weeks.
                 </p>
                 <Link
                   href="/careers"

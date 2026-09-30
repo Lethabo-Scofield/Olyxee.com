@@ -1,5 +1,6 @@
 import { FC, useState } from "react";
 import type { GetStaticPaths, GetStaticProps } from "next";
+import { useRouter } from "next/router";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Briefcase, MapPin, CheckCircle } from "lucide-react";
@@ -12,6 +13,7 @@ import {
   type Role,
   type Question,
 } from "../../lib/careers-roles";
+import { rememberCareerApplication } from "../../lib/career-confirmation";
 
 interface Props {
   role: Role;
@@ -26,6 +28,7 @@ const labelClass = "block text-sm font-medium text-neutral-900 mb-2";
 const hintClass = "text-[13px] text-neutral-500 mt-2 leading-relaxed";
 
 const PaidRolePage: FC<Props> = ({ role }) => {
+  const router = useRouter();
   const [firstName, setFirstName] = useState("");
   const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
@@ -83,7 +86,11 @@ const PaidRolePage: FC<Props> = ({ role }) => {
       }
       setSubmitted(true);
       setSubmitting(false);
-      if (typeof window !== "undefined") {
+      if (rememberCareerApplication(role.slug)) {
+        void router.push("/careers/application-received").catch(() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      } else {
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
     } catch (err) {
@@ -294,7 +301,7 @@ const PaidRolePage: FC<Props> = ({ role }) => {
                 <p className="text-sm text-neutral-500 max-w-md mx-auto font-normal leading-relaxed">
                   Thanks for the care you put in. We read every word. If
                   we&apos;d like to move forward, you&apos;ll hear from us at
-                  the email you provided within 14 days.
+                   the email you provided within two to three weeks.
                 </p>
                 <Link
                   href="/careers"
