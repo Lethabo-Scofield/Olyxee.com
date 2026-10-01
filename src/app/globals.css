@@ -411,8 +411,8 @@ nextjs-portal {
 }
 
 .research-page .research-hero {
+  position: relative;
   width: 100%;
-  padding: clamp(24px, 4vw, 48px) 20px 0;
   background: var(--research-background);
 }
 
@@ -426,33 +426,32 @@ nextjs-portal {
 }
 
 .research-page .research-hero-heading {
-  max-width: 1120px;
-  margin: 0 auto 20px;
+  position: absolute;
+  z-index: 1;
+  top: 24px;
+  left: max(20px, calc((100% - 1120px) / 2));
   text-align: left;
 }
 
 .research-page .research-motion {
   position: relative;
+  overflow: hidden;
   width: 100%;
-  max-width: 480px;
-  aspect-ratio: 4 / 5;
+  max-width: 960px;
+  /* Trim only the clip's empty top/bottom canvas. The motion artwork stays
+     intact: its bounds across every frame are inside this 244–1176 window. */
+  aspect-ratio: 1080 / 932;
   margin: 0 auto;
-}
-
-@media (min-width: 640px) {
-  .research-page .research-hero {
-    padding-right: 32px;
-    padding-left: 32px;
-  }
 }
 
 .research-page .research-motion-video {
   position: absolute;
   z-index: 0;
-  inset: 0;
+  left: 0;
+  top: calc(-100% * 244 / 932);
   display: block;
   width: 100%;
-  height: 100%;
+  height: calc(100% * 1350 / 932);
   object-fit: contain;
   object-position: center;
 }

@@ -108,7 +108,7 @@ const Research: FC = () => {
       <div className="grain" />
       <Header />
 
-      <main className="pt-20">
+      <main className="pt-14">
         <section className="research-hero" aria-labelledby="research-heading">
           <div className="research-hero-heading">
             <h1 id="research-heading" className="research-display">Research</h1>
@@ -137,7 +137,7 @@ const Research: FC = () => {
         </section>
 
         {/* Archive */}
-        <section id="archive" className="research-archive scroll-mt-24 px-5 pb-24 pt-16 sm:px-8 sm:pb-32 sm:pt-24" aria-labelledby="archive-heading">
+        <section id="archive" className="research-archive scroll-mt-24 px-5 pb-24 sm:px-8 sm:pb-32" aria-labelledby="archive-heading">
           <div className="mx-auto max-w-[1120px]">
             <div className="flex flex-col gap-5 border-b border-[#dedee3] sm:flex-row sm:items-end sm:justify-between">
               <h2 id="archive-heading" className="pb-4 text-xl font-semibold tracking-[-0.02em] text-[#1d1d1f]">Research and releases</h2>
