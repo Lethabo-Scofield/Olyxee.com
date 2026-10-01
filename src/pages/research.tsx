@@ -1,6 +1,6 @@
 import { FC, ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import { ArrowUpRight, Pause, Play } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
@@ -18,7 +18,6 @@ const Research: FC = () => {
   const [activeFilter, setActiveFilter] = useState<ResearchFilter>("All entries");
   const videoRef = useRef<HTMLVideoElement>(null);
   const [reducedMotion, setReducedMotion] = useState<boolean | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
   const [mediaError, setMediaError] = useState(false);
   const failedSources = useRef(new Set<string>());
   const visiblePapers = useMemo(
@@ -41,45 +40,19 @@ const Research: FC = () => {
     if (!video || mediaError) return;
     if (reducedMotion !== false) {
       video.pause();
-      setIsPlaying(false);
       return;
     }
     let active = true;
-    video.play().then(() => {
-      if (active) {
-        setIsPlaying(true);
-      }
-    }).catch(() => {
-      if (active) {
-        setIsPlaying(false);
-        if (video.error) setMediaError(true);
-      }
+    video.play().catch(() => {
+      if (active && video.error) setMediaError(true);
     });
     return () => { active = false; };
   }, [reducedMotion, mediaError]);
-
-  const togglePlayback = async () => {
-    const video = videoRef.current;
-    if (!video || mediaError) return;
-    if (!video.paused) {
-      video.pause();
-      setIsPlaying(false);
-      return;
-    }
-    try {
-      await video.play();
-      setIsPlaying(true);
-    } catch {
-      setIsPlaying(false);
-      if (video.error) setMediaError(true);
-    }
-  };
 
   const handleSourceError = (format: string) => {
     failedSources.current.add(format);
     if (failedSources.current.size === 2) {
       setMediaError(true);
-      setIsPlaying(false);
     }
   };
 
@@ -137,39 +110,30 @@ const Research: FC = () => {
 
       <main className="pt-20">
         <section className="research-hero" aria-labelledby="research-heading">
-          <video
-            ref={videoRef}
-            className="research-motion-video"
-            style={{ visibility: mediaError ? "hidden" : undefined }}
-            poster="/images/research-motion-poster.jpg"
-            loop
-            muted
-            playsInline
-            preload="metadata"
-            aria-label="Abstract network geometry and pale blue forms moving across a white field"
-            onPlay={() => { setIsPlaying(true); failedSources.current.clear(); }}
-            onPause={() => setIsPlaying(false)}
-            onError={() => { setMediaError(true); setIsPlaying(false); }}
-          >
-            <source src="/videos/research-motion.mp4" type="video/mp4" onError={() => handleSourceError("mp4")} />
-            <source src="/videos/research-motion.webm" type="video/webm" onError={() => handleSourceError("webm")} />
-          </video>
-          {mediaError && (
-            <img src="/images/research-motion-poster.jpg" className="research-motion-video" alt="" width={1080} height={1350} />
-          )}
           <div className="research-hero-heading">
             <h1 id="research-heading" className="research-display">Research</h1>
           </div>
-          <button
-            className="research-motion-control"
-            type="button"
-            onClick={togglePlayback}
-            disabled={mediaError}
-            aria-label={mediaError ? "Research video unavailable" : isPlaying ? "Pause research motion" : "Play research motion"}
-          >
-            {isPlaying ? <Pause className="h-4 w-4" aria-hidden="true" /> : <Play className="h-4 w-4" aria-hidden="true" />}
-            <span className={mediaError ? undefined : "sr-only"} aria-live="polite">{mediaError ? "Video unavailable" : isPlaying ? "Pause" : "Play"}</span>
-          </button>
+          <div className="research-motion">
+            <video
+              ref={videoRef}
+              className="research-motion-video"
+              style={{ visibility: mediaError ? "hidden" : undefined }}
+              poster="/images/research-motion-poster.jpg"
+              loop
+              muted
+              playsInline
+              preload="metadata"
+              aria-label="Abstract network geometry and pale blue forms moving across a white field"
+              onPlay={() => failedSources.current.clear()}
+              onError={() => setMediaError(true)}
+            >
+              <source src="/videos/research-motion.mp4" type="video/mp4" onError={() => handleSourceError("mp4")} />
+              <source src="/videos/research-motion.webm" type="video/webm" onError={() => handleSourceError("webm")} />
+            </video>
+            {mediaError && (
+              <img src="/images/research-motion-poster.jpg" className="research-motion-video" alt="" width={1080} height={1350} />
+            )}
+          </div>
         </section>
 
         {/* Archive */}

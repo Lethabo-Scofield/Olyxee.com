@@ -411,28 +411,40 @@ nextjs-portal {
 }
 
 .research-page .research-hero {
-  position: relative;
-  overflow: hidden;
   width: 100%;
-  min-height: calc(100vh - 5rem);
-  min-height: calc(100svh - 5rem);
+  padding: clamp(24px, 4vw, 48px) 20px 0;
   background: var(--research-background);
 }
 
 .research-page .research-display {
   margin: 0;
   color: var(--research-ink);
-  font-size: clamp(3.25rem, 8vw, 7rem);
+  font-size: clamp(3.25rem, 6vw, 5rem);
   font-weight: 600;
   letter-spacing: -.055em;
   line-height: 1;
 }
 
 .research-page .research-hero-heading {
-  position: absolute;
-  z-index: 1;
-  top: clamp(32px, 6vh, 72px);
-  left: clamp(24px, 5vw, 80px);
+  max-width: 1120px;
+  margin: 0 auto 20px;
+  text-align: left;
+}
+
+.research-page .research-motion {
+  position: relative;
+  width: 100%;
+  max-width: 1120px;
+  height: clamp(260px, 45vh, 380px);
+  height: clamp(260px, 45svh, 380px);
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .research-page .research-hero {
+    padding-right: 32px;
+    padding-left: 32px;
+  }
 }
 
 .research-page .research-motion-video {
@@ -444,33 +456,6 @@ nextjs-portal {
   height: 100%;
   object-fit: contain;
   object-position: center;
-}
-
-.research-page .research-motion-control {
-  position: absolute;
-  z-index: 2;
-  right: clamp(20px, 3vw, 40px);
-  bottom: clamp(20px, 3vw, 40px);
-  display: inline-flex;
-  min-width: 44px;
-  min-height: 44px;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  padding: 0 12px;
-  border: 1px solid #767676;
-  border-radius: 999px;
-  background: var(--research-background);
-  color: #171717;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 180ms ease, transform 180ms ease;
-}
-
-.research-page .research-motion-control:hover {
-  transform: translateY(-2px);
-  background: #fff;
 }
 
 .research-page .research-archive {
