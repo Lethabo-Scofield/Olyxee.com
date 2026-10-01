@@ -434,9 +434,8 @@ nextjs-portal {
 .research-page .research-motion {
   position: relative;
   width: 100%;
-  max-width: 1120px;
-  height: clamp(260px, 45vh, 380px);
-  height: clamp(260px, 45svh, 380px);
+  max-width: 480px;
+  aspect-ratio: 4 / 5;
   margin: 0 auto;
 }
 
