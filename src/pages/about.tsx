@@ -44,33 +44,8 @@ const APPROACH = [
   },
 ];
 
-const JOURNEY_LEAD: string[] = [
-  "Olyxee was founded by Lethabo Innocent Makonto, widely known as Lethabo Scofield, in Johannesburg, South Africa.",
-  "Olyxee is a research and technology company exploring one question: can an organization itself become intelligent?",
-  "AI systems are gaining the ability to reason, generate content, use tools and perform increasingly complex tasks. Organizations, meanwhile, still depend on people coordinating across many systems, processes and decisions.",
-  "We believe the next frontier is not only giving individuals AI assistants. It is understanding how intelligence might exist at the level of the organization: how it could observe activity, coordinate humans and machines, learn from outcomes and adapt as conditions change.",
-  "This is a difficult, open-ended research direction. We are still early, and have not solved organizational intelligence or built autonomous organizations.",
-  "Our mission is to develop the foundations of Organizational Intelligence. Our long-term goal is to build organizations that can evolve themselves while remaining aligned with human objectives and governance.",
-  "Orgni and Olyxee Logistics give us practical environments in which to build useful software and learn about the needs of real organizational work.",
-];
-
-const JOURNEY_LAYERS: string[] = [
-  "Organizational Intelligence is the broad question of how an organization could understand its activity, coordinate people and software, and learn from what happens.",
-  "Our research directions include adaptive organizations; human-AI coordination; computational organizational models and simulation; autonomous agents for long-running organizational tasks; and systems that learn from outcomes.",
-  "These are areas we are exploring, not a list of capabilities we claim to have completed.",
-  "Orgni is an intelligence layer for everyday organizational work. It connects organizational knowledge, systems and people, helping employees and AI agents access information with more context. Employees can interact with Orgni through familiar workplace environments such as Microsoft Teams.",
-  "Orgni is also an applied research environment: a place to learn how ideas about Organizational Intelligence meet the practical realities of organizational work.",
-  "Olyxee Logistics remains a commercial freight operations platform for managing quotes, orders, payments, cargo, warehouse activity, tracking and customer communication. Complex logistics operations offer practical experience building software around real people, information and processes.",
-];
-
-const JOURNEY_CLOSE: string[] = [
-  "The vision is a future where organizations can learn, adapt and evolve. The long-term goal is to build organizations that can evolve themselves.",
-  "This does not mean removing people from decisions. We are interested in how increasingly capable systems can remain accountable to human objectives, oversight and governance.",
-  "Olyxee is pursuing this as a long-term research mission while building and applying useful technology today.",
-];
-
 const About: FC = () => {
-  const [aboutView, setAboutView] = useState<"vision" | "journey" | "story">("vision");
+  const [aboutView, setAboutView] = useState<"vision" | "story">("vision");
 
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
@@ -121,8 +96,8 @@ const About: FC = () => {
           </div>
         </section>
 
-        {/* === OUR VISION / OUR JOURNEY / OUR STORY === */}
-        <section id="mission" className="relative bg-white overflow-hidden border-t border-neutral-200/70 scroll-mt-24">
+        {/* === OUR VISION / OUR STORY === */}
+        <section id="mission" className="relative bg-white overflow-clip border-t border-neutral-200/70 scroll-mt-24">
           <div className="relative max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-24 sm:py-36">
             {/* Toggle */}
             <div className="flex justify-center mb-16 sm:mb-24">
@@ -134,7 +109,6 @@ const About: FC = () => {
               >
                 {([
                   { key: "vision", label: "Our Vision" },
-                  { key: "journey", label: "Our Journey" },
                   { key: "story", label: "Our Story" },
                 ] as const).map((tab) => (
                   <motion.button
@@ -177,48 +151,6 @@ const About: FC = () => {
                     A future where organizations <span className="text-orange-600">learn</span>, <span className="text-blue-600">adapt</span> and <strong className="font-semibold text-emerald-700">evolve themselves.</strong>
                   </p>
                 </motion.article>
-              ) : aboutView === "journey" ? (
-                <motion.div
-                  key="journey"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -12 }}
-                  transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-                  className="relative"
-                >
-                  <div className="space-y-5 max-w-3xl">
-                    {JOURNEY_LEAD.map((para, i) => (
-                      <p
-                        key={i}
-                        className="text-base sm:text-lg text-neutral-700 leading-relaxed"
-                      >
-                        {para}
-                      </p>
-                    ))}
-                  </div>
-
-                  <div className="mt-5 space-y-5 max-w-3xl">
-                    {JOURNEY_LAYERS.map((layer, i) => (
-                      <p
-                        key={i}
-                        className="text-base sm:text-lg text-neutral-700 leading-relaxed"
-                      >
-                        {layer}
-                      </p>
-                    ))}
-                  </div>
-
-                  <div className="mt-5 space-y-5 max-w-3xl">
-                    {JOURNEY_CLOSE.map((para, i) => (
-                      <p
-                        key={i}
-                        className="text-base sm:text-lg text-neutral-700 leading-relaxed"
-                      >
-                        {para}
-                      </p>
-                    ))}
-                  </div>
-                </motion.div>
               ) : (
                 <motion.div
                   key="story"

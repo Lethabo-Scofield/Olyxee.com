@@ -1,4 +1,6 @@
 import { Fragment } from "react";
+import Image from "next/image";
+import AudioPlayer from "../AudioPlayer";
 
 const STORY = `# Olyxee: Intelligence Emerges Through Connection
 
@@ -64,6 +66,8 @@ But the meaning comes from how those shapes relate to one another.
 
 ### The two dots
 
+![Hand-drawn sketch of the Olyxee mark: two dots held within open arcs](/images/two-dots-sketch.webp)
+
 The two dots represent independent sources of intelligence.
 
 They might be two people, two departments, two systems, or two individual pieces of knowledge.
@@ -77,6 +81,8 @@ Both possess useful knowledge, but neither necessarily understands the complete 
 The dots represent that separation.
 
 ### The half-circles
+
+![Hand-drawn sketch of the Olyxee mark: two open half-circles around two dots](/images/half-circles-sketch.webp)
 
 The half-circles represent the connections between these independent elements.
 
@@ -261,19 +267,49 @@ function emphasis(text: string) {
 
 export default function OurStory() {
   return (
-    <article className="max-w-3xl mx-auto text-base sm:text-lg text-neutral-700 leading-relaxed">
+    <article className="max-w-[40rem] mx-auto text-[1.0625rem] sm:text-[1.1875rem] text-neutral-700 leading-[1.8] antialiased">
       {STORY.split("\n\n").map((block, index) => {
         if (block.startsWith("# ")) {
-          return <h2 key={index} className="font-serif text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-tight leading-tight mb-6">{block.slice(2)}</h2>;
+          return (
+            <Fragment key={index}>
+              <h2 className="font-serif text-4xl sm:text-5xl lg:text-[3.5rem] text-neutral-900 tracking-tight leading-[1.08] mb-6 text-balance">{block.slice(2)}</h2>
+              <AudioPlayer
+                src="/audio/olyxee-blueprint-for-organizational-intelligence.m4a"
+                title="Olyxee's Blueprint for Organizational Intelligence"
+              />
+            </Fragment>
+          );
         }
         if (block.startsWith("## ")) {
-          return <h3 key={index} className="font-serif text-2xl sm:text-3xl text-neutral-900 tracking-tight leading-tight mt-14 sm:mt-20 mb-6">{block.slice(3)}</h3>;
+          return (
+            <h3 key={index} className="font-serif text-2xl sm:text-[2rem] text-neutral-900 tracking-tight leading-[1.2] mt-20 sm:mt-24 mb-7 pt-8 border-t border-neutral-200 text-balance">
+              {block.slice(3)}
+            </h3>
+          );
         }
         if (block.startsWith("### ")) {
-          return <h4 key={index} className="font-serif text-xl sm:text-2xl text-neutral-900 tracking-tight mt-10 mb-5">{block.slice(4)}</h4>;
+          return <h4 key={index} className="font-serif text-xl sm:text-2xl text-neutral-900 tracking-tight leading-snug mt-12 mb-4">{block.slice(4)}</h4>;
         }
-        if (block === "---") return <hr key={index} className="border-neutral-200 mt-14 mb-8" />;
-        return <p key={index} className="mb-5">{emphasis(block)}</p>;
+        const img = block.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+        if (img) {
+          return (
+            <figure key={index} className="my-8 flex justify-center">
+              <Image src={img[2]} alt={img[1]} width={1257} height={1257} sizes="(min-width: 640px) 240px, 60vw" className="h-auto w-full max-w-[15rem]" />
+            </figure>
+          );
+        }
+        if (block === "---") return <hr key={index} className="border-neutral-200 mt-16 mb-10" />;
+        if (/^\*[^*]+\*$/.test(block)) {
+          return <p key={index} className="mb-10 text-xl sm:text-[1.375rem] leading-relaxed text-neutral-500 font-serif italic">{block.slice(1, -1)}</p>;
+        }
+        if (/^\*\*[^*]+\*\*$/.test(block)) {
+          return (
+            <blockquote key={index} className="my-10 border-l-2 border-neutral-900 pl-6 font-serif text-2xl sm:text-[1.75rem] leading-snug text-neutral-900">
+              {block.slice(2, -2)}
+            </blockquote>
+          );
+        }
+        return <p key={index} className="mb-6">{emphasis(block)}</p>;
       })}
     </article>
   );
