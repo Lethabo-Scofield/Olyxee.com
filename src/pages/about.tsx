@@ -2,6 +2,7 @@ import { FC, useState } from "react";
 import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
+import OurStory from "../components/about/OurStory";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -69,7 +70,7 @@ const JOURNEY_CLOSE: string[] = [
 ];
 
 const About: FC = () => {
-  const [aboutView, setAboutView] = useState<"vision" | "journey">("vision");
+  const [aboutView, setAboutView] = useState<"vision" | "journey" | "story">("vision");
 
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
@@ -120,7 +121,7 @@ const About: FC = () => {
           </div>
         </section>
 
-        {/* === OUR VISION / OUR JOURNEY === */}
+        {/* === OUR VISION / OUR JOURNEY / OUR STORY === */}
         <section id="mission" className="relative bg-white overflow-hidden border-t border-neutral-200/70 scroll-mt-24">
           <div className="relative max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-24 sm:py-36">
             {/* Toggle */}
@@ -134,6 +135,7 @@ const About: FC = () => {
                 {([
                   { key: "vision", label: "Our Vision" },
                   { key: "journey", label: "Our Journey" },
+                  { key: "story", label: "Our Story" },
                 ] as const).map((tab) => (
                   <motion.button
                     key={tab.key}
@@ -142,7 +144,7 @@ const About: FC = () => {
                     aria-pressed={aboutView === tab.key}
                     whileTap={{ scale: 0.95 }}
                     transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                    className={`relative px-6 py-2.5 rounded-full text-[11px] font-mono uppercase tracking-[0.22em] transition-colors duration-200 ${
+                    className={`relative px-3 sm:px-6 py-2.5 rounded-full text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.12em] sm:tracking-[0.22em] whitespace-nowrap transition-colors duration-200 ${
                       aboutView === tab.key
                         ? "text-white"
                         : "text-neutral-500 hover:text-neutral-700"
@@ -175,7 +177,7 @@ const About: FC = () => {
                     A future where organizations <span className="text-orange-600">learn</span>, <span className="text-blue-600">adapt</span> and <strong className="font-semibold text-emerald-700">evolve themselves.</strong>
                   </p>
                 </motion.article>
-              ) : (
+              ) : aboutView === "journey" ? (
                 <motion.div
                   key="journey"
                   initial={{ opacity: 0, y: 20 }}
@@ -216,6 +218,16 @@ const About: FC = () => {
                       </p>
                     ))}
                   </div>
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="story"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+                >
+                  <OurStory />
                 </motion.div>
               )}
             </AnimatePresence>
