@@ -1,6 +1,7 @@
 import { FC, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Briefcase, MapPin, AlertCircle } from "lucide-react";
 import SEO from "../../components/SEO";
@@ -14,7 +15,7 @@ import { schools } from "../../lib/schools";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const URL_RE = /^https?:\/\/.+\..+/i;
-const inputClass = "w-full rounded-lg border border-neutral-300 bg-white px-4 py-3 text-[15px] leading-relaxed text-neutral-900 placeholder:text-neutral-400 transition-colors focus:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-neutral-900/10";
+const inputClass = "w-full rounded-xl border border-neutral-300 bg-white px-4 py-3.5 text-base leading-relaxed text-neutral-900 placeholder:text-neutral-400 transition-colors focus:border-neutral-900 focus:outline-none focus:ring-4 focus:ring-neutral-900/10";
 const labelClass = "mb-2 block text-sm font-medium text-neutral-900";
 
 const InternshipsPage: FC = () => {
@@ -203,28 +204,12 @@ const InternshipsPage: FC = () => {
             <a href="#apply" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-neutral-900 px-6 text-sm font-medium text-white transition-colors hover:bg-neutral-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-900">Go to application <ArrowRight className="h-4 w-4" /></a>
           </motion.header>
 
-          <section id="internship-terms" aria-label="Internship terms" className="scroll-mt-24 border-b border-neutral-200 py-6">
-            <div className="flex gap-3 border-l-4 border-red-600 bg-red-50 px-4 py-5 sm:px-5">
-              <AlertCircle aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-red-700" />
-              <div className="space-y-1">
-                <h2 className="text-lg font-semibold leading-6 text-red-900">These internships are unpaid.</h2>
-                <p className="text-sm font-medium leading-6 text-red-800">You will not receive a salary or stipend.</p>
-              </div>
-            </div>
-            <dl className="mt-6 grid gap-5 text-sm leading-6 sm:grid-cols-2">
-              <div>
-                <dt className="font-medium text-neutral-900">Time and location</dt>
-                <dd className="mt-1 text-neutral-600">Remote-first. Hours are usually flexible. Internships typically last 3 to 6 months.</dd>
-              </div>
-              <div>
-                <dt className="font-medium text-neutral-900">Mentorship and reference</dt>
-                <dd className="mt-1 text-neutral-600">Work alongside our team, with mentorship from senior operators and a written reference at the end.</dd>
-              </div>
-              <div className="sm:col-span-2">
-                <dt className="font-medium text-neutral-900">Future opportunities</dt>
-                <dd className="mt-1 text-neutral-600">Exceptional work may lead to an extension or a full-time role. Neither is guaranteed.</dd>
-              </div>
-            </dl>
+          <section id="internship-terms" aria-label="Internship terms" className="scroll-mt-24 border-b border-neutral-200 py-5">
+            <p className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-neutral-700">
+              <span className="inline-flex items-center gap-2 rounded-full bg-red-50 px-3 py-1 font-medium text-red-800 ring-1 ring-inset ring-red-200"><AlertCircle aria-hidden="true" className="h-4 w-4" />Unpaid, no salary or stipend</span>
+              <span className="text-neutral-500">Typically 3 months</span><span aria-hidden="true" className="text-neutral-300">/</span>
+              <span className="text-neutral-500">Remote-first, flexible hours</span>
+            </p>
           </section>
 
           {!selectedRole && <section className="border-b border-neutral-200 py-8">
@@ -232,18 +217,33 @@ const InternshipsPage: FC = () => {
             <ul className="grid gap-x-8 sm:grid-cols-2">{internshipRoles.map((role) => <li key={role.slug} className="border-t border-neutral-200 py-3"><button type="button" onClick={() => changeRole(role.slug)} className="flex w-full items-center justify-between gap-3 text-left text-sm font-medium text-neutral-800 hover:text-neutral-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-800"><span>{role.title}<span className="ml-2 font-normal text-neutral-500">{role.team}</span></span><ArrowRight className="h-4 w-4 shrink-0" /></button></li>)}</ul>
           </section>}
 
-          {selectedRole && <section className="grid gap-10 border-b border-neutral-200 py-9 md:grid-cols-2">
-            <div><p className="mb-3 text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">The work</p><h2 className="mb-5 text-2xl font-medium tracking-[-0.03em]">What you&apos;ll do</h2><ul className="space-y-3">{selectedRole.responsibilities.map((item) => <li key={item} className="flex gap-3 text-[15px] leading-7 text-neutral-700"><span aria-hidden="true" className="mt-[11px] h-1.5 w-1.5 shrink-0 rounded-full bg-neutral-500" />{item}</li>)}</ul></div>
-            <div><p className="mb-3 text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Experience</p><h2 className="mb-5 text-2xl font-medium tracking-[-0.03em]">What you&apos;ll need</h2><ul className="space-y-3">{selectedRole.requirements.map((item) => <li key={item} className="flex gap-3 text-[15px] leading-7 text-neutral-700"><span aria-hidden="true" className="mt-[11px] h-1.5 w-1.5 shrink-0 rounded-full bg-neutral-500" />{item}</li>)}</ul></div>
+          {selectedRole && <section aria-label="Internship programme" className="grid items-center gap-10 border-b border-neutral-200 py-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)] lg:gap-14">
+            <div>
+              <p className="mb-3 text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">What you leave with</p>
+              <h2 className="text-3xl font-medium tracking-[-0.035em] sm:text-4xl">Gain real experience. Build your career.</h2>
+              <ul className="mt-7 space-y-4 text-[15px] leading-6 text-neutral-600">
+                {[
+                  ["Real projects", "with real responsibility and measurable outcomes."],
+                  ["Mentorship", "from the team you work alongside."],
+                  ["A certificate and a letter of recommendation", "when you complete the programme."],
+                  ["A path to the core team", "for exceptional performers, as opportunities allow."],
+                ].map(([title, text], i) => <li key={title} className="flex gap-4"><span aria-hidden="true" className="mt-0.5 font-mono text-xs text-neutral-400">0{i + 1}</span><span><span className="font-medium text-neutral-900">{title}</span> {text}</span></li>)}
+              </ul>
+            </div>
+            <figure>
+              <Image src="/images/internship-certificate.png" alt="Sample Olyxee internship certificate of completion, with space for the intern's name, role, team and dates, a QR code to verify it, and a seal" width={1504} height={1048} sizes="(min-width: 1024px) 560px, 100vw" className="h-auto w-full rounded-xl ring-1 ring-neutral-900/10 shadow-xl shadow-neutral-900/10" />
+              <figcaption className="mt-3 text-xs text-neutral-500">Sample certificate, verifiable at olyxee.com/verify.</figcaption>
+            </figure>
           </section>}
 
           <section id="apply" className="scroll-mt-28 pt-10">
-            <div className="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-              <div><p className="mb-3 text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Application</p><h2 className="text-3xl font-medium tracking-[-0.035em] sm:text-4xl">A few details to get started.</h2><p className="mt-3 max-w-xl text-[15px] leading-7 text-neutral-600">Share your contact details and one link to work you&apos;d like us to see.</p></div>
-              <p className="text-sm leading-6 text-neutral-600"><span className="font-medium text-neutral-900">Required:</span> name, email, internship and work link.<br />School and note are optional.</p>
+            <div className="mb-8 max-w-2xl">
+              <p className="mb-3 text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Apply</p>
+              <h2 className="text-3xl font-medium tracking-[-0.035em] sm:text-4xl">Apply in about two minutes.</h2>
+              <p className="mt-3 text-[15px] leading-7 text-neutral-600">Four quick details and a link to your work. Everything else is optional.</p>
             </div>
             {submitted ? <div className="border-y border-neutral-200 py-8" role="status"><h3 className="text-2xl font-medium">Application received</h3><p className="mt-2 text-neutral-600">Your application was sent to Olyxee&apos;s hiring team.</p><Link href="/careers" className="mt-5 inline-flex items-center gap-2 text-sm font-medium hover:underline">Back to careers <ArrowRight className="h-4 w-4" /></Link></div> :
-            <form noValidate onSubmit={handleSubmit} className="space-y-8">
+            <form noValidate onSubmit={handleSubmit} className="space-y-8 rounded-2xl border border-neutral-200 bg-neutral-50/60 p-5 sm:p-8">
               <div className="grid gap-5 sm:grid-cols-2">
                 <div>
                   <label htmlFor="firstName" className={labelClass}>First name <span aria-hidden="true">*</span></label>
@@ -282,6 +282,11 @@ const InternshipsPage: FC = () => {
                   <input id="email" ref={(node) => { fields.current.email = node; }} required aria-required="true" type="email" autoComplete="email" inputMode="email" value={email} onChange={(e) => setValue("email", setEmail, e.target.value)} className={inputClass} placeholder="you@example.com" aria-invalid={!!fieldErrors.email} aria-describedby={fieldErrors.email ? "email-error" : undefined} />
                   {fieldError("email")}
                 </div>
+                {selectedRole && <div className="sm:col-span-2 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-neutral-200 bg-white px-4 py-3">
+                  <p className="text-sm text-neutral-600">Applying for <span className="font-medium text-neutral-900">{selectedRole.title}</span> <span className="text-neutral-400">· {selectedRole.team}</span></p>
+                  <button type="button" onClick={() => changeRole("")} className="text-sm font-medium text-neutral-900 underline underline-offset-4 hover:text-neutral-600">Change</button>
+                </div>}
+                {!selectedRole && (
                 <div className="sm:col-span-2">
                   <label htmlFor="role" className={labelClass}>Internship <span aria-hidden="true">*</span></label>
                   <select id="role" ref={(node) => { fields.current.role = node; }} required aria-required="true" disabled={submitting} value={roleSlug} onChange={(e) => changeRole(e.target.value)} className={inputClass} aria-invalid={!!fieldErrors.role} aria-describedby={fieldErrors.role ? "role-error" : undefined}>
@@ -291,6 +296,9 @@ const InternshipsPage: FC = () => {
                   {fieldError("role")}
                   {router.isReady && requestedRole && !internshipRoles.some((role) => role.slug === requestedRole) && <p className="mt-2 text-sm text-neutral-600">That role link isn&apos;t available. Please choose from the current internships.</p>}
                 </div>
+                )}
+                <div className="sm:col-span-2"><label htmlFor="portfolio" className={labelClass}>Link to your work <span aria-hidden="true">*</span></label><p className="mb-2 text-xs leading-5 text-neutral-500">LinkedIn, GitHub, portfolio, or CV are all welcome.</p><input id="portfolio" ref={(node) => { fields.current.portfolio = node; }} required aria-required="true" type="url" autoComplete="url" inputMode="url" value={portfolio} onChange={(e) => setValue("portfolio", setPortfolio, e.target.value)} className={inputClass} placeholder="https://" aria-invalid={!!fieldErrors.portfolio} aria-describedby={fieldErrors.portfolio ? "portfolio-error" : undefined} />{fieldError("portfolio")}</div>
+                <p className="sm:col-span-2 mt-2 border-t border-neutral-200 pt-6 text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Optional</p>
                 <div className="relative sm:col-span-2">
                   <label htmlFor="school" className={labelClass}>School you attend or attended <span className="text-xs font-normal text-neutral-500">(optional)</span></label>
                   <input
@@ -392,7 +400,6 @@ const InternshipsPage: FC = () => {
                     </ul>
                   )}
                 </div>
-                <div className="sm:col-span-2"><label htmlFor="portfolio" className={labelClass}>Link to your work <span aria-hidden="true">*</span></label><p className="mb-2 text-xs leading-5 text-neutral-500">LinkedIn, GitHub, portfolio, or CV are all welcome.</p><input id="portfolio" ref={(node) => { fields.current.portfolio = node; }} required aria-required="true" type="url" autoComplete="url" inputMode="url" value={portfolio} onChange={(e) => setValue("portfolio", setPortfolio, e.target.value)} className={inputClass} placeholder="https://" aria-invalid={!!fieldErrors.portfolio} aria-describedby={fieldErrors.portfolio ? "portfolio-error" : undefined} />{fieldError("portfolio")}</div>
                 <div className="sm:col-span-2"><label htmlFor="why" className={labelClass}>Anything you&apos;d like us to know? <span className="text-xs font-normal text-neutral-500">(optional)</span></label><textarea id="why" value={why} onChange={(e) => setWhy(e.target.value)} className={`${inputClass} resize-y`} rows={4} placeholder="What you hope to learn, or something you’ve built that you’re proud of." /></div>
               </div>
               {error && (
@@ -410,7 +417,7 @@ const InternshipsPage: FC = () => {
                   </p>
                 </div>
               )}
-              <div className="border-t border-neutral-200 pt-6"><button type="submit" disabled={submitting} className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-neutral-900 px-7 text-sm font-medium text-white transition-colors hover:bg-neutral-700 disabled:cursor-wait disabled:opacity-60 sm:w-auto">{submitting ? "Sending application…" : "Submit application"} <ArrowRight className="h-4 w-4" /></button><p className="mt-4 text-xs leading-5 text-neutral-500">Your application is sent to Olyxee&apos;s hiring team.</p></div>
+              <div className="border-t border-neutral-200 pt-6"><button type="submit" disabled={submitting} className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-neutral-900 px-7 text-sm font-medium text-white transition-colors hover:bg-neutral-700 disabled:cursor-wait disabled:opacity-60 sm:w-auto">{submitting ? "Sending…" : "Send application"} <ArrowRight className="h-4 w-4" /></button><p className="mt-4 text-xs leading-5 text-neutral-500">Your application is sent to Olyxee&apos;s hiring team.</p></div>
             </form>}
           </section>
         </div>

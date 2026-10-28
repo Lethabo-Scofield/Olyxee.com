@@ -36,12 +36,15 @@ const SCREENS = [
   },
 ];
 
+// Blackroid CFO message. The section stays hidden if this is empty.
+const BLACKROID_MESSAGE = "Orgni connected Xero and Gmail to one place. Reconciliations close faster, month-end reporting needs fewer follow-ups, and every figure traces back to its source.";
+
 const LOGOS = [
   { src: "/partner-logos/anthropic-word.png", alt: "Anthropic", w: 110, h: 30 },
   { src: "/partner-logos/freightshift.png", alt: "FreightShift International Logistics", w: 160, h: 30 },
   { src: "/partner-logos/techxm.png", alt: "TechXM", w: 90, h: 45 },
-  { src: "/partner-logos/monster-energy.png", alt: "Monster Energy", w: 60, h: 60 },
-  { src: "/partner-logos/discovery.png", alt: "Discovery", w: 130, h: 45 },
+  { src: "/partner-logos/blackroid.png", alt: "Blackroid", w: 1692, h: 573 },
+  { src: "/partner-logos/microsoft.png", alt: "Microsoft", w: 1586, h: 354 },
 ];
 
 const PLATFORM_TABS = [
@@ -49,8 +52,8 @@ const PLATFORM_TABS = [
     id: "orgni",
     label: "Orgni",
     desc: "Bring business knowledge, people and systems into practical context for everyday work. Orgni is also an applied research environment for Olyxee.",
-    image: "/images/enterprise/orgni-ontology.png",
-    alt: "Orgni ontology map for Olyxee",
+    image: "/images/enterprise/orgni-in-teams.webp",
+    alt: "@Orgni answering a question inside a Microsoft Teams channel, connected to documents, databases, Xero, Sage and Gmail",
   },
   {
     id: "order-loop",
@@ -495,6 +498,36 @@ const Enterprise: FC = () => {
           />
         </div>
       </section>
+
+      {/* === BLACKROID CFO MESSAGE === */}
+      {BLACKROID_MESSAGE && (
+        <section className="py-20 sm:py-28 px-4 sm:px-6 bg-white border-t border-black/5">
+          <div className="max-w-5xl mx-auto grid items-center gap-10 md:grid-cols-[220px_1fr] md:gap-14">
+            <div className="mx-auto w-44 md:w-full">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl ring-1 ring-black/10">
+                <Image
+                  src="/images/tshiamiso-moeng-crop.webp"
+                  alt="Tshiamiso Moeng, Chief Financial Officer at Blackroid"
+                  fill
+                  sizes="220px"
+                  className="object-cover object-center"
+                />
+              </div>
+            </div>
+            <figure>
+              <Image src="/partner-logos/blackroid.png" alt="Blackroid" width={1692} height={573} className="mb-6 h-8 w-auto grayscale" />
+              <p className="mb-5 text-[11px] font-mono uppercase tracking-[0.2em] text-[#4a5568]">How Orgni helps Blackroid</p>
+              <blockquote className="font-serif text-2xl sm:text-3xl leading-snug tracking-tight text-[#111]">
+                &ldquo;{BLACKROID_MESSAGE}&rdquo;
+              </blockquote>
+              <figcaption className="mt-6 text-[15px] text-[#4a5568]">
+                <span className="font-medium text-[#111]">Tshiamiso Moeng</span>
+                <span aria-hidden="true"> · </span>Chief Financial Officer, Blackroid
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+      )}
 
       <Footer />
     </div>

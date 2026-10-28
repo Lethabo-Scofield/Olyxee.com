@@ -118,6 +118,7 @@ export default function HomePage() {
         <ImageShowcase />
         
         <OrgniSection />
+        <TeamsAvailabilitySection />
         <VideoShowcaseSection />
         <CTASection />
         <LogoStrip />
@@ -474,15 +475,15 @@ function ProductFeature({
   eyebrow?: string;
   heading: string;
   emphasis: string;
-  description: string;
+  description?: string;
   image: { src: string; alt: string; width: number; height: number };
-  primary: ProductCta;
+  primary?: ProductCta;
   secondary?: ProductCta;
 }) {
   const ease = [0.25, 0.1, 0.25, 1] as const;
   const surfaceClass =
     surface === "muted"
-      ? "bg-neutral-50/60 border-y border-neutral-100"
+      ? "bg-neutral-50/60 border-t border-neutral-100"
       : "bg-white border-y border-neutral-100";
 
   return (
@@ -528,6 +529,7 @@ function ProductFeature({
         </motion.div>
 
         {/* Caption / meta */}
+        {(description || primary) && (
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -535,10 +537,12 @@ function ProductFeature({
           transition={{ duration: 0.7, ease }}
           className="mt-8 sm:mt-12 border-t border-neutral-200 pt-8 sm:pt-10 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6 sm:gap-10"
         >
-          <p className="text-neutral-600 text-base sm:text-lg font-normal leading-relaxed max-w-xl">
-            {description}
-          </p>
-          <div className="shrink-0">
+          {description && (
+            <p className="text-neutral-600 text-base sm:text-lg font-normal leading-relaxed max-w-xl">
+              {description}
+            </p>
+          )}
+          {primary && <div className="shrink-0">
             <div className="flex flex-wrap items-center gap-4">
               <a
                 href={primary.href}
@@ -565,8 +569,9 @@ function ProductFeature({
                   </Link>
                 ))}
             </div>
-          </div>
+          </div>}
         </motion.div>
+        )}
       </div>
     </section>
   );
@@ -645,14 +650,12 @@ function OrgniSection() {
       surface="muted"
       heading="Help your team"
       emphasis="find what they need."
-      description="Orgni connects your business knowledge and systems in Microsoft Teams, so your team spends less time searching."
       image={{
-        src: "/images/orgni-finance-context-graph.png",
-        alt: "Orgni helping a finance team recover a missing variance file by connecting context from Outlook, SharePoint, SAP, and Calendar",
+        src: "/images/orgni-teams-close-pack.webp",
+        alt: "A Finance team chat in Microsoft Teams where @Orgni finds a missing variance file, checks the numbers across Outlook, SharePoint, SAP and Calendar, and sends the brief to the CFO",
         width: 1672,
         height: 941,
       }}
-      primary={{ label: "Talk to us", href: "/contact" }}
     />
   );
 }
@@ -805,6 +808,52 @@ const STORIES = [
     href: "/stories/automation",
   },
 ];
+
+function TeamsAvailabilitySection() {
+  return (
+    <section id="orgni-in-teams" aria-labelledby="orgni-in-teams-heading" className="py-20 sm:py-28 lg:py-32 bg-white scroll-mt-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 grid items-center gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <h2 id="orgni-in-teams-heading" className="font-serif text-4xl sm:text-5xl tracking-tight leading-[1.08] text-neutral-900">
+            Tag <span className="rounded-lg bg-orange-600 px-2 text-white">@Orgni</span> in Microsoft Teams.
+          </h2>
+          <p className="mt-5 max-w-md text-base sm:text-lg leading-relaxed text-neutral-600">
+            @Orgni is now available for teams using Microsoft Teams. Ask a question in any channel and get an answer with the context behind it, without leaving the conversation.
+          </p>
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <Link href="/contact" className="inline-flex items-center gap-2 rounded-full bg-neutral-900 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-neutral-700">
+              Get @Orgni for your team <ArrowRight className="h-4 w-4" />
+            </Link>
+            <a href="https://orgni.olyxee.com/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm font-medium text-neutral-900 underline-offset-4 hover:underline">
+              Learn about Orgni <ArrowUpRight className="h-4 w-4" />
+            </a>
+          </div>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 32, scale: 0.98 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="overflow-hidden rounded-3xl ring-1 ring-neutral-900/10 shadow-xl shadow-neutral-900/10"
+        >
+          <Image
+            src="/images/tag-orgni-celebrate.webp"
+            alt="A smiling team member celebrating at her laptop, with the words Tag @Orgni in"
+            width={1672}
+            height={941}
+            sizes="(min-width: 1024px) 700px, 100vw"
+            className="block h-auto w-full"
+          />
+        </motion.div>
+      </div>
+    </section>
+  );
+}
 
 function VideoShowcaseSection() {
   return (

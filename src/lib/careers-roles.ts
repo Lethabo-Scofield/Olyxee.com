@@ -165,16 +165,6 @@ const PAID_QUESTIONS: Question[] = [
   },
 ];
 
-const RESEARCH_QUESTIONS: Question[] = PAID_QUESTIONS.map((question) =>
-  question.id === "research_link"
-    ? {
-        ...question,
-        required: true,
-        hint: "Include a public profile or publication showing your research work.",
-      }
-    : question
-);
-
 const PAID_PROCESS: { title: string; detail: string }[] = [
   {
     title: "Written application",
@@ -205,63 +195,6 @@ const PAID_PROCESS: { title: string; detail: string }[] = [
 export const roles: Role[] = [
   // ─── PAID ROLES ──────────────────────────────────────────────────────
   {
-    slug: "research-scientist-ai",
-    title: "Research Scientist, AI",
-    team: "Research",
-    location: HYBRID,
-    type: "paid",
-    description:
-      "Help shape Olyxee's research into Organizational Intelligence, including computational approaches to organizational models, adaptive systems, and human-AI coordination.",
-    level: "Staff · 8+ years of applied research",
-    compensation: "Top-of-band salary, significant equity, performance bonus, conference and learning budget.",
-    responsibilities: [
-      "Set and own the multi-year research agenda on model reasoning, verification, and reliability",
-      "Design experiments, build evaluation harnesses, and publish work the field builds on",
-      "Translate research into product capabilities the engineering team can ship",
-      "Represent Olyxee in the research community through papers, talks, and collaborations",
-      "Mentor researchers and engineers and raise the technical bar across the company",
-    ],
-    requirements: [
-      "PhD in CS, ML, or a closely related field, plus 8+ years of research beyond your doctorate",
-      "Sustained first-author record at top venues (NeurIPS, ICML, ICLR, ACL) with a public Google Scholar profile",
-      "Demonstrable citation impact, with work others build on and cite",
-      "Expert-level Python and modern ML frameworks (PyTorch, JAX); you write research- and production-grade code",
-      "Experience setting and owning a research agenda end to end, not just executing one",
-      "Patents, widely used open-source, or shipped research that reached real users",
-      "Exceptional written communication; you can make complex ideas land for any audience",
-    ],
-    questions: RESEARCH_QUESTIONS,
-    process: PAID_PROCESS,
-  },
-  {
-    slug: "senior-software-engineer",
-    title: "Senior Software Engineer",
-    team: "Engineering",
-    location: REMOTE,
-    type: "paid",
-    description:
-      "Design and build software across Orgni and Olyxee's other products, while helping create practical environments for research into Organizational Intelligence.",
-    level: "Staff · 8+ years of production engineering",
-    compensation: "Top-of-band salary, significant equity, performance bonus, learning budget.",
-    responsibilities: [
-      "Own end to end design and delivery of major product surfaces or services",
-      "Set the engineering standard for quality, performance, and observability",
-      "Mentor other engineers and raise the bar through code review and architecture",
-      "Collaborate closely with research, product, and design to ship work that matters",
-    ],
-    requirements: [
-      "8+ years shipping and owning production systems at scale (TypeScript, Python, Go, or Rust)",
-      "Deep systems expertise: distributed systems, data-intensive services, performance, and reliability",
-      "Track record of architecting systems that served real production traffic and survived it",
-      "Professional cloud or systems certifications are a strong plus (AWS/GCP Professional, CKA)",
-      "A public body of work we can review: significant open-source, technical writing, or conference talks",
-      "High writing standard; you can ship a design doc that ends a meeting",
-      "Comfortable in early-stage ambiguity and small, senior teams",
-    ],
-    questions: PAID_QUESTIONS,
-    process: PAID_PROCESS,
-  },
-  {
     slug: "marketing-manager",
     title: "Marketing Manager",
     team: "Marketing",
@@ -286,35 +219,6 @@ export const roles: Role[] = [
       "Calm operator who can run multiple workstreams without dropping balls",
     ],
     questions: PAID_QUESTIONS,
-    process: PAID_PROCESS,
-  },
-  {
-    slug: "staff-machine-learning-engineer",
-    title: "Staff Machine Learning Engineer",
-    team: "Engineering & AI",
-    location: REMOTE,
-    type: "paid",
-    description:
-      "Build and evaluate machine-learning systems for Orgni and Olyxee's research into organizational systems, with a focus on careful evaluation and responsible deployment.",
-    level: "Staff · 8+ years building ML systems in production",
-    compensation: "Top-of-band salary, significant equity, performance bonus, compute and learning budget.",
-    responsibilities: [
-      "Own the full lifecycle of production models: data, training, evaluation, and serving",
-      "Push the reliability, latency, and cost of model inference at scale",
-      "Set the standard for how the team evaluates and monitors model behavior",
-      "Partner with research to move new methods into shipped product",
-      "Mentor engineers and raise the ML engineering bar across the company",
-    ],
-    requirements: [
-      "8+ years building and operating ML systems in production, with 3+ at a senior or staff level",
-      "First-author publications or a public Google Scholar / arXiv profile we can review",
-      "Expert Python and deep experience with PyTorch or JAX on real training and serving workloads",
-      "Proven track record deploying large models with strict latency, cost, and reliability targets",
-      "Relevant certifications are a plus (AWS/GCP ML specialty, NVIDIA DLI, or equivalent)",
-      "Strong systems fundamentals; you can own the path from notebook to production service",
-      "Exceptional written communication and a body of public work (open-source, papers, or talks)",
-    ],
-    questions: RESEARCH_QUESTIONS,
     process: PAID_PROCESS,
   },
 
