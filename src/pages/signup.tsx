@@ -49,7 +49,7 @@ const TOOL_CONFIG: Record<Tool, ToolConfig> = {
     features: [
       "Updates on Organizational Intelligence research",
       "News about Orgni and organizational work",
-      "Updates on Olyxee Logistics",
+      "Updates on Freightics",
       "Occasional product and company news",
     ],
     ctaLabel: "Join waitlist",

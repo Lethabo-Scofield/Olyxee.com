@@ -282,13 +282,13 @@ const Pricing: FC = () => {
   return (
     <div className="min-h-screen bg-[#fafafa] text-[#111] font-sans selection:bg-neutral-200 selection:text-neutral-900 relative">
       <SEO
-        title="Pricing: Orgni & Olyxee Logistics Plans"
-        description="Simple, transparent pricing for Orgni, Olyxee's organizational intelligence platform, and Olyxee Logistics, a freight operations platform. Orgni starts free; Olyxee Logistics starts at R89,99/month."
+        title="Pricing: Orgni & Freightics Plans"
+        description="Simple, transparent pricing for Orgni, Olyxee's organizational intelligence platform, and Freightics, a freight operations platform. Orgni starts free; Freightics starts at R89,99/month."
         path="/pricing"
         keywords={[
           "Olyxee pricing",
           "Orgni pricing",
-          "Olyxee Logistics pricing",
+          "Freightics pricing",
           "organizational intelligence software pricing",
           "business workflow software cost",
           "order tracking software pricing",
@@ -316,14 +316,14 @@ const Pricing: FC = () => {
           {
             "@context": "https://schema.org",
             "@type": "Product",
-            name: "Olyxee Logistics",
+            name: "Freightics",
             description:
-              "Olyxee Logistics is a logistics operations platform for managing customers, invoices, cross-border orders, warehouse cargo matching, shipment statuses and customer tracking.",
+              "Freightics is a logistics operations platform for managing customers, invoices, cross-border orders, warehouse cargo matching, shipment statuses and customer tracking.",
             brand: { "@type": "Brand", name: "Olyxee" },
             url: "https://logistics.olyxee.com",
             offers: ORDER_LOOP_PLANS.filter((p) => p.price !== null).map((p) => ({
               "@type": "Offer",
-              name: `Olyxee Logistics ${p.name}`,
+              name: `Freightics ${p.name}`,
               price: p.price,
               priceCurrency: "ZAR",
               description: p.desc,
@@ -339,7 +339,7 @@ const Pricing: FC = () => {
                 name: "Is there a free plan?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Orgni has a free plan that supports one workspace and up to 3 users. Olyxee Logistics starts on Growth at R89,99 per month, with Scale at R999,99 per month and custom pricing for larger operations.",
+                  text: "Orgni has a free plan that supports one workspace and up to 3 users. Freightics starts on Growth at R89,99 per month, with Scale at R999,99 per month and custom pricing for larger operations.",
                 },
               },
               {
@@ -352,10 +352,10 @@ const Pricing: FC = () => {
               },
               {
                 "@type": "Question",
-                name: "Can I use Orgni and Olyxee Logistics together?",
+                name: "Can I use Orgni and Freightics together?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Orgni and Olyxee Logistics are separate products for different needs. Contact our team to discuss which platform fits your organization.",
+                  text: "Orgni and Freightics are separate products for different needs. Contact our team to discuss which platform fits your organization.",
                 },
               },
             ],
@@ -413,10 +413,10 @@ const Pricing: FC = () => {
 
       <div className="bg-[#fafafa] border-t border-black/5">
         <ProductSection
-          logo="/Logo/order-loop-mark.png"
-          name="Olyxee Logistics"
+          logo="/Logo/freightics-mark.png"
+          name="Freightics"
           tagline="Infrastructure for modern freight operations"
-          desc="Olyxee Logistics is a logistics operations platform for managing customers, invoices, cross-border orders, warehouse cargo matching, shipment statuses and customer tracking."
+          desc="Freightics is a logistics operations platform for managing customers, invoices, cross-border orders, warehouse cargo matching, shipment statuses and customer tracking."
           plans={ORDER_LOOP_PLANS}
         />
       </div>
@@ -427,13 +427,13 @@ const Pricing: FC = () => {
         <div className="flex items-center justify-center gap-4 mb-8">
           <Image src="/Logo/orgni-mark.png" alt="Orgni" width={40} height={40} className="w-10 h-10 object-contain" />
           <span className="text-[1.5rem] text-[#4a5568]">+</span>
-          <Image src="/Logo/order-loop-mark.png" alt="Olyxee Logistics" width={40} height={40} className="w-10 h-10 object-contain" />
+          <Image src="/Logo/freightics-mark.png" alt="Freightics" width={40} height={40} className="w-10 h-10 object-contain" />
         </div>
         <h2 className="text-[2rem] sm:text-[3rem] font-medium tracking-tighter text-[#111] mb-6 leading-[1.1]">
-          Orgni and Olyxee Logistics
+          Orgni and Freightics
         </h2>
         <p className="text-[1.125rem] text-[#4a5568] max-w-2xl mx-auto leading-relaxed mb-10">
-          Orgni and Olyxee Logistics serve different needs: organizational context and everyday work, and practical freight operations.
+          Orgni and Freightics serve different needs: organizational context and everyday work, and practical freight operations.
         </p>
         <div className="flex flex-col sm:flex-row gap-6 items-center justify-center">
           <TalkToEnterprise

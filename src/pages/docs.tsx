@@ -121,7 +121,7 @@ const Docs: FC = () => {
 
   return (
     <div>
-      <SEO title="Olyxee Documentation | Product Resources" description="Product resources and API access information for Orgni and Olyxee Logistics." path="/docs" keywords={["Olyxee documentation", "Olyxee API access", "Orgni resources", "Organizational Intelligence", "developer resources"]} />
+      <SEO title="Olyxee Documentation | Product Resources" description="Product resources and API access information for Orgni and Freightics." path="/docs" keywords={["Olyxee documentation", "Olyxee API access", "Orgni resources", "Organizational Intelligence", "developer resources"]} />
       <Header />
       <DocsLayout
         tabs={TABS}
@@ -188,11 +188,11 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
 
   const solutions: ProductRow[] = [
     {
-      name: "Olyxee Logistics",
-      description: "Olyxee Logistics is a logistics operations platform for managing customers, invoices, cross-border orders, warehouse cargo matching, shipment statuses and customer tracking — built for cross-border logistics businesses moving cargo between countries.",
+      name: "Freightics",
+      description: "Freightics is a logistics operations platform for managing customers, invoices, cross-border orders, warehouse cargo matching, shipment statuses and customer tracking — built for cross-border logistics businesses moving cargo between countries.",
       status: "available",
       bg: "/images/gradient-yellow-green.webp",
-      action: { kind: "external", href: "https://logistics.olyxee.com/", label: "Visit Olyxee Logistics" },
+      action: { kind: "external", href: "https://logistics.olyxee.com/", label: "Visit Freightics" },
     },
     {
       name: "Orgni · Work across systems",
@@ -297,7 +297,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
           Olyxee documentation
         </h1>
         <p className="text-neutral-600 text-[17px] leading-[1.55]">
-          Olyxee is a research and technology company exploring the foundations of Organizational Intelligence. Orgni is an intelligence layer for everyday organizational work and an applied environment for this research. These docs focus on using Orgni and Olyxee Logistics in practical workflows.
+          Olyxee is a research and technology company exploring the foundations of Organizational Intelligence. Orgni is an intelligence layer for everyday organizational work and an applied environment for this research. These docs focus on using Orgni and Freightics in practical workflows.
         </p>
       </div>
 

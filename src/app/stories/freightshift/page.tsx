@@ -105,7 +105,7 @@ export default function FreightShiftStory() {
               <li>and the dependencies between all of them.</li>
             </ul>
             <p>
-              <strong>Olyxee Logistics</strong> is Olyxee&apos;s separate freight operations platform for managing freight workflows and customer communication in day-to-day operations.
+              <strong>Freightics</strong> is Olyxee&apos;s separate freight operations platform for managing freight workflows and customer communication in day-to-day operations.
             </p>
 
             <h2>What became possible</h2>
@@ -174,7 +174,7 @@ export default function FreightShiftStory() {
           >
             <div>
               <p className="text-sm font-semibold text-neutral-900 mb-1">Want this for your logistics operations?</p>
-              <p className="text-sm text-neutral-500 font-normal">Talk to us about bringing Olyxee Logistics to your freight corridors.</p>
+              <p className="text-sm text-neutral-500 font-normal">Talk to us about bringing Freightics to your freight corridors.</p>
             </div>
             <Link
               href="/contact"

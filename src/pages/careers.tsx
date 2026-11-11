@@ -23,8 +23,8 @@ function HeroSection() {
           className="relative w-full aspect-[4/3] sm:aspect-[16/9] overflow-hidden rounded-2xl sm:rounded-3xl bg-neutral-100"
         >
           <Image
-            src="/images/careers-team-hero.png"
-            alt="Olyxee team at work"
+            src="/images/careers-team-whiteboard.webp"
+            alt="Olyxee team gathered around a whiteboard of architecture diagrams"
             fill
             priority
             sizes="100vw"

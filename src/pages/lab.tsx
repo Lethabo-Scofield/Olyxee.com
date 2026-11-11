@@ -188,7 +188,7 @@ const Lab: FC = () => {
             {[
               { title: "Research in the open", description: "We share research and ideas as our work develops, contributing to broader discussion about organizational systems." },
               { title: "Human objectives", description: "We explore how adaptive systems can remain aligned with human objectives, oversight and governance." },
-              { title: "Research in practice", description: "Orgni and Olyxee Logistics provide practical contexts for learning about information, people and processes in real organizations." },
+              { title: "Research in practice", description: "Orgni and Freightics provide practical contexts for learning about information, people and processes in real organizations." },
             ].map((item, idx) => (
               <motion.div key={item.title} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={idx} variants={fadeUp} className="bg-white p-10 sm:p-12">
                 <h3 className="text-xl font-semibold text-neutral-900 mb-3">{item.title}</h3>

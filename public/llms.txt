@@ -6,7 +6,7 @@ Our long-term goal is to build organizations that can evolve themselves. We are 
 
 - **Research** — Organizational Intelligence, adaptive organizations, human-AI coordination, organizational models and simulation, autonomous agents and self-improving systems.
 - **Orgni** — The intelligence layer for everyday organizational work. It connects organizational knowledge, systems and people, and provides an applied environment for Olyxee's research. Operational workflows, financial operations and business memory are capabilities within Orgni, not separate companies or products.
-- **Olyxee Logistics** — Infrastructure for modern freight operations: quotes, orders, payments, cargo, warehouse activity, tracking and customer communication. An applied operational platform built by Olyxee.
+- **Freightics** — Infrastructure for modern freight operations: quotes, orders, payments, cargo, warehouse activity, tracking and customer communication. An applied operational platform built by Olyxee.
 - **Olyxee Document Integrity** — Document verification and extraction validation.
 - **Olyxee Lab** — Experimental work contributing to the foundations of Organizational Intelligence.
 
@@ -15,7 +15,7 @@ Our long-term goal is to build organizations that can evolve themselves. We are 
 - [Home](https://olyxee.com/): Company overview, mission, focus areas.
 - [About](https://olyxee.com/about): Who Olyxee is, the problem we work on, and how we operate.
 - [Products & Enterprise](https://olyxee.com/enterprise): All Olyxee products and enterprise systems with status.
-- [Pricing](https://olyxee.com/pricing): Plans for Orgni (Free, Starter R99/mo, Business R999/mo, Enterprise) and Olyxee Logistics (Free, Growth R99/mo, Scale R499/mo, Enterprise). Billed in ZAR.
+- [Pricing](https://olyxee.com/pricing): Plans for Orgni (Free, Starter R99/mo, Business R999/mo, Enterprise) and Freightics (Free, Growth R99/mo, Scale R499/mo, Enterprise). Billed in ZAR.
 - [Orgni](https://olyxee.com/products/ordo): Organizational-intelligence platform and applied research environment.
 - [Olyxee Document Integrity](https://olyxee.com/document-integrity): Document verification and extraction validation.
 - [Research](https://olyxee.com/research): Research agenda, papers, and ongoing work.

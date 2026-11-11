@@ -22,11 +22,11 @@ const Logistics: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 overflow-x-hidden">
       <SEO
-        title="Olyxee Logistics | Freight Operations Platform"
-        description="Infrastructure for modern freight operations. Olyxee Logistics brings quotes, orders, payments, cargo, warehouse activity, tracking and customer communication into one platform."
+        title="Freightics | Freight Operations Platform"
+        description="Infrastructure for modern freight operations. Freightics brings quotes, orders, payments, cargo, warehouse activity, tracking and customer communication into one platform."
         path="/solutions/logistics"
         keywords={[
-          "Olyxee Logistics",
+          "Freightics",
           "logistics operations platform",
           "cross-border logistics",
           "cargo shipping",
@@ -74,7 +74,7 @@ const Logistics: FC = () => {
             >
               <Image
                 src="/images/logistics/hero-iso.png"
-                alt="Olyxee Logistics platform for freight operations, tracking, and delivery"
+                alt="Freightics platform for freight operations, tracking, and delivery"
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 66vw"
@@ -94,7 +94,7 @@ const Logistics: FC = () => {
                 rel="noopener noreferrer"
                 className="group inline-flex items-center justify-between gap-6 px-7 py-5 bg-neutral-900 text-white rounded-full hover:bg-black transition-colors"
               >
-                <span className="text-sm font-medium tracking-wide">Try Olyxee Logistics</span>
+                <span className="text-sm font-medium tracking-wide">Try Freightics</span>
                 <span className="w-9 h-9 rounded-full bg-amber-400 text-neutral-900 flex items-center justify-center group-hover:rotate-45 transition-transform duration-500">
                   <ArrowUpRight className="w-4 h-4" />
                 </span>
@@ -174,7 +174,7 @@ const Logistics: FC = () => {
           >
             <Image
               src="/images/logistics/orders-dashboard.png"
-              alt="Olyxee Logistics orders dashboard"
+              alt="Freightics orders dashboard"
               width={1600}
               height={1200}
               className="w-full h-auto object-cover"

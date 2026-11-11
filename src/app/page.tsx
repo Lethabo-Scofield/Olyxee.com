@@ -28,7 +28,7 @@ export default function HomePage() {
     url: "https://olyxee.com",
     logo: "https://olyxee.com/Logo/Olyxee_Logo.png",
     image: "https://olyxee.com/og-image.jpg",
-    description: "Olyxee is a research and technology company developing the foundations of Organizational Intelligence and researching how organizations can learn, adapt and evolve over time.",
+    description: "Olyxee is a research-driven AI infrastructure company advancing the foundations of intelligent computing through neuro-symbolic intelligence and autonomous adaptive systems, beginning with financial computing.",
     sameAs: [
       "https://www.linkedin.com/company/olyxee/",
       "https://twitter.com/olyxee",
@@ -56,14 +56,14 @@ export default function HomePage() {
       },
     ],
     knowsAbout: [
-      "Organizational Intelligence",
-      "Adaptive Organizations",
-      "Human-AI Coordination",
-      "Organizational Models and Simulation",
-      "Autonomous Agents",
-      "Self-Improving Systems",
+      "Neuro-Symbolic Intelligence",
+      "Autonomous Adaptive Systems",
+      "Formal Verification",
+      "Knowledge Representation",
+      "Financial Computing",
+      "Decision Science",
     ],
-    slogan: "Research and Infrastructure for Organizational Intelligence",
+    slogan: "Advancing the Next Paradigm of Enterprise Computing",
   };
 
   const faqJsonLd = {
@@ -75,7 +75,7 @@ export default function HomePage() {
         name: "What is Olyxee?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Olyxee is a research and technology company focused on Organizational Intelligence. We are exploring how organizations can learn from experience, coordinate humans and machines, adapt to changing environments and improve over time. Our long-term research goal is to understand how organizations themselves might become adaptive intelligent systems.",
+          text: "Olyxee is a research-driven AI infrastructure company advancing the foundations of intelligent computing. Our scientific direction is neuro-symbolic intelligence and autonomous adaptive systems, and we are working towards infrastructure that can discover, represent, verify and evolve the logic governing complex organisations, beginning with financial computing.",
         },
       },
       {
@@ -83,7 +83,7 @@ export default function HomePage() {
         name: "What is Orgni?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Orgni is Olyxee's intelligence layer for everyday organizational work. It connects organizational knowledge, systems and people to give employees and AI agents more context. Orgni is also an applied environment for Olyxee's broader research into Organizational Intelligence.",
+          text: "Orgni is Olyxee's commercial software product. It connects organizational knowledge, systems and people to give employees and AI agents more context for everyday work. It is separate from our research, which investigates the computational foundations of future software infrastructure.",
         },
       },
       {
@@ -114,6 +114,7 @@ export default function HomePage() {
       <Header />
       <main>
         <HeroSection />
+        <ResearchAreas />
         <LatestReleaseSection />
         <ImageShowcase />
         
@@ -155,12 +156,12 @@ function HeroSection() {
         >
           <span className="block sm:whitespace-nowrap">Research and Infrastructure</span>
           <span className="block sm:whitespace-nowrap">
-            for{" "}
+            for the future of{" "}
             <span
               className="font-handwritten text-blue-600 font-semibold tracking-tight"
               style={{ fontFamily: "var(--font-handwritten), cursive" }}
             >
-              Organizational Intelligence
+              intelligent computing
             </span>
           </span>
         </motion.h1>
@@ -332,8 +333,8 @@ function ResearchAreas() {
             className="max-w-3xl mx-auto text-center mb-12 sm:mb-16 lg:mb-20"
           >
             <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Our Research Direction</p>
-            <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900">
-              Building toward organizations that learn and adapt
+            <h2 className="font-serif text-2xl sm:text-4xl lg:text-5xl leading-[1.2] tracking-tight text-neutral-900 text-balance">
+              We envision a future where enterprise computing moves beyond programmed logic and statistical prediction.
             </h2>
           </motion.div>
 
@@ -341,20 +342,20 @@ function ResearchAreas() {
             {[
               {
                 num: "01",
-                title: "Organizational Intelligence",
-                desc: "We study how organizations can behave as intelligent computational systems, including organizational models and simulations that help reason about states, actions and consequences.",
+                title: "Neural intelligence",
+                desc: "Learning patterns, relationships and representations from data, grounded in statistics and probability theory.",
                 gradient: "/images/what-we-do-research.png",
               },
               {
                 num: "02",
-                title: "Adaptive Organizations",
-                desc: "We research how organizations might change their behavior, processes and coordination as conditions shift, and how humans, AI agents, software and machines can work toward shared objectives.",
+                title: "Symbolic intelligence",
+                desc: "Representing and reasoning through explicit knowledge, mathematical principles, logic and constraints, with formal verification and knowledge representation.",
                 gradient: "/images/what-we-do-infrastructure.png",
               },
               {
                 num: "03",
-                title: "Agents and Self-Improving Systems",
-                desc: "We investigate reliable autonomous agents for long-running organizational tasks and systems that can learn from outcomes and progressively improve their operation.",
+                title: "Autonomous adaptive systems",
+                desc: "Investigating how computational systems respond to changing conditions through feedback, decision-making and controlled adaptation, drawing on optimisation and control theory.",
                 gradient: "/images/what-we-do-operations.png",
               },
             ].map((step, idx) => (
@@ -589,7 +590,7 @@ function CourierLoopSection() {
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             className="lg:col-span-4"
           >
-            <p className="text-xs font-semibold text-orange-500 uppercase tracking-[0.2em] mb-4">Olyxee Logistics</p>
+            <p className="text-xs font-semibold text-orange-500 uppercase tracking-[0.2em] mb-4">Freightics</p>
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-5">
               Infrastructure for modern <em className="text-orange-500 not-italic">freight operations.</em>
             </h2>

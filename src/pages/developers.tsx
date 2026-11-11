@@ -26,7 +26,7 @@ const Developers: FC = () => {
 
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO title="Developers" description="Developer resources and product-specific availability information for Orgni and Olyxee Logistics." path="/developers" />
+      <SEO title="Developers" description="Developer resources and product-specific availability information for Orgni and Freightics." path="/developers" />
       <div className="grain" />
       <Header />
 
@@ -72,7 +72,7 @@ const Developers: FC = () => {
             {[
               { icon: Code2, title: "SDK", description: "Planned Python SDK interface for Olyxee product APIs; availability is to be confirmed.", status: "Planned" },
               { icon: Terminal, title: "CLI", description: "Planned command-line interface for Olyxee products and workflows; availability is to be confirmed.", status: "Planned" },
-              { icon: Package, title: "API", description: "API documentation and access information for Orgni and Olyxee Logistics; contact us to confirm product-specific availability.", status: "To confirm" },
+              { icon: Package, title: "API", description: "API documentation and access information for Orgni and Freightics; contact us to confirm product-specific availability.", status: "To confirm" },
               { icon: BookOpen, title: "Docs", description: "Comprehensive guides, tutorials, and API reference.", status: "Available" },
             ].map((tool, idx) => {
               const Icon = tool.icon;
@@ -100,7 +100,7 @@ const Developers: FC = () => {
           <div className="space-y-0 divide-y divide-neutral-200 max-w-3xl">
             {[
               { step: "01", title: "SDK availability", description: "The Python SDK interface is planned; availability is to be confirmed." },
-              { step: "02", title: "Choose a product", description: "Identify the Orgni or Olyxee Logistics resources relevant to your integration." },
+              { step: "02", title: "Choose a product", description: "Identify the Orgni or Freightics resources relevant to your integration." },
               { step: "03", title: "Confirm API access", description: "Contact us to confirm product-specific API documentation and availability." },
               { step: "04", title: "Plan your integration", description: "Use product-specific resources once documentation and access are available." },
             ].map((item, idx) => (

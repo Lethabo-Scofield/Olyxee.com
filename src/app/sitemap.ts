@@ -10,7 +10,7 @@ type Entry = { path: string; priority: number; changeFrequency: ChangeFreq; last
 // Keep lastModified honest: bump a page's date only when its content actually
 // changes. A sitemap where every URL claims to change on every build teaches
 // crawlers to ignore the lastmod signal entirely.
-const REBRAND_DATE = '2026-08-12' // Order Loop → Olyxee Logistics rename
+const REBRAND_DATE = '2026-08-12' // Order Loop → Freightics rename
 const CONTENT_DATE = '2026-05-13' // last general content pass
 const LEGAL_DATE = '2026-05-01'
 

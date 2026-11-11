@@ -57,21 +57,21 @@ const PLATFORM_TABS = [
   },
   {
     id: "order-loop",
-    label: "Olyxee Logistics",
-    desc: "Olyxee Logistics supports freight operations across orders, cargo, warehouse activity and customer tracking.",
+    label: "Freightics",
+    desc: "Freightics supports freight operations across orders, cargo, warehouse activity and customer tracking.",
     image: "/images/enterprise/order-loop-tracking.png",
-    alt: "Olyxee Logistics delivery tracking",
+    alt: "Freightics delivery tracking",
   },
   {
     id: "api",
     label: "API",
-    desc: "Illustrative integration examples only: these example calls are not enabled in this workspace. This does not indicate whether external Orgni or Olyxee Logistics API access is available; contact Olyxee to confirm product-specific availability.",
+    desc: "Illustrative integration examples only: these example calls are not enabled in this workspace. This does not indicate whether external Orgni or Freightics API access is available; contact Olyxee to confirm product-specific availability.",
     image: null,
     alt: "Olyxee API",
   },
 ] as const;
 
-const API_PRODUCTS = ["Orgni", "Olyxee Logistics"] as const;
+const API_PRODUCTS = ["Orgni", "Freightics"] as const;
 const API_STACKS = ["Terminal", "Python", "JavaScript"] as const;
 
 const API_SNIPPETS: Record<
@@ -116,7 +116,7 @@ const run = await client.orgni.workflows.execute({
 console.log(run.status); // 'completed'`,
     },
   },
-  "Olyxee Logistics": {
+  "Freightics": {
     Terminal: {
       file: "terminal",
       code: `curl https://api.olyxee.com/v1/order-loop/orders/XX38169715GB/track \\
@@ -291,7 +291,7 @@ const Enterprise: FC = () => {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { icon: Landmark, title: "Clearer business context", desc: "Bring scattered information into view, so you spend less time chasing details and make decisions with better context." },
-              { icon: Truck, title: "Freight operations", desc: "Olyxee Logistics supports freight teams with practical tools for orders, cargo, warehouse activity and customer updates." },
+              { icon: Truck, title: "Freight operations", desc: "Freightics supports freight teams with practical tools for orders, cargo, warehouse activity and customer updates." },
               { icon: Code2, title: "Less admin, more focus", desc: "Make everyday information easier to find and give yourself more room to focus on customers and the work ahead." },
             ].map((team) => (
               <div
@@ -318,12 +318,9 @@ const Enterprise: FC = () => {
         <h2 className="text-[2.5rem] sm:text-[4rem] font-medium tracking-tighter text-[#111] mb-6 leading-[1.1]">
           Start with the work taking too much of your time.
         </h2>
-        <p className="text-base sm:text-lg leading-relaxed text-[#4a5568] max-w-2xl mx-auto mb-5">
-          Explore how Orgni can bring your business knowledge into context, or see how Olyxee Logistics supports freight operations.
-        </p>
         <Link
           href="/pricing"
-          className="inline-flex items-center text-[#111111] font-medium hover:underline underline-offset-4 text-[1.125rem] mb-12"
+          className="inline-flex items-center text-blue-600 font-medium underline decoration-blue-600/40 hover:decoration-blue-600 underline-offset-4 hover:text-blue-700 text-[1.125rem] mb-12"
         >
           Compare plans <ArrowRight className="ml-1.5 w-4 h-4" />
         </Link>
@@ -352,7 +349,7 @@ const Enterprise: FC = () => {
                 />
               ) : tab.id === "order-loop" ? (
                 <Image
-                  src="/Logo/order-loop-mark.png"
+                  src="/Logo/freightics-mark.png"
                   alt=""
                   width={18}
                   height={18}
@@ -423,7 +420,7 @@ const Enterprise: FC = () => {
                       }`}
                     >
                       <Image
-                        src={p === "Orgni" ? "/Logo/orgni-mark.png" : "/Logo/order-loop-mark.png"}
+                        src={p === "Orgni" ? "/Logo/orgni-mark.png" : "/Logo/freightics-mark.png"}
                         alt=""
                         width={14}
                         height={14}
@@ -483,7 +480,7 @@ const Enterprise: FC = () => {
       {/* === FINAL CTA === */}
       <section className="py-24 sm:py-36 px-4 sm:px-6 text-center max-w-4xl mx-auto border-t border-black/5">
         <p className="mx-auto mb-8 max-w-xl text-base leading-relaxed text-[#4a5568]">
-          Tell us where information gets stuck. We’ll help you explore whether Orgni or Olyxee Logistics is a fit.
+          Tell us where information gets stuck. We’ll help you explore whether Orgni or Freightics is a fit.
         </p>
         <div className="flex flex-col sm:flex-row gap-6 items-center justify-center">
           <Link

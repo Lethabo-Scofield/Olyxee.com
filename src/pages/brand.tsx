@@ -45,7 +45,7 @@ const DOWNLOADS = [
   { label: "Olyxee mark, light", path: "/Logo/Olyxee-White-Logo.png", format: "PNG" },
   { label: "Olyxee mark, dark", path: "/Logo/Olyxee-Black-Logo.png", format: "PNG" },
   { label: "Orgni mark", path: "/images/orgni-logo.png", format: "PNG" },
-  { label: "Olyxee Logistics mark", path: "/images/order-loop-logo.png", format: "PNG" },
+  { label: "Freightics mark", path: "/images/freightics-logo.png", format: "PNG" },
 ];
 
 /* Clear-space diagram */
@@ -146,9 +146,9 @@ const Brand: FC = () => {
       <div className="min-h-screen bg-[#F5F5F7] text-neutral-900">
         <SEO
           title="Brand Guidelines"
-          description="Olyxee brand guidelines: logos for Olyxee, Orgni, and Olyxee Logistics, plus color, typography, and usage rules. Download official assets."
+          description="Olyxee brand guidelines: logos for Olyxee, Orgni, and Freightics, plus color, typography, and usage rules. Download official assets."
           path="/brand"
-          keywords={["Olyxee brand", "Olyxee logo", "Orgni logo", "Olyxee Logistics logo", "Olyxee press kit"]}
+          keywords={["Olyxee brand", "Olyxee logo", "Orgni logo", "Freightics logo", "Olyxee press kit"]}
           jsonLd={{
             "@context": "https://schema.org",
             "@type": "WebPage",
@@ -243,11 +243,11 @@ const Brand: FC = () => {
 
         {/* Product marks */}
         <Section>
-          <SectionHead id="products" title="Product marks" note="Orgni and Olyxee Logistics each carry their own mark. They always sit alongside, never replace, the Olyxee mark." />
+          <SectionHead id="products" title="Product marks" note="Orgni and Freightics each carry their own mark. They always sit alongside, never replace, the Olyxee mark." />
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[
               { src: "/images/orgni-logo.png", name: "Orgni", role: "Organizational intelligence platform" },
-              { src: "/images/order-loop-logo.png", name: "Olyxee Logistics", role: "Freight operations platform" },
+              { src: "/images/freightics-logo.png", name: "Freightics", role: "Freight operations platform" },
             ].map((p) => (
               <Card key={p.name} className="p-8 sm:p-10 flex flex-col items-center text-center">
                 <Image src={p.src} alt={`${p.name} product mark`} width={400} height={400} className="w-36 sm:w-44 h-auto object-contain rounded-2xl mb-6" />

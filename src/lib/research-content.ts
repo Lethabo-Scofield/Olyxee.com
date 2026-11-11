@@ -109,7 +109,7 @@ export const researchEntries = ([
     date: "2026-09-14",
     url: "/research/news/olyxee-joins-claude-partner-network",
     description:
-      "Olyxee joins Anthropic’s Claude Partner Network, supporting its research into Organizational Intelligence and its work on Orgni and Olyxee Logistics.",
+      "Olyxee joins Anthropic’s Claude Partner Network, supporting its research into Organizational Intelligence and its work on Orgni and Freightics.",
     coverImage: "/images/research/claude-partner-network/olyxee-claude-partner-network.png",
     deck:
       "What the network means for our research direction and for the organizations we work with.",
@@ -141,10 +141,10 @@ export const researchEntries = ([
           },
           "Organizational knowledge and activity can be spread across documents, messages, business systems and the knowledge held by employees. Orgni connects organizational knowledge, systems and people so employees and AI agents can access information with more context.",
           {
-            text: "We are applying the same thinking through Olyxee Logistics.",
-            links: [{ text: "Olyxee Logistics", href: "https://logistics.olyxee.com/" }],
+            text: "We are applying the same thinking through Freightics.",
+            links: [{ text: "Freightics", href: "https://logistics.olyxee.com/" }],
           },
-          "Logistics makes coordination across complex operations easy to see. One shipment can involve customers, suppliers, warehouses, invoices, payments, tracking updates and several hand-offs. Olyxee Logistics is a practical freight operations platform and gives us experience building software for this real-world environment.",
+          "Logistics makes coordination across complex operations easy to see. One shipment can involve customers, suppliers, warehouses, invoices, payments, tracking updates and several hand-offs. Freightics is a practical freight operations platform and gives us experience building software for this real-world environment.",
         ],
         quote: {
           text: "The models will keep getting better. The real opportunity is building the infrastructure around them: context, workflows, data and execution, so intelligence becomes part of how an organisation actually operates.",
@@ -185,7 +185,7 @@ export const researchEntries = ([
       {
         heading: "What comes next",
         paragraphs: [
-          "The next steps are straightforward. We will deepen our technical capability around Claude, pursue Anthropic certifications across the team, continue building Orgni and expand Olyxee Logistics.",
+          "The next steps are straightforward. We will deepen our technical capability around Claude, pursue Anthropic certifications across the team, continue building Orgni and expand Freightics.",
           "We will use what we learn from real customer deployments to improve the infrastructure underneath both products. Where it makes sense, we will register Claude-powered deployments through the network and build a track record based on systems working in production.",
           "That evidence matters more to us than demos or AI for its own sake. We want to build infrastructure that becomes part of how work gets done.",
           "Our mission is to develop the foundations of Organizational Intelligence. Joining Anthropic’s Claude Partner Network gives us another resource as we pursue that long-term research direction.",

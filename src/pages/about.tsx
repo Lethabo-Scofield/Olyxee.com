@@ -53,7 +53,7 @@ const About: FC = () => {
         title="About Olyxee | Organizational Intelligence Research"
         description="Olyxee is a research and technology company exploring Organizational Intelligence and building toward organizations capable of learning, adapting and evolving."
         path="/about"
-        keywords={["About Olyxee", "Organizational Intelligence", "adaptive organizations", "Olyxee Research", "Orgni", "Lethabo Scofield"]}
+        keywords={["About Olyxee", "Organizational Intelligence", "adaptive organizations", "Olyxee Research", "Orgni", "Lethabo Scofield", "Lethabo Innocent Makonto"]}
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "AboutPage",
@@ -83,10 +83,10 @@ const About: FC = () => {
               className="relative overflow-hidden rounded-3xl ring-1 ring-neutral-900/10 shadow-2xl shadow-neutral-900/10"
             >
               <Image
-                src="/images/about-self-driving-company.png"
-                alt="The Self-Driving Company — Orgni, Olyxee's operational intelligence infrastructure"
-                width={1670}
-                height={942}
+                src="/images/about-hero-team-2.webp"
+                alt="Two Olyxee teammates talking at a table in a blue office with blue walls"
+                width={1672}
+                height={941}
                 priority
                 sizes="(min-width: 1280px) 1152px, 100vw"
                 className="block w-full h-auto"
@@ -147,8 +147,8 @@ const About: FC = () => {
                   transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
                   className="relative max-w-3xl mx-auto text-center"
                 >
-                  <p className="font-serif text-3xl sm:text-4xl lg:text-[3rem] leading-[1.12] tracking-tight mb-8 text-neutral-900">
-                    A future where organizations <span className="text-orange-600">learn</span>, <span className="text-blue-600">adapt</span> and <strong className="font-semibold text-emerald-700">evolve themselves.</strong>
+                  <p className="font-serif text-2xl sm:text-3xl lg:text-[2.5rem] leading-[1.2] tracking-tight mb-8 text-neutral-900 text-balance">
+                    We envision a future where enterprise computing moves beyond programmed logic and statistical prediction, towards infrastructure capable of <span className="text-orange-600">discovering</span>, <span className="text-blue-600">verifying</span>, and <strong className="font-semibold text-emerald-700">evolving</strong> the principles governing how organisations operate.
                   </p>
                 </motion.article>
               ) : (
@@ -284,8 +284,8 @@ const About: FC = () => {
                 <div className="flex items-center gap-4">
                   <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden ring-1 ring-neutral-200">
                     <Image
-                      src="/images/lethabo-scofield.jpg"
-                      alt="Lethabo Scofield, Founder and CEO of Olyxee"
+                      src="/images/lethabo-makonto.webp"
+                      alt="Lethabo Innocent Makonto (Scofield), Founder and CEO of Olyxee"
                       fill
                       sizes="56px"
                       className="object-cover"
@@ -293,7 +293,7 @@ const About: FC = () => {
                   </div>
                   <div>
                     <p className="text-base sm:text-lg text-neutral-900 tracking-tight leading-tight font-medium">
-                      Lethabo Scofield
+                      Lethabo Innocent Makonto (Scofield)
                     </p>
                     <p className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-500 mt-1">
                       Founder &amp; CEO

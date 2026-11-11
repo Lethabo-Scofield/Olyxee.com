@@ -96,14 +96,7 @@ There is knowledge yet to be discovered, mathematical problems yet to be solved,
 
 That openness is not a limitation.
 
-**It is the reason Olyxee exists.**
-
-## A Message from Our Founder & CEO
-
-"The greatest breakthroughs in AI computing are still ahead of us, and we intend to contribute to the science that makes them possible."
-
-**Lethabo Innocent Makonto**
-Founder & CEO, Olyxee`;
+**It is the reason Olyxee exists.**`;
 
 // Only the emphasis used in this fixed story is supported; text stays escaped.
 function emphasis(text: string) {
