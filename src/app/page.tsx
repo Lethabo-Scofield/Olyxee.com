@@ -330,7 +330,7 @@ function ResearchAreas() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="max-w-3xl mx-auto text-center mb-12 sm:mb-16 lg:mb-20"
+            className="max-w-3xl mx-auto text-center"
           >
             <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Our Research Direction</p>
             <h2 className="font-serif text-2xl sm:text-4xl lg:text-5xl leading-[1.2] tracking-tight text-neutral-900 text-balance">
@@ -338,47 +338,6 @@ function ResearchAreas() {
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
-            {[
-              {
-                num: "01",
-                title: "Neural intelligence",
-                desc: "Learning patterns, relationships and representations from data, grounded in statistics and probability theory.",
-                gradient: "/images/what-we-do-research.png",
-              },
-              {
-                num: "02",
-                title: "Symbolic intelligence",
-                desc: "Representing and reasoning through explicit knowledge, mathematical principles, logic and constraints, with formal verification and knowledge representation.",
-                gradient: "/images/what-we-do-infrastructure.png",
-              },
-              {
-                num: "03",
-                title: "Autonomous adaptive systems",
-                desc: "Investigating how computational systems respond to changing conditions through feedback, decision-making and controlled adaptation, drawing on optimisation and control theory.",
-                gradient: "/images/what-we-do-operations.png",
-              },
-            ].map((step, idx) => (
-              <motion.div
-                key={step.num}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="group relative rounded-2xl overflow-hidden cursor-default"
-              >
-                <div className="absolute inset-0">
-                  <Image src={step.gradient} alt="" fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/35 to-black/15 group-hover:from-black/65 group-hover:via-black/30 group-hover:to-black/10 transition-colors duration-300" />
-                </div>
-                <div className="relative p-7 sm:p-8 min-h-[200px] flex flex-col ring-1 ring-inset ring-white/10 rounded-2xl">
-                  <span className="text-xs font-mono text-white/60 mb-4">{step.num}</span>
-                  <h3 className="text-lg sm:text-xl font-semibold text-white tracking-tight leading-snug mb-3">{step.title}</h3>
-                  <p className="text-sm text-white/80 leading-relaxed">{step.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
 
         </div>
       </div>
