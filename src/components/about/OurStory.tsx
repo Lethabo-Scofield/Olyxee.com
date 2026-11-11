@@ -8,259 +8,113 @@ const STORY = `# Olyxee: Intelligence Emerges Through Connection
 
 ## Why Olyxee Exists
 
-There is something interesting about how organisations work.
+There is something fascinating about intelligence. It rarely exists as a complete, isolated body of knowledge.
 
-A company can employ hundreds of intelligent people, invest millions in technology, collect enormous amounts of data, and still struggle to understand what is happening within its own operations.
+In organisations, knowledge is distributed across people, systems, data, mathematical models, and years of accumulated experience. Each holds a different part of a much larger picture.
 
-The information is there. The knowledge exists. Someone somewhere in the organisation probably knows the answer.
+A financial analyst may understand patterns that a compliance specialist does not. A mathematical model may identify relationships that are difficult for humans to recognise. A business policy may establish constraints that a neural network has never learned.
 
-The problem is that much of this knowledge exists in isolation.
+Each possesses something valuable. None necessarily possesses the whole.
 
-One department understands something another department doesn't. Important decisions are buried in conversations and documents. Systems collect information without necessarily understanding how it relates to everything else. When experienced employees leave, some of what the organisation has learned leaves with them.
+Olyxee began with a question: **What if organisations could become smarter themselves, rather than simply using intelligent tools?**
 
-We have spent decades building technology to help organisations work more efficiently. We have databases, enterprise software, cloud infrastructure, automation, and now increasingly capable artificial intelligence.
+That question led us beyond connecting information. It led us towards investigating how different forms of intelligence could interact, reason, and contribute to a deeper computational understanding of complex systems.
 
-Yet organisations still depend heavily on individuals to connect information, interpret relationships, and maintain a shared understanding of what is happening.
+## The Meaning Behind Our Symbol
 
-This raises a question that became central to Olyxee.
+Our symbol expresses this belief through a simple geometric idea.
 
-**Why are we making the tools used by organisations more intelligent, rather than making organisations themselves intelligent?**
-
-That question is where our story begins.
-
-## How Olyxee Was Founded
-
-Olyxee was founded by Lethabo Scofield in South Africa and formally registered on 21 April 2026.
-
-From the beginning, the intention was to explore a research direction that goes beyond building conventional AI applications.
-
-By 2026, artificial intelligence had already become one of the most competitive areas of technology. Companies were developing increasingly capable models, assistants, agents, and automation platforms. Entire industries were beginning to adopt these technologies.
-
-But we were interested in a different problem.
-
-An organisation is more than the software it uses. It is a collection of people, decisions, responsibilities, processes, systems, and relationships that constantly change.
-
-Much of what makes an organisation function cannot be found in a single database or application. It exists in the connections between things.
-
-A customer order, for example, might involve sales, finance, inventory, logistics, and customer support. Each department sees a different part of the process. Understanding the entire operation requires bringing those different perspectives together.
-
-We began thinking about what would happen if an organisation could develop a persistent understanding of these relationships.
-
-Could it retain knowledge from previous decisions? Could it understand how changes in one part of the business affect another? Could it continuously improve its understanding as employees, systems, and operations evolve?
-
-These questions shaped the direction of Olyxee.
-
-Our ambition is to research and develop the infrastructure that could make this possible.
-
-We are not claiming to have solved organisational intelligence. It is a difficult problem, involving challenges in knowledge representation, memory, reasoning, coordination, and reliable computation.
-
-But we believe it is a problem worth spending years working on.
-
-## The Meaning Behind Our Logo
-
-Our logo is built around a simple geometric idea: two dots and half-circles.
-
-At first glance, there isn't much to explain. It is a small collection of shapes arranged into one symbol.
-
-But the meaning comes from how those shapes relate to one another.
-
-### The two dots
+At its centre are **two circles of unequal size**.
 
 ![Hand-drawn sketch of the Olyxee mark: two dots held within open arcs](/images/two-dots-sketch.webp)
 
-The two dots represent independent sources of intelligence.
+They represent the uneven distribution of knowledge. Intelligence is not uniform. Different individuals, systems, and models possess different capabilities, perspectives, and amounts of information.
 
-They might be two people, two departments, two systems, or two individual pieces of knowledge.
+The larger circle does not imply superiority, nor does the smaller circle imply insignificance. Their difference represents diversity in knowledge and the possibility that each contributes something the other lacks.
 
-Each exists independently. Each holds something the other may not know.
-
-Think about two employees working in the same organisation. One understands the financial implications of a decision, while the other understands its operational consequences.
-
-Both possess useful knowledge, but neither necessarily understands the complete picture.
-
-The dots represent that separation.
-
-### The half-circles
+Surrounding them are **open, incomplete circular forms**.
 
 ![Hand-drawn sketch of the Olyxee mark: two open half-circles around two dots](/images/half-circles-sketch.webp)
 
-The half-circles represent the connections between these independent elements.
+These are deliberately important to the meaning of our identity.
 
-This is where the meaning of the logo becomes more interesting.
+A closed circle suggests completeness. Our symbol remains open because we do not believe understanding is ever entirely complete.
 
-When two sources of knowledge become connected, they can begin to form a broader understanding.
+The openings represent the ability to receive new information, encounter unfamiliar ideas, and incorporate knowledge that originates outside an existing system.
 
-Consider a logistics company.
+The curved forms connect the central elements without enclosing them completely. They suggest that knowledge can move, relationships can develop, and understanding can expand as new evidence emerges.
 
-Its tracking system knows that a shipment has been delayed. Its finance system knows the financial commitments associated with that shipment. Its customer management system knows what was promised to the customer.
+Despite their openness, the forms maintain a coherent geometric structure. The symbol is constructed through carefully proportioned circles and arcs, reflecting our commitment to mathematics, precision, and scientific reasoning.
 
-Individually, each system holds information.
+**The two unequal dots represent knowledge in its different forms. The open circles represent the possibility of discovering what is not yet known. Their relationship represents intelligence emerging through connection.**
 
-But when those systems are connected in a meaningful way, the organisation can begin to understand the consequences of the delay rather than merely knowing that a delay occurred.
+This is the philosophy behind Olyxee.
 
-It can identify affected customers, recognise financial exposure, and determine which operations need attention.
+Not the belief that every system must possess all knowledge, but that meaningful intelligence can emerge when different forms of knowledge interact within structures capable of accommodating new information.
 
-The connection creates the possibility of a capability that none of those isolated systems could provide on its own.
+## From Connection to Computational Understanding
 
-This is what the half-circles symbolise.
+Our founding idea has developed into a broader scientific ambition.
 
-### Why the circles are open
+Artificial intelligence has demonstrated extraordinary progress in learning statistical relationships, recognising patterns, and interpreting information.
 
-The open geometry also carries meaning.
+Yet intelligence involves more than identifying patterns.
 
-We don't see intelligence as something that reaches a final, permanent state.
+It also involves reasoning about relationships, understanding constraints, evaluating consequences, and responding to changing circumstances.
 
-Organisations change. People join and leave. New information becomes available. Processes evolve, and previous assumptions sometimes turn out to be wrong.
+This is why our research direction centres on **Neuro-Symbolic Intelligence and Autonomous Adaptive Systems**.
 
-An organisation that is genuinely capable of learning must be able to revise what it knows.
+Neuro-symbolic intelligence brings statistical learning together with explicit knowledge, mathematical relationships, and logical reasoning.
 
-The open spaces in our symbol represent that possibility. There is room for new knowledge, new relationships, and further development.
+Autonomous adaptive systems investigate how computational systems can respond to changing environments through feedback and decision-making.
 
-The symbol is intentionally simple because the idea behind it is simple.
+Together, these fields provide a foundation for exploring how computational systems can develop richer representations of the environments in which they operate.
 
-**Intelligence emerges through connection.**
+Our long-term ambition is to advance computational understanding and translate scientific progress into foundational software infrastructure.
 
-The dots represent individual sources of knowledge. The half-circles represent the relationships that bring them together. The complete symbol represents the possibility of a more intelligent whole.
+## Beginning with Financial Computing
 
-Of course, connecting information doesn't automatically produce intelligence. Those connections must carry meaningful context, and a system must be capable of interpreting and acting on that context.
+We are beginning with finance, a domain where statistical uncertainty and mathematical precision must coexist.
 
-That is part of the research challenge we have chosen to pursue.
+Our research initiative, **FinIR (Financial Intermediate Representation)**, explores how financial operations can be represented and executed through explicit computational structures rather than depending entirely on probabilistic AI outputs.
 
-## We Are Not Trying to Build Another Version of an Existing AI Company
+FinIR reflects an important principle in our research: learned intelligence and structured mathematical reasoning have distinct strengths, and their integration can provide a stronger foundation for computational systems.
 
-It's important to understand where Olyxee fits into the broader artificial intelligence industry.
+Explore our research: https://www.olyxee.com/research/finir
 
-Companies such as OpenAI, Anthropic, and Google DeepMind are investing heavily in making AI models more capable. Their research continues to expand what machines can understand, generate, and accomplish.
+## The Future We Believe Is Possible
 
-We see those advances as important foundations for what comes next.
+We believe the next generation of computing will emerge from advances that bring learning, knowledge representation, reasoning, and autonomous adaptation closer together.
 
-Our interest is not primarily in competing to build the largest general-purpose model or launching another assistant with similar capabilities.
+Our ambition extends beyond financial computing, beyond individual AI models, and beyond today's enterprise applications.
 
-We are interested in what happens when intelligence moves beyond individual tools and becomes part of the underlying structure of an organisation.
+We envision infrastructure through which computational systems can work with increasingly sophisticated representations of complex environments, making new forms of intelligent software possible.
 
-A highly capable model can answer a question about a company's operations, provided it has the relevant information.
+Much like our symbol, we believe the future of computing remains open.
 
-But answering a question is different from maintaining an understanding of the organisation itself.
+There is knowledge yet to be discovered, mathematical problems yet to be solved, and computational capabilities yet to be realised.
 
-Imagine a system that understands how an organisation is structured, how its departments depend on one another, why certain decisions were made, and how a change might affect the rest of the business.
+That openness is not a limitation.
 
-Now imagine that understanding continuing to evolve as the organisation operates.
+**It is the reason Olyxee exists.**
 
-That is much closer to what we want to investigate.
+## A Message from Our Founder & CEO
 
-We believe there is an important difference between **an organisation that uses artificial intelligence and an organisation that develops intelligence as part of how it operates.**
+"The greatest breakthroughs in AI computing are still ahead of us, and we intend to contribute to the science that makes them possible."
 
-The first describes how most organisations adopt technology today.
-
-The second describes the future we are working toward.
-
-We don't believe this requires replacing the existing AI ecosystem. In many ways, our work depends on advances made by the researchers and companies already developing powerful models and computing systems.
-
-Our ambition lies in another part of the picture: the infrastructure, representations, relationships, and mechanisms that could allow intelligence to function across an entire organisation.
-
-## From Research to Real Systems
-
-Research becomes more useful when its assumptions are tested against real problems.
-
-That is why Olyxee's work includes practical engineering alongside longer-term research.
-
-One of our projects, Orgni, explores how organisational information and context can be brought together so employees can access knowledge without constantly searching through disconnected systems or relying on other people to reconstruct it.
-
-It is an early expression of a much larger idea.
-
-If organisations are ever going to develop a continuously evolving understanding of themselves, they will need reliable ways to represent knowledge, preserve its origins, recognise relationships, and keep information up to date.
-
-These are some of the underlying challenges we want to investigate.
-
-Our work in logistics also provides practical insight into interconnected operations.
-
-A logistics business involves customers, suppliers, warehouses, payments, shipments, documents, and delivery processes. A change in one part of that network can have consequences elsewhere.
-
-Building technology around these operations helps us understand where information becomes fragmented and what is required to make interconnected systems more useful.
-
-These projects are not the final destination.
-
-They allow us to work on real operational problems while developing the engineering experience and research foundations needed for more ambitious systems.
-
-## The Future We Imagine
-
-Imagine joining an organisation where important knowledge doesn't disappear when someone leaves.
-
-Where a decision made years ago can still be understood because the organisation has preserved the reasoning and context behind it.
-
-Where departments don't operate as isolated islands of information.
-
-Where changes in one system can be understood in relation to the people, processes, and other systems they affect.
-
-And where the organisation can use what it learns to become more capable over time.
-
-That is the kind of future we are interested in.
-
-It doesn't mean removing people from organisations or giving machines unlimited authority over decisions.
-
-Human judgement, accountability, and oversight remain essential.
-
-What we want to explore is whether the collective knowledge and experience of an organisation can become something more useful than a collection of disconnected records.
-
-We believe the organisation of the future could possess something resembling an evolving operational memory, an understanding of its own structure, and the ability to coordinate knowledge across its systems.
-
-There are substantial scientific and engineering questions to answer before that vision becomes reality.
-
-We expect some of our assumptions to change as we learn. Some ideas may prove impractical. Others may lead us toward research problems we haven't considered yet.
-
-That uncertainty is part of building a research company.
-
-We are not starting with the assumption that every answer is already known.
-
-We are starting with a question we think matters.
-
-## What Our Symbol Reminds Us Of
-
-When you look at our logo, you see two dots and half-circles.
-
-Nothing about the symbol needs to be complicated.
-
-Its meaning is found in something we observe throughout the world: individual elements can produce new capabilities when they interact in the right way.
-
-A neuron is not a brain. A single employee is not an organisation. A database by itself does not understand the business whose information it stores.
-
-What matters is not only what each component knows or can do, but also how the components relate to one another.
-
-This is the idea we want our symbol to carry.
-
-Olyxee was founded because we believe there is still much to discover about intelligence, particularly how it can exist and evolve across connected systems.
-
-We are not interested in building technology simply because artificial intelligence is popular.
-
-We want to contribute to a future in which organisations become better at understanding themselves, retaining knowledge, adapting to change, and making decisions.
-
-We don't know exactly how long that journey will take or what every part of the technology will eventually look like.
-
-But we know the question we want to spend our time answering.
-
-**What would it take for an organisation to become intelligent?**
-
-That is why Olyxee exists.
-
-And that is why our logo means:
-
-**Intelligence emerges through connection.**
-
----
-
-**Olyxee (Pty) Ltd.**
-
-Founded in South Africa, 2026.
-
-*Research and Infrastructure for Organisational Intelligence.*`;
+**Lethabo Innocent Makonto**
+Founder & CEO, Olyxee`;
 
 // Only the emphasis used in this fixed story is supported; text stays escaped.
 function emphasis(text: string) {
-  return text.split(/(\*\*[^*]+\*\*|\*[^*]+\*)/g).map((part, index) => {
+  return text.split(/(\*\*[^*]+\*\*|\*[^*]+\*|https?:\/\/\S+)/g).map((part, index) => {
     if (part.startsWith("**")) {
       return <strong key={index} className="font-semibold text-neutral-900">{part.slice(2, -2)}</strong>;
     }
     if (part.startsWith("*")) return <em key={index}>{part.slice(1, -1)}</em>;
+    if (/^https?:\/\//.test(part)) {
+      return <a key={index} href={part} target="_blank" rel="noopener noreferrer" className="break-all font-medium text-neutral-900 underline decoration-neutral-300 underline-offset-4 hover:decoration-neutral-900">{part.replace(/^https?:\/\/(www\.)?/, "")}</a>;
+    }
     return <Fragment key={index}>{part}</Fragment>;
   });
 }
@@ -298,6 +152,9 @@ export default function OurStory() {
             </figure>
           );
         }
+        if (/^https?:\/\/\S+$/.test(block)) {
+          return <p key={index} className="mb-6"><a href={block} target="_blank" rel="noopener noreferrer" className="break-all font-medium text-neutral-900 underline decoration-neutral-300 underline-offset-4 hover:decoration-neutral-900">{block.replace(/^https?:\/\/(www\.)?/, "")}</a></p>;
+        }
         if (block === "---") return <hr key={index} className="border-neutral-200 mt-16 mb-10" />;
         if (/^\*[^*]+\*$/.test(block)) {
           return <p key={index} className="mb-10 text-xl sm:text-[1.375rem] leading-relaxed text-neutral-500 font-serif italic">{block.slice(1, -1)}</p>;
@@ -308,6 +165,16 @@ export default function OurStory() {
               {block.slice(2, -2)}
             </blockquote>
           );
+        }
+        if (/^".+"$/.test(block)) {
+          return (
+            <blockquote key={index} className="my-10 border-l-2 border-neutral-900 pl-6 font-serif text-2xl sm:text-[1.75rem] leading-snug text-neutral-900">
+              &ldquo;{block.slice(1, -1)}&rdquo;
+            </blockquote>
+          );
+        }
+        if (block.includes("\n")) {
+          return <p key={index} className="mb-6 -mt-4">{block.split("\n").map((line, i) => <Fragment key={i}>{i > 0 && <br />}{emphasis(line)}</Fragment>)}</p>;
         }
         return <p key={index} className="mb-6">{emphasis(block)}</p>;
       })}
