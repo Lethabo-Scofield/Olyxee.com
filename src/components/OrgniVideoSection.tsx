@@ -1,6 +1,5 @@
 import { FC, useEffect, useRef, useState } from "react";
 import { Pause, Play } from "lucide-react";
-import TalkToEnterprise from "./EnterpriseContactModal";
 
 const OrgniVideoSection: FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -86,28 +85,12 @@ const OrgniVideoSection: FC = () => {
 
       <div className="relative mx-auto flex min-h-[560px] max-w-7xl flex-col justify-center px-5 py-20 sm:min-h-[620px] sm:px-8 lg:px-12">
         <div className="max-w-2xl">
-          <p className="mb-5 text-sm font-medium tracking-[0.16em] text-white/70">
-            ORGNI BY OLYXEE
-          </p>
           <h2
             id="orgni-business-heading"
             className="max-w-xl text-4xl font-medium leading-[1.05] tracking-[-0.045em] sm:text-6xl"
           >
             Spend less time searching. Get back to your business.
           </h2>
-          <p className="mt-6 max-w-lg text-base leading-relaxed text-white/80 sm:text-lg">
-            Orgni brings your business knowledge, people and systems into
-            practical context, so everyday work is easier to understand.
-          </p>
-          <div className="mt-9 flex flex-col items-start gap-5 sm:flex-row sm:items-center">
-            <TalkToEnterprise
-              label="Talk through your business"
-              className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-neutral-950 transition-colors hover:bg-neutral-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black motion-reduce:transition-none"
-            />
-            <span className="text-sm text-white/65">
-              An applied research environment for organizational intelligence.
-            </span>
-          </div>
         </div>
 
         <button
