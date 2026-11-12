@@ -320,14 +320,14 @@ const Pricing: FC = () => {
             description:
               "Freightics is a logistics operations platform for managing customers, invoices, cross-border orders, warehouse cargo matching, shipment statuses and customer tracking.",
             brand: { "@type": "Brand", name: "Olyxee" },
-            url: "https://logistics.olyxee.com",
+            url: "https://freightics.olyxee.com",
             offers: ORDER_LOOP_PLANS.filter((p) => p.price !== null).map((p) => ({
               "@type": "Offer",
               name: `Freightics ${p.name}`,
               price: p.price,
               priceCurrency: "ZAR",
               description: p.desc,
-              url: "https://logistics.olyxee.com",
+              url: "https://freightics.olyxee.com",
             })),
           },
           {

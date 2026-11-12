@@ -142,7 +142,7 @@ export const researchEntries = ([
           "Organizational knowledge and activity can be spread across documents, messages, business systems and the knowledge held by employees. Orgni connects organizational knowledge, systems and people so employees and AI agents can access information with more context.",
           {
             text: "We are applying the same thinking through Freightics.",
-            links: [{ text: "Freightics", href: "https://logistics.olyxee.com/" }],
+            links: [{ text: "Freightics", href: "https://freightics.olyxee.com/" }],
           },
           "Logistics makes coordination across complex operations easy to see. One shipment can involve customers, suppliers, warehouses, invoices, payments, tracking updates and several hand-offs. Freightics is a practical freight operations platform and gives us experience building software for this real-world environment.",
         ],

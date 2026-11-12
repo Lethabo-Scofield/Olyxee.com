@@ -192,7 +192,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       description: "Freightics is a logistics operations platform for managing customers, invoices, cross-border orders, warehouse cargo matching, shipment statuses and customer tracking — built for cross-border logistics businesses moving cargo between countries.",
       status: "available",
       bg: "/images/gradient-yellow-green.webp",
-      action: { kind: "external", href: "https://logistics.olyxee.com/", label: "Visit Freightics" },
+      action: { kind: "external", href: "https://freightics.olyxee.com/", label: "Visit Freightics" },
     },
     {
       name: "Orgni · Work across systems",

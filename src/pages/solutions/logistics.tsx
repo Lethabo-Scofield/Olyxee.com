@@ -89,7 +89,7 @@ const Logistics: FC = () => {
               className="col-span-12 lg:col-span-4 flex flex-col gap-4 lg:pb-8"
             >
               <a
-                href="https://logistics.olyxee.com/"
+                href="https://freightics.olyxee.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center justify-between gap-6 px-7 py-5 bg-neutral-900 text-white rounded-full hover:bg-black transition-colors"
@@ -100,7 +100,7 @@ const Logistics: FC = () => {
                 </span>
               </a>
               <a
-                href="https://logistics.olyxee.com/"
+                href="https://freightics.olyxee.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-mono text-[11px] tracking-[0.22em] text-neutral-400 hover:text-neutral-900 transition-colors pl-2"
@@ -324,7 +324,7 @@ const Logistics: FC = () => {
                 className="col-span-12 lg:col-span-4 flex flex-col gap-3"
               >
                 <a
-                  href="https://logistics.olyxee.com/"
+                  href="https://freightics.olyxee.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group inline-flex items-center justify-between gap-6 px-7 py-5 bg-white text-neutral-900 rounded-full hover:bg-amber-400 transition-colors"

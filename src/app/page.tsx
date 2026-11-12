@@ -121,6 +121,7 @@ export default function HomePage() {
         <OrgniSection />
         <TeamsAvailabilitySection />
         <VideoShowcaseSection />
+        <FreighticsSection />
         <CTASection />
         <LogoStrip />
       </main>
@@ -158,7 +159,7 @@ function HeroSection() {
           <span className="block sm:whitespace-nowrap">
             for the future of{" "}
             <span
-              className="font-handwritten text-blue-600 font-semibold tracking-tight"
+              className="font-handwritten text-blue-900 font-semibold tracking-tight"
               style={{ fontFamily: "var(--font-handwritten), cursive" }}
             >
               intelligent computing
@@ -185,7 +186,7 @@ function HeroSection() {
               href="https://orgni.olyxee.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-7 sm:py-3.5 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-all text-xs sm:text-sm tracking-wide shadow-lg shadow-blue-600/30 border border-blue-500/40"
+              className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-7 sm:py-3.5 bg-blue-900 text-white rounded-full font-medium hover:bg-blue-950 transition-all text-xs sm:text-sm tracking-wide shadow-lg shadow-blue-900/30 border border-blue-800/40"
             >
               Explore Orgni <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </a>
@@ -459,10 +460,10 @@ function ProductFeature({
         >
           <div>
             {eyebrow && (
-              <p className="text-xs font-semibold text-orange-500 uppercase tracking-[0.2em] mb-4">{eyebrow}</p>
+              <p className="text-xs font-semibold text-blue-900 uppercase tracking-[0.2em] mb-4">{eyebrow}</p>
             )}
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] max-w-2xl">
-              {heading} <em className="text-orange-500 not-italic">{emphasis}</em>
+              {heading} <em className="text-blue-900 not-italic">{emphasis}</em>
             </h2>
           </div>
         </motion.div>
@@ -549,9 +550,9 @@ function CourierLoopSection() {
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             className="lg:col-span-4"
           >
-            <p className="text-xs font-semibold text-orange-500 uppercase tracking-[0.2em] mb-4">Freightics</p>
+            <p className="text-xs font-semibold text-blue-900 uppercase tracking-[0.2em] mb-4">Freightics</p>
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-5">
-              Infrastructure for modern <em className="text-orange-500 not-italic">freight operations.</em>
+              Infrastructure for modern <em className="text-blue-900 not-italic">freight operations.</em>
             </h2>
 
             <p className="text-neutral-600 text-base sm:text-lg font-normal leading-relaxed mb-8 max-w-sm">
@@ -560,7 +561,7 @@ function CourierLoopSection() {
 
             <div className="flex flex-wrap items-center gap-4">
               <a
-                href="https://logistics.olyxee.com/"
+                href="https://freightics.olyxee.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2 text-sm font-medium text-white bg-neutral-900 hover:bg-black px-6 py-3 rounded-full transition-colors"
@@ -584,7 +585,7 @@ function CourierLoopSection() {
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             className="lg:col-span-8 relative"
           >
-            <div aria-hidden className="absolute -inset-8 -z-10 bg-gradient-to-br from-orange-50/60 via-white to-amber-50/40 blur-2xl rounded-[2rem]" />
+            <div aria-hidden className="absolute -inset-8 -z-10 bg-gradient-to-br from-blue-50/60 via-white to-slate-50/40 blur-2xl rounded-[2rem]" />
             <div className="relative overflow-hidden rounded-3xl">
               <Image
                 src="/images/order-loop-illustration.png"
@@ -677,7 +678,7 @@ function IntegrationSection() {
             <div
               className="absolute inset-0 rounded-3xl"
               style={{
-                background: 'linear-gradient(135deg, #f97316, #3b82f6, #f97316, #3b82f6)',
+                background: 'linear-gradient(135deg, #1e3a8a, #3b82f6, #1e3a8a, #3b82f6)',
                 backgroundSize: '300% 300%',
                 animation: 'gradient-shift 6s ease infinite',
               }}
@@ -686,7 +687,7 @@ function IntegrationSection() {
               <div
                 className="absolute inset-0 rounded-3xl opacity-[0.06]"
                 style={{
-                  background: 'linear-gradient(135deg, #f97316, #3b82f6, #f97316)',
+                  background: 'linear-gradient(135deg, #1e3a8a, #3b82f6, #1e3a8a)',
                   backgroundSize: '300% 300%',
                   animation: 'gradient-shift 6s ease infinite',
                 }}
@@ -780,7 +781,7 @@ function TeamsAvailabilitySection() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <h2 id="orgni-in-teams-heading" className="font-serif text-4xl sm:text-5xl tracking-tight leading-[1.08] text-neutral-900">
-            Tag <span className="rounded-lg bg-orange-600 px-2 text-white">@Orgni</span> in Microsoft Teams.
+            Tag <span className="rounded-lg bg-blue-900 px-2 text-white">@Orgni</span> in Microsoft Teams.
           </h2>
           <p className="mt-5 max-w-md text-base sm:text-lg leading-relaxed text-neutral-600">
             @Orgni is now available for teams using Microsoft Teams. Ask a question in any channel and get an answer with the context behind it, without leaving the conversation.
@@ -817,13 +818,13 @@ function TeamsAvailabilitySection() {
 
 function VideoShowcaseSection() {
   return (
-    <section id="in-motion" aria-label="Orgni in motion" className="py-20 sm:py-28 lg:py-32 bg-white scroll-mt-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
+    <section id="in-motion" aria-label="Orgni in motion" className="bg-black scroll-mt-24">
+      <div className="w-full">
         <motion.div
-          initial={{ opacity: 0, y: 50, scale: 0.97 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.9 }}
           className="relative"
         >
           <a
@@ -831,7 +832,7 @@ function VideoShowcaseSection() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Explore Orgni"
-            className="group block relative rounded-3xl bg-black overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-4"
+            className="group block relative bg-black overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white"
           >
           <video
             src="/videos/landing-showcase.mp4"
@@ -989,7 +990,7 @@ function StoriesSection() {
               understanding enables
               <svg
                 aria-hidden="true"
-                className="pointer-events-none absolute left-0 right-0 -bottom-2 sm:-bottom-3 w-full h-3 sm:h-[18px] overflow-visible text-orange-500"
+                className="pointer-events-none absolute left-0 right-0 -bottom-2 sm:-bottom-3 w-full h-3 sm:h-[18px] overflow-visible text-blue-900"
                 viewBox="0 0 300 18"
                 preserveAspectRatio="none"
                 fill="none"
@@ -1047,7 +1048,7 @@ function StoriesSection() {
                       0{i + 1}
                     </span>
                     <span className="min-w-0 flex-1">
-                      <span className={`block text-[11px] font-semibold uppercase tracking-[0.18em] mb-2 ${isActive ? "text-orange-600" : "text-neutral-400"}`}>
+                      <span className={`block text-[11px] font-semibold uppercase tracking-[0.18em] mb-2 ${isActive ? "text-blue-900" : "text-neutral-400"}`}>
                         {item.tag}
                       </span>
                       <span className={`block font-serif text-lg sm:text-xl leading-snug tracking-tight transition-colors ${isActive ? "text-neutral-900" : "text-neutral-500 group-hover:text-neutral-800"}`}>
@@ -1141,6 +1142,25 @@ function StoriesSection() {
         </motion.div>
       </div>
     </section>
+  );
+}
+
+function FreighticsSection() {
+  return (
+    <ProductFeature
+      id="freightics"
+      surface="plain"
+      eyebrow="Freightics"
+      heading="Manage all your"
+      emphasis="freight in one place."
+      image={{
+        src: "/images/freightics-shipping.webp",
+        alt: "Freightics shipment page showing a container in transit from Chenghai, China to OR Tambo, South Africa, with a live route map, shipment activity and carrier details",
+        width: 1672,
+        height: 941,
+      }}
+      primary={{ label: "Visit Freightics", href: "https://freightics.olyxee.com/", external: true }}
+    />
   );
 }
 

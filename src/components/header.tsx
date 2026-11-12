@@ -34,7 +34,7 @@ const SIGNIN_OPTIONS: SignInOption[] = [
     {
         name: "Freightics",
         description: "Logistics tracking and updates",
-        href: "https://logistics.olyxee.com/",
+        href: "https://freightics.olyxee.com/",
         external: true,
     },
     {
