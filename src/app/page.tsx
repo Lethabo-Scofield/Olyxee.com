@@ -142,7 +142,6 @@ export default function HomePage() {
         <OrgniSection />
         <FreighticsSection />
         <AboutSection />
-        <CTASection />
         <LogoStrip />
       </main>
       <Footer />
@@ -181,7 +180,7 @@ function HeroSection() {
           <span className="block sm:whitespace-nowrap">
             for the future of{" "}
             <span
-              className="font-handwritten text-[#0a1330] font-semibold tracking-tight"
+              className="font-handwritten text-blue-600 font-semibold tracking-tight"
               style={{ fontFamily: "var(--font-handwritten), cursive" }}
             >
               intelligent computing
@@ -355,7 +354,7 @@ function ResearchAreas() {
           className="max-w-4xl mx-auto text-center"
         >
           <h2 className="font-serif text-4xl sm:text-6xl lg:text-7xl leading-[1.08] tracking-tight text-neutral-900 text-balance">
-            Beyond today&rsquo;s approaches to <span className="text-[#12215a]">artificial intelligence.</span>
+            Beyond today&rsquo;s approaches to <span className="text-pink-500">artificial intelligence.</span>
           </h2>
         </motion.div>
       </div>
@@ -609,9 +608,8 @@ function OrgniSection() {
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.7, ease }}
         >
-          <p className="text-xs font-semibold text-[#0a1330] uppercase tracking-[0.2em] mb-4">Orgni</p>
           <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] max-w-2xl">
-            Help your team <em className="text-[#0a1330] not-italic">find what they need.</em>
+            Intelligent computing for <em className="text-[#0a1330] not-italic">everyday work.</em>
           </h2>
         </motion.div>
 
@@ -624,8 +622,8 @@ function OrgniSection() {
         >
           <div className="relative overflow-hidden rounded-lg ring-1 ring-neutral-200/80">
             <Image
-              src="/images/orgni-teams-close-pack.webp"
-              alt="A Finance team chat in Microsoft Teams where @Orgni finds a missing variance file, checks the numbers across Outlook, SharePoint, SAP and Calendar, and sends the brief to the CFO"
+              src="/images/orgni-teams-finance.webp"
+              alt="Orgni in a Microsoft Teams Finance chat: asked to unblock a close pack, it finds the missing file, checks the numbers across Outlook, SharePoint, SAP and Calendar, and lists the sources found"
               width={1672}
               height={941}
               className="block w-full h-auto"
@@ -635,6 +633,9 @@ function OrgniSection() {
           </div>
         </motion.div>
 
+        <p className="font-serif text-2xl sm:text-3xl tracking-tight text-neutral-900 mb-6">
+          Help your team find what they need.
+        </p>
         <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
           <a
             href="https://orgni.olyxee.com/"
@@ -645,9 +646,6 @@ function OrgniSection() {
             Learn about Orgni
             <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </a>
-          <Link href="/contact" className="inline-flex items-center gap-1.5 text-sm font-medium text-neutral-900 underline decoration-neutral-400 underline-offset-4 hover:decoration-neutral-900">
-            Get @Orgni for your team <ArrowRight className="h-4 w-4" aria-hidden />
-          </Link>
         </div>
       </div>
 
@@ -852,23 +850,32 @@ function VideoShowcaseSection() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   useVideoInView(videoRef);
   return (
-    <div id="in-motion" className="bg-black">
-      <div className="relative">
-        <video
-          ref={videoRef}
-          src="/videos/landing-showcase.mp4"
-          className="block w-full aspect-video object-cover"
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          aria-hidden="true"
-        />
-        <div aria-hidden className="absolute inset-0 bg-black/40 pointer-events-none" />
-        <div className="absolute inset-0 flex items-center justify-center px-6 text-center">
-          <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-white max-w-4xl mx-auto leading-[1.1] text-balance">
-            Advancing the foundations of intelligent computing.
-          </h2>
+    <div id="in-motion" className="bg-white py-20 sm:py-28 lg:py-32">
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
+        <div className="relative overflow-hidden rounded-3xl bg-black">
+          <video
+            ref={videoRef}
+            src="/videos/landing-showcase.mp4"
+            className="block w-full aspect-video object-cover"
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            aria-hidden="true"
+          />
+          <div aria-hidden className="absolute inset-0 bg-black/45 pointer-events-none" />
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 sm:gap-8 px-6 text-center">
+            <h2 className="font-serif text-2xl sm:text-5xl lg:text-6xl tracking-tight text-white max-w-4xl mx-auto leading-[1.1] text-balance">
+              Advancing the foundations of intelligent computing.
+            </h2>
+            <Link
+              href="/contact"
+              className="group inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-4 bg-white text-neutral-950 rounded-full font-medium hover:bg-neutral-200 transition-colors text-sm tracking-wide"
+            >
+              Get in touch
+              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" aria-hidden />
+            </Link>
+          </div>
         </div>
       </div>
     </div>
@@ -897,7 +904,6 @@ function LatestReleaseSection() {
           className="mb-10 sm:mb-14 flex flex-wrap items-end justify-between gap-4"
         >
           <div>
-            <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Research outputs</p>
             <h2 id="latest-release-heading" className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900 max-w-2xl">
               Research that makes financial computing verifiable.
             </h2>
@@ -925,9 +931,9 @@ function LatestReleaseSection() {
             aria-hidden
           />
           <div className="relative">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-600 mb-4">Released &middot; {release.title}</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-700 mb-4">Our latest research</p>
             <h3 className="max-w-[720px] text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.03em] text-neutral-900 sm:text-[2.25rem]">
-              Financial results you can verify, not just trust.
+              Semantic Financial Document Computing
             </h3>
             <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
               <Link
@@ -937,14 +943,6 @@ function LatestReleaseSection() {
                 Read the research
                 <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden />
               </Link>
-              <a
-                href="https://github.com/Olyxee/finir"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-sm font-medium text-neutral-900 underline decoration-neutral-400 underline-offset-4 hover:decoration-neutral-900"
-              >
-                Source code <ArrowUpRight className="h-4 w-4" aria-hidden />
-              </a>
             </div>
           </div>
         </motion.div>
@@ -1172,9 +1170,9 @@ function FreighticsSection() {
     <ProductFeature
       id="freightics"
       surface="plain"
-      eyebrow="Freightics"
-      heading="Manage all your"
-      emphasis="freight in one place."
+      heading="Built to carry our"
+      emphasis="intelligent computing mission."
+      description="Manage all your freight in one place."
       image={{
         src: "/images/freightics-shipping.webp",
         alt: "Freightics shipment page showing a container in transit from Chenghai, China to OR Tambo, South Africa, with a live route map, shipment activity and carrier details",

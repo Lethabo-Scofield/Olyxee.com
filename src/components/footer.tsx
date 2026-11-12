@@ -85,7 +85,7 @@ export default function Footer({ variant = "light" }: FooterProps) {
 
   const styles = isLight
     ? {
-        wrapper: "bg-white text-neutral-900 border-t border-neutral-200",
+        wrapper: "bg-neutral-100 text-neutral-900 border-t border-neutral-200",
         columnTitle: "text-neutral-500",
         link: "text-neutral-900 hover:text-neutral-500",
         divider: "border-neutral-200",
