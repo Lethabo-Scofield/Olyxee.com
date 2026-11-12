@@ -190,6 +190,11 @@ export const researchEntries = ([
           "That evidence matters more to us than demos or AI for its own sake. We want to build infrastructure that becomes part of how work gets done.",
           "Our mission is to develop the foundations of Organizational Intelligence. Joining Anthropic’s Claude Partner Network gives us another resource as we pursue that long-term research direction.",
         ],
+        image: {
+          src: "/images/tag-orgni-celebrate.webp",
+          alt: "A smiling team member celebrating at her laptop, with the words Tag @Orgni in",
+          caption: "Tag @Orgni in Microsoft Teams.",
+        },
       },
     ],
   },

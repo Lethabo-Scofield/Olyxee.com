@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useMemo } from "react";
+import { useState, useEffect, useRef, useMemo, type RefObject } from "react";
 import Header from '../components/header';
 import Footer from '../components/footer';
 import Image from "next/image";
@@ -8,6 +8,29 @@ import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { ArrowRight, ArrowUpRight, Truck, Check, PackageCheck, MapPin, Bell } from "lucide-react";
 
+
+// Plays a decorative video only while it is on screen, and never under
+// reduced-motion, so videos do not compete for attention or battery.
+function useVideoInView(ref: RefObject<HTMLVideoElement | null>) {
+  const reduce = useReducedMotion();
+  useEffect(() => {
+    const video = ref.current;
+    if (!video) return;
+    if (reduce) {
+      video.pause();
+      return;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) video.play().catch(() => {});
+        else video.pause();
+      },
+      { threshold: 0.35 }
+    );
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, [ref, reduce]);
+}
 
 export default function HomePage() {
   const [cookieBannerVisible, setCookieBannerVisible] = useState(false);
@@ -116,12 +139,9 @@ export default function HomePage() {
         <HeroSection />
         <ResearchAreas />
         <LatestReleaseSection />
-        <ImageShowcase />
-        
         <OrgniSection />
-        <TeamsAvailabilitySection />
-        <VideoShowcaseSection />
         <FreighticsSection />
+        <AboutSection />
         <CTASection />
         <LogoStrip />
       </main>
@@ -136,8 +156,10 @@ export default function HomePage() {
 
 function HeroSection() {
   const ref = useRef<HTMLElement | null>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
+  useVideoInView(videoRef);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], [0, 150]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
@@ -145,15 +167,15 @@ function HeroSection() {
   return (
     <section ref={ref} aria-label="Hero" className="relative w-full min-h-[100svh] flex flex-col items-center justify-center px-4 md:px-8 lg:px-16 overflow-hidden">
       <div className="absolute inset-0 w-full h-full">
-        <Image src="/hero-bg.webp" alt="Olyxee hero background with mountain landscape" fill className="object-cover" priority sizes="100vw" />
+        <Image src="/hero-bg.webp" alt="" fill className="object-cover" priority sizes="100vw" />
       </div>
 
-      <motion.div style={mounted ? { y, opacity } : undefined} className="relative z-10 text-center max-w-5xl mx-auto pt-16">
+      <motion.div style={mounted ? { y, opacity } : undefined} className="relative z-10 text-center max-w-5xl mx-auto pt-24 sm:pt-28">
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.1 }}
-          className="font-serif text-neutral-900 leading-[1.02] tracking-tight px-2 sm:px-0 text-[clamp(1.4rem,6.6vw,5.5rem)] sm:text-6xl md:text-7xl lg:text-[5.5rem]"
+          className="font-serif text-neutral-900 leading-[1.04] tracking-tight px-2 sm:px-0 text-[clamp(1.75rem,7.2vw,5.5rem)] sm:text-6xl md:text-7xl lg:text-[5.5rem]"
         >
           <span className="block sm:whitespace-nowrap">Research and Infrastructure</span>
           <span className="block sm:whitespace-nowrap">
@@ -169,27 +191,27 @@ function HeroSection() {
       </motion.div>
 
       <motion.div
-        className="relative z-10 w-full max-w-5xl mt-8 mb-8 px-2 sm:px-0"
+        className="relative z-10 w-full max-w-5xl mt-10 mb-8 px-2 sm:px-0"
         initial={{ opacity: 0, y: 60, scale: 0.97 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 1.2, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-neutral-200/80 shadow-2xl shadow-neutral-300/40">
           <video
+            ref={videoRef}
             src="/videos/hero.mp4"
             className="w-full aspect-video object-cover"
-            autoPlay loop muted playsInline preload="metadata"
+            loop muted playsInline preload="metadata"
+            aria-hidden="true"
           />
           <div className="absolute inset-0 rounded-2xl sm:rounded-3xl pointer-events-none ring-1 ring-inset ring-black/5" />
           <div className="absolute bottom-3 right-3 sm:bottom-6 sm:right-6 z-20">
-            <a
-              href="https://orgni.olyxee.com"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/research"
               className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-7 sm:py-3.5 bg-[#0a1330] text-white rounded-full font-medium hover:bg-[#050a1c] transition-all text-xs sm:text-sm tracking-wide shadow-lg shadow-[#0a1330]/30 border border-[#1a2a5c]/50"
             >
-              Explore Orgni <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-            </a>
+              Explore Our Research <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden />
+            </Link>
           </div>
         </div>
       </motion.div>
@@ -323,30 +345,36 @@ function LogoStrip() {
 
 function ResearchAreas() {
   return (
-    <section className="py-20 sm:py-32 lg:py-40">
+    <section id="research" className="py-24 sm:py-36 lg:py-44 bg-white scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
-        <div className="px-4 sm:px-8 lg:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="max-w-3xl mx-auto text-center"
-          >
-            <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Our Research Direction</p>
-            <h2 className="font-serif text-2xl sm:text-4xl lg:text-5xl leading-[1.2] tracking-tight text-neutral-900 text-balance">
-              We envision a future where enterprise computing moves beyond programmed logic and statistical prediction.
-            </h2>
-          </motion.div>
-
-
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="max-w-4xl mx-auto text-center"
+        >
+          <h2 className="font-serif text-4xl sm:text-6xl lg:text-7xl leading-[1.08] tracking-tight text-neutral-900 text-balance">
+            Beyond today&rsquo;s approaches to <span className="text-[#12215a]">artificial intelligence.</span>
+          </h2>
+        </motion.div>
       </div>
     </section>
   );
 }
 
-
+function TechnologyIntro() {
+  return (
+    <section id="technology" className="pt-20 sm:pt-28 pb-14 sm:pb-20 bg-neutral-50/60 border-t border-neutral-100 scroll-mt-24">
+      <div className="max-w-3xl mx-auto px-4 sm:px-8 text-center">
+        <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Technology</p>
+        <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl leading-[1.1] tracking-tight text-neutral-900 text-balance">
+          Technology you can use today.
+        </h2>
+      </div>
+    </section>
+  );
+}
 
 
 function ImageShowcase() {
@@ -387,21 +415,7 @@ function ImageShowcase() {
   );
 
   return (
-    <section className="py-16 sm:py-24 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 mb-10 sm:mb-14">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="text-center"
-        >
-          <h2 className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900">
-            Spend less time searching. More time growing your business.
-          </h2>
-        </motion.div>
-      </div>
-
+    <div className="pt-16 sm:pt-20 pb-16 sm:pb-24 overflow-hidden" aria-label="Orgni gallery">
       <div className="relative w-full space-y-5 sm:space-y-6">
         <div className="pointer-events-none absolute inset-y-0 left-0 w-12 sm:w-24 bg-gradient-to-r from-white to-transparent z-10" />
         <div className="pointer-events-none absolute inset-y-0 right-0 w-12 sm:w-24 bg-gradient-to-l from-white to-transparent z-10" />
@@ -414,7 +428,7 @@ function ImageShowcase() {
           {doubledB.map(renderCard)}
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 
@@ -432,7 +446,7 @@ function ProductFeature({
   secondary,
 }: {
   id: string;
-  surface: "muted" | "plain";
+  surface: "muted" | "plain" | "dark";
   eyebrow?: string;
   heading: string;
   emphasis: string;
@@ -442,9 +456,12 @@ function ProductFeature({
   secondary?: ProductCta;
 }) {
   const ease = [0.25, 0.1, 0.25, 1] as const;
+  const dark = surface === "dark";
   const surfaceClass =
     surface === "muted"
       ? "bg-neutral-50/60 border-t border-neutral-100"
+      : dark
+      ? "bg-black"
       : "bg-white border-y border-neutral-100";
 
   return (
@@ -460,10 +477,10 @@ function ProductFeature({
         >
           <div>
             {eyebrow && (
-              <p className="text-xs font-semibold text-[#0a1330] uppercase tracking-[0.2em] mb-4">{eyebrow}</p>
+              <p className={`text-xs font-semibold uppercase tracking-[0.2em] mb-4 ${dark ? "text-blue-300" : "text-[#0a1330]"}`}>{eyebrow}</p>
             )}
-            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] max-w-2xl">
-              {heading} <em className="text-[#0a1330] not-italic">{emphasis}</em>
+            <h2 className={`font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.05] max-w-2xl ${dark ? "text-white" : "text-neutral-900"}`}>
+              {heading} <em className={`not-italic ${dark ? "text-blue-300" : "text-[#0a1330]"}`}>{emphasis}</em>
             </h2>
           </div>
         </motion.div>
@@ -476,7 +493,7 @@ function ProductFeature({
           transition={{ duration: 0.9, ease }}
           className="relative mt-10 sm:mt-14"
         >
-          <div className="relative overflow-hidden rounded-lg ring-1 ring-neutral-200/80">
+          <div className={`relative overflow-hidden rounded-lg ring-1 ${dark ? "ring-white/15" : "ring-neutral-200/80"}`}>
             <Image
               src={image.src}
               alt={image.alt}
@@ -508,7 +525,7 @@ function ProductFeature({
               <a
                 href={primary.href}
                 {...(primary.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                className="group inline-flex items-center gap-2 text-sm font-medium text-white bg-neutral-900 hover:bg-black px-6 py-3 rounded-full transition-colors"
+                className={`group inline-flex items-center gap-2 text-sm font-medium px-6 py-3 rounded-full transition-colors ${dark ? "text-neutral-950 bg-white hover:bg-neutral-200" : "text-white bg-neutral-900 hover:bg-black"}`}
               >
                 {primary.label}
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -540,9 +557,9 @@ function ProductFeature({
 
 function CourierLoopSection() {
   return (
-    <section id="logistics" className="py-20 sm:py-32 lg:py-40 bg-white border-y border-neutral-100">
+    <section id="logistics" className="py-20 sm:py-28 bg-white border-b border-neutral-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -550,32 +567,10 @@ function CourierLoopSection() {
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             className="lg:col-span-4"
           >
-            <p className="text-xs font-semibold text-[#0a1330] uppercase tracking-[0.2em] mb-4">Freightics</p>
-            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-5">
-              Infrastructure for modern <em className="text-[#0a1330] not-italic">freight operations.</em>
-            </h2>
-
-            <p className="text-neutral-600 text-base sm:text-lg font-normal leading-relaxed mb-8 max-w-sm">
-              A practical platform for freight and logistics businesses to manage quotes, orders, payments, cargo, warehouse activity, tracking and customer communication.
-            </p>
-
-            <div className="flex flex-wrap items-center gap-4">
-              <a
-                href="https://freightics.olyxee.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 text-sm font-medium text-white bg-neutral-900 hover:bg-black px-6 py-3 rounded-full transition-colors"
-              >
-                Open Logistics
-                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </a>
-              <a
-                href="mailto:info@olyxee.com?subject=Olyxee%20Logistics%20Inquiry"
-                className="text-sm font-medium text-neutral-700 hover:text-neutral-900 transition-colors"
-              >
-                Talk to us →
-              </a>
-            </div>
+            <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Freightics in practice</p>
+            <h3 className="font-serif text-3xl sm:text-4xl text-neutral-900 tracking-tight leading-[1.1] mb-4">
+              From order to <em className="text-[#0a1330] not-italic">delivery.</em>
+            </h3>
           </motion.div>
 
           <motion.div
@@ -585,8 +580,7 @@ function CourierLoopSection() {
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             className="lg:col-span-8 relative"
           >
-            <div aria-hidden className="absolute -inset-8 -z-10 bg-gradient-to-br from-blue-50/60 via-white to-slate-50/40 blur-2xl rounded-[2rem]" />
-            <div className="relative overflow-hidden rounded-3xl">
+            <div className="relative overflow-hidden rounded-3xl ring-1 ring-neutral-200/80">
               <Image
                 src="/images/order-loop-illustration.png"
                 alt="A shopper places an order on their phone while a courier delivers the package, with live order-status steps showing the order is on the way"
@@ -605,19 +599,60 @@ function CourierLoopSection() {
 }
 
 function OrgniSection() {
+  const ease = [0.25, 0.1, 0.25, 1] as const;
   return (
-    <ProductFeature
-      id="orgni"
-      surface="muted"
-      heading="Help your team"
-      emphasis="find what they need."
-      image={{
-        src: "/images/orgni-teams-close-pack.webp",
-        alt: "A Finance team chat in Microsoft Teams where @Orgni finds a missing variance file, checks the numbers across Outlook, SharePoint, SAP and Calendar, and sends the brief to the CFO",
-        width: 1672,
-        height: 941,
-      }}
-    />
+    <section id="orgni" className="bg-white border-y border-neutral-100 scroll-mt-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 pt-20 sm:pt-32 lg:pt-40">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.7, ease }}
+        >
+          <p className="text-xs font-semibold text-[#0a1330] uppercase tracking-[0.2em] mb-4">Orgni</p>
+          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] max-w-2xl">
+            Help your team <em className="text-[#0a1330] not-italic">find what they need.</em>
+          </h2>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 36, scale: 0.985 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.9, ease }}
+          className="relative mt-10 sm:mt-14 mb-10 sm:mb-14"
+        >
+          <div className="relative overflow-hidden rounded-lg ring-1 ring-neutral-200/80">
+            <Image
+              src="/images/orgni-teams-close-pack.webp"
+              alt="A Finance team chat in Microsoft Teams where @Orgni finds a missing variance file, checks the numbers across Outlook, SharePoint, SAP and Calendar, and sends the brief to the CFO"
+              width={1672}
+              height={941}
+              className="block w-full h-auto"
+              sizes="(max-width: 1280px) 100vw, 1216px"
+              quality={95}
+            />
+          </div>
+        </motion.div>
+
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+          <a
+            href="https://orgni.olyxee.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 text-sm font-medium text-white bg-neutral-900 hover:bg-black px-6 py-3 rounded-full transition-colors"
+          >
+            Learn about Orgni
+            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          </a>
+          <Link href="/contact" className="inline-flex items-center gap-1.5 text-sm font-medium text-neutral-900 underline decoration-neutral-400 underline-offset-4 hover:decoration-neutral-900">
+            Get @Orgni for your team <ArrowRight className="h-4 w-4" aria-hidden />
+          </Link>
+        </div>
+      </div>
+
+      <ImageShowcase />
+    </section>
   );
 }
 
@@ -790,9 +825,6 @@ function TeamsAvailabilitySection() {
             <Link href="/contact" className="inline-flex items-center gap-2 rounded-full bg-neutral-900 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-neutral-700">
               Get @Orgni for your team <ArrowRight className="h-4 w-4" />
             </Link>
-            <a href="https://orgni.olyxee.com/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm font-medium text-neutral-900 underline-offset-4 hover:underline">
-              Learn about Orgni <ArrowUpRight className="h-4 w-4" />
-            </a>
           </div>
         </motion.div>
         <motion.div
@@ -817,54 +849,29 @@ function TeamsAvailabilitySection() {
 }
 
 function VideoShowcaseSection() {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  useVideoInView(videoRef);
   return (
-    <section id="in-motion" aria-label="Orgni in motion" className="bg-black scroll-mt-24">
-      <div className="w-full">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.9 }}
-          className="relative"
-        >
-          <a
-            href="https://orgni.olyxee.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Explore Orgni"
-            className="group block relative bg-black overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white"
-          >
-          <video
-            src="/videos/landing-showcase.mp4"
-            className="block w-full aspect-video object-cover"
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-          />
-          <div
-            aria-hidden
-            className="absolute inset-x-0 top-0 h-40 sm:h-56 bg-gradient-to-b from-black/70 via-black/30 to-transparent pointer-events-none"
-          />
-          <div aria-hidden className="absolute inset-0 bg-black/40 pointer-events-none" />
-          <div className="absolute inset-0 flex items-center justify-center px-6 text-center">
-            <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-white max-w-4xl mx-auto leading-[1.1] text-balance">
-              Advancing the foundations of intelligent computing.
-            </h2>
-          </div>
-          <div
-            aria-hidden
-            className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"
-          />
-          <span className="absolute bottom-5 right-5 sm:bottom-8 sm:right-8 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm ring-1 ring-white/20 transition-colors group-hover:bg-white group-hover:text-neutral-900">
-            Explore Orgni
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-          </span>
-          </a>
-        </motion.div>
+    <div id="in-motion" className="bg-black">
+      <div className="relative">
+        <video
+          ref={videoRef}
+          src="/videos/landing-showcase.mp4"
+          className="block w-full aspect-video object-cover"
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
+        />
+        <div aria-hidden className="absolute inset-0 bg-black/40 pointer-events-none" />
+        <div className="absolute inset-0 flex items-center justify-center px-6 text-center">
+          <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-white max-w-4xl mx-auto leading-[1.1] text-balance">
+            Advancing the foundations of intelligent computing.
+          </h2>
+        </div>
       </div>
-    </section>
+    </div>
   );
 }
 
@@ -872,7 +879,7 @@ const STORY_DURATION_MS = 7000;
 
 const LATEST_RELEASE = {
   title: "FinIR",
-  description: "Research into reliable financial calculations.",
+  description: "Financial Intermediate Representation separates probabilistic interpretation from deterministic financial execution, using typed computational structures, explicit dependencies and defined financial semantics.",
   href: "/research/finir",
   background: "/research/finir-card-bg.webp",
 };
@@ -880,7 +887,7 @@ const LATEST_RELEASE = {
 function LatestReleaseSection() {
   const release = LATEST_RELEASE;
   return (
-    <section id="latest-release" className="py-20 sm:py-28 bg-white border-t border-neutral-200/70 scroll-mt-24" aria-labelledby="latest-release-heading">
+    <section id="research-outputs" className="py-20 sm:py-28 bg-white border-t border-neutral-200/70 scroll-mt-24" aria-labelledby="latest-release-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -890,9 +897,9 @@ function LatestReleaseSection() {
           className="mb-10 sm:mb-14 flex flex-wrap items-end justify-between gap-4"
         >
           <div>
-            <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Research</p>
+            <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Research outputs</p>
             <h2 id="latest-release-heading" className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900 max-w-2xl">
-              Latest release
+              Research that makes financial computing verifiable.
             </h2>
           </div>
           <Link
@@ -918,22 +925,39 @@ function LatestReleaseSection() {
             aria-hidden
           />
           <div className="relative">
-            <div>
-              <h3 className="max-w-[720px] text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.03em] text-neutral-900 sm:text-[2.25rem]">
-                {release.title}
-              </h3>
-              <p className="mt-5 max-w-[640px] text-[16px] leading-[1.65] text-neutral-600 sm:text-[17px]">{release.description}</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-600 mb-4">Released &middot; {release.title}</p>
+            <h3 className="max-w-[720px] text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.03em] text-neutral-900 sm:text-[2.25rem]">
+              Financial results you can verify, not just trust.
+            </h3>
+            <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
               <Link
                 href={release.href}
-                className="group mt-8 inline-flex items-center gap-2 rounded-full bg-neutral-900 px-5 py-2.5 text-[14px] font-medium text-white transition-colors hover:bg-black"
+                className="group inline-flex items-center gap-2 rounded-full bg-neutral-900 px-5 py-2.5 text-[14px] font-medium text-white transition-colors hover:bg-black"
               >
                 Read the research
                 <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden />
               </Link>
+              <a
+                href="https://github.com/Olyxee/finir"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-neutral-900 underline decoration-neutral-400 underline-offset-4 hover:decoration-neutral-900"
+              >
+                Source code <ArrowUpRight className="h-4 w-4" aria-hidden />
+              </a>
             </div>
           </div>
         </motion.div>
+
       </div>
+    </section>
+  );
+}
+
+function AboutSection() {
+  return (
+    <section id="about" aria-label="Our mission" className="scroll-mt-24">
+      <VideoShowcaseSection />
     </section>
   );
 }
@@ -1164,7 +1188,7 @@ function FreighticsSection() {
 
 function CTASection() {
   return (
-    <section className="relative py-20 sm:py-28 lg:py-32 bg-white">
+    <section id="contact" className="relative py-20 sm:py-28 lg:py-32 bg-white scroll-mt-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -1183,35 +1207,22 @@ function CTASection() {
           />
 
           <div className="relative text-center max-w-2xl mx-auto">
-            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-5 leading-[1.05]">
-              Could Orgni fit your business?
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-neutral-900 mb-9 leading-[1.05]">
+              Work with us.
             </h2>
-            <p className="text-neutral-600 text-base sm:text-lg font-normal leading-relaxed mb-9 max-w-lg mx-auto">
-              Tell us about your business and learn how Orgni could fit your work in Microsoft Teams.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link
-                href="/contact"
-                className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-all text-sm tracking-wide shadow-lg shadow-neutral-900/10"
-              >
-                Discuss your business
-                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </Link>
-              <Link
-                href="/about"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 text-neutral-900 bg-white border border-neutral-300 rounded-full font-medium hover:bg-neutral-50 transition-all text-sm tracking-wide"
-              >
-                About Olyxee
-              </Link>
-            </div>
+            <Link
+              href="/contact"
+              className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-neutral-900 text-white rounded-full font-medium hover:bg-black transition-all text-sm tracking-wide shadow-lg shadow-neutral-900/10"
+            >
+              Get in touch
+              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </Link>
           </div>
         </motion.div>
       </div>
     </section>
   );
 }
-
 
 function CookieBanner({ onDismiss }: { onDismiss: () => void }) {
   return (
