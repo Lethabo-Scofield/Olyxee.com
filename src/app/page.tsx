@@ -159,7 +159,7 @@ function HeroSection() {
           <span className="block sm:whitespace-nowrap">
             for the future of{" "}
             <span
-              className="font-handwritten text-blue-900 font-semibold tracking-tight"
+              className="font-handwritten text-[#0a1330] font-semibold tracking-tight"
               style={{ fontFamily: "var(--font-handwritten), cursive" }}
             >
               intelligent computing
@@ -186,7 +186,7 @@ function HeroSection() {
               href="https://orgni.olyxee.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-7 sm:py-3.5 bg-blue-900 text-white rounded-full font-medium hover:bg-blue-950 transition-all text-xs sm:text-sm tracking-wide shadow-lg shadow-blue-900/30 border border-blue-800/40"
+              className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-7 sm:py-3.5 bg-[#0a1330] text-white rounded-full font-medium hover:bg-[#050a1c] transition-all text-xs sm:text-sm tracking-wide shadow-lg shadow-[#0a1330]/30 border border-[#1a2a5c]/50"
             >
               Explore Orgni <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </a>
@@ -460,10 +460,10 @@ function ProductFeature({
         >
           <div>
             {eyebrow && (
-              <p className="text-xs font-semibold text-blue-900 uppercase tracking-[0.2em] mb-4">{eyebrow}</p>
+              <p className="text-xs font-semibold text-[#0a1330] uppercase tracking-[0.2em] mb-4">{eyebrow}</p>
             )}
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] max-w-2xl">
-              {heading} <em className="text-blue-900 not-italic">{emphasis}</em>
+              {heading} <em className="text-[#0a1330] not-italic">{emphasis}</em>
             </h2>
           </div>
         </motion.div>
@@ -550,9 +550,9 @@ function CourierLoopSection() {
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             className="lg:col-span-4"
           >
-            <p className="text-xs font-semibold text-blue-900 uppercase tracking-[0.2em] mb-4">Freightics</p>
+            <p className="text-xs font-semibold text-[#0a1330] uppercase tracking-[0.2em] mb-4">Freightics</p>
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] mb-5">
-              Infrastructure for modern <em className="text-blue-900 not-italic">freight operations.</em>
+              Infrastructure for modern <em className="text-[#0a1330] not-italic">freight operations.</em>
             </h2>
 
             <p className="text-neutral-600 text-base sm:text-lg font-normal leading-relaxed mb-8 max-w-sm">
@@ -678,7 +678,7 @@ function IntegrationSection() {
             <div
               className="absolute inset-0 rounded-3xl"
               style={{
-                background: 'linear-gradient(135deg, #1e3a8a, #3b82f6, #1e3a8a, #3b82f6)',
+                background: 'linear-gradient(135deg, #0a1330, #3b82f6, #0a1330, #3b82f6)',
                 backgroundSize: '300% 300%',
                 animation: 'gradient-shift 6s ease infinite',
               }}
@@ -687,7 +687,7 @@ function IntegrationSection() {
               <div
                 className="absolute inset-0 rounded-3xl opacity-[0.06]"
                 style={{
-                  background: 'linear-gradient(135deg, #1e3a8a, #3b82f6, #1e3a8a)',
+                  background: 'linear-gradient(135deg, #0a1330, #3b82f6, #0a1330)',
                   backgroundSize: '300% 300%',
                   animation: 'gradient-shift 6s ease infinite',
                 }}
@@ -781,7 +781,7 @@ function TeamsAvailabilitySection() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <h2 id="orgni-in-teams-heading" className="font-serif text-4xl sm:text-5xl tracking-tight leading-[1.08] text-neutral-900">
-            Tag <span className="rounded-lg bg-blue-900 px-2 text-white">@Orgni</span> in Microsoft Teams.
+            Tag <span className="rounded-lg bg-[#0a1330] px-2 text-white">@Orgni</span> in Microsoft Teams.
           </h2>
           <p className="mt-5 max-w-md text-base sm:text-lg leading-relaxed text-neutral-600">
             @Orgni is now available for teams using Microsoft Teams. Ask a question in any channel and get an answer with the context behind it, without leaving the conversation.
@@ -847,13 +847,11 @@ function VideoShowcaseSection() {
             aria-hidden
             className="absolute inset-x-0 top-0 h-40 sm:h-56 bg-gradient-to-b from-black/70 via-black/30 to-transparent pointer-events-none"
           />
-          <div className="absolute inset-x-0 top-0 pt-8 sm:pt-12 px-6 text-center">
-            <h2 className="font-serif text-2xl sm:text-4xl lg:text-5xl tracking-tight text-white max-w-3xl mx-auto">
-              Bring your business information together.
+          <div aria-hidden className="absolute inset-0 bg-black/40 pointer-events-none" />
+          <div className="absolute inset-0 flex items-center justify-center px-6 text-center">
+            <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl tracking-tight text-white max-w-4xl mx-auto leading-[1.1] text-balance">
+              Advancing the foundations of intelligent computing.
             </h2>
-            <p className="mt-3 text-sm sm:text-lg text-white/75 max-w-xl mx-auto">
-              Find useful information across your business without leaving Microsoft Teams.
-            </p>
           </div>
           <div
             aria-hidden
@@ -990,7 +988,7 @@ function StoriesSection() {
               understanding enables
               <svg
                 aria-hidden="true"
-                className="pointer-events-none absolute left-0 right-0 -bottom-2 sm:-bottom-3 w-full h-3 sm:h-[18px] overflow-visible text-blue-900"
+                className="pointer-events-none absolute left-0 right-0 -bottom-2 sm:-bottom-3 w-full h-3 sm:h-[18px] overflow-visible text-[#0a1330]"
                 viewBox="0 0 300 18"
                 preserveAspectRatio="none"
                 fill="none"
@@ -1048,7 +1046,7 @@ function StoriesSection() {
                       0{i + 1}
                     </span>
                     <span className="min-w-0 flex-1">
-                      <span className={`block text-[11px] font-semibold uppercase tracking-[0.18em] mb-2 ${isActive ? "text-blue-900" : "text-neutral-400"}`}>
+                      <span className={`block text-[11px] font-semibold uppercase tracking-[0.18em] mb-2 ${isActive ? "text-[#0a1330]" : "text-neutral-400"}`}>
                         {item.tag}
                       </span>
                       <span className={`block font-serif text-lg sm:text-xl leading-snug tracking-tight transition-colors ${isActive ? "text-neutral-900" : "text-neutral-500 group-hover:text-neutral-800"}`}>
