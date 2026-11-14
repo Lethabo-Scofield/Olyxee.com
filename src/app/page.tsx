@@ -905,7 +905,7 @@ function LatestReleaseSection() {
         >
           <div>
             <h2 id="latest-release-heading" className="font-serif text-3xl sm:text-5xl tracking-tight text-neutral-900 max-w-2xl">
-              Research that makes financial computing verifiable.
+              Latest from Olyxee.
             </h2>
           </div>
           <Link
@@ -917,12 +917,49 @@ function LatestReleaseSection() {
           </Link>
         </motion.div>
 
+        <div className="grid gap-6 md:grid-cols-2">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.05 }}
+          className="overflow-hidden rounded-3xl bg-black"
+        >
+          <div className="flex h-full items-center">
+            <div className="p-6 sm:p-8">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-300/90 mb-4">Latest news</p>
+              <h3 className="max-w-[640px] text-xl font-semibold leading-[1.2] tracking-[-0.02em] text-white sm:text-2xl">
+                Olyxee wins Best AI Research and Innovation at the South African AI Awards 2026.
+              </h3>
+              <div className="mt-5">
+                <Link
+                  href="/research/news/olyxee-wins-best-ai-research-and-innovation-2026"
+                  className="group inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-[14px] font-medium text-neutral-900 transition-colors hover:bg-neutral-200"
+                >
+                  Read the news
+                  <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden />
+                </Link>
+              </div>
+            </div>
+            <div className="w-28 shrink-0 self-end sm:w-36 lg:w-44">
+              <Image
+                src="/images/research/south-african-ai-awards/award-trophy.webp"
+                alt="South African AI Awards 2026 trophy for Best AI Research and Innovation, awarded to Olyxee"
+                width={640}
+                height={640}
+                sizes="176px"
+                className="h-auto w-full"
+              />
+            </div>
+          </div>
+        </motion.div>
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="relative overflow-hidden rounded-3xl border border-neutral-200 bg-white bg-cover bg-center p-7 sm:p-10 lg:p-12"
+          className="relative flex overflow-hidden rounded-3xl border border-neutral-200 bg-white bg-cover bg-center p-6 sm:p-8"
           style={{ backgroundImage: `url(${release.background})` }}
         >
           <div
@@ -930,12 +967,12 @@ function LatestReleaseSection() {
             style={{ background: "linear-gradient(90deg, rgba(255,255,255,0.42) 0%, rgba(255,255,255,0.22) 55%, rgba(255,255,255,0) 100%)" }}
             aria-hidden
           />
-          <div className="relative">
+          <div className="relative flex flex-col">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-700 mb-4">Our latest research</p>
-            <h3 className="max-w-[720px] text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.03em] text-neutral-900 sm:text-[2.25rem]">
+            <h3 className="max-w-[720px] text-xl font-semibold leading-[1.2] tracking-[-0.02em] text-neutral-900 sm:text-2xl">
               Semantic Financial Document Computing
             </h3>
-            <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <div className="mt-auto pt-5 flex flex-wrap items-center gap-x-6 gap-y-3">
               <Link
                 href={release.href}
                 className="group inline-flex items-center gap-2 rounded-full bg-neutral-900 px-5 py-2.5 text-[14px] font-medium text-white transition-colors hover:bg-black"
@@ -946,6 +983,7 @@ function LatestReleaseSection() {
             </div>
           </div>
         </motion.div>
+        </div>
 
       </div>
     </section>

@@ -198,6 +198,85 @@ export const researchEntries = ([
       },
     ],
   },
+  {
+    category: "News",
+    source: "Olyxee",
+    title: "Olyxee wins Best AI Research and Innovation at the South African AI Awards 2026",
+    authors: "Olyxee",
+    venue: "Olyxee",
+    month: "Nov",
+    year: "2026",
+    date: "2026-11-14",
+    url: "/research/news/olyxee-wins-best-ai-research-and-innovation-2026",
+    description:
+      "Olyxee has been named winner of Best AI Research and Innovation at the South African AI Awards 2026, recognising its work towards the foundations of intelligent computing.",
+    coverImage: "/images/research/south-african-ai-awards/olyxee-best-ai-research-innovation-2026.webp",
+    deck:
+      "Recognition for our research into the foundations of the next generation of intelligent computing.",
+    articleSections: [
+      {
+        paragraphs: [
+          "Olyxee has been named the winner of Best AI Research and Innovation at the South African AI Awards 2026, held on 13 November at The Galleria in Sandton.",
+          "The recognition marks a significant milestone for the South African artificial intelligence research and technology company as it pursues an ambitious goal: building the foundations for the next generation of intelligent computing.",
+          "While much of the AI industry focuses on developing increasingly capable models and assistants, Olyxee is investigating a deeper challenge: how intelligence can become a reliable, adaptive and continuously evolving capability within the systems organisations depend on.",
+        ],
+      },
+      {
+        heading: "Beyond Artificial Intelligence Assistants",
+        paragraphs: [
+          "Today's AI systems can generate text, analyse information and solve complex problems. However, organisations operate within environments governed by financial rules, operational processes, business policies and accountability requirements.",
+          "Making AI useful in these environments requires more than generating convincing answers. Intelligent systems must be able to understand constraints, perform reliable computations, maintain organisational knowledge and adapt without compromising control.",
+          "This challenge is central to Olyxee's research into Neuro-Symbolic Autonomous Systems, combining neural learning with explicit reasoning, formal rules and verifiable computation.",
+          "Our ambition is to move beyond AI that simply responds to instructions towards computing infrastructure that enables organisations to understand, reason, make decisions and improve their operations over time.",
+        ],
+      },
+      {
+        heading: "Turning Research into Technology",
+        paragraphs: [
+          "Olyxee's work extends beyond theoretical exploration. Through research releases, experimental systems and software development, our multidisciplinary team is investigating how these principles can be translated into practical computing technologies.",
+          {
+            text: "One example is FinIR, our open-source financial intermediate representation and execution runtime.",
+            links: [{ text: "FinIR", href: "/research/finir" }],
+          },
+          "FinIR addresses a critical challenge in AI-powered financial computing: ensuring that calculations remain deterministic, traceable and consistent rather than relying entirely on AI-generated code.",
+          "By introducing finance-aware types, dependency tracking and incremental computation, FinIR provides a computational foundation for more reliable financial reasoning.",
+          "In a published reproducible synthetic experiment, FinIR reduced recomputations from 6,000 to 3,600, demonstrating a 40% reduction in repeated calculations under the tested conditions.",
+          {
+            text: "Beyond research, Olyxee is developing Orgni as a practical entry point for intelligent computing in the workplace, exploring how organisational information, knowledge and operational context can support more useful and accountable AI systems.",
+            links: [{ text: "Orgni", href: "https://orgni.olyxee.com/" }],
+          },
+          "Together, these efforts represent an emerging research-to-technology pathway: moving scientific ideas into software that can be tested, evaluated and progressively improved.",
+        ],
+      },
+      {
+        heading: "Why This Recognition Matters",
+        paragraphs: [
+          "The Best AI Research and Innovation category recognises technical originality, contributions to AI research, practical applicability, knowledge sharing and responsible research.",
+          "For Olyxee, winning this award recognises the importance of pursuing foundational technological questions while working towards real-world applications.",
+          "Our work begins in the financial sector, where accuracy, traceability and governance are essential. However, the long-term ambition extends across industries.",
+          "We envision a future in which intelligence is not simply a service organisations access, but a computing capability they can develop, retain and continuously advance.",
+          "This is the future of intelligent computing that Olyxee is working to make possible.",
+        ],
+      },
+      {
+        heading: "Built by a Team, Driven by Research",
+        paragraphs: [
+          "This milestone reflects the dedication of Olyxee's multidisciplinary research and engineering team spanning South Africa and South Asia.",
+          "Their work brings together machine learning, software engineering, mathematical reasoning and systems research, with a shared commitment to advancing what intelligent computing can achieve.",
+          "The award represents both recognition of the work undertaken and a responsibility to continue strengthening its scientific foundations.",
+        ],
+      },
+      {
+        heading: "The Work Continues",
+        paragraphs: [
+          "Winning Best AI Research and Innovation is an important achievement, but Olyxee's long-term mission remains unchanged.",
+          "We will continue investing in foundational research, developing experimental technologies and exploring new computing architectures that bring learning, reasoning, autonomy and reliability together.",
+          "“The greatest breakthroughs in AI computing are still ahead of us, and we intend to contribute to the science that makes them possible.”",
+          "Olyxee | Advancing the Foundations of Intelligent Computing",
+        ],
+      },
+    ],
+  },
 ] satisfies ResearchEntry[]).sort((a, b) => b.date.localeCompare(a.date));
 
 export const researchFilters = ["All entries", "Release", "Publication", "News"] as const;
