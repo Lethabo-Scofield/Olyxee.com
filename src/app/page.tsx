@@ -174,13 +174,13 @@ function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.1 }}
-          className="font-serif text-neutral-900 leading-[1.04] tracking-tight px-2 sm:px-0 text-[clamp(1.75rem,7.2vw,5.5rem)] sm:text-6xl md:text-7xl lg:text-[5.5rem]"
+          className="font-serif text-neutral-900 leading-[1.04] tracking-tight px-1 sm:px-0 text-center text-[clamp(1.35rem,5.6vw,3rem)] sm:text-6xl md:text-7xl lg:text-[5.5rem]"
         >
-          <span className="block sm:whitespace-nowrap">Research and Infrastructure</span>
-          <span className="block sm:whitespace-nowrap">
+          <span className="block whitespace-nowrap">Research and Infrastructure</span>
+          <span className="block whitespace-nowrap">
             for the future of{" "}
             <span
-              className="font-handwritten text-blue-600 font-semibold tracking-tight"
+              className="block sm:inline whitespace-nowrap font-handwritten text-blue-600 font-semibold tracking-tight"
               style={{ fontFamily: "var(--font-handwritten), cursive" }}
             >
               intelligent computing
@@ -354,7 +354,7 @@ function ResearchAreas() {
           className="max-w-4xl mx-auto text-center"
         >
           <h2 className="font-serif text-4xl sm:text-6xl lg:text-7xl leading-[1.08] tracking-tight text-neutral-900 text-balance">
-            Beyond today&rsquo;s approaches to <span className="text-pink-500">artificial intelligence.</span>
+            Beyond today&rsquo;s approaches to <span className="bg-gradient-to-r from-pink-500 to-blue-600 bg-clip-text text-transparent">artificial intelligence.</span>
           </h2>
         </motion.div>
       </div>
@@ -479,7 +479,7 @@ function ProductFeature({
               <p className={`text-xs font-semibold uppercase tracking-[0.2em] mb-4 ${dark ? "text-blue-300" : "text-[#0a1330]"}`}>{eyebrow}</p>
             )}
             <h2 className={`font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.05] max-w-2xl ${dark ? "text-white" : "text-neutral-900"}`}>
-              {heading} <em className={`not-italic ${dark ? "text-blue-300" : "text-[#0a1330]"}`}>{emphasis}</em>
+              {heading} <em className={`not-italic ${dark ? "text-blue-300" : "text-blue-600"}`}>{emphasis}</em>
             </h2>
           </div>
         </motion.div>
@@ -568,7 +568,7 @@ function CourierLoopSection() {
           >
             <p className="text-xs font-semibold text-neutral-400 uppercase tracking-[0.2em] mb-4">Freightics in practice</p>
             <h3 className="font-serif text-3xl sm:text-4xl text-neutral-900 tracking-tight leading-[1.1] mb-4">
-              From order to <em className="text-[#0a1330] not-italic">delivery.</em>
+              From order to <em className="text-blue-600 not-italic">delivery.</em>
             </h3>
           </motion.div>
 
@@ -609,7 +609,7 @@ function OrgniSection() {
           transition={{ duration: 0.7, ease }}
         >
           <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] max-w-2xl">
-            Intelligent computing for <em className="text-[#0a1330] not-italic">everyday work.</em>
+            Intelligent computing for <em className="text-blue-600 not-italic">everyday work.</em>
           </h2>
         </motion.div>
 
