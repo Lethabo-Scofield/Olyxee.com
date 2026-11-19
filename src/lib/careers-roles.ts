@@ -224,15 +224,76 @@ export const roles: Role[] = [
 
   // ─── INTERNSHIPS (all unpaid) ─────────────────────────────────────────
   {
-    slug: "software-engineering-intern",
-    title: "Software Engineering Intern",
+    slug: "applied-ai-research-intern",
+    title: "Applied AI Research Intern",
+    team: "Research",
+    location: REMOTE,
+    type: "internship",
+    description:
+      "Work alongside our researchers on intelligent systems, from reasoning and autonomy to evaluation, and learn how applied AI research moves from question to prototype.",
+    responsibilities: [
+      "Review literature and summarise what matters for a live research question",
+      "Help design and run experiments on reasoning, autonomy, and agent behaviour",
+      "Build small prototypes and evaluation setups to test ideas",
+      "Write up methods and findings as clear research notes and internal reports",
+    ],
+    requirements: [
+      "Strong Python and curiosity about machine learning, agents, or evaluation",
+      "Some prior research or ML project experience (coursework, lab, or personal)",
+      "Currently studying or recently graduated",
+    ],
+  },
+  {
+    slug: "research-engineering-intern",
+    title: "Research Engineering Intern",
+    team: "Research",
+    location: REMOTE,
+    type: "internship",
+    description:
+      "Turn research ideas into working experiments. You will build the code, benchmarks, and tooling that make our research reproducible.",
+    responsibilities: [
+      "Implement experiments and prototypes from research ideas and papers",
+      "Build benchmarks and evaluation harnesses for models and systems",
+      "Write clean, reproducible research code with tracked configs and results",
+      "Help automate experiment runs and compare results across model versions",
+    ],
+    requirements: [
+      "Strong Python and software engineering fundamentals",
+      "Some hands-on ML experience, such as training, fine-tuning, or evaluating models",
+      "Currently studying or recently graduated",
+    ],
+  },
+  {
+    slug: "applied-ai-engineering-intern",
+    title: "Applied AI Engineering Intern",
     team: "Engineering & AI",
     location: REMOTE,
     type: "internship",
     description:
-      "Build product surfaces and backend services across Orgni and Olyxee's other products alongside senior engineers, contributing to software for complex organizational work.",
+      "Build AI features that reach real users. Work on agents, model integrations, and retrieval systems, and learn what it takes to ship them reliably.",
     responsibilities: [
-      "Ship features end to end across frontend, backend, and APIs",
+      "Help build AI applications, agents, and workflows on top of modern models",
+      "Integrate models, tools, and data sources, including retrieval and context systems",
+      "Contribute to evaluation pipelines that show whether a feature behaves correctly",
+      "Support the path from prototype to production AI features",
+    ],
+    requirements: [
+      "Strong Python or TypeScript and solid software fundamentals",
+      "Some project experience with LLMs, agents, or retrieval (coursework, research, or personal)",
+      "Currently studying or recently graduated",
+    ],
+  },
+  {
+    slug: "product-engineering-intern",
+    title: "Product Engineering Intern",
+    team: "Engineering & AI",
+    location: REMOTE,
+    type: "internship",
+    description:
+      "Build customer-facing software across the stack, working with senior engineers on the products people use every day.",
+    responsibilities: [
+      "Ship features across frontend, backend, APIs, and databases",
+      "Help build integrations and the infrastructure behind our products",
       "Write tests, review code, and help raise the engineering bar",
       "Pair with senior engineers on real production systems",
     ],
@@ -243,54 +304,17 @@ export const roles: Role[] = [
     ],
   },
   {
-    slug: "ai-engineering-intern",
-    title: "AI Engineering Intern",
-    team: "Engineering & AI",
-    location: REMOTE,
-    type: "internship",
-    description:
-      "Explore and build applied AI features for Orgni and Olyxee's research into Organizational Intelligence, working across models, software and product experiences.",
-    responsibilities: [
-      "Help build AI-powered features that reach real users",
-      "Integrate models, tools, and data into reliable workflows",
-      "Contribute to evaluation and monitoring so features behave correctly",
-    ],
-    requirements: [
-      "Strong Python and software fundamentals, plus curiosity about applied AI",
-      "Some prior project experience with LLMs, agents, or ML (coursework, research, or personal)",
-      "Currently studying or recently graduated",
-    ],
-  },
-  {
-    slug: "research-analyst-intern",
-    title: "Research Analyst Intern",
-    team: "Research",
-    location: REMOTE,
-    type: "internship",
-    description:
-      "Work alongside our researchers on computational approaches to Organizational Intelligence, including evaluation, organizational models and human-AI coordination.",
-    responsibilities: [
-      "Help design experiments and build evaluation harnesses on real research questions",
-      "Read, reproduce, and extend recent work with the team",
-      "Help turn findings into clear write-ups, notebooks, and internal reports",
-    ],
-    requirements: [
-      "Strong Python and curiosity about ML, evaluation, or reliability research",
-      "Some prior research or ML project experience (coursework, lab, or personal)",
-      "Currently studying or recently graduated",
-    ],
-  },
-  {
-    slug: "data-engineering-intern",
-    title: "Data Engineering Intern",
+    slug: "data-intelligence-engineering-intern",
+    title: "Data & Intelligence Engineering Intern",
     team: "Data & Intelligence",
     location: REMOTE,
     type: "internship",
     description:
-      "Help build data systems that support Orgni and Olyxee's research and product work, including data quality and evaluation.",
+      "Build the data foundations that intelligent systems depend on, from pipelines and datasets to structured knowledge and analytics.",
     responsibilities: [
-      "Help design and operate ETL/ELT pipelines on real product data",
-      "Model data for analytics, ML training, and product features",
+      "Help design and operate data pipelines on real product data",
+      "Build and maintain datasets and structured knowledge for AI systems",
+      "Model data for analytics, model evaluation, and product features",
       "Contribute to data quality, lineage, and observability work",
     ],
     requirements: [
@@ -300,37 +324,38 @@ export const roles: Role[] = [
     ],
   },
   {
-    slug: "qa-engineering-intern",
-    title: "QA Engineering Intern",
+    slug: "ai-evaluation-reliability-intern",
+    title: "AI Evaluation & Reliability Intern",
     team: "Quality & Reliability",
     location: REMOTE,
     type: "internship",
     description:
-      "Help own the quality bar across Olyxee's products with automated testing.",
+      "Measure how well our AI systems and products actually work. You will design tests that catch regressions, hallucinations, and workflow failures before customers do.",
     responsibilities: [
-      "Help build and maintain automated test suites across services and UI",
-      "Contribute to regression, integration, and release testing",
-      "Pair with engineers to prevent issues, not just catch them",
+      "Design evaluation suites for model behaviour, reasoning quality, and hallucinations",
+      "Measure regressions and reliability across model, prompt, and product changes",
+      "Build automated tests for APIs, services, and end-to-end workflows",
+      "Report failures clearly and work with engineers to prevent them recurring",
     ],
     requirements: [
-      "Familiarity with modern test automation frameworks",
-      "Strong analytical mindset and attention to detail",
+      "Strong analytical mindset, attention to detail, and some Python or scripting",
+      "Familiarity with test automation or an interest in evaluating AI systems",
       "Currently studying or recently graduated",
     ],
   },
   {
-    slug: "cybersecurity-intern",
-    title: "Cybersecurity Intern",
+    slug: "ai-security-engineering-intern",
+    title: "AI Security Engineering Intern",
     team: "Security",
     location: REMOTE,
     type: "internship",
     description:
-      "Help protect Olyxee's products, infrastructure, and customer data. Work alongside the engineering team on application security, security reviews, and hardening across Orgni and Freightics.",
+      "Help secure Olyxee's products, infrastructure, and AI systems. Work with engineers on application security, access control, and authorised security testing.",
     responsibilities: [
-      "Help review code and features for security issues before they ship",
-      "Contribute to vulnerability scanning, dependency audits, and remediation",
-      "Help harden authentication, access control, and secrets handling across services",
-      "Assist with security documentation, threat models, and incident runbooks",
+      "Review code and features for security issues before they ship",
+      "Contribute to vulnerability assessment, dependency audits, and remediation",
+      "Help secure AI systems, including prompt injection and data exposure risks",
+      "Support access control, secrets handling, monitoring, and secure development practice",
     ],
     requirements: [
       "Solid fundamentals in web security (OWASP Top 10, authentication, encryption)",
@@ -340,99 +365,63 @@ export const roles: Role[] = [
     ],
   },
   {
-    slug: "marketing-intern",
-    title: "Marketing Intern",
+    slug: "forward-deployed-ai-engineering-intern",
+    title: "Forward Deployed AI Engineering Intern",
+    team: "Engineering & AI",
+    location: REMOTE,
+    type: "internship",
+    description:
+      "Work close to customers and engineers to connect Olyxee technology to real customer environments, from technical discovery to deployment.",
+    responsibilities: [
+      "Help understand customer problems and turn them into technical requirements",
+      "Support configuration, integrations, and enterprise deployments of Olyxee systems",
+      "Troubleshoot implementation issues and document what you learn",
+      "Pass clear technical feedback from customers back to the product and engineering teams",
+    ],
+    requirements: [
+      "Solid programming fundamentals and comfort with APIs and integrations",
+      "Strong communication and a curiosity about how customers use software",
+      "Currently studying or recently graduated",
+    ],
+  },
+  {
+    slug: "account-executive-intern",
+    title: "Account Executive Intern",
+    team: "Sales",
+    location: REMOTE,
+    type: "internship",
+    description:
+      "Learn how modern B2B technology companies win and manage customers. You will work across the sales cycle with the team that owns it.",
+    responsibilities: [
+      "Support prospecting and qualification of new customers",
+      "Help prepare for customer conversations, demos, and proposals",
+      "Maintain pipeline and customer records in the CRM",
+      "Research target markets, accounts, and commercial opportunities",
+    ],
+    requirements: [
+      "Strong writing, communication, and structured thinking",
+      "Interest in enterprise software, AI, and how B2B deals are won",
+      "Currently studying or recently graduated",
+    ],
+  },
+  {
+    slug: "growth-gtm-intern",
+    title: "Growth & GTM Intern",
     team: "Marketing",
     location: REMOTE,
     type: "internship",
     description:
-      "Help tell the Olyxee story. Support content, social, and launch work that grows the audience for our research and products.",
+      "Help take Olyxee's products to market. Work on positioning, campaigns, and growth experiments that bring in the right customers.",
     responsibilities: [
-      "Help create content across blog, social, and email",
-      "Support product and research launches with copy, assets, and coordination",
-      "Track performance of campaigns and channels and report what is working",
-      "Help with competitive and audience research",
+      "Support customer acquisition and demand generation campaigns",
+      "Help sharpen positioning and messaging for products and launches",
+      "Run small growth experiments and report what the results show",
+      "Contribute market research, content, and go-to-market execution",
     ],
     requirements: [
       "Strong writing and communication skills",
-      "Some experience creating content or running social channels (personal or professional)",
-      "Interest in AI, technology, and B2B products",
-      "Currently studying or recently graduated",
-    ],
-  },
-  {
-    slug: "applied-data-science-intern",
-    title: "Applied Data Science Intern",
-    team: "Data & Intelligence",
-    location: REMOTE,
-    type: "internship",
-    description:
-      "Explore applied data science methods relevant to Orgni and Olyxee's research into Organizational Intelligence, including evaluation and modelling work.",
-    responsibilities: [
-      "Help build and evaluate classification, anomaly detection, and confidence scoring models",
-      "Contribute to entity resolution and extraction-quality measurement work",
-      "Help design evaluation datasets and metrics for production model behavior",
-    ],
-    requirements: [
-      "Strong Python and solid grounding in statistics and machine learning",
-      "Some prior modeling project experience (coursework, research, or personal)",
-      "Currently studying or recently graduated",
-    ],
-  },
-  {
-    slug: "product-design-intern",
-    title: "Product Design Intern",
-    team: "Product & Design",
-    location: REMOTE,
-    type: "internship",
-    description:
-      "Design simple product experiences for Orgni and other software supporting organizational knowledge and workflows. This is a design role, not a product management role.",
-    responsibilities: [
-      "Design clear, simple experiences for knowledge maps, workflows, reviews, exceptions, and document verification",
-      "Turn complex operational concepts into understandable interfaces",
-      "Pair with engineers and product to ship designs into real product surfaces",
-    ],
-    requirements: [
-      "A portfolio showing strong interaction and visual design fundamentals",
-      "Comfort with modern design tools (Figma or similar)",
-      "Currently studying or recently graduated",
-    ],
-  },
-  {
-    slug: "cloud-platform-engineering-intern",
-    title: "Cloud and Platform Engineering Intern",
-    team: "Platform & Infrastructure",
-    location: REMOTE,
-    type: "internship",
-    description:
-      "Support cloud infrastructure, deployment pipelines, observability, containers, security, and reliability across Olyxee's software.",
-    responsibilities: [
-      "Help operate Azure infrastructure and deployment pipelines",
-      "Contribute to observability, containerization, and reliability work",
-      "Support the separation and hardening of Orgni's frontend, APIs, and workers",
-    ],
-    requirements: [
-      "Familiarity with a major cloud platform (Azure preferred) and CI/CD concepts",
-      "Some exposure to containers, infrastructure as code, or observability tooling",
-      "Currently studying or recently graduated",
-    ],
-  },
-  {
-    slug: "product-management-intern",
-    title: "Product Management Intern",
-    team: "Product & Design",
-    location: REMOTE,
-    type: "internship",
-    description:
-      "Support a product surface across Orgni or Freightics, learning how software can support complex organizational and operational work.",
-    responsibilities: [
-      "Help translate customer problems into clear specs and shipped product",
-      "Coordinate with engineering, research, and design on delivery",
-      "Help with customer discovery and competitive research",
-    ],
-    requirements: [
-      "Strong writing and structured thinking",
-      "Some exposure to technical or enterprise products",
+      "Some experience with content, campaigns, or growth work (personal or professional)",
+      "Interest in AI, technology, and B2B go-to-market",
       "Currently studying or recently graduated",
     ],
   },
