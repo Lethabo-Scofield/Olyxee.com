@@ -83,7 +83,7 @@ const EdgeAI: FC = () => {
     <div className="min-h-screen bg-white text-neutral-900 relative">
       <SEO
         title="Edge Systems Research | Olyxee"
-        description="Olyxee explores edge systems as part of its broader research into Organizational Intelligence and coordination across complex environments."
+        description="Olyxee explores edge systems as part of its broader research into intelligent computing and coordination across complex environments."
         path="/edgeai"
       />
 
@@ -170,7 +170,7 @@ const EdgeAI: FC = () => {
             transition={{ duration: 0.8, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
             className="text-lg text-neutral-500 max-w-xl leading-relaxed font-normal mb-10"
           >
-            Olyxee is exploring how machine intelligence can operate across real-world systems. This work is one research direction within our broader effort toward Organizational Intelligence—not a solved capability or a separate execution division.
+            Olyxee is exploring how machine intelligence can operate across real-world systems. This work is one research direction within our broader research toward the future of intelligent computing—not a solved capability or a separate execution division.
           </motion.p>
 
           <motion.div

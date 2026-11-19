@@ -11,7 +11,7 @@ const HIGHLIGHTS = [
   {
     eyebrow: "AI at the edge",
     title: "How might intelligence work in physical environments?",
-    body: "We are exploring how AI systems could interact with connected hardware, sensors and operational settings as part of Olyxee's broader research into Organizational Intelligence.",
+    body: "We are exploring how AI systems could interact with connected hardware, sensors and operational settings as part of Olyxee's broader research into intelligent computing.",
     image: "/images/robotics/humanoid-manipulation.png",
     alt: "Connected hardware in an enterprise environment",
     meta: "01 · Edge AI",
@@ -186,7 +186,7 @@ const Robotics: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
       <SEO
-        title="Olyxee | Organizational Intelligence Research in Physical Systems"
+        title="Olyxee | Intelligent Computing Research in Physical Systems"
         description="Olyxee explores how people, software, AI agents and connected machines might coordinate in complex organizational environments."
         path="/enterprise/robotics"
         keywords={[
@@ -212,7 +212,7 @@ const Robotics: FC = () => {
             },
             areaServed: "Worldwide",
             description:
-              "Olyxee researches the foundations of Organizational Intelligence, including how people, software, AI agents and machines might coordinate in complex environments.",
+              "Olyxee researches the foundations of intelligent computing, including how people, software, AI agents and machines might coordinate in complex environments.",
             url: "https://olyxee.com/enterprise/robotics",
             offers: {
               "@type": "Offer",
@@ -228,7 +228,7 @@ const Robotics: FC = () => {
                 name: "What is Olyxee researching in physical systems?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Olyxee is a research and technology company focused on the foundations of Organizational Intelligence. Its research includes how people, software, AI agents and machines might coordinate in complex organizational environments.",
+                  text: "Olyxee is an AI research company working toward the future of intelligent computing. Its research includes how people, software, AI agents and machines might coordinate in complex organizational environments.",
                 },
               },
               {
@@ -364,7 +364,7 @@ const Robotics: FC = () => {
           className="max-w-5xl mx-auto"
         >
           <p className="text-[11px] sm:text-xs font-semibold text-neutral-400 uppercase tracking-[0.18em] sm:tracking-[0.2em] mb-3 sm:mb-4">
-            Researching Organizational Intelligence
+            Researching intelligent computing
           </p>
           <h2 className="font-serif text-[1.75rem] sm:text-5xl lg:text-[4.25rem] leading-[1.1] sm:leading-[1.05] tracking-tight text-neutral-900">
             Olyxee explores how <em className="not-italic text-blue-500">organizations might become intelligent systems</em> through <span className="text-neutral-500">coordination among people, software, AI agents and machines</span>, building toward <em className="not-italic text-orange-400">organizations that learn, adapt and evolve</em>.

@@ -36,17 +36,21 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "Olyxee | Research-Driven AI Infrastructure",
+    default: "Olyxee | AI Research for the Future of Intelligent Computing",
     template: "%s | Olyxee",
   },
   description:
-    "Olyxee is a research-driven AI infrastructure company advancing the foundations of intelligent computing through neuro-symbolic intelligence and autonomous adaptive systems, beginning with financial computing.",
+    "Olyxee is an AI research company working toward the future of intelligent computing, investigating the mathematical, computational and physical principles that could enable new forms of machine intelligence.",
   keywords: [
     "Olyxee",
     "Neuro-Symbolic Intelligence",
     "Neuro-Symbolic Autonomous Systems",
     "Autonomous Adaptive Systems",
     "Intelligent computing",
+    "AI research",
+    "Mathematical foundations of intelligence",
+    "Adaptive computation",
+    "Novel computational architectures",
     "AI infrastructure",
     "Financial computing",
     "FinIR",
@@ -70,9 +74,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteUrl,
     siteName: "Olyxee",
-    title: "Olyxee | Research-Driven AI Infrastructure",
+    title: "Olyxee | AI Research for the Future of Intelligent Computing",
     description:
-      "Olyxee is a research-driven AI infrastructure company advancing the foundations of intelligent computing through neuro-symbolic intelligence and autonomous adaptive systems, beginning with financial computing.",
+      "Olyxee is an AI research company working toward the future of intelligent computing, investigating the mathematical, computational and physical principles that could enable new forms of machine intelligence.",
     images: [
       {
         url: "/og-image.jpg",
@@ -84,9 +88,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Olyxee | Research-Driven AI Infrastructure",
+    title: "Olyxee | AI Research for the Future of Intelligent Computing",
     description:
-      "Olyxee is a research-driven AI infrastructure company advancing the foundations of intelligent computing through neuro-symbolic intelligence and autonomous adaptive systems, beginning with financial computing.",
+      "Olyxee is an AI research company working toward the future of intelligent computing, investigating the mathematical, computational and physical principles that could enable new forms of machine intelligence.",
     images: ["/og-image.jpg"],
     creator: "@Olyxee",
   },
@@ -135,11 +139,15 @@ export default function RootLayout({
               "@type": "Organization",
               name: "Olyxee",
               alternateName: "Olyxee Inc",
-              slogan: "Advancing the Next Paradigm of Enterprise Computing",
+              slogan: "Advancing the foundations of intelligent computing",
               url: "https://olyxee.com",
               logo: "https://olyxee.com/Logo/Olyxee_Logo.png",
-              description: "Olyxee is a research-driven AI infrastructure company advancing the foundations of intelligent computing through neuro-symbolic intelligence and autonomous adaptive systems, beginning with financial computing. Our long-term ambition is infrastructure that can discover, represent, verify and evolve the logic of complex organisations.",
+              description: "Olyxee is an AI research company working toward the future of intelligent computing, investigating the mathematical, computational and physical principles that could enable new forms of machine intelligence.",
               knowsAbout: [
+                "Mathematical Foundations of Intelligence",
+                "Learning and Adaptive Computation",
+                "Novel Computational Architectures",
+                "Information Theory and Physical Principles of Computation",
                 "Neuro-Symbolic Intelligence",
                 "Autonomous Adaptive Systems",
                 "Formal Verification",
@@ -175,7 +183,7 @@ export default function RootLayout({
               name: "Olyxee",
               alternateName: "Olyxee Inc",
               url: "https://olyxee.com",
-              description: "Olyxee is a research-driven AI infrastructure company advancing the foundations of intelligent computing through neuro-symbolic intelligence and autonomous adaptive systems, beginning with financial computing.",
+              description: "Olyxee is an AI research company working toward the future of intelligent computing, investigating the mathematical, computational and physical principles that could enable new forms of machine intelligence.",
               inLanguage: "en",
               publisher: {
                 "@type": "Organization",

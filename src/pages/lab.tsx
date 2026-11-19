@@ -84,7 +84,7 @@ const recentWork = [
 const Lab: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO title="Olyxee Lab | Organizational Intelligence Research" description="Olyxee Lab explores the foundations of Organizational Intelligence and the long-term possibility of organizations that can learn, adapt and evolve." path="/lab" />
+      <SEO title="Olyxee Lab | Intelligent Computing Research" description="Olyxee Lab investigates the foundations of intelligent computing, including learning, adaptive systems and new computational architectures." path="/lab" />
       <div className="grain" />
       <Header />
 
@@ -208,7 +208,7 @@ const Lab: FC = () => {
               <em className="text-neutral-500">the frontier</em>
             </h2>
             <p className="text-neutral-400 text-lg max-w-2xl mx-auto mb-10 font-normal leading-relaxed">
-              We're looking for researchers and engineers interested in the long-term challenge of Organizational Intelligence.
+              We're looking for researchers and engineers interested in the long-term challenge of intelligent computing.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/careers" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white text-neutral-900 rounded-full font-medium hover:bg-neutral-100 transition-all text-sm tracking-wide">

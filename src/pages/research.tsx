@@ -59,15 +59,15 @@ const Research: FC = () => {
   return (
     <div className="research-page min-h-screen relative">
       <SEO
-        title="Research | Organizational Intelligence | Olyxee"
-        description="Explore Olyxee's research directions in Organizational Intelligence, including adaptive organizations, human-AI coordination, organizational models, agents and organizational learning."
+        title="Research | Intelligent Computing Research | Olyxee"
+        description="Explore Olyxee's research interests in the foundations of intelligent computing, including the mathematics of intelligence, adaptive computation, new architectures and the physical principles of computation."
         path="/research"
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "CollectionPage",
           name: "Olyxee Research",
           url: "https://olyxee.com/research",
-          description: "Olyxee's research directions in Organizational Intelligence, alongside documented releases and selected research we follow.",
+          description: "Olyxee's research interests in the foundations of intelligent computing, alongside documented releases and selected research we follow.",
           inLanguage: "en",
           isPartOf: { "@type": "WebSite", name: "Olyxee", url: "https://olyxee.com" },
           publisher: {

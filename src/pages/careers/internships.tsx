@@ -189,7 +189,7 @@ const InternshipsPage: FC = () => {
 
   return (
     <div className="min-h-[100dvh] bg-white text-neutral-900">
-      <SEO title="Internships · Careers" description="Apply for an unpaid internship at Olyxee, a research and technology company exploring Organizational Intelligence." path="/careers/internships" keywords={["Olyxee internships", "Organizational Intelligence internship", "unpaid internship", "AI internship South Africa", "machine learning internship"]} />
+      <SEO title="Internships · Careers" description="Apply for an unpaid internship at Olyxee, an AI research company working toward the future of intelligent computing." path="/careers/internships" keywords={["Olyxee internships", "AI research internship", "unpaid internship", "AI internship South Africa", "machine learning internship"]} />
       <Header />
       <main className="pb-24 pt-20 sm:pb-32">
         <div className="mx-auto max-w-5xl px-5 pt-8 sm:px-8 sm:pt-10">

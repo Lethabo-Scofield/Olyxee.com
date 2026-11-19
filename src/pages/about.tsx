@@ -3,6 +3,7 @@ import SEO from "../components/SEO";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import OurStory from "../components/about/OurStory";
+import ResearchNetwork from "../components/about/ResearchNetwork";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -25,21 +26,21 @@ const APPROACH = [
     icon: Compass,
     label: "What we study",
     title: "Frontier",
-    text: "Bet on problems that are genuinely hard and unsolved.",
+    text: "Pursue fundamental questions about intelligence and computation that remain open.",
     gradient: "/images/gradient-pink-cyan.png",
   },
   {
     icon: ShieldCheck,
     label: "Where research meets work",
     title: "Intelligence",
-    text: "Build intelligence into the organization itself.",
+    text: "Investigate the mathematical and computational principles underlying intelligence.",
     gradient: "/images/gradient-blue.png",
   },
   {
     icon: EyeOff,
     label: "What we apply",
     title: "Evolution",
-    text: "Everything we build should become more capable over time.",
+    text: "Build useful technology today while our research looks further ahead.",
     gradient: "/images/gradient-purple.png",
   },
 ];
@@ -50,10 +51,10 @@ const About: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
       <SEO
-        title="About Olyxee | Organizational Intelligence Research"
-        description="Olyxee is a research and technology company exploring Organizational Intelligence and building toward organizations capable of learning, adapting and evolving."
+        title="About Olyxee | AI Research for Intelligent Computing"
+        description="Olyxee is an AI research company working toward the future of intelligent computing, investigating the mathematical, computational and physical principles that could enable new forms of machine intelligence."
         path="/about"
-        keywords={["About Olyxee", "Organizational Intelligence", "adaptive organizations", "Olyxee Research", "Orgni", "Lethabo Scofield", "Lethabo Innocent Makonto"]}
+        keywords={["About Olyxee", "AI research company", "intelligent computing", "mathematical foundations of intelligence", "adaptive computation", "Olyxee Research", "Orgni", "Freightics", "Lethabo Scofield", "Lethabo Innocent Makonto"]}
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "AboutPage",
@@ -65,7 +66,7 @@ const About: FC = () => {
             url: "https://olyxee.com",
             logo: "https://olyxee.com/Logo/Olyxee_Logo.png",
             description:
-              "Olyxee is a research and technology company exploring Organizational Intelligence and building toward organizations capable of learning, adapting and evolving.",
+              "Olyxee is an AI research company working toward the future of intelligent computing, investigating the mathematical, computational and physical principles that could enable new forms of machine intelligence.",
           },
         }}
       />
@@ -91,7 +92,7 @@ const About: FC = () => {
                 sizes="(min-width: 1280px) 1152px, 100vw"
                 className="block w-full h-auto"
               />
-              <h1 className="sr-only">About Olyxee: Organizational Intelligence research</h1>
+              <h1 className="sr-only">About Olyxee: AI research for the future of intelligent computing</h1>
             </motion.div>
           </div>
         </section>
@@ -147,8 +148,8 @@ const About: FC = () => {
                   transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
                   className="relative max-w-3xl mx-auto text-center"
                 >
-                  <p className="font-serif text-2xl sm:text-3xl lg:text-[2.5rem] leading-[1.2] tracking-tight mb-8 text-neutral-900 text-balance">
-                    We envision a future where enterprise computing moves beyond programmed logic and statistical prediction, towards infrastructure capable of <span className="text-orange-600">discovering</span>, <span className="text-blue-600">verifying</span>, and <strong className="font-semibold text-emerald-700">evolving</strong> the principles governing how organisations operate.
+                  <p className="font-serif text-2xl sm:text-3xl lg:text-[2.5rem] leading-[1.2] tracking-tight text-neutral-900 text-balance">
+                    To advance the scientific foundations of <span className="text-blue-600">intelligent computing.</span>
                   </p>
                 </motion.article>
               ) : (
@@ -166,6 +167,28 @@ const About: FC = () => {
           </div>
         </section>
 
+        {/* === RESEARCH INTERESTS === */}
+        <section id="research-interests" className="py-20 sm:py-28 bg-white border-t border-neutral-200/70 scroll-mt-24">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              custom={0}
+              variants={fadeUp}
+              className="max-w-3xl mb-10 sm:mb-14"
+            >
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-tight leading-[1.08]">
+                Questions we are <span className="text-neutral-500">exploring.</span>
+              </h2>
+              <p className="mt-5 text-[15px] sm:text-base text-neutral-600 leading-relaxed max-w-[56ch]">
+                These are areas of long-term research interest, not claims that these problems are solved.
+              </p>
+            </motion.div>
+            <ResearchNetwork />
+          </div>
+        </section>
+
         {/* === PRINCIPLES === */}
         <section className="py-20 sm:py-32 bg-white border-t border-neutral-200/70">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -177,9 +200,6 @@ const About: FC = () => {
               variants={fadeUp}
               className="max-w-3xl mb-12 sm:mb-16"
             >
-              <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-4">
-                Principles
-              </p>
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-tight leading-[1.08]">
                 One research mission.{" "}
                 <span className="text-neutral-500">Useful technology today.</span>
@@ -248,16 +268,6 @@ const About: FC = () => {
         {/* === FROM THE FOUNDER === */}
         <section id="founder" className="relative scroll-mt-24 py-24 sm:py-36 bg-neutral-50/60 border-t border-neutral-200/70">
           <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: 0.6 }}
-              className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-12 sm:mb-16"
-            >
-              <span className="inline-block w-6 h-px bg-neutral-300 align-middle mr-3" />
-              From the founder
-            </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 24 }}
@@ -332,14 +342,11 @@ const About: FC = () => {
               variants={fadeUp}
               className="relative rounded-3xl bg-neutral-100 ring-1 ring-neutral-200 px-6 py-16 sm:px-12 sm:py-24 lg:py-28 text-center overflow-hidden"
             >
-              <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-neutral-500 mb-6">
-                Join us
-              </p>
               <h3 className="font-serif text-3xl sm:text-5xl tracking-tight mb-5 text-neutral-900 leading-[1.08]">
-                Help shape the future of <span className="text-neutral-500">Organizational Intelligence.</span>
+                Help shape the future of <span className="text-neutral-500">intelligent computing.</span>
               </h3>
               <p className="text-base sm:text-lg text-neutral-600 font-normal mb-10 max-w-xl mx-auto leading-relaxed">
-                Join a team exploring a long-term research mission while building useful technology for real organizational work.
+                Join a team pursuing a long-term scientific mission while building useful technology today.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Link

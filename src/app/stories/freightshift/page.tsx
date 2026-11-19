@@ -118,7 +118,7 @@ export default function FreightShiftStory() {
 
             <h2>Learning from complex operations</h2>
             <p>
-              Complex freight environments offer practical experience in building software around information, people, processes and decisions. This work informs Olyxee&apos;s broader research into Organizational Intelligence without implying that the longer-term research goal has been achieved.
+              Complex freight environments offer practical experience in building software around information, people, processes and decisions. This work informs Olyxee&apos;s broader research into intelligent computing without implying that the longer-term research goal has been achieved.
             </p>
             <p>
               The engagement illustrates how a clearer view of operational context can support coordination across teams and systems.

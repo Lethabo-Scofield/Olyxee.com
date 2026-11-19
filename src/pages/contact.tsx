@@ -133,9 +133,9 @@ const Contact: FC = () => {
     <div className="min-h-screen bg-white text-neutral-900">
       <SEO
         title="Contact"
-        description="Contact Olyxee about research into Organizational Intelligence, our products, partnerships, support, careers, press, or general inquiries."
+        description="Contact Olyxee about our research into intelligent computing, our products, partnerships, support, careers, press, or general inquiries."
         path="/contact"
-        keywords={["Contact Olyxee", "Olyxee sales", "Olyxee support", "Olyxee partnerships", "Organizational Intelligence research"]}
+        keywords={["Contact Olyxee", "Olyxee sales", "Olyxee support", "Olyxee partnerships", "intelligent computing research"]}
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "ContactPage",

@@ -318,7 +318,7 @@ function EmergingTalentSection() {
               Emerging talent
             </h2>
             <p className="text-base sm:text-lg text-neutral-500 leading-relaxed font-normal mb-8">
-              Join a research and technology company exploring the foundations of Organizational Intelligence. We welcome curious people who want to contribute to research and useful software for complex organizations.
+              Join an AI research company working toward the future of intelligent computing. We welcome curious people who want to contribute to research and to useful software.
             </p>
             <Link
               href="/about"
@@ -461,7 +461,7 @@ function CTASection() {
             Don't see your role?
           </h2>
           <p className="text-neutral-600 text-lg max-w-lg mx-auto mb-10 font-normal leading-relaxed">
-            We hire for talent, not just titles. If you're excited about researching Organizational Intelligence or building practical technology for complex organizations, reach out.
+            We hire for talent, not just titles. If you're excited about researching the foundations of intelligent computing or building practical technology, reach out.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -488,16 +488,16 @@ const Careers: FC = () => {
     <div className="min-h-screen bg-white text-neutral-900 relative">
       <SEO
         title="Careers"
-        description="Join Olyxee, a research and technology company exploring Organizational Intelligence. Open internships and roles across research, engineering, design, and operations."
+        description="Join Olyxee, an AI research company working toward the future of intelligent computing. Open internships and roles across research, engineering, design, and operations."
         path="/careers"
-        keywords={["Olyxee careers", "Organizational Intelligence research", "research internships", "engineering jobs", "Olyxee jobs", "machine learning internship", "technology jobs Johannesburg", "research jobs South Africa"]}
+        keywords={["Olyxee careers", "intelligent computing research", "research internships", "engineering jobs", "Olyxee jobs", "machine learning internship", "technology jobs Johannesburg", "research jobs South Africa"]}
         jsonLd={[
           {
             "@context": "https://schema.org",
             "@type": "CollectionPage",
             name: "Careers at Olyxee",
             url: "https://olyxee.com/careers",
-            about: "Open internships and roles at Olyxee, a research and technology company focused on Organizational Intelligence.",
+            about: "Open internships and roles at Olyxee, an AI research company working toward the future of intelligent computing.",
             publisher: {
               "@type": "Organization",
               name: "Olyxee",

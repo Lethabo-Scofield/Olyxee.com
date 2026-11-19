@@ -64,7 +64,7 @@ export async function GET() {
               lineHeight: 1.4,
             }}
           >
-            Research and Infrastructure for Organizational Intelligence
+            Research and Infrastructure for the Future of Intelligent Computing
           </div>
           <div
             style={{

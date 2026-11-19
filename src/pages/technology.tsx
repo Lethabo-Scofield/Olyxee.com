@@ -18,7 +18,7 @@ const fadeUp = {
 const Technology: FC = () => {
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO title="Technology | Organizational Intelligence | Olyxee" description="Olyxee researches the foundations of Organizational Intelligence, including adaptive systems, organizational models, autonomous agents and human-AI coordination. Orgni applies this work to everyday organizational settings." path="/technology" />
+      <SEO title="Technology | Intelligent Computing Research | Olyxee" description="Olyxee researches the foundations of intelligent computing, including adaptive systems, organizational models, autonomous agents and human-AI coordination. Orgni applies this work to everyday organizational settings." path="/technology" />
       <div className="grain" />
       <Header />
 
@@ -61,7 +61,7 @@ const Technology: FC = () => {
             </div>
           </motion.div>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.5 }} className="text-lg text-neutral-500 leading-relaxed max-w-3xl font-normal">
-            Olyxee is researching the foundations of Organizational Intelligence: how systems might learn from organizational activity, coordinate people and machines, and adapt over time. Orgni is an intelligence layer for everyday organizational work and an applied environment for this ongoing research.
+            Olyxee is researching the foundations of intelligent computing, including how systems might learn from organizational activity, coordinate people and machines, and adapt over time. Orgni is an intelligence layer for everyday organizational work and an applied environment for this ongoing research.
           </motion.p>
         </div>
       </section>

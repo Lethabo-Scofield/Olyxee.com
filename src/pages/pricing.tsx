@@ -406,7 +406,7 @@ const Pricing: FC = () => {
           logo="/Logo/orgni-mark.png"
           name="Orgni"
           tagline="The intelligence layer for everyday organizational work"
-          desc="Orgni connects organizational knowledge, systems and people so employees can access information with greater context. It is also an applied environment for Olyxee's broader research into Organizational Intelligence."
+          desc="Orgni connects organizational knowledge, systems and people so employees can access information with greater context. It is also an applied environment for Olyxee's broader research into intelligent computing."
           plans={ORGNI_PLANS}
         />
       </div>

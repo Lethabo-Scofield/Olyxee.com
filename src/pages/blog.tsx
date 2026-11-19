@@ -25,7 +25,7 @@ const posts = [
       },
       {
         heading: "What Orgni does",
-        body: `Orgni is an intelligence layer for everyday organizational work. It connects organizational knowledge, systems and people so employees and AI agents can access information with more context.\n\nOrgni is also an applied environment for Olyxee's broader research into Organizational Intelligence: a place to learn from how information and work come together inside real organizations.\n\nEmployees can interact with Orgni through familiar workplace environments such as Microsoft Teams, rather than constantly switching between systems.`,
+        body: `Orgni is an intelligence layer for everyday organizational work. It connects organizational knowledge, systems and people so employees and AI agents can access information with more context.\n\nOrgni is also an applied environment for Olyxee's broader research into intelligent computing: a place to learn from how information and work come together inside real organizations.\n\nEmployees can interact with Orgni through familiar workplace environments such as Microsoft Teams, rather than constantly switching between systems.`,
       },
       {
         heading: "Why context-first matters",
@@ -134,7 +134,7 @@ const Blog: FC = () => {
     <div className="min-h-screen bg-white text-neutral-900 relative">
       <SEO
         title="Blog"
-        description="Research and product writing from Olyxee on Organizational Intelligence, adaptive systems and the technology used in organizational work."
+        description="Research and product writing from Olyxee on intelligent computing, adaptive systems and the technology used in organizational work."
         path="/blog"
         keywords={["Olyxee blog", "Organizational Intelligence", "adaptive organizations", "human-AI coordination", "Orgni"]}
         jsonLd={{
@@ -142,7 +142,7 @@ const Blog: FC = () => {
           "@type": "Blog",
           name: "Olyxee Blog",
           url: "https://olyxee.com/blog",
-          description: "Research and product writing from Olyxee on Organizational Intelligence, adaptive systems and the technology used in organizational work.",
+          description: "Research and product writing from Olyxee on intelligent computing, adaptive systems and the technology used in organizational work.",
           inLanguage: "en",
           publisher: {
             "@type": "Organization",
@@ -196,7 +196,7 @@ const Blog: FC = () => {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="text-lg text-neutral-500 leading-relaxed max-w-2xl font-normal"
           >
-            Research and product writing on Organizational Intelligence, adaptive systems and the future of organizational work.
+            Research and product writing on intelligent computing, adaptive systems and the future of organizational work.
           </motion.p>
         </div>
       </section>

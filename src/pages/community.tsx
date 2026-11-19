@@ -33,7 +33,7 @@ const Community: FC = () => {
   const statsRef = useRef<HTMLDivElement>(null);
 
   const channels: Channel[] = React.useMemo(() => [
-    { icon: MessageSquare, title: "Discord", description: "Join conversations about Organizational Intelligence, adaptive systems and the software we build.", members: 5000, unit: "members", link: "https://discord.gg/DgBEMVCh", bg: "/images/gradient-blue-pink.webp" },
+    { icon: MessageSquare, title: "Discord", description: "Join conversations about intelligent computing, adaptive systems and the software we build.", members: 5000, unit: "members", link: "https://discord.gg/DgBEMVCh", bg: "/images/gradient-blue-pink.webp" },
     { icon: Github, title: "GitHub", description: "Explore Olyxee's public repositories and follow our software work.", members: 1200, unit: "stars", link: "https://github.com/Olyxee", bg: "/images/gradient-yellow-green.webp" },
     { icon: Twitter, title: "X", description: "Follow updates on Olyxee's research direction, products and community.", members: 3000, unit: "followers", link: "https://x.com/Olyxee", bg: "/images/gradient-pastel.webp" },
     { icon: Users, title: "Forums", description: "Join discussions about organizational systems, research questions and practical software.", members: 2000, unit: "posts", link: "#forums", bg: "/images/gradient-orange-purple.webp" },
@@ -77,7 +77,7 @@ const Community: FC = () => {
 
   return (
     <div className="min-h-screen bg-white text-neutral-900 relative">
-      <SEO title="Community | Olyxee" description="Connect with people interested in Organizational Intelligence, adaptive systems, Olyxee's research and products." path="/community" />
+      <SEO title="Community | Olyxee" description="Connect with people interested in intelligent computing, adaptive systems, Olyxee's research and products." path="/community" />
       <div className="grain" />
       <Header />
 
@@ -118,7 +118,7 @@ const Community: FC = () => {
             </div>
           </motion.div>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.5 }} className="text-xl text-neutral-500 leading-relaxed max-w-3xl font-normal">
-            Connect with people interested in Organizational Intelligence, adaptive systems and practical technology for complex organizations.
+            Connect with people interested in intelligent computing, adaptive systems and practical technology for complex organizations.
           </motion.p>
         </div>
       </section>

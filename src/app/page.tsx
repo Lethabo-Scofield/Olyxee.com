@@ -3,10 +3,11 @@
 import { useState, useEffect, useRef, useMemo, type RefObject } from "react";
 import Header from '../components/header';
 import Footer from '../components/footer';
+import { IBMLogo, MicrosoftLogo } from "../components/company-logos";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useTransform, useReducedMotion } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Truck, Check, PackageCheck, MapPin, Bell } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Truck, Check, PackageCheck, MapPin, Bell, Cpu, Network, Atom } from "lucide-react";
 
 
 // Plays a decorative video only while it is on screen, and never under
@@ -51,7 +52,7 @@ export default function HomePage() {
     url: "https://olyxee.com",
     logo: "https://olyxee.com/Logo/Olyxee_Logo.png",
     image: "https://olyxee.com/og-image.jpg",
-    description: "Olyxee is a research-driven AI infrastructure company advancing the foundations of intelligent computing through neuro-symbolic intelligence and autonomous adaptive systems, beginning with financial computing.",
+    description: "Olyxee is an AI research company working toward the future of intelligent computing, investigating the mathematical, computational and physical principles that could enable new forms of machine intelligence.",
     sameAs: [
       "https://www.linkedin.com/company/olyxee/",
       "https://twitter.com/olyxee",
@@ -79,6 +80,10 @@ export default function HomePage() {
       },
     ],
     knowsAbout: [
+      "Mathematical Foundations of Intelligence",
+      "Learning and Adaptive Computation",
+      "Novel Computational Architectures",
+      "Information Theory and Physical Principles of Computation",
       "Neuro-Symbolic Intelligence",
       "Autonomous Adaptive Systems",
       "Formal Verification",
@@ -86,7 +91,7 @@ export default function HomePage() {
       "Financial Computing",
       "Decision Science",
     ],
-    slogan: "Advancing the Next Paradigm of Enterprise Computing",
+    slogan: "Advancing the foundations of intelligent computing",
   };
 
   const faqJsonLd = {
@@ -98,7 +103,7 @@ export default function HomePage() {
         name: "What is Olyxee?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Olyxee is a research-driven AI infrastructure company advancing the foundations of intelligent computing. Our scientific direction is neuro-symbolic intelligence and autonomous adaptive systems, and we are working towards infrastructure that can discover, represent, verify and evolve the logic governing complex organisations, beginning with financial computing.",
+          text: "Olyxee is an AI research company working toward the future of intelligent computing, investigating the mathematical, computational and physical principles that could enable new forms of machine intelligence.",
         },
       },
       {
@@ -138,6 +143,7 @@ export default function HomePage() {
       <main>
         <HeroSection />
         <ResearchAreas />
+        <EvolutionOfComputing />
         <LatestReleaseSection />
         <OrgniSection />
         <FreighticsSection />
@@ -357,6 +363,159 @@ function ResearchAreas() {
             Beyond today&rsquo;s approaches to <span className="bg-gradient-to-r from-pink-500 to-blue-600 bg-clip-text text-transparent">artificial intelligence.</span>
           </h2>
         </motion.div>
+      </div>
+    </section>
+  );
+}
+
+const EVOLUTION_STAGES = [
+  {
+    icon: Cpu,
+    label: "Traditional Computing",
+    text: "Executes explicitly programmed instructions to process information and solve problems.",
+    caption: "Built up over decades by companies such as",
+    featured: false,
+  },
+  {
+    icon: Network,
+    label: "Modern AI Computing",
+    text: "Uses learned models to recognise patterns, generate predictions and perform increasingly complex tasks.",
+    caption: "Led today by AI labs and platforms such as",
+    featured: false,
+  },
+  {
+    icon: Atom,
+    label: "Future Intelligent Computing",
+    eyebrow: "Olyxee’s Research Vision",
+    caption: "",
+    text: "Investigating new mathematical principles, computational architectures and potentially physical mechanisms that could enable fundamentally different forms of machine intelligence.",
+    featured: true,
+  },
+] as const;
+
+function EvolutionOfComputing() {
+  return (
+    <section id="evolution" aria-labelledby="evolution-heading" className="pb-24 sm:pb-32 lg:pb-40 bg-white scroll-mt-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
+        <motion.div
+          initial={{ opacity: 0, y: 32 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7 }}
+          className="max-w-3xl mx-auto text-center"
+        >
+          <h2 id="evolution-heading" className="font-serif text-3xl sm:text-5xl lg:text-6xl leading-[1.08] tracking-tight text-neutral-900 text-balance">
+            The Evolution of Computing
+          </h2>
+          <p className="mt-5 text-base sm:text-lg text-neutral-600 leading-relaxed text-balance">
+            Understanding where computing has been, where it stands today, and the future we are working toward.
+          </p>
+        </motion.div>
+
+        <ol className="mt-12 sm:mt-16 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 list-none p-0">
+          {EVOLUTION_STAGES.map((stage, index) => {
+            const Icon = stage.icon;
+            return (
+              <motion.li
+                key={stage.label}
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.7, delay: index * 0.1 }}
+                className={`relative flex flex-col rounded-2xl p-7 sm:p-8 ${
+                  stage.featured
+                    ? "bg-neutral-950 text-white ring-1 ring-neutral-900"
+                    : "bg-neutral-50 text-neutral-900 ring-1 ring-neutral-200"
+                }`}
+              >
+                <span
+                  aria-hidden
+                  className={`flex h-10 w-10 items-center justify-center rounded-full ring-1 ${
+                    stage.featured ? "ring-white/30 text-white" : "ring-neutral-300 text-neutral-700"
+                  }`}
+                >
+                  <Icon className="h-5 w-5" strokeWidth={1.5} />
+                </span>
+                {"eyebrow" in stage && (
+                  <p className="mt-6 text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-400">{stage.eyebrow}</p>
+                )}
+                <h3 className={`font-serif text-2xl sm:text-[1.65rem] leading-tight tracking-tight ${"eyebrow" in stage ? "mt-2" : "mt-6"}`}>
+                  {stage.label}
+                </h3>
+                <p className={`mt-3 text-[15px] leading-relaxed ${stage.featured ? "text-neutral-300" : "text-neutral-600"}`}>
+                  {stage.text}
+                </p>
+                <div className={`mt-auto pt-8`}>
+                  {index === 0 && (
+                    <>
+                      <p className="mb-4 text-xs text-neutral-500">{stage.caption}</p>
+                      <div className="flex flex-wrap items-center gap-x-7 gap-y-4 grayscale opacity-70">
+                        <IBMLogo className="h-6 w-auto" />
+                        <Image src="/hardware-logos/intel.jpg" alt="Intel" width={270} height={269} className="h-8 w-8 object-contain mix-blend-multiply" />
+                        <MicrosoftLogo className="h-5 w-5" />
+                      </div>
+                    </>
+                  )}
+                  {index === 1 && (
+                    <>
+                      <p className="mb-4 text-xs text-neutral-500">{stage.caption}</p>
+                      <div className="flex flex-wrap items-center gap-x-6 gap-y-4 grayscale opacity-70">
+                        {[
+                          ["openai.svg", "OpenAI", "h-6"],
+                          ["anthropic.svg", "Anthropic", "h-5"],
+                          ["google.svg", "Google", "h-6"],
+                          ["meta.svg", "Meta", "h-5"],
+                          ["mistral.svg", "Mistral AI", "h-6"],
+                          ["nvidia.svg", "NVIDIA", "h-5"],
+                        ].map(([file, name, height]) => (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img key={file} src={`/partner-logos/${file}`} alt={name} loading="lazy" className={`${height} w-auto`} />
+                        ))}
+                      </div>
+                    </>
+                  )}
+                  {index === 2 && (
+                    <div className="border-t border-white/15 pt-5">
+                      <p className="mb-3 text-xs text-neutral-400">Others exploring new foundations of computing include</p>
+                      <ul className="mb-6 flex list-none flex-wrap gap-2 p-0">
+                        <li className="inline-flex items-center gap-2 rounded-full py-1 pl-2.5 pr-3 text-xs text-neutral-200 ring-1 ring-white/20">
+                          <Image src="/hardware-logos/intel.jpg" alt="" width={270} height={269} className="h-4 w-4 object-contain invert grayscale mix-blend-screen" />
+                          Intel Labs
+                        </li>
+                        <li className="inline-flex items-center gap-2 rounded-full py-1 pl-2.5 pr-3 text-xs text-neutral-200 ring-1 ring-white/20">
+                          <IBMLogo className="h-3 w-auto brightness-0 invert" />
+                          IBM Research
+                        </li>
+                        <li className="inline-flex items-center gap-2 rounded-full py-1 pl-2.5 pr-3 text-xs text-neutral-200 ring-1 ring-white/20">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src="/partner-logos/google.svg" alt="" className="h-3.5 w-3.5" />
+                          Google Quantum AI
+                        </li>
+                        {["Extropic", "Normal Computing"].map((name) => (
+                          <li key={name} className="rounded-full px-3 py-1 text-xs text-neutral-200 ring-1 ring-white/20">{name}</li>
+                        ))}
+                      </ul>
+                      <div className="flex items-center gap-3">
+                      <Image src="/Logo/Olyxee-White-Logo.png" alt="Olyxee" width={40} height={40} className="h-10 w-10 object-contain" />
+                      <p className="text-xs leading-snug text-neutral-400">Long-term research, not a finished era.</p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </motion.li>
+            );
+          })}
+        </ol>
+
+        <div className="mt-8 sm:mt-10 text-center">
+          <Link
+            href="/about#mission"
+            className="group inline-flex items-center gap-1.5 text-sm text-neutral-500 hover:text-neutral-900 transition-colors underline decoration-neutral-300 underline-offset-4 hover:decoration-neutral-900"
+          >
+            Explore Our Vision
+            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" aria-hidden />
+          </Link>
+        </div>
       </div>
     </section>
   );
@@ -609,7 +768,7 @@ function OrgniSection() {
           transition={{ duration: 0.7, ease }}
         >
           <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] max-w-2xl">
-            Intelligent computing for <em className="text-blue-600 not-italic">everyday work.</em>
+            Practical engineering for <em className="text-blue-600 not-italic">everyday work.</em>
           </h2>
         </motion.div>
 
@@ -923,15 +1082,15 @@ function LatestReleaseSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.05 }}
-          className="overflow-hidden rounded-3xl bg-black"
+          className="overflow-hidden rounded-3xl bg-black min-h-[340px] sm:min-h-[400px]"
         >
-          <div className="flex h-full items-center">
-            <div className="p-6 sm:p-8">
+          <div className="flex h-full min-h-[inherit] items-center">
+            <div className="p-7 sm:p-10">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-300/90 mb-4">Latest news</p>
-              <h3 className="max-w-[640px] text-xl font-semibold leading-[1.2] tracking-[-0.02em] text-white sm:text-2xl">
+              <h3 className="max-w-[640px] text-2xl font-semibold leading-[1.2] tracking-[-0.02em] text-white sm:text-[1.9rem]">
                 Olyxee wins Best AI Research and Innovation at the South African AI Awards 2026.
               </h3>
-              <div className="mt-5">
+              <div className="mt-7">
                 <Link
                   href="/research/news/olyxee-wins-best-ai-research-and-innovation-2026"
                   className="group inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-[14px] font-medium text-neutral-900 transition-colors hover:bg-neutral-200"
@@ -941,13 +1100,13 @@ function LatestReleaseSection() {
                 </Link>
               </div>
             </div>
-            <div className="w-28 shrink-0 self-end sm:w-36 lg:w-44">
+            <div className="w-32 shrink-0 self-end sm:w-44 lg:w-56">
               <Image
                 src="/images/research/south-african-ai-awards/award-trophy.webp"
                 alt="South African AI Awards 2026 trophy for Best AI Research and Innovation, awarded to Olyxee"
                 width={640}
                 height={640}
-                sizes="176px"
+                sizes="224px"
                 className="h-auto w-full"
               />
             </div>
@@ -959,7 +1118,7 @@ function LatestReleaseSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="relative flex overflow-hidden rounded-3xl border border-neutral-200 bg-white bg-cover bg-center p-6 sm:p-8"
+          className="relative flex overflow-hidden rounded-3xl border border-neutral-200 bg-white bg-cover bg-center p-7 sm:p-10 min-h-[340px] sm:min-h-[400px]"
           style={{ backgroundImage: `url(${release.background})` }}
         >
           <div
@@ -969,10 +1128,10 @@ function LatestReleaseSection() {
           />
           <div className="relative flex flex-col">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-700 mb-4">Our latest research</p>
-            <h3 className="max-w-[720px] text-xl font-semibold leading-[1.2] tracking-[-0.02em] text-neutral-900 sm:text-2xl">
+            <h3 className="max-w-[720px] text-2xl font-semibold leading-[1.2] tracking-[-0.02em] text-neutral-900 sm:text-[1.9rem]">
               Semantic Financial Document Computing
             </h3>
-            <div className="mt-auto pt-5 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <div className="mt-auto pt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
               <Link
                 href={release.href}
                 className="group inline-flex items-center gap-2 rounded-full bg-neutral-900 px-5 py-2.5 text-[14px] font-medium text-white transition-colors hover:bg-black"
@@ -1208,8 +1367,8 @@ function FreighticsSection() {
     <ProductFeature
       id="freightics"
       surface="plain"
-      heading="Built to carry our"
-      emphasis="intelligent computing mission."
+      heading="Practical engineering for"
+      emphasis="global freight."
       description="Manage all your freight in one place."
       image={{
         src: "/images/freightics-shipping.webp",

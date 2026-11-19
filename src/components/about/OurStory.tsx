@@ -2,27 +2,37 @@ import { Fragment } from "react";
 import Image from "next/image";
 import AudioPlayer from "../AudioPlayer";
 
-const STORY = `# Olyxee: Intelligence Emerges Through Connection
+const STORY = `# Why Olyxee Exists
 
-*The story behind our founding, our symbol, and the future we believe is possible.*
+*The conviction behind our founding, and the symbol that carries it.*
 
-## Why Olyxee Exists
+## A Conviction About Progress
 
-There is something fascinating about intelligence. It rarely exists as a complete, isolated body of knowledge.
+Olyxee was founded on the conviction that meaningful progress in artificial intelligence requires more than continuously improving existing models.
 
-In organisations, knowledge is distributed across people, systems, data, mathematical models, and years of accumulated experience. Each holds a different part of a much larger picture.
+Major advances in computing have historically emerged from fundamental scientific research. New mathematics, new ways of representing information and new understanding of what computation can do have repeatedly changed what machines are able to do.
 
-A financial analyst may understand patterns that a compliance specialist does not. A mathematical model may identify relationships that are difficult for humans to recognise. A business policy may establish constraints that a neural network has never learned.
+We want to pursue similarly foundational questions about intelligence and computation.
 
-Each possesses something valuable. None necessarily possesses the whole.
+## What We Investigate
 
-Olyxee began with a question: **What if organisations could become smarter themselves, rather than simply using intelligent tools?**
+Our long-term research interests include the mathematical foundations of intelligence, learning and adaptive computation, novel computational architectures, information theory and the physical principles of computation, and new mechanisms for intelligent systems.
 
-That question led us beyond connecting information. It led us towards investigating how different forms of intelligence could interact, reason, and contribute to a deeper computational understanding of complex systems.
+These are research interests, not claims that we have solved these problems. We believe some of the most important discoveries in intelligent computing remain ahead of us.
+
+## Two Ways of Working
+
+We work in two complementary ways.
+
+**Research for tomorrow.** Investigating fundamental questions that could contribute to future computing paradigms.
+
+**Engineering for today.** Building useful technologies, including Orgni and Freightics, while strengthening the organisation's technical capabilities.
+
+Our products are practical engineering work. They are not themselves fundamental scientific breakthroughs, and they do not define the limits of what we are trying to understand.
 
 ## The Meaning Behind Our Symbol
 
-Our symbol expresses this belief through a simple geometric idea.
+Our symbol expresses a belief about intelligence through a simple geometric idea.
 
 At its centre are **two circles of unequal size**.
 
@@ -42,57 +52,15 @@ A closed circle suggests completeness. Our symbol remains open because we do not
 
 The openings represent the ability to receive new information, encounter unfamiliar ideas, and incorporate knowledge that originates outside an existing system.
 
-The curved forms connect the central elements without enclosing them completely. They suggest that knowledge can move, relationships can develop, and understanding can expand as new evidence emerges.
-
 Despite their openness, the forms maintain a coherent geometric structure. The symbol is constructed through carefully proportioned circles and arcs, reflecting our commitment to mathematics, precision, and scientific reasoning.
 
-**The two unequal dots represent knowledge in its different forms. The open circles represent the possibility of discovering what is not yet known. Their relationship represents intelligence emerging through connection.**
+**The two unequal dots represent knowledge in its different forms. The open circles represent the possibility of discovering what is not yet known.**
 
-This is the philosophy behind Olyxee.
+## The Future We Are Working Toward
 
-Not the belief that every system must possess all knowledge, but that meaningful intelligence can emerge when different forms of knowledge interact within structures capable of accommodating new information.
+We believe the next generation of computing will depend on deeper discoveries about intelligence, learning and computation.
 
-## From Connection to Computational Understanding
-
-Our founding idea has developed into a broader scientific ambition.
-
-Artificial intelligence has demonstrated extraordinary progress in learning statistical relationships, recognising patterns, and interpreting information.
-
-Yet intelligence involves more than identifying patterns.
-
-It also involves reasoning about relationships, understanding constraints, evaluating consequences, and responding to changing circumstances.
-
-This is why our research direction centres on **Neuro-Symbolic Intelligence and Autonomous Adaptive Systems**.
-
-Neuro-symbolic intelligence brings statistical learning together with explicit knowledge, mathematical relationships, and logical reasoning.
-
-Autonomous adaptive systems investigate how computational systems can respond to changing environments through feedback and decision-making.
-
-Together, these fields provide a foundation for exploring how computational systems can develop richer representations of the environments in which they operate.
-
-Our long-term ambition is to advance computational understanding and translate scientific progress into foundational software infrastructure.
-
-## Beginning with Financial Computing
-
-We are beginning with finance, a domain where statistical uncertainty and mathematical precision must coexist.
-
-Our research initiative, **FinIR (Financial Intermediate Representation)**, explores how financial operations can be represented and executed through explicit computational structures rather than depending entirely on probabilistic AI outputs.
-
-FinIR reflects an important principle in our research: learned intelligence and structured mathematical reasoning have distinct strengths, and their integration can provide a stronger foundation for computational systems.
-
-Explore our research: https://www.olyxee.com/research/finir
-
-## The Future We Believe Is Possible
-
-We believe the next generation of computing will emerge from advances that bring learning, knowledge representation, reasoning, and autonomous adaptation closer together.
-
-Our ambition extends beyond financial computing, beyond individual AI models, and beyond today's enterprise applications.
-
-We envision infrastructure through which computational systems can work with increasingly sophisticated representations of complex environments, making new forms of intelligent software possible.
-
-Much like our symbol, we believe the future of computing remains open.
-
-There is knowledge yet to be discovered, mathematical problems yet to be solved, and computational capabilities yet to be realised.
+Much like our symbol, we believe the future of computing remains open. There is knowledge yet to be discovered, mathematical problems yet to be solved, and computational capabilities yet to be realised.
 
 That openness is not a limitation.
 
@@ -122,7 +90,7 @@ export default function OurStory() {
               <h2 className="font-serif text-4xl sm:text-5xl lg:text-[3.5rem] text-neutral-900 tracking-tight leading-[1.08] mb-6 text-balance">{block.slice(2)}</h2>
               <AudioPlayer
                 src="/audio/olyxee-blueprint-for-organizational-intelligence.m4a"
-                title="Olyxee's Blueprint for Organizational Intelligence"
+                title="Listen to the Olyxee story"
               />
             </Fragment>
           );

@@ -297,7 +297,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
           Olyxee documentation
         </h1>
         <p className="text-neutral-600 text-[17px] leading-[1.55]">
-          Olyxee is a research and technology company exploring the foundations of Organizational Intelligence. Orgni is an intelligence layer for everyday organizational work and an applied environment for this research. These docs focus on using Orgni and Freightics in practical workflows.
+          Olyxee is an AI research company working toward the future of intelligent computing. Orgni is an intelligence layer for everyday organizational work and an applied environment for this research. These docs focus on using Orgni and Freightics in practical workflows.
         </p>
       </div>
 
@@ -354,7 +354,7 @@ function DocsHome({ onNavigate }: { onNavigate: (tab: string, page: string) => v
       {/* Footer note */}
       <div className="border-t border-neutral-100 pt-8">
         <p className="text-[12px] text-neutral-400 leading-relaxed">
-          Olyxee is researching Organizational Intelligence. Documentation, schemas, and APIs are continuously evolving; some surfaces are intentionally gated while they stabilize for production use.
+          Olyxee is researching the foundations of intelligent computing. Documentation, schemas, and APIs are continuously evolving; some surfaces are intentionally gated while they stabilize for production use.
         </p>
       </div>
     </div>
