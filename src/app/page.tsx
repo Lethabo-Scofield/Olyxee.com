@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useMemo, type RefObject } from "react";
 import Header from '../components/header';
 import Footer from '../components/footer';
 import { IBMLogo, MicrosoftLogo } from "../components/company-logos";
+import FutureComputingSimulation from "../components/FutureComputingSimulation";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useTransform, useReducedMotion } from "framer-motion";
@@ -374,6 +375,7 @@ const EVOLUTION_STAGES = [
     label: "Traditional Computing",
     text: "Executes explicitly programmed instructions to process information and solve problems.",
     caption: "Built up over decades by companies such as",
+    bg: { src: "/images/traditional-computing.webp", inline: true, image: "", wash: "" },
     featured: false,
   },
   {
@@ -381,6 +383,7 @@ const EVOLUTION_STAGES = [
     label: "Modern AI Computing",
     text: "Uses learned models to recognise patterns, generate predictions and perform increasingly complex tasks.",
     caption: "Led today by AI labs and platforms such as",
+    bg: { src: "/images/ai-structures.png", image: "object-cover object-center", wash: "from-white via-white/75 to-white/0" },
     featured: false,
   },
   {
@@ -389,6 +392,7 @@ const EVOLUTION_STAGES = [
     eyebrow: "Olyxee’s Research Vision",
     caption: "",
     text: "Investigating new mathematical principles, computational architectures and potentially physical mechanisms that could enable fundamentally different forms of machine intelligence.",
+    bg: { src: "", inline: true, image: "", wash: "" },
     featured: true,
   },
 ] as const;
@@ -418,20 +422,17 @@ function EvolutionOfComputing() {
             return (
               <motion.li
                 key={stage.label}
+                {...(stage.featured ? { "data-sim-host": "" } : {})}
                 initial={{ opacity: 0, y: 28 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.7, delay: index * 0.1 }}
-                className={`relative flex flex-col rounded-2xl p-7 sm:p-8 ${
-                  stage.featured
-                    ? "bg-neutral-950 text-white ring-1 ring-neutral-900"
-                    : "bg-neutral-50 text-neutral-900 ring-1 ring-neutral-200"
-                }`}
+                className="relative flex flex-col px-1 py-6 text-neutral-900 sm:py-8"
               >
                 <span
                   aria-hidden
                   className={`flex h-10 w-10 items-center justify-center rounded-full ring-1 ${
-                    stage.featured ? "ring-white/30 text-white" : "ring-neutral-300 text-neutral-700"
+                    "ring-neutral-300 text-neutral-700"
                   }`}
                 >
                   <Icon className="h-5 w-5" strokeWidth={1.5} />
@@ -442,24 +443,37 @@ function EvolutionOfComputing() {
                 <h3 className={`font-serif text-2xl sm:text-[1.65rem] leading-tight tracking-tight ${"eyebrow" in stage ? "mt-2" : "mt-6"}`}>
                   {stage.label}
                 </h3>
-                <p className={`mt-3 text-[15px] leading-relaxed ${stage.featured ? "text-neutral-300" : "text-neutral-600"}`}>
+                <p className={`mt-3 text-[15px] leading-relaxed text-neutral-600`}>
                   {stage.text}
                 </p>
-                <div className={`mt-auto pt-8`}>
+                {stage.featured && (
+                  <FutureComputingSimulation className="mt-6 h-60 w-full sm:h-72 [mask-image:radial-gradient(ellipse_at_center,#000_55%,transparent_100%)]" />
+                )}
+                <div className="mt-auto pt-8">
                   {index === 0 && (
                     <>
-                      <p className="mb-4 text-xs text-neutral-500">{stage.caption}</p>
-                      <div className="flex flex-wrap items-center gap-x-7 gap-y-4 grayscale opacity-70">
+                      <Image
+                        src="/images/traditional-computing.webp"
+                        unoptimized
+                        alt="A 1950s computer operator at a mainframe control console"
+                        width={1737}
+                        height={906}
+                        loading="eager"
+                        sizes="(min-width: 768px) 34vw, 100vw"
+                        className="mb-5 h-auto w-full"
+                      />
+                      <p className="mb-3 text-xs text-neutral-600">{stage.caption}</p>
+                      <div className="flex flex-wrap items-center gap-x-7 gap-y-4 grayscale opacity-80">
                         <IBMLogo className="h-6 w-auto" />
-                        <Image src="/hardware-logos/intel.jpg" alt="Intel" width={270} height={269} className="h-8 w-8 object-contain mix-blend-multiply" />
+                        <Image unoptimized src="/hardware-logos/intel.jpg" alt="Intel" width={270} height={269} className="h-8 w-8 object-contain mix-blend-multiply" />
                         <MicrosoftLogo className="h-5 w-5" />
                       </div>
                     </>
                   )}
                   {index === 1 && (
                     <>
-                      <p className="mb-4 text-xs text-neutral-500">{stage.caption}</p>
-                      <div className="flex flex-wrap items-center gap-x-6 gap-y-4 grayscale opacity-70">
+                      <p className="mb-3 text-xs text-neutral-600">{stage.caption}</p>
+                      <div className="flex flex-wrap items-center gap-x-6 gap-y-4 grayscale opacity-80">
                         {[
                           ["openai.svg", "OpenAI", "h-6"],
                           ["anthropic.svg", "Anthropic", "h-5"],
@@ -472,32 +486,33 @@ function EvolutionOfComputing() {
                           <img key={file} src={`/partner-logos/${file}`} alt={name} loading="lazy" className={`${height} w-auto`} />
                         ))}
                       </div>
+                      
                     </>
                   )}
                   {index === 2 && (
-                    <div className="border-t border-white/15 pt-5">
-                      <p className="mb-3 text-xs text-neutral-400">Others exploring new foundations of computing include</p>
-                      <ul className="mb-6 flex list-none flex-wrap gap-2 p-0">
-                        <li className="inline-flex items-center gap-2 rounded-full py-1 pl-2.5 pr-3 text-xs text-neutral-200 ring-1 ring-white/20">
-                          <Image src="/hardware-logos/intel.jpg" alt="" width={270} height={269} className="h-4 w-4 object-contain invert grayscale mix-blend-screen" />
+                    <div>
+                      <p className="mb-3 text-xs text-neutral-600">Others exploring new foundations of computing include</p>
+                      <ul className="mb-5 flex list-none flex-wrap gap-2 p-0">
+                        <li className="inline-flex items-center gap-2 rounded-full bg-white/85 py-1 pl-2.5 pr-3 text-xs text-neutral-700 ring-1 ring-neutral-300">
+                          <Image unoptimized src="/hardware-logos/intel.jpg" alt="" width={270} height={269} className="h-4 w-4 object-contain grayscale mix-blend-multiply" />
                           Intel Labs
                         </li>
-                        <li className="inline-flex items-center gap-2 rounded-full py-1 pl-2.5 pr-3 text-xs text-neutral-200 ring-1 ring-white/20">
-                          <IBMLogo className="h-3 w-auto brightness-0 invert" />
+                        <li className="inline-flex items-center gap-2 rounded-full bg-white/85 py-1 pl-2.5 pr-3 text-xs text-neutral-700 ring-1 ring-neutral-300">
+                          <IBMLogo className="h-3 w-auto grayscale" />
                           IBM Research
                         </li>
-                        <li className="inline-flex items-center gap-2 rounded-full py-1 pl-2.5 pr-3 text-xs text-neutral-200 ring-1 ring-white/20">
+                        <li className="inline-flex items-center gap-2 rounded-full bg-white/85 py-1 pl-2.5 pr-3 text-xs text-neutral-700 ring-1 ring-neutral-300">
                           {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img src="/partner-logos/google.svg" alt="" className="h-3.5 w-3.5" />
                           Google Quantum AI
                         </li>
                         {["Extropic", "Normal Computing"].map((name) => (
-                          <li key={name} className="rounded-full px-3 py-1 text-xs text-neutral-200 ring-1 ring-white/20">{name}</li>
+                          <li key={name} className="rounded-full bg-white/85 px-3 py-1 text-xs text-neutral-700 ring-1 ring-neutral-300">{name}</li>
                         ))}
                       </ul>
                       <div className="flex items-center gap-3">
-                      <Image src="/Logo/Olyxee-White-Logo.png" alt="Olyxee" width={40} height={40} className="h-10 w-10 object-contain" />
-                      <p className="text-xs leading-snug text-neutral-400">Long-term research, not a finished era.</p>
+                        <Image src="/Logo/Olyxee-Black-Logo.png" alt="Olyxee" width={40} height={40} className="h-9 w-9 object-contain" />
+                        <p className="text-xs leading-snug text-neutral-500">Long-term research, not a finished era. Illustrative simulation of local interaction rules, inspired by Lenia.</p>
                       </div>
                     </div>
                   )}
@@ -768,7 +783,7 @@ function OrgniSection() {
           transition={{ duration: 0.7, ease }}
         >
           <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.05] max-w-2xl">
-            Practical engineering for <em className="text-blue-600 not-italic">everyday work.</em>
+            Intelligent computing for <em className="text-blue-600 not-italic">everyday work.</em>
           </h2>
         </motion.div>
 
@@ -1367,8 +1382,8 @@ function FreighticsSection() {
     <ProductFeature
       id="freightics"
       surface="plain"
-      heading="Practical engineering for"
-      emphasis="global freight."
+      heading="Built to carry our"
+      emphasis="intelligent computing mission."
       description="Manage all your freight in one place."
       image={{
         src: "/images/freightics-shipping.webp",
