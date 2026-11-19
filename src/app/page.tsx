@@ -7,7 +7,7 @@ import { IBMLogo, MicrosoftLogo } from "../components/company-logos";
 import FutureComputingSimulation from "../components/FutureComputingSimulation";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform, useReducedMotion, useMotionValueEvent } from "framer-motion";
 import { ArrowRight, ArrowUpRight, Truck, Check, PackageCheck, MapPin, Bell, Cpu, Network, Atom } from "lucide-react";
 
 
@@ -383,7 +383,7 @@ const EVOLUTION_STAGES = [
     label: "Modern AI Computing",
     text: "Uses learned models to recognise patterns, generate predictions and perform increasingly complex tasks.",
     caption: "Led today by AI labs and platforms such as",
-    bg: { src: "/images/ai-structures.png", image: "object-cover object-center", wash: "from-white via-white/75 to-white/0" },
+    bg: { src: "/images/modern-ai-computing.webp", image: "object-cover object-center", wash: "from-white via-white/75 to-white/0" },
     featured: false,
   },
   {
@@ -397,132 +397,157 @@ const EVOLUTION_STAGES = [
   },
 ] as const;
 
-function EvolutionOfComputing() {
+function EvolutionLogos({ index }: { index: number }) {
+  if (index === 0) {
+    return (
+      <>
+        <p className="mb-3 text-xs text-neutral-600">{EVOLUTION_STAGES[0].caption}</p>
+        <div className="flex flex-wrap items-center gap-x-7 gap-y-4 grayscale opacity-80">
+          <IBMLogo className="h-6 w-auto" />
+          <Image unoptimized src="/hardware-logos/intel.jpg" alt="Intel" width={270} height={269} className="h-8 w-8 object-contain mix-blend-multiply" />
+          <MicrosoftLogo className="h-5 w-5" />
+        </div>
+      </>
+    );
+  }
+  if (index === 1) {
+    return (
+      <>
+        <p className="mb-3 text-xs text-neutral-600">{EVOLUTION_STAGES[1].caption}</p>
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-4 grayscale opacity-80">
+          {[
+            ["openai.svg", "OpenAI", "h-6"],
+            ["anthropic.svg", "Anthropic", "h-5"],
+            ["google.svg", "Google", "h-6"],
+            ["meta.svg", "Meta", "h-5"],
+            ["mistral.svg", "Mistral AI", "h-6"],
+            ["nvidia.svg", "NVIDIA", "h-5"],
+          ].map(([file, name, height]) => (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img key={file} src={`/partner-logos/${file}`} alt={name} loading="lazy" className={`${height} w-auto`} />
+          ))}
+        </div>
+      </>
+    );
+  }
   return (
-    <section id="evolution" aria-labelledby="evolution-heading" className="pb-24 sm:pb-32 lg:pb-40 bg-white scroll-mt-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.7 }}
-          className="max-w-3xl mx-auto text-center"
-        >
-          <h2 id="evolution-heading" className="font-serif text-3xl sm:text-5xl lg:text-6xl leading-[1.08] tracking-tight text-neutral-900 text-balance">
+    <div>
+      <p className="mb-3 text-xs text-neutral-600">Others exploring new foundations of computing include</p>
+      <ul className="mb-4 flex list-none flex-wrap gap-2 p-0">
+        <li className="inline-flex items-center gap-2 rounded-full bg-white/85 py-1 pl-2.5 pr-3 text-xs text-neutral-700 ring-1 ring-neutral-300">
+          <Image unoptimized src="/hardware-logos/intel.jpg" alt="" width={270} height={269} className="h-4 w-4 object-contain grayscale mix-blend-multiply" />
+          Intel Labs
+        </li>
+        <li className="inline-flex items-center gap-2 rounded-full bg-white/85 py-1 pl-2.5 pr-3 text-xs text-neutral-700 ring-1 ring-neutral-300">
+          <IBMLogo className="h-3 w-auto grayscale" />
+          IBM Research
+        </li>
+        <li className="inline-flex items-center gap-2 rounded-full bg-white/85 py-1 pl-2.5 pr-3 text-xs text-neutral-700 ring-1 ring-neutral-300">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/partner-logos/google.svg" alt="" className="h-3.5 w-3.5" />
+          Google Quantum AI
+        </li>
+        {["Extropic", "Normal Computing"].map((name) => (
+          <li key={name} className="rounded-full bg-white/85 px-3 py-1 text-xs text-neutral-700 ring-1 ring-neutral-300">{name}</li>
+        ))}
+      </ul>
+      <p className="text-xs leading-snug text-neutral-500">Long-term research, not a finished era. Illustrative simulation of local interaction rules, inspired by Lenia.</p>
+    </div>
+  );
+}
+
+function EvolutionVisual({ index }: { index: number }) {
+  if (index === 0) {
+    return (
+      <Image
+        src="/images/traditional-computing.webp"
+        unoptimized
+        alt="A 1950s computer operator at a mainframe control console"
+        width={1737}
+        height={906}
+        priority
+        sizes="(min-width: 1024px) 60vw, 100vw"
+        className="h-auto max-h-[40svh] w-auto max-w-full object-contain"
+      />
+    );
+  }
+  return (
+    <Image
+      src="/images/modern-ai-computing.webp"
+      alt="Modern AI computing: edge hardware connected to warehouse, retail and humanoid robot applications"
+      width={1672}
+      height={941}
+      sizes="(min-width: 1024px) 60vw, 100vw"
+      className="h-auto max-h-[40svh] w-auto max-w-full object-contain"
+    />
+  );
+}
+
+function EvolutionOfComputing() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [active, setActive] = useState(0);
+  const gatherRef = useRef(0);
+  const reduceMotion = useReducedMotion() ?? false;
+  const { scrollYProgress: p } = useScroll({ target: sectionRef, offset: ["start start", "end end"] });
+  const count = EVOLUTION_STAGES.length;
+
+  // One stage is shown at a time; the previous one fades fully out as the next fades in.
+  useMotionValueEvent(p, "change", (v) => {
+    setActive(Math.max(0, Math.min(count - 1, Math.floor(v * count))));
+    gatherRef.current = reduceMotion ? 1 : Math.max(0, Math.min(1, (v - 0.7) / 0.25));
+  });
+
+  const fade = reduceMotion ? "" : "transition-[opacity,transform] duration-700 ease-in-out";
+
+  return (
+    <section
+      ref={sectionRef}
+      id="evolution"
+      aria-labelledby="evolution-heading"
+      className="relative bg-white scroll-mt-24"
+      style={{ height: "420svh" }}
+    >
+      <div data-sim-host="" className="sticky top-0 flex h-[100svh] flex-col overflow-hidden bg-white pt-20 pb-5 sm:pt-24 sm:pb-8">
+        {/* Future Intelligent Computing: agents drift in, then come together into one swarm as you scroll */}
+        <div aria-hidden className={`absolute inset-0 ${fade} ${active === 2 ? "opacity-100" : "opacity-0"}`}>
+          {active === 2 && <FutureComputingSimulation className="h-full w-full" gatherRef={gatherRef} />}
+        </div>
+
+        <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-8 lg:px-12">
+          <h2 id="evolution-heading" className="text-center font-serif text-2xl sm:text-5xl lg:text-6xl leading-[1.08] tracking-tight text-neutral-900 text-balance">
             The Evolution of Computing
           </h2>
-          <p className="mt-5 text-base sm:text-lg text-neutral-600 leading-relaxed text-balance">
-            Understanding where computing has been, where it stands today, and the future we are working toward.
-          </p>
-        </motion.div>
+        </div>
 
-        <ol className="mt-12 sm:mt-16 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 list-none p-0">
-          {EVOLUTION_STAGES.map((stage, index) => {
-            const Icon = stage.icon;
-            return (
-              <motion.li
-                key={stage.label}
-                {...(stage.featured ? { "data-sim-host": "" } : {})}
-                initial={{ opacity: 0, y: 28 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.7, delay: index * 0.1 }}
-                className="relative flex flex-col px-1 py-6 text-neutral-900 sm:py-8"
-              >
-                <span
-                  aria-hidden
-                  className={`flex h-10 w-10 items-center justify-center rounded-full ring-1 ${
-                    "ring-neutral-300 text-neutral-700"
-                  }`}
-                >
-                  <Icon className="h-5 w-5" strokeWidth={1.5} />
-                </span>
-                {"eyebrow" in stage && (
-                  <p className="mt-6 text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-400">{stage.eyebrow}</p>
-                )}
-                <h3 className={`font-serif text-2xl sm:text-[1.65rem] leading-tight tracking-tight ${"eyebrow" in stage ? "mt-2" : "mt-6"}`}>
-                  {stage.label}
-                </h3>
-                <p className={`mt-3 text-[15px] leading-relaxed text-neutral-600`}>
-                  {stage.text}
-                </p>
-                {stage.featured && (
-                  <FutureComputingSimulation className="mt-6 h-60 w-full sm:h-72 [mask-image:radial-gradient(ellipse_at_center,#000_55%,transparent_100%)]" />
-                )}
-                <div className="mt-auto pt-8">
-                  {index === 0 && (
-                    <>
-                      <Image
-                        src="/images/traditional-computing.webp"
-                        unoptimized
-                        alt="A 1950s computer operator at a mainframe control console"
-                        width={1737}
-                        height={906}
-                        loading="eager"
-                        sizes="(min-width: 768px) 34vw, 100vw"
-                        className="mb-5 h-auto w-full"
-                      />
-                      <p className="mb-3 text-xs text-neutral-600">{stage.caption}</p>
-                      <div className="flex flex-wrap items-center gap-x-7 gap-y-4 grayscale opacity-80">
-                        <IBMLogo className="h-6 w-auto" />
-                        <Image unoptimized src="/hardware-logos/intel.jpg" alt="Intel" width={270} height={269} className="h-8 w-8 object-contain mix-blend-multiply" />
-                        <MicrosoftLogo className="h-5 w-5" />
-                      </div>
-                    </>
-                  )}
-                  {index === 1 && (
-                    <>
-                      <p className="mb-3 text-xs text-neutral-600">{stage.caption}</p>
-                      <div className="flex flex-wrap items-center gap-x-6 gap-y-4 grayscale opacity-80">
-                        {[
-                          ["openai.svg", "OpenAI", "h-6"],
-                          ["anthropic.svg", "Anthropic", "h-5"],
-                          ["google.svg", "Google", "h-6"],
-                          ["meta.svg", "Meta", "h-5"],
-                          ["mistral.svg", "Mistral AI", "h-6"],
-                          ["nvidia.svg", "NVIDIA", "h-5"],
-                        ].map(([file, name, height]) => (
-                          // eslint-disable-next-line @next/next/no-img-element
-                          <img key={file} src={`/partner-logos/${file}`} alt={name} loading="lazy" className={`${height} w-auto`} />
-                        ))}
-                      </div>
-                      
-                    </>
-                  )}
-                  {index === 2 && (
-                    <div>
-                      <p className="mb-3 text-xs text-neutral-600">Others exploring new foundations of computing include</p>
-                      <ul className="mb-5 flex list-none flex-wrap gap-2 p-0">
-                        <li className="inline-flex items-center gap-2 rounded-full bg-white/85 py-1 pl-2.5 pr-3 text-xs text-neutral-700 ring-1 ring-neutral-300">
-                          <Image unoptimized src="/hardware-logos/intel.jpg" alt="" width={270} height={269} className="h-4 w-4 object-contain grayscale mix-blend-multiply" />
-                          Intel Labs
-                        </li>
-                        <li className="inline-flex items-center gap-2 rounded-full bg-white/85 py-1 pl-2.5 pr-3 text-xs text-neutral-700 ring-1 ring-neutral-300">
-                          <IBMLogo className="h-3 w-auto grayscale" />
-                          IBM Research
-                        </li>
-                        <li className="inline-flex items-center gap-2 rounded-full bg-white/85 py-1 pl-2.5 pr-3 text-xs text-neutral-700 ring-1 ring-neutral-300">
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img src="/partner-logos/google.svg" alt="" className="h-3.5 w-3.5" />
-                          Google Quantum AI
-                        </li>
-                        {["Extropic", "Normal Computing"].map((name) => (
-                          <li key={name} className="rounded-full bg-white/85 px-3 py-1 text-xs text-neutral-700 ring-1 ring-neutral-300">{name}</li>
-                        ))}
-                      </ul>
-                      <div className="flex items-center gap-3">
-                        <Image src="/Logo/Olyxee-Black-Logo.png" alt="Olyxee" width={40} height={40} className="h-9 w-9 object-contain" />
-                        <p className="text-xs leading-snug text-neutral-500">Long-term research, not a finished era. Illustrative simulation of local interaction rules, inspired by Lenia.</p>
-                      </div>
-                    </div>
-                  )}
+        {/* each stage is one composition: title, image and logos stacked as a single unit */}
+        <div className="pointer-events-none relative mx-auto mt-3 grid min-h-0 w-full max-w-5xl flex-1 px-4 sm:mt-5 sm:px-8">
+          {EVOLUTION_STAGES.map((stage, i) => (
+            <div
+              key={stage.label}
+              aria-hidden={active !== i}
+              className={`col-start-1 row-start-1 flex h-full min-h-0 flex-col items-center text-center ${fade} ${
+                "justify-center"
+              } ${active === i ? "opacity-100 translate-y-0 pointer-events-auto" : `opacity-0 pointer-events-none ${active > i ? "-translate-y-4" : "translate-y-4"}`}`}
+            >
+              {"eyebrow" in stage && (
+                <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-500">{stage.eyebrow}</p>
+              )}
+              <h3 className={`font-serif text-3xl leading-tight tracking-tight text-neutral-900 sm:text-5xl ${"eyebrow" in stage ? "mt-2" : ""}`}>
+                {stage.label}
+              </h3>
+              {i < count - 1 && (
+                <div className="mt-4 flex w-full min-h-0 justify-center sm:mt-5">
+                  <EvolutionVisual index={i} />
                 </div>
-              </motion.li>
-            );
-          })}
-        </ol>
+              )}
+              <div className="mt-4 max-w-xl [&_div]:justify-center [&_ul]:justify-center">
+                <EvolutionLogos index={i} />
+              </div>
+            </div>
+          ))}
+        </div>
 
-        <div className="mt-8 sm:mt-10 text-center">
+        <div className="relative mt-3 text-center sm:mt-5">
           <Link
             href="/about#mission"
             className="group inline-flex items-center gap-1.5 text-sm text-neutral-500 hover:text-neutral-900 transition-colors underline decoration-neutral-300 underline-offset-4 hover:decoration-neutral-900"

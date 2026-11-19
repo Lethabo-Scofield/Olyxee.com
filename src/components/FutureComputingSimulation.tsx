@@ -104,9 +104,11 @@ interface Props {
   className?: string;
   /** Element that receives pointer interaction. Defaults to the closest ancestor marked data-sim-host, then the parent. */
   hostSelector?: string;
+  /** Optional 0..1 value (e.g. scroll progress) that makes the agents converge into one swarm. */
+  gatherRef?: { current: number };
 }
 
-export default function FutureComputingSimulation({ className = "", hostSelector = "[data-sim-host]" }: Props) {
+export default function FutureComputingSimulation({ className = "", hostSelector = "[data-sim-host]", gatherRef }: Props) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -134,8 +136,8 @@ export default function FutureComputingSimulation({ className = "", hostSelector
 
     const targetCount = (w: number, h: number) => {
       const coarse = window.matchMedia("(pointer: coarse)").matches || w < 480;
-      const count = Math.round((w * h) / 620) * (coarse ? 0.7 : 1);
-      return Math.max(90, Math.min(360, Math.round(count)));
+      const count = Math.round((w * h) / 2200) * (coarse ? 0.75 : 1);
+      return Math.max(70, Math.min(150, Math.round(count)));
     };
 
     const buildSprites = () => {
@@ -162,8 +164,8 @@ export default function FutureComputingSimulation({ className = "", hostSelector
         const dist = Math.hypot(dx, dy);
         if (dist < 1) continue;
         const ease = link.s * link.s * (3 - 2 * link.s);
-        ctx.strokeStyle = `rgba(${LINK_RGB}, ${(0.62 * ease).toFixed(3)})`;
-        ctx.lineWidth = 0.55 + 0.7 * ease;
+        ctx.strokeStyle = `rgba(${LINK_RGB}, ${(0.8 * ease).toFixed(3)})`;
+        ctx.lineWidth = 0.7 + 0.9 * ease;
         ctx.beginPath();
         ctx.moveTo(a.x + (dx / dist) * a.r * 0.6, a.y + (dy / dist) * a.r * 0.6);
         ctx.lineTo(b.x - (dx / dist) * b.r * 0.6, b.y - (dy / dist) * b.r * 0.6);
@@ -197,6 +199,7 @@ export default function FutureComputingSimulation({ className = "", hostSelector
       if (!swarm) return;
       const dt = last ? (now - last) / 1000 : 1 / 60;
       last = now;
+      if (gatherRef) swarm.gather = gatherRef.current;
       swarm.step(dt, pointer);
       draw();
 

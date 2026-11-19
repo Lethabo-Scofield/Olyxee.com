@@ -117,10 +117,24 @@ export class Swarm {
     this.degree = new Int16Array(this.agents.length);
   }
 
+  private centres: { x: number; y: number; fam: number }[] = [];
+  /** 0 = agents drift freely, 1 = they converge into one swarm at (gatherX, gatherY) as fractions of the canvas. */
+  gather = 0;
+  gatherX = 0.66;
+  gatherY = 0.52;
+
   private spawn(): Agent {
     const rnd = this.rand;
     const speed = (6 + rnd() * 10) * this.scale;
     const heading = rnd() * TAU;
+    // agents start in small groups of similar kind, so separate pieces are visible
+    // coming together rather than an even scatter
+    const GROUP = 7;
+    const g = Math.floor(this.agents.length / GROUP);
+    while (this.centres.length <= g) {
+      this.centres.push({ x: rnd() * this.width, y: rnd() * this.height, fam: Math.floor(rnd() * FAMILIES) });
+    }
+    const c = this.centres[g];
     return {
       x: rnd() * this.width,
       y: rnd() * this.height,
@@ -129,7 +143,7 @@ export class Swarm {
       r: (4.6 + rnd() * 3.6) * this.scale,
       angle: rnd() * TAU,
       spin: (rnd() - 0.5) * 0.7,
-      trait: (Math.floor(rnd() * FAMILIES) + 0.5 + (rnd() - 0.5) * 0.5) / FAMILIES,
+      trait: (c.fam + 0.5 + (rnd() - 0.5) * 0.35) / FAMILIES,
       variant: Math.floor(rnd() * 3),
       phase: rnd() * TAU,
       agit: 0,
@@ -197,8 +211,8 @@ export class Swarm {
     }
     this.seen.clear();
 
-    const maxLinks = 3;
-    const linkReach = R * 0.62;
+    const maxLinks = 4 + Math.round(3 * this.gather);
+    const linkReach = R * (0.8 + 0.18 * this.gather);
     const rep0 = 1.55;                    // repulsion distance in body radii
     const traitSin = new Float32Array(n);
     const traitCos = new Float32Array(n);
@@ -260,13 +274,13 @@ export class Swarm {
             }
 
             // temporary connections between close, similar agents
-            if (i < j && like > 0.2) {
+            if (i < j && sim > 0.62 - 0.45 * this.gather) {
               const key = i * 65536 + j;
               if (d < linkReach) {
                 const existing = this.links.get(key);
                 if (existing) {
-                  if (a.agit < 0.2 && b.agit < 0.2) { existing.s = Math.min(1, existing.s + dt * 1.1); this.seen.add(key); }
-                } else if (this.degree[i] < maxLinks && this.degree[j] < maxLinks && a.agit < 0.2 && b.agit < 0.2 && d < linkReach * 0.85) {
+                  if (a.agit < 0.4 && b.agit < 0.4) { existing.s = Math.min(1, existing.s + dt * 1.6); this.seen.add(key); }
+                } else if (this.degree[i] < maxLinks && this.degree[j] < maxLinks && a.agit < 0.4 && b.agit < 0.4 && d < linkReach * 0.95) {
                   this.links.set(key, { a: i, b: j, s: 0.02 });
                   this.degree[i]++; this.degree[j]++;
                   this.seen.add(key);
@@ -297,6 +311,18 @@ export class Swarm {
       fx += Math.cos(heading) * wander;
       fy += Math.sin(heading) * wander;
 
+      // scroll-driven gathering: agents stream towards one point and settle into a single swarm
+      if (this.gather > 0.001) {
+        const dxc = this.wrapDelta(this.gatherX * width - a.x, width);
+        const dyc = this.wrapDelta(this.gatherY * height - a.y, height);
+        const dc = Math.hypot(dxc, dyc) || 1;
+        // pull only agents that are outside the swarm's body, so it stays large instead of collapsing to a point
+        const body = Math.min(width, height) * 0.3;
+        const soft = Math.min(1, Math.max(0, (dc - body) / (body * 0.6)));
+        fx += (dxc / dc) * soft * 150 * this.gather * scale;
+        fy += (dyc / dc) * soft * 150 * this.gather * scale;
+      }
+
       // cursor: a gentle push and swirl
       if (pointer?.active) {
         const dx = this.wrapDelta(a.x - pointer.x, width);
@@ -316,7 +342,7 @@ export class Swarm {
     }
 
     // integrate
-    const vmax = 44 * scale;
+    const vmax = 44 * scale * (1 + 4 * this.gather);
     const vmin = 9 * scale;
     const damp = Math.exp(-1.4 * dt);
     for (let i = 0; i < n; i++) {
@@ -358,8 +384,8 @@ export class Swarm {
     for (const [key, link] of this.links) {
       if (!this.seen.has(key)) {
         const a = agents[link.a], b = agents[link.b];
-        const stretched = Math.hypot(this.wrapDelta(b.x - a.x, width), this.wrapDelta(b.y - a.y, height)) > linkReach * 1.25;
-        link.s -= dt * (stretched || a.agit > 0.2 || b.agit > 0.2 ? 2.2 : 0.9);
+        const stretched = Math.hypot(this.wrapDelta(b.x - a.x, width), this.wrapDelta(b.y - a.y, height)) > linkReach * 1.3;
+        link.s -= dt * (stretched || a.agit > 0.45 || b.agit > 0.45 ? 2.2 : 0.55);
         if (link.s <= 0) this.links.delete(key);
       }
     }
