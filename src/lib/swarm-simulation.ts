@@ -120,8 +120,8 @@ export class Swarm {
   private centres: { x: number; y: number; fam: number }[] = [];
   /** 0 = agents drift freely, 1 = they converge into one swarm at (gatherX, gatherY) as fractions of the canvas. */
   gather = 0;
-  gatherX = 0.66;
-  gatherY = 0.52;
+  gatherX = 0.5;
+  gatherY = 0.5;
 
   private spawn(): Agent {
     const rnd = this.rand;
@@ -317,7 +317,7 @@ export class Swarm {
         const dyc = this.wrapDelta(this.gatherY * height - a.y, height);
         const dc = Math.hypot(dxc, dyc) || 1;
         // pull only agents that are outside the swarm's body, so it stays large instead of collapsing to a point
-        const body = Math.min(width, height) * 0.3;
+        const body = Math.min(width, height) * 0.4;
         const soft = Math.min(1, Math.max(0, (dc - body) / (body * 0.6)));
         fx += (dxc / dc) * soft * 150 * this.gather * scale;
         fy += (dyc / dc) * soft * 150 * this.gather * scale;

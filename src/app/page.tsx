@@ -508,11 +508,6 @@ function EvolutionOfComputing() {
       style={{ height: "420svh" }}
     >
       <div data-sim-host="" className="sticky top-0 flex h-[100svh] flex-col overflow-hidden bg-white pt-20 pb-5 sm:pt-24 sm:pb-8">
-        {/* Future Intelligent Computing: agents drift in, then come together into one swarm as you scroll */}
-        <div aria-hidden className={`absolute inset-0 ${fade} ${active === 2 ? "opacity-100" : "opacity-0"}`}>
-          {active === 2 && <FutureComputingSimulation className="h-full w-full" gatherRef={gatherRef} />}
-        </div>
-
         <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-8 lg:px-12">
           <h2 id="evolution-heading" className="text-center font-serif text-2xl sm:text-5xl lg:text-6xl leading-[1.08] tracking-tight text-neutral-900 text-balance">
             The Evolution of Computing
@@ -526,7 +521,7 @@ function EvolutionOfComputing() {
               key={stage.label}
               aria-hidden={active !== i}
               className={`col-start-1 row-start-1 flex h-full min-h-0 flex-col items-center text-center ${fade} ${
-                "justify-center"
+                i === count - 1 ? "justify-start" : "justify-center"
               } ${active === i ? "opacity-100 translate-y-0 pointer-events-auto" : `opacity-0 pointer-events-none ${active > i ? "-translate-y-4" : "translate-y-4"}`}`}
             >
               {"eyebrow" in stage && (
@@ -535,9 +530,17 @@ function EvolutionOfComputing() {
               <h3 className={`font-serif text-3xl leading-tight tracking-tight text-neutral-900 sm:text-5xl ${"eyebrow" in stage ? "mt-2" : ""}`}>
                 {stage.label}
               </h3>
-              {i < count - 1 && (
+              {i < count - 1 ? (
                 <div className="mt-4 flex w-full min-h-0 justify-center sm:mt-5">
                   <EvolutionVisual index={i} />
+                </div>
+              ) : (
+                <div aria-hidden className="relative mt-2 min-h-[34svh] w-full flex-1">
+                  {active === i && (
+                    <div className="absolute inset-0">
+                      <FutureComputingSimulation className="h-full w-full" gatherRef={gatherRef} />
+                    </div>
+                  )}
                 </div>
               )}
               <div className="mt-4 max-w-xl [&_div]:justify-center [&_ul]:justify-center">
