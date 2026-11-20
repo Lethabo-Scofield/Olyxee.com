@@ -208,7 +208,8 @@ export default function FutureComputingSimulation({ className = "", hostSelector
       if (frameTimes.length >= 90) {
         const avg = frameTimes.reduce((t, v) => t + v, 0) / frameTimes.length;
         frameTimes = [];
-        if (avg > 1 / 38 && swarm.agents.length > 110) swarm.setCount(Math.round(swarm.agents.length * 0.82));
+        // never drop agents while the swarm is forming: removing them (and their links) made it look broken
+        if (!gatherRef && avg > 1 / 38 && swarm.agents.length > 110) swarm.setCount(Math.round(swarm.agents.length * 0.82));
       }
     };
 
@@ -234,13 +235,12 @@ export default function FutureComputingSimulation({ className = "", hostSelector
       canvas.width = Math.round(w * dpr);
       canvas.height = Math.round(h * dpr);
       if (!swarm) {
-        swarm = new Swarm(w, h, targetCount(w, h), 21);
-        // reduced motion shows a settled, meaningful state instead of animating
+        swarm = new Swarm(w, h, targetCount(w, h), 21);        // reduced motion shows a settled, meaningful state instead of animating
         const warmup = reduced.matches ? 900 : 120;
         for (let i = 0; i < warmup; i++) swarm.step(1 / 30);
       } else {
         swarm.resize(w, h);
-        swarm.setCount(targetCount(w, h));
+        swarm.setCount(gatherRef ? Math.max(swarm.agents.length, targetCount(w, h)) : targetCount(w, h));
       }
       draw();
     };

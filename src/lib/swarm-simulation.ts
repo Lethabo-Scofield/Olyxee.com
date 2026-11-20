@@ -211,8 +211,8 @@ export class Swarm {
     }
     this.seen.clear();
 
-    const maxLinks = 4 + Math.round(3 * this.gather);
-    const linkReach = R * (0.8 + 0.18 * this.gather);
+    const maxLinks = 4 + Math.round(5 * this.gather);
+    const linkReach = R * (0.8 + 0.19 * this.gather);
     const rep0 = 1.55;                    // repulsion distance in body radii
     const traitSin = new Float32Array(n);
     const traitCos = new Float32Array(n);
@@ -261,8 +261,8 @@ export class Swarm {
               // dissimilar neighbours keep a polite distance
               if (sim < 0.6) {
                 const push = (0.6 - sim) / 0.6;
-                fx -= ux * bump * push * 22 * scale;
-                fy -= uy * bump * push * 22 * scale;
+                fx -= ux * bump * push * 22 * (1 - this.gather) * scale;
+                fy -= uy * bump * push * 22 * (1 - this.gather) * scale;
               }
             }
 
@@ -274,7 +274,7 @@ export class Swarm {
             }
 
             // temporary connections between close, similar agents
-            if (i < j && sim > 0.62 - 0.45 * this.gather) {
+            if (i < j && sim > 0.62 - 0.9 * this.gather) {
               const key = i * 65536 + j;
               if (d < linkReach) {
                 const existing = this.links.get(key);
@@ -302,8 +302,8 @@ export class Swarm {
       if (similar > cap) {
         const over = Math.min(1.5, (similar - cap) / cap);
         const len = Math.hypot(cxs, cys) || 1;
-        fx -= (cxs / len) * over * 48 * scale;
-        fy -= (cys / len) * over * 48 * scale;
+        fx -= (cxs / len) * over * 48 * (1 - 0.75 * this.gather) * scale;
+        fy -= (cys / len) * over * 48 * (1 - 0.75 * this.gather) * scale;
       }
       // smooth personal wander, so nothing is ever perfectly still
       const heading = a.phase + this.time * (0.25 + 0.15 * Math.sin(a.phase * 3)) + Math.sin(this.time * 0.37 + a.phase * 5) * 0.8;
@@ -317,10 +317,14 @@ export class Swarm {
         const dyc = this.wrapDelta(this.gatherY * height - a.y, height);
         const dc = Math.hypot(dxc, dyc) || 1;
         // pull only agents that are outside the swarm's body, so it stays large instead of collapsing to a point
-        const body = Math.min(width, height) * 0.4;
+        const body = Math.min(width, height) * 0.36;
         const soft = Math.min(1, Math.max(0, (dc - body) / (body * 0.6)));
         fx += (dxc / dc) * soft * 150 * this.gather * scale;
         fy += (dyc / dc) * soft * 150 * this.gather * scale;
+        // inside the body a gentle spring keeps every agent tied to the swarm, so it stays one connected network
+        const hold = Math.min(1, Math.max(0, (dc - body * 0.55) / (body * 0.45))) * 48 * this.gather * scale;
+        fx += (dxc / dc) * hold;
+        fy += (dyc / dc) * hold;
       }
 
       // cursor: a gentle push and swirl

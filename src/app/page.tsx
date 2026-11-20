@@ -1,9 +1,11 @@
 "use client";
 
+import { SiAnthropic, SiIntel, SiMeta, SiNvidia } from "react-icons/si";
+import { FaMicrosoft } from "react-icons/fa";
 import { useState, useEffect, useRef, useMemo, type RefObject } from "react";
 import Header from '../components/header';
 import Footer from '../components/footer';
-import { IBMLogo, MicrosoftLogo } from "../components/company-logos";
+
 import FutureComputingSimulation from "../components/FutureComputingSimulation";
 import Image from "next/image";
 import Link from "next/link";
@@ -389,7 +391,6 @@ const EVOLUTION_STAGES = [
   {
     icon: Atom,
     label: "Future Intelligent Computing",
-    eyebrow: "Olyxee’s Research Vision",
     caption: "",
     text: "Investigating new mathematical principles, computational architectures and potentially physical mechanisms that could enable fundamentally different forms of machine intelligence.",
     bg: { src: "", inline: true, image: "", wash: "" },
@@ -402,11 +403,11 @@ function EvolutionLogos({ index }: { index: number }) {
     return (
       <>
         <p className="mb-3 text-xs text-neutral-600">{EVOLUTION_STAGES[0].caption}</p>
-        <div className="flex flex-wrap items-center gap-x-7 gap-y-4 grayscale opacity-80">
-          <IBMLogo className="h-6 w-auto" />
-          <Image unoptimized src="/hardware-logos/intel.jpg" alt="Intel" width={270} height={269} className="h-8 w-8 object-contain mix-blend-multiply" />
-          <MicrosoftLogo className="h-5 w-5" />
-        </div>
+        <ul className="flex list-none flex-wrap items-center justify-center gap-x-5 gap-y-3 p-0 text-sm text-neutral-700">
+          <li className="font-bold tracking-[0.18em] text-neutral-700">IBM</li>
+          <li className="inline-flex items-center gap-2"><SiIntel aria-hidden className="h-4 w-4 text-neutral-700" />Intel</li>
+          <li className="inline-flex items-center gap-2"><FaMicrosoft aria-hidden className="h-4 w-4 text-neutral-700" />Microsoft</li>
+        </ul>
       </>
     );
   }
@@ -414,44 +415,40 @@ function EvolutionLogos({ index }: { index: number }) {
     return (
       <>
         <p className="mb-3 text-xs text-neutral-600">{EVOLUTION_STAGES[1].caption}</p>
-        <div className="flex flex-wrap items-center gap-x-6 gap-y-4 grayscale opacity-80">
+        <ul className="flex list-none flex-wrap items-center justify-center gap-x-5 gap-y-3 p-0 text-sm text-neutral-700">
           {[
-            ["openai.svg", "OpenAI", "h-6"],
-            ["anthropic.svg", "Anthropic", "h-5"],
-            ["google.svg", "Google", "h-6"],
-            ["meta.svg", "Meta", "h-5"],
-            ["mistral.svg", "Mistral AI", "h-6"],
-            ["nvidia.svg", "NVIDIA", "h-5"],
-          ].map(([file, name, height]) => (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img key={file} src={`/partner-logos/${file}`} alt={name} loading="lazy" className={`${height} w-auto`} />
+            { name: "OpenAI", file: "openai.svg" },
+            { name: "Anthropic", Icon: SiAnthropic },
+            { name: "Google", file: "google.svg" },
+            { name: "Meta", Icon: SiMeta },
+            { name: "Mistral AI", file: "mistral.svg" },
+            { name: "NVIDIA", Icon: SiNvidia },
+          ].map(({ name, file, Icon }) => (
+            <li key={name} className="inline-flex items-center gap-2">
+              {Icon ? (
+                <Icon aria-hidden className="h-4 w-4 text-neutral-700" />
+              ) : (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={`/partner-logos/${file}`} alt="" loading="lazy" className="h-4 w-auto max-w-[1.4rem] grayscale brightness-50 contrast-125" />
+              )}
+              {name}
+            </li>
           ))}
-        </div>
+        </ul>
       </>
     );
   }
   return (
     <div>
-      <p className="mb-3 text-xs text-neutral-600">Others exploring new foundations of computing include</p>
-      <ul className="mb-4 flex list-none flex-wrap gap-2 p-0">
-        <li className="inline-flex items-center gap-2 rounded-full bg-white/85 py-1 pl-2.5 pr-3 text-xs text-neutral-700 ring-1 ring-neutral-300">
-          <Image unoptimized src="/hardware-logos/intel.jpg" alt="" width={270} height={269} className="h-4 w-4 object-contain grayscale mix-blend-multiply" />
-          Intel Labs
+      <p className="mb-3 text-xs text-neutral-600">The future of computing is being envisioned by</p>
+      <ul className="flex list-none flex-wrap items-center justify-center gap-x-5 gap-y-3 p-0 text-sm text-neutral-700">
+        <li className="inline-flex items-center gap-2">
+          <Image unoptimized priority src="/Logo/Olyxee_Logo_ClearBack.png" alt="" width={20} height={20} className="h-5 w-5 object-contain" />
+          <span className="font-medium text-neutral-900">Olyxee</span>
         </li>
-        <li className="inline-flex items-center gap-2 rounded-full bg-white/85 py-1 pl-2.5 pr-3 text-xs text-neutral-700 ring-1 ring-neutral-300">
-          <IBMLogo className="h-3 w-auto grayscale" />
-          IBM Research
-        </li>
-        <li className="inline-flex items-center gap-2 rounded-full bg-white/85 py-1 pl-2.5 pr-3 text-xs text-neutral-700 ring-1 ring-neutral-300">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/partner-logos/google.svg" alt="" className="h-3.5 w-3.5" />
-          Google Quantum AI
-        </li>
-        {["Extropic", "Normal Computing"].map((name) => (
-          <li key={name} className="rounded-full bg-white/85 px-3 py-1 text-xs text-neutral-700 ring-1 ring-neutral-300">{name}</li>
-        ))}
+        <li className="font-bold tracking-[0.18em] text-neutral-700">IBM</li>
+        <li className="font-medium tracking-tight text-neutral-700">Google</li>
       </ul>
-      <p className="text-xs leading-snug text-neutral-500">Long-term research, not a finished era. Illustrative simulation of local interaction rules, inspired by Lenia.</p>
     </div>
   );
 }
@@ -484,7 +481,7 @@ function EvolutionVisual({ index }: { index: number }) {
 }
 
 function EvolutionOfComputing() {
-  const sectionRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
   const gatherRef = useRef(0);
   const reduceMotion = useReducedMotion() ?? false;
@@ -501,19 +498,17 @@ function EvolutionOfComputing() {
 
   return (
     <section
-      ref={sectionRef}
       id="evolution"
       aria-labelledby="evolution-heading"
       className="relative bg-white scroll-mt-24"
-      style={{ height: "420svh" }}
     >
+      <div className="relative z-10 mx-auto max-w-7xl px-4 pb-0 pt-4 text-left sm:px-8 lg:px-12">
+        <h2 id="evolution-heading" className="text-base font-medium tracking-tight text-blue-600 sm:text-lg">
+          The Evolution of Computing
+        </h2>
+      </div>
+      <div ref={sectionRef} className="relative -mt-8 sm:-mt-12" style={{ height: "420svh" }}>
       <div data-sim-host="" className="sticky top-0 flex h-[100svh] flex-col overflow-hidden bg-white pt-20 pb-5 sm:pt-24 sm:pb-8">
-        <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-8 lg:px-12">
-          <h2 id="evolution-heading" className="text-center font-serif text-2xl sm:text-5xl lg:text-6xl leading-[1.08] tracking-tight text-neutral-900 text-balance">
-            The Evolution of Computing
-          </h2>
-        </div>
-
         {/* each stage is one composition: title, image and logos stacked as a single unit */}
         <div className="pointer-events-none relative mx-auto mt-3 grid min-h-0 w-full max-w-5xl flex-1 px-4 sm:mt-5 sm:px-8">
           {EVOLUTION_STAGES.map((stage, i) => (
@@ -521,13 +516,10 @@ function EvolutionOfComputing() {
               key={stage.label}
               aria-hidden={active !== i}
               className={`col-start-1 row-start-1 flex h-full min-h-0 flex-col items-center text-center ${fade} ${
-                i === count - 1 ? "justify-start" : "justify-center"
+                "justify-start"
               } ${active === i ? "opacity-100 translate-y-0 pointer-events-auto" : `opacity-0 pointer-events-none ${active > i ? "-translate-y-4" : "translate-y-4"}`}`}
             >
-              {"eyebrow" in stage && (
-                <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-500">{stage.eyebrow}</p>
-              )}
-              <h3 className={`font-serif text-3xl leading-tight tracking-tight text-neutral-900 sm:text-5xl ${"eyebrow" in stage ? "mt-2" : ""}`}>
+              <h3 className={`font-serif text-3xl leading-tight tracking-tight text-neutral-900 sm:text-5xl `}>
                 {stage.label}
               </h3>
               {i < count - 1 ? (
@@ -559,6 +551,7 @@ function EvolutionOfComputing() {
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" aria-hidden />
           </Link>
         </div>
+      </div>
       </div>
     </section>
   );
@@ -1119,72 +1112,58 @@ function LatestReleaseSection() {
           </Link>
         </motion.div>
 
-        <div className="grid gap-6 md:grid-cols-2">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.05 }}
-          className="overflow-hidden rounded-3xl bg-black min-h-[340px] sm:min-h-[400px]"
-        >
-          <div className="flex h-full min-h-[inherit] items-center">
-            <div className="p-7 sm:p-10">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-300/90 mb-4">Latest news</p>
-              <h3 className="max-w-[640px] text-2xl font-semibold leading-[1.2] tracking-[-0.02em] text-white sm:text-[1.9rem]">
-                Olyxee wins Best AI Research and Innovation at the South African AI Awards 2026.
-              </h3>
-              <div className="mt-7">
-                <Link
-                  href="/research/news/olyxee-wins-best-ai-research-and-innovation-2026"
-                  className="group inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-[14px] font-medium text-neutral-900 transition-colors hover:bg-neutral-200"
-                >
-                  Read the news
-                  <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden />
-                </Link>
-              </div>
-            </div>
-            <div className="w-32 shrink-0 self-end sm:w-44 lg:w-56">
-              <Image
-                src="/images/research/south-african-ai-awards/award-trophy.webp"
-                alt="South African AI Awards 2026 trophy for Best AI Research and Innovation, awarded to Olyxee"
-                width={640}
-                height={640}
-                sizes="224px"
-                className="h-auto w-full"
-              />
-            </div>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          className="relative flex overflow-hidden rounded-3xl border border-neutral-200 bg-white bg-cover bg-center p-7 sm:p-10 min-h-[340px] sm:min-h-[400px]"
-          style={{ backgroundImage: `url(${release.background})` }}
-        >
-          <div
-            className="pointer-events-none absolute inset-0"
-            style={{ background: "linear-gradient(90deg, rgba(255,255,255,0.42) 0%, rgba(255,255,255,0.22) 55%, rgba(255,255,255,0) 100%)" }}
-            aria-hidden
-          />
-          <div className="relative flex flex-col">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-700 mb-4">Our latest research</p>
-            <h3 className="max-w-[720px] text-2xl font-semibold leading-[1.2] tracking-[-0.02em] text-neutral-900 sm:text-[1.9rem]">
-              Semantic Financial Document Computing
-            </h3>
-            <div className="mt-auto pt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-              <Link
-                href={release.href}
-                className="group inline-flex items-center gap-2 rounded-full bg-neutral-900 px-5 py-2.5 text-[14px] font-medium text-white transition-colors hover:bg-black"
-              >
-                Read the research
-                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden />
+        <div className="grid gap-x-8 gap-y-12 md:grid-cols-2">
+          {[
+            {
+              href: "/research/news/olyxee-wins-best-ai-research-and-innovation-2026",
+              image: "/images/research/south-african-ai-awards/olyxee-best-ai-research-innovation-2026.webp",
+              alt: "Olyxee wins Best AI Research and Innovation at the South African AI Awards 2026",
+              label: "News",
+              date: "Nov 14, 2026",
+              title: "Olyxee wins Best AI Research and Innovation at the South African AI Awards 2026",
+            },
+            {
+              href: release.href,
+              image: release.background,
+              alt: "FinIR: Semantic Financial Document Computing",
+              label: "Research",
+              date: "",
+              title: "Semantic Financial Document Computing",
+            },
+          ].map((item, i) => (
+            <motion.div
+              key={item.href}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.05 * (i + 1) }}
+            >
+              <Link href={item.href} className="group block">
+                <div className="relative aspect-[2/1] overflow-hidden rounded-2xl bg-neutral-100">
+                  <Image
+                    src={item.image}
+                    alt={item.alt}
+                    fill
+                    unoptimized
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                  />
+                </div>
+                <div className="mt-5 flex items-center gap-2 text-sm text-neutral-500">
+                  <span className="font-medium text-neutral-900">{item.label}</span>
+                  {item.date && (
+                    <>
+                      <span aria-hidden>&middot;</span>
+                      <span>{item.date}</span>
+                    </>
+                  )}
+                </div>
+                <h3 className="mt-2 max-w-xl text-xl font-medium leading-snug tracking-[-0.01em] text-neutral-900 sm:text-2xl">
+                  {item.title}
+                </h3>
               </Link>
-            </div>
-          </div>
-        </motion.div>
+            </motion.div>
+          ))}
         </div>
 
       </div>
