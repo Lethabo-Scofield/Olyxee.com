@@ -8,7 +8,7 @@ import FutureComputingSimulation from "../components/FutureComputingSimulation";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useTransform, useReducedMotion, useMotionValueEvent } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Workflow, Landmark, LineChart, Truck, Check, PackageCheck, MapPin, Bell } from "lucide-react";
+import { ArrowDown, ArrowRight, ArrowUpRight, Landmark, Stethoscope, ShoppingBag, Truck, Check, PackageCheck, MapPin, Bell } from "lucide-react";
 
 
 // Plays a decorative video only while it is on screen, and never under
@@ -228,80 +228,99 @@ function HeroSection() {
 
 
 function ResearchToImpact() {
-  const reduceMotion = useReducedMotion() ?? false;
   const ease = [0.25, 0.1, 0.25, 1] as const;
   const reveal = (i: number) => ({
-    initial: { opacity: 0, y: 18 },
+    initial: { opacity: 0, y: 14 },
     whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, amount: 0.4 },
-    transition: { duration: 0.6, delay: i * 0.15, ease },
+    viewport: { once: true, amount: 0.3 },
+    transition: { duration: 0.6, delay: i * 0.14, ease },
   });
-  const outcomes = [
-    { Icon: Workflow, label: "Operations" },
-    { Icon: Truck, label: "Logistics" },
-    { Icon: Landmark, label: "Finance" },
-    { Icon: LineChart, label: "Insight" },
+  // a sparse research graph: nodes and the relationships between them
+  const nodes: [number, number][] = [[28, 104], [84, 44], [146, 92], [206, 36], [262, 86], [326, 42], [374, 98], [176, 132], [306, 128]];
+  const edges: [number, number][] = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [2, 7], [4, 8], [7, 8]];
+  const accent = new Set([2, 4]);
+  const glyphs: { g: string; x: number; y: number }[] = [
+    { g: "∂", x: 176, y: 62 }, { g: "Σ", x: 236, y: 118 }, { g: "ψ", x: 340, y: 76 }, { g: "λ", x: 56, y: 140 }, { g: "∇", x: 296, y: 18 },
   ];
-  const pill = "rounded-full border border-white/15 bg-black px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-white/60";
+  const industries = [
+    { Icon: Landmark, label: "Finance" },
+    { Icon: Truck, label: "Logistics" },
+    { Icon: Stethoscope, label: "Healthcare" },
+    { Icon: ShoppingBag, label: "Retail" },
+  ];
   return (
-    <section id="research-to-impact" aria-labelledby="impact-heading" className="py-20 sm:py-28 bg-black text-white scroll-mt-24">
-      <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 grid gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-20">
+    <section id="research-to-impact" aria-labelledby="impact-heading" className="py-20 sm:py-28 bg-white border-t border-neutral-200/70 scroll-mt-24">
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 grid gap-14 lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-16">
         <div>
-          <h2 id="impact-heading" className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.05] text-white">
+          <h2 id="impact-heading" className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.05] text-neutral-900">
             Olyxee advances the science.{" "}
-            <span className="text-white/45">Blackroid puts it to work.</span>
+            <span className="text-neutral-400">Blackroid puts it to work.</span>
           </h2>
           <a
             href="https://blackroid.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-9 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-medium text-neutral-950 transition-colors hover:bg-neutral-200"
+            className="mt-9 inline-flex items-center gap-2 rounded-full bg-neutral-900 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-black"
           >
             Explore Blackroid
             <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
           </a>
         </div>
 
-        <div className="relative mx-auto w-full max-w-md">
-          {/* soft backdrop grid + glow keeps the panel from feeling flat */}
-          <div aria-hidden className="pointer-events-none absolute -inset-6 rounded-[2rem] bg-[radial-gradient(ellipse_at_50%_0%,rgba(47,107,255,0.18),transparent_65%)]" />
-          <ol aria-label="From research to business outcomes" className="relative list-none rounded-3xl border border-white/10 bg-white/[0.03] p-5 sm:p-6">
-            <span aria-hidden className="absolute bottom-6 left-1/2 top-6 w-px -translate-x-1/2 bg-gradient-to-b from-white/10 via-white/25 to-white/10" />
-            {!reduceMotion && (
-              <motion.span
-                aria-hidden
-                className="absolute left-1/2 top-6 h-16 w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-blue-400 to-transparent"
-                animate={{ y: [0, 330], opacity: [0, 1, 0] }}
-                transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut" }}
-              />
-            )}
-
-            <motion.li {...reveal(0)} className="relative flex items-center justify-center gap-3 rounded-2xl bg-white px-6 py-6 shadow-[0_0_40px_-8px_rgba(255,255,255,0.35)]">
-              <Image unoptimized src="/Logo/Olyxee_Logo_ClearBack.png" alt="" width={32} height={32} className="h-8 w-8 object-contain" />
-              <span className="font-serif text-3xl tracking-tight text-neutral-900">Olyxee</span>
-            </motion.li>
-
-            <motion.li {...reveal(1)} className="relative flex justify-center py-5">
-              <span className={pill}>Research commercialisation</span>
-            </motion.li>
-
-            <motion.li {...reveal(2)} className="relative flex items-center justify-center rounded-2xl border border-white/20 bg-neutral-950 px-6 py-7">
-              <Image unoptimized src="/Logo/blackroid-white.png" alt="Blackroid" width={1737} height={328} className="h-9 w-auto object-contain" />
-            </motion.li>
-
-            <motion.li {...reveal(3)} className="relative flex justify-center py-5">
-              <span className={pill}>Real-world business outcomes</span>
-            </motion.li>
-
-            <motion.li {...reveal(4)} className="relative grid grid-cols-4 gap-2">
-              {outcomes.map(({ Icon, label }) => (
-                <div key={label} className="flex flex-col items-center gap-2 rounded-xl border border-white/10 bg-black/60 px-1 py-3.5">
-                  <Icon className="h-5 w-5 text-white/85" aria-hidden />
-                  <span className="text-[10px] uppercase tracking-[0.12em] text-white/50">{label}</span>
-                </div>
+        <div className="mx-auto w-full max-w-lg" role="group" aria-label="Olyxee scientific research leads to Blackroid, which delivers AI-native business services">
+          {/* Olyxee: scientific research */}
+          <motion.div {...reveal(0)} className="relative overflow-hidden rounded-3xl border border-neutral-200 bg-neutral-50">
+            <svg viewBox="0 0 400 160" className="absolute inset-x-0 bottom-0 h-auto w-full" aria-hidden>
+              {edges.map(([i, j]) => (
+                <line key={`${i}-${j}`} x1={nodes[i][0]} y1={nodes[i][1]} x2={nodes[j][0]} y2={nodes[j][1]} stroke="#d4d4d4" strokeWidth="1" />
               ))}
-            </motion.li>
-          </ol>
+              {nodes.map(([x, y], i) => (
+                <circle key={i} cx={x} cy={y} r={accent.has(i) ? 4.5 : 3} fill={accent.has(i) ? "#2563eb" : "#fff"} stroke={accent.has(i) ? "#2563eb" : "#a3a3a3"} strokeWidth="1.2" />
+              ))}
+              {glyphs.map(({ g, x, y }) => (
+                <text key={g} x={x} y={y} fontSize="17" fontStyle="italic" fill="#a3a3a3" fontFamily="Georgia, serif">{g}</text>
+              ))}
+            </svg>
+            <div className="relative flex items-start justify-between gap-4 px-6 pb-40 pt-6 sm:pb-44">
+              <div className="flex items-center gap-2.5">
+                <Image unoptimized src="/Logo/Olyxee_Logo_ClearBack.png" alt="" width={28} height={28} className="h-7 w-7 object-contain" />
+                <span className="font-serif text-2xl tracking-tight text-neutral-900">Olyxee</span>
+              </div>
+              <span className="rounded-full border border-neutral-300 bg-white px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em] text-neutral-700">
+                Scientific Research
+              </span>
+            </div>
+          </motion.div>
+
+          {/* bridge */}
+          <motion.div {...reveal(1)} className="flex flex-col items-center py-1" aria-hidden>
+            <span className="h-5 w-px bg-neutral-300" />
+            <span className="rounded-full border border-neutral-300 bg-white px-3.5 py-1 text-[11px] font-medium uppercase tracking-[0.14em] text-neutral-600">
+              Commercialisation
+            </span>
+            <span className="h-5 w-px bg-neutral-300" />
+            <ArrowDown className="-mt-1 h-3.5 w-3.5 text-neutral-400" />
+          </motion.div>
+
+          {/* Blackroid: AI-native */}
+          <motion.div {...reveal(2)} className="rounded-3xl bg-neutral-950 p-6 text-white">
+            <div className="flex items-center justify-between gap-4">
+              <Image unoptimized src="/Logo/blackroid-white.png" alt="Blackroid" width={1737} height={328} className="h-7 w-auto object-contain" />
+              <span className="rounded-full border border-white/25 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em] text-white/80">
+                AI-Native
+              </span>
+            </div>
+            <ul className="mt-7 grid grid-cols-4 gap-3" aria-label="Industries">
+              {industries.map(({ Icon, label }) => (
+                <li key={label} className="flex flex-col items-center gap-2 text-center">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/20 bg-white/[0.06]">
+                    <Icon className="h-5 w-5 text-white" aria-hidden />
+                  </span>
+                  <span className="text-[11px] tracking-wide text-white/70">{label}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
         </div>
       </div>
     </section>
