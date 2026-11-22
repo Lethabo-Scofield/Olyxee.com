@@ -52,7 +52,7 @@ const About: FC = () => {
     <div className="min-h-screen bg-white text-neutral-900 relative">
       <SEO
         title="About Olyxee | AI Research for Intelligent Computing"
-        description="Olyxee is an AI research company working toward the future of intelligent computing, investigating the mathematical, computational and physical principles that could enable new forms of machine intelligence."
+        description="Olyxee is a South African artificial intelligence research company advancing intelligent computing. We investigate the mathematical principles and computational architectures that could enable machines to reason, learn, adapt and operate reliably."
         path="/about"
         keywords={["About Olyxee", "AI research company", "intelligent computing", "mathematical foundations of intelligence", "adaptive computation", "Olyxee Research", "Orgni", "Freightics", "Lethabo Scofield", "Lethabo Innocent Makonto"]}
         jsonLd={{
@@ -66,7 +66,7 @@ const About: FC = () => {
             url: "https://olyxee.com",
             logo: "https://olyxee.com/Logo/Olyxee_Logo.png",
             description:
-              "Olyxee is an AI research company working toward the future of intelligent computing, investigating the mathematical, computational and physical principles that could enable new forms of machine intelligence.",
+              "Olyxee is a South African artificial intelligence research company advancing intelligent computing. We investigate the mathematical principles and computational architectures that could enable machines to reason, learn, adapt and operate reliably.",
           },
         }}
       />
@@ -151,6 +151,12 @@ const About: FC = () => {
                   <p className="font-serif text-2xl sm:text-3xl lg:text-[2.5rem] leading-[1.2] tracking-tight text-neutral-900 text-balance">
                     To advance the scientific foundations of <span className="text-blue-600">intelligent computing.</span>
                   </p>
+                  <p className="mt-8 text-base sm:text-lg leading-relaxed text-neutral-600 text-balance">
+                    Olyxee is a South African artificial intelligence research company advancing intelligent computing. We investigate the mathematical principles and computational architectures that could enable machines to reason, learn, adapt, and operate reliably.
+                  </p>
+                  <p className="mt-5 text-base sm:text-lg leading-relaxed text-neutral-600 text-balance">
+                    Our multidisciplinary research, carried out by a team across South Africa and South Asia, spans machine intelligence, neuro-symbolic computation, and autonomous adaptive systems, with the ambition of developing new foundations for intelligent computing.
+                  </p>
                 </motion.article>
               ) : (
                 <motion.div
@@ -186,6 +192,41 @@ const About: FC = () => {
               </p>
             </motion.div>
             <ResearchNetwork />
+          </div>
+        </section>
+
+        {/* === RESEARCH TO IMPACT === */}
+        <section id="research-to-impact" className="py-20 sm:py-28 bg-white border-t border-neutral-200/70 scroll-mt-24">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              custom={0}
+              variants={fadeUp}
+              className="max-w-3xl"
+            >
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-neutral-900 tracking-tight leading-[1.08]">
+                Research to <span className="text-neutral-500">Impact.</span>
+              </h2>
+              <p className="mt-5 text-[15px] sm:text-base text-neutral-600 leading-relaxed max-w-[60ch]">
+                Olyxee&apos;s research investigates the mathematical and computational foundations of machine intelligence.
+              </p>
+              <p className="mt-4 text-[15px] sm:text-base text-neutral-600 leading-relaxed max-w-[60ch]">
+                Blackroid provides a pathway for translating applicable research into commercial services, combining intelligent infrastructure with specialist expertise to deliver measurable business outcomes.
+              </p>
+              <p className="mt-4 text-[15px] sm:text-base text-neutral-600 leading-relaxed max-w-[60ch]">
+                This relationship connects scientific exploration with practical applications while allowing Olyxee to remain focused on advancing intelligent computing.
+              </p>
+              <a
+                href="https://blackroid.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-neutral-900 underline underline-offset-4 decoration-neutral-300 hover:decoration-neutral-900"
+              >
+                Visit blackroid.com
+              </a>
+            </motion.div>
           </div>
         </section>
 

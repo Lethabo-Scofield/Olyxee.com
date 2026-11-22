@@ -1,8 +1,6 @@
 "use client";
 
-import { SiAnthropic, SiIntel, SiMeta, SiNvidia } from "react-icons/si";
-import { FaMicrosoft } from "react-icons/fa";
-import { useState, useEffect, useRef, useMemo, type RefObject } from "react";
+import { useState, useEffect, useRef, useMemo, type ReactNode, type RefObject } from "react";
 import Header from '../components/header';
 import Footer from '../components/footer';
 
@@ -10,7 +8,7 @@ import FutureComputingSimulation from "../components/FutureComputingSimulation";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useTransform, useReducedMotion, useMotionValueEvent } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Truck, Check, PackageCheck, MapPin, Bell, Cpu, Network, Atom } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Workflow, Landmark, LineChart, Truck, Check, PackageCheck, MapPin, Bell } from "lucide-react";
 
 
 // Plays a decorative video only while it is on screen, and never under
@@ -55,7 +53,7 @@ export default function HomePage() {
     url: "https://olyxee.com",
     logo: "https://olyxee.com/Logo/Olyxee_Logo.png",
     image: "https://olyxee.com/og-image.jpg",
-    description: "Olyxee is an AI research company working toward the future of intelligent computing, investigating the mathematical, computational and physical principles that could enable new forms of machine intelligence.",
+    description: "Olyxee is a South African artificial intelligence research company advancing intelligent computing. We investigate the mathematical principles and computational architectures that could enable machines to reason, learn, adapt and operate reliably.",
     sameAs: [
       "https://www.linkedin.com/company/olyxee/",
       "https://twitter.com/olyxee",
@@ -106,7 +104,7 @@ export default function HomePage() {
         name: "What is Olyxee?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Olyxee is an AI research company working toward the future of intelligent computing, investigating the mathematical, computational and physical principles that could enable new forms of machine intelligence.",
+          text: "Olyxee is a South African artificial intelligence research company advancing intelligent computing. We investigate the mathematical principles and computational architectures that could enable machines to reason, learn, adapt and operate reliably.",
         },
       },
       {
@@ -147,11 +145,11 @@ export default function HomePage() {
         <HeroSection />
         <ResearchAreas />
         <EvolutionOfComputing />
-        <LatestReleaseSection />
+        <ResearchToImpact />
         <OrgniSection />
-        <FreighticsSection />
+        <ImageShowcase />
+        <LatestReleaseSection />
         <AboutSection />
-        <LogoStrip />
       </main>
       <Footer />
       <AnimatePresence>
@@ -228,6 +226,87 @@ function HeroSection() {
   );
 }
 
+
+function ResearchToImpact() {
+  const reduceMotion = useReducedMotion() ?? false;
+  const ease = [0.25, 0.1, 0.25, 1] as const;
+  const reveal = (i: number) => ({
+    initial: { opacity: 0, y: 18 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, amount: 0.4 },
+    transition: { duration: 0.6, delay: i * 0.15, ease },
+  });
+  const outcomes = [
+    { Icon: Workflow, label: "Operations" },
+    { Icon: Truck, label: "Logistics" },
+    { Icon: Landmark, label: "Finance" },
+    { Icon: LineChart, label: "Insight" },
+  ];
+  const pill = "rounded-full border border-white/15 bg-black px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-white/60";
+  return (
+    <section id="research-to-impact" aria-labelledby="impact-heading" className="py-20 sm:py-28 bg-black text-white scroll-mt-24">
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 grid gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-20">
+        <div>
+          <h2 id="impact-heading" className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.05] text-white">
+            Olyxee advances the science.{" "}
+            <span className="text-white/45">Blackroid puts it to work.</span>
+          </h2>
+          <a
+            href="https://blackroid.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-9 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-medium text-neutral-950 transition-colors hover:bg-neutral-200"
+          >
+            Explore Blackroid
+            <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+          </a>
+        </div>
+
+        <div className="relative mx-auto w-full max-w-md">
+          {/* soft backdrop grid + glow keeps the panel from feeling flat */}
+          <div aria-hidden className="pointer-events-none absolute -inset-6 rounded-[2rem] bg-[radial-gradient(ellipse_at_50%_0%,rgba(47,107,255,0.18),transparent_65%)]" />
+          <ol aria-label="From research to business outcomes" className="relative list-none rounded-3xl border border-white/10 bg-white/[0.03] p-5 sm:p-6">
+            <span aria-hidden className="absolute bottom-6 left-1/2 top-6 w-px -translate-x-1/2 bg-gradient-to-b from-white/10 via-white/25 to-white/10" />
+            {!reduceMotion && (
+              <motion.span
+                aria-hidden
+                className="absolute left-1/2 top-6 h-16 w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-blue-400 to-transparent"
+                animate={{ y: [0, 330], opacity: [0, 1, 0] }}
+                transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut" }}
+              />
+            )}
+
+            <motion.li {...reveal(0)} className="relative flex items-center justify-center gap-3 rounded-2xl bg-white px-6 py-6 shadow-[0_0_40px_-8px_rgba(255,255,255,0.35)]">
+              <Image unoptimized src="/Logo/Olyxee_Logo_ClearBack.png" alt="" width={32} height={32} className="h-8 w-8 object-contain" />
+              <span className="font-serif text-3xl tracking-tight text-neutral-900">Olyxee</span>
+            </motion.li>
+
+            <motion.li {...reveal(1)} className="relative flex justify-center py-5">
+              <span className={pill}>Research commercialisation</span>
+            </motion.li>
+
+            <motion.li {...reveal(2)} className="relative flex items-center justify-center rounded-2xl border border-white/20 bg-neutral-950 px-6 py-7">
+              <Image unoptimized src="/Logo/blackroid-white.png" alt="Blackroid" width={1737} height={328} className="h-9 w-auto object-contain" />
+            </motion.li>
+
+            <motion.li {...reveal(3)} className="relative flex justify-center py-5">
+              <span className={pill}>Real-world business outcomes</span>
+            </motion.li>
+
+            <motion.li {...reveal(4)} className="relative grid grid-cols-4 gap-2">
+              {outcomes.map(({ Icon, label }) => (
+                <div key={label} className="flex flex-col items-center gap-2 rounded-xl border border-white/10 bg-black/60 px-1 py-3.5">
+                  <Icon className="h-5 w-5 text-white/85" aria-hidden />
+                  <span className="text-[10px] uppercase tracking-[0.12em] text-white/50">{label}</span>
+                </div>
+              ))}
+            </motion.li>
+          </ol>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 function LogoStrip() {
   const slots: { front: { name: string; file: string }; back: { name: string; file: string } }[] = [
@@ -371,187 +450,63 @@ function ResearchAreas() {
   );
 }
 
-const EVOLUTION_STAGES = [
-  {
-    icon: Cpu,
-    label: "Traditional Computing",
-    text: "Executes explicitly programmed instructions to process information and solve problems.",
-    caption: "Built up over decades by companies such as",
-    bg: { src: "/images/traditional-computing.webp", inline: true, image: "", wash: "" },
-    featured: false,
-  },
-  {
-    icon: Network,
-    label: "Modern AI Computing",
-    text: "Uses learned models to recognise patterns, generate predictions and perform increasingly complex tasks.",
-    caption: "Led today by AI labs and platforms such as",
-    bg: { src: "/images/modern-ai-computing.webp", image: "object-cover object-center", wash: "from-white via-white/75 to-white/0" },
-    featured: false,
-  },
-  {
-    icon: Atom,
-    label: "Future Intelligent Computing",
-    caption: "",
-    text: "Investigating new mathematical principles, computational architectures and potentially physical mechanisms that could enable fundamentally different forms of machine intelligence.",
-    bg: { src: "", inline: true, image: "", wash: "" },
-    featured: true,
-  },
-] as const;
-
-function EvolutionLogos({ index }: { index: number }) {
-  if (index === 0) {
-    return (
-      <>
-        <p className="mb-3 text-xs text-neutral-600">{EVOLUTION_STAGES[0].caption}</p>
-        <ul className="flex list-none flex-wrap items-center justify-center gap-x-5 gap-y-3 p-0 text-sm text-neutral-700">
-          <li className="font-bold tracking-[0.18em] text-neutral-700">IBM</li>
-          <li className="inline-flex items-center gap-2"><SiIntel aria-hidden className="h-4 w-4 text-neutral-700" />Intel</li>
-          <li className="inline-flex items-center gap-2"><FaMicrosoft aria-hidden className="h-4 w-4 text-neutral-700" />Microsoft</li>
-        </ul>
-      </>
-    );
-  }
-  if (index === 1) {
-    return (
-      <>
-        <p className="mb-3 text-xs text-neutral-600">{EVOLUTION_STAGES[1].caption}</p>
-        <ul className="flex list-none flex-wrap items-center justify-center gap-x-5 gap-y-3 p-0 text-sm text-neutral-700">
-          {[
-            { name: "OpenAI", file: "openai.svg" },
-            { name: "Anthropic", Icon: SiAnthropic },
-            { name: "Google", file: "google.svg" },
-            { name: "Meta", Icon: SiMeta },
-            { name: "Mistral AI", file: "mistral.svg" },
-            { name: "NVIDIA", Icon: SiNvidia },
-          ].map(({ name, file, Icon }) => (
-            <li key={name} className="inline-flex items-center gap-2">
-              {Icon ? (
-                <Icon aria-hidden className="h-4 w-4 text-neutral-700" />
-              ) : (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={`/partner-logos/${file}`} alt="" loading="lazy" className="h-4 w-auto max-w-[1.4rem] grayscale brightness-50 contrast-125" />
-              )}
-              {name}
-            </li>
-          ))}
-        </ul>
-      </>
-    );
-  }
-  return (
-    <div>
-      <p className="mb-3 text-xs text-neutral-600">The future of computing is being envisioned by</p>
-      <ul className="flex list-none flex-wrap items-center justify-center gap-x-5 gap-y-3 p-0 text-sm text-neutral-700">
-        <li className="inline-flex items-center gap-2">
-          <Image unoptimized priority src="/Logo/Olyxee_Logo_ClearBack.png" alt="" width={20} height={20} className="h-5 w-5 object-contain" />
-          <span className="font-medium text-neutral-900">Olyxee</span>
-        </li>
-        <li className="font-bold tracking-[0.18em] text-neutral-700">IBM</li>
-        <li className="font-medium tracking-tight text-neutral-700">Google</li>
-      </ul>
-    </div>
-  );
-}
-
-function EvolutionVisual({ index }: { index: number }) {
-  if (index === 0) {
-    return (
-      <Image
-        src="/images/traditional-computing.webp"
-        unoptimized
-        alt="A 1950s computer operator at a mainframe control console"
-        width={1737}
-        height={906}
-        priority
-        sizes="(min-width: 1024px) 60vw, 100vw"
-        className="h-auto max-h-[40svh] w-auto max-w-full object-contain"
-      />
-    );
-  }
-  return (
-    <Image
-      src="/images/modern-ai-computing.webp"
-      alt="Modern AI computing: edge hardware connected to warehouse, retail and humanoid robot applications"
-      width={1672}
-      height={941}
-      sizes="(min-width: 1024px) 60vw, 100vw"
-      className="h-auto max-h-[40svh] w-auto max-w-full object-contain"
-    />
-  );
-}
+const VISION_PARAGRAPHS: ReactNode[] = [
+  <>Olyxee is an <span className="text-blue-600">artificial intelligence research company</span> advancing intelligent computing for the world.</>,
+  <>We investigate the <span className="text-violet-600">mathematical principles</span> and <span className="text-teal-600">computational architectures</span> that could enable machines to reason, learn, adapt and operate reliably.</>,
+  <>Our multidisciplinary team works on <span className="text-pink-600">machine intelligence</span>, neuro-symbolic computation and autonomous adaptive systems.</>,
+  <>The future we are working toward is a <span className="font-medium text-neutral-900">new foundation for intelligent computing</span>, grounded in science that people can trust.</>,
+];
 
 function EvolutionOfComputing() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState(0);
   const gatherRef = useRef(0);
+  const [shown, setShown] = useState(0);
   const reduceMotion = useReducedMotion() ?? false;
   const { scrollYProgress: p } = useScroll({ target: sectionRef, offset: ["start start", "end end"] });
-  const count = EVOLUTION_STAGES.length;
+  const n = VISION_PARAGRAPHS.length;
 
-  // One stage is shown at a time; the previous one fades fully out as the next fades in.
+  // The swarm stays pinned. Lines appear one by one as you scroll; once all are shown the section releases.
   useMotionValueEvent(p, "change", (v) => {
-    setActive(Math.max(0, Math.min(count - 1, Math.floor(v * count))));
-    gatherRef.current = reduceMotion ? 1 : Math.max(0, Math.min(1, (v - 0.7) / 0.25));
+    gatherRef.current = reduceMotion ? 1 : Math.max(0, Math.min(1, v / 0.6));
+    setShown(reduceMotion ? n : Math.max(0, Math.min(n, Math.floor((v - 0.05) / (0.8 / n) + 1))));
   });
 
-  const fade = reduceMotion ? "" : "transition-[opacity,transform] duration-700 ease-in-out";
+  const fade = reduceMotion ? "" : "transition-[opacity,transform] duration-700 ease-out";
 
   return (
-    <section
-      id="evolution"
-      aria-labelledby="evolution-heading"
-      className="relative bg-white scroll-mt-24"
-    >
-      <div className="relative z-10 mx-auto max-w-7xl px-4 pb-0 pt-4 text-left sm:px-8 lg:px-12">
-        <h2 id="evolution-heading" className="text-base font-medium tracking-tight text-blue-600 sm:text-lg">
-          The Evolution of Computing
-        </h2>
-      </div>
-      <div ref={sectionRef} className="relative -mt-8 sm:-mt-12" style={{ height: "420svh" }}>
-      <div data-sim-host="" className="sticky top-0 flex h-[100svh] flex-col overflow-hidden bg-white pt-20 pb-5 sm:pt-24 sm:pb-8">
-        {/* each stage is one composition: title, image and logos stacked as a single unit */}
-        <div className="pointer-events-none relative mx-auto mt-3 grid min-h-0 w-full max-w-5xl flex-1 px-4 sm:mt-5 sm:px-8">
-          {EVOLUTION_STAGES.map((stage, i) => (
-            <div
-              key={stage.label}
-              aria-hidden={active !== i}
-              className={`col-start-1 row-start-1 flex h-full min-h-0 flex-col items-center text-center ${fade} ${
-                "justify-start"
-              } ${active === i ? "opacity-100 translate-y-0 pointer-events-auto" : `opacity-0 pointer-events-none ${active > i ? "-translate-y-4" : "translate-y-4"}`}`}
-            >
-              <h3 className={`font-serif text-3xl leading-tight tracking-tight text-neutral-900 sm:text-5xl `}>
-                {stage.label}
-              </h3>
-              {i < count - 1 ? (
-                <div className="mt-4 flex w-full min-h-0 justify-center sm:mt-5">
-                  <EvolutionVisual index={i} />
-                </div>
-              ) : (
-                <div aria-hidden className="relative mt-2 min-h-[34svh] w-full flex-1">
-                  {active === i && (
-                    <div className="absolute inset-0">
-                      <FutureComputingSimulation className="h-full w-full" gatherRef={gatherRef} />
-                    </div>
-                  )}
-                </div>
-              )}
-              <div className="mt-4 max-w-xl [&_div]:justify-center [&_ul]:justify-center">
-                <EvolutionLogos index={i} />
-              </div>
+    <section id="evolution" aria-labelledby="evolution-heading" className="relative bg-white scroll-mt-24">
+      <div ref={sectionRef} className="relative" style={{ height: `${reduceMotion ? 100 : 100 + n * 55}svh` }}>
+        <div className="sticky top-0 flex h-[100svh] items-center overflow-hidden pt-16">
+          <div className="mx-auto grid w-full max-w-7xl items-center gap-4 px-4 sm:px-8 lg:grid-cols-[1.35fr_1fr] lg:gap-10 lg:px-12">
+            <div aria-hidden className="relative h-[38svh] min-h-[240px] w-full lg:h-[76svh]">
+              <FutureComputingSimulation className="h-full w-full" gatherRef={gatherRef} />
             </div>
-          ))}
+            <div className="text-left">
+              <h2 id="evolution-heading" className="font-serif text-3xl leading-tight tracking-tight text-neutral-900 sm:text-5xl">
+                Future Intelligent Computing
+              </h2>
+              <ul className="mt-6 space-y-4 sm:mt-8">
+                {VISION_PARAGRAPHS.map((para, i) => (
+                  <li
+                    key={i}
+                    className={`text-lg leading-relaxed text-neutral-700 sm:text-xl ${fade} ${i < shown ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"}`}
+                  >
+                    {para}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href="/about#mission"
+                className={`group mt-8 inline-flex items-center gap-1.5 text-sm text-neutral-500 underline decoration-neutral-300 underline-offset-4 hover:text-neutral-900 hover:decoration-neutral-900 ${fade} ${
+                  shown >= n ? "opacity-100" : "pointer-events-none opacity-0"
+                }`}
+              >
+                Explore Our Vision
+                <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden />
+              </Link>
+            </div>
+          </div>
         </div>
-
-        <div className="relative mt-3 text-center sm:mt-5">
-          <Link
-            href="/about#mission"
-            className="group inline-flex items-center gap-1.5 text-sm text-neutral-500 hover:text-neutral-900 transition-colors underline decoration-neutral-300 underline-offset-4 hover:decoration-neutral-900"
-          >
-            Explore Our Vision
-            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" aria-hidden />
-          </Link>
-        </div>
-      </div>
       </div>
     </section>
   );
@@ -609,7 +564,7 @@ function ImageShowcase() {
   );
 
   return (
-    <div className="pt-16 sm:pt-20 pb-16 sm:pb-24 overflow-hidden" aria-label="Orgni gallery">
+    <section className="border-t border-neutral-100 bg-white py-20 sm:py-28 overflow-hidden" aria-label="Orgni gallery">
       <div className="relative w-full space-y-5 sm:space-y-6">
         <div className="pointer-events-none absolute inset-y-0 left-0 w-12 sm:w-24 bg-gradient-to-r from-white to-transparent z-10" />
         <div className="pointer-events-none absolute inset-y-0 right-0 w-12 sm:w-24 bg-gradient-to-l from-white to-transparent z-10" />
@@ -622,7 +577,7 @@ function ImageShowcase() {
           {doubledB.map(renderCard)}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
@@ -645,7 +600,7 @@ function ProductFeature({
   heading: string;
   emphasis: string;
   description?: string;
-  image: { src: string; alt: string; width: number; height: number };
+  image?: { src: string; alt: string; width: number; height: number };
   primary?: ProductCta;
   secondary?: ProductCta;
 }) {
@@ -680,6 +635,7 @@ function ProductFeature({
         </motion.div>
 
         {/* Full-width showcase */}
+        {image && (
         <motion.div
           initial={{ opacity: 0, y: 36, scale: 0.985 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -699,6 +655,7 @@ function ProductFeature({
             />
           </div>
         </motion.div>
+        )}
 
         {/* Caption / meta */}
         {(description || primary) && (
@@ -828,7 +785,8 @@ function OrgniSection() {
           </div>
         </motion.div>
 
-        <p className="font-serif text-2xl sm:text-3xl tracking-tight text-neutral-900 mb-6">
+        <div className="flex flex-wrap items-center justify-between gap-x-8 gap-y-5 pb-20 sm:pb-28">
+        <p className="font-serif text-2xl sm:text-3xl tracking-tight text-neutral-900">
           Help your team find what they need.
         </p>
         <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
@@ -842,9 +800,8 @@ function OrgniSection() {
             <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </a>
         </div>
+        </div>
       </div>
-
-      <ImageShowcase />
     </section>
   );
 }
@@ -1381,25 +1338,6 @@ function StoriesSection() {
         </motion.div>
       </div>
     </section>
-  );
-}
-
-function FreighticsSection() {
-  return (
-    <ProductFeature
-      id="freightics"
-      surface="plain"
-      heading="Built to carry our"
-      emphasis="intelligent computing mission."
-      description="Manage all your freight in one place."
-      image={{
-        src: "/images/freightics-shipping.webp",
-        alt: "Freightics shipment page showing a container in transit from Chenghai, China to OR Tambo, South Africa, with a live route map, shipment activity and carrier details",
-        width: 1672,
-        height: 941,
-      }}
-      primary={{ label: "Visit Freightics", href: "https://freightics.olyxee.com/", external: true }}
-    />
   );
 }
 

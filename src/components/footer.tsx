@@ -85,7 +85,8 @@ export default function Footer({ variant = "light" }: FooterProps) {
 
   const styles = isLight
     ? {
-        wrapper: "bg-neutral-100 text-neutral-900 border-t border-neutral-200",
+        wrapper: "bg-white text-neutral-900",
+        card: "bg-neutral-100 bg-cover bg-center ring-1 ring-neutral-200/70",
         columnTitle: "text-neutral-500",
         link: "text-neutral-900 hover:text-neutral-500",
         divider: "border-neutral-200",
@@ -94,6 +95,7 @@ export default function Footer({ variant = "light" }: FooterProps) {
       }
     : {
         wrapper: "bg-neutral-950 text-white",
+        card: "bg-white/[0.05] ring-1 ring-white/10",
         columnTitle: "text-white/50",
         link: "text-white hover:text-white/60",
         divider: "border-white/10",
@@ -103,9 +105,13 @@ export default function Footer({ variant = "light" }: FooterProps) {
 
   return (
     <footer className={styles.wrapper} aria-label="Site footer">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
-        {/* === Link columns === */}
-        <div className="pt-16 sm:pt-20 pb-12 sm:pb-16">
+      <div className="px-2 pt-2 sm:px-3 sm:pt-3">
+        {/* === Link card: wide, with a small gutter either side === */}
+        <div
+          className={`rounded-3xl sm:rounded-[2rem] ${styles.card}`}
+          style={isLight ? { backgroundImage: "url(/images/footer-bg.webp)" } : undefined}
+        >
+         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 pt-14 sm:pt-16 pb-12 sm:pb-14">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-6 sm:gap-x-8 gap-y-12">
             {footerData.columns.map((column) => (
               <div key={column.title}>
@@ -148,10 +154,13 @@ export default function Footer({ variant = "light" }: FooterProps) {
               </div>
             ))}
           </div>
+         </div>
         </div>
+      </div>
 
-        {/* === Bottom bar === */}
-        <div className={`border-t ${styles.divider} py-6 sm:py-8 flex flex-col-reverse sm:flex-row items-center sm:justify-between gap-4`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
+        {/* === Bottom bar (outside the card) === */}
+        <div className="py-6 sm:py-8 flex flex-col-reverse sm:flex-row items-center sm:justify-between gap-4">
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 justify-center sm:justify-start">
             <Link href="/" className="flex items-center gap-2">
               <Image src="/Logo/Olyxee_Logo.png" alt="Olyxee" width={20} height={20} className="w-5 h-5" />

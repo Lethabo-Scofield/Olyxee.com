@@ -59,8 +59,8 @@ const PLATFORM_TABS = [
     id: "order-loop",
     label: "Freightics",
     desc: "Freightics supports freight operations across orders, cargo, warehouse activity and customer tracking.",
-    image: "/images/enterprise/order-loop-tracking.png",
-    alt: "Freightics delivery tracking",
+    image: "/images/freightics-shipping.webp",
+    alt: "Freightics shipment page showing a container in transit from Chenghai, China to OR Tambo, South Africa, with a live route map, shipment activity and carrier details",
   },
   {
     id: "api",

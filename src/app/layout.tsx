@@ -40,9 +40,11 @@ export const metadata: Metadata = {
     template: "%s | Olyxee",
   },
   description:
-    "Olyxee is an AI research company working toward the future of intelligent computing, investigating the mathematical, computational and physical principles that could enable new forms of machine intelligence.",
+    "Olyxee is a South African artificial intelligence research company advancing intelligent computing. We investigate the mathematical principles and computational architectures that could enable machines to reason, learn, adapt and operate reliably.",
   keywords: [
     "Olyxee",
+    "South African AI research company",
+    "Foundations of machine intelligence",
     "Neuro-Symbolic Intelligence",
     "Neuro-Symbolic Autonomous Systems",
     "Autonomous Adaptive Systems",
@@ -76,7 +78,7 @@ export const metadata: Metadata = {
     siteName: "Olyxee",
     title: "Olyxee | AI Research for the Future of Intelligent Computing",
     description:
-      "Olyxee is an AI research company working toward the future of intelligent computing, investigating the mathematical, computational and physical principles that could enable new forms of machine intelligence.",
+      "Olyxee is a South African artificial intelligence research company advancing intelligent computing. We investigate the mathematical principles and computational architectures that could enable machines to reason, learn, adapt and operate reliably.",
     images: [
       {
         url: "/og-image.jpg",
@@ -90,7 +92,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Olyxee | AI Research for the Future of Intelligent Computing",
     description:
-      "Olyxee is an AI research company working toward the future of intelligent computing, investigating the mathematical, computational and physical principles that could enable new forms of machine intelligence.",
+      "Olyxee is a South African artificial intelligence research company advancing intelligent computing. We investigate the mathematical principles and computational architectures that could enable machines to reason, learn, adapt and operate reliably.",
     images: ["/og-image.jpg"],
     creator: "@Olyxee",
   },
@@ -142,7 +144,7 @@ export default function RootLayout({
               slogan: "Advancing the foundations of intelligent computing",
               url: "https://olyxee.com",
               logo: "https://olyxee.com/Logo/Olyxee_Logo.png",
-              description: "Olyxee is an AI research company working toward the future of intelligent computing, investigating the mathematical, computational and physical principles that could enable new forms of machine intelligence.",
+              description: "Olyxee is a South African artificial intelligence research company advancing intelligent computing. We investigate the mathematical principles and computational architectures that could enable machines to reason, learn, adapt and operate reliably.",
               knowsAbout: [
                 "Mathematical Foundations of Intelligence",
                 "Learning and Adaptive Computation",
@@ -183,7 +185,7 @@ export default function RootLayout({
               name: "Olyxee",
               alternateName: "Olyxee Inc",
               url: "https://olyxee.com",
-              description: "Olyxee is an AI research company working toward the future of intelligent computing, investigating the mathematical, computational and physical principles that could enable new forms of machine intelligence.",
+              description: "Olyxee is a South African artificial intelligence research company advancing intelligent computing. We investigate the mathematical principles and computational architectures that could enable machines to reason, learn, adapt and operate reliably.",
               inLanguage: "en",
               publisher: {
                 "@type": "Organization",
