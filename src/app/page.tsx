@@ -8,7 +8,7 @@ import FutureComputingSimulation from "../components/FutureComputingSimulation";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useTransform, useReducedMotion, useMotionValueEvent } from "framer-motion";
-import { ArrowDown, ArrowRight, ArrowUpRight, Landmark, Stethoscope, ShoppingBag, Truck, Check, PackageCheck, MapPin, Bell } from "lucide-react";
+import { FlaskConical, Cpu, ArrowRight, ArrowUpRight, Landmark, Stethoscope, ShoppingBag, Truck, Check, PackageCheck, MapPin, Bell } from "lucide-react";
 
 
 // Plays a decorative video only while it is on screen, and never under
@@ -147,7 +147,6 @@ export default function HomePage() {
         <EvolutionOfComputing />
         <ResearchToImpact />
         <OrgniSection />
-        <ImageShowcase />
         <LatestReleaseSection />
         <AboutSection />
       </main>
@@ -228,20 +227,8 @@ function HeroSection() {
 
 
 function ResearchToImpact() {
-  const ease = [0.25, 0.1, 0.25, 1] as const;
-  const reveal = (i: number) => ({
-    initial: { opacity: 0, y: 14 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, amount: 0.3 },
-    transition: { duration: 0.6, delay: i * 0.14, ease },
-  });
-  // a sparse research graph: nodes and the relationships between them
-  const nodes: [number, number][] = [[28, 104], [84, 44], [146, 92], [206, 36], [262, 86], [326, 42], [374, 98], [176, 132], [306, 128]];
-  const edges: [number, number][] = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [2, 7], [4, 8], [7, 8]];
-  const accent = new Set([2, 4]);
-  const glyphs: { g: string; x: number; y: number }[] = [
-    { g: "∂", x: 176, y: 62 }, { g: "Σ", x: 236, y: 118 }, { g: "ψ", x: 340, y: 76 }, { g: "λ", x: 56, y: 140 }, { g: "∇", x: 296, y: 18 },
-  ];
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  useVideoInView(videoRef);
   const industries = [
     { Icon: Landmark, label: "Finance" },
     { Icon: Truck, label: "Logistics" },
@@ -249,79 +236,46 @@ function ResearchToImpact() {
     { Icon: ShoppingBag, label: "Retail" },
   ];
   return (
-    <section id="research-to-impact" aria-labelledby="impact-heading" className="py-20 sm:py-28 bg-white border-t border-neutral-200/70 scroll-mt-24">
-      <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 grid gap-14 lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-16">
-        <div>
-          <h2 id="impact-heading" className="font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.05] text-neutral-900">
-            Olyxee advances the science.{" "}
-            <span className="text-neutral-400">Blackroid puts it to work.</span>
-          </h2>
-          <a
-            href="https://blackroid.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-9 inline-flex items-center gap-2 rounded-full bg-neutral-900 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-black"
-          >
-            Explore Blackroid
-            <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-          </a>
-        </div>
-
-        <div className="mx-auto w-full max-w-lg" role="group" aria-label="Olyxee scientific research leads to Blackroid, which delivers AI-native business services">
-          {/* Olyxee: scientific research */}
-          <motion.div {...reveal(0)} className="relative overflow-hidden rounded-3xl border border-neutral-200 bg-neutral-50">
-            <svg viewBox="0 0 400 160" className="absolute inset-x-0 bottom-0 h-auto w-full" aria-hidden>
-              {edges.map(([i, j]) => (
-                <line key={`${i}-${j}`} x1={nodes[i][0]} y1={nodes[i][1]} x2={nodes[j][0]} y2={nodes[j][1]} stroke="#d4d4d4" strokeWidth="1" />
-              ))}
-              {nodes.map(([x, y], i) => (
-                <circle key={i} cx={x} cy={y} r={accent.has(i) ? 4.5 : 3} fill={accent.has(i) ? "#2563eb" : "#fff"} stroke={accent.has(i) ? "#2563eb" : "#a3a3a3"} strokeWidth="1.2" />
-              ))}
-              {glyphs.map(({ g, x, y }) => (
-                <text key={g} x={x} y={y} fontSize="17" fontStyle="italic" fill="#a3a3a3" fontFamily="Georgia, serif">{g}</text>
-              ))}
-            </svg>
-            <div className="relative flex items-start justify-between gap-4 px-6 pb-40 pt-6 sm:pb-44">
-              <div className="flex items-center gap-2.5">
-                <Image unoptimized src="/Logo/Olyxee_Logo_ClearBack.png" alt="" width={28} height={28} className="h-7 w-7 object-contain" />
-                <span className="font-serif text-2xl tracking-tight text-neutral-900">Olyxee</span>
-              </div>
-              <span className="rounded-full border border-neutral-300 bg-white px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em] text-neutral-700">
-                Scientific Research
-              </span>
+    <section id="research-to-impact" aria-label="Olyxee and Blackroid: from scientific research to AI-native business services" className="bg-white px-2 py-8 sm:px-3 sm:py-12 scroll-mt-24">
+      <div className="relative min-h-[460px] overflow-hidden rounded-3xl bg-black py-8 sm:min-h-[580px] sm:rounded-[2rem] sm:py-10">
+      <video ref={videoRef} src="/videos/landing-showcase.mp4" className="absolute inset-0 h-full w-full object-cover" loop muted playsInline preload="metadata" aria-hidden="true" />
+      <div aria-hidden className="absolute inset-0 bg-black/50" />
+      <div className="relative px-6 sm:px-10">
+        <div className="w-full max-w-sm">
+          <div className="flex items-center justify-between gap-4 py-5">
+            <div className="flex items-center gap-2.5">
+              <Image unoptimized src="/Logo/Olyxee_Logo_ClearBack.png" alt="" width={28} height={28} className="h-7 w-7 object-contain brightness-0 invert" />
+              <span className="font-serif text-2xl tracking-tight text-white">Olyxee</span>
             </div>
-          </motion.div>
+            <Link href="/research" className="inline-flex items-center gap-1.5 text-sm text-white/75 underline decoration-white/30 underline-offset-4 transition-colors hover:text-white hover:decoration-white"><FlaskConical className="h-4 w-4" aria-hidden />Scientific Research</Link>
+          </div>
 
-          {/* bridge */}
-          <motion.div {...reveal(1)} className="flex flex-col items-center py-1" aria-hidden>
-            <span className="h-5 w-px bg-neutral-300" />
-            <span className="rounded-full border border-neutral-300 bg-white px-3.5 py-1 text-[11px] font-medium uppercase tracking-[0.14em] text-neutral-600">
-              Commercialisation
-            </span>
-            <span className="h-5 w-px bg-neutral-300" />
-            <ArrowDown className="-mt-1 h-3.5 w-3.5 text-neutral-400" />
-          </motion.div>
-
-          {/* Blackroid: AI-native */}
-          <motion.div {...reveal(2)} className="rounded-3xl bg-neutral-950 p-6 text-white">
-            <div className="flex items-center justify-between gap-4">
-              <Image unoptimized src="/Logo/blackroid-white.png" alt="Blackroid" width={1737} height={328} className="h-7 w-auto object-contain" />
-              <span className="rounded-full border border-white/25 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em] text-white/80">
-                AI-Native
-              </span>
+          <div className="flex items-center gap-3" aria-hidden>
+            <div className="flex w-7 flex-col items-center">
+              <span className="h-10 w-px bg-white/40" />
             </div>
-            <ul className="mt-7 grid grid-cols-4 gap-3" aria-label="Industries">
-              {industries.map(({ Icon, label }) => (
-                <li key={label} className="flex flex-col items-center gap-2 text-center">
-                  <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/20 bg-white/[0.06]">
-                    <Icon className="h-5 w-5 text-white" aria-hidden />
-                  </span>
-                  <span className="text-[11px] tracking-wide text-white/70">{label}</span>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
+            <span className="text-xs text-white/70">Commercialisation</span>
+          </div>
+
+          <div className="flex items-center justify-between gap-4 py-5">
+            <Image unoptimized src="/Logo/blackroid-white.png" alt="Blackroid" width={1737} height={328} className="h-6 w-auto object-contain" />
+            <a href="https://blackroid.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm text-white/75 underline decoration-white/30 underline-offset-4 transition-colors hover:text-white hover:decoration-white"><Cpu className="h-4 w-4" aria-hidden />AI-Native</a>
+          </div>
+
+          {/* Blackroid branches out to the industries it serves */}
+          <svg viewBox="0 0 400 28" className="block h-7 w-full" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="1" aria-hidden>
+            <path d="M200 0V12M50 12H350M50 12V28M150 12V28M250 12V28M350 12V28" />
+          </svg>
+          <ul className="grid grid-cols-4 gap-2" aria-label="Industries">
+            {industries.map(({ Icon, label }) => (
+              <li key={label} className="flex flex-col items-center gap-2 text-center">
+                <Icon className="h-6 w-6 text-white" aria-hidden />
+                <span className="text-xs text-white/75">{label}</span>
+              </li>
+            ))}
+          </ul>
         </div>
+      </div>
       </div>
     </section>
   );
@@ -544,61 +498,6 @@ function TechnologyIntro() {
   );
 }
 
-
-function ImageShowcase() {
-  const rowA = [
-    { src: "/images/showcase/enterprise-ai-framework.png", alt: "A conceptual framework for organizational intelligence", caption: "Find information across your business" },
-    { src: "/images/showcase/knowledge-routing.png", alt: "A query routed to structured organisational knowledge", caption: "Get the right context for work" },
-    { src: "/images/showcase/connected-systems.png", alt: "Systems, clouds and people connected around a shared hub", caption: "Bring work context together" },
-    { src: "/images/showcase/company-insights.png", alt: "Illustrative organizational insights from business information", caption: "See context behind decisions" },
-    { src: "/images/showcase/business-model.png", alt: "A hand sketching a business model map", caption: "Understand how work fits together" },
-  ];
-  const rowB = [
-    { src: "/images/showcase/ai-assistant.png", alt: "A person working with an AI assistant across dashboards", caption: "Help teams coordinate with context" },
-    { src: "/images/showcase/custom-ai-solutions.png", alt: "Software and content representing research into adaptive systems", caption: "Support changing business needs" },
-    { src: "/images/showcase/sales-funnel.png", alt: "A sales funnel chart with operational records", caption: "Keep sales work in context" },
-    { src: "/images/showcase/roi-reporting.png", alt: "ROI reporting with revenue charts", caption: "Understand business performance" },
-  ];
-
-  const doubledA = [...rowA, ...rowA];
-  const doubledB = [...rowB, ...rowB];
-
-  const renderCard = (img: { src: string; alt: string; caption: string }, idx: number) => (
-    <div
-      key={`${img.alt}-${idx}`}
-      className="group relative flex-shrink-0 w-[260px] sm:w-[360px] lg:w-[440px] aspect-[16/10] rounded-2xl overflow-hidden shadow-[0_20px_50px_-12px_rgba(15,23,42,0.35)] hover:shadow-[0_30px_70px_-12px_rgba(15,23,42,0.5)] transition-shadow duration-500"
-    >
-      <Image
-        src={img.src}
-        alt={img.alt}
-        fill
-        className="object-cover transition-transform duration-700 group-hover:scale-105"
-        sizes="(max-width: 640px) 260px, (max-width: 1024px) 360px, 440px"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-        <p className="text-white text-sm sm:text-base font-medium">{img.caption}</p>
-      </div>
-    </div>
-  );
-
-  return (
-    <section className="border-t border-neutral-100 bg-white py-20 sm:py-28 overflow-hidden" aria-label="Orgni gallery">
-      <div className="relative w-full space-y-5 sm:space-y-6">
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-12 sm:w-24 bg-gradient-to-r from-white to-transparent z-10" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-12 sm:w-24 bg-gradient-to-l from-white to-transparent z-10" />
-
-        <div className="image-scroll-row-a flex gap-5 sm:gap-6 hover:[animation-play-state:paused] will-change-transform">
-          {doubledA.map(renderCard)}
-        </div>
-
-        <div className="image-scroll-row-b flex gap-5 sm:gap-6 hover:[animation-play-state:paused] will-change-transform">
-          {doubledB.map(renderCard)}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 type ProductCta = { label: string; href: string; external?: boolean };
 
@@ -1018,36 +917,19 @@ function TeamsAvailabilitySection() {
 }
 
 function VideoShowcaseSection() {
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-  useVideoInView(videoRef);
   return (
-    <div id="in-motion" className="bg-white py-20 sm:py-28 lg:py-32">
-      <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
-        <div className="relative overflow-hidden rounded-3xl bg-black">
-          <video
-            ref={videoRef}
-            src="/videos/landing-showcase.mp4"
-            className="block w-full aspect-video object-cover"
-            loop
-            muted
-            playsInline
-            preload="metadata"
-            aria-hidden="true"
-          />
-          <div aria-hidden className="absolute inset-0 bg-black/45 pointer-events-none" />
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 sm:gap-8 px-6 text-center">
-            <h2 className="font-serif text-2xl sm:text-5xl lg:text-6xl tracking-tight text-white max-w-4xl mx-auto leading-[1.1] text-balance">
-              Advancing the foundations of intelligent computing.
-            </h2>
-            <Link
-              href="/contact"
-              className="group inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-4 bg-white text-neutral-950 rounded-full font-medium hover:bg-neutral-200 transition-colors text-sm tracking-wide"
-            >
-              Get in touch
-              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" aria-hidden />
-            </Link>
-          </div>
-        </div>
+    <div id="in-motion" className="bg-white px-2 pb-6 pt-4 sm:px-3 sm:pb-10 sm:pt-6">
+      <div className="flex flex-col items-center justify-center gap-6 rounded-3xl bg-neutral-100 px-6 py-12 text-center sm:rounded-[2rem] sm:py-16">
+        <h2 className="font-serif text-2xl sm:text-4xl tracking-tight text-neutral-900 max-w-2xl mx-auto leading-[1.15] text-balance">
+          Advancing the foundations of intelligent computing.
+        </h2>
+        <Link
+          href="/contact"
+          className="group inline-flex items-center justify-center gap-2 px-6 py-3 bg-neutral-900 text-white rounded-full font-medium hover:bg-black transition-colors text-sm tracking-wide"
+        >
+          Get in touch
+          <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" aria-hidden />
+        </Link>
       </div>
     </div>
   );
