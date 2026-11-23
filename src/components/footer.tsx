@@ -89,6 +89,8 @@ export default function Footer({ variant = "light" }: FooterProps) {
         card: "bg-neutral-100 bg-cover bg-center ring-1 ring-neutral-200/70",
         columnTitle: "text-neutral-500",
         link: "text-neutral-900 hover:text-neutral-500",
+        cardTitle: "text-white/75",
+        cardLink: "text-white hover:text-white/70",
         divider: "border-neutral-200",
         copyright: "text-neutral-500",
         social: "text-neutral-900 hover:text-neutral-500",
@@ -98,6 +100,8 @@ export default function Footer({ variant = "light" }: FooterProps) {
         card: "bg-white/[0.05] ring-1 ring-white/10",
         columnTitle: "text-white/50",
         link: "text-white hover:text-white/60",
+        cardTitle: "text-white/50",
+        cardLink: "text-white hover:text-white/60",
         divider: "border-white/10",
         copyright: "text-white/55",
         social: "text-white hover:text-white/60",
@@ -109,13 +113,13 @@ export default function Footer({ variant = "light" }: FooterProps) {
         {/* === Link card: wide, with a small gutter either side === */}
         <div
           className={`rounded-3xl sm:rounded-[2rem] ${styles.card}`}
-          style={isLight ? { backgroundImage: "url(/images/footer-bg.webp)" } : undefined}
+          style={isLight ? { backgroundImage: "url(/images/footer-bg.webp?v=2)" } : undefined}
         >
          <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 pt-14 sm:pt-16 pb-12 sm:pb-14">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-6 sm:gap-x-8 gap-y-12">
             {footerData.columns.map((column) => (
               <div key={column.title}>
-                <h3 className={`text-sm font-medium ${styles.columnTitle} mb-5`}>
+                <h3 className={`text-sm font-medium ${styles.cardTitle} mb-5`}>
                   {column.title}
                 </h3>
                 <ul className="space-y-3">
@@ -135,14 +139,14 @@ export default function Footer({ variant = "light" }: FooterProps) {
                             href={link.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className={`text-sm ${styles.link} transition-colors`}
+                            className={`text-sm ${styles.cardLink} transition-colors`}
                           >
                             {content}
                           </a>
                         ) : (
                           <Link
                             href={link.href}
-                            className={`text-sm ${styles.link} transition-colors`}
+                            className={`text-sm ${styles.cardLink} transition-colors`}
                           >
                             {content}
                           </Link>

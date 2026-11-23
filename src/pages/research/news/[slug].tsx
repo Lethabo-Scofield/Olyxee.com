@@ -43,7 +43,7 @@ function RichParagraph({ paragraph }: { paragraph: ArticleParagraph }) {
   let remainder = paragraph.text;
   const content: ReactNode[] = [];
 
-  paragraph.links.forEach((link, index) => {
+  (paragraph.links ?? []).forEach((link, index) => {
     const position = remainder.indexOf(link.text);
     if (position === -1) return;
     content.push(remainder.slice(0, position));
@@ -68,6 +68,7 @@ export default function NewsArticle({ entry }: InferGetStaticPropsType<typeof ge
   const description = entry.description;
   const image = `https://olyxee.com${entry.coverImage ?? "/og-image.jpg"}`;
   const readingTime = getReadingTime(entry);
+  const headline = entry.headline ?? entry.title;
 
   return (
     <div className="min-h-screen bg-white text-[#1d1d1f]">
@@ -111,8 +112,16 @@ export default function NewsArticle({ entry }: InferGetStaticPropsType<typeof ge
             </Link>
             <header className="mt-12 max-w-[760px]">
               <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-[#86868b]">{entry.category}</p>
-              <h1 className="mt-5 text-[2.75rem] font-semibold leading-[1.04] tracking-[-0.045em] sm:text-[4.5rem]">
-                {entry.title}
+              <h1
+                className={`mt-5 font-semibold text-balance text-[#1d1d1f] ${
+                  headline.length > 60
+                    ? "text-[1.85rem] leading-[1.15] tracking-[-0.03em] sm:text-[2.6rem]"
+                    : headline.length > 30
+                    ? "text-[2.1rem] leading-[1.1] tracking-[-0.035em] sm:text-[3.25rem]"
+                    : "text-[2.75rem] leading-[1.04] tracking-[-0.045em] sm:text-[4.5rem]"
+                }`}
+              >
+                {headline}
               </h1>
               {entry.deck && (
                 <p className="mt-7 max-w-[700px] text-[19px] leading-[1.6] text-[#6e6e73] sm:text-[22px]">
@@ -132,7 +141,7 @@ export default function NewsArticle({ entry }: InferGetStaticPropsType<typeof ge
               <figure className="mt-12 sm:mt-14">
                 <Image
                   src={entry.coverImage}
-                  alt="Olyxee and Claude Partner Network"
+                  alt={entry.title}
                   width={1672}
                   height={941}
                   priority
@@ -152,9 +161,16 @@ export default function NewsArticle({ entry }: InferGetStaticPropsType<typeof ge
                       {section.heading}
                     </h2>
                   )}
-                  <div className="space-y-6 text-[17px] leading-[1.75] text-[#3a3a3c] sm:text-[18px]">
+                  <div className="space-y-7 text-[17px] leading-[1.8] text-[#3a3a3c] sm:text-[18px]">
                     {section.paragraphs.map((paragraph, paragraphIndex) => (
-                      <p key={`${sectionIndex}-${paragraphIndex}`}>
+                      <p
+                        key={`${sectionIndex}-${paragraphIndex}`}
+                        className={
+                          typeof paragraph !== "string" && paragraph.emphasis
+                            ? "border-l-2 border-[#1d1d1f] py-1 pl-5 text-[1.2rem] font-medium leading-[1.55] tracking-[-0.01em] text-[#1d1d1f] sm:text-[1.35rem]"
+                            : undefined
+                        }
+                      >
                         <RichParagraph paragraph={paragraph} />
                       </p>
                     ))}

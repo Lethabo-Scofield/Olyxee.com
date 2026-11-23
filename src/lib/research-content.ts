@@ -13,7 +13,9 @@ export type ArticleLink = {
 
 export type ArticleParagraph = string | {
   text: string;
-  links: ArticleLink[];
+  links?: ArticleLink[];
+  /** Renders the paragraph as a larger pull statement. */
+  emphasis?: boolean;
 };
 
 export type ArticleSection = {
@@ -47,6 +49,8 @@ export type ResearchEntry = {
   links?: ResearchLink[];
   coverImage?: string;
   deck?: string;
+  /** Shorter heading shown on the article page; the full title is still used for the list and SEO. */
+  headline?: string;
   articleSections?: ArticleSection[];
 };
 
@@ -211,8 +215,7 @@ export const researchEntries = ([
     description:
       "Olyxee has been named winner of Best AI Research and Innovation at the South African AI Awards 2026, recognising its work towards the foundations of intelligent computing.",
     coverImage: "/images/research/south-african-ai-awards/olyxee-best-ai-research-innovation-2026.webp",
-    deck:
-      "Recognition for our research into the foundations of the next generation of intelligent computing.",
+    headline: "Olyxee wins Best AI Research and Innovation",
     articleSections: [
       {
         paragraphs: [
@@ -273,6 +276,85 @@ export const researchEntries = ([
           "We will continue investing in foundational research, developing experimental technologies and exploring new computing architectures that bring learning, reasoning, autonomy and reliability together.",
           "“The greatest breakthroughs in AI computing are still ahead of us, and we intend to contribute to the science that makes them possible.”",
           "Olyxee | Advancing the Foundations of Intelligent Computing",
+        ],
+      },
+    ],
+  },
+  {
+    category: "News",
+    source: "Olyxee",
+    title: "Olyxee and Blackroid Unite Research and Enterprise Expertise to Advance Intelligent Computing",
+    authors: "Olyxee",
+    venue: "Olyxee",
+    month: "Nov",
+    year: "2026",
+    date: "2026-11-23",
+    url: "/research/news/olyxee-and-blackroid-advance-intelligent-computing",
+    description:
+      "Olyxee and Blackroid announce a strategic alignment connecting artificial intelligence research with enterprise service delivery, to advance intelligent computing and translate progress into measurable business impact.",
+    coverImage: "/images/research/blackroid/olyxee-blackroid-alignment.webp",
+    deck:
+      "A strategic alignment connecting scientific research with real-world execution.",
+    articleSections: [
+      {
+        paragraphs: [
+          "Today, we are announcing a strategic alignment between Olyxee and Blackroid, bringing together our artificial intelligence research capabilities and enterprise service delivery experience under a shared vision: advancing intelligent computing and translating technological progress into measurable business impact.",
+          "This marks an important step in how we intend to connect scientific discovery, advanced engineering, and commercial execution.",
+        ],
+      },
+      {
+        heading: "Bringing Together Two Complementary Strengths",
+        paragraphs: [
+          "At Olyxee, we have built a multidisciplinary team of researchers and engineers spanning South Africa and South Asia, united by an ambition to investigate some of the most fundamental unsolved problems in machine intelligence.",
+          "Our work focuses on advancing the mathematical principles and computational architectures that could enable machines to autonomously form knowledge, discover previously unknown principles, and develop generalisable understanding.",
+          "Alongside this research, Blackroid has been working with enterprise clients, gaining practical experience in understanding organisational challenges, engineering business solutions, and delivering technology within real operational environments.",
+          "Through these experiences, we recognised an important opportunity.",
+          { text: "Organisations do not necessarily need more technology to manage. They need complex problems solved, operations executed reliably, and measurable results delivered.", emphasis: true },
+          "At the same time, advances in artificial intelligence create opportunities to fundamentally rethink how business services are delivered.",
+          "Bringing Olyxee and Blackroid together strategically allows us to approach this challenge from both directions: scientific research and real-world execution.",
+        ],
+      },
+      {
+        heading: "From Research to Real-World Impact",
+        paragraphs: [
+          "Under this direction, Olyxee will continue concentrating on the scientific foundations of intelligent computing, including mathematical reasoning, autonomous knowledge formation, adaptive intelligence, and new computational architectures.",
+          "Blackroid will focus on translating technological capabilities into commercial value through AI-native business services and enterprise transformation.",
+          "By combining intelligent software infrastructure with specialist expertise, Blackroid is building a model in which organisations can outsource complex operations and receive completed services rather than simply acquiring software to operate themselves.",
+          "Our initial commercial exploration includes financial services, insurance, healthcare, and enterprise technology, with opportunities extending beyond individual industries and geographical markets.",
+          "As Olyxee's research advances, applicable discoveries may become part of the computational infrastructure supporting Blackroid's services.",
+          "This creates a pathway for scientific progress to inform commercial applications, while the challenges encountered in real business environments can help shape new research questions.",
+        ],
+      },
+      {
+        heading: "One Vision, Distinct Responsibilities",
+        paragraphs: [
+          "This strategic alignment does not change Olyxee's fundamental purpose.",
+          "We remain committed to advancing intelligent computing as a scientific discipline, investigating capabilities beyond conventional software, existing AI applications, and today's dominant computational architectures.",
+          "Blackroid brings a complementary commercial focus, combining technology, specialist expertise, and operational accountability to deliver services that organisations can rely on.",
+          "Together, we aim to establish a stronger connection between the creation of new computing capabilities and their application to meaningful economic and organisational challenges.",
+        ],
+      },
+      {
+        heading: "Looking Ahead",
+        paragraphs: [
+          "We believe the next significant advances in artificial intelligence will require more than increasingly capable models. They will require new approaches to how computational systems acquire knowledge, reason, adapt, and operate.",
+          "Our researchers and engineers are pursuing these questions at Olyxee.",
+          "Through Blackroid, we are establishing a commercial pathway for bringing applicable advances into business operations, informed by enterprise delivery experience and real customer needs.",
+          { text: "This is the direction we are building toward: advancing the science of intelligent computing while creating the infrastructure and expertise to turn its progress into real-world value.", emphasis: true },
+        ],
+      },
+      {
+        heading: "About Olyxee and Blackroid",
+        paragraphs: [
+          "Olyxee is an artificial intelligence research company with a multidisciplinary team spanning South Africa and South Asia. Its research focuses on advancing the foundations of intelligent computing through new mathematical principles, computational architectures, and autonomous knowledge formation.",
+          "Blackroid is an AI-native business services company combining artificial intelligence, software infrastructure, and specialist expertise to solve complex operational challenges and deliver measurable business outcomes.",
+          {
+            text: "Learn more: Olyxee | Blackroid",
+            links: [
+              { text: "Olyxee", href: "https://olyxee.com" },
+              { text: "Blackroid", href: "https://blackroid.com" },
+            ],
+          },
         ],
       },
     ],

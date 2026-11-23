@@ -8,7 +8,7 @@ import FutureComputingSimulation from "../components/FutureComputingSimulation";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useTransform, useReducedMotion, useMotionValueEvent } from "framer-motion";
-import { FlaskConical, Cpu, ArrowRight, ArrowUpRight, Landmark, Stethoscope, ShoppingBag, Truck, Check, PackageCheck, MapPin, Bell } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, PackageCheck, MapPin, Bell } from "lucide-react";
 
 
 // Plays a decorative video only while it is on screen, and never under
@@ -145,7 +145,6 @@ export default function HomePage() {
         <HeroSection />
         <ResearchAreas />
         <EvolutionOfComputing />
-        <ResearchToImpact />
         <OrgniSection />
         <LatestReleaseSection />
         <AboutSection />
@@ -225,61 +224,6 @@ function HeroSection() {
   );
 }
 
-
-function ResearchToImpact() {
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-  useVideoInView(videoRef);
-  const industries = [
-    { Icon: Landmark, label: "Finance" },
-    { Icon: Truck, label: "Logistics" },
-    { Icon: Stethoscope, label: "Healthcare" },
-    { Icon: ShoppingBag, label: "Retail" },
-  ];
-  return (
-    <section id="research-to-impact" aria-label="Olyxee and Blackroid: from scientific research to AI-native business services" className="bg-white px-2 py-8 sm:px-3 sm:py-12 scroll-mt-24">
-      <div className="relative min-h-[460px] overflow-hidden rounded-3xl bg-black py-8 sm:min-h-[580px] sm:rounded-[2rem] sm:py-10">
-      <video ref={videoRef} src="/videos/landing-showcase.mp4" className="absolute inset-0 h-full w-full object-cover" loop muted playsInline preload="metadata" aria-hidden="true" />
-      <div aria-hidden className="absolute inset-0 bg-black/50" />
-      <div className="relative px-6 sm:px-10">
-        <div className="w-full max-w-sm">
-          <div className="flex items-center justify-between gap-4 py-5">
-            <div className="flex items-center gap-2.5">
-              <Image unoptimized src="/Logo/Olyxee_Logo_ClearBack.png" alt="" width={28} height={28} className="h-7 w-7 object-contain brightness-0 invert" />
-              <span className="font-serif text-2xl tracking-tight text-white">Olyxee</span>
-            </div>
-            <Link href="/research" className="inline-flex items-center gap-1.5 text-sm text-white/75 underline decoration-white/30 underline-offset-4 transition-colors hover:text-white hover:decoration-white"><FlaskConical className="h-4 w-4" aria-hidden />Scientific Research</Link>
-          </div>
-
-          <div className="flex items-center gap-3" aria-hidden>
-            <div className="flex w-7 flex-col items-center">
-              <span className="h-10 w-px bg-white/40" />
-            </div>
-            <span className="text-xs text-white/70">Commercialisation</span>
-          </div>
-
-          <div className="flex items-center justify-between gap-4 py-5">
-            <Image unoptimized src="/Logo/blackroid-white.png" alt="Blackroid" width={1737} height={328} className="h-6 w-auto object-contain" />
-            <a href="https://blackroid.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm text-white/75 underline decoration-white/30 underline-offset-4 transition-colors hover:text-white hover:decoration-white"><Cpu className="h-4 w-4" aria-hidden />AI-Native</a>
-          </div>
-
-          {/* Blackroid branches out to the industries it serves */}
-          <svg viewBox="0 0 400 28" className="block h-7 w-full" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="1" aria-hidden>
-            <path d="M200 0V12M50 12H350M50 12V28M150 12V28M250 12V28M350 12V28" />
-          </svg>
-          <ul className="grid grid-cols-4 gap-2" aria-label="Industries">
-            {industries.map(({ Icon, label }) => (
-              <li key={label} className="flex flex-col items-center gap-2 text-center">
-                <Icon className="h-6 w-6 text-white" aria-hidden />
-                <span className="text-xs text-white/75">{label}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-      </div>
-    </section>
-  );
-}
 
 function LogoStrip() {
   const slots: { front: { name: string; file: string }; back: { name: string; file: string } }[] = [
@@ -919,7 +863,7 @@ function TeamsAvailabilitySection() {
 function VideoShowcaseSection() {
   return (
     <div id="in-motion" className="bg-white px-2 pb-6 pt-4 sm:px-3 sm:pb-10 sm:pt-6">
-      <div className="flex flex-col items-center justify-center gap-6 rounded-3xl bg-neutral-100 px-6 py-12 text-center sm:rounded-[2rem] sm:py-16">
+      <div className="flex flex-col items-center justify-center mx-auto max-w-4xl gap-6 rounded-3xl bg-neutral-100 px-6 py-12 text-center sm:rounded-[2rem] sm:py-16">
         <h2 className="font-serif text-2xl sm:text-4xl tracking-tight text-neutral-900 max-w-2xl mx-auto leading-[1.15] text-balance">
           Advancing the foundations of intelligent computing.
         </h2>
@@ -970,19 +914,33 @@ function LatestReleaseSection() {
           </Link>
         </motion.div>
 
-        <div className="grid gap-x-8 gap-y-12 md:grid-cols-2">
+        <div className="grid items-start gap-x-6 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
           {[
             {
+              href: "/research/news/olyxee-and-blackroid-advance-intelligent-computing",
+              image: "/images/research/blackroid/olyxee-x-blackroid-card.webp",
+              w: 1536,
+              h: 1024,
+              alt: "Olyxee and Blackroid",
+              label: "News",
+              date: "Nov 23, 2026",
+              title: "Olyxee and Blackroid unite",
+            },
+            {
               href: "/research/news/olyxee-wins-best-ai-research-and-innovation-2026",
-              image: "/images/research/south-african-ai-awards/olyxee-best-ai-research-innovation-2026.webp",
+              image: "/images/research/south-african-ai-awards/olyxee-award-card.webp",
+              w: 1774,
+              h: 887,
               alt: "Olyxee wins Best AI Research and Innovation at the South African AI Awards 2026",
               label: "News",
               date: "Nov 14, 2026",
-              title: "Olyxee wins Best AI Research and Innovation at the South African AI Awards 2026",
+              title: "Olyxee wins Best AI Research and Innovation",
             },
             {
               href: release.href,
-              image: release.background,
+              image: "/research/finir-card-excel.webp",
+              w: 1672,
+              h: 941,
               alt: "FinIR: Semantic Financial Document Computing",
               label: "Research",
               date: "",
@@ -997,14 +955,15 @@ function LatestReleaseSection() {
               transition={{ duration: 0.7, delay: 0.05 * (i + 1) }}
             >
               <Link href={item.href} className="group block">
-                <div className="relative aspect-[2/1] overflow-hidden rounded-2xl bg-neutral-100">
+                <div className="overflow-hidden rounded-2xl bg-neutral-100">
                   <Image
                     src={item.image}
                     alt={item.alt}
-                    fill
+                    width={item.w}
+                    height={item.h}
                     unoptimized
-                    sizes="(min-width: 768px) 50vw, 100vw"
-                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                    className="block h-auto w-full transition-transform duration-500 ease-out group-hover:scale-[1.03]"
                   />
                 </div>
                 <div className="mt-5 flex items-center gap-2 text-sm text-neutral-500">
@@ -1016,7 +975,7 @@ function LatestReleaseSection() {
                     </>
                   )}
                 </div>
-                <h3 className="mt-2 max-w-xl text-xl font-medium leading-snug tracking-[-0.01em] text-neutral-900 sm:text-2xl">
+                <h3 className="mt-2 max-w-xl text-lg font-medium leading-snug tracking-[-0.01em] text-neutral-900 sm:text-xl">
                   {item.title}
                 </h3>
               </Link>
